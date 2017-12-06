@@ -4,6 +4,9 @@ cache:
   directories:
   - node_modules
 
+jdk:
+  - oraclejdk8
+
 node_js:
   - '8'
   - '6'
@@ -15,5 +18,3 @@ install:
 
 script:
   - npm run test
-  - ./lint_code.sh
-  - ./lint_docs.sh
