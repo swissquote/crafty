@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ES5 formatting Gives no warning on correct code 1`] = `Array []`;
+
+exports[`ES5 formatting Warns on wrong format 1`] = `
+Array [
+  Object {
+    "column": 17,
+    "endColumn": 18,
+    "endLine": 3,
+    "fix": Object {
+      "range": Array [
+        19,
+        19,
+      ],
+      "text": "
+",
+    },
+    "line": 3,
+    "message": "Statement inside of curly braces should be on next line.",
+    "nodeType": "Punctuator",
+    "ruleId": "brace-style",
+    "severity": 2,
+    "source": "function test() { \\"use strict\\"; fetch(\\"This is spartaaa\\"); }",
+  },
+  Object {
+    "column": 60,
+    "endColumn": 61,
+    "endLine": 3,
+    "fix": Object {
+      "range": Array [
+        61,
+        61,
+      ],
+      "text": "
+",
+    },
+    "line": 3,
+    "message": "Closing curly brace should be on the same line as opening curly brace or on the line after the previous block.",
+    "nodeType": "Punctuator",
+    "ruleId": "brace-style",
+    "severity": 2,
+    "source": "function test() { \\"use strict\\"; fetch(\\"This is spartaaa\\"); }",
+  },
+  Object {
+    "column": 7,
+    "fix": Object {
+      "range": Array [
+        70,
+        70,
+      ],
+      "text": ";",
+    },
+    "line": 5,
+    "message": "Missing semicolon.",
+    "nodeType": "ExpressionStatement",
+    "ruleId": "semi",
+    "severity": 2,
+    "source": "test()",
+  },
+]
+`;

@@ -1,0 +1,40 @@
+{
+  "name": "integration",
+  "version": "1.0.3",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": "../../node_modules/.bin/jest",
+    "test:watch": "../../node_modules/.bin/jest --watch"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "@swissquote/crafty": "1.0.3",
+    "@swissquote/crafty-preset-babel": "1.0.3",
+    "@swissquote/crafty-preset-images": "1.0.3",
+    "@swissquote/crafty-preset-images-simple": "1.0.3",
+    "@swissquote/crafty-preset-maven": "1.0.3",
+    "@swissquote/crafty-preset-polyfills": "1.0.3",
+    "@swissquote/crafty-preset-postcss": "1.0.3",
+    "@swissquote/crafty-preset-typescript": "1.0.3",
+    "@swissquote/crafty-runner-gulp": "1.0.3",
+    "@swissquote/crafty-runner-rollup": "1.0.3",
+    "@swissquote/crafty-runner-webpack": "1.0.3",
+    "get-stdin": "5.0.1"
+  },
+  "engines": {
+    "node": ">=4.3.0 <5.0.0 || >=5.10"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "testEnvironment": "node",
+    "verbose": true
+  },
+  "dependencies": {
+    "rimraf": "^2.6.1"
+  }
+}

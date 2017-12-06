@@ -1,0 +1,33 @@
+@import "imported.scss";
+
+// Doesn't like tags
+body {
+    // Doesn't like units on 0
+    margin: 0em;
+}
+
+// This is not a valid component
+.notAComponent {
+    color: blue;
+}
+
+// State should not be without a component
+.is-something {
+    color: blue;
+}
+
+// No ids have to be used
+#no-id {
+    color: blue;
+}
+
+// No nesting more than two levels
+.Nesting {
+    &--shouldNot {
+        &--beMoreThan {
+            &--twoLevels {
+                color: blue;
+            }
+        }
+    }
+}

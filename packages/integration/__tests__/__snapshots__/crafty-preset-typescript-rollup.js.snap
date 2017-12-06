@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deletes rollup uglify plugin using crafty.config.js 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles-no-uglify/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+[__:__:__] Finished 'js_myTSBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Deletes rollup uglify plugin using crafty.config.js 2`] = `
+"var C = /** @class */ (function () {
+    function C() {
+        console.log(\\"Something happens here\\");
+    }
+    C.prototype.someMethod = function () {
+        alert(\\"yes, alert still exists\\");
+    };
+    return C;
+}());
+var D = /** @class */ (function () {
+    function D() {
+        console.log(\\"Something else happens here\\");
+    }
+    D.prototype.someMethod = function () {
+        alert(\\"yes, alert still exists\\");
+    };
+    return D;
+}());
+
+export { C, D };
+//# sourceMappingURL=myTSBundle.min.js.map
+"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+Object {
+  "status": 1,
+  "stderr": "[js_myTSBundle] (!) __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+js/typescript.ts
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Error: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+    ...stacktrace...
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+",
+}
+`;
+
+exports[`Works with rollup 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+[__:__:__] Finished 'js_myTSBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Works with rollup 2`] = `
+"var C=/** @class */function(){function e(){console.log(\\"Something happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}(),D=/** @class */function(){function e(){console.log(\\"Something else happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}();export{C,D};
+//# sourceMappingURL=myTSBundle.min.js.map
+"
+`;

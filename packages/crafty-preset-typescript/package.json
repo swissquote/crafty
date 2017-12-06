@@ -1,0 +1,26 @@
+{
+  "name": "@swissquote/crafty-preset-typescript",
+  "version": "1.0.3",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/swissquote/crafty.git",
+  "main": "src/index.js",
+  "dependencies": {
+    "gulp-concat": "2.6.1",
+    "gulp-newer": "1.3.0",
+    "gulp-sourcemaps": "2.6.1",
+    "gulp-tslint": "8.1.2",
+    "gulp-typescript": "3.2.3",
+    "rollup-plugin-tslint": "^0.1.24",
+    "rollup-plugin-typescript2": "0.8.4",
+    "tmp": "0.0.33",
+    "ts-jest": "21.2.4",
+    "ts-loader": "3.2.0",
+    "tslint": "5.8.0",
+    "tslint-eslint-rules": "4.1.1",
+    "tslint-loader": "3.5.3",
+    "typescript": "2.6.2"
+  },
+  "engines": {
+    "node": ">=4.3.0 <5.0.0 || >=5.10"
+  }
+}

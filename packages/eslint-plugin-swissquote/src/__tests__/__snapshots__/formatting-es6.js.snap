@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ES6 Formatting Fails on badly formatted code 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "endColumn": 6,
+    "endLine": 4,
+    "fix": Object {
+      "range": Array [
+        84,
+        89,
+      ],
+      "text": "    ",
+    },
+    "line": 4,
+    "message": "Expected indentation of 4 spaces but found 5.",
+    "nodeType": "Identifier",
+    "ruleId": "indent",
+    "severity": 2,
+    "source": "     jsTasks = [];",
+  },
+  Object {
+    "column": 1,
+    "endColumn": 7,
+    "endLine": 9,
+    "fix": Object {
+      "range": Array [
+        183,
+        189,
+      ],
+      "text": "    ",
+    },
+    "line": 9,
+    "message": "Expected indentation of 4 spaces but found 6.",
+    "nodeType": "Punctuator",
+    "ruleId": "indent",
+    "severity": 2,
+    "source": "      }",
+  },
+  Object {
+    "column": 1,
+    "endColumn": 9,
+    "endLine": 15,
+    "fix": Object {
+      "range": Array [
+        341,
+        349,
+      ],
+      "text": "      ",
+    },
+    "line": 15,
+    "message": "Expected indentation of 6 spaces but found 8.",
+    "nodeType": "Identifier",
+    "ruleId": "indent",
+    "severity": 2,
+    "source": "        watchers.add(js[name].watch || js[name].source, taskName);",
+  },
+]
+`;
+
+exports[`ES6 Formatting Gives no warning on correct code 1`] = `Array []`;

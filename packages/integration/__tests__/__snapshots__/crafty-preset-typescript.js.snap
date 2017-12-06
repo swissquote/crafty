@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lints TypeScript using the command 1`] = `
+Object {
+  "status": 2,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+js/Component.ts
+ERROR: 2:24   whitespace       missing whitespace
+ERROR: 3:18   no-multi-spaces  Multiple spaces found before 'b'.
+
+js/SomeLibrary.ts
+ERROR: 12:5   one-line         misplaced opening brace
+
+js/script.ts
+ERROR: 7:5    no-console       Calls to 'console.log' are not allowed.
+ERROR: 11:5   no-console       Calls to 'console.log' are not allowed.
+ERROR: 14:5   one-line         misplaced opening brace
+ERROR: 17:7   no-console       Calls to 'console.log' are not allowed.
+ERROR: 18:13  semicolon        Missing semicolon
+
+",
+}
+`;

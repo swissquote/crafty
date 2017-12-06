@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Test page</title>
+
+    <script src="https://unpkg.com/requirejs@2.3.5/require.js"></script>
+
+    <script>
+      requirejs.config({
+        paths: {
+          'react': 'https://unpkg.com/react@16.0.0/umd/react.development',
+          'react-dom': 'https://unpkg.com/react-dom@16.0.0/umd/react-dom.development',
+          'prop-types': 'https://unpkg.com/prop-types@15.6.0/prop-types'
+        }
+      })
+    </script>
+
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  require(["dist/js/app.min.js"], function () {
+    console.log("Loaded")
+  })
+</script>
+</body>
+</html>

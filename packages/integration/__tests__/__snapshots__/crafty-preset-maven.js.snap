@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fails if no pom is found 1`] = `
+Object {
+  "status": 0,
+  "stderr": "Could not define destination using maven, falling back to default No pom.xml found
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-maven/missing-pom/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Places files in target of a webapp 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-maven/webapp/target/my-app-1.0.0-SNAPSHOT/resources/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Places files in target of a webapp from within a subfolder 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-maven/subfolder/target/my-app-1.0.0-SNAPSHOT/resources/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Places files in target of a webjar 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-maven/webjar/target/classes/META-INF/resources/webjars/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Reads env. var before pom.xml 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-maven/env-override/target/some_basedir/resources/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

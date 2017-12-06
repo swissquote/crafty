@@ -1,0 +1,169 @@
+**Crafty** is a package bundled with all needed configurations to make your
+frontend build environment a joy to work with.
+
+[TOC]
+
+## Installation and usage
+
+### Install
+
+```bash
+npm install crafty crafty-preset-babel crafty-preset-postcss crafty-preset-jest crafty-runner-webpack crafty-runner-gulp
+```
+
+### Configure
+
+In `crafty.config.js` add
+
+```javascript
+module.exports = {
+  presets: [
+    "@swissquote/crafty-preset-babel",
+    "@swissquote/crafty-preset-postcss",
+    "@swissquote/crafty-preset-jest",
+    "@swissquote/crafty-runner-webpack",
+    "@swissquote/crafty-runner-gulp"
+  ],
+  js: {
+    app: {
+      runner: "webpack",
+      source: "js/app.js"
+    }
+  },
+  css: {
+    app: {
+      source: "css/app.scss",
+      watch: ["css/**"]
+    }
+  }
+};
+```
+
+### Run
+
+```bash
+crafty run
+crafty test
+```
+
+With this configuration you get:
+
+* Create a JavaScript bundle compiled with Webpack and Babel.
+* Linted your JavaScript with ESLint.
+* Create a CSS bundle compiled with PostCSS.
+* Lint your CSS with Stylelint.
+* Run your tests with Jest and compile them with Babel.
+
+## Why
+
+Getting started in a frontend app is very easy, write an `index.html`, a
+`style.css`, and a `script.js` file and you're good to go.
+
+But on bigger apps you might want some CSS preprocessing ? but which one to
+choose ? **Sass**, **Less**, **Stylus**, **Postcss** ? Then you want to write
+your JavaScript using EcmaScript6, but do you transpile it with **Traceur** or
+**Babel** ? Then you have to package your JavaScript in bundles, you have the
+choice between **rollup.js**, **Browserify**, **Webpack** or **Pundle**. Now you
+want to lint your JavaScript, do you choose **ESLint** or **JSHint** ? To
+orchestrate all this, do you use **Gulp**, **Broccoli** or **Grunt** ?
+
+You guessed it, each tool in the JavaScript stack has at least two alternatives,
+and there is not always a clear winner. This lead to a "JavaScript Fatigue" in
+the community these last years and many people got lost in what tools to choose
+to do these tasks.
+
+But even when you chose the tool you want to work with, you still have to
+configure it, maintain it up to date and follow up on changes.
+
+**Crafty** is an attempt to create a package that is simple to install and
+configure. Specify your JavaScript and CSS files in entry and get them compiled,
+compressed and linted with the best tools available.
+
+Each tool is fine-tuned to give the best and to follow Swissquote's Guidelines
+and best practices for frontend development.
+
+Many aspects of **Crafty** are configurable and updates are painless.
+
+[More on Why](./Why.md)
+
+## Features
+
+The main feature of **Crafty** is to compile your JavaScript, CSS, compress your
+images and deliver them in the target directory.
+
+But shortening the list of features you gain with **Crafty** to one sentence
+doesn't give it's full measure. Here's some other things it can do:
+
+### JavaScript
+
+* Write **EcmaScript2015**, transpiled to JavaScript all browsers understand
+  with Babel.
+* Write **TypeScript**, transpiled to EcmaScript5 with the TypeScript compiler.
+* Bundle all JavaScript files together with the help of **Webpack**.
+* Compress the output with **UglifyJS** to create the smallest possible bundles.
+* Lint your code with **ESLint**, points you to possible mistakes and formatting
+  errors.
+* Simple debugging with sourcemaps.
+
+[Read more about features here](03_Use_Cases/Compiling_JavaScript.md)
+
+### CSS
+
+* Preprocess your css using **Postcss** and many plugins that will allow to
+  write in a syntax approaching the one of Sass.
+* Some plugins include `postcss-mixins` to define mixins, `postcss-nested` to
+  nest your styles, `postcss-cssnext` to use CSS4 options today
+* Compress the CSS output with `postcss-csso` to get the smallest possible file.
+* Automatically add vendor prefixes to properties with `autoprefixer`.
+* Simple Debugging with Sourcemaps
+
+[Read more about features here](03_Use_Cases/Compiling_CSS.md)
+
+### Images
+
+With the help of
+[`crafty-preset-images`](05_Packages/05_crafty-preset-images.md) you can also
+compress your images (svg/png/jpg/gif).
+
+[Read more about features and configuration here](03_Use_Cases/Compressing_Images.md)
+
+### Watching for Changes / Hot Module Replacement
+
+By running the `gulp watch` command, a process is launched to trigger a rebuild
+of your asset on each change in `src/main/frontend`.
+
+A change on the configuration while Watching will reconfigure itself.
+
+For Assets built with **Webpack** this can be even more powerful : after
+compiling your code, it can change the code within the browsers **without
+reloading**.
+
+Here's an example:
+
+![React Hot Module Reload example](react-hot-loader.gif)
+
+[Read more about `watch`](04_User_Guides/Developing_Faster_with_Crafty_watch.md)
+
+## Maven, Node and Gulp
+
+Swissquote's build environment is based mainly on Maven and it's plugin
+ecosystem. But the frontend world solely relies on Node tooling to build
+Javascript and CSS assets.
+
+To use the best of both worlds, we take advantage of the
+`maven-frontend-plugin`. This plugin will ensure a Node version is installed and
+will run an `npm install` to install our JavaScript dependencies.
+
+We also use Gulp, a JavaScript task runner (can be seen a bit like Ant but for
+the JavaScript world).
+
+**Crafty** is the glue that will take all these pieces we mentioned, and build
+you assets with the best-in-class tools. Working with Swissquote's Frontend
+Guidelines as well.
+
+Everything bundled in a way that `mvn clean install` will build your assets like
+you would expect with pure Java plugins.
+
+## Getting started
+
+To get started, follow [the guide](01_Getting_Started.md)

@@ -1,0 +1,250 @@
+
+/* Import CSS Files (postcss-import, postcss-url) */
+
+@import "foo.scss";
+@import "media/bar.scss" (min-width: 25em);
+
+/* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
+
+.Parent {
+    background: white;
+
+    &--before {
+        color: #333;
+    }
+
+    @at-root {
+        .Child {
+            background: black;
+        }
+    }
+
+    &--after {
+        color: #eee;
+    }
+}
+
+/* Mixins (postcss-mixins) */
+
+@define-mixin icon $name {
+    padding-left: 16px;
+
+    &:after {
+        content: "";
+        background: url("/icons/$(name).png");
+    }
+}
+
+.Search {
+    @mixin icon search;
+}
+
+/* Comments (postcss-scss) */
+
+// single line comment
+.Button {
+    color: orange;
+}
+
+/* Variables (postcss-advanced-variables, postcss-custom-properties) */
+
+:root {
+    --color: #f00;
+}
+
+$blue: #056ef0;
+$column: 200px;
+
+.Menu {
+    width: calc(4 * $column);
+}
+
+.MenuLink {
+    color: var(--color);
+    background: $blue;
+    width: $column;
+}
+
+/* Property Lookup (postcss-property-lookup) */
+
+.Heading {
+    margin: 20px;
+    padding: @margin;
+}
+
+/* Images in CSS (postcss-assets) */
+
+.Card {
+    background: resolve("background.jpg"); /* use only on small files */
+}
+
+.Button {
+    background: inline("some/button.png");
+    background-size: size("some/button.png");
+    width: width("some/button.png");
+    height: height("some/button.png");
+
+}
+
+/* Math in your CSS (postcss-calc) */
+
+:root {
+    --main-font-size: 16px;
+}
+
+.Header {
+    font-size: var(--main-font-size);
+}
+
+.Header {
+    font-size: calc(var(--main-font-size) * 2);
+    height: calc(100px - 2em);
+    margin-top: calc(var(--main-font-size) * 1.5);
+}
+
+/* Conditionals (postcss-advanced-variables) */
+
+.Notice--clear {
+    @if 3 < 5 {
+        background: green;
+    }
+    @else {
+        background: blue;
+    }
+}
+
+/* Loops (postcss-advanced-variables) */
+
+@each $icon in (foo, bar, baz) {
+    .icon-$(icon) {
+        background: url("icons/$(icon).png");
+    }
+}
+
+@for $i from 1 to 3 {
+    .Button--$i { width: $(i)px; }
+}
+
+/* Initial Values (postcss-initial) */
+
+.Link {
+    animation: initial;
+    background: initial;
+    white-space: initial;
+}
+
+/* Colors:
+ * postcss-color-function
+ * postcss-color-gray
+ * postcss-color-hex-alpha
+ * postcss-color-hwb
+ * postcss-color-rebeccapurple
+ * postcss-color-rgba-fallback
+ */
+
+.Quote {
+    background: rgba(153, 221, 153, 0.8);   // This will create a fallback without the alpha
+
+    border-color: #9d9c;                    // This will be transformed to rgba
+
+    color: rebeccapurple;                   // ... sad story, homage to eric meyer
+}
+
+/* Color manipulation */
+
+.Link {
+    color: color(red alpha(-10%));      // Change the opacity of red
+}
+
+.Link:hover {
+    color: color(red blackness(80%));   // Darken the color
+}
+
+.Link {
+    color: hwb(90, 0%, 0%, 0.6);        // This will be transformed to rgba
+}
+
+/* Levels of gray */
+
+.Text {
+    color: gray(85);            // Level of gray
+
+    background: gray(10%, 50%); // Level of gray with opacity
+}
+
+/* Selectors:
+ * postcss-selector-matches
+ * postcss-selector-not
+ * postcss-pseudo-class-any-link
+ * postcss-custom-selectors
+ */
+
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button {
+    /* styles for your buttons */
+}
+
+:--button:--enter {
+    /* hover/focus styles for your button */
+}
+
+.Text:not(:first-child, .Special) {
+    color: red;
+}
+
+.Text:matches(:first-child, .Special) {
+    color: red;
+}
+
+.Navigation :any-link {
+    background-color: yellow;
+}
+
+/* Media Queries (postcss-custom-media, postcss-media-minmax) */
+
+@media (width >= 500px) and (width <= 1200px) {
+    /* your styles */
+}
+
+/* or coupled with custom media queries */
+@custom-media --only-medium-screen (width < 500px) or (width > 1200px);
+
+@media (--only-medium-screen) {
+    /* your styles */
+}
+
+/* Vendor Prefixes (autoprefixer) */
+
+:fullscreen .Link {
+    display: flex;
+}
+
+/*
+ * Browser Support:
+ * postcss-pseudoelements
+ * postcss-replace-overflow-wrap
+ * postcss-filter-gradient
+ * postcss-font-variant
+ */
+
+.Button:before {
+    content: attr(href);
+}
+
+.Foo {
+    overflow-wrap: break-word;
+}
+
+.Buy {
+    background: linear-gradient(to bottom, #1e5799, #7db9e8);
+}
+
+.Heading.Heading--small {
+    font-variant-caps: small-caps;
+}
+
+.Table {
+    font-variant-numeric: lining-nums;
+}

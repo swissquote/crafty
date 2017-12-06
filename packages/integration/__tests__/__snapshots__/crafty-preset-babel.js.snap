@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lints JavaScript using command 1`] = `
+Object {
+  "status": 1,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/Component.js
+  11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
+   3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
+   5:10  error    'test' is defined but never used                                               no-unused-vars
+   5:19  error    A space is required after ','                                                  comma-spacing
+   6:1   error    Expected indentation of 2 spaces but found 3                                   indent
+  11:5   warning  Unexpected console statement                                                   no-console
+  15:5   warning  Unexpected console statement                                                   no-console
+  15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
+  15:33  error    A space is required after ','                                                  comma-spacing
+  15:33  error    There should be no space before ','                                            comma-spacing
+  19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
+
+✖ 13 problems (11 errors, 2 warnings)
+  9 errors, 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints JavaScript using command, explicit configuration 1`] = `
+Object {
+  "status": 1,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/Component.js
+  11:3  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
+   5:10  error    'test' is defined but never used                                               no-unused-vars
+   6:1   error    Expected indentation of 2 spaces but found 3                                   indent
+  11:5   warning  Unexpected console statement                                                   no-console
+  15:5   warning  Unexpected console statement                                                   no-console
+  19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
+
+✖ 7 problems (5 errors, 2 warnings)
+  3 errors, 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints JavaScript using command, legacy 1`] = `
+Object {
+  "status": 1,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints-es5/js/script.js
+  3:1   error  Use the function form of 'use strict'                                          strict
+  3:19  error  A space is required after ','                                                  comma-spacing
+  4:1   error  Expected indentation of 2 spaces but found 3                                   indent
+  7:1   error  Use the function form of 'use strict'                                          strict
+  8:1   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  9:12  error  Expected '===' and instead saw '=='                                            eqeqeq
+
+✖ 6 problems (6 errors, 0 warnings)
+  3 errors, 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints JavaScript using command, recommended preset 1`] = `
+Object {
+  "status": 1,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/Component.js
+  11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
+   3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
+   5:10  error    'test' is defined but never used                                               no-unused-vars
+   5:19  error    A space is required after ','                                                  comma-spacing
+   6:1   error    Expected indentation of 2 spaces but found 3                                   indent
+  11:5   warning  Unexpected console statement                                                   no-console
+  15:5   warning  Unexpected console statement                                                   no-console
+  15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
+  15:33  error    A space is required after ','                                                  comma-spacing
+  15:33  error    There should be no space before ','                                            comma-spacing
+  19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
+
+✖ 13 problems (11 errors, 2 warnings)
+  9 errors, 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;

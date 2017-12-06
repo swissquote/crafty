@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doesn't warn on valid but badly formatted code 1`] = `Array []`;
+
+exports[`Doesn't work with ES6 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "fatal": true,
+    "line": 3,
+    "message": "Parsing error: The keyword 'const' is reserved",
+    "ruleId": null,
+    "severity": 2,
+    "source": "const something = [];",
+  },
+]
+`;
+
+exports[`Warns on console.log 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "endColumn": 12,
+    "endLine": 1,
+    "line": 1,
+    "message": "Unexpected console statement.",
+    "nodeType": "MemberExpression",
+    "ruleId": "no-console",
+    "severity": 1,
+    "source": "console.log(\\"Yeah\\");",
+  },
+]
+`;

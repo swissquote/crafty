@@ -1,0 +1,20 @@
+# node / node_modules
+node/**
+node_modules/**
+
+# SQ-Gulp
+packages/**/dist/**
+packages/**/dist_typings/**
+experiment/dist
+target/**
+
+# Tests
+coverage
+packages/integration/fixtures/**/dist**
+
+# Caches
+.rpt2_cache
+
+# Documentation
+docs/publish.json
+docs/publish_dev.json

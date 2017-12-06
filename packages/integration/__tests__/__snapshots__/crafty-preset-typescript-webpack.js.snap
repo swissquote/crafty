@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiles TypeScript 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+                Asset       Size  Chunks             Chunk Names
+    0.myBundle.min.js  334 bytes       0  [emitted]
+      myBundle.min.js    1.81 kB       1  [emitted]  default
+0.myBundle.min.js.map    1.71 kB       0  [emitted]
+  myBundle.min.js.map    16.7 kB       1  [emitted]  default
+    js/Component.d.ts   60 bytes          [emitted]
+       js/script.d.ts   73 bytes          [emitted]
+  js/SomeLibrary.d.ts  142 bytes          [emitted]
+   [0] multi ./js/script.ts 28 bytes {1} [built]
+   [1] ./js/script.ts 593 bytes {1} [built]
+   [2] ./js/Component.ts 49 bytes {1} [built]
+   [3] ./js/SomeLibrary.ts 386 bytes {0} [built]
+
+
+Compiled with warnings.
+
+myBundle.min.js from UglifyJs
+Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles TypeScript 2`] = `
+"define(function(){return function(n){function e(t){if(o[t])return o[t].exports;var r=o[t]={i:t,l:!1,exports:{}};return n[t].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var t=window.webpackJsonp;window.webpackJsonp=function(e,o,u){for(var c,i,a=0,f=[];a<e.length;a++)i=e[a],r[i]&&f.push(r[i][0]),r[i]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(n[c]=o[c]);for(t&&t(e,o,u);f.length;)f.shift()()};var o={},r={1:0};return e.e=function(n){function t(){i.onerror=i.onload=null,clearTimeout(a);var e=r[n];0!==e&&(e&&e[1](new Error(\\"Loading chunk \\"+n+\\" failed.\\")),r[n]=void 0)}var o=r[n];if(0===o)return new Promise(function(n){n()});if(o)return o[2];var u=new Promise(function(e,t){o=r[n]=[e,t]});o[2]=u;var c=document.getElementsByTagName(\\"head\\")[0],i=document.createElement(\\"script\\");i.type=\\"text/javascript\\",i.charset=\\"utf-8\\",i.async=!0,i.timeout=12e4,e.nc&&i.setAttribute(\\"nonce\\",e.nc),i.src=e.p+\\"\\"+n+\\".myBundle.min.js\\";var a=setTimeout(t,12e4);return i.onerror=i.onload=t,c.appendChild(i),u},e.m=n,e.c=o,e.d=function(n,t,o){e.o(n,t)||Object.defineProperty(n,t,{configurable:!1,enumerable:!0,get:o})},e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t},e.o=function(n,e){return Object.prototype.hasOwnProperty.call(n,e)},e.p=\\"\\",e.oe=function(n){throw console.error(n),n},e(e.s=0)}([function(n,e,t){n.exports=t(1)},function(n,e,t){\\"use strict\\";Object.defineProperty(e,\\"__esModule\\",{value:!0});var o=t(2),r=function(){function n(){console.log(\\"init class\\")}return n.prototype.method=function(){console.log(Object(o.a)(2,4)),t.e(0).then(t.bind(null,3)).then(function(n){var e=new n.default;console.log(e.add(2,4))})},n}();e.default=r},function(n,e,t){\\"use strict\\";function o(n,e){return n+e}e.a=o}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles TypeScript 3`] = `
+"webpackJsonp([0],{3:function(t,e,n){\\"use strict\\";Object.defineProperty(e,\\"__esModule\\",{value:!0});var r=function(){function t(){}return t.prototype.add=function(t,e){return t+e},t.prototype.substract=function(t,e){return t-e},t.prototype.divide=function(t,e){return t/e},t}();e.default=r}});
+//# sourceMappingURL=0.myBundle.min.js.map"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+Object {
+  "status": 1,
+  "stderr": "[js_myTSBundle] (!) __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+js/typescript.ts
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Error: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+    ...stacktrace...
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+",
+}
+`;
+
+exports[`Lints TypeScript with webpack 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+                Asset       Size  Chunks             Chunk Names
+    0.myBundle.min.js  334 bytes       0  [emitted]
+      myBundle.min.js    1.81 kB       1  [emitted]  default
+0.myBundle.min.js.map    1.71 kB       0  [emitted]
+  myBundle.min.js.map    16.4 kB       1  [emitted]  default
+    js/Component.d.ts   60 bytes          [emitted]
+       js/script.d.ts   73 bytes          [emitted]
+  js/SomeLibrary.d.ts  142 bytes          [emitted]
+   [0] multi ./js/script.ts 28 bytes {1} [built]
+   [1] ./js/script.ts 448 bytes {1} [built] [1 warning]
+   [2] ./js/Component.ts 49 bytes {1} [built] [1 warning]
+   [3] ./js/SomeLibrary.ts 386 bytes {0} [built] [1 warning]
+
+
+Compiled with warnings.
+
+./js/Component.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts
+ERROR: 2:24  whitespace       missing whitespace
+ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
+
+ @ ./js/script.ts 1:0-35
+ @ multi ./js/script.ts
+
+./js/SomeLibrary.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
+ERROR: 12:5  one-line  misplaced opening brace
+
+ @ ./js/script.ts 8:8-31
+ @ multi ./js/script.ts
+
+./js/script.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
+ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
+ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
+ERROR: 13:5  one-line    misplaced opening brace
+ERROR: 16:7  no-console  Calls to 'console.log' are not allowed.
+ERROR: 17:7  semicolon   Missing semicolon
+
+ @ multi ./js/script.ts
+
+myBundle.min.js from UglifyJs
+Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

@@ -1,0 +1,25 @@
+{
+  "name": "@swissquote/crafty-runner-rollup",
+  "version": "1.0.3",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/swissquote/crafty.git",
+  "main": "./src/index.js",
+  "dependencies": {
+    "chalk": "2.3.0",
+    "debug": "^3.0.1",
+    "pretty-hrtime": "1.0.3",
+    "rollup": "0.52.1",
+    "rollup-plugin-commonjs": "8.2.6",
+    "rollup-plugin-json": "2.3.0",
+    "rollup-plugin-node-resolve": "3.0.0",
+    "rollup-plugin-replace": "2.0.0",
+    "rollup-plugin-uglify": "2.0.1",
+    "uglify-es": "3.2.1"
+  },
+  "peerDependencies": {
+    "crafty": "1.0.0"
+  },
+  "engines": {
+    "node": ">=4.3.0 <5.0.0 || >=5.10"
+  }
+}

@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiles JavaScript 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript 2`] = `
+"function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}var _createClass=function(){function e(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(n,t,a){return t&&e(n.prototype,t),a&&e(n,a),n}}(),Test=function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),e}(),test=new Test(\\"Stéphane\\");test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript 3`] = `
+"setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
+exports[`Compiles JavaScript and concatenates 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/concatenates/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript and concatenates 2`] = `
+"function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);var _createClass=function(){function e(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(n,t,a){return t&&e(n.prototype,t),a&&e(n,a),n}}(),Test=function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),e}(),test=new Test(\\"Stéphane\\");test.sayHi();
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Compiles JavaScript with custom babel plugin 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-babel-plugin/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript with custom babel plugin 2`] = `
+"var foo = {
+  \\"catch\\": function _catch() {}
+};
+
+//eslint-disable-next-line no-console
+console.log(foo.catch);
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+Object {
+  "status": 1,
+  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] SyntaxError in plugin 'gulp-babel'
+Message:
+    __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js: Unexpected token (14:6)
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+
+events.js:182
+      throw er; // Unhandled 'error' event
+      ^
+ESLintError: Failed with 1 error
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js
+  14:7  error  Parsing error: Unexpected token
+
+  12 | }
+  13 |
+> 14 | const test = new Test(\\"Stéphane\\");
+     |       ^
+  15 | test.sayHi();
+  16 |
+
+✖ 1 problem (1 error, 0 warnings)
+
+",
+}
+`;
+
+exports[`Lints JavaScript 1`] = `
+Object {
+  "status": 1,
+  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLintError in plugin 'gulp-eslint'
+Message:
+    Failed with 4 errors
+Details:
+    domainEmitter: [object Object]
+    domain: [object Object]
+    domainThrown: false
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/js/script.js
+  3:19  error  A space is required after ','                                                  comma-spacing
+  4:1   error  Expected indentation of 2 spaces but found 3                                   indent
+  8:1   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  9:12  error  Expected '===' and instead saw '=='                                            eqeqeq
+
+✖ 4 problems (4 errors, 0 warnings)
+  3 errors, 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints JavaScript, doesn't fail in development 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5-dev/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5-dev/js/script.js
+  3:19  warning  A space is required after ','                                                  comma-spacing
+  4:1   warning  Expected indentation of 2 spaces but found 3                                   indent
+  8:1   warning  Opening curly brace does not appear on the same line as controlling statement  brace-style
+
+✖ 3 problems (0 errors, 3 warnings)
+  0 errors, 3 warnings potentially fixable with the \`--fix\` option.
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

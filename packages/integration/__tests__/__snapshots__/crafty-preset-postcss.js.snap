@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lints with the command 1`] = `
+Object {
+  "status": 2,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+css/imported.scss
+ 1:1  ✖  Types are allowed only inside a scope  swissquote/no-type-outside-scope
+
+css/style.scss
+  4:1   ✖  Types are allowed only inside a scope                                 swissquote/no-type-outside-scope
+  6:14  ✖  Unexpected unit                                                       length-zero-no-unit
+ 10:1   ✖  Expected class selector \\".notAComponent\\" to match specified pattern   selector-class-pattern
+ 15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
+ 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 id selectors                 selector-max-id
+ 28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
+ 31:5   ✖  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
+
+",
+}
+`;
+
+exports[`Lints with the command in legacy mode 1`] = `
+Object {
+  "status": 2,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+css/style.scss
+  6:14  ✖  Unexpected unit                            length-zero-no-unit
+ 31:5   ✖  Unexpected missing end-of-source newline   no-missing-end-of-source-newline
+
+",
+}
+`;
+
+exports[`Lints with the command with custom config 1`] = `
+Object {
+  "status": 2,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+css/style.scss
+  6:14  ✖  Unexpected unit                                                       length-zero-no-unit
+ 10:1   ✖  Expected class selector \\".notAComponent\\" to match specified pattern   selector-class-pattern
+ 15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
+ 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 id selectors                 selector-max-id
+ 28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
+ 31:5   ✖  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
+
+",
+}
+`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Copies and compresses images 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            img: __PATH__/packages/integration/fixtures/crafty-preset-images/dist/images
+[__:__:__] Starting 'images' ...
+[__:__:__] Starting 'images_all' ...
+[__:__:__] gulp-imagemin: Minified 1 image (saved 124 kB - 18.3%)
+[__:__:__] Finished 'images_all' after ____ ms
+[__:__:__] Starting 'images_svg' ...
+[__:__:__] Finished 'images_svg' after ____ ms
+[__:__:__] Finished 'images' after ____ ms
+",
+}
+`;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsx-no-duplicate-props works fails with the same prop 1`] = `
+Array [
+  Object {
+    "column": 47,
+    "endColumn": 52,
+    "endLine": 4,
+    "line": 4,
+    "message": "No duplicate props allowed",
+    "nodeType": "JSXAttribute",
+    "ruleId": "@swissquote/swissquote/react/jsx-no-duplicate-props",
+    "severity": 2,
+    "source": "function SomeComponent() { return  <div id=\\"\\" id=\\"\\" />;  }",
+  },
+]
+`;
+
+exports[`no-did-mount-set-state fails with setState in componentDidMount 1`] = `
+Array [
+  Object {
+    "column": 7,
+    "endColumn": 20,
+    "endLine": 8,
+    "line": 8,
+    "message": "Do not use setState in componentDidMount",
+    "nodeType": "MemberExpression",
+    "ruleId": "@swissquote/swissquote/react/no-did-mount-set-state",
+    "severity": 2,
+    "source": "      this.setState({",
+  },
+]
+`;
