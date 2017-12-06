@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+  - node_modules
+
+node_js:
+  - '8'
+  - '6'
+  - '4'
+
+install:
+  - npm install
+  - npm run bootstrap
+
+script:
+  - npm run test
+  - ./lint_code.sh
+  - ./lint_docs.sh
