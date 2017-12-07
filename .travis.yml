@@ -13,7 +13,7 @@ node_js:
   - '6'
 
 before_install:
-  - java --version
+  - java -version
   - mvn --version
 
 install:

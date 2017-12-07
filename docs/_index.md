@@ -8,7 +8,12 @@ frontend build environment a joy to work with.
 ### Install
 
 ```bash
-npm install crafty crafty-preset-babel crafty-preset-postcss crafty-preset-jest crafty-runner-webpack crafty-runner-gulp
+npm install @swissquote/crafty \
+  @swissquote/crafty-preset-babel \
+  @swissquote/crafty-preset-postcss \
+  @swissquote/crafty-preset-jest \
+  @swissquote/crafty-runner-webpack \
+  @swissquote/crafty-runner-gulp
 ```
 
 ### Configure
