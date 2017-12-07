@@ -1,9 +1,10 @@
 const debug = require("debug")("webpack-runner");
-const minimatch = require("minimatch");
 const path = require("path");
 const webpack = require("webpack");
 const WebpackChain = require("webpack-chain");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
+const isGlob = require("is-glob");
+const globToRegex = require("glob-to-regexp");
 
 const PureClassesPlugin = require("./PureClassesPlugin");
 const paths = require("./utils/paths");
@@ -13,30 +14,18 @@ const absolutePaths = paths.absolutePaths;
 const MODULES = path.join(__dirname, "..", "node_modules");
 const APP_MODULES = path.join(process.cwd(), "node_modules");
 
-// TODO :: add integration test for glob patterns
-// TODO :: keep original externals system, but transform globs to regex
-function isProvided(js, request) {
-  // If no provided libraries are specified, everything is external
-  if (!js.externals || js.externals.length === 0) {
-    return false;
+function prepareExternals(externals) {
+  if (!externals || externals.length === 0) {
+    return [];
   }
 
-  // Find exact matches
-  if (js.externals.indexOf(request) > -1) {
-    return true;
-  }
-
-  // Find against patterns
-  for (let pattern in js.externals) {
-    if (
-      js.externals.hasOwnProperty(pattern) &&
-      minimatch(request, js.externals[pattern], { dot: true })
-    ) {
-      return true;
+  return externals.map(external => {
+    if (typeof external !== "string" || !isGlob(external)) {
+      return external;
     }
-  }
 
-  return false;
+    return globToRegex(external);
+  });
 }
 
 module.exports = function(crafty, bundle, webpackPort) {
@@ -74,17 +63,7 @@ module.exports = function(crafty, bundle, webpackPort) {
     .library(bundle.library || "") // The library name
     .umdNamedDefine(true); // If output.libraryTarget is set to umd and output.library is set, the amd module will be named.
 
-  chain.externals([
-    function(context, request, callback) {
-      // If it is a library in the "provided" list, skip it
-      if (isProvided(bundle, request)) {
-        return callback(null, request);
-      }
-
-      // We're fine, include it
-      return callback();
-    }
-  ]);
+  chain.externals(prepareExternals(bundle.externals));
 
   // Makes some environment variables available to the JS code, for example:
   // if (process.env.NODE_ENV === 'production') { ... }.
