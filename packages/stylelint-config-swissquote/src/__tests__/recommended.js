@@ -300,29 +300,29 @@ const validCss = `/** @define Form */
 `;
 
 describe("flags no warnings with valid css", () => {
-    it("flags no warnings nor errors", () => {
-      const result = stylelint.lint({ code: validCss, config });
-  
-      return result.then(data => {
-        expect(data.errored).toBeFalsy();
-        expect(data.results[0].warnings.length).toBe(0);
-      });
-    });
-  });
-  
-
-it("Works with namespaces", () => {
-    const result = stylelint.lint({
-        code: ".Component {\n    top: 10px;\n}\n\n" 
-            + ".ns-Component {\n    top: 10px;\n}\n\n" 
-            + ".namespace-Component {\n    top: 10px;\n}\n\n" 
-            + ".myNamespace-Component {\n    top: 10px;\n}\n",
-        config
-    });
+  it("flags no warnings nor errors", () => {
+    const result = stylelint.lint({ code: validCss, config });
 
     return result.then(data => {
-        expect(data.results[0].warnings).toMatchSnapshot()
+      expect(data.errored).toBeFalsy();
+      expect(data.results[0].warnings.length).toBe(0);
     });
+  });
+});
+
+it("Works with namespaces", () => {
+  const result = stylelint.lint({
+    code:
+      ".Component {\n    top: 10px;\n}\n\n" +
+      ".ns-Component {\n    top: 10px;\n}\n\n" +
+      ".namespace-Component {\n    top: 10px;\n}\n\n" +
+      ".myNamespace-Component {\n    top: 10px;\n}\n",
+    config
+  });
+
+  return result.then(data => {
+    expect(data.results[0].warnings).toMatchSnapshot();
+  });
 });
 
 describe("flags warnings when using ids", () => {

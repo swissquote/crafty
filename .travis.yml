@@ -11,7 +11,10 @@ jdk:
 node_js:
   - '8'
   - '6'
-  - '4'
+
+before_install:
+  - java --version
+  - mvn --version
 
 install:
   - npm install
