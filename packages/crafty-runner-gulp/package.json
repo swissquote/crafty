@@ -1,7 +1,7 @@
 {
   "name": "@swissquote/crafty-runner-gulp",
-  "version": "1.0.3",
-  "license": "UNLICENSED",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "main": "./src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.0.3",
+    "@swissquote/crafty": "1.0.0",
     "debug": "^3.0.1",
     "glob-watcher": "4.0.0",
     "gulp-plumber": "1.1.0",
