@@ -92,11 +92,6 @@ Message:
     __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js: Unexpected token (14:6)
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-
-events.js:183
-      throw er; // Unhandled 'error' event
-      ^
-ESLintError: Failed with 1 error
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -126,13 +121,7 @@ exports[`Lints JavaScript 1`] = `
 Object {
   "status": 1,
   "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLintError in plugin 'gulp-eslint'
-Message:
-    Failed with 4 errors
-Details:
-    domainEmitter: [object Object]
-    domain: [object Object]
-    domainThrown: false
+[__:__:__] ESLint failed with 4 errors
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",

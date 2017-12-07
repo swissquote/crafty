@@ -28,7 +28,18 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     // Fail the build if we have linting
     // errors and we build directly
     if (!crafty.isWatching()) {
-      stream.add(eslint.failAfterError());
+      stream.add(
+        eslint.results(results => {
+          const count = results.errorCount;
+          if (count) {
+            const message =
+              "ESLint failed with " +
+              count +
+              (count === 1 ? " error" : " errors");
+            cb(new crafty.Information(message));
+          }
+        })
+      );
     }
 
     const babelOptions = babelConfigurator(
