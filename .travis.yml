@@ -21,3 +21,13 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - npm run test
+  - composer global require daux/daux.io
+  - daux generate
+
+deploy:
+  provider: pages
+  local_dir: static
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
