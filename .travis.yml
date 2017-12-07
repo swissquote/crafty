@@ -21,8 +21,10 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - npm run test
-  - composer global require daux/daux.io
-  - daux generate
+
+after_script:
+  - composer install
+  - vendor/bin/daux generate
 
 deploy:
   provider: pages
