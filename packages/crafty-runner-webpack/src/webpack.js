@@ -13,6 +13,8 @@ const absolutePaths = paths.absolutePaths;
 const MODULES = path.join(__dirname, "..", "node_modules");
 const APP_MODULES = path.join(process.cwd(), "node_modules");
 
+// TODO :: add integration test for glob patterns
+// TODO :: keep original externals system, but transform globs to regex
 function isProvided(js, request) {
   // If no provided libraries are specified, everything is external
   if (!js.externals || js.externals.length === 0) {
@@ -25,7 +27,7 @@ function isProvided(js, request) {
   }
 
   // Find against patterns
-  for (let pattern in js.external) {
+  for (let pattern in js.externals) {
     if (
       js.externals.hasOwnProperty(pattern) &&
       minimatch(request, js.externals[pattern], { dot: true })

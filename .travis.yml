@@ -3,6 +3,7 @@ language: node_js
 cache:
   directories:
   - node_modules
+  - vendor
 
 jdk:
   - oraclejdk8
@@ -22,7 +23,7 @@ script:
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - npm run test
 
-after_script:
+before_deploy:
   - composer install
   - vendor/bin/daux generate
 
