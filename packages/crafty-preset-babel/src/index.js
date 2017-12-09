@@ -12,10 +12,10 @@ const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
   defaultConfig(config) {
-    // For some shitty reason, eslint.CLIEngine doesn't support "extends",
+    // For some reason, eslint.CLIEngine doesn't support "extends",
     // it has to be done through a configuration file
     const esConfig = tmp.fileSync({
-      prefix: "sq-gulp-config-",
+      prefix: "crafty-config-",
       postfix: ".json"
     }).name;
 
@@ -154,7 +154,7 @@ module.exports = {
       .rule("lint-js")
       .pre()
       .test(/\.jsx?$/)
-      .exclude.add(/(node_modules|bower_components|sq-gulp)/)
+      .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("eslint")
       .loader("eslint-loader")
