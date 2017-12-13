@@ -34,7 +34,7 @@ module.exports = {
     "block-opening-brace-space-before": warn("always"),
     "color-hex-case": warn("lower"),
     "color-hex-length": warn("short"),
-    "comment-whitespace-inside": warn("always"),
+    //"comment-whitespace-inside": warn("always"),
     "declaration-bang-space-after": warn("never"),
     "declaration-bang-space-before": warn("always"),
     "declaration-block-semicolon-newline-after": warn("always-multi-line"),
