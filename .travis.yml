@@ -28,7 +28,7 @@ script:
 
 before_deploy:
   - composer install
-  - vendor/bin/daux generate
+  - vendor/bin/daux generate --themes=docs_theme
 
 deploy:
   provider: pages
