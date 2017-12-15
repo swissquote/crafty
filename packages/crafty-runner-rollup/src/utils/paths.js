@@ -1,11 +1,7 @@
 const path = require("path");
 
-function isPathAbsolute(string) {
-  return /^(?:\/|[a-z]+:\/\/)/.test(string);
-}
-
 function absolutePath(item) {
-  if (isPathAbsolute(item)) {
+  if (path.isAbsolute(item)) {
     return item;
   }
 
@@ -31,7 +27,6 @@ function resolve(relative) {
 }
 
 module.exports = {
-  isPathAbsolute,
   absolutePath,
   absolutePaths,
   resolve
