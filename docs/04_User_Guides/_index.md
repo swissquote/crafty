@@ -5,7 +5,8 @@ are available to you to how to improve your productivity with `gulp watch`.
 
 ## Getting Started
 
-* [Configuring the build in your project](Configuring_the_build_in_your_project.md)
+* [Configuring the build in a blank project](Configuring_the_build_in_a_blank_project.md)
+* [Configuring the build in a maven project](Configuring_the_build_in_a_maven_project.md)
 * [Create a configuration file](Create_a_configuration_file.md)
 
 ## Productivity

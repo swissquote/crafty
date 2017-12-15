@@ -2,8 +2,6 @@
 
 ### Update your project's `pom.xml`
 
-Add the version variable `sq-web-assets.version`
-
 In the `<build><plugins>` section, add the following configuration:
 
 ```xml
@@ -28,8 +26,8 @@ In the `<build><plugins>` section, add the following configuration:
                 <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
-                <nodeVersion>v6.11.4</nodeVersion>
-                <yarnVersion>v1.1.0</yarnVersion>
+                <nodeVersion>v8.9.3</nodeVersion>
+                <yarnVersion>v1.3.2</yarnVersion>
             </configuration>
         </execution>
 
@@ -76,9 +74,9 @@ in `src/main/frontend/package.json` add:
 }
 ```
 
-## `.hgignore`
+## `.gitignore`
 
-add this to your `.hgignore`
+add this to your `.gitignore`
 
 ```ignore
 # Frontend plugins
@@ -86,7 +84,7 @@ src/main/frontend/node/**
 src/main/frontend/node_modules/**
 ```
 
-> This applies to Git as well, but the file name would be `.gitignore`
+> This applies to Mercurial as well, but the file name would be `.hgignore`
 
 ## Next
 

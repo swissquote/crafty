@@ -46,18 +46,20 @@ module.exports = {
 
 ### Run
 
+You can run the commands using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) or by adding them to the `scripts` section of your `package.json` 
+
 ```bash
-crafty run
-crafty test
+npx crafty run
+npx crafty test
 ```
 
 With this configuration you get:
 
-* Create a JavaScript bundle compiled with Webpack and Babel.
-* Linted your JavaScript with ESLint.
-* Create a CSS bundle compiled with PostCSS.
-* Lint your CSS with Stylelint.
-* Run your tests with Jest and compile them with Babel.
+* Create a JavaScript bundle compiled with [Webpack](https://webpack.js.org/) and [Babel](https://babeljs.io/).
+* Linted your JavaScript with [ESLint](https://eslint.org/).
+* Create a CSS bundle compiled with [PostCSS](http://postcss.org/).
+* Lint your CSS with [Stylelint](https://stylelint.io/).
+* Run your tests with [Jest](https://facebook.github.io/jest/) and compile them with [Babel](https://babeljs.io/).
 
 ## Why
 
