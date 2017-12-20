@@ -1,5 +1,12 @@
 sudo: false
 language: node_js
+
+addons:
+  sonarcloud:
+    organization: "swissquote"
+    branches:
+      - master
+
 cache:
   directories:
   - node_modules
@@ -25,6 +32,7 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - npm run test
+  - sonar-scanner
 
 before_deploy:
   - composer install
