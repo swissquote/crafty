@@ -36,6 +36,9 @@ module.exports = {
     // Group tasks into other tasks
     gulp.task("images", gulp.parallel("images_svg"));
 
+    // Register this task to run automatically
+    crafty.addDefaultTask("images");
+
     // Create custom watchers
     gulp.watch(["js/*.js"]).on("change", function(path) {
       console.log("Change happened to", path);
