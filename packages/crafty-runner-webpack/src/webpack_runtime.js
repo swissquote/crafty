@@ -34,23 +34,25 @@ function onDone(crafty, webpackConfig, compiler, bundle) {
     // This will copy it to disk, to make refreshes work fine
     // as we don't use the dev-server as a proxy
     if (crafty.isWatching()) {
-      const file = path.join(
-        webpackConfig.output.path,
-        webpackConfig.output.filename
-      );
-      compiler.outputFileSystem.readFile(file, (err, result) => {
-        if (err) {
-          throw err;
-        }
+      Object.keys(stats.compilation.assets)
+        .map(key => stats.compilation.assets[key])
+        .filter(asset => asset.emitted)
+        .forEach(asset => {
+          const file = asset.existsAt;
+          compiler.outputFileSystem.readFile(file, (err, result) => {
+            if (err) {
+              throw err;
+            }
 
-        mkdirp.sync(path.dirname(file));
+            mkdirp.sync(path.dirname(file));
 
-        fs.writeFile(file, result, err2 => {
-          if (err2) {
-            throw err2;
-          }
+            fs.writeFile(file, result, err2 => {
+              if (err2) {
+                throw err2;
+              }
+            });
+          });
         });
-      });
     }
 
     // Write stats
