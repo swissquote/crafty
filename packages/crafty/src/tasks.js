@@ -68,9 +68,7 @@ function registerTasks(crafty) {
         Object.keys(bundleCreators[type]).length == 0
       ) {
         crafty.log.error(
-          `Could not find bundleCreator for '${type}.${
-            bundleName
-          }', did you forget to load a preset or runner ?`
+          `Could not find bundleCreator for '${type}.${bundleName}', did you forget to load a preset or runner ?`
         );
         return;
       }
@@ -86,9 +84,9 @@ function registerTasks(crafty) {
       // The bundle doesn't specify a runner, but we have more than one available
       if (!bundle.runner) {
         throw new Error(
-          `You have multiple runners, please specify a runner for '${
-            bundleName
-          }'. Available runners are ['${configurators.join("', '")}'].`
+          `You have multiple runners, please specify a runner for '${bundleName}'. Available runners are ['${configurators.join(
+            "', '"
+          )}'].`
         );
       }
 

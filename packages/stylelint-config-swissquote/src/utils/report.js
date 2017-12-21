@@ -71,9 +71,7 @@ module.exports = function(violation) {
 
   if (typeof severity === "undefined") {
     throw new Error(
-      `The rule name ${
-        ruleName
-      } has no corresponding registered severity.\n\n` +
+      `The rule name ${ruleName} has no corresponding registered severity.\n\n` +
         "This is most likely a bug in stylelint: please file an issue with this stack trace " +
         "at\nhttps://github.com/stylelint/stylelint/issues"
     );

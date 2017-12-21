@@ -85,9 +85,7 @@ const immediateHandlers = {
     }
 
     stderr(
-      `Creating a browser bundle that depends on ${
-        detail
-      }. You might need to include https://www.npmjs.com/package/rollup-plugin-node-builtins`
+      `Creating a browser bundle that depends on ${detail}. You might need to include https://www.npmjs.com/package/rollup-plugin-node-builtins`
     );
   },
 
@@ -246,9 +244,7 @@ const deferredHandlers = {
       }
 
       stderr(
-        `Plugins that transform code${
-          detail
-        } should generate accompanying sourcemaps`
+        `Plugins that transform code${detail} should generate accompanying sourcemaps`
       );
     }
   },
