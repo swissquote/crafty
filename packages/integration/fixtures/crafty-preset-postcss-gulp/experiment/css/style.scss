@@ -24,9 +24,9 @@
     }
 }
 
-/* Mixins (postcss-mixins) */
+/* Mixins (postcss-sassy-mixins) */
 
-@define-mixin icon $name {
+@mixin icon($name) {
     padding-left: 16px;
 
     &:after {
@@ -36,7 +36,7 @@
 }
 
 .Search {
-    @mixin icon search;
+    @include icon(search);
 }
 
 /* Comments (postcss-scss) */

@@ -100,7 +100,7 @@ module.exports = {
         ignoreAtRules: [
           "at-root",
           "if",
-          "define-mixin",
+          "include",
           "mixin",
           "else",
           "each",

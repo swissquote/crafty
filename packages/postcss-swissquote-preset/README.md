@@ -5,7 +5,7 @@
 * **Organization**
   * Nested Styles (`postcss-nesting`, `postcss-nested`, `postcss-atroot`)
   * Import CSS Files (`postcss-import`, `postcss-url`)
-  * Mixins (`postcss-mixins`)
+  * Mixins (`postcss-sassy-mixins`)
   * Comments (`postcss-scss`)
 * **Variables**
   * Variables (`postcss-advanced-variables`, `postcss-custom-properties`)

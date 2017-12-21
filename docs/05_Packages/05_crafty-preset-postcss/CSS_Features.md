@@ -16,7 +16,7 @@ All included plugins have a short example accompanying them below.
 | postcss-import                 |                 | Import files                              |
 | postcss-scss                   |                 | Inline comments support                   |
 | postcss-url                    |                 | Rebase urls after import                  |
-| postcss-mixins                 |                 | Sass-like mixins                          |
+| postcss-sassy-mixins           |                 | Sass-like mixins                          |
 | postcss-advanced-variables     |                 | Sass-like variables and methods           |
 | postcss-nested                 |                 | Sass-like nested selectors                |
 | postcss-atroot                 |                 | place rules back up to the root           |
@@ -124,14 +124,14 @@ body { background: #eee; }
 
 ```
 
-### Mixins (`postcss-mixins`)
+### Mixins (`sassy-mixins`)
 
-`@define-mixin` allows to create Sass style mixins.
+`@mixin` allows to create Sass style mixins.
 
 ```css
 /* Before */
 
-@define-mixin icon $name {
+@mixin icon($name) {
     padding-left: 16px;
 
     &::after {
@@ -141,7 +141,7 @@ body { background: #eee; }
 }
 
 .search {
-    @mixin icon search;
+    @include icon(search);
 }
 
 /* After */

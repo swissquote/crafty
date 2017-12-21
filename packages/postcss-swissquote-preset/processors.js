@@ -10,8 +10,8 @@ module.exports = function(config) {
   processors.push(require("postcss-url")({ url: "rebase" }));
 
   // Apply Sass-like features
-  processors.push(require("postcss-mixins")()); // TODO :: migrate to https://www.npmjs.com/package/postcss-sassy-mixins ?
-  processors.push(require("postcss-advanced-variables")()); // TODO :: investigate about postcss-each, postcss-conditionals, postcss-simple-vars, postcss-nested-vars
+  processors.push(require("postcss-sassy-mixins")());
+  processors.push(require("postcss-advanced-variables")()); 
   processors.push(require("postcss-atroot")());
   processors.push(require("postcss-property-lookup")());
 
