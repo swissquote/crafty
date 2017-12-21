@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./src/index.js",
   "bin": {
     "crafty": "./src/bin.js"
