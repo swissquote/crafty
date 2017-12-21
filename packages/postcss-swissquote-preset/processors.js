@@ -11,9 +11,13 @@ module.exports = function(config) {
 
   // Apply Sass-like features
   processors.push(require("postcss-sassy-mixins")());
-  processors.push(require("postcss-advanced-variables")()); 
+  processors.push(require("postcss-advanced-variables")());
   processors.push(require("postcss-atroot")());
   processors.push(require("postcss-property-lookup")());
+
+  // Add plugins from postcss-preset-env missing in postcss-cssnext
+  processors.push(require("postcss-dir-pseudo-class")());
+  processors.push(require("postcss-logical")());
 
   // Handle next generation features
   const cssnextOptions = {
@@ -25,8 +29,7 @@ module.exports = function(config) {
   };
   processors.push(require("postcss-cssnext")(cssnextOptions));
 
-  // Must be run after postcss-apply
-  // that is inside postcss-cssnext
+  // Also support sass-style nesting
   processors.push(require("postcss-nested")());
 
   // Handle asset variables resolving

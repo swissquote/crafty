@@ -83,7 +83,33 @@ $column: 200px;
     background-size: size("some/button.png");
     width: width("some/button.png");
     height: height("some/button.png");
+}
 
+/* Image set (postcss-image-set-polyfill) */
+
+.BigImage {
+    background-image: image-set(
+        url(img/test.png) 1x,
+        url(img/test-2x.png) 2x,
+        url(my-img-print.png) 600dpi
+    );
+}
+
+/* Help with RTL languages (postcss-logical, postcss-dir-pseudo-class) */
+
+.Banner {
+    color: #222;
+    inset: logical 0 5px 10px;
+    padding-inline: 20px 40px;
+    resize: block;
+}
+
+.Banner__title:dir(rtl) {
+    margin-right: 10px;
+}
+
+.Banner__title:dir(ltr) {
+    margin-left: 10px;
 }
 
 /* Math in your CSS (postcss-calc) */
@@ -137,8 +163,10 @@ $column: 200px;
  * postcss-color-function
  * postcss-color-gray
  * postcss-color-hex-alpha
+ * postcss-color-hsl
  * postcss-color-hwb
  * postcss-color-rebeccapurple
+ * postcss-color-rgb
  * postcss-color-rgba-fallback
  */
 
@@ -148,6 +176,14 @@ $column: 200px;
     border-color: #9d9c;                    // This will be transformed to rgba
 
     color: rebeccapurple;                   // ... sad story, homage to eric meyer
+}
+
+.Quote--clear {
+    background: rgb(250.5 255 255);           // Allows to declare colors with rgb() level 4 
+
+    color: hsl(200grad 100% 50% / 20%);       // This will declare colors with hsl() level 4
+
+    border-color: hwb(90, 0%, 0%, 0.5);       // This will transform colors to rgba()
 }
 
 /* Color manipulation */
@@ -177,6 +213,7 @@ $column: 200px;
  * postcss-selector-not
  * postcss-pseudo-class-any-link
  * postcss-custom-selectors
+ * postcss-attribute-case-insensitive
  */
 
 @custom-selector :--button button, .button;
@@ -202,6 +239,10 @@ $column: 200px;
     background-color: yellow;
 }
 
+[frame=hsides i] {
+    border-style: solid none;
+}
+
 /* Media Queries (postcss-custom-media, postcss-media-minmax) */
 
 @media (width >= 500px) and (width <= 1200px) {
@@ -223,11 +264,16 @@ $column: 200px;
 
 /*
  * Browser Support:
+ * postcss-font-family-system-ui
  * postcss-pseudoelements
  * postcss-replace-overflow-wrap
  * postcss-filter-gradient
  * postcss-font-variant
  */
+
+.Body {
+    font-family: system-ui;
+}
 
 .Button:before {
     content: attr(href);

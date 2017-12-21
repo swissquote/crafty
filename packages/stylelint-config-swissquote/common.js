@@ -124,7 +124,7 @@ module.exports = {
     "selector-pseudo-element-no-unknown": true,
     "selector-pseudo-element-colon-notation": "single",
     "string-no-newline": true,
-    "unit-no-unknown": true,
+    "unit-no-unknown": [true, { ignoreUnits: ["x"] }],
 
     // Limiting Language features
     // ---------------------------------------------------------------------
