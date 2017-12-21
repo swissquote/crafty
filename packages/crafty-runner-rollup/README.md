@@ -41,8 +41,7 @@ The rollup.js preset is compatible with our
 
 ## Extending the configuration
 
-Each preset and `crafty.config.js` can define the `rollup(crafty, bundle,
-rollupConfig)` function to override rollup.js' configuration.
+Each preset and `crafty.config.js` can define the `rollup(crafty, bundle, rollupConfig)` function to override rollup.js' configuration.
 
 ```javascript
 module.exports = {

@@ -8,7 +8,7 @@ With the help of [ESLint](http://eslint.org) we created a default configuration 
 
 Many linting errors require an human mind to be fixed, but other don't.
 
-__ESLint__ comes with a very useful command line flag to fix the errors automatically.
+**ESLint** comes with a very useful command line flag to fix the errors automatically.
 
 We bundled a [command line tool](../../CLI.md) that will leverage this and help you fix your JavaScript errors quickly
 
@@ -24,8 +24,8 @@ Here I'll explain how to disable linting on some files or part of files, but rem
 
 Good reasons include:
 
-- It's an external library you downloaded, so it should not follow our conventions
-- you are adding a "console.log" but wrapped in a "if" statement to check if "console" exists in the global scope.
+* It's an external library you downloaded, so it should not follow our conventions
+* you are adding a "console.log" but wrapped in a "if" statement to check if "console" exists in the global scope.
 
 ### Disable linting on a line
 
@@ -36,7 +36,7 @@ you can find the rule name at the end of the error message you get when compilin
 
 ```javascript
 if (console) {
-    console.log("Les carottes sont cuites"); //eslint-disable-line no-console
+  console.log("Les carottes sont cuites"); //eslint-disable-line no-console
 }
 ```
 
@@ -48,14 +48,14 @@ You should use this possiblity with parcimony, but you can just add the followin
 /*eslint-disable */
 
 //suppress all warnings between comments
-alert('foo');
+alert("foo");
 
 /*eslint-enable */
 ```
 
 ### Disable linting for one or more files
 
-When running, __ESLint__ will look for a `.eslintignore` file in it's working directory and apply all the patterns to ignore some files.
+When running, **ESLint** will look for a `.eslintignore` file in it's working directory and apply all the patterns to ignore some files.
 
 The patterns in your .eslintignore file must match the [.gitignore syntax](https://git-scm.com/docs/gitignore).
 
@@ -65,11 +65,11 @@ For example:
 vendor/**.css
 ```
 
-> The `.eslintignore` file's location changes wether you want to disable linting from __Crafty__ or the Mercurial hooks.
+> The `.eslintignore` file's location changes wether you want to disable linting from **Crafty** or the Mercurial hooks.
 >
 > For the hooks, the file must be at the root of your repository (next to your `.hgignore`/`.gitignore`).
 >
-> For __Crafty__, the file must be in the Gulp working directory (generally `src/main/frontend`).
+> For **Crafty**, the file must be in the Gulp working directory (generally `src/main/frontend`).
 
 ## Customizing the rules
 
@@ -79,11 +79,11 @@ We created a default set of rules following the Swissquote JavaScript Guideline,
 
 ```javascript
 module.exports = {
-    eslint: {
-        rules: {
-            "arrow-parens": ["error", "always"]
-        }
+  eslint: {
+    rules: {
+      "arrow-parens": ["error", "always"]
     }
+  }
 };
 ```
 

@@ -53,8 +53,7 @@ supported
 ### Slight change in behavior of `gulp.watch()`
 
 We changed the behavior of `gulp.watch()` in Crafty compared to how it works in
-Gulp: Instead of watching directly, the watch will start when running `crafty
-watch`.
+Gulp: Instead of watching directly, the watch will start when running `crafty watch`.
 
 This creates a clear separation between development and production builds.
 

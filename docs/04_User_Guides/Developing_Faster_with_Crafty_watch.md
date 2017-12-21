@@ -1,5 +1,4 @@
-Once `npm install` was executed, you can either do `crafty run` or `crafty
-watch`
+Once `npm install` was executed, you can either do `crafty run` or `crafty watch`
 
 While developing, prefer `crafty watch`
 

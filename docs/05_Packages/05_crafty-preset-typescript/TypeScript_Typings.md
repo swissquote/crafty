@@ -1,4 +1,3 @@
-
 There are three ways to get Definition files (or Typings) in your project
 
 [TOC]
@@ -10,12 +9,10 @@ Starting with TypeScript 2, Typings can automatically be loaded from NPM package
 So if for example you use `lodash`, you can install `npm install @types/lodash` and the types are loaded automatically.
 The definition files that are in these packages are loaded form the same place as
 
->
 > I did a few tests, it seems that type definitions are found if you do
 > `import _ from 'lodash';` but not if you do `import _add from 'lodash/add';`.
 >
 > It seems only packages with nothing after the package name are taken in account.
->
 
 ## 2. Use the `typings` tool to download community managed typings
 
@@ -29,11 +26,9 @@ The `typings/index.d.ts` has then to be loaded in your project using the "files"
 
 [More commands](https://github.com/typings/typings/blob/master/docs/commands.md)
 
->
-> __Be careful__
+> **Be careful**
 > These typings are taken directly from internet and can't be mirrored.
 > If you have a build server that doesn't have access to the internet, you should commit the definition files with your project.
->
 
 ## 3. Create your own `*.d.ts` file
 

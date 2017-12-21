@@ -5,7 +5,7 @@ NC='\033[0m'
 
 echo "${GREEN}Autoformatting Docs${NC}"
 echo "${GREEN}================${NC}"
-prettier --write docs/**/*.md docs/*.md || exit 1
+prettier --write docs/**/*.md docs/**/**/*.md docs/*.md || exit 1
 
 echo
 echo "${GREEN}Markdown Linting${NC}"

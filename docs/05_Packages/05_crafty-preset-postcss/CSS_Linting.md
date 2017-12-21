@@ -1,5 +1,4 @@
-
-For linting we use __Stylelint__; a pluggable CSS linter that works on top of postcss.
+For linting we use **Stylelint**; a pluggable CSS linter that works on top of postcss.
 
 [TOC]
 
@@ -7,10 +6,10 @@ For linting we use __Stylelint__; a pluggable CSS linter that works on top of po
 
 Our linting rules come in two flavors, Legacy and Recommended.
 
-- Legacy will only check the formatting and common practices.
-- Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.
+* Legacy will only check the formatting and common practices.
+* Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.
 
-By default, we check in __Recommended__ mode, you can change this parameter with the [`legacy_css` option in your `crafty.config.js`](03_User_Guides/crafty.config.js_Available_Options.md)
+By default, we check in **Recommended** mode, you can change this parameter with the [`legacy_css` option in your `crafty.config.js`](03_User_Guides/crafty.config.js_Available_Options.md)
 
 ## Linting in development
 
@@ -27,18 +26,19 @@ Some browser specific hacks or other tweaks may come as false positives in the l
 The best is to use this way to silence stylelint, just disable the parts you know to be correct.
 
 ```css
-#id { /* stylelint-disable-line */
+/* stylelint-disable-next-line */
+#id {
   color: pink !important; /* stylelint-disable-line declaration-no-important */
 }
 ```
 
-As you can see, adding the `/* stylelint-disable-line */` will completely ignore all errors on this line.
+As you can see, adding the `/* stylelint-disable-next-line */` will completely ignore all errors on the following line.
 
-The next line gives a more interesting example : `/* stylelint-disable-line declaration-no-important */` we disable the linting only for a specific rule.
+The next line gives a more interesting example : `/* stylelint-disable-next-line declaration-no-important */` we disable the linting only for a specific rule.
 
 This is the recommended way as you won't risk silencing errors that would have been useful to you, you can even specify multiple rules, separated by a comma.
 
-You can also use the alternative `/* stylelint-disable-next-line */` comment.
+You can also use the alternative `/* stylelint-disable-line */` comment to disable the current line.
 
 ### Disable linting for a section
 
@@ -54,7 +54,7 @@ You can also disable linting for as many lines as you want.
 
 ### Disable linting for one or more files
 
-When running, __Stylelint__ will look for a `.stylelintignore` file in it's working directory and apply all the patterns to ignore some files.
+When running, **Stylelint** will look for a `.stylelintignore` file in it's working directory and apply all the patterns to ignore some files.
 
 The patterns in your .stylelintignore file must match the [.gitignore syntax](https://git-scm.com/docs/gitignore).
 
@@ -64,11 +64,11 @@ For example:
 vendor/**.css
 ```
 
-> The `.stylelintignore` file's location changes wether you want to disable linting from __Crafty__ or the Mercurial hooks.
+> The `.stylelintignore` file's location changes wether you want to disable linting from **Crafty** or the Mercurial hooks.
 >
 > For the hooks, the file must be at the root of your repository (next to your `.hgignore`/`.gitignore`).
 >
-> For __Crafty__, the file must be in the Gulp working directory (generally `src/main/frontend`).
+> For **Crafty**, the file must be in the Gulp working directory (generally `src/main/frontend`).
 
 ## Customizing the rules
 
@@ -80,15 +80,18 @@ Be aware that these rules will not be applied to the mercurial hooks.
 
 ```javascript
 module.exports = {
-    stylelint: {
-        rules: {
-            "selector-no-type": true
-        }
-    },
-    stylelint_legacy: {
-        rules: {
-            "max-nesting-depth": [2, {ignore: ["at-rules-without-declaration-blocks"]}],
-        }
+  stylelint: {
+    rules: {
+      "selector-no-type": true
     }
+  },
+  stylelint_legacy: {
+    rules: {
+      "max-nesting-depth": [
+        2,
+        { ignore: ["at-rules-without-declaration-blocks"] }
+      ]
+    }
+  }
 };
 ```

@@ -1,4 +1,3 @@
-
 [TOC]
 
 ## Language features
@@ -14,12 +13,12 @@ This allows you to create on-the-fly type definitions without creating an actual
 
 ```typescript
 interface Person {
-    firstName: string;
-    lastName: string;
+  firstName: string;
+  lastName: string;
 }
 
 function greeter(person: Person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
+  return "Hello, " + person.firstName + " " + person.lastName;
 }
 
 var user = { firstName: "Jane", lastName: "User" };
@@ -36,26 +35,24 @@ Union types come to the rescue :
 ```typescript
 type Shape = Square | Rectangle | Circle;
 
-function area(s: Shape) {
-
-}
+function area(s: Shape) {}
 ```
 
 You can also use it to validate values and not just types :
 
 ```typescript
 function direction(k: "left" | "right") {
-    // The value of k is "left" or "right"
+  // The value of k is "left" or "right"
 }
 ```
 
 ## Other
 
-- `readonly` properties in interfaces and classes
-- Generic Types
-- JSX Support (with the `.tsx` extension)
-- Decorators
-- Type Aliases (`type PrimitiveArray = Array<string|number|boolean>;`)
+* `readonly` properties in interfaces and classes
+* Generic Types
+* JSX Support (with the `.tsx` extension)
+* Decorators
+* Type Aliases (`type PrimitiveArray = Array<string|number|boolean>;`)
 
 [Read more](http://www.typescriptlang.org/docs/tutorial.html)
 

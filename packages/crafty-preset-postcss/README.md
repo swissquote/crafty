@@ -1,8 +1,8 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-- [Gulp](05_Packages/02_crafty-runner-gulp.md)
-- [Webpack](05_Packages/02_crafty-runner-webpack.md)
+* [Gulp](05_Packages/02_crafty-runner-gulp.md)
+* [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Linters</th><td>
@@ -12,7 +12,7 @@ Provides stylelint, configured with [`stylelint-config-swissquote`](05_Packages/
 </td></tr>
 <tr><th>Commands</th><td>
 
-- `cssLint`: Lint CSS files, this is a facade for Stylelint, pre-configured with our preset.
+* `cssLint`: Lint CSS files, this is a facade for Stylelint, pre-configured with our preset.
 
 </td></tr>
 </table>
@@ -27,13 +27,13 @@ We want to offer the best experience for writing CSS that is compatible with mos
 
 ## Features
 
-__postcss__ is a CSS parser that supports plugins, many plugins are maintained by a big community, we use a handful of them.
+**postcss** is a CSS parser that supports plugins, many plugins are maintained by a big community, we use a handful of them.
 
 [Features and examples](CSS_Features.md)
 
 ## Linting
 
-__Stylelint__ is a wonderful tool to lint CSS in many forms, we have a custom configuration preset for Stylelint that comes pre-configured.
+**Stylelint** is a wonderful tool to lint CSS in many forms, we have a custom configuration preset for Stylelint that comes pre-configured.
 
 [Read more about it here](CSS_Linting.md)
 
@@ -45,11 +45,11 @@ npm install @swissquote/crafty-preset-postcss --save
 
 ```javascript
 module.exports = {
-    presets: [
-        "@swissquote/crafty-preset-postcss",
-        "@swissquote/crafty-runner-webpack",   // optional
-        "@swissquote/crafty-runner-gulp"       // optional
-    ],
+  presets: [
+    "@swissquote/crafty-preset-postcss",
+    "@swissquote/crafty-runner-webpack", // optional
+    "@swissquote/crafty-runner-gulp" // optional
+  ]
 };
 ```
 
@@ -75,17 +75,17 @@ By default, the CSS will be inlined within your bundle, but you can provide the 
 
 ```javascript
 module.exports = {
-    presets: [
-        "@swissquote/crafty-preset-postcss",
-        "@swissquote/crafty-runner-gulp"
-    ],
-    css: {
-        app: {
-            runner: "gulp", // optional if you have only one runner defined
-            source: "css/app.scss",
-            watch: ["css/**"]
-        }
-    },
+  presets: [
+    "@swissquote/crafty-preset-postcss",
+    "@swissquote/crafty-runner-gulp"
+  ],
+  css: {
+    app: {
+      runner: "gulp", // optional if you have only one runner defined
+      source: "css/app.scss",
+      watch: ["css/**"]
+    }
+  }
 };
 ```
 
@@ -97,14 +97,14 @@ This command will lint CSS files using Stylelint's CLI too, you can get it's doc
 
 The additions made by this command are:
 
-- Pre-configured rules, defined by [`stylelint-config-swissquote`](05_Packages/10_stylelint-config-swissquote.md) activated using `--preset`.
-- Set the syntax to `scss`.
+* Pre-configured rules, defined by [`stylelint-config-swissquote`](05_Packages/10_stylelint-config-swissquote.md) activated using `--preset`.
+* Set the syntax to `scss`.
 
 there are 3 presets available for you :
 
-- `recommended`: Contains all BEM specific rules.
-- `legacy`: Contains things specific to legacy code.
-- `common`: Enforces the styleguide of the CSS. (included in both `recommended` and `legacy`)
+* `recommended`: Contains all BEM specific rules.
+* `legacy`: Contains things specific to legacy code.
+* `common`: Enforces the styleguide of the CSS. (included in both `recommended` and `legacy`)
 
 Setting presets is done with the `--preset` option
 
@@ -120,9 +120,9 @@ If no preset is specified `recommended` is used.
 
 ## Bundle Options
 
-| Option          | Type                       | Optional ? | Runner  | Description                                                                             |
-|-----------------|----------------------------|------------|---------|-----------------------------------------------------------------------------------------|
-| `extractCSS`    | Boolean / String / Object  | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also just pass `true` which will use `[bundle]-[name].min.css` as filename, you can use `[bundle]` in the filename which is replaced by your bundle name.  |
+| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                         |
+| ------------ | ------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also just pass `true` which will use `[bundle]-[name].min.css` as filename, you can use `[bundle]` in the filename which is replaced by your bundle name. |
 
 ### Linting options
 

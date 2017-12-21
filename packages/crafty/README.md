@@ -42,14 +42,14 @@ Read more about [the anatomy of a preset](Anatomy_of_a_preset.md)
 
 ## Existing runners and presets
 
-- [`crafty-runner-webpack`](05_Packages/02_crafty-runner-webpack.md) Use this runner to bundle your code with Webpack.
-- [`crafty-runner-gulp`](05_Packages/02_crafty-runner-gulp.md) Use this runner to be able to create Gulp tasks in your projects.
-- [`crafty-preset-babel`](05_Packages/05_crafty-preset-babel) EcmaScript 2015+ support with Babel and ESLint with our linting rules.
-- [`crafty-preset-postcss`](05_Packages/05_crafty-preset-postcss) Compile your CSS using PostCSS, works with Webpack and Gulp.
-- [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript) This preset provides TypeScript support and configures TSLint with our linting rules.
-- [`crafty-preset-images`](05_Packages/05_crafty-preset-images.md) This preset compresses your SVG/PNG/JPG/GIF files.
-- [`crafty-preset-images-simple`](05_Packages/05_crafty-preset-images-simple.md) If you are behind a corporate proxy, this preset will just copy images instead of compressing them.
-- [`crafty-preset-maven`](05_Packages/05_crafty-preset-maven.md) This preset overrides the destination to move your compiled assets to the right directory in `target` of your Maven project.
-- [`crafty-preset-react`](05_Packages/05_crafty-preset-react.md) A preset that provides default configuration when using React in a project. JSX Compilation is handled by the `crafty-preset-babel` already (__Not Ready__)
-- [`crafty-preset-polyfills`](05_Packages/05_crafty-preset-polyfills.md) Webpack : Add polyfills for common features (__Not Ready__)
-- [`crafty-preset-jest`](05_Packages/05_crafty-preset-jest.md) This preset will add Jest to the `crafty test` command, works with Babel and TypeScript.
+* [`crafty-runner-webpack`](05_Packages/02_crafty-runner-webpack.md) Use this runner to bundle your code with Webpack.
+* [`crafty-runner-gulp`](05_Packages/02_crafty-runner-gulp.md) Use this runner to be able to create Gulp tasks in your projects.
+* [`crafty-preset-babel`](05_Packages/05_crafty-preset-babel) EcmaScript 2015+ support with Babel and ESLint with our linting rules.
+* [`crafty-preset-postcss`](05_Packages/05_crafty-preset-postcss) Compile your CSS using PostCSS, works with Webpack and Gulp.
+* [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript) This preset provides TypeScript support and configures TSLint with our linting rules.
+* [`crafty-preset-images`](05_Packages/05_crafty-preset-images.md) This preset compresses your SVG/PNG/JPG/GIF files.
+* [`crafty-preset-images-simple`](05_Packages/05_crafty-preset-images-simple.md) If you are behind a corporate proxy, this preset will just copy images instead of compressing them.
+* [`crafty-preset-maven`](05_Packages/05_crafty-preset-maven.md) This preset overrides the destination to move your compiled assets to the right directory in `target` of your Maven project.
+* [`crafty-preset-react`](05_Packages/05_crafty-preset-react.md) A preset that provides default configuration when using React in a project. JSX Compilation is handled by the `crafty-preset-babel` already (**Not Ready**)
+* [`crafty-preset-polyfills`](05_Packages/05_crafty-preset-polyfills.md) Webpack : Add polyfills for common features (**Not Ready**)
+* [`crafty-preset-jest`](05_Packages/05_crafty-preset-jest.md) This preset will add Jest to the `crafty test` command, works with Babel and TypeScript.

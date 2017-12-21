@@ -1,14 +1,14 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-- [Gulp](05_Packages/02_crafty-runner-gulp.md)
-- [rollup.js](05_Packages/02_crafty-runner-rollup.md)
-- [Webpack](05_Packages/02_crafty-runner-webpack.md)
+* [Gulp](05_Packages/02_crafty-runner-gulp.md)
+* [rollup.js](05_Packages/02_crafty-runner-rollup.md)
+* [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Test Runners</th><td>
 
-- [Jest](05_Packages/05_crafty-preset-jest.md)
+* [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 <tr><th>Linters</th><td>
@@ -18,7 +18,7 @@ Provides ESLint, configured with [`eslint-plugin-swissquote`](05_Packages/10_esl
 </td></tr>
 <tr><th>Commands</th><td>
 
-- `jsLint`: Lint JavaScript files, this is a facade for ESLint, pre-configured with our preset.
+* `jsLint`: Lint JavaScript files, this is a facade for ESLint, pre-configured with our preset.
 
 </td></tr>
 </table>
@@ -33,7 +33,7 @@ We want to offer the best experience for writing CSS that is compatible with mos
 
 ## Features
 
-`babel-preset-webpack` is able to configure __Babel__ with __Webpack__ and __rollup.js__. This preset also supports __Gulp__ but in this case only concatenates and minifies the files.
+`babel-preset-webpack` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case only concatenates and minifies the files.
 
 [Our Babel preset](05_Packages/10_babel-preset-swissquote.md)
 
@@ -41,7 +41,7 @@ We want to offer the best experience for writing CSS that is compatible with mos
 
 ## Linting
 
-In `babel-preset-webpack` JavaScript is linted with __ESLint__, a very powerful pluggable linter, our configuration follows the Swissquote JavaScript Guideline.
+In `babel-preset-webpack` JavaScript is linted with **ESLint**, a very powerful pluggable linter, our configuration follows the Swissquote JavaScript Guideline.
 
 [Read more](./JavaScript_Linting.md)
 
@@ -53,17 +53,17 @@ npm install @swissquote/crafty-preset-babel --save
 
 ```javascript
 module.exports = {
-    presets: [
-        "@swissquote/crafty-preset-babel",
-        "@swissquote/crafty-runner-webpack",   // optional
-        "@swissquote/crafty-runner-gulp"       // optional
-    ],
-    js: {
-        app: {
-            runner: "webpack", // Webpack, Gulp or rollup.js (optional if you have only one runner defined)
-            source: "js/app.js"
-        }
-    },
+  presets: [
+    "@swissquote/crafty-preset-babel",
+    "@swissquote/crafty-runner-webpack", // optional
+    "@swissquote/crafty-runner-gulp" // optional
+  ],
+  js: {
+    app: {
+      runner: "webpack", // Webpack, Gulp or rollup.js (optional if you have only one runner defined)
+      source: "js/app.js"
+    }
+  }
 };
 ```
 
@@ -117,9 +117,9 @@ When running your tests with `crafty test` this preset will be use to convert al
 
 ### Bundle options
 
-| Option   | Type     | Optional ? | Runner  | Description                                                                                                                  |
-|----------|----------|------------|---------|------------------------------------------------------------------------------------------------------------------------------|
-| `concat` | Boolean  | Yes        | Gulp    | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this) |
+| Option   | Type    | Optional ? | Runner | Description                                                                                                                     |
+| -------- | ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `concat` | Boolean | Yes        | Gulp   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this) |
 
 ### Addind Babel plugins and presets
 
@@ -137,7 +137,7 @@ module.exports = {
   babel(crafty, bundle, babelConfig) {
     babelConfig.plugins.push("transform-es3-property-literals");
   }
-}
+};
 ```
 
 Provided that you did `npm install --save-dev babel-plugin-transform-es5-property-mutators` before, Babel will now use this plugin as well in each run.
@@ -156,15 +156,15 @@ This linter will leverage ESLint to lint your JavaScript files with the Swissquo
 
 The additions made by this command are:
 
-- Pre-configured rules, defined by [`eslint-plugin-swissquote`](05_Packages/10_eslint-plugin-swissquote.md) activated using `--preset`.
-- Uses `babel-eslint` as a parser to support new syntax that ESLint doesn't understand yet.
+* Pre-configured rules, defined by [`eslint-plugin-swissquote`](05_Packages/10_eslint-plugin-swissquote.md) activated using `--preset`.
+* Uses `babel-eslint` as a parser to support new syntax that ESLint doesn't understand yet.
 
 there are 4 presets available for you :
 
-- `format` Base formatting rules, should work on any code (included in `legacy` and `recommended`)
-- `node` Adds environment information for nodejs
-- `legacy` For all your ES5 code
-- `recommended` For al your ES2015+ code, also contains rules for React
+* `format` Base formatting rules, should work on any code (included in `legacy` and `recommended`)
+* `node` Adds environment information for nodejs
+* `legacy` For all your ES5 code
+* `recommended` For al your ES2015+ code, also contains rules for React
 
 Setting presets is done with the `--preset` option
 

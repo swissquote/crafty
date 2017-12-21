@@ -1,13 +1,13 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-- [rollup.js](05_Packages/02_crafty-runner-rollup.md)
-- [Webpack](05_Packages/02_crafty-runner-webpack.md)
+* [rollup.js](05_Packages/02_crafty-runner-rollup.md)
+* [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Test Runners</th><td>
 
-- [Jest](05_Packages/05_crafty-preset-jest.md)
+* [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 <tr><th>Linters</th><td>
@@ -17,7 +17,7 @@ Provides tslint, with a minimal configuration (should be extended in the future 
 </td></tr>
 <tr><th>Commands</th><td>
 
-- `tsLint`: Lint TypeScript files, this is a facade for TSLint, pre-configured
+* `tsLint`: Lint TypeScript files, this is a facade for TSLint, pre-configured
   with our preset.
 
 </td></tr>
@@ -56,17 +56,17 @@ npm install @swissquote/crafty-preset-typescript --save
 
 ```javascript
 module.exports = {
-    presets: [
-        "@swissquote/crafty-preset-typescript",
-        "@swissquote/crafty-runner-webpack",   // optional
-        "@swissquote/crafty-runner-rollup"     // optional
-    ],
-    js: {
-        app: {
-            runner: "webpack", // Webpack or rollup.js (optional if you have only one runner defined)
-            source: "js/app.ts"
-        }
-    },
+  presets: [
+    "@swissquote/crafty-preset-typescript",
+    "@swissquote/crafty-runner-webpack", // optional
+    "@swissquote/crafty-runner-rollup" // optional
+  ],
+  js: {
+    app: {
+      runner: "webpack", // Webpack or rollup.js (optional if you have only one runner defined)
+      source: "js/app.ts"
+    }
+  }
 };
 ```
 

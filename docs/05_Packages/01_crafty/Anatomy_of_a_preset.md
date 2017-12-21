@@ -1,4 +1,3 @@
-
 ## Defining a preset
 
 A preset is defined with the following functions.
@@ -84,44 +83,43 @@ Bundles can contain those fields by default, each bundleType can add more fields
 
 ```typescript
 interface Bundle {
+  /**
+   * The bundle name, is the key you specify next to the object in `crafty.config.js`
+   */
+  name: string;
 
-    /**
-     * The bundle name, is the key you specify next to the object in `crafty.config.js`
-     */
-    name: string;
+  /**
+   * The bundle's type, generally `js` or `css`, you can also create your own types.
+   */
+  type: string;
 
-    /**
-     * The bundle's type, generally `js` or `css`, you can also create your own types.
-     */
-    type: string;
+  /**
+   * The task name to use when you generate the task, is made of `<bundle.type>_<bundle.name>`
+   */
+  taskName: string;
 
-    /**
-     * The task name to use when you generate the task, is made of `<bundle.type>_<bundle.name>`
-     */
-    taskName: string;
+  /**
+   * One single file or an array of files you wish to compile. Glob expressions are valid.
+   */
+  source: string | string[];
 
-    /**
-     * One single file or an array of files you wish to compile. Glob expressions are valid.
-     */
-    source: string | string[];
-
-    /*
+  /*
      * The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`
      */
-    destintion: string;
+  destintion: string;
 
-    /*
+  /*
      * The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded
      */
-    runner?: string;
+  runner?: string;
 
-    /*
+  /*
      * The watch expression to use to rebuild this asset.
      * Any glob expression is valid, is needed for Gulp in watch mode.
      * Webpack and rollup.js have their own mechanism to watch files and don't need this option.
      * If nothing is specified, it will use the value of `source` as a watch expression
      */
-    watch?: string | string[];
+  watch?: string | string[];
 }
 ```
 
@@ -159,7 +157,7 @@ Commands receive three parameters: a Crafty instance, the command input and the 
  * @returns a promise that resolves with 0 if everything went well or rejects with a non 0 exit code
  */
 function command(crafty: Crafty, input: string, cli: Meow): Promise<number> {
-    return Promise.resolve(0);
+  return Promise.resolve(0);
 }
 ```
 

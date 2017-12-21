@@ -35,8 +35,7 @@ your assets to Maven's `target` directory.
 
 ### `browser`: Browser compatibility
 
-Default: `"> 1%, last 4 versions, Firefox ESR, Safari >= 7.1, iOS >= 7.1,
-Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 8"`
+Default: `"> 1%, last 4 versions, Firefox ESR, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 8"`
 
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.
@@ -59,9 +58,7 @@ The options are described
 
 ### `stylelint_pattern`: Which files to lint
 
-Default: `["css/**/*.scss", "css/**/*.css", "!*.min.css",
-"!**/vendor/**/*.scss", "!**/vendor/**/*.css", "!**/vendor/*.scss",
-"!**/vendor/*.css"]`
+Default: `["css/**/*.scss", "css/**/*.css", "!*.min.css", "!**/vendor/**/*.scss", "!**/vendor/**/*.css", "!**/vendor/*.scss", "!**/vendor/*.css"]`
 
 Define the file types you want to target when linting CSS files.
 

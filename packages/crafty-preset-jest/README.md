@@ -57,8 +57,7 @@ any depth under the `src` top level folder.
 
 We recommend to put the test files (or `__tests__` folders) next to the code
 they are testing so that relative imports appear shorter. For example, if
-`App.test.js` and `App.js` are in the same folder, the test needs to `import App
-from './App'` instead of a long relative path.
+`App.test.js` and `App.js` are in the same folder, the test needs to `import App from './App'` instead of a long relative path.
 
 > Using [`crafty-preset-babel`](05_Packages/05_crafty-preset-babel.md) will add
 > `jsx` as a supported test file extension and

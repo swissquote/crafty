@@ -52,8 +52,7 @@ configuration.
 
 #### `webpack(crafty, bundle, chain)`
 
-Each preset and `crafty.config.js` can define the `webpack(crafty, bundle,
-chain)` function to override rollup.js' configuration.
+Each preset and `crafty.config.js` can define the `webpack(crafty, bundle, chain)` function to override rollup.js' configuration.
 
 Webpack's configuration is built using
 [`webpack-chain`](https://github.com/mozilla-neutrino/webpack-chain#getting-started)

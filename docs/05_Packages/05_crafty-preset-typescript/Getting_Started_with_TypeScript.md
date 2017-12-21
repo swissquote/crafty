@@ -1,4 +1,3 @@
-
 Like for an EcmaScript2015 bundle, you must set `webpack: true` in your `crafty.config.js` for your bundle.
 
 ## Prerequisite
@@ -7,10 +6,7 @@ To make the compilation work with TypeScript, you need to add a `tsconfig.json` 
 
 ```json
 {
-  "exclude": [
-      "node_modules",
-      "node"
-   ],
+  "exclude": ["node_modules", "node"],
   "compilerOptions": {
     "moduleResolution": "node",
     "charset": "UTF-8",
@@ -54,12 +50,12 @@ Then create a `js/main.ts` file with the following content
 
 ```typescript
 interface Person {
-    firstName: string;
-    lastName: string;
+  firstName: string;
+  lastName: string;
 }
 
 function greeter(person: Person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
+  return "Hello, " + person.firstName + " " + person.lastName;
 }
 
 var user = { firstName: "Jane", lastName: "User" };
@@ -83,9 +79,7 @@ for this, you need to create a `tsconfig.json` next to your `crafty.config.js` a
 
 ```json
 {
-  "files": [
-    "./typings/index.d.ts"
-  ]
+  "files": ["./typings/index.d.ts"]
 }
 ```
 

@@ -84,8 +84,7 @@ Here's an example :
 
 ![React Hot Module Replacement example](../react-hot-loader.gif)
 
-To enable HMR on your react application, you must set `hot: true` and `react:
-true` on your bundle in `crafty.config.js`.
+To enable HMR on your react application, you must set `hot: true` and `react: true` on your bundle in `crafty.config.js`.
 
 Then you must transform all your `ReactDOM.render` from this:
 
