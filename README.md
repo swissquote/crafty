@@ -1,6 +1,9 @@
 # Crafty
 
-[![Build Status](https://travis-ci.org/swissquote/crafty.svg?branch=master)](https://travis-ci.org/swissquote/crafty)
+[![Latest Version](https://img.shields.io/github/release/swissquote/crafty.svg?style=flat-square)](https://github.com/swissquote/crafty/releases)
+[![license](https://img.shields.io/github/license/swissquote/crafty.svg?style=flat-square)](https://github.com/swissquote/crafty/blob/master/LICENSE.md)
+[![Build Status](https://img.shields.io/travis/swissquote/crafty/master.svg?style=flat-square)](https://travis-ci.org/swissquote/crafty)
+[![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty)
 
 Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, Rollup, Babel, ESLint, TypeScript, TSLint, PostCSS, Stylelint and many other tools.
 
