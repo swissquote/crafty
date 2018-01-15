@@ -54,8 +54,8 @@ module.exports = {
 const reactRules = require("eslint-plugin-react").configs.recommended.rules;
 Object.keys(reactRules).forEach(ruleName => {
   // Only define the rules we don't have configured yet
-  if (!module.exports.rules.hasOwnProperty(ruleName)) {
-    module.exports.rules["@swissquote/swissquote/" + ruleName] =
-      reactRules[ruleName];
+  const key = `@swissquote/swissquote/${ruleName}`
+  if (!module.exports.rules.hasOwnProperty(key)) {
+    module.exports.rules[key] = reactRules[ruleName];
   }
 });
