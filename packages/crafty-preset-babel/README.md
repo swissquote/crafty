@@ -27,13 +27,11 @@ Provides ESLint, configured with [`eslint-plugin-swissquote`](05_Packages/10_esl
 
 ## Description
 
-The principle of CSS is very easy to grasp, yet CSS is very complicated to write at large scales.
-
-We want to offer the best experience for writing CSS that is compatible with most browsers with a minimum overhead for the developer.
+**Babel** is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with **ESLint** to lint your code, you get the best preset to get started easily.
 
 ## Features
 
-`babel-preset-webpack` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case only concatenates and minifies the files.
+`@swissquote/crafty-preset-babel` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case only concatenates and minifies the files.
 
 [Our Babel preset](05_Packages/10_babel-preset-swissquote.md)
 
@@ -41,7 +39,7 @@ We want to offer the best experience for writing CSS that is compatible with mos
 
 ## Linting
 
-In `babel-preset-webpack` JavaScript is linted with **ESLint**, a very powerful pluggable linter, our configuration follows the Swissquote JavaScript Guideline.
+In `@swissquote/crafty-preset-babel` JavaScript is linted with **ESLint**, a very powerful pluggable linter, our configuration follows the Swissquote JavaScript Guideline.
 
 [Read more](./JavaScript_Linting.md)
 
