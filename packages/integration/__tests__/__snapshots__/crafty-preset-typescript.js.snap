@@ -6,14 +6,14 @@ Object {
   "stderr": "",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
-js/Component.ts
+js/Component.ts:2:24
 ERROR: 2:24   whitespace       missing whitespace
 ERROR: 3:18   no-multi-spaces  Multiple spaces found before 'b'.
 
-js/SomeLibrary.ts
+js/SomeLibrary.ts:12:5
 ERROR: 12:5   one-line         misplaced opening brace
 
-js/script.ts
+js/script.ts:7:5
 ERROR: 7:5    no-console       Calls to 'console.log' are not allowed.
 ERROR: 11:5   no-console       Calls to 'console.log' are not allowed.
 ERROR: 14:5   one-line         misplaced opening brace

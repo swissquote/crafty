@@ -124,8 +124,8 @@ doesn't give it's full measure. Here's some other things it can do:
 
 * Preprocess your css using **Postcss** and many plugins that will allow to
   write in a syntax approaching the one of Sass.
-* Some plugins include `postcss-sassy-mixins` to define mixins, `postcss-nested` to
-  nest your styles, `postcss-cssnext` to use CSS4 options today
+* Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext` 
+  to use CSS4 options today and `postcss-advanced-variables` to define mixins
 * Compress the CSS output with `postcss-csso` to get the smallest possible file.
 * Automatically add vendor prefixes to properties with `autoprefixer`.
 * Simple Debugging with Sourcemaps

@@ -25,6 +25,9 @@ module.exports = {
       tsLint: {
         //eslint-disable-next-line no-unused-vars
         command: function(crafty, input, cli) {
+          // Remove command argument
+          process.argv.splice(process.argv.indexOf("tsLint"), 1);
+
           global.craftyConfig = crafty.config;
           require("./commands/tsLint");
         },

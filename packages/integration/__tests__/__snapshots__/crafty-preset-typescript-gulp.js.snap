@@ -154,14 +154,14 @@ Details:
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts:2:24
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/SomeLibrary.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/SomeLibrary.ts:12:5
 ERROR: 12:5  one-line  misplaced opening brace
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts:6:5
 ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
 ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
 ERROR: 13:5  one-line    misplaced opening brace

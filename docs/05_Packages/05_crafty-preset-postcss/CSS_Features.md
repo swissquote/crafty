@@ -15,8 +15,7 @@ All included plugins have a short example accompanying them below.
 | postcss-import                     |                 | Import files                              |
 | postcss-scss                       |                 | Inline comments support                   |
 | postcss-url                        |                 | Rebase urls after import                  |
-| postcss-sassy-mixins               |                 | Sass-like mixins                          |
-| postcss-advanced-variables         |                 | Sass-like variables and methods           |
+| postcss-advanced-variables         |                 | Sass-like variables, mixins and loops     |
 | postcss-nested                     |                 | Sass-like nested selectors                |
 | postcss-atroot                     |                 | place rules back up to the root           |
 | postcss-property-lookup            |                 | reference other property values           |
@@ -512,9 +511,7 @@ blockquote {
 }
 
 .Quote--clear {
-  background: rgb(
-    250.5 255 255
-  ); // Allows to declare colors with rgb() level 4
+  background: rgb(250.5 255 255); // Allows to declare colors with rgb() level 4
 
   color: hsl(
     200grad 100% 50% / 20%

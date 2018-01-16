@@ -50,10 +50,10 @@ exports[`Compiles TypeScript 3`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[js_myTSBundle] (!) __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+  "stderr": "[js_myTSBundle] (!) __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
 js/typescript.ts
 [__:__:__] 'js_myTSBundle' errored after ____ ms
-[__:__:__] Error: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts (14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+[__:__:__] Error: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
@@ -97,7 +97,7 @@ Object {
 Compiled with warnings.
 
 ./js/Component.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
 
@@ -105,14 +105,14 @@ ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
  @ multi ./js/script.ts
 
 ./js/SomeLibrary.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
 ERROR: 12:5  one-line  misplaced opening brace
 
  @ ./js/script.ts 8:8-31
  @ multi ./js/script.ts
 
 ./js/script.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts:6:5
 ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
 ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
 ERROR: 13:5  one-line    misplaced opening brace

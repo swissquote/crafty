@@ -10,8 +10,8 @@ module.exports = function(config) {
   processors.push(require("postcss-url")({ url: "rebase" }));
 
   // Apply Sass-like features
-  processors.push(require("postcss-sassy-mixins")());
-  processors.push(require("postcss-advanced-variables")());
+  const variablesOptions = { disable: "@import" };
+  processors.push(require("postcss-advanced-variables")(variablesOptions));
   processors.push(require("postcss-atroot")());
   processors.push(require("postcss-property-lookup")());
 
