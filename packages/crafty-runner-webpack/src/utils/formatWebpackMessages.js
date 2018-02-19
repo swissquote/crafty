@@ -103,12 +103,12 @@ function formatMessage(message, isError) {
 }
 
 function formatWebpackMessages(json) {
-  const formattedErrors = json.errors.map(message => {
-    return formatMessage(message, true);
-  });
-  const formattedWarnings = json.warnings.map(message => {
-    return formatMessage(message, false);
-  });
+  const formattedErrors = json.errors.map(message =>
+    formatMessage(message, true)
+  );
+  const formattedWarnings = json.warnings.map(message =>
+    formatMessage(message, false)
+  );
   const result = {
     errors: formattedErrors,
     warnings: formattedWarnings

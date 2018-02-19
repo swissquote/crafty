@@ -8,9 +8,9 @@ const WebpackDevServer = require("webpack-dev-server");
 const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty-runner-webpack");
 
-const formatWebpackMessages = require("./utils/formatWebpackMessages");
 const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");
+const webpackOutput = require("./webpack_output");
 
 function prepareConfiguration(crafty, bundle, webpackPort) {
   // Base configuration
@@ -55,19 +55,6 @@ function onDone(crafty, webpackConfig, compiler, bundle) {
         });
     }
 
-    // Write stats
-    console.log(
-      stats.toString({
-        colors: chalk.supportsColor,
-        hash: false, // We don't use hashes
-        version: false, // This is just noise
-        errors: false, // Errors are printed separately
-        warnings: false, // Warnings are printed separately
-        timings: crafty.loglevel > 1,
-        cached: crafty.loglevel > 1
-      })
-    );
-
     // Write a complete profile for the webpack run if needed
     if (webpackConfig.profile) {
       const profile = `${webpackConfig.output.path}${path.sep}${
@@ -83,34 +70,7 @@ function onDone(crafty, webpackConfig, compiler, bundle) {
       });
     }
 
-    // Nicer Error/Warning Messages
-    console.log();
-    console.log();
-    let messages = formatWebpackMessages(stats.toJson({}, true));
-
-    // If errors exist, only show errors.
-    if (messages.errors.length) {
-      console.log(chalk.red("Failed to compile."));
-      console.log();
-      messages.errors.forEach(message => {
-        console.log(message);
-        console.log();
-      });
-      return;
-    }
-
-    // Show warnings if no errors were found.
-    if (messages.warnings.length) {
-      console.log(chalk.yellow("Compiled with warnings."));
-      console.log();
-      messages.warnings.forEach(message => {
-        console.log(message);
-        console.log();
-      });
-      return;
-    }
-
-    console.log(chalk.green("Compiled successfully!"));
+    webpackOutput(stats, compiler);
   };
 }
 

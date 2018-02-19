@@ -11,15 +11,20 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks             Chunk Names
-    myBundle.min.js  2.42 kB       0  [emitted]  default
-myBundle.min.js.map  13.4 kB       0  [emitted]  default
-   [0] multi ./js/script.js 28 bytes {0} [built]
-   [1] ./js/script.js 1.14 kB {0} [built]
-   [2] ./js/Component.js 2.44 kB {0} [built]
+  size     name     module                status
+  28 B     0        multi ./js/script.js  built
+  1.14 kB  1        ./js/script.js        built
+  2.44 kB  2        ./js/Component.js     built
+
+  size     name     asset                 status
+  2.42 kB  default  myBundle.min.js       emitted
+  13.4 kB  default  myBundle.min.js.map   emitted
 
 
-Compiled successfully!
+
+  Compiled successfully!
+  Δt ____ms
+
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -43,16 +48,20 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks             Chunk Names
-    myBundle.min.js   2.5 kB       0  [emitted]  default
-myBundle.min.js.map  14.5 kB       0  [emitted]  default
-   [0] multi ./js/script.js 28 bytes {0} [built]
-   [1] ./js/script.js 1.2 kB {0} [built]
-   [3] ./js/Component.js 2.44 kB {0} [built]
-    + 1 hidden module
+  size     name     module                status
+  28 B     0        multi ./js/script.js  built
+  1.2 kB   1        ./js/script.js        built
+  2.44 kB  3        ./js/Component.js     built
 
+  size     name     asset                 status
+  2.5 kB   default  myBundle.min.js       emitted
+  14.5 kB  default  myBundle.min.js.map   emitted
 
-Compiled successfully!
+  (1 module hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -114,15 +123,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks  Chunk Names
-    myBundle.min.js  2.48 kB       0  default
-myBundle.min.js.map  13.7 kB       0  default
-   [0] multi ./js/script.js 28 bytes {0} [built]
-   [1] ./js/script.js 1.23 kB {0} [built] [1 error]
-   [2] ./js/Component.js 2.44 kB {0} [built] [1 error]
+  size     name  module                status
+  28 B     0     multi ./js/script.js  built
+  1.23 kB  1     ./js/script.js        built ✖
+  2.44 kB  2     ./js/Component.js     built ✖
 
+  (2 assets hidden)
 
-Failed to compile.
+  Failed to compile.
 
 ./js/Component.js
 
@@ -156,6 +164,8 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 
  @ multi ./js/script.js
 
+  Δt ____ms ✖ 3 problems (2 errors, 1 warning)
+
 ",
 }
 `;
@@ -171,22 +181,27 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks             Chunk Names
-    myBundle.min.js  1.47 kB       0  [emitted]  default
-myBundle.min.js.map  12.5 kB       0  [emitted]  default
-   [0] multi ./js/index.js 28 bytes {0} [built]
-   [1] ./js/index.js 137 bytes {0} [built]
-   [2] ./js/imported-javascript.js 1.18 kB {0} [built]
-   [3] ./js/imported-typescript.js 459 bytes {0} [built]
+  size     name     module                       status
+  28 B     0        multi ./js/index.js          built
+  137 B    1        ./js/index.js                built
+  1.18 kB  2        ./js/imported-javascript.js  built
+  459 B    3        ./js/imported-typescript.js  built
+
+  size     name     asset                        status
+  1.47 kB  default  myBundle.min.js              emitted
+  12.5 kB  default  myBundle.min.js.map          emitted
 
 
-Compiled with warnings.
+
+  Compiled with warnings.
 
 myBundle.min.js from UglifyJs
 Dropping __PURE__ call [./js/imported-javascript.js:42,5]
 Dropping unused variable B [./js/imported-javascript.js:40,4]
 Dropping __PURE__ call [./js/imported-typescript.js:16,23]
 Dropping unused variable D [./js/imported-typescript.js:16,4]
+
+  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms

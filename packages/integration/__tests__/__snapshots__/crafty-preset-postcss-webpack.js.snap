@@ -12,25 +12,27 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks             Chunk Names
-    myBundle.min.js  6.83 kB       0  [emitted]  default
-myBundle.min.js.map  54.4 kB       0  [emitted]  default
-   [0] multi ./js/app.js 28 bytes {0} [built]
-   [1] ./js/app.js 259 bytes {0} [built]
-   [2] ./css/style.scss 1.5 kB {0} [built]
-   [3] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader?{\\"importLoaders\\":1,\\"minimize\\":false}!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader?{__POSTCSS_OPTIONS__}!./css/style.scss 396 bytes {0} [built]
-   [4] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader/lib/css-base.js 2.26 kB {0} [built]
-   [5] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/addStyles.js 9.92 kB {0} [built]
-   [6] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/urls.js 3.01 kB {0} [built]
+  size     name     module                                          status
+  28 B     0        multi ./js/app.js                               built
+  259 B    1        ./js/app.js                                     built
+  1.5 kB   2        ./css/style.scss                                built
+  396 B    3        css-loader!postcss-loader/lib!./css/style.scss  built
 
+  size     name     asset                                           status
+  6.83 kB  default  myBundle.min.js                                 emitted
+  54.4 kB  default  myBundle.min.js.map                             emitted
 
-Compiled with warnings.
+  (3 modules hidden)
+
+  Compiled with warnings.
 
 myBundle.min.js from UglifyJs
 Condition always false [__PATH__/packages/crafty-preset-postcss/node_modules/style-loader!__PATH__/packages/crafty-preset-postcss/node_modules/css-loader??ref--0-1!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader/lib??ref--0-2!./css/style.scss:20,0]
 Dropping unreachable code [__PATH__/packages/crafty-preset-postcss/node_modules/style-loader!__PATH__/packages/crafty-preset-postcss/node_modules/css-loader??ref--0-1!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader/lib??ref--0-2!./css/style.scss:21,0]
 Dropping unused variable insertInto [__PATH__/packages/crafty-preset-postcss/node_modules/style-loader!__PATH__/packages/crafty-preset-postcss/node_modules/css-loader??ref--0-1!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader/lib??ref--0-2!./css/style.scss:7,0]
 Side effects in initialization of unused variable update [__PATH__/packages/crafty-preset-postcss/node_modules/style-loader!__PATH__/packages/crafty-preset-postcss/node_modules/css-loader??ref--0-1!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader/lib??ref--0-2!./css/style.scss:16,0]
+
+  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
@@ -56,24 +58,23 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-                       Asset       Size  Chunks             Chunk Names
-             myBundle.min.js  816 bytes       0  [emitted]  default
-    myBundle-default.min.css  255 bytes       0  [emitted]  default
-         myBundle.min.js.map    7.27 kB       0  [emitted]  default
-myBundle-default.min.css.map  535 bytes       0  [emitted]  default
-   [0] multi ./js/app.js 28 bytes {0} [built]
-   [1] ./js/app.js 259 bytes {0} [built]
-   [2] ./css/style.scss 41 bytes {0} [built]
-   [3] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader?{\\"importLoaders\\":1,\\"sourceMap\\":true,\\"minimize\\":false}!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader?{__POSTCSS_OPTIONS__}!./css/style.scss 968 bytes [built]
-   [4] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader/lib/css-base.js 2.26 kB [built]
-   [5] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/addStyles.js 9.92 kB [built]
-   [6] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/urls.js 3.01 kB [built]
-Child extract-text-webpack-plugin __LONG_AND_WEIRD_PATH__!css/style.scss:
-       [0] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader?{\\"importLoaders\\":1,\\"sourceMap\\":true,\\"minimize\\":false}!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader?{__POSTCSS_OPTIONS__}!./css/style.scss 968 bytes {0} [built]
-       [1] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader/lib/css-base.js 2.26 kB {0} [built]
+  size     name     module                                          status
+  28 B     0        multi ./js/app.js                               built
+  259 B    1        ./js/app.js                                     built
+  41 B     2        ./css/style.scss                                built
+  968 B    3        css-loader!postcss-loader/lib!./css/style.scss  built
 
+  size     name     asset                                           status
+  816 B    default  myBundle.min.js                                 emitted
+  255 B    default  myBundle-default.min.css                        emitted
+  7.27 kB  default  myBundle.min.js.map                             emitted
+  535 B    default  myBundle-default.min.css.map                    emitted
 
-Compiled successfully!
+  (3 modules hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -108,18 +109,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-              Asset     Size  Chunks  Chunk Names
-    myBundle.min.js  5.93 kB       0  default
-myBundle.min.js.map  46.4 kB       0  default
-   [0] multi ./js/app.js 28 bytes {0} [built]
-   [1] ./js/app.js 259 bytes {0} [built]
-   [2] ./css/style.scss 1.5 kB {0} [built]
-   [3] __PATH__/packages/crafty-preset-postcss/node_modules/css-loader?{\\"importLoaders\\":1,\\"minimize\\":false}!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader?{__POSTCSS_OPTIONS__}!./css/style.scss 162 bytes {0} [built] [failed] [1 error]
-   [4] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/addStyles.js 9.92 kB {0} [built]
-   [5] __PATH__/packages/crafty-preset-postcss/node_modules/style-loader/lib/urls.js 3.01 kB {0} [built]
+  size    name  module                                          status
+  28 B    0     multi ./js/app.js                               built
+  259 B   1     ./js/app.js                                     built
+  1.5 kB  2     ./css/style.scss                                built
+  162 B   3     css-loader!postcss-loader/lib!./css/style.scss  built failed ✖
 
+  (2 assets, 2 modules hidden)
 
-Failed to compile.
+  Failed to compile.
 
 __PATH__/packages/crafty-preset-postcss/node_modules/css-loader?{\\"importLoaders\\":1,\\"minimize\\":false}!__PATH__/packages/crafty-preset-postcss/node_modules/postcss-loader?{__POSTCSS_OPTIONS__}!./css/style.scss
 Module build failed: Syntax Error
@@ -136,6 +134,8 @@ Module build failed: Syntax Error
  @ ./css/style.scss 2:14-207
  @ ./js/app.js
  @ multi ./js/app.js
+
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
 
 ",
 }

@@ -11,24 +11,29 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-                Asset       Size  Chunks             Chunk Names
-    0.myBundle.min.js  334 bytes       0  [emitted]
-      myBundle.min.js    1.81 kB       1  [emitted]  default
-0.myBundle.min.js.map     1.7 kB       0  [emitted]
-  myBundle.min.js.map    16.7 kB       1  [emitted]  default
-    js/Component.d.ts   60 bytes          [emitted]
-  js/SomeLibrary.d.ts  142 bytes          [emitted]
-       js/script.d.ts   73 bytes          [emitted]
-   [0] multi ./js/script.ts 28 bytes {1} [built]
-   [1] ./js/script.ts 593 bytes {1} [built]
-   [2] ./js/Component.ts 49 bytes {1} [built]
-   [3] ./js/SomeLibrary.ts 386 bytes {0} [built]
+  size     name     module                 status
+  28 B     0        multi ./js/script.ts   built
+  593 B    1        ./js/script.ts         built
+  49 B     2        ./js/Component.ts      built
+  386 B    3        ./js/SomeLibrary.ts    built
+
+  size     name     asset                  status
+  334 B    js       0.myBundle.min.js      emitted
+  1.81 kB  default  myBundle.min.js        emitted
+  1.7 kB   map      0.myBundle.min.js.map  emitted
+  16.7 kB  default  myBundle.min.js.map    emitted
+  60 B     ts       js/Component.d.ts      emitted
+  73 B     ts       js/script.d.ts         emitted
+  142 B    ts       js/SomeLibrary.d.ts    emitted
 
 
-Compiled with warnings.
+
+  Compiled with warnings.
 
 myBundle.min.js from UglifyJs
 Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
+
+  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
@@ -80,21 +85,24 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-                Asset       Size  Chunks             Chunk Names
-    0.myBundle.min.js  334 bytes       0  [emitted]
-      myBundle.min.js    1.81 kB       1  [emitted]  default
-0.myBundle.min.js.map     1.7 kB       0  [emitted]
-  myBundle.min.js.map    16.4 kB       1  [emitted]  default
-    js/Component.d.ts   60 bytes          [emitted]
-  js/SomeLibrary.d.ts  142 bytes          [emitted]
-       js/script.d.ts   73 bytes          [emitted]
-   [0] multi ./js/script.ts 28 bytes {1} [built]
-   [1] ./js/script.ts 448 bytes {1} [built] [1 warning]
-   [2] ./js/Component.ts 49 bytes {1} [built] [1 warning]
-   [3] ./js/SomeLibrary.ts 386 bytes {0} [built] [1 warning]
+  size     name     module                 status
+  28 B     0        multi ./js/script.ts   built
+  448 B    1        ./js/script.ts         built ⚠
+  49 B     2        ./js/Component.ts      built ⚠
+  386 B    3        ./js/SomeLibrary.ts    built ⚠
+
+  size     name     asset                  status
+  334 B    js       0.myBundle.min.js      emitted
+  1.81 kB  default  myBundle.min.js        emitted
+  1.7 kB   map      0.myBundle.min.js.map  emitted
+  16.4 kB  default  myBundle.min.js.map    emitted
+  60 B     ts       js/Component.d.ts      emitted
+  73 B     ts       js/script.d.ts         emitted
+  142 B    ts       js/SomeLibrary.d.ts    emitted
 
 
-Compiled with warnings.
+
+  Compiled with warnings.
 
 ./js/Component.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
@@ -123,6 +131,8 @@ ERROR: 17:7  semicolon   Missing semicolon
 
 myBundle.min.js from UglifyJs
 Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
+
+  Δt ____ms ⚠  4 problems (0 errors, 4 warnings)
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
