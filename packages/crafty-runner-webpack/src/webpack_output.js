@@ -20,6 +20,59 @@ function shortenLoaders(row) {
   return row;
 }
 
+/**
+ * Sort the files order.
+ * The main reason is that test snapshots need the order to stay the same.
+ * For some reason this isn't the case sometimes.
+ * 
+ * @param {*} files 
+ */
+function sortFiles(files) {
+  const modules = [];
+  const assets = [];
+
+  let isAssets = false;
+
+  for (var i in files) {
+    const row = files[i];
+    if (row[0] == "size" && row[2] == "asset") {
+      isAssets = true;
+    }
+
+    if (row[0] == "size" || row[0] == "") {
+      continue;
+    }
+
+    if (isAssets) {
+      assets.push(row);
+    } else {
+      modules.push(row);
+    }
+  }
+
+  const final = [];
+
+  if (modules.length) {
+    final.push([ 'size', 'name', 'module', 'status' ]);
+    final.push(...modules.sort((a, b) => a[1] - b[1]));
+  }
+
+  if (modules.length && assets.length) {
+    final.push([ '', '', '', '' ]);
+  }
+
+  if (assets.length) {
+    final.push([ 'size', 'name', 'asset', 'status' ]);
+    final.push(...assets.sort((a, b) => {
+      if (a[2] < b[2]) return -1;
+      if (a[2] > b[2]) return 1;
+      return 0;
+    }));
+  }
+
+  return final;
+}
+
 module.exports = function(stats, compiler) {
   const opts = {
     cached: false,
@@ -31,7 +84,7 @@ module.exports = function(stats, compiler) {
 
   // List compiled files
   const files = parse.files(json).map(shortenLoaders);
-  console.log(style.files(files, compiler.options));
+  console.log(style.files(sortFiles(files), compiler.options));
   console.log("\n  " + style.hidden(parse.hidden(json)));
 
   // Disabled and replaced by our system
