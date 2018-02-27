@@ -1,8 +1,6 @@
 **Crafty** is a package bundled with all needed configurations to make your
 frontend build environment a joy to work with.
 
-[TOC]
-
 ## Installation and usage
 
 ### Install

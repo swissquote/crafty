@@ -13,7 +13,7 @@ $(function () {
 
     // If there is no code block we hide the link
     if (!codeBlocks.size()) {
-        toggleCodeSection.addClass('hidden');
+        toggleCodeSection.addClass('Hidden');
         return;
     }
 
@@ -26,26 +26,29 @@ $(function () {
             case 2: // Show code blocks inline
                 toggleCodeBlockBtnFloat.addClass("Button--active");
                 codeBlockView.addClass('Columns__right--float');
-                codeBlocks.removeClass('hidden');
+                codeBlockView.removeClass('Columns__right--full');
+                codeBlocks.removeClass('Hidden');
                 break;
             case 1: // Show code blocks below
                 toggleCodeBlockBtnBelow.addClass("Button--active");
                 toggleCodeBlockBtn.prop('checked', true);
                 codeBlockView.removeClass('Columns__right--float');
-                codeBlocks.removeClass('hidden');
+                codeBlockView.addClass('Columns__right--full');
+                codeBlocks.removeClass('Hidden');
                 break;
             case 0: // Hidden code blocks
             default:
                 toggleCodeBlockBtnHide.addClass("Button--active");
                 toggleCodeBlockBtn.prop('checked', false);
                 codeBlockView.removeClass('Columns__right--float');
-                codeBlocks.addClass('hidden');
+                codeBlockView.addClass('Columns__right--full');
+                codeBlocks.addClass('Hidden');
                 break;
         }
     }
 
     toggleCodeBlockBtn.click(function() {
-        setCodeBlockStyle(codeBlocks.hasClass('hidden') ? 1 : 0);
+        setCodeBlockStyle(codeBlocks.hasClass('Hidden') ? 1 : 0);
     });
 
     toggleCodeBlockBtnHide.click(function() { setCodeBlockStyle(0); });
