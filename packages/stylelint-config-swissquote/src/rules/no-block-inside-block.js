@@ -51,7 +51,6 @@ module.exports = function() {
         if (cssRuleHasSelectorEndingWithColon(rule)) {
           return;
         }
-        console.log(resolveNestedSelector(rule.selector, rule));
         resolveNestedSelector(rule.selector, rule).forEach(selector => {
           selectorParser(selectorAST => {
             selectorAST.walk(selectorNode => {
