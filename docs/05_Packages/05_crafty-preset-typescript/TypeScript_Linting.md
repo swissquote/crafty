@@ -1,7 +1,7 @@
 Linting in TypeScript is less advanced than in JavaScript, there are less available rules and features.
 This is also less of a problem because the language itself prevents errors with the help of types.
 
-We use [Tslint](https://palantir.github.io/tslint/) to lint our TypeScript code.
+We use [TSLint](https://palantir.github.io/tslint/) to lint our TypeScript code.
 
 ## Disable linting on parts of files
 

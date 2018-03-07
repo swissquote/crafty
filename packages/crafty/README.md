@@ -9,7 +9,7 @@ All the rest is handled by presets.
 
 Crafty's philosophy is that there are many great build and automation tools out there, we don't want to reinvent them.
 
-Gulp is awesome to create tasks and streams of work, Webpack is great at creating bundles, PostCSS and its plugin ecosystem is very powerul, but what plugins and loaders should we use for each ?
+Gulp is awesome to create tasks and streams of work, Webpack is great at creating bundles, PostCSS and its plugin ecosystem is very powerful, but what plugins and loaders should we use for each ?
 
 Crafty's philosophy is that if you wish to use Gulp and Webpack together, it should be easy.
 If you want to use TypeScript instead of Babel, it should be a single configuration line change.

@@ -1,4 +1,4 @@
-Like for an EcmaScript2015 bundle, you must set `webpack: true` in your `crafty.config.js` for your bundle.
+Like for an EcmaScript 2015 bundle, you must set `webpack: true` in your `crafty.config.js` for your bundle.
 
 ## Prerequisite
 
@@ -73,7 +73,7 @@ To leverage external libraries in your project, you need to configure TypeScript
 
 If you use Typings from the `@types` scoped packages you don't need this configuration.
 
-But for the defintions downloaded with `typings` or your own, you need to tell TypeScript to load them.
+But for the definitions downloaded with `typings` or your own, you need to tell TypeScript to load them.
 
 for this, you need to create a `tsconfig.json` next to your `crafty.config.js` and add a `"files"` array inside.
 

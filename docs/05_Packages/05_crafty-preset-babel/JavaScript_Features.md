@@ -39,7 +39,7 @@ Both Webpack and rollup.js us Babel to compile modern JavaScript to JavaScript t
 Babel is a compiler that gets all of its features through plugins.
 We chose the best plugins in the community to get the best out of it.
 
-[Our Babel preset](05_Packages/10_babel-preset-swissquote.md) contains everything we need for our frontend applications.
+[Our Babel preset](05_Packages/10_babel-preset-swissquote.md) contains everything we need for our web applications.
 
 The options we have for this preset are `environment` and `browsers`.
 

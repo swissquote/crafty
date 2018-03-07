@@ -12,7 +12,7 @@
 </td></tr>
 <tr><th>Linters</th><td>
 
-Provides tslint, with a minimal configuration (should be extended in the future to match the one in stylelint)
+Provides TSLint, with a minimal configuration (should be extended in the future to match the one in stylelint)
 
 </td></tr>
 <tr><th>Commands</th><td>
@@ -41,12 +41,12 @@ Or you can check out the [TypeScript specific features](TypeScript_Features.md)
 
 ## Linting
 
-Like any language, TypeScript has best practies and things that you shouldn't do.
+Like any language, TypeScript has best practices and things that you shouldn't do.
 With the help of `tslint` we check the code for common mistakes and formatting errors.
 
 [Read more](TypeScript_Linting.md)
 
-We currently don't provide a direct access to Tslint's CLI
+We currently don't provide a direct access to TSLint's CLI
 
 ## Installation
 
@@ -88,10 +88,9 @@ When running your tests with `crafty test` this preset will be use to convert al
 
 TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.
 
-Some packages come with their own definitions, for the others there are three ways to consume these files.
+Some packages come with their own definitions, for the others there are two ways to consume these files.
 
-1. Use `@types` scoped packages from npm
-1. Use the `typings` tool to download community managed typings
+1. Use `@types` scoped packages from NPM
 1. Create your own `*.d.ts` file
 
 [Read more](TypeScript_Typings.md)
@@ -105,7 +104,7 @@ We have a user guide to easily get started with TypeScript in your project
 ### `crafty tsLint`
 
 This linter will leverage TSLint to lint your TypeScript files with the
-Swissquote presets preinstalled. All
+Swissquote presets pre-configured. All
 [TSLint CLI](https://palantir.github.io/tslint/usage/cli/) options are valid
 here.
 

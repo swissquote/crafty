@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/travis/swissquote/crafty/master.svg?style=flat-square)](https://travis-ci.org/swissquote/crafty)
 [![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty)
 
-Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, Rollup, Babel, ESLint, TypeScript, TSLint, PostCSS, Stylelint and many other tools.
+Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, rollup.js, Babel, ESLint, TypeScript, TSLint, PostCSS, Stylelint and many other tools.
 
 Crafty has a default configuration and provides many possibilities to extend that default configuration.
 
@@ -52,7 +52,7 @@ module.exports = {
 
 ### Run
 
-You can run the commands using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) or by adding them to the `scripts` section of your `package.json` 
+You can run the commands using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) or by adding them to the `scripts` section of your `package.json`
 
 ```bash
 npx crafty run
@@ -69,12 +69,12 @@ With this configuration you get:
 
 ## Why
 
-Getting started in a frontend app is very easy, write an `index.html`, a
+Getting started in a web application is very easy, write an `index.html`, a
 `style.css`, and a `script.js` file and you're good to go.
 
 But on bigger apps you might want some CSS preprocessing ? but which one to
-choose ? **Sass**, **Less**, **Stylus**, **Postcss** ? Then you want to write
-your JavaScript using EcmaScript6, but do you transpile it with **Traceur** or
+choose ? **Sass**, **Less**, **Stylus**, **PostCSS** ? Then you want to write
+your JavaScript using EcmaScript 2015+, but do you transpile it with **Traceur** or
 **Babel** ? Then you have to package your JavaScript in bundles, you have the
 choice between **rollup.js**, **Browserify**, **Webpack** or **Pundle**. Now you
 want to lint your JavaScript, do you choose **ESLint** or **JSHint** ? To
@@ -93,7 +93,7 @@ configure. Specify your JavaScript and CSS files in entry and get them compiled,
 compressed and linted with the best tools available.
 
 Each tool is fine-tuned to give the best and to follow Swissquote's Guidelines
-and best practices for frontend development.
+and best practices for Frontend development.
 
 Many aspects of **Crafty** are configurable and updates are painless.
 
@@ -109,26 +109,26 @@ doesn't give it's full measure. Here's some other things it can do:
 
 ### JavaScript
 
-* Write **EcmaScript2015**, transpiled to JavaScript all browsers understand
+* Write **EcmaScript 2015**, transpiled to JavaScript all browsers understand
   with Babel.
-* Write **TypeScript**, transpiled to EcmaScript5 with the TypeScript compiler.
+* Write **TypeScript**, transpiled to EcmaScript 5 with the TypeScript compiler.
 * Bundle all JavaScript files together with the help of **Webpack**.
 * Compress the output with **UglifyJS** to create the smallest possible bundles.
 * Lint your code with **ESLint**, points you to possible mistakes and formatting
   errors.
-* Simple debugging with sourcemaps.
+* Simple debugging with Source Maps.
 
 [Read more about features here](https://swissquote.github.io/crafty/Use_Cases/Compiling_JavaScript.html)
 
 ### CSS
 
-* Preprocess your css using **Postcss** and many plugins that will allow to
+* Preprocess your CSS using **PostCSS** and many plugins that will allow to
   write in a syntax approaching the one of Sass.
-* Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext` 
-  to use CSS4 options today and `postcss-advanced-variables` to define mixins
+* Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext`
+  to use future CSS options today and `postcss-advanced-variables` to define mixins
 * Compress the CSS output with `postcss-csso` to get the smallest possible file.
 * Automatically add vendor prefixes to properties with `autoprefixer`.
-* Simple Debugging with Sourcemaps
+* Simple Debugging with Source Maps
 
 [Read more about features here](https://swissquote.github.io/crafty/Use_Cases/Compiling_CSS.html)
 
@@ -160,8 +160,8 @@ Here's an example:
 ## Maven, Node and Gulp
 
 Swissquote's build environment is based mainly on Maven and it's plugin
-ecosystem. But the frontend world solely relies on Node tooling to build
-Javascript and CSS assets.
+ecosystem. But the Frontend world solely relies on Node tooling to build
+JavaScript and CSS assets.
 
 To use the best of both worlds, we take advantage of the
 `maven-frontend-plugin`. This plugin will ensure a Node version is installed and
@@ -171,8 +171,7 @@ We also use Gulp, a JavaScript task runner (can be seen a bit like Ant but for
 the JavaScript world).
 
 **Crafty** is the glue that will take all these pieces we mentioned, and build
-you assets with the best-in-class tools. Working with Swissquote's Frontend
-Guidelines as well.
+you assets with the best-in-class tools. Working with Swissquote's JavaScript and CSS Guidelines as well.
 
 Everything bundled in a way that `mvn clean install` will build your assets like
 you would expect with pure Java plugins.
@@ -180,4 +179,3 @@ you would expect with pure Java plugins.
 ## Getting started
 
 To get started, follow [the guide](https://swissquote.github.io/crafty/Getting_Started.html)
-

@@ -77,9 +77,9 @@ module.exports = {
 }
 ```
 
-## Defining a bundleCreator
+## Defining a `bundleCreator`
 
-Bundles can contain those fields by default, each bundleType can add more fields.
+Bundles can contain those fields by default, each `bundleType` can add more fields.
 
 ```typescript
 interface Bundle {
@@ -141,7 +141,7 @@ bundleCreator(crafty: crafty): {
 }
 ```
 
-In this example, you can see that this bundleCreator is meant for the `js` bundleType, and will be used if you specify `gulp` or `gulp/babel` as runner.
+In this example, you can see that this `bundleCreator` is meant for the `js` `bundleType`, and will be used if you specify `gulp` or `gulp/babel` as runner.
 
 You can also see that a watcher is created, so if the `bundle.watch` pattern is matched, `bundle.taskName` is executed.
 

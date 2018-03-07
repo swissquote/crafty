@@ -3,11 +3,11 @@
 ## Language features
 
 TypeScript is a superset of EcmaScript 2015, in this section we will only cover what is added on top of it.
-For ES2015 features, you can check out our [Babel preset's features](../05_crafty-preset-babel/JavaScript_Features.md).
+For EcmaScript 2015 features, you can check out our [Babel preset's features](../05_crafty-preset-babel/JavaScript_Features.md).
 
 ### Interfaces
 
-a very useful feature for types is interfaces, unline other strongly typed languages, interfaces can contain fields as well, and optional fields.
+A very useful feature for types is interfaces, unlike other strongly typed languages, interfaces can contain fields and optional fields.
 
 This allows you to create on-the-fly type definitions without creating an actual class in the output JavaScript.
 
@@ -60,4 +60,4 @@ function direction(k: "left" | "right") {
 
 TypeScript being out for a few years now, it has first class support in many IDE's like IntelliJ, Visual Studio Code and others.
 
-The IDE directly understands types and type definition files and is able to propose autocompletion and refactorings out of the box.
+The IDE directly understands types and type definition files and is able to propose auto completion and refactoring out of the box.

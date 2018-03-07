@@ -1,4 +1,4 @@
-**Postcss** is a CSS Parser that can be extended with plugins.
+**PostCSS** is a CSS Parser that can be extended with plugins.
 We made a selection of plugins useful for Swissquote.
 Here are some features made possible by them.
 
@@ -8,47 +8,47 @@ Here are some features made possible by them.
 
 All included plugins have a short example accompanying them below.
 
-| Plugin                             | Meta-plugin     | Description                               |
-| ---------------------------------- | --------------- | ----------------------------------------- |
-| postcss-assets                     |                 | Embed images & size functions             |
-| postcss-filter-gradient            |                 | Gradient fallback for IE9                 |
-| postcss-import                     |                 | Import files                              |
-| postcss-scss                       |                 | Inline comments support                   |
-| postcss-url                        |                 | Rebase urls after import                  |
-| postcss-advanced-variables         |                 | Sass-like variables, mixins and loops     |
-| postcss-nested                     |                 | Sass-like nested selectors                |
-| postcss-atroot                     |                 | place rules back up to the root           |
-| postcss-property-lookup            |                 | reference other property values           |
-| postcss-dir-pseudo-class           |                 | Use the `:dir()` pseudo class for LTR/RTL |
-| postcss-logical                    |                 | New LTR/RTL and flow related properties   |
-| autoprefixer                       |                 | Add or remove Vendor prefixes             |
-| postcss-csso                       |                 | Minify CSS                                |
-| postcss-attribute-case-insensitive | postcss-cssnext | Support case insensitive attributes       |
-| postcss-calc                       | postcss-cssnext | Resolves calculations                     |
-| postcss-color-function             | postcss-cssnext | W3C color methods                         |
-| postcss-color-gray                 | postcss-cssnext | Shades of gray                            |
-| postcss-color-hex-alpha            | postcss-cssnext | `#rrggbbaa` colors                        |
-| postcss-color-hsl                  | postcss-cssnext | Allow to define colors using `hsl()`      |
-| postcss-color-hwb                  | postcss-cssnext | `hwb()` color function                    |
-| postcss-color-rebeccapurple        | postcss-cssnext | Adds the `rebbeccapurple` color           |
-| postcss-color-rgb                  | postcss-cssnext | Change W3C Color Level 4 rgb() to Level 3 |
-| postcss-color-rgba-fallback        | postcss-cssnext | Add an RGB fallback to RGBA colors        |
-| postcss-custom-media               | postcss-cssnext | W3C custom media queries                  |
-| postcss-custom-properties          | postcss-cssnext | W3C custom variables                      |
-| postcss-custom-selectors           | postcss-cssnext | W3C custom selectors                      |
-| postcss-font-family-system-ui      | postcss-cssnext | Change `system-ui` to a font-family list  |
-| postcss-font-variant               | postcss-cssnext | Transformed to `font-feature-settings`    |
-| postcss-image-set-polyfill         | postcss-cssnext | Use `image-set()` for image selection     |
-| postcss-initial                    | postcss-cssnext | Use initial value for a property          |
-| postcss-media-minmax               | postcss-cssnext | W3C < <= >= > media queries               |
-| postcss-nesting                    | postcss-cssnext | W3C nested selectors                      |
-| postcss-pseudo-class-any-link      | postcss-cssnext | Allows you to use :any-link pseudo class. |
-| postcss-pseudoelements             | postcss-cssnext | Adjust `::` to `:`                        |
-| postcss-replace-overflow-wrap      | postcss-cssnext | Converts `overflow-wrap` to `word-wrap`   |
-| postcss-selector-matches           | postcss-cssnext | W3C multiple matches pseudo-classes       |
-| postcss-selector-not               | postcss-cssnext | W3C multiple not pseudo-classes           |
+| Plugin                               | Meta-plugin       | Description                                 |
+| ------------------------------------ | ----------------- | ------------------------------------------- |
+| `postcss-assets`                     |                   | Embed images & size functions               |
+| `postcss-filter-gradient`            |                   | Gradient fallback for IE9                   |
+| `postcss-import`                     |                   | Import files                                |
+| `postcss-scss`                       |                   | Inline comments support                     |
+| `postcss-url`                        |                   | Update relative URLs after import           |
+| `postcss-advanced-variables`         |                   | Sass-like variables, mixins and loops       |
+| `postcss-nested`                     |                   | Sass-like nested selectors                  |
+| `postcss-atroot`                     |                   | place rules back up to the root             |
+| `postcss-property-lookup`            |                   | reference other property values             |
+| `postcss-dir-pseudo-class`           |                   | Use the `:dir()` pseudo class for LTR/RTL   |
+| `postcss-logical`                    |                   | New LTR/RTL and flow related properties     |
+| `autoprefixer`                       |                   | Add or remove Vendor prefixes               |
+| `postcss-csso`                       |                   | Minify CSS                                  |
+| `postcss-attribute-case-insensitive` | `postcss-cssnext` | Support case insensitive attributes         |
+| `postcss-calc`                       | `postcss-cssnext` | Resolves calculations                       |
+| `postcss-color-function`             | `postcss-cssnext` | W3C color methods                           |
+| `postcss-color-gray`                 | `postcss-cssnext` | Shades of gray                              |
+| `postcss-color-hex-alpha`            | `postcss-cssnext` | `#rrggbbaa` colors                          |
+| `postcss-color-hsl`                  | `postcss-cssnext` | Allow to define colors using `hsl()`        |
+| `postcss-color-hwb`                  | `postcss-cssnext` | `hwb()` color function                      |
+| `postcss-color-rebeccapurple`        | `postcss-cssnext` | Adds the `rebbeccapurple` color             |
+| `postcss-color-rgb`                  | `postcss-cssnext` | Change W3C Color Level 4 `rgb()` to Level 3 |
+| `postcss-color-rgba-fallback`        | `postcss-cssnext` | Add an RGB fallback to RGBA colors          |
+| `postcss-custom-media`               | `postcss-cssnext` | W3C custom media queries                    |
+| `postcss-custom-properties`          | `postcss-cssnext` | W3C custom variables                        |
+| `postcss-custom-selectors`           | `postcss-cssnext` | W3C custom selectors                        |
+| `postcss-font-family-system-ui`      | `postcss-cssnext` | Change `system-ui` to a font-family list    |
+| `postcss-font-variant`               | `postcss-cssnext` | Transformed to `font-feature-settings`      |
+| `postcss-image-set-polyfill`         | `postcss-cssnext` | Use `image-set()` for image selection       |
+| `postcss-initial`                    | `postcss-cssnext` | Use initial value for a property            |
+| `postcss-media-minmax`               | `postcss-cssnext` | W3C < <= >= > media queries                 |
+| `postcss-nesting`                    | `postcss-cssnext` | W3C nested selectors                        |
+| `postcss-pseudo-class-any-link`      | `postcss-cssnext` | Allows you to use :any-link pseudo class.   |
+| `postcss-pseudoelements`             | `postcss-cssnext` | Adjust `::` to `:`                          |
+| `postcss-replace-overflow-wrap`      | `postcss-cssnext` | Converts `overflow-wrap` to `word-wrap`     |
+| `postcss-selector-matches`           | `postcss-cssnext` | W3C multiple matches pseudo-classes         |
+| `postcss-selector-not`               | `postcss-cssnext` | W3C multiple not pseudo-classes             |
 
-## Organisation
+## Organization
 
 ### Nested Styles (`postcss-nesting`, `postcss-nested`, `postcss-atroot`)
 
@@ -94,8 +94,8 @@ All included plugins have a short example accompanying them below.
 
 ### Import CSS Files (`postcss-import`, `postcss-url`)
 
-With `@import`, you can import your css files to create a single CSS output file.
-All relative links are rebased when imported.
+With `@import`, you can import your CSS files to create a single CSS output file.
+All relative links are updated when they are imported.
 
 ```css
 /* Before */
@@ -187,10 +187,10 @@ body {
 We have two possible ways of using variables:
 
 1. Sass style variables : `$variable`
-1. Css properties (Official specification): `--variable`
+1. CSS properties (Official specification): `--variable`
 
 Sass style variables are provided as a compatibility layer.
-It is recommended to use the CSS properties as they are future proof and will be natively supported in browsers in the future.
+It is recommended to use the CSS properties as they are future proof and will be directly supported in browsers in the future.
 
 ```css
 /* Before */
@@ -324,7 +324,7 @@ body {
   resize: block;
 }
 
-// postcss-dir-psseudo-class
+// `postcss-dir-psseudo-class`
 .Banner__title:dir(rtl) {
   margin-right: 10px;
 }
@@ -357,7 +357,7 @@ body {
   resize: vertical;
 }
 
-// postcss-dir-psseudo-class
+// `postcss-dir-psseudo-class`
 [dir="rtl"] .Banner__title {
   margin-right: 10px;
 }
@@ -492,7 +492,7 @@ a {
 
 Many colors functions don't work in all browsers, these plugins will create fallbacks.
 
-`rebeccapurple` is a whole different story, it's an homage to [Eric Meyer's daughter](https://github.com/postcss/postcss-color-rebeccapurple#why-this-plugin-).
+`rebeccapurple` is a whole different story, it's an homage to [Eric Meyer's daughter](https://github.com/postcss/`postcss-color-rebeccapurple`#why-this-plugin-).
 
 ```css
 /* Before */
@@ -545,7 +545,7 @@ blockquote {
 #### Color manipulation
 
 You can modify a color by applying modifiers.
-Apart from the few presented here, there are [a lot of modifiers](https://github.com/postcss/postcss-color-function#list-of-color-adjuster) available
+Apart from the few presented here, there are [a lot of modifiers](https://github.com/postcss/`postcss-color-function`#list-of-color-adjuster) available
 
 ```css
 /* Before */
@@ -771,10 +771,10 @@ Browsers have the tendency to do things their way, either with vendor prefixes o
 
 ### Vendor Prefixes (`autoprefixer`)
 
-Tired of having to look for what prefix to use in your css ?
+Tired of having to look for what prefix to use in your CSS ?
 You don't need this anymore!
 With **Autoprefixer** this is all done for you.
-You can simply write your CSS following the W3C standards and autoprefixer will handle the rest for you
+You can simply write your CSS following the W3C standards and Autoprefixer will handle the rest for you
 
 ```css
 /* Before */
@@ -808,9 +808,9 @@ You can simply write your CSS following the W3C standards and autoprefixer will 
 ### Browser support (`postcss-font-family-system-ui`, `postcss-pseudoelements`, `postcss-replace-overflow-wrap`, `postcss-filter-gradient`, `postcss-font-variant`)
 
 Some ways of writing CSS are compatible with modern browsers but not with older ones.
-These plugins ensure some propreties include a fallback.
+These plugins ensure some properties include a fallback.
 
-They are only enabled if your target browsers are concerned by these syntaxes
+They are only enabled if your target browsers need those fixes.
 
 ```css
 /* Before */

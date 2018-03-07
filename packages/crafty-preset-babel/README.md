@@ -39,7 +39,7 @@ Provides ESLint, configured with [`eslint-plugin-swissquote`](05_Packages/10_esl
 
 ## Linting
 
-In `@swissquote/crafty-preset-babel` JavaScript is linted with **ESLint**, a very powerful pluggable linter, our configuration follows the Swissquote JavaScript Guideline.
+In `@swissquote/crafty-preset-babel` JavaScript is linted with **ESLint**, a very powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline.
 
 [Read more](./JavaScript_Linting.md)
 
@@ -119,7 +119,7 @@ When running your tests with `crafty test` this preset will be use to convert al
 | -------- | ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | `concat` | Boolean | Yes        | Gulp   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this) |
 
-### Addind Babel plugins and presets
+### Adding Babel plugins and presets
 
 You can add, replace or remove plugins and add options to our default Babel configuration.
 To see which plugins are already included, you can go to the [Swissquote Preset for Babel](05_Packages/10_babel-preset-swissquote.md) page.
@@ -150,7 +150,7 @@ You can read about the linting options in the page about [Read more](./JavaScrip
 
 ### `crafty jsLint`
 
-This linter will leverage ESLint to lint your JavaScript files with the Swissquote presets preinstalled. All [ESLint CLI](https://eslint.org/docs/user-guide/command-line-interface) options are valid here.
+This linter will leverage ESLint to lint your JavaScript files with the Swissquote presets pre-configured. All [ESLint CLI](https://eslint.org/docs/user-guide/command-line-interface) options are valid here.
 
 The additions made by this command are:
 
@@ -160,9 +160,9 @@ The additions made by this command are:
 there are 4 presets available for you :
 
 * `format` Base formatting rules, should work on any code (included in `legacy` and `recommended`)
-* `node` Adds environment information for nodejs
-* `legacy` For all your ES5 code
-* `recommended` For al your ES2015+ code, also contains rules for React
+* `node` Adds environment information for Node.js
+* `legacy` For all your EcmaScript 5 code
+* `recommended` For al your EcmaScript 2015+ code, also contains rules for React
 
 Setting presets is done with the `--preset` option
 

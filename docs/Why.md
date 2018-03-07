@@ -6,7 +6,7 @@ This package is a helper to compile your scripts to the best, optimized,
 compressed and understood by all browser versions of the code you write.
 
 It takes the best tools choices of the community between the huge amount of
-options for the task at hand (**Sass**, **Less**, **Stylus**, **Postcss**,
+options for the task at hand (**Sass**, **Less**, **Stylus**, **PostCSS**,
 **Traceur**, **Babel**, **rollup.js**, **Browserify**, **Webpack**, **Pundle**,
 **ESLint**, **JSHint**, **Gulp**, **Broccoli**, **Grunt**) With a consideration
 for features, configurability, update frequency, compatibility and community.
@@ -16,7 +16,7 @@ best out of each one.
 
 ### Features
 
-We support the full ES2015 and ES2016 Specifications, Advanced CSS with the help
+We support the full EcmaScript 2015 and EcmaScript 2016 Specifications, Advanced CSS with the help
 of PostCSS and also TypeScript.
 
 The features are best explained in each specific section :

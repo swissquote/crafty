@@ -18,18 +18,18 @@ Linting is important but while writing code, formatting is not the most importan
 
 ## Turning off linting for some parts of your code
 
-You might find yourself surprised with the number of errors you get when you lint your javascript files for the first time.
+You might find yourself surprised with the number of errors you get when you lint your JavaScript files for the first time.
 
 Here I'll explain how to disable linting on some files or part of files, but remember! The linting is here to help you! You should disable it only for very good reasons.
 
 Good reasons include:
 
 * It's an external library you downloaded, so it should not follow our conventions
-* you are adding a "console.log" but wrapped in a "if" statement to check if "console" exists in the global scope.
+* you are adding a `console.log` but wrapped in a `if` statement to check if "console" exists in the global scope.
 
 ### Disable linting on a line
 
-To be surgical you can also disable the linting on a single line with "eslint-disable-line"
+To be surgical you can also disable the linting on a single line with `eslint-disable-line`
 
 Optionally, but it's recommended you can add which rules are disabled, in the following it is "no-console",
 you can find the rule name at the end of the error message you get when compiling.
@@ -42,22 +42,23 @@ if (console) {
 
 ### Disable linting on a block of code
 
-You should use this possiblity with parcimony, but you can just add the following comments around your block
+You should use this possibility only if you're sure of what you do.
+To disable linting on a block you can add the following comments around your block
 
 ```javascript
-/*eslint-disable */
+/* eslint-disable */
 
-//suppress all warnings between comments
+// suppress all warnings between comments
 alert("foo");
 
-/*eslint-enable */
+/* eslint-enable */
 ```
 
 ### Disable linting for one or more files
 
 When running, **ESLint** will look for a `.eslintignore` file in it's working directory and apply all the patterns to ignore some files.
 
-The patterns in your .eslintignore file must match the [.gitignore syntax](https://git-scm.com/docs/gitignore).
+The patterns in your `.eslintignore` file must match the [`.gitignore` syntax](https://git-scm.com/docs/gitignore).
 
 For example:
 
@@ -87,4 +88,4 @@ module.exports = {
 };
 ```
 
-You can set rules either for EcmaScript5 or EcmaScript6 (AKA EcmaScript2015)
+You can set rules either for EcmaScript 5 or EcmaScript 6 (AKA EcmaScript 2015)

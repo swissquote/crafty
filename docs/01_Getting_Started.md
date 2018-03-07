@@ -12,7 +12,7 @@ To be able to use Crafty correctly, you need to have a basic understanding of
 what NPM/Yarn do;
 
 * [Basic knowledge of `npm install`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
-* Know how to run commands installed through npm
+* Know how to run commands installed through NPM
   ([`npx your_command`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
   or `node_modules/.bin/your_command`)
 * [Understand `npm run` and the `script` field](https://docs.npmjs.com/misc/scripts)

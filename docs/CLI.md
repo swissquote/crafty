@@ -19,11 +19,11 @@ Otherwise you can execute as many tasks as you wish.
 ## `crafty watch`
 
 Running the watch mode will execute all tasks once at the start. After that, it
-will watch for filesystem changes and re-execute related tasks once a change
+will watch for file system changes and re-execute related tasks once a change
 occurs.
 
 All presets can add watchers for any file pattern or use their embedded watcher
-(like webpack).
+(like Webpack).
 
 ## `crafty test`
 

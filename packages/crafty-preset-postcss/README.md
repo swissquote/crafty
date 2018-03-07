@@ -27,7 +27,7 @@ We want to offer the best experience for writing CSS that is compatible with mos
 
 ## Features
 
-**postcss** is a CSS parser that supports plugins, many plugins are maintained by a big community, we use a handful of them.
+**PostCSS** is a CSS parser that supports plugins, many plugins are maintained by a big community, we use a handful of them.
 
 [Features and examples](CSS_Features.md)
 
@@ -63,13 +63,13 @@ The only thing you have to do is to use `import "myfile.scss"` in your Webpack i
 
 When setting `hot: true` in your `crafty.config.js` for your main JavaScript bundle, you can enable Hot Module Replacement.
 
-With this, the CSS files imported in your webpack bundles are automatically reloaded upon changes.
+With this, the CSS files imported in your Webpack bundles are automatically reloaded upon changes.
 
 This works only in `crafty watch`
 
 ### Extracting CSS
 
-By default, the CSS will be inlined within your bundle, but you can provide the `extractCSS` option to extract your styles using the `ExtractTextWebpackPlugin`.
+By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `ExtractTextWebpackPlugin`.
 
 ## Usage with Gulp
 
@@ -120,9 +120,9 @@ If no preset is specified `recommended` is used.
 
 ## Bundle Options
 
-| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                         |
-| ------------ | ------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also just pass `true` which will use `[bundle]-[name].min.css` as filename, you can use `[bundle]` in the filename which is replaced by your bundle name. |
+| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                           |
+| ------------ | ------------------------- | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also just pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
 
 ### Linting options
 

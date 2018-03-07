@@ -1,4 +1,4 @@
-For linting we use **Stylelint**; a pluggable CSS linter that works on top of postcss.
+For linting we use **Stylelint**; a CSS linter that works on top of PostCSS and supports plugins.
 
 [TOC]
 
@@ -56,7 +56,7 @@ You can also disable linting for as many lines as you want.
 
 When running, **Stylelint** will look for a `.stylelintignore` file in it's working directory and apply all the patterns to ignore some files.
 
-The patterns in your .stylelintignore file must match the [.gitignore syntax](https://git-scm.com/docs/gitignore).
+The patterns in your `.stylelintignore` file must match the [`.gitignore` syntax](https://git-scm.com/docs/gitignore).
 
 For example:
 
