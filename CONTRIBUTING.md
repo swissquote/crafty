@@ -1,6 +1,6 @@
 # Installation
 
-This project is organized with Lerna to manage multiple modules in a single project.
+This project is organized with Lerna to manage more than one module in a single project.
 
 ```bash
 npm install
@@ -11,7 +11,7 @@ Those two commands install all dependencies in each package.
 
 ## Using the experiment project
 
-There is a small example project within Crafty to experiment with features outside of integration tests.
+We provide a small example project within Crafty to experiment with features outside of integration tests.
 You can tweak the configuration in any way you like in this project.
 
 ```bash
@@ -19,10 +19,11 @@ cd experiment
 npm install
 ```
 
-Then you can run one of 
-- `npm run build` to build the project once
-- `npm run test` to execute the tests
-- `npm run watch` to run the compilation in watch mode
+Then you can run one of
+
+* `npm run build` to build the project once
+* `npm run test` to execute the tests
+* `npm run watch` to run the compilation in watch mode
 
 # Development
 
@@ -32,9 +33,9 @@ Then you can run one of
 npm run jest
 ```
 
-Tests are currently mainly integration tests in the `packages/integration` directory.
+Tests are mainly integration tests in the `packages/integration` directory.
 
-Those tests do a run of the configuration with various configuration of presets and register the results in snapshots.
+Those tests do a run of the configuration with different combinations of configuration and presets and register the results in snapshots.
 
 # Release
 

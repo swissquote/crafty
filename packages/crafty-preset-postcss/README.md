@@ -21,19 +21,19 @@ Provides stylelint, configured with [`stylelint-config-swissquote`](05_Packages/
 
 ## Description
 
-The principle of CSS is very easy to grasp, yet CSS is very complicated to write at large scales.
+The principle of CSS is easy to grasp, yet CSS is complicated to write at large scales.
 
-We want to offer the best experience for writing CSS that is compatible with most browsers with a minimum overhead for the developer.
+We want to offer the best experience for writing CSS that is compatible with most browsers without the long configuration process.
 
 ## Features
 
-**PostCSS** is a CSS parser that supports plugins, many plugins are maintained by a big community, we use a handful of them.
+**PostCSS** is a CSS parser that supports plugins, countless plugins are maintained by a big community, we use a handful of them.
 
 [Features and examples](CSS_Features.md)
 
 ## Linting
 
-**Stylelint** is a wonderful tool to lint CSS in many forms, we have a custom configuration preset for Stylelint that comes pre-configured.
+**Stylelint** is a wonderful tool to lint CSS in according to your rules, we have a custom configuration preset for Stylelint that comes pre-configured.
 
 [Read more about it here](CSS_Linting.md)
 
@@ -57,7 +57,7 @@ module.exports = {
 
 Webpack defines the right loaders to support CSS.
 
-The only thing you have to do is to use `import "myfile.scss"` in your Webpack imported file.
+To use it, add `import "myfile.scss"` in your Webpack imported file.
 
 ### Hot Module Replacement
 
@@ -65,7 +65,7 @@ When setting `hot: true` in your `crafty.config.js` for your main JavaScript bun
 
 With this, the CSS files imported in your Webpack bundles are automatically reloaded upon changes.
 
-This works only in `crafty watch`
+This is used inside `crafty watch`, the build mode will not take it into account.
 
 ### Extracting CSS
 
@@ -81,7 +81,7 @@ module.exports = {
   ],
   css: {
     app: {
-      runner: "gulp", // optional if you have only one runner defined
+      runner: "gulp", // optional if you have a single runner defined
       source: "css/app.scss",
       watch: ["css/**"]
     }
@@ -103,7 +103,7 @@ The additions made by this command are:
 there are 3 presets available for you :
 
 * `recommended`: Contains all BEM specific rules.
-* `legacy`: Contains things specific to legacy code.
+* `legacy`: Contains rules specific to legacy code.
 * `common`: Enforces the styleguide of the CSS. (included in both `recommended` and `legacy`)
 
 Setting presets is done with the `--preset` option
@@ -120,9 +120,9 @@ If no preset is specified `recommended` is used.
 
 ## Bundle Options
 
-| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                           |
-| ------------ | ------------------------- | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also just pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
+| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                      |
+| ------------ | ------------------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
 
 ### Linting options
 

@@ -2,7 +2,7 @@
 
 A preset is defined with the following functions.
 
-Everything is optional; use only what you need.
+All methods are optional; Use the methods you need, leave out the rest.
 
 ```typescript
 module.exports = {
@@ -14,9 +14,9 @@ module.exports = {
     defaultConfig(): {[key: string]: string} { return {} }
 
     /**
-     * Finalize the configuration once the user overrides have been applied.
+     * Change the configuration once the user overrides have been applied.
      *
-     * (things like renaming legacy parameters, validating or sanitizing values can be done here)
+     * (Renaming legacy parameters, validating or sanitizing values, etc...) can be done here
      *
      * @param config The original configuration
      * @return The full configuration
@@ -58,7 +58,7 @@ module.exports = {
     tasks(crafty: Crafty): void
 
     /**
-     * This extension point is called when `crafty test` is executed, you can run your test runner at this time and return with a Promise.
+     * This extension point is called when `crafty test` is executed, you can run your test runner and return with a Promise.
      *
      * @param crafty The Crafty instance
      * @param input The input to the command

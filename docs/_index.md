@@ -65,7 +65,7 @@ With this configuration you get:
 
 ## Why
 
-Getting started in a web application is very easy, write an `index.html`, a
+Getting started in a web application is easy, write an `index.html`, a
 `style.css`, and a `script.js` file and you're good to go.
 
 But on bigger apps you might want some CSS preprocessing ? but which one to
@@ -78,7 +78,7 @@ orchestrate all this, do you use **Gulp**, **Broccoli** or **Grunt** ?
 
 You guessed it, each tool in the JavaScript stack has at least two alternatives,
 and there is not always a clear winner. This lead to a "JavaScript Fatigue" in
-the community these last years and many people got lost in what tools to choose
+the community these last years and some people got lost in what tools to choose
 to do these tasks.
 
 But even when you chose the tool you want to work with, you still have to
@@ -91,7 +91,7 @@ compressed and linted with the best tools available.
 Each tool is fine-tuned to give the best and to follow Swissquote's Guidelines
 and best practices for Frontend development.
 
-Many aspects of **Crafty** are configurable and updates are painless.
+Most aspects of **Crafty** are configurable and updates are painless.
 
 [More on Why](./Why.md)
 
@@ -101,7 +101,7 @@ The main feature of **Crafty** is to compile your JavaScript, CSS, compress your
 images and deliver them in the target directory.
 
 But shortening the list of features you gain with **Crafty** to one sentence
-doesn't give it's full measure. Here's some other things it can do:
+doesn't give it's full measure. Here's some other features it has:
 
 ### JavaScript
 
@@ -118,7 +118,7 @@ doesn't give it's full measure. Here's some other things it can do:
 
 ### CSS
 
-* Preprocess your CSS using **PostCSS** and many plugins that will allow to
+* Preprocess your CSS using **PostCSS** and plugins that will allow to
   write in a syntax approaching the one of Sass.
 * Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext`
   to use CSS 4 options today and `postcss-advanced-variables` to define mixins

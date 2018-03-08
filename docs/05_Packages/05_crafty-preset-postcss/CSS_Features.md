@@ -45,8 +45,8 @@ All included plugins have a short example accompanying them below.
 | `postcss-pseudo-class-any-link`      | `postcss-cssnext` | Allows you to use :any-link pseudo class.   |
 | `postcss-pseudoelements`             | `postcss-cssnext` | Adjust `::` to `:`                          |
 | `postcss-replace-overflow-wrap`      | `postcss-cssnext` | Converts `overflow-wrap` to `word-wrap`     |
-| `postcss-selector-matches`           | `postcss-cssnext` | W3C multiple matches pseudo-classes         |
-| `postcss-selector-not`               | `postcss-cssnext` | W3C multiple not pseudo-classes             |
+| `postcss-selector-matches`           | `postcss-cssnext` | W3C `:matches()` pseudo-classes             |
+| `postcss-selector-not`               | `postcss-cssnext` | W3C `:not()` pseudo-classes                 |
 
 ## Organization
 
@@ -190,7 +190,7 @@ We have two possible ways of using variables:
 1. CSS properties (Official specification): `--variable`
 
 Sass style variables are provided as a compatibility layer.
-It is recommended to use the CSS properties as they are future proof and will be directly supported in browsers in the future.
+We recommend to use the CSS properties as they are future proof and will be directly supported in browsers in the future.
 
 ```css
 /* Before */
@@ -251,7 +251,9 @@ $column: 200px;
 /* Before */
 
 body {
-  background: inline("background.png"); /* use only on small files */
+  background: inline(
+    "background.png"
+  ); /* Be careful to not use this on big files */
 }
 
 .button {
@@ -490,7 +492,7 @@ a {
 
 #### Color Fallbacks
 
-Many colors functions don't work in all browsers, these plugins will create fallbacks.
+Some colors functions don't work in all browsers, these plugins will create fallbacks.
 
 `rebeccapurple` is a whole different story, it's an homage to [Eric Meyer's daughter](https://github.com/postcss/`postcss-color-rebeccapurple`#why-this-plugin-).
 
@@ -544,8 +546,8 @@ blockquote {
 
 #### Color manipulation
 
-You can modify a color by applying modifiers.
-Apart from the few presented here, there are [a lot of modifiers](https://github.com/postcss/`postcss-color-function`#list-of-color-adjuster) available
+You can change a color by applying modifiers.
+Apart from the ones presented here, there are [a lot of modifiers](https://github.com/postcss/`postcss-color-function`#list-of-color-adjuster) available
 
 ```css
 /* Before */
@@ -581,7 +583,7 @@ body {
 
 #### Levels of gray
 
-You can also easily get levels of gray.
+You can also get levels of gray.
 
 ```css
 /* Before */
@@ -735,7 +737,7 @@ nav :visited {
 
 ### Media Queries (`postcss-custom-media`, `postcss-media-minmax`)
 
-Normally, media queries should be written with `min-width` and `max-width` but leads to quite unclear declarations.
+Media queries should be written with `min-width` and `max-width` but it leads to unclear declarations.
 
 With custom media queries, and query ranges, it's much easier to write.
 
@@ -747,9 +749,9 @@ With custom media queries, and query ranges, it's much easier to write.
 }
 
 /* or coupled with custom media queries */
-@custom-media --only-medium-screen (width < 500px) or (width > 1200px);
+@custom-media --medium-screen (width < 500px) or (width > 1200px);
 
-@media (--only-medium-screen) {
+@media (--medium-screen) {
   /* your styles */
 }
 
@@ -767,14 +769,14 @@ With custom media queries, and query ranges, it's much easier to write.
 
 ## Fallbacks
 
-Browsers have the tendency to do things their way, either with vendor prefixes or by using a custom syntax no other browser supports. These plugins make it easy for you.
+Browsers have the tendency to do everything their way, either with vendor prefixes or by using a custom syntax no other browser supports. These plugins make it easy for you.
 
 ### Vendor Prefixes (`autoprefixer`)
 
 Tired of having to look for what prefix to use in your CSS ?
 You don't need this anymore!
 With **Autoprefixer** this is all done for you.
-You can simply write your CSS following the W3C standards and Autoprefixer will handle the rest for you
+You can write your CSS following the W3C standards and Autoprefixer will handle the rest for you
 
 ```css
 /* Before */
@@ -810,7 +812,7 @@ You can simply write your CSS following the W3C standards and Autoprefixer will 
 Some ways of writing CSS are compatible with modern browsers but not with older ones.
 These plugins ensure some properties include a fallback.
 
-They are only enabled if your target browsers need those fixes.
+They are enabled if your target browsers need those fixes.
 
 ```css
 /* Before */

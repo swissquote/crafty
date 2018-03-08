@@ -27,11 +27,11 @@ Provides ESLint, configured with [`eslint-plugin-swissquote`](05_Packages/10_esl
 
 ## Description
 
-**Babel** is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with **ESLint** to lint your code, you get the best preset to get started easily.
+**Babel** is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with **ESLint** to lint your code, you get the best preset to get started.
 
 ## Features
 
-`@swissquote/crafty-preset-babel` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case only concatenates and minifies the files.
+`@swissquote/crafty-preset-babel` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case it concatenates and minifies the files, it doesn't resolve imports.
 
 [Our Babel preset](05_Packages/10_babel-preset-swissquote.md)
 
@@ -39,7 +39,7 @@ Provides ESLint, configured with [`eslint-plugin-swissquote`](05_Packages/10_esl
 
 ## Linting
 
-In `@swissquote/crafty-preset-babel` JavaScript is linted with **ESLint**, a very powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline.
+In `@swissquote/crafty-preset-babel` JavaScript is linted with **ESLint**, a powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline.
 
 [Read more](./JavaScript_Linting.md)
 
@@ -58,7 +58,7 @@ module.exports = {
   ],
   js: {
     app: {
-      runner: "webpack", // Webpack, Gulp or rollup.js (optional if you have only one runner defined)
+      runner: "webpack", // Webpack, Gulp or rollup.js (optional if you have a single runner defined)
       source: "js/app.js"
     }
   }
@@ -74,7 +74,7 @@ They will resolve your modules recursively and bundle them in one file or more i
 
 #### JavaScript External assets
 
-By default, all bundlers include all external dependencies in the final bundle, this works fine for applications, but if you wish to build a multi-tenant application or a library, you don't wish to include all dependencies, because you'll end up with the same dependency multiple times.
+By default, all bundlers include all external dependencies in the final bundle, this works fine for applications, but if you wish to build a multi-tenant application or a library, you don't wish to include all dependencies, because you'll end up with the same dependency duplicated.
 
 The `externals` option allows you to define a list of libraries that are provided and should not be embedded in the build, here is an example :
 
@@ -97,14 +97,14 @@ module.exports = {
 
 In this example `react`, `react-dom` and all modules starting with `squp/` will be treated as external
 
-> You can see that globs were used here, note that they only work for Webpack, rollup.js needs complete strings.
+> You can see that globs were used here, note that they work for Webpack but rollup.js needs complete strings.
 
 ### With Gulp
 
 Gulp will not bundle your files like Webpack and rollup.js do, instead it will generate one output file per input file.
-This is very useful if you are creating a library as it's the role of the final application to tree-shake what it doesn't need from your library.
+This is useful if you are creating a library as it's the role of the final application to tree-shake what it doesn't need from your library.
 
-Tree-shaking is very powerful but is sub-optimal on big files as many code patterns are recognized as side-effects and thus aren't removed from your bundle even if they aren't used.
+Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren't removed from your bundle even if they aren't used.
 
 ## Usage with Jest
 
@@ -138,7 +138,7 @@ module.exports = {
 };
 ```
 
-Provided that you did `npm install --save-dev babel-plugin-transform-es5-property-mutators` before, Babel will now use this plugin as well in each run.
+After you did `npm install --save-dev babel-plugin-transform-es5-property-mutators` before, Babel will now use this plugin as well in each run.
 
 This method is called once per bundle, so you can customize each bundle's configuration differently.
 

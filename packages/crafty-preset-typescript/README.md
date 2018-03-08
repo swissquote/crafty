@@ -31,7 +31,7 @@ Microsoft presents TypeScript as "JavaScript that scales".
 TypeScript is a superset of JavaScript that allows you to type your code.
 Not everything needs to have a type as the tool is powerful enough to infer most of the types.
 
-Not only TypeScript has types but it also supports the full EcmaScript 2015 Specification.
+TypeScript has types but it also supports the full EcmaScript 2015 Specification.
 
 ## Features
 
@@ -41,12 +41,12 @@ Or you can check out the [TypeScript specific features](TypeScript_Features.md)
 
 ## Linting
 
-Like any language, TypeScript has best practices and things that you shouldn't do.
+Like any language, TypeScript has best practices and practices that you shouldn't do.
 With the help of `tslint` we check the code for common mistakes and formatting errors.
 
 [Read more](TypeScript_Linting.md)
 
-We currently don't provide a direct access to TSLint's CLI
+We don't provide a direct access to TSLint's CLI but plan to do so in the future.
 
 ## Installation
 
@@ -63,7 +63,7 @@ module.exports = {
   ],
   js: {
     app: {
-      runner: "webpack", // Webpack or rollup.js (optional if you have only one runner defined)
+      runner: "webpack", // Webpack or rollup.js (optional if you have a single runner defined)
       source: "js/app.ts"
     }
   }
@@ -74,7 +74,7 @@ module.exports = {
 
 Both offer the same level of integration.
 
-The only thing you need to configure is the `tsconfig.json` file that you put at the root of the project.
+You have to configure TypeScript with the `tsconfig.json` file that you put at the root of the project.
 
 Some options can't be auto-configured through the loaders / plugins so that's why you have to do it yourself.
 Moreover, the integration with your IDE is simplified if you have a complete `tsconfig.json` in your project.
@@ -97,7 +97,7 @@ Some packages come with their own definitions, for the others there are two ways
 
 ## Getting Started
 
-We have a user guide to easily get started with TypeScript in your project
+We have a user guide to get started with TypeScript in your project
 
 [Follow the guide](Getting_Started_with_TypeScript.md)
 

@@ -14,7 +14,7 @@ This is the main entry point to execute one or more tasks in Crafty.
 
 Running `crafty run` without a task will execute the `default` task.
 
-Otherwise you can execute as many tasks as you wish.
+You can specify one or more tasks to run, separated by space.
 
 ## `crafty watch`
 
@@ -30,7 +30,7 @@ All presets can add watchers for any file pattern or use their embedded watcher
 Presets can register test runners, when running `crafty test` all these test
 runners are invoked.
 
-Currently Jest is the only test runner which has a preset.
+We have one test runner which is provided as a preset; Jest.
 
 ## Commands added by presets
 

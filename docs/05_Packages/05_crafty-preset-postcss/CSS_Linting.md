@@ -6,14 +6,14 @@ For linting we use **Stylelint**; a CSS linter that works on top of PostCSS and 
 
 Our linting rules come in two flavors, Legacy and Recommended.
 
-* Legacy will only check the formatting and common practices.
+* Legacy will check the formatting and common practices.
 * Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.
 
 By default, we check in **Recommended** mode, you can change this parameter with the [`legacy_css` option in your `crafty.config.js`](03_User_Guides/crafty.config.js_Available_Options.md)
 
 ## Linting in development
 
-Linting is important but while writing code, formatting is not the most important thing and failing the build for something as insignificant as a space is more annoying than helpful. That's why in Crafty, formatting rules are in warn-only mode during development (with `crafty watch`) so that you can focus on programming and not on formatting.
+Linting is important but while writing code, formatting is not the most important thing and failing the build for something as insignificant as a space is more annoying than helpful. That's why in Crafty, formatting rules are in warning mode during development (with `crafty watch`) so that you can focus on programming and not on formatting.
 
 ## Turning off linting for some parts of your code
 
@@ -23,7 +23,7 @@ Some browser specific hacks or other tweaks may come as false positives in the l
 
 ### Disable linting for a line
 
-The best is to use this way to silence stylelint, just disable the parts you know to be correct.
+The best is to use this way to silence stylelint, to disable the parts you know to be correct.
 
 ```css
 /* stylelint-disable-next-line */
@@ -32,17 +32,17 @@ The best is to use this way to silence stylelint, just disable the parts you kno
 }
 ```
 
-As you can see, adding the `/* stylelint-disable-next-line */` will completely ignore all errors on the following line.
+As you can see, adding the `/* stylelint-disable-next-line */` will ignore all errors on the following line.
 
-The next line gives a more interesting example : `/* stylelint-disable-next-line declaration-no-important */` we disable the linting only for a specific rule.
+The next line gives a more interesting example : `/* stylelint-disable-next-line declaration-no-important */` we disable the linting for a specific rule.
 
-This is the recommended way as you won't risk silencing errors that would have been useful to you, you can even specify multiple rules, separated by a comma.
+This is the recommended way as you won't risk silencing errors that would have been useful to you, you can even specify more than one rule, separated by a comma.
 
 You can also use the alternative `/* stylelint-disable-line */` comment to disable the current line.
 
 ### Disable linting for a section
 
-You can also disable linting for as many lines as you want.
+You can also disable linting for one or more blocks
 
 ```css
 /* stylelint-disable selector-no-id, declaration-no-important  */

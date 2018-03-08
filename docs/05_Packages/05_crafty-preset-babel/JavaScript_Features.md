@@ -4,7 +4,7 @@
 
 All bundles made with Babel have the same features, regardless of the bundler that was used.
 
-Gulp however will not use Babel to create your final bundle.
+Except Gulp that will not use Babel to create your final bundle.
 
 ## EcmaScript 2015/2016 with Babel
 
@@ -36,7 +36,7 @@ Both Webpack and rollup.js us Babel to compile modern JavaScript to JavaScript t
 
 ### Babel
 
-Babel is a compiler that gets all of its features through plugins.
+Babel is a compiler that gets all its features through plugins.
 We chose the best plugins in the community to get the best out of it.
 
 [Our Babel preset](05_Packages/10_babel-preset-swissquote.md) contains everything we need for our web applications.

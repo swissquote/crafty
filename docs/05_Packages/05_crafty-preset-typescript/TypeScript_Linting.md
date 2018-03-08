@@ -5,7 +5,7 @@ We use [TSLint](https://palantir.github.io/tslint/) to lint our TypeScript code.
 
 ## Disable linting on parts of files
 
-There are many ways to disable the linting on the part of a file
+There are some ways to disable the linting on the part of a file
 
 * `/* tslint:disable */` - Disable all rules for the rest of the file
 * `/* tslint:enable */` - Enable all rules for the rest of the file
@@ -17,7 +17,7 @@ There are many ways to disable the linting on the part of a file
 
 ## Customize the rules
 
-TSLint [contains many rules](https://palantir.github.io/tslint/rules/).
+TSLint [contains more than 100 rules](https://palantir.github.io/tslint/rules/).
 
 We created a default set of rules , but if your project wants stricter rules, you can enable them like that in your `crafty.config.js` :
 
