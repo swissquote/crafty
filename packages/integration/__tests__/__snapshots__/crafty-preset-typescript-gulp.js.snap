@@ -116,8 +116,7 @@ export default NewStuff;
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 0,
-  "stderr": "js/SomeLibrary.ts(10,1): error TS1005: '}' expected.
-",
+  "stderr": "",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -125,8 +124,9 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-[__:__:__] TypeScript: 1 syntax error
-[__:__:__] TypeScript: emit succeeded (with errors)
+js/SomeLibrary.ts(10,1): error TS1005: '}' expected.
+TypeScript: 1 syntax error
+TypeScript: emit succeeded (with errors)
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
