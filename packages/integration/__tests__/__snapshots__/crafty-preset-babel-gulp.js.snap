@@ -19,7 +19,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript 2`] = `
-"var _createClass=function(){function e(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(n,t,a){return t&&e(n.prototype,t),a&&e(n,a),n}}();function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}var Test=function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),e}(),test=new Test(\\"Stéphane\\");test.sayHi();
+"var _createClass=function(){function a(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(e,n,t){return n&&a(e.prototype,n),t&&a(e,t),e}}();function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}var Test=function(){function n(e){_classCallCheck(this,n),this.name=e}return _createClass(n,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),n}(),test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=script.js.map
 "
 `;
@@ -49,7 +49,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript and concatenates 2`] = `
-"setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);var _createClass=function(){function e(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(n,t,a){return t&&e(n.prototype,t),a&&e(n,a),n}}();function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}var Test=function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),e}(),test=new Test(\\"Stéphane\\");test.sayHi();
+"setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);var _createClass=function(){function a(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(e,n,t){return n&&a(e.prototype,n),t&&a(e,t),e}}();function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}var Test=function(){function n(e){_classCallCheck(this,n),this.name=e}return _createClass(n,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\"+this.name+\\" !\\")}}]),n}(),test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
