@@ -4,22 +4,6 @@ const parse = require("webpack-stylish/lib/parse");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
-const findLoader = /(?:.*\/)(.*-loader.*)(?:\?.*)/;
-
-function shortenLoaders(row) {
-  if (row[2].indexOf("!") !== -1) {
-    row[2] = row[2]
-      .split("!")
-      .map(str => {
-        const matches = findLoader.exec(str);
-        return matches ? matches[1] : str;
-      })
-      .join("!");
-  }
-
-  return row;
-}
-
 /**
  * Sort the files order.
  * The main reason is that test snapshots need the order to stay the same.
@@ -83,8 +67,7 @@ module.exports = function(stats, compiler) {
   const json = stats.toJson(opts, true);
 
   // List compiled files
-  const files = parse.files(json).map(shortenLoaders);
-  console.log(style.files(sortFiles(files), compiler.options));
+  console.log(style.files(sortFiles(parse.files(json)), compiler.options));
   console.log("\n  " + style.hidden(parse.hidden(json)));
 
   // Disabled and replaced by our system
