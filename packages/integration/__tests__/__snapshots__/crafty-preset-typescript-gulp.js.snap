@@ -138,12 +138,13 @@ exports[`Lints TypeScript 1`] = `
 Object {
   "status": 1,
   "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Error in plugin 'gulp-tslint'
+[__:__:__] Error in plugin \\"gulp-tslint\\"
 Message:
     Failed to lint: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts [2, 24]: missing whitespace, __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts [3, 18]: Multiple spaces found before 'b'., __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/SomeLibrary.ts [12, 5]: misplaced opening brace, __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts [13, 5]: misplaced opening brace, __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts [6, 5]: Calls to 'console.log' are not allowed., __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts [10, 5]: Calls to 'console.log' are not allowed., __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts [16, 7]: Calls to 'console.log' are not allowed., __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts [17, 7]: Missing semicolon.
 Details:
     domain: [object Object]
     domainThrown: true
+
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",
