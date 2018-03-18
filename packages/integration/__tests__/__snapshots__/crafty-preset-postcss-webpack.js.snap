@@ -62,13 +62,13 @@ Object {
   28 B     0        multi ./js/app.js                built
   259 B    1        ./js/app.js                      built
   41 B     2        ./css/style.scss                 built
-  968 B    3        postcss-loader!./css/style.scss  built
+  963 B    3        postcss-loader!./css/style.scss  built
 
   size     name     asset                            status
   255 B    default  myBundle-default.min.css         emitted
   535 B    default  myBundle-default.min.css.map     emitted
   816 B    default  myBundle.min.js                  emitted
-  7.27 kB  default  myBundle.min.js.map              emitted
+  7.29 kB  default  myBundle.min.js.map              emitted
 
   (3 modules hidden)
 
@@ -113,7 +113,7 @@ Object {
   28 B    0     multi ./js/app.js                built
   259 B   1     ./js/app.js                      built
   1.5 kB  2     ./css/style.scss                 built
-  460 B   3     postcss-loader!./css/style.scss  built failed ✖
+  162 B   3     postcss-loader!./css/style.scss  built failed ✖
 
   (2 assets, 2 modules hidden)
 
@@ -128,8 +128,8 @@ Module build failed: Syntax Error
   16 |     }
 > 17 | }
      | ^
-  18 | 
-  19 | 
+  18 |
+  19 |
 
  @ ./css/style.scss 2:14-207
  @ ./js/app.js

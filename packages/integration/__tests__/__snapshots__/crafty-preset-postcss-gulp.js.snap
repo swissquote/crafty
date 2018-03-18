@@ -41,7 +41,7 @@ css/style.scss
  15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
  20:1   ✖  Expected \\"#no-id\\" to have no more than 0 id selectors                 selector-max-id
  28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
- 31:5   ⚠  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
+ 31:7   ⚠  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -73,7 +73,7 @@ css/style.scss
  15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
  20:1   ✖  Expected \\"#no-id\\" to have no more than 0 id selectors                 selector-max-id
  28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
- 31:5   ✖  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
+ 31:7   ✖  Unexpected missing end-of-source newline                              no-missing-end-of-source-newline
 
 ",
 }
@@ -458,7 +458,7 @@ Message:
   3 |     margin: 0;
 > 4 | }
     | ^
-  5 | 
+  5 |
 
 [__:__:__] 'css' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
