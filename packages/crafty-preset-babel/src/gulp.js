@@ -2,7 +2,8 @@ const concat = require("gulp-concat");
 const eslint = require("gulp-eslint");
 const newer = require("gulp-newer");
 const sourcemaps = require("gulp-sourcemaps");
-const uglify = require("gulp-uglify");
+const uglifyES = require("uglify-es");
+const composer = require("gulp-uglify/composer");
 const babel = require("gulp-babel");
 
 const babelConfigurator = require("./babel");
@@ -58,7 +59,8 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     }
 
     if (crafty.getEnvironment() === "production") {
-      stream.add(uglify(crafty.config.uglifyJS));
+      const minify = composer(uglifyES, console);
+      stream.add(minify(crafty.config.uglifyJS));
     }
 
     stream.add(sourcemaps.write("./"));

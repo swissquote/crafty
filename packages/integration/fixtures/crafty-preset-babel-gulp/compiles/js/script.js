@@ -1,5 +1,7 @@
 /* global test */
 
+import "./otherfile";
+
 class Test {
   constructor(name) {
     this.name = name;
