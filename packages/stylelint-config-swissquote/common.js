@@ -120,6 +120,7 @@ module.exports = {
     "keyframe-declaration-no-important": true,
     "media-feature-name-no-unknown": true,
     "property-no-unknown": true,
+    "selector-max-compound-selectors": 6,
     "selector-pseudo-class-no-unknown": true,
     "selector-pseudo-element-no-unknown": true,
     "selector-pseudo-element-colon-notation": "single",
