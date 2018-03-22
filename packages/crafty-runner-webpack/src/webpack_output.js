@@ -54,6 +54,21 @@ function sortFiles(files) {
     }));
   }
 
+  // Replacing the file sizes in output log
+  // to have predictable snapshot output 
+  // when testing Crafty. As webpack seems 
+  // to create differences in various environments
+  // without differences in the actual output's size
+  if (process.env.TESTING_CRAFTY) {
+    return final.map(item => {
+      if (item[0] != "" && item[0] != "size") {
+        item[0] = 1000;
+      }
+
+      return item;
+    })
+  }
+
   return final;
 }
 
