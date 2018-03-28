@@ -59,9 +59,8 @@ module.exports = function(crafty, bundle, webpackPort) {
   chain.output
     .path(absolutePath(destination)) // The build folder.
     .filename(bundle.destination) // Generated JS file names (with nested folders).
-    .libraryTarget(bundle.libraryTarget || "amd") // The destination type
-    .library(bundle.library || "") // The library name
-    .umdNamedDefine(true); // If output.libraryTarget is set to umd and output.library is set, the amd module will be named.
+    .libraryTarget(bundle.libraryTarget || "umd") // The destination type
+    .library(bundle.library || ""); // The library name
 
   chain.externals(prepareExternals(bundle.externals));
 
