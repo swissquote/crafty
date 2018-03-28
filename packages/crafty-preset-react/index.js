@@ -20,12 +20,10 @@ module.exports = {
     if (crafty.getEnvironment() !== "production" && crafty.isWatching() && bundle.hot && bundle.react) {
 
       // Only TypeScript needs this loader, babel uses a plugin
-      if (chain.module.rule("ts")) {
-        chain.module.rule("ts").use("hot").loader("react-hot-loader/webpack");
-      }
-
-      // According to react-hot-loader's documentation, this should be the very first entry.
-      chain.entry("default").prepend(require.resolve("react-hot-loader/patch"));
+      // TODO :: make it work again for TypeScript
+      //if (chain.module.rule("ts")) {
+      //  chain.module.rule("ts").use("hot").loader("react-hot-loader/webpack");
+      //}
     }
 
   },
