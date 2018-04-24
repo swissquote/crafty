@@ -1,5 +1,29 @@
 const _ = require("lodash");
 
+function isInDisabledRange(result, startLine, ruleName) {
+  if (!result.stylelint.disabledRanges) {
+    return false;
+  }
+
+  //eslint-disable-next-line guard-for-in
+  for (const i in result.stylelint.disabledRanges) {
+    const range = result.stylelint.disabledRanges[i];
+    if (
+      result.stylelint.disabledRanges.hasOwnProperty(i) &&
+      // If the violation is within a disabledRange,
+      // and that disabledRange's rules include this one,
+      // do not register a warning
+      range.start <= startLine &&
+      (range.end >= startLine || range.end === undefined) &&
+      (!range.rules || range.rules.indexOf(ruleName) !== -1)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 /**
  * Report a violation.
  *
@@ -45,22 +69,8 @@ module.exports = function(violation) {
   // line number that the complaint pertains to
   const startLine = line || node.positionBy({ index }).line;
 
-  if (result.stylelint.disabledRanges) {
-    //eslint-disable-next-line guard-for-in
-    for (const i in result.stylelint.disabledRanges) {
-      const range = result.stylelint.disabledRanges[i];
-      if (
-        result.stylelint.disabledRanges.hasOwnProperty(i) &&
-        // If the violation is within a disabledRange,
-        // and that disabledRange's rules include this one,
-        // do not register a warning
-        range.start <= startLine &&
-        (range.end >= startLine || range.end === undefined) &&
-        (!range.rules || range.rules.indexOf(ruleName) !== -1)
-      ) {
-        return;
-      }
-    }
+  if (isInDisabledRange(result, startLine, ruleName)) {
+    return;
   }
 
   const severity = _.get(

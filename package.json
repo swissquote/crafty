@@ -7,6 +7,7 @@
   "main": "index.js",
   "author": "Stephane Goetz",
   "scripts": {
+    "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "test": "jest --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty",
     "bootstrap": "lerna bootstrap"
   },

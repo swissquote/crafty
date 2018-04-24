@@ -8,8 +8,8 @@ const formatWebpackMessages = require("./utils/formatWebpackMessages");
  * Sort the files order.
  * The main reason is that test snapshots need the order to stay the same.
  * For some reason this isn't the case sometimes.
- * 
- * @param {*} files 
+ *
+ * @param {*} files
  */
 function sortFiles(files) {
   const modules = [];
@@ -37,26 +37,28 @@ function sortFiles(files) {
   const final = [];
 
   if (modules.length) {
-    final.push([ 'size', 'name', 'module', 'status' ]);
+    final.push(["size", "name", "module", "status"]);
     final.push(...modules.sort((a, b) => a[1] - b[1]));
   }
 
   if (modules.length && assets.length) {
-    final.push([ '', '', '', '' ]);
+    final.push(["", "", "", ""]);
   }
 
   if (assets.length) {
-    final.push([ 'size', 'name', 'asset', 'status' ]);
-    final.push(...assets.sort((a, b) => {
-      if (a[2] < b[2]) return -1;
-      if (a[2] > b[2]) return 1;
-      return 0;
-    }));
+    final.push(["size", "name", "asset", "status"]);
+    final.push(
+      ...assets.sort((a, b) => {
+        if (a[2] < b[2]) return -1;
+        if (a[2] > b[2]) return 1;
+        return 0;
+      })
+    );
   }
 
   // Replacing the file sizes in output log
-  // to have predictable snapshot output 
-  // when testing Crafty. As webpack seems 
+  // to have predictable snapshot output
+  // when testing Crafty. As webpack seems
   // to create differences in various environments
   // without differences in the actual output's size
   if (process.env.TESTING_CRAFTY) {
@@ -66,7 +68,7 @@ function sortFiles(files) {
       }
 
       return item;
-    })
+    });
   }
 
   return final;

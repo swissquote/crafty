@@ -13,52 +13,52 @@ const messages = {
 
 const isScope = /^s-/;
 
-module.exports = function() {
-  return (root, result) => {
-    function checkSelector(selectorNode, ruleNode) {
-      // Selectors can be within selectors, so check those too
-      selectorNode.each(childNode => {
-        if (childNode.type === "selector" || childNode.value === ":not") {
-          checkSelector(childNode, ruleNode);
-        }
-      });
+function checkSelector(selectorNode, ruleNode, result) {
+  // Selectors can be within selectors, so check those too
+  selectorNode.each(childNode => {
+    if (childNode.type === "selector" || childNode.value === ":not") {
+      checkSelector(childNode, ruleNode, result);
+    }
+  });
 
-      const hasTypes = selectorNode.some(childNode => childNode.type === "tag");
+  const hasTypes = selectorNode.some(childNode => childNode.type === "tag");
 
-      if (
-        selectorNode.type === "root" ||
-        selectorNode.type === "pseudo" ||
-        !hasTypes
-      ) {
-        return;
-      }
+  if (
+    selectorNode.type === "root" ||
+    selectorNode.type === "pseudo" ||
+    !hasTypes
+  ) {
+    return;
+  }
 
-      let hasScope = false;
-      for (const i in selectorNode.nodes) {
-        if (!selectorNode.nodes.hasOwnProperty(i)) {
-          continue;
-        }
-
-        const node = selectorNode.nodes[i];
-
-        if (node.type === "class" && node.value.match(isScope)) {
-          hasScope = true;
-        }
-
-        if (node.type === "tag" && !hasScope) {
-          report({
-            ruleName,
-            result,
-            node: ruleNode,
-            message: messages.rejected,
-            word: selectorNode
-          });
-
-          return;
-        }
-      }
+  let hasScope = false;
+  for (const i in selectorNode.nodes) {
+    if (!selectorNode.nodes.hasOwnProperty(i)) {
+      continue;
     }
 
+    const node = selectorNode.nodes[i];
+
+    if (node.type === "class" && node.value.match(isScope)) {
+      hasScope = true;
+    }
+
+    if (node.type === "tag" && !hasScope) {
+      report({
+        ruleName,
+        result,
+        node: ruleNode,
+        message: messages.rejected,
+        word: selectorNode
+      });
+
+      return;
+    }
+  }
+}
+
+module.exports = function() {
+  return (root, result) => {
     root.walkRules(rule => {
       if (
         !isStandardSyntaxRule(rule) ||
@@ -82,9 +82,9 @@ module.exports = function() {
           }
 
           try {
-            selectorParser(container => checkSelector(container, rule)).process(
-              resolvedSelector
-            );
+            selectorParser(container =>
+              checkSelector(container, rule, result)
+            ).process(resolvedSelector);
           } catch (e) {
             result.warn("Cannot parse selector", { node: rule });
           }

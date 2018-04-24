@@ -15,37 +15,38 @@ const isComponent = /^(?:[a-z$][a-zA-Z0-9]+-)?[A-Z][a-zA-Z0-9]*(__[a-z][a-zA-Z0-
 function getGroup(selectorNode) {
   const group = [];
 
-  // Get all elements after the current one till the next separator
   let take = false;
-  const length = selectorNode.parent.nodes.length;
-  for (let i = 0; i < length; i++) {
-    if (take && selectorNode.parent.nodes[i].type === "combinator") {
-      break;
+
+  const takeNeededElements = node => {
+    if (take && node.type === "combinator") {
+      return false;
     }
 
     if (take) {
-      group.push(selectorNode.parent.nodes[i]);
+      group.push(node);
     }
 
     // When at the current element, start to take
-    if (selectorNode.parent.nodes[i] === selectorNode) {
+    if (node === selectorNode) {
       take = true;
+    }
+
+    return true;
+  };
+
+  // Get all elements after the current one till the next separator
+  const length = selectorNode.parent.nodes.length;
+  for (let i = 0; i < length; i++) {
+    if (!takeNeededElements(selectorNode.parent.nodes[i])) {
+      break;
     }
   }
 
+  // Get all elements before the current one till the next separator
   take = false;
   for (let i = length - 1; i >= 0; i--) {
-    if (take && selectorNode.parent.nodes[i].type === "combinator") {
+    if (!takeNeededElements(selectorNode.parent.nodes[i])) {
       break;
-    }
-
-    if (take) {
-      group.push(selectorNode.parent.nodes[i]);
-    }
-
-    // When at the current element, start to take
-    if (selectorNode.parent.nodes[i] === selectorNode) {
-      take = true;
     }
   }
 
