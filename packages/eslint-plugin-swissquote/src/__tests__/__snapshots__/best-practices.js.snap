@@ -16,6 +16,22 @@ Array [
 ]
 `;
 
+exports[`Uses sonar plugin 1`] = `
+Array [
+  Object {
+    "column": 14,
+    "endColumn": 25,
+    "endLine": 10,
+    "line": 10,
+    "message": "This branch duplicates the one on line 6",
+    "nodeType": "BinaryExpression",
+    "ruleId": "@swissquote/swissquote/sonarjs/no-identical-conditions",
+    "severity": 2,
+    "source": "  } else if (param === 1) { // Noncompliant",
+  },
+]
+`;
+
 exports[`Warns on console.log 1`] = `
 Array [
   Object {
