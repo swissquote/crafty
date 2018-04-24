@@ -55,13 +55,9 @@ const validCss = `
 `;
 
 describe("flags no warnings with valid css", () => {
-  let result;
-
-  beforeEach(() => {
-    result = stylelint.lint({
-      code: validCss,
-      config
-    });
+  const result = stylelint.lint({
+    code: validCss,
+    config
   });
 
   it("did not error", () => {
@@ -111,11 +107,7 @@ const errors = [
 
 errors.forEach(error => {
   describe(`Error: ${error.message}`, () => {
-    let result;
-
-    beforeEach(() => {
-      result = stylelint.lint({ code: `${error.code}\n`, config });
-    });
+    const result = stylelint.lint({ code: `${error.code}\n`, config });
 
     it("did error", () => {
       return result.then(data => expect(data.errored).toBeTruthy());
