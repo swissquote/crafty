@@ -12,7 +12,7 @@ function postcssProcess(rule, schema) {
   const rulePrimaryOptions = ruleOptions[0];
   const ruleSecondaryOptions = ruleOptions[1];
 
-  const postcssProcessOptions = { syntax: scssSyntax };
+  const postcssProcessOptions = { syntax: scssSyntax, from: undefined };
 
   const processor = postcss();
   processor.use(assignDisabledRanges);
