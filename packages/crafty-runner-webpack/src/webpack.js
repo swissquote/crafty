@@ -2,6 +2,7 @@ const debug = require("debug")("webpack-runner");
 const path = require("path");
 const webpack = require("webpack");
 const WebpackChain = require("webpack-chain");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const isGlob = require("is-glob");
 const globToRegex = require("glob-to-regexp");
@@ -86,7 +87,10 @@ module.exports = function(crafty, bundle, webpackPort) {
     chain
       .plugin("uglify")
       .init((Plugin, args = []) => new Plugin(args))
-      .use(webpack.optimize.UglifyJsPlugin, Object.assign({}, config.uglifyJS));
+      .use(
+        UglifyJSPlugin,
+        Object.assign({}, { sourceMap: true, uglifyOptions: config.uglifyJS })
+      );
 
     // Don't emit files if an error occured (forces to check what the error is)
     chain

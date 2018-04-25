@@ -17,7 +17,6 @@ module.exports = function buildPreset(context, opts) {
         polyfill: false,
         regenerator: true,
         // Resolve the Babel runtime relative to the config.
-        // You can safely remove this after ejecting:
         moduleName: path.dirname(require.resolve("babel-runtime/package"))
       }
     ]
@@ -69,11 +68,7 @@ module.exports = function buildPreset(context, opts) {
     // Compiles import() to a deferred require()
     plugins.push(require.resolve("babel-plugin-dynamic-import-node"));
   } else {
-    const targets = {
-      // We currently minify with uglify
-      // Remove after https://github.com/mishoo/UglifyJS2/issues/448
-      uglify: true
-    };
+    const targets = {};
 
     if (opts.browsers) {
       targets.browsers = opts.browsers;

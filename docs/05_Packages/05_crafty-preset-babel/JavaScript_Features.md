@@ -44,6 +44,8 @@ We chose the best plugins in the community to get the best out of it.
 The options we have for this preset are `environment` and `browsers`.
 
 * `environment` is defined automatically from how you run it (`crafty run/watch/test`).
-* `browsers` is defined from `config.browsers`. The default list is `"> 1%, last 4 versions, Firefox ESR, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"`
+* `browsers` is defined from `config.browsers`.
+  The default list is `"> 0.25%, Firefox ESR, Edge >= 13, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"`.
+  You can override those defaults using any valid [Browserslist query source](https://github.com/browserslist/browserslist#queries)
 
 You can override this browsers list in your crafty configuration file.

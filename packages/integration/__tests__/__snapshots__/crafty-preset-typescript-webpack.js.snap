@@ -28,12 +28,8 @@ Object {
 
 
 
-  Compiled with warnings.
-
-myBundle.min.js from UglifyJs
-Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
-
-  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
+  Compiled successfully!
+  Δt ____ms
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
@@ -43,7 +39,7 @@ Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"!function(e,n){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=n();else if(\\"function\\"==typeof define&&define.amd)define([],n);else{var t=n();for(var o in t)(\\"object\\"==typeof exports?exports:e)[o]=t[o]}}(\\"undefined\\"!=typeof self?self:this,function(){return function(e){function n(t){if(o[t])return o[t].exports;var r=o[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,n),r.l=!0,r.exports}var t=window.webpackJsonp;window.webpackJsonp=function(n,o,u){for(var i,c,f=0,a=[];f<n.length;f++)c=n[f],r[c]&&a.push(r[c][0]),r[c]=0;for(i in o)Object.prototype.hasOwnProperty.call(o,i)&&(e[i]=o[i]);for(t&&t(n,o,u);a.length;)a.shift()()};var o={},r={1:0};return n.e=function(e){function t(){c.onerror=c.onload=null,clearTimeout(f);var n=r[e];0!==n&&(n&&n[1](new Error(\\"Loading chunk \\"+e+\\" failed.\\")),r[e]=void 0)}var o=r[e];if(0===o)return new Promise(function(e){e()});if(o)return o[2];var u=new Promise(function(n,t){o=r[e]=[n,t]});o[2]=u;var i=document.getElementsByTagName(\\"head\\")[0],c=document.createElement(\\"script\\");c.type=\\"text/javascript\\",c.charset=\\"utf-8\\",c.async=!0,c.timeout=12e4,n.nc&&c.setAttribute(\\"nonce\\",n.nc),c.src=n.p+\\"\\"+e+\\".myBundle.min.js\\";var f=setTimeout(t,12e4);return c.onerror=c.onload=t,i.appendChild(c),u},n.m=e,n.c=o,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},n.p=\\"\\",n.oe=function(e){throw console.error(e),e},n(n.s=0)}([function(e,n,t){e.exports=t(1)},function(e,n,t){\\"use strict\\";Object.defineProperty(n,\\"__esModule\\",{value:!0});var o=t(2),r=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(Object(o.a)(2,4)),t.e(0).then(t.bind(null,3)).then(function(e){var n=new e.default;console.log(n.add(2,4))})},e}();n.default=r},function(e,n,t){\\"use strict\\";function o(e,n){return e+n}n.a=o}])});
+"!function(e,n){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=n();else if(\\"function\\"==typeof define&&define.amd)define([],n);else{var t=n();for(var o in t)(\\"object\\"==typeof exports?exports:e)[o]=t[o]}}(\\"undefined\\"!=typeof self?self:this,function(){return function(e){var n=window.webpackJsonp;window.webpackJsonp=function(t,r,u){for(var i,c,f=0,a=[];f<t.length;f++)c=t[f],o[c]&&a.push(o[c][0]),o[c]=0;for(i in r)Object.prototype.hasOwnProperty.call(r,i)&&(e[i]=r[i]);for(n&&n(t,r,u);a.length;)a.shift()()};var t={},o={1:0};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.e=function(e){var n=o[e];if(0===n)return new Promise(function(e){e()});if(n)return n[2];var t=new Promise(function(t,r){n=o[e]=[t,r]});n[2]=t;var u=document.getElementsByTagName(\\"head\\")[0],i=document.createElement(\\"script\\");i.type=\\"text/javascript\\",i.charset=\\"utf-8\\",i.async=!0,i.timeout=12e4,r.nc&&i.setAttribute(\\"nonce\\",r.nc),i.src=r.p+\\"\\"+e+\\".myBundle.min.js\\";var c=setTimeout(f,12e4);function f(){i.onerror=i.onload=null,clearTimeout(c);var n=o[e];0!==n&&(n&&n[1](new Error(\\"Loading chunk \\"+e+\\" failed.\\")),o[e]=void 0)}return i.onerror=i.onload=f,u.appendChild(i),t},r.m=e,r.c=t,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:t})},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,\\"a\\",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p=\\"\\",r.oe=function(e){throw console.error(e),e},r(r.s=0)}([function(e,n,t){e.exports=t(1)},function(e,n,t){\\"use strict\\";Object.defineProperty(n,\\"__esModule\\",{value:!0});var o=t(2),r=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(Object(o.a)(2,4)),t.e(0).then(t.bind(null,3)).then(function(e){var n=new e.default;console.log(n.add(2,4))})},e}();n.default=r},function(e,n,t){\\"use strict\\";n.a=function(e,n){return e+n}}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -129,10 +125,7 @@ ERROR: 17:7  semicolon   Missing semicolon
 
  @ multi ./js/script.ts
 
-myBundle.min.js from UglifyJs
-Dropping unused variable result [webpack/bootstrap UNIQUE_ID]
-
-  Δt ____ms ⚠  4 problems (0 errors, 4 warnings)
+  Δt ____ms ⚠  3 problems (0 errors, 3 warnings)
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms

@@ -135,7 +135,12 @@ module.exports = {
       bundle
     );
 
-    if (crafty.getEnvironment() === "production") {
+    // Cache can be disabled for experimentation and when running Crafty's tests
+    if (
+      crafty.getEnvironment() === "production" &&
+      !process.argv.some(arg => arg === "--no-cache") &&
+      !process.env.TESTING_CRAFTY
+    ) {
       options.cacheDirectory = true;
     }
 

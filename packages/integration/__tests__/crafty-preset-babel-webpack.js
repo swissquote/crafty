@@ -25,6 +25,27 @@ it("Compiles JavaScript", () => {
   ).toMatchSnapshot();
 });
 
+it("Does not transpile on modern browsers", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-babel-webpack/no-old-browser"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+});
+
 it("Compiles JavaScript with externals", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/externals")
