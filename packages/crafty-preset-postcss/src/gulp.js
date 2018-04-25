@@ -2,6 +2,7 @@ const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
 const sourcemaps = require("gulp-sourcemaps");
 const scssParser = require("postcss-scss");
+const touch = require("./touch.js");
 const eos = require("end-of-stream");
 const exhaust = require("stream-exhaust");
 const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
@@ -22,6 +23,7 @@ function cssTask(crafty, StreamHandler, bundle) {
       )
       .add(rename(bundle.destination))
       .add(sourcemaps.write("./"))
+      .add(touch())
       .generate();
   };
 }
