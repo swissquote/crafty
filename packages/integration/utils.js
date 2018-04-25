@@ -31,11 +31,7 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
-    .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
-    .replace(
-      /Child extract-text-webpack-plugin (?:.*)\/(.*):/g,
-      "Child extract-text-webpack-plugin __LONG_AND_WEIRD_PATH__!css/$1:"
-    ); // Remove relative paths
+    .replace(new RegExp(escapedPath, "gm"), "__PATH__"); // Remove paths
 }
 
 function snapshotizeCSS(ret) {

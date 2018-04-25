@@ -11,20 +11,19 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                 status
-  1 kB  0        multi ./js/script.ts   built
-  1 kB  1        ./js/script.ts         built
-  1 kB  2        ./js/Component.ts      built
-  1 kB  3        ./js/SomeLibrary.ts    built
+  size  name     module                      status
+  1 kB  0        ./js/script.ts + 1 modules  built
+  1 kB  1        multi ./js/script.ts        built
+  1 kB  2        ./js/SomeLibrary.ts         built
 
-  size  name     asset                  status
-  1 kB  js       0.myBundle.min.js      emitted
-  1 kB  map      0.myBundle.min.js.map  emitted
-  1 kB  ts       js/Component.d.ts      emitted
-  1 kB  ts       js/SomeLibrary.d.ts    emitted
-  1 kB  ts       js/script.d.ts         emitted
-  1 kB  default  myBundle.min.js        emitted
-  1 kB  default  myBundle.min.js.map    emitted
+  size  name     asset                       status
+  1 kB  js       0.myBundle.min.js           emitted
+  1 kB  map      0.myBundle.min.js.map       emitted
+  1 kB  ts       js/Component.d.ts           emitted
+  1 kB  ts       js/SomeLibrary.d.ts         emitted
+  1 kB  ts       js/script.d.ts              emitted
+  1 kB  default  myBundle.min.js             emitted
+  1 kB  default  myBundle.min.js.map         emitted
 
 
 
@@ -39,12 +38,12 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"!function(e,n){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=n();else if(\\"function\\"==typeof define&&define.amd)define([],n);else{var t=n();for(var o in t)(\\"object\\"==typeof exports?exports:e)[o]=t[o]}}(\\"undefined\\"!=typeof self?self:this,function(){return function(e){var n=window.webpackJsonp;window.webpackJsonp=function(t,r,u){for(var i,c,f=0,a=[];f<t.length;f++)c=t[f],o[c]&&a.push(o[c][0]),o[c]=0;for(i in r)Object.prototype.hasOwnProperty.call(r,i)&&(e[i]=r[i]);for(n&&n(t,r,u);a.length;)a.shift()()};var t={},o={1:0};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.e=function(e){var n=o[e];if(0===n)return new Promise(function(e){e()});if(n)return n[2];var t=new Promise(function(t,r){n=o[e]=[t,r]});n[2]=t;var u=document.getElementsByTagName(\\"head\\")[0],i=document.createElement(\\"script\\");i.type=\\"text/javascript\\",i.charset=\\"utf-8\\",i.async=!0,i.timeout=12e4,r.nc&&i.setAttribute(\\"nonce\\",r.nc),i.src=r.p+\\"\\"+e+\\".myBundle.min.js\\";var c=setTimeout(f,12e4);function f(){i.onerror=i.onload=null,clearTimeout(c);var n=o[e];0!==n&&(n&&n[1](new Error(\\"Loading chunk \\"+e+\\" failed.\\")),o[e]=void 0)}return i.onerror=i.onload=f,u.appendChild(i),t},r.m=e,r.c=t,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:t})},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,\\"a\\",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p=\\"\\",r.oe=function(e){throw console.error(e),e},r(r.s=0)}([function(e,n,t){e.exports=t(1)},function(e,n,t){\\"use strict\\";Object.defineProperty(n,\\"__esModule\\",{value:!0});var o=t(2),r=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(Object(o.a)(2,4)),t.e(0).then(t.bind(null,3)).then(function(e){var n=new e.default;console.log(n.add(2,4))})},e}();n.default=r},function(e,n,t){\\"use strict\\";n.a=function(e,n){return e+n}}])});
+"!function(e,n){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=n();else if(\\"function\\"==typeof define&&define.amd)define([],n);else{var t=n();for(var o in t)(\\"object\\"==typeof exports?exports:e)[o]=t[o]}}(window,function(){return function(e){function n(n){for(var t,r,i=n[0],u=n[1],c=0,a=[];c<i.length;c++)r=i[c],o[r]&&a.push(o[r][0]),o[r]=0;for(t in u)Object.prototype.hasOwnProperty.call(u,t)&&(e[t]=u[t]);for(f&&f(n);a.length;)a.shift()()}var t={},o={1:0};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}r.e=function(e){var n=[],t=o[e];if(0!==t)if(t)n.push(t[2]);else{var i=new Promise(function(n,r){t=o[e]=[n,r]});n.push(t[2]=i);var u=document.getElementsByTagName(\\"head\\")[0],c=document.createElement(\\"script\\");c.charset=\\"utf-8\\",c.timeout=120,r.nc&&c.setAttribute(\\"nonce\\",r.nc),c.src=function(e){return r.p+\\"\\"+e+\\".myBundle.min.js\\"}(e);var f=setTimeout(function(){a({type:\\"timeout\\",target:c})},12e4);function a(n){c.onerror=c.onload=null,clearTimeout(f);var t=o[e];if(0!==t){if(t){var r=n&&(\\"load\\"===n.type?\\"missing\\":n.type),i=n&&n.target&&n.target.src,u=new Error(\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+r+\\": \\"+i+\\")\\");u.type=r,u.request=i,t[1](u)}o[e]=void 0}}c.onerror=c.onload=a,u.appendChild(c)}return Promise.all(n)},r.m=e,r.c=t,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:t})},r.r=function(e){Object.defineProperty(e,\\"__esModule\\",{value:!0})},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,\\"a\\",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p=\\"\\",r.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp=window.webpackJsonp||[],u=i.push.bind(i);i.push=n,i=i.slice();for(var c=0;c<i.length;c++)n(i[c]);var f=u;return r(r.s=1)}([function(e,n,t){\\"use strict\\";t.r(n);var o=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(2+4),t.e(0).then(t.bind(null,2)).then(function(e){var n=new e.default;console.log(n.add(2,4))})},e}();n.default=o},function(e,n,t){e.exports=t(0)}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 3`] = `
-"webpackJsonp([0],{3:function(t,e,n){\\"use strict\\";Object.defineProperty(e,\\"__esModule\\",{value:!0});var r=function(){function t(){}return t.prototype.add=function(t,e){return t+e},t.prototype.substract=function(t,e){return t-e},t.prototype.divide=function(t,e){return t/e},t}();e.default=r}});
+"(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{2:function(t,n,o){\\"use strict\\";o.r(n);var r=function(){function t(){}return t.prototype.add=function(t,n){return t+n},t.prototype.substract=function(t,n){return t-n},t.prototype.divide=function(t,n){return t/n},t}();n.default=r}}]);
 //# sourceMappingURL=0.myBundle.min.js.map"
 `;
 
@@ -81,20 +80,19 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                 status
-  1 kB  0        multi ./js/script.ts   built
-  1 kB  1        ./js/script.ts         built ⚠
-  1 kB  2        ./js/Component.ts      built ⚠
-  1 kB  3        ./js/SomeLibrary.ts    built ⚠
+  size  name     module                      status
+  1 kB  0        ./js/script.ts + 1 modules  built ⚠
+  1 kB  1        multi ./js/script.ts        built
+  1 kB  2        ./js/SomeLibrary.ts         built ⚠
 
-  size  name     asset                  status
-  1 kB  js       0.myBundle.min.js      emitted
-  1 kB  map      0.myBundle.min.js.map  emitted
-  1 kB  ts       js/Component.d.ts      emitted
-  1 kB  ts       js/SomeLibrary.d.ts    emitted
-  1 kB  ts       js/script.d.ts         emitted
-  1 kB  default  myBundle.min.js        emitted
-  1 kB  default  myBundle.min.js.map    emitted
+  size  name     asset                       status
+  1 kB  js       0.myBundle.min.js           emitted
+  1 kB  map      0.myBundle.min.js.map       emitted
+  1 kB  ts       js/Component.d.ts           emitted
+  1 kB  ts       js/SomeLibrary.d.ts         emitted
+  1 kB  ts       js/script.d.ts              emitted
+  1 kB  default  myBundle.min.js             emitted
+  1 kB  default  myBundle.min.js.map         emitted
 
 
 
@@ -105,7 +103,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
 
- @ ./js/script.ts 1:0-35
+ @ ./js/script.ts 1:0-35 7:20-24
  @ multi ./js/script.ts
 
 ./js/SomeLibrary.ts

@@ -100,21 +100,24 @@ module.exports = function jsTaskES6(crafty, bundle) {
       const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
       const compiler = webpack(webpackConfig);
 
+      if (!compiler) {
+        return Promise.reject("Could not create compiler");
+      }
+
       // "invalid" event fires when you have changed a file, and Webpack is
       // recompiling a bundle. WebpackDevServer takes care to pause serving the
       // bundle, so if you refresh, it'll wait instead of serving the old one.
       // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-      compiler.plugin("invalid", () => {
+      compiler.hooks.invalid.tap("CraftyRuntime", () => {
         console.log("Compiling...");
       });
 
-      compiler.plugin("done", onDone(crafty, webpackConfig, compiler, bundle));
+      compiler.hooks.done.tap(
+        "CraftyRuntime",
+        onDone(crafty, webpackConfig, compiler, bundle)
+      );
 
-      if (compiler) {
-        return Promise.resolve(compiler);
-      } else {
-        return Promise.reject("Could not create compiler");
-      }
+      return Promise.resolve(compiler);
     } catch (e) {
       return Promise.reject(e);
     }

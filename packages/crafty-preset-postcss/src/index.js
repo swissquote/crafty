@@ -1,6 +1,6 @@
 const path = require("path");
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
 
 const gulpTasks = require("./gulp");
@@ -146,52 +146,37 @@ module.exports = {
       .add(resolve(""))
       .add(resolve("node_modules"));
 
-    let loaders = [
-      {
-        loader: "css-loader",
-        options: {
-          importLoaders: 1,
-          sourceMap:
-            crafty.getEnvironment() === "production" && bundle.extractCSS,
-          minimize: false // we already apply postcss-csso in postcss
-        }
-      },
-      {
-        loader: "postcss-loader",
-        options: {
-          parser: require("postcss-scss"),
-          plugins: getProcessors(crafty.config)
-        }
-      }
-    ];
-
     if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
       // Initialize extraction plugin
-      const extractCSS = new ExtractTextPlugin(getExtractConfig(bundle));
+      const extractCSS = new MiniCssExtractPlugin(getExtractConfig(bundle));
 
       // Create a list of loaders that also contains the extraction loader
-      loaders = extractCSS.extract({
-        use: loaders,
-        fallback: "style-loader"
-      });
+      styleRule.use("style-loader").loader(MiniCssExtractPlugin.loader);
 
       chain
         .plugin("extractCSS")
         .init(Plugin => Plugin)
         .use(extractCSS, {});
     } else {
-      // When not using ExtractTextPlugin, we need
-      // style-loader in front of the other loaders
-      loaders.unshift({ loader: "style-loader", options: {} });
+      styleRule.use("style-loader").loader("style-loader");
     }
 
-    // inspired by https://github.com/mozilla-neutrino/webpack-chain/issues/8#issuecomment-283805670
-    loaders.forEach(({ loader, options }) => {
-      const rule = styleRule.use(loader).loader(loader);
+    styleRule
+      .use("css-loader")
+      .loader("css-loader")
+      .options({
+        importLoaders: 1,
+        sourceMap:
+          crafty.getEnvironment() === "production" && bundle.extractCSS,
+        minimize: false // we already apply postcss-csso in postcss
+      });
 
-      if (options) {
-        rule.options(options);
-      }
-    });
+    styleRule
+      .use("postcss-loader")
+      .loader("postcss-loader")
+      .options({
+        parser: require("postcss-scss"),
+        plugins: getProcessors(crafty.config)
+      });
   }
 };

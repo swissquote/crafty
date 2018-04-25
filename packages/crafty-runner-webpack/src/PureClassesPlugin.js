@@ -28,40 +28,43 @@ const regex = /\/\**\s*@class\s*\**\//g;
  */
 class PureClassesPlugin {
   apply(compiler) {
-    compiler.plugin("compilation", compilation => {
-      compilation.plugin("optimize-chunk-assets", function(chunks, callback) {
-        chunks.forEach(function(chunk) {
-          chunk.files.forEach(function(file) {
-            const value = compilation.assets[file].source();
+    compiler.hooks.compilation.tap("PureClassesPlugin", compilation => {
+      compilation.hooks.optimizeChunkAssets.tapAsync(
+        "PureClassesPlugin",
+        function(chunks, callback) {
+          chunks.forEach(function(chunk) {
+            chunk.files.forEach(function(file) {
+              const value = compilation.assets[file].source();
 
-            const replacement = new ReplaceSource(
-              compilation.assets[file],
-              file
-            );
+              const replacement = new ReplaceSource(
+                compilation.assets[file],
+                file
+              );
 
-            let hasReplacements = false;
-            let m;
-            while ((m = regex.exec(value)) !== null) {
-              // This is necessary to avoid infinite loops with zero-width matches
-              if (m.index === regex.lastIndex) {
-                regex.lastIndex++;
+              let hasReplacements = false;
+              let m;
+              while ((m = regex.exec(value)) !== null) {
+                // This is necessary to avoid infinite loops with zero-width matches
+                if (m.index === regex.lastIndex) {
+                  regex.lastIndex++;
+                }
+
+                replacement.replace(
+                  m.index,
+                  m.index + m[0].length - 1,
+                  "/*@__PURE__*/"
+                );
+                hasReplacements = true;
               }
 
-              replacement.replace(
-                m.index,
-                m.index + m[0].length - 1,
-                "/*@__PURE__*/"
-              );
-              hasReplacements = true;
-            }
-
-            if (hasReplacements) {
-              compilation.assets[file] = replacement;
-            }
+              if (hasReplacements) {
+                compilation.assets[file] = replacement;
+              }
+            });
           });
-        });
-        callback();
-      });
+          callback();
+        }
+      );
     });
   }
 }

@@ -34,10 +34,16 @@ module.exports = function(crafty, bundle, webpackPort) {
   const isWatching = crafty.isWatching();
   const chain = new WebpackChain();
 
-  // Some default configuration
-  chain
-    .bail(true) // Don't attempt to continue if there are any errors.
-    .devtool("source-map"); // We generate sourcemaps in production. This is slow but gives good results.
+  // Define webpack's mode, will enable some default configurations
+  chain.mode(
+    crafty.getEnvironment() === "production" ? "production" : "development"
+  );
+
+  // Don't attempt to continue if there are any errors.
+  chain.bail(true);
+
+  // We generate sourcemaps in production. This is slow but gives good results.
+  chain.devtool("source-map");
 
   // Add default extensions as they seem
   // to be overriden once another is added
@@ -65,14 +71,16 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   chain.externals(prepareExternals(bundle.externals));
 
-  // Makes some environment variables available to the JS code, for example:
-  // if (process.env.NODE_ENV === 'production') { ... }.
-  chain
-    .plugin("define")
-    .init((Plugin, args = []) => new Plugin(args))
-    .use(webpack.DefinePlugin, {
-      "process.env.NODE_ENV": JSON.stringify(crafty.getEnvironment())
-    });
+  // Minimization is enabled only in production but we still
+  // define it here in case someone needs to minify in development.
+  // We are Cloning the uglifyJS Object as webpack
+  // mutates it which messes with other implementations
+  chain.optimization.minimizer([
+    new UglifyJSPlugin({
+      sourceMap: true,
+      uglifyOptions: Object.assign({}, config.uglifyJS)
+    })
+  ]);
 
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
@@ -82,21 +90,8 @@ module.exports = function(crafty, bundle, webpackPort) {
       .init((Plugin, args = []) => new Plugin(args))
       .use(PureClassesPlugin, {});
 
-    // Minify the code.only in production
-    // Cloning the uglifyJS Object as webpack is mutating it which messes with other implementations
-    chain
-      .plugin("uglify")
-      .init((Plugin, args = []) => new Plugin(args))
-      .use(
-        UglifyJSPlugin,
-        Object.assign({}, { sourceMap: true, uglifyOptions: config.uglifyJS })
-      );
-
     // Don't emit files if an error occured (forces to check what the error is)
-    chain
-      .plugin("noEmitOnError")
-      .init(Plugin => new Plugin())
-      .use(webpack.NoEmitOnErrorsPlugin);
+    chain.optimization.noEmitOnErrors(true);
   }
 
   // Hot Reloading
@@ -112,13 +107,6 @@ module.exports = function(crafty, bundle, webpackPort) {
       .plugin("case-sensitive")
       .init(Plugin => new Plugin())
       .use(CaseSensitivePathsPlugin);
-
-    // Prints more readable module names
-    // in the browser console on HMR updates
-    chain
-      .plugin("named")
-      .init(Plugin => new Plugin())
-      .use(webpack.NamedModulesPlugin);
 
     // This is necessary to emit hot updates:
     if (bundle.hot) {

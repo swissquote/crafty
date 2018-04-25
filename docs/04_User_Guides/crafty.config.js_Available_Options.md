@@ -110,7 +110,7 @@ Apart from the common options, here are the options you can use for CSS bundles.
 
 | Option       | Type                      | Runner  | Preset                  | Description                                                                                                                                                                                                                                                                                                      |
 | ------------ | ------------------------- | ------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `extractCSS` | Boolean / String / Object | Webpack | `crafty-preset-postcss` | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
+| `extractCSS` | Boolean / String / Object | Webpack | `crafty-preset-postcss` | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
 
 ### JavaScript Bundles
 
