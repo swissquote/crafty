@@ -110,10 +110,6 @@ module.exports = {
       bundle
     );
 
-    // Make it that babel references helpers instead of embedding them
-    // this allows rollup to de-duplicate them.
-    babelOptions.plugins.push(require.resolve("babel-plugin-external-helpers"));
-
     // Webpack handles this at the loader level, but Rollup needs it this way.
     babelOptions.exclude = ["node_modules/**"];
     babelOptions.include = ["**/*.js", "**/*.jsx"];

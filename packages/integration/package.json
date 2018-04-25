@@ -19,7 +19,8 @@
     "@swissquote/crafty-runner-gulp": "1.0.2",
     "@swissquote/crafty-runner-rollup": "1.0.2",
     "@swissquote/crafty-runner-webpack": "1.0.2",
-    "babel-plugin-transform-es3-property-literals": "^6.22.0"
+    "@babel/core": "v7.0.0-beta.46",
+    "@babel/plugin-transform-property-literals": "v7.0.0-beta.46"
   },
   "engines": {
     "node": ">=6.0.0"

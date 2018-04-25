@@ -120,8 +120,8 @@ If no preset is specified `recommended` is used.
 
 ## Bundle Options
 
-| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                      |
-| ------------ | ------------------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                        |
+| ------------ | ------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
 
 ### Linting options
