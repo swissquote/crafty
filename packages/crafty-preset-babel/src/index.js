@@ -128,7 +128,11 @@ module.exports = {
     const options = babelConfigurator(
       crafty,
       crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle
+      bundle,
+      {
+        deduplicateHelpers: true,
+        useESModules: true
+      }
     );
 
     // Cache can be disabled for experimentation and when running Crafty's tests
