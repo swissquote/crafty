@@ -47,7 +47,7 @@ Webpack. Allowing you to use `import` from EcmaScript 2015 for your CSS.
 
 ```bash
 cd src/main/frontend
-npm install @swissquote/crafty @swissquote/crafty-preset-postcss @swissquote/crafty-runner-gulp --save
+npm install @swissquote/crafty @swissquote/crafty-preset-postcss @swissquote/crafty-runner-webpack --save
 ```
 
 In your `crafty.config.js` file, you must add the following presets.
