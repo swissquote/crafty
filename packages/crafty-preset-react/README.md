@@ -152,7 +152,7 @@ if (process.env.NODE_ENV === "development") {
 If you're using TypeScript you have one more step to make
 
 ```bash
-node/node node_modules/.bin/typings install dt~webpack-env --global
+npm install --save @types/webpack-env
 ```
 
 [Read more about Hot Module Replacement](https://medium.com/@rajaraodv/webpack-hot-module-replacement-hmr-e756a726a07#.6qqb8241p)
