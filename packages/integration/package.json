@@ -1,6 +1,6 @@
 {
   "name": "integration",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
@@ -8,19 +8,19 @@
     "test:watch": "../../node_modules/.bin/jest --watch"
   },
   "devDependencies": {
-    "@swissquote/crafty": "1.0.2",
-    "@swissquote/crafty-preset-babel": "1.0.2",
+    "@babel/core": "v7.0.0-beta.46",
+    "@babel/plugin-transform-property-literals": "v7.0.0-beta.46",
+    "@swissquote/crafty": "1.1.0",
+    "@swissquote/crafty-preset-babel": "1.1.0",
     "@swissquote/crafty-preset-images": "1.0.1",
     "@swissquote/crafty-preset-images-simple": "1.0.0",
     "@swissquote/crafty-preset-maven": "1.0.0",
-    "@swissquote/crafty-preset-polyfills": "1.0.2",
-    "@swissquote/crafty-preset-postcss": "1.0.2",
-    "@swissquote/crafty-preset-typescript": "1.0.2",
-    "@swissquote/crafty-runner-gulp": "1.0.2",
-    "@swissquote/crafty-runner-rollup": "1.0.2",
-    "@swissquote/crafty-runner-webpack": "1.0.2",
-    "@babel/core": "v7.0.0-beta.46",
-    "@babel/plugin-transform-property-literals": "v7.0.0-beta.46"
+    "@swissquote/crafty-preset-polyfills": "1.1.0",
+    "@swissquote/crafty-preset-postcss": "1.1.0",
+    "@swissquote/crafty-preset-typescript": "1.1.0",
+    "@swissquote/crafty-runner-gulp": "1.1.0",
+    "@swissquote/crafty-runner-rollup": "1.1.0",
+    "@swissquote/crafty-runner-webpack": "1.1.0"
   },
   "engines": {
     "node": ">=6.0.0"
