@@ -46,9 +46,9 @@ function normalizeJestOptions(crafty, input, cli) {
     preset.jest(crafty, options);
   });
 
-  // Support all extensions that can be transformed for test files extensions
+  // Support all extensions that can be transformed for test files extensions, except for json
   if (!options.hasOwnProperty("testRegex")) {
-    const extensions = options.moduleFileExtensions.join("|");
+    const extensions = options.moduleFileExtensions.filter(extension => extension !== 'json').join("|");
     options.testRegex = `(/__tests__/.*|(\\.|/)(test|spec))\\.(${extensions})$`;
   }
 
