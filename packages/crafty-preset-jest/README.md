@@ -64,6 +64,12 @@ they are testing so that relative imports appear shorter. For example, if
 > [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript.md) will
 > add the support for `ts` and `tsx`
 
+To be able to use `.ts` or `.tsx` test files, you'll have to add `@types/jest` as a dependency :
+
+```sh
+npm install --save @types/jest
+```
+
 ## `crafty test`
 
 Running `crafty test` will run all test and exit. But you can use any option
