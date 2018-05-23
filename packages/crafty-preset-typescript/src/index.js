@@ -82,7 +82,7 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.tsx?$"] = require.resolve(
+    options.transform["^.+\\.(ts|tsx)?$"] = require.resolve(
       "ts-jest/preprocessor.js"
     );
 
