@@ -1,8 +1,7 @@
 const { join } = require("path");
-const { writeFileSync } = require("fs");
+const { writeFileSync, unlinkSync } = require("fs");
 
 const jest = require("jest-cli");
-const tmp = require("tmp");
 
 function normalizeJestOptions(crafty, input, cli) {
   const moduleDirectories = new Set([
@@ -55,13 +54,24 @@ function normalizeJestOptions(crafty, input, cli) {
   return options;
 }
 
+function deleteOnExit(file) {
+  process.addListener('exit', function _(data) {
+    try {
+      unlinkSync(file);
+    }
+    catch (e) {
+      console.log("Failed", e)
+    }
+  });
+}
+
 module.exports = {
   test(crafty, input, cli) {
     return new Promise((resolve, reject) => {
-      const configFile = tmp.fileSync({
-        prefix: "jest-config-",
-        postfix: ".json"
-      }).name;
+      // Create config file in the current working directory
+      // Creating it in a temp path breaks code coverage collection
+      const configFile = join(process.cwd(), "jest-config-crafty.json");
+      deleteOnExit(configFile);
       const options = normalizeJestOptions(crafty, input, cli);
       const cliOptions = {
         config: configFile,
