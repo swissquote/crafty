@@ -53,5 +53,4 @@ Read more about [the anatomy of a preset](Anatomy_of_a_preset.md)
 * [`crafty-preset-images-simple`](05_Packages/05_crafty-preset-images-simple.md) If you are behind a corporate proxy, this preset will copy images without compressing them.
 * [`crafty-preset-maven`](05_Packages/05_crafty-preset-maven.md) This preset overrides the destination to move your compiled assets to the right directory in `target` of your Maven project.
 * [`crafty-preset-react`](05_Packages/05_crafty-preset-react.md) A preset that provides default configuration when using React in a project. JSX Compilation is handled by the `crafty-preset-babel` already (**Not Ready**)
-* [`crafty-preset-polyfills`](05_Packages/05_crafty-preset-polyfills.md) Webpack : Add polyfills for common features (**Not Ready**)
 * [`crafty-preset-jest`](05_Packages/05_crafty-preset-jest.md) This preset will add Jest to the `crafty test` command, works with Babel and TypeScript.
