@@ -5,7 +5,7 @@ const path = require("path");
 const rollupBabel = require("rollup-plugin-babel");
 const rollupEslint = require("rollup-plugin-eslint");
 
-const babelConfigurator = require("./babel");
+const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
 const createTask = require("./gulp");
 
 const MODULES = path.join(__dirname, "..", "node_modules");

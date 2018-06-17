@@ -6,7 +6,7 @@ const uglifyES = require("uglify-es");
 const composer = require("gulp-uglify/composer");
 const babel = require("gulp-babel");
 
-const babelConfigurator = require("./babel");
+const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
 
 module.exports = function createTask(crafty, bundle, StreamHandler) {
   return cb => {

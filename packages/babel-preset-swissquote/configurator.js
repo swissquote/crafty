@@ -5,7 +5,7 @@ module.exports = function(crafty, environment, bundle, babelOptions) {
     babelrc: false,
     presets: [
       [
-        require.resolve("@swissquote/babel-preset-swissquote"),
+        __dirname,
         Object.assign(
           {
             browsers: crafty.config.browsers,

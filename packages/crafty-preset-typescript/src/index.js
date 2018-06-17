@@ -8,6 +8,8 @@ const createTempFile = require("./utils").createTempFile;
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
+const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
 function resolve(relative) {
   return path.resolve(process.cwd(), relative);
 }
@@ -116,10 +118,20 @@ module.exports = {
       .test(/\.tsx?$/)
       .exclude.add(/(node_modules|bower_components)/);
 
+    const babelOptions = babelConfigurator(
+      crafty,
+      crafty.getEnvironment() === "production" ? "production" : "development",
+      bundle
+    );
+
     chain.module
       .rule("ts")
-      .use("ts-loader")
-      .loader("ts-loader")
-      .options({});
+      .use("awesome-typescript-loader")
+      .loader("awesome-typescript-loader")
+      .options({
+        //useBabel: false,
+        //babelCore: "@babel/core",
+        //babelOptions
+      });
   }
 };
