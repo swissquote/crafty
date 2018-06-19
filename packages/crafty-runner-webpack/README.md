@@ -11,6 +11,7 @@ be the most efficient possible for production.
 * Your code is Uglified after compilation.
 * Configurable output formats
 * Watch mode, re-compiles your files on changes
+* Profile easily with `--profile` which will create a profile next to the generated JavaScript
 
 ## Configuration
 
