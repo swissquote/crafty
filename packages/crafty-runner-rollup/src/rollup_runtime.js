@@ -2,7 +2,7 @@ const rollup = require("rollup");
 const commonjs = require("rollup-plugin-commonjs");
 const resolve = require("rollup-plugin-node-resolve");
 const json = require("rollup-plugin-json");
-const uglify = require("rollup-plugin-uglify");
+const { uglify } = require("rollup-plugin-uglify");
 const replace = require("rollup-plugin-replace");
 const minify = require("uglify-es").minify;
 
