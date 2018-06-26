@@ -95,32 +95,32 @@ module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
   let webpackPort = null;
   const compilerReady = portFinder.getFree(taskName).then(freePort => {
-    try {
-      webpackPort = freePort;
-      const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
-      const compiler = webpack(webpackConfig);
+    webpackPort = freePort;
+    const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
+    const compiler = webpack(webpackConfig);
 
-      if (!compiler) {
-        return Promise.reject("Could not create compiler");
-      }
-
-      // "invalid" event fires when you have changed a file, and Webpack is
-      // recompiling a bundle. WebpackDevServer takes care to pause serving the
-      // bundle, so if you refresh, it'll wait instead of serving the old one.
-      // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-      compiler.hooks.invalid.tap("CraftyRuntime", () => {
-        console.log("Compiling...");
-      });
-
-      compiler.hooks.done.tap(
-        "CraftyRuntime",
-        onDone(crafty, webpackConfig, compiler, bundle)
-      );
-
-      return Promise.resolve(compiler);
-    } catch (e) {
-      return Promise.reject(e);
+    if (!compiler) {
+      return Promise.reject("Could not create compiler");
     }
+
+    // "invalid" event fires when you have changed a file, and Webpack is
+    // recompiling a bundle. WebpackDevServer takes care to pause serving the
+    // bundle, so if you refresh, it'll wait instead of serving the old one.
+    // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+    compiler.hooks.invalid.tap("CraftyRuntime", () => {
+      console.log("Compiling...");
+    });
+
+    compiler.hooks.done.tap(
+      "CraftyRuntime",
+      onDone(crafty, webpackConfig, compiler, bundle)
+    );
+
+    return compiler;
+  });
+
+  compilerReady.catch(e => {
+    crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
   });
 
   // This is executed in watch mode only
