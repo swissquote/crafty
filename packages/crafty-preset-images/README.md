@@ -28,10 +28,10 @@ downloaded from GitHub directly.
 
 ### Open issues about that
 
-* https://github.com/imagemin/optipng-bin/issues/71
-* https://github.com/imagemin/jpegtran-bin (no open issue, same issue as
+- https://github.com/imagemin/optipng-bin/issues/71
+- https://github.com/imagemin/jpegtran-bin (no open issue, same issue as
   `optipng-bin`)
-* https://github.com/imagemin/gifsicle-bin/issues/77
+- https://github.com/imagemin/gifsicle-bin/issues/77
 
 ### The alternative
 

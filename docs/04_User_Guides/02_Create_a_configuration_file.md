@@ -154,9 +154,9 @@ to your project to be able to compress your jpg, png, gif and svg files
 Your assets can be located anywhere you want next to your `package.json` and
 `crafty.config.js` but we recommend putting them inside a sub-directory:
 
-* `js` for JavaScript / TypeScript files
-* `css` for Style sheets
-* `images` for images
+- `js` for JavaScript / TypeScript files
+- `css` for Style sheets
+- `images` for images
 
 If you have some external JavaScript or CSS that aren't available in NPM. You
 can also use create a `vendor` directory either in the `js`/`css` folder or in
@@ -175,9 +175,9 @@ for example `file.min.js` or `file.min.css`
 This is a convention that allows some tools to know the content is minified. And
 will bring you the following benefits :
 
-* When compressing files together, a file with ".min" in the name will not be
+- When compressing files together, a file with ".min" in the name will not be
   minified again, thus you get a performance boost.
-* Files with ".min" in their names won't go through the linting hooks.
+- Files with ".min" in their names won't go through the linting hooks.
 
 ## Destination directory
 

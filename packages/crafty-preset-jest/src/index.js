@@ -47,7 +47,9 @@ function normalizeJestOptions(crafty, input, cli) {
 
   // Support all extensions that can be transformed for test files extensions, except for json
   if (!options.hasOwnProperty("testRegex")) {
-    const extensions = options.moduleFileExtensions.filter(extension => extension !== 'json').join("|");
+    const extensions = options.moduleFileExtensions
+      .filter(extension => extension !== "json")
+      .join("|");
     options.testRegex = `(/__tests__/.*|(\\.|/)(test|spec))\\.(${extensions})$`;
   }
 
@@ -55,12 +57,11 @@ function normalizeJestOptions(crafty, input, cli) {
 }
 
 function deleteOnExit(file) {
-  process.addListener('exit', function _(data) {
+  process.addListener("exit", () => {
     try {
       unlinkSync(file);
-    }
-    catch (e) {
-      console.log("Failed", e)
+    } catch (e) {
+      console.log("Failed", e);
     }
   });
 }

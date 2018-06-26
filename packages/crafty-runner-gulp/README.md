@@ -9,9 +9,9 @@ This runner is based on Gulp 4.
 
 ## Features
 
-* Create any gulp task
-* Combine tasks in parallel or in series
-* Create file watchers that run tasks or anything else on change.
+- Create any gulp task
+- Combine tasks in parallel or in series
+- Create file watchers that run tasks or anything else on change.
 
 ## Adding Gulp tasks
 
@@ -64,9 +64,9 @@ This creates a clear separation between development and production builds.
 It works the same way as `gulp.src()...pipe(gulp.dest())` but with some added
 syntactic sugar:
 
-* Doesn't return a new instance on every `pipe` thus allowing you to create
+- Doesn't return a new instance on every `pipe` thus allowing you to create
   complex streams without re-assigning the variable every time
-* Includes `gulp-plumber` to catch errors
+- Includes `gulp-plumber` to catch errors
 
 ```javascript
 gulp.task("images_svg", function() {
@@ -80,9 +80,9 @@ gulp.task("images_svg", function() {
 
 #### `new StreamHandler(source, destination[, errorCallback])`
 
-* `source` is a glob or array of globs
-* `destination` is a destination file or directory
-* `errorCallback` is an optional callback that you can set to define what to do
+- `source` is a glob or array of globs
+- `destination` is a destination file or directory
+- `errorCallback` is an optional callback that you can set to define what to do
   with errors in your stream
 
 #### `stream.add(handler)`

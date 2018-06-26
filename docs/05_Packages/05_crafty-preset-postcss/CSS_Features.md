@@ -186,8 +186,8 @@ body {
 
 We have two possible ways of using variables:
 
-1. Sass style variables : `$variable`
-1. CSS properties (Official specification): `--variable`
+1.  Sass style variables : `$variable`
+1.  CSS properties (Official specification): `--variable`
 
 Sass style variables are provided as a compatibility layer.
 We recommend to use the CSS properties as they are future proof and will be directly supported in browsers in the future.
@@ -436,7 +436,7 @@ h1 {
 
 @for $i from 1 to 3 {
   .b-$i {
-    width: $(i)px;
+    width: $(i) px;
   }
 }
 
@@ -481,7 +481,7 @@ a {
 a {
   animation: none 0s ease 0s 1 normal none running;
   animation: initial;
-  background: transparent none repeat 0 0/auto auto padding-box border-box
+  background: transparent none repeat 0 0 / auto auto padding-box border-box
     scroll;
   background: initial;
   white-space: normal;

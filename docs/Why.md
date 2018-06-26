@@ -58,7 +58,7 @@ Or they are made for one specific tool.
 
 For example:
 
-* [create-react-app](https://github.com/facebookincubator/create-react-app) is
+- [create-react-app](https://github.com/facebookincubator/create-react-app) is
   meant to create React applications with Babel and Webpack. You can't use
   TypeScript and you are limited to one bundle.
-* [neutrino](https://neutrino.js.org/) is more configurable but still allows to is limited to one bundle and Webpack.
+- [neutrino](https://neutrino.js.org/) is more configurable but still allows to is limited to one bundle and Webpack.

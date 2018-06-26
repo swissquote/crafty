@@ -11,13 +11,13 @@ N/A
 </td></tr>
 <tr><th>Commands</th><td>
 
-* `test`: Jest integrates itself with the `crafty test` command
+- `test`: Jest integrates itself with the `crafty test` command
 
 </td></tr>
 <tr><th>Related presets</th><td>
 
-* [Babel](05_Packages/05_crafty-preset-babel.md)
-* [TypeScript](05_Packages/05_crafty-preset-typescript.md)
+- [Babel](05_Packages/05_crafty-preset-babel.md)
+- [TypeScript](05_Packages/05_crafty-preset-typescript.md)
 
 </td></tr>
 </table>
@@ -48,9 +48,9 @@ need them.
 Jest will look for test files with any of the following popular naming
 conventions:
 
-* Files with `.js` suffix in `__tests__` folders.
-* Files with `.test.js` suffix.
-* Files with `.spec.js` suffix.
+- Files with `.js` suffix in `__tests__` folders.
+- Files with `.test.js` suffix.
+- Files with `.spec.js` suffix.
 
 The `.test.js` / `.spec.js` files (or the `__tests__` folders) can be located at
 any depth under the `src` top level folder.

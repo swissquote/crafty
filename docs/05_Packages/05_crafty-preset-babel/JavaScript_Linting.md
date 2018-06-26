@@ -24,8 +24,8 @@ Here I'll explain how to disable linting on some files or part of files, but rem
 
 Good reasons include:
 
-* It's an external library you downloaded, so it should not follow our conventions
-* you are adding a `console.log` but wrapped in a `if` statement to check if "console" exists in the global scope.
+- It's an external library you downloaded, so it should not follow our conventions
+- you are adding a `console.log` but wrapped in a `if` statement to check if "console" exists in the global scope.
 
 ### Disable linting on a line
 

@@ -48,11 +48,11 @@ function direction(k: "left" | "right") {
 
 ## Other
 
-* `readonly` properties in interfaces and classes
-* Generic Types
-* JSX Support (with the `.tsx` extension)
-* Decorators
-* Type Aliases (`type PrimitiveArray = Array<string|number|boolean>;`)
+- `readonly` properties in interfaces and classes
+- Generic Types
+- JSX Support (with the `.tsx` extension)
+- Decorators
+- Type Aliases (`type PrimitiveArray = Array<string|number|boolean>;`)
 
 [Read more](http://www.typescriptlang.org/docs/tutorial.html)
 
