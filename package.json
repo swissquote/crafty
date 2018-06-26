@@ -10,12 +10,19 @@
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "test": "jest -i --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty",
     "postinstall": "lerna bootstrap",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "outdated": "node outdated.js"
   },
   "dependencies": {
+    "asyncmap": "^1.0.0",
+    "chalk": "^2.4.1",
+    "easy-table": "^1.1.1",
     "jest": "^21.2.1",
     "lerna": "^2.7.1",
     "markdown-spellcheck": "1.3.1",
+    "pacote": "^8.1.6",
+    "require-relative": "^0.8.7",
+    "semver": "^5.5.0",
     "write-good": "0.11.3"
   },
   "engines": {
