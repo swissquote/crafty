@@ -28,7 +28,7 @@ it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["tsLint", "run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual(["tsLint", "help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -53,7 +53,7 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["tsLint", "run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual(["tsLint", "help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
