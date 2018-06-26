@@ -94,39 +94,43 @@ function printErrors(summary, errors) {
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
   let webpackPort = null;
-  const compilerReady = portFinder.getFree(taskName).then(freePort => {
-    webpackPort = freePort;
-    const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
-    const compiler = webpack(webpackConfig);
+  const getCompiler = () => {
+    return portFinder.getFree(taskName).then(freePort => {
+      webpackPort = freePort;
+      const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
+      const compiler = webpack(webpackConfig);
 
-    if (!compiler) {
-      return Promise.reject("Could not create compiler");
-    }
+      if (!compiler) {
+        return Promise.reject("Could not create compiler");
+      }
 
-    // "invalid" event fires when you have changed a file, and Webpack is
-    // recompiling a bundle. WebpackDevServer takes care to pause serving the
-    // bundle, so if you refresh, it'll wait instead of serving the old one.
-    // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-    compiler.hooks.invalid.tap("CraftyRuntime", () => {
-      console.log("Compiling...");
+      // "invalid" event fires when you have changed a file, and Webpack is
+      // recompiling a bundle. WebpackDevServer takes care to pause serving the
+      // bundle, so if you refresh, it'll wait instead of serving the old one.
+      // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+      compiler.hooks.invalid.tap("CraftyRuntime", () => {
+        console.log("Compiling...");
+      });
+
+      compiler.hooks.done.tap(
+        "CraftyRuntime",
+        onDone(crafty, webpackConfig, compiler, bundle)
+      );
+
+      return compiler;
     });
-
-    compiler.hooks.done.tap(
-      "CraftyRuntime",
-      onDone(crafty, webpackConfig, compiler, bundle)
-    );
-
-    return compiler;
-  });
-
-  compilerReady.catch(e => {
-    crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
-  });
+  }
 
   // This is executed in watch mode only
   let runningWatcher = null;
   crafty.watcher.addRaw({
     start: () => {
+      const compilerReady = getCompiler();
+
+      compilerReady.catch(e => {
+        crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
+      });
+
       compilerReady
         .then(
           compiler => {
@@ -149,9 +153,6 @@ module.exports = function jsTaskES6(crafty, bundle) {
                 "Started, listening on localhost:" + webpackPort
               );
             });
-          },
-          e => {
-            crafty.log.error("[webpack-dev-server]", "Could not start", e);
           }
         )
         .catch(e => {
@@ -162,26 +163,31 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
   // This is executed in single-run only
   crafty.undertaker.task(taskName, cb => {
+
+    const compilerReady = getCompiler();
+
+    compilerReady.catch(e => {
+      cb(e);
+    });
+
     compilerReady.then(compiler => {
-      try {
-        compiler.run((err, stats) => {
-          if (err) {
-            printErrors("Failed to compile.", [err]);
-            return cb("Webpack compilation failed");
-          }
+      compiler.run((err, stats) => {
+        if (err) {
+          printErrors("Failed to compile.", [err]);
+          return cb("Webpack compilation failed");
+        }
 
-          if (stats.compilation.errors && stats.compilation.errors.length) {
-            // Those errors are printed by "onDone"
-            //printErrors('Failed to compile.', stats.compilation.errors);
-            return cb("Webpack compilation failed");
-          }
+        if (stats.compilation.errors && stats.compilation.errors.length) {
+          // Those errors are printed by "onDone"
+          //printErrors('Failed to compile.', stats.compilation.errors);
+          return cb("Webpack compilation failed");
+        }
 
-          return cb();
-        });
-      } catch (e) {
-        printErrors("Failed to compile.", [e]);
-        cb(e);
-      }
-    }, cb);
+        return cb();
+      });
+    }).catch(e => {
+      printErrors("Failed to compile.", [e]);
+      cb(e);
+    })
   });
 };
