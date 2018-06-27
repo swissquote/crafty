@@ -2,9 +2,7 @@ const path = require("path");
 const fs = require("fs");
 
 const chalk = require("chalk");
-const webpackMerge = require("webpack-merge");
-const webpack = require("webpack");
-const WebpackDevServer = require("webpack-dev-server");
+
 const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty-runner-webpack");
 
@@ -20,6 +18,7 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
   if (fs.existsSync(configPath)) {
     crafty.log("Merging SQ webpack config with " + chalk.magenta(configPath));
+    const webpackMerge = require("webpack-merge");
     webpackConfig = webpackMerge.smart(webpackConfig, require(configPath));
   }
 
@@ -98,6 +97,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
     return portFinder.getFree(taskName).then(freePort => {
       webpackPort = freePort;
       const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
+      const webpack = require("webpack");
       const compiler = webpack(webpackConfig);
 
       if (!compiler) {
@@ -134,6 +134,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
       compilerReady
         .then(compiler => {
           // Prepare the Hot Reload Server
+          const WebpackDevServer = require("webpack-dev-server");
           runningWatcher = new WebpackDevServer(compiler, {
             stats: false,
             hot: true,

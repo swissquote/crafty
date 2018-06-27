@@ -16,9 +16,9 @@
     "chalk": "^2.4.1",
     "debug": "^3.0.1",
     "glob-to-regexp": "0.4.0",
+    "hash-index": "3.0.0",
     "is-glob": "4.0.0",
     "mkdirp": "0.5.1",
-    "service-port": "1.0.0",
     "uglifyjs-webpack-plugin": "1.2.6",
     "webpack": "4.12.1",
     "webpack-chain": "4.8.0",
@@ -28,5 +28,8 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "service-names-port-numbers": "^2.0.0"
   }
 }

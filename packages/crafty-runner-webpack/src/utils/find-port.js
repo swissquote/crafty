@@ -1,7 +1,25 @@
 const net = require("net");
 const path = require("path");
 
-const servicePort = require("service-port");
+const hash = require("hash-index");
+
+function servicePort(name) {
+  let i = 0;
+  const reservedPorts = require("./reservedPorts.json");
+  const range = [];
+
+  for (let n = 1024; n <= 65535; n++) {
+    if (reservedPorts[i] === n) {
+      i++;
+    } else {
+      range.push(n);
+    }
+  }
+
+  const index = hash(name, range.length);
+
+  return range[index];
+}
 
 const portRange = 100;
 const assigned = {};

@@ -1,14 +1,9 @@
 const debug = require("debug")("webpack-runner");
 const path = require("path");
 const fs = require("fs");
-const webpack = require("webpack");
 const WebpackChain = require("webpack-chain");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const isGlob = require("is-glob");
 const globToRegex = require("glob-to-regexp");
-
-const PureClassesPlugin = require("./PureClassesPlugin");
 const paths = require("./utils/paths");
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
@@ -80,6 +75,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   // define it here in case someone needs to minify in development.
   // We are Cloning the uglifyJS Object as webpack
   // mutates it which messes with other implementations
+  const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
   chain.optimization.minimizer([
     new UglifyJSPlugin({
       sourceMap: true,
@@ -90,6 +86,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
     // We transform them into /* @__PURE__ */ so UglifyJS is able to remove them when unused.
+    const PureClassesPlugin = require("./PureClassesPlugin");
     chain
       .plugin("pure_classes")
       .init((Plugin, args = []) => new Plugin(args))
@@ -111,14 +108,14 @@ module.exports = function(crafty, bundle, webpackPort) {
     chain
       .plugin("case-sensitive")
       .init(Plugin => new Plugin())
-      .use(CaseSensitivePathsPlugin);
+      .use(require("case-sensitive-paths-webpack-plugin"));
 
     // This is necessary to emit hot updates:
     if (bundle.hot) {
       chain
         .plugin("hot")
         .init(Plugin => new Plugin())
-        .use(webpack.HotModuleReplacementPlugin);
+        .use(require("webpack/lib/HotModuleReplacementPlugin"));
 
       chain
         .entry("default")

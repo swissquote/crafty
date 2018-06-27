@@ -1,11 +1,3 @@
-const rollup = require("rollup");
-const commonjs = require("rollup-plugin-commonjs");
-const resolve = require("rollup-plugin-node-resolve");
-const json = require("rollup-plugin-json");
-const { uglify } = require("rollup-plugin-uglify");
-const replace = require("rollup-plugin-replace");
-const minify = require("uglify-es").minify;
-
 const chalk = require("chalk");
 const prettyTime = require("pretty-hrtime");
 
@@ -20,7 +12,7 @@ const relativeId = require("./utils/relativeId");
 
 const debug = require("debug")("rollup-runner");
 
-function buildConfiguration(crafty, taskName, bundle) {
+function buildConfiguration(crafty, taskName, bundle, warnings) {
   const destination = path.join(
     absolutePath(crafty.config.destination_js),
     bundle.directory ? bundle.directory : "",
@@ -34,31 +26,31 @@ function buildConfiguration(crafty, taskName, bundle) {
         // eslint
         // tslint
         json: {
-          plugin: json,
+          plugin: require("rollup-plugin-json"),
           weight: 10
         },
         // babel
         // typescript
         replace: {
-          plugin: replace,
+          plugin: require("rollup-plugin-replace"),
           weight: 30,
           options: {
             "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
           }
         },
         resolve: {
-          plugin: resolve,
+          plugin: require("rollup-plugin-node-resolve"),
           weight: 40,
           options: {
             browser: true
           }
         },
         commonjs: {
-          plugin: commonjs,
+          plugin: require("rollup-plugin-commonjs"),
           weight: 50
         },
         uglify: {
-          plugin: uglify,
+          plugin: require("rollup-plugin-uglify").uglify,
           weight: 100,
           options: {
             output: {
@@ -72,7 +64,7 @@ function buildConfiguration(crafty, taskName, bundle) {
               }
             }
           },
-          minifier: minify,
+          minifier: require("uglify-es").minify,
           init: plugin => {
             return plugin.plugin(plugin.options, plugin.minifier);
           }
@@ -115,6 +107,13 @@ function buildConfiguration(crafty, taskName, bundle) {
       return plugin.init ? plugin.init(plugin) : plugin.plugin(plugin.options);
     });
 
+  const onwarn = config.input.onwarn;
+  config.input.onwarn = onwarn
+    ? warning => onwarn(warning, warnings.add)
+    : warnings.add;
+
+  debug(`Final configuration for '${taskName}':`, config);
+
   return config;
 }
 
@@ -138,23 +137,18 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
   const warnings = batchWarnings(taskName);
 
-  const config = buildConfiguration(crafty, taskName, bundle);
-
-  const onwarn = config.input.onwarn;
-  config.input.onwarn = onwarn
-    ? warning => onwarn(warning, warnings.add)
-    : warnings.add;
-
-  debug(`Final configuration for '${taskName}':`, config);
-
   // This is executed in watch mode only
   crafty.watcher.addRaw({
     start: () => {
+      const rollup = require("rollup");
+      const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
+
       crafty.log(`Start watching with webpack in '${chalk.cyan(taskName)}'`);
       const watchOptions = Object.assign({}, config.input, {
         output: config.output,
         watch: config.watch
       });
+
       const watcher = rollup.watch(watchOptions);
 
       watcher.on("event", event => {
@@ -196,6 +190,9 @@ module.exports = function jsTaskES6(crafty, bundle) {
   });
 
   crafty.undertaker.task(taskName, cb => {
+    const rollup = require("rollup");
+    const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
+
     function onError(e) {
       warnings.add(e);
       warnings.flush();

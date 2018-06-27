@@ -1,8 +1,5 @@
 const path = require("path");
 
-const rollupTSLint = require("rollup-plugin-tslint");
-const rollupTypescript = require("rollup-plugin-typescript2");
-
 const createTask = require("./gulp");
 const createTempFile = require("./utils").createTempFile;
 
@@ -61,16 +58,15 @@ module.exports = {
   },
   rollup(crafty, bundle, rollupConfig) {
     rollupConfig.input.plugins.typescript = {
-      plugin: rollupTypescript,
+      plugin: require("rollup-plugin-typescript2"),
       weight: 20
     };
 
     // Linting doesn't work well currently in rollup
     // - Errors are imprecise, just outputs "Warnings or errors were found"
     // - If the code can't be parsed, you lose the information of where it failed
-
     //rollupConfig.input.plugins.tslint = {
-    //  plugin: rollupTSLint,
+    //  plugin: require("rollup-plugin-tslint"),
     //  weight: 0,
     //  options: {
     //    exclude: ["node_modules/**"],

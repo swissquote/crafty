@@ -1,7 +1,6 @@
 const EventEmitter = require("events");
 
 const vfs = require("vinyl-fs");
-const watch = require("glob-watcher");
 
 function Gulp(crafty) {
   this.crafty = crafty;
@@ -62,6 +61,7 @@ Gulp.prototype.watch = function(glob, opt, task) {
   this.crafty.watcher.addRaw({
     start: () => {
       this.crafty.log(`Start watching '${glob}'`);
+      const watch = require("glob-watcher");
       watch(glob, options, fn).on("change", event => {
         emitter.emit("change", event);
       });
