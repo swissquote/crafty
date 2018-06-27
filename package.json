@@ -6,11 +6,19 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "author": "Stephane Goetz",
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/eslint",
+      "**/gulp-eslint",
+      "**/rollup-plugin-eslint",
+      "**/eslint-loader",
+      "**/babel-eslint"
+    ]
+  },
   "scripts": {
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "test": "jest -i --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty",
-    "postinstall": "lerna bootstrap",
-    "bootstrap": "lerna bootstrap",
     "outdated": "node outdated.js"
   },
   "dependencies": {

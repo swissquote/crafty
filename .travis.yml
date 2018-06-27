@@ -9,7 +9,6 @@ addons:
 
 cache:
   directories:
-  - node_modules
   - vendor
 
 jdk:
@@ -25,15 +24,14 @@ before_install:
   - mvn --version
 
 install:
-  - npm install
-  - npm run bootstrap
+  - yarn install
 
 # Disable sonar-scanner in Pull Requests as it's not able find the command.
 script:
   - _SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
-  - npm run test
+  - yarn test
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then sonar-scanner; fi'
 
 before_deploy:
