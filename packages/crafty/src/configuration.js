@@ -46,8 +46,8 @@ function loadPreset(config, preset) {
 function endCounter(start, preset) {
   const precision = 3; // 3 decimal places
   const elapsed = process.hrtime(start); // divide by a million to get nano to milli
-  const ms = elapsed[0] * 1000 + elapsed[1] / 1000000
-  
+  const ms = elapsed[0] * 1000 + elapsed[1] / 1000000;
+
   debug(`Loaded '${preset}' in ${ms.toFixed(precision)} ms`);
 }
 

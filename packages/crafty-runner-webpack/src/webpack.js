@@ -1,5 +1,6 @@
 const debug = require("debug")("webpack-runner");
 const path = require("path");
+const fs = require("fs");
 const webpack = require("webpack");
 const WebpackChain = require("webpack-chain");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
@@ -11,9 +12,6 @@ const PureClassesPlugin = require("./PureClassesPlugin");
 const paths = require("./utils/paths");
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
-
-const MODULES = path.join(__dirname, "..", "node_modules");
-const APP_MODULES = path.join(process.cwd(), "node_modules");
 
 function prepareExternals(externals) {
   if (!externals || externals.length === 0) {
@@ -50,10 +48,17 @@ module.exports = function(crafty, bundle, webpackPort) {
   chain.resolve.extensions.add(".js");
 
   chain.resolve.modules.add("node_modules");
-  chain.resolve.modules.add(APP_MODULES);
-  chain.resolve.modules.add(MODULES);
-  chain.resolveLoader.modules.add(APP_MODULES);
-  chain.resolveLoader.modules.add(MODULES);
+
+  [
+    path.join(process.cwd(), "node_modules"),
+    path.join(__dirname, "..", "node_modules"),
+    path.join(__dirname, "..", "..", "..", "node_modules")
+  ]
+    .filter(fs.existsSync)
+    .forEach(dir => {
+      chain.resolve.modules.add(dir);
+      chain.resolveLoader.modules.add(dir);
+    });
 
   // Add entries
   absolutePaths(bundle.source).forEach(source =>

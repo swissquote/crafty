@@ -119,7 +119,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
       return compiler;
     });
-  }
+  };
 
   // This is executed in watch mode only
   let runningWatcher = null;
@@ -132,29 +132,27 @@ module.exports = function jsTaskES6(crafty, bundle) {
       });
 
       compilerReady
-        .then(
-          compiler => {
-            // Prepare the Hot Reload Server
-            runningWatcher = new WebpackDevServer(compiler, {
-              stats: false,
-              hot: true,
-              hotOnly: true,
-              headers: {
-                "Access-Control-Allow-Origin": "*"
-              }
-            });
+        .then(compiler => {
+          // Prepare the Hot Reload Server
+          runningWatcher = new WebpackDevServer(compiler, {
+            stats: false,
+            hot: true,
+            hotOnly: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          });
 
-            runningWatcher.listen(webpackPort, "localhost", function(err) {
-              if (err) {
-                throw new util.PluginError("webpack-dev-server", err);
-              }
-              crafty.log(
-                "[webpack-dev-server]",
-                "Started, listening on localhost:" + webpackPort
-              );
-            });
-          }
-        )
+          runningWatcher.listen(webpackPort, "localhost", function(err) {
+            if (err) {
+              throw new util.PluginError("webpack-dev-server", err);
+            }
+            crafty.log(
+              "[webpack-dev-server]",
+              "Started, listening on localhost:" + webpackPort
+            );
+          });
+        })
         .catch(e => {
           crafty.log.error("[webpack-dev-server]", "Could not start", e);
         });
@@ -163,31 +161,32 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
   // This is executed in single-run only
   crafty.undertaker.task(taskName, cb => {
-
     const compilerReady = getCompiler();
 
     compilerReady.catch(e => {
       cb(e);
     });
 
-    compilerReady.then(compiler => {
-      compiler.run((err, stats) => {
-        if (err) {
-          printErrors("Failed to compile.", [err]);
-          return cb("Webpack compilation failed");
-        }
+    compilerReady
+      .then(compiler => {
+        compiler.run((err, stats) => {
+          if (err) {
+            printErrors("Failed to compile.", [err]);
+            return cb("Webpack compilation failed");
+          }
 
-        if (stats.compilation.errors && stats.compilation.errors.length) {
-          // Those errors are printed by "onDone"
-          //printErrors('Failed to compile.', stats.compilation.errors);
-          return cb("Webpack compilation failed");
-        }
+          if (stats.compilation.errors && stats.compilation.errors.length) {
+            // Those errors are printed by "onDone"
+            //printErrors('Failed to compile.', stats.compilation.errors);
+            return cb("Webpack compilation failed");
+          }
 
-        return cb();
+          return cb();
+        });
+      })
+      .catch(e => {
+        printErrors("Failed to compile.", [e]);
+        cb(e);
       });
-    }).catch(e => {
-      printErrors("Failed to compile.", [e]);
-      cb(e);
-    })
   });
 };

@@ -1,6 +1,6 @@
 // Due to the fact crafty is linked, we need to get webpack like this,
 // in any other project you can still "require('webpack')"
-const webpack = require('@swissquote/crafty-runner-webpack/node_modules/webpack');
+const webpack = require('webpack');
 
 module.exports = {
   externals: [
