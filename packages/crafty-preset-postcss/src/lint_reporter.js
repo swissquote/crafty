@@ -1,4 +1,3 @@
-const _ = require("lodash");
 const util = require("postcss-reporter/lib/util");
 const postcss = require("postcss");
 const formatter = require("stylelint/lib/formatters/stringFormatter");
@@ -30,13 +29,19 @@ function reporter(opts) {
       : "";
 
     let messagesToLog = result.messages;
-    const sourceGroupedMessages = _.groupBy(
-      messagesToLog,
-      message => util.getLocation(message).file || resultSource
-    );
+    const sourceGroupedMessages = messagesToLog.reduce((result, message) => {
+      const key = util.getLocation(message).file || resultSource;
+      if (hasOwnProperty.call(result, key)) {
+        result[key].push(message);
+      } else {
+        result[key] = [message];
+      }
+      return result;
+    } , {});
 
     const prepared = [];
-    _.forOwn(sourceGroupedMessages, function(messages, source) {
+    Object.keys(sourceGroupedMessages).forEach(source => {
+      const messages = sourceGroupedMessages[source];
       prepared.push({
         warnings: messages,
         source: source,
@@ -47,7 +52,7 @@ function reporter(opts) {
     });
 
     if (options.clearReportedMessages) {
-      result.messages = _.difference(result.messages, messagesToLog);
+      result.messages = [];
     }
 
     const report = formatter(prepared).trim();

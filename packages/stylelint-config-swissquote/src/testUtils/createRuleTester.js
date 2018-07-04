@@ -1,6 +1,5 @@
 /* global expect */
 
-const _ = require("lodash");
 const assignDisabledRanges = require("stylelint/lib/assignDisabledRanges");
 //const basicChecks = require("./basicChecks")
 const normalizeRuleSettings = require("stylelint/lib/normalizeRuleSettings");
@@ -37,10 +36,12 @@ module.exports.test = function OK(rule, schema) {
       const warnings = postcssResult.warnings();
 
       if (warnings.length) {
-        const actual = _.pick(warnings[0], ["line", "column", "text"]);
-        actual.warnings = warnings.length;
-
-        return actual;
+        return {
+          line: warnings[0].line,
+          column: warnings[0].column,
+          text: warnings[0].text,
+          warnings: warnings.length
+        };
       }
 
       return { warnings: 0 };

@@ -11,7 +11,6 @@ Array [
     "message": "Parsing error: The keyword 'const' is reserved",
     "ruleId": null,
     "severity": 2,
-    "source": "const something = [];",
   },
 ]
 `;
@@ -27,7 +26,6 @@ Array [
     "nodeType": "BinaryExpression",
     "ruleId": "@swissquote/swissquote/sonarjs/no-identical-conditions",
     "severity": 2,
-    "source": "  } else if (param === 1) { // Noncompliant",
   },
 ]
 `;
@@ -44,7 +42,6 @@ Array [
     "nodeType": "MemberExpression",
     "ruleId": "no-console",
     "severity": 1,
-    "source": "console.log(\\"Yeah\\");",
   },
 ]
 `;
