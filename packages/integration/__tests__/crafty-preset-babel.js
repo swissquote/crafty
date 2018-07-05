@@ -28,7 +28,13 @@ it("Loads crafty-preset-babel and does not register webpack tasks", () => {
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["jsLint", "run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual([
+    "jsLint",
+    "help",
+    "run",
+    "watch",
+    "test"
+  ]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -50,7 +56,13 @@ it("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task"
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["jsLint", "run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual([
+    "jsLint",
+    "help",
+    "run",
+    "watch",
+    "test"
+  ]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
@@ -162,7 +174,13 @@ it("Assigns bundle only once when runner is specified", () => {
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["jsLint", "run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual([
+    "jsLint",
+    "help",
+    "run",
+    "watch",
+    "test"
+  ]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

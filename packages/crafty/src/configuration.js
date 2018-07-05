@@ -43,11 +43,21 @@ function loadPreset(config, preset) {
   return merge.recursive(true, config, resolvedModule.defaultConfig());
 }
 
+function endCounter(start, preset) {
+  const precision = 3; // 3 decimal places
+  const elapsed = process.hrtime(start); // divide by a million to get nano to milli
+  const ms = elapsed[0] * 1000 + elapsed[1] / 1000000;
+
+  debug(`Loaded '${preset}' in ${ms.toFixed(precision)} ms`);
+}
+
 function loadMissingPresets(config) {
   debug("loadMissingPresets", config.presets);
   while (hasUnloadedPresets(config)) {
     config.presets.forEach(preset => {
+      const start = process.hrtime();
       config = loadPreset(config, preset);
+      endCounter(start, preset);
     });
   }
   return config;

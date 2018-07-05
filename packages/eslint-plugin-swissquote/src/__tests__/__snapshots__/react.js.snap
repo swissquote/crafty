@@ -11,7 +11,6 @@ Array [
     "nodeType": "JSXAttribute",
     "ruleId": "@swissquote/swissquote/react/jsx-no-duplicate-props",
     "severity": 2,
-    "source": "function SomeComponent() { return  <div id=\\"\\" id=\\"\\" />;  }",
   },
 ]
 `;
@@ -27,7 +26,6 @@ Array [
     "nodeType": "MemberExpression",
     "ruleId": "@swissquote/swissquote/react/no-did-mount-set-state",
     "severity": 2,
-    "source": "      this.setState({",
   },
 ]
 `;

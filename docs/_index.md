@@ -55,12 +55,12 @@ npx crafty test
 
 With this configuration you get:
 
-* Create a JavaScript bundle compiled with [Webpack](https://webpack.js.org/)
+- Create a JavaScript bundle compiled with [Webpack](https://webpack.js.org/)
   and [Babel](https://babeljs.io/).
-* Linted your JavaScript with [ESLint](https://eslint.org/).
-* Create a CSS bundle compiled with [PostCSS](http://postcss.org/).
-* Lint your CSS with [Stylelint](https://stylelint.io/).
-* Run your tests with [Jest](https://facebook.github.io/jest/) and compile them
+- Linted your JavaScript with [ESLint](https://eslint.org/).
+- Create a CSS bundle compiled with [PostCSS](http://postcss.org/).
+- Lint your CSS with [Stylelint](https://stylelint.io/).
+- Run your tests with [Jest](https://facebook.github.io/jest/) and compile them
   with [Babel](https://babeljs.io/).
 
 ## Why
@@ -105,26 +105,26 @@ doesn't give it's full measure. Here's some other features it has:
 
 ### JavaScript
 
-* Write **EcmaScript 2015**, transpiled to JavaScript all browsers understand
+- Write **EcmaScript 2015**, transpiled to JavaScript all browsers understand
   with Babel.
-* Write **TypeScript**, transpiled to EcmaScript 5 with the TypeScript compiler.
-* Bundle all JavaScript files together with the help of **Webpack**.
-* Compress the output with **UglifyJS** to create the smallest possible bundles.
-* Lint your code with **ESLint**, points you to possible mistakes and formatting
+- Write **TypeScript**, transpiled to EcmaScript 5 with the TypeScript compiler.
+- Bundle all JavaScript files together with the help of **Webpack**.
+- Compress the output with **UglifyJS** to create the smallest possible bundles.
+- Lint your code with **ESLint**, points you to possible mistakes and formatting
   errors.
-* Simple debugging with Source Maps.
+- Simple debugging with Source Maps.
 
 [Read more about features here](03_Use_Cases/Compiling_JavaScript.md)
 
 ### CSS
 
-* Preprocess your CSS using **PostCSS** and plugins that will allow to
+- Preprocess your CSS using **PostCSS** and plugins that will allow to
   write in a syntax approaching the one of Sass.
-* Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext`
+- Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext`
   to use CSS 4 options today and `postcss-advanced-variables` to define mixins
-* Compress the CSS output with `postcss-csso` to get the smallest possible file.
-* Automatically add vendor prefixes to properties with `autoprefixer`.
-* Simple Debugging with Source Maps
+- Compress the CSS output with `postcss-csso` to get the smallest possible file.
+- Automatically add vendor prefixes to properties with `autoprefixer`.
+- Simple Debugging with Source Maps
 
 [Read more about features here](03_Use_Cases/Compiling_CSS.md)
 

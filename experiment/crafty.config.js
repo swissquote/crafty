@@ -1,6 +1,3 @@
-// Due to the fact crafty is linked, we need to get webpack like this,
-// in any other project you can still "require('webpack')"
-const webpack = require('@swissquote/crafty-runner-webpack/node_modules/webpack');
 
 module.exports = {
   externals: [
@@ -40,6 +37,11 @@ module.exports = {
   },
   webpack(crafty, bundle, chain) {
 
+    // Do the requires when they're actually needed
+    // Doing them at the top of the files will slow down all 
+    // commands that don't actually need this dependency
+    const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
+
     // Code Splitting needs this to work correctly
     chain
       .output
@@ -48,6 +50,6 @@ module.exports = {
     // Only keep some locales in moment
     chain
       .plugin('contextReplacement')
-      .use(webpack.ContextReplacementPlugin, [/moment[\/\\]locale$/, /(?:de|fr|en-gb)\.js/]);
+      .use(ContextReplacementPlugin, [/moment[\/\\]locale$/, /(?:de|fr|en-gb)\.js/]);
   }
 };

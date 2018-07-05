@@ -38,7 +38,7 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"!function(e,n){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=n();else if(\\"function\\"==typeof define&&define.amd)define([],n);else{var t=n();for(var o in t)(\\"object\\"==typeof exports?exports:e)[o]=t[o]}}(window,function(){return function(e){function n(n){for(var t,r,i=n[0],u=n[1],c=0,a=[];c<i.length;c++)r=i[c],o[r]&&a.push(o[r][0]),o[r]=0;for(t in u)Object.prototype.hasOwnProperty.call(u,t)&&(e[t]=u[t]);for(f&&f(n);a.length;)a.shift()()}var t={},o={1:0};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}r.e=function(e){var n=[],t=o[e];if(0!==t)if(t)n.push(t[2]);else{var i=new Promise(function(n,r){t=o[e]=[n,r]});n.push(t[2]=i);var u=document.getElementsByTagName(\\"head\\")[0],c=document.createElement(\\"script\\");c.charset=\\"utf-8\\",c.timeout=120,r.nc&&c.setAttribute(\\"nonce\\",r.nc),c.src=function(e){return r.p+\\"\\"+e+\\".myBundle.min.js\\"}(e);var f=setTimeout(function(){a({type:\\"timeout\\",target:c})},12e4);function a(n){c.onerror=c.onload=null,clearTimeout(f);var t=o[e];if(0!==t){if(t){var r=n&&(\\"load\\"===n.type?\\"missing\\":n.type),i=n&&n.target&&n.target.src,u=new Error(\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+r+\\": \\"+i+\\")\\");u.type=r,u.request=i,t[1](u)}o[e]=void 0}}c.onerror=c.onload=a,u.appendChild(c)}return Promise.all(n)},r.m=e,r.c=t,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:t})},r.r=function(e){Object.defineProperty(e,\\"__esModule\\",{value:!0})},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,\\"a\\",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p=\\"\\",r.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp=window.webpackJsonp||[],u=i.push.bind(i);i.push=n,i=i.slice();for(var c=0;c<i.length;c++)n(i[c]);var f=u;return r(r.s=1)}([function(e,n,t){\\"use strict\\";t.r(n);var o=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(2+4),t.e(0).then(t.bind(null,2)).then(function(e){var n=new e.default;console.log(n.add(2,4))})},e}();n.default=o},function(e,n,t){e.exports=t(0)}])});
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){function t(t){var n=t[0];var o=t[1];var u,i,a=0,f=[];for(;a<n.length;a++)i=n[a],r[i]&&f.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);c&&c(t);while(f.length)f.shift()()}var n={};var r={1:0};function o(e){return u.p+\\"\\"+e+\\".myBundle.min.js\\"}function u(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=true,r.exports}u.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var i=new Promise(function(t,o){n=r[e]=[t,o]});t.push(n[2]=i);var a=document.getElementsByTagName(\\"head\\")[0];var f=document.createElement(\\"script\\");var c;f.charset=\\"utf-8\\",f.timeout=120,u.nc&&f.setAttribute(\\"nonce\\",u.nc),f.src=o(e),c=function(t){f.onerror=f.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var u=t&&t.target&&t.target.src;var i=new Error(\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\");i.type=o,i.request=u,n[1](i)}r[e]=void 0}};var l=setTimeout(function(){c({type:\\"timeout\\",target:f})},12e4);f.onerror=f.onload=c,a.appendChild(f)}return Promise.all(t)},u.m=e,u.c=n,u.d=function(e,t,n){u.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:n})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},u.t=function(e,t){if(1&t&&(e=u(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(u.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)u.d(n,r,function(t){return e[t]}.bind(null,r));return n},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,\\"a\\",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp=window.webpackJsonp||[];var a=i.push.bind(i);i.push=t,i=i.slice();for(var f=0;f<i.length;f++)t(i[f]);var c=a;return u(u.s=1)}([function(e,t,n){\\"use strict\\";function r(e,t){return e+t}n.r(t);var o=function(){function e(){console.log(\\"init class\\")}return e.prototype.method=function(){console.log(r(2,4)),n.e(0).then(n.bind(null,2)).then(function(e){var t=new e.default;console.log(t.add(2,4))})},e}();t.default=o},function(e,t,n){e.exports=n(0)}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -99,6 +99,7 @@ Object {
   Compiled with warnings.
 
 ./js/Component.ts
+Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
@@ -107,6 +108,7 @@ ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
  @ multi ./js/script.ts
 
 ./js/SomeLibrary.ts
+Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
 ERROR: 12:5  one-line  misplaced opening brace
 
@@ -114,6 +116,7 @@ ERROR: 12:5  one-line  misplaced opening brace
  @ multi ./js/script.ts
 
 ./js/script.ts
+Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts:6:5
 ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
 ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.

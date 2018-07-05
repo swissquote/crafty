@@ -6,8 +6,8 @@ For linting we use **Stylelint**; a CSS linter that works on top of PostCSS and 
 
 Our linting rules come in two flavors, Legacy and Recommended.
 
-* Legacy will check the formatting and common practices.
-* Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.
+- Legacy will check the formatting and common practices.
+- Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.
 
 By default, we check in **Recommended** mode, you can change this parameter with the [`legacy_css` option in your `crafty.config.js`](03_User_Guides/crafty.config.js_Available_Options.md)
 

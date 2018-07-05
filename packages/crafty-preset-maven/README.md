@@ -49,8 +49,8 @@ You can set the destination path manually but it's recommended to change the
 
 This is the default for each:
 
-* `webapp`: `${project.build.directory}/${project.build.finalName}/resources`
-* `webjar`: `${project.build.outputDirectory}/META-INF/resources/webjars`
+- `webapp`: `${project.build.directory}/${project.build.finalName}/resources`
+- `webjar`: `${project.build.outputDirectory}/META-INF/resources/webjars`
 
 This preset's role is to replace `config.destination` which is used to create
 the destination for each `bundleType` (`destination_js`, `destination_css` ...)

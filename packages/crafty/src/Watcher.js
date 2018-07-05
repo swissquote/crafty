@@ -1,4 +1,3 @@
-const watch = require("glob-watcher");
 const chalk = require("chalk");
 
 const run = require("./commands/run");
@@ -29,6 +28,7 @@ class Watcher {
           "on change"
         );
         this.runOnce = this.runOnce.concat(tasks);
+        const watch = require("glob-watcher");
         this.watchers[regex].running = watch(regex, {}, parallelRun);
       }
     };

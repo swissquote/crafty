@@ -1,19 +1,19 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-* [Webpack](05_Packages/02_crafty-runner-webpack.md)
+- [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Test Runners</th><td>
 
-* [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 <tr><th>Related presets</th><td>
 
-* [Babel](05_Packages/05_crafty-preset-babel.md)
-* [TypeScript](05_Packages/05_crafty-preset-typescript.md)
-* [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Babel](05_Packages/05_crafty-preset-babel.md)
+- [TypeScript](05_Packages/05_crafty-preset-typescript.md)
+- [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 </table>
@@ -64,8 +64,8 @@ Their documentation on testing components is exhaustive.
 When doing modern JavaScript development, the usual process is **Write code**,
 **Compile**, **Refresh the browser**.
 
-* `crafty watch` removes the **Compile** step because it's run automatically.
-* Hot Module Replacement (HMR) was created to remove the **Refresh the browser**
+- `crafty watch` removes the **Compile** step because it's run automatically.
+- Hot Module Replacement (HMR) was created to remove the **Refresh the browser**
   part.
 
 More precisely, when doing a build with Webpack, in development mode, a

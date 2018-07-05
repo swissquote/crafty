@@ -11,16 +11,16 @@
     "test:watch": "../../node_modules/.bin/jest --watch"
   },
   "dependencies": {
-    "babel-eslint": "8.2.3",
-    "eslint-plugin-import": "2.11.0",
-    "eslint-plugin-react": "7.7.0",
+    "babel-eslint": "8.2.5",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-react": "7.10.0",
     "eslint-plugin-sonarjs": "^0.1.0"
   },
   "peerDepdency": {
-    "eslint": ">= 4"
+    "eslint": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "eslint": "4.19.1",
+    "eslint": "5.0.1",
     "merge": "1.2.0"
   },
   "engines": {

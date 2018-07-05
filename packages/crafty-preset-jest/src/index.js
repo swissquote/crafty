@@ -1,13 +1,16 @@
 const { join } = require("path");
-const { writeFileSync, unlinkSync } = require("fs");
+const { writeFileSync, unlinkSync, existsSync } = require("fs");
 
 const jest = require("jest-cli");
 
 function normalizeJestOptions(crafty, input, cli) {
-  const moduleDirectories = new Set([
-    join(__dirname, "../node_modules"),
-    join(process.cwd(), "node_modules")
-  ]);
+  const moduleDirectories = new Set(
+    [
+      join(process.cwd(), "node_modules"),
+      join(__dirname, "..", "node_modules"),
+      join(__dirname, "..", "..", "..", "node_modules")
+    ].filter(existsSync)
+  );
   if (cli.flags.moduleDirectories) {
     cli.flags.moduleDirectories
       .split(",")
@@ -47,7 +50,9 @@ function normalizeJestOptions(crafty, input, cli) {
 
   // Support all extensions that can be transformed for test files extensions, except for json
   if (!options.hasOwnProperty("testRegex")) {
-    const extensions = options.moduleFileExtensions.filter(extension => extension !== 'json').join("|");
+    const extensions = options.moduleFileExtensions
+      .filter(extension => extension !== "json")
+      .join("|");
     options.testRegex = `(/__tests__/.*|(\\.|/)(test|spec))\\.(${extensions})$`;
   }
 
@@ -55,12 +60,11 @@ function normalizeJestOptions(crafty, input, cli) {
 }
 
 function deleteOnExit(file) {
-  process.addListener('exit', function _(data) {
+  process.addListener("exit", () => {
     try {
       unlinkSync(file);
-    }
-    catch (e) {
-      console.log("Failed", e)
+    } catch (e) {
+      console.log("Failed", e);
     }
   });
 }

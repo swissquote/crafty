@@ -2,30 +2,30 @@
 
 ## Features
 
-* **Organization**
-  * Nested Styles (`postcss-nesting`, `postcss-nested`, `postcss-atroot`)
-  * Import CSS Files (`postcss-import`, `postcss-url`)
-  * Comments (`postcss-scss`)
-* **Variables**
-  * Variables and Mixins (`postcss-advanced-variables`, `postcss-custom-properties`)
-  * Property Lookup (`postcss-property-lookup`)
-* **Images**
-  * Images in CSS (`postcss-assets`)
-* **Dynamic Styles**
-  * Math in your CSS (`postcss-calc`)
-  * Conditionals (`postcss-advanced-variables`)
-  * Loops (`postcss-advanced-variables`)
-  * Initial Values (`postcss-initial`)
-  * Colors (`postcss-color-function`, `postcss-color-gray`,
+- **Organization**
+  - Nested Styles (`postcss-nesting`, `postcss-nested`, `postcss-atroot`)
+  - Import CSS Files (`postcss-import`, `postcss-url`)
+  - Comments (`postcss-scss`)
+- **Variables**
+  - Variables and Mixins (`postcss-advanced-variables`, `postcss-custom-properties`)
+  - Property Lookup (`postcss-property-lookup`)
+- **Images**
+  - Images in CSS (`postcss-assets`)
+- **Dynamic Styles**
+  - Math in your CSS (`postcss-calc`)
+  - Conditionals (`postcss-advanced-variables`)
+  - Loops (`postcss-advanced-variables`)
+  - Initial Values (`postcss-initial`)
+  - Colors (`postcss-color-function`, `postcss-color-gray`,
     `postcss-color-hex-alpha`, `postcss-color-hwb`,
     `postcss-color-rebeccapurple`, `postcss-color-rgba-fallback`)
-* **Syntax simplification**
-  * Selectors (`postcss-selector-matches`, `postcss-selector-not`,
+- **Syntax simplification**
+  - Selectors (`postcss-selector-matches`, `postcss-selector-not`,
     `postcss-pseudo-class-any-link`, `postcss-custom-selectors`)
-  * Media Queries (`postcss-custom-media`, `postcss-media-minmax`)
-* **Fallbacks**
-  * Vendor Prefixes (`autoprefixer`)
-  * Browser support (`postcss-pseudoelements`, `postcss-replace-overflow-wrap`,
+  - Media Queries (`postcss-custom-media`, `postcss-media-minmax`)
+- **Fallbacks**
+  - Vendor Prefixes (`autoprefixer`)
+  - Browser support (`postcss-pseudoelements`, `postcss-replace-overflow-wrap`,
     `postcss-filter-gradient`, `postcss-font-variant`)
 
 See details in [CSS Features](05_crafty-preset-postcss/CSS_Features.md).

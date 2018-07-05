@@ -21,9 +21,9 @@ npm install
 
 Then you can run one of
 
-* `npm run build` to build the project once
-* `npm run test` to execute the tests
-* `npm run watch` to run the compilation in watch mode
+- `npm run build` to build the project once
+- `npm run test` to execute the tests
+- `npm run watch` to run the compilation in watch mode
 
 # Development
 
