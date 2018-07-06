@@ -166,9 +166,7 @@ module.exports = {
       .loader("css-loader")
       .options({
         importLoaders: 1,
-        sourceMap:
-          crafty.getEnvironment() === "production" && bundle.extractCSS,
-        minimize: false // we already apply postcss-csso in postcss
+        sourceMap: crafty.getEnvironment() === "production" && bundle.extractCSS
       });
 
     styleRule
