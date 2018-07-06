@@ -4,15 +4,8 @@ const lockfile = require('@yarnpkg/lockfile');
 const semver = require("semver");
 const chalk = require("chalk");
 
-
-const map = require('asyncmap');
-const Table = require('easy-table');
-const pacote = require('pacote');
-const relative = require('require-relative');
 const Repository = require("lerna/lib/Repository");
 const PackageUtilities = require("lerna/lib/PackageUtilities");
-
-
 
 function renderChain(currentChain) {
     //currentChain.reverse();
@@ -27,7 +20,6 @@ function findRequestChain(currentChain) {
     }
 
     requiredBy[requested].forEach(parent => {
-
         if (currentChain.indexOf(parent) > -1) {
             renderChain(currentChain.concat(`loop (${parent})`));
             return;
@@ -75,6 +67,10 @@ if (limitPackages) {
         Object.keys(dependencies  || {}).forEach(dep => ownPackages.add(dep))
         Object.keys(devDependencies || {}).forEach(dep => ownPackages.add(dep))
     });
+
+    // Exclude small packages that make a lot of noise
+    ownPackages.delete("chalk");
+    ownPackages.delete("debug");
 }
 
 
