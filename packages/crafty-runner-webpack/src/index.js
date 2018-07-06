@@ -34,7 +34,6 @@ module.exports = {
           top_retain: false,
           toplevel: false,
           typeofs: false,
-          
 
           // Switch off all types of compression except those needed to convince
           // react-devtools that we're using a production build

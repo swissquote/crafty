@@ -14,6 +14,7 @@ function snapshotizeOutput(ret) {
     .replace(/^\[[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]/gm, "[__:__:__]") // Remove timestamps
     .replace(/after ([0-9]*(?:\.[0-9]*)?) (h|min|[mnμ]?s)/g, "after ____ ms") // Remove durations
     .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
+    .replace(/｢atl｣: Time: ([0-9]*)ms/g, "｢atl｣: Time:  ____ms") // Remove durations
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
     .replace(
       /result \[webpack\/bootstrap (.*?)\]/g,

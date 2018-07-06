@@ -37,7 +37,7 @@ function reporter(opts) {
         result[key] = [message];
       }
       return result;
-    } , {});
+    }, {});
 
     const prepared = [];
     Object.keys(sourceGroupedMessages).forEach(source => {

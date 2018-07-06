@@ -5,11 +5,11 @@ module.exports = function(crafty, environment, bundle, babelOptions) {
     babelrc: false,
     presets: [
       [
-        require.resolve("@swissquote/babel-preset-swissquote"),
+        __dirname,
         Object.assign(
           {
             browsers: crafty.config.browsers,
-            environment: environment
+            environment
           },
           babelOptions || {}
         )
@@ -20,7 +20,7 @@ module.exports = function(crafty, environment, bundle, babelOptions) {
 
   // Apply preset configuration
   crafty.getImplementations("babel").forEach(preset => {
-    debug(preset.presetName + ".babel(Crafty, bundle, babelConfig)");
+    debug(`${preset.presetName}.babel(Crafty, bundle, babelConfig)`);
     preset.babel(crafty, bundle, babelConfiguration);
     debug("preset executed");
   });

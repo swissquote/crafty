@@ -1,11 +1,7 @@
 const path = require("path");
 
 function absolutePath(item) {
-  if (path.isAbsolute(item)) {
-    return item;
-  }
-
-  return path.join(process.cwd(), item);
+  return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
 
 function absolutePaths(arr) {

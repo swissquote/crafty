@@ -3,7 +3,7 @@ const tmp = require("tmp");
 const fs = require("fs");
 const path = require("path");
 
-const babelConfigurator = require("./babel");
+const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
 const createTask = require("./gulp");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
@@ -62,7 +62,6 @@ module.exports = {
           top_retain: false,
           toplevel: false,
           typeofs: false,
-          
 
           // Switch off all types of compression except those needed to convince
           // react-devtools that we're using a production build
