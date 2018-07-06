@@ -5,8 +5,6 @@ const createTempFile = require("./utils").createTempFile;
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
-const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-
 function resolve(relative) {
   return path.resolve(process.cwd(), relative);
 }
@@ -114,10 +112,15 @@ module.exports = {
       .test(/\.tsx?$/)
       .exclude.add(/(node_modules|bower_components)/);
 
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     const babelOptions = babelConfigurator(
       crafty,
       crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle
+      bundle,
+      {
+        deduplicateHelpers: true,
+        useESModules: true
+      }
     );
 
     chain.module
@@ -125,9 +128,19 @@ module.exports = {
       .use("awesome-typescript-loader")
       .loader("awesome-typescript-loader")
       .options({
-        //useBabel: false,
-        //babelCore: "@babel/core",
-        //babelOptions
+        // We set the value this way to respect backwards compatibility,
+        // Ideally, the value should be `crafty.config.destination_js`
+        // TODO :: check if we need to take into account the destination-dir of the bundle
+        declarationDir: crafty.config.destination_js + "/js",
+        // Transpile to esnext so that Babel can apply all its magic
+        target: "ESNext",
+        // Preserve JSX so babel can optimize it, or add development/debug information
+        jsx: "Preserve",
+        // TODO :: It seems there is a problem with cache and declaration (.d.ts) files, needs to be checked
+        //useCache: true,
+        useBabel: true,
+        babelCore: "@babel/core",
+        babelOptions
       });
   }
 };
