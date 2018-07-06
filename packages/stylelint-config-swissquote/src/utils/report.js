@@ -71,10 +71,11 @@ module.exports = function(violation) {
     return;
   }
 
-  const severity = result.stylelint.hasOwnProperty("ruleSeverities") 
-    && result.stylelint.ruleSeverities.hasOwnProperty(ruleName) 
-    && result.stylelint.ruleSeverities[ruleName]
-    || "ignore";
+  const severity =
+    (result.stylelint.hasOwnProperty("ruleSeverities") &&
+      result.stylelint.ruleSeverities.hasOwnProperty(ruleName) &&
+      result.stylelint.ruleSeverities[ruleName]) ||
+    "ignore";
 
   if (typeof severity === "undefined") {
     throw new Error(
@@ -102,9 +103,10 @@ module.exports = function(violation) {
     warningProperties.word = word;
   }
 
-  const warningMessage = result.stylelint.hasOwnProperty("customMessages") 
-  && result.stylelint.customMessages.hasOwnProperty(ruleName) 
-  && result.stylelint.customMessages[ruleName]
-  || message;
+  const warningMessage =
+    (result.stylelint.hasOwnProperty("customMessages") &&
+      result.stylelint.customMessages.hasOwnProperty(ruleName) &&
+      result.stylelint.customMessages[ruleName]) ||
+    message;
   result.warn(warningMessage, warningProperties);
 };

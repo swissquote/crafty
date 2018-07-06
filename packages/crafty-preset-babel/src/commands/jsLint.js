@@ -14,7 +14,7 @@ const tmpfile = tmp.fileSync({ postfix: ".json" }).name;
 fs.writeFileSync(tmpfile, JSON.stringify(configuration.configuration));
 
 // Remove "jsLint" from  command
-process.argv.splice(2,1);
+process.argv.splice(2, 1);
 
 process.argv.push("--config");
 process.argv.push(tmpfile);

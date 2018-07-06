@@ -131,8 +131,8 @@ module.exports = {
     // Ideally, the value should be without the `/js` at the end
     const declarationDir = absolutePath(
       crafty.config.destination_js +
-      (bundle.directory ? "/" + bundle.directory : "") +
-      "/js"
+        (bundle.directory ? "/" + bundle.directory : "") +
+        "/js"
     );
 
     chain.module
