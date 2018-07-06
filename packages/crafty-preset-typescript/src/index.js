@@ -9,6 +9,10 @@ function resolve(relative) {
   return path.resolve(process.cwd(), relative);
 }
 
+function absolutePath(item) {
+  return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
+}
+
 module.exports = {
   defaultConfig() {
     return {
@@ -123,15 +127,21 @@ module.exports = {
       }
     );
 
+    // We set the value this way to respect backwards compatibility,
+    // Ideally, the value should be without the `/js` at the end
+    const declarationDir = absolutePath(
+      crafty.config.destination_js +
+      (bundle.directory ? "/" + bundle.directory : "") +
+      "/js"
+    );
+
     chain.module
       .rule("ts")
       .use("awesome-typescript-loader")
       .loader("awesome-typescript-loader")
       .options({
-        // We set the value this way to respect backwards compatibility,
-        // Ideally, the value should be `crafty.config.destination_js`
-        // TODO :: check if we need to take into account the destination-dir of the bundle
-        declarationDir: crafty.config.destination_js + "/js",
+        // Write declaration files in the destination folder
+        declarationDir,
         // Transpile to esnext so that Babel can apply all its magic
         target: "ESNext",
         // Preserve JSX so babel can optimize it, or add development/debug information
