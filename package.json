@@ -7,7 +7,9 @@
   "main": "index.js",
   "author": "Stephane Goetz",
   "workspaces": {
-    "packages": ["packages/*"],
+    "packages": [
+      "packages/*"
+    ],
     "nohoist": [
       "**/eslint",
       "**/gulp-eslint",
@@ -21,6 +23,7 @@
     "test": "jest -i --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty"
   },
   "dependencies": {
+    "@yarnpkg/lockfile": "^1.0.2",
     "asyncmap": "^1.0.0",
     "chalk": "^2.4.1",
     "easy-table": "^1.1.1",
