@@ -23,23 +23,6 @@ module.exports = {
     // TODO :: ensure we can still use `setupTestFrameworkScriptFile` and this at the same time
     options.setupTestFrameworkScriptFile = require.resolve("./testSetup.js");
   },
-  webpack(crafty, bundle, chain) {
-    chain.resolve.modules.add(MODULES);
-    chain.resolveLoader.modules.add(MODULES);
-
-
-    if (crafty.getEnvironment() !== "production" && crafty.isWatching() && bundle.hot && bundle.react) {
-
-      // Only TypeScript needs this loader, babel uses a plugin
-      if (chain.module.rule("ts")) {
-        chain.module.rule("ts").use("hot").loader("react-hot-loader/webpack");
-      }
-
-      // According to react-hot-loader's documentation, this should be the very first entry.
-      chain.entry("default").prepend(require.resolve("react-hot-loader/patch"));
-    }
-
-  },
   babel(crafty, bundle, babelConfig) {
 
     // Add hot module replacement for bundles with React
