@@ -127,30 +127,37 @@ module.exports = {
       }
     );
 
-    // We set the value this way to respect backwards compatibility,
-    // Ideally, the value should be without the `/js` at the end
-    const declarationDir = absolutePath(
-      crafty.config.destination_js +
-        (bundle.directory ? "/" + bundle.directory : "") +
-        "/js"
-    );
+    const optionOverrides = {
+      // Transpile to esnext so that Babel can apply all its magic
+      target: "ESNext",
+      // Preserve JSX so babel can optimize it, or add development/debug information
+      jsx: "Preserve",
+      // TODO :: It seems there is a problem with cache and declaration (.d.ts) files, needs to be checked
+      //useCache: true,
+      useBabel: true,
+      babelCore: "@babel/core",
+      babelOptions
+    };
+
+    // Get the current configuration to know what configuration options we have to set
+    const instance = require("awesome-typescript-loader/dist/instance");
+    const currentConfig = instance.readConfigFile(process.cwd(), {}, {}, require("typescript"));
+
+    if (currentConfig.compilerConfig.options.declaration && !currentConfig.compilerConfig.options.declarationDir) {
+      // Write declaration files in the destination folder
+      // We set the value this way to respect backwards compatibility,
+      // Ideally, the value should be without the `/js` at the end
+      optionOverrides.declarationDir = absolutePath(
+        crafty.config.destination_js +
+          (bundle.directory ? "/" + bundle.directory : "") +
+          "/js"
+      );
+    }
 
     chain.module
       .rule("ts")
       .use("awesome-typescript-loader")
       .loader("awesome-typescript-loader")
-      .options({
-        // Write declaration files in the destination folder
-        declarationDir,
-        // Transpile to esnext so that Babel can apply all its magic
-        target: "ESNext",
-        // Preserve JSX so babel can optimize it, or add development/debug information
-        jsx: "Preserve",
-        // TODO :: It seems there is a problem with cache and declaration (.d.ts) files, needs to be checked
-        //useCache: true,
-        useBabel: true,
-        babelCore: "@babel/core",
-        babelOptions
-      });
+      .options(optionOverrides);
   }
 };
