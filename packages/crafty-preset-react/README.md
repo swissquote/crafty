@@ -86,66 +86,18 @@ Here's an example :
 
 To enable HMR on your react application, you must set `hot: true` and `react: true` on your bundle in `crafty.config.js`.
 
-Then you must transform all your `ReactDOM.render` from this:
+Then you must mark your root component as hot-exported :
 
 ```javascript
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./containers/App";
+import React from 'react'
+import { hot } from 'react-hot-loader'
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const App = () => <div>Hello World!</div>
+
+export default hot(module)(App)
 ```
 
-into this:
-
-```javascript
-import React from "react";
-import ReactDOM from "react-dom";
-import { AppContainer } from "react-hot-loader";
-import App from "./containers/App";
-
-const render = Component => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById("root")
-  );
-};
-
-render(App);
-
-// Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept("./containers/App", () => {
-    render(App);
-  });
-}
-```
-
-Keep in mind that everything inside `if (module.hot)` will be removed in your
-production build.
-
-### Usage with code splitting
-
-If you use code splitting in your applications, by default the code split
-bundles will not work with React Hot Loader.
-
-To fix this, you can force a require of the dependencies in the bundle that is
-code split during development.
-
-Something like :
-
-```javascript
-import("../components/DatePickers").then(DatePickers => {
-  // Do something with lazy loaded module
-});
-
-// Force loading of module in development
-if (process.env.NODE_ENV === "development") {
-  require("../components/DatePickers");
-}
-```
+Only the root component needs this wrapping, the child components don't need it.
 
 ### TypeScript
 
