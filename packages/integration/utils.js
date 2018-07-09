@@ -8,12 +8,13 @@ function snapshotizeOutput(ret) {
   return ret
     .replace(/ *$/gm, "") // Remove spaces at EOL
     .replace(
-      /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-PRZcf-nqry=><]/g,
+      /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-PRZcf-nqry=><]/g, // eslint-disable-line no-control-regex
       ""
     ) // Remove ansi colors
     .replace(/^\[[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]/gm, "[__:__:__]") // Remove timestamps
     .replace(/after ([0-9]*(?:\.[0-9]*)?) (h|min|[mnμ]?s)/g, "after ____ ms") // Remove durations
     .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
+    .replace(/｢atl｣: Time: ([0-9]*)ms/g, "｢atl｣: Time:  ____ms") // Remove durations
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
     .replace(
       /result \[webpack\/bootstrap (.*?)\]/g,
@@ -31,11 +32,7 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
-    .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
-    .replace(
-      /Child extract-text-webpack-plugin (?:.*)\/(.*):/g,
-      "Child extract-text-webpack-plugin __LONG_AND_WEIRD_PATH__!css/$1:"
-    ); // Remove relative paths
+    .replace(new RegExp(escapedPath, "gm"), "__PATH__"); // Remove paths
 }
 
 function snapshotizeCSS(ret) {

@@ -46,3 +46,28 @@ something.push("a value");
   expect(result.warningCount).toBe(0);
   expect(result.errorCount).toBe(1);
 });
+
+it("Uses sonar plugin", () => {
+  const result = lint(
+    engine,
+    `
+/* global openWindow, closeWindow, moveWindowToTheBackground */
+
+function changeWindow(param) {
+  "use strict";
+  if (param === 1) {
+    openWindow();
+  } else if (param === 2) {
+    closeWindow();
+  } else if (param === 1) { // Noncompliant
+    moveWindowToTheBackground();
+  }
+}
+
+`
+  );
+
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toBe(0);
+  expect(result.errorCount).toBe(1);
+});

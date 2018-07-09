@@ -11,13 +11,13 @@ N/A
 </td></tr>
 <tr><th>Commands</th><td>
 
-* `test`: Jest integrates itself with the `crafty test` command
+- `test`: Jest integrates itself with the `crafty test` command
 
 </td></tr>
 <tr><th>Related presets</th><td>
 
-* [Babel](05_Packages/05_crafty-preset-babel.md)
-* [TypeScript](05_Packages/05_crafty-preset-typescript.md)
+- [Babel](05_Packages/05_crafty-preset-babel.md)
+- [TypeScript](05_Packages/05_crafty-preset-typescript.md)
 
 </td></tr>
 </table>
@@ -48,9 +48,9 @@ need them.
 Jest will look for test files with any of the following popular naming
 conventions:
 
-* Files with `.js` suffix in `__tests__` folders.
-* Files with `.test.js` suffix.
-* Files with `.spec.js` suffix.
+- Files with `.js` suffix in `__tests__` folders.
+- Files with `.test.js` suffix.
+- Files with `.spec.js` suffix.
 
 The `.test.js` / `.spec.js` files (or the `__tests__` folders) can be located at
 any depth under the `src` top level folder.
@@ -63,6 +63,12 @@ they are testing so that relative imports appear shorter. For example, if
 > `jsx` as a supported test file extension and
 > [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript.md) will
 > add the support for `ts` and `tsx`
+
+To be able to use `.ts` or `.tsx` test files, you'll have to add `@types/jest` as a dependency :
+
+```sh
+npm install --save @types/jest
+```
 
 ## `crafty test`
 
@@ -175,7 +181,6 @@ import App from "./App";
 it("renders welcome message", () => {
   const wrapper = shallow(<App />);
   const welcome = <h2>Welcome to React</h2>;
-  // expect(wrapper.contains(welcome)).to.equal(true);
   expect(wrapper.contains(welcome)).toEqual(true);
 });
 ```

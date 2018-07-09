@@ -1,14 +1,16 @@
 const { join } = require("path");
-const { writeFileSync } = require("fs");
+const { writeFileSync, unlinkSync, existsSync } = require("fs");
 
 const jest = require("jest-cli");
-const tmp = require("tmp");
 
 function normalizeJestOptions(crafty, input, cli) {
-  const moduleDirectories = new Set([
-    join(__dirname, "../node_modules"),
-    join(process.cwd(), "node_modules")
-  ]);
+  const moduleDirectories = new Set(
+    [
+      join(process.cwd(), "node_modules"),
+      join(__dirname, "..", "node_modules"),
+      join(__dirname, "..", "..", "..", "node_modules")
+    ].filter(existsSync)
+  );
   if (cli.flags.moduleDirectories) {
     cli.flags.moduleDirectories
       .split(",")
@@ -46,22 +48,34 @@ function normalizeJestOptions(crafty, input, cli) {
     preset.jest(crafty, options);
   });
 
-  // Support all extensions that can be transformed for test files extensions
+  // Support all extensions that can be transformed for test files extensions, except for json
   if (!options.hasOwnProperty("testRegex")) {
-    const extensions = options.moduleFileExtensions.join("|");
+    const extensions = options.moduleFileExtensions
+      .filter(extension => extension !== "json")
+      .join("|");
     options.testRegex = `(/__tests__/.*|(\\.|/)(test|spec))\\.(${extensions})$`;
   }
 
   return options;
 }
 
+function deleteOnExit(file) {
+  process.addListener("exit", () => {
+    try {
+      unlinkSync(file);
+    } catch (e) {
+      console.log("Failed", e);
+    }
+  });
+}
+
 module.exports = {
   test(crafty, input, cli) {
     return new Promise((resolve, reject) => {
-      const configFile = tmp.fileSync({
-        prefix: "jest-config-",
-        postfix: ".json"
-      }).name;
+      // Create config file in the current working directory
+      // Creating it in a temp path breaks code coverage collection
+      const configFile = join(process.cwd(), "jest-config-crafty.json");
+      deleteOnExit(configFile);
       const options = normalizeJestOptions(crafty, input, cli);
       const cliOptions = {
         config: configFile,

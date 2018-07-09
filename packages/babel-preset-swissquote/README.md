@@ -4,27 +4,27 @@ This package includes the Babel preset used by Crafty.
 
 This preset will do the following for you:
 
-* Transform EcmaScript 2015+ back to EcmaScript 5, according to the list of
-  browsers you support. (`babel-preset-env`)
-* Handle non-standard class properties
-  (`babel-plugin-transform-class-properties`)
-* Support Object rest and spread (`babel-plugin-transform-object-rest-spread`)
-* [prod/dev] Transpile generators (`babel-plugin-transform-regenerator`)
-* Polyfills the runtime needed for `async`/`await` and generators
-  (`babel-plugin-transform-runtime`)
-* Convert JSX to JavaScript (`babel-preset-react`)
-* [test/dev] Add debug information to JSX
-  (`babel-plugin-transform-react-jsx-self`,
-  `babel-plugin-transform-react-jsx-source`)
-* Support Dynamic imports (`babel-plugin-syntax-dynamic-import`) or convert them
-  to a deferred require in tests (`babel-plugin-dynamic-import-node`)
+- Transform EcmaScript 2015+ back to EcmaScript 5, according to the list of
+  browsers you support. (`@babel/preset-env`)
+- Handle non-standard class properties
+  (`@babel/plugin-proposal-class-properties`)
+- Support Object rest, spread and destructuring (`@babel/plugin-proposal-object-rest-spread`, `@babel/plugin-transform-destructuring`)
+- [prod/dev] Transpile generators (`@babel/plugin-transform-regenerator`)
+- Polyfills the runtime needed for `async`/`await` and generators
+  (`@babel/plugin-transform-runtime`)
+- Convert JSX to JavaScript (`@babel/preset-react`)
+- [prod] Remove React Prop Types in production ( `babel-plugin-transform-react-remove-prop-types` )
+- Support Dynamic imports (`@babel/plugin-syntax-dynamic-import`) or convert them
+  to a deferred require in tests (`babel-plugin-transform-dynamic-import`)
 
 ## Options
 
-| Option        | Default                                         | Effect                                                                          |
-| ------------- | ----------------------------------------------- | ------------------------------------------------------------------------------- |
-| `environment` | `process.env.BABEL_ENV || process.env.NODE_ENV` | Overrides the environment, must be one of `development`, `test` or `production` |
-| `browsers`    | `babel-preset-env`'s default + IE9              | Sets the list of browsers to support, must be a valid Browserslist query        |
+| Option               | Default                                         | Effect                                                                                      |
+| -------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `environment`        | `process.env.BABEL_ENV || process.env.NODE_ENV` | Overrides the environment, must be one of `development`, `test` or `production`             |
+| `browsers`           | `babel-preset-env`'s default + IE9              | Sets the list of browsers to support, must be a valid Browserslist query                    |
+| `deduplicateHelpers` | `false`                                         | Defines if the babel helpers (like `createClass`) should be in each file or referenced once |
+| `useESModules`       | `false`                                         | Defines if `@babel/plugin-transform-runtime` should use ES modules or commonjs modules      |
 
 ## Usage in Crafty
 

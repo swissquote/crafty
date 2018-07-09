@@ -2,9 +2,7 @@ const path = require("path");
 const fs = require("fs");
 
 const chalk = require("chalk");
-const webpackMerge = require("webpack-merge");
-const webpack = require("webpack");
-const WebpackDevServer = require("webpack-dev-server");
+
 const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty-runner-webpack");
 
@@ -20,6 +18,7 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
   if (fs.existsSync(configPath)) {
     crafty.log("Merging SQ webpack config with " + chalk.magenta(configPath));
+    const webpackMerge = require("webpack-merge");
     webpackConfig = webpackMerge.smart(webpackConfig, require(configPath));
   }
 
@@ -94,63 +93,67 @@ function printErrors(summary, errors) {
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
   let webpackPort = null;
-  const compilerReady = portFinder.getFree(taskName).then(freePort => {
-    try {
+  const getCompiler = () => {
+    return portFinder.getFree(taskName).then(freePort => {
       webpackPort = freePort;
       const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
+      const webpack = require("webpack");
       const compiler = webpack(webpackConfig);
+
+      if (!compiler) {
+        return Promise.reject("Could not create compiler");
+      }
 
       // "invalid" event fires when you have changed a file, and Webpack is
       // recompiling a bundle. WebpackDevServer takes care to pause serving the
       // bundle, so if you refresh, it'll wait instead of serving the old one.
       // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-      compiler.plugin("invalid", () => {
+      compiler.hooks.invalid.tap("CraftyRuntime", () => {
         console.log("Compiling...");
       });
 
-      compiler.plugin("done", onDone(crafty, webpackConfig, compiler, bundle));
+      compiler.hooks.done.tap(
+        "CraftyRuntime",
+        onDone(crafty, webpackConfig, compiler, bundle)
+      );
 
-      if (compiler) {
-        return Promise.resolve(compiler);
-      } else {
-        return Promise.reject("Could not create compiler");
-      }
-    } catch (e) {
-      return Promise.reject(e);
-    }
-  });
+      return compiler;
+    });
+  };
 
   // This is executed in watch mode only
   let runningWatcher = null;
   crafty.watcher.addRaw({
     start: () => {
-      compilerReady
-        .then(
-          compiler => {
-            // Prepare the Hot Reload Server
-            runningWatcher = new WebpackDevServer(compiler, {
-              stats: false,
-              hot: true,
-              hotOnly: true,
-              headers: {
-                "Access-Control-Allow-Origin": "*"
-              }
-            });
+      const compilerReady = getCompiler();
 
-            runningWatcher.listen(webpackPort, "localhost", function(err) {
-              if (err) {
-                throw new util.PluginError("webpack-dev-server", err);
-              }
-              crafty.log(
-                "[webpack-dev-server]",
-                "Started, listening on localhost:" + webpackPort
-              );
-            });
-          },
-          e => {
-            crafty.log.error("[webpack-dev-server]", "Could not start", e);
-          }
-        )
+      compilerReady.catch(e => {
+        crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
+      });
+
+      compilerReady
+        .then(compiler => {
+          // Prepare the Hot Reload Server
+          const WebpackDevServer = require("webpack-dev-server");
+          runningWatcher = new WebpackDevServer(compiler, {
+            stats: false,
+            hot: true,
+            hotOnly: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          });
+
+          runningWatcher.listen(webpackPort, "localhost", function(err) {
+            if (err) {
+              throw new util.PluginError("webpack-dev-server", err);
+            }
+            crafty.log(
+              "[webpack-dev-server]",
+              "Started, listening on localhost:" + webpackPort
+            );
+          });
+        })
         .catch(e => {
           crafty.log.error("[webpack-dev-server]", "Could not start", e);
         });
@@ -159,8 +162,14 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
   // This is executed in single-run only
   crafty.undertaker.task(taskName, cb => {
-    compilerReady.then(compiler => {
-      try {
+    const compilerReady = getCompiler();
+
+    compilerReady.catch(e => {
+      cb(e);
+    });
+
+    compilerReady
+      .then(compiler => {
         compiler.run((err, stats) => {
           if (err) {
             printErrors("Failed to compile.", [err]);
@@ -175,10 +184,10 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
           return cb();
         });
-      } catch (e) {
+      })
+      .catch(e => {
         printErrors("Failed to compile.", [e]);
         cb(e);
-      }
-    }, cb);
+      });
   });
 };

@@ -69,7 +69,7 @@ module.exports = {
       }
     ],
     //"no-loop-func": true,
-    "no-unused-expression": true,
+    //"no-unused-expression": true,
     //"no-new-func": true,
     //"no-octal-escape": true,
     //"no-param-reassign": true,

@@ -8,6 +8,7 @@ function getCommands(crafty) {
     debug(`${preset.presetName}.commands(crafty)`);
     commands = merge.recursive(true, commands, preset.commands(crafty));
   });
+  commands.help = require("./help.js");
   commands.run = require("./run.js");
   commands.watch = require("./watch.js");
   commands.test = require("./testCommand.js");

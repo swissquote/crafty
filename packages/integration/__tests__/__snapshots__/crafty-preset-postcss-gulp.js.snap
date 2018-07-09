@@ -269,10 +269,7 @@ exports[`Experiment with all CSS 2`] = `
  */
 
 .Quote {
-    background: #99dd99;
     background: rgba(153, 221, 153, .8);   /* This will create a fallback without the alpha*/
-
-    border-color: #99dd99;
 
     border-color: rgba(153, 221, 153, 0.8);                    /* This will be transformed to rgba*/
 
@@ -280,11 +277,9 @@ exports[`Experiment with all CSS 2`] = `
 }
 
 .Quote--clear {
-    background: rgb(251, 255, 255);           /* Allows to declare colors with rgb() level 4 */
+    background: rgb(251, 255, 255);           /* Allows to declare colors with rgb() level 4*/
 
     color: hsla(180, 100%, 50%, .2);       /* This will declare colors with hsl() level 4*/
-
-    border-color: #80ff00;
 
     border-color: rgba(128, 255, 0, .5);       /* This will transform colors to rgba()*/
 }
@@ -292,7 +287,6 @@ exports[`Experiment with all CSS 2`] = `
 /* Color manipulation */
 
 .Link {
-    color: #ff0000;
     color: rgba(255, 0, 0, 0.9);      /* Change the opacity of red*/
 }
 
@@ -301,7 +295,6 @@ exports[`Experiment with all CSS 2`] = `
 }
 
 .Link {
-    color: #80ff00;
     color: rgba(128, 255, 0, .6);        /* This will be transformed to rgba*/
 }
 
@@ -309,8 +302,6 @@ exports[`Experiment with all CSS 2`] = `
 
 .Text {
     color: rgb(85, 85, 85);            /* Level of gray*/
-
-    background: #1a1a1a;
 
     background: rgba(26, 26, 26, 0.5); /* Level of gray with opacity*/
 }
@@ -366,7 +357,6 @@ button:focus,
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
@@ -381,7 +371,6 @@ button:focus,
 }
 
 :fullscreen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -409,9 +398,6 @@ button:focus,
 }
 
 .Buy {
-    background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), to(#7db9e8));
-    background: -webkit-linear-gradient(top, #1e5799, #7db9e8);
-    background: -o-linear-gradient(top, #1e5799, #7db9e8);
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
@@ -430,13 +416,13 @@ button:focus,
     font-variant-numeric: lining-nums;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .BigImage {
     background-image: url(img/test-2x.png);
 } }
 
-@media (-webkit-min-device-pixel-ratio: 6.25), (-o-min-device-pixel-ratio: 25/4), (min-resolution: 600dpi) {
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);

@@ -22,7 +22,7 @@ it("Loads crafty-preset-images-simple and does not register gulp tasks", () => {
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -70,7 +70,7 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["run", "watch", "test"]);
+  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

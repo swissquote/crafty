@@ -21,11 +21,11 @@ function describeCommands(descriptions, padding) {
 function describeTasks(undertaker) {
   const tree = undertaker.tree();
   return tree.nodes.length
-    ? makeSpaces(2) + tree.nodes.join("\n" + makeSpaces(2)).trim()
-    : makeSpaces(2) + "No task defined";
+    ? makeSpaces(2) + tree.nodes.join(`\n${makeSpaces(2)}`).trim()
+    : `${makeSpaces(2)}No task defined`;
 }
 
-module.exports = function(commands, crafty) {
+function showHelp(commands, crafty) {
   crafty.createTasks();
   const padding = Object.keys(commands)
     .map(string => string.length)
@@ -40,4 +40,9 @@ ${describeCommands(commands, padding)}
 Tasks:
 ${describeTasks(crafty.undertaker)}
 `;
+}
+
+exports.description = "This help";
+exports.command = function help(crafty /*, input, cli*/) {
+  console.log(showHelp(crafty.commands, crafty));
 };

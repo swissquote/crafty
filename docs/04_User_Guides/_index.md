@@ -5,14 +5,14 @@ are available to you to how to improve your productivity with `gulp watch`.
 
 ## Getting Started
 
-* [Configuring the build in a blank project](Configuring_the_build_in_a_blank_project.md)
-* [Configuring the build in a maven project](Configuring_the_build_in_a_maven_project.md)
-* [Create a configuration file](Create_a_configuration_file.md)
+- [Configuring the build in a blank project](Configuring_the_build_in_a_blank_project.md)
+- [Configuring the build in a maven project](Configuring_the_build_in_a_maven_project.md)
+- [Create a configuration file](Create_a_configuration_file.md)
 
 ## Productivity
 
-* [Developing Faster with Crafty watch](User_Guides/Developing_Faster_with_Crafty_watch.md)
+- [Developing Faster with Crafty watch](User_Guides/Developing_Faster_with_Crafty_watch.md)
 
 ## References
 
-* [Available options in `crafty.config.js`](crafty.config.js_Available_Options.md)
+- [Available options in `crafty.config.js`](crafty.config.js_Available_Options.md)

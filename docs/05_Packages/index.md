@@ -91,14 +91,6 @@ JSX Compilation is handled by the `crafty-preset-babel` already.
 
 [Features and options](05_crafty-preset-react.md)
 
-### `crafty-preset-polyfills`
-
-> **Not Ready**
-
-Webpack : Add polyfills for common features
-
-[Features and options](05_crafty-preset-polyfills.md)
-
 ## Test runners
 
 ### `crafty-preset-jest`

@@ -34,7 +34,7 @@ compression to your svg source file (remove comments and useless spaces)
 
 ## Known issues
 
-* Downloading jpg/png/gif compression tools is done from GitHub directly and
+- Downloading jpg/png/gif compression tools is done from GitHub directly and
   fails on machines that don't have internet access or a corporate proxy. You
   can use
   [`crafty-preset-images-simple`](05_Packages/05_crafty-preset-images-simple.md)

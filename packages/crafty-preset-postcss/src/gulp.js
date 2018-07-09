@@ -1,17 +1,16 @@
-const postcss = require("gulp-postcss");
-const rename = require("gulp-rename");
-const sourcemaps = require("gulp-sourcemaps");
-const scssParser = require("postcss-scss");
-const eos = require("end-of-stream");
-const exhaust = require("stream-exhaust");
-const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
-
 function cssTask(crafty, StreamHandler, bundle) {
   return function() {
     // Init
     const destination =
       crafty.config.destination_css +
       (bundle.directory ? "/" + bundle.directory : "");
+
+    const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
+    const postcss = require("gulp-postcss");
+    const rename = require("gulp-rename");
+    const scssParser = require("postcss-scss");
+    const sourcemaps = require("gulp-sourcemaps");
+    const touch = require("./touch.js");
 
     return new StreamHandler(bundle.source, destination)
       .add(sourcemaps.init())
@@ -22,6 +21,7 @@ function cssTask(crafty, StreamHandler, bundle) {
       )
       .add(rename(bundle.destination))
       .add(sourcemaps.write("./"))
+      .add(touch())
       .generate();
   };
 }
@@ -44,10 +44,14 @@ function createLinter(gulp, crafty, name) {
       reporter
     ];
 
+    const postcss = require("gulp-postcss");
+    const scssParser = require("postcss-scss");
     const stream = gulp
       .src(crafty.config.stylelint_pattern)
       .pipe(postcss(processors, { parser: scssParser }));
 
+    const eos = require("end-of-stream");
+    const exhaust = require("stream-exhaust");
     eos(exhaust(stream), { error: false }, err => {
       const result = reporter.report();
 

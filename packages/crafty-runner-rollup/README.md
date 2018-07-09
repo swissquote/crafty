@@ -13,10 +13,10 @@ EcmaScript 2015 exports which allow for advanced tree shaking.
 
 ## Features
 
-* Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports
-* Your code is Uglified after compilation.
-* Configurable output formats
-* Watch mode, re-compiles your files on changes
+- Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports
+- Your code is Uglified after compilation.
+- Configurable output formats
+- Watch mode, re-compiles your files on changes
 
 ## Options
 
@@ -105,7 +105,7 @@ module.exports = {
 
 ## Known issues
 
-* If you have two bundles that run with rollup.js, if one fails, the second one
+- If you have two bundles that run with rollup.js, if one fails, the second one
   stops as well.
-* ESLint stops linting after the first file in error, this shouldn't be the
+- ESLint stops linting after the first file in error, this shouldn't be the
   case.

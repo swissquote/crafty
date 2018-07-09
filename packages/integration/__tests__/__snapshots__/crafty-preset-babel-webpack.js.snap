@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Compiles Generators 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles-generators/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                status
+  1 kB  3        ./js/script.js        built
+  1 kB  4        multi ./js/script.js  built
+
+  size  name     asset                 status
+  1 kB  default  myBundle.min.js       emitted
+  1 kB  default  myBundle.min.js.map   emitted
+
+  (3 modules hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles Generators 2`] = `
+"(function(t,r){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=r();else if(\\"function\\"===typeof define&&define.amd)define([],r);else{var e=r();for(var n in e)(\\"object\\"===typeof exports?exports:t)[n]=e[n]}})(window,function(){return function(t){var r={};function e(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:false,exports:{}};return t[n].call(o.exports,o,o.exports,e),o.l=true,o.exports}return e.m=t,e.c=r,e.d=function(t,r,n){e.o(t,r)||Object.defineProperty(t,r,{enumerable:true,get:n})},e.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:true})},e.t=function(t,r){if(1&r&&(t=e(t)),8&r)return t;if(4&r&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(e.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:t}),2&r&&\\"string\\"!=typeof t)for(var o in t)e.d(n,o,function(r){return t[r]}.bind(null,o));return n},e.n=function(t){var r=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(r,\\"a\\",r),r},e.o=function(t,r){return Object.prototype.hasOwnProperty.call(t,r)},e.p=\\"\\",e(e.s=4)}([function(t,r,e){t.exports=e(2)},function(t,r){!function(r){\\"use strict\\";var e=Object.prototype;var n=e.hasOwnProperty;var o;var i=\\"function\\"===typeof Symbol?Symbol:{};var a=i.iterator||\\"@@iterator\\";var u=i.asyncIterator||\\"@@asyncIterator\\";var c=i.toStringTag||\\"@@toStringTag\\";var f=\\"object\\"===typeof t;var s=r.regeneratorRuntime;if(s)return void(f&&(t.exports=s));function l(t,r,e,n){var o=r&&r.prototype instanceof m?r:m;var i=Object.create(o.prototype);var a=new R(n||[]);return i._invoke=P(t,e,a),i}function h(t,r,e){try{return{type:\\"normal\\",arg:t.call(r,e)}}catch(t){return{type:\\"throw\\",arg:t}}}s=r.regeneratorRuntime=f?t.exports:{},s.wrap=l;var p=\\"suspendedStart\\";var v=\\"suspendedYield\\";var y=\\"executing\\";var d=\\"completed\\";var g={};function m(){}function w(){}function x(){}var b={};b[a]=function(){return this};var L=Object.getPrototypeOf;var j=L&&L(L(G([])));j&&j!==e&&n.call(j,a)&&(b=j);var E=x.prototype=m.prototype=Object.create(b);function O(t){[\\"next\\",\\"throw\\",\\"return\\"].forEach(function(r){t[r]=function(t){return this._invoke(r,t)}})}function _(t){function r(e,o,i,a){var u=h(t[e],t,o);if(\\"throw\\"!==u.type){var c=u.arg;var f=c.value;if(f&&\\"object\\"===typeof f&&n.call(f,\\"__await\\"))return Promise.resolve(f.__await).then(function(t){r(\\"next\\",t,i,a)},function(t){r(\\"throw\\",t,i,a)});return Promise.resolve(f).then(function(t){c.value=t,i(c)},function(t){return r(\\"throw\\",t,i,a)})}a(u.arg)}var e;function o(t,n){function o(){return new Promise(function(e,o){r(t,n,e,o)})}return e=e?e.then(o,o):o()}this._invoke=o}function P(t,r,e){var n=p;return function(o,i){if(n===y)throw new Error(\\"Generator is already running\\");if(n===d){if(\\"throw\\"===o)throw i;return F()}e.method=o,e.arg=i;while(true){var a=e.delegate;if(a){var u=S(a,e);if(u){if(u===g)continue;return u}}if(\\"next\\"===e.method)e.sent=e._sent=e.arg;else if(\\"throw\\"===e.method){if(n===p)throw n=d,e.arg;e.dispatchException(e.arg)}else\\"return\\"===e.method&&e.abrupt(\\"return\\",e.arg);n=y;var c=h(t,r,e);if(\\"normal\\"===c.type){if(n=e.done?d:v,c.arg===g)continue;return{value:c.arg,done:e.done}}\\"throw\\"===c.type&&(n=d,e.method=\\"throw\\",e.arg=c.arg)}}}function S(t,r){var e=t.iterator[r.method];if(e===o){if(r.delegate=null,\\"throw\\"===r.method){if(t.iterator.return&&(r.method=\\"return\\",r.arg=o,S(t,r),\\"throw\\"===r.method))return g;r.method=\\"throw\\",r.arg=new TypeError(\\"The iterator does not provide a 'throw' method\\")}return g}var n=h(e,t.iterator,r.arg);if(\\"throw\\"===n.type)return r.method=\\"throw\\",r.arg=n.arg,r.delegate=null,g;var i=n.arg;if(!i)return r.method=\\"throw\\",r.arg=new TypeError(\\"iterator result is not an object\\"),r.delegate=null,g;if(!i.done)return i;return r[t.resultName]=i.value,r.next=t.nextLoc,\\"return\\"!==r.method&&(r.method=\\"next\\",r.arg=o),r.delegate=null,g}function k(t){var r={tryLoc:t[0]};1 in t&&(r.catchLoc=t[1]),2 in t&&(r.finallyLoc=t[2],r.afterLoc=t[3]),this.tryEntries.push(r)}function N(t){var r=t.completion||{};r.type=\\"normal\\",delete r.arg,t.completion=r}function R(t){this.tryEntries=[{tryLoc:\\"root\\"}],t.forEach(k,this),this.reset(true)}function G(t){if(t){var r=t[a];if(r)return r.call(t);if(\\"function\\"===typeof t.next)return t;if(!isNaN(t.length)){var e=-1,i=function r(){while(++e<t.length)if(n.call(t,e))return r.value=t[e],r.done=false,r;return r.value=o,r.done=true,r};return i.next=i}}return{next:F}}function F(){return{value:o,done:true}}w.prototype=E.constructor=x,x.constructor=w,x[c]=w.displayName=\\"GeneratorFunction\\",s.isGeneratorFunction=function(t){var r=\\"function\\"===typeof t&&t.constructor;return!!r&&(r===w||\\"GeneratorFunction\\"===(r.displayName||r.name))},s.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,x):(t.__proto__=x,c in t||(t[c]=\\"GeneratorFunction\\")),t.prototype=Object.create(E),t},s.awrap=function(t){return{__await:t}},O(_.prototype),_.prototype[u]=function(){return this},s.AsyncIterator=_,s.async=function(t,r,e,n){var o=new _(l(t,r,e,n));return s.isGeneratorFunction(r)?o:o.next().then(function(t){return t.done?t.value:o.next()})},O(E),E[c]=\\"Generator\\",E[a]=function(){return this},E.toString=function(){return\\"[object Generator]\\"},s.keys=function(t){var r=[];for(var e in t)r.push(e);return r.reverse(),function e(){while(r.length){var n=r.pop();if(n in t)return e.value=n,e.done=false,e}return e.done=true,e}},s.values=G,R.prototype={constructor:R,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=o,this.done=false,this.delegate=null,this.method=\\"next\\",this.arg=o,this.tryEntries.forEach(N),!t)for(var r in this)\\"t\\"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=o)},stop:function(){this.done=true;var t=this.tryEntries[0];var r=t.completion;if(\\"throw\\"===r.type)throw r.arg;return this.rval},dispatchException:function(t){if(this.done)throw t;var r=this;function e(e,n){return u.type=\\"throw\\",u.arg=t,r.next=e,n&&(r.method=\\"next\\",r.arg=o),!!n}for(var i=this.tryEntries.length-1;i>=0;--i){var a=this.tryEntries[i];var u=a.completion;if(\\"root\\"===a.tryLoc)return e(\\"end\\");if(a.tryLoc<=this.prev){var c=n.call(a,\\"catchLoc\\");var f=n.call(a,\\"finallyLoc\\");if(c&&f){if(this.prev<a.catchLoc)return e(a.catchLoc,true);if(this.prev<a.finallyLoc)return e(a.finallyLoc)}else if(c){if(this.prev<a.catchLoc)return e(a.catchLoc,true)}else{if(!f)throw new Error(\\"try statement without catch or finally\\");if(this.prev<a.finallyLoc)return e(a.finallyLoc)}}}},abrupt:function(t,r){for(var e=this.tryEntries.length-1;e>=0;--e){var o=this.tryEntries[e];if(o.tryLoc<=this.prev&&n.call(o,\\"finallyLoc\\")&&this.prev<o.finallyLoc){var i=o;break}}i&&(\\"break\\"===t||\\"continue\\"===t)&&i.tryLoc<=r&&r<=i.finallyLoc&&(i=null);var a=i?i.completion:{};if(a.type=t,a.arg=r,i)return this.method=\\"next\\",this.next=i.finallyLoc,g;return this.complete(a)},complete:function(t,r){if(\\"throw\\"===t.type)throw t.arg;return\\"break\\"===t.type||\\"continue\\"===t.type?this.next=t.arg:\\"return\\"===t.type?(this.rval=this.arg=t.arg,this.method=\\"return\\",this.next=\\"end\\"):\\"normal\\"===t.type&&r&&(this.next=r),g},finish:function(t){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.finallyLoc===t)return this.complete(e.completion,e.afterLoc),N(e),g}},catch:function(t){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc===t){var n=e.completion;if(\\"throw\\"===n.type){var o=n.arg;N(e)}return o}}throw new Error(\\"illegal catch attempt\\")},delegateYield:function(t,r,e){return this.delegate={iterator:G(t),resultName:r,nextLoc:e},\\"next\\"===this.method&&(this.arg=o),g}}}(function(){return this}()||Function(\\"return this\\")())},function(t,r,e){var n=function(){return this}()||Function(\\"return this\\")();var o=n.regeneratorRuntime&&Object.getOwnPropertyNames(n).indexOf(\\"regeneratorRuntime\\")>=0;var i=o&&n.regeneratorRuntime;if(n.regeneratorRuntime=void 0,t.exports=e(1),o)n.regeneratorRuntime=i;else try{delete n.regeneratorRuntime}catch(t){n.regeneratorRuntime=void 0}},function(t,r,e){\\"use strict\\";e.r(r),e.d(r,\\"default\\",function(){return a});var n=e(0);var o=e.n(n);var i=o.a.mark(a);function a(){return o.a.wrap(function(t){while(1)switch(t.prev=t.next){case 0:return t.next=2,1;case 2:case\\"end\\":return t.stop()}},i,this)}},function(t,r,e){t.exports=e(3)}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
 exports[`Compiles JavaScript 1`] = `
 Object {
   "status": 0,
@@ -11,14 +47,13 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                status
-  1 kB  0        multi ./js/script.js  built
-  1 kB  1        ./js/script.js        built
-  1 kB  2        ./js/Component.js     built
+  size  name     module                      status
+  1 kB  0        ./js/script.js + 9 modules  built
+  1 kB  1        multi ./js/script.js        built
 
-  size  name     asset                 status
-  1 kB  default  myBundle.min.js       emitted
-  1 kB  default  myBundle.min.js.map   emitted
+  size  name     asset                       status
+  1 kB  default  myBundle.min.js             emitted
+  1 kB  default  myBundle.min.js.map         emitted
 
 
 
@@ -33,7 +68,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript 2`] = `
-"!function(e,t){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=t();else if(\\"function\\"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"==typeof exports?exports:e)[r]=n[r]}}(\\"undefined\\"!=typeof self?self:this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var n={};return t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,\\"a\\",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=\\"\\",t(t.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}Object.defineProperty(t,\\"__esModule\\",{value:!0});var o=n(2),i=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=function(){function e(){r(this,e),console.log(\\"init class\\")}return i(e,[{key:\\"method\\",value:function(){console.log(o.a)}}]),e}();t.default=u},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){if(!e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return!t||\\"object\\"!=typeof t&&\\"function\\"!=typeof t?e:t}function i(e,t){if(\\"function\\"!=typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function, not \\"+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),c=function(e){function t(){var e,n,i,u;r(this,t);for(var c=arguments.length,f=Array(c),a=0;a<c;a++)f[a]=arguments[a];return n=i=o(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(f))),i.handleClick=function(){i.setState({hey:!0})},u=n,o(i,u)}return i(t,e),u(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);t.a=c}])});
+"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e();else if(\\"function\\"===typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:false,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:true,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:true})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=1)}([function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}function i(t){return i=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},i(t)}function f(t){return f=\\"function\\"===typeof Symbol&&\\"symbol\\"===i(Symbol.iterator)?function(t){return i(t)}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":i(t)},f(t)}function c(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function l(t,e){if(e&&(\\"object\\"===f(e)||\\"function\\"===typeof e))return e;return c(t)}function a(t){return a=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},a(t)}function p(t,e){return p=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},p(t,e)}function y(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:true,configurable:true}}),e&&p(t,e)}n.r(e);var s=function(t){function e(){var t;var n;r(this,e);for(var o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];return n=l(this,(t=a(e)).call.apply(t,[this].concat(u))),n.handleClick=function(){n.setState({hey:true})},n}return y(e,t),u(e,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),e}(React.Component);n.d(e,\\"default\\",function(){return b});var b=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(s)}}]),t}()},function(t,e,n){t.exports=n(0)}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -48,16 +83,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                status
-  1 kB  0        multi ./js/script.js  built
-  1 kB  1        ./js/script.js        built
-  1 kB  3        ./js/Component.js     built
+  size  name     module                              status
+  1 kB  0        external \\"somelibrary/thing/stuff\\"  built
+  1 kB  1        ./js/script.js + 9 modules          built
+  1 kB  2        multi ./js/script.js                built
 
-  size  name     asset                 status
-  1 kB  default  myBundle.min.js       emitted
-  1 kB  default  myBundle.min.js.map   emitted
+  size  name     asset                               status
+  1 kB  default  myBundle.min.js                     emitted
+  1 kB  default  myBundle.min.js.map                 emitted
 
-  (1 module hidden)
+
 
   Compiled successfully!
   Δt ____ms
@@ -70,7 +105,79 @@ Object {
 `;
 
 exports[`Compiles JavaScript with externals 2`] = `
-"!function(e,t){if(\\"object\\"==typeof exports&&\\"object\\"==typeof module)module.exports=t(require(\\"somelibrary/thing/stuff\\"));else if(\\"function\\"==typeof define&&define.amd)define([\\"somelibrary/thing/stuff\\"],t);else{var n=t(\\"object\\"==typeof exports?require(\\"somelibrary/thing/stuff\\"):e[\\"somelibrary/thing/stuff\\"]);for(var r in n)(\\"object\\"==typeof exports?exports:e)[r]=n[r]}}(\\"undefined\\"!=typeof self?self:this,function(e){return function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var n={};return t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,\\"a\\",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=\\"\\",t(t.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}Object.defineProperty(t,\\"__esModule\\",{value:!0});var o=n(2),i=n.n(o),u=n(3),f=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),c=function(){function e(){r(this,e),console.log(\\"init class\\")}return f(e,[{key:\\"method\\",value:function(){console.log(u.a,i.a)}}]),e}();t.default=c},function(t,n){t.exports=e},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){if(!e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return!t||\\"object\\"!=typeof t&&\\"function\\"!=typeof t?e:t}function i(e,t){if(\\"function\\"!=typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function, not \\"+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),f=function(e){function t(){var e,n,i,u;r(this,t);for(var f=arguments.length,c=Array(f),a=0;a<f;a++)c[a]=arguments[a];return n=i=o(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(c))),i.handleClick=function(){i.setState({hey:!0})},u=n,o(i,u)}return i(t,e),u(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);t.a=f}])});
+"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e(require(\\"somelibrary/thing/stuff\\"));else if(\\"function\\"===typeof define&&define.amd)define([\\"somelibrary/thing/stuff\\"],e);else{var n=\\"object\\"===typeof exports?e(require(\\"somelibrary/thing/stuff\\")):e(t[\\"somelibrary/thing/stuff\\"]);for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,function(t){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:false,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:true,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:true})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=2)}([function(e,n){e.exports=t},function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}n.r(e);var i=n(0);var f=n.n(i);function c(t){return c=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},c(t)}function l(t){return l=\\"function\\"===typeof Symbol&&\\"symbol\\"===c(Symbol.iterator)?function(t){return c(t)}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":c(t)},l(t)}function a(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function s(t,e){if(e&&(\\"object\\"===l(e)||\\"function\\"===typeof e))return e;return a(t)}function y(t){return y=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},y(t)}function p(t,e){return p=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},p(t,e)}function b(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:true,configurable:true}}),e&&p(t,e)}var d=function(t){function e(){var t;var n;r(this,e);for(var o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];return n=s(this,(t=y(e)).call.apply(t,[this].concat(u))),n.handleClick=function(){n.setState({hey:true})},n}return b(e,t),u(e,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),e}(React.Component);n.d(e,\\"default\\",function(){return m});var m=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(d,f.a)}}]),t}()},function(t,e,n){t.exports=n(1)}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Deduplicates helpers 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles-deduplicates/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        ./js/script.js + 10 modules  built
+  1 kB  1        multi ./js/script.js         built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Deduplicates helpers 2`] = `
+"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e();else if(\\"function\\"===typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:false,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:true,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:true})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=1)}([function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}function i(t){return i=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},i(t)}function c(t){return c=\\"function\\"===typeof Symbol&&\\"symbol\\"===i(Symbol.iterator)?function(t){return i(t)}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":i(t)},c(t)}function f(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function l(t,e){if(e&&(\\"object\\"===c(e)||\\"function\\"===typeof e))return e;return f(t)}function a(t){return a=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},a(t)}function y(t,e){return y=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},y(t,e)}function p(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:true,configurable:true}}),e&&y(t,e)}n.r(e);var s=function(t){function e(){var t;var n;r(this,e);for(var o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];return n=l(this,(t=a(e)).call.apply(t,[this].concat(u))),n.handleClick=function(){n.setState({hey:true})},n}return p(e,t),u(e,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),e}(React.Component);var b=function(t){function e(){var t;var n;r(this,e);for(var o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];return n=l(this,(t=a(e)).call.apply(t,[this].concat(u))),n.handleClick=function(){n.setState({hey:true})},n}return p(e,t),u(e,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),e}(React.Component);n.d(e,\\"default\\",function(){return d});var d=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(s,b)}}]),t}()},function(t,e,n){t.exports=n(0)}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Does not transpile on modern browsers 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/no-old-browser/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                      status
+  1 kB  0        ./js/script.js + 1 modules  built
+  1 kB  1        multi ./js/script.js        built
+
+  size  name     asset                       status
+  1 kB  default  myBundle.min.js             emitted
+  1 kB  default  myBundle.min.js.map         emitted
+
+
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Does not transpile on modern browsers 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(e,t,n){\\"use strict\\";n.r(t);class r extends React.Component{constructor(...e){super(...e),this.handleClick=(()=>{this.setState({hey:true})})}render(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}n.d(t,\\"default\\",function(){return o});class o{constructor(){console.log(\\"init class\\")}method(){console.log(r)}}},function(e,t,n){e.exports=n(0)}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -123,16 +230,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                status
-  1 kB  0     multi ./js/script.js  built
-  1 kB  1     ./js/script.js        built ✖
-  1 kB  2     ./js/Component.js     built ✖
+  size  name  module                      status
+  1 kB  0     ./js/script.js + 9 modules  built ✖
+  1 kB  1     multi ./js/script.js        built
 
   (2 assets hidden)
 
   Failed to compile.
 
 ./js/Component.js
+Module Error (from __PATH__/packages/crafty-preset-babel/node_modules/eslint-loader/index.js):
 
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
   11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
@@ -141,10 +248,11 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Comp
 ✖ 2 problems (2 errors, 0 warnings)
   2 errors, 0 warnings potentially fixable with the \`--fix\` option.
 
- @ ./js/script.js 7:0-39
+ @ ./js/script.js 5:0-39 23:33-42
  @ multi ./js/script.js
 
 ./js/script.js
+Module Error (from __PATH__/packages/crafty-preset-babel/node_modules/eslint-loader/index.js):
 
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
    3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
@@ -162,9 +270,9 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 ✖ 11 problems (9 errors, 2 warnings)
   7 errors, 0 warnings potentially fixable with the \`--fix\` option.
 
- @ multi ./js/script.js
+ @ multi ./js/script.js +0
 
-  Δt ____ms ✖ 3 problems (2 errors, 1 warning)
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 ",
 }
@@ -181,27 +289,18 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                       status
-  1 kB  0        multi ./js/index.js          built
-  1 kB  1        ./js/index.js                built
-  1 kB  2        ./js/imported-javascript.js  built
-  1 kB  3        ./js/imported-typescript.js  built
+  size  name     module                     status
+  1 kB  0        ./js/index.js + 2 modules  built
+  1 kB  1        multi ./js/index.js        built
 
-  size  name     asset                        status
-  1 kB  default  myBundle.min.js              emitted
-  1 kB  default  myBundle.min.js.map          emitted
+  size  name     asset                      status
+  1 kB  default  myBundle.min.js            emitted
+  1 kB  default  myBundle.min.js.map        emitted
 
 
 
-  Compiled with warnings.
-
-myBundle.min.js from UglifyJs
-Dropping __PURE__ call [./js/imported-javascript.js:42,5]
-Dropping unused variable B [./js/imported-javascript.js:40,4]
-Dropping __PURE__ call [./js/imported-typescript.js:16,23]
-Dropping unused variable D [./js/imported-typescript.js:16,4]
-
-  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
+  Compiled successfully!
+  Δt ____ms
 
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms

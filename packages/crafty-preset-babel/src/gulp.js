@@ -1,13 +1,3 @@
-const concat = require("gulp-concat");
-const eslint = require("gulp-eslint");
-const newer = require("gulp-newer");
-const sourcemaps = require("gulp-sourcemaps");
-const uglifyES = require("uglify-es");
-const composer = require("gulp-uglify/composer");
-const babel = require("gulp-babel");
-
-const babelConfigurator = require("./babel");
-
 module.exports = function createTask(crafty, bundle, StreamHandler) {
   return cb => {
     // Init
@@ -20,10 +10,12 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
+      const newer = require("gulp-newer");
       stream.add(newer(crafty.config.destination_js + bundle.destination));
     }
 
     // Linting
+    const eslint = require("gulp-eslint");
     stream.add(eslint(crafty.config.eslint)).add(eslint.format());
 
     // Fail the build if we have linting
@@ -43,6 +35,8 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       );
     }
 
+    const babel = require("gulp-babel");
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     const babelOptions = babelConfigurator(
       crafty,
       crafty.getEnvironment() === "production" ? "production" : "development",
@@ -52,13 +46,17 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(babel(babelOptions));
 
     // Process
+    const sourcemaps = require("gulp-sourcemaps");
     stream.add(sourcemaps.init({ loadMaps: true }));
 
     if (bundle.concat) {
+      const concat = require("gulp-concat");
       stream.add(concat(bundle.destination));
     }
 
     if (crafty.getEnvironment() === "production") {
+      const uglifyES = require("uglify-es");
+      const composer = require("gulp-uglify/composer");
       const minify = composer(uglifyES, console);
       stream.add(minify(crafty.config.uglifyJS));
     }

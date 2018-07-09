@@ -1,19 +1,19 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-* [Webpack](05_Packages/02_crafty-runner-webpack.md)
+- [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Test Runners</th><td>
 
-* [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 <tr><th>Related presets</th><td>
 
-* [Babel](05_Packages/05_crafty-preset-babel.md)
-* [TypeScript](05_Packages/05_crafty-preset-typescript.md)
-* [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Babel](05_Packages/05_crafty-preset-babel.md)
+- [TypeScript](05_Packages/05_crafty-preset-typescript.md)
+- [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 </table>
@@ -64,8 +64,8 @@ Their documentation on testing components is exhaustive.
 When doing modern JavaScript development, the usual process is **Write code**,
 **Compile**, **Refresh the browser**.
 
-* `crafty watch` removes the **Compile** step because it's run automatically.
-* Hot Module Replacement (HMR) was created to remove the **Refresh the browser**
+- `crafty watch` removes the **Compile** step because it's run automatically.
+- Hot Module Replacement (HMR) was created to remove the **Refresh the browser**
   part.
 
 More precisely, when doing a build with Webpack, in development mode, a
@@ -152,7 +152,7 @@ if (process.env.NODE_ENV === "development") {
 If you're using TypeScript you have one more step to make
 
 ```bash
-node/node node_modules/.bin/typings install dt~webpack-env --global
+npm install --save @types/webpack-env
 ```
 
 [Read more about Hot Module Replacement](https://medium.com/@rajaraodv/webpack-hot-module-replacement-hmr-e756a726a07#.6qqb8241p)

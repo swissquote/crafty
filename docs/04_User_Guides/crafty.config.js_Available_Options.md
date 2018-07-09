@@ -35,7 +35,7 @@ your assets to Maven's `target` directory.
 
 ### `browser`: Browser compatibility
 
-Default: `"> 1%, last 4 versions, Firefox ESR, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"`
+Default: `"> 0.25%, Firefox ESR, Edge >= 13, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"`
 
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.
@@ -45,6 +45,8 @@ needs to add to the CSS file.
 
 The default browsers we defined was taken from the statistics of browser usage
 we have seen across all Swissquote Platforms
+
+If you want a different list, you can override those defaults using any valid [Browserslist query source](https://github.com/browserslist/browserslist#queries)
 
 ### `uglifyJS` : JavaScript compression
 
@@ -106,9 +108,9 @@ build it.
 
 Apart from the common options, here are the options you can use for CSS bundles.
 
-| Option       | Type                      | Runner  | Preset                  | Description                                                                                                                                                                                                                                                                                                      |
-| ------------ | ------------------------- | ------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `extractCSS` | Boolean / String / Object | Webpack | `crafty-preset-postcss` | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
+| Option       | Type                      | Runner  | Preset                  | Description                                                                                                                                                                                                                                                                                                        |
+| ------------ | ------------------------- | ------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `extractCSS` | Boolean / String / Object | Webpack | `crafty-preset-postcss` | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
 
 ### JavaScript Bundles
 

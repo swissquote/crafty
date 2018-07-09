@@ -1,13 +1,13 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-* [rollup.js](05_Packages/02_crafty-runner-rollup.md)
-* [Webpack](05_Packages/02_crafty-runner-webpack.md)
+- [rollup.js](05_Packages/02_crafty-runner-rollup.md)
+- [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
 <tr><th>Test Runners</th><td>
 
-* [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
 <tr><th>Linters</th><td>
@@ -17,7 +17,7 @@ Provides TSLint, with a minimal configuration (should be extended in the future 
 </td></tr>
 <tr><th>Commands</th><td>
 
-* `tsLint`: Lint TypeScript files, this is a facade for TSLint, pre-configured
+- `tsLint`: Lint TypeScript files, this is a facade for TSLint, pre-configured
   with our preset.
 
 </td></tr>
@@ -90,8 +90,8 @@ TypeScript is also able to understand Types on libraries written in pure JavaScr
 
 Some packages come with their own definitions, for the others there are two ways to consume these files.
 
-1. Use `@types` scoped packages from NPM
-1. Create your own `*.d.ts` file
+1.  Use `@types` scoped packages from NPM
+1.  Create your own `*.d.ts` file
 
 [Read more](TypeScript_Typings.md)
 

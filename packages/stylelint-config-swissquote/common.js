@@ -14,6 +14,7 @@ function warn(value, options) {
 }
 
 module.exports = {
+  plugins: [require.resolve("stylelint-scss")],
   rules: {
     // Formatting
     // ---------------------------------------------------------------------
@@ -94,20 +95,6 @@ module.exports = {
 
     // Possible Errors
     // ---------------------------------------------------------------------
-    "at-rule-no-unknown": [
-      true,
-      {
-        ignoreAtRules: [
-          "at-root",
-          "if",
-          "include",
-          "mixin",
-          "else",
-          "each",
-          "for"
-        ]
-      }
-    ],
     "color-no-invalid-hex": true,
     "declaration-block-no-duplicate-properties": [
       true,
@@ -132,6 +119,10 @@ module.exports = {
     "at-rule-no-vendor-prefix": true,
     "property-no-vendor-prefix": true,
     "selector-no-vendor-prefix": true,
-    "value-no-vendor-prefix": true
+    "value-no-vendor-prefix": true,
+
+    // SCSS Rules
+    // ---------------------------------------------------------------------
+    "scss/at-rule-no-unknown": true
   }
 };

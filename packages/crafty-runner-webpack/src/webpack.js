@@ -1,18 +1,12 @@
 const debug = require("debug")("webpack-runner");
 const path = require("path");
-const webpack = require("webpack");
+const fs = require("fs");
 const WebpackChain = require("webpack-chain");
-const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const isGlob = require("is-glob");
 const globToRegex = require("glob-to-regexp");
-
-const PureClassesPlugin = require("./PureClassesPlugin");
 const paths = require("./utils/paths");
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
-
-const MODULES = path.join(__dirname, "..", "node_modules");
-const APP_MODULES = path.join(process.cwd(), "node_modules");
 
 function prepareExternals(externals) {
   if (!externals || externals.length === 0) {
@@ -33,20 +27,33 @@ module.exports = function(crafty, bundle, webpackPort) {
   const isWatching = crafty.isWatching();
   const chain = new WebpackChain();
 
-  // Some default configuration
-  chain
-    .bail(true) // Don't attempt to continue if there are any errors.
-    .devtool("source-map"); // We generate sourcemaps in production. This is slow but gives good results.
+  // Define webpack's mode, will enable some default configurations
+  chain.mode(
+    crafty.getEnvironment() === "production" ? "production" : "development"
+  );
+
+  // Don't attempt to continue if there are any errors.
+  chain.bail(true);
+
+  // We generate sourcemaps in production. This is slow but gives good results.
+  chain.devtool("source-map");
 
   // Add default extensions as they seem
   // to be overriden once another is added
   chain.resolve.extensions.add(".js");
 
   chain.resolve.modules.add("node_modules");
-  chain.resolve.modules.add(APP_MODULES);
-  chain.resolve.modules.add(MODULES);
-  chain.resolveLoader.modules.add(APP_MODULES);
-  chain.resolveLoader.modules.add(MODULES);
+
+  [
+    path.join(process.cwd(), "node_modules"),
+    path.join(__dirname, "..", "node_modules"),
+    path.join(__dirname, "..", "..", "..", "node_modules")
+  ]
+    .filter(fs.existsSync)
+    .forEach(dir => {
+      chain.resolve.modules.add(dir);
+      chain.resolveLoader.modules.add(dir);
+    });
 
   // Add entries
   absolutePaths(bundle.source).forEach(source =>
@@ -64,35 +71,29 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   chain.externals(prepareExternals(bundle.externals));
 
-  // Makes some environment variables available to the JS code, for example:
-  // if (process.env.NODE_ENV === 'production') { ... }.
-  chain
-    .plugin("define")
-    .init((Plugin, args = []) => new Plugin(args))
-    .use(webpack.DefinePlugin, {
-      "process.env.NODE_ENV": JSON.stringify(crafty.getEnvironment())
-    });
+  // Minimization is enabled only in production but we still
+  // define it here in case someone needs to minify in development.
+  // We are Cloning the uglifyJS Object as webpack
+  // mutates it which messes with other implementations
+  const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+  chain.optimization.minimizer([
+    new UglifyJSPlugin({
+      sourceMap: true,
+      uglifyOptions: Object.assign({}, config.uglifyJS)
+    })
+  ]);
 
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
     // We transform them into /* @__PURE__ */ so UglifyJS is able to remove them when unused.
+    const PureClassesPlugin = require("./PureClassesPlugin");
     chain
       .plugin("pure_classes")
       .init((Plugin, args = []) => new Plugin(args))
       .use(PureClassesPlugin, {});
 
-    // Minify the code.only in production
-    // Cloning the uglifyJS Object as webpack is mutating it which messes with other implementations
-    chain
-      .plugin("uglify")
-      .init((Plugin, args = []) => new Plugin(args))
-      .use(webpack.optimize.UglifyJsPlugin, Object.assign({}, config.uglifyJS));
-
     // Don't emit files if an error occured (forces to check what the error is)
-    chain
-      .plugin("noEmitOnError")
-      .init(Plugin => new Plugin())
-      .use(webpack.NoEmitOnErrorsPlugin);
+    chain.optimization.noEmitOnErrors(true);
   }
 
   // Hot Reloading
@@ -107,21 +108,14 @@ module.exports = function(crafty, bundle, webpackPort) {
     chain
       .plugin("case-sensitive")
       .init(Plugin => new Plugin())
-      .use(CaseSensitivePathsPlugin);
-
-    // Prints more readable module names
-    // in the browser console on HMR updates
-    chain
-      .plugin("named")
-      .init(Plugin => new Plugin())
-      .use(webpack.NamedModulesPlugin);
+      .use(require("case-sensitive-paths-webpack-plugin"));
 
     // This is necessary to emit hot updates:
     if (bundle.hot) {
       chain
         .plugin("hot")
         .init(Plugin => new Plugin())
-        .use(webpack.HotModuleReplacementPlugin);
+        .use(require("webpack/lib/HotModuleReplacementPlugin"));
 
       chain
         .entry("default")

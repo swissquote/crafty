@@ -1,4 +1,26 @@
-const _ = require("lodash");
+function isInDisabledRange(result, startLine, ruleName) {
+  if (!result.stylelint.disabledRanges) {
+    return false;
+  }
+
+  //eslint-disable-next-line guard-for-in
+  for (const i in result.stylelint.disabledRanges) {
+    const range = result.stylelint.disabledRanges[i];
+    if (
+      result.stylelint.disabledRanges.hasOwnProperty(i) &&
+      // If the violation is within a disabledRange,
+      // and that disabledRange's rules include this one,
+      // do not register a warning
+      range.start <= startLine &&
+      (range.end >= startLine || range.end === undefined) &&
+      (!range.rules || range.rules.indexOf(ruleName) !== -1)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 /**
  * Report a violation.
@@ -45,29 +67,15 @@ module.exports = function(violation) {
   // line number that the complaint pertains to
   const startLine = line || node.positionBy({ index }).line;
 
-  if (result.stylelint.disabledRanges) {
-    //eslint-disable-next-line guard-for-in
-    for (const i in result.stylelint.disabledRanges) {
-      const range = result.stylelint.disabledRanges[i];
-      if (
-        result.stylelint.disabledRanges.hasOwnProperty(i) &&
-        // If the violation is within a disabledRange,
-        // and that disabledRange's rules include this one,
-        // do not register a warning
-        range.start <= startLine &&
-        (range.end >= startLine || range.end === undefined) &&
-        (!range.rules || range.rules.indexOf(ruleName) !== -1)
-      ) {
-        return;
-      }
-    }
+  if (isInDisabledRange(result, startLine, ruleName)) {
+    return;
   }
 
-  const severity = _.get(
-    result.stylelint,
-    ["ruleSeverities", ruleName],
-    "ignore"
-  );
+  const severity =
+    (result.stylelint.hasOwnProperty("ruleSeverities") &&
+      result.stylelint.ruleSeverities.hasOwnProperty(ruleName) &&
+      result.stylelint.ruleSeverities[ruleName]) ||
+    "ignore";
 
   if (typeof severity === "undefined") {
     throw new Error(
@@ -95,10 +103,10 @@ module.exports = function(violation) {
     warningProperties.word = word;
   }
 
-  const warningMessage = _.get(
-    result.stylelint,
-    ["customMessages", ruleName],
-    message
-  );
+  const warningMessage =
+    (result.stylelint.hasOwnProperty("customMessages") &&
+      result.stylelint.customMessages.hasOwnProperty(ruleName) &&
+      result.stylelint.customMessages[ruleName]) ||
+    message;
   result.warn(warningMessage, warningProperties);
 };

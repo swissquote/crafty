@@ -7,10 +7,11 @@ be the most efficient possible for production.
 
 ## Features
 
-* Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports
-* Your code is Uglified after compilation.
-* Configurable output formats
-* Watch mode, re-compiles your files on changes
+- Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports
+- Your code is Uglified after compilation.
+- Configurable output formats
+- Watch mode, re-compiles your files on changes
+- Profile your bundles with `--profile` which will create a profile next to the generated JavaScript
 
 ## Configuration
 

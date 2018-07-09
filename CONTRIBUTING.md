@@ -21,9 +21,9 @@ npm install
 
 Then you can run one of
 
-* `npm run build` to build the project once
-* `npm run test` to execute the tests
-* `npm run watch` to run the compilation in watch mode
+- `npm run build` to build the project once
+- `npm run test` to execute the tests
+- `npm run watch` to run the compilation in watch mode
 
 # Development
 
@@ -47,13 +47,13 @@ Update the version number in `package.json`
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Do a proper install
-node_modules/.bin/lerna clean
-node_modules/.bin/lerna bootstrap
+npx lerna clean --yes
+npx lerna bootstrap
 
 # Release a canary version to test in a prokect
-node_modules/.bin/lerna publish --canary
+npx lerna publish --canary
 
 # -> Test inside one or more projects
 
-node_modules/.bin/lerna publish --exact
+npx lerna publish --exact
 ```

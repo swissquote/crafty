@@ -325,53 +325,56 @@ it("Works with namespaces", () => {
   });
 });
 
-describe("flags warnings when using ids", () => {
-  let result;
+describe("Flags errors when using unknown at rules", () => {
+  const result = stylelint.lint({
+    code: `
+@while ($i == 1) {
+    .Button {
+        top: 10px;
+    }
+}
 
-  beforeEach(() => {
-    result = stylelint.lint({
-      code: "#ids-not-allowed {\n    top: 10px;\n}\n",
-      config
+@unknown {
+    .Button {
+        top: 10px;
+    }
+}
+`,
+    config
+  });
+
+  it("raised one 'scss/at-rule-no-unknown' error", () => {
+    return result.then(data => {
+      expect(data.errored).toBeTruthy();
+      expect(data.results[0].warnings.length).toBe(1);
+      expect(data.results[0].warnings[0].rule).toBe("scss/at-rule-no-unknown");
+      expect(data.results[0].warnings[0].severity).toBe("error");
+      expect(data.results[0].warnings[0].line).toBe(8);
+      expect(data.results[0].warnings[0].column).toBe(1);
+      expect(data.results[0].warnings[0].text).toBe(
+        'Unexpected unknown at-rule "@unknown" (at-rule-no-unknown) (scss/at-rule-no-unknown)'
+      );
     });
   });
+});
 
-  it("did error", () => {
-    return result.then(data => expect(data.errored).toBeTruthy());
+describe("flags warnings when using ids", () => {
+  const result = stylelint.lint({
+    code: "#ids-not-allowed {\n    top: 10px;\n}\n",
+    config
   });
 
-  it("flags one warning", () => {
-    return result.then(data => expect(data.results[0].warnings.length).toBe(1));
-  });
-
-  it("correct warning text", () => {
-    return result.then(data =>
+  it("raised one 'selector-max-id' error", () => {
+    return result.then(data => {
+      expect(data.errored).toBeTruthy();
+      expect(data.results[0].warnings.length).toBe(1);
+      expect(data.results[0].warnings[0].rule).toBe("selector-max-id");
+      expect(data.results[0].warnings[0].severity).toBe("error");
+      expect(data.results[0].warnings[0].line).toBe(1);
+      expect(data.results[0].warnings[0].column).toBe(1);
       expect(data.results[0].warnings[0].text).toBe(
         'Expected "#ids-not-allowed" to have no more than 0 id selectors (selector-max-id)'
-      )
-    );
-  });
-
-  it("correct rule flagged", () => {
-    return result.then(data =>
-      expect(data.results[0].warnings[0].rule).toBe("selector-max-id")
-    );
-  });
-
-  it("correct severity flagged", () => {
-    return result.then(data =>
-      expect(data.results[0].warnings[0].severity).toBe("error")
-    );
-  });
-
-  it("correct line number", () => {
-    return result.then(data =>
-      expect(data.results[0].warnings[0].line).toBe(1)
-    );
-  });
-
-  it("correct column number", () => {
-    return result.then(data =>
-      expect(data.results[0].warnings[0].column).toBe(1)
-    );
+      );
+    });
   });
 });

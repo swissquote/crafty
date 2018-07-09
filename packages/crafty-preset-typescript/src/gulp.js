@@ -1,9 +1,3 @@
-const concat = require("gulp-concat");
-const tslint = require("gulp-tslint");
-const newer = require("gulp-newer");
-const sourcemaps = require("gulp-sourcemaps");
-const typescript = require("gulp-typescript");
-
 const createTempFile = require("./utils").createTempFile;
 
 module.exports = function createTask(crafty, bundle, StreamHandler) {
@@ -18,10 +12,12 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
+      const newer = require("gulp-newer");
       stream.add(newer(crafty.config.destination_js + bundle.destination));
     }
 
     // Linting
+    const tslint = require("gulp-tslint");
     stream.add(
       tslint({
         formatter: "stylish",
@@ -38,12 +34,15 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     );
 
     // Process
+    const sourcemaps = require("gulp-sourcemaps");
     stream.add(sourcemaps.init({ loadMaps: true }));
 
+    const typescript = require("gulp-typescript");
     const tsProject = typescript.createProject("tsconfig.json");
     stream.add(tsProject());
 
     if (bundle.concat) {
+      const concat = require("gulp-concat");
       stream.add(concat(bundle.destination));
     }
 
