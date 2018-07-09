@@ -35,7 +35,7 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - yarn test
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then sonar-scanner; fi'
+  - sonar-scanner
 
 before_deploy:
   - composer install
