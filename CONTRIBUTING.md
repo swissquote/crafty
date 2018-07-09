@@ -47,8 +47,7 @@ Update the version number in `package.json`
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Do a proper install
-npx lerna clean --yes
-npx lerna bootstrap
+npx lerna clean --yes && rm -rf node_modules yarn.lock && yarn install
 
 # Release a canary version to test in a prokect
 npx lerna publish --canary
