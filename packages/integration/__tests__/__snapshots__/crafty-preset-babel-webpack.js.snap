@@ -246,7 +246,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Comp
   12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
 
 ✖ 2 problems (2 errors, 0 warnings)
-  2 errors, 0 warnings potentially fixable with the \`--fix\` option.
+  2 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
  @ ./js/script.js 5:0-39 23:33-42
  @ multi ./js/script.js
@@ -268,7 +268,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
   20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
 
 ✖ 11 problems (9 errors, 2 warnings)
-  7 errors, 0 warnings potentially fixable with the \`--fix\` option.
+  7 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
  @ multi ./js/script.js +0
 

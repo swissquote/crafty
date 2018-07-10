@@ -11,10 +11,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-ℹ ｢atl｣: Using typescript@__version__ from typescript
-ℹ ｢atl｣: Using tsconfig.json from __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/compiles/tsconfig.json
-ℹ ｢atl｣: Checking started in a separate process...
-ℹ ｢atl｣: Time:  ____ms
   size  name     module                      status
   1 kB  2        ./js/script.ts + 1 modules  built
   1 kB  3        multi ./js/script.ts        built
@@ -54,8 +50,7 @@ exports[`Compiles TypeScript 3`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "✖ ｢atl｣: Checking finished with 1 errors
-[__:__:__] 'js_myTSBundle' errored after ____ ms
+  "stderr": "[__:__:__] 'js_myTSBundle' errored after ____ ms
 [__:__:__] Error: Webpack compilation failed
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
@@ -68,9 +63,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-ℹ ｢atl｣: Using typescript@__version__ from typescript
-ℹ ｢atl｣: Using tsconfig.json from __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/tsconfig.json
-ℹ ｢atl｣: Checking started in a separate process...
   size  name  module                          status
   1 kB  0     ./js/typescript.ts + 2 modules  built ⚠
   1 kB  1     multi ./js/typescript.ts        built
@@ -79,8 +71,9 @@ Object {
 
   Failed to compile.
 
-[at-loader] ./js/typescript.ts:14:1
-    TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
+[tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1)
+      TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 
   Δt ____ms ✖ 2 problems (1 error, 1 warning)
 
@@ -99,10 +92,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-ℹ ｢atl｣: Using typescript@__version__ from typescript
-ℹ ｢atl｣: Using tsconfig.json from __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/tsconfig.json
-ℹ ｢atl｣: Checking started in a separate process...
-ℹ ｢atl｣: Time:  ____ms
   size  name     module                      status
   1 kB  2        ./js/script.ts + 1 modules  built ⚠
   1 kB  3        multi ./js/script.ts        built
