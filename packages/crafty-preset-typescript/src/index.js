@@ -111,10 +111,9 @@ module.exports = {
       });
 
     // TypeScript
-    chain.module
-      .rule("ts")
-      .test(/\.tsx?$/)
-      .exclude.add(/(node_modules|bower_components)/);
+    const tsRule = chain.module.rule("ts");
+    tsRule.test(/\.tsx?$/);
+    tsRule.exclude.add(/(node_modules|bower_components)/);
 
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     const babelOptions = babelConfigurator(
@@ -127,37 +126,33 @@ module.exports = {
       }
     );
 
-    const optionOverrides = {
-      // Transpile to esnext so that Babel can apply all its magic
-      target: "ESNext",
-      // Preserve JSX so babel can optimize it, or add development/debug information
-      jsx: "Preserve",
-      // TODO :: It seems there is a problem with cache and declaration (.d.ts) files, needs to be checked
-      //useCache: true,
-      useBabel: true,
-      babelCore: "@babel/core",
-      babelOptions
+    // Cache can be disabled for experimentation and when running Crafty's tests
+    if (
+      crafty.getEnvironment() === "production" &&
+      !process.argv.some(arg => arg === "--no-cache") &&
+      !process.env.TESTING_CRAFTY
+    ) {
+      babelOptions.cacheDirectory = true;
+    }
+  
+    // EcmaScript 2015+
+    tsRule
+      .use("babel")
+      .loader("babel-loader")
+      .options(babelOptions);
+
+    const tsOptions = {
+      compilerOptions: {
+        // Transpile to esnext so that Babel can apply all its magic
+        target: "ESNext",
+        // Preserve JSX so babel can optimize it, or add development/debug information
+        jsx: "Preserve"
+      }
     };
 
-    // Get the current configuration to know what configuration options we have to set
-    const instance = require("awesome-typescript-loader/dist/instance");
-    const currentConfig = instance.readConfigFile(process.cwd(), {}, {}, require("typescript"));
-
-    if (currentConfig.compilerConfig.options.declaration && !currentConfig.compilerConfig.options.declarationDir) {
-      // Write declaration files in the destination folder
-      // We set the value this way to respect backwards compatibility,
-      // Ideally, the value should be without the `/js` at the end
-      optionOverrides.declarationDir = absolutePath(
-        crafty.config.destination_js +
-          (bundle.directory ? "/" + bundle.directory : "") +
-          "/js"
-      );
-    }
-
-    chain.module
-      .rule("ts")
-      .use("awesome-typescript-loader")
-      .loader("awesome-typescript-loader")
-      .options(optionOverrides);
+    tsRule
+      .use("ts-loader")
+      .loader("ts-loader")
+      .options(tsOptions);
   }
 };
