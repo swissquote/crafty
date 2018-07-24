@@ -92,10 +92,8 @@ function printErrors(summary, errors) {
  */
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
-  let webpackPort = null;
   const getCompiler = () => {
     return portFinder.getFree(taskName).then(freePort => {
-      webpackPort = freePort;
       const config = prepareConfiguration(crafty, bundle, freePort);
       const webpack = require("webpack");
       const compiler = webpack(config);
@@ -137,13 +135,13 @@ module.exports = function jsTaskES6(crafty, bundle) {
           const WebpackDevServer = require("webpack-dev-server");
           runningWatcher = new WebpackDevServer(compiler, config.devServer);
 
-          runningWatcher.listen(webpackPort, "localhost", function(err) {
+          runningWatcher.listen(config.devServer.port, "localhost", function(err) {
             if (err) {
               throw new util.PluginError("webpack-dev-server", err);
             }
             crafty.log(
               "[webpack-dev-server]",
-              "Started, listening on localhost:" + webpackPort
+              "Started, listening on localhost:" + config.devServer.port
             );
           });
         })
