@@ -12,13 +12,13 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                      status
-  1 kB  2        ./js/script.ts + 1 modules  built
-  1 kB  3        multi ./js/script.ts        built
+  1 kB  2        multi ./js/script.ts        built
+  1 kB  3        ./js/script.ts + 1 modules  built
   1 kB  4        ./js/SomeLibrary.ts         built
 
   size  name     asset                       status
-  1 kB  js       0.myBundle.min.js           emitted
-  1 kB  map      0.myBundle.min.js.map       emitted
+  1 kB  js       1.myBundle.min.js           emitted
+  1 kB  map      1.myBundle.min.js.map       emitted
   1 kB  ts       js/Component.d.ts           emitted
   1 kB  ts       js/SomeLibrary.d.ts         emitted
   1 kB  ts       js/script.d.ts              emitted
@@ -64,8 +64,8 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
-  1 kB  0     ./js/typescript.ts + 2 modules  built ⚠
-  1 kB  1     multi ./js/typescript.ts        built
+  1 kB  0     multi ./js/typescript.ts        built
+  1 kB  1     ./js/typescript.ts + 2 modules  built ⚠
 
   (3 assets hidden)
 
@@ -93,13 +93,13 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                      status
-  1 kB  2        ./js/script.ts + 1 modules  built ⚠
-  1 kB  3        multi ./js/script.ts        built
+  1 kB  2        multi ./js/script.ts        built
+  1 kB  3        ./js/script.ts + 1 modules  built ⚠
   1 kB  4        ./js/SomeLibrary.ts         built ⚠
 
   size  name     asset                       status
-  1 kB  js       0.myBundle.min.js           emitted
-  1 kB  map      0.myBundle.min.js.map       emitted
+  1 kB  js       1.myBundle.min.js           emitted
+  1 kB  map      1.myBundle.min.js.map       emitted
   1 kB  ts       js/Component.d.ts           emitted
   1 kB  ts       js/SomeLibrary.d.ts         emitted
   1 kB  ts       js/script.d.ts              emitted
@@ -136,7 +136,7 @@ ERROR: 13:5  one-line    misplaced opening brace
 ERROR: 16:7  no-console  Calls to 'console.log' are not allowed.
 ERROR: 17:7  semicolon   Missing semicolon
 
- @ multi ./js/script.ts +0
+ @ multi ./js/script.ts default[0]
 
   Δt ____ms ⚠  3 problems (0 errors, 3 warnings)
 

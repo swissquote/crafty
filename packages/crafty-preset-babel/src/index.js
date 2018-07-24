@@ -133,7 +133,7 @@ module.exports = {
     // Add Eslint configuration
     //TODO :: throw error after all files are linted, not after first error
     rollupConfig.input.plugins.eslint = {
-      plugin: require("rollup-plugin-eslint"),
+      plugin: require("rollup-plugin-eslint").eslint,
       weight: -20,
       options: Object.assign({}, crafty.config.eslint, {
         throwOnError: crafty.getEnvironment() === "production",

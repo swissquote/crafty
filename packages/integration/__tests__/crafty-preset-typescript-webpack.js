@@ -90,8 +90,8 @@ it("Compiles TypeScript", () => {
 
   expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(fs.existsSync("dist/js/0.myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/0.myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js.map")).toBeTruthy();
 
   expect(
     fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
