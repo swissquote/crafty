@@ -96,9 +96,9 @@ module.exports = function jsTaskES6(crafty, bundle) {
   const getCompiler = () => {
     return portFinder.getFree(taskName).then(freePort => {
       webpackPort = freePort;
-      const webpackConfig = prepareConfiguration(crafty, bundle, freePort);
+      const config = prepareConfiguration(crafty, bundle, freePort);
       const webpack = require("webpack");
-      const compiler = webpack(webpackConfig);
+      const compiler = webpack(config);
 
       if (!compiler) {
         return Promise.reject("Could not create compiler");
@@ -114,10 +114,10 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
       compiler.hooks.done.tap(
         "CraftyRuntime",
-        onDone(crafty, webpackConfig, compiler, bundle)
+        onDone(crafty, config, compiler, bundle)
       );
 
-      return compiler;
+      return { compiler, config };
     });
   };
 
@@ -132,17 +132,10 @@ module.exports = function jsTaskES6(crafty, bundle) {
       });
 
       compilerReady
-        .then(compiler => {
+        .then(({ compiler, config }) => {
           // Prepare the Hot Reload Server
           const WebpackDevServer = require("webpack-dev-server");
-          runningWatcher = new WebpackDevServer(compiler, {
-            stats: false,
-            hot: true,
-            hotOnly: true,
-            headers: {
-              "Access-Control-Allow-Origin": "*"
-            }
-          });
+          runningWatcher = new WebpackDevServer(compiler, config.devServer);
 
           runningWatcher.listen(webpackPort, "localhost", function(err) {
             if (err) {
@@ -169,7 +162,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
     });
 
     compilerReady
-      .then(compiler => {
+      .then(({ compiler, config }) => {
         compiler.run((err, stats) => {
           if (err) {
             printErrors("Failed to compile.", [err]);

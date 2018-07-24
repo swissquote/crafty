@@ -129,6 +129,15 @@ module.exports = function(crafty, bundle, webpackPort) {
         ) // WebpackDevServer host and port
         .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
     }
+
+    chain.devServer
+      .hot(bundle.hot)
+      .hotOnly(true)
+      .stats(false)
+      .contentBase(config.destination)
+      .headers({
+        "Access-Control-Allow-Origin": "*"
+      });
   }
 
   // Apply preset configuration
