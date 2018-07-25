@@ -7,7 +7,14 @@ const chalk = require("chalk");
 const Repository = require("lerna/lib/Repository");
 const PackageUtilities = require("lerna/lib/PackageUtilities");
 
+const lernaRegex = /lerna@.*/;
+
 function renderChain(currentChain) {
+    // If it's a lerna dependency, ignore it.
+    if (currentChain.filter(item => lernaRegex.test(item)).length) {
+        return;
+    }
+
     //currentChain.reverse();
     console.log(currentChain.join(chalk.bold(" ← "))); // →
 }

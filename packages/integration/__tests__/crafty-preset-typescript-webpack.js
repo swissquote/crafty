@@ -97,7 +97,7 @@ it("Compiles TypeScript", () => {
     fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
   expect(
-    fs.readFileSync("dist/js/0.myBundle.min.js").toString("utf8")
+    fs.readFileSync("dist/js/1.myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
 });
 
