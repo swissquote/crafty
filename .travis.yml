@@ -37,14 +37,19 @@ script:
   - yarn test
   - sonar-scanner
 
-before_deploy:
-  - composer install
-  - vendor/bin/daux generate --themes=docs_theme
 
-deploy:
-  provider: pages
-  local_dir: static
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: deploy
+      node_js: "8"
+      script: skip
+      before_deploy:
+        - composer install
+        - vendor/bin/daux generate --themes=docs_theme
+      deploy:
+        provider: pages
+        local_dir: static
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+        on:
+          branch: master
