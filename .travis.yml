@@ -35,12 +35,12 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - yarn test
-  - sonar-scanner
+  - sonar-scanner || true # Don't fail because of Sonarqube
 
 
 jobs:
   include:
-    - stage: deploy
+    - stage: "Deploy Documentation"
       node_js: "8"
       script: skip
       before_deploy:
