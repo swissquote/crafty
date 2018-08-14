@@ -102,11 +102,7 @@ module.exports = function buildPreset(context, opts) {
     {
       helpers: opts.deduplicateHelpers || false,
       useESModules: opts.useESModules || false,
-      useBuiltIns: true,
-      polyfill: false,
-      regenerator: true,
-      // Resolve the Babel runtime relative to the config.
-      moduleName: path.dirname(require.resolve("@babel/runtime/package.json"))
+      regenerator: true
     }
   ]);
 
