@@ -1,11 +1,9 @@
 // @ts-check
-const fs = require('fs');
-const lockfile = require('@yarnpkg/lockfile');
+const fs = require("fs");
+const lockfile = require("@yarnpkg/lockfile");
 const semver = require("semver");
 const chalk = require("chalk");
-
-const Repository = require("lerna/lib/Repository");
-const PackageUtilities = require("lerna/lib/PackageUtilities");
+const Project = require("@lerna/project");
 
 const lernaRegex = /lerna@.*/;
 
@@ -19,7 +17,7 @@ function renderChain(currentChain) {
     console.log(currentChain.join(chalk.bold(" ← "))); // →
 }
 
-function findRequestChain(currentChain) {
+function findRequestChain(requiredBy, currentChain) {
     const requested = currentChain[currentChain.length -1];
     if (!requiredBy.hasOwnProperty(requested)) {
         renderChain(currentChain);
@@ -32,11 +30,11 @@ function findRequestChain(currentChain) {
             return;
         }
 
-        findRequestChain(currentChain.concat(parent))
+        findRequestChain(requiredBy, currentChain.concat(parent))
     });
 }
 
-function registerDependencies(dependencies, parent) {
+function registerDependencies(requiredBy, dependencies, parent) {
     Object.keys(dependencies).forEach(dep => {
         const version = dependencies[dep];
 
@@ -50,71 +48,68 @@ function registerDependencies(dependencies, parent) {
     });
 }
 
-console.log("Loading dependency tree");
-let file = fs.readFileSync('yarn.lock', 'utf8');
-let json = lockfile.parse(file).object;
+async function listOwnPackages(limitPackages) {
+    const ownPackages = new Set();
 
-const limitPackages = process.argv.indexOf("--all") == -1;
-const ownPackages = new Set();
-
-if (limitPackages) {
-    console.log("Listing packages ...");
-    const repository = new Repository(process.cwd());
-    const { rootPath, packageConfigs } = repository;
+    if (limitPackages) {
+        console.log("Listing packages ...");
+        const repository = new Project(process.cwd());
+        const craftyPackages = await repository.getPackages();
+        console.log(`${craftyPackages.length} packages found ...`);
     
-    // Add root package as well
-    //packageConfigs.push('.');
+        craftyPackages.forEach(pkg => ownPackages.add(pkg.name));
+        console.log("Listing dependencies ...");
+        craftyPackages.forEach(({ dependencies, devDependencies }) => {
+            Object.keys(dependencies  || {}).forEach(dep => ownPackages.add(dep))
+            Object.keys(devDependencies || {}).forEach(dep => ownPackages.add(dep))
+        });
     
-    var craftyPackages = PackageUtilities.getPackages({ rootPath, packageConfigs });
-    console.log(`${craftyPackages.length} packages found ...`)
+        // Exclude small packages that make a lot of noise
+        ownPackages.delete("chalk");
+        ownPackages.delete("debug");
+        ownPackages.delete("is-glob");
+    }
 
-    craftyPackages.forEach(pkg => ownPackages.add(pkg.name));
-    console.log("Listing dependencies ...");
-    craftyPackages.forEach(({ dependencies, devDependencies }) => {
-        Object.keys(dependencies  || {}).forEach(dep => ownPackages.add(dep))
-        Object.keys(devDependencies || {}).forEach(dep => ownPackages.add(dep))
-    });
-
-    // Exclude small packages that make a lot of noise
-    ownPackages.delete("chalk");
-    ownPackages.delete("debug");
+    return ownPackages;
 }
 
+function listPackages(requiredBy) {
+    console.log("Loading dependency tree");
+    let file = fs.readFileSync('yarn.lock', 'utf8');
+    let json = lockfile.parse(file).object;
+    
+    const packages /*: { [package: string]: { [resolvedVersion: string]: requestedVersion: string[]; }} */ = {};
+    Object.keys(json).forEach(key => {
+        const lastIndex = key.lastIndexOf("@");
+        const module = key.substring(0, lastIndex);
+        const requestedVersion = key.substring(lastIndex + 1);
+        const resolvedVersion = json[key].version;
 
+        // Prepare a list of dependencies and who required them
+        if (json[key].dependencies) {
+            registerDependencies(requiredBy, json[key].dependencies, key);
+        }
 
-// List all the packages and their requested versions
+        if (json[key].optionalDependencies) {
+            registerDependencies(requiredBy, json[key].optionalDependencies, key);
+        }
 
-const requiredBy = {};
-const packages /*: { [package: string]: { [resolvedVersion: string]: requestedVersion: string[]; }} */ = {};
-Object.keys(json).forEach(key => {
-    const lastIndex = key.lastIndexOf("@");
-    const module = key.substring(0, lastIndex);
-    const requestedVersion = key.substring(lastIndex + 1);
-    const resolvedVersion = json[key].version;
+        if (!packages.hasOwnProperty(module)) {
+            packages[module] = {};
+        }
 
-    // Prepare a list of dependencies and who required them
-    if (json[key].dependencies) {
-        registerDependencies(json[key].dependencies, key);
-    }
+        if (!packages[module].hasOwnProperty(resolvedVersion)) {
+            packages[module][resolvedVersion] = [];
+        }
 
-    if (json[key].optionalDependencies) {
-        registerDependencies(json[key].optionalDependencies, key);
-    }
+        packages[module][resolvedVersion].push(requestedVersion);
+    });
 
-    if (!packages.hasOwnProperty(module)) {
-        packages[module] = {};
-    }
+    return packages;
+}
 
-    if (!packages[module].hasOwnProperty(resolvedVersion)) {
-        packages[module][resolvedVersion] = [];
-    }
-
-    packages[module][resolvedVersion].push(requestedVersion);
-});
-
-const duplicatePackages = [];
-
-const withDuplicates = Object.keys(packages)
+function listDuplicatePackages(packages) {
+    return Object.keys(packages)
     .filter(module => Object.keys(packages[module]).length > 1)
     .map(module => {
         const versions = Object.keys(packages[module]);
@@ -122,25 +117,28 @@ const withDuplicates = Object.keys(packages)
 
         const [latestVersion, ...olderVersions] = versions;
 
-        const requested = olderVersions.map(r => packages[module][r]).reduce((prev, current) => {
-            return prev.concat(current);
-        }, []);
+        const requested = olderVersions
+            .map(r => packages[module][r])
+            .reduce((prev, current) => prev.concat(current), []);
 
-        duplicatePackages.push({
-            module,
-            latestVersion,
-            requested
-        })
+        return { module, latestVersion, requested };
     });
+}
 
+const limitPackages = process.argv.indexOf("--all") == -1;
+const requiredBy = {};
+const packages = listPackages(requiredBy);
+const duplicatePackages = listDuplicatePackages(packages);
 
-duplicatePackages.forEach(({module, latestVersion, requested}) => {
-    // Skip packages that we don't directly depend upon
-    if (limitPackages && !ownPackages.has(module)) {
-        return;     
-    }
-
-    console.log("");
-    console.log(chalk.bold(module), "( Latest version", chalk.bold(latestVersion), ")");
-    requested.forEach(req => findRequestChain([`${module}@${req}`]));
+listOwnPackages(limitPackages).then(ownPackages => {
+    duplicatePackages.forEach(({module, latestVersion, requested}) => {
+        // Skip packages that we don't directly depend upon
+        if (limitPackages && !ownPackages.has(module)) {
+            return;     
+        }
+    
+        console.log("");
+        console.log(chalk.bold(module), "( Latest version", chalk.bold(latestVersion), ")");
+        requested.forEach(req => findRequestChain(requiredBy, [`${module}@${req}`]));
+    });
 });
