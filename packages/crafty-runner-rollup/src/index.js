@@ -1,4 +1,3 @@
-const debug = require("debug")("rollup-runner");
 const generateTask = require("./rollup_runtime");
 
 module.exports = {

@@ -357,11 +357,13 @@ button:focus,
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
 
 :-moz-full-screen .Link {
+    display: -moz-box;
     display: flex;
 }
 
@@ -371,7 +373,9 @@ button:focus,
 }
 
 :fullscreen .Link {
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
 }
@@ -398,6 +402,8 @@ button:focus,
 }
 
 .Buy {
+    background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), to(#7db9e8));
+    background: -o-linear-gradient(top, #1e5799, #7db9e8);
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
@@ -416,13 +422,13 @@ button:focus,
     font-variant-numeric: lining-nums;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
 
 .BigImage {
     background-image: url(img/test-2x.png);
 } }
 
-@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+@media (-webkit-min-device-pixel-ratio: 6.25), (-o-min-device-pixel-ratio: 25/4), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);

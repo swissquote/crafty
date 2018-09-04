@@ -86,16 +86,7 @@ exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
   "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] SyntaxError in plugin \\"gulp-babel\\"
-Message:
-    __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js: Unexpected token (14:6)
-
-  12 | }
-  13 |
-> 14 | const test = new Test(\\"Stéphane\\");
-     |       ^
-  15 | test.sayHi();
-  16 |
+[__:__:__] ESLint failed with 1 error
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",
