@@ -6,7 +6,7 @@ module.exports = {
    * order is important
    * ******************
    */
-   // https://npmjs.com/package/postcss-custom-properties
+  // https://npmjs.com/package/postcss-custom-properties
   customProperties: (options) => require("postcss-custom-properties")(options),
 
   // https://npmjs.com/package/postcss-calc
@@ -83,4 +83,4 @@ module.exports = {
 
   // https://www.npmjs.com/package/postcss-replace-overflow-wrap
   overflowWrap: (options) => require("postcss-replace-overflow-wrap")(options)
-}
+};

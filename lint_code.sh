@@ -92,7 +92,7 @@ node ../crafty-preset-babel/bin/eslint.js --fix --preset recommended --preset no
 
 echo "${GREEN}Linting postcss-swissquote-preset$NC"
 cd "$DIR/packages/postcss-swissquote-preset"
-node ../crafty-preset-babel/bin/eslint.js --fix --preset recommended --preset node *.js
+node ../crafty-preset-babel/bin/eslint.js --fix --preset recommended --preset node *.js src/**/*.js
 
 echo "${GREEN}Linting stylelint-config-swissquote$NC"
 cd "$DIR/packages/stylelint-config-swissquote"

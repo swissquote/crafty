@@ -17,7 +17,7 @@ function getDefaultBrowsers() {
   // There seems to be a bug with browserslist's data
   for (var name in browserslist.data) {
     if (browserslist.data.hasOwnProperty(name)) {
-      browserslist.data[name].released.sort((a, b) => Number(a) - Number(b))
+      browserslist.data[name].released.sort((a, b) => Number(a) - Number(b));
     }
   }
 

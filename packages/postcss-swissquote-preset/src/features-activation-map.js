@@ -32,4 +32,4 @@ module.exports = {
   colorRgba: [ "css3-colors" ],
   overflowWrap: [ "wordwrap" ],
   imageSet: [ "css-image-set" ]
-}
+};

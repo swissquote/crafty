@@ -135,7 +135,9 @@ module.exports = function jsTaskES6(crafty, bundle) {
           const WebpackDevServer = require("webpack-dev-server");
           runningWatcher = new WebpackDevServer(compiler, config.devServer);
 
-          runningWatcher.listen(config.devServer.port, "localhost", function(err) {
+          runningWatcher.listen(config.devServer.port, "localhost", function(
+            err
+          ) {
             if (err) {
               throw new util.PluginError("webpack-dev-server", err);
             }

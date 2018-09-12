@@ -22,10 +22,9 @@ module.exports = function(config) {
   // Handle next generation features
   const cssnextOptions = {
     browsers: config.browsers,
-    features: {
-    }
+    features: {}
   };
-  processors.push(require("./cssnext")(cssnextOptions));
+  processors.push(require("./src/cssnext")(cssnextOptions));
 
   // Also support sass-style nesting
   processors.push(require("postcss-nested")());
@@ -67,7 +66,7 @@ module.exports = function(config) {
   processors.push(require("postcss-reporter")(reporterOptions));
 
   // List the used plugins (sends output to debug)
-  processors.push(require("./postcss-plugin-list"));
+  processors.push(require("./src/postcss-plugin-list"));
 
   return processors;
 };

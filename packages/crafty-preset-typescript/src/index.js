@@ -111,7 +111,7 @@ module.exports = {
       });
 
     // TypeScript
-    const tsRule = chain.module.rule("ts");
+    const tsRule = chain.module.rule("ts");
     tsRule.test(/\.tsx?$/);
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
@@ -134,7 +134,7 @@ module.exports = {
     ) {
       babelOptions.cacheDirectory = true;
     }
-  
+
     // EcmaScript 2015+
     tsRule
       .use("babel")

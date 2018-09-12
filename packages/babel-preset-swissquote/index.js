@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = function buildPreset(context, opts) {
   const presets = [];
   const plugins = [];
