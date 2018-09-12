@@ -23,11 +23,9 @@ module.exports = function(config) {
   const cssnextOptions = {
     browsers: config.browsers,
     features: {
-      applyRule: false, // this feature will never be spec-compliant, removing
-      autoprefixer: false // Disable autoprefixer, will be done separately
     }
   };
-  processors.push(require("postcss-cssnext")(cssnextOptions));
+  processors.push(require("./cssnext")(cssnextOptions));
 
   // Also support sass-style nesting
   processors.push(require("postcss-nested")());

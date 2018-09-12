@@ -134,7 +134,10 @@ exports[`Experiment with all CSS 2`] = `
     padding-left: 16px;
 }
 
-.Search:after { content: \\"\\"; background: url(\\"/icons/search.png\\"); }
+.Search:after {
+        content: \\"\\";
+        background: url(\\"/icons/search.png\\");
+    }
 
 /* Comments (postcss-scss) */
 
@@ -146,12 +149,17 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Variables (postcss-advanced-variables, postcss-custom-properties) */
 
+:root {
+    --color: #f00;
+}
+
 .Menu {
     width: 800px;
 }
 
 .MenuLink {
     color: #f00;
+    color: var(--color);
     background: #056ef0;
     width: 200px;
 }
@@ -192,11 +200,17 @@ exports[`Experiment with all CSS 2`] = `
     right: 5px;
 }
 
-.Banner:dir(ltr) { padding-left: 20px; padding-right: 40px; }
+.Banner:dir(ltr) {
+    padding-left: 20px;
+    padding-right: 40px; }
 
-.Banner:dir(rtl) { padding-right: 20px; padding-left: 40px; }
+.Banner:dir(rtl) {
+    padding-right: 20px;
+    padding-left: 40px; }
 
-.Banner { resize: vertical; }
+.Banner {
+    resize: vertical;
+}
 
 [dir=\\"rtl\\"] .Banner__title {
     margin-right: 10px;
@@ -208,14 +222,21 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Math in your CSS (postcss-calc) */
 
+:root {
+    --main-font-size: 16px;
+}
+
 .Header {
     font-size: 16px;
+    font-size: var(--main-font-size);
 }
 
 .Header {
     font-size: 32px;
+    font-size: calc(var(--main-font-size) * 2);
     height: calc(100px - 2em);
     margin-top: 24px;
+    margin-top: calc(var(--main-font-size) * 1.5);
 }
 
 /* Conditionals (postcss-advanced-variables) */
@@ -314,15 +335,11 @@ exports[`Experiment with all CSS 2`] = `
  * postcss-attribute-case-insensitive
  */
 
-button,
-.button {
+button,.button {
     /* styles for your buttons */
 }
 
-button:hover,
-.button:hover,
-button:focus,
-.button:focus {
+button:hover,button:focus,.button:hover,.button:focus {
     /* hover/focus styles for your button */
 }
 
@@ -335,6 +352,18 @@ button:focus,
 }
 
 .Navigation :link,.Navigation :visited {
+    background-color: yellow;
+}
+
+.Navigation :-webkit-any-link {
+    background-color: yellow;
+}
+
+.Navigation :-moz-any-link {
+    background-color: yellow;
+}
+
+.Navigation :any-link {
     background-color: yellow;
 }
 
@@ -357,13 +386,11 @@ button:focus,
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
 
 :-moz-full-screen .Link {
-    display: -moz-box;
     display: flex;
 }
 
@@ -373,9 +400,7 @@ button:focus,
 }
 
 :fullscreen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
-    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
 }
@@ -390,7 +415,7 @@ button:focus,
  */
 
 .Body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
 }
 
 .Button:before {
@@ -402,8 +427,6 @@ button:focus,
 }
 
 .Buy {
-    background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), to(#7db9e8));
-    background: -o-linear-gradient(top, #1e5799, #7db9e8);
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
@@ -422,13 +445,13 @@ button:focus,
     font-variant-numeric: lining-nums;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .BigImage {
     background-image: url(img/test-2x.png);
 } }
 
-@media (-webkit-min-device-pixel-ratio: 6.25), (-o-min-device-pixel-ratio: 25/4), (min-resolution: 600dpi) {
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);
