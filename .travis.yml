@@ -27,7 +27,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 
 install:
-  - yarn install
+  - yarn install || yarn install --no-lockfile
 
 # Disable sonar-scanner in Pull Requests as it's not able find the command.
 script:
