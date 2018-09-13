@@ -1,86 +1,144 @@
-/* eslint-disable max-len */
-module.exports = {
+const ChainedMap = require("./ChainedMap");
+const Processor = require("./Processor");
+
+class ProcessorMap extends ChainedMap {
   /**
-   * REMINDER:
-   * ******************
-   * order is important
-   * ******************
+   * Create a processor, returns the existing one if there is already one with the same name
+   *
+   * @param {string} name The name of the module that provides this feature
+   * @returns {Processor}
    */
-  // https://npmjs.com/package/postcss-custom-properties
-  customProperties: (options) => require("postcss-custom-properties")(options),
+  processor(name) {
+    return this.getOrCompute(name, () => new Processor(name));
+  }
+}
 
-  // https://npmjs.com/package/postcss-calc
-  calc: (options) => require("postcss-calc")(options),
+module.exports = function(config) {
+  const env = config.environment || process.env.NODE_ENV || "production";
 
-  // https://www.npmjs.com/package/postcss-image-set-polyfill
-  imageSet: (options) => require("postcss-image-set-polyfill")(options),
+  // All processors used to make the CSS readable by a browser
+  const processors = new ProcessorMap();
 
-  // https://npmjs.com/package/postcss-nesting
-  nesting: (options) => require("postcss-nesting")(options),
+  // Handle @import and rebase urls
+  processors.processor("postcss-import");
+  processors.processor("postcss-url").setOptions({ url: "rebase" });
 
-  // https://npmjs.com/package/postcss-custom-media
-  customMedia: (options) => require("postcss-custom-media")(options),
+  // Apply Sass-like features
+  processors
+    .processor("postcss-advanced-variables")
+    .setOptions({ disable: "@import" });
+  processors.processor("postcss-atroot");
+  processors.processor("postcss-property-lookup");
 
-  // https://npmjs.com/package/postcss-media-minmax
-  mediaQueriesRange: (options) => require("postcss-media-minmax")(options),
+  // Add plugins from postcss-preset-env missing in postcss-cssnext
+  processors.processor("postcss-dir-pseudo-class");
+  processors.processor("postcss-logical");
 
-  // https://npmjs.com/package/postcss-custom-selectors
-  customSelectors: (options) => require("postcss-custom-selectors")(options),
+  // Handle next generation features
+  processors.processor("postcss-custom-properties")
+    .enableIfUnsupported([ "css-variables" ], config.browsers)
+    .before("postcss-calc");
 
-  // https://npmjs.com/package/postcss-attribute-case-insensitive
-  attributeCaseInsensitive: (options) => require("postcss-attribute-case-insensitive")(options),
+  processors.processor("postcss-calc");
 
-  // https://npmjs.com/package/postcss-color-rebeccapurple
-  colorRebeccapurple: (options) => require("postcss-color-rebeccapurple")(options),
+  processors.processor("postcss-image-set-polyfill")
+    .enableIfUnsupported([ "css-image-set" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-color-hwb
-  colorHwb: (options) => require("postcss-color-hwb")(options),
+  processors.processor("postcss-nesting");
 
-  // https://npmjs.com/package/postcss-color-hsl
-  colorHsl: (options) => require("postcss-color-hsl")(options),
+  processors.processor("postcss-custom-media");
+  processors.processor("postcss-media-minmax");
 
-  // https://npmjs.com/package/postcss-color-rgb
-  colorRgb: (options) => require("postcss-color-rgb")(options),
+  processors.processor("postcss-custom-selectors");
 
-  // https://npmjs.com/package/postcss-color-gray
-  colorGray: (options) => require("postcss-color-gray")(options),
+  processors.processor("postcss-attribute-case-insensitive")
+    .enableIfUnsupported([ "css-case-insensitive" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-color-hex-alpha
-  colorHexAlpha: (options) => require("postcss-color-hex-alpha")(options),
+  processors.processor("postcss-color-rebeccapurple")
+    .enableIfUnsupported([ "css-rebeccapurple" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-color-function
-  colorFunction: (options) => require("postcss-color-function")(options),
+  processors.processor("postcss-color-hwb");
+  processors.processor("postcss-color-hsl");
+  processors.processor("postcss-color-rgb");
+  processors.processor("postcss-color-gray");
 
-  // https://npmjs.com/package/postcss-font-family-system-ui
-  fontFamilySystemUi: (options) => require("postcss-font-family-system-ui")(options),
+  processors.processor("postcss-color-hex-alpha")
+    .enableIfUnsupported([ "css-rrggbbaa" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-font-variant
-  fontVariant: (options) => require("postcss-font-variant")(options),
+  processors.processor("postcss-color-function");
 
-  // https://npmjs.com/package/pleeease-filters
-  filter: (options) => require("pleeease-filters")(options),
+  processors.processor("postcss-font-family-system-ui");
 
-  // https://npmjs.com/package/postcss-initial
-  initial: (options) => require("postcss-initial")(options),
+  processors.processor("postcss-font-variant");
 
-  // https://npmjs.com/package/pixrem
-  rem: (options) => require("pixrem")(options),
+  processors.processor("pleeease-filters")
+    .enableIfUnsupported([ "css-filters" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-pseudoelements
-  pseudoElements: (options) => require("postcss-pseudoelements")(options),
+  processors.processor("postcss-initial")
+    .enableIfUnsupported([ "css-all", "css-initial-value" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-selector-matches
-  pseudoClassMatches: (options) => require("postcss-selector-matches")(options),
+  processors.processor("pixrem")
+    .setOptions({ browsers: config.browsers })
+    .enableIfUnsupported([ "rem" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-selector-not
-  pseudoClassNot: (options) => require("postcss-selector-not")(options),
+  processors.processor("postcss-pseudoelements")
+    .enableIfUnsupported([ "css-gencontent" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-pseudo-class-any-link
-  pseudoClassAnyLink: (options) => require("postcss-pseudo-class-any-link")(options),
+  processors.processor("postcss-selector-matches")
+    .enableIfUnsupported([ "css-matches-pseudo" ], config.browsers);
 
-  // https://npmjs.com/package/postcss-color-rgba-fallback
-  colorRgba: (options) => require("postcss-color-rgba-fallback")(options),
+  processors.processor("postcss-selector-not")
+    .enableIfUnsupported([ "css-not-sel-list" ], config.browsers);
 
-  // https://www.npmjs.com/package/postcss-replace-overflow-wrap
-  overflowWrap: (options) => require("postcss-replace-overflow-wrap")(options)
+  processors.processor("postcss-pseudo-class-any-link");
+
+  processors.processor("postcss-color-rgba-fallback")
+    .enableIfUnsupported([ "css3-colors" ], config.browsers);
+
+  processors.processor("postcss-replace-overflow-wrap")
+    .enableIfUnsupported([ "wordwrap" ], config.browsers);
+
+  // Also support sass-style nesting
+  processors.processor("postcss-nested");
+
+  // Handle asset variables resolving
+  processors.processor("postcss-assets").setOptions({
+    cachebuster: true,
+    loadPaths: ["images"],
+    relative: true
+  });
+
+  // Only add postcss-opacity and postcss-filter-gradient if old IE needs to be supported
+  processors.processor("postcss-filter-gradient").enableIf(() => {
+    const list = require("browserslist")(config.browsers);
+
+    return (
+      list.indexOf("ie 9") >= 0 ||
+      list.indexOf("ie 8") >= 0 ||
+      list.indexOf("ie 7") >= 0 ||
+      list.indexOf("ie 6") >= 0
+    );
+  });
+
+  // Options to apply to autoprefixer
+  processors.processor("autoprefixer").setOptions({
+    browsers: config.browsers
+  });
+
+  // CSSO :: Minify and Optimize CSS
+  processors
+    .processor("postcss-csso")
+    .enableIf(() => env === "production");
+
+  // Report problems encountered during build
+  processors.processor("postcss-reporter").setOptions({
+    clearReportedMessages: true
+  });
+
+  // List the used plugins (sends output to debug)
+  processors
+    .processor("plugin-list")
+    .module(require.resolve("./postcss-plugin-list"));
+
+  return processors;
 };

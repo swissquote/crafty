@@ -1,7 +1,18 @@
+const { isSupported } = require("caniuse-api");
+
+function isAllSupported(items, browsers) {
+  const allItems = Array.isArray(items) ? items : [ items ];
+
+  return allItems.every(item => isSupported(item, browsers));
+}
+
 module.exports = class Processor {
   constructor(name) {
     this.name = name;
     this.options = {};
+
+    this.enableCallback = null;
+    this.caniuseFeature = null;
   }
 
   module(moduleName) {
@@ -18,15 +29,32 @@ module.exports = class Processor {
   }
 
   isEnabled() {
-    if (!this.enableCallback) {
+    if (!this.enableCallback && !this.caniuseFeature) {
       return true;
     }
 
-    return this.enableCallback(this.options);
+    if (this.caniuseFeature && isAllSupported(this.caniuseFeature, this.browserslist)) {
+      return false;
+    }
+
+    if (this.enableCallback) {
+      return this.enableCallback(this.options);
+    }
+
+    return true;
   }
 
   enableIf(callback) {
     this.enableCallback = callback;
+
+    return this;
+  }
+
+  enableIfUnsupported(caniuseFeature, browsers) {
+    this.caniuseFeature = caniuseFeature;
+    this.browserslist = browsers;
+
+    return this;
   }
 
   setOptions(options) {

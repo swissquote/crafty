@@ -174,7 +174,7 @@ module.exports = {
       .loader("postcss-loader")
       .options({
         parser: require("postcss-scss"),
-        plugins: getProcessors(crafty.config)
+        plugins: getProcessors(crafty.config, crafty)
       });
   }
 };
