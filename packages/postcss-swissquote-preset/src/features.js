@@ -37,6 +37,10 @@ module.exports = function(config) {
   // Handle next generation features
   processors.processor("postcss-custom-properties")
     .enableIfUnsupported([ "css-variables" ], config.browsers)
+    .setOptions({
+      preserve: false,
+      appendVariables: true
+    })
     .before("postcss-calc");
 
   processors.processor("postcss-calc");

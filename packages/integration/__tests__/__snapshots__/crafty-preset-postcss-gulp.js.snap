@@ -20,6 +20,26 @@ Object {
 }
 `;
 
+exports[`Compiles CSS, configuration has overrides 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/compiles-with-overrides/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] Finished 'css_myBundle' after ____ ms
+[__:__:__] Finished 'css' after ____ ms
+[__:__:__] Starting 'css__lint' ...
+[__:__:__] Finished 'css__lint' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
 exports[`Doesn't compile without a task, but lints (doesn't throw in development) 1`] = `
 Object {
   "status": 0,
@@ -149,17 +169,12 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Variables (postcss-advanced-variables, postcss-custom-properties) */
 
-:root {
-    --color: #f00;
-}
-
 .Menu {
     width: 800px;
 }
 
 .MenuLink {
     color: #f00;
-    color: var(--color);
     background: #056ef0;
     width: 200px;
 }
@@ -222,21 +237,14 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Math in your CSS (postcss-calc) */
 
-:root {
-    --main-font-size: 16px;
-}
-
 .Header {
     font-size: 16px;
-    font-size: var(--main-font-size);
 }
 
 .Header {
     font-size: 32px;
-    font-size: calc(var(--main-font-size) * 2);
     height: calc(100px - 2em);
     margin-top: 24px;
-    margin-top: calc(var(--main-font-size) * 1.5);
 }
 
 /* Conditionals (postcss-advanced-variables) */

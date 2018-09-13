@@ -31,3 +31,10 @@ body {
         }
     }
 }
+
+// works with CSS Modules
+:global {
+    .Nesting {
+        color: green;
+    }
+}

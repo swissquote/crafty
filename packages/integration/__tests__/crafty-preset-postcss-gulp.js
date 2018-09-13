@@ -119,3 +119,22 @@ it("Compiles CSS", () => {
     ".Link{color:#00f}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
+
+it("Compiles CSS, configuration has overrides", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-postcss-gulp/compiles-with-overrides")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/css/myBundle.min.css")).toBeTruthy();
+  expect(fs.existsSync("dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(fs.existsSync("dist/css/imported.scss")).toBeFalsy();
+
+  expect(fs.readFileSync("dist/css/myBundle.min.css").toString("utf8")).toEqual(
+    ".Link{color:#fa5b35}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */\n"
+  );
+});

@@ -373,7 +373,7 @@ describe("flags warnings when using ids", () => {
       expect(data.results[0].warnings[0].line).toBe(1);
       expect(data.results[0].warnings[0].column).toBe(1);
       expect(data.results[0].warnings[0].text).toBe(
-        'Expected "#ids-not-allowed" to have no more than 0 id selectors (selector-max-id)'
+        'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
       );
     });
   });
