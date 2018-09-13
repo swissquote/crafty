@@ -89,6 +89,53 @@ module.exports = {
 };
 ```
 
+## Extending from your `crafty.config.js`
+
+For this you need to add a `postcss` method to your `crafty.config.js` 
+
+```javascript
+module.exports = {
+  /**
+   * Represents the extension point for Postcss configuration
+   * @param {Crafty} crafty - The instance of Crafty.
+   * @param {ProcessorMap} config - The list of plugins currently configured
+   */
+  postcss(crafty, config) {
+
+    // Add postcss-fixes
+    // We recommend that for all plugins you add, you set a "before", 
+    // because otherwise they run as last plugins and some other plugins might miss some optimizations
+    // For example if your plugin adds a `calc()` or a `var()` postcss-calc and postcss-custom-properties will already have run
+    config.processor("postcss-fixes")
+        .before("autoprefixer");
+
+    // Replace postcss-csso with cssnano, 
+    // - only enabled in production
+    // - runs before postcss-reporter
+    // - use cssnano's default preset
+    config.delete("postcss-csso");
+    config.processor("cssnano")
+        .enableIf(options => crafty.getEnvironment() === "production")
+        .before("postcss-reporter")
+        .setOptions({
+            preset: "default"
+        })
+
+    // Change autoprefixer's options to disable autoprefixing for flexbox
+    const autoprefixerOptions = config.processor("autoprefixer").options;
+    autoprefixerOptions.flexbox = false;
+
+    // Override CSS custom properties in code
+    const customProperties = config.processor("postcss-custom-properties").options;
+    customProperties.variables = {
+        color: "#fa5b35";
+    }
+  }
+};
+```
+
+[Read about the full API](./Postcss_Extension_API.md)
+
 ## Commands
 
 ### `crafty cssLint`
