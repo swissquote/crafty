@@ -44,7 +44,7 @@ module.exports = {
     // "no-underscore-dangle": "error",
     //"no-unused-expressions": "error",
     "no-unused-labels": "error",
-    "no-unused-vars": ["error", "local"],
+    "no-unused-vars": ["error", { args: "after-used", vars: "local" }],
     "no-useless-return": "error",
     "no-use-before-define": "error",
     radix: "error",
