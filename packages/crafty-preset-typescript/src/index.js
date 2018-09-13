@@ -13,6 +13,34 @@ function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
 
+function findConfigFile(compiler, requestDirPath, configFile) {
+  // If `configFile` is an absolute path, return it right away
+  if (path.isAbsolute(configFile)) {
+    return compiler.sys.fileExists(configFile) ? configFile : undefined;
+  }
+  // If `configFile` is a relative path, resolve it.
+  // We define a relative path as: starts with
+  // one or two dots + a common directory delimiter
+  if (configFile.match(/^\.\.?(\/|\\)/)) {
+    const resolvedPath = path.resolve(requestDirPath, configFile);
+    return compiler.sys.fileExists(resolvedPath) ? resolvedPath : undefined;
+    // If `configFile` is a file name, find it in the directory tree
+  } else {
+    while (true) {
+      const fileName = path.join(requestDirPath, configFile);
+      if (compiler.sys.fileExists(fileName)) {
+        return fileName;
+      }
+      const parentPath = path.dirname(requestDirPath);
+      if (parentPath === requestDirPath) {
+        break;
+      }
+      requestDirPath = parentPath;
+    }
+    return undefined;
+  }
+}
+
 module.exports = {
   defaultConfig() {
     return {
@@ -149,6 +177,30 @@ module.exports = {
         jsx: "Preserve"
       }
     };
+
+    // Get the current configuration to know what configuration options we have to set
+    const compiler = require("typescript");
+    const configFile = findConfigFile(compiler, process.cwd(), "tsconfig.json");
+    const currentConfig = compiler.readConfigFile(
+      configFile,
+      compiler.sys.readFile
+    );
+
+    if (
+      currentConfig.config &&
+      currentConfig.config.compilerOptions &&
+      currentConfig.config.compilerOptions.declaration &&
+      !currentConfig.config.compilerOptions.declarationDir
+    ) {
+      // Write declaration files in the destination folder
+      // We set the value this way to respect backwards compatibility,
+      // Ideally, the value should be without the `/js` at the end
+      tsOptions.compilerOptions.declarationDir = absolutePath(
+        crafty.config.destination_js +
+          (bundle.directory ? "/" + bundle.directory : "") +
+          "/js"
+      );
+    }
 
     tsRule
       .use("ts-loader")
