@@ -1,16 +1,32 @@
 module.exports = class Processor {
   constructor(name) {
     this.name = name;
+    this.options = {};
   }
 
-  module(callback, options) {
-    this.callback = callback;
-
-    if (options) {
-      return this.setOptions(options);
-    }
+  module(moduleName) {
+    const modulePath = require.resolve(moduleName);
+    this.moduleInit = options => require(modulePath)(options);
 
     return this;
+  }
+
+  init(callback) {
+    this.moduleInit = callback;
+
+    return this;
+  }
+
+  isEnabled() {
+    if (!this.enableCallback) {
+      return true;
+    }
+
+    return this.enableCallback(this.options);
+  }
+
+  enableIf(callback) {
+    this.enableCallback = callback;
   }
 
   setOptions(options) {
@@ -20,7 +36,11 @@ module.exports = class Processor {
   }
 
   instantiate() {
-    return this.callback(this.options);
+    if (!this.moduleInit) {
+      this.module(this.name);
+    }
+
+    return this.moduleInit(this.options);
   }
 
   before(name) {
@@ -48,4 +68,4 @@ module.exports = class Processor {
     this.__after = name;
     return this;
   }
-}
+};

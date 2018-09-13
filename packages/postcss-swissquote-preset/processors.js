@@ -7,7 +7,6 @@ class ProcessorMap extends ChainedMap {
   }
 }
 
-
 module.exports = function(config) {
   const env = config.environment || process.env.NODE_ENV || "production";
 
@@ -15,67 +14,74 @@ module.exports = function(config) {
   const processors = new ProcessorMap();
 
   // Handle @import and rebase urls
-  processors.processor("postcss-import").module(options => require("postcss-import")(options));
-  processors.processor("postcss-url").module(options => require("postcss-url")(options), { url: "rebase" });
+  processors.processor("postcss-import");
+  processors.processor("postcss-url").setOptions({ url: "rebase" });
 
   // Apply Sass-like features
-  const variablesOptions = { disable: "@import" };
-  processors.processor("postcss-advanced-variables").module(options => require("postcss-advanced-variables")(options), variablesOptions);
-  processors.processor("postcss-atroot").module(options => require("postcss-atroot")(options));
-  processors.processor("postcss-property-lookup").module(options => require("postcss-property-lookup")(options));
+  processors
+    .processor("postcss-advanced-variables")
+    .setOptions({ disable: "@import" });
+  processors.processor("postcss-atroot");
+  processors.processor("postcss-property-lookup");
 
   // Add plugins from postcss-preset-env missing in postcss-cssnext
-  processors.processor("postcss-dir-pseudo-class").module(options => require("postcss-dir-pseudo-class")(options));
-  processors.processor("postcss-logical").module(options => require("postcss-logical")(options));
+  processors.processor("postcss-dir-pseudo-class");
+  processors.processor("postcss-logical");
 
   // Handle next generation features
   const cssnextOptions = {
     browsers: config.browsers,
     features: {}
   };
-  processors.processor("postcss-cssnext").module(options => require("./src/cssnext")(options), cssnextOptions);
+  processors
+    .processor("postcss-cssnext")
+    .module(require.resolve("./src/cssnext"))
+    .setOptions(cssnextOptions);
 
   // Also support sass-style nesting
-  processors.processor("postcss-nested").module(options => require("postcss-nested")(options));
+  processors.processor("postcss-nested");
 
   // Handle asset variables resolving
-  const assetsOptions = {
+  processors.processor("postcss-assets").setOptions({
     cachebuster: true,
     loadPaths: ["images"],
     relative: true
-  };
-  processors.processor("postcss-assets").module(options => require("postcss-assets")(options), assetsOptions);
+  });
 
   // Only add postcss-opacity and postcss-filter-gradient if old IE needs to be supported
-  const list = require("browserslist")(config.browsers);
-  if (
-    list.indexOf("ie 9") >= 0 ||
-    list.indexOf("ie 8") >= 0 ||
-    list.indexOf("ie 7") >= 0 ||
-    list.indexOf("ie 6") >= 0
-  ) {
-    processors.processor("postcss-filter-gradient").module(options => require("postcss-filter-gradient")(options));
-  }
+  processors.processor("postcss-filter-gradient").enableIf(() => {
+    const list = require("browserslist")(config.browsers);
+
+    return (
+      list.indexOf("ie 9") >= 0 ||
+      list.indexOf("ie 8") >= 0 ||
+      list.indexOf("ie 7") >= 0 ||
+      list.indexOf("ie 6") >= 0
+    );
+  });
 
   // Options to apply to autoprefixer
-  const autoprefixerOptions = {
+  processors.processor("autoprefixer").setOptions({
     browsers: config.browsers
-  };
-  processors.processor("autoprefixer").module(options => require("autoprefixer")(options), autoprefixerOptions);
+  });
 
   // CSSO :: Minify and Optimize CSS
-  if (env === "production") {
-    processors.processor("postcss-csso").module(options => require("postcss-csso")(options));
-  }
+  processors
+    .processor("postcss-csso")
+    .enableIf(() => env === "production");
 
   // Report problems encountered during build
-  const reporterOptions = {
+  processors.processor("postcss-reporter").setOptions({
     clearReportedMessages: true
-  };
-  processors.processor("postcss-reporter").module(options => require("postcss-reporter")(options), reporterOptions);
+  });
 
   // List the used plugins (sends output to debug)
-  processors.processor("plugin-list").module(options => require("./src/postcss-plugin-list"));
+  processors
+    .processor("plugin-list")
+    .module(require.resolve("./src/postcss-plugin-list"));
 
-  return processors.values().map(item => item.instantiate());
+  return processors
+    .values()
+    .filter(item => item.isEnabled())
+    .map(item => item.instantiate());
 };
