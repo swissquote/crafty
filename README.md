@@ -125,8 +125,8 @@ doesn't give it's full measure. Here's some other features it has:
 
 - Preprocess your CSS using **PostCSS** and plugins that will allow to
   write in a syntax approaching the one of Sass.
-- Some plugins include `postcss-nested` to nest your styles, `postcss-cssnext`
-  to use future CSS options today and `postcss-advanced-variables` to define mixins
+- Some plugins include `postcss-nested` to nest your styles, some plugins to use
+  Future CSS features today and `postcss-advanced-variables` to define mixins
 - Compress the CSS output with `postcss-csso` to get the smallest possible file.
 - Automatically add vendor prefixes to properties with `autoprefixer`.
 - Simple Debugging with Source Maps

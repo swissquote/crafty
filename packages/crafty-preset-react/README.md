@@ -89,12 +89,12 @@ To enable HMR on your react application, you must set `hot: true` and `react: tr
 Then you must mark your root component as hot-exported :
 
 ```javascript
-import React from 'react'
-import { hot } from 'react-hot-loader'
+import React from "react";
+import { hot } from "react-hot-loader";
 
-const App = () => <div>Hello World!</div>
+const App = () => <div>Hello World!</div>;
 
-export default hot(module)(App)
+export default hot(module)(App);
 ```
 
 Only the root component needs this wrapping, the child components don't need it.
