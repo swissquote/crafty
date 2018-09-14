@@ -49,8 +49,8 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0
 # Do a proper install
 npx lerna clean --yes && rm -rf node_modules yarn.lock && yarn install
 
-# Release a canary version to test in a prokect
-npx lerna publish --canary
+# Release a canary version to test in a project
+npx lerna publish --canary --exact --force-publish="*" --npmClient=npm
 
 # -> Test inside one or more projects
 
