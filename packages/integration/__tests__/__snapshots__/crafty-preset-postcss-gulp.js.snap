@@ -207,14 +207,6 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Help with RTL languages (postcss-logical, postcss-dir-pseudo-class) */
 
-.Banner {
-    color: #222;
-    top: 0;
-    left: 5px;
-    bottom: 10px;
-    right: 5px;
-}
-
 .Banner:dir(ltr) {
     padding-left: 20px;
     padding-right: 40px; }
@@ -224,6 +216,11 @@ exports[`Experiment with all CSS 2`] = `
     padding-left: 40px; }
 
 .Banner {
+    color: #222;
+    top: 0;
+    left: 5px;
+    bottom: 10px;
+    right: 5px;
     resize: vertical;
 }
 
@@ -300,7 +297,7 @@ exports[`Experiment with all CSS 2`] = `
 .Quote {
     background: rgba(153, 221, 153, .8);   /* This will create a fallback without the alpha*/
 
-    border-color: rgba(153, 221, 153, 0.8);                    /* This will be transformed to rgba*/
+    border-color: rgba(153,221,153,0.8);                    /* This will be transformed to rgba*/
 
     color: #639;                   /* ... sad story, homage to eric meyer*/
 }
