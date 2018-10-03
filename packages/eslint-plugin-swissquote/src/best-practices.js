@@ -88,7 +88,8 @@ module.exports = {
         requireReturnDescription: false
       }
     ],
-    "valid-typeof": "error"
+    "valid-typeof": "error",
+    "@swissquote/swissquote/sonarjs/no-duplicate-string": ["error", 10]
   }
 };
 

@@ -122,7 +122,10 @@ it("Compiles CSS", () => {
 
 it("Compiles CSS, configuration has overrides", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-postcss-gulp/compiles-with-overrides")
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-postcss-gulp/compiles-with-overrides"
+    )
   );
   rimraf.sync("dist");
 

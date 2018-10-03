@@ -108,7 +108,10 @@ module.exports = {
     "media-feature-name-no-unknown": true,
     "property-no-unknown": true,
     "selector-max-compound-selectors": 6,
-    "selector-pseudo-class-no-unknown": [true, {ignorePseudoClasses: ["global"]}],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { ignorePseudoClasses: ["global"] }
+    ],
     "selector-pseudo-element-no-unknown": true,
     "selector-pseudo-element-colon-notation": "single",
     "string-no-newline": true,
