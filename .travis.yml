@@ -43,9 +43,11 @@ script:
   - sonar-scanner || true # Don't fail because of Sonarqube
 
 matrix:
+  fast_finish: true
   allow_failures:
     - os: osx
     - os: windows
+    - node: "11"
 
 jobs:
   include:
