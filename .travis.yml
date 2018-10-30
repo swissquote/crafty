@@ -13,10 +13,16 @@ cache:
 #    - node_modules
     - vendor
 
+os:
+  - linux
+  - osx
+  - windows
+
 jdk:
   - oraclejdk8
 
 node_js:
+  - '11'
   - '10'
   - '9'
   - '8'
@@ -36,6 +42,10 @@ script:
   - yarn test
   - sonar-scanner || true # Don't fail because of Sonarqube
 
+matrix:
+  allow_failures:
+    - os: osx
+    - os: windows
 
 jobs:
   include:
