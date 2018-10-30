@@ -135,7 +135,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
           const WebpackDevServer = require("webpack-dev-server");
           runningWatcher = new WebpackDevServer(compiler, config.devServer);
 
-          runningWatcher.listen(config.devServer.port, "localhost", function(
+          runningWatcher.listen(config.devServer.port, config.devServer.host, function(
             err
           ) {
             if (err) {
@@ -143,7 +143,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
             }
             crafty.log(
               "[webpack-dev-server]",
-              "Started, listening on localhost:" + config.devServer.port
+              "Started, listening on " + config.devServer.host + ":" + config.devServer.port
             );
           });
         })

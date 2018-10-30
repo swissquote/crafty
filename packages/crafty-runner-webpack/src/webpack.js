@@ -132,6 +132,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
     chain.devServer
       .hot(bundle.hot)
+      .host("localhost")
       .port(webpackPort)
       .hotOnly(true)
       .stats(false)
