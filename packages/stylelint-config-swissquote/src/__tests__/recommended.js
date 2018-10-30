@@ -296,7 +296,6 @@ const validCss = `/** @define Form */
     display: inline-block;
     text-align: left;
 }
-
 `;
 
 describe("flags no warnings with valid css", () => {
