@@ -7307,6 +7307,11 @@ jest-mock@^23.2.0:
   resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-23.2.0.tgz#ad1c60f29e8719d47c26e1138098b6d18b261134"
   integrity sha1-rRxg8p6HGdR8JuETgJi20YsmETQ=
 
+jest-pnp-resolver@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.0.1.tgz#f397cd71dbcd4a1947b2e435f6da8e9a347308fa"
+  integrity sha512-kzhvJQp+9k0a/hpvIIzOJgOwfOqmnohdrAMZW2EscH3kxR2VWD7EcPa10cio8EK9V7PcD75bhG1pFnO70zGwSQ==
+
 jest-regex-util@^23.3.0:
   version "23.3.0"
   resolved "https://registry.yarnpkg.com/jest-regex-util/-/jest-regex-util-23.3.0.tgz#5f86729547c2785c4002ceaa8f849fe8ca471bc5"
@@ -9636,6 +9641,13 @@ pn@^1.1.0:
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
 
+pnp-webpack-plugin@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.2.0.tgz#a85338bc313b8a0469c1d8c5c5d016873be47cb2"
+  integrity sha512-cCaqL7SZCqeJoCEL5GhSGU9CFJOMcDIEAS83X+0m2q25vtt9IqrMJ5dObm8WyqnM4CHRaIn0VVkn7RXdZ0C6Kg==
+  dependencies:
+    ts-pnp "^1.0.0"
+
 portfinder@^1.0.9:
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.19.tgz#07e87914a55242dcda5b833d42f018d6875b595f"
@@ -11114,6 +11126,11 @@ rollup-plugin-node-resolve@3.4.0:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
+rollup-plugin-pnp-resolve@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-pnp-resolve/-/rollup-plugin-pnp-resolve-1.0.1.tgz#5c2af5588b24dac4e906c1492dd43ead3c0348ce"
+  integrity sha512-9tp8UodHVZ9i0/uD2CKCwfZLODlXat3QnFQq1nwN7kVg0eFed7f1dWpWsTK8AbpOTv9hqv16AjngaWQtYGXl2A==
+
 rollup-plugin-replace@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-replace/-/rollup-plugin-replace-2.1.0.tgz#f9c07a4a89a2f8be912ee54b3f0f68d91e9ed0ae"
@@ -12481,6 +12498,11 @@ ts-loader@5.2.2:
     loader-utils "^1.0.2"
     micromatch "^3.1.4"
     semver "^5.0.1"
+
+ts-pnp@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.0.0.tgz#44a3a9e8c13fcb711bcda75d7b576c21af120c9d"
+  integrity sha512-qgwM7eBrxFvZSXLtSvjf3c2mXwJOOGD49VlE+KocUGX95DuMdLc/psZHBnPpZL5b2NU7VtQGHRCWF3cNfe5kxQ==
 
 tslib@1.9.0:
   version "1.9.0"

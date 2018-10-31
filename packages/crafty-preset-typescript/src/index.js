@@ -178,6 +178,14 @@ module.exports = {
       }
     };
 
+    try {
+      // This require fails if we're not in Yarn PNP
+      require(`pnpapi`);
+      tsOptions.resolveModuleName = require('ts-pnp').resolveModuleName;
+    } catch (error) {
+      // not in PnP; not a problem
+    }
+
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");
     const configFile = findConfigFile(compiler, process.cwd(), "tsconfig.json");

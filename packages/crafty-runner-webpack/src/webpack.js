@@ -71,6 +71,19 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   chain.externals(prepareExternals(bundle.externals));
 
+  // Enable support for Yarn PNP
+  const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
+  chain
+    .plugin("pnp-webpack-plugin")
+    .init((Plugin) => Plugin)
+    .use(PnpWebpackPlugin);
+
+  chain.resolveLoader
+    .plugin("pnp-webpack-plugin")
+    .init(Plugin => Plugin.moduleLoader(module))
+    .use(PnpWebpackPlugin);
+  
+
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
   // We are Cloning the uglifyJS Object as webpack
