@@ -7,8 +7,8 @@
     "access": "public"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "babel-eslint": "10.0.1",
@@ -21,18 +21,12 @@
   },
   "devDependencies": {
     "eslint": "5.8.0",
+    "jest": "23.6.0",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "23.6.0",
     "merge": "1.2.1"
   },
   "engines": {
     "node": ">=8.0.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ],
-    "testEnvironment": "node",
-    "verbose": true
   }
 }
