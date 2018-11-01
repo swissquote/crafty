@@ -7,8 +7,8 @@
     "access": "public"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "main": "src/index.js",
   "dependencies": {
@@ -22,15 +22,19 @@
     "pnp-webpack-plugin": "^1.2.0",
     "uglifyjs-webpack-plugin": "1.3.0",
     "webpack": "4.23.1",
-    "webpack-chain": "4.12.0",
+    "webpack-chain": "5.0.1",
     "webpack-dev-server": "3.1.10",
     "webpack-merge": "4.1.4",
+    "webpack-sources": "1.3.0",
     "webpack-stylish": "0.1.8"
   },
   "engines": {
     "node": ">=8.0.0"
   },
   "devDependencies": {
+    "jest": "23.6.0",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "23.6.0",
     "service-names-port-numbers": "^2.0.0"
   }
 }

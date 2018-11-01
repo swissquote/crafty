@@ -88,13 +88,12 @@ module.exports = function(crafty, bundle, webpackPort) {
   // define it here in case someone needs to minify in development.
   // We are Cloning the uglifyJS Object as webpack
   // mutates it which messes with other implementations
-  const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-  chain.optimization.minimizer([
-    new UglifyJSPlugin({
+  chain.optimization.minimizer("uglify")
+    .init((Plugin, options) => new Plugin(options))
+    .use(require.resolve("uglifyjs-webpack-plugin"), {
       sourceMap: true,
       uglifyOptions: Object.assign({}, config.uglifyJS)
-    })
-  ]);
+    });
 
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
