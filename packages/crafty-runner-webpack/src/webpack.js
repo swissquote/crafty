@@ -75,7 +75,8 @@ module.exports = function(crafty, bundle, webpackPort) {
   // define it here in case someone needs to minify in development.
   // We are Cloning the uglifyJS Object as webpack
   // mutates it which messes with other implementations
-  chain.optimization.minimizer("uglify")
+  chain.optimization
+    .minimizer("uglify")
     .init((Plugin, options) => new Plugin(options))
     .use(require.resolve("uglifyjs-webpack-plugin"), {
       sourceMap: true,
@@ -85,11 +86,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
     // We transform them into /* @__PURE__ */ so UglifyJS is able to remove them when unused.
-    const PureClassesPlugin = require("./PureClassesPlugin");
-    chain
-      .plugin("pure_classes")
-      .init((Plugin, args = []) => new Plugin(args))
-      .use(PureClassesPlugin, {});
+    chain.plugin("pure_classes").use(require.resolve("./PureClassesPlugin"));
 
     // Don't emit files if an error occured (forces to check what the error is)
     chain.optimization.noEmitOnErrors(true);
@@ -106,15 +103,13 @@ module.exports = function(crafty, bundle, webpackPort) {
     // See https://github.com/facebookincubator/create-react-app/issues/240
     chain
       .plugin("case-sensitive")
-      .init(Plugin => new Plugin())
-      .use(require("case-sensitive-paths-webpack-plugin"));
+      .use(require.resolve("case-sensitive-paths-webpack-plugin"));
 
     // This is necessary to emit hot updates:
     if (bundle.hot) {
       chain
         .plugin("hot")
-        .init(Plugin => new Plugin())
-        .use(require("webpack/lib/HotModuleReplacementPlugin"));
+        .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
 
       chain
         .entry("default")
