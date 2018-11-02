@@ -77,11 +77,10 @@ module.exports = function(crafty, bundle, webpackPort) {
   // mutates it which messes with other implementations
   chain.optimization
     .minimizer("uglify")
-    .init((Plugin, options) => new Plugin(options))
-    .use(require.resolve("uglifyjs-webpack-plugin"), {
+    .use(require.resolve("terser-webpack-plugin"), [{
       sourceMap: true,
-      uglifyOptions: Object.assign({}, config.uglifyJS)
-    });
+      terserOptions: Object.assign({}, config.uglifyJS)
+    }]);
 
   if (crafty.getEnvironment() === "production") {
     // Because in some cases, comments on classes are /** @class */
