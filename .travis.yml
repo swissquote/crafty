@@ -8,29 +8,21 @@ addons:
       - master
 
 cache:
-#  yarn: true
   directories:
-#    - node_modules
     - vendor
-
-os:
-  - linux
-  - osx
-#  - windows
 
 jdk:
   - oraclejdk8
 
 node_js:
-#  - '11'
+  - '11'
   - '10'
   - '9'
   - '8'
 
-# Disable Yarn PNP by default, add only one matrix entry 
+# Use Yarn without PNP by default
 env:
-  - NPM_CLIENT=yarn
-  - YARN_PLUGNPLAY_OVERRIDE=0 
+  - NPM_CLIENT=yarn YARN_PLUGNPLAY_OVERRIDE=0 
 
 # Make sure we have the latest Yarn version
 before_install:
@@ -50,15 +42,25 @@ script:
 
 matrix:
   fast_finish: true
+  # Support on those versions and platforms is experimental, 
   allow_failures:
     - os: osx
     - os: windows
     - node_js: "11"
   include:
+    # Test once with NPM
     - node_js: "10"
       env: NPM_CLIENT=npm
+    # Test once with Yarn PNP
     - node_js: "10"
       env: YARN_PLUGNPLAY_OVERRIDE=1
+    # Test once on Windows
+    - node_js: "10"
+      os: windows
+    # Test once on macOS
+    - node_js: "10"
+      os: osx
+    # Deploy the documentation, once all builds are finished
     - stage: "Deploy Documentation"
       node_js: "10"
       script: skip
