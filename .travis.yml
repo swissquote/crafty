@@ -30,6 +30,7 @@ before_install:
 
 install:
   - $NPM_CLIENT install
+  - 'if [ $NPM_CLIENT = "npm" ]; then npx lerna bootstrap --npm-client=npm; fi'
 
 # Disable sonar-scanner in Pull Requests as it's not able find the command.
 script:
