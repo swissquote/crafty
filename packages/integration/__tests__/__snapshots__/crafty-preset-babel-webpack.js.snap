@@ -262,13 +262,12 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
   11:5   warning  Unexpected console statement                                                   no-console
   15:5   warning  Unexpected console statement                                                   no-console
   15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
-  15:33  error    A space is required after ','                                                  comma-spacing
   15:33  error    There should be no space before ','                                            comma-spacing
   19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
   20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
 
-✖ 11 problems (9 errors, 2 warnings)
-  7 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 10 problems (8 errors, 2 warnings)
+  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
  @ multi ./js/script.js default[0]
 

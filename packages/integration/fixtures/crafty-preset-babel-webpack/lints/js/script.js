@@ -12,7 +12,7 @@ export default class newStuff {
   }
 
   method () {
-    console.log(  "some method" ,Component);
+    console.log(  "some method" , Component);
   }
 
   isEqual( a, b)
