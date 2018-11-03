@@ -55,10 +55,8 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     }
 
     if (crafty.getEnvironment() === "production") {
-      const uglifyES = require("uglify-es");
-      const composer = require("gulp-uglify/composer");
-      const minify = composer(uglifyES, console);
-      stream.add(minify(crafty.config.uglifyJS));
+      const terser = require("gulp-terser");
+      stream.add(terser({...crafty.config.uglifyJS, sourceMap: {}}));
     }
 
     stream.add(sourcemaps.write("./"));

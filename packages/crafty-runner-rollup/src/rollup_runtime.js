@@ -54,7 +54,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           weight: 50
         },
         uglify: {
-          plugin: require("rollup-plugin-uglify").uglify,
+          plugin: require("rollup-plugin-terser").terser,
           weight: 100,
           options: {
             output: {
@@ -68,7 +68,6 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
               }
             }
           },
-          minifier: require("uglify-es").minify,
           init: plugin => {
             return plugin.plugin(plugin.options, plugin.minifier);
           }

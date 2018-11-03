@@ -155,8 +155,7 @@ module.exports = {
 
       chain
         .plugin("extractCSS")
-        .init(Plugin => Plugin)
-        .use(extractCSS, {});
+        .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
     } else {
       styleRule.use("style-loader").loader("style-loader");
     }
