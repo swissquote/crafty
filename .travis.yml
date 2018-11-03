@@ -53,7 +53,7 @@ matrix:
       env: NPM_CLIENT=npm
     # Test once with Yarn PNP
     - node_js: "10"
-      env: YARN_PLUGNPLAY_OVERRIDE=1
+      env: NPM_CLIENT=yarn YARN_PLUGNPLAY_OVERRIDE=1
     # Test once on Windows
     - node_js: "10"
       os: windows
