@@ -27,19 +27,25 @@ node_js:
   - '9'
   - '8'
 
+# Disable Yarn PNP by default, add only one matrix entry 
+env:
+  - NPM_CLIENT=yarn
+  - YARN_PLUGNPLAY_OVERRIDE=0 
+
+# Make sure we have the latest Yarn version
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
 install:
-  - yarn install
+  - $NPM_CLIENT install
 
 # Disable sonar-scanner in Pull Requests as it's not able find the command.
 script:
   - _SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
-  - yarn test
+  - $NPM_CLIENT test
   - sonar-scanner || true # Don't fail because of Sonarqube
 
 matrix:
@@ -48,11 +54,13 @@ matrix:
     - os: osx
     - os: windows
     - node_js: "11"
-
-jobs:
   include:
+    - node_js: "10"
+      env: NPM_CLIENT=npm
+    - node_js: "10"
+      env: YARN_PLUGNPLAY_OVERRIDE=1
     - stage: "Deploy Documentation"
-      node_js: "8"
+      node_js: "10"
       script: skip
       before_deploy:
         - composer install
