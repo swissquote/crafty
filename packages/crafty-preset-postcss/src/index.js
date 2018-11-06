@@ -157,12 +157,12 @@ module.exports = {
         .plugin("extractCSS")
         .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
     } else {
-      styleRule.use("style-loader").loader("style-loader");
+      styleRule.use("style-loader").loader(require.resolve("style-loader"));
     }
 
     styleRule
       .use("css-loader")
-      .loader("css-loader")
+      .loader(require.resolve("css-loader"))
       .options({
         importLoaders: 1,
         sourceMap: crafty.getEnvironment() === "production" && bundle.extractCSS
@@ -170,7 +170,7 @@ module.exports = {
 
     styleRule
       .use("postcss-loader")
-      .loader("postcss-loader")
+      .loader(require.resolve("postcss-loader"))
       .options({
         parser: require("postcss-scss"),
         plugins: getProcessors(crafty.config, crafty)

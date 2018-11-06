@@ -132,7 +132,7 @@ module.exports = {
       .include.add(resolve("js"))
       .end()
       .use("tslint")
-      .loader("tslint-loader")
+      .loader(require.resolve("tslint-loader"))
       .options({
         configFile: filename,
         formatter: "stylish"
@@ -166,7 +166,7 @@ module.exports = {
     // EcmaScript 2015+
     tsRule
       .use("babel")
-      .loader("babel-loader")
+      .loader(require.resolve("babel-loader"))
       .options(babelOptions);
 
     const tsOptions = {
@@ -204,7 +204,7 @@ module.exports = {
 
     tsRule
       .use("ts-loader")
-      .loader("ts-loader")
+      .loader(require.resolve("ts-loader"))
       .options(tsOptions);
   }
 };
