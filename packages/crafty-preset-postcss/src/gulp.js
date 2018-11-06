@@ -15,7 +15,7 @@ function cssTask(crafty, StreamHandler, bundle) {
     return new StreamHandler(bundle.source, destination)
       .add(sourcemaps.init())
       .add(
-        postcss(getProcessors(crafty.config, crafty), {
+        postcss(getProcessors(crafty.config, crafty, bundle), {
           parser: scssParser
         })
       )

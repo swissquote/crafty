@@ -99,8 +99,9 @@ module.exports = {
    * Represents the extension point for Postcss configuration
    * @param {Crafty} crafty - The instance of Crafty.
    * @param {ProcessorMap} config - The list of plugins currently configured
+   * @param {Object} bundle - The bundle that is being prepared for build (name, input, source, destination)
    */
-  postcss(crafty, config) {
+  postcss(crafty, config, bundle) {
     // Add postcss-fixes
     // We recommend that for all plugins you add, you set a "before",
     // because otherwise they run as last plugins and some other plugins might miss some optimizations

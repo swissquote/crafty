@@ -173,7 +173,7 @@ module.exports = {
       .loader(require.resolve("postcss-loader"))
       .options({
         parser: require("postcss-scss"),
-        plugins: getProcessors(crafty.config, crafty)
+        plugins: getProcessors(crafty.config, crafty, bundle)
       });
   }
 };
