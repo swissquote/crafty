@@ -9,10 +9,17 @@ const version = require("../package.json").version;
 
 log(`Starting Crafty ${version}...`);
 
+let readConfig = true;
+
+if (process.argv.indexOf("--ignore-crafty-config") > -1) {
+  process.argv.splice(process.argv.indexOf("--ignore-crafty-config"), 1);
+  readConfig = false;
+}
+
 // Initialize the configuration
 const crafty = configuration.getCrafty(
   configuration.extractPresets(process.argv),
-  configuration.getOverrides()
+  readConfig ? configuration.getOverrides() : {}
 );
 
 // Get all possible commands
