@@ -53,7 +53,7 @@ module.exports = function buildPreset(context, opts) {
         // Do not transform modules to CJS
         modules: false,
         // Exclude transforms that make all code slower
-        exclude: ['transform-typeof-symbol']
+        exclude: ["transform-typeof-symbol"]
       }
     ]);
   }
