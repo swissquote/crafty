@@ -90,7 +90,7 @@ describe("tests for no-type-outside-scope", () => {
     const t = await createRuleTester.test(rule, ".class header {}");
     expect(t).toEqual([
       {
-        column: 1,
+        column: 8,
         line: 1,
         text: rule.messages.rejected
       }
@@ -118,7 +118,7 @@ describe("tests for no-type-outside-scope", () => {
     );
     expect(t).toEqual([
       {
-        column: 24,
+        column: 1,
         line: 1,
         text: rule.messages.rejected
       }
