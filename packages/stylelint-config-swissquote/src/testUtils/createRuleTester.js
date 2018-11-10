@@ -25,26 +25,14 @@ function postcssProcess(rule, schema) {
     .process(schema.code, postcssProcessOptions);
 }
 
-module.exports.test = function OK(rule, schema) {
+module.exports.test = async function OK(rule, schema) {
   expect.assertions(1);
 
-  return postcssProcess(
+  const postcssResult = postcssProcess(
     rule,
     typeof schema === "string" ? { code: schema } : schema
-  )
-    .then(postcssResult => {
-      const warnings = postcssResult.warnings();
+  );
 
-      if (warnings.length) {
-        return {
-          line: warnings[0].line,
-          column: warnings[0].column,
-          text: warnings[0].text,
-          warnings: warnings.length
-        };
-      }
-
-      return { warnings: 0 };
-    })
-    .catch(err => console.log(err.stack)); // eslint-disable-line no-console
+  const warnings = postcssResult.warnings();
+  return warnings.map(({ line, column, text }) => ({ line, column, text }));
 };
