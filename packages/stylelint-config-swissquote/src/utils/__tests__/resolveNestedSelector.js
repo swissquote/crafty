@@ -148,12 +148,21 @@ it("Nested on many levels, with parent selector, multiple", async () => {
 });
 
 it("Nested with compound parent selector", async () => {
-  // Doesn't store the compound part information
   const t = await postcssProcess("header { &.class {} }");
-  expect(t).toEqual([["header", ".class"]]);
+  expect(t).toEqual([["header.class"]]);
 });
 
 it("Nested with parent selector, middle", async () => {
   const t = await postcssProcess(".Component { .Wrapper & .SubComponent {} }");
   expect(t).toEqual([[".Wrapper", ".Component", ".SubComponent"]]);
 });
+
+it("Works on compound selector concatenating class names", async () => {
+  const t = await postcssProcess(`
+  .Parent {
+    &--before { }
+    &--after { }
+  }
+  `);
+  expect(t).toEqual([[".Parent--before"], [".Parent--after"]]);
+})
