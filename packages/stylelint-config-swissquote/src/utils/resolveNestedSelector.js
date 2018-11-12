@@ -1,3 +1,50 @@
+const parentBeginning = /^\s*&\s*/;
+const parentEnd = /\s*&\s*$/;
+
+function hasParentSelector(selector) {
+  return selector.some(part => part.selector.indexOf("&") !== -1);
+}
+
+function insertParent(parentSelector, selector) {
+  for (const index in selector) {
+    if (!selector.hasOwnProperty(index)) {
+      continue;
+    }
+
+    const part = selector[index];
+    if (part.selector.indexOf("&") === -1) {
+      continue;
+    }
+
+    // Selector at the beginning
+    if (part.selector.match(parentBeginning)) {
+      part.selector = part.selector.replace(parentBeginning, "");
+      selector.splice(index, 0, ...parentSelector);
+
+      return selector;
+    }
+
+    // Selector at the end
+    if (part.selector.match(parentEnd)) {
+      part.selector = part.selector.replace(parentEnd, "");
+      selector.splice(index + 1, 0, ...parentSelector);
+
+      return selector;
+    }
+
+    // Selector in the middle
+    const parts = part.selector.split("&").map(item => item.trim());
+    const before = { selector: parts[0], node: part.node.clone() };
+    const after = { selector: parts[1], node: part.node.clone() };
+    selector.splice(index, 1, before, ...parentSelector, after);
+
+    return selector;
+  }
+
+  // Shouldn't get here
+  throw new Error("How did you get here ?");
+}
+
 function resolveNestedSelector(initialSelector, node) {
   var parent = node.parent;
   var parentIsNestAtRule = parent.type === "atrule" && parent.name === "nest";
@@ -18,13 +65,16 @@ function resolveNestedSelector(initialSelector, node) {
     : parent.selectors;
 
   return parentSelectors.reduce((result, parentSelector) => {
-    // TODO :: Add feature back later
-    /*if (selector.indexOf('&') !== -1) {
-        var newlyResolvedSelectors = resolveNestedSelector(parentSelector, parent)
-          .map(resolvedParentSelector => selector.replace(/&/g, resolvedParentSelector));
+    if (hasParentSelector(selector)) {
+      var newlyResolvedSelectors = resolveNestedSelector(
+        parentSelector,
+        parent
+      ).map(resolvedParentSelector =>
+        insertParent(resolvedParentSelector, selector)
+      );
 
-        return result.concat(newlyResolvedSelectors);
-      }*/
+      return result.concat(newlyResolvedSelectors);
+    }
 
     var combinedSelector = [{ selector: parentSelector, node: parent }].concat(
       selector
