@@ -80,7 +80,7 @@ module.exports = {
     "no-template-curly-in-string": "error",
     "no-unexpected-multiline": "error",
     "no-unreachable": "error",
-    "no-restricted-globals": ['error'].concat(restrictedGlobals),
+    "no-restricted-globals": ["error"].concat(restrictedGlobals),
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "use-isnan": "error",

@@ -204,10 +204,18 @@ it("Lints JavaScript using command", () => {
 });
 
 it("Lints JavaScript using command, ignore crafty.config.js", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/lints-ignore-config"));
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-babel/lints-ignore-config")
+  );
   rimraf.sync("dist");
 
-  const result = testUtils.run(["--preset", "@swissquote/crafty-preset-babel", "--ignore-crafty-config", "jsLint", "crafty.config.js"]);
+  const result = testUtils.run([
+    "--preset",
+    "@swissquote/crafty-preset-babel",
+    "--ignore-crafty-config",
+    "jsLint",
+    "crafty.config.js"
+  ]);
 
   expect(result).toMatchSnapshot();
 

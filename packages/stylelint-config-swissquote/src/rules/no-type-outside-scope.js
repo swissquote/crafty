@@ -2,8 +2,9 @@ const isKeyframeSelector = require("stylelint/lib/utils/isKeyframeSelector");
 const isStandardSyntaxRule = require("stylelint/lib/utils/isStandardSyntaxRule");
 const isStandardSyntaxSelector = require("stylelint/lib/utils/isStandardSyntaxSelector");
 const report = require("stylelint/lib/utils/report");
-const resolvedNestedSelector = require("postcss-resolve-nested-selector");
-const selectorParser = require("postcss-selector-parser");
+
+const resolveNestedSelector = require("../utils/resolveNestedSelector");
+const parseSelector = require("../utils/parseSelector");
 
 const ruleName = "swissquote/no-type-outside-scope";
 
@@ -11,7 +12,19 @@ const messages = {
   rejected: "Types are allowed only inside a scope"
 };
 
-const isScope = /^s-/;
+function isScope(node) {
+  return node && node.type === "class" && node.value.match(/^s-/);
+}
+
+function getOriginalNode(node) {
+  return node.originalNode || getOriginalNode(node.parent);
+}
+
+function alreadyWarned(warnings, node) {
+  return warnings
+    .filter(warning => warning.rule === ruleName)
+    .some(warning => warning.node === node);
+}
 
 function checkSelector(selectorNode, ruleNode, result) {
   // Selectors can be within selectors, so check those too
@@ -21,39 +34,37 @@ function checkSelector(selectorNode, ruleNode, result) {
     }
   });
 
-  const hasTypes = selectorNode.some(childNode => childNode.type === "tag");
-
-  if (
-    selectorNode.type === "root" ||
-    selectorNode.type === "pseudo" ||
-    !hasTypes
-  ) {
+  if (selectorNode.type === "root" || selectorNode.type === "pseudo") {
     return;
   }
 
-  let hasScope = false;
-  for (const i in selectorNode.nodes) {
-    if (!selectorNode.nodes.hasOwnProperty(i)) {
-      continue;
+  let typeWithoutScope = false;
+  for (const childNode of selectorNode.nodes) {
+    if (isScope(childNode)) {
+      break;
     }
 
-    const node = selectorNode.nodes[i];
-
-    if (node.type === "class" && node.value.match(isScope)) {
-      hasScope = true;
+    if (childNode.type === "tag") {
+      typeWithoutScope = childNode;
+      break;
     }
+  }
 
-    if (node.type === "tag" && !hasScope) {
-      report({
-        ruleName,
-        result,
-        node: ruleNode,
-        message: messages.rejected,
-        word: selectorNode
-      });
-
+  if (typeWithoutScope) {
+    const originalNode = getOriginalNode(typeWithoutScope);
+    if (alreadyWarned(result.warnings(), originalNode)) {
+      // Don't warn twice for the same node
       return;
     }
+
+    report({
+      ruleName,
+      result,
+      node: originalNode,
+      index: typeWithoutScope.sourceIndex,
+      message: messages.rejected,
+      word: selectorNode
+    });
   }
 }
 
@@ -76,15 +87,18 @@ module.exports = function() {
       }
 
       rule.selectors.forEach(selector => {
-        resolvedNestedSelector(selector, rule).forEach(resolvedSelector => {
-          if (!isStandardSyntaxSelector(resolvedSelector)) {
+        resolveNestedSelector(selector, rule).forEach(resolvedSelector => {
+          if (
+            resolvedSelector.some(
+              resolved => !isStandardSyntaxSelector(resolved.selector)
+            )
+          ) {
             return;
           }
 
           try {
-            selectorParser(container =>
-              checkSelector(container, rule, result)
-            ).process(resolvedSelector);
+            const container = parseSelector(resolvedSelector);
+            checkSelector(container, rule, result);
           } catch (e) {
             result.warn("Cannot parse selector", { node: rule });
           }

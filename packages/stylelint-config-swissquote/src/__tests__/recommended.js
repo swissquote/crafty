@@ -79,12 +79,13 @@ const validCss = `/** @define Form */
 /* Errors
    ========================================================================== */
 
-/* stylelint-disable-next-line swissquote/no-type-outside-scope */
+/* stylelint-disable swissquote/no-type-outside-scope */
 .Form__item.has-error .Input,
 .Form__item.has-error .Select select,
 .Form__item.has-error .Textarea {
     border-color: var(--Form__item--error-border-color);
 }
+/* stylelint-enable */
 
 .Form__item.has-error .Form__item__message {
     color: var(--Form__item--error-text-color);
