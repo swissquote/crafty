@@ -97,6 +97,7 @@ module.exports = {
     // Linting doesn't work well currently in rollup
     // - Errors are imprecise, just outputs "Warnings or errors were found"
     // - If the code can't be parsed, you lose the information of where it failed
+    // TODO :: re-enable once this works better
     //rollupConfig.input.plugins.tslint = {
     //  plugin: require("rollup-plugin-tslint"),
     //  weight: 0,
@@ -104,7 +105,7 @@ module.exports = {
     //    exclude: ["node_modules/**"],
     //    include: ["**/*.ts", "**/*.tsx"],
     //    configuration: createTempFile(JSON.stringify(crafty.config.tslint)),
-    //    throwError: true // TODO :: throw only on warning
+    //    throwOnError: true
     //  }
     //};
   },
