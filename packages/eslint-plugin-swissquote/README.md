@@ -14,7 +14,7 @@ This plugin comes with four presets
   and `recommended`)
 - `node` Adds environment information for Node.js
 - `legacy` For all your EcmaScript 5 code
-- `recommended` For al your EcmaScript 2015+ code, also contains rules for React
+- `recommended` For all your EcmaScript 2015+ code, also contains rules for React
 
 ## Included plugins
 
