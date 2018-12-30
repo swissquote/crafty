@@ -32,5 +32,8 @@ This is due to a limitation with ESLint that doesn't allow us to add plugins to 
 Include them with in your projects like this:
 
 ```json
-{ "extends": ["plugin:@swissquote/swissquote/recommended"] }
+{
+  "plugins": ["@swissquote/swissquote"],
+  "extends": ["plugin:@swissquote/swissquote/recommended"]
+}
 ```
