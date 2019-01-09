@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/eslint-plugin-swissquote",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -12,15 +12,16 @@
   },
   "dependencies": {
     "babel-eslint": "10.0.1",
+    "confusing-browser-globals": "1.0.5",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react": "7.12.3",
     "eslint-plugin-sonarjs": "0.2.0"
   },
   "peerDepdency": {
     "eslint": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "eslint": "5.8.0",
+    "eslint": "5.12.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "^1.0.1",
     "jest-resolve": "23.6.0",

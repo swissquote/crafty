@@ -189,7 +189,7 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("babel")
-      .loader("babel-loader")
+      .loader(require.resolve("babel-loader"))
       .options(options);
 
     // JavaScript linting
@@ -200,7 +200,7 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("eslint")
-      .loader("eslint-loader")
+      .loader(require.resolve("eslint-loader"))
       .options(crafty.config.eslint);
   }
 };

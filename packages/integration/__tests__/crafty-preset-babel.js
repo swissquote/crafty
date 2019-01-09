@@ -203,6 +203,27 @@ it("Lints JavaScript using command", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
+it("Lints JavaScript using command, ignore crafty.config.js", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-babel/lints-ignore-config")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run([
+    "--preset",
+    "@swissquote/crafty-preset-babel",
+    "--ignore-crafty-config",
+    "jsLint",
+    "crafty.config.js"
+  ]);
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed lint
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+});
+
 it("Lints JavaScript using command, legacy", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-babel/lints-es5")

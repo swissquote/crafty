@@ -55,6 +55,22 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
 }
 `;
 
+exports[`Lints JavaScript using command, ignore crafty.config.js 1`] = `
+Object {
+  "status": 1,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints-ignore-config/crafty.config.js
+  1:1  error  'module' is not defined  no-undef
+
+✖ 1 problem (1 error, 0 warnings)
+
+",
+}
+`;
+
 exports[`Lints JavaScript using command, legacy 1`] = `
 Object {
   "status": 1,
