@@ -73,7 +73,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Enable support for Yarn PNP
   const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
-  chain
+  chain.resolve
     .plugin("pnp-webpack-plugin")
     .init((Plugin) => Plugin)
     .use(PnpWebpackPlugin);
@@ -82,7 +82,7 @@ module.exports = function(crafty, bundle, webpackPort) {
     .plugin("pnp-webpack-plugin")
     .init(Plugin => Plugin.moduleLoader(module))
     .use(PnpWebpackPlugin);
-  
+
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.

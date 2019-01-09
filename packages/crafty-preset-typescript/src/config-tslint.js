@@ -11,7 +11,7 @@ function fullWarn() {
 }
 
 module.exports = {
-  extends: ["tslint-eslint-rules"],
+  extends: [require.resolve("tslint-eslint-rules")],
   rules: {
     // legacy
     "class-name": true,

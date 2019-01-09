@@ -32,6 +32,7 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
+    .replace(/\/(.*?)\/\.cache\/yarn(.*?)-([a-z0-9]{40})/gm, "__PATH__") // Remove paths
     .replace(new RegExp(escapedPath, "gm"), "__PATH__"); // Remove paths
 }
 
