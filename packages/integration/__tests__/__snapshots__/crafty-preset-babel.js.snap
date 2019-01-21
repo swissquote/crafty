@@ -19,13 +19,12 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
   11:5   warning  Unexpected console statement                                                   no-console
   15:5   warning  Unexpected console statement                                                   no-console
   15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
-  15:33  error    A space is required after ','                                                  comma-spacing
   15:33  error    There should be no space before ','                                            comma-spacing
   19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
   20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
 
-✖ 13 problems (11 errors, 2 warnings)
-  9 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 12 problems (10 errors, 2 warnings)
+  8 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }
@@ -113,13 +112,12 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
   11:5   warning  Unexpected console statement                                                   no-console
   15:5   warning  Unexpected console statement                                                   no-console
   15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
-  15:33  error    A space is required after ','                                                  comma-spacing
   15:33  error    There should be no space before ','                                            comma-spacing
   19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
   20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
 
-✖ 13 problems (11 errors, 2 warnings)
-  9 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 12 problems (10 errors, 2 warnings)
+  8 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }
