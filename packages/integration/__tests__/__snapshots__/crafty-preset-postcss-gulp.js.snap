@@ -472,12 +472,13 @@ Object {
   "stderr": "[__:__:__] 'css_myBundle' errored after ____ ms
 [__:__:__] CssSyntaxError in plugin \\"gulp-postcss\\"
 Message:
-    __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/css/style.scss:4:1: Unexpected }
+    __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/css/style.scss:3:5: Unknown word
 
+  1 |
   2 | .BodyComponent
-  3 |     margin: 0;
-> 4 | }
-    | ^
+> 3 |     margin: 0;
+    |     ^
+  4 | }
   5 |
 
 [__:__:__] 'css' errored after ____ ms
