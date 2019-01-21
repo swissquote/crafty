@@ -116,14 +116,14 @@ Object {
 Module build failed (from __PATH__/node_modules/postcss-loader/src/index.js):
 SyntaxError
 
-(17:1) Unexpected }
+(10:13) Unknown word
 
-  15 |         color: #eee;
-  16 |     }
-> 17 | }
-     | ^
-  18 |
-  19 |
+   8 |     @at-root {
+   9 |         .Child
+> 10 |             background: black;
+     |             ^
+  11 |         }
+  12 |     }
 
  @ ./css/style.scss 2:14-172
  @ ./js/app.js
