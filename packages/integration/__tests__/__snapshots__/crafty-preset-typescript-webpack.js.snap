@@ -111,32 +111,21 @@ Object {
   Compiled with warnings.
 
 ./js/Component.ts
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
 
- @ ./js/script.ts 3:0-35 17:18-22
- @ multi ./js/script.ts
-
 ./js/SomeLibrary.ts
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
 ERROR: 12:5  one-line  misplaced opening brace
 
- @ ./js/script.ts 18:6-29
- @ multi ./js/script.ts
-
 ./js/script.ts
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts:6:5
 ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
 ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
 ERROR: 13:5  one-line    misplaced opening brace
 ERROR: 16:7  no-console  Calls to 'console.log' are not allowed.
 ERROR: 17:7  semicolon   Missing semicolon
-
- @ multi ./js/script.ts default[0]
 
   Δt ____ms ⚠  3 problems (0 errors, 3 warnings)
 
