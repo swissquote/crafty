@@ -115,28 +115,13 @@ Object {
 
   Compiled with warnings.
 
-<<<<<<< HEAD
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
-=======
-./js/Component.ts
->>>>>>> master
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
 ERROR: 2:24  whitespace       missing whitespace
 ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
 
-<<<<<<< HEAD
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
 ERROR: 12:5  one-line  misplaced opening brace
 
-Module Warning (from __PATH__/node_modules/tslint-loader/index.js):
-=======
-./js/SomeLibrary.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
-ERROR: 12:5  one-line  misplaced opening brace
-
-./js/script.ts
->>>>>>> master
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts:6:5
 ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
 ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
