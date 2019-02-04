@@ -239,8 +239,6 @@ Object {
   Failed to compile.
 
 ./js/Component.js
-Module Error (from __PATH__/packages/crafty-preset-babel/node_modules/eslint-loader/index.js):
-
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
   11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
   12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
@@ -248,12 +246,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Comp
 ✖ 2 problems (2 errors, 0 warnings)
   2 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
- @ ./js/script.js 5:0-39 23:33-42
- @ multi ./js/script.js
-
 ./js/script.js
-Module Error (from __PATH__/packages/crafty-preset-babel/node_modules/eslint-loader/index.js):
-
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
    3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
    5:10  error    'test' is defined but never used                                               no-unused-vars
@@ -268,8 +261,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 
 ✖ 10 problems (8 errors, 2 warnings)
   6 errors and 0 warnings potentially fixable with the \`--fix\` option.
-
- @ multi ./js/script.js default[0]
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
