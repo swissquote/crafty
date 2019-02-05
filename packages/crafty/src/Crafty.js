@@ -75,6 +75,15 @@ class Crafty {
     return this.config.loadedPresets.filter(preset => preset[method]);
   }
 
+  get isPnp() {
+    try {
+      require(`pnpapi`);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   get loglevel() {
     // If a DEBUG environemnt variable is passed, automatically switch to loglevel 3
     if (process.env.DEBUG) {

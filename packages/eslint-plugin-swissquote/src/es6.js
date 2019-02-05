@@ -78,15 +78,16 @@ module.exports = {
 
     // -> Static Analysis
 
-    // Disabled 4 rules for Yarn PNP Support
+    // Disabled 5 rules for Yarn PNP Support
     // - import/default
     // - import/no-deprecated
+    // - import/named
     // - import/no-duplicates
     // - import/order
 
     //"@swissquote/swissquote/import/no-unresolved": "error", // Ensure imports point to a file/module that can be resolved.
     //"@swissquote/swissquote/import/default": "warn", // Ensure a default export is present, given a default import.
-    "@swissquote/swissquote/import/named": "warn", // Ensure named imports correspond to a named export in the remote file.
+    //"@swissquote/swissquote/import/named": "warn", // Ensure named imports correspond to a named export in the remote file.
 
     // -> Helpful warnings
     "@swissquote/swissquote/import/export": "error", // Report any invalid exports, i.e. re-export of the same name
