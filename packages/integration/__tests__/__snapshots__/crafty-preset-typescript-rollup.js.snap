@@ -84,7 +84,7 @@ Object {
 `;
 
 exports[`Works with rollup 2`] = `
-"var C=/** @class */function(){function e(){console.log(\\"Something happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}(),D=/** @class */function(){function e(){console.log(\\"Something else happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}();export{C,D};
+"var e=/** @class */function(){function e(){console.log(\\"Something happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}(),t=/** @class */function(){function e(){console.log(\\"Something else happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}();export{e as C,t as D};
 //# sourceMappingURL=myTSBundle.min.js.map
 "
 `;
