@@ -6,7 +6,6 @@ function snapshotizeOutput(ret) {
     .join(__dirname, "..", "..")
     .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   return ret
-    .replace(/ *$/gm, "") // Remove spaces at EOL
     .replace(
       /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-PRZcf-nqry=><]/g, // eslint-disable-line no-control-regex
       ""
@@ -32,7 +31,9 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
-    .replace(new RegExp(escapedPath, "gm"), "__PATH__"); // Remove paths
+    .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
+    .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
+    .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
 }
 
 function snapshotizeCSS(ret) {
