@@ -67,9 +67,6 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
                 return /@preserve|@license|@cc_on|@class/i.test(comment.value);
               }
             }
-          },
-          init: plugin => {
-            return plugin.plugin(plugin.options, plugin.minifier);
           }
         }
       },
