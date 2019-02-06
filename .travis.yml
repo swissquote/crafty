@@ -42,7 +42,6 @@ matrix:
   fast_finish: true
   # Support on those versions and platforms is experimental, 
   allow_failures:
-    - os: osx
     - os: windows
     - node_js: "11"
   include:

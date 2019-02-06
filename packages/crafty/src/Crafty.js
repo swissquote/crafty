@@ -75,7 +75,7 @@ class Crafty {
     return this.config.loadedPresets.filter(preset => preset[method]);
   }
 
-  get isPnp() {
+  get isPNP() {
     try {
       require(`pnpapi`);
       return true;
