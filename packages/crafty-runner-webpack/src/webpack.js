@@ -151,7 +151,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
     chain
         .plugin("bundle-analyzer")
-        .init((Plugin, args) => Plugin.BundleAnalyzerPlugin(...args))
+        .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
         .use(require.resolve("webpack-bundle-analyzer"), [{
           analyzerMode: "static",
           openAnalyzer: false,
