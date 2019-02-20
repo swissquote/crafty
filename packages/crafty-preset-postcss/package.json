@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-postcss",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -8,13 +8,13 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@swissquote/postcss-swissquote-preset": "1.4.0",
-    "@swissquote/stylelint-config-swissquote": "1.4.0",
+    "@swissquote/postcss-swissquote-preset": "1.5.0",
+    "@swissquote/stylelint-config-swissquote": "1.5.0",
     "css-loader": "2.1.0",
     "end-of-stream": "1.4.1",
     "gulp-postcss": "8.0.0",
     "gulp-rename": "1.4.0",
-    "gulp-sourcemaps": "2.6.4",
+    "gulp-sourcemaps": "2.6.5",
     "mini-css-extract-plugin": "^0.5.0",
     "postcss": "7.0.14",
     "postcss-loader": "3.0.0",
@@ -26,7 +26,7 @@
     "stylelint": "9.10.1",
     "through2": "^3.0.0",
     "tmp": "0.0.33",
-    "webpack": "4.29.2"
+    "webpack": "4.29.5"
   },
   "engines": {
     "node": ">=8.0.0"

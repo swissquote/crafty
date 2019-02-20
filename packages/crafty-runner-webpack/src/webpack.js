@@ -161,6 +161,17 @@ module.exports = function(crafty, bundle, webpackPort) {
   // profile that we'll later write to disk
   if (process.argv.some(arg => arg === "--profile")) {
     chain.profile(true);
+
+    chain
+        .plugin("bundle-analyzer")
+        .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
+        .use(require.resolve("webpack-bundle-analyzer"), [{
+          analyzerMode: "static",
+          openAnalyzer: false,
+          reportFilename: `${bundle.name}_report.html`,
+          generateStatsFile: true,
+          statsFilename: `${bundle.name}_stats.json`
+        }]);
   }
 
   return chain.toConfig();

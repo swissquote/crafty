@@ -1,6 +1,6 @@
 {
   "name": "integration",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
@@ -8,18 +8,18 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@babel/core": "7.2.2",
+    "@babel/core": "7.3.3",
     "@babel/plugin-transform-property-literals": "7.2.0",
-    "@swissquote/crafty": "1.4.0",
-    "@swissquote/crafty-preset-babel": "1.4.0",
-    "@swissquote/crafty-preset-images": "1.4.0",
+    "@swissquote/crafty": "1.5.0",
+    "@swissquote/crafty-preset-babel": "1.5.0",
+    "@swissquote/crafty-preset-images": "1.5.0",
     "@swissquote/crafty-preset-images-simple": "1.4.0",
     "@swissquote/crafty-preset-maven": "1.4.0",
-    "@swissquote/crafty-preset-postcss": "1.4.0",
-    "@swissquote/crafty-preset-typescript": "1.4.0",
-    "@swissquote/crafty-runner-gulp": "1.4.0",
-    "@swissquote/crafty-runner-rollup": "1.4.0",
-    "@swissquote/crafty-runner-webpack": "1.4.0",
+    "@swissquote/crafty-preset-postcss": "1.5.0",
+    "@swissquote/crafty-preset-typescript": "1.5.0",
+    "@swissquote/crafty-runner-gulp": "1.5.0",
+    "@swissquote/crafty-runner-rollup": "1.5.0",
+    "@swissquote/crafty-runner-webpack": "1.5.0",
     "jest": "24.1.0",
     "jest-pnp-resolver": "^1.0.1",
     "jest-resolve": "24.1.0"
