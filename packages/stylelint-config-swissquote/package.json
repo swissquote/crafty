@@ -7,12 +7,22 @@
     "access": "public"
   },
   "main": "index.js",
+  "dependencies": {
+    "stylelint-scss": "3.5.3",
+    "postcss-resolve-nested-selector": "0.1.1",
+    "postcss-scss": "2.0.0",
+    "postcss-selector-parser": "^5.0.0-rc.4"
+  },
   "devDependencies": {
-    "stylelint": "9.10.1"
+    "jest": "24.1.0",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "24.1.0",
+    "stylelint": "9.10.1",
+    "postcss": "7.0.14"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -25,8 +35,5 @@
     ],
     "testEnvironment": "node",
     "verbose": true
-  },
-  "dependencies": {
-    "stylelint-scss": "3.5.3"
   }
 }

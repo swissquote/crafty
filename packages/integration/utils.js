@@ -31,6 +31,7 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
+    .replace(/\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm, "__PATH__") // Remove paths
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one

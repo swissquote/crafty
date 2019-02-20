@@ -11,8 +11,8 @@
     "crafty": "./src/bin.js"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "browserslist": "4.4.1",
@@ -25,6 +25,11 @@
     "pretty-hrtime": "1.0.3",
     "tmp": "0.0.33",
     "undertaker": "1.2.0"
+  },
+  "devDependencies": {
+    "jest": "24.1.0",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "24.1.0"
   },
   "engines": {
     "node": ">=8.0.0"

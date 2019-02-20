@@ -179,6 +179,10 @@ module.exports = {
       }
     };
 
+    if (crafty.isPNP) {
+      tsOptions.resolveModuleName = require('ts-pnp').resolveModuleName;
+    }
+
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");
     const configFile = findConfigFile(compiler, process.cwd(), "tsconfig.json");

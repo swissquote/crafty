@@ -78,19 +78,26 @@ module.exports = {
 
     // -> Static Analysis
 
+    // Disabled 5 rules for Yarn PNP Support
+    // - import/default
+    // - import/no-deprecated
+    // - import/named
+    // - import/no-duplicates
+    // - import/order
+
     //"@swissquote/swissquote/import/no-unresolved": "error", // Ensure imports point to a file/module that can be resolved.
-    "@swissquote/swissquote/import/default": "warn", // Ensure a default export is present, given a default import.
-    "@swissquote/swissquote/import/named": "warn", // Ensure named imports correspond to a named export in the remote file.
+    //"@swissquote/swissquote/import/default": "warn", // Ensure a default export is present, given a default import.
+    //"@swissquote/swissquote/import/named": "warn", // Ensure named imports correspond to a named export in the remote file.
 
     // -> Helpful warnings
     "@swissquote/swissquote/import/export": "error", // Report any invalid exports, i.e. re-export of the same name
-    "@swissquote/swissquote/import/no-deprecated": "warn", // Report imported names marked with @deprecated documentation tag
+    //"@swissquote/swissquote/import/no-deprecated": "warn", // Report imported names marked with @deprecated documentation tag
 
     // -> Style guide
     "@swissquote/swissquote/import/first": "error", // Ensure all imports appear before other statements
-    "@swissquote/swissquote/import/no-duplicates": "error", // Report repeated import of the same module in multiple places
-    //"@swissquote/swissquote/import/newline-after-import": "error", // Enforce a newline after import statements
-    "@swissquote/swissquote/import/order": [
+    //"@swissquote/swissquote/import/no-duplicates": "error", // Report repeated import of the same module in multiple places
+    "@swissquote/swissquote/import/newline-after-import": "error", // Enforce a newline after import statements
+    /*"@swissquote/swissquote/import/order": [
       "error",
       {
         // Enforce a convention in module import order
@@ -101,7 +108,7 @@ module.exports = {
         ],
         "newlines-between": "always"
       }
-    ],
+    ],*/
     "@swissquote/swissquote/import/newline-after-import": "error",
     "@swissquote/swissquote/import/prefer-default-export": "error",
     "@swissquote/swissquote/import/no-absolute-path": "error",
