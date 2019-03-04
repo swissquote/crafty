@@ -39,3 +39,14 @@ it("Succeeds with babel", () => {
 
   expect(result).toMatchSnapshot();
 });
+
+it("Succeeds with babel and React", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-jest/babel-react")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["test"]);
+
+  expect(result).toMatchSnapshot();
+});

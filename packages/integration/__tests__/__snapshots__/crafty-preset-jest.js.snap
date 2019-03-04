@@ -18,6 +18,24 @@ Ran all test suites.
 }
 `;
 
+exports[`Succeeds with babel and React 1`] = `
+Object {
+  "status": 0,
+  "stderr": "PASS src/__tests__/MyComponent.jsx
+PASS src/__tests__/Counter.jsx
+
+Test Suites: 2 passed, 2 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        _____s
+Ran all test suites.
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+",
+}
+`;
+
 exports[`Succeeds with typescript 1`] = `
 Object {
   "status": 0,

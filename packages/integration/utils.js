@@ -32,7 +32,7 @@ function snapshotizeOutput(ret) {
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
     .replace(/^Time:        ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)(, estimated ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s))?/gm, "Time:        _____s") // Remove test durations (Jest)
-    .replace(/^  (✓) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm, "  $1 $2 (__ms)") // Remove test result duration (Jest)
+    .replace(/^  (  )?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm, "  $1$2 $3 (__ms)") // Remove test result duration (Jest)
     .replace(/\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm, "__PATH__") // Remove paths
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
