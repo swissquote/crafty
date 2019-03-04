@@ -247,9 +247,7 @@ module.exports = {
     options.moduleDirectories.push(MODULES);
 
     // Add a transformer for TypeScript
-    options.transform["^.+\\.tsx?$"] = require.resolve(
-      "ts-jest/preprocessor.js"
-    );
+    options.transform["^.+\\.tsx?$"] = require.resolve("ts-jest");
 
     // Add file extensions to resolve imports
     options.moduleFileExtensions.push("ts");
