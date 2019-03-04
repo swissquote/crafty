@@ -22,9 +22,14 @@ exports[`Succeeds with babel and React 1`] = `
 Object {
   "status": 0,
   "stderr": "PASS src/__tests__/MyComponent.jsx
-PASS src/__tests__/Counter.jsx
+  <MyComponent />
+    ✓ renders three <Foo /> components (__ms)
+    ✓ renders an \`.icon-star\` (__ms)
+    ✓ renders children when passed in (__ms)
+  <Counter />
+    ✓ can render and update a counter (__ms)
 
-Test Suites: 2 passed, 2 total
+Test Suites: 1 passed, 1 total
 Tests:       4 passed, 4 total
 Snapshots:   0 total
 Time:        _____s
