@@ -6,8 +6,8 @@ import { hot } from "react-hot-loader";
 import Loading from "../components/Loading";
 import Counters from "../containers/Counters";
 
-const DatePickers = loadable({
-  loader: () => import("../components/DatePickers").then(it => {
+const Tabs = loadable({
+  loader: () => import("../components/Tabs").then(it => {
     return it.default;
   }),
   loading: Loading
@@ -15,7 +15,7 @@ const DatePickers = loadable({
 
 const App = () => (
   <div>
-    <DatePickers />
+    <Tabs />
 
     <h1>Counter</h1>
     <Counters />

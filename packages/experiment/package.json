@@ -1,0 +1,34 @@
+{
+    "name": "crafty-experiment",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "crafty run",
+        "test": "crafty test",
+        "watch": "crafty watch",
+        "start": "serve"
+    },
+    "dependencies": {
+        "@types/react": "^16.4.6",
+        "moment": "^2.19.1",
+        "react-addons-shallow-compare": "^15.6.2",
+        "react-loadable": "^5.3.1",
+        "react-tabs": "^3.0.0",
+        "serve": "^10.0.0",
+        "webpack": "^4.29.6"
+    },
+    "devDependencies": {
+        "@swissquote/crafty": "1.5.0",
+        "@swissquote/crafty-preset-babel": "1.5.0",
+        "@swissquote/crafty-preset-images": "1.5.0",
+        "@swissquote/crafty-preset-images-simple": "1.4.0",
+        "@swissquote/crafty-preset-maven": "1.4.0",
+        "@swissquote/crafty-preset-postcss": "1.5.0",
+        "@swissquote/crafty-preset-typescript": "1.5.0",
+        "@swissquote/crafty-runner-gulp": "1.5.0",
+        "@swissquote/crafty-runner-rollup": "1.5.0",
+        "@swissquote/crafty-runner-webpack": "1.5.0",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3"
+    }
+}
