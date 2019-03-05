@@ -7,6 +7,15 @@ const rimraf = require("rimraf");
 
 const testUtils = require("../utils");
 
+let testIfNotPnp = test;
+
+try {
+  require(`pnpapi`);
+  testIfNotPnp = test.skip;
+} catch (error) {
+  // not in PnP; not a problem
+}
+
 it("Succeeds without transpiling", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/succeeds")
@@ -18,7 +27,7 @@ it("Succeeds without transpiling", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("Succeeds with typescript", () => {
+testIfNotPnp("Succeeds with typescript", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/typescript")
   );
@@ -40,7 +49,7 @@ it("Succeeds with babel", () => {
   expect(result).toMatchSnapshot();
 });
 
-it("Succeeds with babel and React", () => {
+testIfNotPnp("Succeeds with babel and React", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/babel-react")
   );
