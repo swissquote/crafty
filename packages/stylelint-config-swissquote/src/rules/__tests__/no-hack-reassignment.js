@@ -1,7 +1,7 @@
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-hack-reassignment");
 
-describe("no-hack-reassignment", async () => {
+describe("no-hack-reassignment", () => {
   it("works on non-hack", async () => {
     const t = await createRuleTester.test(rule, ".somethingElse {}");
     expect(t).toEqual([]);
