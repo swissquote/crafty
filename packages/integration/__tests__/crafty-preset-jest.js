@@ -39,9 +39,7 @@ testIfNotPnp("Succeeds with typescript", () => {
 });
 
 it("Succeeds with babel", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-jest/babel")
-  );
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/babel"));
   rimraf.sync("dist");
 
   const result = testUtils.run(["test"]);
@@ -53,6 +51,25 @@ testIfNotPnp("Succeeds with babel and React", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/babel-react")
   );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["test"]);
+
+  expect(result).toMatchSnapshot();
+});
+
+test("Succeeds with esm module", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm"));
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["test"]);
+
+  expect(result).toMatchSnapshot();
+});
+
+
+test("Succeeds with esm module and babel", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel"));
   rimraf.sync("dist");
 
   const result = testUtils.run(["test"]);

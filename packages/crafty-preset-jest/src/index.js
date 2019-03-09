@@ -45,6 +45,12 @@ function normalizeJestOptions(crafty, input, cli) {
     options.testRegex = input.join("|").replace(".", "\\.");
   }
 
+  // Add custom transformer to ES import/export in node_modules
+  options.transformIgnorePatterns = [];
+  options.transform["[/\\\\]node_modules[/\\\\].+\\.m?js$"] = require.resolve(
+    "./esm-transformer"
+  );
+
   crafty.getImplementations("jest").forEach(preset => {
     preset.jest(crafty, options);
   });

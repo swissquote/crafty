@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const fs = require("fs");
 const jestPreset = require("babel-preset-jest");
-const babel = require("babel-core");
+const babel = require("@babel/core");
 const babelIstanbulPlugin = require("babel-plugin-istanbul");
 
 const THIS_FILE = fs.readFileSync(__filename);

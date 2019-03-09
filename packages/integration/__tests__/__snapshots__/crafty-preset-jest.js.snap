@@ -41,6 +41,42 @@ Ran all test suites.
 }
 `;
 
+exports[`Succeeds with esm module 1`] = `
+Object {
+  "status": 0,
+  "stderr": "PASS src/__tests__/math.js
+  ✓ adds two numbers (__ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        _____s
+Ran all test suites.
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+",
+}
+`;
+
+exports[`Succeeds with esm module and babel 1`] = `
+Object {
+  "status": 0,
+  "stderr": "PASS src/__tests__/math.js
+  ✓ adds two numbers (__ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        _____s
+Ran all test suites.
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+",
+}
+`;
+
 exports[`Succeeds with typescript 1`] = `
 Object {
   "status": 0,
