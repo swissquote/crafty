@@ -29,24 +29,24 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
 function copyToDisk(stats, compiler) {
   Object.keys(stats.compilation.assets)
-  .map(key => stats.compilation.assets[key])
-  .filter(asset => asset.emitted)
-  .forEach(asset => {
-    const file = asset.existsAt;
-    compiler.outputFileSystem.readFile(file, (err, result) => {
-      if (err) {
-        throw err;
-      }
-
-      mkdirp.sync(path.dirname(file));
-
-      fs.writeFile(file, result, err2 => {
-        if (err2) {
-          throw err2;
+    .map(key => stats.compilation.assets[key])
+    .filter(asset => asset.emitted)
+    .forEach(asset => {
+      const file = asset.existsAt;
+      compiler.outputFileSystem.readFile(file, (err, result) => {
+        if (err) {
+          throw err;
         }
+
+        mkdirp.sync(path.dirname(file));
+
+        fs.writeFile(file, result, err2 => {
+          if (err2) {
+            throw err2;
+          }
+        });
       });
     });
-  });
 }
 
 // Print out errors
@@ -86,19 +86,16 @@ module.exports = function jsTaskES6(crafty, bundle) {
         console.log("Compiling...");
       });
 
-      compiler.hooks.done.tap(
-        "CraftyRuntime",
-        stats => {
-          // If we are in watch mode, the bundle is only generated in memory
-          // This will copy it to disk, to make refreshes work fine
-          // as we don't use the dev-server as a proxy
-          if (crafty.isWatching()) {
-            copyToDisk(stats, compiler)
-          }
-      
-          webpackOutput(stats, compiler);
+      compiler.hooks.done.tap("CraftyRuntime", stats => {
+        // If we are in watch mode, the bundle is only generated in memory
+        // This will copy it to disk, to make refreshes work fine
+        // as we don't use the dev-server as a proxy
+        if (crafty.isWatching()) {
+          copyToDisk(stats, compiler);
         }
-      );
+
+        webpackOutput(stats, compiler);
+      });
 
       return { compiler, config };
     });

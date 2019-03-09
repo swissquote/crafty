@@ -104,7 +104,7 @@ module.exports = function buildPreset(context, opts) {
     require.resolve("@babel/plugin-transform-runtime"),
     {
       absoluteRuntime: path.dirname(
-        require.resolve('@babel/runtime/package.json')
+        require.resolve("@babel/runtime/package.json")
       ), // Otherwise, Yarn PNP is really unhappy
       helpers: opts.deduplicateHelpers || false,
       useESModules: opts.useESModules || false,

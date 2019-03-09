@@ -25,7 +25,7 @@ function normalizeJestOptions(crafty, input, cli) {
   }
 
   const options = {
-    resolver: require.resolve(`jest-pnp-resolver`),
+    resolver: require.resolve("jest-pnp-resolver"),
     moduleDirectories: [...moduleDirectories],
     moduleFileExtensions: [...moduleFileExtensions],
     testPathIgnorePatterns: ["/node_modules/", crafty.config.destination],
@@ -86,13 +86,10 @@ module.exports = {
 
       writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
 
-      jest.runCLI(
-        cliOptions,
-        [configFile],
-        result =>
-          result.numFailedTests || result.numFailedTestSuites
-            ? reject()
-            : resolve()
+      jest.runCLI(cliOptions, [configFile], result =>
+        result.numFailedTests || result.numFailedTestSuites
+          ? reject()
+          : resolve()
       );
     });
   }

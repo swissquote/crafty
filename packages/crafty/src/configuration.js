@@ -81,10 +81,12 @@ function getCrafty(presets, craftyConfig) {
   config.loadedPresets.push(craftyConfig);
 
   // Apply overrides to clean up configuration
-  config.loadedPresets.filter(preset => preset.config).forEach(preset => {
-    debug(preset.presetName + ".config(config)");
-    config = preset.config(config);
-  });
+  config.loadedPresets
+    .filter(preset => preset.config)
+    .forEach(preset => {
+      debug(preset.presetName + ".config(config)");
+      config = preset.config(config);
+    });
 
   // Set default bundleType destinations if not found.
   Object.keys(config.bundleTypes).forEach(type => {

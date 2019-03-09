@@ -13,7 +13,7 @@ function snapshotizeOutput(ret) {
     .replace(/^\[[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]/gm, "[__:__:__]") // Remove timestamps
     .replace(/after ([0-9]*(?:\.[0-9]*)?) (h|min|[mnμ]?s)/g, "after ____ ms") // Remove durations
     .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
-    .replace(/｢atl｣: Time: ([0-9]*)ms/g, "｢atl｣: Time:  ____ms") // Remove durations 
+    .replace(/｢atl｣: Time: ([0-9]*)ms/g, "｢atl｣: Time:  ____ms") // Remove durations
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
     .replace(
       /result \[webpack\/bootstrap (.*?)\]/g,
@@ -32,9 +32,18 @@ function snapshotizeOutput(ret) {
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
     .replace(/^(\s*)PASS(\s*)/gm, "PASS ") // Fix weird space in some case with nested jest runs (Jest)
-    .replace(/^Time:        ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)(, estimated ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s))?/gm, "Time:        _____s") // Remove test durations (Jest)
-    .replace(/^  (  )?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm, "  $1$2 $3 (__ms)") // Remove test result duration (Jest)
-    .replace(/\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm, "__PATH__") // Remove paths
+    .replace(
+      /^Time: {8}([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)(, estimated ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s))?/gm,
+      "Time:        _____s"
+    ) // Remove test durations (Jest)
+    .replace(
+      /^ {2}( {2})?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm,
+      "  $1$2 $3 (__ms)"
+    ) // Remove test result duration (Jest)
+    .replace(
+      /\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm,
+      "__PATH__"
+    ) // Remove paths
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one

@@ -165,4 +165,4 @@ it("Works on compound selector concatenating class names", async () => {
   }
   `);
   expect(t).toEqual([[".Parent--before"], [".Parent--after"]]);
-})
+});

@@ -1,7 +1,7 @@
 /*
-** Taken from https://github.com/rollup/rollup/blob/b949eb08169115ff66648838cbc4833379bf9440/bin/src/logging.js
-** We might need to keep this up-to-date with new updates of Rollup
-*/
+ ** Taken from https://github.com/rollup/rollup/blob/b949eb08169115ff66648838cbc4833379bf9440/bin/src/logging.js
+ ** We might need to keep this up-to-date with new updates of Rollup
+ */
 
 const chalk = require("chalk");
 

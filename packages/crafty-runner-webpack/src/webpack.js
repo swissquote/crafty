@@ -75,14 +75,13 @@ module.exports = function(crafty, bundle, webpackPort) {
   const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
   chain.resolve
     .plugin("pnp-webpack-plugin")
-    .init((Plugin) => Plugin)
+    .init(Plugin => Plugin)
     .use(PnpWebpackPlugin);
 
   chain.resolveLoader
     .plugin("pnp-webpack-plugin")
     .init(Plugin => Plugin.moduleLoader(module))
     .use(PnpWebpackPlugin);
-
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
@@ -163,15 +162,17 @@ module.exports = function(crafty, bundle, webpackPort) {
     chain.profile(true);
 
     chain
-        .plugin("bundle-analyzer")
-        .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
-        .use(require.resolve("webpack-bundle-analyzer"), [{
+      .plugin("bundle-analyzer")
+      .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
+      .use(require.resolve("webpack-bundle-analyzer"), [
+        {
           analyzerMode: "static",
           openAnalyzer: false,
           reportFilename: `${bundle.name}_report.html`,
           generateStatsFile: true,
           statsFilename: `${bundle.name}_stats.json`
-        }]);
+        }
+      ]);
   }
 
   return chain.toConfig();

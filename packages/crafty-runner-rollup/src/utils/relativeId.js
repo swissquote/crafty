@@ -1,7 +1,7 @@
 /*
-** Taken from https://github.com/rollup/rollup/blob/b949eb08169115ff66648838cbc4833379bf9440/src/utils/relativeId.js
-** We might need to keep this up-to-date with new updates of Rollup
-*/
+ ** Taken from https://github.com/rollup/rollup/blob/b949eb08169115ff66648838cbc4833379bf9440/src/utils/relativeId.js
+ ** We might need to keep this up-to-date with new updates of Rollup
+ */
 
 const relative = require("path").relative;
 
