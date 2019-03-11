@@ -106,6 +106,26 @@ it("Compiles JavaScript with externals", () => {
   ).toMatchSnapshot();
 });
 
+it("Creates profiles", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/profiles")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default", "--profile"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle_report.html")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle_stats.json")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+});
+
 it("Lints JavaScript with webpack", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/lints")

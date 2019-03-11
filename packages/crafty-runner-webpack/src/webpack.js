@@ -149,13 +149,6 @@ module.exports = function(crafty, bundle, webpackPort) {
       });
   }
 
-  // Apply preset configuration
-  crafty.getImplementations("webpack").forEach(preset => {
-    debug(preset.presetName + ".webpack(Crafty, bundle, chain)");
-    preset.webpack(crafty, bundle, chain);
-    debug("added webpack");
-  });
-
   // If --profile is passed, we create a
   // profile that we'll later write to disk
   if (process.argv.some(arg => arg === "--profile")) {
@@ -173,7 +166,21 @@ module.exports = function(crafty, bundle, webpackPort) {
           statsFilename: `${bundle.name}_stats.json`
         }
       ]);
+
+    chain
+      .plugin("inspectpack")
+      .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
+      .use(require.resolve("inspectpack/plugin"), [
+        {}
+      ]);
   }
+
+  // Apply preset configuration
+  crafty.getImplementations("webpack").forEach(preset => {
+    debug(preset.presetName + ".webpack(Crafty, bundle, chain)");
+    preset.webpack(crafty, bundle, chain);
+    debug("added webpack");
+  });
 
   return chain.toConfig();
 };
