@@ -5,8 +5,16 @@ const cherow = require("cherow");
 
 const THIS_FILE = fs.readFileSync(__filename);
 
+const importExportRegex = /\b(import|export)\b/;
+
 function shouldCompile(code) {
   try {
+    // Quick check with a regex,
+    // Allows to eliminate most cases right away without a more expensive parsing.
+    if (!code.match(importExportRegex)) {
+      return false;
+    }
+
     const tree = cherow.parse(code, { module: true, next: true });
 
     // Imports and exports have to be at the first level on a file
