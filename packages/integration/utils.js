@@ -37,6 +37,10 @@ function snapshotizeOutput(ret) {
       "Time:        _____s"
     ) // Remove test durations (Jest)
     .replace(
+      /(PASS|FAIL) (.*)\s\(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/,
+      "$1 $2"
+    ) // Remove long test durations (Jest)
+    .replace(
       /^ {2}( {2})?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm,
       "  $1$2 $3 (__ms)"
     ) // Remove test result duration (Jest)
