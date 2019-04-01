@@ -75,7 +75,9 @@ module.exports = function(crafty, bundle, webpackPort) {
   const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
   chain.resolve
     .plugin("pnp-webpack-plugin")
-    .init(Plugin => Plugin)
+    // Cloning the plugin exports as this would otherwise 
+    // fail with `Cannot redefine property: __pluginArgs`
+    .init(Plugin => ({...Plugin}))
     .use(PnpWebpackPlugin);
 
   chain.resolveLoader
