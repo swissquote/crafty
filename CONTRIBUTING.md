@@ -45,9 +45,10 @@ Update the version number in `package.json`
 
 ```bash
 export NODE_TLS_REJECT_UNAUTHORIZED=0
+export YARN_PLUGNPLAY_OVERRIDE=0
 
 # Do a proper install
-rm -rf node_modules yarn.lock && yarn install
+rm -rf node_modules yarn.lock .pnp .pnp.js && yarn install
 
 # Release a canary version to test in a project
 yarn lerna publish --canary --exact --force-publish="*" --npmClient=npm
