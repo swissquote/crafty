@@ -102,7 +102,7 @@ module.exports = {
   ],
   js: {
     lib: {
-      runner: "gulp",
+      runner: "gulp/typescript",
       source: "js/**/*.ts"
     }
   }
