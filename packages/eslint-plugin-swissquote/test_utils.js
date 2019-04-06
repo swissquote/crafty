@@ -20,7 +20,7 @@ module.exports = {
 
     const engine = new CLIEngine(configuration);
     Object.keys(definedRules).forEach(rule => {
-      engine.linter.rules.define(
+      engine.linter.defineRule(
         `@swissquote/swissquote/${rule}`,
         definedRules[rule]
       );

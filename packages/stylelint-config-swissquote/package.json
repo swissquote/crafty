@@ -1,18 +1,28 @@
 {
   "name": "@swissquote/stylelint-config-swissquote",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
     "access": "public"
   },
   "main": "index.js",
+  "dependencies": {
+    "postcss-resolve-nested-selector": "0.1.1",
+    "postcss-scss": "2.0.0",
+    "postcss-selector-parser": "^6.0.0",
+    "stylelint-scss": "3.5.4"
+  },
   "devDependencies": {
+    "jest": "24.7.1",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "24.7.1",
+    "postcss": "7.0.14",
     "stylelint": "9.10.1"
   },
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -25,8 +35,5 @@
     ],
     "testEnvironment": "node",
     "verbose": true
-  },
-  "dependencies": {
-    "stylelint-scss": "3.5.2"
   }
 }

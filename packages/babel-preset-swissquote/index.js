@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = function buildPreset(context, opts) {
   const presets = [];
   const plugins = [];
@@ -50,6 +52,7 @@ module.exports = function buildPreset(context, opts) {
       {
         targets,
         useBuiltIns: "entry",
+        corejs: 2,
         // Do not transform modules to CJS
         modules: false,
         // Exclude transforms that make all code slower
@@ -101,6 +104,9 @@ module.exports = function buildPreset(context, opts) {
   plugins.push([
     require.resolve("@babel/plugin-transform-runtime"),
     {
+      absoluteRuntime: path.dirname(
+        require.resolve("@babel/runtime/package.json")
+      ), // Otherwise, Yarn PNP is really unhappy
       helpers: opts.deduplicateHelpers || false,
       useESModules: opts.useESModules || false,
       regenerator: true

@@ -1,39 +1,37 @@
 {
   "name": "integration",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@babel/core": "7.4.3",
+    "@swissquote/crafty": "1.6.0",
+    "@swissquote/crafty-preset-babel": "1.6.0",
+    "@swissquote/crafty-preset-images": "1.5.0",
+    "@swissquote/crafty-preset-images-simple": "1.4.0",
+    "@swissquote/crafty-preset-maven": "1.6.0",
+    "@swissquote/crafty-preset-postcss": "1.6.0",
+    "@swissquote/crafty-preset-typescript": "1.6.0",
+    "@swissquote/crafty-runner-gulp": "1.6.0",
+    "@swissquote/crafty-runner-rollup": "1.6.0",
+    "@swissquote/crafty-runner-webpack": "1.6.0",
+    "@types/jest": "^24.0.9",
+    "jest": "24.7.1",
+    "jest-pnp-resolver": "^1.0.1",
+    "jest-resolve": "24.7.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
-    "@babel/core": "7.2.2",
     "@babel/plugin-transform-property-literals": "7.2.0",
-    "@swissquote/crafty": "1.4.0",
-    "@swissquote/crafty-preset-babel": "1.4.0",
-    "@swissquote/crafty-preset-images": "1.4.0",
-    "@swissquote/crafty-preset-images-simple": "1.4.0",
-    "@swissquote/crafty-preset-maven": "1.4.0",
-    "@swissquote/crafty-preset-postcss": "1.4.0",
-    "@swissquote/crafty-preset-typescript": "1.4.0",
-    "@swissquote/crafty-runner-gulp": "1.4.0",
-    "@swissquote/crafty-runner-rollup": "1.4.0",
-    "@swissquote/crafty-runner-webpack": "1.4.0"
+    "lodash-es": "^4.17.11"
   },
   "engines": {
     "node": ">=8.0.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ],
-    "testEnvironment": "node",
-    "verbose": true
-  },
-  "dependencies": {
-    "rimraf": "^2.6.1"
   }
 }

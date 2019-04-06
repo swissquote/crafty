@@ -38,8 +38,14 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
             "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
           }
         },
+        pnpResolve: {
+          plugin: require("rollup-plugin-pnp-resolve"),
+          weight: 35
+        },
         resolve: {
-          plugin: require("rollup-plugin-node-resolve"),
+          plugin: crafty.isPNP
+            ? () => ({ name: `node-resolve-noop` })
+            : require("rollup-plugin-node-resolve"),
           weight: 40,
           options: {
             browser: true
@@ -63,9 +69,6 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
                 return /@preserve|@license|@cc_on|@class/i.test(comment.value);
               }
             }
-          },
-          init: plugin => {
-            return plugin.plugin(plugin.options, plugin.minifier);
           }
         }
       },

@@ -71,6 +71,20 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   chain.externals(prepareExternals(bundle.externals));
 
+  // Enable support for Yarn PNP
+  const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
+  chain.resolve
+    .plugin("pnp-webpack-plugin")
+    // Cloning the plugin exports as this would otherwise 
+    // fail with `Cannot redefine property: __pluginArgs`
+    .init(Plugin => ({...Plugin}))
+    .use(PnpWebpackPlugin);
+
+  chain.resolveLoader
+    .plugin("pnp-webpack-plugin")
+    .init(Plugin => Plugin.moduleLoader(module))
+    .use(PnpWebpackPlugin);
+
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
   // We are Cloning the uglifyJS Object as webpack
@@ -137,18 +151,38 @@ module.exports = function(crafty, bundle, webpackPort) {
       });
   }
 
+  // If --profile is passed, we create a
+  // profile that we'll later write to disk
+  if (process.argv.some(arg => arg === "--profile")) {
+    chain.profile(true);
+
+    chain
+      .plugin("bundle-analyzer")
+      .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
+      .use(require.resolve("webpack-bundle-analyzer"), [
+        {
+          analyzerMode: "static",
+          openAnalyzer: false,
+          reportFilename: `${bundle.name}_report.html`,
+          generateStatsFile: true,
+          statsFilename: `${bundle.name}_stats.json`
+        }
+      ]);
+
+    chain
+      .plugin("inspectpack")
+      .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
+      .use(require.resolve("inspectpack/plugin"), [
+        {}
+      ]);
+  }
+
   // Apply preset configuration
   crafty.getImplementations("webpack").forEach(preset => {
     debug(preset.presetName + ".webpack(Crafty, bundle, chain)");
     preset.webpack(crafty, bundle, chain);
     debug("added webpack");
   });
-
-  // If --profile is passed, we create a
-  // profile that we'll later write to disk
-  if (process.argv.some(arg => arg === "--profile")) {
-    chain.profile(true);
-  }
 
   return chain.toConfig();
 };

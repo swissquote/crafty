@@ -6,7 +6,6 @@ function snapshotizeOutput(ret) {
     .join(__dirname, "..", "..")
     .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   return ret
-    .replace(/ *$/gm, "") // Remove spaces at EOL
     .replace(
       /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-PRZcf-nqry=><]/g, // eslint-disable-line no-control-regex
       ""
@@ -32,7 +31,26 @@ function snapshotizeOutput(ret) {
       /postcss-loader\/lib\?({.*})!/g,
       "postcss-loader?{__POSTCSS_OPTIONS__}!"
     ) // Remove very custom postcss options
-    .replace(new RegExp(escapedPath, "gm"), "__PATH__"); // Remove paths
+    .replace(/^(\s*)PASS(\s*)/gm, "PASS ") // Fix weird space in some case with nested jest runs (Jest)
+    .replace(
+      /^Time: {8}([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)(, estimated ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s))?/gm,
+      "Time:        _____s"
+    ) // Remove test durations (Jest)
+    .replace(
+      /(PASS|FAIL) (.*)\s\(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/,
+      "$1 $2"
+    ) // Remove long test durations (Jest)
+    .replace(
+      /^ {2}( {2})?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)\)/gm,
+      "  $1$2 $3 (__ms)"
+    ) // Remove test result duration (Jest)
+    .replace(
+      /\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm,
+      "__PATH__"
+    ) // Remove paths
+    .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
+    .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
+    .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
 }
 
 function snapshotizeCSS(ret) {

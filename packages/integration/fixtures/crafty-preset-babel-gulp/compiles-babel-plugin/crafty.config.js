@@ -7,6 +7,6 @@ module.exports = {
     }
   },
   babel(crafty, bundle, babel) {
-    babel.plugins.push("@babel/plugin-transform-property-literals");
+    babel.plugins.push(require.resolve("@babel/plugin-transform-property-literals"));
   }
 };

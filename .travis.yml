@@ -8,26 +8,23 @@ addons:
       - master
 
 cache:
-#  yarn: true
   directories:
-#    - node_modules
     - vendor
-
-os:
-  - linux
-  - osx
-#  - windows
 
 jdk:
   - oraclejdk8
 
 node_js:
-#  - '11'
+  - '11'
   - '10'
   - '8'
 
+# Use Yarn without PNP by default
+env: YARN_PLUGNPLAY_OVERRIDE=0 
+
+# Make sure we have the latest Yarn version
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
 install:
@@ -43,15 +40,23 @@ script:
 
 matrix:
   fast_finish: true
+  # Support on those versions and platforms is experimental, 
   allow_failures:
-    - os: osx
     - os: windows
-    - node: "11"
-
-jobs:
+    - node_js: "11"
   include:
+    # Test once with Yarn PNP
+    - node_js: "10"
+      env: YARN_PLUGNPLAY_OVERRIDE=1
+    # Test once on Windows
+    - node_js: "10"
+      os: windows
+    # Test once on macOS
+    - node_js: "10"
+      os: osx
+    # Deploy the documentation, once all builds are finished
     - stage: "Deploy Documentation"
-      node_js: "8"
+      node_js: "10"
       script: skip
       before_deploy:
         - composer install

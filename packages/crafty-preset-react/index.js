@@ -20,8 +20,8 @@ module.exports = {
       }
     }
 
-    // TODO :: ensure we can still use `setupTestFrameworkScriptFile` and this at the same time
-    options.setupTestFrameworkScriptFile = require.resolve("./testSetup.js");
+    options.setupFilesAfterEnv = options.setupFilesAfterEnv || [];
+    options.setupFilesAfterEnv.push(require.resolve("./testSetup.js"));
   },
   babel(crafty, bundle, babelConfig) {
 

@@ -111,9 +111,7 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.tsx?$"] = require.resolve(
-      "ts-jest/preprocessor.js"
-    );
+    options.transform["^.+\\.tsx?$"] = require.resolve("ts-jest");
 
     options.moduleFileExtensions.push("ts");
     options.moduleFileExtensions.push("tsx");
@@ -178,6 +176,10 @@ module.exports = {
         jsx: "Preserve"
       }
     };
+
+    if (crafty.isPNP) {
+      tsOptions.resolveModuleName = require("ts-pnp").resolveModuleName;
+    }
 
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");

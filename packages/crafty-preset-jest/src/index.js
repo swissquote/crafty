@@ -25,6 +25,7 @@ function normalizeJestOptions(crafty, input, cli) {
   }
 
   const options = {
+    resolver: require.resolve("jest-pnp-resolver"),
     moduleDirectories: [...moduleDirectories],
     moduleFileExtensions: [...moduleFileExtensions],
     testPathIgnorePatterns: ["/node_modules/", crafty.config.destination],
@@ -43,6 +44,12 @@ function normalizeJestOptions(crafty, input, cli) {
   if (input.length) {
     options.testRegex = input.join("|").replace(".", "\\.");
   }
+
+  // Add custom transformer to ES import/export in node_modules
+  options.transformIgnorePatterns = [];
+  options.transform["[/\\\\]node_modules[/\\\\].+\\.m?js$"] = require.resolve(
+    "./esm-transformer"
+  );
 
   crafty.getImplementations("jest").forEach(preset => {
     preset.jest(crafty, options);
@@ -85,13 +92,10 @@ module.exports = {
 
       writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
 
-      jest.runCLI(
-        cliOptions,
-        [configFile],
-        result =>
-          result.numFailedTests || result.numFailedTestSuites
-            ? reject()
-            : resolve()
+      jest.runCLI(cliOptions, [configFile], result =>
+        result.numFailedTests || result.numFailedTestSuites
+          ? reject()
+          : resolve()
       );
     });
   }
