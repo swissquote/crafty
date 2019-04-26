@@ -69,7 +69,7 @@ This is used inside `crafty watch`, the build mode will not take it into account
 
 ### Extracting CSS
 
-By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `ExtractTextWebpackPlugin`.
+By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `MiniCssExtractPlugin`.
 
 ## Usage with Gulp
 

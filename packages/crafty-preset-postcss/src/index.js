@@ -148,7 +148,6 @@ module.exports = {
     if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
       // Initialize extraction plugin
       const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-      const extractCSS = new MiniCssExtractPlugin(getExtractConfig(bundle));
 
       // Create a list of loaders that also contains the extraction loader
       styleRule.use("style-loader").loader(MiniCssExtractPlugin.loader);
