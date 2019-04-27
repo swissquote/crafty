@@ -1,0 +1,47 @@
+@import "imported.scss";
+
+/* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
+
+.Parent {
+    background: white;
+
+    &--before {
+        color: #333;
+    }
+
+    @at-root {
+        .Child {
+            background: black;
+        }
+    }
+
+    &--after {
+        color: #eee;
+    }
+}
+
+/* Comments (postcss-scss) */
+
+// single line comment
+.Button {
+    color: orange;
+}
+
+/* Variables (postcss-advanced-variables, postcss-custom-properties) */
+
+:root {
+    --color: #f00;
+}
+
+$blue: #056ef0;
+$column: 200px;
+
+.Menu {
+    width: calc(4 * $column);
+}
+
+.MenuLink {
+    color: var(--color);
+    background: $blue;
+    width: $column;
+}

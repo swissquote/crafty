@@ -39,9 +39,9 @@ it("Fails gracefully on broken markup", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Compiles CSS within webpack, extracts CSS", () => {
+it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract")
+    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-boolean")
   );
   rimraf.sync("dist");
 
@@ -59,5 +59,51 @@ it("Compiles CSS within webpack, extracts CSS", () => {
   ).toMatchSnapshot();
   expect(
     fs.readFileSync("dist/js/myBundle-default.min.css").toString("utf8")
+  ).toMatchSnapshot();
+});
+
+it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-string")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle-string.min.css")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle-string.min.css.map")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/myBundle-string.min.css").toString("utf8")
+  ).toMatchSnapshot();
+});
+
+it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-object")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle-object.min.css")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle-object.min.css.map")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/myBundle-object.min.css").toString("utf8")
   ).toMatchSnapshot();
 });

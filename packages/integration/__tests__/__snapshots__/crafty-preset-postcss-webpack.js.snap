@@ -39,15 +39,15 @@ exports[`Compiles CSS within webpack 2`] = `
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
-exports[`Compiles CSS within webpack, extracts CSS 1`] = `
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 1`] = `
 Object {
   "status": 0,
   "stderr": "",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
-            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract/dist/css
-           js: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract/dist/js
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-boolean/dist/css
+           js: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-boolean/dist/js
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
@@ -74,15 +74,107 @@ Object {
 }
 `;
 
-exports[`Compiles CSS within webpack, extracts CSS 2`] = `
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 2`] = `
 "(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(2)},function(e,t,n){},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(1);n.d(t,\\"default\\",function(){return o});var o=function e(){r(this,e)}}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
-exports[`Compiles CSS within webpack, extracts CSS 3`] = `
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 3`] = `
 "a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}
 
 /*# sourceMappingURL=myBundle-default.min.css.map*/"
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-object/dist/css
+           js: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-object/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/app.js            built
+  1 kB  1        ./css/style.scss             built
+  1 kB  2        ./js/app.js + 1 modules      built
+
+  size  name     asset                        status
+  1 kB  default  myBundle-object.min.css      emitted
+  1 kB  default  myBundle-object.min.css.map  emitted
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(2)},function(e,t,n){},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(1);n.d(t,\\"default\\",function(){return o});var o=function e(){r(this,e)}}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 3`] = `
+"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}
+
+/*# sourceMappingURL=myBundle-object.min.css.map*/"
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-string/dist/css
+           js: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-string/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/app.js            built
+  1 kB  1        ./css/style.scss             built
+  1 kB  2        ./js/app.js + 1 modules      built
+
+  size  name     asset                        status
+  1 kB  default  myBundle-string.min.css      emitted
+  1 kB  default  myBundle-string.min.css.map  emitted
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(2)},function(e,t,n){},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(1);n.d(t,\\"default\\",function(){return o});var o=function e(){r(this,e)}}])});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 3`] = `
+"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}
+
+/*# sourceMappingURL=myBundle-string.min.css.map*/"
 `;
 
 exports[`Fails gracefully on broken markup 1`] = `
