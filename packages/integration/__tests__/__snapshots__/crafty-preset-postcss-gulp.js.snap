@@ -391,6 +391,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
@@ -405,6 +406,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 :fullscreen .Link {
+    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -432,6 +434,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 .Buy {
+    background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), to(#7db9e8));
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
