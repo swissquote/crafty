@@ -67,9 +67,10 @@ test("Succeeds with esm module", () => {
   expect(result).toMatchSnapshot();
 });
 
-
 test("Succeeds with esm module and babel", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel"));
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel")
+  );
   rimraf.sync("dist");
 
   const result = testUtils.run(["test"]);

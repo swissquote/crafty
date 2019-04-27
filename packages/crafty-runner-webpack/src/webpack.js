@@ -75,9 +75,9 @@ module.exports = function(crafty, bundle, webpackPort) {
   const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
   chain.resolve
     .plugin("pnp-webpack-plugin")
-    // Cloning the plugin exports as this would otherwise 
+    // Cloning the plugin exports as this would otherwise
     // fail with `Cannot redefine property: __pluginArgs`
-    .init(Plugin => ({...Plugin}))
+    .init(Plugin => ({ ...Plugin }))
     .use(PnpWebpackPlugin);
 
   chain.resolveLoader
@@ -172,9 +172,7 @@ module.exports = function(crafty, bundle, webpackPort) {
     chain
       .plugin("inspectpack")
       .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
-      .use(require.resolve("inspectpack/plugin"), [
-        {}
-      ]);
+      .use(require.resolve("inspectpack/plugin"), [{}]);
   }
 
   // Apply preset configuration
