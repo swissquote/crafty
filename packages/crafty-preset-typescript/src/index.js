@@ -185,10 +185,13 @@ module.exports = {
       compiler.sys.readFile
     );
 
-    if (
+    const hasDeclarations =
       currentConfig.config &&
       currentConfig.config.compilerOptions &&
-      currentConfig.config.compilerOptions.declaration &&
+      currentConfig.config.compilerOptions.declaration;
+
+    if (
+      hasDeclarations &&
       !currentConfig.config.compilerOptions.declarationDir
     ) {
       // Write declaration files in the destination folder
@@ -201,9 +204,41 @@ module.exports = {
       );
     }
 
+    if (crafty.isPNP) {
+      tsOptions.resolveModuleName = require("ts-pnp").resolveModuleName;
+    }
+
+    // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
+    // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
+    if (!hasDeclarations) {
+      tsOptions.transpileOnly = true;
+
+      const forkCheckerOptions = {
+        typescript: require.resolve("typescript"),
+        compilerOptions: tsOptions.compilerOptions
+      };
+
+      if (crafty.isPNP) {
+        forkCheckerOptions.resolveModuleNameModule = path.join(
+          __dirname,
+          "resolvers.js"
+        );
+        forkCheckerOptions.resolveTypeReferenceDirectiveModule = path.join(
+          __dirname,
+          "resolvers.js"
+        );
+      }
+
+      chain
+        .plugin("fork-ts-checker")
+        .use(require.resolve("fork-ts-checker-webpack-plugin"), [
+          forkCheckerOptions
+        ]);
+    }
+
     tsRule
       .use("ts-loader")
       .loader(require.resolve("ts-loader"))
-      .options(require("pnp-webpack-plugin").tsLoaderOptions(tsOptions));
+      .options(tsOptions);
   }
 };

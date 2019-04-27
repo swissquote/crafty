@@ -33,6 +33,10 @@ You can ask TypeScript to also export all Type definitions along with the code, 
 }
 ```
 
+> Note that if you use Webpack, requesting the creation of declaration disables an internal 
+> optimization that uses workers to check the validity of your TypeScript files.
+> So make sure that you actually need declarations as they have a non-negligible generation cost.
+
 ## Most basic example
 
 Create a bundle like this:

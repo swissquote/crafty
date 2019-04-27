@@ -99,6 +99,35 @@ it("Compiles TypeScript", () => {
   expect(
     fs.readFileSync("dist/js/1.myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/js/SomeLibrary.d.ts").toString("utf8")
+  ).toMatchSnapshot();
+});
+
+it("Compiles TypeScript - fork checker", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/compiles-forked"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/1.myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
 });
 
 it("Lints TypeScript with webpack", () => {
@@ -128,6 +157,40 @@ it("Fails gracefully on broken markup", () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
+});
+
+it("Fails gracefully on invalid TS", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-typescript-webpack/invalid")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed types
+  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
+});
+
+it("Fails gracefully on invalid TS - fork checker", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/invalid-forked"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed types
+  // TODO :: see if it can be done with fork TS Checker
+  //expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  //expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
 });
