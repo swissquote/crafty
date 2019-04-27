@@ -41,7 +41,10 @@ it("Fails gracefully on broken markup", () => {
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-boolean")
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-postcss-webpack/extract-boolean"
+    )
   );
   rimraf.sync("dist");
 
@@ -64,7 +67,10 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", ()
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-string")
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-postcss-webpack/extract-string"
+    )
   );
   rimraf.sync("dist");
 
@@ -87,7 +93,10 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", () 
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-postcss-webpack/extract-object")
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-postcss-webpack/extract-object"
+    )
   );
   rimraf.sync("dist");
 

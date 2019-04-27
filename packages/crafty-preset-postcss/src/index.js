@@ -164,7 +164,8 @@ module.exports = {
       .loader(require.resolve("css-loader"))
       .options({
         importLoaders: 1,
-        sourceMap: crafty.getEnvironment() === "production" && !!bundle.extractCSS
+        sourceMap:
+          crafty.getEnvironment() === "production" && !!bundle.extractCSS
       });
 
     styleRule
