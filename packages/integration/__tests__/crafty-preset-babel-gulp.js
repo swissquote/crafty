@@ -22,13 +22,7 @@ it("Loads crafty-preset-babel and does not register gulp tasks", () => {
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual([
-    "jsLint",
-    "help",
-    "run",
-    "watch",
-    "test"
-  ]);
+  expect(Object.keys(commands)).toContain("jsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -50,13 +44,7 @@ it("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", () =
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual([
-    "jsLint",
-    "help",
-    "run",
-    "watch",
-    "test"
-  ]);
+  expect(Object.keys(commands)).toContain("jsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

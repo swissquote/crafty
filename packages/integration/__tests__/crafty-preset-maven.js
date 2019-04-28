@@ -26,11 +26,11 @@ it("Loads crafty-preset-maven, crafty-preset-babel and overrides configuration",
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
 
-  expect(crafty.config.destination.replace(process.cwd() + "/", "")).toEqual(
+  expect(crafty.config.destination.replace(`${process.cwd()}/`, "")).toEqual(
     "target/my-app-1.0.0-SNAPSHOT/resources"
   );
 
-  expect(crafty.config.destination_js.replace(process.cwd() + "/", "")).toEqual(
+  expect(crafty.config.destination_js.replace(`${process.cwd()}/`, "")).toEqual(
     "target/my-app-1.0.0-SNAPSHOT/resources/js"
   );
 });

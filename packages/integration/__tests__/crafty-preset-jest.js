@@ -7,11 +7,11 @@ const rimraf = require("rimraf");
 
 const testUtils = require("../utils");
 
-let testIfNotPnp = test;
+let testIfNotPnp = it;
 
 try {
-  require(`pnpapi`);
-  testIfNotPnp = test.skip;
+  require("pnpapi");
+  testIfNotPnp = it.skip;
 } catch (error) {
   // not in PnP; not a problem
 }
@@ -58,7 +58,7 @@ testIfNotPnp("Succeeds with babel and React", () => {
   expect(result).toMatchSnapshot();
 });
 
-test("Succeeds with esm module", () => {
+it("Succeeds with esm module", () => {
   process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm"));
   rimraf.sync("dist");
 
@@ -67,7 +67,7 @@ test("Succeeds with esm module", () => {
   expect(result).toMatchSnapshot();
 });
 
-test("Succeeds with esm module and babel", () => {
+it("Succeeds with esm module and babel", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel")
   );

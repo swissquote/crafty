@@ -5,7 +5,6 @@ const path = require("path");
 
 const rimraf = require("rimraf");
 const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
@@ -20,9 +19,6 @@ it("Loads crafty-preset-images-simple and does not register gulp tasks", () => {
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -68,9 +64,6 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
