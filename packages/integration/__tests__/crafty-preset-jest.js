@@ -27,6 +27,36 @@ it("Succeeds without transpiling", () => {
   expect(result).toMatchSnapshot();
 });
 
+it("Creates IDE Integration files", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/ide"));
+  rimraf.sync("jest.config.js");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("jest.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+});
+
+it("Creates IDE Integration files with Babel", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-jest/ide-babel")
+  );
+  rimraf.sync("jest.config.js");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("jest.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+});
+
 testIfNotPnp("Succeeds with typescript", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-jest/typescript")

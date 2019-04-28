@@ -185,6 +185,21 @@ it("Lints JavaScript using command", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
+it("Generates IDE Helper", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/ide"));
+  rimraf.sync(".eslintrc.js");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync(".eslintrc.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+});
+
 it("Lints JavaScript using command, ignore crafty.config.js", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-babel/lints-ignore-config")

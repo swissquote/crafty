@@ -12,6 +12,7 @@ function getCommands(crafty) {
   commands.run = require("./run.js");
   commands.watch = require("./watch.js");
   commands.test = require("./testCommand.js");
+  commands.ide = require("./ide.js");
 
   return commands;
 }

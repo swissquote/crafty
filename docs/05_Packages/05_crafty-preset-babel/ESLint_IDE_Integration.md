@@ -1,23 +1,12 @@
 [TOC]
 
-## IntelliJ IDEA : in-editor linting
-
 ![Shows errors inline](./IDE_Integration_eslint_inline.png)
 
-With in-editor linting you can lint your files while linting and also fix some errors automatically with `alt`-`enter`.
+ESLint's IDE integration relies in general on the `.eslintrc` files (optionally with a .js or .json extension) 
 
-![Fixing errors automatically](./IDE_Integration_autofix.png)
+## Options
 
-Ensure you have the `ESLint` plugin in your IDE.
-
-![ESLint Configuration](./IDE_Integration_eslint_config.png)
-
-This can be changed per-project, the important options are :
-
-- Enable: √
-- Node Interpreter : either use the one on your system or the one in your project (generally `src/main/frontend/node/node`)
-- ESLint Package : point to your `crafty-preset-babel` package (generally `node_modules/crafty-preset-babel/`)
-- Extra ESLint options : Here you choose the presets you want to apply. See below
+When generating the configuration file, you can add arguments to specify which presets you want, if you specify nothing it will use the `format` preset.
 
 ### Presets
 
@@ -30,4 +19,9 @@ You can use the number of presets you wish, the `format` preset is the one check
 
 You can define them with `--preset {presetName}`
 
-For example running with `--preset recommended` will verify for formatting, common rules, EcmaScript 2015+ specific and React specific rules.
+For example running with `crafty ide --preset recommended` will verify for formatting, common rules, EcmaScript 2015+ specific and React specific rules.
+
+## IDE plugins
+
+- __[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)__
+- __[IntelliJ IDEA](https://plugins.jetbrains.com/plugin/7494-eslint)__
