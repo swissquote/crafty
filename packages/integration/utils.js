@@ -48,6 +48,7 @@ function snapshotizeOutput(ret) {
       /\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm,
       "__PATH__"
     ) // Remove paths
+    .replace(/    domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
