@@ -2,7 +2,11 @@
 
 ![Shows errors inline](./IDE_Integration_eslint_inline.png)
 
-ESLint's IDE integration relies in general on the `.eslintrc` files (optionally with a .js or .json extension) 
+ESLint's IDE integration relies in general on the `.eslintrc` files (optionally with a .js or .json extension).
+
+With the `crafty ide` command, a configuration file is generated to be read by your IDE.
+
+> Note that these configuration files __should not be commited__ with your project as they are different for each machine because module paths are absolute.
 
 ## Options
 

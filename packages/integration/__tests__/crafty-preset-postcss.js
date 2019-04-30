@@ -71,3 +71,17 @@ it("Lints with the command with custom config", () => {
 
   expect(fs.existsSync("dist")).toBeFalsy();
 });
+
+it("Creates IDE Integration files", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-postcss/ide"));
+  rimraf.sync("stylelint.config.js");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("stylelint.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+});
