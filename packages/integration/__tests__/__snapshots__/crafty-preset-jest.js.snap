@@ -18,10 +18,7 @@ exports[`Creates IDE Integration files 2`] = `
 
 module.exports = {
     \\"resolver\\": \\"__PATH__/node_modules/jest-pnp-resolver/index.js\\",
-    \\"moduleDirectories\\": [
-        \\"__PATH__/packages/crafty-preset-jest/node_modules\\",
-        \\"__PATH__/node_modules\\"
-    ],
+    \\"moduleDirectories\\": [ /* Ignored paths for diff */ ],
     \\"moduleFileExtensions\\": [
         \\"js\\",
         \\"json\\"
@@ -66,10 +63,7 @@ exports[`Creates IDE Integration files with Babel 2`] = `
 
 module.exports = {
     \\"resolver\\": \\"__PATH__/node_modules/jest-pnp-resolver/index.js\\",
-    \\"moduleDirectories\\": [
-        \\"__PATH__/packages/crafty-preset-jest/node_modules\\",
-        \\"__PATH__/node_modules\\"
-    ],
+    \\"moduleDirectories\\": [ /* Ignored paths for diff */ ],
     \\"moduleFileExtensions\\": [
         \\"js\\",
         \\"json\\"
