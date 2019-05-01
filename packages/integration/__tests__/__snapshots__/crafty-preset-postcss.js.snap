@@ -24,7 +24,21 @@ module.exports = {
         \\"__PATH__/packages/stylelint-config-swissquote/recommended.js\\"
     ],
     \\"rules\\": {
-        \\"swissquote/no-type-outside-scope\\": null
+        \\"swissquote/no-type-outside-scope\\": null,
+        \\"plugin/no-unsupported-browser-features\\": [
+            true,
+            {
+                \\"severity\\": \\"warning\\",
+                \\"browsers\\": \\"> 0.25%, Firefox ESR, Edge >= 13, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9, not op_mini all\\",
+                \\"ignore\\": [
+                    \\"rem\\",
+                    \\"calc\\",
+                    \\"css-initial-value\\",
+                    \\"css-image-set\\",
+                    \\"css-gradients\\"
+                ]
+            }
+        ]
     }
 };
 "

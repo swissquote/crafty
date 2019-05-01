@@ -14,7 +14,10 @@ function warn(value, options) {
 }
 
 module.exports = {
-  plugins: [require.resolve("stylelint-scss")],
+  plugins: [
+    require.resolve("stylelint-scss"),
+    require.resolve("stylelint-no-unsupported-browser-features")
+  ],
   rules: {
     // Formatting
     // ---------------------------------------------------------------------
