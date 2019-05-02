@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const findUp = require("find-up");
 const merge = require("merge");
 const resolve = require("enhanced-resolve");
 
@@ -8,39 +9,105 @@ const defaultConfiguration = require("./defaultConfiguration");
 
 const debug = require("debug")("crafty:configuration");
 
+const craftyPresetNames = "crafty-preset-names";
+
+let LOADING = new Set();
+
+/**
+ * A module can be a a full path or just a module name
+ * From that we'll try to find the name of the preset and the file that contains it.
+ * @param {String} module
+ */
 function resolveModule(module) {
   debug("resolveModule", module);
+
+  const presetName = module;
+
+  if (path.isAbsolute(presetName)) {
+    return [getPresetName(module), module];
+  }
+
   try {
-    // Try a first way
-    return require(module);
+    // Try the naive way
+    return [presetName, require.resolve(module)];
   } catch (e) {
     // Try a more advanced way
-    return require(resolve.sync(process.cwd() + "/node_modules", module));
+    return [presetName, resolve.sync(process.cwd() + "/node_modules", module)];
   }
 }
 
-function isPresetLoaded(config, preset) {
-  return config.loadedPresets.some(
-    loadedPreset => loadedPreset.presetName === preset
+function isPresetLoadingOrLoaded(config, preset) {
+  const isLoading = LOADING.has(preset);
+  const isLoaded = config.loadedPresets.some(loadedPreset =>
+    loadedPreset[craftyPresetNames].has(preset)
   );
+
+  //debug("isPresetLoadingOrLoaded", preset, {isLoading, isLoaded})
+
+  return isLoading || isLoaded;
 }
 
-function hasUnloadedPresets(config) {
-  return config.presets.some(preset => !isPresetLoaded(config, preset));
+function unloadedPresets(config, presets) {
+  return presets.filter(preset => !isPresetLoadingOrLoaded(config, preset));
+}
+
+/**
+ * Get the package's name or the filename if nothing is found
+ * @param {*} file
+ */
+function getPresetName(file) {
+  const packageJson = findUp.sync("package.json", { cwd: path.dirname(file) });
+
+  if (packageJson) {
+    return require(packageJson).name || file;
+  }
+
+  return file;
 }
 
 function loadPreset(config, preset) {
-  if (isPresetLoaded(config, preset)) {
+  debug("loadPreset: start", preset);
+
+  const [presetName, resolvedModule] = resolveModule(preset);
+  debug("loadPreset: resolved", preset, { presetName, resolvedModule });
+
+  // Even if we check in loadMissingPreset for already loading or loaded,
+  // presets, because of its recursive nature it might still come here with
+  // Something that is loading or loaded
+  if (isPresetLoadingOrLoaded(config, presetName)) {
+    debug("loadPreset: loading or loaded", presetName);
     return config;
   }
-  const resolvedModule = resolveModule(preset);
-  resolvedModule.presetName = preset;
-  config.loadedPresets.push(resolvedModule);
-  if (!resolvedModule.defaultConfig) {
+
+  // We have a list of presets currently loading to prevent dependency loops
+  LOADING.add(preset);
+  LOADING.add(presetName);
+  LOADING.add(resolvedModule);
+
+  const loadedModule = require(resolvedModule);
+  loadedModule.presetName = presetName;
+
+  loadedModule.test = "hey";
+  loadedModule[craftyPresetNames] = new Set([
+    preset,
+    presetName,
+    resolvedModule
+  ]);
+
+  // If this preset has dependencies to other presets,
+  // They need to be loaded now, so that they're added before the current one in the list of dependencies
+  if (loadedModule.presets) {
+    debug("loadPreset: Load nested", loadedModule.presets);
+    config = loadMissingPresets(config, loadedModule.presets);
+  }
+
+  config.loadedPresets.push(loadedModule);
+  if (!loadedModule.defaultConfig) {
     return config;
   }
-  debug(resolvedModule.presetName + ".defaultConfig()");
-  return merge.recursive(true, config, resolvedModule.defaultConfig());
+
+  debug(loadedModule.presetName + ".defaultConfig()");
+  return merge.recursive(true, config, loadedModule.defaultConfig());
 }
 
 function endCounter(start, preset) {
@@ -51,27 +118,36 @@ function endCounter(start, preset) {
   debug(`Loaded '${preset}' in ${ms.toFixed(precision)} ms`);
 }
 
-function loadMissingPresets(config) {
-  debug("loadMissingPresets", config.presets);
-  while (hasUnloadedPresets(config)) {
-    config.presets.forEach(preset => {
+function loadMissingPresets(config, presets) {
+  debug("loadMissingPresets", presets);
+
+  let stillUnloadedPresets = unloadedPresets(config, presets);
+
+  // Not sure a loop is needed here
+  do {
+    debug("loadMissingPresets: will load:", stillUnloadedPresets);
+    stillUnloadedPresets.forEach(preset => {
       const start = process.hrtime();
       config = loadPreset(config, preset);
       endCounter(start, preset);
     });
-  }
+
+    stillUnloadedPresets = unloadedPresets(config, presets);
+  } while (stillUnloadedPresets.length > 0);
+
   return config;
 }
 
 function getCrafty(presets, craftyConfig) {
   debug("getCrafty");
+  LOADING = new Set();
 
   let config = merge(true, defaultConfiguration, {
     destination: require("path").join(process.cwd(), "dist"),
     presets: presets.concat(craftyConfig.presets || []),
     loadedPresets: []
   });
-  config = loadMissingPresets(config);
+  config = loadMissingPresets(config, config.presets);
   config = merge.recursive(true, config, craftyConfig);
 
   // Use `crafty.config.js` like a preset
@@ -79,6 +155,13 @@ function getCrafty(presets, craftyConfig) {
   // able to override any behaviour from other presets
   craftyConfig.presetName = "crafty.config.js";
   config.loadedPresets.push(craftyConfig);
+
+  debug(
+    "Finished loading\n" +
+      config.loadedPresets
+        .map(preset => ` - ${preset.presetName}`)
+        .join("\n")
+  );
 
   // Apply overrides to clean up configuration
   config.loadedPresets
