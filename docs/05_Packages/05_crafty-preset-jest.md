@@ -1,1 +1,0 @@
-../../packages/crafty-preset-jest/README.md

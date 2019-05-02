@@ -1,6 +1,6 @@
 [TOC]
 
-One thing that's great about Crafty is that you don't have too many configuration files in your project, 
+One thing that's great about Crafty is that you don't have too many configuration files in your project,
 the downside of it is that IDEs use those configuration files to give you an out-of-the-box experience by reading these configuration files.
 
 For this reason, we implemented `crafty ide`. This command will generate the configuration files in your project so that your IDE can give you the out-of-the-box experience you want.
@@ -19,9 +19,9 @@ Some integrations, like ESLint support command line options to tweak the generat
 
 We currently have two presets that benefit from this feature :
 
-- [ESLint](./05_Packages/05_crafty-preset-babel/ESLint_IDE_Integration.md)
+- [ESLint](./05_Packages/05_crafty-preset-eslint/ESLint_IDE_Integration.md)
 - [stylelint](./05_Packages/05_crafty-preset-postcss/Stylelint_IDE_Integration.md)
-- Jest
+- [Jest](./05_Packages/05_crafty-preset-jest/Jest_IDE_Integration.md)
 
 ## Works best with
 
