@@ -87,7 +87,6 @@ function loadPreset(config, preset) {
   const loadedModule = require(resolvedModule);
   loadedModule.presetName = presetName;
 
-  loadedModule.test = "hey";
   loadedModule[craftyPresetNames] = new Set([
     preset,
     presetName,

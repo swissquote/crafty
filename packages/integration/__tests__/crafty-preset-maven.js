@@ -20,6 +20,7 @@ it("Loads crafty-preset-maven, crafty-preset-babel and overrides configuration",
 
   const loadedPresets = [
     require("@swissquote/crafty-preset-maven"),
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     Object.assign({ presetName: "crafty.config.js" }, config)
   ];

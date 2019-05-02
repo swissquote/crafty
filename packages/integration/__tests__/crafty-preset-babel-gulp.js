@@ -15,6 +15,7 @@ it("Loads crafty-preset-babel and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-babel"], {});
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     { presetName: "crafty.config.js" }
   ];
@@ -36,6 +37,7 @@ it("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", () =
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-runner-gulp"),
     Object.assign({ presetName: "crafty.config.js" }, config)

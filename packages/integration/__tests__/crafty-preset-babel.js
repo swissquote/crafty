@@ -21,6 +21,7 @@ it("Loads crafty-preset-babel and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-babel"], {});
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     { presetName: "crafty.config.js" }
   ];
@@ -42,6 +43,7 @@ it("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task"
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-runner-webpack"),
     Object.assign({ presetName: "crafty.config.js" }, config)
@@ -72,6 +74,7 @@ it("Fails on double runner with incorrect bundle assignment", () => {
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-runner-gulp"),
     require("@swissquote/crafty-runner-webpack"),
@@ -99,6 +102,7 @@ it("Fails on double runner with imprecise bundle assignment", () => {
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-preset-typescript"),
     require("@swissquote/crafty-runner-gulp"),
@@ -126,6 +130,7 @@ it("Fails on non-existing runners", () => {
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-preset-typescript"),
     require("@swissquote/crafty-runner-gulp"),
@@ -153,6 +158,7 @@ it("Assigns bundle only once when runner is specified", () => {
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-babel"),
     require("@swissquote/crafty-runner-gulp"),
     require("@swissquote/crafty-runner-webpack"),
