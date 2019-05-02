@@ -4,7 +4,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 const mkdirp = require("mkdirp");
-const debug = require("debug")("crafty-runner-webpack");
+const debug = require("debug")("crafty:runner-webpack");
 
 const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");

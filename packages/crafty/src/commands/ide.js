@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const debug = require("debug")("ide");
+const debug = require("debug")("crafty:ide");
 
 exports.description = "Create configuration files for IDE Integration";
 exports.command = function run(crafty, input, cli) {

@@ -1,4 +1,4 @@
-const debug = require("debug")("gulp-runner");
+const debug = require("debug")("crafty:runner-gulp");
 
 const StreamHandler = require("./StreamHandler");
 const Gulp = require("./Gulp.js");

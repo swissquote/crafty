@@ -6,7 +6,7 @@ const resolve = require("enhanced-resolve");
 const Crafty = require("./Crafty");
 const defaultConfiguration = require("./defaultConfiguration");
 
-const debug = require("debug")("configuration");
+const debug = require("debug")("crafty:configuration");
 
 function resolveModule(module) {
   debug("resolveModule", module);

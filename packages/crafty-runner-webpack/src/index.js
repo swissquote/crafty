@@ -1,4 +1,3 @@
-const debug = require("debug")("webpack-runner");
 const generateTask = require("./webpack_runtime");
 
 module.exports = {

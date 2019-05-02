@@ -10,7 +10,7 @@ const batchWarnings = require("./utils/logging");
 const handleError = require("./utils/handleError");
 const relativeId = require("./utils/relativeId");
 
-const debug = require("debug")("rollup-runner");
+const debug = require("debug")("crafty:runner-rollup");
 
 function buildConfiguration(crafty, taskName, bundle, warnings) {
   const destination = path.join(

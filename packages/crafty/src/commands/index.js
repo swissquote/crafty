@@ -1,4 +1,4 @@
-const debug = require("debug")("commands");
+const debug = require("debug")("crafty:commands");
 const merge = require("merge");
 
 function getCommands(crafty) {
