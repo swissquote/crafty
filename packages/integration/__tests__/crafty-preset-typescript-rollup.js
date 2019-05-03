@@ -65,7 +65,6 @@ it("Fails gracefully on broken markup", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-/*
 it("Lints TypeScript with rollup", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-typescript-rollup/lints")
@@ -76,9 +75,7 @@ it("Lints TypeScript with rollup", () => {
 
   expect(result).toMatchSnapshot();
 
-  //TODO :: make that TS linting errors throw errors
   // Files aren't generated on failed lint
-  //expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  //expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
-*/

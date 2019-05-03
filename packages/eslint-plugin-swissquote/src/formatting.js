@@ -1,8 +1,4 @@
-function warn() {
-  // When running in development mode, some errors can just be warnings.
-  // Some errors don't need to break the build if they aren't threatening the functionality.
-  return process.env.NODE_ENV === "development" ? "warn" : "error";
-}
+const { warn } = require("./utils");
 
 // Command line formatting checker
 // Mainly the formatting rules and
@@ -35,7 +31,7 @@ module.exports = {
     // "max-nested-callbacks": [warn(), 2],
     // "max-params": [warn(), 3],
     // "max-statements": [warn(), 10],
-    "new-cap": warn(),
+    "new-cap": [warn(), { newIsCapExceptions: ["default"] }],
     "new-parens": warn(),
     "no-array-constructor": warn(),
     "no-bitwise": warn(),

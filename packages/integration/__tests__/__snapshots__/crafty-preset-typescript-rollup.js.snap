@@ -21,18 +21,22 @@ Object {
 exports[`Deletes rollup uglify plugin using crafty.config.js 2`] = `
 "var C = /** @class */ (function () {
     function C() {
+        /* eslint-disable-next-line no-console */
         console.log(\\"Something happens here\\");
     }
     C.prototype.someMethod = function () {
+        /* eslint-disable-next-line no-alert */
         alert(\\"yes, alert still exists\\");
     };
     return C;
 }());
 var D = /** @class */ (function () {
     function D() {
+        /* eslint-disable-next-line no-console */
         console.log(\\"Something else happens here\\");
     }
     D.prototype.someMethod = function () {
+        /* eslint-disable-next-line no-alert */
         alert(\\"yes, alert still exists\\");
     };
     return D;
@@ -46,10 +50,10 @@ export { C, D };
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[js_myTSBundle] (!) __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts(14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+  "stderr": "[js_myTSBundle] (!) Errors were found
 js/typescript.ts
 [__:__:__] 'js_myTSBundle' errored after ____ ms
-[__:__:__] Error: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts(14,1): syntax error TS1068 Unexpected token. A constructor, method, accessor, or property was expected.
+[__:__:__] Error: Errors were found
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
@@ -61,6 +65,56 @@ js/typescript.ts
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts
+  14:8  error  Parsing error: Unexpected token
+
+  12 | }
+  13 |
+> 14 | export class D {
+     |        ^
+  15 |     constructor() {
+  16 |         console.log(\\"Something else happens here\\");
+  17 |     }
+
+✖ 1 problem (1 error, 0 warnings)
+
+",
+}
+`;
+
+exports[`Lints TypeScript with rollup 1`] = `
+Object {
+  "status": 1,
+  "stderr": "[js_myBundle] (!) Errors were found
+js/script.ts
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Error: Errors were found
+    ...stacktrace...
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/script.ts
+   6:1   error    Expected indentation of 2 spaces but found 4                                   indent
+   7:5   warning  Unexpected console statement                                                   no-console
+   8:1   error    Expected indentation of 2 spaces but found 1                                   indent
+  11:5   warning  Unexpected console statement                                                   no-console
+  14:5   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  17:7   warning  Unexpected console statement                                                   no-console
+  18:7   error    There should be no space before ','                                            comma-spacing
+  18:13  error    Missing semicolon                                                              semi
+
+✖ 8 problems (5 errors, 3 warnings)
+  5 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
 ",
 }
 `;

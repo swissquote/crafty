@@ -1,5 +1,3 @@
-const createTempFile = require("./utils").createTempFile;
-
 module.exports = function createTask(crafty, bundle, StreamHandler) {
   return cb => {
     // Init
@@ -17,21 +15,26 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     }
 
     // Linting
-    const tslint = require("gulp-tslint");
-    stream.add(
-      tslint({
-        formatter: "stylish",
-        configuration: createTempFile(JSON.stringify(crafty.config.tslint))
-      })
-    );
+    const eslint = require("gulp-eslint");
+    stream.add(eslint(crafty.config.eslint)).add(eslint.format());
 
     // Fail the build if we have linting
     // errors and we build directly
-    stream.add(
-      tslint.report({
-        emitError: !crafty.isWatching()
-      })
-    );
+    if (!crafty.isWatching()) {
+      stream.add(
+        eslint.results(results => {
+          const count = results.errorCount;
+          if (count) {
+            const message =
+              "ESLint failed with " +
+              count +
+              (count === 1 ? " error" : " errors");
+            cb(new crafty.Information(message));
+          }
+        })
+      );
+    }
+
 
     // Process
     const sourcemaps = require("gulp-sourcemaps");

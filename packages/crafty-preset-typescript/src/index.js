@@ -1,34 +1,30 @@
 const path = require("path");
+const fs = require("fs");
 
 const createTask = require("./gulp");
-const createTempFile = require("./utils").createTempFile;
 
 const MODULES = path.join(__dirname, "..", "node_modules");
-
-function resolve(relative) {
-  return path.resolve(process.cwd(), relative);
-}
 
 function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
 
-function findConfigFile(compiler, requestDirPath, configFile) {
+function findConfigFile(requestDirPath, configFile) {
   // If `configFile` is an absolute path, return it right away
   if (path.isAbsolute(configFile)) {
-    return compiler.sys.fileExists(configFile) ? configFile : undefined;
+    return fs.existsSync(configFile) ? configFile : undefined;
   }
   // If `configFile` is a relative path, resolve it.
   // We define a relative path as: starts with
   // one or two dots + a common directory delimiter
   if (configFile.match(/^\.\.?(\/|\\)/)) {
     const resolvedPath = path.resolve(requestDirPath, configFile);
-    return compiler.sys.fileExists(resolvedPath) ? resolvedPath : undefined;
+    return fs.existsSync(resolvedPath) ? resolvedPath : undefined;
     // If `configFile` is a file name, find it in the directory tree
   } else {
     while (true) {
       const fileName = path.join(requestDirPath, configFile);
-      if (compiler.sys.fileExists(fileName)) {
+      if (fs.existsSync(fileName)) {
         return fileName;
       }
       const parentPath = path.dirname(requestDirPath);
@@ -42,26 +38,12 @@ function findConfigFile(compiler, requestDirPath, configFile) {
 }
 
 module.exports = {
+  presets: [
+    require.resolve("@swissquote/crafty-preset-eslint")
+  ],
   defaultConfig() {
     return {
-      bundleTypes: { js: "js" },
-      // TSLint config
-      tslint: require("./config-tslint.js")
-    };
-  },
-  commands() {
-    return {
-      tsLint: {
-        //eslint-disable-next-line no-unused-vars
-        command: function(crafty, input, cli) {
-          // Remove command argument
-          process.argv.splice(process.argv.indexOf("tsLint"), 1);
-
-          global.craftyConfig = crafty.config;
-          require("./commands/tsLint");
-        },
-        description: "Lint TypeScript for errors"
-      }
+      bundleTypes: { js: "js" }
     };
   },
   bundleCreator(crafty) {
@@ -93,21 +75,14 @@ module.exports = {
       plugin: require("rollup-plugin-typescript2"),
       weight: 20
     };
+  },
+  eslint(config, eslint){
+    // This configuration is read by the webpack and rollup plugins
+    // The rest of the configuration is handled by `eslint-plugin-swissquote`
+    eslint.extensions.push("ts");
+    eslint.extensions.push("tsx");
 
-    // Linting doesn't work well currently in rollup
-    // - Errors are imprecise, just outputs "Warnings or errors were found"
-    // - If the code can't be parsed, you lose the information of where it failed
-    // TODO :: re-enable once this works better
-    //rollupConfig.input.plugins.tslint = {
-    //  plugin: require("rollup-plugin-tslint"),
-    //  weight: 0,
-    //  options: {
-    //    exclude: ["node_modules/**"],
-    //    include: ["**/*.ts", "**/*.tsx"],
-    //    configuration: createTempFile(JSON.stringify(crafty.config.tslint)),
-    //    throwOnError: true
-    //  }
-    //};
+    return eslint;
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
@@ -120,22 +95,6 @@ module.exports = {
     chain.resolve.extensions.add(".ts").add(".tsx");
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
-
-    const filename = createTempFile(JSON.stringify(crafty.config.tslint));
-
-    // TypeScript linting
-    chain.module
-      .rule("lint-ts")
-      .pre() // It's important to do this before TypeScript processes the JS.
-      .test(/\.tsx?$/)
-      .include.add(resolve("js"))
-      .end()
-      .use("tslint")
-      .loader(require.resolve("tslint-loader"))
-      .options({
-        configFile: filename,
-        formatter: "stylish"
-      });
 
     // TypeScript
     const tsRule = chain.module.rule("ts");
@@ -179,7 +138,7 @@ module.exports = {
 
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");
-    const configFile = findConfigFile(compiler, process.cwd(), "tsconfig.json");
+    const configFile = findConfigFile(process.cwd(), "tsconfig.json");
     const currentConfig = compiler.readConfigFile(
       configFile,
       compiler.sys.readFile

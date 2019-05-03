@@ -3,6 +3,8 @@ const tmp = require("tmp");
 const fs = require("fs");
 const path = require("path");
 
+const debug = require("debug")("crafty:preset-eslint");
+
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
@@ -33,11 +35,27 @@ module.exports = {
   },
   config(config) {
     // Add eslint react version
-    config.eslint = merge.recursive(config.eslint, {
+    const eslintConfig = merge.recursive(config.eslint, {
       baseConfig: {
         settings: { react: { version: config.eslintReactVersion } }
       }
     });
+
+    let extendedEslintConfig = {
+      config: eslintConfig,
+      extensions: ["js", "jsx"]
+    };
+
+    // Apply overrides to clean up configuration
+    config.loadedPresets
+      .filter(preset => preset.eslint)
+      .forEach(preset => {
+        debug(preset.presetName + ".eslint(config, eslint)");
+        extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
+      });
+
+    config.eslintExtensions = extendedEslintConfig.extensions;
+    config.eslint = extendedEslintConfig.config;
 
     return config;
   },
@@ -77,7 +95,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
       options: Object.assign({}, crafty.config.eslint, {
         throwOnError: crafty.getEnvironment() === "production",
         exclude: ["node_modules/**"],
-        include: ["**/*.js", "**/*.jsx"]
+        include: crafty.config.eslintExtensions.map(extension => `**/*.${extension}`)
       })
     };
   },
@@ -86,11 +104,13 @@ module.exports = ${JSON.stringify(content, null, 4)};
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
+    const extensions = crafty.config.eslintExtensions;
+
     // JavaScript linting
     chain.module
       .rule("lint-js")
       .pre()
-      .test(/\.jsx?$/)
+      .test(new RegExp(`\\.(${extensions.join("|")})$`))
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("eslint")

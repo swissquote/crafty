@@ -21,14 +21,12 @@ it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-typescript"),
     { presetName: "crafty.config.js" }
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toContain("tsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -45,15 +43,13 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-typescript"),
     require("@swissquote/crafty-runner-webpack"),
     Object.assign({ presetName: "crafty.config.js" }, config)
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toContain("tsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
@@ -128,10 +124,9 @@ it("Lints TypeScript with webpack", () => {
 
   expect(result).toMatchSnapshot();
 
-  //TODO :: make that TS linting errors throw errors
   // Files aren't generated on failed lint
-  //expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  //expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
 it("Fails gracefully on broken markup", () => {

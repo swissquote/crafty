@@ -2,23 +2,41 @@
 
 exports[`Lints TypeScript using the command 1`] = `
 Object {
-  "status": 2,
+  "status": 1,
   "stderr": "",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
-js/Component.ts:2:24
-ERROR: 2:24   whitespace       missing whitespace
-ERROR: 3:18   no-multi-spaces  Multiple spaces found before 'b'.
 
-js/SomeLibrary.ts:12:5
-ERROR: 12:5   one-line         misplaced opening brace
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/Component.ts
+  2:1   error  Prefer default export                         @swissquote/swissquote/import/prefer-default-export
+  3:1   error  Expected indentation of 2 spaces but found 3  indent
+  3:18  error  Multiple spaces found before 'b'              no-multi-spaces
 
-js/script.ts:7:5
-ERROR: 7:5    no-console       Calls to 'console.log' are not allowed.
-ERROR: 11:5   no-console       Calls to 'console.log' are not allowed.
-ERROR: 14:5   one-line         misplaced opening brace
-ERROR: 17:7   no-console       Calls to 'console.log' are not allowed.
-ERROR: 18:13  semicolon        Missing semicolon
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.ts
+   6:1   error    Expected indentation of 2 spaces but found 4                                   indent
+   7:5   warning  Unexpected console statement                                                   no-console
+   8:1   error    Expected indentation of 2 spaces but found 1                                   indent
+  11:5   warning  Unexpected console statement                                                   no-console
+  14:5   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  17:7   warning  Unexpected console statement                                                   no-console
+  18:7   error    There should be no space before ','                                            comma-spacing
+  18:13  error    Missing semicolon                                                              semi
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/SomeLibrary.ts
+   3:1  error  Expected indentation of 2 spaces but found 4                                   indent
+   4:1  error  Expected indentation of 4 spaces but found 8                                   indent
+   5:1  error  Expected indentation of 2 spaces but found 4                                   indent
+   7:1  error  Expected indentation of 2 spaces but found 4                                   indent
+   8:1  error  Expected indentation of 4 spaces but found 2                                   indent
+   9:1  error  Expected indentation of 2 spaces but found 4                                   indent
+  11:1  error  Expected indentation of 2 spaces but found 4                                   indent
+  12:1  error  Expected indentation of 2 spaces but found 4                                   indent
+  12:5  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  13:1  error  Expected indentation of 4 spaces but found 8                                   indent
+  14:1  error  Expected indentation of 2 spaces but found 6                                   indent
+
+✖ 22 problems (19 errors, 3 warnings)
+  18 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }

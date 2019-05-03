@@ -13,7 +13,7 @@ it("Lints TypeScript using the command", () => {
   );
   rimraf.sync("dist");
 
-  const result = testUtils.run(["tsLint", "js/**/*.ts"]);
+  const result = testUtils.run(["jsLint", "js/**/*.ts"]);
 
   expect(result).toMatchSnapshot();
 

@@ -15,14 +15,12 @@ it("Loads crafty-preset-typescript and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-typescript"),
     { presetName: "crafty.config.js" }
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toContain("tsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -36,15 +34,13 @@ it("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task",
   );
 
   const loadedPresets = [
+    require("@swissquote/crafty-preset-eslint"),
     require("@swissquote/crafty-preset-typescript"),
     require("@swissquote/crafty-runner-gulp"),
     Object.assign({ presetName: "crafty.config.js" }, config)
   ];
 
   expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toContain("tsLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

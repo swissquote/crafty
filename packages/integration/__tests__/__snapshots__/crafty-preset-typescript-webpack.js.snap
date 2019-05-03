@@ -120,17 +120,31 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ⚠
+  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
 
   (3 assets hidden)
 
   Failed to compile.
 
+./js/typescript.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
+  14:8  error  Parsing error: Unexpected token
+
+  12 | }
+  13 |
+> 14 | export class D {
+     |        ^
+  15 |     constructor() {
+  16 |         console.log(\\"Something else happens here\\");
+  17 |     }
+
+✖ 1 problem (1 error, 0 warnings)
+
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1)
       TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 
-  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 ",
 }
@@ -154,21 +168,39 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 Starting type checking service...
 Using 1 worker with 2048MB memory limit
-  size  name     module                          status
-  1 kB  0        multi ./js/typescript.ts        built
-  1 kB  1        ./js/typescript.ts + 2 modules  built ⚠
+  size  name  module                          status
+  1 kB  0     multi ./js/typescript.ts        built
+  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
 
-  size  name     asset                           status
-  1 kB  default  myTSBundle.min.js               emitted
-  1 kB  default  myTSBundle.min.js.map           emitted
+  (2 assets hidden)
 
   Failed to compile.
 
+./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-forked/js/typescript.ts
-ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-forked/js/typescript.ts(5,17):
-TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+   2:1   error    Expected indentation of 2 spaces but found 4  indent
+   3:1   error    Expected indentation of 4 spaces but found 8  indent
+   3:9   warning  Unexpected console statement                  no-console
+   5:1   error    Expected indentation of 4 spaces but found 8  indent
+   5:13  error    'D' was used before it was defined            no-use-before-define
+   6:1   error    Expected indentation of 2 spaces but found 4  indent
+   8:1   error    Expected indentation of 2 spaces but found 4  indent
+   9:1   error    Expected indentation of 4 spaces but found 8  indent
+   9:9   error    Unexpected alert                              no-alert
+  10:1   error    Expected indentation of 2 spaces but found 4  indent
+  14:1   error    Expected indentation of 2 spaces but found 4  indent
+  15:1   error    Expected indentation of 4 spaces but found 8  indent
+  15:9   warning  Unexpected console statement                  no-console
+  16:1   error    Expected indentation of 2 spaces but found 4  indent
+  18:1   error    Expected indentation of 2 spaces but found 4  indent
+  19:1   error    Expected indentation of 4 spaces but found 8  indent
+  19:9   error    Unexpected alert                              no-alert
+  20:1   error    Expected indentation of 2 spaces but found 4  indent
 
-  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+✖ 18 problems (16 errors, 2 warnings)
+  13 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+  Δt ____ms ✖ 1 problem (1 error, 0 warnings)
 
 ",
 }
@@ -192,17 +224,41 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ⚠
+  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
 
   (3 assets hidden)
 
   Failed to compile.
 
+./js/typescript.ts
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
+   2:1   error    Expected indentation of 2 spaces but found 4  indent
+   3:1   error    Expected indentation of 4 spaces but found 8  indent
+   3:9   warning  Unexpected console statement                  no-console
+   5:1   error    Expected indentation of 4 spaces but found 8  indent
+   5:13  error    'D' was used before it was defined            no-use-before-define
+   6:1   error    Expected indentation of 2 spaces but found 4  indent
+   8:1   error    Expected indentation of 2 spaces but found 4  indent
+   9:1   error    Expected indentation of 4 spaces but found 8  indent
+   9:9   error    Unexpected alert                              no-alert
+  10:1   error    Expected indentation of 2 spaces but found 4  indent
+  14:1   error    Expected indentation of 2 spaces but found 4  indent
+  15:1   error    Expected indentation of 4 spaces but found 8  indent
+  15:9   warning  Unexpected console statement                  no-console
+  16:1   error    Expected indentation of 2 spaces but found 4  indent
+  18:1   error    Expected indentation of 2 spaces but found 4  indent
+  19:1   error    Expected indentation of 4 spaces but found 8  indent
+  19:9   error    Unexpected alert                              no-alert
+  20:1   error    Expected indentation of 2 spaces but found 4  indent
+
+✖ 18 problems (16 errors, 2 warnings)
+  13 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts(5,17)
       TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
 
-  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 ",
 }
@@ -210,8 +266,13 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 
 exports[`Lints TypeScript with webpack 1`] = `
 Object {
-  "status": 0,
-  "stderr": "",
+  "status": 1,
+  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Error: Webpack compilation failed
+    ...stacktrace...
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -219,46 +280,46 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                      status
-  1 kB  2        multi ./js/script.ts        built
-  1 kB  3        ./js/script.ts + 1 modules  built ⚠
-  1 kB  4        ./js/SomeLibrary.ts         built ⚠
+  size  name  module                      status
+  1 kB  2     multi ./js/script.ts        built
+  1 kB  3     ./js/script.ts + 1 modules  built ✖
+  1 kB  4     ./js/SomeLibrary.ts         built ✖
 
-  size  name     asset                       status
-  1 kB  js       1.myBundle.min.js           emitted
-  1 kB  map      1.myBundle.min.js.map       emitted
-  1 kB  ts       js/Component.d.ts           emitted
-  1 kB  ts       js/SomeLibrary.d.ts         emitted
-  1 kB  ts       js/script.d.ts              emitted
-  1 kB  default  myBundle.min.js             emitted
-  1 kB  default  myBundle.min.js.map         emitted
+  (7 assets, 2 modules hidden)
 
-  (2 modules hidden)
-
-  Compiled with warnings.
+  Failed to compile.
 
 ./js/Component.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts:2:24
-ERROR: 2:24  whitespace       missing whitespace
-ERROR: 3:18  no-multi-spaces  Multiple spaces found before 'b'.
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts
+  2:1   error  Prefer default export                         @swissquote/swissquote/import/prefer-default-export
+  3:1   error  Expected indentation of 2 spaces but found 3  indent
+  3:18  error  Multiple spaces found before 'b'              no-multi-spaces
+
+✖ 3 problems (3 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/SomeLibrary.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts:12:5
-ERROR: 12:5  one-line  misplaced opening brace
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
+  11:3  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/script.ts
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts:6:5
-ERROR: 6:5   no-console  Calls to 'console.log' are not allowed.
-ERROR: 10:5  no-console  Calls to 'console.log' are not allowed.
-ERROR: 13:5  one-line    misplaced opening brace
-ERROR: 16:7  no-console  Calls to 'console.log' are not allowed.
-ERROR: 17:7  semicolon   Missing semicolon
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
+   5:1  error    Expected indentation of 2 spaces but found 4                                   indent
+   6:5  warning  Unexpected console statement                                                   no-console
+   7:1  error    Expected indentation of 2 spaces but found 1                                   indent
+  10:5  warning  Unexpected console statement                                                   no-console
+  13:5  error    Opening curly brace does not appear on the same line as controlling statement  brace-style
+  16:7  warning  Unexpected console statement                                                   no-console
+  17:7  error    Missing semicolon                                                              semi
 
-  Δt ____ms ⚠  3 problems (0 errors, 3 warnings)
+✖ 7 problems (4 errors, 3 warnings)
+  4 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-[__:__:__] Finished 'js_myBundle' after ____ ms
-[__:__:__] Finished 'js' after ____ ms
-[__:__:__] Finished 'default' after ____ ms
+  Δt ____ms ✖ 3 problems (3 errors, 0 warnings)
+
 ",
 }
 `;

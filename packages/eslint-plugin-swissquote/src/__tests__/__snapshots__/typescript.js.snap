@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fails on badly formatted TypeScript code 1`] = `
+Array [
+  Object {
+    "column": 35,
+    "fix": Object {
+      "range": Array [
+        33,
+        35,
+      ],
+      "text": " ",
+    },
+    "line": 2,
+    "message": "Multiple spaces found before '('.",
+    "nodeType": "Punctuator",
+    "ruleId": "no-multi-spaces",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 6,
+    "endLine": 4,
+    "fix": Object {
+      "range": Array [
+        100,
+        105,
+      ],
+      "text": "    ",
+    },
+    "line": 4,
+    "message": "Expected indentation of 4 spaces but found 5.",
+    "messageId": "wrongIndentation",
+    "nodeType": "Identifier",
+    "ruleId": "@swissquote/swissquote/@typescript-eslint/indent",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 7,
+    "endLine": 9,
+    "fix": Object {
+      "range": Array [
+        209,
+        215,
+      ],
+      "text": "    ",
+    },
+    "line": 9,
+    "message": "Expected indentation of 4 spaces but found 6.",
+    "messageId": "wrongIndentation",
+    "nodeType": "Punctuator",
+    "ruleId": "@swissquote/swissquote/@typescript-eslint/indent",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 9,
+    "endLine": 15,
+    "fix": Object {
+      "range": Array [
+        367,
+        375,
+      ],
+      "text": "      ",
+    },
+    "line": 15,
+    "message": "Expected indentation of 6 spaces but found 8.",
+    "messageId": "wrongIndentation",
+    "nodeType": "Identifier",
+    "ruleId": "@swissquote/swissquote/@typescript-eslint/indent",
+    "severity": 2,
+  },
+]
+`;

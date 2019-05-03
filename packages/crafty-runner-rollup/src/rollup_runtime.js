@@ -24,7 +24,6 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
       input: bundle.source,
       plugins: {
         // eslint
-        // tslint
         json: {
           plugin: require("rollup-plugin-json"),
           weight: 10

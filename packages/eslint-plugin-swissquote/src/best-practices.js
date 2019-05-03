@@ -1,5 +1,7 @@
 const restrictedGlobals = require("confusing-browser-globals");
 
+const { addMissingRules } = require("./utils");
+
 module.exports = {
   rules: {
     // Best practices
@@ -46,7 +48,11 @@ module.exports = {
     // "no-underscore-dangle": "error",
     //"no-unused-expressions": "error",
     "no-unused-labels": "error",
-    "no-unused-vars": ["error", { args: "after-used", vars: "local" }],
+    "no-unused-vars": [
+      "error",
+      { args: "none", vars: "local", ignoreRestSiblings: true }
+    ],
+
     "no-useless-return": "error",
     "no-use-before-define": "error",
     radix: "error",
@@ -84,27 +90,12 @@ module.exports = {
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "use-isnan": "error",
-    "valid-jsdoc": [
-      "error",
-      {
-        requireReturn: false,
-        requireReturnDescription: false
-      }
-    ],
     "valid-typeof": "error",
     "@swissquote/swissquote/sonarjs/no-duplicate-string": ["error", 10]
   }
 };
 
-// Eslint can't load plugins transitively (from a shared config)
-// So we have to include the file ourselves and include the rules as if they were ours.
-// Solution proposed by @nzakas himself : https://github.com/eslint/eslint/issues/3458#issuecomment-257161846
-// replaces `extends: "plugin:sonarjs/recommended",`
-const sonarRules = require("eslint-plugin-sonarjs").configs.recommended.rules;
-Object.keys(sonarRules).forEach(ruleName => {
-  // Only define the rules we don't have configured yet
-  const key = `@swissquote/swissquote/${ruleName}`;
-  if (!module.exports.rules.hasOwnProperty(key)) {
-    module.exports.rules[key] = sonarRules[ruleName];
-  }
-});
+addMissingRules(
+  require("eslint-plugin-sonarjs").configs.recommended.rules,
+  module.exports.rules
+);
