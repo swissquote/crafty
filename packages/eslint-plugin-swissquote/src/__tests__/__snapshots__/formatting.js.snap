@@ -5,56 +5,40 @@ exports[`ES5 formatting Gives no warning on correct code 1`] = `Array []`;
 exports[`ES5 formatting Warns on wrong format 1`] = `
 Array [
   Object {
-    "column": 17,
-    "endColumn": 18,
-    "endLine": 3,
+    "column": 1,
+    "endColumn": 60,
+    "endLine": 2,
     "fix": Object {
       "range": Array [
-        19,
-        19,
+        0,
+        60,
       ],
-      "text": "
+      "text": "function test() {
+  \\"use strict\\";
+  fetch(\\"This is spartaaa\\");
 ",
     },
-    "line": 3,
-    "message": "Statement inside of curly braces should be on next line.",
-    "messageId": "blockSameLine",
-    "nodeType": "Punctuator",
-    "ruleId": "brace-style",
-    "severity": 2,
-  },
-  Object {
-    "column": 60,
-    "endColumn": 61,
-    "endLine": 3,
-    "fix": Object {
-      "range": Array [
-        61,
-        61,
-      ],
-      "text": "
-",
-    },
-    "line": 3,
-    "message": "Closing curly brace should be on the same line as opening curly brace or on the line after the previous block.",
-    "messageId": "singleLineClose",
-    "nodeType": "Punctuator",
-    "ruleId": "brace-style",
+    "line": 1,
+    "message": "Replace \`⏎function·test()·{·\\"use·strict\\";·fetch(\\"This·is·spartaaa\\");·\` with \`function·test()·{⏎··\\"use·strict\\";⏎··fetch(\\"This·is·spartaaa\\");⏎\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
   },
   Object {
     "column": 7,
+    "endColumn": 1,
+    "endLine": 5,
     "fix": Object {
       "range": Array [
-        70,
+        69,
         70,
       ],
       "text": ";",
     },
-    "line": 5,
-    "message": "Missing semicolon.",
-    "nodeType": "ExpressionStatement",
-    "ruleId": "semi",
+    "line": 4,
+    "message": "Replace \`⏎\` with \`;\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
   },
 ]

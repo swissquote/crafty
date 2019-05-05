@@ -2,7 +2,7 @@
 
 export default class OtherComponent extends React.Component {
   handleClick = () => {
-    this.setState({hey: true});
+    this.setState({ hey: true });
   };
 
   render() {

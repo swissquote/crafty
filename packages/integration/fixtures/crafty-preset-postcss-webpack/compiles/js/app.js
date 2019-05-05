@@ -1,6 +1,3 @@
-
 import "../css/style";
 
-export default class app {
-
-}
+export default class app {}

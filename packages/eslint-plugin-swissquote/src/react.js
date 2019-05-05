@@ -31,7 +31,6 @@ module.exports = {
 
     // Swissquote Rules
     "@swissquote/swissquote/react/jsx-handler-names": "error",
-    "@swissquote/swissquote/react/jsx-indent": ["error", 2],
     "@swissquote/swissquote/react/jsx-pascal-case": "error",
     "@swissquote/swissquote/react/no-did-mount-set-state": "error",
     "@swissquote/swissquote/react/no-did-update-set-state": "error",

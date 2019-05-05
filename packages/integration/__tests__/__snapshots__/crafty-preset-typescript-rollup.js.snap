@@ -103,17 +103,18 @@ js/script.ts
 [__:__:__] Starting 'js_myBundle' ...
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/script.ts
-   6:1   error    Expected indentation of 2 spaces but found 4                                   indent
-   7:5   warning  Unexpected console statement                                                   no-console
-   8:1   error    Expected indentation of 2 spaces but found 1                                   indent
-  11:5   warning  Unexpected console statement                                                   no-console
-  14:5   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
-  17:7   warning  Unexpected console statement                                                   no-console
-  18:7   error    There should be no space before ','                                            comma-spacing
-  18:13  error    Missing semicolon                                                              semi
+   1:1   error    Replace \`⏎import·{\` with \`import·{·\`         @swissquote/swissquote/prettier/prettier
+   6:3   error    Replace \`··constructor·\` with \`constructor\`  @swissquote/swissquote/prettier/prettier
+   7:5   warning  Unexpected console statement                 no-console
+   8:2   error    Insert \`·\`                                   @swissquote/swissquote/prettier/prettier
+  11:5   warning  Unexpected console statement                 no-console
+  11:17  error    Replace \`·test(·\` with \`test(\`               @swissquote/swissquote/prettier/prettier
+  13:16  error    Replace \`·(·)·=>⏎···\` with \`()·=>\`           @swissquote/swissquote/prettier/prettier
+  17:7   warning  Unexpected console statement                 no-console
+  18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
-✖ 8 problems (5 errors, 3 warnings)
-  5 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 9 problems (6 errors, 3 warnings)
+  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }

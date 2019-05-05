@@ -16,24 +16,15 @@ module.exports = {
     "no-array-constructor": "off",
     "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn(),
 
-    "@swissquote/swissquote/@typescript-eslint/type-annotation-spacing": warn(),
-
+    // Implemented by prettier
     indent: "off",
-    "@swissquote/swissquote/@typescript-eslint/indent": [warn(), 2],
-
+    "@swissquote/swissquote/@typescript-eslint/indent": "off",
     semi: "off",
     // TODO :: enable this on next release of eslint rules
-    //"@swissquote/swissquote/@typescript-eslint/semi": [warn()],
-
+    //"@swissquote/swissquote/@typescript-eslint/semi": "off",
     "no-extra-parens": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-extra-parens": [
-      warn(),
-      "all",
-      {
-        nestedBinaryExpressions: false,
-        conditionalAssign: false,
-        ignoreJSX: "multi-line"
-      }
-    ]
+    "@swissquote/swissquote/@typescript-eslint/no-extra-parens": "off",
+    "@swissquote/swissquote/@typescript-eslint/member-delimiter-style": "off",
+    "@swissquote/swissquote/@typescript-eslint/type-annotation-spacing": "off"
   }
 };

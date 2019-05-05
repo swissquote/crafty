@@ -1,4 +1,3 @@
-
 export class C {
   constructor() {
     /* eslint-disable-next-line no-console */

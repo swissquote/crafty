@@ -8,7 +8,6 @@ module.exports = {
     "array-callback-return": "error",
     "block-scoped-var": "error",
     camelcase: ["error", { properties: "never" }],
-    // "complexity": ["error", 11],
     "consistent-return": "error",
     curly: ["error", "all"],
     "dot-notation": ["error", { allowKeywords: true }],
@@ -19,7 +18,6 @@ module.exports = {
     "no-case-declarations": "error",
     "no-catch-shadow": "error",
     "no-delete-var": "error",
-    // "no-eq-null": "error",
     "no-eval": "error",
     "no-extend-native": "error",
     "no-extra-bind": "error",
@@ -45,8 +43,6 @@ module.exports = {
     "no-throw-literal": "error",
     "no-undef": "error",
     "no-undef-init": "error",
-    // "no-underscore-dangle": "error",
-    //"no-unused-expressions": "error",
     "no-unused-labels": "error",
     "no-unused-vars": [
       "error",
@@ -58,8 +54,6 @@ module.exports = {
     radix: "error",
     "require-yield": "error",
     strict: "error",
-    // "vars-on-top": "error",
-    // "wrap-iife": "error",
     yoda: ["error", "never"],
 
     // Avoiding errors

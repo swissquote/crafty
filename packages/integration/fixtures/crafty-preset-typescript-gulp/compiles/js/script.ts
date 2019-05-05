@@ -1,4 +1,3 @@
-
 import test from "./Component";
 
 export default class NewStuff {
@@ -11,7 +10,7 @@ export default class NewStuff {
     // eslint-disable-next-line no-console
     console.log(test(2, 4));
 
-    import("./SomeLibrary").then((SomeLibrary) => {
+    import("./SomeLibrary").then(SomeLibrary => {
       const som = new SomeLibrary.default();
 
       // eslint-disable-next-line no-console

@@ -152,7 +152,7 @@ exports[`Lints TypeScript 1`] = `
 Object {
   "status": 1,
   "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 8 errors
+[__:__:__] ESLint failed with 10 errors
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",
@@ -165,24 +165,26 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts
-  2:1   error  Prefer default export                         @swissquote/swissquote/import/prefer-default-export
-  3:1   error  Expected indentation of 2 spaces but found 3  indent
-  3:18  error  Multiple spaces found before 'b'              no-multi-spaces
+  1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  2:1  error  Prefer default export                                               @swissquote/swissquote/import/prefer-default-export
+  3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/SomeLibrary.ts
-  11:3  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  10:15  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/script.ts
-   5:1  error    Expected indentation of 2 spaces but found 4                                   indent
-   6:5  warning  Unexpected console statement                                                   no-console
-   7:1  error    Expected indentation of 2 spaces but found 1                                   indent
-  10:5  warning  Unexpected console statement                                                   no-console
-  13:5  error    Opening curly brace does not appear on the same line as controlling statement  brace-style
-  16:7  warning  Unexpected console statement                                                   no-console
-  17:7  error    Missing semicolon                                                              semi
+   1:1   error    Replace \`⏎import·{\` with \`import·{·\`                   @swissquote/swissquote/prettier/prettier
+   5:1   error    Replace \`····constructor·\` with \`··constructor\`        @swissquote/swissquote/prettier/prettier
+   6:5   warning  Unexpected console statement                           no-console
+   7:1   error    Insert \`·\`                                             @swissquote/swissquote/prettier/prettier
+  10:5   warning  Unexpected console statement                           no-console
+  10:17  error    Replace \`·test(·\` with \`test(\`                         @swissquote/swissquote/prettier/prettier
+  12:34  error    Replace \`·(SomeLibrary)·=>⏎···\` with \`SomeLibrary·=>\`  @swissquote/swissquote/prettier/prettier
+  16:7   warning  Unexpected console statement                           no-console
+  17:7   error    Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
 
-✖ 11 problems (8 errors, 3 warnings)
-  7 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 13 problems (10 errors, 3 warnings)
+  9 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }

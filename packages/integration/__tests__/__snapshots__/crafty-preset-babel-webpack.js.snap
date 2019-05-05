@@ -271,24 +271,26 @@ Object {
 
 ./js/Component.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
-  11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
-  12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
 
-✖ 2 problems (2 errors, 0 warnings)
-  2 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 4 problems (4 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/script.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
-   3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
-   5:10  error    'test' is defined but never used                                               no-unused-vars
-   5:19  error    A space is required after ','                                                  comma-spacing
-   6:1   error    Expected indentation of 2 spaces but found 3                                   indent
-  11:5   warning  Unexpected console statement                                                   no-console
-  15:5   warning  Unexpected console statement                                                   no-console
-  15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
-  15:33  error    There should be no space before ','                                            comma-spacing
-  19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
-  20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
+   3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+   5:10  error    'test' is defined but never used                 no-unused-vars
+   5:14  error    Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+   6:1   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  11:5   warning  Unexpected console statement                     no-console
+  14:9   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  15:5   warning  Unexpected console statement                     no-console
+  15:17  error    Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
+  18:11  error    Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+  20:14  error    Expected '===' and instead saw '=='              eqeqeq
 
 ✖ 10 problems (8 errors, 2 warnings)
   6 errors and 0 warnings potentially fixable with the \`--fix\` option.

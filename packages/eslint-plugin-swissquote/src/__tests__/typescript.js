@@ -37,5 +37,5 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(4);
+  expect(result.errorCount).toBe(5);
 });

@@ -31,7 +31,7 @@ module.exports = {
   lint(cli, text) {
     // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeonfiles
     // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeontext
-    const linter = cli.executeOnText(text);
+    const linter = cli.executeOnText(text.replace(/^\n/, ""));
     return linter.results[0];
   }
 };

@@ -178,24 +178,24 @@ Using 1 worker with 2048MB memory limit
 
 ./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-forked/js/typescript.ts
-   2:1   error    Expected indentation of 2 spaces but found 4  indent
-   3:1   error    Expected indentation of 4 spaces but found 8  indent
-   3:9   warning  Unexpected console statement                  no-console
-   5:1   error    Expected indentation of 4 spaces but found 8  indent
-   5:13  error    'D' was used before it was defined            no-use-before-define
-   6:1   error    Expected indentation of 2 spaces but found 4  indent
-   8:1   error    Expected indentation of 2 spaces but found 4  indent
-   9:1   error    Expected indentation of 4 spaces but found 8  indent
-   9:9   error    Unexpected alert                              no-alert
-  10:1   error    Expected indentation of 2 spaces but found 4  indent
-  14:1   error    Expected indentation of 2 spaces but found 4  indent
-  15:1   error    Expected indentation of 4 spaces but found 8  indent
-  15:9   warning  Unexpected console statement                  no-console
-  16:1   error    Expected indentation of 2 spaces but found 4  indent
-  18:1   error    Expected indentation of 2 spaces but found 4  indent
-  19:1   error    Expected indentation of 4 spaces but found 8  indent
-  19:9   error    Unexpected alert                              no-alert
-  20:1   error    Expected indentation of 2 spaces but found 4  indent
+   2:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   3:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+   3:9   warning  Unexpected console statement        no-console
+   5:1   error    Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+   5:13  error    'D' was used before it was defined  no-use-before-define
+   6:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   8:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   9:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+   9:9   error    Unexpected alert                    no-alert
+  10:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  14:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  15:1   error    Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  15:9   warning  Unexpected console statement        no-console
+  16:1   error    Replace \`····\` with \`··\`            @swissquote/swissquote/prettier/prettier
+  18:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  19:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  19:9   error    Unexpected alert                    no-alert
+  20:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
 
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
@@ -232,24 +232,24 @@ Object {
 
 ./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
-   2:1   error    Expected indentation of 2 spaces but found 4  indent
-   3:1   error    Expected indentation of 4 spaces but found 8  indent
-   3:9   warning  Unexpected console statement                  no-console
-   5:1   error    Expected indentation of 4 spaces but found 8  indent
-   5:13  error    'D' was used before it was defined            no-use-before-define
-   6:1   error    Expected indentation of 2 spaces but found 4  indent
-   8:1   error    Expected indentation of 2 spaces but found 4  indent
-   9:1   error    Expected indentation of 4 spaces but found 8  indent
-   9:9   error    Unexpected alert                              no-alert
-  10:1   error    Expected indentation of 2 spaces but found 4  indent
-  14:1   error    Expected indentation of 2 spaces but found 4  indent
-  15:1   error    Expected indentation of 4 spaces but found 8  indent
-  15:9   warning  Unexpected console statement                  no-console
-  16:1   error    Expected indentation of 2 spaces but found 4  indent
-  18:1   error    Expected indentation of 2 spaces but found 4  indent
-  19:1   error    Expected indentation of 4 spaces but found 8  indent
-  19:9   error    Unexpected alert                              no-alert
-  20:1   error    Expected indentation of 2 spaces but found 4  indent
+   2:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   3:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+   3:9   warning  Unexpected console statement        no-console
+   5:1   error    Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+   5:13  error    'D' was used before it was defined  no-use-before-define
+   6:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   8:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+   9:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+   9:9   error    Unexpected alert                    no-alert
+  10:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  14:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  15:1   error    Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  15:9   warning  Unexpected console statement        no-console
+  16:1   error    Replace \`····\` with \`··\`            @swissquote/swissquote/prettier/prettier
+  18:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  19:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  19:9   error    Unexpected alert                    no-alert
+  20:1   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
 
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
@@ -291,32 +291,34 @@ Object {
 
 ./js/Component.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts
-  2:1   error  Prefer default export                         @swissquote/swissquote/import/prefer-default-export
-  3:1   error  Expected indentation of 2 spaces but found 3  indent
-  3:18  error  Multiple spaces found before 'b'              no-multi-spaces
+  1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  2:1  error  Prefer default export                                               @swissquote/swissquote/import/prefer-default-export
+  3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
 
 ✖ 3 problems (3 errors, 0 warnings)
   2 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/SomeLibrary.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
-  11:3  error  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  10:15  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
 
 ✖ 1 problem (1 error, 0 warnings)
   1 error and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/script.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
-   5:1  error    Expected indentation of 2 spaces but found 4                                   indent
-   6:5  warning  Unexpected console statement                                                   no-console
-   7:1  error    Expected indentation of 2 spaces but found 1                                   indent
-  10:5  warning  Unexpected console statement                                                   no-console
-  13:5  error    Opening curly brace does not appear on the same line as controlling statement  brace-style
-  16:7  warning  Unexpected console statement                                                   no-console
-  17:7  error    Missing semicolon                                                              semi
+   1:1   error    Replace \`⏎import·{\` with \`import·{·\`                   @swissquote/swissquote/prettier/prettier
+   5:1   error    Replace \`····constructor·\` with \`··constructor\`        @swissquote/swissquote/prettier/prettier
+   6:5   warning  Unexpected console statement                           no-console
+   7:1   error    Insert \`·\`                                             @swissquote/swissquote/prettier/prettier
+  10:5   warning  Unexpected console statement                           no-console
+  10:17  error    Replace \`·test(·\` with \`test(\`                         @swissquote/swissquote/prettier/prettier
+  12:34  error    Replace \`·(SomeLibrary)·=>⏎···\` with \`SomeLibrary·=>\`  @swissquote/swissquote/prettier/prettier
+  16:7   warning  Unexpected console statement                           no-console
+  17:7   error    Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
 
-✖ 7 problems (4 errors, 3 warnings)
-  4 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 9 problems (6 errors, 3 warnings)
+  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
   Δt ____ms ✖ 3 problems (3 errors, 0 warnings)
 

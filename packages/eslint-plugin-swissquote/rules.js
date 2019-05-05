@@ -1,15 +1,11 @@
-const importPlugin = require("eslint-plugin-import");
-const reactPlugin = require("eslint-plugin-react");
-const sonarPlugin = require("eslint-plugin-sonarjs");
-const typeScriptPlugin = require("@typescript-eslint/eslint-plugin");
-
 module.exports = {};
 
 const plugins = {
-  react: reactPlugin,
-  import: importPlugin,
-  sonarjs: sonarPlugin,
-  "@typescript-eslint": typeScriptPlugin
+  react: require("eslint-plugin-react"),
+  import: require("eslint-plugin-import"),
+  sonarjs: require("eslint-plugin-sonarjs"),
+  prettier: require("eslint-plugin-prettier"),
+  "@typescript-eslint": require("@typescript-eslint/eslint-plugin")
 };
 
 // Eslint can't load plugins transitively (from a shared config)
