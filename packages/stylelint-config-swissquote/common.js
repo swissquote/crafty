@@ -29,19 +29,17 @@ module.exports = {
     // [SPEC] The closing brace MUST be on the next line after the body
     // [SPEC] The opening brace MUST be the last element of the line
     // [SPEC] There MUST be one space before the opening brace
+    // [SPEC] There MUST be a space after our property–value delimiting colon (:)
     // TODO :: check how we could write tabWidth to a .prettierrc
     "prettier/prettier": warn(true, { tabWidth: 4 }),
 
     "block-no-empty": warn(),
     "color-hex-length": warn("short"),
-    "declaration-block-single-line-max-declarations": warn(1),
-    // [SPEC] There MUST be a space after our property–value delimiting colon (:)
-    "function-whitespace-after": warn("always"),
+
     // "function-url-quotes": "double", // Does not work with variables
     "media-feature-name-no-vendor-prefix": warn(),
     "media-feature-range-operator-space-after": warn("always"),
     "media-feature-range-operator-space-before": warn("always"),
-    "no-missing-end-of-source-newline": warn(),
     "length-zero-no-unit": warn(),
 
     // Possible Errors
