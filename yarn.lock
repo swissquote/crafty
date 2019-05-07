@@ -9763,7 +9763,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.14.3:
+prettier@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
   integrity sha512-sXe5lSt2WQlCbydGETgfm1YBShgOX4HxQkFPvbxkcwgDvGDeqVau8h+12+lmSVlP3rHPz0oavfddSZg/q+Szjw==
@@ -11599,6 +11599,13 @@ stylelint-no-unsupported-browser-features@3.0.2:
     doiuse "^4.2.0"
     lodash "^4.17.4"
     postcss "^7.0.0"
+
+stylelint-prettier@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/stylelint-prettier/-/stylelint-prettier-1.0.7.tgz#89c565c1fe3acf68ddfa45f682cbc42bd7353ddc"
+  integrity sha512-KZejK6tDB9VnDpWLt+zZ8fDJ64Y10JKYBODilSTl2DSTVZs86l5fRK9CthlXbSdw9K/FT8da+DqDK0MfbMU28w==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
 
 stylelint-scss@3.6.1:
   version "3.6.1"
