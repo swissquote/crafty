@@ -54,19 +54,14 @@ const validCss = `
 }
 `;
 
-describe("flags no warnings with valid css", () => {
-  const result = stylelint.lint({
-    code: validCss,
+it("flags no warnings with valid css", async () => {
+  const result = await stylelint.lint({
+    code: validCss.replace(/^\n/, ""),
     config
   });
 
-  it("did not error", () => {
-    return result.then(data => expect(data.errored).toBeFalsy());
-  });
-
-  it("flags no warnings", () => {
-    return result.then(data => expect(data.results[0].warnings.length).toBe(0));
-  });
+  expect(result.errored).toBeFalsy();
+  expect(result.results[0].warnings.length).toBe(0);
 });
 
 const errors = [
@@ -79,71 +74,42 @@ const errors = [
   {
     code: "#some-id { color: blue;}",
     line: 1,
-    column: 23,
+    column: 11,
     message:
-      'Expected single space before "}" of a single-line block (block-closing-brace-space-before)'
+      'Replace \"·color:·blue;\" with \"⏎····color:·blue;⏎\" (prettier/prettier)'
   },
   {
     code: "#some-id {color: blue; }",
     line: 1,
     column: 11,
     message:
-      'Expected single space after "{" of a single-line block (block-opening-brace-space-after)'
+      'Replace \"color:·blue;·\" with \"⏎····color:·blue;⏎\" (prettier/prettier)'
   },
   {
     code: "#some-id { color: blue; background: orange; }",
     line: 1,
-    column: 10,
+    column: 11,
     message:
-      "Expected no more than 1 declaration (declaration-block-single-line-max-declarations)"
+      'Replace "·color:·blue;·background:·orange;·" with "⏎····color:·blue;⏎····background:·orange;⏎" (prettier/prettier)'
   },
   {
     code: "#some-id {\n color: blue;\n}",
     line: 2,
     column: 2,
-    message: "Expected indentation of 4 spaces (indentation)"
+    message: "Insert \"···\" (prettier/prettier)"
   }
 ];
 
 errors.forEach(error => {
-  describe(`Error: ${error.message}`, () => {
-    const result = stylelint.lint({ code: `${error.code}\n`, config });
+  it(`Error: ${error.message}`, async () => {
+    const result = await stylelint.lint({ code: `${error.code}\n`, config });
 
-    it("did error", () => {
-      return result.then(data => expect(data.errored).toBeTruthy());
-    });
-
-    it("flags one warning", () => {
-      //result.then(data => {
-      //  console.log(data.results[0].warnings.map(warning => "=> " + warning.line + ":" + warning.column + " " + warning.text).join("\n"))
-      //});
-      return result.then(data =>
-        expect(data.results[0].warnings.length).toBe(1)
-      );
-    });
-
-    it("correct warning text", () => {
-      return result.then(data =>
-        expect(data.results[0].warnings[0].text).toBe(error.message)
-      );
-    });
-
-    it("correct severity flagged", () => {
-      return result.then(data =>
-        expect(data.results[0].warnings[0].severity).toBe("error")
-      );
-    });
-
-    it("correct line number", () => {
-      return result.then(data =>
-        expect(data.results[0].warnings[0].line).toBe(error.line)
-      );
-    });
-
-    it("correct column number", () => {
-      return result.then(data =>
-        expect(data.results[0].warnings[0].column).toBe(error.column)
-      );
-    });
+    expect(result.errored).toBeTruthy();
+    //console.log(result.results[0].warnings);
+    expect(result.results[0].warnings.length).toBe(1);
+    expect(result.results[0].warnings[0].text).toBe(error.message);
+    expect(result.results[0].warnings[0].severity).toBe("error");
+    expect(result.results[0].warnings[0].line).toBe(error.line);
+    expect(result.results[0].warnings[0].column).toBe(error.column);
   });
 });
