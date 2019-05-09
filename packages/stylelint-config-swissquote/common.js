@@ -15,6 +15,7 @@ function warn(value, options) {
 
 module.exports = {
   plugins: [
+    require.resolve("./index"),
     require.resolve("stylelint-prettier"),
     require.resolve("stylelint-scss"),
     require.resolve("stylelint-no-unsupported-browser-features")
@@ -51,6 +52,7 @@ module.exports = {
     ],
     "declaration-block-no-redundant-longhand-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
+    "function-calc-no-invalid": true,
     "function-calc-no-unspaced-operator": true,
     "function-linear-gradient-no-nonstandard-direction": true,
     "keyframe-declaration-no-important": true,
@@ -65,6 +67,8 @@ module.exports = {
     "selector-pseudo-element-colon-notation": "single",
     "string-no-newline": true,
     "unit-no-unknown": [true, { ignoreUnits: ["x"] }],
+    "swissquote/no-negative-var": true,
+
 
     // Limiting Language features
     // ---------------------------------------------------------------------

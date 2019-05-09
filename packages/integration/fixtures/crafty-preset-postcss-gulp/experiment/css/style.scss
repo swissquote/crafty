@@ -1,6 +1,7 @@
 /* Import CSS Files (postcss-import, postcss-url) */
 
 @import "foo.scss";
+@import "math.scss";
 @import "media/bar.scss" (min-width: 25em);
 
 /* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */

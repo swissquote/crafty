@@ -31,6 +31,10 @@ function reporter(opts) {
     let messagesToLog = result.messages;
     const sourceGroupedMessages = messagesToLog.reduce((result, message) => {
       const key = util.getLocation(message).file || resultSource;
+      if (!message.severity) {
+        message.severity = message.type || "warning";
+      }
+
       if (hasOwnProperty.call(result, key)) {
         result[key].push(message);
       } else {
