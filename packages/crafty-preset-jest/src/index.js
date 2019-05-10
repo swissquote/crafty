@@ -25,7 +25,6 @@ function normalizeJestOptions(crafty, input, cli) {
   }
 
   const options = {
-    resolver: require.resolve("jest-pnp-resolver"),
     moduleDirectories: [...moduleDirectories],
     moduleFileExtensions: [...moduleFileExtensions],
     testPathIgnorePatterns: ["/node_modules/", crafty.config.destination],
