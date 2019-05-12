@@ -43,6 +43,12 @@ module.exports = {
     }
   },
   webpack(crafty, bundle, chain) {
+    // Resolve this module for Yarn PNP
+    chain.resolve.alias.set(
+      "react-hot-loader",
+      require.resolve("react-hot-loader")
+    );
+
     if (enableHotLoader(crafty, bundle)) {
       // Patch react-dom
       chain.module
