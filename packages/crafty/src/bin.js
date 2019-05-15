@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 
 const log = require("fancy-log");
+const loudRejection = require("loud-rejection");
 
 const cli = require("./cli");
 const configuration = require("./configuration");
 const getCommands = require("./commands");
 const version = require("../package.json").version;
+
+loudRejection();
+
+process.title = "crafty";
 
 log(`Starting Crafty ${version}...`);
 

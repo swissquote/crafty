@@ -5,6 +5,12 @@ A preset is defined with the following functions.
 All methods are optional; Use the methods you need, leave out the rest.
 
 ```typescript
+
+interface CLIInputs {
+  input: string[];
+  flags: {[key: string]: string}
+}
+
 module.exports = {
     /**
      * Provide some default configuration along with the preset.
@@ -29,7 +35,7 @@ module.exports = {
      * @param crafty The Crafty instance
      * @return an object with command names as key, and an object with "command" and "description" as keys
      */
-    commands(crafty: Crafty): {[command: string]: {command: (crafty: Crafty, input: string, cli: Meow) => Promise<number>, description: string}} { return {} }
+    commands(crafty: Crafty): {[command: string]: {command: (crafty: Crafty, input: string, cli: CLIInputs) => Promise<number>, description: string}} { return {} }
 
     /**
      * This extension point is called when the configuration is complete, you can use this if you need to initialize something that will be needed later by your preset
@@ -62,10 +68,10 @@ module.exports = {
      *
      * @param crafty The Crafty instance
      * @param input The input to the command
-     * @param cli The Meow instance, allows to query for options and parameters
+     * @param cli The arguments passed to the CLI, allows to query for options and parameters
      * @returns a promise that fail if the test fail.
      */
-    test(crafty: Crafty, input: string, cli: Meow): Promise
+    test(crafty: Crafty, input: string, cli: CLIInputs): Promise
 
     // Presets add more extensions points
 
@@ -153,10 +159,10 @@ Commands receive three parameters: a Crafty instance, the command input and the 
 /**
  * @param crafty The Crafty instance
  * @param input The input to the command
- * @param cli The Meow instance, allows to query for options and parameters
+ * @param cli The arguments passed to the CLI, allows to query for options and parameters
  * @returns a promise that resolves with 0 if everything went well or rejects with a non 0 exit code
  */
-function command(crafty: Crafty, input: string, cli: Meow): Promise<number> {
+function command(crafty: Crafty, input: string, cli: CLIInputs): Promise<number> {
   return Promise.resolve(0);
 }
 ```
