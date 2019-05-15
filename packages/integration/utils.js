@@ -48,7 +48,10 @@ function snapshotizeOutput(ret) {
       /\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm,
       "__PATH__"
     ) // Remove paths
-    .replace(/"moduleDirectories": \[([\s\S]*?)\]/g, `"moduleDirectories": [ /* Ignored paths for diff */ ]`) // Fix paths that tend to vary by environment
+    .replace(
+      /"moduleDirectories": \[([\s\S]*?)\]/g,
+      `"moduleDirectories": [ /* Ignored paths for diff */ ]`
+    ) // Fix paths that tend to vary by environment
     .replace(/\/.pnp\/externals\/pnp-[a-f0-9]{40}/, "") // Normalize Yarn PNP Paths
     .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths

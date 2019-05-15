@@ -157,9 +157,7 @@ function getCrafty(presets, craftyConfig) {
 
   debug(
     "Finished loading\n" +
-      config.loadedPresets
-        .map(preset => ` - ${preset.presetName}`)
-        .join("\n")
+      config.loadedPresets.map(preset => ` - ${preset.presetName}`).join("\n")
   );
 
   // Apply overrides to clean up configuration

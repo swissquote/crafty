@@ -5,7 +5,6 @@ const path = require("path");
 
 const rimraf = require("rimraf");
 const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
@@ -178,10 +177,12 @@ it("Fails gracefully on invalid TS - fork checker", () => {
   //expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
 });
 
-
 it("Removes unused classes", () => {
   process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-webpack/tree-shaking")
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/tree-shaking"
+    )
   );
   rimraf.sync("dist");
 

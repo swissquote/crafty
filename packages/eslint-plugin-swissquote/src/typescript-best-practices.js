@@ -7,7 +7,10 @@ module.exports = {
   rules: {
     // Overrides
     camelcase: "off",
-    "@swissquote/swissquote/@typescript-eslint/camelcase": ["error", { properties: "never" }],
+    "@swissquote/swissquote/@typescript-eslint/camelcase": [
+      "error",
+      { properties: "never" }
+    ],
 
     "no-use-before-define": "off",
     "@swissquote/swissquote/@typescript-eslint/no-use-before-define": "error",
@@ -26,5 +29,5 @@ module.exports = {
 addMissingRules(
   require("@typescript-eslint/eslint-plugin").configs.recommended.rules,
   module.exports.rules,
-  Object.keys(require('./typescript').rules)
+  Object.keys(require("./typescript").rules)
 );

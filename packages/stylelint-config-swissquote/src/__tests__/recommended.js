@@ -333,8 +333,7 @@ it("Works with namespaces", () => {
 
 describe("Flags errors when using unknown at rules", () => {
   const result = stylelint.lint({
-    code:
-`@while ($i == 1) {
+    code: `@while ($i == 1) {
     .Button {
         top: 10px;
     }

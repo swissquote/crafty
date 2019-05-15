@@ -17,7 +17,7 @@ const rule = function() {
     root.walkDecls(decl => {
       const value = decl.value;
 
-      valueParser(value).walk(function(node) {
+      valueParser(value).walk(node => {
         if (node.type !== "function") {
           return;
         }
@@ -26,9 +26,7 @@ const rule = function() {
           return;
         }
 
-        if (
-          postcss.vendor.unprefixed(node.value) !== negativeVar
-        ) {
+        if (postcss.vendor.unprefixed(node.value) !== negativeVar) {
           return;
         }
 

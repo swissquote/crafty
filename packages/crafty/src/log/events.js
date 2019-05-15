@@ -19,9 +19,9 @@ function logEvents(crafty) {
     const time = prettyTime(evt.duration);
     const level = evt.branch ? "info" : "error";
     crafty.log[level](
-      `'${colors.cyan(evt.name)}' ${colors.red("errored after")} ${colors.magenta(
-        time
-      )}`
+      `'${colors.cyan(evt.name)}' ${colors.red(
+        "errored after"
+      )} ${colors.magenta(time)}`
     );
     // If we haven't logged this before, log it and add to list
     if (loggedErrors.indexOf(evt.error) === -1) {

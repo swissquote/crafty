@@ -1,5 +1,6 @@
 const path = require("path");
-const fs = require("fs");
+
+const findUp = require("find-up");
 
 const createTask = require("./gulp");
 
@@ -9,38 +10,8 @@ function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
 
-function findConfigFile(requestDirPath, configFile) {
-  // If `configFile` is an absolute path, return it right away
-  if (path.isAbsolute(configFile)) {
-    return fs.existsSync(configFile) ? configFile : undefined;
-  }
-  // If `configFile` is a relative path, resolve it.
-  // We define a relative path as: starts with
-  // one or two dots + a common directory delimiter
-  if (configFile.match(/^\.\.?(\/|\\)/)) {
-    const resolvedPath = path.resolve(requestDirPath, configFile);
-    return fs.existsSync(resolvedPath) ? resolvedPath : undefined;
-    // If `configFile` is a file name, find it in the directory tree
-  } else {
-    while (true) {
-      const fileName = path.join(requestDirPath, configFile);
-      if (fs.existsSync(fileName)) {
-        return fileName;
-      }
-      const parentPath = path.dirname(requestDirPath);
-      if (parentPath === requestDirPath) {
-        break;
-      }
-      requestDirPath = parentPath;
-    }
-    return undefined;
-  }
-}
-
 module.exports = {
-  presets: [
-    require.resolve("@swissquote/crafty-preset-eslint")
-  ],
+  presets: [require.resolve("@swissquote/crafty-preset-eslint")],
   defaultConfig() {
     return {
       bundleTypes: { js: "js" }
@@ -76,7 +47,7 @@ module.exports = {
       weight: 20
     };
   },
-  eslint(config, eslint){
+  eslint(config, eslint) {
     // This configuration is read by the webpack and rollup plugins
     // The rest of the configuration is handled by `eslint-plugin-swissquote`
     eslint.extensions.push("ts");
@@ -92,10 +63,12 @@ module.exports = {
     options.moduleFileExtensions.push("tsx");
   },
   webpack(crafty, bundle, chain) {
-    const configFile = findConfigFile(process.cwd(), "tsconfig.json");
+    const configFile = findUp.sync("tsconfig.json", { cwd: process.cwd() });
 
     if (!configFile) {
-      crafty.log.error(`No tsconfig.json found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`);
+      crafty.log.error(
+        `No tsconfig.json found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`
+      );
       return;
     }
 
@@ -163,9 +136,8 @@ module.exports = {
       // We set the value this way to respect backwards compatibility,
       // Ideally, the value should be without the `/js` at the end
       tsOptions.compilerOptions.declarationDir = absolutePath(
-        crafty.config.destination_js +
-          (bundle.directory ? "/" + bundle.directory : "") +
-          "/js"
+        `${crafty.config.destination_js +
+          (bundle.directory ? `/${bundle.directory}` : "")}/js`
       );
     }
 

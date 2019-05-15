@@ -76,14 +76,14 @@ const errors = [
     line: 1,
     column: 11,
     message:
-      'Replace \"·color:·blue;\" with \"⏎····color:·blue;⏎\" (prettier/prettier)'
+      'Replace "·color:·blue;" with "⏎····color:·blue;⏎" (prettier/prettier)'
   },
   {
     code: "#some-id {color: blue; }",
     line: 1,
     column: 11,
     message:
-      'Replace \"color:·blue;·\" with \"⏎····color:·blue;⏎\" (prettier/prettier)'
+      'Replace "color:·blue;·" with "⏎····color:·blue;⏎" (prettier/prettier)'
   },
   {
     code: "#some-id { color: blue; background: orange; }",
@@ -96,7 +96,7 @@ const errors = [
     code: "#some-id {\n color: blue;\n}",
     line: 2,
     column: 2,
-    message: "Insert \"···\" (prettier/prettier)"
+    message: 'Insert "···" (prettier/prettier)'
   }
 ];
 

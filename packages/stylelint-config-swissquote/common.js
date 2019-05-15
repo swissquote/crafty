@@ -69,7 +69,6 @@ module.exports = {
     "unit-no-unknown": [true, { ignoreUnits: ["x"] }],
     "swissquote/no-negative-var": true,
 
-
     // Limiting Language features
     // ---------------------------------------------------------------------
     "at-rule-no-vendor-prefix": true,

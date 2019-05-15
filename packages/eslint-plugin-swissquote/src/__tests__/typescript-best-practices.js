@@ -38,7 +38,7 @@ test()
 it("Uses sonar plugin", () => {
   const result = lint(
     engine,
-`
+    `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
 
 function changeWindow(param: number) {

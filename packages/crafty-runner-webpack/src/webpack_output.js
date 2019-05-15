@@ -108,7 +108,9 @@ module.exports = function(stats, compiler) {
     console.log("\n  " + colors.green("Compiled successfully!"));
   }
 
-  const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${style.time(json.time)}`;
+  const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${style.time(
+    json.time
+  )}`;
 
   if (messages.warnings.length || messages.errors.length) {
     console.log(

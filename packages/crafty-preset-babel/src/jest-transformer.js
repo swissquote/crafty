@@ -40,7 +40,7 @@ module.exports = {
       ).concat([jestPreset]),
       retainLines: true,
       sourceMaps: "inline",
-      filename: filename
+      filename
     });
 
     if (transformOptions && transformOptions.instrument) {

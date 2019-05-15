@@ -29,6 +29,6 @@ module.exports = {
     "no-sparse-arrays": warn(),
     "no-useless-concat": warn(),
     "no-void": warn(),
-    "no-with": warn(),
+    "no-with": warn()
   }
 };

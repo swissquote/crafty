@@ -6,9 +6,7 @@ const createTask = require("./gulp");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
-  presets: [
-    require.resolve("@swissquote/crafty-preset-eslint")
-  ],
+  presets: [require.resolve("@swissquote/crafty-preset-eslint")],
   defaultConfig(config) {
     return {
       bundleTypes: { js: "js" },
@@ -73,13 +71,13 @@ module.exports = {
       )
     ) {
       configurators.js["gulp/babel"] = (
-        crafty,
+        _crafty,
         bundle,
         gulp,
         StreamHandler
       ) => {
-        gulp.task(bundle.taskName, createTask(crafty, bundle, StreamHandler));
-        crafty.watcher.add(bundle.watch || bundle.source, bundle.taskName);
+        gulp.task(bundle.taskName, createTask(_crafty, bundle, StreamHandler));
+        _crafty.watcher.add(bundle.watch || bundle.source, bundle.taskName);
       };
     }
 

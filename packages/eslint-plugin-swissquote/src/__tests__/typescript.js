@@ -1,3 +1,5 @@
+/* global describe, it, expect, jest */
+
 const { prepareCLIEngine, lint } = require("../../test_utils");
 const engine = prepareCLIEngine(
   require("../formatting"),

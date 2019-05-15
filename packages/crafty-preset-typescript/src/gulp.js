@@ -25,16 +25,14 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
         eslint.results(results => {
           const count = results.errorCount;
           if (count) {
-            const message =
-              "ESLint failed with " +
-              count +
-              (count === 1 ? " error" : " errors");
+            const message = `ESLint failed with ${count}${
+              count === 1 ? " error" : " errors"
+            }`;
             cb(new crafty.Information(message));
           }
         })
       );
     }
-
 
     // Process
     const sourcemaps = require("gulp-sourcemaps");

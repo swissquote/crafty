@@ -35,8 +35,9 @@ module.exports = function(config) {
   processors.processor("postcss-logical");
 
   // Handle next generation features
-  processors.processor("postcss-custom-properties")
-    .enableIfUnsupported([ "css-variables" ], config.browsers)
+  processors
+    .processor("postcss-custom-properties")
+    .enableIfUnsupported(["css-variables"], config.browsers)
     .setOptions({
       preserve: false,
       appendVariables: true
@@ -45,8 +46,9 @@ module.exports = function(config) {
 
   processors.processor("postcss-calc");
 
-  processors.processor("postcss-image-set-polyfill")
-    .enableIfUnsupported([ "css-image-set" ], config.browsers);
+  processors
+    .processor("postcss-image-set-polyfill")
+    .enableIfUnsupported(["css-image-set"], config.browsers);
 
   processors.processor("postcss-nesting");
 
@@ -55,19 +57,22 @@ module.exports = function(config) {
 
   processors.processor("postcss-custom-selectors");
 
-  processors.processor("postcss-attribute-case-insensitive")
-    .enableIfUnsupported([ "css-case-insensitive" ], config.browsers);
+  processors
+    .processor("postcss-attribute-case-insensitive")
+    .enableIfUnsupported(["css-case-insensitive"], config.browsers);
 
-  processors.processor("postcss-color-rebeccapurple")
-    .enableIfUnsupported([ "css-rebeccapurple" ], config.browsers);
+  processors
+    .processor("postcss-color-rebeccapurple")
+    .enableIfUnsupported(["css-rebeccapurple"], config.browsers);
 
   processors.processor("postcss-color-hwb");
   processors.processor("postcss-color-hsl");
   processors.processor("postcss-color-rgb");
   processors.processor("postcss-color-gray");
 
-  processors.processor("postcss-color-hex-alpha")
-    .enableIfUnsupported([ "css-rrggbbaa" ], config.browsers);
+  processors
+    .processor("postcss-color-hex-alpha")
+    .enableIfUnsupported(["css-rrggbbaa"], config.browsers);
 
   processors.processor("postcss-color-function");
 
@@ -75,32 +80,40 @@ module.exports = function(config) {
 
   processors.processor("postcss-font-variant");
 
-  processors.processor("pleeease-filters")
-    .enableIfUnsupported([ "css-filters" ], config.browsers);
+  processors
+    .processor("pleeease-filters")
+    .enableIfUnsupported(["css-filters"], config.browsers);
 
-  processors.processor("postcss-initial")
-    .enableIfUnsupported([ "css-all", "css-initial-value" ], config.browsers);
+  processors
+    .processor("postcss-initial")
+    .enableIfUnsupported(["css-all", "css-initial-value"], config.browsers);
 
-  processors.processor("pixrem")
+  processors
+    .processor("pixrem")
     .setOptions({ browsers: config.browsers })
-    .enableIfUnsupported([ "rem" ], config.browsers);
+    .enableIfUnsupported(["rem"], config.browsers);
 
-  processors.processor("postcss-pseudoelements")
-    .enableIfUnsupported([ "css-gencontent" ], config.browsers);
+  processors
+    .processor("postcss-pseudoelements")
+    .enableIfUnsupported(["css-gencontent"], config.browsers);
 
-  processors.processor("postcss-selector-matches")
-    .enableIfUnsupported([ "css-matches-pseudo" ], config.browsers);
+  processors
+    .processor("postcss-selector-matches")
+    .enableIfUnsupported(["css-matches-pseudo"], config.browsers);
 
-  processors.processor("postcss-selector-not")
-    .enableIfUnsupported([ "css-not-sel-list" ], config.browsers);
+  processors
+    .processor("postcss-selector-not")
+    .enableIfUnsupported(["css-not-sel-list"], config.browsers);
 
   processors.processor("postcss-pseudo-class-any-link");
 
-  processors.processor("postcss-color-rgba-fallback")
-    .enableIfUnsupported([ "css3-colors" ], config.browsers);
+  processors
+    .processor("postcss-color-rgba-fallback")
+    .enableIfUnsupported(["css3-colors"], config.browsers);
 
-  processors.processor("postcss-replace-overflow-wrap")
-    .enableIfUnsupported([ "wordwrap" ], config.browsers);
+  processors
+    .processor("postcss-replace-overflow-wrap")
+    .enableIfUnsupported(["wordwrap"], config.browsers);
 
   // Also support sass-style nesting
   processors.processor("postcss-nested");
@@ -130,9 +143,7 @@ module.exports = function(config) {
   });
 
   // CSSO :: Minify and Optimize CSS
-  processors
-    .processor("postcss-csso")
-    .enableIf(() => env === "production");
+  processors.processor("postcss-csso").enableIf(() => env === "production");
 
   // Report problems encountered during build
   processors.processor("postcss-reporter").setOptions({
