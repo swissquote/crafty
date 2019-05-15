@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     // Recommended rules override
+    "@swissquote/swissquote/react/display-name": 0, // Disabled as it generates false positives
     "@swissquote/swissquote/react/jsx-no-duplicate-props": [
       "error",
       { ignoreCase: true }
