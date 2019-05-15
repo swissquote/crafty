@@ -325,3 +325,34 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 ",
 }
 `;
+
+exports[`Removes unused classes 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/tree-shaking/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/index.ts          built
+  1 kB  1        ./js/index.ts + 3 modules    built
+
+  size  name     asset                        status
+  1 kB  ts       js/imported-typescript.d.ts  emitted
+  1 kB  ts       js/index.d.ts                emitted
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
