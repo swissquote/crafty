@@ -1,6 +1,14 @@
-const { isSupported } = require("caniuse-api");
+// Lazy load caniuse's API
+let isSupported;
 
 function isAllSupported(items, browsers) {
+
+  // Load only when it's needed for the first time
+  if (!isSupported) {
+    const caniuse = require("caniuse-api");
+    isSupported = caniuse.isSupported;
+  }
+
   const allItems = Array.isArray(items) ? items : [ items ];
 
   return allItems.every(item => isSupported(item, browsers));
