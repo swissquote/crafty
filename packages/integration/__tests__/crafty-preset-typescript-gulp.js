@@ -5,7 +5,6 @@ const path = require("path");
 
 const rimraf = require("rimraf");
 const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 

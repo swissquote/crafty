@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 const prettyTime = require("pretty-hrtime");
 
 const formatError = require("./formatError");
@@ -7,19 +7,19 @@ const formatError = require("./formatError");
 function logEvents(crafty) {
   const loggedErrors = [];
   crafty.undertaker.on("start", evt => {
-    crafty.log.info(`Starting '${chalk.cyan(evt.name)}' ...`);
+    crafty.log.info(`Starting '${colors.cyan(evt.name)}' ...`);
   });
   crafty.undertaker.on("stop", evt => {
     const time = prettyTime(evt.duration);
     crafty.log.info(
-      `Finished '${chalk.cyan(evt.name)}' after ${chalk.magenta(time)}`
+      `Finished '${colors.cyan(evt.name)}' after ${colors.magenta(time)}`
     );
   });
   crafty.undertaker.on("error", evt => {
     const time = prettyTime(evt.duration);
     const level = evt.branch ? "info" : "error";
     crafty.log[level](
-      `'${chalk.cyan(evt.name)}' ${chalk.red("errored after")} ${chalk.magenta(
+      `'${colors.cyan(evt.name)}' ${colors.red("errored after")} ${colors.magenta(
         time
       )}`
     );

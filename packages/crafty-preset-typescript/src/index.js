@@ -92,6 +92,13 @@ module.exports = {
     options.moduleFileExtensions.push("tsx");
   },
   webpack(crafty, bundle, chain) {
+    const configFile = findConfigFile(process.cwd(), "tsconfig.json");
+
+    if (!configFile) {
+      crafty.log.error(`No tsconfig.json found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`);
+      return;
+    }
+
     chain.resolve.extensions.add(".ts").add(".tsx");
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
@@ -138,7 +145,6 @@ module.exports = {
 
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");
-    const configFile = findConfigFile(process.cwd(), "tsconfig.json");
     const currentConfig = compiler.readConfigFile(
       configFile,
       compiler.sys.readFile

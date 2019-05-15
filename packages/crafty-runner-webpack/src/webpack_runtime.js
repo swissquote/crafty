@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty:runner-webpack");
@@ -17,7 +17,7 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
   const configPath = path.join(process.cwd(), "webpack.config.js");
 
   if (fs.existsSync(configPath)) {
-    crafty.log("Merging SQ webpack config with " + chalk.magenta(configPath));
+    crafty.log("Merging SQ webpack config with " + colors.magenta(configPath));
     const webpackMerge = require("webpack-merge");
     webpackConfig = webpackMerge.smart(webpackConfig, require(configPath));
   }

@@ -99,10 +99,6 @@ module.exports = function(crafty, bundle, webpackPort) {
     ]);
 
   if (crafty.getEnvironment() === "production") {
-    // Because in some cases, comments on classes are /** @class */
-    // We transform them into /* @__PURE__ */ so UglifyJS is able to remove them when unused.
-    chain.plugin("pure_classes").use(require.resolve("./PureClassesPlugin"));
-
     // Don't emit files if an error occured (forces to check what the error is)
     chain.optimization.noEmitOnErrors(true);
   }

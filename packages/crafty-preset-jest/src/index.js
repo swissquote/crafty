@@ -1,8 +1,6 @@
 const { join } = require("path");
 const { writeFileSync, unlinkSync, existsSync } = require("fs");
 
-const jest = require("jest-cli");
-
 function normalizeJestOptions(crafty, input, cli) {
   const moduleDirectories = new Set(
     [
@@ -104,7 +102,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
 
       writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
 
-      jest.runCLI(cliOptions, [configFile], result =>
+      require("jest-cli").runCLI(cliOptions, [configFile], result =>
         result.numFailedTests || result.numFailedTestSuites
           ? reject()
           : resolve()
