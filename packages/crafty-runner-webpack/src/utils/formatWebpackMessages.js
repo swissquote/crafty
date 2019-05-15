@@ -14,7 +14,7 @@
 // This is quite hacky and hopefully won't be needed when Webpack fixes this.
 // https://github.com/webpack/webpack/issues/2878
 
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const friendlySyntaxErrorLabel = "Syntax error:";
 
@@ -93,7 +93,7 @@ function formatMessage(originalMessage, isError) {
     ];
   }
 
-  lines[0] = chalk.inverse(lines[0]);
+  lines[0] = colors.inverse(lines[0]);
 
   message = lines.join("\n");
   // Internal stacks are generally useless so we strip them... with the

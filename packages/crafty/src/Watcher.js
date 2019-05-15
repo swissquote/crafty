@@ -1,9 +1,9 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const run = require("./commands/run");
 
 function listTasks(tasks) {
-  return tasks.map(item => `'${chalk.cyan(item)}'`).join(", ");
+  return tasks.map(item => `'${colors.cyan(item)}'`).join(", ");
 }
 
 class Watcher {

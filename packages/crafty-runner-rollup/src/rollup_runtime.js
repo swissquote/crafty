@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 const prettyTime = require("pretty-hrtime");
 
 const paths = require("./utils/paths");
@@ -144,7 +144,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
       const rollup = require("rollup");
       const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
-      crafty.log(`Start watching with webpack in '${chalk.cyan(taskName)}'`);
+      crafty.log(`Start watching with webpack in '${colors.cyan(taskName)}'`);
       const watchOptions = Object.assign({}, config.input, {
         output: config.output,
         watch: config.watch
@@ -165,26 +165,26 @@ module.exports = function jsTaskES6(crafty, bundle) {
             break;
 
           case "START":
-            crafty.log(`Watch ready for '${chalk.cyan(taskName)}'`);
+            crafty.log(`Watch ready for '${colors.cyan(taskName)}'`);
             break;
 
           case "BUNDLE_START":
-            crafty.log(`Starting '${chalk.cyan(taskName)}' ...`);
+            crafty.log(`Starting '${colors.cyan(taskName)}' ...`);
             break;
 
           case "BUNDLE_END":
             const time = prettyTime(msToHrtime(event.duration));
             crafty.log(
-              `Finished '${chalk.cyan(taskName)}' after ${chalk.magenta(
+              `Finished '${colors.cyan(taskName)}' after ${colors.magenta(
                 time
-              )}\n           Wrote ${chalk.bold(
+              )}\n           Wrote ${colors.bold(
                 event.output.map(relativeId).join(", ")
               )}\n           Waiting for changes...`
             );
             break;
 
           case "END":
-          ///crafty.log(`'${chalk.cyan(taskName)}' is Waiting for changes...`);
+          ///crafty.log(`'${colors.cyan(taskName)}' is Waiting for changes...`);
         }
       });
     }

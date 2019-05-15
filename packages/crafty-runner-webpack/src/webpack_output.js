@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 const style = require("webpack-stylish/lib/style");
 const parse = require("webpack-stylish/lib/parse");
 
@@ -94,21 +94,21 @@ module.exports = function(stats, compiler) {
   const messages = formatWebpackMessages(stats.toJson({}, true));
   // If errors exist, only show errors.
   if (messages.errors.length) {
-    console.log("\n  " + chalk.red("Failed to compile.") + "\n");
+    console.log("\n  " + colors.red("Failed to compile.") + "\n");
     messages.errors.forEach(message => {
       console.log(message + "\n");
     });
   } else if (messages.warnings.length) {
-    console.log("\n  " + chalk.yellow("Compiled with warnings.") + "\n");
+    console.log("\n  " + colors.yellow("Compiled with warnings.") + "\n");
     // Show warnings if no errors were found.
     messages.warnings.forEach(message => {
       console.log(message + "\n");
     });
   } else {
-    console.log("\n  " + chalk.green("Compiled successfully!"));
+    console.log("\n  " + colors.green("Compiled successfully!"));
   }
 
-  const time = chalk`  {gray Δ{italic t}} ${style.time(json.time)}`;
+  const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${style.time(json.time)}`;
 
   if (messages.warnings.length || messages.errors.length) {
     console.log(

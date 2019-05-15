@@ -4,18 +4,18 @@
  ** We might need to keep this up-to-date with new updates of Rollup
  */
 
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const relativeId = require("./relativeId");
 
 const stderr = console.error.bind(console);
 
 function title(str) {
-  stderr(`${chalk.bold.yellow("(!)")} ${chalk.bold.yellow(str)}`);
+  stderr(colors.bold.yellow(`(!) ${str}`));
 }
 
 function info(url) {
-  stderr(chalk.grey(url));
+  stderr(colors.grey(url));
 }
 
 function nest(array, prop) {
@@ -45,8 +45,8 @@ function showTruncatedWarnings(warnings) {
   const sliced =
     nestedByModule.length > 5 ? nestedByModule.slice(0, 3) : nestedByModule;
   sliced.forEach(({ key: id, items }) => {
-    stderr(chalk.bold(relativeId(id)));
-    stderr(chalk.grey(items[0].frame));
+    stderr(colors.bold(relativeId(id)));
+    stderr(colors.grey(items[0].frame));
 
     if (items.length > 1) {
       stderr(
@@ -69,7 +69,7 @@ const immediateHandlers = {
       "https://gist.github.com/Rich-Harris/d472c50732dab03efeb37472b08a3f32"
     );
     warning.deprecations.forEach(option => {
-      stderr(`${chalk.bold(option.old)} is now ${option.new}`);
+      stderr(`${colors.bold(option.old)} is now ${option.new}`);
     });
   },
 
@@ -136,7 +136,7 @@ const deferredHandlers = {
       Array.from(dependencies.keys()).forEach(dependency => {
         const importers = dependencies.get(dependency);
         stderr(
-          `${chalk.bold(dependency)} (imported by ${importers.join(", ")})`
+          `${colors.bold(dependency)} (imported by ${importers.join(", ")})`
         );
       });
     }
@@ -151,9 +151,9 @@ const deferredHandlers = {
       );
 
       warnings.forEach(warning => {
-        stderr(chalk.bold(warning.importer));
+        stderr(colors.bold(warning.importer));
         stderr(`${warning.missing} is not exported by ${warning.exporter}`);
-        stderr(chalk.grey(warning.frame));
+        stderr(colors.grey(warning.frame));
       });
     }
   },
@@ -196,7 +196,7 @@ const deferredHandlers = {
       title("Conflicting re-exports");
       warnings.forEach(warning => {
         stderr(
-          `${chalk.bold(relativeId(warning.reexporter))} re-exports '${
+          `${colors.bold(relativeId(warning.reexporter))} re-exports '${
             warning.name
           }' from both ${relativeId(warning.sources[0])} and ${relativeId(
             warning.sources[1]
@@ -216,7 +216,7 @@ const deferredHandlers = {
         "Use options.globals to specify browser global variable names corresponding to external modules"
       );
       warnings.forEach(warning => {
-        stderr(`${chalk.bold(warning.source)} (guessing '${warning.guess}')`);
+        stderr(`${colors.bold(warning.source)} (guessing '${warning.guess}')`);
       });
     }
   },
@@ -273,7 +273,7 @@ const deferredHandlers = {
               loc += `: (${warning.loc.line}:${warning.loc.column})`;
             }
 
-            stderr(chalk.bold(relativeId(loc)));
+            stderr(colors.bold(relativeId(loc)));
             if (warning.frame) {
               info(warning.frame);
             }
@@ -340,9 +340,7 @@ module.exports = function batchWarnings(taskName) {
         } else {
           warnings.forEach(warning => {
             stderr(
-              `[${taskName}] ${chalk.bold.yellow("(!)")} ${chalk.bold.yellow(
-                warning.message
-              )}`
+              `[${taskName}] ${colors.bold.yellow(`(!) ${warning.message}`)}`
             );
 
             if (warning.url) {
@@ -356,7 +354,7 @@ module.exports = function batchWarnings(taskName) {
                 loc += `: (${warning.loc.line}:${warning.loc.column})`;
               }
 
-              stderr(chalk.bold(relativeId(loc)));
+              stderr(colors.bold(relativeId(loc)));
             }
 
             if (warning.frame) {
