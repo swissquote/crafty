@@ -163,7 +163,5 @@ it("Removes unused classes", () => {
   const content = fs.readFileSync(BUNDLE).toString("utf8");
 
   expect(content.indexOf("From class A") > -1).toBeTruthy();
-  expect(content.indexOf("From class C") > -1).toBeTruthy();
-  expect(content.indexOf("From class D") > -1).toBeFalsy();
   expect(content.indexOf("From class B") > -1).toBeFalsy();
 });
