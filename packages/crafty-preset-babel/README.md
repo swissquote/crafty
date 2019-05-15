@@ -123,7 +123,9 @@ module.exports = {
    * @param {Object} babelConfig - The current Babel configuration
    */
   babel(crafty, bundle, babelConfig) {
-    babelConfig.plugins.push(require.resolve("@babel/plugin-transform-property-literals"));
+    babelConfig.plugins.push(
+      require.resolve("@babel/plugin-transform-property-literals")
+    );
   }
 };
 ```

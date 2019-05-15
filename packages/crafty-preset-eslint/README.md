@@ -10,7 +10,7 @@
 
 ## Description
 
-**ESLint** is the leading tool to lint JavaScript and, using plugins, to lint many flavours of it like TypeScript.
+**ESLint** is the leading tool to lint JavaScript and, using plugins, to lint many flavors of it like TypeScript.
 
 ## Linting
 
@@ -20,7 +20,7 @@ This preset comes with the Swissquote JavaScript Guideline.
 
 ## Installation
 
-Crafty-prest-eslint comes automatically with `@swissquote/crafty-preset-babel` so install this only if you only need the linter without the bundler.
+`crafty-prest-eslint` comes automatically with `@swissquote/crafty-preset-babel` so install this only if you only need the linter without the bundler.
 
 ```bash
 npm install @swissquote/crafty-preset-eslint --save
@@ -28,9 +28,7 @@ npm install @swissquote/crafty-preset-eslint --save
 
 ```javascript
 module.exports = {
-  presets: [
-    "@swissquote/crafty-preset-eslint"
-  ]
+  presets: ["@swissquote/crafty-preset-eslint"]
 };
 ```
 

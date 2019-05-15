@@ -48,7 +48,7 @@ Read more about [the anatomy of a preset](Anatomy_of_a_preset.md)
 - [`crafty-runner-gulp`](05_Packages/02_crafty-runner-gulp.md) Use this runner to be able to create Gulp tasks in your projects.
 - [`crafty-preset-babel`](05_Packages/05_crafty-preset-babel) EcmaScript 2015+ support with Babel and ESLint with our linting rules.
 - [`crafty-preset-postcss`](05_Packages/05_crafty-preset-postcss) Compile your CSS using PostCSS, works with Webpack and Gulp.
-- [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript) This preset provides TypeScript support and configures TSLint with our linting rules.
+- [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript) This preset provides TypeScript support and configures ESLint with our linting rules.
 - [`crafty-preset-images`](05_Packages/05_crafty-preset-images.md) This preset compresses your SVG/PNG/JPG/GIF files.
 - [`crafty-preset-images-simple`](05_Packages/05_crafty-preset-images-simple.md) If you are behind a corporate proxy, this preset will copy images without compressing them.
 - [`crafty-preset-maven`](05_Packages/05_crafty-preset-maven.md) This preset overrides the destination to move your compiled assets to the right directory in `target` of your Maven project.

@@ -59,7 +59,8 @@ module.exports = {
 
     return config;
   },
-  ide() {
+  ide(crafty) {
+    global.craftyConfig = crafty.config;
     const configurationBuilder = require("./eslintConfigurator");
 
     return {

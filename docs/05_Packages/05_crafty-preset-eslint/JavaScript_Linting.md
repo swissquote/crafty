@@ -87,5 +87,3 @@ module.exports = {
   }
 };
 ```
-
-You can set rules either for EcmaScript 5 or EcmaScript 6 (AKA EcmaScript 2015)

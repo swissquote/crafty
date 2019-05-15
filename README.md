@@ -6,7 +6,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=crafty&metric=alert_status)](https://sonarcloud.io/dashboard?id=crafty)
 [![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty) [![Greenkeeper badge](https://badges.greenkeeper.io/swissquote/crafty.svg)](https://greenkeeper.io/)
 
-Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, rollup.js, Babel, ESLint, TypeScript, TSLint, PostCSS, Stylelint and other tools.
+Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, rollup.js, Babel, ESLint, TypeScript, PostCSS, Stylelint and other tools.
 
 Crafty has a default configuration and provides possibilities to extend that default configuration.
 

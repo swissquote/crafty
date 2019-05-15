@@ -20,7 +20,6 @@ All the options in `crafty.config.js` apart from your bundles in the `js` and
 | `stylelint`                | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the naming conventions                                  | `crafty-preset-postcss`                                                  |
 | `stylelint_legacy`         | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the base formatting rules and best practices            | `crafty-preset-postcss`                                                  |
 | `stylelint_pattern`        | See Below                        | Define the file types you want to target when linting CSS files.                                                     | `crafty-preset-postcss`                                                  |
-| `tslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all TypeScript source files.                                                              | `crafty-preset-typescript`                                               |
 | `uglifyJS`                 | See below                        | Configure the compression level of your JavaScript assets.                                                           | `crafty-preset-babel` / `crafty-runner-rollup` / `crafty-runner-webpack` |
 
 ### `destination`

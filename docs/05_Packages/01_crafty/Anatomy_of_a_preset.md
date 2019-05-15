@@ -110,21 +110,21 @@ interface Bundle {
   source: string | string[];
 
   /*
-     * The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`
-     */
+   * The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`
+   */
   destintion: string;
 
   /*
-     * The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded
-     */
+   * The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded
+   */
   runner?: string;
 
   /*
-     * The watch expression to use to rebuild this asset.
-     * Any glob expression is valid, is needed for Gulp in watch mode.
-     * Webpack and rollup.js have their own mechanism to watch files and don't need this option.
-     * If nothing is specified, it will use the value of `source` as a watch expression
-     */
+   * The watch expression to use to rebuild this asset.
+   * Any glob expression is valid, is needed for Gulp in watch mode.
+   * Webpack and rollup.js have their own mechanism to watch files and don't need this option.
+   * If nothing is specified, it will use the value of `source` as a watch expression
+   */
   watch?: string | string[];
 }
 ```
@@ -162,7 +162,11 @@ Commands receive three parameters: a Crafty instance, the command input and the 
  * @param cli The arguments passed to the CLI, allows to query for options and parameters
  * @returns a promise that resolves with 0 if everything went well or rejects with a non 0 exit code
  */
-function command(crafty: Crafty, input: string, cli: CLIInputs): Promise<number> {
+function command(
+  crafty: Crafty,
+  input: string,
+  cli: CLIInputs
+): Promise<number> {
   return Promise.resolve(0);
 }
 ```
