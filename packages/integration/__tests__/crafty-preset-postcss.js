@@ -82,4 +82,10 @@ it("Creates IDE Integration files", () => {
       fs.readFileSync("stylelint.config.js").toString("utf8")
     )
   ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("prettier.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
 });

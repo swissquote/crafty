@@ -188,6 +188,12 @@ it("Generates IDE Helper", () => {
       fs.readFileSync(".eslintrc.js").toString("utf8")
     )
   ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("prettier.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
 });
 
 it("Lints JavaScript using command, ignore crafty.config.js", () => {

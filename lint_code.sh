@@ -41,6 +41,10 @@ echo "${GREEN}Linting crafty-preset-postcss$NC"
 cd "$DIR/packages/crafty-preset-postcss"
 yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node src/**/*.js
 
+echo "${GREEN}Linting crafty-preset-prettier$NC"
+cd "$DIR/packages/crafty-preset-prettier"
+yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node src/**/*.js
+
 echo "${GREEN}Linting crafty-preset-react$NC"
 cd "$DIR/packages/crafty-preset-react"
 yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node *.js

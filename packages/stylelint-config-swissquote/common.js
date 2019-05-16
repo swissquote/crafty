@@ -31,7 +31,6 @@ module.exports = {
     // [SPEC] The opening brace MUST be the last element of the line
     // [SPEC] There MUST be one space before the opening brace
     // [SPEC] There MUST be a space after our property–value delimiting colon (:)
-    // TODO :: check how we could write tabWidth to a .prettierrc
     "prettier/prettier": warn(true, { tabWidth: 4 }),
 
     "block-no-empty": warn(),

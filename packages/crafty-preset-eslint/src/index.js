@@ -8,6 +8,9 @@ const debug = require("debug")("crafty:preset-eslint");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
+  presets: [
+    require.resolve("@swissquote/crafty-preset-prettier")
+  ],
   defaultConfig(config) {
     // For some reason, eslint.CLIEngine doesn't support "extends",
     // it has to be done through a configuration file

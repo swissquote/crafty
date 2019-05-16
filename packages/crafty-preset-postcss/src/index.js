@@ -60,6 +60,7 @@ function addUnsupportedBrowserSupportRule(rules, browsers) {
 }
 
 module.exports = {
+  presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig() {
     return {
       bundleTypes: { css: "css" },
@@ -97,6 +98,15 @@ module.exports = {
     };
   },
   config(config) {
+    // Set prettier configuration for CSS
+    config.prettier.overrides = config.prettier.overrides || [];
+    config.prettier.overrides.push({
+      files: ["*.css", "*.scss"],
+      options: {
+        tabWidth: 4
+      }
+    });
+
     // Add missing informations to CSS configurations
     for (let i in config.css) {
       if (!config.css.hasOwnProperty(i)) {
