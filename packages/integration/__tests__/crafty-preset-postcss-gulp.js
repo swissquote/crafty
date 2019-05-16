@@ -18,13 +18,11 @@ it("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", ()
     config
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-postcss"),
-    require("@swissquote/crafty-runner-gulp"),
-    Object.assign({ presetName: "crafty.config.js" }, config)
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-postcss");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands)).toContain("cssLint");

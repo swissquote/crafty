@@ -13,12 +13,10 @@ const getCrafty = configuration.getCrafty;
 it("Loads crafty-preset-images and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-images"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-images"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -30,13 +28,11 @@ it("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", () 
     {}
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-images"),
-    require("@swissquote/crafty-runner-gulp"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

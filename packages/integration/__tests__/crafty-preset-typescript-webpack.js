@@ -19,13 +19,10 @@ jest.mock("node-forge");
 it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-eslint"),
-    require("@swissquote/crafty-preset-typescript"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -41,14 +38,11 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
     config
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-eslint"),
-    require("@swissquote/crafty-preset-typescript"),
-    require("@swissquote/crafty-runner-webpack"),
-    Object.assign({ presetName: "crafty.config.js" }, config)
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-webpack");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

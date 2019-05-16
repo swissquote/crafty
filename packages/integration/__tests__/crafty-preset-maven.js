@@ -18,14 +18,11 @@ it("Loads crafty-preset-maven, crafty-preset-babel and overrides configuration",
     config
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-maven"),
-    require("@swissquote/crafty-preset-eslint"),
-    require("@swissquote/crafty-preset-babel"),
-    Object.assign({ presetName: "crafty.config.js" }, config)
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-maven");
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-babel");
 
   expect(crafty.config.destination.replace(`${process.cwd()}/`, "")).toEqual(
     "target/my-app-1.0.0-SNAPSHOT/resources"

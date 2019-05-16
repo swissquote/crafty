@@ -14,12 +14,10 @@ const getCrafty = configuration.getCrafty;
 it("Loads crafty-preset-postcss and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-postcss"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-postcss");
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands)).toContain("cssLint");

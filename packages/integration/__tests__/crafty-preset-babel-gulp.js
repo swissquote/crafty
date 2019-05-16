@@ -14,13 +14,11 @@ const getCrafty = configuration.getCrafty;
 it("Loads crafty-preset-babel and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-babel"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-eslint"),
-    require("@swissquote/crafty-preset-babel"),
-    { presetName: "crafty.config.js" }
-  ];
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
 
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-babel");
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands)).toContain("jsLint");
@@ -36,14 +34,11 @@ it("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", () =
     config
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-eslint"),
-    require("@swissquote/crafty-preset-babel"),
-    require("@swissquote/crafty-runner-gulp"),
-    Object.assign({ presetName: "crafty.config.js" }, config)
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-babel");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands)).toContain("jsLint");
