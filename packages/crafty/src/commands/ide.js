@@ -23,14 +23,15 @@ exports.command = async function run(crafty, input, cli) {
   let gitignoreModified = false;
   let ignoreFile = [];
   if (fs.existsSync(gitignore)) {
-    ignoreFile = fs.readFileSync(gitignore, {encoding: "utf-8"}).split(/\r?\n/)
+    ignoreFile = fs
+      .readFileSync(gitignore, { encoding: "utf-8" })
+      .split(/\r?\n/);
   }
 
   Object.keys(files).forEach(file => {
-    const {
-      content,
-      serializer = obj => JSON.stringify(obj, null, 4)
-    } = files[file];
+    const { content, serializer = obj => JSON.stringify(obj, null, 4) } = files[
+      file
+    ];
     const destination = path.join(process.cwd(), file);
 
     fs.writeFileSync(destination, serializer(content));
@@ -44,7 +45,7 @@ exports.command = async function run(crafty, input, cli) {
   });
 
   if (gitignoreModified) {
-    fs.writeFileSync(gitignore, ignoreFile.join("\n") + "\n");
+    fs.writeFileSync(gitignore, `${ignoreFile.join("\n")}\n`);
     console.log(`Written .gitignore`);
   }
 

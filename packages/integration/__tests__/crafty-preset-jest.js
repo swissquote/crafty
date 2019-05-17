@@ -42,9 +42,7 @@ it("Creates IDE Integration files", () => {
   ).toMatchSnapshot();
 
   expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync(".gitignore").toString("utf8")
-    )
+    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
   ).toMatchSnapshot();
 });
 
