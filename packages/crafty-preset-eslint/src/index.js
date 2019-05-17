@@ -54,7 +54,14 @@ module.exports = {
       .filter(preset => preset.eslint)
       .forEach(preset => {
         debug(preset.presetName + ".eslint(config, eslint)");
-        extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
+        if (typeof preset.eslint == "function") {
+          extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
+        } else {
+          extendedEslintConfig.config = merge.recursive(
+            extendedEslintConfig.config,
+            preset.eslint
+          );
+        }
       });
 
     config.eslintExtensions = extendedEslintConfig.extensions;
