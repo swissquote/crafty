@@ -3,9 +3,24 @@ const prettyTime = require("pretty-hrtime");
 
 const formatError = require("./formatError");
 
+const logged = new Set();
+
+function wasLogged(event) {
+  if (event.error || event.message) {
+    return logged.has(event.error || event.message);
+  }
+
+  return false;
+}
+
+function recordLogged(event) {
+  if (event.error || event.message) {
+    logged.add(event.error || event.message);
+  }
+}
+
 // Wire up logging events
 function logEvents(crafty) {
-  const loggedErrors = [];
   crafty.undertaker.on("start", evt => {
     crafty.log.info(`Starting '${colors.cyan(evt.name)}' ...`);
   });
@@ -24,10 +39,14 @@ function logEvents(crafty) {
       )} ${colors.magenta(time)}`
     );
     // If we haven't logged this before, log it and add to list
-    if (loggedErrors.indexOf(evt.error) === -1) {
+    if (!wasLogged(evt)) {
       crafty.log.error(formatError(evt));
-      loggedErrors.push(evt.error);
+      recordLogged(evt);
     }
   });
 }
+
+logEvents.wasLogged = wasLogged;
+logEvents.recordLogged = recordLogged;
+
 module.exports = logEvents;

@@ -5,6 +5,8 @@ const loudRejection = require("loud-rejection");
 
 const cli = require("./cli");
 const configuration = require("./configuration");
+const events = require("./log/events");
+const formatError = require("./log/formatError");
 const getCommands = require("./commands");
 const version = require("../package.json").version;
 
@@ -36,7 +38,11 @@ cli(crafty, commands).then(
     // Wait for the stdout buffer to drain.
     process.on("exit", () => process.exit(exitCode));
   },
-  () => {
+  (error) => {
+    if (!events.wasLogged(error)) {
+      console.error(formatError(error));
+    }
+
     process.on("exit", () => process.exit(1));
   }
 );
