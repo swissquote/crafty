@@ -4,7 +4,7 @@ module.exports = {
       parser: require.resolve("babel-eslint"),
       extends: require.resolve("./src/formatting.js"),
       overrides: {
-        files: ["**/*.ts", "**/*.tsx"],
+        files: ["*.ts", "*.tsx"],
         parser: require.resolve("@typescript-eslint/parser"),
         // Extends doesn't work in overrides, so we add rules directly
         rules: require("./src/typescript.js").rules
@@ -42,7 +42,7 @@ module.exports = {
         "./src/react.js"
       ].map(require.resolve),
       overrides: {
-        files: ["**/*.ts", "**/*.tsx"],
+        files: ["*.ts", "*.tsx"],
         parser: require.resolve("@typescript-eslint/parser"),
 
         // Extends doesn't work in overrides, so we add rules directly

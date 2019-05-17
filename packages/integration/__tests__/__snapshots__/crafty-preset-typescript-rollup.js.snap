@@ -67,15 +67,7 @@ js/typescript.ts
 [__:__:__] Starting 'js_myTSBundle' ...
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/typescript.ts
-  14:8  error  Parsing error: Unexpected token
-
-  12 | }
-  13 |
-> 14 | export class D {
-     |        ^
-  15 |     constructor() {
-  16 |         console.log(\\"Something else happens here\\");
-  17 |     }
+  14:0  error  Parsing error: Unexpected token. A constructor, method, accessor, or property was expected
 
 ✖ 1 problem (1 error, 0 warnings)
 

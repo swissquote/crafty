@@ -13,6 +13,8 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: true
   },
   rules: {
+    "@swissquote/swissquote/prettier/prettier": [warn(), { parser: "typescript" }],
+
     "no-array-constructor": "off",
     "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn(),
 

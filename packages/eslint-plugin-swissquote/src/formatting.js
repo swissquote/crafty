@@ -10,7 +10,7 @@ module.exports = {
     amd: true
   },
   rules: {
-    "@swissquote/swissquote/prettier/prettier": warn(),
+    "@swissquote/swissquote/prettier/prettier": [warn(), { parser: "babel" }],
 
     // Code Style
     "new-cap": [warn(), { newIsCapExceptions: ["default"] }],

@@ -22,7 +22,11 @@ module.exports = {
     "@swissquote/swissquote/@typescript-eslint/no-unused-vars": [
       "error",
       { args: "none", vars: "local", ignoreRestSiblings: true }
-    ]
+    ],
+
+    // Be nice on our users
+    "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
+    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off"
   }
 };
 
