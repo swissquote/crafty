@@ -30,6 +30,7 @@ it("Succeeds without transpiling", () => {
 it("Creates IDE Integration files", () => {
   process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/ide"));
   rimraf.sync("jest.config.js");
+  rimraf.sync(".gitignore");
 
   const result = testUtils.run(["ide"]);
 
@@ -39,6 +40,12 @@ it("Creates IDE Integration files", () => {
       fs.readFileSync("jest.config.js").toString("utf8")
     )
   ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync(".gitignore").toString("utf8")
+    )
+  ).toMatchSnapshot();
 });
 
 it("Creates IDE Integration files with Babel", () => {
@@ -46,6 +53,7 @@ it("Creates IDE Integration files with Babel", () => {
     path.join(__dirname, "../fixtures/crafty-preset-jest/ide-babel")
   );
   rimraf.sync("jest.config.js");
+  rimraf.sync(".gitignore");
 
   const result = testUtils.run(["ide"]);
 

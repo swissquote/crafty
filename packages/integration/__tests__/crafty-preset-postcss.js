@@ -73,6 +73,8 @@ it("Lints with the command with custom config", () => {
 it("Creates IDE Integration files", () => {
   process.chdir(path.join(__dirname, "../fixtures/crafty-preset-postcss/ide"));
   rimraf.sync("stylelint.config.js");
+  rimraf.sync("prettier.config.js");
+  rimraf.sync(".gitignore");
 
   const result = testUtils.run(["ide"]);
 
@@ -86,6 +88,12 @@ it("Creates IDE Integration files", () => {
   expect(
     testUtils.snapshotizeOutput(
       fs.readFileSync("prettier.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync(".gitignore").toString("utf8")
     )
   ).toMatchSnapshot();
 });

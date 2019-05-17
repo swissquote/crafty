@@ -7,6 +7,7 @@ Object {
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 Written jest.config.js
+Written .gitignore
 ",
 }
 `;
@@ -44,6 +45,11 @@ module.exports = {
 "
 `;
 
+exports[`Creates IDE Integration files 3`] = `
+"/jest.config.js
+"
+`;
+
 exports[`Creates IDE Integration files with Babel 1`] = `
 Object {
   "status": 0,
@@ -51,6 +57,7 @@ Object {
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 Written jest.config.js
+Written .gitignore
 ",
 }
 `;

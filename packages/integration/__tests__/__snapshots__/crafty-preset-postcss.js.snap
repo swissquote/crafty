@@ -8,6 +8,7 @@ Object {
 [__:__:__] Starting Crafty __version__...
 Written prettier.config.js
 Written stylelint.config.js
+Written .gitignore
 ",
 }
 `;
@@ -63,6 +64,12 @@ exports[`Creates IDE Integration files 3`] = `
         }
     ]
 };
+"
+`;
+
+exports[`Creates IDE Integration files 4`] = `
+"/prettier.config.js
+/stylelint.config.js
 "
 `;
 

@@ -8,6 +8,7 @@ Object {
 [__:__:__] Starting Crafty __version__...
 Written prettier.config.js
 Written .eslintrc.js
+Written .gitignore
 ",
 }
 `;
@@ -43,6 +44,12 @@ exports[`Generates IDE Helper 3`] = `
   // You don't need to commit this file
 
   module.exports = {};
+"
+`;
+
+exports[`Generates IDE Helper 4`] = `
+"/prettier.config.js
+/.eslintrc.js
 "
 `;
 
