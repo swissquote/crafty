@@ -46,7 +46,7 @@ module.exports = {
     // Resolve this module for Yarn PNP
     chain.resolve.alias.set(
       "react-hot-loader",
-      require.resolve("react-hot-loader")
+      path.dirname(require.resolve("react-hot-loader"))
     );
 
     if (enableHotLoader(crafty, bundle)) {
