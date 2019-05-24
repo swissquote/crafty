@@ -9426,13 +9426,13 @@ postcss-custom-media@7.0.8:
   dependencies:
     postcss "^7.0.14"
 
-postcss-custom-properties@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-7.0.0.tgz#24dc4fbe6d6ed550ea4fd3b11204660e9ffa3b33"
-  integrity sha512-dl/CNaM6z2RBa0vZZqsV6Hunj4HD6Spu7FcAkiVp5B2tgm6xReKKYzI7x7QNx3wTMBNj5v+ylfVcQGMW4xdkHw==
+postcss-custom-properties@8.0.10:
+  version "8.0.10"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-8.0.10.tgz#e8dc969e1e15c555f0b836b7f278ef47e3cdeaff"
+  integrity sha512-GDL0dyd7++goDR4SSasYdRNNvp4Gqy1XMzcCnTijiph7VB27XXpJ8bW/AI0i2VSBZ55TpdGhMr37kMSpRfYD0Q==
   dependencies:
-    balanced-match "^1.0.0"
-    postcss "^6.0.18"
+    postcss "^7.0.14"
+    postcss-values-parser "^2.0.1"
 
 postcss-custom-selectors@5.1.2:
   version "5.1.2"
@@ -9789,7 +9789,7 @@ postcss@^5.0.5:
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.10, postcss@^6.0.18, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.9:
+postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.10, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.9:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   integrity sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
