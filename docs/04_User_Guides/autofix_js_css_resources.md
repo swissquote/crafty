@@ -1,16 +1,10 @@
 
-
 # How to apply autoformatting frontend resources
 
 
-# Option1 : Crafty jsLint, tsLint, CssLint options
+
+## Option 1 : Crafty jsLint, CssLint options
 `crafty jsLint --fix --preset recommend `
-
-will lint all your files and list the errors
-`npx crafty tsLint <path to files> --preset recommended `
-
-will lint all your files and automatically fix the errors
-`npx crafty tsLint <path to files> --preset recommended --fix `
 
 
 
@@ -24,14 +18,41 @@ will lint all your css  files and automatically fix the errors
 more info for crafty eslint options here:  https://swissquote.github.io/crafty/Packages/crafty-preset-eslint/index.html
 
 
-# Option2 :  Prettier is used internally with crafty 
+## Option 2 :  integrate crafty linter in idea 
+
+This option permits you to format using your IDE's built-int mechanism 
+more info here : https://swissquote.github.io/crafty/Packages/crafty-preset-eslint/ESLint_IDE_Integration.html
+
+`yarn crafty ide`
+
+## Option 3 :  Prettier is used internally with crafty 
 
 Prettier is used internally with crafty and some times regex paths in eslint have issues: 
 
 so some equivalent commands for javascript linting is: 
 
-- `node_modules/.bin/prettier --write "**/*.ts"`
+Note the `--write ` option is used to save the modifications 
+feel free to ommit it in case you want just to preview.
 
-- `node_modules/.bin/prettie --write "**/*.tsx"`
+- For typescript
+	- `yarn prettier --write "**/*.ts"`
+ 	- or `node_modules/.bin/prettier --write "**/*.ts"`
 
-- `node_modules/.bin/prettie --write "**/*.js"`
+- For typescript + JSX files 
+	- `yarn prettier --write "**/*.tsx"`
+	- or `node_modules/.bin/prettier --write "**/*.tsx"`
+
+- For typescript + JS
+
+ 	- `yarn prettier --write "**/*.js"`
+	- or `node_modules/.bin/prettier --write "**/*.js"`
+
+- For all the above
+
+	- `yarn prettier --write "**/*.js"`
+
+	- or `node_modules/.bin/prettier --write "**/*.js"`
+
+More options here: https://prettier.io/docs/en/cli.html
+
+
