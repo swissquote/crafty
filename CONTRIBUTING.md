@@ -55,5 +55,5 @@ yarn lerna publish --canary --exact --force-publish="*" --npmClient=npm
 
 # -> Test inside one or more projects
 
-yarn lerna publish --exact
+yarn lerna publish --exact --force-publish="*"
 ```
