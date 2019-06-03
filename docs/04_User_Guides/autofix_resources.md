@@ -1,13 +1,12 @@
 [TOC]
 
-## Description, how to apply autoformatting frontend resources
 ### What is this?
 In this guide we provide some simple examples for the usage of autofixing functionality.
 Crafty comes with some default linter configuration including among other 
 
-- eslint (js)
-- post-css (css)
-- prettier (js + css)
+- ESLint (JavaScript)
+- PostCSS (CSS)
+- Prettier (JavaScript + CSS)
 
 
 ### When should you use it?
@@ -19,14 +18,18 @@ Before diving into fixing 100 lines of code try these commands they come in hand
 
 ## Option 1 : Crafty jsLint, CssLint options
 
+This command will lint all you files inside src folder.
+
 `crafty jsLint src/** --fix --preset recommended `
 
-will lint all your files and list the errors
+This command will lint all your files for css rules inside src folder.
 
 
 `crafty cssLint src/** --fix --preset recommended `
 
-more info for crafty eslint options here:  https://swissquote.github.io/crafty/Packages/crafty-preset-eslint/index.html
+
+- More info for crafty ESLint options here: [crafty-preset-eslint](../05_Packages/05_crafty-preset-eslint/index.md)
+- More info for crafty PostCSS options here: [crafty-preset-postcss](../05_Packages/05_crafty-preset-postcss/index.md)
 
 
 ## Option 2 : Prettier is used internally with crafty
@@ -49,7 +52,6 @@ Note the `--write ` option is used to save the modifications but it is optional.
 Feel free to commit it in case you want just to preview.
 
  - Example for linting typescript files:
-	- `yarn prettier --write "**/*.ts"`
- 	- or `npx prettier --write "**/*.ts"`
+ 	- `npx prettier --write "**/*.ts"`
 ￼
 More options here: https://prettier.io/docs/en/cli.html
