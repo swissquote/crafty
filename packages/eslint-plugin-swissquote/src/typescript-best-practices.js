@@ -5,7 +5,12 @@ module.exports = {
     sourceType: "module"
   },
   rules: {
-    // Overrides
+    // Override of JavaScript recommended
+    "dot-notation": "off", // Produce false positives and breaks valid code
+    "no-undef": "off", // This check is done by the TypeScript compiler
+    "no-explicit-any": "off", // We won't force this on our users. Let them be the judge
+
+    // Apply TypeScript specific rules
     camelcase: "off",
     "@swissquote/swissquote/@typescript-eslint/camelcase": [
       "error",
@@ -24,9 +29,10 @@ module.exports = {
       { args: "none", vars: "local", ignoreRestSiblings: true }
     ],
 
-    // Be nice on our users
+    // Overrides of TypeScript recommended
     "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
-    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off"
+    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off",
+
   }
 };
 
