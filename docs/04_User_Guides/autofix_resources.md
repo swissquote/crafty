@@ -38,6 +38,7 @@ Before running `yarn prettier` you should run
 	
 	yarn crafty ide
 
+More information [IDE-Integration](../IDE_Integration.md) 
 This command will generate prettier configuration for your project.
 Prettier is used internally with crafty and some times regex paths in eslint have issues: 
 so some equivalent commands for ts, tsx, js files linting are: 
