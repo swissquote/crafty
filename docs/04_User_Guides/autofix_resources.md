@@ -22,7 +22,7 @@ This command will lint all you files inside src folder.
 
 `crafty jsLint src/** --fix --preset recommended `
 
-This command will lint all your files for css rules inside src folder.
+This command will lint all your files for CSS rules inside src folder.
 
 
 `crafty cssLint src/** --fix --preset recommended `
@@ -51,7 +51,7 @@ so some equivalent commands for ts, tsx, js files linting are:
 Note the `--write ` option is used to save the modifications but it is optional.
 Feel free to commit it in case you want just to preview.
 
- - Example for linting typescript files:
+ - Example for linting TypeScript files:
  	- `npx prettier --write "**/*.ts"`
 ￼
 More options here: https://prettier.io/docs/en/cli.html
