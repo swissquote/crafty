@@ -139,7 +139,7 @@ module.exports = function(config) {
 
   // Options to apply to autoprefixer
   processors.processor("autoprefixer").setOptions({
-    browsers: config.browsers
+    overrideBrowserslist: config.browsers
   });
 
   // CSSO :: Minify and Optimize CSS
