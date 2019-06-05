@@ -20,9 +20,6 @@ node_js:
   - '10'
   - '8'
 
-# Use Yarn without PNP by default
-env: YARN_PLUGNPLAY_OVERRIDE=0 
-
 # Make sure we have the latest Yarn version
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -44,8 +41,8 @@ matrix:
   # Support on those versions and platforms is experimental, 
   allow_failures:
     - os: windows
-    - node_js: "11"
-    - node_js: "12"
+    - node_js: "10"
+      env: YARN_PLUGNPLAY_OVERRIDE=1
   include:
     # Test once with Yarn PNP
     - node_js: "10"
