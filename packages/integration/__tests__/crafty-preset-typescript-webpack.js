@@ -67,14 +67,14 @@ it("Compiles TypeScript", () => {
 
   expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(fs.existsSync("dist/js/417.myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/417.myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/168.myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/168.myBundle.min.js.map")).toBeTruthy();
 
   expect(
     fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
   expect(
-    fs.readFileSync("dist/js/417.myBundle.min.js").toString("utf8")
+    fs.readFileSync("dist/js/168.myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
   expect(
     fs.readFileSync("dist/js/js/SomeLibrary.d.ts").toString("utf8")
@@ -96,14 +96,14 @@ it("Compiles TypeScript - fork checker", () => {
 
   expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(fs.existsSync("dist/js/1.myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/1.myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/168.myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/168.myBundle.min.js.map")).toBeTruthy();
 
   expect(
     fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
   expect(
-    fs.readFileSync("dist/js/1.myBundle.min.js").toString("utf8")
+    fs.readFileSync("dist/js/168.myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
 });
 

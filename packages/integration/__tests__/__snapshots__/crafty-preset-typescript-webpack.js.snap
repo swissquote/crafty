@@ -13,18 +13,19 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 Starting type checking service...
 Using 1 worker with 2048MB memory limit
-  size  name     module                      status
-  1 kB  2        multi ./js/script.ts        built
-  1 kB  3        ./js/script.ts + 1 modules  built
-  1 kB  4        ./js/SomeLibrary.ts         built
+  size  name     module                                                       status
+  1 kB  131      (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
+  1 kB  168      ./js/SomeLibrary.ts                                          built
+  1 kB  315      ./js/script.ts + 1 modules                                   built
+  1 kB  324      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
 
-  size  name     asset                       status
-  1 kB  js       1.myBundle.min.js           emitted
-  1 kB  map      1.myBundle.min.js.map       emitted
-  1 kB  default  myBundle.min.js             emitted
-  1 kB  default  myBundle.min.js.map         emitted
+  size  name     asset                                                        status
+  1 kB  js       168.myBundle.min.js                                          emitted
+  1 kB  map      168.myBundle.min.js.map                                      emitted
+  1 kB  default  myBundle.min.js                                              emitted
+  1 kB  default  myBundle.min.js.map                                          emitted
 
-  (2 modules hidden)
+  (7 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -37,19 +38,20 @@ Using 1 worker with 2048MB memory limit
 `;
 
 exports[`Compiles TypeScript - fork checker 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){function t(t){var n=t[0];var o=t[1];var u,i,a=0,c=[];for(;a<n.length;a++)i=n[a],r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(t);while(c.length)c.shift()()}var n={};var r={0:0};function o(e){return u.p+\\"\\"+e+\\".myBundle.min.js\\"}function u(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=true,r.exports}u.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var i=new Promise(function(t,o){n=r[e]=[t,o]});t.push(n[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(t){a.onerror=a.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var u=t&&t.target&&t.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.type=o,f.request=u,n[1](f)}r[e]=void 0}};var l=setTimeout(function(){c({type:\\"timeout\\",target:a})},12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(t)},u.m=e,u.c=n,u.d=function(e,t,n){u.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:n})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},u.t=function(e,t){if(1&t&&(e=u(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(u.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)u.d(n,r,function(t){return e[t]}.bind(null,r));return n},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,\\"a\\",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp=window.webpackJsonp||[];var a=i.push.bind(i);i.push=t,i=i.slice();for(var c=0;c<i.length;c++)t(i[c]);var f=a;return u(u.s=2)}([function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.d(t,\\"a\\",function(){return r})},function(e,t,n){\\"use strict\\";function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}n.d(t,\\"a\\",function(){return o})},function(e,t,n){e.exports=n(3)},function(e,t,n){\\"use strict\\";n.r(t);var r=n(0);var o=n(1);function u(e,t){return e+t}n.d(t,\\"default\\",function(){return i});var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),n.e(1).then(n.bind(null,4)).then(function(e){var t=new e.default;console.log(t.add(2,4))})}}]),e}()}])});
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,f,a=0,l=[];for(;a<r.length;a++)f=r[a],n[f]&&l.push(n[f][0]),n[f]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var f=document.createElement(\\"script\\");var a;f.charset=\\"utf-8\\",f.timeout=120,e.nc&&f.setAttribute(\\"nonce\\",e.nc),f.src=i;var l=new Error;a=function(e){f.onerror=f.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){a({type:\\"timeout\\",target:f})},12e4);f.onerror=f.onload=a,document.head.appendChild(f)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript - fork checker 3`] = `
-"(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{4:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",function(){return a});var e=u(0);var r=u(1);var a=function(){function n(){Object(e.a)(this,n)}return Object(r.a)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
-//# sourceMappingURL=1.myBundle.min.js.map"
+"(window.webpackJsonp=window.webpackJsonp||[]).push([[168],{168:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",function(){return c});var e=u(324);var r=u(131);var c=function(){function n(){Object(e.b)(this,n)}return Object(r.b)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
+//# sourceMappingURL=168.myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:7793) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -58,14 +60,14 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                                                       status
-  1 kB  49       (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
-  1 kB  182      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
-  1 kB  385      ./js/script.ts + 1 modules                                   built
-  1 kB  417      ./js/SomeLibrary.ts                                          built
+  1 kB  131      (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
+  1 kB  168      ./js/SomeLibrary.ts                                          built
+  1 kB  315      ./js/script.ts + 1 modules                                   built
+  1 kB  324      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
 
   size  name     asset                                                        status
-  1 kB  js       417.myBundle.min.js                                          emitted
-  1 kB  map      417.myBundle.min.js.map                                      emitted
+  1 kB  js       168.myBundle.min.js                                          emitted
+  1 kB  map      168.myBundle.min.js.map                                      emitted
   1 kB  ts       js/Component.d.ts                                            emitted
   1 kB  ts       js/SomeLibrary.d.ts                                          emitted
   1 kB  ts       js/script.d.ts                                               emitted
@@ -85,13 +87,13 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){function t(t){var n=t[0];var o=t[1];var u,i,a=0,c=[];for(;a<n.length;a++)i=n[a],r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(t);while(c.length)c.shift()()}var n={};var r={0:0};function o(e){return u.p+\\"\\"+e+\\".myBundle.min.js\\"}function u(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=true,r.exports}u.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var i=new Promise(function(t,o){n=r[e]=[t,o]});t.push(n[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(t){a.onerror=a.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var u=t&&t.target&&t.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.type=o,f.request=u,n[1](f)}r[e]=void 0}};var l=setTimeout(function(){c({type:\\"timeout\\",target:a})},12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(t)},u.m=e,u.c=n,u.d=function(e,t,n){u.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:n})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},u.t=function(e,t){if(1&t&&(e=u(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(u.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)u.d(n,r,function(t){return e[t]}.bind(null,r));return n},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,\\"a\\",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp=window.webpackJsonp||[];var a=i.push.bind(i);i.push=t,i=i.slice();for(var c=0;c<i.length;c++)t(i[c]);var f=a;return u(u.s=2)}([function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.d(t,\\"a\\",function(){return r})},function(e,t,n){\\"use strict\\";function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}n.d(t,\\"a\\",function(){return o})},function(e,t,n){e.exports=n(3)},function(e,t,n){\\"use strict\\";n.r(t);var r=n(0);var o=n(1);function u(e,t){return e+t}n.d(t,\\"default\\",function(){return i});var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),n.e(1).then(n.bind(null,4)).then(function(e){var t=new e.default;console.log(t.add(2,4))})}}]),e}()}])});
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,f,a=0,l=[];for(;a<r.length;a++)f=r[a],n[f]&&l.push(n[f][0]),n[f]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var f=document.createElement(\\"script\\");var a;f.charset=\\"utf-8\\",f.timeout=120,e.nc&&f.setAttribute(\\"nonce\\",e.nc),f.src=i;var l=new Error;a=function(e){f.onerror=f.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){a({type:\\"timeout\\",target:f})},12e4);f.onerror=f.onload=a,document.head.appendChild(f)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 3`] = `
-"(window.webpackJsonp=window.webpackJsonp||[]).push([[417],{417:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",function(){return a});var e=u(182);var r=u(49);var a=function(){function n(){Object(e.default)(this,n)}return Object(r.default)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
-//# sourceMappingURL=417.myBundle.min.js.map"
+"(window.webpackJsonp=window.webpackJsonp||[]).push([[168],{168:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",function(){return c});var e=u(324);var r=u(131);var c=function(){function n(){Object(e.b)(this,n)}return Object(r.b)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
+//# sourceMappingURL=168.myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 4`] = `
@@ -111,6 +113,7 @@ Object {
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:7822) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -120,7 +123,7 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name     module                          status
-  1 kB  2        ./js/typescript.ts + 2 modules  built ⚠
+  1 kB  505      ./js/typescript.ts + 2 modules  built failed ✖
 
   size  name     asset                           status
   1 kB  ts       js/typescript.d.ts
@@ -131,13 +134,11 @@ Object {
 
   Failed to compile.
 
-./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
   14:0  error  Parsing error: Unexpected token. A constructor, method, accessor, or property was expected
 
 ✖ 1 problem (1 error, 0 warnings)
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1)
       TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 
@@ -165,15 +166,17 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 Starting type checking service...
 Using 1 worker with 2048MB memory limit
-  size  name  module                          status
-  1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
+  size  name     module                          status
+  1 kB  505      ./js/typescript.ts + 2 modules  built failed ✖
 
-  (2 assets hidden)
+  size  name     asset                           status
+  1 kB  default  myTSBundle.min.js
+  1 kB  default  myTSBundle.min.js.map
+
+  (2 modules hidden)
 
   Failed to compile.
 
-./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-forked/js/typescript.ts
    2:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
    3:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
@@ -211,6 +214,7 @@ Object {
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:7823) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -219,15 +223,18 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
+  size  name     module                          status
+  1 kB  505      ./js/typescript.ts + 2 modules  built failed ✖
 
-  (3 assets hidden)
+  size  name     asset                           status
+  1 kB  ts       js/typescript.d.ts
+  1 kB  default  myTSBundle.min.js
+  1 kB  default  myTSBundle.min.js.map
+
+  (2 modules hidden)
 
   Failed to compile.
 
-./js/typescript.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
    2:3   error    Delete \`··\`                         @swissquote/swissquote/prettier/prettier
    3:1   error    Delete \`····\`                       @swissquote/swissquote/prettier/prettier
@@ -251,7 +258,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts(5,17)
       TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
 
@@ -269,6 +275,7 @@ Object {
     ...stacktrace...
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:7814) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -278,24 +285,24 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                                                       status
-  1 kB  49       (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
-  1 kB  182      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
-  1 kB  385      ./js/script.ts + 1 modules                                   built ⚠
-  1 kB  417      ./js/SomeLibrary.ts                                          built ⚠
+  1 kB  131      (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
+  1 kB  168      ./js/SomeLibrary.ts                                          built failed ✖
+  1 kB  315      ./js/script.ts + 1 modules                                   built failed ✖
+  1 kB  324      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
 
   size  name     asset                                                        status
-  1 kB  js       417.myBundle.min.js                                          emitted
-  1 kB  map      417.myBundle.min.js.map                                      emitted
-  1 kB  ts       js/Component.d.ts                                            emitted
-  1 kB  ts       js/SomeLibrary.d.ts                                          emitted
-  1 kB  ts       js/script.d.ts                                               emitted
-  1 kB  default  myBundle.min.js                                              emitted
-  1 kB  default  myBundle.min.js.map                                          emitted
+  1 kB  js       168.myBundle.min.js
+  1 kB  map      168.myBundle.min.js.map
+  1 kB  ts       js/Component.d.ts
+  1 kB  ts       js/SomeLibrary.d.ts
+  1 kB  ts       js/script.d.ts
+  1 kB  default  myBundle.min.js
+  1 kB  default  myBundle.min.js.map
 
   (7 modules hidden)
+
   Failed to compile.
 
-./js/Component.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/Component.ts
   1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
   2:1  error  Prefer default export                                               @swissquote/swissquote/import/prefer-default-export
@@ -304,14 +311,12 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 ✖ 3 problems (3 errors, 0 warnings)
   2 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-./js/SomeLibrary.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
   10:15  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
 
 ✖ 1 problem (1 error, 0 warnings)
   1 error and 0 warnings potentially fixable with the \`--fix\` option.
 
-./js/script.ts
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
    1:1   error    Replace \`⏎import·{\` with \`import·{·\`                   @swissquote/swissquote/prettier/prettier
    5:1   error    Replace \`····constructor·\` with \`··constructor\`        @swissquote/swissquote/prettier/prettier
@@ -335,7 +340,8 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 exports[`Removes unused classes 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:7826) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -344,14 +350,15 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
-  1 kB  0        multi ./js/index.ts          built
-  1 kB  1        ./js/index.ts + 3 modules    built
+  1 kB  479      ./js/index.ts + 3 modules    built
 
   size  name     asset                        status
   1 kB  ts       js/imported-typescript.d.ts  emitted
   1 kB  ts       js/index.d.ts                emitted
   1 kB  default  myBundle.min.js              emitted
   1 kB  default  myBundle.min.js.map          emitted
+
+  (2 modules hidden)
 
   Compiled successfully!
   Δt ____ms
