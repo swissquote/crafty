@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fails on badly formatted TypeScript code 1`] = `
+Array [
+  Object {
+    "column": 33,
+    "endColumn": 35,
+    "endLine": 1,
+    "fix": Object {
+      "range": Array [
+        32,
+        34,
+      ],
+      "text": "",
+    },
+    "line": 1,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 2,
+    "endLine": 3,
+    "fix": Object {
+      "range": Array [
+        99,
+        100,
+      ],
+      "text": "",
+    },
+    "line": 3,
+    "message": "Delete \`·\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 3,
+    "endLine": 8,
+    "fix": Object {
+      "range": Array [
+        208,
+        210,
+      ],
+      "text": "",
+    },
+    "line": 8,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 7,
+    "endColumn": 9,
+    "endLine": 14,
+    "fix": Object {
+      "range": Array [
+        372,
+        374,
+      ],
+      "text": "",
+    },
+    "line": 14,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 18,
+    "endColumn": 28,
+    "endLine": 17,
+    "fix": Object {
+      "range": Array [
+        457,
+        467,
+      ],
+      "text": "taskName",
+    },
+    "line": 17,
+    "message": "Replace \`·taskName·\` with \`taskName\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+]
+`;

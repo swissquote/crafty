@@ -214,7 +214,7 @@ Object {
 `;
 
 exports[`Does not transpile on modern browsers 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(window,function(){return function(e,t){\\"use strict\\";var o={};function n(t){if(o[t])return o[t].exports;var r=o[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,n),r.l=true,r.exports}function r(){return n(107)}return t(n),r()}({107:function(e,t,o){\\"use strict\\";o.r(t);class n extends React.Component{constructor(...e){super(...e),this.handleClick=(()=>{this.setState({hey:true})})}render(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}o.d(t,\\"default\\",function(){return r});class r{constructor(){console.log(\\"init class\\")}method(){console.log(n)}}}},function(e){\\"use strict\\";!function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){var t=Object.prototype.hasOwnProperty;e.d=function(e,o,n){t.call(e,o)||Object.defineProperty(e,o,{enumerable:true,get:n})}}()})});
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=true,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";n.r(t);class r extends React.Component{constructor(...e){super(...e),this.handleClick=()=>{this.setState({hey:true})}}render(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}n.d(t,\\"default\\",function(){return o});class o{constructor(){console.log(\\"init class\\")}method(){console.log(r)}}}])});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -279,23 +279,25 @@ Object {
   Failed to compile.
 
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
-  11:3   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
-  12:13  error  Multiple spaces found before '<'                                               no-multi-spaces
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
 
-✖ 2 problems (2 errors, 0 warnings)
-  2 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 4 problems (4 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
-   3:24  error    Multiple spaces found before '\\"./Component.js\\"'                                no-multi-spaces
-   5:10  error    'test' is defined but never used                                               no-unused-vars
-   5:19  error    A space is required after ','                                                  comma-spacing
-   6:1   error    Expected indentation of 2 spaces but found 3                                   indent
-  11:5   warning  Unexpected console statement                                                   no-console
-  15:5   warning  Unexpected console statement                                                   no-console
-  15:19  error    Multiple spaces found before '\\"some method\\"'                                   no-multi-spaces
-  15:33  error    There should be no space before ','                                            comma-spacing
-  19:3   error    Opening curly brace does not appear on the same line as controlling statement  brace-style
-  20:14  error    Expected '===' and instead saw '=='                                            eqeqeq
+   3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+   5:10  error    'test' is defined but never used                 no-unused-vars
+   5:14  error    Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+   6:1   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  11:5   warning  Unexpected console statement                     no-console
+  14:9   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  15:5   warning  Unexpected console statement                     no-console
+  15:17  error    Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
+  18:11  error    Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+  20:14  error    Expected '===' and instead saw '=='              eqeqeq
 
 ✖ 10 problems (8 errors, 2 warnings)
   6 errors and 0 warnings potentially fixable with the \`--fix\` option.
@@ -319,7 +321,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                     status
   1 kB  0        multi ./js/index.js        built
-  1 kB  1        ./js/index.js + 2 modules  built
+  1 kB  1        ./js/index.js + 3 modules  built
 
   size  name     asset                      status
   1 kB  default  myBundle.min.js            emitted

@@ -1,4 +1,4 @@
-const debug = require("debug")("test");
+const debug = require("debug")("crafty:test");
 
 exports.description = "Run tests from any test runners";
 exports.command = function test(crafty, input, cli) {

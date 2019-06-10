@@ -13,6 +13,7 @@ target
 # Tests
 coverage
 packages/integration/fixtures/**/dist
+packages/integration/fixtures/**/.gitignore
 
 # Caches
 .rpt2_cache
@@ -25,3 +26,4 @@ docs/publish_dev.json
 .settings
 .classpath
 .project
+.idea

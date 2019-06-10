@@ -1,7 +1,14 @@
-const { isSupported } = require("caniuse-api");
+// Lazy load caniuse's API
+let isSupported;
 
 function isAllSupported(items, browsers) {
-  const allItems = Array.isArray(items) ? items : [ items ];
+  // Load only when it's needed for the first time
+  if (!isSupported) {
+    const caniuse = require("caniuse-api");
+    isSupported = caniuse.isSupported;
+  }
+
+  const allItems = Array.isArray(items) ? items : [items];
 
   return allItems.every(item => isSupported(item, browsers));
 }
@@ -50,7 +57,10 @@ module.exports = class Processor {
    * @returns {boolean}
    */
   isEnabled() {
-    if (this.caniuseFeature && isAllSupported(this.caniuseFeature, this.browserslist)) {
+    if (
+      this.caniuseFeature &&
+      isAllSupported(this.caniuseFeature, this.browserslist)
+    ) {
       return false;
     }
 

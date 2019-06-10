@@ -12,13 +12,7 @@
 </td></tr>
 <tr><th>Linters</th><td>
 
-Provides TSLint, with a minimal configuration (should be extended in the future to match the one in stylelint)
-
-</td></tr>
-<tr><th>Commands</th><td>
-
-- `tsLint`: Lint TypeScript files, this is a facade for TSLint, pre-configured
-  with our preset.
+Provides ESLint, with full configuration for TypeScript. Based on the same configuration we use in JavaScript.
 
 </td></tr>
 </table>
@@ -42,11 +36,9 @@ Or you can check out the [TypeScript specific features](TypeScript_Features.md)
 ## Linting
 
 Like any language, TypeScript has best practices and practices that you shouldn't do.
-With the help of `tslint` we check the code for common mistakes and formatting errors.
+With the help of ESLint we check the code for common mistakes and formatting errors.
 
-[Read more](TypeScript_Linting.md)
-
-We don't provide a direct access to TSLint's CLI but plan to do so in the future.
+[Read more](../05_crafty-preset-eslint/TypeScript_Linting.md)
 
 ## Installation
 
@@ -101,18 +93,13 @@ We have a user guide to get started with TypeScript in your project
 
 [Follow the guide](Getting_Started_with_TypeScript.md)
 
-### `crafty tsLint`
+### `crafty jsLint`
 
-This linter will leverage TSLint to lint your TypeScript files with the
-Swissquote presets pre-configured. All
-[TSLint CLI](https://palantir.github.io/tslint/usage/cli/) options are valid
-here.
-
-The additions made by this command are pre-configured rules from the Swissquote
-Guidelines.
+Leveraging ESLint, we add configuration to lint TypeScript.
+You can use that using the same command as for JavaScript.
 
 ```bash
-crafty tsLint src/**
+crafty jsLint src/**
 ```
 
 If you pass the `--fix` flag it will fix all the errors it can and write them

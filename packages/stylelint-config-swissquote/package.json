@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/stylelint-config-swissquote",
-  "version": "1.6.0",
+  "version": "1.7.2",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -10,15 +10,17 @@
   "dependencies": {
     "postcss-resolve-nested-selector": "0.1.1",
     "postcss-scss": "2.0.0",
-    "postcss-selector-parser": "^6.0.0",
-    "stylelint-scss": "3.5.4"
+    "postcss-selector-parser": "6.0.2",
+    "postcss-value-parser": "4.0.0",
+    "prettier": "^1.17.0",
+    "stylelint-no-unsupported-browser-features": "3.0.2",
+    "stylelint-prettier": "1.1.1",
+    "stylelint-scss": "3.8.0"
   },
   "devDependencies": {
-    "jest": "24.7.1",
-    "jest-pnp-resolver": "^1.0.1",
-    "jest-resolve": "24.7.1",
-    "postcss": "7.0.14",
-    "stylelint": "9.10.1"
+    "jest": "24.8.0",
+    "postcss": "7.0.17",
+    "stylelint": "10.1.0"
   },
   "scripts": {
     "test": "jest",

@@ -131,10 +131,10 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/js/script.js
-  3:19  error  A space is required after ','                                                  comma-spacing
-  4:1   error  Expected indentation of 2 spaces but found 3                                   indent
-  8:1   error  Opening curly brace does not appear on the same line as controlling statement  brace-style
-  9:12  error  Expected '===' and instead saw '=='                                            eqeqeq
+  3:14  error  Replace \`·(one,\` with \`(one,·\`       @swissquote/swissquote/prettier/prettier
+  4:1   error  Delete \`·\`                           @swissquote/swissquote/prettier/prettier
+  7:23  error  Replace \`⏎\` with \`·\`                 @swissquote/swissquote/prettier/prettier
+  9:12  error  Expected '===' and instead saw '=='  eqeqeq
 
 ✖ 4 problems (4 errors, 0 warnings)
   3 errors and 0 warnings potentially fixable with the \`--fix\` option.
@@ -156,9 +156,9 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5-dev/js/script.js
-  3:19  warning  A space is required after ','                                                  comma-spacing
-  4:1   warning  Expected indentation of 2 spaces but found 3                                   indent
-  8:1   warning  Opening curly brace does not appear on the same line as controlling statement  brace-style
+  3:14  warning  Replace \`·(one,\` with \`(one,·\`  @swissquote/swissquote/prettier/prettier
+  4:1   warning  Delete \`·\`                      @swissquote/swissquote/prettier/prettier
+  7:23  warning  Replace \`⏎\` with \`·\`            @swissquote/swissquote/prettier/prettier
 
 ✖ 3 problems (0 errors, 3 warnings)
   0 errors and 3 warnings potentially fixable with the \`--fix\` option.

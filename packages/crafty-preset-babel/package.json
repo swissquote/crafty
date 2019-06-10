@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-babel",
-  "version": "1.6.0",
+  "version": "1.7.2",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -8,27 +8,20 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/runtime": "7.4.3",
-    "@swissquote/babel-preset-swissquote": "1.6.0",
-    "@swissquote/eslint-plugin-swissquote": "1.6.0",
-    "babel-loader": "8.0.5",
-    "babel-plugin-istanbul": "5.1.1",
+    "@babel/core": "7.4.5",
+    "@babel/runtime": "7.4.5",
+    "@swissquote/babel-preset-swissquote": "1.7.2",
+    "@swissquote/crafty-preset-eslint": "1.7.2",
+    "babel-loader": "8.0.6",
+    "babel-plugin-istanbul": "5.1.4",
     "babel-preset-jest": "24.6.0",
-    "debug": "^4.1.0",
-    "eslint": "5.16.0",
-    "eslint-loader": "2.1.2",
     "gulp-babel": "8.0.0",
     "gulp-concat": "2.6.1",
     "gulp-eslint": "5.0.0",
     "gulp-newer": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
-    "gulp-terser": "1.1.7",
-    "merge": "1.2.1",
-    "resolve-from": "4.0.0",
-    "rollup-plugin-babel": "4.3.2",
-    "rollup-plugin-eslint": "5.1.0",
-    "tmp": "0.1.0"
+    "gulp-terser": "1.2.0",
+    "rollup-plugin-babel": "4.3.2"
   },
   "engines": {
     "node": ">=8.0.0"

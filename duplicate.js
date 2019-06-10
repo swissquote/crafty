@@ -2,7 +2,7 @@
 const fs = require("fs");
 const lockfile = require("@yarnpkg/lockfile");
 const semver = require("semver");
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 const Project = require("@lerna/project");
 
 const lernaRegex = /lerna@.*/;
@@ -14,7 +14,7 @@ function renderChain(currentChain) {
     }
 
     //currentChain.reverse();
-    console.log(currentChain.join(chalk.bold(" ← "))); // →
+    console.log(currentChain.join(colors.bold(" ← "))); // →
 }
 
 function findRequestChain(requiredBy, currentChain) {
@@ -56,14 +56,14 @@ async function listOwnPackages(limitPackages) {
         const repository = new Project(process.cwd());
         const craftyPackages = await repository.getPackages();
         console.log(`${craftyPackages.length} packages found ...`);
-    
+
         craftyPackages.forEach(pkg => ownPackages.add(pkg.name));
         console.log("Listing dependencies ...");
         craftyPackages.forEach(({ dependencies, devDependencies }) => {
             Object.keys(dependencies  || {}).forEach(dep => ownPackages.add(dep))
             Object.keys(devDependencies || {}).forEach(dep => ownPackages.add(dep))
         });
-    
+
         // Exclude small packages that make a lot of noise
         ownPackages.delete("chalk");
         ownPackages.delete("debug");
@@ -77,7 +77,7 @@ function listPackages(requiredBy) {
     console.log("Loading dependency tree");
     let file = fs.readFileSync('yarn.lock', 'utf8');
     let json = lockfile.parse(file).object;
-    
+
     const packages /*: { [package: string]: { [resolvedVersion: string]: requestedVersion: string[]; }} */ = {};
     Object.keys(json).forEach(key => {
         const lastIndex = key.lastIndexOf("@");
@@ -134,11 +134,11 @@ listOwnPackages(limitPackages).then(ownPackages => {
     duplicatePackages.forEach(({module, latestVersion, requested}) => {
         // Skip packages that we don't directly depend upon
         if (limitPackages && !ownPackages.has(module)) {
-            return;     
+            return;
         }
-    
+
         console.log("");
-        console.log(chalk.bold(module), "( Latest version", chalk.bold(latestVersion), ")");
+        console.log(colors.bold(module), "( Latest version", colors.bold(latestVersion), ")");
         requested.forEach(req => findRequestChain(requiredBy, [`${module}@${req}`]));
     });
 });

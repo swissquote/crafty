@@ -10,7 +10,7 @@ const watcher = require("./Watcher");
 const Information = require("./log/Information");
 const registerTasks = require("./tasks");
 
-const debug = require("debug")("Crafty");
+const debug = require("debug")("crafty:core");
 
 class Crafty {
   constructor(config) {

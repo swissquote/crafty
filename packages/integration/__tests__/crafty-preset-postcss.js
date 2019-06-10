@@ -14,21 +14,13 @@ const getCrafty = configuration.getCrafty;
 it("Loads crafty-preset-postcss and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-postcss"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-postcss");
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual([
-    "cssLint",
-    "help",
-    "run",
-    "watch",
-    "test"
-  ]);
+  expect(Object.keys(commands)).toContain("cssLint");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -76,4 +68,30 @@ it("Lints with the command with custom config", () => {
   expect(result).toMatchSnapshot();
 
   expect(fs.existsSync("dist")).toBeFalsy();
+});
+
+it("Creates IDE Integration files", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-postcss/ide"));
+  rimraf.sync("stylelint.config.js");
+  rimraf.sync("prettier.config.js");
+  rimraf.sync(".gitignore");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("stylelint.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("prettier.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
+  ).toMatchSnapshot();
 });

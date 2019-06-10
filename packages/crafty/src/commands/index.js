@@ -1,4 +1,4 @@
-const debug = require("debug")("commands");
+const debug = require("debug")("crafty:commands");
 const merge = require("merge");
 
 function getCommands(crafty) {
@@ -12,6 +12,7 @@ function getCommands(crafty) {
   commands.run = require("./run.js");
   commands.watch = require("./watch.js");
   commands.test = require("./testCommand.js");
+  commands.ide = require("./ide.js");
 
   return commands;
 }

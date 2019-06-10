@@ -5,7 +5,6 @@ const path = require("path");
 
 const rimraf = require("rimraf");
 const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
@@ -20,21 +19,10 @@ jest.mock("node-forge");
 it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-typescript"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual([
-    "tsLint",
-    "help",
-    "run",
-    "watch",
-    "test"
-  ]);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -50,22 +38,11 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
     config
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-typescript"),
-    require("@swissquote/crafty-runner-webpack"),
-    Object.assign({ presetName: "crafty.config.js" }, config)
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual([
-    "tsLint",
-    "help",
-    "run",
-    "watch",
-    "test"
-  ]);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-webpack");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
@@ -99,6 +76,35 @@ it("Compiles TypeScript", () => {
   expect(
     fs.readFileSync("dist/js/417.myBundle.min.js").toString("utf8")
   ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/js/SomeLibrary.d.ts").toString("utf8")
+  ).toMatchSnapshot();
+});
+
+it("Compiles TypeScript - fork checker", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/compiles-forked"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/1.myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
+  expect(
+    fs.readFileSync("dist/js/1.myBundle.min.js").toString("utf8")
+  ).toMatchSnapshot();
 });
 
 it("Lints TypeScript with webpack", () => {
@@ -111,10 +117,9 @@ it("Lints TypeScript with webpack", () => {
 
   expect(result).toMatchSnapshot();
 
-  //TODO :: make that TS linting errors throw errors
   // Files aren't generated on failed lint
-  //expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  //expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
 it("Fails gracefully on broken markup", () => {
@@ -128,6 +133,62 @@ it("Fails gracefully on broken markup", () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
+});
+
+it("Fails gracefully on invalid TS", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-typescript-webpack/invalid")
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed types
+  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
+});
+
+it("Fails gracefully on invalid TS - fork checker", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/invalid-forked"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed types
+  // TODO :: see if it can be done with fork TS Checker
+  //expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeFalsy();
+  //expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeFalsy();
+});
+
+it("Removes unused classes", () => {
+  process.chdir(
+    path.join(
+      __dirname,
+      "../fixtures/crafty-preset-typescript-webpack/tree-shaking"
+    )
+  );
+  rimraf.sync("dist");
+
+  const result = testUtils.run(["run", "default"]);
+
+  expect(result).toMatchSnapshot();
+
+  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
+  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+
+  const content = fs.readFileSync("dist/js/myBundle.min.js").toString("utf8");
+
+  expect(content.indexOf("From class A") > -1).toBeTruthy();
+  expect(content.indexOf("From class B") > -1).toBeFalsy();
 });

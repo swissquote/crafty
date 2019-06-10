@@ -1,34 +1,40 @@
 import * as React from "react";
 
 interface CounterProps {
-    increment: number;
+  increment: number;
 }
 
 interface CounterState {
-    count: number;
+  count: number;
 }
 
-export default class Counter extends React.Component<CounterProps, CounterState> {
+export default class Counter extends React.Component<
+  CounterProps,
+  CounterState
+> {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
+    this.state = {
+      count: 0
+    };
+  }
 
-        this.state = {
-            count: 0
-        };
-    }
+  tick = () => {
+    this.setState(currentState => ({
+      count: currentState.count + this.props.increment
+    }));
+  };
 
-    tick = () => {
-        this.setState(currentState => ({
-            count: currentState.count + this.props.increment
-        }));
-    }
+  componentDidMount() {
+    setInterval(this.tick, 1000);
+  }
 
-    componentDidMount() {
-        setInterval(this.tick, 1000);
-    }
-
-    render() {
-        return <div><strong>Counter</strong> ({this.props.increment}): {this.state.count}</div>;
-    }
+  render() {
+    return (
+      <div>
+        <strong>Counter</strong> ({this.props.increment}): {this.state.count}
+      </div>
+    );
+  }
 }

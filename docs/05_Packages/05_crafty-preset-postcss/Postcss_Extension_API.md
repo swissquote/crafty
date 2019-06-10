@@ -84,13 +84,13 @@ class ProcessorMap {
   values(): Processor[];
 
   /*
-     * Returns an object of all the entries in the backing Map
-     * where the key is the object property, and the value
-     * corresponding to the key. Will return `undefined` if the backing
-     * Map is empty.
-     * This will order properties by their name if the value is
-     * a ProcessorMap that used .before() or .after().
-     */
+   * Returns an object of all the entries in the backing Map
+   * where the key is the object property, and the value
+   * corresponding to the key. Will return `undefined` if the backing
+   * Map is empty.
+   * This will order properties by their name if the value is
+   * a ProcessorMap that used .before() or .after().
+   */
 
   entries(): { [name: string]: Processor };
 }

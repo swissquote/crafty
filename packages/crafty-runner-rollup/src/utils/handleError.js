@@ -3,7 +3,7 @@
  ** We might need to keep this up-to-date with new updates of Rollup
  */
 
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const relativeId = require("./relativeId");
 
@@ -18,10 +18,10 @@ module.exports = function handleError(err, recover) {
   const message =
     (err.plugin ? `(${err.plugin} plugin) ${description}` : description) || err;
 
-  stderr(chalk.bold.red(`[!] ${chalk.bold(message)}`));
+  stderr(colors.bold.red(`[!] ${message}`));
 
   if (err.url) {
-    stderr(chalk.cyan(err.url));
+    stderr(colors.cyan(err.url));
   }
 
   if (err.loc) {
@@ -35,9 +35,9 @@ module.exports = function handleError(err, recover) {
   }
 
   if (err.frame) {
-    stderr(chalk.dim(err.frame));
+    stderr(colors.dim(err.frame));
   } else if (err.stack) {
-    stderr(chalk.dim(err.stack));
+    stderr(colors.dim(err.stack));
   }
 
   stderr("");

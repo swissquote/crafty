@@ -1,4 +1,4 @@
-const debug = require("debug")("tasks");
+const debug = require("debug")("crafty:tasks");
 const merge = require("merge");
 
 function shortName(runner) {

@@ -5,7 +5,6 @@ const path = require("path");
 
 const rimraf = require("rimraf");
 const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
@@ -14,15 +13,10 @@ const getCrafty = configuration.getCrafty;
 it("Loads crafty-preset-images-simple and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-images-simple"], {});
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-images-simple"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -38,14 +32,12 @@ it("Fails if both crafty-preset-images-simple and crafty-preset-images-simple ar
     {}
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-images"),
-    require("@swissquote/crafty-preset-images-simple"),
-    require("@swissquote/crafty-runner-gulp"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images");
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
 
   expect(() => crafty.createTasks()).toThrow(
     "Failed registering 'crafty-preset-images-simple' a task with this name already exists"
@@ -61,16 +53,11 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
     {}
   );
 
-  const loadedPresets = [
-    require("@swissquote/crafty-preset-images-simple"),
-    require("@swissquote/crafty-runner-gulp"),
-    { presetName: "crafty.config.js" }
-  ];
-
-  expect(crafty.config.loadedPresets).toEqual(loadedPresets);
-
-  const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toEqual(["help", "run", "watch", "test"]);
+  const loadedPresets = crafty.config.loadedPresets.map(
+    preset => preset.presetName
+  );
+  expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
+  expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([

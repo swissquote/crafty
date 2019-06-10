@@ -69,7 +69,13 @@ This is used inside `crafty watch`, the build mode will not take it into account
 
 ### Extracting CSS
 
-By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `ExtractTextWebpackPlugin`.
+By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `MiniCssExtractPlugin`.
+
+#### Side effects
+
+Be careful when using `extractCSS` option and `sideEffects: false` in `package.json` of your project. Crafty is using `css-loader` and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.
+
+[Webpack docs and examples](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free)
 
 ## Usage with Gulp
 

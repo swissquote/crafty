@@ -14,7 +14,7 @@
 // This is quite hacky and hopefully won't be needed when Webpack fixes this.
 // https://github.com/webpack/webpack/issues/2878
 
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const friendlySyntaxErrorLabel = "Syntax error:";
 
@@ -32,7 +32,6 @@ function formatMessage(originalMessage, isError) {
   lines = lines.filter(line => !/Module [A-z ]+\(from/.test(line));
 
   // Transform parsing error into syntax error
-  // TODO: move this to our ESLint formatter?
   lines = lines.map(line => {
     const parsingError = /Line (\d+):(?:(\d+):)?\s*Parsing error: (.+)$/.exec(
       line
@@ -94,7 +93,7 @@ function formatMessage(originalMessage, isError) {
     ];
   }
 
-  lines[0] = chalk.inverse(lines[0]);
+  lines[0] = colors.inverse(lines[0]);
 
   message = lines.join("\n");
   // Internal stacks are generally useless so we strip them... with the

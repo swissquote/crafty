@@ -2,7 +2,7 @@
 
 export default class MyComponent extends React.Component {
   handleClick = () => {
-    this.setState({hey: true});
+    this.setState({ hey: true });
   };
 
   render() {

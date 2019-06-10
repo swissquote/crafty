@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/eslint-plugin-swissquote",
-  "version": "1.6.0",
+  "version": "1.7.2",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -11,20 +11,23 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "1.10.2",
+    "@typescript-eslint/parser": "1.10.2",
     "babel-eslint": "10.0.1",
-    "confusing-browser-globals": "1.0.6",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-plugin-react": "7.12.4",
-    "eslint-plugin-sonarjs": "0.3.0"
+    "confusing-browser-globals": "1.0.7",
+    "eslint-plugin-import": "2.17.3",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-react": "7.13.0",
+    "eslint-plugin-sonarjs": "0.4.0",
+    "prettier": "^1.17.0",
+    "typescript": "3.5.1"
   },
   "peerDepdency": {
     "eslint": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
     "eslint": "5.16.0",
-    "jest": "24.7.1",
-    "jest-pnp-resolver": "^1.0.1",
-    "jest-resolve": "24.7.1",
+    "jest": "24.8.0",
     "merge": "1.2.1"
   },
   "engines": {

@@ -7,6 +7,9 @@ const rimraf = require("rimraf");
 
 const testUtils = require("../utils");
 
+const BUNDLE = "dist/js/myBundle.min.js";
+const BUNDLE_MAP = `${BUNDLE}.map`;
+
 it("Compiles JavaScript", () => {
   process.chdir(
     path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/compiles")
@@ -17,12 +20,10 @@ it("Compiles JavaScript", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Compiles Generators", () => {
@@ -38,12 +39,10 @@ it("Compiles Generators", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Deduplicates helpers", () => {
@@ -59,12 +58,10 @@ it("Deduplicates helpers", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Does not transpile on modern browsers", () => {
@@ -80,12 +77,10 @@ it("Does not transpile on modern browsers", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Compiles JavaScript with externals", () => {
@@ -98,12 +93,10 @@ it("Compiles JavaScript with externals", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Creates profiles", () => {
@@ -116,14 +109,12 @@ it("Creates profiles", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle_report.html")).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle_stats.json")).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
 });
 
 it("Lints JavaScript with webpack", () => {
@@ -137,8 +128,8 @@ it("Lints JavaScript with webpack", () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync(BUNDLE)).toBeFalsy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeFalsy();
 });
 
 it("Fails gracefully on broken markup", () => {
@@ -152,8 +143,8 @@ it("Fails gracefully on broken markup", () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(fs.existsSync(BUNDLE)).toBeFalsy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeFalsy();
 });
 
 it("Removes unused classes", () => {
@@ -166,13 +157,11 @@ it("Removes unused classes", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(fs.existsSync(BUNDLE)).toBeTruthy();
+  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  const content = fs.readFileSync("dist/js/myBundle.min.js").toString("utf8");
+  const content = fs.readFileSync(BUNDLE).toString("utf8");
 
   expect(content.indexOf("From class A") > -1).toBeTruthy();
-  expect(content.indexOf("From class C") > -1).toBeTruthy();
-  expect(content.indexOf("From class D") > -1).toBeFalsy();
   expect(content.indexOf("From class B") > -1).toBeFalsy();
 });

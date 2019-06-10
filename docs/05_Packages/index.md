@@ -52,7 +52,7 @@ Compile your CSS using **PostCSS**, works with **Webpack** and Gulp.
 This preset provides TypeScript support for the Gulp, Webpack and rollup.js
 runners.
 
-It also configures TSLint with our linting rules
+It also configures ESLint with our linting rules
 
 [Features and options](05_crafty-preset-typescript)
 

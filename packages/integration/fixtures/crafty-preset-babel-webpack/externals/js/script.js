@@ -2,7 +2,6 @@ import SomeLib from "somelibrary/thing/stuff";
 
 import Component from "./Component";
 
-
 export default class newStuff {
   constructor() {
     //eslint-disable-next-line no-console

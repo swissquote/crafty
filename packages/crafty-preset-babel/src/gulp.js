@@ -4,7 +4,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     const stream = new StreamHandler(
       bundle.source,
       crafty.config.destination_js +
-        (bundle.directory ? "/" + bundle.directory : ""),
+        (bundle.directory ? `/${bundle.directory}` : ""),
       cb
     );
 
@@ -25,10 +25,9 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
         eslint.results(results => {
           const count = results.errorCount;
           if (count) {
-            const message =
-              "ESLint failed with " +
-              count +
-              (count === 1 ? " error" : " errors");
+            const message = `ESLint failed with ${count}${
+              count === 1 ? " error" : " errors"
+            }`;
             cb(new crafty.Information(message));
           }
         })

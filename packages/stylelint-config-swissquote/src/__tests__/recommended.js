@@ -109,7 +109,8 @@ const validCss = `/** @define Form */
     border-collapse: separate;
     padding: 0 0.5rem;
     white-space: nowrap;
-    border: var(--Form__addon-border-width) var(--Form__addon-border-style) var(--Form__addon-border-color);
+    border: var(--Form__addon-border-width) var(--Form__addon-border-style)
+        var(--Form__addon-border-color);
     width: 1%;
     text-align: center;
     vertical-align: middle;
@@ -147,7 +148,10 @@ const validCss = `/** @define Form */
     border-right-width: 0;
 }
 
-[dir="ltr"] > .Form__item__control.has-addon .Input ~ .Form__item__addon:last-child {
+[dir="ltr"]
+    > .Form__item__control.has-addon
+    .Input
+    ~ .Form__item__addon:last-child {
     border-top-right-radius: var(--Form__addon-border-radius);
     border-bottom-right-radius: var(--Form__addon-border-radius);
 }
@@ -159,7 +163,8 @@ const validCss = `/** @define Form */
 
 [dir="rtl"] {
     .Form__item__addon:first-child {
-        border-radius: 0 var(--Form__addon-border-radius) var(--Form__addon-border-radius) 0;
+        border-radius: 0 var(--Form__addon-border-radius)
+            var(--Form__addon-border-radius) 0;
         border-left-width: 0;
         border-right-width: var(--Form__addon-border-width);
     }
@@ -175,7 +180,8 @@ const validCss = `/** @define Form */
     }
 
     .Form__item__control.has-addon .Input ~ .Form__item__addon:last-child {
-        border-radius: var(--Form__addon-border-radius) 0 0 var(--Form__addon-border-radius);
+        border-radius: var(--Form__addon-border-radius) 0 0
+            var(--Form__addon-border-radius);
     }
 }
 
@@ -327,8 +333,7 @@ it("Works with namespaces", () => {
 
 describe("Flags errors when using unknown at rules", () => {
   const result = stylelint.lint({
-    code: `
-@while ($i == 1) {
+    code: `@while ($i == 1) {
     .Button {
         top: 10px;
     }
@@ -346,14 +351,16 @@ describe("Flags errors when using unknown at rules", () => {
   it("raised one 'scss/at-rule-no-unknown' error", () => {
     return result.then(data => {
       expect(data.errored).toBeTruthy();
-      expect(data.results[0].warnings.length).toBe(1);
-      expect(data.results[0].warnings[0].rule).toBe("scss/at-rule-no-unknown");
-      expect(data.results[0].warnings[0].severity).toBe("error");
-      expect(data.results[0].warnings[0].line).toBe(8);
-      expect(data.results[0].warnings[0].column).toBe(1);
-      expect(data.results[0].warnings[0].text).toBe(
-        'Unexpected unknown at-rule "@unknown" (at-rule-no-unknown) (scss/at-rule-no-unknown)'
-      );
+      expect(data.results[0].warnings).toEqual([
+        {
+          line: 7,
+          column: 1,
+          rule: "scss/at-rule-no-unknown",
+          severity: "error",
+          text:
+            'Unexpected unknown at-rule "@unknown" (at-rule-no-unknown) (scss/at-rule-no-unknown)'
+        }
+      ]);
     });
   });
 });
@@ -367,14 +374,16 @@ describe("flags warnings when using ids", () => {
   it("raised one 'selector-max-id' error", () => {
     return result.then(data => {
       expect(data.errored).toBeTruthy();
-      expect(data.results[0].warnings.length).toBe(1);
-      expect(data.results[0].warnings[0].rule).toBe("selector-max-id");
-      expect(data.results[0].warnings[0].severity).toBe("error");
-      expect(data.results[0].warnings[0].line).toBe(1);
-      expect(data.results[0].warnings[0].column).toBe(1);
-      expect(data.results[0].warnings[0].text).toBe(
-        'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
-      );
+      expect(data.results[0].warnings).toEqual([
+        {
+          line: 1,
+          column: 1,
+          rule: "selector-max-id",
+          severity: "error",
+          text:
+            'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
+        }
+      ]);
     });
   });
 });

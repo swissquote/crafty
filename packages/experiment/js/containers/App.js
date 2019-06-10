@@ -7,9 +7,10 @@ import Loading from "../components/Loading";
 import Counters from "../containers/Counters";
 
 const Tabs = loadable({
-  loader: () => import("../components/Tabs").then(it => {
-    return it.default;
-  }),
+  loader: () =>
+    import("../components/Tabs").then(it => {
+      return it.default;
+    }),
   loading: Loading
 });
 

@@ -9,10 +9,14 @@ export default class MyComponent extends React.Component {
     };
   }
   handleClick = () => {
-    this.setState({clicked: true});
+    this.setState({ clicked: true });
   };
 
   render() {
-    return <div onClick={this.handleClick} className="foo">Hey</div>;
+    return (
+      <div onClick={this.handleClick} className="foo">
+        Hey
+      </div>
+    );
   }
 }

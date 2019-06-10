@@ -10,7 +10,8 @@ const defaultBrowsers = [
   "Chrome >= 32",
   "Firefox >= 24",
   "Opera >= 24",
-  "IE >= 9"
+  "IE >= 9",
+  "not op_mini all"
 ].join(", ");
 
 function getDefaultBrowsers() {

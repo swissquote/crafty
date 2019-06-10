@@ -436,7 +436,7 @@ h1 {
 
 @for $i from 1 to 3 {
   .b-$i {
-    width: $(i) px;
+    width: #{i}px;
   }
 }
 

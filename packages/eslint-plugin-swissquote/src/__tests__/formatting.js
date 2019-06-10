@@ -55,6 +55,6 @@ test()
 
     expect(result.messages).toMatchSnapshot();
     expect(result.warningCount).toBe(0);
-    expect(result.errorCount).toBe(3);
+    expect(result.errorCount).toBe(2);
   });
 });

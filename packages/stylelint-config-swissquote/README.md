@@ -24,6 +24,8 @@
   (`.s-*`).
 - `no-utility-reassignment`: Utilities (`.u-*`) must be applied directly on the
   concerned element.
+- `no-negative-var`: Using `var()` doesn't work as you would expect it to return
+  a negative value, but it just parses the function as `-var()` and never executes it.
 
 ## Usage within Crafty
 

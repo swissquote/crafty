@@ -1,7 +1,7 @@
-
 /* Import CSS Files (postcss-import, postcss-url) */
 
 @import "foo.scss";
+@import "math.scss";
 @import "media/bar.scss" (min-width: 25em);
 
 /* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
@@ -133,8 +133,7 @@ $column: 200px;
 .Notice--clear {
     @if 3 < 5 {
         background: green;
-    }
-    @else {
+    } @else {
         background: blue;
     }
 }
@@ -148,7 +147,9 @@ $column: 200px;
 }
 
 @for $i from 1 to 3 {
-    .Button--$i { width: $(i)px; }
+    .Button--$i {
+        width: #{$i}px;
+    }
 }
 
 /* Initial Values (postcss-initial) */
@@ -171,41 +172,52 @@ $column: 200px;
  */
 
 .Quote {
-    background: rgba(153, 221, 153, 0.8);   // This will create a fallback without the alpha
+    // This will create a fallback without the alpha
+    background: rgba(153, 221, 153, 0.8);
 
-    border-color: #9d9c;                    // This will be transformed to rgba
+    // This will be transformed to rgba
+    border-color: #9d9c;
 
-    color: rebeccapurple;                   // ... sad story, homage to eric meyer
+    // ... sad story, homage to Eric Meyer
+    color: rebeccapurple;
 }
 
 .Quote--clear {
-    background: rgb(250.5 255 255);           // Allows to declare colors with rgb() level 4
+    // Allows to declare colors with rgb() level 4
+    background: rgb(250.5 255 255);
 
-    color: hsl(200grad 100% 50% / 20%);       // This will declare colors with hsl() level 4
+    // This will declare colors with hsl() level 4
+    color: hsl(200grad 100% 50% / 20%);
 
-    border-color: hwb(90, 0%, 0%, 0.5);       // This will transform colors to rgba()
+    // This will transform colors to rgba()
+    border-color: hwb(90, 0%, 0%, 0.5);
 }
 
 /* Color manipulation */
 
 .Link {
-    color: color(red alpha(-10%));      // Change the opacity of red
+    // Change the opacity of red
+    color: color(red alpha(-10%));
 }
 
 .Link:hover {
-    color: color(red blackness(80%));   // Darken the color
+    // Darken the color
+    color: color(red blackness(80%));
 }
 
 .Link {
-    color: hwb(90, 0%, 0%, 0.6);        // This will be transformed to rgba
+    // This will be transformed to rgba
+    color: hwb(90, 0%, 0%, 0.6);
 }
 
 /* Levels of gray */
 
 .Text {
-    color: gray(85);            // Level of gray
+    // Level of gray
+    color: gray(85);
 
-    background: gray(10%, 50%); // Level of gray with opacity
+    // Level of gray with opacity
+    background: gray(10%, 50%);
 }
 
 /* Selectors:
@@ -239,7 +251,7 @@ $column: 200px;
     background-color: yellow;
 }
 
-[frame=hsides i] {
+[frame="hsides" i] {
     border-style: solid none;
 }
 

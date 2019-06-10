@@ -4,12 +4,8 @@ const fs = require("fs");
 const path = require("path");
 
 const rimraf = require("rimraf");
-const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
-
-const getCrafty = configuration.getCrafty;
 
 it("Lints TypeScript using the command", () => {
   process.chdir(
@@ -17,7 +13,7 @@ it("Lints TypeScript using the command", () => {
   );
   rimraf.sync("dist");
 
-  const result = testUtils.run(["tsLint", "js/**/*.ts"]);
+  const result = testUtils.run(["jsLint", "js/**/*.ts"]);
 
   expect(result).toMatchSnapshot();
 

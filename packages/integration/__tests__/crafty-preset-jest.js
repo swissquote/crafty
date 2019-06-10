@@ -7,11 +7,11 @@ const rimraf = require("rimraf");
 
 const testUtils = require("../utils");
 
-let testIfNotPnp = test;
+let testIfNotPnp = it;
 
 try {
-  require(`pnpapi`);
-  testIfNotPnp = test.skip;
+  require("pnpapi");
+  testIfNotPnp = it.skip;
 } catch (error) {
   // not in PnP; not a problem
 }
@@ -25,6 +25,42 @@ it("Succeeds without transpiling", () => {
   const result = testUtils.run(["test"]);
 
   expect(result).toMatchSnapshot();
+});
+
+it("Creates IDE Integration files", () => {
+  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/ide"));
+  rimraf.sync("jest.config.js");
+  rimraf.sync(".gitignore");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("jest.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
+
+  expect(
+    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
+  ).toMatchSnapshot();
+});
+
+it("Creates IDE Integration files with Babel", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-jest/ide-babel")
+  );
+  rimraf.sync("jest.config.js");
+  rimraf.sync(".gitignore");
+
+  const result = testUtils.run(["ide"]);
+
+  expect(result).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeOutput(
+      fs.readFileSync("jest.config.js").toString("utf8")
+    )
+  ).toMatchSnapshot();
 });
 
 testIfNotPnp("Succeeds with typescript", () => {
@@ -58,7 +94,7 @@ testIfNotPnp("Succeeds with babel and React", () => {
   expect(result).toMatchSnapshot();
 });
 
-test("Succeeds with esm module", () => {
+it("Succeeds with esm module", () => {
   process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm"));
   rimraf.sync("dist");
 
@@ -67,9 +103,10 @@ test("Succeeds with esm module", () => {
   expect(result).toMatchSnapshot();
 });
 
-
-test("Succeeds with esm module and babel", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel"));
+it("Succeeds with esm module and babel", () => {
+  process.chdir(
+    path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel")
+  );
   rimraf.sync("dist");
 
   const result = testUtils.run(["test"]);

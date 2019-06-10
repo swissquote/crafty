@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 
 const tasks = {};
 
@@ -18,10 +18,10 @@ function logSyncTask(crafty) {
     }
     const taskNames = taskKeys.map(key => tasks[key]).join(", ");
     crafty.log.warn(
-      chalk.red("The following tasks did not complete:"),
-      chalk.cyan(taskNames)
+      colors.red("The following tasks did not complete:"),
+      colors.cyan(taskNames)
     );
-    crafty.log.warn(chalk.red("Did you forget to signal async completion?"));
+    crafty.log.warn(colors.red("Did you forget to signal async completion?"));
   });
   crafty.undertaker.on("start", start);
   crafty.undertaker.on("stop", clear);

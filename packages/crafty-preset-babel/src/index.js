@@ -1,6 +1,3 @@
-const merge = require("merge");
-const tmp = require("tmp");
-const fs = require("fs");
 const path = require("path");
 
 const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
@@ -9,31 +6,10 @@ const createTask = require("./gulp");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
+  presets: [require.resolve("@swissquote/crafty-preset-eslint")],
   defaultConfig(config) {
-    // For some reason, eslint.CLIEngine doesn't support "extends",
-    // it has to be done through a configuration file
-    const esConfig = tmp.fileSync({
-      prefix: "crafty-config-",
-      postfix: ".json"
-    }).name;
-
-    fs.writeFileSync(
-      esConfig,
-      JSON.stringify({ extends: ["plugin:@swissquote/swissquote/recommended"] })
-    );
-
     return {
       bundleTypes: { js: "js" },
-
-      // In case of browser support changes, we prefer having a fixed version
-      eslintReactVersion: "15.0",
-
-      // ESLint Override Rules
-      eslint: {
-        useEslintrc: false,
-        plugins: ["@swissquote/swissquote"],
-        configFile: esConfig
-      },
 
       // Pass options to uglifyJS, used by both webpack and gulp-uglify
       // We disable most of the compress options as they account for most of the
@@ -79,34 +55,12 @@ module.exports = {
       }
     };
   },
-  config(config) {
-    // Add eslint react version
-    config.eslint = merge.recursive(config.eslint, {
-      baseConfig: {
-        settings: { react: { version: config.eslintReactVersion } }
-      }
-    });
-
-    return config;
-  },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
     options.transform["\\.(js|jsx)$"] = require.resolve("./jest-transformer");
     options.moduleFileExtensions.push("jsx");
 
     options.globals.BABEL_OPTIONS = babelConfigurator(crafty, "test", {});
-  },
-  commands() {
-    return {
-      jsLint: {
-        //eslint-disable-next-line no-unused-vars
-        command: function(crafty, input, cli) {
-          global.craftyConfig = crafty.config;
-          require("./commands/jsLint");
-        },
-        description: "Lint JavaScript for errors"
-      }
-    };
   },
   bundleCreator(crafty) {
     const configurators = { js: {} };
@@ -117,31 +71,19 @@ module.exports = {
       )
     ) {
       configurators.js["gulp/babel"] = (
-        crafty,
+        _crafty,
         bundle,
         gulp,
         StreamHandler
       ) => {
-        gulp.task(bundle.taskName, createTask(crafty, bundle, StreamHandler));
-        crafty.watcher.add(bundle.watch || bundle.source, bundle.taskName);
+        gulp.task(bundle.taskName, createTask(_crafty, bundle, StreamHandler));
+        _crafty.watcher.add(bundle.watch || bundle.source, bundle.taskName);
       };
     }
 
     return configurators;
   },
   rollup(crafty, bundle, rollupConfig) {
-    // Add Eslint configuration
-    //TODO :: throw error after all files are linted, not after first error
-    rollupConfig.input.plugins.eslint = {
-      plugin: require("rollup-plugin-eslint").eslint,
-      weight: -20,
-      options: Object.assign({}, crafty.config.eslint, {
-        throwOnError: crafty.getEnvironment() === "production",
-        exclude: ["node_modules/**"],
-        include: ["**/*.js", "**/*.jsx"]
-      })
-    };
-
     const babelOptions = babelConfigurator(
       crafty,
       crafty.getEnvironment() === "production" ? "production" : "development",
@@ -191,16 +133,5 @@ module.exports = {
       .use("babel")
       .loader(require.resolve("babel-loader"))
       .options(options);
-
-    // JavaScript linting
-    chain.module
-      .rule("lint-js")
-      .pre()
-      .test(/\.jsx?$/)
-      .exclude.add(/(node_modules|bower_components)/)
-      .end()
-      .use("eslint")
-      .loader(require.resolve("eslint-loader"))
-      .options(crafty.config.eslint);
   }
 };

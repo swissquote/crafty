@@ -1,33 +1,52 @@
-const chalk = require("chalk");
+const colors = require("ansi-colors");
 const prettyTime = require("pretty-hrtime");
 
 const formatError = require("./formatError");
 
+const logged = new Set();
+
+function wasLogged(event) {
+  if (event.error || event.message) {
+    return logged.has(event.error || event.message);
+  }
+
+  return false;
+}
+
+function recordLogged(event) {
+  if (event.error || event.message) {
+    logged.add(event.error || event.message);
+  }
+}
+
 // Wire up logging events
 function logEvents(crafty) {
-  const loggedErrors = [];
   crafty.undertaker.on("start", evt => {
-    crafty.log.info(`Starting '${chalk.cyan(evt.name)}' ...`);
+    crafty.log.info(`Starting '${colors.cyan(evt.name)}' ...`);
   });
   crafty.undertaker.on("stop", evt => {
     const time = prettyTime(evt.duration);
     crafty.log.info(
-      `Finished '${chalk.cyan(evt.name)}' after ${chalk.magenta(time)}`
+      `Finished '${colors.cyan(evt.name)}' after ${colors.magenta(time)}`
     );
   });
   crafty.undertaker.on("error", evt => {
     const time = prettyTime(evt.duration);
     const level = evt.branch ? "info" : "error";
     crafty.log[level](
-      `'${chalk.cyan(evt.name)}' ${chalk.red("errored after")} ${chalk.magenta(
-        time
-      )}`
+      `'${colors.cyan(evt.name)}' ${colors.red(
+        "errored after"
+      )} ${colors.magenta(time)}`
     );
     // If we haven't logged this before, log it and add to list
-    if (loggedErrors.indexOf(evt.error) === -1) {
+    if (!wasLogged(evt)) {
       crafty.log.error(formatError(evt));
-      loggedErrors.push(evt.error);
+      recordLogged(evt);
     }
   });
 }
+
+logEvents.wasLogged = wasLogged;
+logEvents.recordLogged = recordLogged;
+
 module.exports = logEvents;
