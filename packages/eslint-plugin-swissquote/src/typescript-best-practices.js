@@ -9,6 +9,7 @@ module.exports = {
     "dot-notation": "off", // Produce false positives and breaks valid code
     "no-undef": "off", // This check is done by the TypeScript compiler
     "no-explicit-any": "off", // We won't force this on our users. Let them be the judge
+    "no-shadow": "off", // This is not as useful as we have types for our variables
 
     // Apply TypeScript specific rules
     camelcase: "off",
