@@ -121,11 +121,11 @@ css/math.scss
  6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
 
 css/style.scss
-  83:5  ⚠  Unexpected browser feature \\"background-img-opts\\" is only partially supported by Safari 5.1                                                                                                                                                                       plugin/no-unsupported-browser-features
- 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 9,10,11, Edge 13,14,15,16,17,18, iOS Safari 8,7.0-7.1,8.1-8.4,9.0-9.2,9.3,10.0-10.2,10.3,11.0-11.2,11.3-11.4,12.0-12.1,12.2, Android Browser 4.4.3-4.4.4, Samsung Internet 4, KaiOS Browser 2.5   plugin/no-unsupported-browser-features
- 158:5  ⚠  Unexpected browser feature \\"css-animation\\" is not supported by IE 9                                                                                                                                                                                              plugin/no-unsupported-browser-features
- 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is not supported by IE 9 and only partially supported by IE 10,11, Firefox 24,25,26,27, Safari 5.1                                                                                                                          plugin/no-unsupported-browser-features
- 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 9,10,11, Edge 13,14,15,16,17, Firefox 24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48, Safari 5.1, KaiOS Browser 2.5                                          plugin/no-unsupported-browser-features
+  83:5  ⚠  Unexpected browser feature \\"background-img-opts\\" is only partially supported by Safari 5.1                                                                                                                  plugin/no-unsupported-browser-features
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 9,10,11, Edge 13,14,15,16,17,18, iOS Safari 8,7.0-7.1,8.1-8.4,9.0-9.2,9.3,10.0-10.2,10.3,11.0-11.2,11.3-11.4,12.0-12.1, Samsung Internet 4   plugin/no-unsupported-browser-features
+ 158:5  ⚠  Unexpected browser feature \\"css-animation\\" is not supported by IE 9                                                                                                                                         plugin/no-unsupported-browser-features
+ 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is not supported by IE 9 and only partially supported by IE 10,11, Firefox 24,25,26,27                                                                                 plugin/no-unsupported-browser-features
+ 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 9,10,11, Edge 13,14,15,16,17, Firefox 24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48                    plugin/no-unsupported-browser-features
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -171,7 +171,7 @@ exports[`Experiment with all CSS 2`] = `
     padding-left: 16px;
 }
 
-.Search:after {
+.Search::after {
         content: \\"\\";
         background: url(\\"/icons/search.png\\");
     }
@@ -319,9 +319,11 @@ exports[`Experiment with all CSS 2`] = `
 
 .Quote {
     /* This will create a fallback without the alpha*/
+    background: #99dd99;
     background: rgba(153, 221, 153, .8);
 
     /* This will be transformed to rgba*/
+    border-color: #99dd99;
     border-color: rgba(153,221,153,0.8);
 
     /* ... sad story, homage to Eric Meyer*/
@@ -336,6 +338,7 @@ exports[`Experiment with all CSS 2`] = `
     color: hsla(180, 100%, 50%, .2);
 
     /* This will transform colors to rgba()*/
+    border-color: #80ff00;
     border-color: rgba(128, 255, 0, .5);
 }
 
@@ -343,6 +346,7 @@ exports[`Experiment with all CSS 2`] = `
 
 .Link {
     /* Change the opacity of red*/
+    color: #ff0000;
     color: rgba(255, 0, 0, 0.9);
 }
 
@@ -353,6 +357,7 @@ exports[`Experiment with all CSS 2`] = `
 
 .Link {
     /* This will be transformed to rgba*/
+    color: #80ff00;
     color: rgba(128, 255, 0, .6);
 }
 
@@ -425,7 +430,6 @@ button:hover,button:focus,.button:hover,.button:focus {
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
@@ -440,7 +444,6 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 :fullscreen .Link {
-    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -456,10 +459,10 @@ button:hover,button:focus,.button:hover,.button:focus {
  */
 
 .Body {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
+    font-family: system-ui;
 }
 
-.Button:before {
+.Button::before {
     content: attr(href);
 }
 
@@ -468,7 +471,6 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 .Buy {
-    background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), to(#7db9e8));
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
