@@ -76,9 +76,7 @@ module.exports = function(config) {
 
   processors.processor("postcss-color-function");
 
-  // Currently disabled as it doesn't support missing browser stats
-  // TODO :: re-enable once it's safe
-  //processors.processor("postcss-font-family-system-ui");
+  processors.processor("postcss-font-family-system-ui");
 
   processors.processor("postcss-font-variant");
 
