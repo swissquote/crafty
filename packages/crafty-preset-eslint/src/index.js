@@ -8,9 +8,7 @@ const debug = require("debug")("crafty:preset-eslint");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
-  presets: [
-    require.resolve("@swissquote/crafty-preset-prettier")
-  ],
+  presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig(config) {
     // For some reason, eslint.CLIEngine doesn't support "extends",
     // it has to be done through a configuration file
@@ -34,7 +32,7 @@ module.exports = {
         plugins: ["@swissquote/swissquote"],
         configFile: esConfig
       }
-    }
+    };
   },
   config(config) {
     // Add eslint react version
@@ -106,7 +104,9 @@ module.exports = ${JSON.stringify(content, null, 4)};
       options: Object.assign({}, crafty.config.eslint, {
         throwOnError: crafty.getEnvironment() === "production",
         exclude: ["node_modules/**"],
-        include: crafty.config.eslintExtensions.map(extension => `**/*.${extension}`)
+        include: crafty.config.eslintExtensions.map(
+          extension => `**/*.${extension}`
+        )
       })
     };
   },
@@ -126,6 +126,10 @@ module.exports = ${JSON.stringify(content, null, 4)};
       .end()
       .use("eslint")
       .loader(require.resolve("eslint-loader"))
-      .options(crafty.config.eslint);
+      .options({
+        ...crafty.config.eslint,
+        // TODO :: remove this once a version of eslint-loader supporting ESLint 6 is out
+        formatter: require("eslint/lib/cli-engine/formatters/stylish")
+      });
   }
-}
+};
