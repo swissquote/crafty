@@ -1,5 +1,3 @@
-/* global test */
-
 function test (one,two) {
    return one + two;
 }

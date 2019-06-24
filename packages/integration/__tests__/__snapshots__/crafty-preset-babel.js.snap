@@ -141,12 +141,12 @@ Object {
 [__:__:__] Starting Crafty __version__...
 
 __PATH__/packages/integration/fixtures/crafty-preset-babel/lints-es5/js/script.js
-  3:1   error  Use the function form of 'use strict'  strict
-  3:14  error  Replace \`·(one,\` with \`(one,·\`         @swissquote/swissquote/prettier/prettier
-  4:1   error  Delete \`·\`                             @swissquote/swissquote/prettier/prettier
-  7:1   error  Use the function form of 'use strict'  strict
-  7:23  error  Replace \`⏎\` with \`·\`                   @swissquote/swissquote/prettier/prettier
-  9:12  error  Expected '===' and instead saw '=='    eqeqeq
+  1:1   error  Use the function form of 'use strict'  strict
+  1:14  error  Replace \`·(one,\` with \`(one,·\`         @swissquote/swissquote/prettier/prettier
+  2:1   error  Delete \`·\`                             @swissquote/swissquote/prettier/prettier
+  5:1   error  Use the function form of 'use strict'  strict
+  5:23  error  Replace \`⏎\` with \`·\`                   @swissquote/swissquote/prettier/prettier
+  7:12  error  Expected '===' and instead saw '=='    eqeqeq
 
 ✖ 6 problems (6 errors, 0 warnings)
   3 errors and 0 warnings potentially fixable with the \`--fix\` option.
