@@ -109,9 +109,7 @@ const deferredHandlers = {
       title("Unused external imports");
       warnings.forEach(warning => {
         stderr(
-          `${warning.names} imported from external module '${
-            warning.source
-          }' but never used`
+          `${warning.names} imported from external module '${warning.source}' but never used`
         );
       });
     }

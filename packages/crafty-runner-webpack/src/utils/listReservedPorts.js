@@ -58,7 +58,5 @@ fs.writeFileSync(
 );
 
 console.log(
-  `Bloom filter written to 'reservedPorts.json' with ${
-    reservedPorts.length
-  } reserved ports.`
+  `Bloom filter written to 'reservedPorts.json' with ${reservedPorts.length} reserved ports.`
 );
