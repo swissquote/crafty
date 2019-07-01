@@ -1,7 +1,5 @@
 const Undertaker = require("undertaker");
 const log = require("fancy-log");
-const fs = require("fs");
-const tmp = require("tmp");
 
 const events = require("./log/events");
 const formatError = require("./log/formatError");
