@@ -94,9 +94,7 @@ module.exports = {
 
     if (config.mavenType !== "webapp" && config.mavenType !== "webjar") {
       throw new Error(
-        `Your config.type '${
-          config.mavenType
-        }' is invalid, must be 'webapp' or 'webjar'`
+        `Your config.type '${config.mavenType}' is invalid, must be 'webapp' or 'webjar'`
       );
     }
 

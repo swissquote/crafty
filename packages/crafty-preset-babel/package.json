@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-babel",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -10,18 +10,18 @@
   "dependencies": {
     "@babel/core": "7.4.5",
     "@babel/runtime": "7.4.5",
-    "@swissquote/babel-preset-swissquote": "1.7.2",
-    "@swissquote/crafty-preset-eslint": "1.7.2",
+    "@swissquote/babel-preset-swissquote": "1.7.3",
+    "@swissquote/crafty-preset-eslint": "1.7.3",
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "5.1.4",
     "babel-preset-jest": "24.6.0",
     "gulp-babel": "8.0.0",
     "gulp-concat": "2.6.1",
-    "gulp-eslint": "5.0.0",
+    "gulp-eslint": "6.0.0",
     "gulp-newer": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-terser": "1.2.0",
-    "rollup-plugin-babel": "4.3.2"
+    "rollup-plugin-babel": "4.3.3"
   },
   "engines": {
     "node": ">=8.0.0"

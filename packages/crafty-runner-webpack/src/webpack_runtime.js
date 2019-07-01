@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 
 const colors = require("ansi-colors");
-
 const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty:runner-webpack");
 
@@ -50,13 +49,10 @@ function copyToDisk(stats, compiler) {
 }
 
 // Print out errors
-function printErrors(summary, errors) {
+function printErrors(summary, error) {
   console.log(summary);
   console.log();
-  errors.forEach(err => {
-    console.log(err.message || err);
-    console.log();
-  });
+  console.log(error);
 }
 
 /**
@@ -152,21 +148,24 @@ module.exports = function jsTaskES6(crafty, bundle) {
       .then(({ compiler, config }) => {
         compiler.run((err, stats) => {
           if (err) {
-            printErrors("Failed to compile.", [err]);
-            return cb("Webpack compilation failed");
+            if (err instanceof Error) {
+              return cb(err);
+            } else {
+              printErrors("Failed to compile.", err);
+              return cb(new crafty.Information("Webpack compilation failed"));
+            }
           }
 
           if (stats.compilation.errors && stats.compilation.errors.length) {
             // Those errors are printed by "onDone"
-            //printErrors('Failed to compile.', stats.compilation.errors);
-            return cb("Webpack compilation failed");
+            return cb(new crafty.Information("Webpack compilation failed"));
           }
 
           return cb();
         });
       })
       .catch(e => {
-        printErrors("Failed to compile.", [e]);
+        printError("Failed to compile.", e);
         cb(e);
       });
   });
