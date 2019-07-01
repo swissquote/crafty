@@ -49,7 +49,7 @@ function copyToDisk(stats, compiler) {
 }
 
 // Print out errors
-function printErrors(summary, error) {
+function printError(summary, error) {
   console.log(summary);
   console.log();
   console.log(error);
@@ -151,7 +151,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
             if (err instanceof Error) {
               return cb(err);
             } else {
-              printErrors("Failed to compile.", err);
+              printError("Failed to compile.", err);
               return cb(new crafty.Information("Webpack compilation failed"));
             }
           }
