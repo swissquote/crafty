@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ["@swissquote/crafty-preset-babel", "@swissquote/crafty-runner-rollup"],
+  presets: ["@swissquote/crafty-preset-babel", "@swissquote/crafty-runner-webpack"],
   js: {
     myBundle: {
       source: "js/script.js"

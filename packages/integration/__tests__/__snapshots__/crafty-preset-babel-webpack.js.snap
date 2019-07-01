@@ -215,11 +215,8 @@ exports[`Does not transpile on modern browsers 2`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[js_myBundle] (!) Errors were found
-js/script.js
-[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Error: Errors were found
-    ...stacktrace...
+  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",
@@ -230,7 +227,15 @@ js/script.js
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+  size  name  module                status
+  1 kB  0     multi ./js/script.js  built
+  1 kB  1     ./js/script.js        built failed ✖
 
+  (2 assets hidden)
+
+  Failed to compile.
+
+./js/script.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js
   15:1  error  Parsing error: Unexpected token
 
@@ -240,6 +245,16 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/scri
      | ^
 
 ✖ 1 problem (1 error, 0 warnings)
+
+./js/script.js
+SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js: Unexpected token (15:0)
+
+  13 |
+  14 | }
+> 15 |
+     | ^
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 ",
 }
