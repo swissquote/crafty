@@ -3,7 +3,9 @@
 exports[`Compiles Generators 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -40,7 +42,9 @@ exports[`Compiles Generators 2`] = `
 exports[`Compiles JavaScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -75,7 +79,9 @@ exports[`Compiles JavaScript 2`] = `
 exports[`Compiles JavaScript with externals 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -111,7 +117,9 @@ exports[`Compiles JavaScript with externals 2`] = `
 exports[`Creates profiles 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -151,7 +159,9 @@ exports[`Creates profiles 2`] = `
 exports[`Deduplicates helpers 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -186,7 +196,9 @@ exports[`Deduplicates helpers 2`] = `
 exports[`Does not transpile on modern browsers 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -225,6 +237,8 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -233,15 +247,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                status
-  1 kB  0     multi ./js/script.js  built
-  1 kB  1     ./js/script.js        built failed ✖
+  size  name     module               status
+  1 kB  961      ./js/script.js       built failed ✖
 
-  (2 assets hidden)
+  size  name     asset                status
+  1 kB  default  myBundle.min.js
+  1 kB  default  myBundle.min.js.map
 
   Failed to compile.
 
-./js/script.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js
   15:1  error  Parsing error: Unexpected token
 
@@ -252,9 +266,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/scri
 
 ✖ 1 problem (1 error, 0 warnings)
 
-./js/script.js
 SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js: Unexpected token (15:0)
-
   13 |
   14 | }
 > 15 |
@@ -273,6 +285,8 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -325,7 +339,9 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 exports[`Removes unused classes 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:

@@ -3,7 +3,9 @@
 exports[`Compiles TypeScript - fork checker 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -38,7 +40,7 @@ Using 1 worker with 2048MB memory limit
 `;
 
 exports[`Compiles TypeScript - fork checker 2`] = `
-"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,f,a=0,l=[];for(;a<r.length;a++)f=r[a],n[f]&&l.push(n[f][0]),n[f]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var f=document.createElement(\\"script\\");var a;f.charset=\\"utf-8\\",f.timeout=120,e.nc&&f.setAttribute(\\"nonce\\",e.nc),f.src=i;var l=new Error;a=function(e){f.onerror=f.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){a({type:\\"timeout\\",target:f})},12e4);f.onerror=f.onload=a,document.head.appendChild(f)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,a,f=0,l=[];for(;f<r.length;f++)a=r[f],n[a]&&l.push(n[a][0]),n[a]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var a=document.createElement(\\"script\\");var f;a.charset=\\"utf-8\\",a.timeout=120,e.nc&&a.setAttribute(\\"nonce\\",e.nc),a.src=i;var l=new Error;f=function(e){a.onerror=a.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.name=\\"ChunkLoadError\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){f({type:\\"timeout\\",target:a})},12e4);a.onerror=a.onload=f,document.head.appendChild(a)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -50,7 +52,9 @@ exports[`Compiles TypeScript - fork checker 3`] = `
 exports[`Compiles TypeScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "(node:23721) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+(node:11111) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -87,7 +91,7 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,f,a=0,l=[];for(;a<r.length;a++)f=r[a],n[f]&&l.push(n[f][0]),n[f]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var f=document.createElement(\\"script\\");var a;f.charset=\\"utf-8\\",f.timeout=120,e.nc&&f.setAttribute(\\"nonce\\",e.nc),f.src=i;var l=new Error;a=function(e){f.onerror=f.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){a({type:\\"timeout\\",target:f})},12e4);f.onerror=f.onload=a,document.head.appendChild(f)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,function(){return function(e,n){\\"use strict\\";var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:false,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=true,o.exports}function o(){return r(315)}return r.m=e,n(r),o()}({131:function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"b\\",function(){return o})},315:function(e,n,t){\\"use strict\\";t.r(n);var r=t(324);var o=t.n(r);var u=t(131);o=t.n(u);function i(e,n){return e+n}t.d(n,\\"default\\",function(){return c});var c=function(){function e(){o()(this,e),console.log(\\"init class\\")}return o()(e,[{key:\\"method\\",value:function(){console.log(i(2,4)),t.e(168).then(t.bind(null,168)).then(function(e){var n=new e.default;console.log(n.add(2,4))})}}]),e}()},324:function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"b\\",function(){return r})}},function(e){\\"use strict\\";!function(){var n=Object.prototype.hasOwnProperty;e.d=function(e,t,r){n.call(e,t)||Object.defineProperty(e,t,{enumerable:true,get:r})}}(),function(){e.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){e.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return e.d(t,\\"a\\",t),t}}(),function(){e.f={},e.e=function(n){return Promise.all(Object.keys(e.f).reduce(function(t,r){return e.f[r](n,t),t},[]))}}(),function(){e.p=\\"\\"}(),function(){e.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){var n={913:0};function t(t){var r=t[0];var o=t[1];var i=t[3];var c,a,f=0,l=[];for(;f<r.length;f++)a=r[f],n[a]&&l.push(n[a][0]),n[a]=0;for(c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e.m[c]=o[c]);i&&i(e),u&&u(t);while(l.length)l.shift()()}e.f.j=function(t,r){var o=n[t];if(0!==o)if(o)r.push(o[2]);else{var u=new Promise(function(e,r){o=n[t]=[e,r]});r.push(o[2]=u);var i=e.p+e.u(t);var c=function(){if(n[t])return n[t][1];0!==n[t]&&(n[t]=void 0)};var a=document.createElement(\\"script\\");var f;a.charset=\\"utf-8\\",a.timeout=120,e.nc&&a.setAttribute(\\"nonce\\",e.nc),a.src=i;var l=new Error;f=function(e){a.onerror=a.onload=null,clearTimeout(s);var n=c();if(n){var r=e&&(\\"load\\"===e.type?\\"missing\\":e.type);var o=e&&e.target&&e.target.src;l.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+r+\\": \\"+o+\\")\\",l.name=\\"ChunkLoadError\\",l.type=r,l.request=o,n(l)}};var s=setTimeout(function(){f({type:\\"timeout\\",target:a})},12e4);a.onerror=a.onload=f,document.head.appendChild(a)}};var r=window.webpackJsonp=window.webpackJsonp||[];var o=r.push.bind(r);r.push=t;var u=o}()})});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -112,7 +116,9 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:7822) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+(node:11111) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -154,6 +160,8 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -211,7 +219,9 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:7823) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+(node:11111) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -271,7 +281,9 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:7814) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+(node:11111) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
@@ -336,7 +348,9 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 exports[`Removes unused classes 1`] = `
 Object {
   "status": 0,
-  "stderr": "(node:7826) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+(node:11111) DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...

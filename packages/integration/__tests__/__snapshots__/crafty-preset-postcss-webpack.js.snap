@@ -3,7 +3,9 @@
 exports[`Compiles CSS within webpack 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
+  "stderr": "(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
+",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
@@ -186,6 +188,8 @@ Object {
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (using Array property 'length' is deprecated)
+(node:11111) DeprecationWarning: Chunk.files was changed from Array to Set (indexing Array is deprecated)
 ",
   "stdout": "
 [__:__:__] Starting Crafty __version__...
