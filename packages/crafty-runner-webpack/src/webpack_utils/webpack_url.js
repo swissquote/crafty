@@ -4,4 +4,4 @@
 // but this variable corresponds to the url of the current package.
 // This file is here to "patch" this url to be able to request hot reloaded modules from
 // the middleware directly
-__webpack_require__.p = `${__resourceQuery.substr(1)}/`;
+__webpack_require__.p = __resourceQuery.substr(1).concat("/");

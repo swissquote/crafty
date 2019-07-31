@@ -6,6 +6,12 @@ const createTask = require("./gulp");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
+// Use another watch mode for TypeScript
+// https://blog.johnnyreilly.com/2019/05/typescript-and-high-cpu-usage-watch.html
+// https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/236
+// https://github.com/Realytics/fork-ts-checker-webpack-plugin/pull/256
+process.env.TSC_WATCHFILE = "UseFsEventsWithFallbackDynamicPolling";
+
 function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }

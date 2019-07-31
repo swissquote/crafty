@@ -34,11 +34,10 @@ script:
   - unset _JAVA_OPTIONS
   - alias java='java "$_SILENT_JAVA_OPTIONS"'
   - yarn test
-  - sonar-scanner || true # Don't fail because of Sonarqube
 
 matrix:
   fast_finish: true
-  # Support on those versions and platforms is experimental, 
+  # Support on those versions and platforms is experimental
   allow_failures:
     - os: windows
     - node_js: "10"
@@ -53,6 +52,13 @@ matrix:
     # Test once on macOS
     - node_js: "10"
       os: osx
+    # Run SonarQube check
+    - stage: SonarQube
+      node_js: "10"
+      if: repo = swissquote/crafty AND type != pull_request
+      script:
+        - git fetch --unshallow --quiet
+        - sonar-scanner
     # Deploy the documentation, once all builds are finished
     - stage: "Deploy Documentation"
       node_js: "10"
