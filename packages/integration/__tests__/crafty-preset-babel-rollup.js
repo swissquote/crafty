@@ -21,7 +21,7 @@ it("Compiles JavaScript with rollup", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 

@@ -70,12 +70,8 @@ it("Compiles JavaScript", () => {
   expect(fs.existsSync("dist/js/otherfile.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/otherfile.js.map")).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/script.js").toString("utf8")
-  ).toMatchSnapshot();
-  expect(
-    fs.readFileSync("dist/js/otherfile.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("dist/js/otherfile.js")).toMatchSnapshot();
 });
 
 it("Fails gracefully on broken markup", () => {
@@ -111,9 +107,7 @@ it("Compiles JavaScript with custom babel plugin", () => {
   expect(fs.existsSync("dist/js/script.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/script.js.map")).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/script.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("dist/js/script.js")).toMatchSnapshot();
 });
 
 it("Compiles JavaScript and concatenates", () => {
@@ -136,7 +130,7 @@ it("Compiles JavaScript and concatenates", () => {
   expect(fs.existsSync("dist/js/otherfile.js.map")).toBeFalsy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 

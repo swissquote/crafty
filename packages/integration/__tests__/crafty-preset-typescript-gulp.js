@@ -62,12 +62,8 @@ it("Compiles TypeScript", () => {
   expect(fs.existsSync("dist/js/Component.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/Component.js.map")).toBeTruthy();
 
-  expect(
-    fs.readFileSync("dist/js/script.js").toString("utf8")
-  ).toMatchSnapshot();
-  expect(
-    fs.readFileSync("dist/js/Component.js").toString("utf8")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("dist/js/Component.js")).toMatchSnapshot();
 });
 
 it("Compiles TypeScript and concatenates", () => {
@@ -93,7 +89,7 @@ it("Compiles TypeScript and concatenates", () => {
   expect(fs.existsSync("dist/js/otherfile.js.map")).toBeFalsy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 

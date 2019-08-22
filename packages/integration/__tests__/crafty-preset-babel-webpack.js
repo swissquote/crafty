@@ -23,7 +23,7 @@ it("Compiles JavaScript", () => {
   expect(fs.existsSync(BUNDLE)).toBeTruthy();
   expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Compiles Generators", () => {
@@ -42,7 +42,7 @@ it("Compiles Generators", () => {
   expect(fs.existsSync(BUNDLE)).toBeTruthy();
   expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Deduplicates helpers", () => {
@@ -61,7 +61,7 @@ it("Deduplicates helpers", () => {
   expect(fs.existsSync(BUNDLE)).toBeTruthy();
   expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Does not transpile on modern browsers", () => {
@@ -80,7 +80,7 @@ it("Does not transpile on modern browsers", () => {
   expect(fs.existsSync(BUNDLE)).toBeTruthy();
   expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Compiles JavaScript with externals", () => {
@@ -96,7 +96,7 @@ it("Compiles JavaScript with externals", () => {
   expect(fs.existsSync(BUNDLE)).toBeTruthy();
   expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Creates profiles", () => {
@@ -114,7 +114,7 @@ it("Creates profiles", () => {
   expect(fs.existsSync("dist/js/myBundle_report.html")).toBeTruthy();
   expect(fs.existsSync("dist/js/myBundle_stats.json")).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(BUNDLE)).toMatchSnapshot();
 });
 
 it("Lints JavaScript with webpack", () => {

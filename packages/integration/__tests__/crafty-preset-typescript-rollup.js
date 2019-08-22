@@ -26,7 +26,7 @@ it("Works with rollup", () => {
   expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeTruthy();
   expect(
-    fs.readFileSync("dist/js/myTSBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myTSBundle.min.js")
   ).toMatchSnapshot();
 });
 
@@ -46,7 +46,7 @@ it("Deletes rollup uglify plugin using crafty.config.js", () => {
   expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeTruthy();
   expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeTruthy();
   expect(
-    fs.readFileSync("dist/js/myTSBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myTSBundle.min.js")
   ).toMatchSnapshot();
 });
 

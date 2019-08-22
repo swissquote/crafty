@@ -1,6 +1,5 @@
 /* global describe, it, expect */
 
-const fs = require("fs");
 const path = require("path");
 
 const rimraf = require("rimraf");
@@ -35,15 +34,9 @@ it("Creates IDE Integration files", () => {
   const result = testUtils.run(["ide"]);
 
   expect(result).toMatchSnapshot();
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync("jest.config.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("jest.config.js")).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(".gitignore")).toMatchSnapshot();
 });
 
 it("Creates IDE Integration files with Babel", () => {
@@ -56,11 +49,7 @@ it("Creates IDE Integration files with Babel", () => {
   const result = testUtils.run(["ide"]);
 
   expect(result).toMatchSnapshot();
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync("jest.config.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("jest.config.js")).toMatchSnapshot();
 });
 
 testIfNotPnp("Succeeds with typescript", () => {

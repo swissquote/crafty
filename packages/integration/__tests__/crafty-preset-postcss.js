@@ -79,19 +79,9 @@ it("Creates IDE Integration files", () => {
   const result = testUtils.run(["ide"]);
 
   expect(result).toMatchSnapshot();
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync("stylelint.config.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("stylelint.config.js")).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync("prettier.config.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("prettier.config.js")).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(".gitignore")).toMatchSnapshot();
 });

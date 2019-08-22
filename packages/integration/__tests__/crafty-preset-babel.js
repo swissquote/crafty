@@ -185,21 +185,11 @@ it("Generates IDE Helper", () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync(".eslintrc.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(".eslintrc.js")).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(
-      fs.readFileSync("prettier.config.js").toString("utf8")
-    )
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot("prettier.config.js")).toMatchSnapshot();
 
-  expect(
-    testUtils.snapshotizeOutput(fs.readFileSync(".gitignore").toString("utf8"))
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(".gitignore")).toMatchSnapshot();
 });
 
 it("Lints JavaScript using command, ignore crafty.config.js", () => {

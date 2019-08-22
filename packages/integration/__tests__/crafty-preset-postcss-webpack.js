@@ -21,7 +21,7 @@ it("Compiles CSS within webpack", () => {
   expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 
@@ -58,7 +58,7 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", ()
   expect(fs.existsSync("dist/js/myBundle-default.min.css.map")).toBeTruthy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
   expect(
     fs.readFileSync("dist/js/myBundle-default.min.css").toString("utf8")
@@ -84,7 +84,7 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", () 
   expect(fs.existsSync("dist/js/myBundle-string.min.css.map")).toBeTruthy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
   expect(
     fs.readFileSync("dist/js/myBundle-string.min.css").toString("utf8")
@@ -110,7 +110,7 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", () 
   expect(fs.existsSync("dist/js/myBundle-object.min.css.map")).toBeTruthy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot("dist/js/myBundle.min.js")
   ).toMatchSnapshot();
   expect(
     fs.readFileSync("dist/js/myBundle-object.min.css").toString("utf8")

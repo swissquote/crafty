@@ -1,4 +1,7 @@
-const { CLIEngine, getCLIEngineInternalSlots } = require("eslint/lib/cli-engine/cli-engine.js");
+const {
+  CLIEngine,
+  getCLIEngineInternalSlots
+} = require("eslint/lib/cli-engine/cli-engine.js");
 const merge = require("merge");
 
 const definedRules = require("./rules");
@@ -21,10 +24,7 @@ module.exports = {
     const engine = new CLIEngine(configuration);
     const linter = getCLIEngineInternalSlots(engine).linter;
     Object.keys(definedRules).forEach(rule => {
-      linter.defineRule(
-        `@swissquote/swissquote/${rule}`,
-        definedRules[rule]
-      );
+      linter.defineRule(`@swissquote/swissquote/${rule}`, definedRules[rule]);
     });
 
     return engine;
