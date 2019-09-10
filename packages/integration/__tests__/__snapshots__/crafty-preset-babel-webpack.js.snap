@@ -236,7 +236,6 @@ Object {
   Failed to compile.
 
 ./js/script.js
-
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js
   15:1  error  Parsing error: Unexpected token
 
@@ -285,7 +284,6 @@ Object {
   Failed to compile.
 
 ./js/Component.js
-
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
    4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
    6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
@@ -296,7 +294,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Comp
   4 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ./js/script.js
-
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
    3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
    5:10  error    'test' is defined but never used                 no-unused-vars
