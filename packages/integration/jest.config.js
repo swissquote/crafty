@@ -1,5 +1,4 @@
 module.exports = {
-  runner: "jest-serial-runner",
   testPathIgnorePatterns: ["/node_modules/", "/fixtures/"],
   collectCoverageFrom: [
     "**/*.{js,jsx}",

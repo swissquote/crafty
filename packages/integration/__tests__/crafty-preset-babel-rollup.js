@@ -1,55 +1,59 @@
 /* global describe, it, expect */
 
-const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
-
+const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
-it("Compiles JavaScript with rollup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-rollup/compiles")
-  );
-  rimraf.sync("dist");
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
-  const result = testUtils.run(["run", "default"]);
+it("Compiles JavaScript with rollup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-rollup/compiles"
+  );
+  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
 
   expect(
-    testUtils.readForSnapshot("dist/js/myBundle.min.js")
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 
-it("Fails gracefully on broken markup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-rollup/fails")
+it("Fails gracefully on broken markup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-rollup/fails"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Lints JavaScript with rollup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-rollup/lints")
+it("Lints JavaScript with rollup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-rollup/lints"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });

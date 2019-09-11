@@ -3,8 +3,7 @@
 exports[`Compiles CSS 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/compiles/dist/css
@@ -23,8 +22,7 @@ Object {
 exports[`Compiles CSS, configuration has overrides 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/compiles-with-overrides/dist/css
@@ -43,8 +41,7 @@ Object {
 exports[`Doesn't compile without a task, but lints (doesn't throw in development) 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/no-bundle-dev/dist/css
@@ -72,11 +69,7 @@ css/style.scss
 exports[`Doesn't compile without a task, but lints 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'css__lint' errored after ____ ms
-[__:__:__] Stylelint: Errors were found
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/no-bundle/dist/css
@@ -95,6 +88,9 @@ css/style.scss
  28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
  31:6   ✖  Insert \\"⏎\\"                                                            prettier/prettier
 
+[__:__:__] 'css__lint' errored after ____ ms
+[__:__:__] Stylelint: Errors were found
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -102,8 +98,7 @@ css/style.scss
 exports[`Experiment with all CSS 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/experiment/dist/css
@@ -488,7 +483,14 @@ button:hover,button:focus,.button:hover,.button:focus {
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'css_myBundle' errored after ____ ms
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] 'css_myBundle' errored after ____ ms
 [__:__:__] CssSyntaxError in plugin \\"gulp-postcss\\"
 Message:
     __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/css/style.scss:3:5: Unknown word
@@ -502,14 +504,6 @@ Message:
 
 [__:__:__] 'css' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
-[__:__:__] Starting Crafty __version__...
-[__:__:__] Files will be stored in:
-            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/dist/css
-[__:__:__] Starting 'default' ...
-[__:__:__] Starting 'css' ...
-[__:__:__] Starting 'css_myBundle' ...
 ",
 }
 `;

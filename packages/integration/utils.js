@@ -1,4 +1,4 @@
-const childProcess = require("child_process");
+const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
 
@@ -72,41 +72,48 @@ function snapshotizeCSS(ret) {
   return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
 }
 
-function run(args, commandOptions) {
+async function run(args, cwd, commandOptions) {
   const options = Object.assign(
     {
-      shell: true
+      cwd,
+      reject: false,
     },
     commandOptions || {}
   );
 
   options.env = Object.assign(
     { TESTING_CRAFTY: "true" },
-    process.env,
     options.env || {}
   );
 
-  const ret = childProcess.spawnSync(
-    `'${require.resolve("@swissquote/crafty/src/bin")}'`,
+  const ret = await execa.node(
+    require.resolve("@swissquote/crafty/src/bin"),
     args,
     options
   );
 
   return {
-    stdout: ret.stdout
-      ? `\n${snapshotizeOutput(ret.stdout.toString("utf8"))}`
-      : "",
-    stderr: ret.stderr ? snapshotizeOutput(ret.stderr.toString("utf8")) : "",
-    status: ret.status
+    status: ret.exitCode,
+    stdall: ret.all ? `\n${snapshotizeOutput(ret.all.toString("utf8"))}\n` : ""
   };
 }
 
-function readForSnapshot(file) {
-  return snapshotizeOutput(fs.readFileSync(file).toString("utf8"));
+function readFile(cwd, file) {
+  return fs.readFileSync(path.join(cwd, file)).toString("utf8");
+}
+
+function exists(cwd, file) {
+  return fs.existsSync(path.join(cwd, file));
+}
+
+function readForSnapshot(cwd, file) {
+  return snapshotizeOutput(readFile(cwd, file));
 }
 
 module.exports = {
   run,
+  readFile,
+  exists,
   readForSnapshot,
   snapshotizeCSS,
   snapshotizeOutput

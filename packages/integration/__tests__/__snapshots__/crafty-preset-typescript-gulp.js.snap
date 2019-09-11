@@ -3,8 +3,7 @@
 exports[`Compiles TypeScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/compiles/dist/js
@@ -54,8 +53,7 @@ exports[`Compiles TypeScript 3`] = `
 exports[`Compiles TypeScript and concatenates 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/concatenates/dist/js
@@ -116,14 +114,7 @@ export default NewStuff;
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 1 error
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-Error: TypeScript: Compilation failed
-    ...stacktrace...
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/fails/dist/js
@@ -136,9 +127,15 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/fails/js/So
 
 ✖ 1 problem (1 error, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 1 error
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 js/SomeLibrary.ts(10,1): error TS1005: '}' expected.
 TypeScript: 1 syntax error
 TypeScript: emit succeeded (with errors)
+Error: TypeScript: Compilation failed
+    ...stacktrace...
 ",
 }
 `;
@@ -146,12 +143,7 @@ TypeScript: emit succeeded (with errors)
 exports[`Lints TypeScript 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 10 errors
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/dist/js
@@ -181,6 +173,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/sc
 ✖ 13 problems (10 errors, 3 warnings)
   9 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 10 errors
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;

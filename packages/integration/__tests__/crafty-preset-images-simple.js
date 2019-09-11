@@ -2,11 +2,13 @@
 
 const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
+const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
-
 const testUtils = require("../utils");
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 const getCrafty = configuration.getCrafty;
 
@@ -66,23 +68,23 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
   ]);
 });
 
-it("Copies and compresses images", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-images-simple")
-  );
-  rimraf.sync("dist");
+it("Copies and compresses images", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-images-simple");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "images"]);
+  const result = await testUtils.run(["run", "images"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/images/batman.svg")).toBeTruthy();
-  expect(fs.existsSync("dist/images/somedir/cute-cats-2.jpg")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/images/batman.svg")).toBeTruthy();
+  expect(
+    testUtils.exists(cwd, "dist/images/somedir/cute-cats-2.jpg")
+  ).toBeTruthy();
 
-  expect(fs.statSync("dist/images/batman.svg").size).toEqual(
-    fs.statSync("images/batman.svg").size
+  expect(fs.statSync(path.join(cwd, "dist/images/batman.svg")).size).toEqual(
+    fs.statSync(path.join(cwd, "images/batman.svg")).size
   );
-  expect(fs.statSync("dist/images/somedir/cute-cats-2.jpg").size).toEqual(
-    fs.statSync("images/somedir/cute-cats-2.jpg").size
-  );
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
+  ).toEqual(fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size);
 });

@@ -1,13 +1,14 @@
 /* global describe, it, expect, jest */
 
-const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
+const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
-
 const testUtils = require("../utils");
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 const getCrafty = configuration.getCrafty;
 
@@ -162,104 +163,107 @@ it("Assigns bundle only once when runner is specified", () => {
   ]);
 });
 
-it("Lints JavaScript using command", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/lints"));
-  rimraf.sync("dist");
+it("Lints JavaScript using command", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["jsLint", "js/**/*.js"]);
+  const result = await testUtils.run(["jsLint", "js/**/*.js"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Generates IDE Helper", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/ide"));
-  rimraf.sync(".eslintrc.js");
-  rimraf.sync("prettier.config.js");
-  rimraf.sync(".gitignore");
+it("Generates IDE Helper", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/ide");
+  await rmfr(path.join(cwd, ".eslintrc.js"));
+  await rmfr(path.join(cwd, "prettier.config.js"));
+  await rmfr(path.join(cwd, ".gitignore"));
 
-  const result = testUtils.run(["ide"]);
+  const result = await testUtils.run(["ide"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot(".eslintrc.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, ".eslintrc.js")).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot("prettier.config.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "prettier.config.js")
+  ).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot(".gitignore")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, ".gitignore")).toMatchSnapshot();
 });
 
-it("Lints JavaScript using command, ignore crafty.config.js", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel/lints-ignore-config")
+it("Lints JavaScript using command, ignore crafty.config.js", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel/lints-ignore-config"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run([
-    "--preset",
-    PRESET_BABEL,
-    "--ignore-crafty-config",
-    "jsLint",
-    "crafty.config.js"
-  ]);
-
-  expect(result).toMatchSnapshot();
-
-  // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
-});
-
-it("Lints JavaScript using command, legacy", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel/lints-es5")
+  const result = await testUtils.run(
+    [
+      "--preset",
+      PRESET_BABEL,
+      "--ignore-crafty-config",
+      "jsLint",
+      "crafty.config.js"
+    ],
+    cwd
   );
-  rimraf.sync("dist");
-
-  const result = testUtils.run(["jsLint", "js/**/*.js", "--preset", "legacy"]);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Lints JavaScript using command, recommended preset", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/lints"));
-  rimraf.sync("dist");
+it("Lints JavaScript using command, legacy", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints-es5");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run([
-    "jsLint",
-    "js/**/*.js",
-    "--preset",
-    "recommended"
-  ]);
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--preset", "legacy"],
+    cwd
+  );
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Lints JavaScript using command, explicit configuration", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-babel/lints"));
-  rimraf.sync("dist");
+it("Lints JavaScript using command, recommended preset", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run([
-    "jsLint",
-    "js/**/*.js",
-    "--config",
-    "eslintOverride.json"
-  ]);
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--preset", "recommended"],
+    cwd
+  );
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
+
+it("Lints JavaScript using command, explicit configuration", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
+  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],
+    cwd
+  );
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });

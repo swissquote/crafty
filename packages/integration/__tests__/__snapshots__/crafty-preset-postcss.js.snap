@@ -3,8 +3,7 @@
 exports[`Creates IDE Integration files 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 Written prettier.config.js
 Written stylelint.config.js
@@ -76,8 +75,7 @@ exports[`Creates IDE Integration files 4`] = `
 exports[`Lints with the command 1`] = `
 Object {
   "status": 2,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 
 css/imported.scss
@@ -99,8 +97,7 @@ css/style.scss
 exports[`Lints with the command in legacy mode 1`] = `
 Object {
   "status": 2,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 
 css/style.scss
@@ -114,8 +111,7 @@ css/style.scss
 exports[`Lints with the command with custom config 1`] = `
 Object {
   "status": 2,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 
 css/style.scss

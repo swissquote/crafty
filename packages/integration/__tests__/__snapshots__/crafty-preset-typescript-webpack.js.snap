@@ -3,8 +3,7 @@
 exports[`Compiles TypeScript - fork checker 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/compiles-forked/dist/js
@@ -49,8 +48,7 @@ exports[`Compiles TypeScript - fork checker 3`] = `
 exports[`Compiles TypeScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/compiles/dist/js
@@ -105,12 +103,7 @@ exports[`Compiles TypeScript 4`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myTSBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/dist/js
@@ -137,6 +130,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -144,12 +141,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js
 exports[`Fails gracefully on invalid TS - fork checker 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myTSBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-forked/dist/js
@@ -192,6 +184,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 
   Δt ____ms ✖ 1 problem (1 error, 0 warnings)
 
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -199,12 +195,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 exports[`Fails gracefully on invalid TS 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myTSBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/dist/js
@@ -249,6 +240,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -256,12 +251,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 exports[`Lints TypeScript with webpack 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/dist/js
@@ -310,6 +300,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 
   Δt ____ms ✖ 3 problems (3 errors, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -317,8 +311,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 exports[`Removes unused classes 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/tree-shaking/dist/js

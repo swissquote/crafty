@@ -3,8 +3,7 @@
 exports[`Compiles Generators 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles-generators/dist/js
@@ -39,8 +38,7 @@ exports[`Compiles Generators 2`] = `
 exports[`Compiles JavaScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles/dist/js
@@ -73,8 +71,7 @@ exports[`Compiles JavaScript 2`] = `
 exports[`Compiles JavaScript with externals 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/externals/dist/js
@@ -108,8 +105,7 @@ exports[`Compiles JavaScript with externals 2`] = `
 exports[`Creates profiles 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/profiles/dist/js
@@ -147,8 +143,7 @@ exports[`Creates profiles 2`] = `
 exports[`Deduplicates helpers 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles-deduplicates/dist/js
@@ -181,8 +176,7 @@ exports[`Deduplicates helpers 2`] = `
 exports[`Does not transpile on modern browsers 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/no-old-browser/dist/js
@@ -215,12 +209,7 @@ exports[`Does not transpile on modern browsers 2`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/dist/js
@@ -256,6 +245,10 @@ SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -263,12 +256,7 @@ SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/
 exports[`Lints JavaScript with webpack 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/dist/js
@@ -311,6 +299,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -318,8 +310,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/scri
 exports[`Removes unused classes 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/tree-shaking/dist/js

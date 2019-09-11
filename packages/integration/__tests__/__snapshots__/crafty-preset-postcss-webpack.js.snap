@@ -3,8 +3,7 @@
 exports[`Compiles CSS within webpack 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/compiles/dist/css
@@ -42,8 +41,7 @@ exports[`Compiles CSS within webpack 2`] = `
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-boolean/dist/css
@@ -88,8 +86,7 @@ exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-object/dist/css
@@ -134,8 +131,7 @@ exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/extract-string/dist/css
@@ -180,12 +176,7 @@ exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Webpack compilation failed
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/fails/dist/css
@@ -215,6 +206,10 @@ Syntax error: Unknown word (10:13)
 
   Δt ____ms ✖ 1 problem (1 error, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
