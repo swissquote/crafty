@@ -23,6 +23,10 @@ function snapshotizeOutput(ret) {
         ""
       ) // Remove unhandled rejections
       .replace(
+        /(.*)DeprecationWarning: Using a domain property in MakeCallback is deprecated. Use the async_context variant of MakeCallback or the AsyncResource class instead.(.*)\n/g,
+        ""
+      ) // This error is triggered starting with Node 10, it seems it's internal to the node engine and somewhat related to webpack tests ...
+      .replace(
         /result \[webpack\/bootstrap (.*?)\]/g,
         "result [webpack/bootstrap UNIQUE_ID]"
       ) // Remove hash from webpack results
@@ -64,6 +68,7 @@ function snapshotizeOutput(ret) {
       .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0
       .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
       .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
+      .replace(/\.\/([A-Za-z\/\.]*)\n\n__PATH__/gm, `./$1\n__PATH__`) // Sometimes lint output has more line breaks for no known reason ...
       .replace(/\n\n\n+/g, "\n\n")
   ); // Replace multi line breaks by single one
 }
