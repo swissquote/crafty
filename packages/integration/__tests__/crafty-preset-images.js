@@ -61,8 +61,8 @@ it("Copies and compresses images", async () => {
 
   expect(
     fs.statSync(path.join(cwd, "dist/images/batman.svg")).size
-  ).toBeLessThan(fs.statSync("images/batman.svg").size);
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/batman.svg")).size);
   expect(
     fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
-  ).toBeLessThan(fs.statSync("images/somedir/cute-cats-2.jpg").size);
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size);
 });
