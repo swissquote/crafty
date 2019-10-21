@@ -60,7 +60,7 @@ The patterns in your `.stylelintignore` file must match the [`.gitignore` syntax
 
 For example:
 
-```ignore
+```
 vendor/**.css
 ```
 

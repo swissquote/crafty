@@ -62,7 +62,7 @@ The patterns in your `.eslintignore` file must match the [`.gitignore` syntax](h
 
 For example:
 
-```ignore
+```
 vendor/**.css
 ```
 
