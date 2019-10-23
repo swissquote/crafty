@@ -101,23 +101,10 @@ module.exports = function(crafty, bundle, webpackPort) {
     .chunkFilename(`[name].${bundle.destination}`)
     .libraryTarget(bundle.libraryTarget || "umd") // The destination type
     .library(bundle.library || "") // The library name
-    .jsonpFunction(generateJsonpName(isWatching, bundle)); // TODO :: change that
+    .jsonpFunction(generateJsonpName(isWatching, bundle))
+    .set("ecmaVersion", 5);
 
   chain.externals(prepareExternals(bundle.externals));
-
-  // Enable support for Yarn PNP
-  const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
-  chain.resolve
-    .plugin("pnp-webpack-plugin")
-    // Cloning the plugin exports as this would otherwise
-    // fail with `Cannot redefine property: __pluginArgs`
-    .init(Plugin => ({ ...Plugin }))
-    .use(PnpWebpackPlugin);
-
-  chain.resolveLoader
-    .plugin("pnp-webpack-plugin")
-    .init(Plugin => Plugin.moduleLoader(module))
-    .use(PnpWebpackPlugin);
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
