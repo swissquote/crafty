@@ -19,7 +19,7 @@ in `package.json` add:
 
 add this to your `.gitignore`
 
-```ignore
+```
 node_modules/**
 ```
 

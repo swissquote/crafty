@@ -3,8 +3,7 @@
 exports[`Compiles JavaScript 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles/dist/js
@@ -25,7 +24,7 @@ exports[`Compiles JavaScript 2`] = `
 `;
 
 exports[`Compiles JavaScript 3`] = `
-"setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);
+"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
 //# sourceMappingURL=otherfile.js.map
 "
 `;
@@ -33,8 +32,7 @@ exports[`Compiles JavaScript 3`] = `
 exports[`Compiles JavaScript and concatenates 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/concatenates/dist/js
@@ -49,7 +47,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript and concatenates 2`] = `
-"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||false,a.configurable=true,\\"value\\"in a&&(a.writable=true),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout(function(){console.log(\\"Welcome to this website\\")},1e3);var Test=function(){function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||false,a.configurable=true,\\"value\\"in a&&(a.writable=true),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);var Test=function(){function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
@@ -57,8 +55,7 @@ exports[`Compiles JavaScript and concatenates 2`] = `
 exports[`Compiles JavaScript with custom babel plugin 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-babel-plugin/dist/js
@@ -85,12 +82,7 @@ console.log(foo.catch);
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 1 error
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/dist/js
@@ -110,6 +102,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.
 
 ✖ 1 problem (1 error, 0 warnings)
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 1 error
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -117,12 +113,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.
 exports[`Lints JavaScript 1`] = `
 Object {
   "status": 1,
-  "stderr": "[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 4 errors
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/dist/js
@@ -139,6 +130,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/js/scr
 ✖ 4 problems (4 errors, 0 warnings)
   3 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 4 errors
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;
@@ -146,8 +141,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/js/scr
 exports[`Lints JavaScript, doesn't fail in development 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5-dev/dist/js

@@ -1,14 +1,15 @@
 /* global describe, it, expect */
 
-const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
+const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
-
 const testUtils = require("../utils");
 
 const getCrafty = configuration.getCrafty;
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 it("Loads crafty-preset-typescript and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
@@ -43,86 +44,85 @@ it("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task",
   ]);
 });
 
-it("Compiles TypeScript", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-gulp/compiles")
+it("Compiles TypeScript", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-gulp/compiles"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 
-  expect(fs.existsSync("dist/js/script.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/script.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  expect(fs.existsSync("dist/js/Component.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/Component.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Component.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Component.js.map")).toBeTruthy();
 
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
   expect(
-    fs.readFileSync("dist/js/script.js").toString("utf8")
-  ).toMatchSnapshot();
-  expect(
-    fs.readFileSync("dist/js/Component.js").toString("utf8")
+    testUtils.readForSnapshot(cwd, "dist/js/Component.js")
   ).toMatchSnapshot();
 });
 
-it("Compiles TypeScript and concatenates", () => {
-  process.chdir(
-    path.join(
-      __dirname,
-      "../fixtures/crafty-preset-typescript-gulp/concatenates"
-    )
+it("Compiles TypeScript and concatenates", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-gulp/concatenates"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
 
-  expect(fs.existsSync("dist/js/script.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/script.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeFalsy();
 
-  expect(fs.existsSync("dist/js/otherfile.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/otherfile.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
   expect(
-    fs.readFileSync("dist/js/myBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
   ).toMatchSnapshot();
 });
 
-it("Fails gracefully on broken markup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-gulp/fails")
+it("Fails gracefully on broken markup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-gulp/fails"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Lints TypeScript", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-gulp/lints")
+it("Lints TypeScript", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-gulp/lints"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });

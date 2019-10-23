@@ -77,7 +77,7 @@ module.exports = {
 
 The path of the final file will be :
 
-```ignore
+```
                                                        ↓ "js" or "css" is added depending on bundle type
 <maven_root>/target/classes/META-INF/resources/webjars/js/library.min.js
              ↑ Default path for webjars                   ↑ Inferred from the bundle name

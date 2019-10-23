@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-jest",
-  "version": "1.7.3",
+  "version": "1.8.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -8,10 +8,10 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/plugin-transform-modules-commonjs": "7.5.0",
+    "@babel/core": "7.6.4",
+    "@babel/plugin-transform-modules-commonjs": "7.6.0",
     "cherow": "1.6.9",
-    "jest-cli": "24.8.0"
+    "jest-cli": "24.9.0"
   },
   "engines": {
     "node": ">=8.0.0"

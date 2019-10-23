@@ -3,10 +3,9 @@
 exports[`Fails if no pom is found 1`] = `
 Object {
   "status": 0,
-  "stderr": "Could not define destination using maven, falling back to default No pom.xml found
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
+Could not define destination using maven, falling back to default No pom.xml found
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-maven/missing-pom/dist/js
 [__:__:__] Starting 'default' ...
@@ -22,8 +21,7 @@ Object {
 exports[`Places files in target of a webapp 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-maven/webapp/target/my-app-1.0.0-SNAPSHOT/resources/js
@@ -40,8 +38,7 @@ Object {
 exports[`Places files in target of a webapp from within a subfolder 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-maven/subfolder/target/my-app-1.0.0-SNAPSHOT/resources/js
@@ -58,8 +55,7 @@ Object {
 exports[`Places files in target of a webjar 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-maven/webjar/target/classes/META-INF/resources/webjars/js
@@ -76,8 +72,7 @@ Object {
 exports[`Reads env. var before pom.xml 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-maven/env-override/target/some_basedir/resources/js

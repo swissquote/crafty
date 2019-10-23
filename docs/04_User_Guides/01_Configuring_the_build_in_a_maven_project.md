@@ -78,7 +78,7 @@ in `src/main/frontend/package.json` add:
 
 add this to your `.gitignore`
 
-```ignore
+```
 # Frontend plugins
 src/main/frontend/node/**
 src/main/frontend/node_modules/**

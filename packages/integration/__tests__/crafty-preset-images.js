@@ -2,11 +2,13 @@
 
 const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
+const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
-
 const testUtils = require("../utils");
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 const getCrafty = configuration.getCrafty;
 
@@ -43,22 +45,24 @@ it("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", () 
   ]);
 });
 
-it("Copies and compresses images", () => {
-  process.chdir(path.join(__dirname, "../fixtures/crafty-preset-images"));
-  rimraf.sync("dist");
+it("Copies and compresses images", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-images");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "images"]);
+  const result = await testUtils.run(["run", "images"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/images/batman.svg")).toBeTruthy();
-  expect(fs.existsSync("dist/images/somedir/cute-cats-2.jpg")).toBeTruthy();
-  expect(fs.existsSync("dist/images/notcopied.txt")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/images/batman.svg")).toBeTruthy();
+  expect(
+    testUtils.exists(cwd, "dist/images/somedir/cute-cats-2.jpg")
+  ).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/images/notcopied.txt")).toBeFalsy();
 
-  expect(fs.statSync("dist/images/batman.svg").size).toBeLessThan(
-    fs.statSync("images/batman.svg").size
-  );
-  expect(fs.statSync("dist/images/somedir/cute-cats-2.jpg").size).toBeLessThan(
-    fs.statSync("images/somedir/cute-cats-2.jpg").size
-  );
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/batman.svg")).size
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/batman.svg")).size);
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size);
 });

@@ -1,11 +1,12 @@
 /* global describe, it, expect, jest */
 
-const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
-
+const rmfr = require("rmfr");
 const testUtils = require("../utils");
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 // node-forge 0.6.33 doesn't work with jest.
 // but selfsigned is fixed on this version
@@ -13,69 +14,70 @@ const testUtils = require("../utils");
 // https://github.com/jfromaniello/selfsigned/issues/16
 jest.mock("node-forge");
 
-it("Works with rollup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-rollup/compiles")
+it("Works with rollup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-rollup/compiles"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
   expect(
-    fs.readFileSync("dist/js/myTSBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
   ).toMatchSnapshot();
 });
 
-it("Deletes rollup uglify plugin using crafty.config.js", () => {
-  process.chdir(
-    path.join(
-      __dirname,
-      "../fixtures/crafty-preset-typescript-rollup/compiles-no-uglify"
-    )
+it("Deletes rollup uglify plugin using crafty.config.js", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-rollup/compiles-no-uglify"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync("dist/js/myTSBundle.min.js")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myTSBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
   expect(
-    fs.readFileSync("dist/js/myTSBundle.min.js").toString("utf8")
+    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
   ).toMatchSnapshot();
 });
 
-it("Fails gracefully on broken markup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-rollup/fails")
+it("Fails gracefully on broken markup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-rollup/fails"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-it("Lints TypeScript with rollup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-typescript-rollup/lints")
+it("Lints TypeScript with rollup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-typescript-rollup/lints"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync("dist/js/myBundle.min.js")).toBeFalsy();
-  expect(fs.existsSync("dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });

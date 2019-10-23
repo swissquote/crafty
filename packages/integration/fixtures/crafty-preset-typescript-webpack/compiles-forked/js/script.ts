@@ -10,11 +10,13 @@ export default class NewStuff {
     // eslint-disable-next-line no-console
     console.log(test(2, 4));
 
-    import("./SomeLibrary").then(SomeLibrary => {
-      const som = new SomeLibrary.default();
+    import(/* webpackChunkName: "someLibrary" */ "./SomeLibrary").then(
+      SomeLibrary => {
+        const som = new SomeLibrary.default();
 
-      // eslint-disable-next-line no-console
-      console.log(som.add(2, 4));
-    });
+        // eslint-disable-next-line no-console
+        console.log(som.add(2, 4));
+      }
+    );
   }
 }

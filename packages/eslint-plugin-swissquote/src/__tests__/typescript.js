@@ -34,7 +34,8 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
 
   return ["js"];
 };
-`
+`,
+    "file.ts"
   );
 
   expect(result.messages).toMatchSnapshot();
@@ -129,7 +130,8 @@ export default class SplitButton extends React.Component<
     });
   }
 }
-`
+`,
+    "Component.tsx"
   );
 
   expect(result.warningCount).toBe(0);

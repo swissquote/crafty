@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const debug = require("debug")("crafty:runner-webpack");
 const path = require("path");
 const fs = require("fs");
@@ -20,6 +21,37 @@ function prepareExternals(externals) {
 
     return globToRegex(external);
   });
+}
+
+/**
+ * The jsonp function is used to load async chunks
+ * We generate a name that is as unique as possible
+ * Because if multiple webpack bundles are loaded at the same time
+ * they might conflict
+ * 
+ * @param {Boolean} isWatching 
+ * @param {Bundle} bundle 
+ */
+function generateJsonpName(isWatching, bundle) {
+  // For testing we need to pre-hardcode it
+  // If we don't, the minification will have weird effects
+  if (process.env.TESTING_CRAFTY) {
+    return "webpackJsonp_UNIQID";
+  }
+
+  let name;
+  if (isWatching) {
+    // Use a name that is reproducible in watch mode
+    // This mode just needs a hash that is different enough
+    name = `${process.cwd()}-${bundle.taskName}`;
+  } else {
+    // In production mode, we want this id to be as unique as possible
+    name = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+
+  const hashed = crypto.createHash('sha1').update(name).digest("hex").substring(0,8);
+
+  return `webpackJsonp_${hashed}`;
 }
 
 module.exports = function(crafty, bundle, webpackPort) {
@@ -66,8 +98,10 @@ module.exports = function(crafty, bundle, webpackPort) {
   chain.output
     .path(absolutePath(destination)) // The build folder.
     .filename(bundle.destination) // Generated JS file names (with nested folders).
+    .chunkFilename(`[name].${bundle.destination}`)
     .libraryTarget(bundle.libraryTarget || "umd") // The destination type
-    .library(bundle.library || ""); // The library name
+    .library(bundle.library || "") // The library name
+    .jsonpFunction(generateJsonpName(isWatching, bundle)); // TODO :: change that
 
   chain.externals(prepareExternals(bundle.externals));
 

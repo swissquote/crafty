@@ -3,8 +3,7 @@
 exports[`Compiles JavaScript with rollup 1`] = `
 Object {
   "status": 0,
-  "stderr": "",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles/dist/js
@@ -27,15 +26,7 @@ exports[`Compiles JavaScript with rollup 2`] = `
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
-  "stderr": "[js_myBundle] (!) Errors were found
-js/script.js
-[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] Error: Errors were found
-    ...stacktrace...
-[__:__:__] 'js' errored after ____ ms
-[__:__:__] 'default' errored after ____ ms
-",
-  "stdout": "
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/fails/dist/js
@@ -53,14 +44,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/fails/js/scrip
 
 ✖ 1 problem (1 error, 0 warnings)
 
-",
-}
-`;
-
-exports[`Lints JavaScript with rollup 1`] = `
-Object {
-  "status": 1,
-  "stderr": "[js_myBundle] (!) Errors were found
+[js_myBundle] (!) Errors were found
 js/script.js
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
@@ -68,7 +52,13 @@ js/script.js
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",
-  "stdout": "
+}
+`;
+
+exports[`Lints JavaScript with rollup 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
             js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/dist/js
@@ -91,6 +81,13 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/scrip
 ✖ 10 problems (8 errors, 2 warnings)
   6 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
+[js_myBundle] (!) Errors were found
+js/script.js
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Error: Errors were found
+    ...stacktrace...
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
 ",
 }
 `;

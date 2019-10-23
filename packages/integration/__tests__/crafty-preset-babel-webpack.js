@@ -1,166 +1,167 @@
 /* global describe, it, expect */
 
-const fs = require("fs");
 const path = require("path");
-
-const rimraf = require("rimraf");
-
+const rmfr = require("rmfr");
 const testUtils = require("../utils");
+
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
 
 const BUNDLE = "dist/js/myBundle.min.js";
 const BUNDLE_MAP = `${BUNDLE}.map`;
 
-it("Compiles JavaScript", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/compiles")
+it("Compiles JavaScript", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/compiles"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Compiles Generators", () => {
-  process.chdir(
-    path.join(
-      __dirname,
-      "../fixtures/crafty-preset-babel-webpack/compiles-generators"
-    )
+it("Compiles Generators", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/compiles-generators"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Deduplicates helpers", () => {
-  process.chdir(
-    path.join(
-      __dirname,
-      "../fixtures/crafty-preset-babel-webpack/compiles-deduplicates"
-    )
+it("Deduplicates helpers", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/compiles-deduplicates"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Does not transpile on modern browsers", () => {
-  process.chdir(
-    path.join(
-      __dirname,
-      "../fixtures/crafty-preset-babel-webpack/no-old-browser"
-    )
+it("Does not transpile on modern browsers", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/no-old-browser"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Compiles JavaScript with externals", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/externals")
+it("Compiles JavaScript with externals", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/externals"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Creates profiles", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/profiles")
+it("Creates profiles", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/profiles"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default", "--profile"]);
+  const result = await testUtils.run(["run", "default", "--profile"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle_report.html")).toBeTruthy();
-  expect(fs.existsSync("dist/js/myBundle_stats.json")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle_report.html")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle_stats.json")).toBeTruthy();
 
-  expect(fs.readFileSync(BUNDLE).toString("utf8")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-it("Lints JavaScript with webpack", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/lints")
+it("Lints JavaScript with webpack", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/lints"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync(BUNDLE)).toBeFalsy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });
 
-it("Fails gracefully on broken markup", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/fails")
+it("Fails gracefully on broken markup", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/fails"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(fs.existsSync(BUNDLE)).toBeFalsy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });
 
-it("Removes unused classes", () => {
-  process.chdir(
-    path.join(__dirname, "../fixtures/crafty-preset-babel-webpack/tree-shaking")
+it("Removes unused classes", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/tree-shaking"
   );
-  rimraf.sync("dist");
+  await rmfr(path.join(cwd, "dist"));
 
-  const result = testUtils.run(["run", "default"]);
+  const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result).toMatchSnapshot();
 
-  expect(fs.existsSync(BUNDLE)).toBeTruthy();
-  expect(fs.existsSync(BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  const content = fs.readFileSync(BUNDLE).toString("utf8");
+  const content = testUtils.readFile(cwd, BUNDLE);
 
   expect(content.indexOf("From class A") > -1).toBeTruthy();
   expect(content.indexOf("From class B") > -1).toBeFalsy();

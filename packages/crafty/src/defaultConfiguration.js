@@ -3,15 +3,15 @@ const browserslist = require("browserslist");
 
 const defaultBrowsers = [
   "> 0.25%",
-  "Firefox ESR",
-  "Edge >= 13",
-  "Safari >= 7.1",
-  "iOS >= 7.1",
-  "Chrome >= 32",
-  "Firefox >= 24",
-  "Opera >= 24",
-  "IE >= 9",
-  "not op_mini all"
+  "Edge >= 15",
+  "Safari >= 10",
+  "iOS >= 10",
+  "Chrome >= 56",
+  "Firefox >= 51",
+  "IE >= 11",
+  "not op_mini all",
+  "not Safari 5.1",
+  "not kaios 2.5"
 ].join(", ");
 
 function getDefaultBrowsers() {
