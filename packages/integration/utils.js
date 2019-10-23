@@ -82,6 +82,7 @@ async function run(args, cwd, commandOptions) {
     {
       cwd,
       reject: false,
+      all: true
     },
     commandOptions || {}
   );

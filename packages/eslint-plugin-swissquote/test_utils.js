@@ -29,10 +29,10 @@ module.exports = {
 
     return engine;
   },
-  lint(cli, text) {
+  lint(cli, text, filename = "foo.js") {
     // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeonfiles
     // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeontext
-    const linter = cli.executeOnText(text.replace(/^\n/, ""));
+    const linter = cli.executeOnText(text.replace(/^\n/, ""), filename);
     return linter.results[0];
   }
 };
