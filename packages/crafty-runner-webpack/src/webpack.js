@@ -158,7 +158,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
       // Support Https flag from webpack dev server
       // to be able to serve resources over HTTPS
-      const httpProtocol = chain.devServer.https ? "https" : "http";
+      const httpProtocol = !!bundle.https ? "https" : "http";
       chain
         .entry("default")
         .prepend(
@@ -181,7 +181,8 @@ module.exports = function(crafty, bundle, webpackPort) {
       .contentBase(config.destination)
       .headers({
         "Access-Control-Allow-Origin": "*"
-      });
+      })
+      .https(!!bundle.https);
   }
 
   // If --profile is passed, we create a
