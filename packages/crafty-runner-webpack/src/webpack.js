@@ -156,15 +156,18 @@ module.exports = function(crafty, bundle, webpackPort) {
         .plugin("hot")
         .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
 
+      // Support Https flag from webpack dev server
+      // to be able to serve resources over HTTPS
+      const httpProtocol = chain.devServer.https ? "https" : "http";
       chain
         .entry("default")
         .prepend(
           require.resolve("./webpack_utils/webpack_url.js") +
-            `?http://localhost:${webpackPort}`
+          `?${httpProtocol}://localhost:${webpackPort}`
         ) // Patch webpack lookup URL
         .prepend(
           require.resolve("webpack-dev-server/client") +
-            `?http://localhost:${webpackPort}`
+          `?${httpProtocol}://localhost:${webpackPort}`
         ) // WebpackDevServer host and port
         .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
     }
