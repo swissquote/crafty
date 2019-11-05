@@ -43,9 +43,12 @@ module.exports = {
     const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
 
     // Code Splitting needs this to work correctly
-    chain
-      .output
-      .publicPath('dist/js/');
+    if (crafty.getEnvironment() === "production") {
+      chain.output.publicPath('dist/js/');
+    }
+
+    // Enable serving with https
+    //chain.devServer.https(true);
 
     // Only keep some locales in moment
     chain
