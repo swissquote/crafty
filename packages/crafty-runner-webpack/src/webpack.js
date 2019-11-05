@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 const debug = require("debug")("crafty:runner-webpack");
 const path = require("path");
 const fs = require("fs");
@@ -28,9 +28,9 @@ function prepareExternals(externals) {
  * We generate a name that is as unique as possible
  * Because if multiple webpack bundles are loaded at the same time
  * they might conflict
- * 
- * @param {Boolean} isWatching 
- * @param {Bundle} bundle 
+ *
+ * @param {Boolean} isWatching
+ * @param {Bundle} bundle
  */
 function generateJsonpName(isWatching, bundle) {
   // For testing we need to pre-hardcode it
@@ -46,10 +46,20 @@ function generateJsonpName(isWatching, bundle) {
     name = `${process.cwd()}-${bundle.taskName}`;
   } else {
     // In production mode, we want this id to be as unique as possible
-    name = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    name =
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15);
   }
 
-  const hashed = crypto.createHash('sha1').update(name).digest("hex").substring(0,8);
+  const hashed = crypto
+    .createHash("sha1")
+    .update(name)
+    .digest("hex")
+    .substring(0, 8);
 
   return `webpackJsonp_${hashed}`;
 }
@@ -156,18 +166,10 @@ module.exports = function(crafty, bundle, webpackPort) {
         .plugin("hot")
         .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
 
-      // Support Https flag from webpack dev server
-      // to be able to serve resources over HTTPS
-      const httpProtocol = !!bundle.https ? "https" : "http";
       chain
         .entry("default")
         .prepend(
-          require.resolve("./webpack_utils/webpack_url.js") +
-          `?${httpProtocol}://localhost:${webpackPort}`
-        ) // Patch webpack lookup URL
-        .prepend(
-          require.resolve("webpack-dev-server/client") +
-          `?${httpProtocol}://localhost:${webpackPort}`
+          require.resolve("webpack-dev-server/client") + `?__DEV_SERVER_URL__`
         ) // WebpackDevServer host and port
         .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
     }
@@ -181,8 +183,7 @@ module.exports = function(crafty, bundle, webpackPort) {
       .contentBase(config.destination)
       .headers({
         "Access-Control-Allow-Origin": "*"
-      })
-      .https(!!bundle.https);
+      });
   }
 
   // If --profile is passed, we create a
@@ -215,6 +216,32 @@ module.exports = function(crafty, bundle, webpackPort) {
     preset.webpack(crafty, bundle, chain);
     debug("added webpack");
   });
+
+  // If we're in watch mode, there are some settings we have to
+  // cleanly apply at the end of the configuration process
+  if (crafty.getEnvironment() !== "production" && isWatching && bundle.hot) {
+    const httpProtocol = !!chain.devServer.get("https") ? "https" : "http";
+    const urlPrefix = `${httpProtocol}://localhost:${webpackPort}`;
+
+    // Set the final URL for the Dev Server
+    const defaultEntries = chain.entry("default");
+
+    const entries = defaultEntries
+      .values()
+      .map(value => value.replace("__DEV_SERVER_URL__", urlPrefix));
+
+    defaultEntries.clear();
+
+    entries.forEach(entry => {
+      defaultEntries.add(entry);
+    });
+
+    // Setting the public path to find the compiled assets
+    const contentBase = chain.devServer.get("contentBase");
+    const outputPath = chain.output.get("path");
+    const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
+    chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
+  }
 
   return chain.toConfig();
 };
