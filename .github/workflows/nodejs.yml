@@ -36,7 +36,7 @@ jobs:
         CI: true
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.1
-      if: github.repository == "swissquote/crafty" && github.event_name != 'pull_request'
+      if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
