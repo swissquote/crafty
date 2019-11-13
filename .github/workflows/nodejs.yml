@@ -53,14 +53,15 @@ jobs:
         
   documentation:
     runs-on: ubuntu-latest
-    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
+    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request' && github.ref == 'master'
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Generate documentation
       run: vendor/bin/daux generate --themes=docs_theme
-    - uses: maxheld83/ghpages@v0.2.1
+    - uses: JamesIves/github-pages-deploy-action@releases/v2.0.3
       env:
-        BUILD_DIR: "static"
+        FOLDER: "static"
+        BRANCH: gh-pages
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
