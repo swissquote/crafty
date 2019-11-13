@@ -53,9 +53,17 @@ jobs:
         
   documentation:
     runs-on: ubuntu-latest
-    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request' && github.ref == 'master'
+    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request' && github.ref == 'heads/master'
     steps:
     - uses: actions/checkout@v1
+    - name: Cache vendor
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-docs-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-docs-${{ env.cache-name }}-
+          ${{ runner.OS }}-docs-
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Generate documentation
