@@ -43,8 +43,6 @@ jobs:
     if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
     steps:
     - uses: actions/checkout@v1
-    - name: Install Java
-      uses: olafurpg/setup-scala@v5
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.1
       env:
