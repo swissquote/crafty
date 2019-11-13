@@ -20,11 +20,11 @@ jobs:
       uses: actions/cache@v1
       with:
         path: node_modules
-        key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.OS }}-build-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-${{ matrix.node-version }}-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-${{ matrix.node-version }}-
           ${{ runner.OS }}-build-
-          ${{ runner.OS }}-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
