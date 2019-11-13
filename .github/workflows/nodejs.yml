@@ -34,9 +34,28 @@ jobs:
       run: yarn test
       env:
         CI: true
+        
+  sonarcloud:
+    runs-on: ubuntu-latest
+    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
+    steps:
+    - name: Install Java
+      uses: olafurpg/setup-scala@v5
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.1
-      if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
+  documentation:
+    runs-on: ubuntu-latest
+    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
+    steps:
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Generate documentation
+      run: vendor/bin/daux generate --themes=docs_theme
+    - uses: maxheld83/ghpages@v0.2.1
+      env:
+        BUILD_DIR: "static"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
