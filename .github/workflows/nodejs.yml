@@ -4,12 +4,15 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
+        os: [ubuntu-latest]
         node-version: [8.x, 10.x, 12.x]
+        include:
+        - os: macos-latest
+          node: 12.x
+
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v1
