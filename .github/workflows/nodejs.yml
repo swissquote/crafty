@@ -68,7 +68,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Generate documentation
       run: vendor/bin/daux generate --themes=docs_theme
-    - uses: JamesIves/github-pages-deploy-action@releases/v2.0.3
+    - uses: JamesIves/github-pages-deploy-action@2.0.3
       env:
         FOLDER: "static"
         BRANCH: gh-pages
