@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
     steps:
+    - uses: actions/checkout@v1
     - name: Install Java
       uses: olafurpg/setup-scala@v5
     - name: SonarCloud Scan
@@ -51,6 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
     steps:
+    - uses: actions/checkout@v1
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Generate documentation
