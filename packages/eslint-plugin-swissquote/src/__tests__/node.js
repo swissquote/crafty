@@ -40,6 +40,8 @@ const something = [];
 
 something.push("a value");
 
+console.log(something);
+
 `
   );
 
