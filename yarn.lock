@@ -4077,10 +4077,10 @@ enhanced-resolve@4.1.1, enhanced-resolve@^4.0.0:
     memory-fs "^0.5.0"
     tapable "^1.0.0"
 
-enhanced-resolve@5.0.0-beta.3:
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.0.0-beta.3.tgz#1f5b24d223db90a2e86235c365e337fcbf28a68b"
-  integrity sha512-SMjrP/h0qau9mj6L+dY0I350vTnHUDNm3hjV2QRzqhfaa6UYAkDoLfuRWPqAErKDejveFPyGLiQx1A8a5uR5hQ==
+enhanced-resolve@5.0.0-beta.4:
+  version "5.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.0.0-beta.4.tgz#a14a799c098c2c43ec2cd0b718b14a2eadec7301"
+  integrity sha512-5/C1ZLbPbiFKM9WnF2LKvwresdLoKb0Py6r9XAt9gojZ6wnJb1ay2OzLY+T0DX5KSrimvTufAGISysArUlRpdQ==
   dependencies:
     graceful-fs "^4.2.0"
     tapable "^2.0.0-beta.8"
@@ -12763,10 +12763,10 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.x"
 
-watchpack@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.0.0-beta.7.tgz#7233e896f679f6ad2c74034124d1962849c03a45"
-  integrity sha512-XFXX+sKAabAZxIPKczVWlSKU5ckfbA7APnULjygoCAU4E/cHFSKQyC3WMN56ePulj0ZvrkLoXsDvTNGHjAHDCw==
+watchpack@2.0.0-beta.9:
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.0.0-beta.9.tgz#c9a2d25af677203c5a0727803d72239d8f60499d"
+  integrity sha512-tk6i7Mh7zt4Z6c7Pa7PBMRPM04es+1KB2JITgR0O/SZLKnCbT05u/B53WJp+FcPZLes3HQZ1d27fYy6FRFYb5Q==
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
@@ -12888,10 +12888,10 @@ webpack-merge@4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-sources@2.0.0-beta.4:
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.0.0-beta.4.tgz#b92f912e16e5c49ebd3c268edf83b13972a3c8ef"
-  integrity sha512-Xa2Ul5hAlMICQsKN1hjoSTSxJ0UmET4gZXR1e/Sfpos0XNSc2K3fhJHz79CxLyYh0KFEaj6NeoMra9Pp66hRBQ==
+webpack-sources@2.0.0-beta.7:
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.0.0-beta.7.tgz#525b4caaef7371fd7f8bf7e5fffe692880038926"
+  integrity sha512-jbUJbBcU/PHABhHDtUfXCSU6wD6dYOBMH4oIQnXxyapigyuOSHdkmqENayzV+3OEK8tm45qRQD/ggtyAMxqjAQ==
   dependencies:
     source-list-map "^2.0.1"
     source-map "~0.6.1"
@@ -12917,10 +12917,10 @@ webpack-stylish@0.1.8:
     text-table "^0.2.0"
     wordwrap "^1.0.0"
 
-webpack@5.0.0-beta.1:
-  version "5.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.1.tgz#267bb4dd7f0f152b4bb97916eb5e144aba2c3398"
-  integrity sha512-/hDs3MOfeNAgnfF79TxZLGUnOFDUZBhObZ4RSoQexR5fhzgIighC71r6/KR2BSI7yoVwTVA4g2a91raDCywhjA==
+webpack@5.0.0-beta.5:
+  version "5.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.5.tgz#672e1c72db71a02f7f8bd03e9cf6be9631faa7a7"
+  integrity sha512-h4J1+jhpuRp0+WH33z6ctDBnbwcRv7cL74hZj1k/72SeC/fK9zUALW5VXqoc6rBMH0TzLDo1SmQiBE339is/cA==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
@@ -12928,7 +12928,7 @@ webpack@5.0.0-beta.1:
     "@webassemblyjs/wasm-parser" "1.8.5"
     acorn "^7.0.0"
     chrome-trace-event "^1.0.2"
-    enhanced-resolve "5.0.0-beta.3"
+    enhanced-resolve "5.0.0-beta.4"
     eslint-scope "^5.0.0"
     events "^3.0.0"
     glob-to-regexp "^0.4.1"
@@ -12941,8 +12941,8 @@ webpack@5.0.0-beta.1:
     schema-utils "^2.5.0"
     tapable "2.0.0-beta.8"
     terser-webpack-plugin "^2.2.1"
-    watchpack "2.0.0-beta.7"
-    webpack-sources "2.0.0-beta.4"
+    watchpack "2.0.0-beta.9"
+    webpack-sources "2.0.0-beta.7"
 
 websocket-driver@>=0.5.1:
   version "0.7.3"
