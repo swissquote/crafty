@@ -18,10 +18,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Cache node modules
+    - name: Get Yarn Cache Directory
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache Yarn Cache
       uses: actions/cache@v1
       with:
-        path: node_modules
+        path: ${{ steps.yarn-cache.outputs.dir }}
         key: ${{ runner.OS }}-build-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.OS }}-build-${{ matrix.node-version }}-${{ env.cache-name }}-
@@ -56,14 +59,15 @@ jobs:
     if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
     steps:
     - uses: actions/checkout@v1
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
     - name: Cache vendor
       uses: actions/cache@v1
       with:
-        path: node_modules
-        key: ${{ runner.OS }}-docs-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.OS }}-docs-${{ env.cache-name }}-
-          ${{ runner.OS }}-docs-
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
     - name: Generate documentation
