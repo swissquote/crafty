@@ -4,35 +4,43 @@ const parse = require("webpack-stylish/lib/parse");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
+function getModules(stats) {
+    const result = [];
+    const reLoader = /(.+node_modules\/)((.+-loader).+!)/i;
+    const reNodeModules = /(.*)node_modules/;
+
+    for (const module of stats.modules) {
+      let modulePath = (module.name || module.identifier).toString();
+
+      if (reLoader.test(modulePath)) {
+        modulePath = modulePath.replace(reLoader, '$3!');
+      } else if (reNodeModules.test(modulePath)) {
+        modulePath = modulePath.replace(reNodeModules, '(node_modules)');
+      }
+
+      const row = [
+        module.size,
+        (module.id || "").toString(),
+        modulePath,
+        parse.status(module)
+      ];
+
+      result.push(row);
+    }
+
+    return result;
+}
+
 /**
  * Sort the files order.
  * The main reason is that test snapshots need the order to stay the same.
  * For some reason this isn't the case sometimes.
  *
- * @param {*} files
+ * @param {*} stats
  */
-function sortFiles(files) {
-  const modules = [];
-  const assets = [];
-
-  let isAssets = false;
-
-  for (var i in files) {
-    const row = files[i];
-    if (row[0] == "size" && row[2] == "asset") {
-      isAssets = true;
-    }
-
-    if (row[0] == "size" || row[0] == "") {
-      continue;
-    }
-
-    if (isAssets) {
-      assets.push(row);
-    } else {
-      modules.push(row);
-    }
-  }
+function getFiles(stats) {
+  const modules = getModules(stats);
+  const assets = parse.assets(stats);
 
   const final = [];
 
@@ -84,7 +92,7 @@ module.exports = function(stats, compiler) {
   const json = stats.toJson(opts, true);
 
   // List compiled files
-  console.log(style.files(sortFiles(parse.files(json)), compiler.options));
+  console.log(style.files(getFiles(json), compiler.options));
   console.log("\n  " + style.hidden(parse.hidden(json)));
 
   // Disabled and replaced by our system
