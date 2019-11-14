@@ -56,7 +56,7 @@ jobs:
         
   documentation:
     runs-on: ubuntu-latest
-    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
+    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v1
     - name: Get Composer Cache Directory
