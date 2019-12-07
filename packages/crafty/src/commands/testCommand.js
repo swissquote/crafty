@@ -19,13 +19,13 @@ exports.command = function test(crafty, input, cli) {
 
     let done = 0;
     let failed = false;
-    function finishWhenDone() {
+    function finishWhenDone(taskResult) {
       done += 1;
       if (done === tasks.length) {
         if (failed) {
           reject();
         } else {
-          resolve();
+          resolve(taskResult);
         }
       }
     }
