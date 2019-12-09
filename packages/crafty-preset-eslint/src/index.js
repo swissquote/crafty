@@ -126,10 +126,6 @@ module.exports = ${JSON.stringify(content, null, 4)};
       .end()
       .use("eslint")
       .loader(require.resolve("eslint-loader"))
-      .options({
-        ...crafty.config.eslint,
-        // TODO :: remove this once a version of eslint-loader supporting ESLint 6 is out
-        formatter: require("eslint/lib/cli-engine/formatters/stylish")
-      });
+      .options(Object.assign({}, crafty.config.eslint));
   }
 };
