@@ -7710,10 +7710,10 @@ loader-fs-cache@^1.0.2:
     find-cache-dir "^0.1.1"
     mkdirp "0.5.1"
 
-loader-runner@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-3.0.0.tgz#c86f303af2dacbd27eabd2ea3aaa957291562e23"
-  integrity sha512-BlinBEAJYOUubaKH9hMxshD1FltYLTd3FA4DoxEh/82C0Rc4cmcqI61bEUj0/osbmW9FCTXTpMAO/jHZDZC5Fw==
+loader-runner@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-3.1.0.tgz#e9440e5875f2ad2f968489cd2c7b59a4f2847fcb"
+  integrity sha512-wE/bOCdTKMR2rm7Xxh+eirDOmN7Vx7hntWgiTayuFPtF8MgsFDo49SP8kkYz8IVlEBTOtR7P+XI7bE1xjo/IkA==
 
 loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
   version "1.2.3"
@@ -11181,7 +11181,7 @@ serialize-javascript@^1.7.0:
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.9.1.tgz#cfc200aef77b600c47da9bb8149c943e798c2fdb"
   integrity sha512-0Vb/54WJ6k5v8sSWN09S0ora+Hnr+cX40r9F170nT+mSkaxltoE/7R3OrIdBSUv1OoiobH1QoWQbCnAO+e8J1A==
 
-serialize-javascript@^2.1.1:
+serialize-javascript@^2.1.0, serialize-javascript@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-2.1.2.tgz#ecec53b0e0317bdc95ef76ab7074b7384785fa61"
   integrity sha512-rs9OggEUF0V4jUSecXazOYsLfu7OGK2qIn3c7IPBiffz32XniEp/TX9Xmc9LQfK2nQ2QKHvZ2oygKUGU0lG4jQ==
@@ -12137,7 +12137,7 @@ terser-webpack-plugin@^2.2.1:
     terser "^4.3.9"
     webpack-sources "^1.4.3"
 
-terser@^4.0.0, terser@^4.1.0, terser@^4.4.2:
+terser@^4.0.0, terser@^4.1.0, terser@^4.3.9, terser@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/terser/-/terser-4.4.2.tgz#448fffad0245f4c8a277ce89788b458bfd7706e8"
   integrity sha512-Uufrsvhj9O1ikwgITGsZ5EZS6qPokUOkCegS7fYOdGTv+OA90vndUbU6PEjr5ePqHfNUbGyMO7xyIZv2MhsALQ==
@@ -12946,10 +12946,10 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.x"
 
-watchpack@2.0.0-beta.9:
-  version "2.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.0.0-beta.9.tgz#c9a2d25af677203c5a0727803d72239d8f60499d"
-  integrity sha512-tk6i7Mh7zt4Z6c7Pa7PBMRPM04es+1KB2JITgR0O/SZLKnCbT05u/B53WJp+FcPZLes3HQZ1d27fYy6FRFYb5Q==
+watchpack@2.0.0-beta.10:
+  version "2.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.0.0-beta.10.tgz#6e4a5b16bda08a5a3ce9851f166a45a8860066bb"
+  integrity sha512-JR/S6jbW/hC+xAHG+AxZjkIH/yCxC/yQfCJT8FnZDrZf//tCd6O3wtcEuCkgFmWVERC2IdnlYvmzwa1RJJKg0A==
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
@@ -13071,10 +13071,10 @@ webpack-merge@4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-sources@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.0.0-beta.7.tgz#525b4caaef7371fd7f8bf7e5fffe692880038926"
-  integrity sha512-jbUJbBcU/PHABhHDtUfXCSU6wD6dYOBMH4oIQnXxyapigyuOSHdkmqENayzV+3OEK8tm45qRQD/ggtyAMxqjAQ==
+webpack-sources@2.0.0-beta.8:
+  version "2.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.0.0-beta.8.tgz#0fc292239f6767cf4e9b47becfaa340ce6d7ea4f"
+  integrity sha512-RUaCJu7HYNeuzlY4WYcArcnOzMIj7kHndQ4pBdgP3iiMpG3Ke0BWY5wvb/VEFgsIXp3ZzPGRECwX+4fgpcKFYw==
   dependencies:
     source-list-map "^2.0.1"
     source-map "~0.6.1"
@@ -13100,10 +13100,10 @@ webpack-stylish@0.1.8:
     text-table "^0.2.0"
     wordwrap "^1.0.0"
 
-webpack@5.0.0-beta.5:
-  version "5.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.5.tgz#672e1c72db71a02f7f8bd03e9cf6be9631faa7a7"
-  integrity sha512-h4J1+jhpuRp0+WH33z6ctDBnbwcRv7cL74hZj1k/72SeC/fK9zUALW5VXqoc6rBMH0TzLDo1SmQiBE339is/cA==
+webpack@5.0.0-beta.9:
+  version "5.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.0.0-beta.9.tgz#86136eb537c24c55519af02ab04a129b36fbb28e"
+  integrity sha512-9tkuXAGTHmF4th/Em8HsUnilshJdVNtHzBMJDOs78qMCai2nXr/mWaeFHOut7Mycy3KERsHRvF4UD6CdSa7DsQ==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
@@ -13117,15 +13117,16 @@ webpack@5.0.0-beta.5:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.15"
     json-parse-better-errors "^1.0.2"
-    loader-runner "3.0.0"
+    loader-runner "^3.1.0"
     loader-utils "^1.2.3"
+    mime "^2.4.4"
     neo-async "^2.6.1"
     pkg-dir "^4.2.0"
     schema-utils "^2.5.0"
     tapable "2.0.0-beta.8"
     terser-webpack-plugin "^2.2.1"
-    watchpack "2.0.0-beta.9"
-    webpack-sources "2.0.0-beta.7"
+    watchpack "2.0.0-beta.10"
+    webpack-sources "2.0.0-beta.8"
 
 websocket-driver@>=0.5.1:
   version "0.7.3"

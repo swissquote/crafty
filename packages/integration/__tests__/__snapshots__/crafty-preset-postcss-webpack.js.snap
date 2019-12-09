@@ -22,7 +22,7 @@ Object {
   1 kB  default  myBundle.min.js                                                       emitted
   1 kB  map      myBundle.min.js.map                                                   emitted
 
-  (2 modules hidden)
+  (3 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -35,7 +35,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(622);n.d(t,{default:function(){return o}});var o=function e(){r(this,e)}},594:function(e,t,n){t=e.exports=n(70)(false),t.push([e.i,\\"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}\\",\\"\\"])},70:function(e){\\"use strict\\";function t(e,t){var r=e[1]||\\"\\";var o=e[3];if(!o)return r;if(t&&\\"function\\"===typeof btoa){var a=n(o);var i=o.sources.map((function(e){return\\"/*# sourceURL=\\".concat(o.sourceRoot).concat(e,\\" */\\")}));return[r].concat(i).concat([a]).join(\\"\\\\n\\")}return[r].join(\\"\\\\n\\")}function n(e){var t=btoa(unescape(encodeURIComponent(JSON.stringify(e))));var n=\\"sourceMappingURL=data:application/json;charset=utf-8;base64,\\".concat(t);return\\"/*# \\".concat(n,\\" */\\")}e.exports=function(e){var n=[];return n.toString=function(){return this.map((function(n){var r=t(n,e);if(n[2])return\\"@media \\".concat(n[2],\\"{\\").concat(r,\\"}\\");return r})).join(\\"\\")},n.i=function(e,t){\\"string\\"===typeof e&&(e=[[null,e,\\"\\"]]);var r={};for(var o=0;o<this.length;o++){var a=this[o][0];null!=a&&(r[a]=true)}for(var i=0;i<e.length;i++){var u=e[i];null!=u[0]&&r[u[0]]||(t&&!u[2]?u[2]=t:t&&(u[2]=\\"(\\".concat(u[2],\\") and (\\").concat(t,\\")\\")),n.push(u))}},n}},622:function(e,t,n){var r=n(594);\\"string\\"===typeof r&&(r=[[e.i,r,\\"\\"]]);var o={};o.insert=\\"head\\",o.singleton=false;n(191)(r,o);r.locals&&(e.exports=r.locals)},191:function(e,t,n){\\"use strict\\";var r={};var o=function(){var e;return function(){return\\"undefined\\"===typeof e&&(e=Boolean(window&&document&&document.all&&!window.atob)),e}}();var a=function(){var e={};return function(t){if(\\"undefined\\"===typeof e[t]){var n=document.querySelector(t);if(window.HTMLIFrameElement&&n instanceof window.HTMLIFrameElement)try{n=n.contentDocument.head}catch(e){n=null}e[t]=n}return e[t]}}();function i(e,t){var n=[];var r={};for(var o=0;o<e.length;o++){var a=e[o];var i=t.base?a[0]+t.base:a[0];var u=a[1];var s=a[2];var c=a[3];var f={css:u,media:s,sourceMap:c};r[i]?r[i].parts.push(f):n.push(r[i]={id:i,parts:[f]})}return n}function u(e,t){for(var n=0;n<e.length;n++){var o=e[n];var a=r[o.id];var i=0;if(a){for(a.refs++;i<a.parts.length;i++)a.parts[i](o.parts[i]);for(;i<o.parts.length;i++)a.parts.push(h(o.parts[i],t))}else{var u=[];for(;i<o.parts.length;i++)u.push(h(o.parts[i],t));r[o.id]={id:o.id,refs:1,parts:u}}}}function s(e){var t=document.createElement(\\"style\\");if(\\"undefined\\"===typeof e.attributes.nonce){var r=n.nc;r&&(e.attributes.nonce=r)}if(Object.keys(e.attributes).forEach((function(n){t.setAttribute(n,e.attributes[n])})),\\"function\\"===typeof e.insert)e.insert(t);else{var o=a(e.insert||\\"head\\");if(!o)throw new Error(\\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\\");o.appendChild(t)}return t}function c(e){if(null===e.parentNode)return false;e.parentNode.removeChild(e)}var f=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join(\\"\\\\n\\")}}();function l(e,t,n,r){var o=n?\\"\\":r.css;if(e.styleSheet)e.styleSheet.cssText=f(t,o);else{var a=document.createTextNode(o);var i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(a,i[t]):e.appendChild(a)}}function d(e,t,n){var r=n.css;var o=n.media;var a=n.sourceMap;if(o&&e.setAttribute(\\"media\\",o),a&&btoa&&(r+=\\"\\\\n/*# sourceMappingURL=data:application/json;base64,\\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(a)))),\\" */\\")),e.styleSheet)e.styleSheet.cssText=r;else{while(e.firstChild)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}var p=null;var v=0;function h(e,t){var n;var r;var o;if(t.singleton){var a=v++;n=p||(p=s(t)),r=l.bind(null,n,a,false),o=l.bind(null,n,a,true)}else n=s(t),r=d.bind(null,n,t),o=function(){c(n)};return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else o()}}e.exports=function(e,t){t=t||{},t.attributes=\\"object\\"===typeof t.attributes?t.attributes:{},t.singleton||\\"boolean\\"===typeof t.singleton||(t.singleton=o());var n=i(e,t);return u(n,t),function(e){var o=[];for(var a=0;a<n.length;a++){var s=n[a];var c=r[s.id];c&&(c.refs--,o.push(c))}if(e){var f=i(e,t);u(f,t)}for(var l=0;l<o.length;l++){var d=o[l];if(0===d.refs){for(var p=0;p<d.parts.length;p++)d.parts[p]();delete r[d.id]}}}}}};var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:false,exports:{}};return e[r](o,o.exports,n),o.l=true,o.exports}return function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){var e=Object.prototype.hasOwnProperty;n.d=function(t,n){for(var r in n)e.call(n,r)&&!e.call(t,r)&&Object.defineProperty(t,r,{enumerable:true,get:n[r]})}}(),n(429)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(622);n.d(t,{default:function(){return o}});var o=function e(){r(this,e)}},594:function(e,t,n){t=e.exports=n(70)(false),t.push([e.id,\\"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}\\",\\"\\"])},70:function(e){\\"use strict\\";function t(e,t){var r=e[1]||\\"\\";var o=e[3];if(!o)return r;if(t&&\\"function\\"===typeof btoa){var a=n(o);var i=o.sources.map((function(e){return\\"/*# sourceURL=\\".concat(o.sourceRoot).concat(e,\\" */\\")}));return[r].concat(i).concat([a]).join(\\"\\\\n\\")}return[r].join(\\"\\\\n\\")}function n(e){var t=btoa(unescape(encodeURIComponent(JSON.stringify(e))));var n=\\"sourceMappingURL=data:application/json;charset=utf-8;base64,\\".concat(t);return\\"/*# \\".concat(n,\\" */\\")}e.exports=function(e){var n=[];return n.toString=function(){return this.map((function(n){var r=t(n,e);if(n[2])return\\"@media \\".concat(n[2],\\"{\\").concat(r,\\"}\\");return r})).join(\\"\\")},n.i=function(e,t){\\"string\\"===typeof e&&(e=[[null,e,\\"\\"]]);var r={};for(var o=0;o<this.length;o++){var a=this[o][0];null!=a&&(r[a]=true)}for(var i=0;i<e.length;i++){var u=e[i];null!=u[0]&&r[u[0]]||(t&&!u[2]?u[2]=t:t&&(u[2]=\\"(\\".concat(u[2],\\") and (\\").concat(t,\\")\\")),n.push(u))}},n}},622:function(e,t,n){var r=n(594);\\"string\\"===typeof r&&(r=[[e.id,r,\\"\\"]]);var o={};o.insert=\\"head\\",o.singleton=false;n(191)(r,o);r.locals&&(e.exports=r.locals)},191:function(e,t,n){\\"use strict\\";var r={};var o=function(){var e;return function(){return\\"undefined\\"===typeof e&&(e=Boolean(window&&document&&document.all&&!window.atob)),e}}();var a=function(){var e={};return function(t){if(\\"undefined\\"===typeof e[t]){var n=document.querySelector(t);if(window.HTMLIFrameElement&&n instanceof window.HTMLIFrameElement)try{n=n.contentDocument.head}catch(e){n=null}e[t]=n}return e[t]}}();function i(e,t){var n=[];var r={};for(var o=0;o<e.length;o++){var a=e[o];var i=t.base?a[0]+t.base:a[0];var u=a[1];var c=a[2];var s=a[3];var f={css:u,media:c,sourceMap:s};r[i]?r[i].parts.push(f):n.push(r[i]={id:i,parts:[f]})}return n}function u(e,t){for(var n=0;n<e.length;n++){var o=e[n];var a=r[o.id];var i=0;if(a){for(a.refs++;i<a.parts.length;i++)a.parts[i](o.parts[i]);for(;i<o.parts.length;i++)a.parts.push(h(o.parts[i],t))}else{var u=[];for(;i<o.parts.length;i++)u.push(h(o.parts[i],t));r[o.id]={id:o.id,refs:1,parts:u}}}}function c(e){var t=document.createElement(\\"style\\");if(\\"undefined\\"===typeof e.attributes.nonce){var r=n.nc;r&&(e.attributes.nonce=r)}if(Object.keys(e.attributes).forEach((function(n){t.setAttribute(n,e.attributes[n])})),\\"function\\"===typeof e.insert)e.insert(t);else{var o=a(e.insert||\\"head\\");if(!o)throw new Error(\\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\\");o.appendChild(t)}return t}function s(e){if(null===e.parentNode)return false;e.parentNode.removeChild(e)}var f=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join(\\"\\\\n\\")}}();function l(e,t,n,r){var o=n?\\"\\":r.css;if(e.styleSheet)e.styleSheet.cssText=f(t,o);else{var a=document.createTextNode(o);var i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(a,i[t]):e.appendChild(a)}}function d(e,t,n){var r=n.css;var o=n.media;var a=n.sourceMap;if(o&&e.setAttribute(\\"media\\",o),a&&btoa&&(r+=\\"\\\\n/*# sourceMappingURL=data:application/json;base64,\\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(a)))),\\" */\\")),e.styleSheet)e.styleSheet.cssText=r;else{while(e.firstChild)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}var p=null;var v=0;function h(e,t){var n;var r;var o;if(t.singleton){var a=v++;n=p||(p=c(t)),r=l.bind(null,n,a,false),o=l.bind(null,n,a,true)}else n=c(t),r=d.bind(null,n,t),o=function(){s(n)};return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else o()}}e.exports=function(e,t){t=t||{},t.attributes=\\"object\\"===typeof t.attributes?t.attributes:{},t.singleton||\\"boolean\\"===typeof t.singleton||(t.singleton=o());var n=i(e,t);return u(n,t),function(e){var o=[];for(var a=0;a<n.length;a++){var c=n[a];var s=r[c.id];s&&(s.refs--,o.push(s))}if(e){var f=i(e,t);u(f,t)}for(var l=0;l<o.length;l++){var d=o[l];if(0===d.refs){for(var p=0;p<d.parts.length;p++)d.parts[p]();delete r[d.id]}}}}}};var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={id:r,exports:{}};return e[r](o,o.exports,n),o.exports}return function(){n.d=function(e,t){for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:true,get:t[r]})}}(),function(){n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)}}(),function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),n(429)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -50,14 +50,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-(node:11111) DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
+(node:11111) [DEP_WEBPACK_COMPILATION_NORMAL_MODULE_LOADER_HOOK] DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: MainTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_CHUNK_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: ChunkTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_HASH_FOR_CHUNK] DeprecationWarning: MainTemplate.hooks.hashForChunk is deprecated (use JavascriptModulesPlugin.getCompilationHooks().chunkHash instead)
-(node:11111) DeprecationWarning: Module.id: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Module.updateHash: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
-(node:11111) DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
+(node:11111) [DEP_WEBPACK_MODULE_ID] DeprecationWarning: Module.id: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_MODULE_UPDATE_HASH] DeprecationWarning: Module.updateHash: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_MODULES_ITERABLE] DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_GROUP_GET_MODULE_INDEX_2] DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
   size  name     module                           status
   1000           postcss-loader!./css/style.scss  built
   1 kB  429      ./js/app.js + 1 modules          built
@@ -69,7 +69,7 @@ Object {
   1 kB  default  myBundle.min.js                  emitted
   1 kB  map      myBundle.min.js.map              emitted
 
-  (3 modules hidden)
+  (4 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -82,7 +82,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:false,exports:{}};return e[o](r,r.exports,n),r.l=true,r.exports}return function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){var e=Object.prototype.hasOwnProperty;n.d=function(t,n){for(var o in n)e.call(n,o)&&!e.call(t,o)&&Object.defineProperty(t,o,{enumerable:true,get:n[o]})}}(),n(429)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={exports:{}};return e[o](r,r.exports,n),r.exports}return function(){n.d=function(e,t){for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:true,get:t[o]})}}(),function(){n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)}}(),function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),n(429)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -103,14 +103,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-(node:11111) DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
+(node:11111) [DEP_WEBPACK_COMPILATION_NORMAL_MODULE_LOADER_HOOK] DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: MainTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_CHUNK_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: ChunkTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_HASH_FOR_CHUNK] DeprecationWarning: MainTemplate.hooks.hashForChunk is deprecated (use JavascriptModulesPlugin.getCompilationHooks().chunkHash instead)
-(node:11111) DeprecationWarning: Module.id: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Module.updateHash: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
-(node:11111) DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
+(node:11111) [DEP_WEBPACK_MODULE_ID] DeprecationWarning: Module.id: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_MODULE_UPDATE_HASH] DeprecationWarning: Module.updateHash: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_MODULES_ITERABLE] DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_GROUP_GET_MODULE_INDEX_2] DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
   size  name     module                           status
   1000           postcss-loader!./css/style.scss  built
   1 kB  429      ./js/app.js + 1 modules          built
@@ -122,7 +122,7 @@ Object {
   1 kB  default  myBundle.min.js                  emitted
   1 kB  map      myBundle.min.js.map              emitted
 
-  (3 modules hidden)
+  (4 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -135,7 +135,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:false,exports:{}};return e[o](r,r.exports,n),r.l=true,r.exports}return function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){var e=Object.prototype.hasOwnProperty;n.d=function(t,n){for(var o in n)e.call(n,o)&&!e.call(t,o)&&Object.defineProperty(t,o,{enumerable:true,get:n[o]})}}(),n(429)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={exports:{}};return e[o](r,r.exports,n),r.exports}return function(){n.d=function(e,t){for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:true,get:t[o]})}}(),function(){n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)}}(),function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),n(429)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -156,14 +156,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-(node:11111) DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
+(node:11111) [DEP_WEBPACK_COMPILATION_NORMAL_MODULE_LOADER_HOOK] DeprecationWarning: Compilation.hooks.normalModuleLoader was moved to NormalModule.getCompilationHooks(compilation).loader
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: MainTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_CHUNK_TEMPLATE_RENDER_MANIFEST] DeprecationWarning: ChunkTemplate.hooks.renderManifest is deprecated (use Compilation.hooks.renderManifest instead)
 (node:11111) [DEP_WEBPACK_MAIN_TEMPLATE_HASH_FOR_CHUNK] DeprecationWarning: MainTemplate.hooks.hashForChunk is deprecated (use JavascriptModulesPlugin.getCompilationHooks().chunkHash instead)
-(node:11111) DeprecationWarning: Module.id: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Module.updateHash: Use new ChunkGraph API
-(node:11111) DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
-(node:11111) DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
+(node:11111) [DEP_WEBPACK_MODULE_ID] DeprecationWarning: Module.id: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_MODULE_UPDATE_HASH] DeprecationWarning: Module.updateHash: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_MODULES_ITERABLE] DeprecationWarning: Chunk.modulesIterable: Use new ChunkGraph API
+(node:11111) [DEP_WEBPACK_CHUNK_GROUP_GET_MODULE_INDEX_2] DeprecationWarning: ChunkGroup.getModuleIndex2 was renamed to getModulePostOrderIndex
   size  name     module                           status
   1000           postcss-loader!./css/style.scss  built
   1 kB  429      ./js/app.js + 1 modules          built
@@ -175,7 +175,7 @@ Object {
   1 kB  default  myBundle.min.js                  emitted
   1 kB  map      myBundle.min.js.map              emitted
 
-  (3 modules hidden)
+  (4 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -188,7 +188,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:false,exports:{}};return e[o](r,r.exports,n),r.l=true,r.exports}return function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){var e=Object.prototype.hasOwnProperty;n.d=function(t,n){for(var o in n)e.call(n,o)&&!e.call(t,o)&&Object.defineProperty(t,o,{enumerable:true,get:n[o]})}}(),n(429)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)(\\"object\\"===typeof exports?exports:e)[o]=n[o]}})(window,(function(){return function(){var e={429:function(e,t,n){\\"use strict\\";function o(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t);n(691);n.d(t,{default:function(){return r}});var r=function e(){o(this,e)}},691:function(){}};var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={exports:{}};return e[o](r,r.exports,n),r.exports}return function(){n.d=function(e,t){for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:true,get:t[o]})}}(),function(){n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)}}(),function(){n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),n(429)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -215,7 +215,7 @@ Object {
   1 kB  594   postcss-loader!./css/style.scss                                       built failed ✖
   1 kB  622   ./css/style.scss                                                      built
 
-  (2 assets, 2 modules hidden)
+  (2 assets, 3 modules hidden)
 
   Failed to compile.
 
