@@ -114,6 +114,8 @@ module.exports = {
       .options(babelOptions);
 
     const tsOptions = {
+      // https://webpack.js.org/guides/build-performance/#typescript-loader
+      experimentalWatchApi: true,
       compilerOptions: {
         // Transpile to esnext so that Babel can apply all its magic
         target: "ESNext",
@@ -157,6 +159,7 @@ module.exports = {
       tsOptions.transpileOnly = true;
 
       const forkCheckerOptions = {
+        useTypescriptIncrementalApi: true,
         typescript: require.resolve("typescript"),
         compilerOptions: tsOptions.compilerOptions
       };
