@@ -69,7 +69,10 @@ it("Succeeds with babel", async () => {
 });
 
 it("Fails with babel", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/babel-fails");
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-jest/babel-fails"
+  );
   await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["test"], cwd);

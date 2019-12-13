@@ -87,10 +87,7 @@ async function run(args, cwd, commandOptions) {
     commandOptions || {}
   );
 
-  options.env = Object.assign(
-    { TESTING_CRAFTY: "true" },
-    options.env || {}
-  );
+  options.env = Object.assign({ TESTING_CRAFTY: "true" }, options.env || {});
 
   const ret = await execa.node(
     require.resolve("@swissquote/crafty/src/bin"),

@@ -1,5 +1,7 @@
 const debug = require("debug")("crafty:test");
 
+const formatError = require("../log/formatError");
+
 exports.description = "Run tests from any test runners";
 exports.command = function test(crafty, input, cli) {
   debug("Registering Runners");
@@ -23,7 +25,11 @@ exports.command = function test(crafty, input, cli) {
       done += 1;
       if (done === tasks.length) {
         if (failed) {
-          reject();
+          reject(
+            new crafty.Information(
+              "crafty test: One or more test runners failed"
+            )
+          );
         } else {
           resolve(taskResult);
         }
@@ -31,7 +37,7 @@ exports.command = function test(crafty, input, cli) {
     }
 
     function failedRunning(e) {
-      console.log("Failed running tests", e);
+      console.error(formatError(e));
       failed = true;
       finishWhenDone();
     }

@@ -105,8 +105,15 @@ module.exports = ${JSON.stringify(content, null, 4)};
 
       require("jest-cli")
         .runCLI(cliOptions, [configFile])
-        .then(result => (result.results.success ? resolve(result) : reject()))
-        .catch(reject);
+        .then(
+          result =>
+            result.results.success
+              ? resolve(result)
+              : reject(
+                  new crafty.Information("Jest: One or more tests failed")
+                ),
+          reject
+        );
     });
   }
 };
