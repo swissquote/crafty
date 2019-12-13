@@ -33,7 +33,7 @@ module.exports = {
     // Overrides of TypeScript recommended
     "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
     "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off",
-
+    "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
   }
 };
 
