@@ -181,6 +181,11 @@ module.exports = function(crafty, bundle, webpackPort) {
       .hotOnly(true)
       .stats(false)
       .contentBase(config.destination)
+      .watchOptions({
+        // Ignore the default dist folder as otherwise
+        // webpack can enter a rebuild loop
+        ignored: ["node_modules", `${chain.output.get("path")}/**`]
+      })
       .headers({
         "Access-Control-Allow-Origin": "*"
       });
@@ -220,8 +225,11 @@ module.exports = function(crafty, bundle, webpackPort) {
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process
   if (crafty.getEnvironment() !== "production" && isWatching && bundle.hot) {
-    const httpProtocol = !!chain.devServer.get("https") ? "https" : "http";
-    const urlPrefix = `${httpProtocol}://localhost:${webpackPort}`;
+    // Read theses values from webpack chain as they could have been overriden with a preset
+    const protocol = !!chain.devServer.get("https") ? "https" : "http";
+    const host = chain.devServer.get("host");
+    const port = chain.devServer.get("port");
+    const urlPrefix = `${protocol}://${host}:${port}`;
 
     // Set the final URL for the Dev Server
     const defaultEntries = chain.entry("default");
@@ -236,11 +244,15 @@ module.exports = function(crafty, bundle, webpackPort) {
       defaultEntries.add(entry);
     });
 
-    // Setting the public path to find the compiled assets
-    const contentBase = chain.devServer.get("contentBase");
-    const outputPath = chain.output.get("path");
-    const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
-    chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
+    // Setting the public path to find the compiled assets,
+    // only if it hasn't already been set
+    const definedPublicPath = chain.output.get("publicPath");
+    if (!definedPublicPath) {
+      const contentBase = chain.devServer.get("contentBase");
+      const outputPath = chain.output.get("path");
+      const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
+      chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
+    }
   }
 
   return chain.toConfig();
