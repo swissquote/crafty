@@ -9,11 +9,11 @@
   "main": "src/index.js",
   "dependencies": {
     "@babel/core": "7.7.7",
-    "@babel/runtime": "7.7.6",
+    "@babel/runtime": "7.7.7",
     "@swissquote/babel-preset-swissquote": "1.9.1",
     "@swissquote/crafty-preset-eslint": "1.9.1",
     "babel-loader": "8.0.6",
-    "babel-plugin-istanbul": "5.2.0",
+    "babel-plugin-istanbul": "6.0.0",
     "babel-preset-jest": "24.9.0",
     "gulp-babel": "8.0.0",
     "gulp-concat": "2.6.1",
@@ -24,6 +24,6 @@
     "rollup-plugin-babel": "4.3.3"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   }
 }

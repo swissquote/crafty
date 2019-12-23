@@ -43,6 +43,7 @@ function snapshotizeOutput(ret) {
         "postcss-loader?{__POSTCSS_OPTIONS__}!"
       ) // Remove very custom postcss options
       .replace(/^(\s*)PASS(\s*)/gm, "PASS ") // Fix weird space in some case with nested jest runs (Jest)
+      .replace(/^(\s*)FAIL(\s*)/gm, "FAIL ") // Fix weird space in some case with nested jest runs (Jest)
       .replace(
         /^Time: {8}([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)(, estimated ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s))?/gm,
         "Time:        _____s"
