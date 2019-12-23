@@ -25,13 +25,13 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
       plugins: {
         // eslint
         json: {
-          plugin: require("rollup-plugin-json"),
+          plugin: require("@rollup/plugin-json"),
           weight: 10
         },
         // babel
         // typescript
         replace: {
-          plugin: require("rollup-plugin-replace"),
+          plugin: require("@rollup/plugin-replace"),
           weight: 30,
           options: {
             "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
@@ -42,16 +42,14 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           weight: 35
         },
         resolve: {
-          plugin: crafty.isPNP
-            ? () => ({ name: `node-resolve-noop` })
-            : require("rollup-plugin-node-resolve"),
+          plugin: require("@rollup/plugin-node-resolve"),
           weight: 40,
           options: {
             browser: true
           }
         },
         commonjs: {
-          plugin: require("rollup-plugin-commonjs"),
+          plugin: require("@rollup/plugin-commonjs"),
           weight: 50
         },
         uglify: {
