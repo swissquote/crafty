@@ -289,10 +289,8 @@ exports[`Experiment with all CSS 2`] = `
 /* Initial Values (postcss-initial) */
 
 .Link {
-    -webkit-animation: none 0s ease 0s 1 normal none running;
-            animation: none 0s ease 0s 1 normal none running;
-    -webkit-animation: initial;
-            animation: initial;
+    animation: none 0s ease 0s 1 normal none running;
+    animation: initial;
     background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
     background: initial;
     white-space: normal;
