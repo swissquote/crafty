@@ -1,12 +1,6 @@
 sudo: false
 language: node_js
 
-addons:
-  sonarcloud:
-    organization: "swissquote"
-    branches:
-      - master
-
 cache:
   directories:
     - vendor
@@ -15,7 +9,6 @@ jdk:
   - oraclejdk8
 
 node_js:
-  - '12'
   - '10'
 
 # Make sure we have the latest Yarn version
@@ -37,38 +30,9 @@ matrix:
   fast_finish: true
   # Support on those versions and platforms is experimental
   allow_failures:
-    - os: windows
     - node_js: "10"
       env: YARN_PLUGNPLAY_OVERRIDE=1
   include:
     # Test once with Yarn PNP
     - node_js: "10"
       env: YARN_PLUGNPLAY_OVERRIDE=1
-    # Test once on Windows
-    - node_js: "10"
-      os: windows
-    # Test once on macOS
-    - node_js: "10"
-      os: osx
-    # Run SonarQube check
-    - stage: SonarQube
-      node_js: "10"
-      if: repo = swissquote/crafty AND type != pull_request
-      script:
-        - git fetch --unshallow --quiet
-        - sonar-scanner
-    # Deploy the documentation, once all builds are finished
-    - stage: "Deploy Documentation"
-      node_js: "10"
-      if: repo = swissquote/crafty AND type != pull_request
-      script: skip
-      before_deploy:
-        - composer install
-        - vendor/bin/daux generate --themes=docs_theme
-      deploy:
-        provider: pages
-        local_dir: static
-        skip_cleanup: true
-        github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-        on:
-          branch: master
