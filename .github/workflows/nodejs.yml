@@ -6,11 +6,11 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         node-version: [10.x, 12.x]
         # TODO : add macos and windows as targets
         # TODO : add Yarn PNP as failable build
-        include:
+        exclude:
         - os: macos-latest
           node-version: 12.x
           
