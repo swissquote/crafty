@@ -103,7 +103,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
 
       writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
 
-      require("jest-cli")
+      require("@jest/core")
         .runCLI(cliOptions, [configFile])
         .then(
           result =>
