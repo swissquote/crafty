@@ -8,5 +8,8 @@
   "ignoreDeps": [
     "lerna",
     "postcss-custom-properties"
+  ],
+  "ignorePaths": [
+    "packages/integration/fixtures"
   ]
 }
