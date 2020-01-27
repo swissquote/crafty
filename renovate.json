@@ -5,6 +5,14 @@
   ],
   "schedule": "before 9pm on Monday",
   "statusCheckVerify": true,
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "@types/*"
+      ],
+      "rangeStrategy": "update-lockfile"
+    }
+  ],
   "ignoreDeps": [
     "lerna",
     "postcss-custom-properties"
