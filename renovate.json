@@ -1,16 +1,57 @@
 {
   "extends": [
-    "config:base",
-    "group:allNonMajor"
+    "config:base"
   ],
   "schedule": "before 9pm on Monday",
   "statusCheckVerify": true,
   "packageRules": [
     {
+      "groupName": "@types",
       "packagePatterns": [
         "@types/*"
       ],
       "rangeStrategy": "update-lockfile"
+    },
+    {
+      "groupName": "@types",
+      "packagePatterns": [
+        "@types/*"
+      ],
+      "rangeStrategy": "update-lockfile"
+    }
+  ],
+  "ignoreDeps": [
+    "lerna",
+    "postcss-custom-properties"
+  ],
+  "ignorePaths": [
+    "packages/integration/fixtures"
+  ]
+}
+ "minor": {
+        "groupName": "all rollup dependencies",
+        "groupSlug": "rollup-minor-patch"
+      }
+    },
+    {
+      "groupName": "postcss",
+      "packagePatterns": [
+        "^postcss"
+      ],
+      "minor": {
+        "groupName": "all postcss dependencies",
+        "groupSlug": "postcss-minor-patch"
+      }
+    },
+    {
+      "groupName": "webpack",
+      "packagePatterns": [
+        "^webpack"
+      ],
+      "minor": {
+        "groupName": "all webpack dependencies",
+        "groupSlug": "webpack-minor-patch"
+      }
     }
   ],
   "ignoreDeps": [
