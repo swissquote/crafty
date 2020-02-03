@@ -1,6 +1,6 @@
 {
   "extends": ["config:base"],
-  "schedule": "before 9pm on Monday",
+  "schedule": "before 11pm on Monday",
   "statusCheckVerify": true,
   "packageRules": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "groupName": "eslint",
-      "packagePatterns": ["^eslint"],
+      "packagePatterns": ["^eslint", "@typescript-eslint/*"],
       "minor": {
         "groupName": "all eslint dependencies",
         "groupSlug": "eslint-minor-patch"
