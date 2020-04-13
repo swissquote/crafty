@@ -8,20 +8,20 @@ Object {
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/Component.ts
   1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
-  2:1  error  Prefer default export                                               @swissquote/swissquote/import/prefer-default-export
   3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/SomeLibrary.ts
-   1:1  error  Delete \`⏎\`                                        @swissquote/swissquote/prettier/prettier
-   3:3  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
-   4:1  error  Replace \`········\` with \`····\`                    @swissquote/swissquote/prettier/prettier
-   5:1  error  Replace \`····\` with \`··\`                          @swissquote/swissquote/prettier/prettier
-   7:1  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
-   8:3  error  Insert \`··\`                                       @swissquote/swissquote/prettier/prettier
-   9:1  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
-  11:3  error  Replace \`··divide(a,·b)⏎···\` with \`divide(a,·b)\`  @swissquote/swissquote/prettier/prettier
-  13:1  error  Replace \`········\` with \`····\`                    @swissquote/swissquote/prettier/prettier
-  14:1  error  Delete \`····\`                                     @swissquote/swissquote/prettier/prettier
+   1:1  error  Delete \`⏎\`                                            @swissquote/swissquote/prettier/prettier
+   5:4  error  Insert \`;\`                                            @swissquote/swissquote/prettier/prettier
+   9:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  10:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
+  11:3  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  13:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  14:3  error  Insert \`··\`                                           @swissquote/swissquote/prettier/prettier
+  15:1  error  Replace \`····\` with \`··\`                              @swissquote/swissquote/prettier/prettier
+  17:1  error  Replace \`····divide(a,·b)⏎···\` with \`··divide(a,·b)\`  @swissquote/swissquote/prettier/prettier
+  19:1  error  Replace \`········\` with \`····\`                        @swissquote/swissquote/prettier/prettier
+  20:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.ts
    1:1   error    Replace \`⏎import·{\` with \`import·{·\`         @swissquote/swissquote/prettier/prettier
@@ -35,7 +35,86 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.
   18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
 ✖ 22 problems (19 errors, 3 warnings)
-  18 errors and 0 warnings potentially fixable with the \`--fix\` option.
+  19 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints TypeScript using the command, --preset format 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/Component.ts
+  1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/SomeLibrary.ts
+   1:1  error  Delete \`⏎\`                                            @swissquote/swissquote/prettier/prettier
+   5:4  error  Insert \`;\`                                            @swissquote/swissquote/prettier/prettier
+   9:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  10:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
+  11:3  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  13:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  14:3  error  Insert \`··\`                                           @swissquote/swissquote/prettier/prettier
+  15:1  error  Replace \`····\` with \`··\`                              @swissquote/swissquote/prettier/prettier
+  17:1  error  Replace \`····divide(a,·b)⏎···\` with \`··divide(a,·b)\`  @swissquote/swissquote/prettier/prettier
+  19:1  error  Replace \`········\` with \`····\`                        @swissquote/swissquote/prettier/prettier
+  20:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.ts
+   1:1   error  Replace \`⏎import·{\` with \`import·{·\`         @swissquote/swissquote/prettier/prettier
+   6:3   error  Replace \`··constructor·\` with \`constructor\`  @swissquote/swissquote/prettier/prettier
+   8:2   error  Insert \`·\`                                   @swissquote/swissquote/prettier/prettier
+  11:17  error  Replace \`·test(·\` with \`test(\`               @swissquote/swissquote/prettier/prettier
+  13:16  error  Replace \`·(·)·=>⏎···\` with \`()·=>\`           @swissquote/swissquote/prettier/prettier
+  18:6   error  Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
+
+✖ 19 problems (19 errors, 0 warnings)
+  19 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints TypeScript using the command, --preset recommended 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/Component.ts
+  1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/SomeLibrary.ts
+   1:1  error  Delete \`⏎\`                                            @swissquote/swissquote/prettier/prettier
+   5:4  error  Insert \`;\`                                            @swissquote/swissquote/prettier/prettier
+   9:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  10:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
+  11:3  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  13:1  error  Delete \`··\`                                           @swissquote/swissquote/prettier/prettier
+  14:3  error  Insert \`··\`                                           @swissquote/swissquote/prettier/prettier
+  15:1  error  Replace \`····\` with \`··\`                              @swissquote/swissquote/prettier/prettier
+  17:1  error  Replace \`····divide(a,·b)⏎···\` with \`··divide(a,·b)\`  @swissquote/swissquote/prettier/prettier
+  19:1  error  Replace \`········\` with \`····\`                        @swissquote/swissquote/prettier/prettier
+  20:1  error  Delete \`····\`                                         @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.ts
+   1:1   error    Replace \`⏎import·{\` with \`import·{·\`         @swissquote/swissquote/prettier/prettier
+   6:3   error    Replace \`··constructor·\` with \`constructor\`  @swissquote/swissquote/prettier/prettier
+   7:5   warning  Unexpected console statement                 no-console
+   8:2   error    Insert \`·\`                                   @swissquote/swissquote/prettier/prettier
+  11:5   warning  Unexpected console statement                 no-console
+  11:17  error    Replace \`·test(·\` with \`test(\`               @swissquote/swissquote/prettier/prettier
+  13:16  error    Replace \`·(·)·=>⏎···\` with \`()·=>\`           @swissquote/swissquote/prettier/prettier
+  17:7   warning  Unexpected console statement                 no-console
+  18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
+
+✖ 22 problems (19 errors, 3 warnings)
+  19 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
 }

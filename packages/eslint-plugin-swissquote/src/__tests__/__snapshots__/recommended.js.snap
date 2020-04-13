@@ -1,0 +1,396 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uses sonar plugin 1`] = `
+Array [
+  Object {
+    "column": 10,
+    "endColumn": 22,
+    "endLine": 3,
+    "line": 3,
+    "message": "'changeWindow' is defined but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 14,
+    "endColumn": 25,
+    "endLine": 8,
+    "line": 8,
+    "message": "This branch duplicates the one on line 4",
+    "nodeType": "BinaryExpression",
+    "ruleId": "@swissquote/swissquote/sonarjs/no-identical-conditions",
+    "severity": 2,
+  },
+]
+`;
+
+exports[`Warns on console.log 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "endColumn": 12,
+    "endLine": 1,
+    "line": 1,
+    "message": "Unexpected console statement.",
+    "messageId": "unexpected",
+    "nodeType": "MemberExpression",
+    "ruleId": "no-console",
+    "severity": 1,
+  },
+]
+`;
+
+exports[`Works fine with ES6 code 1`] = `
+Array [
+  Object {
+    "column": 7,
+    "endColumn": 18,
+    "endLine": 1,
+    "line": 1,
+    "message": "'SkinnedMesh' is defined but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 27,
+    "endColumn": 32,
+    "endLine": 1,
+    "line": 1,
+    "message": "'THREE' is not defined.",
+    "messageId": "undef",
+    "nodeType": "Identifier",
+    "ruleId": "no-undef",
+    "severity": 2,
+  },
+  Object {
+    "column": 16,
+    "endColumn": 21,
+    "endLine": 21,
+    "line": 21,
+    "message": "'THREE' is not defined.",
+    "messageId": "undef",
+    "nodeType": "Identifier",
+    "ruleId": "no-undef",
+    "severity": 2,
+  },
+  Object {
+    "column": 8,
+    "endColumn": 39,
+    "endLine": 25,
+    "fix": Object {
+      "range": Array [
+        483,
+        514,
+      ],
+      "text": "
+  op: a,
+  lhs: { op: b },
+  rhs: c
+",
+    },
+    "line": 25,
+    "message": "Replace \`·op:·a,·lhs:·{·op:·b·},·rhs:·c·\` with \`⏎··op:·a,⏎··lhs:·{·op:·b·},⏎··rhs:·c⏎\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 13,
+    "endColumn": 14,
+    "endLine": 25,
+    "line": 25,
+    "message": "'a' is assigned a value but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 27,
+    "endColumn": 28,
+    "endLine": 25,
+    "line": 25,
+    "message": "'b' is assigned a value but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 37,
+    "endColumn": 38,
+    "endLine": 25,
+    "line": 25,
+    "message": "'c' is assigned a value but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 43,
+    "endColumn": 53,
+    "endLine": 25,
+    "line": 25,
+    "message": "'getASTNode' is not defined.",
+    "messageId": "undef",
+    "nodeType": "Identifier",
+    "ruleId": "no-undef",
+    "severity": 2,
+  },
+  Object {
+    "column": 7,
+    "endColumn": 10,
+    "endLine": 30,
+    "line": 30,
+    "message": "'obj' is assigned a value but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 5,
+    "endLine": 31,
+    "fix": Object {
+      "range": Array [
+        607,
+        611,
+      ],
+      "text": "  ",
+    },
+    "line": 31,
+    "message": "Replace \`····\` with \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 3,
+    "endLine": 32,
+    "fix": Object {
+      "range": Array [
+        624,
+        626,
+      ],
+      "text": "",
+    },
+    "line": 32,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 16,
+    "endColumn": 27,
+    "endLine": 32,
+    "line": 32,
+    "message": "'theProtoObj' is not defined.",
+    "messageId": "undef",
+    "nodeType": "Identifier",
+    "ruleId": "no-undef",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 3,
+    "endLine": 33,
+    "fix": Object {
+      "range": Array [
+        652,
+        654,
+      ],
+      "text": "",
+    },
+    "line": 33,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 3,
+    "endColumn": 5,
+    "endLine": 34,
+    "fix": Object {
+      "range": Array [
+        700,
+        702,
+      ],
+      "text": "",
+    },
+    "line": 34,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 3,
+    "endLine": 35,
+    "fix": Object {
+      "range": Array [
+        714,
+        716,
+      ],
+      "text": "",
+    },
+    "line": 35,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 3,
+    "endColumn": 5,
+    "endLine": 36,
+    "fix": Object {
+      "range": Array [
+        731,
+        733,
+      ],
+      "text": "",
+    },
+    "line": 36,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 2,
+    "endLine": 37,
+    "fix": Object {
+      "range": Array [
+        746,
+        747,
+      ],
+      "text": "",
+    },
+    "line": 37,
+    "message": "Delete \`·\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 5,
+    "endColumn": 20,
+    "endLine": 38,
+    "fix": Object {
+      "range": Array [
+        770,
+        785,
+      ],
+      "text": "return \`d \${",
+    },
+    "line": 38,
+    "message": "Replace \`·return·\`d·\${··\` with \`return·\`d·\${\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 3,
+    "endColumn": 5,
+    "endLine": 39,
+    "fix": Object {
+      "range": Array [
+        807,
+        809,
+      ],
+      "text": "",
+    },
+    "line": 39,
+    "message": "Delete \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 5,
+    "endLine": 40,
+    "fix": Object {
+      "range": Array [
+        812,
+        816,
+      ],
+      "text": "  ",
+    },
+    "line": 40,
+    "message": "Replace \`····\` with \`··\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 3,
+    "endColumn": 32,
+    "endLine": 41,
+    "fix": Object {
+      "range": Array [
+        855,
+        884,
+      ],
+      "text": "[\`prop_\${(() => 42)()}\`",
+    },
+    "line": 41,
+    "message": "Replace \`··[·\`prop_\${··(()·=>·42)()}\`·\` with \`[\`prop_\${(()·=>·42)()}\`\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 1,
+    "endLine": 44,
+    "fix": Object {
+      "range": Array [
+        893,
+        894,
+      ],
+      "text": "",
+    },
+    "line": 43,
+    "message": "Delete \`⏎\`",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+]
+`;
+
+exports[`jsx-no-duplicate-props works fails with the same prop 1`] = `
+Array [
+  Object {
+    "column": 21,
+    "endColumn": 26,
+    "endLine": 4,
+    "line": 4,
+    "message": "No duplicate props allowed",
+    "nodeType": "JSXAttribute",
+    "ruleId": "@swissquote/swissquote/react/jsx-no-duplicate-props",
+    "severity": 2,
+  },
+]
+`;
+
+exports[`no-did-mount-set-state fails with setState in componentDidMount 1`] = `
+Array [
+  Object {
+    "column": 5,
+    "endColumn": 18,
+    "endLine": 6,
+    "line": 6,
+    "message": "Do not use setState in componentDidMount",
+    "nodeType": "MemberExpression",
+    "ruleId": "@swissquote/swissquote/react/no-did-mount-set-state",
+    "severity": 2,
+  },
+]
+`;

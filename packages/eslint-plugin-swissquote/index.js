@@ -1,8 +1,12 @@
+function resolveModules(...args) {
+  return args.map(arg => require.resolve(`./src/${arg}.js`));
+}
+
 module.exports = {
   configs: {
     format: {
       parser: require.resolve("babel-eslint"),
-      extends: require.resolve("./src/formatting.js"),
+      extends: resolveModules("formatting", "es6-format"),
       overrides: [
         {
           files: ["*.ts", "*.tsx"],
@@ -14,19 +18,14 @@ module.exports = {
     },
     node: {
       parser: require.resolve("babel-eslint"),
-      extends: require.resolve("./src/node.js")
+      extends: resolveModules("node")
     },
     legacy: {
       env: {
         browser: true,
         amd: true
       },
-      extends: ["./src/formatting.js", "./src/best-practices.js"].map(
-        require.resolve
-      ),
-      parserOptions: {
-        sourceType: "script"
-      },
+      extends: resolveModules("formatting", "best-practices"),
       rules: {
         "no-dupe-keys": "error"
       }
@@ -37,12 +36,13 @@ module.exports = {
         browser: true,
         amd: true
       },
-      extends: [
-        "./src/formatting.js",
-        "./src/best-practices.js",
-        "./src/es6.js",
-        "./src/react.js"
-      ].map(require.resolve),
+      extends: resolveModules(
+        "formatting",
+        "best-practices",
+        "es6-format",
+        "es6-recommended",
+        "react"
+      ),
       overrides: [
         {
           files: ["*.ts", "*.tsx"],

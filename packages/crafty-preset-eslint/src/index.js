@@ -23,9 +23,6 @@ module.exports = {
     );
 
     return {
-      // In case of browser support changes, we prefer having a fixed version
-      eslintReactVersion: "15.0",
-
       // ESLint Override Rules
       eslint: {
         useEslintrc: false,
@@ -36,11 +33,7 @@ module.exports = {
   },
   config(config) {
     // Add eslint react version
-    const eslintConfig = merge.recursive(config.eslint, {
-      baseConfig: {
-        settings: { react: { version: config.eslintReactVersion } }
-      }
-    });
+    const eslintConfig = Object.assign({}, config.eslint);
 
     let extendedEslintConfig = {
       config: eslintConfig,

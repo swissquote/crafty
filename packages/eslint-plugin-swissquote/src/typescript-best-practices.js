@@ -11,7 +11,7 @@ module.exports = {
     "@swissquote/swissquote/@typescript-eslint/no-explicit-any": "off", // We won't force this on our users. Let them be the judge
     "no-shadow": "off", // This is not as useful as we have types for our variables
 
-    // Apply TypeScript specific rules
+    // Replace base rules with TypeScript specific rules
     camelcase: "off",
     "@swissquote/swissquote/@typescript-eslint/camelcase": [
       "error",

@@ -153,7 +153,6 @@ Object {
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/Component.ts
   1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
-  2:1  error  Prefer default export                                               @swissquote/swissquote/import/prefer-default-export
   3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/SomeLibrary.ts
@@ -170,11 +169,11 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/sc
   16:7   warning  Unexpected console statement                           no-console
   17:7   error    Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
 
-✖ 13 problems (10 errors, 3 warnings)
+✖ 12 problems (9 errors, 3 warnings)
   9 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 [__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] ESLint failed with 10 errors
+[__:__:__] ESLint failed with 9 errors
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",

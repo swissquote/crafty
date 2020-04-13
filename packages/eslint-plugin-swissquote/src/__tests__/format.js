@@ -1,7 +1,7 @@
 /* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine(require("../formatting"), require("../es6"));
+const engine = prepareCLIEngine("format");
 
 describe("ES6 Formatting", () => {
   it("Gives no warning on correct code", () => {
