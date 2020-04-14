@@ -18,7 +18,13 @@ module.exports = {
     },
     node: {
       parser: require.resolve("babel-eslint"),
-      extends: resolveModules("node")
+      extends: resolveModules("node"),
+      overrides: [
+        {
+          files: ["*.ts", "*.tsx"],
+          parser: require.resolve("@typescript-eslint/parser")
+        }
+      ]
     },
     legacy: {
       env: {
