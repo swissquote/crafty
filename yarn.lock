@@ -10207,13 +10207,13 @@ postcss-color-gray@5.0.0:
     postcss "^7.0.5"
     postcss-values-parser "^2.0.0"
 
-postcss-color-hex-alpha@5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-color-hex-alpha/-/postcss-color-hex-alpha-5.0.3.tgz#a8d9ca4c39d497c9661e374b9c51899ef0f87388"
-  integrity sha512-PF4GDel8q3kkreVXKLAGNpHKilXsZ6xuu+mOQMHWHLPNyjiUBOr75sp5ZKJfmv1MCus5/DWUGcK9hm6qHEnXYw==
+postcss-color-hex-alpha@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-color-hex-alpha/-/postcss-color-hex-alpha-6.0.0.tgz#9c748b3986e640c6cba891b49f4b6e0ff4e8b0f4"
+  integrity sha512-ZUw1fFbPmNA1IOwsbRhIYsddqRmaGs80fdR5VGJwu+qarrnt974OIwSpQYh3Yb04Jx6r44gWbGNpAVU+eUhmQQ==
   dependencies:
-    postcss "^7.0.14"
-    postcss-values-parser "^2.0.1"
+    postcss "^7.0.27"
+    postcss-values-parser "^3.2.0"
 
 postcss-color-hsl@2.0.0:
   version "2.0.0"
@@ -10234,13 +10234,13 @@ postcss-color-hwb@3.0.0:
     postcss-message-helpers "^2.0.0"
     reduce-function-call "^1.0.2"
 
-postcss-color-rebeccapurple@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-color-rebeccapurple/-/postcss-color-rebeccapurple-5.0.0.tgz#fa7693fd779b95fc88769b9ea64aeba72b530676"
-  integrity sha512-jeCPS+7hh2AcbuXFca26l+xn82PKYI9Oy3PMK8ML9nOACxyxkn1EAlIZyGOTCnzzvYVrhKSCly6Eqt83fb5CnQ==
+postcss-color-rebeccapurple@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-color-rebeccapurple/-/postcss-color-rebeccapurple-6.0.0.tgz#a426e54eaf25c9bc41213f8edcd0f318f7300eab"
+  integrity sha512-7DOI5VEpi73Mn9YsCoMX7Ld5EQzQPxJh3JaiUERCDDV5xhQtmO41zqktLOTi7psJYuQnzWdbrxbpJ/TUdg1zrg==
   dependencies:
-    postcss "^7.0.26"
-    postcss-values-parser "^3.0.5"
+    postcss "^7.0.27"
+    postcss-values-parser "^3.2.0"
 
 postcss-color-rgb@2.0.0:
   version "2.0.0"
@@ -10590,7 +10590,7 @@ postcss-value-parser@^3.2.3, postcss-value-parser@^3.3.0, postcss-value-parser@^
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==
 
-postcss-values-parser@^2.0.0, postcss-values-parser@^2.0.1:
+postcss-values-parser@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/postcss-values-parser/-/postcss-values-parser-2.0.1.tgz#da8b472d901da1e205b47bdc98637b9e9e550e5f"
   integrity sha512-2tLuBsA6P4rYTNKCXYG/71C7j1pU6pK503suYOmn4xYrQIzW+opD+7FAFNuGSdZC/3Qfy334QbeMu7MEb8gOxg==
@@ -10599,13 +10599,12 @@ postcss-values-parser@^2.0.0, postcss-values-parser@^2.0.1:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-values-parser@^3.0.5:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/postcss-values-parser/-/postcss-values-parser-3.1.1.tgz#487111a0446117d3463d2d429a380788f1365f69"
-  integrity sha512-p56/Cu9wb8+lck/iOTeuFeSHKEUH1bbWQ03T6N3jDkw+15pV65rMY5pK+OWhVpRn5TIrByS6UVpO3mSqvlhZYA==
+postcss-values-parser@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/postcss-values-parser/-/postcss-values-parser-3.2.1.tgz#55114607de6631338ba8728d3e9c15785adcc027"
+  integrity sha512-SQ7/88VE9LhJh9gc27/hqnSU/aZaREVJcRVccXBmajgP2RkjdJzNyH/a9GCVMI5nsRhT0jC5HpUMwfkz81DVVg==
   dependencies:
     color-name "^1.1.4"
-    is-number "^7.0.0"
     is-url-superb "^3.0.0"
     postcss "^7.0.5"
     url-regex "^5.0.0"
