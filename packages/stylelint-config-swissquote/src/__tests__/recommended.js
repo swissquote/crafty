@@ -4,6 +4,10 @@ const stylelint = require("stylelint");
 
 const config = require("../../recommended");
 
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
+
 const validCss = `/** @define Form */
 
 :root {
