@@ -5749,10 +5749,15 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-fp-ts@^2.0.2, fp-ts@^2.3.1:
+fp-ts@^2.0.2:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.5.4.tgz#f184079aaa78403ea66458517be7787e0d593429"
   integrity sha512-cZlLeEneRYypc2dOzB9h8+bd9mQhJVyt2g0Dny2gKR7uWNgA4EmLSJyguLYsTU44nJSSG9EjurUalEc0wQqeKw==
+
+fp-ts@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.6.1.tgz#f2505a4b44a77a344a1e451c667383e42f3728de"
+  integrity sha512-ZYOgqEOvUuO59rvItjf1OniEG4k/ClY3rd+AiuRYbl3skY4X/s7Oig25/wvORjycjeOjjr5OO+VcpprLQQOpIQ==
 
 fragment-cache@^0.2.1:
   version "0.2.1"
@@ -6971,18 +6976,18 @@ inspect-with-kind@^1.0.4:
   dependencies:
     kind-of "^6.0.2"
 
-inspectpack@4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/inspectpack/-/inspectpack-4.4.0.tgz#47c3a94b80ba8a4b72034b784f018ff58952eb03"
-  integrity sha512-V9vjuP5OqAk3jnCZ0M9TIhZlRNdd9v1fggwAHHOTYvxqFRkAtEbjj1dII6kpj6tN8+yHKBL5u9gf9Lp7GGOLHw==
+inspectpack@4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/inspectpack/-/inspectpack-4.5.2.tgz#4a32f078a9173954c1a139913a88d1eb9821e52a"
+  integrity sha512-HTj+t+QuF2ogbvPaN0d2c7VUJNB9bdERN4IT+MLTxxgRBegn5xarv/76SlFnjOFWzesbqxoIxfGATu7I1+pMOA==
   dependencies:
-    chalk "^3.0.0"
-    fp-ts "^2.3.1"
-    io-ts "^2.0.3"
+    chalk "^4.0.0"
+    fp-ts "^2.6.1"
+    io-ts "^2.2.3"
     io-ts-reporters "^1.0.0"
-    pify "^4.0.1"
+    pify "^5.0.0"
     semver-compare "^1.0.0"
-    yargs "^15.1.0"
+    yargs "^15.3.1"
 
 internal-ip@^4.3.0:
   version "4.3.0"
@@ -7034,10 +7039,15 @@ io-ts-reporters@^1.0.0:
     fp-ts "^2.0.2"
     io-ts "^2.0.0"
 
-io-ts@^2.0.0, io-ts@^2.0.3:
+io-ts@^2.0.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.1.tgz#d8cb21a23cf8fbe697d78445a65bab42c0eb467f"
   integrity sha512-RufppkTV58MfDKF2gXlHVBvi+WIyL7nUcAQMkJ1O3SiQcqwlxf6dBOJP/LV19UxHRkGKJZ6ImSj7LqYcELIejQ==
+
+io-ts@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.3.tgz#6680383d0b84e0e61fa9f121a512474a9aa325c5"
+  integrity sha512-qiaqhzYVGENWvMnf4Dto/j8IDEiEWexNf4Z3b8tFEyE1GLLojnACUvUqkV2QF7vLC0cv/QKtq6ZOgKGConPYEA==
 
 ip-regex@^2.1.0:
   version "2.1.0"
@@ -10087,6 +10097,11 @@ pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
+
+pify@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
+  integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
 pinkie-promise@^2.0.0:
   version "2.0.1"
@@ -14408,7 +14423,7 @@ yargs@12.0.5, yargs@^12.0.2:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^11.1.1"
 
-yargs@^15.1.0, yargs@^15.3.1:
+yargs@^15.3.1:
   version "15.3.1"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.3.1.tgz#9505b472763963e54afe60148ad27a330818e98b"
   integrity sha512-92O1HWEjw27sBfgmXiixJWT5hRBp2eobqXicLtPBIDBhYB+1HpwZlXmbW2luivBJHBzki+7VyCLRtAkScbTBQA==
