@@ -103,7 +103,11 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
       return 0;
     })
     .map(plugin => {
-      return plugin.init ? plugin.init(plugin) : plugin.plugin(plugin.options);
+      if (plugin.init) {
+        return plugin.init(plugin);
+      }
+
+      return plugin.plugin.default ? plugin.plugin.default(plugin.options) : plugin.plugin(plugin.options);
     });
 
   const onwarn = config.input.onwarn;
