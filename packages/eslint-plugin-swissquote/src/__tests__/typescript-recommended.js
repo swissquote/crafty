@@ -76,7 +76,7 @@ function assignRef<T>(ref: T, setter: React.Ref<T>) {
 export type triggerFunction = (options: {
   isOpen: boolean;
   caret: React.ReactNode;
-  props: object;
+  props: Record<string, unknown>;
 }) => React.ReactNode;
 
 export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {

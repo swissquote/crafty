@@ -13,10 +13,39 @@ module.exports = {
 
     // Replace base rules with TypeScript specific rules
     camelcase: "off",
-    "@swissquote/swissquote/@typescript-eslint/camelcase": [
+    "@swissquote/swissquote/@typescript-eslint/naming-convention": [
       "error",
-      { properties: "never" }
+      {
+        "selector": "default",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "memberLike",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE"]
+      },
+      {
+        // Properties can come from legacy systems / libraries, don't block because of this
+        "selector": "property",
+        "format": null
+      },
+      {
+        // A function parameter can be a class or property
+        "selector": "parameter",
+        "format": ["camelCase", "PascalCase"]
+      }
     ],
+
+    // Disable this rule for the time being, enforcing it suddenly would be too harsh
+    // TODO :: enable in 2.0
+    "@swissquote/swissquote/@typescript-eslint/explicit-module-boundary-types": "off",
 
     "no-use-before-define": "off",
     "@swissquote/swissquote/@typescript-eslint/no-use-before-define": "error",
