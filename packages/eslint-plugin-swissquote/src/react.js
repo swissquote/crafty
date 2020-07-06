@@ -9,7 +9,7 @@ module.exports = {
       }
     },
     react: {
-      version: "15" //Overlaid when loading this file
+      version: "detect"
     }
   },
   parserOptions: {
@@ -49,7 +49,14 @@ module.exports = {
   }
 };
 
+// Add all recommended configurations from eslint-plugin-react
 addMissingRules(
   require("eslint-plugin-react").configs.recommended.rules,
+  module.exports.rules
+);
+
+// Disable all the rules from eslint-plugin-react that are handled by Prettier
+addMissingRules(
+  require("eslint-config-prettier/react").rules,
   module.exports.rules
 );

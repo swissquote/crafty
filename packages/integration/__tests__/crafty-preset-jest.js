@@ -68,6 +68,18 @@ it("Succeeds with babel", async () => {
   expect(result).toMatchSnapshot();
 });
 
+it("Fails with babel", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-jest/babel-fails"
+  );
+  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result).toMatchSnapshot();
+});
+
 testIfNotPnp("Succeeds with babel and React", async () => {
   const cwd = path.join(
     __dirname,

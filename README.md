@@ -3,8 +3,10 @@
 [![Latest Version](https://img.shields.io/github/release/swissquote/crafty.svg?style=flat-square)](https://github.com/swissquote/crafty/releases)
 [![license](https://img.shields.io/github/license/swissquote/crafty.svg?style=flat-square)](https://github.com/swissquote/crafty/blob/master/LICENSE.md)
 [![Build Status](https://img.shields.io/travis/swissquote/crafty/master.svg?style=flat-square)](https://travis-ci.org/swissquote/crafty)
+[![Build Status](https://github.com/swissquote/crafty/workflows/Node%20CI/badge.svg)](https://github.com/swissquote/crafty/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=crafty&metric=alert_status)](https://sonarcloud.io/dashboard?id=crafty)
-[![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty) [![Greenkeeper badge](https://badges.greenkeeper.io/swissquote/crafty.svg)](https://greenkeeper.io/)
+[![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty)
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?style=flat-square)](https://renovatebot.com)
 
 Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, rollup.js, Babel, ESLint, TypeScript, PostCSS, Stylelint and other tools.
 

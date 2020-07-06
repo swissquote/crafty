@@ -1,6 +1,6 @@
 {
   "name": "integration",
-  "version": "1.8.0",
+  "version": "1.11.1",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
@@ -8,31 +8,31 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@babel/core": "7.7.5",
-    "@swissquote/crafty": "1.8.0",
-    "@swissquote/crafty-preset-babel": "1.8.0",
-    "@swissquote/crafty-preset-eslint": "1.8.0",
-    "@swissquote/crafty-preset-images": "1.8.0",
-    "@swissquote/crafty-preset-images-simple": "1.8.0",
-    "@swissquote/crafty-preset-maven": "1.8.0",
-    "@swissquote/crafty-preset-postcss": "1.8.0",
-    "@swissquote/crafty-preset-prettier": "1.8.0",
-    "@swissquote/crafty-preset-typescript": "1.8.0",
-    "@swissquote/crafty-runner-gulp": "1.8.0",
-    "@swissquote/crafty-runner-rollup": "1.8.0",
-    "@swissquote/crafty-runner-webpack": "1.8.0",
-    "@types/jest": "^24.0.9",
-    "execa": "^3.2.0",
-    "jest": "24.9.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "rmfr": "^2.0.0"
+    "@babel/core": "7.10.4",
+    "@swissquote/crafty": "1.11.1",
+    "@swissquote/crafty-preset-babel": "1.11.1",
+    "@swissquote/crafty-preset-eslint": "1.11.1",
+    "@swissquote/crafty-preset-images": "1.11.1",
+    "@swissquote/crafty-preset-images-simple": "1.11.1",
+    "@swissquote/crafty-preset-maven": "1.11.1",
+    "@swissquote/crafty-preset-postcss": "1.11.1",
+    "@swissquote/crafty-preset-prettier": "1.11.1",
+    "@swissquote/crafty-preset-typescript": "1.11.1",
+    "@swissquote/crafty-runner-gulp": "1.11.1",
+    "@swissquote/crafty-runner-rollup": "1.11.1",
+    "@swissquote/crafty-runner-webpack": "1.11.1",
+    "@types/jest": "^26.0.0",
+    "execa": "4.0.2",
+    "jest": "26.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "rmfr": "2.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-property-literals": "7.7.4",
-    "lodash-es": "^4.17.11"
+    "@babel/plugin-transform-property-literals": "7.10.4",
+    "lodash-es": "4.17.15"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   }
 }

@@ -8,15 +8,44 @@ module.exports = {
     // Override of JavaScript recommended
     "dot-notation": "off", // Produce false positives and breaks valid code
     "no-undef": "off", // This check is done by the TypeScript compiler
-    "no-explicit-any": "off", // We won't force this on our users. Let them be the judge
+    "@swissquote/swissquote/@typescript-eslint/no-explicit-any": "off", // We won't force this on our users. Let them be the judge
     "no-shadow": "off", // This is not as useful as we have types for our variables
 
-    // Apply TypeScript specific rules
+    // Replace base rules with TypeScript specific rules
     camelcase: "off",
-    "@swissquote/swissquote/@typescript-eslint/camelcase": [
+    "@swissquote/swissquote/@typescript-eslint/naming-convention": [
       "error",
-      { properties: "never" }
+      {
+        "selector": "default",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "memberLike",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE"]
+      },
+      {
+        // Properties can come from legacy systems / libraries, don't block because of this
+        "selector": "property",
+        "format": null
+      },
+      {
+        // A function parameter can be a class or property
+        "selector": "parameter",
+        "format": ["camelCase", "PascalCase"]
+      }
     ],
+
+    // Disable this rule for the time being, enforcing it suddenly would be too harsh
+    // TODO :: enable in 2.0
+    "@swissquote/swissquote/@typescript-eslint/explicit-module-boundary-types": "off",
 
     "no-use-before-define": "off",
     "@swissquote/swissquote/@typescript-eslint/no-use-before-define": "error",
@@ -33,7 +62,7 @@ module.exports = {
     // Overrides of TypeScript recommended
     "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
     "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off",
-
+    "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
   }
 };
 

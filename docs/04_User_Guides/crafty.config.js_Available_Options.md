@@ -11,7 +11,6 @@ All the options in `crafty.config.js` apart from your bundles in the `js` and
 | `destination`              | See below                        | The destination at which to put all files                                                                            | Core                                                                     |
 | `destination_<bundleType>` | `destination + "/" + bundleType` | The destination for JavaScript/TypeScript files                                                                      | Core                                                                     |
 | `eslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all JavaScript source files that go through the Gulp builder                              | `crafty-preset-babel`                                                    |
-| `eslintReactVersion`       | `"15.0"`                         | Some linting rules need to know the React version used.                                                              | `crafty-preset-babel`                                                    |
 | `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-rollup` / `crafty-runner-webpack`                         |
 | `img_basedir`              | `"images"`                       | Where to take images from (Relative to current working directory)                                                    | `crafty-preset-images` / `crafty-preset-images-simple`                   |
 | `img_extensions`           | `["png", "jpg", "jpeg", "gif"]`  | What extensions to compress (excludes svg)                                                                           | `crafty-preset-images`                                                   |
@@ -34,7 +33,7 @@ your assets to Maven's `target` directory.
 
 ### `browser`: Browser compatibility
 
-Default: `"> 0.25%, Firefox ESR, Edge >= 13, Safari >= 7.1, iOS >= 7.1, Chrome >= 32, Firefox >= 24, Opera >= 24, IE >= 9"`
+Default: `> 0.25%, Firefox ESR, Edge >= 15, Safari >= 10, iOS >= 10, Chrome >= 56, Firefox >= 51, IE >= 11, not op_mini all, not Safari 5.1, not kaios 2.5, not ie 9`
 
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.

@@ -28,11 +28,7 @@ module.exports = {
     \\"rules\\": {
         \\"no-var\\": 0
     },
-    \\"settings\\": {
-        \\"react\\": {
-            \\"version\\": \\"15.0\\"
-        }
-    }
+    \\"settings\\": {}
 };
 "
 `;
@@ -108,6 +104,33 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
   20:14  error    Expected '===' and instead saw '=='              eqeqeq
 
 ✖ 14 problems (12 errors, 2 warnings)
+  10 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`Lints JavaScript using command, format preset 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/Component.js
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-babel/lints/js/script.js
+   3:23  error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+   5:14  error  Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+   6:1   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  14:9   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  15:17  error  Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
+  18:11  error  Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+
+✖ 10 problems (10 errors, 0 warnings)
   10 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",

@@ -11,7 +11,8 @@ const defaultBrowsers = [
   "IE >= 11",
   "not op_mini all",
   "not Safari 5.1",
-  "not kaios 2.5"
+  "not kaios 2.5",
+  "not ie 9"
 ].join(", ");
 
 function getDefaultBrowsers() {

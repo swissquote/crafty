@@ -236,6 +236,22 @@ it("Lints JavaScript using command, legacy", async () => {
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
+it("Lints JavaScript using command, format preset", async () => {
+  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
+  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--preset", "format"],
+    cwd
+  );
+
+  expect(result).toMatchSnapshot();
+
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
+
 it("Lints JavaScript using command, recommended preset", async () => {
   const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
   await rmfr(path.join(cwd, "dist"));

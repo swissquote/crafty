@@ -1,0 +1,54 @@
+{
+  "extends": ["config:base"],
+  "schedule": "before 11pm on Monday",
+  "statusCheckVerify": true,
+  "packageRules": [
+    {
+      "groupName": "@types",
+      "packagePatterns": ["@types/*"],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "groupName": "rollup",
+      "packagePatterns": ["@rollup/*", "^rollup"],
+      "minor": {
+        "groupName": "all rollup dependencies",
+        "groupSlug": "rollup-minor-patch"
+      }
+    },
+    {
+      "groupName": "jest",
+      "packagePatterns": ["jest"],
+      "minor": {
+        "groupName": "all jest dependencies",
+        "groupSlug": "jest-minor-patch"
+      }
+    },
+    {
+      "groupName": "eslint",
+      "packagePatterns": ["^eslint", "@typescript-eslint/*"],
+      "minor": {
+        "groupName": "all eslint dependencies",
+        "groupSlug": "eslint-minor-patch"
+      }
+    },
+    {
+      "groupName": "postcss",
+      "packagePatterns": ["^postcss"],
+      "minor": {
+        "groupName": "all postcss dependencies",
+        "groupSlug": "postcss-minor-patch"
+      }
+    },
+    {
+      "groupName": "webpack",
+      "packagePatterns": ["^webpack"],
+      "minor": {
+        "groupName": "all webpack dependencies",
+        "groupSlug": "webpack-minor-patch"
+      }
+    }
+  ],
+  "ignoreDeps": ["lerna", "postcss-custom-properties"],
+  "ignorePaths": ["packages/integration/fixtures"]
+}

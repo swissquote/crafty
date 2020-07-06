@@ -1,6 +1,12 @@
 
+export interface RandomInterface {
+  someType: {
+    someSubType: number;
+  }
+}
+
 export default class SomeLibrary {
-    add(a, b) {
+    add(a: number, b): RandomInterface["someType"]["someSubType"] {
         return a + b;
     }
 

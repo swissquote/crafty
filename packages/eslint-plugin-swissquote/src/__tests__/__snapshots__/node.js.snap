@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Works with TypeScript 1`] = `
+Array [
+  Object {
+    "column": 9,
+    "endColumn": 38,
+    "endLine": 6,
+    "fix": Object {
+      "range": Array [
+        155,
+        163,
+      ],
+      "text": "",
+    },
+    "line": 6,
+    "message": "Type string trivially inferred from a string literal, remove type annotation.",
+    "messageId": "noInferrableType",
+    "nodeType": "VariableDeclarator",
+    "ruleId": "@swissquote/swissquote/@typescript-eslint/no-inferrable-types",
+    "severity": 2,
+  },
+  Object {
+    "column": 25,
+    "endColumn": 27,
+    "endLine": 34,
+    "line": 34,
+    "message": "Expected '===' and instead saw '=='.",
+    "messageId": "unexpected",
+    "nodeType": "BinaryExpression",
+    "ruleId": "eqeqeq",
+    "severity": 2,
+  },
+  Object {
+    "column": 16,
+    "endColumn": 35,
+    "endLine": 35,
+    "line": 35,
+    "message": "Redundant use of \`await\` on a return value.",
+    "nodeType": "Identifier",
+    "ruleId": "no-return-await",
+    "severity": 2,
+  },
+]
+`;

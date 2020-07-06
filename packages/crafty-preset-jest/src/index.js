@@ -97,16 +97,23 @@ module.exports = ${JSON.stringify(content, null, 4)};
       const cliOptions = {
         config: configFile,
         coverage: cli.flags.coverage,
-        watch: cli.flags.watch
+        watch: cli.flags.watch,
+        updateSnapshot: cli.flags.updateSnapshot || cli.flags.u
       };
 
       writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
 
-      require("jest-cli").runCLI(cliOptions, [configFile], result =>
-        result.numFailedTests || result.numFailedTestSuites
-          ? reject()
-          : resolve()
-      );
+      require("@jest/core")
+        .runCLI(cliOptions, [configFile])
+        .then(
+          result =>
+            result.results.success
+              ? resolve(result)
+              : reject(
+                  new crafty.Information("Jest: One or more tests failed")
+                ),
+          reject
+        );
     });
   }
 };

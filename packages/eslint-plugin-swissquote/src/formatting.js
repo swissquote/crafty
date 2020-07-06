@@ -20,7 +20,6 @@ module.exports = {
     "no-empty-character-class": warn(),
     "no-lone-blocks": warn(),
     "no-multi-str": warn(),
-    "no-negated-condition": warn(),
     "no-nested-ternary": warn(),
     "no-new-object": warn(),
     "no-new-wrappers": warn(),

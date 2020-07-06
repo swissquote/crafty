@@ -2,37 +2,41 @@ const {
   CLIEngine,
   getCLIEngineInternalSlots
 } = require("eslint/lib/cli-engine/cli-engine.js");
-const merge = require("merge");
+const fs = require("fs");
+const tmp = require("tmp");
 
 const definedRules = require("./rules");
 
-module.exports = {
-  prepareCLIEngine(...args) {
-    const configuration = merge.recursive(...args);
+function prepareCLIEngine(...args) {
+  const config = {
+    plugins: ["@swissquote/swissquote"],
+    extends: args.map(preset => `plugin:@swissquote/swissquote/${preset}`),
+    rules: {},
+    settings: {}
+  };
 
-    // For some reason, CLIEngine wants "envs"
-    if (configuration.env) {
-      const envs = [];
-      Object.keys(configuration.env)
-        .filter(env => configuration.env[env])
-        .forEach(env => {
-          envs.push(env);
-        });
-      configuration.envs = envs;
-    }
+  const tmpfile = tmp.fileSync({ postfix: ".json" }).name;
+  fs.writeFileSync(tmpfile, JSON.stringify(config));
 
-    const engine = new CLIEngine(configuration);
-    const linter = getCLIEngineInternalSlots(engine).linter;
-    Object.keys(definedRules).forEach(rule => {
-      linter.defineRule(`@swissquote/swissquote/${rule}`, definedRules[rule]);
-    });
+  configuration = {
+    useEslintrc: false,
+    configFile: tmpfile
+  };
 
-    return engine;
-  },
-  lint(cli, text, filename = "foo.js") {
-    // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeonfiles
-    // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeontext
-    const linter = cli.executeOnText(text.replace(/^\n/, ""), filename);
-    return linter.results[0];
-  }
-};
+  const engine = new CLIEngine(configuration);
+  const linter = getCLIEngineInternalSlots(engine).linter;
+  Object.keys(definedRules).forEach(rule => {
+    linter.defineRule(`@swissquote/swissquote/${rule}`, definedRules[rule]);
+  });
+
+  return engine;
+}
+
+function lint(cli, text, filename = "foo.js") {
+  // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeonfiles
+  // @see http://eslint.org/docs/developer-guide/nodejs-api.html#executeontext
+  const linter = cli.executeOnText(text.replace(/^\n/, ""), filename);
+  return linter.results[0];
+}
+
+module.exports = { prepareCLIEngine, lint };

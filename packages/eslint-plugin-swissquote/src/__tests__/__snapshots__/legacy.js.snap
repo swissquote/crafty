@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Doesn't work with ES6 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "fatal": true,
+    "line": 1,
+    "message": "Parsing error: The keyword 'const' is reserved",
+    "ruleId": null,
+    "severity": 2,
+  },
+]
+`;
+
 exports[`ES5 formatting Gives no warning on correct code 1`] = `Array []`;
 
 exports[`ES5 formatting Warns on wrong format 1`] = `

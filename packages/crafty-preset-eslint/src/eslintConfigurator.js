@@ -3,6 +3,8 @@ const path = require("path");
 
 const resolveFrom = require("resolve-from");
 
+require("./patchModuleResolver");
+
 module.exports = function configurationBuilder(args) {
   let configuration = {
     plugins: ["@swissquote/swissquote"],

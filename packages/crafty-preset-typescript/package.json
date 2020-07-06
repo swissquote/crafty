@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-typescript",
-  "version": "1.8.0",
+  "version": "1.11.1",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -8,26 +8,26 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@babel/core": "7.7.5",
-    "@babel/runtime": "7.7.6",
-    "@swissquote/babel-preset-swissquote": "1.8.0",
-    "@swissquote/crafty-preset-eslint": "1.8.0",
-    "babel-loader": "8.0.6",
+    "@babel/core": "7.10.4",
+    "@babel/runtime": "7.10.4",
+    "@swissquote/babel-preset-swissquote": "1.11.1",
+    "@swissquote/crafty-preset-eslint": "1.11.1",
+    "babel-loader": "8.1.0",
     "find-up": "^4.0.0",
-    "fork-ts-checker-webpack-plugin": "3.1.1",
+    "fork-ts-checker-webpack-plugin": "4.1.5",
     "gulp-concat": "2.6.1",
     "gulp-eslint": "6.0.0",
     "gulp-newer": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-typescript": "5.0.1",
-    "rollup-plugin-typescript2": "0.25.3",
-    "tmp": "0.1.0",
-    "ts-jest": "24.2.0",
-    "ts-loader": "6.2.1",
+    "rollup-plugin-typescript2": "0.27.1",
+    "tmp": "0.2.1",
+    "ts-jest": "26.1.1",
+    "ts-loader": "7.0.5",
     "ts-pnp": "^1.1.2",
-    "typescript": "3.7.3"
+    "typescript": "3.9.6"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   }
 }

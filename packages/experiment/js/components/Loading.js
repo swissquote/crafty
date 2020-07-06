@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Loading() {
-  return <div>Loading datepicker...</div>;
+  return <div>Loading tabs...</div>;
 }

@@ -1,46 +1,46 @@
-/* global describe, it, expect, jest */
+/* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine(
-  require("../formatting"),
-  require("../typescript"),
-  { parser: require.resolve("@typescript-eslint/parser") }
-);
+const engine = prepareCLIEngine("recommended");
 
-it("Fails on badly formatted TypeScript code", () => {
+it("Warns on console.log", () => {
+  const result = lint(engine, `
+const foo = window;
+
+// Use a TypeScript 3.7 feature to make sure it works
+if (foo?.bar?.baz) {
+  console.log(foo.bar.baz);
+}
+`, "file.ts");
+
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toBe(1);
+  expect(result.errorCount).toBe(0);
+});
+
+
+it("Uses sonar plugin", () => {
   const result = lint(
     engine,
     `
-module.exports = function initJS  (gulp, config: {}, watchers): string[] {
-  const js = config.js,
-     jsTasks: string[] = [];
+/* global openWindow, closeWindow, moveWindowToTheBackground */
 
-  for (const name in js) {
-    if (!js.hasOwnProperty(name)) {
-      continue;
-      }
-
-    const taskName = \`js_\${name}\`;
-
-    if (!compileWithWebpack(js[name])) {
-      gulp.task(taskName, jsTaskES5(gulp, config, watchers, js[name]));
-        watchers.add(js[name].watch || js[name].source, taskName);
-    }
-
-    jsTasks.push( taskName );
+function changeWindow(param: number) {
+  if (param === 1) {
+    openWindow();
+  } else if (param === 2) {
+    closeWindow();
+  } else if (param === 1) {
+    // Noncompliant    ^
+    moveWindowToTheBackground();
   }
-
-  gulp.task("js", jsTasks);
-
-  return ["js"];
-};
-`,
-    "file.ts"
+}
+`, "file.ts"
   );
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(5);
+  expect(result.errorCount).toBe(2);
 });
 
 it("Works with complex types", () => {
@@ -76,7 +76,7 @@ function assignRef<T>(ref: T, setter: React.Ref<T>) {
 export type triggerFunction = (options: {
   isOpen: boolean;
   caret: React.ReactNode;
-  props: object;
+  props: Record<string, unknown>;
 }) => React.ReactNode;
 
 export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -112,7 +112,7 @@ export default class SplitButton extends React.Component<
 
   private target: Element;
 
-  handleRef = node => {
+  ref = node => {
     this.target = getElement(node);
     assignRef(this.target, this.props.innerRef);
   };
@@ -120,11 +120,12 @@ export default class SplitButton extends React.Component<
   render(trigger) {
     const { trigger } = this.props;
     if (typeof trigger !== "function") {
-      return <button innerRef={this.handleRef}>{trigger}</button>;
+      // eslint-disable-next-line @swissquote/swissquote/react/jsx-handler-names
+      return <button innerRef={this.ref}>{trigger}</button>;
     }
 
     return (trigger as triggerFunction)({
-      props: { innerRef: this.handleRef },
+      props: { innerRef: this.ref },
       isOpen: this.state.open,
       caret: <span className={this.props.classes("Caret")} />
     });
@@ -134,6 +135,7 @@ export default class SplitButton extends React.Component<
     "Component.tsx"
   );
 
+  expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(0);
   expect(result.errorCount).toBe(0);
 });
