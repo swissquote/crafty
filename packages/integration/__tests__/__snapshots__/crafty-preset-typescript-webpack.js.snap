@@ -11,10 +11,12 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 Starting type checking service...
-  size  name         module                           status
-  1 kB  2            multi ./js/script.ts             built
-  1 kB  3            ./js/script.ts + 1 modules       built
-  1 kB  4            ./js/SomeLibrary.ts              built
+(node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
+  size  name         module                                                       status
+  1 kB  131          (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
+  1 kB  315          (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
+  1 kB  354          ./js/script.ts + 1 modules                                   built
+  1 kB  561          ./js/SomeLibrary.ts                                          built
 
   size  name         asset                                                        status
   1 kB  default      myBundle.min.js                                              emitted
@@ -22,7 +24,7 @@ Starting type checking service...
   1 kB  someLibrary  someLibrary.myBundle.min.js                                  emitted
   1 kB  map          someLibrary.myBundle.min.js.map                              emitted
 
-  (7 modules hidden)
+  (8 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -35,7 +37,7 @@ Starting type checking service...
 `;
 
 exports[`Compiles TypeScript - fork checker 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){function t(t){var n=t[0];var o=t[1];var u,i,a=0,c=[];for(;a<n.length;a++)i=n[a],Object.prototype.hasOwnProperty.call(r,i)&&r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(t);while(c.length)c.shift()()}var n={};var r={0:0};function o(e){return u.p+\\"\\"+({1:\\"someLibrary\\"}[e]||e)+\\".myBundle.min.js\\"}function u(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=true,r.exports}u.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var i=new Promise((function(t,o){n=r[e]=[t,o]}));t.push(n[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(t){a.onerror=a.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var u=t&&t.target&&t.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.name=\\"ChunkLoadError\\",f.type=o,f.request=u,n[1](f)}r[e]=void 0}};var l=setTimeout((function(){c({type:\\"timeout\\",target:a})}),12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(t)},u.m=e,u.c=n,u.d=function(e,t,n){u.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:n})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},u.t=function(e,t){if(1&t&&(e=u(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(u.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)u.d(n,r,function(t){return e[t]}.bind(null,r));return n},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,\\"a\\",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var a=i.push.bind(i);i.push=t,i=i.slice();for(var c=0;c<i.length;c++)t(i[c]);var f=a;return u(u.s=2)}([function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.d(t,\\"a\\",(function(){return r}))},function(e,t,n){\\"use strict\\";function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}n.d(t,\\"a\\",(function(){return o}))},function(e,t,n){e.exports=n(3)},function(e,t,n){\\"use strict\\";n.r(t),n.d(t,\\"default\\",(function(){return i}));var r=n(0);var o=n(1);function u(e,t){return e+t}var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),n.e(1).then(n.bind(null,4)).then((function(e){var t=new e.default;console.log(t.add(2,4))}))}}]),e}()}])}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,(function(){return function(){\\"use strict\\";var e={315:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},131:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})},354:function(e,n,t){t.r(n),t.d(n,{default:function(){return i}});var r=t(315);var o=t(131);function u(e,n){return e+n}var i=function(){function e(){(0,r.Z)(this,e),console.log(\\"init class\\")}return(0,o.Z)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),t.e(399).then(t.bind(t,561)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),e}()}};var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={exports:{}};return e[r](o,o.exports,t),o.exports}return t.m=e,function(){t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:true,get:n[r]})}}(),function(){t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))}}(),function(){t.u=function(e){return\\"someLibrary.myBundle.min.js\\"}}(),function(){t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)}}(),function(){var e={};t.l=function(n,r,o){if(e[n])return void e[n].push(r);var u,i;if(void 0!==o){var a=document.getElementsByTagName(\\"script\\");for(var f=0;f<a.length;f++){var c=a[f];if(c.getAttribute(\\"src\\")==n){u=c;break}}}u||(i=true,u=document.createElement(\\"script\\"),u.charset=\\"utf-8\\",u.timeout=120,t.nc&&u.setAttribute(\\"nonce\\",t.nc),u.src=n),e[n]=[r];var l=function(t){l=function(){},u.onerror=u.onload=null,clearTimeout(s);var r=e[n];delete e[n],u.parentNode.removeChild(u),r&&r.forEach((function(e){return e(t)}))};var s=setTimeout((function(){l({type:\\"timeout\\",target:u})}),12e4);u.onerror=u.onload=l,i&&document.head.appendChild(u)}}(),function(){t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){t.p=\\"\\"}(),function(){var e={913:0};function n(n){var r=n[0];var o=n[1];var i=n[3];var a,f,c=0,l=[];for(;c<r.length;c++)f=r[c],t.o(e,f)&&e[f]&&l.push(e[f][0]),e[f]=0;for(a in o)t.o(o,a)&&(t.m[a]=o[a]);i&&i(t),u&&u(n);while(l.length)l.shift()()}t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var u=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=u);var i=t.p+t.u(n);var a=new Error;var f=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var u=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var i=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+u+\\": \\"+i+\\")\\",a.name=\\"ChunkLoadError\\",a.type=u,a.request=i,o[1](a)}};t.l(i,f,\\"chunk-\\"+n)}};var r=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var o=r.push.bind(r);r.push=n;var u=o}(),t(354)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -56,6 +58,10 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 (node:11111) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 (node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
+(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
   size  name     module                                                       status
   1 kB  131      (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
   1 kB  315      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
@@ -71,7 +77,7 @@ Object {
   1 kB  default  myBundle.min.js                                              emitted
   1 kB  map      myBundle.min.js.map                                          emitted
 
-  (7 modules hidden)
+  (8 modules hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -84,7 +90,7 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){function t(t){var n=t[0];var o=t[1];var u,i,a=0,c=[];for(;a<n.length;a++)i=n[a],Object.prototype.hasOwnProperty.call(r,i)&&r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(t);while(c.length)c.shift()()}var n={};var r={0:0};function o(e){return u.p+\\"\\"+({}[e]||e)+\\".myBundle.min.js\\"}function u(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:false,exports:{}};return e[t].call(r.exports,r,r.exports,u),r.l=true,r.exports}u.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var i=new Promise((function(t,o){n=r[e]=[t,o]}));t.push(n[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(t){a.onerror=a.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var u=t&&t.target&&t.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.name=\\"ChunkLoadError\\",f.type=o,f.request=u,n[1](f)}r[e]=void 0}};var l=setTimeout((function(){c({type:\\"timeout\\",target:a})}),12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(t)},u.m=e,u.c=n,u.d=function(e,t,n){u.o(e,t)||Object.defineProperty(e,t,{enumerable:true,get:n})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})},u.t=function(e,t){if(1&t&&(e=u(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(u.r(n),Object.defineProperty(n,\\"default\\",{enumerable:true,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)u.d(n,r,function(t){return e[t]}.bind(null,r));return n},u.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(t,\\"a\\",t),t},u.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var a=i.push.bind(i);i.push=t,i=i.slice();for(var c=0;c<i.length;c++)t(i[c]);var f=a;return u(u.s=2)}([function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.d(t,\\"a\\",(function(){return r}))},function(e,t,n){\\"use strict\\";function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}n.d(t,\\"a\\",(function(){return o}))},function(e,t,n){e.exports=n(3)},function(e,t,n){\\"use strict\\";n.r(t),n.d(t,\\"default\\",(function(){return i}));var r=n(0);var o=n(1);function u(e,t){return e+t}var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),n.e(1).then(n.bind(null,4)).then((function(e){var t=new e.default;console.log(t.add(2,4))}))}}]),e}()}])}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,(function(){return function(){\\"use strict\\";var e={315:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},131:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||false,r.configurable=true,\\"value\\"in r&&(r.writable=true),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})},354:function(e,n,t){t.r(n),t.d(n,{default:function(){return i}});var r=t(315);var o=t(131);function u(e,n){return e+n}var i=function(){function e(){(0,r.Z)(this,e),console.log(\\"init class\\")}return(0,o.Z)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),t.e(561).then(t.bind(t,561)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),e}()}};var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={exports:{}};return e[r](o,o.exports,t),o.exports}return t.m=e,function(){t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:true,get:n[r]})}}(),function(){t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))}}(),function(){t.u=function(e){return e+\\".myBundle.min.js\\"}}(),function(){t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)}}(),function(){var e={};t.l=function(n,r,o){if(e[n])return void e[n].push(r);var u,i;if(void 0!==o){var a=document.getElementsByTagName(\\"script\\");for(var f=0;f<a.length;f++){var c=a[f];if(c.getAttribute(\\"src\\")==n){u=c;break}}}u||(i=true,u=document.createElement(\\"script\\"),u.charset=\\"utf-8\\",u.timeout=120,t.nc&&u.setAttribute(\\"nonce\\",t.nc),u.src=n),e[n]=[r];var l=function(t){l=function(){},u.onerror=u.onload=null,clearTimeout(s);var r=e[n];delete e[n],u.parentNode.removeChild(u),r&&r.forEach((function(e){return e(t)}))};var s=setTimeout((function(){l({type:\\"timeout\\",target:u})}),12e4);u.onerror=u.onload=l,i&&document.head.appendChild(u)}}(),function(){t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:true})}}(),function(){t.p=\\"\\"}(),function(){var e={913:0};function n(n){var r=n[0];var o=n[1];var i=n[3];var a,f,c=0,l=[];for(;c<r.length;c++)f=r[c],t.o(e,f)&&e[f]&&l.push(e[f][0]),e[f]=0;for(a in o)t.o(o,a)&&(t.m[a]=o[a]);i&&i(t),u&&u(n);while(l.length)l.shift()()}t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var u=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=u);var i=t.p+t.u(n);var a=new Error;var f=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var u=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var i=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+u+\\": \\"+i+\\")\\",a.name=\\"ChunkLoadError\\",a.type=u,a.request=i,o[1](a)}};t.l(i,f,\\"chunk-\\"+n)}};var r=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var o=r.push.bind(r);r.push=n;var u=o}(),t(354)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -134,6 +140,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 (node:11111) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -149,6 +159,7 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
 Starting type checking service...
+(node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
   size  name  module                          status
   1 kB  475   ./js/typescript.ts + 2 modules  built failed ✖
 
@@ -239,6 +250,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 (node:11111) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -259,7 +274,7 @@ Object {
   1 kB  354   ./js/script.ts + 1 modules                                   built failed ✖
   1 kB  561   ./js/SomeLibrary.ts                                          built failed ✖
 
-  (7 assets, 7 modules hidden)
+  (7 assets, 8 modules hidden)
 
   Failed to compile.
 
@@ -298,6 +313,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 [__:__:__] 'default' errored after ____ ms
 (node:11111) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
 (node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
+(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -313,6 +332,10 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 (node:11111) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
+BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
+Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
+Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
   size  name     module                       status
   1 kB  163      ./js/index.ts + 3 modules    built
 
