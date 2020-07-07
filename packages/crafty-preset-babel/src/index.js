@@ -93,9 +93,10 @@ module.exports = {
     // Webpack handles this at the loader level, but Rollup needs it this way.
     babelOptions.exclude = ["node_modules/**"];
     babelOptions.include = ["**/*.js", "**/*.jsx"];
+    babelOptions.babelHelpers = "bundled";
 
     rollupConfig.input.plugins.babel = {
-      plugin: require("rollup-plugin-babel"),
+      plugin: require("@rollup/plugin-babel"),
       weight: 20,
       options: babelOptions
     };
