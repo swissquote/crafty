@@ -33,7 +33,7 @@ your assets to Maven's `target` directory.
 
 ### `browser`: Browser compatibility
 
-Default: `> 0.25%, Firefox ESR, Edge >= 15, Safari >= 10, iOS >= 10, Chrome >= 56, Firefox >= 51, IE >= 11, not op_mini all, not Safari 5.1, not kaios 2.5, not ie 9`
+Default: `> 0.25%, Edge >= 17, Safari >= 11, iOS >= 11, Chrome >= 66, Firefox >= 60, IE >= 11, not op_mini all`
 
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.
