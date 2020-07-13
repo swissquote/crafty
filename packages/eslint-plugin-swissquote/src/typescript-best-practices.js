@@ -17,19 +17,11 @@ module.exports = {
       "error",
       {
         "selector": "default",
-        "format": ["camelCase"]
-      },
-      {
-        "selector": "memberLike",
-        "format": ["camelCase"]
-      },
-      {
-        "selector": "typeLike",
         "format": ["camelCase", "PascalCase"]
       },
       {
         "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"]
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"]
       },
       {
         // Properties can come from legacy systems / libraries, don't block because of this
