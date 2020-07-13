@@ -32,7 +32,6 @@ Then you can run one of
 ```bash
 npm run jest
 ```
-
 Tests are mainly integration tests in the `packages/integration` directory.
 
 Those tests do a run of the configuration with different combinations of configuration and presets and register the results in snapshots.
@@ -48,12 +47,18 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0
 export YARN_PLUGNPLAY_OVERRIDE=0
 
 # Do a proper install
-rm -rf node_modules yarn.lock .pnp .pnp.js && yarn install
+rm -rf node_modules yarn.lock .pnp .pnp.js packages/*/node_modules
+
+# Will fail on gifsicle, optipng, mozjpeg behind a corporate proxy, you can ignore this
+yarn install
+
+# Run tests (Behind a corporate proxy, the image compression test WILL fail and should be ignored)
+yarn test
 
 # Release a canary version to test in a project
-yarn lerna publish --canary --exact --force-publish="*" --npmClient=npm
+yarn publish:canary
 
 # -> Test inside one or more projects
 
-yarn lerna publish --exact --force-publish="*"
+yarn publish:all
 ```

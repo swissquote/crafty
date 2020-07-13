@@ -22,7 +22,9 @@
     "lint:code": "sh lint_code.sh",
     "lint:docs": "sh lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
-    "test": "jest --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty"
+    "test": "jest --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty",
+    "publish:canary": "lerna publish --canary --exact --force-publish=\"*\" --npmClient=npm",
+    "publish:all": "lerna publish --exact --force-publish=\"*\""
   },
   "dependencies": {
     "jest": "26.1.0",
