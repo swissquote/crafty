@@ -55,6 +55,7 @@ module.exports = {
     "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
     "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off",
     "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
+    "@swissquote/swissquote/@typescript-eslint/ban-types": "warn"
   }
 };
 
