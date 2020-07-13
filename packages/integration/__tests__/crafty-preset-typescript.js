@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global jest, describe, it, expect */
 const path = require("path");
 const rmfr = require("rmfr");
 const testUtils = require("../utils");
@@ -30,7 +30,10 @@ it("Lints TypeScript using the command, --preset recommended, --preset node", as
   );
   await rmfr(path.join(cwd, "dist"));
 
-  const result = await testUtils.run(["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"], cwd);
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
+    cwd
+  );
 
   expect(result).toMatchSnapshot();
 
@@ -46,7 +49,10 @@ it("Lints TypeScript using the command, --preset recommended", async () => {
   );
   await rmfr(path.join(cwd, "dist"));
 
-  const result = await testUtils.run(["jsLint", "js/**/*.ts", "--preset", "recommended"], cwd);
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.ts", "--preset", "recommended"],
+    cwd
+  );
 
   expect(result).toMatchSnapshot();
 
@@ -62,7 +68,10 @@ it("Lints TypeScript using the command, --preset format", async () => {
   );
   await rmfr(path.join(cwd, "dist"));
 
-  const result = await testUtils.run(["jsLint", "js/**/*.ts", "--preset", "format"], cwd);
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.ts", "--preset", "format"],
+    cwd
+  );
 
   expect(result).toMatchSnapshot();
 

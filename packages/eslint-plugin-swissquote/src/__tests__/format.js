@@ -1,6 +1,7 @@
 /* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
+
 const engine = prepareCLIEngine("format");
 
 describe("ES6 Formatting", () => {

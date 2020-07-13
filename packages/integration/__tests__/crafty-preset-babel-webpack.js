@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global jest, describe, it, expect */
 
 const path = require("path");
 const rmfr = require("rmfr");

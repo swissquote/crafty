@@ -18,7 +18,7 @@ function prepareCLIEngine(...args) {
   const tmpfile = tmp.fileSync({ postfix: ".json" }).name;
   fs.writeFileSync(tmpfile, JSON.stringify(config));
 
-  configuration = {
+  const configuration = {
     useEslintrc: false,
     configFile: tmpfile
   };

@@ -1,6 +1,7 @@
 /* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
+
 const engine = prepareCLIEngine("recommended", "node");
 
 it("Doesn't warn on console.log", () => {
@@ -74,11 +75,11 @@ export function useSWR<T, Error = any>(
     {}
   );
 }
-`, "utils.ts"
+`,
+    "utils.ts"
   );
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(0, "no warnings");
   expect(result.errorCount).toBe(3, "no errors");
 });
-

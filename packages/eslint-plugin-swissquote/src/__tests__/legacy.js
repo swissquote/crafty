@@ -1,6 +1,7 @@
 /* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
+
 const engine = prepareCLIEngine("legacy");
 
 it("Doesn't work with ES6", () => {

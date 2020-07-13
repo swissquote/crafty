@@ -112,7 +112,7 @@ module.exports = function buildPreset(context, opts) {
       // By default, babel assumes babel/runtime version 7.0.0-beta.0,
       // explicitly resolving to match the provided helper functions.
       // https://github.com/babel/babel/issues/10261
-      version: require('@babel/runtime/package.json').version,
+      version: require("@babel/runtime/package.json").version,
       regenerator: true
     }
   ]);
@@ -131,8 +131,10 @@ module.exports = function buildPreset(context, opts) {
   // but not yet supported in webpack due to support missing from acorn.
   // These can be removed once webpack has support.
   // See https://github.com/facebook/create-react-app/issues/8445#issuecomment-588512250
-  plugins.push(require.resolve('@babel/plugin-proposal-optional-chaining'));
-  plugins.push(require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'));
+  plugins.push(require.resolve("@babel/plugin-proposal-optional-chaining"));
+  plugins.push(
+    require.resolve("@babel/plugin-proposal-nullish-coalescing-operator")
+  );
 
   // function* () { yield 42; yield 43; }
   if (!isEnvTest) {

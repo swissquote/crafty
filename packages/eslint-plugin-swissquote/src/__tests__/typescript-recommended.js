@@ -1,23 +1,27 @@
 /* global describe, it, expect */
 
 const { prepareCLIEngine, lint } = require("../../test_utils");
+
 const engine = prepareCLIEngine("recommended");
 
 it("Warns on console.log", () => {
-  const result = lint(engine, `
+  const result = lint(
+    engine,
+    `
 const foo = window;
 
 // Use a TypeScript 3.7 feature to make sure it works
 if (foo?.bar?.baz) {
   console.log(foo.bar.baz);
 }
-`, "file.ts");
+`,
+    "file.ts"
+  );
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(1);
   expect(result.errorCount).toBe(0);
 });
-
 
 it("Uses sonar plugin", () => {
   const result = lint(
@@ -35,7 +39,8 @@ function changeWindow(param: number) {
     moveWindowToTheBackground();
   }
 }
-`, "file.ts"
+`,
+    "file.ts"
   );
 
   expect(result.messages).toMatchSnapshot();
