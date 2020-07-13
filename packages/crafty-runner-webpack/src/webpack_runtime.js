@@ -17,8 +17,8 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
   if (fs.existsSync(configPath)) {
     crafty.log("Merging SQ webpack config with " + colors.magenta(configPath));
-    const webpackMerge = require("webpack-merge");
-    webpackConfig = webpackMerge.smart(webpackConfig, require(configPath));
+    const { merge } = require("webpack-merge");
+    webpackConfig = merge(webpackConfig, require(configPath));
   }
 
   debug("Webpack configuration", webpackConfig);

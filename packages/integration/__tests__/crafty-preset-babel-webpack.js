@@ -28,6 +28,23 @@ it("Compiles JavaScript", async () => {
   expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
+it("Compiles JavaScript with webpack overrides", async () => {
+  const cwd = path.join(
+    __dirname,
+    "../fixtures/crafty-preset-babel-webpack/compiles-merge-webpack-config"
+  );
+  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
+});
+
 it("Compiles Generators", async () => {
   const cwd = path.join(
     __dirname,
