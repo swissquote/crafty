@@ -20,6 +20,10 @@ module.exports = {
         "format": ["camelCase", "PascalCase"]
       },
       {
+        "selector": "enumMember",
+        "format": ["UPPER_CASE"]
+      }
+      {
         "selector": "variable",
         "format": ["camelCase", "PascalCase", "UPPER_CASE"]
       },
