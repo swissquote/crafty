@@ -18,8 +18,7 @@
 </td></tr>
 </table>
 
-This preset provides utilities for Jest and Hot Module Replacement in React
-projects.
+This preset provides Hot Module Replacement in React projects.
 
 [TOC]
 
@@ -46,18 +45,6 @@ module.exports = {
   }
 };
 ```
-
-## Testing React components in Jest
-
-This preset comes with [Enzyme](https://github.com/airbnb/enzyme) already
-configured for React 16.
-
-This allows you to do shallow rendering of components, execute events and check
-the state of components.
-
-Their documentation on testing components is exhaustive.
-
-[Check it out](http://airbnb.io/enzyme/)
 
 ## Hot Module Replacement
 
