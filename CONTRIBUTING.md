@@ -56,7 +56,7 @@ yarn install
 yarn test
 
 # Release a canary version to test in a project
-yarn publish:canary
+yarn publish:canary -- --new-version 1.12.0-beta.0
 
 # -> Test inside one or more projects
 
