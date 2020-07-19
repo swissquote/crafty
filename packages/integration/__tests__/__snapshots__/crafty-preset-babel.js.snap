@@ -17,6 +17,9 @@ exports[`Generates IDE Helper 2`] = `
 // This file is generated to improve IDE Integration
 // You don't need to commit this file, nor need it to run \`crafty build\`
 
+// Fix module resolution
+require(\\"__PATH__/packages/crafty-preset-eslint/src/patchModuleResolver.js\\");
+
 module.exports = {
     \\"plugins\\": [
         \\"@swissquote/swissquote\\"

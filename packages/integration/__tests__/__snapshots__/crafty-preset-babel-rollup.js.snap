@@ -45,7 +45,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/fails/js/scrip
 ✖ 1 problem (1 error, 0 warnings)
 
 [js_myBundle] (!) Errors were found
-js/script.js
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...
@@ -66,6 +65,12 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 
+__PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/Component.js
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
+
 __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/script.js
    3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
    5:10  error    'test' is defined but never used                 no-unused-vars
@@ -78,11 +83,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/scrip
   18:11  error    Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
   20:14  error    Expected '===' and instead saw '=='              eqeqeq
 
-✖ 10 problems (8 errors, 2 warnings)
-  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 14 problems (12 errors, 2 warnings)
+  10 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 [js_myBundle] (!) Errors were found
-js/script.js
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...

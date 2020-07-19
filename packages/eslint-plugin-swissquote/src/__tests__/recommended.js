@@ -1,19 +1,19 @@
 /* global describe, it, expect */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
+const { prepareESLint, lint } = require("../../test_utils");
 
-const engine = prepareCLIEngine("recommended");
+const engine = prepareESLint("recommended");
 
-it("Warns on console.log", () => {
-  const result = lint(engine, `console.log("Yeah");\n`);
+it("Warns on console.log", async () => {
+  const result = await lint(engine, `console.log("Yeah");\n`);
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(1);
   expect(result.errorCount).toBe(0);
 });
 
-it("Uses sonar plugin", () => {
-  const result = lint(
+it("Uses sonar plugin", async () => {
+  const result = await lint(
     engine,
     `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
@@ -36,8 +36,8 @@ function changeWindow(param) {
   expect(result.errorCount).toBe(2);
 });
 
-it("Works fine with ES6 code", () => {
-  const result = lint(
+it("Works fine with ES6 code", async () => {
+  const result = await lint(
     engine,
     `
 class SkinnedMesh extends THREE.Mesh {
@@ -92,8 +92,8 @@ const obj = {
 });
 
 describe("jsx-no-duplicate-props", () => {
-  it("works with different props", () => {
-    const result = lint(
+  it("works with different props", async () => {
+    const result = await lint(
       engine,
       `
 import * as React from "react";
@@ -109,8 +109,8 @@ export default function SomeComponent() {
     expect(result.errorCount).toBe(0, "no errors expected");
   });
 
-  it("works fails with the same prop", () => {
-    const result = lint(
+  it("works fails with the same prop", async () => {
+    const result = await lint(
       engine,
       `
 import * as React from "react";
@@ -128,8 +128,8 @@ export default function SomeComponent() {
 });
 
 describe("no-did-mount-set-state", () => {
-  it("fails with setState in componentDidMount", () => {
-    const result = lint(
+  it("fails with setState in componentDidMount", async () => {
+    const result = await lint(
       engine,
       `
 import React from "react";

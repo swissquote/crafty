@@ -77,6 +77,10 @@ echo "${GREEN}Linting postcss-swissquote-preset$NC"
 cd "$DIR/packages/postcss-swissquote-preset"
 yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node *.js src/**/*.js
 
+echo "${GREEN}Linting rollup-plugin-eslint$NC"
+cd "$DIR/packages/rollup-plugin-eslint"
+yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node *.js
+
 echo "${GREEN}Linting stylelint-config-swissquote$NC"
 cd "$DIR/packages/stylelint-config-swissquote"
 yarn node ../crafty-preset-eslint/src/commands/jsLint.js --fix --preset recommended --preset node *.js src/**/*.js

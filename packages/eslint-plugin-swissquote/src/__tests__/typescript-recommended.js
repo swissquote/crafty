@@ -1,11 +1,11 @@
 /* global describe, it, expect */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
+const { prepareESLint, lint } = require("../../test_utils");
 
-const engine = prepareCLIEngine("recommended");
+const engine = prepareESLint("recommended");
 
-it("Warns on console.log", () => {
-  const result = lint(
+it("Warns on console.log", async () => {
+  const result = await lint(
     engine,
     `
 const foo = window;
@@ -23,8 +23,8 @@ if (foo?.bar?.baz) {
   expect(result.errorCount).toBe(0);
 });
 
-it("Uses sonar plugin", () => {
-  const result = lint(
+it("Uses sonar plugin", async () => {
+  const result = await lint(
     engine,
     `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
@@ -48,8 +48,8 @@ function changeWindow(param: number) {
   expect(result.errorCount).toBe(2);
 });
 
-it("Works with complex types", () => {
-  const result = lint(
+it("Works with complex types", async () => {
+  const result = await lint(
     engine,
     `
 import * as React from "react";
