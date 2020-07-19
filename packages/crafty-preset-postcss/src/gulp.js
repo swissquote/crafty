@@ -3,7 +3,7 @@ function cssTask(crafty, StreamHandler, bundle) {
     // Init
     const destination =
       crafty.config.destination_css +
-      (bundle.directory ? "/" + bundle.directory : "");
+      (bundle.directory ? `/${bundle.directory}` : "");
 
     const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
     const postcss = require("gulp-postcss");
@@ -27,7 +27,7 @@ function cssTask(crafty, StreamHandler, bundle) {
 }
 
 function createLinter(gulp, crafty, name) {
-  gulp.task(name, function(cb) {
+  gulp.task(name, cb => {
     const reporterConfig = {
       throwError: crafty.getEnvironment() === "production",
       clearReportedMessages: true

@@ -4,7 +4,7 @@ const log = require("fancy-log");
 const events = require("./log/events");
 const formatError = require("./log/formatError");
 const syncTask = require("./log/syncTask");
-const watcher = require("./Watcher");
+const Watcher = require("./Watcher");
 const Information = require("./log/Information");
 const registerTasks = require("./tasks");
 
@@ -23,7 +23,7 @@ class Crafty {
       this.undertaker.parallel = this.undertaker.series;
     }
 
-    this.watcher = new watcher(this);
+    this.watcher = new Watcher(this);
     this.defaultTasks = [];
     events(this);
     syncTask(this);

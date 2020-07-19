@@ -17,13 +17,12 @@ function sortFiles(files) {
 
   let isAssets = false;
 
-  for (var i in files) {
-    const row = files[i];
-    if (row[0] == "size" && row[2] == "asset") {
+  for (const row of files) {
+    if (row[0] === "size" && row[2] === "asset") {
       isAssets = true;
     }
 
-    if (row[0] == "size" || row[0] == "") {
+    if (row[0] === "size" || row[0] === "") {
       continue;
     }
 
@@ -49,8 +48,12 @@ function sortFiles(files) {
     final.push(["size", "name", "asset", "status"]);
     final.push(
       ...assets.sort((a, b) => {
-        if (a[2] < b[2]) return -1;
-        if (a[2] > b[2]) return 1;
+        if (a[2] < b[2]) {
+          return -1;
+        }
+        if (a[2] > b[2]) {
+          return 1;
+        }
         return 0;
       })
     );
@@ -63,7 +66,7 @@ function sortFiles(files) {
   // without differences in the actual output's size
   if (process.env.TESTING_CRAFTY) {
     return final.map(item => {
-      if (item[0] != "" && item[0] != "size") {
+      if (item[0] !== "" && item[0] !== "size") {
         item[0] = 1000;
       }
 
@@ -85,7 +88,7 @@ module.exports = function(stats, compiler) {
 
   // List compiled files
   console.log(style.files(sortFiles(parse.files(json)), compiler.options));
-  console.log("\n  " + style.hidden(parse.hidden(json)));
+  console.log(`\n  ${style.hidden(parse.hidden(json))}`);
 
   // Disabled and replaced by our system
   //console.log(style.problems(parse.problems(json)));
@@ -94,18 +97,18 @@ module.exports = function(stats, compiler) {
   const messages = formatWebpackMessages(stats.toJson({}, true));
   // If errors exist, only show errors.
   if (messages.errors.length) {
-    console.log("\n  " + colors.red("Failed to compile.") + "\n");
+    console.log(`\n  ${colors.red("Failed to compile.")}\n`);
     messages.errors.forEach(message => {
-      console.log(message + "\n");
+      console.log(`${message}\n`);
     });
   } else if (messages.warnings.length) {
-    console.log("\n  " + colors.yellow("Compiled with warnings.") + "\n");
+    console.log(`\n  ${colors.yellow("Compiled with warnings.")}\n`);
     // Show warnings if no errors were found.
     messages.warnings.forEach(message => {
-      console.log(message + "\n");
+      console.log(`${message}\n`);
     });
   } else {
-    console.log("\n  " + colors.green("Compiled successfully!"));
+    console.log(`\n  ${colors.green("Compiled successfully!")}`);
   }
 
   const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${style.time(

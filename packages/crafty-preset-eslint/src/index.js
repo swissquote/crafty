@@ -1,7 +1,11 @@
 const merge = require("merge");
 const path = require("path");
 
-const { configurationBuilder, stringifyConfiguration, toTempFile } = require("./eslintConfigurator");
+const {
+  configurationBuilder,
+  stringifyConfiguration,
+  toTempFile
+} = require("./eslintConfigurator");
 
 const debug = require("debug")("crafty:preset-eslint");
 
@@ -31,7 +35,7 @@ module.exports = {
     config.loadedPresets
       .filter(preset => preset.eslint)
       .forEach(preset => {
-        debug(preset.presetName + ".eslint(config, eslint)");
+        debug(`${preset.presetName}.eslint(config, eslint)`);
         if (typeof preset.eslint == "function") {
           extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
         } else {
@@ -61,7 +65,7 @@ module.exports = {
     return {
       jsLint: {
         //eslint-disable-next-line no-unused-vars
-        command: function(crafty, input, cli) {
+        command(crafty, input, cli) {
           global.craftyConfig = crafty.config;
           require("./commands/jsLint");
         },

@@ -16,32 +16,33 @@ module.exports = {
     "@swissquote/swissquote/@typescript-eslint/naming-convention": [
       "error",
       {
-        "selector": "default",
-        "format": ["camelCase", "PascalCase"]
+        selector: "default",
+        format: ["camelCase", "PascalCase"]
       },
       {
-        "selector": "enumMember",
-        "format": ["UPPER_CASE"]
+        selector: "enumMember",
+        format: ["UPPER_CASE"]
       },
       {
-        "selector": "variable",
-        "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+        selector: "variable",
+        format: ["camelCase", "PascalCase", "UPPER_CASE"]
       },
       {
         // Properties can come from legacy systems / libraries, don't block because of this
-        "selector": "property",
-        "format": null
+        selector: "property",
+        format: null
       },
       {
         // A function parameter can be a class or property
-        "selector": "parameter",
-        "format": ["camelCase", "PascalCase"]
+        selector: "parameter",
+        format: ["camelCase", "PascalCase"]
       }
     ],
 
     // Disable this rule for the time being, enforcing it suddenly would be too harsh
     // TODO :: enable in 2.0
-    "@swissquote/swissquote/@typescript-eslint/explicit-module-boundary-types": "off",
+    "@swissquote/swissquote/@typescript-eslint/explicit-module-boundary-types":
+      "off",
 
     "no-use-before-define": "off",
     "@swissquote/swissquote/@typescript-eslint/no-use-before-define": "error",
@@ -56,8 +57,10 @@ module.exports = {
     ],
 
     // Overrides of TypeScript recommended
-    "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type": "off",
-    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility": "off",
+    "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type":
+      "off",
+    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility":
+      "off",
     "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
     "@swissquote/swissquote/@typescript-eslint/ban-types": "warn"
   }

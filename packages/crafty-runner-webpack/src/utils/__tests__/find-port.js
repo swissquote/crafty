@@ -1,3 +1,4 @@
+/* global test, expect */
 const portFinder = require("../find-port");
 
 test("it can return port", () => {

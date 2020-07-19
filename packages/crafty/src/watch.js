@@ -1,26 +1,24 @@
 /*
- * Taken from https://github.com/gulpjs/glob-watcher/pull/42/ 
+ * Taken from https://github.com/gulpjs/glob-watcher/pull/42/
  * as glob-watcher will not be upgraded for the forseeable future
  */
 
-'use strict';
+const chokidar = require("chokidar");
+const debounce = require("just-debounce");
+const asyncDone = require("async-done");
+const isNegatedGlob = require("is-negated-glob");
+const anymatch = require("anymatch");
 
-var chokidar = require('chokidar');
-var debounce = require('just-debounce');
-var asyncDone = require('async-done');
-var isNegatedGlob = require('is-negated-glob');
-var anymatch = require('anymatch');
-
-var defaultOpts = {
+const defaultOpts = {
   delay: 200,
-  events: ['add', 'change', 'unlink'],
+  events: ["add", "change", "unlink"],
   ignored: [],
   ignoreInitial: true,
-  queue: true,
+  queue: true
 };
 
 function listenerCount(ee, evtName) {
-  if (typeof ee.listenerCount === 'function') {
+  if (typeof ee.listenerCount === "function") {
     return ee.listenerCount(evtName);
   }
 
@@ -28,23 +26,18 @@ function listenerCount(ee, evtName) {
 }
 
 function hasErrorListener(ee) {
-  return listenerCount(ee, 'error') !== 0;
+  return listenerCount(ee, "error") !== 0;
 }
 
 function getPattern(val) {
   return val.pattern;
 }
 
+/* eslint-disable no-param-reassign */
 function watch(glob, options, cb) {
-  if (typeof options === 'function') {
+  if (typeof options === "function") {
     cb = options;
     options = {};
-  }
-
-  var opt = {...defaultOpts, ...options};
-
-  if (!Array.isArray(opt.events)) {
-    opt.events = [opt.events];
   }
 
   if (Array.isArray(glob)) {
@@ -53,33 +46,38 @@ function watch(glob, options, cb) {
   } else {
     glob = [glob];
   }
+  /* eslint-enable no-param-reassign */
 
-  var queued = false;
-  var running = false;
+  const opt = { ...defaultOpts, ...options };
 
-  var positives = [];
-  var negatives = [];
+  if (!Array.isArray(opt.events)) {
+    opt.events = [opt.events];
+  }
+
+  let queued = false;
+  let running = false;
+
+  const positives = [];
+  const negatives = [];
 
   // Reverse the glob here so we don't end up with a positive
   // and negative glob in position 0 after a reverse
-  glob.reverse().forEach(sortGlobs);
-
-  function sortGlobs(globString, index) {
-    var result = isNegatedGlob(globString);
-    var obj = { pattern: result.pattern, index: index };
+  glob.reverse().forEach((globString, index) => {
+    const result = isNegatedGlob(globString);
+    const obj = { pattern: result.pattern, index };
     (result.negated ? negatives : positives).push(obj);
-  }
+  });
 
-  var toWatch = positives.map(getPattern);
+  const toWatch = positives.map(getPattern);
 
   function shouldBeIgnored(path) {
-    var negativeMatch = anymatch(negatives.map(getPattern), path, true);
+    const negativeMatch = anymatch(negatives.map(getPattern), path, true);
     // If negativeMatch is -1, that means it was never negated
     if (negativeMatch === -1) {
       return false;
     }
 
-    var positiveMatch = anymatch(toWatch, path, true);
+    const positiveMatch = anymatch(toWatch, path, true);
 
     // If the negative is "less than" the positive, that means
     // it came later in the glob array before we reversed them
@@ -90,18 +88,19 @@ function watch(glob, options, cb) {
   if (negatives.length) {
     opt.ignored = [].concat(opt.ignored, shouldBeIgnored);
   }
-  var watcher = chokidar.watch(toWatch, opt);
+  const watcher = chokidar.watch(toWatch, opt);
 
   function runComplete(err) {
     running = false;
 
     if (err && hasErrorListener(watcher)) {
-      watcher.emit('error', err);
+      watcher.emit("error", err);
     }
 
     // If we have a run queued, start onChange again
     if (queued) {
       queued = false;
+      /* eslint-disable no-use-before-define */
       onChange();
     }
   }
@@ -118,8 +117,8 @@ function watch(glob, options, cb) {
     asyncDone(cb, runComplete);
   }
 
-  var fn;
-  if (typeof cb === 'function') {
+  let fn;
+  if (typeof cb === "function") {
     fn = debounce(onChange, opt.delay);
   }
 

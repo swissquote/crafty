@@ -1,3 +1,4 @@
+/* global describe, it, expect */
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-negative-var");
 

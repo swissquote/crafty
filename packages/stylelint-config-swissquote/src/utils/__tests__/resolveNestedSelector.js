@@ -1,3 +1,5 @@
+/* global it, expect */
+/* eslint-disable @swissquote/swissquote/sonarjs/no-duplicate-string */
 const isKeyframeSelector = require("stylelint/lib/utils/isKeyframeSelector");
 const isStandardSyntaxRule = require("stylelint/lib/utils/isStandardSyntaxRule");
 const isStandardSyntaxSelector = require("stylelint/lib/utils/isStandardSyntaxSelector");
@@ -5,17 +7,6 @@ const postcss = require("postcss");
 const scssSyntax = require("postcss-scss");
 
 const resolveNestedSelector = require("../resolveNestedSelector");
-
-async function postcssProcess(code) {
-  const resultContainer = [];
-  await postcss()
-    .use(getResolvedSelectors(resultContainer))
-    .process(code, { syntax: scssSyntax, from: undefined });
-
-  return resultContainer.map(selectorContainer =>
-    selectorContainer.map(selector => selector.selector)
-  );
-}
 
 function getResolvedSelectors(results) {
   return (root, result) => {
@@ -52,6 +43,17 @@ function getResolvedSelectors(results) {
   };
 }
 
+async function postcssProcess(code) {
+  const resultContainer = [];
+  await postcss()
+    .use(getResolvedSelectors(resultContainer))
+    .process(code, { syntax: scssSyntax, from: undefined });
+
+  return resultContainer.map(selectorContainer =>
+    selectorContainer.map(selector => selector.selector)
+  );
+}
+
 it("Non nested selector", async () => {
   const t = await postcssProcess("header {}");
   expect(t).toEqual([["header"]]);
@@ -69,7 +71,10 @@ it("Simple nested selector", async () => {
 
 it("Multiple nested selector", async () => {
   const t = await postcssProcess(".Component { a:hover, a:focus {} }");
-  expect(t).toEqual([[".Component", "a:hover"], [".Component", "a:focus"]]);
+  expect(t).toEqual([
+    [".Component", "a:hover"],
+    [".Component", "a:focus"]
+  ]);
 });
 
 it("Multiple nested selector, more levels", async () => {
@@ -105,13 +110,19 @@ it("Nested with parent selector, beginning", async () => {
 it("Nested with parent selector, beginning, multiple", async () => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
   const t = await postcssProcess(".Component { & a:hover, .notParent {} }");
-  expect(t).toEqual([[".Component", "a:hover"], [".Component", ".notParent"]]);
+  expect(t).toEqual([
+    [".Component", "a:hover"],
+    [".Component", ".notParent"]
+  ]);
 });
 
 it("Nested with parent selector, beginning, multiple 2", async () => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
   const t = await postcssProcess(".Component { & a:hover, & a:focus {} }");
-  expect(t).toEqual([[".Component", "a:hover"], [".Component", "a:focus"]]);
+  expect(t).toEqual([
+    [".Component", "a:hover"],
+    [".Component", "a:focus"]
+  ]);
 });
 
 it("Nested with parent selector, end", async () => {
@@ -121,13 +132,19 @@ it("Nested with parent selector, end", async () => {
 
 it("Nested with parent selector, end, multiple", async () => {
   const t = await postcssProcess(".Component { a:hover &, .notParent {} }");
-  expect(t).toEqual([["a:hover", ".Component"], [".Component", ".notParent"]]);
+  expect(t).toEqual([
+    ["a:hover", ".Component"],
+    [".Component", ".notParent"]
+  ]);
 });
 
 it("Nested with parent selector, end, multiple 2", async () => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
   const t = await postcssProcess(".Component { a:hover &, a:focus & {} }");
-  expect(t).toEqual([["a:hover", ".Component"], ["a:focus", ".Component"]]);
+  expect(t).toEqual([
+    ["a:hover", ".Component"],
+    ["a:focus", ".Component"]
+  ]);
 });
 
 it("Nested on many levels, with parent selector", async () => {

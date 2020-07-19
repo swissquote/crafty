@@ -38,7 +38,7 @@ cli(crafty, commands).then(
     // Wait for the stdout buffer to drain.
     process.on("exit", () => process.exit(exitCode));
   },
-  (error) => {
+  error => {
     if (!events.wasLogged(error)) {
       console.error(formatError(error));
     }

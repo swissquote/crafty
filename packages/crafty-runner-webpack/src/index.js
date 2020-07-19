@@ -52,7 +52,7 @@ module.exports = {
   },
   config(config) {
     // Add missing informations to JavaScript configurations
-    for (let j in config.js) {
+    for (const j in config.js) {
       if (!config.js.hasOwnProperty(j)) {
         continue;
       }
