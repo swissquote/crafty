@@ -7,8 +7,10 @@
     "index.js"
   ],
   "scripts": {
-    "test": "jest",
-    "prepublish": "yarn test"
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
