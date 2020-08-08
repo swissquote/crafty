@@ -142,10 +142,11 @@ module.exports = function jsTaskES6(crafty, bundle) {
       const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
       crafty.log(`Start watching with webpack in '${colors.cyan(taskName)}'`);
-      const watchOptions = Object.assign({}, config.input, {
+      const watchOptions = {
+        ...config.input,
         output: config.output,
         watch: config.watch
-      });
+      };
 
       const watcher = rollup.watch(watchOptions);
 

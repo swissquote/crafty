@@ -27,7 +27,8 @@ module.exports = {
       return src;
     }
 
-    const options = Object.assign({}, config.globals.BABEL_OPTIONS, {
+    const options = {
+      ...config.globals.BABEL_OPTIONS,
       babelrc: false,
       plugins:
         (config.globals.BABEL_OPTIONS &&
@@ -41,7 +42,7 @@ module.exports = {
       retainLines: true,
       sourceMaps: "inline",
       filename
-    });
+    };
 
     if (transformOptions && transformOptions.instrument) {
       options.auxiliaryCommentBefore = " istanbul ignore next ";

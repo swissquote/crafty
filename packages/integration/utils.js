@@ -79,16 +79,14 @@ function snapshotizeCSS(ret) {
 }
 
 async function run(args, cwd, commandOptions) {
-  const options = Object.assign(
-    {
-      cwd,
-      reject: false,
-      all: true
-    },
-    commandOptions || {}
-  );
+  const options = {
+    cwd,
+    reject: false,
+    all: true,
+    ...commandOptions
+  };
 
-  options.env = Object.assign({ TESTING_CRAFTY: "true" }, options.env || {});
+  options.env = { TESTING_CRAFTY: "true", ...options.env };
 
   const ret = await execa.node(
     require.resolve("@swissquote/crafty/src/bin"),

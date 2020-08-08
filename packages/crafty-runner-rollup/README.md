@@ -93,11 +93,12 @@ module.exports = {
     rollupConfig.input.plugins.eslint = {
       plugin: rollupEslint,
       weight: -20,
-      options: Object.assign({}, crafty.config.eslint, {
+      options: {
+        ...crafty.config.eslint,
         throwOnError: crafty.getEnvironment() === "production",
         exclude: ["node_modules/**"],
         include: ["**/*.js", "**/*.jsx"]
-      })
+      }
     };
   }
 };

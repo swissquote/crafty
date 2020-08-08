@@ -24,7 +24,7 @@ module.exports = {
   },
   config(config) {
     // Add eslint react version
-    const eslintConfig = Object.assign({}, config.eslint);
+    const eslintConfig = { ...config.eslint };
 
     let extendedEslintConfig = {
       config: eslintConfig,

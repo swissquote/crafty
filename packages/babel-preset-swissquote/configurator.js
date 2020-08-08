@@ -6,13 +6,11 @@ module.exports = function(crafty, environment, bundle, babelOptions) {
     presets: [
       [
         __dirname,
-        Object.assign(
-          {
-            browsers: crafty.config.browsers,
-            environment
-          },
-          babelOptions || {}
-        )
+        {
+          browsers: crafty.config.browsers,
+          environment,
+          ...babelOptions
+        }
       ]
     ],
     plugins: []

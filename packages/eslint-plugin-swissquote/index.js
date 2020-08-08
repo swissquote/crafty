@@ -55,11 +55,10 @@ module.exports = {
           parser: require.resolve("@typescript-eslint/parser"),
 
           // Extends doesn't work in overrides, so we add rules directly
-          rules: Object.assign(
-            {},
-            require("./src/typescript.js").rules,
-            require("./src/typescript-best-practices.js").rules
-          )
+          rules: {
+            ...require("./src/typescript.js").rules,
+            ...require("./src/typescript-best-practices.js").rules
+          }
         }
       ]
     }
