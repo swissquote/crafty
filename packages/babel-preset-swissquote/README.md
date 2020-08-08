@@ -8,14 +8,10 @@ This preset will do the following for you:
   browsers you support. (`@babel/preset-env`)
 - Handle non-standard class properties
   (`@babel/plugin-proposal-class-properties`)
-- Support Object rest, spread and destructuring (`@babel/plugin-proposal-object-rest-spread`, `@babel/plugin-transform-destructuring`)
-- [prod/dev] Transpile generators (`@babel/plugin-transform-regenerator`)
 - Polyfills the runtime needed for `async`/`await` and generators
   (`@babel/plugin-transform-runtime`)
 - Convert JSX to JavaScript (`@babel/preset-react`)
 - [prod] Remove React Prop Types in production ( `babel-plugin-transform-react-remove-prop-types` )
-- Support Dynamic imports (`@babel/plugin-syntax-dynamic-import`) or convert them
-  to a deferred require in tests (`babel-plugin-transform-dynamic-import`)
 
 ## Options
 

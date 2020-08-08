@@ -77,26 +77,11 @@ module.exports = function buildPreset(context, opts) {
   // Plugins
   // --------------------------------------------
 
-  // Necessary to include regardless of the environment because
-  // in practice some other transforms (such as object-rest-spread)
-  // don't work without it: https://github.com/babel/babel/issues/7215
-  plugins.push(require.resolve("@babel/plugin-transform-destructuring"));
-
   // class { handleClick = () => { } }
   plugins.push([
     require.resolve("@babel/plugin-proposal-class-properties"),
     {
       loose: true
-    }
-  ]);
-
-  // The following two plugins use Object.assign directly, instead of Babel's
-  // extends helper. Note that this assumes `Object.assign` is available.
-  // { ...todo, completed: true }
-  plugins.push([
-    require.resolve("@babel/plugin-proposal-object-rest-spread"),
-    {
-      useBuiltIns: true
     }
   ]);
 
@@ -140,25 +125,6 @@ module.exports = function buildPreset(context, opts) {
   plugins.push(
     require.resolve("@babel/plugin-proposal-nullish-coalescing-operator")
   );
-
-  // function* () { yield 42; yield 43; }
-  if (!isEnvTest) {
-    plugins.push([
-      require.resolve("@babel/plugin-transform-regenerator"),
-      {
-        // Async functions are converted to generators by @babel/preset-env
-        async: false
-      }
-    ]);
-  }
-
-  // Adds syntax support for import()
-  plugins.push(require.resolve("@babel/plugin-syntax-dynamic-import"));
-
-  if (isEnvTest) {
-    // Compiles import() to a deferred require()
-    plugins.push(require.resolve("babel-plugin-transform-dynamic-import"));
-  }
 
   return {
     presets,
