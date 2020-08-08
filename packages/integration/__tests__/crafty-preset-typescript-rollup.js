@@ -32,10 +32,10 @@ it("Works with rollup", async () => {
   ).toMatchSnapshot();
 });
 
-it("Deletes rollup uglify plugin using crafty.config.js", async () => {
+it("Deletes rollup terser plugin using crafty.config.js", async () => {
   const cwd = path.join(
     __dirname,
-    "../fixtures/crafty-preset-typescript-rollup/compiles-no-uglify"
+    "../fixtures/crafty-preset-typescript-rollup/compiles-no-terser"
   );
   await rmfr(path.join(cwd, "dist"));
 

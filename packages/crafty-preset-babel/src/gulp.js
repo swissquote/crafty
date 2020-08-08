@@ -58,7 +58,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     if (crafty.getEnvironment() === "production") {
       const terser = require("gulp-terser");
-      stream.add(terser({ ...crafty.config.uglifyJS, sourceMap: {} }));
+      stream.add(terser({ ...crafty.config.terser, sourceMap: {} }));
     }
 
     stream.add(sourcemaps.write("./"));

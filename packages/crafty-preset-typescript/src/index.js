@@ -80,7 +80,6 @@ module.exports = {
       weight: 30,
       options: babelOptions
     };
-
   },
   eslint(config, eslint) {
     // This configuration is read by the webpack and rollup plugins

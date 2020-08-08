@@ -28,7 +28,7 @@ In this case, this build will run through Webpack and execute the following task
 - Linting with ESLint
 - Resolve dependencies and create one bundle
 - Compile the code using Babel
-- Minify all files with UglifyJS
+- Minify all files with Terser
 
 After this, we get a bundle named `app.min.js` in `dist/js`.
 

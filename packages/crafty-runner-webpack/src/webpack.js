@@ -132,14 +132,14 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
-  // We are Cloning the uglifyJS Object as webpack
+  // We are Cloning the Terser configuration Object as webpack
   // mutates it which messes with other implementations
   chain.optimization
-    .minimizer("uglify")
+    .minimizer("terser")
     .use(require.resolve("terser-webpack-plugin"), [
       {
         sourceMap: true,
-        terserOptions: Object.assign({}, config.uglifyJS)
+        terserOptions: { ...config.terser }
       }
     ]);
 

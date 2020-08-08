@@ -20,6 +20,9 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
     bundle.destination
   );
 
+  const terserOptions = { ...crafty.config.terser };
+  delete terserOptions.sourceMap;
+
   const config = {
     input: {
       input: bundle.source,
@@ -53,21 +56,10 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           plugin: require("@rollup/plugin-commonjs"),
           weight: 50
         },
-        uglify: {
+        terser: {
           plugin: require("rollup-plugin-terser").terser,
           weight: 100,
-          options: {
-            output: {
-              comments(node, comment) {
-                if (comment.type !== "comment2") {
-                  return false;
-                }
-
-                // keep multiline comments containing one of those
-                return /@preserve|@license|@cc_on|@class/i.test(comment.value);
-              }
-            }
-          }
+          options: terserOptions
         }
       },
       external: bundle.externals

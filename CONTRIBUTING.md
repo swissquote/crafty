@@ -32,6 +32,7 @@ Then you can run one of
 ```bash
 npm run jest
 ```
+
 Tests are mainly integration tests in the `packages/integration` directory.
 
 Those tests do a run of the configuration with different combinations of configuration and presets and register the results in snapshots.
