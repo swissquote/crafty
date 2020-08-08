@@ -1,8 +1,5 @@
 const path = require("path");
 
-const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-const createTask = require("./gulp");
-
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
@@ -20,7 +17,12 @@ module.exports = {
     options.transform["\\.(js|jsx)$"] = require.resolve("./jest-transformer");
     options.moduleFileExtensions.push("jsx");
 
-    options.globals.BABEL_OPTIONS = babelConfigurator(crafty, "test", {});
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    options.globals.BABEL_OPTIONS = babelConfigurator(
+      crafty,
+      {},
+      { environment: "test" }
+    );
   },
   bundleCreator(crafty) {
     const configurators = { js: {} };
@@ -36,6 +38,7 @@ module.exports = {
         gulp,
         StreamHandler
       ) => {
+        const createTask = require("./gulp");
         gulp.task(bundle.taskName, createTask(_crafty, bundle, StreamHandler));
         _crafty.watcher.add(bundle.watch || bundle.source, bundle.taskName);
       };
@@ -44,11 +47,8 @@ module.exports = {
     return configurators;
   },
   rollup(crafty, bundle, rollupConfig) {
-    const babelOptions = babelConfigurator(
-      crafty,
-      crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle
-    );
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    const babelOptions = babelConfigurator(crafty, bundle);
 
     // Webpack handles this at the loader level, but Rollup needs it this way.
     babelOptions.exclude = ["node_modules/**"];
@@ -66,15 +66,11 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    const options = babelConfigurator(
-      crafty,
-      crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle,
-      {
-        deduplicateHelpers: true,
-        useESModules: true
-      }
-    );
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    const options = babelConfigurator(crafty, bundle, {
+      deduplicateHelpers: true,
+      useESModules: true
+    });
 
     // Cache can be disabled for experimentation and when running Crafty's tests
     if (

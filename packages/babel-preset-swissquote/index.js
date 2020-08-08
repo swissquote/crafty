@@ -100,20 +100,25 @@ module.exports = function buildPreset(context, opts) {
     }
   ]);
 
+  const babelRuntime = path.dirname(require.resolve("@babel/runtime/package.json"));
+
   // Polyfills the runtime needed for async/await and generators
   plugins.push([
     require.resolve("@babel/plugin-transform-runtime"),
     {
-      absoluteRuntime: path.dirname(
-        require.resolve("@babel/runtime/package.json")
-      ), // Otherwise, Yarn PNP is really unhappy
+      corejs: false,
       helpers: opts.deduplicateHelpers || false,
-      useESModules: opts.useESModules || false,
       // By default, babel assumes babel/runtime version 7.0.0-beta.0,
       // explicitly resolving to match the provided helper functions.
       // https://github.com/babel/babel/issues/10261
-      version: require("@babel/runtime/package.json").version,
-      regenerator: true
+      version: require(path.join(babelRuntime, "package.json")).version,
+      regenerator: true,
+      // https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
+      useESModules: opts.useESModules || false,
+      // Undocumented option that lets us encapsulate our runtime, ensuring
+      // the correct version is used
+      // https://github.com/babel/babel/blob/090c364a90fe73d36a30707fc612ce037bdbbb24/packages/babel-plugin-transform-runtime/src/index.js#L35-L42
+      absoluteRuntime: babelRuntime,
     }
   ]);
 

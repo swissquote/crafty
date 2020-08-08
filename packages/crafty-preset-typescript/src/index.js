@@ -64,11 +64,7 @@ module.exports = {
     };
 
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(
-      crafty,
-      crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle
-    );
+    const babelOptions = babelConfigurator(crafty, bundle);
 
     // Webpack handles this at the loader level, but Rollup needs it this way.
     babelOptions.exclude = ["node_modules/**"];
@@ -116,15 +112,10 @@ module.exports = {
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(
-      crafty,
-      crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle,
-      {
-        deduplicateHelpers: true,
-        useESModules: true
-      }
-    );
+    const babelOptions = babelConfigurator(crafty, bundle, {
+      deduplicateHelpers: true,
+      useESModules: true
+    });
 
     // Cache can be disabled for experimentation and when running Crafty's tests
     if (
