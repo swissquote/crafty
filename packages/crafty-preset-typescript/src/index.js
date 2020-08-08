@@ -50,8 +50,37 @@ module.exports = {
   rollup(crafty, bundle, rollupConfig) {
     rollupConfig.input.plugins.typescript = {
       plugin: require("rollup-plugin-typescript2"),
-      weight: 20
+      weight: 20,
+      options: {
+        tsconfigOverride: {
+          compilerOptions: {
+            // Transpile to esnext so that Babel can apply all its magic
+            target: "ESNext",
+            // Preserve JSX so babel can optimize it, or add development/debug information
+            jsx: "Preserve"
+          }
+        }
+      }
     };
+
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    const babelOptions = babelConfigurator(
+      crafty,
+      crafty.getEnvironment() === "production" ? "production" : "development",
+      bundle
+    );
+
+    // Webpack handles this at the loader level, but Rollup needs it this way.
+    babelOptions.exclude = ["node_modules/**"];
+    babelOptions.extensions = [".ts", ".tsx"];
+    babelOptions.babelHelpers = "bundled";
+
+    rollupConfig.input.plugins.babelTypeScript = {
+      plugin: require("@rollup/plugin-babel"),
+      weight: 30,
+      options: babelOptions
+    };
+
   },
   eslint(config, eslint) {
     // This configuration is read by the webpack and rollup plugins

@@ -18,34 +18,47 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"import test from \\"./Component\\";
-var NewStuff = /** @class */ (function () {
-    function NewStuff() {
-        // eslint-disable-next-line no-console
-        console.log(\\"init class\\");
-    }
-    NewStuff.prototype.method = function () {
-        // eslint-disable-next-line no-console
-        console.log(test(2, 4));
-        import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
-            var som = new SomeLibrary.default();
-            // eslint-disable-next-line no-console
-            console.log(som.add(2, 4));
-        });
-    };
-    return NewStuff;
-}());
-export default NewStuff;
+"function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+import test from \\"./Component\\";
+
+var NewStuff = /*#__PURE__*/function () {
+  function NewStuff() {
+    _classCallCheck(this, NewStuff);
+
+    // eslint-disable-next-line no-console
+    console.log(\\"init class\\");
+  }
+
+  _createClass(NewStuff, [{
+    key: \\"method\\",
+    value: function method() {
+      // eslint-disable-next-line no-console
+      console.log(test(2, 4));
+      import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
+        var som = new SomeLibrary.default(); // eslint-disable-next-line no-console
+
+        console.log(som.add(2, 4));
+      });
+    }
+  }]);
+
+  return NewStuff;
+}();
+
+export { NewStuff as default };
 //# sourceMappingURL=script.js.map
 "
 `;
 
 exports[`Compiles TypeScript 3`] = `
 "export default function test(a, b) {
-    return a + b;
+  return a + b;
 }
-
 //# sourceMappingURL=Component.js.map
 "
 `;
@@ -69,44 +82,73 @@ Object {
 
 exports[`Compiles TypeScript and concatenates 2`] = `
 "export default function test(a, b) {
-    return a + b;
+  return a + b;
 }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
 
-var SomeLibrary = /** @class */ (function () {
-    function SomeLibrary() {
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SomeLibrary = /*#__PURE__*/function () {
+  function SomeLibrary() {
+    _classCallCheck(this, SomeLibrary);
+  }
+
+  _createClass(SomeLibrary, [{
+    key: \\"add\\",
+    value: function add(a, b) {
+      return a + b;
     }
-    SomeLibrary.prototype.add = function (a, b) {
-        return a + b;
-    };
-    SomeLibrary.prototype.substract = function (a, b) {
-        return a - b;
-    };
-    SomeLibrary.prototype.divide = function (a, b) {
-        return a / b;
-    };
-    return SomeLibrary;
-}());
-export default SomeLibrary;
+  }, {
+    key: \\"substract\\",
+    value: function substract(a, b) {
+      return a - b;
+    }
+  }, {
+    key: \\"divide\\",
+    value: function divide(a, b) {
+      return a / b;
+    }
+  }]);
+
+  return SomeLibrary;
+}();
+
+export { SomeLibrary as default };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 import test from \\"./Component\\";
-var NewStuff = /** @class */ (function () {
-    function NewStuff() {
-        // eslint-disable-next-line no-console
-        console.log(\\"init class\\");
-    }
-    NewStuff.prototype.method = function () {
-        // eslint-disable-next-line no-console
-        console.log(test(2, 4));
-        import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
-            var som = new SomeLibrary.default();
-            // eslint-disable-next-line no-console
-            console.log(som.add(2, 4));
-        });
-    };
-    return NewStuff;
-}());
-export default NewStuff;
 
+var NewStuff = /*#__PURE__*/function () {
+  function NewStuff() {
+    _classCallCheck(this, NewStuff);
+
+    // eslint-disable-next-line no-console
+    console.log(\\"init class\\");
+  }
+
+  _createClass(NewStuff, [{
+    key: \\"method\\",
+    value: function method() {
+      // eslint-disable-next-line no-console
+      console.log(test(2, 4));
+      import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
+        var som = new SomeLibrary.default(); // eslint-disable-next-line no-console
+
+        console.log(som.add(2, 4));
+      });
+    }
+  }]);
+
+  return NewStuff;
+}();
+
+export { NewStuff as default };
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
