@@ -56,7 +56,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Then finalize with Babel
     const babel = require("gulp-babel");
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
     const babelOptions = babelConfigurator(crafty, bundle);
 
     babelOptions.ignore = ["**/*.d.ts"];

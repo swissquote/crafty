@@ -23,6 +23,8 @@ function resolveBabelRuntimeRelativeTo(cwd) {
       if (fs.existsSync(testedPath)) {
         return babelRuntimePackageFile;
       }
+
+      return null;
     },
     { cwd }
   );

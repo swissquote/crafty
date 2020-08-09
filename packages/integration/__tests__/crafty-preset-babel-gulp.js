@@ -74,6 +74,30 @@ it("Compiles JavaScript", async () => {
   ).toMatchSnapshot();
 });
 
+it("Compiles JavaScript, keeps runtime external", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/compiles-import-runtime"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
+
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
+});
+
 it("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/fails"

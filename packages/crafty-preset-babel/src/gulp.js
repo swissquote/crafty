@@ -38,7 +38,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     }
 
     const babel = require("gulp-babel");
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
     const babelOptions = babelConfigurator(crafty, bundle);
 
     stream.add(babel(babelOptions));

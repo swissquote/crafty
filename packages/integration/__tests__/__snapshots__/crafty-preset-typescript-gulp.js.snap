@@ -153,6 +153,65 @@ export { NewStuff as default };
 "
 `;
 
+exports[`Compiles TypeScript, keeps runtime external 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles TypeScript, keeps runtime external 2`] = `
+"import _classCallCheck from \\"@babel/runtime/helpers/classCallCheck\\";
+import _createClass from \\"@babel/runtime/helpers/createClass\\";
+import test from \\"./Component\\";
+
+var NewStuff = /*#__PURE__*/function () {
+  function NewStuff() {
+    _classCallCheck(this, NewStuff);
+
+    // eslint-disable-next-line no-console
+    console.log(\\"init class\\");
+  }
+
+  _createClass(NewStuff, [{
+    key: \\"method\\",
+    value: function method() {
+      // eslint-disable-next-line no-console
+      console.log(test(2, 4));
+      import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
+        var som = new SomeLibrary.default(); // eslint-disable-next-line no-console
+
+        console.log(som.add(2, 4));
+      });
+    }
+  }]);
+
+  return NewStuff;
+}();
+
+export { NewStuff as default };
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles TypeScript, keeps runtime external 3`] = `
+"export default function test(a, b) {
+  return a + b;
+}
+//# sourceMappingURL=Component.js.map
+"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,

@@ -79,6 +79,35 @@ console.log(foo.catch);
 "
 `;
 
+exports[`Compiles JavaScript, keeps runtime external 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, keeps runtime external 2`] = `
+"import _classCallCheck from\\"@babel/runtime/helpers/classCallCheck\\";import _createClass from\\"@babel/runtime/helpers/createClass\\";import\\"./otherfile\\";var Test=function(){function e(s){_classCallCheck(this,e),this.name=s}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, keeps runtime external 3`] = `
+"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
