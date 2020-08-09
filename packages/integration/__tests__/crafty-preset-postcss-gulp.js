@@ -1,7 +1,5 @@
 /* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
 
@@ -37,11 +35,9 @@ it("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", ()
 });
 
 it("Doesn't compile without a task, but lints", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/no-bundle"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/no-bundle"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -51,11 +47,9 @@ it("Doesn't compile without a task, but lints", async () => {
 });
 
 it("Doesn't compile without a task, but lints (doesn't throw in development)", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/no-bundle-dev"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/no-bundle-dev"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -65,11 +59,9 @@ it("Doesn't compile without a task, but lints (doesn't throw in development)", a
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -79,11 +71,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Experiment with all CSS", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/experiment"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/experiment"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -100,11 +90,9 @@ it("Experiment with all CSS", async () => {
 });
 
 it("Compiles CSS", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -120,11 +108,9 @@ it("Compiles CSS", async () => {
 });
 
 it("Compiles CSS, configuration has overrides", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-gulp/compiles-with-overrides"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/compiles-with-overrides"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

@@ -1,6 +1,4 @@
 /* global jest, describe, it, expect */
-const path = require("path");
-const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
@@ -8,11 +6,9 @@ const testUtils = require("../utils");
 jest.setTimeout(30000);
 
 it("Lints TypeScript using the command", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
 
@@ -24,11 +20,9 @@ it("Lints TypeScript using the command", async () => {
 });
 
 it("Lints TypeScript using the command, --preset recommended, --preset node", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
@@ -43,11 +37,9 @@ it("Lints TypeScript using the command, --preset recommended, --preset node", as
 });
 
 it("Lints TypeScript using the command, --preset recommended", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.ts", "--preset", "recommended"],
@@ -62,11 +54,9 @@ it("Lints TypeScript using the command, --preset recommended", async () => {
 });
 
 it("Lints TypeScript using the command, --preset format", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.ts", "--preset", "format"],

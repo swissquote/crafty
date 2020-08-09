@@ -1,7 +1,5 @@
 /* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
@@ -12,11 +10,9 @@ const BUNDLE = "dist/js/myBundle.min.js";
 const BUNDLE_MAP = `${BUNDLE}.map`;
 
 it("Compiles JavaScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -29,11 +25,9 @@ it("Compiles JavaScript", async () => {
 });
 
 it("Compiles JavaScript with webpack overrides", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/compiles-merge-webpack-config"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/compiles-merge-webpack-config"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -46,11 +40,9 @@ it("Compiles JavaScript with webpack overrides", async () => {
 });
 
 it("Compiles Generators", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/compiles-generators"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/compiles-generators"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -63,11 +55,9 @@ it("Compiles Generators", async () => {
 });
 
 it("Deduplicates helpers", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/compiles-deduplicates"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/compiles-deduplicates"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -80,11 +70,9 @@ it("Deduplicates helpers", async () => {
 });
 
 it("Does not transpile on modern browsers", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/no-old-browser"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/no-old-browser"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -97,11 +85,9 @@ it("Does not transpile on modern browsers", async () => {
 });
 
 it("Compiles JavaScript with externals", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/externals"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/externals"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -114,11 +100,9 @@ it("Compiles JavaScript with externals", async () => {
 });
 
 it("Creates profiles", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/profiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/profiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default", "--profile"], cwd);
 
@@ -133,11 +117,9 @@ it("Creates profiles", async () => {
 });
 
 it("Lints JavaScript with webpack", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -149,11 +131,9 @@ it("Lints JavaScript with webpack", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -165,11 +145,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Removes unused classes", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-webpack/tree-shaking"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-webpack/tree-shaking"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

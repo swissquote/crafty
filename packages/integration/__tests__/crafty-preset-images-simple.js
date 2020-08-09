@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const testUtils = require("../utils");
 
@@ -69,8 +68,7 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
 });
 
 it("Copies and compresses images", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-images-simple");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-images-simple");
 
   const result = await testUtils.run(["run", "images"], cwd);
 

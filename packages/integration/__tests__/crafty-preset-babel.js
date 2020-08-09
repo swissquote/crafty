@@ -1,7 +1,5 @@
 /* global describe, it, expect, jest */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
 const testUtils = require("../utils");
@@ -164,8 +162,7 @@ it("Assigns bundle only once when runner is specified", () => {
 });
 
 it("Lints JavaScript using command", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(["jsLint", "js/**/*.js"], cwd);
 
@@ -177,10 +174,11 @@ it("Lints JavaScript using command", async () => {
 });
 
 it("Generates IDE Helper", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/ide");
-  await rmfr(path.join(cwd, ".eslintrc.js"));
-  await rmfr(path.join(cwd, "prettier.config.js"));
-  await rmfr(path.join(cwd, ".gitignore"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/ide", [
+    ".eslintrc.js",
+    "prettier.config.js",
+    ".gitignore"
+  ]);
 
   const result = await testUtils.run(["ide"], cwd);
 
@@ -196,11 +194,9 @@ it("Generates IDE Helper", async () => {
 });
 
 it("Lints JavaScript using command, ignore crafty.config.js", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel/lints-ignore-config"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel/lints-ignore-config"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     [
@@ -221,8 +217,7 @@ it("Lints JavaScript using command, ignore crafty.config.js", async () => {
 });
 
 it("Lints JavaScript using command, legacy", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints-es5");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints-es5");
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.js", "--preset", "legacy"],
@@ -237,8 +232,7 @@ it("Lints JavaScript using command, legacy", async () => {
 });
 
 it("Lints JavaScript using command, format preset", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.js", "--preset", "format"],
@@ -253,8 +247,7 @@ it("Lints JavaScript using command, format preset", async () => {
 });
 
 it("Lints JavaScript using command, recommended preset", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.js", "--preset", "recommended"],
@@ -269,8 +262,7 @@ it("Lints JavaScript using command, recommended preset", async () => {
 });
 
 it("Lints JavaScript using command, explicit configuration", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-babel/lints");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(
     ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],

@@ -1,7 +1,5 @@
 /* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
 const testUtils = require("../utils");
@@ -53,11 +51,9 @@ it("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", () =
 });
 
 it("Compiles JavaScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -79,11 +75,9 @@ it("Compiles JavaScript", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -94,12 +88,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Compiles JavaScript with custom babel plugin", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/compiles-babel-plugin"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/compiles-babel-plugin"
   );
-
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -115,11 +106,9 @@ it("Compiles JavaScript with custom babel plugin", async () => {
 });
 
 it("Compiles JavaScript and concatenates", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/concatenates"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/concatenates"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -140,11 +129,9 @@ it("Compiles JavaScript and concatenates", async () => {
 });
 
 it("Lints JavaScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/lints-es5"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/lints-es5"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -156,11 +143,9 @@ it("Lints JavaScript", async () => {
 });
 
 it("Lints JavaScript, doesn't fail in development", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-babel-gulp/lints-es5-dev"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/lints-es5-dev"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

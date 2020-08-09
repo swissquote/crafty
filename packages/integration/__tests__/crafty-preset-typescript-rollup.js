@@ -1,7 +1,5 @@
 /* global describe, it, expect, jest */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
@@ -15,11 +13,9 @@ jest.setTimeout(30000);
 jest.mock("node-forge");
 
 it("Works with rollup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-rollup/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-rollup/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -33,11 +29,10 @@ it("Works with rollup", async () => {
 });
 
 it("Deletes rollup terser plugin using crafty.config.js", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-rollup/compiles-no-terser"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-rollup/compiles-no-terser"
   );
-  await rmfr(path.join(cwd, "dist"));
+  );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -51,11 +46,9 @@ it("Deletes rollup terser plugin using crafty.config.js", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-rollup/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-rollup/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -67,11 +60,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Lints TypeScript with rollup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-rollup/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-rollup/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

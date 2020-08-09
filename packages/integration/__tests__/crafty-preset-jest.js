@@ -1,7 +1,5 @@
 /* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
@@ -18,8 +16,7 @@ try {
 }
 
 it("Succeeds without transpiling", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/succeeds");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/succeeds");
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -27,9 +24,10 @@ it("Succeeds without transpiling", async () => {
 });
 
 it("Creates IDE Integration files", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/ide");
-  await rmfr(path.join(cwd, "jest.config.js"));
-  await rmfr(path.join(cwd, ".gitignore"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide", [
+    "jest.config.js",
+    ".gitignore"
+  ]);
 
   const result = await testUtils.run(["ide"], cwd);
 
@@ -40,9 +38,10 @@ it("Creates IDE Integration files", async () => {
 });
 
 it("Creates IDE Integration files with Babel", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/ide-babel");
-  await rmfr(path.join(cwd, "jest.config.js"));
-  await rmfr(path.join(cwd, ".gitignore"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide-babel", [
+    "jest.config.js",
+    ".gitignore"
+  ]);
 
   const result = await testUtils.run(["ide"], cwd);
 
@@ -51,8 +50,7 @@ it("Creates IDE Integration files with Babel", async () => {
 });
 
 testIfNotPnp("Succeeds with typescript", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/typescript");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/typescript");
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -60,8 +58,7 @@ testIfNotPnp("Succeeds with typescript", async () => {
 });
 
 it("Succeeds with babel", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/babel");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/babel");
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -69,11 +66,9 @@ it("Succeeds with babel", async () => {
 });
 
 it("Fails with babel", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-jest/babel-fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/babel-fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -81,11 +76,9 @@ it("Fails with babel", async () => {
 });
 
 testIfNotPnp("Succeeds with babel and React", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-jest/babel-react"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/babel-react"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -93,8 +86,7 @@ testIfNotPnp("Succeeds with babel and React", async () => {
 });
 
 it("Succeeds with esm module", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/esm");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/esm");
 
   const result = await testUtils.run(["test"], cwd);
 
@@ -102,8 +94,7 @@ it("Succeeds with esm module", async () => {
 });
 
 it("Succeeds with esm module and babel", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-jest/esm-babel");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/esm-babel");
 
   const result = await testUtils.run(["test"], cwd);
 
