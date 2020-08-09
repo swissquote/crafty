@@ -58,6 +58,7 @@ var C = /*#__PURE__*/function () {
 
   return C;
 }();
+
 var D = /*#__PURE__*/function () {
   function D() {
     _classCallCheck(this, D);
@@ -106,6 +107,70 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/
 [__:__:__] 'default' errored after ____ ms
 ",
 }
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+[__:__:__] Finished 'js_myTSBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 2`] = `
+"import _classCallCheck from '@babel/runtime/helpers/classCallCheck';
+import _createClass from '@babel/runtime/helpers/createClass';
+
+var C = /*#__PURE__*/function () {
+  function C() {
+    _classCallCheck(this, C);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something happens here\\");
+  }
+
+  _createClass(C, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
+    }
+  }]);
+
+  return C;
+}();
+
+var D = /*#__PURE__*/function () {
+  function D() {
+    _classCallCheck(this, D);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something else happens here\\");
+  }
+
+  _createClass(D, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
+    }
+  }]);
+
+  return D;
+}();
+
+export { C, D };
+//# sourceMappingURL=myTSBundle.min.js.map
+"
 `;
 
 exports[`Lints TypeScript with rollup 1`] = `

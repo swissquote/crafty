@@ -10,8 +10,56 @@ it("Compiles JavaScript with rollup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/compiles"
   );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+  ).toMatchSnapshot();
+});
+
+it("Keeps imports unresolved for Babel Runtime", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-rollup/compiles-import-runtime"
+  );
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+  ).toMatchSnapshot();
+});
+
+it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-rollup/compiles-import-runtime-commonjs"
   );
 
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+  ).toMatchSnapshot();
+});
+
+it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-rollup/compiles-import-runtime-commonjs"
+  );
 
   const result = await testUtils.run(["run", "default"], cwd);
 

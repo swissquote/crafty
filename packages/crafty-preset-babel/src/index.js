@@ -47,18 +47,17 @@ module.exports = {
     return configurators;
   },
   rollup(crafty, bundle, rollupConfig) {
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(crafty, bundle);
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-rollup");
+    const { hasRuntime, options } = babelConfigurator(crafty, bundle);
 
-    // Webpack handles this at the loader level, but Rollup needs it this way.
-    babelOptions.exclude = ["node_modules/**"];
-    babelOptions.include = ["**/*.js", "**/*.jsx"];
-    babelOptions.babelHelpers = "bundled";
+    if (hasRuntime) {
+      rollupConfig.input.external.push(/@babel\/runtime/);
+    }
 
     rollupConfig.input.plugins.babel = {
       plugin: require("@rollup/plugin-babel"),
       weight: 20,
-      options: babelOptions
+      options
     };
   },
   webpack(crafty, bundle, chain) {

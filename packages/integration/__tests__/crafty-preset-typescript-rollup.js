@@ -32,6 +32,21 @@ it("Deletes rollup terser plugin using crafty.config.js", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/compiles-no-terser"
   );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
+  ).toMatchSnapshot();
+});
+
+it("Keeps imports unresolved for Babel Runtime", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-rollup/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);

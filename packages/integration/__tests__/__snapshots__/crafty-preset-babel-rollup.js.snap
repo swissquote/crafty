@@ -54,6 +54,77 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/fails/js/scrip
 }
 `;
 
+exports[`Keeps imports unresolved for Babel Runtime 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 2`] = `
+"import e from\\"@babel/runtime/helpers/classCallCheck\\";import t from\\"@babel/runtime/helpers/createClass\\";import r from\\"@babel/runtime/helpers/inherits\\";import n from\\"@babel/runtime/helpers/createSuper\\";var l=function(l){r(i,l);var a=n(i);function i(){var t;e(this,i);for(var r=arguments.length,n=new Array(r),l=0;l<r;l++)n[l]=arguments[l];return t=a.call.apply(a,[this].concat(n)),t.handleClick=function(){t.setState({hey:!0})},t}return t(i,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),i}(React.Component);var a=function(){function r(){e(this,r),console.log(\\"init class\\")}return t(r,[{key:\\"method\\",value:function(){console.log(l)}}]),r}();export default a;
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime-commonjs/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, which means for CommonJS output that its default export is assigned to \\"module.exports\\". For many tools, such CommonJS output will not be interchangeable with the original ES module. If this is intended, explicitly set \\"output.exports\\" to either \\"auto\\" or \\"default\\", otherwise you might want to consider changing the signature of \\"js/script.js\\" to use named exports only.
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 2`] = `
+"\\"use strict\\";function e(e){return e&&\\"object\\"===typeof e&&\\"default\\"in e?e.default:e}var r=e(require(\\"@babel/runtime/helpers/classCallCheck\\"));var t=e(require(\\"@babel/runtime/helpers/createClass\\"));var n=e(require(\\"@babel/runtime/helpers/inherits\\"));var a=e(require(\\"@babel/runtime/helpers/createSuper\\"));var l=function(e){n(i,e);var l=a(i);function i(){var e;r(this,i);for(var t=arguments.length,n=new Array(t),a=0;a<t;a++)n[a]=arguments[a];return e=l.call.apply(l,[this].concat(n)),e.handleClick=function(){e.setState({hey:!0})},e}return t(i,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),i}(React.Component);var i=function(){function e(){r(this,e),console.log(\\"init class\\")}return t(e,[{key:\\"method\\",value:function(){console.log(l)}}]),e}();module.exports=i;
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 3`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime-commonjs/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, which means for CommonJS output that its default export is assigned to \\"module.exports\\". For many tools, such CommonJS output will not be interchangeable with the original ES module. If this is intended, explicitly set \\"output.exports\\" to either \\"auto\\" or \\"default\\", otherwise you might want to consider changing the signature of \\"js/script.js\\" to use named exports only.
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 4`] = `
+"\\"use strict\\";function e(e){return e&&\\"object\\"===typeof e&&\\"default\\"in e?e.default:e}var r=e(require(\\"@babel/runtime/helpers/classCallCheck\\"));var t=e(require(\\"@babel/runtime/helpers/createClass\\"));var n=e(require(\\"@babel/runtime/helpers/inherits\\"));var a=e(require(\\"@babel/runtime/helpers/createSuper\\"));var l=function(e){n(i,e);var l=a(i);function i(){var e;r(this,i);for(var t=arguments.length,n=new Array(t),a=0;a<t;a++)n[a]=arguments[a];return e=l.call.apply(l,[this].concat(n)),e.handleClick=function(){e.setState({hey:!0})},e}return t(i,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),i}(React.Component);var i=function(){function e(){r(this,e),console.log(\\"init class\\")}return t(e,[{key:\\"method\\",value:function(){console.log(l)}}]),e}();module.exports=i;
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
 exports[`Lints JavaScript with rollup 1`] = `
 Object {
   "status": 1,

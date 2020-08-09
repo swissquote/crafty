@@ -34,10 +34,42 @@ The rollup.js preset is compatible with our
 [Babel](05_Packages/05_crafty-preset-babel.md) and
 [TypeScript](05_Packages/05_crafty-preset-typescript.md)
 
-| Option      | Type                | Optional ? | Description                                                                                                             |
-| ----------- | ------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `format`    | String              | Yes        | Define the output format can be any of `amd`, `iife`, `cjs`, `es` or `umd`. Defaults to `es`.                           |
-| `externals` | Array&lt;String&gt; | Yes        | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs) |
+| Option          | Type       | Optional ? | Description                                                                                                             |
+| --------------- | ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `format`        | `string`   | Yes        | Define the output format can be any of `amd`, `iife`, `cjs`, `es` or `umd`. Defaults to `es`.                           |
+| `externals`     | `string[]` | Yes        | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs) |
+| `inlineRuntime` | `boolean`  | Yes        | Do we inline the `@babel/runtime` ? Read below for details and implication                                              |
+
+### `inlineRuntime` / put @babel/runtime inline or keep it as imports
+
+Default: `true` when nothing is specified, and to `false` when a dependency to `@babel/runtime` is found.
+
+When compiling newer EcmaScript to older versions, some helper functions can be needed to make it work. For example functions to create classes, rest, spread, etc...
+
+These helpers are quite small, however, if you are creating a library which will be included in another project, your bundle might end up containing the library along with the copies that the final project will contain as well.
+
+A way to reduce this cost is instead of having these helpers inline is to keep them as imports.
+
+```javascript
+// This
+function _classCallCheck(instance, Constructor) {
+  /* */
+}
+function _defineProperties(target, props) {
+  /* */
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  /* */
+}
+
+// Becomes
+import _classCallCheck from "@babel/runtime/helpers/classCallCheck";
+import _createClass from "@babel/runtime/helpers/createClass";
+```
+
+The way to do this is by adding a dependency to `@babel/runtime` in your project's `package.json`.
+
+If for some reason you need a dependency to `@babel/runtime` but still wish helpers to be inline, you can force it with `inlineRuntime: true`.
 
 ## Extending the configuration
 
