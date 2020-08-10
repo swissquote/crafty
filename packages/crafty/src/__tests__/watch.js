@@ -10,6 +10,10 @@ const normalizePath = require("normalize-path");
 
 const watch = require("../watch");
 
+// Add a high timeout because of https://github.com/facebook/jest/issues/8942
+// Tests would be unreliable if they timeout >_<
+jest.setTimeout(30000);
+
 // Default delay on debounce
 const timeout = 200;
 
