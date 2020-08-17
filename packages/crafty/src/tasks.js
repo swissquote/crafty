@@ -18,7 +18,7 @@ function initBundle(crafty, bundle, bundleCreators, type, chosenRunner) {
 function registerTasks(crafty) {
   let bundleCreators = {};
   crafty.getImplementations("bundleCreator").forEach(preset => {
-    debug(preset.presetName + ".bundleCreator(crafty)");
+    debug(`${preset.presetName}.bundleCreator(crafty)`);
     bundleCreators = merge.recursive(
       true,
       bundleCreators,
@@ -60,12 +60,12 @@ function registerTasks(crafty) {
 
       // Infer default destination if it's not specified
       if (!bundle.destination) {
-        bundle.destination = bundleName + ".min.js";
+        bundle.destination = `${bundleName}.min.js`;
       }
 
       if (
         !bundleCreators.hasOwnProperty(type) ||
-        Object.keys(bundleCreators[type]).length == 0
+        Object.keys(bundleCreators[type]).length === 0
       ) {
         crafty.log.error(
           `Could not find bundleCreator for '${type}.${bundleName}', did you forget to load a preset or runner ?`
@@ -75,7 +75,7 @@ function registerTasks(crafty) {
 
       // If there is only one runner for this bundleType, let's go with that
       const configurators = Object.keys(bundleCreators[type]);
-      if (!bundle.runner && configurators.length == 1) {
+      if (!bundle.runner && configurators.length === 1) {
         initBundle(crafty, bundle, bundleCreators, type, configurators[0]);
         tasks.push(bundle.taskName);
         return;
@@ -98,7 +98,7 @@ function registerTasks(crafty) {
       }
 
       const shortNamefilters = configurators.filter(
-        runner => shortName(runner) == bundle.runner
+        runner => shortName(runner) === bundle.runner
       );
       if (shortNamefilters.length > 1) {
         throw new Error(
@@ -108,13 +108,13 @@ function registerTasks(crafty) {
         );
       }
 
-      if (shortNamefilters == 1) {
+      if (shortNamefilters === 1) {
         initBundle(
           crafty,
           bundle,
           bundleCreators,
           type,
-          configurators.first(runner => shortName(runner) == bundle.runner)
+          configurators.first(runner => shortName(runner) === bundle.runner)
         );
         tasks.push(bundle.taskName);
         return;
@@ -135,7 +135,7 @@ function registerTasks(crafty) {
 
   // Arbitrary task creation, not related to bundles
   crafty.getImplementations("tasks").forEach(preset => {
-    debug(preset.presetName + ".tasks(crafty)");
+    debug(`${preset.presetName}.tasks(crafty)`);
     preset.tasks(crafty);
   });
 

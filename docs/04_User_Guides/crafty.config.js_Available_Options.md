@@ -5,21 +5,21 @@
 All the options in `crafty.config.js` apart from your bundles in the `js` and
 `css` bundles are optional.
 
-| Option                     | Default Value                    | Description                                                                                                          | Preset                                                                   |
-| -------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `browsers`                 | See below                        | The browser compatibility we wish in the compiled files. Read more below                                             | Core                                                                     |
-| `destination`              | See below                        | The destination at which to put all files                                                                            | Core                                                                     |
-| `destination_<bundleType>` | `destination + "/" + bundleType` | The destination for JavaScript/TypeScript files                                                                      | Core                                                                     |
-| `eslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all JavaScript source files that go through the Gulp builder                              | `crafty-preset-babel`                                                    |
-| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-rollup` / `crafty-runner-webpack`                         |
-| `img_basedir`              | `"images"`                       | Where to take images from (Relative to current working directory)                                                    | `crafty-preset-images` / `crafty-preset-images-simple`                   |
-| `img_extensions`           | `["png", "jpg", "jpeg", "gif"]`  | What extensions to compress (excludes svg)                                                                           | `crafty-preset-images`                                                   |
-| `legacy_css`               | `false`                          | When enabling this feature, the CSS will be linted for errors and formatting instead of the Swissquote CSS Guideline | `crafty-preset-postcss`                                                  |
-| `mavenType`                | See below                        | Defines wether this application is a `webapp` or `webjar`.                                                           | `crafty-preset-maven`                                                    |
-| `stylelint`                | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the naming conventions                                  | `crafty-preset-postcss`                                                  |
-| `stylelint_legacy`         | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the base formatting rules and best practices            | `crafty-preset-postcss`                                                  |
-| `stylelint_pattern`        | See Below                        | Define the file types you want to target when linting CSS files.                                                     | `crafty-preset-postcss`                                                  |
-| `uglifyJS`                 | See below                        | Configure the compression level of your JavaScript assets.                                                           | `crafty-preset-babel` / `crafty-runner-rollup` / `crafty-runner-webpack` |
+| Option                     | Default Value                    | Description                                                                                                          | Preset                                                 |
+| -------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `browsers`                 | See below                        | The browser compatibility we wish in the compiled files. Read more below                                             | Core                                                   |
+| `destination`              | See below                        | The destination at which to put all files                                                                            | Core                                                   |
+| `destination_<bundleType>` | `destination + "/" + bundleType` | The destination for JavaScript/TypeScript files                                                                      | Core                                                   |
+| `eslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all JavaScript source files that go through the Gulp builder                              | `crafty-preset-babel`                                  |
+| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-rollup` / `crafty-runner-webpack`       |
+| `img_basedir`              | `"images"`                       | Where to take images from (Relative to current working directory)                                                    | `crafty-preset-images` / `crafty-preset-images-simple` |
+| `img_extensions`           | `["png", "jpg", "jpeg", "gif"]`  | What extensions to compress (excludes svg)                                                                           | `crafty-preset-images`                                 |
+| `legacy_css`               | `false`                          | When enabling this feature, the CSS will be linted for errors and formatting instead of the Swissquote CSS Guideline | `crafty-preset-postcss`                                |
+| `mavenType`                | See below                        | Defines wether this application is a `webapp` or `webjar`.                                                           | `crafty-preset-maven`                                  |
+| `stylelint`                | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the naming conventions                                  | `crafty-preset-postcss`                                |
+| `stylelint_legacy`         | Swissquote CSS Guideline         | This defines the rules for all CSS source files, it contains the base formatting rules and best practices            | `crafty-preset-postcss`                                |
+| `stylelint_pattern`        | See Below                        | Define the file types you want to target when linting CSS files.                                                     | `crafty-preset-postcss`                                |
+| `terser`                   | See below                        | Configure the compression level of your JavaScript assets.                                                           | `crafty-preset-terser`                                 |
 
 ### `destination`
 
@@ -33,7 +33,7 @@ your assets to Maven's `target` directory.
 
 ### `browser`: Browser compatibility
 
-Default: `> 0.25%, Firefox ESR, Edge >= 15, Safari >= 10, iOS >= 10, Chrome >= 56, Firefox >= 51, IE >= 11, not op_mini all, not Safari 5.1, not kaios 2.5, not ie 9`
+Default: `> 0.25%, Edge >= 17, Safari >= 11, iOS >= 11, Chrome >= 66, Firefox >= 60, IE >= 11, not op_mini all`
 
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.
@@ -46,7 +46,7 @@ we have seen across all Swissquote Platforms
 
 If you want a different list, you can override those defaults using any valid [Browserslist query source](https://github.com/browserslist/browserslist#queries)
 
-### `uglifyJS` : JavaScript compression
+### `terser` : JavaScript compression
 
 Default: `{ compress: true, sourceMap: true }`
 
@@ -54,7 +54,7 @@ By default, we compress our JavaScript with safe parameters, if you wish you can
 go further and enable more advanced compression techniques.
 
 The options are described
-[in UglifyJS' documentation](https://github.com/mishoo/UglifyJS2#usage)
+[in Terser's documentation](https://github.com/terser/terser#minify-options)
 
 ### `stylelint_pattern`: Which files to lint
 

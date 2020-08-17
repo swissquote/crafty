@@ -108,7 +108,7 @@ module.exports = {
     });
 
     // Add missing informations to CSS configurations
-    for (let i in config.css) {
+    for (const i in config.css) {
       if (!config.css.hasOwnProperty(i)) {
         continue;
       }
@@ -123,7 +123,7 @@ module.exports = {
 
       // Infer default destination if it's not specified
       if (!config.css[i].destination) {
-        config.css[i].destination = i + ".min.css";
+        config.css[i].destination = `${i}.min.css`;
       }
     }
 
@@ -139,7 +139,7 @@ module.exports = {
     return {
       cssLint: {
         //eslint-disable-next-line no-unused-vars
-        command: function(crafty, input, cli) {
+        command(crafty, input, cli) {
           global.craftyConfig = crafty.config;
           require("./commands/lint_css");
         },
@@ -147,7 +147,7 @@ module.exports = {
       }
     };
   },
-  bundleCreator(crafty) {
+  bundleCreator() {
     return {
       css: {
         "gulp/postcss": (crafty, bundle, gulp, StreamHandler) => {

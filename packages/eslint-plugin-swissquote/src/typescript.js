@@ -18,23 +18,27 @@ module.exports = {
     },
     "import/resolver": {
       // use <root>/tsconfig.json
-      "typescript": {
-        "alwaysTryTypes": true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
+      typescript: {
+        alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
       }
     }
   },
   rules: {
-    "@swissquote/swissquote/prettier/prettier": [warn(), { parser: "typescript" }],
+    "@swissquote/swissquote/prettier/prettier": [
+      warn(),
+      { parser: "typescript" }
+    ],
 
     // Has a TypeScript replacement
     "no-array-constructor": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn(),
+    "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn()
   }
 };
 
 // Disable all the rules from ESLint that are handled by @typescript-eslint
 addMissingRules(
-  require("@typescript-eslint/eslint-plugin").configs['eslint-recommended'].overrides[0].rules,
+  require("@typescript-eslint/eslint-plugin").configs["eslint-recommended"]
+    .overrides[0].rules,
   module.exports.rules
 );
 

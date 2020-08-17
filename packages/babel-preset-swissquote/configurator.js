@@ -1,18 +1,19 @@
 const debug = require("debug")("crafty:preset-babel");
 
-module.exports = function(crafty, environment, bundle, babelOptions) {
+module.exports = function(crafty, bundle, babelOptions) {
   const babelConfiguration = {
     babelrc: false,
     presets: [
       [
         __dirname,
-        Object.assign(
-          {
-            browsers: crafty.config.browsers,
-            environment
-          },
-          babelOptions || {}
-        )
+        {
+          browsers: crafty.config.browsers,
+          environment:
+            crafty.getEnvironment() === "production"
+              ? "production"
+              : "development",
+          ...babelOptions
+        }
       ]
     ],
     plugins: []

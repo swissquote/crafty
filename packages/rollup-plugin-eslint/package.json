@@ -1,0 +1,37 @@
+{
+  "name": "@swissquote/rollup-plugin-eslint",
+  "version": "1.12.0",
+  "description": "Verify entry point and all imported files with ESLint",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swissquote/crafty"
+  },
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "es2015",
+    "eslint",
+    "lint"
+  ],
+  "author": "Bogdan Chadkin <trysound@yandex.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "26.4.0",
+    "rollup": "2.26.3",
+    "@rollup/plugin-node-resolve": "9.0.0"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "4.0.0",
+    "eslint": "7.7.0"
+  }
+}

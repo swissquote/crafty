@@ -1,32 +1,32 @@
 {
-    "name": "crafty-experiment",
-    "version": "1.11.1",
-    "private": true,
-    "scripts": {
-        "build": "crafty run",
-        "test": "crafty test",
-        "watch": "crafty watch",
-        "start": "serve"
-    },
-    "dependencies": {
-        "@types/react": "^16.9.34",
-        "react-loadable": "5.5.0",
-        "react-tabs": "3.1.1",
-        "serve": "11.3.2",
-        "webpack": "5.0.0-beta.20"
-    },
-    "devDependencies": {
-        "@swissquote/crafty": "1.11.1",
-        "@swissquote/crafty-preset-babel": "1.11.1",
-        "@swissquote/crafty-preset-images": "1.11.1",
-        "@swissquote/crafty-preset-images-simple": "1.11.1",
-        "@swissquote/crafty-preset-maven": "1.11.1",
-        "@swissquote/crafty-preset-postcss": "1.11.1",
-        "@swissquote/crafty-preset-typescript": "1.11.1",
-        "@swissquote/crafty-runner-gulp": "1.11.1",
-        "@swissquote/crafty-runner-rollup": "1.11.1",
-        "@swissquote/crafty-runner-webpack": "1.11.1",
-        "react": "16.13.1",
-        "react-dom": "16.13.1"
-    }
+  "name": "experiment",
+  "version": "1.12.0",
+  "private": true,
+  "scripts": {
+    "build": "crafty run",
+    "test": "crafty test",
+    "watch": "crafty watch",
+    "start": "serve"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.34",
+    "react-loadable": "5.5.0",
+    "react-tabs": "3.1.1",
+    "serve": "11.3.2",
+    "webpack": "5.0.0-beta.20"
+  },
+  "devDependencies": {
+    "@swissquote/crafty": "1.12.0",
+    "@swissquote/crafty-preset-babel": "1.12.0",
+    "@swissquote/crafty-preset-images": "1.12.0",
+    "@swissquote/crafty-preset-images-simple": "1.12.0",
+    "@swissquote/crafty-preset-maven": "1.12.0",
+    "@swissquote/crafty-preset-postcss": "1.12.0",
+    "@swissquote/crafty-preset-typescript": "1.12.0",
+    "@swissquote/crafty-runner-gulp": "1.12.0",
+    "@swissquote/crafty-runner-rollup": "1.12.0",
+    "@swissquote/crafty-runner-webpack": "1.12.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
 }

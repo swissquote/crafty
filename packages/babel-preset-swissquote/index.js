@@ -77,11 +77,6 @@ module.exports = function buildPreset(context, opts) {
   // Plugins
   // --------------------------------------------
 
-  // Necessary to include regardless of the environment because
-  // in practice some other transforms (such as object-rest-spread)
-  // don't work without it: https://github.com/babel/babel/issues/7215
-  plugins.push(require.resolve("@babel/plugin-transform-destructuring"));
-
   // class { handleClick = () => { } }
   plugins.push([
     require.resolve("@babel/plugin-proposal-class-properties"),
@@ -90,31 +85,36 @@ module.exports = function buildPreset(context, opts) {
     }
   ]);
 
-  // The following two plugins use Object.assign directly, instead of Babel's
-  // extends helper. Note that this assumes `Object.assign` is available.
-  // { ...todo, completed: true }
-  plugins.push([
-    require.resolve("@babel/plugin-proposal-object-rest-spread"),
-    {
-      useBuiltIns: true
-    }
-  ]);
+  const babelRuntime = path.dirname(
+    require.resolve("@babel/runtime/package.json")
+  );
+  const chosenRuntime = opts.runtimeDependency
+    ? opts.runtimeDependency
+    : babelRuntime;
+
+  const transformRuntimeOption = {
+    corejs: false,
+    helpers: opts.deduplicateHelpers || false,
+    // By default, babel assumes babel/runtime version 7.0.0-beta.0,
+    // explicitly resolving to match the provided helper functions.
+    // https://github.com/babel/babel/issues/10261
+    version: require(path.join(chosenRuntime, "package.json")).version,
+    regenerator: true,
+    // https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
+    useESModules: opts.useESModules || false
+  };
+
+  if (!opts.runtimeDependency) {
+    // Undocumented option that lets us encapsulate our runtime, ensuring
+    // the correct version is used
+    // https://github.com/babel/babel/blob/090c364a90fe73d36a30707fc612ce037bdbbb24/packages/babel-plugin-transform-runtime/src/index.js#L35-L42
+    transformRuntimeOption.absoluteRuntime = babelRuntime;
+  }
 
   // Polyfills the runtime needed for async/await and generators
   plugins.push([
     require.resolve("@babel/plugin-transform-runtime"),
-    {
-      absoluteRuntime: path.dirname(
-        require.resolve("@babel/runtime/package.json")
-      ), // Otherwise, Yarn PNP is really unhappy
-      helpers: opts.deduplicateHelpers || false,
-      useESModules: opts.useESModules || false,
-      // By default, babel assumes babel/runtime version 7.0.0-beta.0,
-      // explicitly resolving to match the provided helper functions.
-      // https://github.com/babel/babel/issues/10261
-      version: require('@babel/runtime/package.json').version,
-      regenerator: true
-    }
+    transformRuntimeOption
   ]);
 
   // Remove PropTypes from production build
@@ -131,27 +131,10 @@ module.exports = function buildPreset(context, opts) {
   // but not yet supported in webpack due to support missing from acorn.
   // These can be removed once webpack has support.
   // See https://github.com/facebook/create-react-app/issues/8445#issuecomment-588512250
-  plugins.push(require.resolve('@babel/plugin-proposal-optional-chaining'));
-  plugins.push(require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'));
-
-  // function* () { yield 42; yield 43; }
-  if (!isEnvTest) {
-    plugins.push([
-      require.resolve("@babel/plugin-transform-regenerator"),
-      {
-        // Async functions are converted to generators by @babel/preset-env
-        async: false
-      }
-    ]);
-  }
-
-  // Adds syntax support for import()
-  plugins.push(require.resolve("@babel/plugin-syntax-dynamic-import"));
-
-  if (isEnvTest) {
-    // Compiles import() to a deferred require()
-    plugins.push(require.resolve("babel-plugin-transform-dynamic-import"));
-  }
+  plugins.push(require.resolve("@babel/plugin-proposal-optional-chaining"));
+  plugins.push(
+    require.resolve("@babel/plugin-proposal-nullish-coalescing-operator")
+  );
 
   return {
     presets,

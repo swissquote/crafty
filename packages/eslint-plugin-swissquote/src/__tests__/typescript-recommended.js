@@ -1,26 +1,30 @@
 /* global describe, it, expect */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine("recommended");
+const { prepareESLint, lint } = require("../../test_utils");
 
-it("Warns on console.log", () => {
-  const result = lint(engine, `
+const engine = prepareESLint("recommended");
+
+it("Warns on console.log", async () => {
+  const result = await lint(
+    engine,
+    `
 const foo = window;
 
 // Use a TypeScript 3.7 feature to make sure it works
 if (foo?.bar?.baz) {
   console.log(foo.bar.baz);
 }
-`, "file.ts");
+`,
+    "file.ts"
+  );
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(1);
   expect(result.errorCount).toBe(0);
 });
 
-
-it("Uses sonar plugin", () => {
-  const result = lint(
+it("Uses sonar plugin", async () => {
+  const result = await lint(
     engine,
     `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
@@ -35,7 +39,8 @@ function changeWindow(param: number) {
     moveWindowToTheBackground();
   }
 }
-`, "file.ts"
+`,
+    "file.ts"
   );
 
   expect(result.messages).toMatchSnapshot();
@@ -43,8 +48,8 @@ function changeWindow(param: number) {
   expect(result.errorCount).toBe(2);
 });
 
-it("Works with complex types", () => {
-  const result = lint(
+it("Works with complex types", async () => {
+  const result = await lint(
     engine,
     `
 import * as React from "react";

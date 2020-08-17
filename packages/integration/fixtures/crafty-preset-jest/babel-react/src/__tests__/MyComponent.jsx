@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { shallow } from "enzyme";
+import TestRenderer from "react-test-renderer";
 import { act } from "react-dom/test-utils";
 
 import Counter from "../Counter";
@@ -9,22 +9,22 @@ import Foo from "../Foo";
 
 describe('<MyComponent />', () => {
   it('renders three <Foo /> components', () => {
-    const wrapper = shallow(<MyComponent />);
-    expect(wrapper.find(Foo)).toHaveLength(3)
+    const wrapper = TestRenderer.create(<MyComponent />);
+    expect(wrapper.root.findAllByType(Foo)).toHaveLength(3)
   });
 
   it('renders an `.icon-star`', () => {
-    const wrapper = shallow(<MyComponent />);
-    expect(wrapper.find('.icon-star')).toHaveLength(1)
+    const wrapper = TestRenderer.create(<MyComponent />);
+    expect(wrapper.root.findByProps({className: 'icon-star'}).type).toEqual("i");
   });
 
   it('renders children when passed in', () => {
-    const wrapper = shallow((
+    const wrapper = TestRenderer.create((
       <MyComponent>
         <div className="unique" />
       </MyComponent>
     ));
-    expect(wrapper.contains(<div className="unique" />)).toEqual(true);
+    expect(wrapper.root.findByType(MyComponent).children[4].props).toEqual({className: "unique"});
   });
 });
 

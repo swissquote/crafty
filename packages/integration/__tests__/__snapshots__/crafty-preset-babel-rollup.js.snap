@@ -18,7 +18,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript with rollup 2`] = `
-"function t(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function e(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function n(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}function r(t){return(r=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function o(t,e){return(o=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function c(t,e){return!e||\\"object\\"!=typeof e&&\\"function\\"!=typeof e?function(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}(t):e}function u(t){var e=function(){if(\\"undefined\\"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(t){return!1}}();return function(){var n,o=r(t);if(e){var u=r(this).constructor;n=Reflect.construct(o,arguments,u)}else n=o.apply(this,arguments);return c(this,n)}}var i=function(e){!function(t,e){if(\\"function\\"!=typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&o(t,e)}(c,React.Component);var r=u(c);function c(){var e;t(this,c);for(var n=arguments.length,o=new Array(n),u=0;u<n;u++)o[u]=arguments[u];return(e=r.call.apply(r,[this].concat(o))).handleClick=function(){e.setState({hey:!0})},e}return n(c,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),c}(),f=function(){function e(){t(this,e),console.log(\\"init class\\")}return n(e,[{key:\\"method\\",value:function(){console.log(i)}}]),e}();export default f;
+"function t(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function e(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function n(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}function r(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&c(t,e)}function o(t){return o=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},o(t)}function c(t,e){return c=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},c(t,e)}function u(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(t){return!1}}function i(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function f(t,e){if(e&&(\\"object\\"===typeof e||\\"function\\"===typeof e))return e;return i(t)}function a(t){var e=u();return function(){var n,r=o(t);if(e){var c=o(this).constructor;n=Reflect.construct(r,arguments,c)}else n=r.apply(this,arguments);return f(this,n)}}var l=function(e){r(c,e);var o=a(c);function c(){var e;t(this,c);for(var n=arguments.length,r=new Array(n),u=0;u<n;u++)r[u]=arguments[u];return e=o.call.apply(o,[this].concat(r)),e.handleClick=function(){e.setState({hey:!0})},e}return n(c,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),c}(React.Component);var s=function(){function e(){t(this,e),console.log(\\"init class\\")}return n(e,[{key:\\"method\\",value:function(){console.log(l)}}]),e}();export default s;
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
@@ -45,7 +45,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/fails/js/scrip
 ✖ 1 problem (1 error, 0 warnings)
 
 [js_myBundle] (!) Errors were found
-js/script.js
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...
@@ -53,6 +52,77 @@ js/script.js
 [__:__:__] 'default' errored after ____ ms
 ",
 }
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 2`] = `
+"import e from\\"@babel/runtime/helpers/classCallCheck\\";import t from\\"@babel/runtime/helpers/createClass\\";import r from\\"@babel/runtime/helpers/inherits\\";import n from\\"@babel/runtime/helpers/createSuper\\";var l=function(l){r(i,l);var a=n(i);function i(){var t;e(this,i);for(var r=arguments.length,n=new Array(r),l=0;l<r;l++)n[l]=arguments[l];return t=a.call.apply(a,[this].concat(n)),t.handleClick=function(){t.setState({hey:!0})},t}return t(i,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),i}(React.Component);var a=function(){function r(){e(this,r),console.log(\\"init class\\")}return t(r,[{key:\\"method\\",value:function(){console.log(l)}}]),r}();export default a;
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime-commonjs/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, which means for CommonJS output that its default export is assigned to \\"module.exports\\". For many tools, such CommonJS output will not be interchangeable with the original ES module. If this is intended, explicitly set \\"output.exports\\" to either \\"auto\\" or \\"default\\", otherwise you might want to consider changing the signature of \\"js/script.js\\" to use named exports only.
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 2`] = `
+"\\"use strict\\";var e=require(\\"@babel/runtime/helpers/classCallCheck\\");var t=require(\\"@babel/runtime/helpers/createClass\\");var r=require(\\"@babel/runtime/helpers/inherits\\");var a=require(\\"@babel/runtime/helpers/createSuper\\");function n(e){return e&&\\"object\\"===typeof e&&\\"default\\"in e?e:{default:e}}var l=n(e);var u=n(t);var i=n(r);var c=n(a);var o=function(e){i.default(r,e);var t=c.default(r);function r(){var e;l.default(this,r);for(var a=arguments.length,n=new Array(a),u=0;u<a;u++)n[u]=arguments[u];return e=t.call.apply(t,[this].concat(n)),e.handleClick=function(){e.setState({hey:!0})},e}return u.default(r,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),r}(React.Component);var s=function(){function e(){l.default(this,e),console.log(\\"init class\\")}return u.default(e,[{key:\\"method\\",value:function(){console.log(o)}}]),e}();module.exports=s;
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 3`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime-commonjs/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, which means for CommonJS output that its default export is assigned to \\"module.exports\\". For many tools, such CommonJS output will not be interchangeable with the original ES module. If this is intended, explicitly set \\"output.exports\\" to either \\"auto\\" or \\"default\\", otherwise you might want to consider changing the signature of \\"js/script.js\\" to use named exports only.
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime, using commonjs 4`] = `
+"\\"use strict\\";var e=require(\\"@babel/runtime/helpers/classCallCheck\\");var t=require(\\"@babel/runtime/helpers/createClass\\");var r=require(\\"@babel/runtime/helpers/inherits\\");var a=require(\\"@babel/runtime/helpers/createSuper\\");function n(e){return e&&\\"object\\"===typeof e&&\\"default\\"in e?e:{default:e}}var l=n(e);var u=n(t);var i=n(r);var c=n(a);var o=function(e){i.default(r,e);var t=c.default(r);function r(){var e;l.default(this,r);for(var a=arguments.length,n=new Array(a),u=0;u<a;u++)n[u]=arguments[u];return e=t.call.apply(t,[this].concat(n)),e.handleClick=function(){e.setState({hey:!0})},e}return u.default(r,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),r}(React.Component);var s=function(){function e(){l.default(this,e),console.log(\\"init class\\")}return u.default(e,[{key:\\"method\\",value:function(){console.log(o)}}]),e}();module.exports=s;
+//# sourceMappingURL=myBundle.min.js.map
+"
 `;
 
 exports[`Lints JavaScript with rollup 1`] = `
@@ -66,6 +136,12 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 
+__PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/Component.js
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
+
 __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/script.js
    3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
    5:10  error    'test' is defined but never used                 no-unused-vars
@@ -78,11 +154,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/lints/js/scrip
   18:11  error    Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
   20:14  error    Expected '===' and instead saw '=='              eqeqeq
 
-✖ 10 problems (8 errors, 2 warnings)
-  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 14 problems (12 errors, 2 warnings)
+  10 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 [js_myBundle] (!) Errors were found
-js/script.js
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...

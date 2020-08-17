@@ -2,6 +2,7 @@ const colors = require("ansi-colors");
 const prettyTime = require("pretty-hrtime");
 
 const paths = require("./utils/paths");
+
 const absolutePath = paths.absolutePath;
 
 const path = require("path");
@@ -18,6 +19,9 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
     bundle.directory ? bundle.directory : "",
     bundle.destination
   );
+
+  const terserOptions = { ...crafty.config.terser };
+  delete terserOptions.sourceMap;
 
   const config = {
     input: {
@@ -52,21 +56,10 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           plugin: require("@rollup/plugin-commonjs"),
           weight: 50
         },
-        uglify: {
+        terser: {
           plugin: require("rollup-plugin-terser").terser,
           weight: 100,
-          options: {
-            output: {
-              comments: function(node, comment) {
-                if (comment.type !== "comment2") {
-                  return;
-                }
-
-                // keep multiline comments containing one of those
-                return /@preserve|@license|@cc_on|@class/i.test(comment.value);
-              }
-            }
-          }
+          options: terserOptions
         }
       },
       external: bundle.externals
@@ -75,13 +68,13 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
       file: destination,
       format: bundle.format || "es",
       sourcemap: true,
-      sourcemapFile: destination + ".map"
+      sourcemapFile: `${destination}.map`
     }
   };
 
   // Apply preset configuration
   crafty.getImplementations("rollup").forEach(preset => {
-    debug(preset.presetName + ".rollup(Crafty, bundle, rollupConfig)");
+    debug(`${preset.presetName}.rollup(Crafty, bundle, rollupConfig)`);
     preset.rollup(crafty, bundle, config);
     debug("preset executed");
   });
@@ -90,13 +83,13 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
   config.input.plugins = Object.keys(config.input.plugins)
     .map(key => config.input.plugins[key])
     .sort((a, b) => {
-      const weight_a = a.weight || 0;
-      const weight_b = b.weight || 0;
-      if (weight_a < weight_b) {
+      const weightA = a.weight || 0;
+      const weightB = b.weight || 0;
+      if (weightA < weightB) {
         return -1;
       }
 
-      if (weight_a > weight_b) {
+      if (weightA > weightB) {
         return 1;
       }
 
@@ -107,7 +100,9 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
         return plugin.init(plugin);
       }
 
-      return plugin.plugin.default ? plugin.plugin.default(plugin.options) : plugin.plugin(plugin.options);
+      return plugin.plugin.default
+        ? plugin.plugin.default(plugin.options)
+        : plugin.plugin(plugin.options);
     });
 
   const onwarn = config.input.onwarn;
@@ -121,7 +116,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
 }
 
 function msToHrtime(duration) {
-  const hrtime = (duration / 1000 + "").split(".").map(parseFloat);
+  const hrtime = `${duration / 1000}`.split(".").map(parseFloat);
   hrtime[1] = hrtime[1] * 1000000;
 
   return hrtime;
@@ -147,10 +142,11 @@ module.exports = function jsTaskES6(crafty, bundle) {
       const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
       crafty.log(`Start watching with webpack in '${colors.cyan(taskName)}'`);
-      const watchOptions = Object.assign({}, config.input, {
+      const watchOptions = {
+        ...config.input,
         output: config.output,
         watch: config.watch
-      });
+      };
 
       const watcher = rollup.watch(watchOptions);
 
@@ -159,7 +155,6 @@ module.exports = function jsTaskES6(crafty, bundle) {
           case "FATAL":
             handleError(event.error, true);
             throw event.error;
-            break;
 
           case "ERROR":
             warnings.flush();
@@ -174,7 +169,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
             crafty.log(`Starting '${colors.cyan(taskName)}' ...`);
             break;
 
-          case "BUNDLE_END":
+          case "BUNDLE_END": {
             const time = prettyTime(msToHrtime(event.duration));
             crafty.log(
               `Finished '${colors.cyan(taskName)}' after ${colors.magenta(
@@ -184,6 +179,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
               )}\n           Waiting for changes...`
             );
             break;
+          }
 
           case "END":
           ///crafty.log(`'${colors.cyan(taskName)}' is Waiting for changes...`);
@@ -205,10 +201,10 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
     return rollup
       .rollup(config.input)
-      .then(bundle => {
+      .then(builtBundle => {
         debug(`Rollup finished parsing files for '${taskName}'`);
 
-        return bundle.write(config.output);
+        return builtBundle.write(config.output);
       }, onError)
       .then(warnings.flush, onError);
   });

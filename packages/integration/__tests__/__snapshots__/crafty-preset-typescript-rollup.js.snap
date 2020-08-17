@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Deletes rollup uglify plugin using crafty.config.js 1`] = `
+exports[`Deletes rollup terser plugin using crafty.config.js 1`] = `
 Object {
   "status": 0,
   "stdall": "
 [__:__:__] Starting Crafty __version__...
 [__:__:__] Files will be stored in:
-            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles-no-uglify/dist/js
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles-no-terser/dist/js
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
@@ -17,29 +17,66 @@ Object {
 }
 `;
 
-exports[`Deletes rollup uglify plugin using crafty.config.js 2`] = `
-"var C = /** @class */ (function () {
-    function C() {
-        /* eslint-disable-next-line no-console */
-        console.log(\\"Something happens here\\");
+exports[`Deletes rollup terser plugin using crafty.config.js 2`] = `
+"function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError(\\"Cannot call a class as a function\\");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if (\\"value\\" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+var C = /*#__PURE__*/function () {
+  function C() {
+    _classCallCheck(this, C);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something happens here\\");
+  }
+
+  _createClass(C, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
     }
-    C.prototype.someMethod = function () {
-        /* eslint-disable-next-line no-alert */
-        alert(\\"yes, alert still exists\\");
-    };
-    return C;
-}());
-var D = /** @class */ (function () {
-    function D() {
-        /* eslint-disable-next-line no-console */
-        console.log(\\"Something else happens here\\");
+  }]);
+
+  return C;
+}();
+
+var D = /*#__PURE__*/function () {
+  function D() {
+    _classCallCheck(this, D);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something else happens here\\");
+  }
+
+  _createClass(D, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
     }
-    D.prototype.someMethod = function () {
-        /* eslint-disable-next-line no-alert */
-        alert(\\"yes, alert still exists\\");
-    };
-    return D;
-}());
+  }]);
+
+  return D;
+}();
 
 export { C, D };
 //# sourceMappingURL=myTSBundle.min.js.map
@@ -63,7 +100,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/fails/js/
 ✖ 1 problem (1 error, 0 warnings)
 
 [js_myTSBundle] (!) Errors were found
-js/typescript.ts
 [__:__:__] 'js_myTSBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...
@@ -71,6 +107,70 @@ js/typescript.ts
 [__:__:__] 'default' errored after ____ ms
 ",
 }
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+[__:__:__] Finished 'js_myTSBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for Babel Runtime 2`] = `
+"import _classCallCheck from '@babel/runtime/helpers/classCallCheck';
+import _createClass from '@babel/runtime/helpers/createClass';
+
+var C = /*#__PURE__*/function () {
+  function C() {
+    _classCallCheck(this, C);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something happens here\\");
+  }
+
+  _createClass(C, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
+    }
+  }]);
+
+  return C;
+}();
+
+var D = /*#__PURE__*/function () {
+  function D() {
+    _classCallCheck(this, D);
+
+    /* eslint-disable-next-line no-console */
+    console.log(\\"Something else happens here\\");
+  }
+
+  _createClass(D, [{
+    key: \\"someMethod\\",
+    value: function someMethod() {
+      /* eslint-disable-next-line no-alert */
+      alert(\\"yes, alert still exists\\");
+    }
+  }]);
+
+  return D;
+}();
+
+export { C, D };
+//# sourceMappingURL=myTSBundle.min.js.map
+"
 `;
 
 exports[`Lints TypeScript with rollup 1`] = `
@@ -84,6 +184,22 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/Component.ts
+  1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/SomeLibrary.ts
+   1:1  error  Delete \`⏎\`                                        @swissquote/swissquote/prettier/prettier
+   3:3  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
+   4:1  error  Replace \`········\` with \`····\`                    @swissquote/swissquote/prettier/prettier
+   5:1  error  Replace \`····\` with \`··\`                          @swissquote/swissquote/prettier/prettier
+   7:1  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
+   8:3  error  Insert \`··\`                                       @swissquote/swissquote/prettier/prettier
+   9:1  error  Delete \`··\`                                       @swissquote/swissquote/prettier/prettier
+  11:3  error  Replace \`··divide(a,·b)⏎···\` with \`divide(a,·b)\`  @swissquote/swissquote/prettier/prettier
+  13:1  error  Replace \`········\` with \`····\`                    @swissquote/swissquote/prettier/prettier
+  14:1  error  Delete \`····\`                                     @swissquote/swissquote/prettier/prettier
+
 __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/script.ts
    1:1   error    Replace \`⏎import·{\` with \`import·{·\`         @swissquote/swissquote/prettier/prettier
    6:3   error    Replace \`··constructor·\` with \`constructor\`  @swissquote/swissquote/prettier/prettier
@@ -95,11 +211,10 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-rollup/lints/js/
   17:7   warning  Unexpected console statement                 no-console
   18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
-✖ 9 problems (6 errors, 3 warnings)
-  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 21 problems (18 errors, 3 warnings)
+  18 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 [js_myBundle] (!) Errors were found
-js/script.ts
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Error: Errors were found
     ...stacktrace...
@@ -127,7 +242,7 @@ Object {
 `;
 
 exports[`Works with rollup 2`] = `
-"var e=/** @class */function(){function e(){console.log(\\"Something happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}(),t=/** @class */function(){function e(){console.log(\\"Something else happens here\\")}return e.prototype.someMethod=function(){alert(\\"yes, alert still exists\\")},e}();export{e as C,t as D};
+"function e(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}function n(e,n){for(var t=0;t<n.length;t++){var o=n[t];o.enumerable=o.enumerable||!1,o.configurable=!0,\\"value\\"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function t(e,t,o){return t&&n(e.prototype,t),o&&n(e,o),e}var o=function(){function n(){e(this,n),console.log(\\"Something happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();var r=function(){function n(){e(this,n),console.log(\\"Something else happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();export{o as C,r as D};
 //# sourceMappingURL=myTSBundle.min.js.map
 "
 `;

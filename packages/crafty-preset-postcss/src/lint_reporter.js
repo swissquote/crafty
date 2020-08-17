@@ -3,7 +3,7 @@ const postcss = require("postcss");
 const formatter = require("stylelint/lib/formatters/stringFormatter");
 
 function hasError(messages) {
-  return messages.some(function(message) {
+  return messages.some(message => {
     if (message.rule) {
       // stylelint
       return message.severity === "error";
@@ -24,31 +24,34 @@ function reporter(opts) {
   const completeReport = [];
 
   function innerReporter(css, result) {
-    let resultSource = result.root.source
+    const resultSource = result.root.source
       ? result.root.source.input.file || result.root.source.input.id
       : "";
 
-    let messagesToLog = result.messages;
-    const sourceGroupedMessages = messagesToLog.reduce((result, message) => {
-      const key = util.getLocation(message).file || resultSource;
-      if (!message.severity) {
-        message.severity = message.type || "warning";
-      }
+    const messagesToLog = result.messages;
+    const sourceGroupedMessages = messagesToLog.reduce(
+      (innerResult, message) => {
+        const key = util.getLocation(message).file || resultSource;
+        if (!message.severity) {
+          message.severity = message.type || "warning";
+        }
 
-      if (hasOwnProperty.call(result, key)) {
-        result[key].push(message);
-      } else {
-        result[key] = [message];
-      }
-      return result;
-    }, {});
+        if (hasOwnProperty.call(innerResult, key)) {
+          innerResult[key].push(message);
+        } else {
+          innerResult[key] = [message];
+        }
+        return innerResult;
+      },
+      {}
+    );
 
     const prepared = [];
     Object.keys(sourceGroupedMessages).forEach(source => {
       const messages = sourceGroupedMessages[source];
       prepared.push({
         warnings: messages,
-        source: source,
+        source,
         deprecations: [],
         invalidOptionWarnings: [],
         errored: hasError(messages)
@@ -71,7 +74,7 @@ function reporter(opts) {
 
   innerReporter.report = function() {
     if (completeReport.length) {
-      console.log("\n" + completeReport.join("\n\n") + "\n");
+      console.log(`\n${completeReport.join("\n\n")}\n`);
     }
 
     return !shouldThrow;

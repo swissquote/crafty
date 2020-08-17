@@ -14,6 +14,20 @@ const craftyPresetNames = "crafty-preset-names";
 let LOADING = new Set();
 
 /**
+ * Get the package's name or the filename if nothing is found
+ * @param {*} file
+ */
+function getPresetName(file) {
+  const packageJson = findUp.sync("package.json", { cwd: path.dirname(file) });
+
+  if (packageJson) {
+    return require(packageJson).name || file;
+  }
+
+  return file;
+}
+
+/**
  * A module can be a a full path or just a module name
  * From that we'll try to find the name of the preset and the file that contains it.
  * @param {String} module
@@ -32,7 +46,7 @@ function resolveModule(module) {
     return [presetName, require.resolve(module)];
   } catch (e) {
     // Try a more advanced way
-    return [presetName, resolve.sync(process.cwd() + "/node_modules", module)];
+    return [presetName, resolve.sync(`${process.cwd()}/node_modules`, module)];
   }
 }
 
@@ -51,21 +65,8 @@ function unloadedPresets(config, presets) {
   return presets.filter(preset => !isPresetLoadingOrLoaded(config, preset));
 }
 
-/**
- * Get the package's name or the filename if nothing is found
- * @param {*} file
- */
-function getPresetName(file) {
-  const packageJson = findUp.sync("package.json", { cwd: path.dirname(file) });
-
-  if (packageJson) {
-    return require(packageJson).name || file;
-  }
-
-  return file;
-}
-
-function loadPreset(config, preset) {
+function loadPreset(initialConfig, preset) {
+  let config = initialConfig;
   debug("loadPreset: start", preset);
 
   const [presetName, resolvedModule] = resolveModule(preset);
@@ -97,6 +98,7 @@ function loadPreset(config, preset) {
   // They need to be loaded now, so that they're added before the current one in the list of dependencies
   if (loadedModule.presets) {
     debug("loadPreset: Load nested", loadedModule.presets);
+    // eslint-disable-next-line no-use-before-define
     config = loadMissingPresets(config, loadedModule.presets);
   }
 
@@ -105,7 +107,7 @@ function loadPreset(config, preset) {
     return config;
   }
 
-  debug(loadedModule.presetName + ".defaultConfig()");
+  debug(`${loadedModule.presetName}.defaultConfig()`);
   return merge.recursive(true, config, loadedModule.defaultConfig());
 }
 
@@ -117,7 +119,8 @@ function endCounter(start, preset) {
   debug(`Loaded '${preset}' in ${ms.toFixed(precision)} ms`);
 }
 
-function loadMissingPresets(config, presets) {
+function loadMissingPresets(initialConfig, presets) {
+  let config = initialConfig;
   debug("loadMissingPresets", presets);
 
   let stillUnloadedPresets = unloadedPresets(config, presets);
@@ -125,11 +128,11 @@ function loadMissingPresets(config, presets) {
   // Not sure a loop is needed here
   do {
     debug("loadMissingPresets: will load:", stillUnloadedPresets);
-    stillUnloadedPresets.forEach(preset => {
+    for (const preset of stillUnloadedPresets) {
       const start = process.hrtime();
       config = loadPreset(config, preset);
       endCounter(start, preset);
-    });
+    }
 
     stillUnloadedPresets = unloadedPresets(config, presets);
   } while (stillUnloadedPresets.length > 0);
@@ -156,22 +159,23 @@ function getCrafty(presets, craftyConfig) {
   config.loadedPresets.push(craftyConfig);
 
   debug(
-    "Finished loading\n" +
-      config.loadedPresets.map(preset => ` - ${preset.presetName}`).join("\n")
+    `Finished loading\n${config.loadedPresets
+      .map(preset => ` - ${preset.presetName}`)
+      .join("\n")}`
   );
 
   // Apply overrides to clean up configuration
   config.loadedPresets
     .filter(preset => preset.config)
     .forEach(preset => {
-      debug(preset.presetName + ".config(config)");
+      debug(`${preset.presetName}.config(config)`);
       config = preset.config(config);
     });
 
   // Set default bundleType destinations if not found.
   Object.keys(config.bundleTypes).forEach(type => {
-    if (!config["destination_" + type]) {
-      config["destination_" + type] = path.join(
+    if (!config[`destination_${type}`]) {
+      config[`destination_${type}`] = path.join(
         config.destination,
         config.bundleTypes[type]
       );
@@ -180,7 +184,7 @@ function getCrafty(presets, craftyConfig) {
   const crafty = new Crafty(config);
 
   crafty.getImplementations("init").forEach(preset => {
-    debug(preset.presetName + ".init(Crafty)");
+    debug(`${preset.presetName}.init(Crafty)`);
     preset.init(crafty);
     debug("init run");
   });
@@ -199,7 +203,7 @@ function extractPresets(argv) {
   if (argv.indexOf("--preset") > -1) {
     let idx,
       prevIdx = 0;
-    while ((idx = argv.indexOf("--preset")) == 2) {
+    while ((idx = argv.indexOf("--preset")) === 2) {
       if (prevIdx && idx - prevIdx > 1) {
         break;
       }

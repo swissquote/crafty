@@ -1,7 +1,5 @@
-/* global describe, it, expect */
+/* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
 
@@ -29,11 +27,9 @@ it("Loads crafty-preset-postcss and does not register gulp tasks", () => {
 });
 
 it("Lints with the command", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss/no-bundle"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss/no-bundle"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["cssLint", "css/*.scss"], cwd);
 
@@ -43,11 +39,9 @@ it("Lints with the command", async () => {
 });
 
 it("Lints with the command in legacy mode", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss/no-bundle"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss/no-bundle"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     ["cssLint", "css/*.scss", "--preset", "legacy"],
@@ -60,11 +54,9 @@ it("Lints with the command in legacy mode", async () => {
 });
 
 it("Lints with the command with custom config", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss/no-bundle"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss/no-bundle"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(
     ["cssLint", "css/*.scss", "--config", "stylelint.json"],
@@ -77,10 +69,11 @@ it("Lints with the command with custom config", async () => {
 });
 
 it("Creates IDE Integration files", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-postcss/ide");
-  await rmfr(path.join(cwd, "stylelint.config.js"));
-  await rmfr(path.join(cwd, "prettier.config.js"));
-  await rmfr(path.join(cwd, ".gitignore"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-postcss/ide", [
+    "stylelint.config.js",
+    "prettier.config.js",
+    ".gitignore"
+  ]);
 
   const result = await testUtils.run(["ide"], cwd);
 

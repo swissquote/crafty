@@ -1,7 +1,5 @@
-/* global describe, it, expect */
+/* global jest, describe, it, expect */
 
-const path = require("path");
-const rmfr = require("rmfr");
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
@@ -9,11 +7,9 @@ const testUtils = require("../utils");
 jest.setTimeout(30000);
 
 it("Compiles CSS within webpack", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-webpack/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-webpack/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -28,11 +24,9 @@ it("Compiles CSS within webpack", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-webpack/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-webpack/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -43,11 +37,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-webpack/extract-boolean"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-webpack/extract-boolean"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -71,11 +63,9 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", as
 });
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-webpack/extract-string"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-webpack/extract-string"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -97,11 +87,9 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", asy
 });
 
 it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-postcss-webpack/extract-object"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-webpack/extract-object"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

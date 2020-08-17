@@ -50,7 +50,31 @@ module.exports = {
   rollup(crafty, bundle, rollupConfig) {
     rollupConfig.input.plugins.typescript = {
       plugin: require("rollup-plugin-typescript2"),
-      weight: 20
+      weight: 20,
+      options: {
+        tsconfigOverride: {
+          compilerOptions: {
+            // Transpile to esnext so that Babel can apply all its magic
+            target: "ESNext",
+            // Preserve JSX so babel can optimize it, or add development/debug information
+            jsx: "Preserve"
+          }
+        }
+      }
+    };
+
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-rollup");
+    const { hasRuntime, options } = babelConfigurator(crafty, bundle);
+    options.extensions = [".ts", ".tsx"];
+
+    if (hasRuntime) {
+      rollupConfig.input.external.push(/@babel\/runtime/);
+    }
+
+    rollupConfig.input.plugins.babelTypeScript = {
+      plugin: require("@rollup/plugin-babel"),
+      weight: 30,
+      options
     };
   },
   eslint(config, eslint) {
@@ -88,15 +112,10 @@ module.exports = {
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(
-      crafty,
-      crafty.getEnvironment() === "production" ? "production" : "development",
-      bundle,
-      {
-        deduplicateHelpers: true,
-        useESModules: true
-      }
-    );
+    const babelOptions = babelConfigurator(crafty, bundle, {
+      deduplicateHelpers: true,
+      useESModules: true
+    });
 
     // Cache can be disabled for experimentation and when running Crafty's tests
     if (

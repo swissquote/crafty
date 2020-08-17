@@ -6,6 +6,7 @@ const WebpackChain = require("webpack-chain");
 const isGlob = require("is-glob");
 const globToRegex = require("glob-to-regexp");
 const paths = require("./utils/paths");
+
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
 
@@ -103,7 +104,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   );
 
   const destination =
-    config.destination_js + (bundle.directory ? "/" + bundle.directory : "");
+    config.destination_js + (bundle.directory ? `/${bundle.directory}` : "");
 
   chain.output
     .path(absolutePath(destination)) // The build folder.
@@ -121,14 +122,14 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
-  // We are Cloning the uglifyJS Object as webpack
+  // We are Cloning the Terser configuration Object as webpack
   // mutates it which messes with other implementations
   chain.optimization
-    .minimizer("uglify")
+    .minimizer("terser")
     .use(require.resolve("terser-webpack-plugin"), [
       {
         sourceMap: true,
-        terserOptions: Object.assign({}, config.uglifyJS)
+        terserOptions: { ...config.terser }
       }
     ]);
 
@@ -159,7 +160,7 @@ module.exports = function(crafty, bundle, webpackPort) {
       chain
         .entry("default")
         .prepend(
-          require.resolve("webpack-dev-server/client") + `?__DEV_SERVER_URL__`
+          `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
         ) // WebpackDevServer host and port
         .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
     }
@@ -207,7 +208,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Apply preset configuration
   crafty.getImplementations("webpack").forEach(preset => {
-    debug(preset.presetName + ".webpack(Crafty, bundle, chain)");
+    debug(`${preset.presetName}.webpack(Crafty, bundle, chain)`);
     preset.webpack(crafty, bundle, chain);
     debug("added webpack");
   });
@@ -216,7 +217,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   // cleanly apply at the end of the configuration process
   if (crafty.getEnvironment() !== "production" && isWatching && bundle.hot) {
     // Read theses values from webpack chain as they could have been overriden with a preset
-    const protocol = !!chain.devServer.get("https") ? "https" : "http";
+    const protocol = chain.devServer.get("https") ? "https" : "http";
     const host = chain.devServer.get("host");
     const port = chain.devServer.get("port");
     const urlPrefix = `${protocol}://${host}:${port}`;

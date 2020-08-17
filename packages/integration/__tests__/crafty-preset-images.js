@@ -1,8 +1,7 @@
-/* global describe, it, expect */
+/* global jest, describe, it, expect */
 
 const fs = require("fs");
 const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const testUtils = require("../utils");
 
@@ -46,8 +45,7 @@ it("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", () 
 });
 
 it("Copies and compresses images", async () => {
-  const cwd = path.join(__dirname, "../fixtures/crafty-preset-images");
-  await rmfr(path.join(cwd, "dist"));
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-images");
 
   const result = await testUtils.run(["run", "images"], cwd);
 

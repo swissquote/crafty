@@ -6,6 +6,6 @@ module.exports = {
     }
   },
   rollup(crafty, bundle, rollupConfig) {
-    delete rollupConfig.input.plugins.uglify;
+    delete rollupConfig.input.plugins.terser;
   }
 };

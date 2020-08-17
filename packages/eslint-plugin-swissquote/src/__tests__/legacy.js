@@ -1,10 +1,11 @@
 /* global describe, it, expect */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine("legacy");
+const { prepareESLint, lint } = require("../../test_utils");
 
-it("Doesn't work with ES6", () => {
-  const result = lint(
+const engine = prepareESLint("legacy");
+
+it("Doesn't work with ES6", async () => {
+  const result = await lint(
     engine,
     `
 const something = [];
@@ -19,8 +20,8 @@ something.push("a value");
 });
 
 describe("ES5 formatting", () => {
-  it("Gives no warning on correct code", () => {
-    const result = lint(
+  it("Gives no warning on correct code", async () => {
+    const result = await lint(
       engine,
       `
 /* global jQuery */
@@ -66,8 +67,8 @@ describe("ES5 formatting", () => {
     expect(result.errorCount).toBe(0);
   });
 
-  it("Warns on wrong format", () => {
-    const result = lint(
+  it("Warns on wrong format", async () => {
+    const result = await lint(
       engine,
       `
 

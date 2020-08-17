@@ -15,8 +15,13 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     }
 
     // Linting
-    const eslint = require("gulp-eslint");
-    stream.add(eslint(crafty.config.eslint)).add(eslint.format());
+    const {
+      toTempFile
+    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
+    const eslint = require("gulp-eslint7");
+    stream
+      .add(eslint({ configFile: toTempFile(crafty.config.eslint) }))
+      .add(eslint.format());
 
     // Fail the build if we have linting
     // errors and we build directly
@@ -38,9 +43,25 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     const sourcemaps = require("gulp-sourcemaps");
     stream.add(sourcemaps.init({ loadMaps: true }));
 
+    // First convert TypeScript
+    const tsOptions = {
+      // Transpile to esnext so that Babel can apply all its magic
+      target: "ESNext",
+      // Preserve JSX so babel can optimize it, or add development/debug information
+      jsx: "Preserve"
+    };
     const typescript = require("gulp-typescript");
-    const tsProject = typescript.createProject("tsconfig.json");
+    const tsProject = typescript.createProject("tsconfig.json", tsOptions);
     stream.add(tsProject());
+
+    // Then finalize with Babel
+    const babel = require("gulp-babel");
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
+    const babelOptions = babelConfigurator(crafty, bundle);
+
+    babelOptions.ignore = ["**/*.d.ts"];
+
+    stream.add(babel(babelOptions));
 
     if (bundle.concat) {
       const concat = require("gulp-concat");

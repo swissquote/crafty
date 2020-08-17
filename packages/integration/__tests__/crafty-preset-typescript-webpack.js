@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const rmfr = require("rmfr");
 const configuration = require("@swissquote/crafty/src/configuration");
 const testUtils = require("../utils");
 
@@ -55,11 +54,9 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
 });
 
 it("Compiles TypeScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -82,11 +79,9 @@ it("Compiles TypeScript", async () => {
 });
 
 it("Compiles TypeScript - fork checker", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/compiles-forked"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/compiles-forked"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -110,11 +105,9 @@ it("Compiles TypeScript - fork checker", async () => {
 });
 
 it("Lints TypeScript with webpack", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -126,11 +119,9 @@ it("Lints TypeScript with webpack", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -142,11 +133,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Fails gracefully on invalid TS", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/invalid"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/invalid"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -158,11 +147,9 @@ it("Fails gracefully on invalid TS", async () => {
 });
 
 it("Fails gracefully on invalid TS - fork checker", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/invalid-forked"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/invalid-forked"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -175,11 +162,9 @@ it("Fails gracefully on invalid TS - fork checker", async () => {
 });
 
 it("Removes unused classes", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-webpack/tree-shaking"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/tree-shaking"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

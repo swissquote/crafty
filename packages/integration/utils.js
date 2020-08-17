@@ -1,6 +1,7 @@
 const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
+const rmfr = require("rmfr");
 
 function snapshotizeOutput(ret) {
   const escapedPath = path
@@ -80,16 +81,14 @@ function snapshotizeCSS(ret) {
 }
 
 async function run(args, cwd, commandOptions) {
-  const options = Object.assign(
-    {
-      cwd,
-      reject: false,
-      all: true
-    },
-    commandOptions || {}
-  );
+  const options = {
+    cwd,
+    reject: false,
+    all: true,
+    ...commandOptions
+  };
 
-  options.env = Object.assign({ TESTING_CRAFTY: "true" }, options.env || {});
+  options.env = { TESTING_CRAFTY: "true", ...options.env };
 
   const ret = await execa.node(
     require.resolve("@swissquote/crafty/src/bin"),
@@ -115,11 +114,22 @@ function readForSnapshot(cwd, file) {
   return snapshotizeOutput(readFile(cwd, file));
 }
 
+async function getCleanFixtures(fixtures, clean = ["dist"]) {
+  const dir = path.join(__dirname, "fixtures", fixtures);
+  for (const dirToClean of clean) {
+    // eslint-disable-next-line no-await-in-loop
+    await rmfr(path.join(dir, dirToClean));
+  }
+
+  return dir;
+}
+
 module.exports = {
   run,
   readFile,
   exists,
   readForSnapshot,
   snapshotizeCSS,
-  snapshotizeOutput
+  snapshotizeOutput,
+  getCleanFixtures
 };

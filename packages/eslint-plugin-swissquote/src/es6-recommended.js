@@ -48,6 +48,6 @@ module.exports = {
     "prefer-template": "error",
     strict: ["error", "never"], // babel inserts `'use strict';` for us
     "symbol-description": "error",
-    "no-useless-rename": "error",
+    "no-useless-rename": "error"
   }
 };

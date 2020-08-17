@@ -1,7 +1,4 @@
-/* global describe, it, expect */
-
-const path = require("path");
-const rmfr = require("rmfr");
+/* global jest, describe, it, expect */
 const configuration = require("@swissquote/crafty/src/configuration");
 const testUtils = require("../utils");
 
@@ -45,11 +42,33 @@ it("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task",
 });
 
 it("Compiles TypeScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-gulp/compiles"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/compiles"
   );
-  await rmfr(path.join(cwd, "dist"));
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
+
+  expect(testUtils.exists(cwd, "dist/js/Component.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Component.js.map")).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/Component.js")
+  ).toMatchSnapshot();
+});
+
+it("Compiles TypeScript, keeps runtime external", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/compiles-import-runtime"
+  );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -71,11 +90,9 @@ it("Compiles TypeScript", async () => {
 });
 
 it("Compiles TypeScript and concatenates", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-gulp/concatenates"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/concatenates"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -96,11 +113,9 @@ it("Compiles TypeScript and concatenates", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-gulp/fails"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/fails"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -112,11 +127,9 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 it("Lints TypeScript", async () => {
-  const cwd = path.join(
-    __dirname,
-    "../fixtures/crafty-preset-typescript-gulp/lints"
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/lints"
   );
-  await rmfr(path.join(cwd, "dist"));
 
   const result = await testUtils.run(["run", "default"], cwd);
 

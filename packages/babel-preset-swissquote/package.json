@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/babel-preset-swissquote",
-  "version": "1.11.1",
+  "version": "1.12.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -11,25 +11,17 @@
     "configurator.js"
   ],
   "dependencies": {
-    "@babel/core": "7.10.4",
+    "@babel/core": "7.11.1",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "7.10.4",
-    "@babel/plugin-proposal-optional-chaining": "7.10.4",
-    "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/plugin-transform-classes": "7.10.4",
-    "@babel/plugin-transform-destructuring": "7.10.4",
-    "@babel/plugin-transform-react-constant-elements": "7.10.4",
-    "@babel/plugin-transform-react-display-name": "7.10.4",
-    "@babel/plugin-transform-regenerator": "7.10.4",
-    "@babel/plugin-transform-runtime": "7.10.4",
-    "@babel/preset-env": "7.10.4",
-    "@babel/preset-flow": "7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "7.11.0",
+    "@babel/plugin-transform-runtime": "7.11.0",
+    "@babel/preset-env": "7.11.0",
     "@babel/preset-react": "7.10.4",
-    "@babel/runtime": "7.10.4",
-    "babel-plugin-transform-dynamic-import": "2.1.0",
+    "@babel/runtime": "7.11.2",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "debug": "4.1.1"
+    "debug": "4.1.1",
+    "find-up": "5.0.0"
   },
   "engines": {
     "node": ">=10.0.0"

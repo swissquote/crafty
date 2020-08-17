@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-runner-webpack",
-  "version": "1.11.1",
+  "version": "1.12.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -12,6 +12,7 @@
   },
   "main": "src/index.js",
   "dependencies": {
+    "@swissquote/crafty-preset-terser": "1.12.0",
     "ansi-colors": "^4.0.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "debug": "^4.1.0",
@@ -21,19 +22,19 @@
     "is-glob": "4.0.1",
     "mkdirp": "1.0.4",
     "pnp-webpack-plugin": "^1.2.0",
-    "terser-webpack-plugin": "3.0.6",
+    "terser-webpack-plugin": "4.1.0",
     "webpack": "5.0.0-beta.20",
     "webpack-bundle-analyzer": "^3.0.4",
-    "webpack-chain": "6.5.0",
+    "webpack-chain": "6.5.1",
     "webpack-dev-server": "3.11.0",
-    "webpack-merge": "5.0.7",
+    "webpack-merge": "5.1.1",
     "webpack-stylish": "0.1.8"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "jest": "26.1.0",
+    "jest": "26.4.0",
     "service-names-port-numbers": "2.0.0"
   }
 }

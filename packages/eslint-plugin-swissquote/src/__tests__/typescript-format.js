@@ -1,10 +1,11 @@
 /* global describe, it, expect, jest */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine("format");
+const { prepareESLint, lint } = require("../../test_utils");
 
-it("Fails on badly formatted TypeScript code", () => {
-  const result = lint(
+const engine = prepareESLint("format");
+
+it("Fails on badly formatted TypeScript code", async () => {
+  const result = await lint(
     engine,
     `
 module.exports = function initJS  (gulp, config: {}, watchers): string[] {
@@ -39,8 +40,8 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
   expect(result.errorCount).toBe(5);
 });
 
-it("Works with complex types", () => {
-  const result = lint(
+it("Works with complex types", async () => {
+  const result = await lint(
     engine,
     `
 import * as React from "react";

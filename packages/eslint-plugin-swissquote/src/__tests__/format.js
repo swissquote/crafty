@@ -1,11 +1,12 @@
 /* global describe, it, expect */
 
-const { prepareCLIEngine, lint } = require("../../test_utils");
-const engine = prepareCLIEngine("format");
+const { prepareESLint, lint } = require("../../test_utils");
+
+const engine = prepareESLint("format");
 
 describe("ES6 Formatting", () => {
-  it("Gives no warning on correct code", () => {
-    const result = lint(
+  it("Gives no warning on correct code", async () => {
+    const result = await lint(
       engine,
       `
 module.exports = function initJS(gulp, config, watchers) {
@@ -39,8 +40,8 @@ module.exports = function initJS(gulp, config, watchers) {
     expect(result.errorCount).toBe(0);
   });
 
-  it("Fails on badly formatted code", () => {
-    const result = lint(
+  it("Fails on badly formatted code", async () => {
+    const result = await lint(
       engine,
       `
 module.exports = function initJS(gulp, config, watchers) {

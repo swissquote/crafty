@@ -1,3 +1,5 @@
+/* global describe, it, expect */
+/* eslint-disable @swissquote/swissquote/sonarjs/no-identical-functions */
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-type-outside-scope");
 

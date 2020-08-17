@@ -16,9 +16,9 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
   const configPath = path.join(process.cwd(), "webpack.config.js");
 
   if (fs.existsSync(configPath)) {
-    crafty.log("Merging SQ webpack config with " + colors.magenta(configPath));
-    const webpackMerge = require("webpack-merge");
-    webpackConfig = webpackMerge.smart(webpackConfig, require(configPath));
+    crafty.log(`Merging SQ webpack config with ${colors.magenta(configPath)}`);
+    const { merge } = require("webpack-merge");
+    webpackConfig = merge(webpackConfig, require(configPath));
   }
 
   debug("Webpack configuration", webpackConfig);
@@ -116,16 +116,13 @@ module.exports = function jsTaskES6(crafty, bundle) {
           runningWatcher.listen(
             config.devServer.port,
             config.devServer.host,
-            function(err) {
+            err => {
               if (err) {
-                throw new util.PluginError("webpack-dev-server", err);
+                throw err;
               }
               crafty.log(
                 "[webpack-dev-server]",
-                "Started, listening on " +
-                  config.devServer.host +
-                  ":" +
-                  config.devServer.port
+                `Started, listening on ${config.devServer.host}:${config.devServer.port}`
               );
             }
           );
