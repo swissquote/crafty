@@ -135,7 +135,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   if (crafty.getEnvironment() === "production") {
     // Don't emit files if an error occured (forces to check what the error is)
-    chain.optimization.noEmitOnErrors(true);
+    chain.optimization.set("emitOnErrors", false);
   }
 
   // Hot Reloading
