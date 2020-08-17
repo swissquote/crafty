@@ -43,7 +43,7 @@ function getEffectivePom() {
     throw new Error("No pom.xml found");
   }
 
-  childProcess.execSync(`mvn help:effective-pom -Doutput="${tmpfile}"`, {
+  childProcess.execSync(`mvn help:effective-pom -Doutput="${tmpfile}" 2>&1`, {
     cwd: pomWorkingDirectory
   });
 
@@ -102,8 +102,7 @@ module.exports = {
       config.destination = getDestination(config);
     } catch (e) {
       console.error(
-        "Could not define destination using maven, falling back to default",
-        e.message
+        `Could not define destination using maven, falling back to default. \nOriginal message:\n${e.message}`
       );
     }
 
