@@ -3,10 +3,7 @@ const { ESLint } = require("eslint");
 const { createFilter } = require("@rollup/pluginutils");
 
 function normalizePath(id) {
-  return path
-    .relative(process.cwd(), id)
-    .split(path.sep)
-    .join("/");
+  return path.relative(process.cwd(), id).split(path.sep).join("/");
 }
 
 async function getFormatter(eslint, formatter) {
@@ -53,7 +50,7 @@ module.exports = function eslintPlugin(options = {}) {
       }
 
       const report = await eslint.lintText(code, {
-        filePath: file
+        filePath: file,
       });
 
       if (report) {
@@ -78,9 +75,9 @@ module.exports = function eslintPlugin(options = {}) {
       }
 
       const hasWarnings =
-        throwOnWarning && reports.some(report => report.warningCount > 0);
+        throwOnWarning && reports.some((report) => report.warningCount > 0);
       const hasErrors =
-        throwOnError && reports.some(report => report.errorCount > 0);
+        throwOnError && reports.some((report) => report.errorCount > 0);
 
       if (hasWarnings && hasErrors) {
         throw Error("Warnings or errors were found");
@@ -93,6 +90,6 @@ module.exports = function eslintPlugin(options = {}) {
       if (hasErrors) {
         throw Error("Errors were found");
       }
-    }
+    },
   };
 };

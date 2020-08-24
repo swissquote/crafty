@@ -10,7 +10,7 @@ exports.command = async function run(crafty, input, cli) {
 
   let totalBrowsers = 0;
   const browsers = {};
-  list.forEach(tuple => {
+  list.forEach((tuple) => {
     totalBrowsers++;
     const [browser, version] = tuple.split(/\s/);
 
@@ -23,7 +23,7 @@ exports.command = async function run(crafty, input, cli) {
 
   const { agents } = require("caniuse-lite/dist/unpacker/agents");
 
-  const getBrowserName = browser => agents[browser].browser;
+  const getBrowserName = (browser) => agents[browser].browser;
 
   const maxLength =
     Object.keys(browsers).reduce(
@@ -38,7 +38,7 @@ exports.command = async function run(crafty, input, cli) {
   );
   console.log();
 
-  Object.keys(browsers).forEach(browser => {
+  Object.keys(browsers).forEach((browser) => {
     const name = getBrowserName(browser);
     const remainingLength = maxLength - name.length;
 

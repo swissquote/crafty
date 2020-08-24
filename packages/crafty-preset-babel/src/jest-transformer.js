@@ -41,7 +41,7 @@ module.exports = {
       ).concat([jestPreset]),
       retainLines: true,
       sourceMaps: "inline",
-      filename
+      filename,
     };
 
     if (transformOptions && transformOptions.instrument) {
@@ -53,12 +53,12 @@ module.exports = {
           {
             // files outside `cwd` will not be instrumented
             cwd: config.rootDir,
-            exclude: []
-          }
-        ]
+            exclude: [],
+          },
+        ],
       ]);
     }
 
     return babel.transform(src, options).code;
-  }
+  },
 };

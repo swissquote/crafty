@@ -15,7 +15,7 @@ it("Loads crafty-preset-postcss and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    preset => preset.presetName
+    (preset) => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-postcss");
 
@@ -72,7 +72,7 @@ it("Creates IDE Integration files", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-postcss/ide", [
     "stylelint.config.js",
     "prettier.config.js",
-    ".gitignore"
+    ".gitignore",
   ]);
 
   const result = await testUtils.run(["ide"], cwd);

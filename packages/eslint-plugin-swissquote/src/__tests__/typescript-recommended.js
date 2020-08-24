@@ -111,13 +111,13 @@ export default class SplitButton extends React.Component<
     super(props);
 
     this.state = {
-      open: props.open || false
+      open: props.open || false,
     };
   }
 
   private target: Element;
 
-  ref = node => {
+  ref = (node) => {
     this.target = getElement(node);
     assignRef(this.target, this.props.innerRef);
   };
@@ -132,7 +132,7 @@ export default class SplitButton extends React.Component<
     return (trigger as triggerFunction)({
       props: { innerRef: this.ref },
       isOpen: this.state.open,
-      caret: <span className={this.props.classes("Caret")} />
+      caret: <span className={this.props.classes("Caret")} />,
     });
   }
 }

@@ -3,7 +3,7 @@ const postcss = require("postcss");
 const formatter = require("stylelint/lib/formatters/stringFormatter");
 
 function hasError(messages) {
-  return messages.some(message => {
+  return messages.some((message) => {
     if (message.rule) {
       // stylelint
       return message.severity === "error";
@@ -14,7 +14,7 @@ function hasError(messages) {
 }
 
 function shouldThrowError(sources) {
-  return sources.length && sources.some(entry => entry.errored);
+  return sources.length && sources.some((entry) => entry.errored);
 }
 
 function reporter(opts) {
@@ -47,14 +47,14 @@ function reporter(opts) {
     );
 
     const prepared = [];
-    Object.keys(sourceGroupedMessages).forEach(source => {
+    Object.keys(sourceGroupedMessages).forEach((source) => {
       const messages = sourceGroupedMessages[source];
       prepared.push({
         warnings: messages,
         source,
         deprecations: [],
         invalidOptionWarnings: [],
-        errored: hasError(messages)
+        errored: hasError(messages),
       });
     });
 
@@ -72,7 +72,7 @@ function reporter(opts) {
     }
   }
 
-  innerReporter.report = function() {
+  innerReporter.report = function () {
     if (completeReport.length) {
       console.log(`\n${completeReport.join("\n\n")}\n`);
     }

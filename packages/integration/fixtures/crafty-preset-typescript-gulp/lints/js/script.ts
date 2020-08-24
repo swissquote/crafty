@@ -9,7 +9,7 @@ export default class NewStuff {
   method() {
     console.log( test( 2, 4));
 
-    import("./SomeLibrary").then( (SomeLibrary) =>
+    import("./SomeLibrary").then( SomeLibrary =>
     {
       const som = new SomeLibrary.default();
 

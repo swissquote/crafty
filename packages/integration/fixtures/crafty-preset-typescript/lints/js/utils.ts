@@ -22,7 +22,7 @@ export function useSWR<T, Error = any>(
       async revalidate() {
         return true;
       },
-      isValidating: true
+      isValidating: true,
     };
   }
 

@@ -6,7 +6,7 @@ const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEn
 
 const ruleName = "swissquote/no-state-without-component";
 const messages = {
-  rejected: "A state must be linked to a component"
+  rejected: "A state must be linked to a component",
 };
 
 const containsState = /^(?:i|ha)s-/;
@@ -17,7 +17,7 @@ function getGroup(selectorNode) {
 
   let take = false;
 
-  const takeNeededElements = node => {
+  const takeNeededElements = (node) => {
     if (take && node.type === "combinator") {
       return false;
     }
@@ -63,20 +63,20 @@ function isOrphanState(selectorNode) {
 
   // If there is at least one component in the group, we're good
   return !group.some(
-    element => element.type === "class" && element.value.match(isComponent)
+    (element) => element.type === "class" && element.value.match(isComponent)
   );
 }
 
-module.exports = function() {
+module.exports = function () {
   return (root, result) => {
-    root.walkRules(rule => {
+    root.walkRules((rule) => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
         return;
       }
 
-      resolveNestedSelector(rule.selector, rule).forEach(selector => {
-        selectorParser(selectorAST => {
-          selectorAST.walk(selectorNode => {
+      resolveNestedSelector(rule.selector, rule).forEach((selector) => {
+        selectorParser((selectorAST) => {
+          selectorAST.walk((selectorNode) => {
             // No need to check if the current element isn't a state
             if (
               selectorNode.type !== "class" ||
@@ -91,7 +91,7 @@ module.exports = function() {
                 node: rule,
                 index: selectorNode.sourceIndex,
                 ruleName,
-                result
+                result,
               });
             }
           });

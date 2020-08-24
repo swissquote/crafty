@@ -61,7 +61,7 @@ const validCss = `
 it("flags no warnings with valid css", async () => {
   const result = await stylelint.lint({
     code: validCss.replace(/^\n/, ""),
-    config
+    config,
   });
 
   expect(result.errored).toBeFalsy();
@@ -73,38 +73,38 @@ const errors = [
     code: "#some-id {\n}",
     line: 1,
     column: 10,
-    message: "Unexpected empty block (block-no-empty)"
+    message: "Unexpected empty block (block-no-empty)",
   },
   {
     code: "#some-id { color: blue;}",
     line: 1,
     column: 11,
     message:
-      'Replace "·color:·blue;" with "⏎····color:·blue;⏎" (prettier/prettier)'
+      'Replace "·color:·blue;" with "⏎····color:·blue;⏎" (prettier/prettier)',
   },
   {
     code: "#some-id {color: blue; }",
     line: 1,
     column: 11,
     message:
-      'Replace "color:·blue;·" with "⏎····color:·blue;⏎" (prettier/prettier)'
+      'Replace "color:·blue;·" with "⏎····color:·blue;⏎" (prettier/prettier)',
   },
   {
     code: "#some-id { color: blue; background: orange; }",
     line: 1,
     column: 11,
     message:
-      'Replace "·color:·blue;·background:·orange;·" with "⏎····color:·blue;⏎····background:·orange;⏎" (prettier/prettier)'
+      'Replace "·color:·blue;·background:·orange;·" with "⏎····color:·blue;⏎····background:·orange;⏎" (prettier/prettier)',
   },
   {
     code: "#some-id {\n color: blue;\n}",
     line: 2,
     column: 2,
-    message: 'Insert "···" (prettier/prettier)'
-  }
+    message: 'Insert "···" (prettier/prettier)',
+  },
 ];
 
-errors.forEach(error => {
+errors.forEach((error) => {
   it(`Error: ${error.message}`, async () => {
     const result = await stylelint.lint({ code: `${error.code}\n`, config });
 

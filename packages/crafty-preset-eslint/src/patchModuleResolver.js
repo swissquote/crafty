@@ -53,7 +53,7 @@ const ModuleResolver = require(moduleResolverPath);
 
 const originalResolve = ModuleResolver.resolve;
 
-ModuleResolver.resolve = function(moduleName, relativeToPath) {
+ModuleResolver.resolve = function (moduleName, relativeToPath) {
   try {
     // First check for the module relative to the current location
     return originalResolve(moduleName, __filename);

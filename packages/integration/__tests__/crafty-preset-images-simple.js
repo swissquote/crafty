@@ -15,7 +15,7 @@ it("Loads crafty-preset-images-simple and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-images-simple"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    preset => preset.presetName
+    (preset) => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
 
@@ -28,13 +28,13 @@ it("Fails if both crafty-preset-images-simple and crafty-preset-images-simple ar
     [
       "@swissquote/crafty-preset-images",
       "@swissquote/crafty-preset-images-simple",
-      "@swissquote/crafty-runner-gulp"
+      "@swissquote/crafty-runner-gulp",
     ],
     {}
   );
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    preset => preset.presetName
+    (preset) => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-images");
   expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
@@ -49,13 +49,13 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
   const crafty = getCrafty(
     [
       "@swissquote/crafty-preset-images-simple",
-      "@swissquote/crafty-runner-gulp"
+      "@swissquote/crafty-runner-gulp",
     ],
     {}
   );
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    preset => preset.presetName
+    (preset) => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-images-simple");
   expect(loadedPresets).toContain("@swissquote/crafty-runner-gulp");
@@ -63,7 +63,7 @@ it("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp tas
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "images",
-    "default"
+    "default",
   ]);
 });
 

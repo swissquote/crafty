@@ -52,7 +52,7 @@ function resolveModule(module) {
 
 function isPresetLoadingOrLoaded(config, preset) {
   const isLoading = LOADING.has(preset);
-  const isLoaded = config.loadedPresets.some(loadedPreset =>
+  const isLoaded = config.loadedPresets.some((loadedPreset) =>
     loadedPreset[craftyPresetNames].has(preset)
   );
 
@@ -62,7 +62,7 @@ function isPresetLoadingOrLoaded(config, preset) {
 }
 
 function unloadedPresets(config, presets) {
-  return presets.filter(preset => !isPresetLoadingOrLoaded(config, preset));
+  return presets.filter((preset) => !isPresetLoadingOrLoaded(config, preset));
 }
 
 function loadPreset(initialConfig, preset) {
@@ -91,7 +91,7 @@ function loadPreset(initialConfig, preset) {
   loadedModule[craftyPresetNames] = new Set([
     preset,
     presetName,
-    resolvedModule
+    resolvedModule,
   ]);
 
   // If this preset has dependencies to other presets,
@@ -147,7 +147,7 @@ function getCrafty(presets, craftyConfig) {
   let config = merge(true, defaultConfiguration, {
     destination: require("path").join(process.cwd(), "dist"),
     presets: presets.concat(craftyConfig.presets || []),
-    loadedPresets: []
+    loadedPresets: [],
   });
   config = loadMissingPresets(config, config.presets);
   config = merge.recursive(true, config, craftyConfig);
@@ -160,20 +160,20 @@ function getCrafty(presets, craftyConfig) {
 
   debug(
     `Finished loading\n${config.loadedPresets
-      .map(preset => ` - ${preset.presetName}`)
+      .map((preset) => ` - ${preset.presetName}`)
       .join("\n")}`
   );
 
   // Apply overrides to clean up configuration
   config.loadedPresets
-    .filter(preset => preset.config)
-    .forEach(preset => {
+    .filter((preset) => preset.config)
+    .forEach((preset) => {
       debug(`${preset.presetName}.config(config)`);
       config = preset.config(config);
     });
 
   // Set default bundleType destinations if not found.
-  Object.keys(config.bundleTypes).forEach(type => {
+  Object.keys(config.bundleTypes).forEach((type) => {
     if (!config[`destination_${type}`]) {
       config[`destination_${type}`] = path.join(
         config.destination,
@@ -183,7 +183,7 @@ function getCrafty(presets, craftyConfig) {
   });
   const crafty = new Crafty(config);
 
-  crafty.getImplementations("init").forEach(preset => {
+  crafty.getImplementations("init").forEach((preset) => {
     debug(`${preset.presetName}.init(Crafty)`);
     preset.init(crafty);
     debug("init run");

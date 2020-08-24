@@ -1,6 +1,6 @@
 var through = require("through2");
 
-module.exports = function(options) {
+module.exports = function (options) {
   return through.obj((file, enc, cb) => {
     if (file.isNull()) {
       return cb(null, file);

@@ -1,5 +1,5 @@
 function resolveModules(...args) {
-  return args.map(arg => require.resolve(`./src/${arg}.js`));
+  return args.map((arg) => require.resolve(`./src/${arg}.js`));
 }
 
 module.exports = {
@@ -12,9 +12,9 @@ module.exports = {
           files: ["*.ts", "*.tsx"],
           parser: require.resolve("@typescript-eslint/parser"),
           // Extends doesn't work in overrides, so we add rules directly
-          rules: require("./src/typescript.js").rules
-        }
-      ]
+          rules: require("./src/typescript.js").rules,
+        },
+      ],
     },
     node: {
       parser: require.resolve("babel-eslint"),
@@ -22,25 +22,25 @@ module.exports = {
       overrides: [
         {
           files: ["*.ts", "*.tsx"],
-          parser: require.resolve("@typescript-eslint/parser")
-        }
-      ]
+          parser: require.resolve("@typescript-eslint/parser"),
+        },
+      ],
     },
     legacy: {
       env: {
         browser: true,
-        amd: true
+        amd: true,
       },
       extends: resolveModules("formatting", "best-practices"),
       rules: {
-        "no-dupe-keys": "error"
-      }
+        "no-dupe-keys": "error",
+      },
     },
     recommended: {
       parser: require.resolve("babel-eslint"),
       env: {
         browser: true,
-        amd: true
+        amd: true,
       },
       extends: resolveModules(
         "formatting",
@@ -57,11 +57,11 @@ module.exports = {
           // Extends doesn't work in overrides, so we add rules directly
           rules: {
             ...require("./src/typescript.js").rules,
-            ...require("./src/typescript-best-practices.js").rules
-          }
-        }
-      ]
-    }
+            ...require("./src/typescript-best-practices.js").rules,
+          },
+        },
+      ],
+    },
   },
-  rules: require("./rules")
+  rules: require("./rules"),
 };

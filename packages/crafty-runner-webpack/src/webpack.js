@@ -15,7 +15,7 @@ function prepareExternals(externals) {
     return [];
   }
 
-  return externals.map(external => {
+  return externals.map((external) => {
     if (typeof external !== "string" || !isGlob(external)) {
       return external;
     }
@@ -48,12 +48,8 @@ function generateJsonpName(isWatching, bundle) {
   } else {
     // In production mode, we want this id to be as unique as possible
     name =
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15);
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
   }
 
   const hashed = crypto
@@ -65,7 +61,7 @@ function generateJsonpName(isWatching, bundle) {
   return `webpackJsonp_${hashed}`;
 }
 
-module.exports = function(crafty, bundle, webpackPort) {
+module.exports = function (crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
   const chain = new WebpackChain();
@@ -90,16 +86,16 @@ module.exports = function(crafty, bundle, webpackPort) {
   [
     path.join(process.cwd(), "node_modules"),
     path.join(__dirname, "..", "node_modules"),
-    path.join(__dirname, "..", "..", "..", "node_modules")
+    path.join(__dirname, "..", "..", "..", "node_modules"),
   ]
     .filter(fs.existsSync)
-    .forEach(dir => {
+    .forEach((dir) => {
       chain.resolve.modules.add(dir);
       chain.resolveLoader.modules.add(dir);
     });
 
   // Add entries
-  absolutePaths(bundle.source).forEach(source =>
+  absolutePaths(bundle.source).forEach((source) =>
     chain.entry("default").add(source)
   );
 
@@ -122,12 +118,12 @@ module.exports = function(crafty, bundle, webpackPort) {
     .plugin("pnp-webpack-plugin")
     // Cloning the plugin exports as this would otherwise
     // fail with `Cannot redefine property: __pluginArgs`
-    .init(Plugin => ({ ...Plugin }))
+    .init((Plugin) => ({ ...Plugin }))
     .use(PnpWebpackPlugin);
 
   chain.resolveLoader
     .plugin("pnp-webpack-plugin")
-    .init(Plugin => Plugin.moduleLoader(module))
+    .init((Plugin) => Plugin.moduleLoader(module))
     .use(PnpWebpackPlugin);
 
   // Minimization is enabled only in production but we still
@@ -139,8 +135,8 @@ module.exports = function(crafty, bundle, webpackPort) {
     .use(require.resolve("terser-webpack-plugin"), [
       {
         sourceMap: true,
-        terserOptions: { ...config.terser }
-      }
+        terserOptions: { ...config.terser },
+      },
     ]);
 
   if (crafty.getEnvironment() === "production") {
@@ -185,16 +181,16 @@ module.exports = function(crafty, bundle, webpackPort) {
       .watchOptions({
         // Ignore the default dist folder as otherwise
         // webpack can enter a rebuild loop
-        ignored: ["node_modules", `${chain.output.get("path")}/**`]
+        ignored: ["node_modules", `${chain.output.get("path")}/**`],
       })
       .headers({
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
       });
   }
 
   // If --profile is passed, we create a
   // profile that we'll later write to disk
-  if (process.argv.some(arg => arg === "--profile")) {
+  if (process.argv.some((arg) => arg === "--profile")) {
     chain.profile(true);
 
     chain
@@ -206,8 +202,8 @@ module.exports = function(crafty, bundle, webpackPort) {
           openAnalyzer: false,
           reportFilename: `${bundle.name}_report.html`,
           generateStatsFile: true,
-          statsFilename: `${bundle.name}_stats.json`
-        }
+          statsFilename: `${bundle.name}_stats.json`,
+        },
       ]);
 
     chain
@@ -217,7 +213,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   }
 
   // Apply preset configuration
-  crafty.getImplementations("webpack").forEach(preset => {
+  crafty.getImplementations("webpack").forEach((preset) => {
     debug(`${preset.presetName}.webpack(Crafty, bundle, chain)`);
     preset.webpack(crafty, bundle, chain);
     debug("added webpack");
@@ -237,11 +233,11 @@ module.exports = function(crafty, bundle, webpackPort) {
 
     const entries = defaultEntries
       .values()
-      .map(value => value.replace("__DEV_SERVER_URL__", urlPrefix));
+      .map((value) => value.replace("__DEV_SERVER_URL__", urlPrefix));
 
     defaultEntries.clear();
 
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       defaultEntries.add(entry);
     });
 

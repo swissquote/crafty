@@ -89,11 +89,11 @@ Array [
       "text": "
   op: a,
   lhs: { op: b },
-  rhs: c
+  rhs: c,
 ",
     },
     "line": 25,
-    "message": "Replace \`·op:·a,·lhs:·{·op:·b·},·rhs:·c·\` with \`⏎··op:·a,⏎··lhs:·{·op:·b·},⏎··rhs:·c⏎\`",
+    "message": "Replace \`·op:·a,·lhs:·{·op:·b·},·rhs:·c·\` with \`⏎··op:·a,⏎··lhs:·{·op:·b·},⏎··rhs:·c,⏎\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
@@ -154,18 +154,18 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 1,
+    "column": 3,
     "endColumn": 5,
     "endLine": 31,
     "fix": Object {
       "range": Array [
-        607,
+        609,
         611,
       ],
-      "text": "  ",
+      "text": "",
     },
     "line": 31,
-    "message": "Replace \`····\` with \`··\`",
+    "message": "Delete \`··\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
@@ -199,13 +199,13 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 1,
-    "endColumn": 3,
+    "column": 3,
+    "endColumn": 5,
     "endLine": 33,
     "fix": Object {
       "range": Array [
-        652,
         654,
+        656,
       ],
       "text": "",
     },
@@ -216,13 +216,13 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 3,
-    "endColumn": 5,
+    "column": 1,
+    "endColumn": 3,
     "endLine": 34,
     "fix": Object {
       "range": Array [
+        698,
         700,
-        702,
       ],
       "text": "",
     },
@@ -233,13 +233,13 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 1,
-    "endColumn": 3,
+    "column": 3,
+    "endColumn": 5,
     "endLine": 35,
     "fix": Object {
       "range": Array [
-        714,
         716,
+        718,
       ],
       "text": "",
     },
@@ -250,13 +250,13 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 3,
-    "endColumn": 5,
+    "column": 1,
+    "endColumn": 3,
     "endLine": 36,
     "fix": Object {
       "range": Array [
+        729,
         731,
-        733,
       ],
       "text": "",
     },
@@ -267,13 +267,13 @@ Array [
     "severity": 2,
   },
   Object {
-    "column": 1,
-    "endColumn": 2,
+    "column": 5,
+    "endColumn": 6,
     "endLine": 37,
     "fix": Object {
       "range": Array [
-        746,
-        747,
+        750,
+        751,
       ],
       "text": "",
     },
@@ -319,34 +319,34 @@ Array [
   },
   Object {
     "column": 1,
-    "endColumn": 5,
+    "endColumn": 3,
     "endLine": 40,
     "fix": Object {
       "range": Array [
         812,
-        816,
+        814,
       ],
-      "text": "  ",
+      "text": "",
     },
     "line": 40,
-    "message": "Replace \`····\` with \`··\`",
+    "message": "Delete \`··\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
   },
   Object {
     "column": 3,
-    "endColumn": 32,
+    "endColumn": 33,
     "endLine": 41,
     "fix": Object {
       "range": Array [
         855,
-        884,
+        885,
       ],
-      "text": "[\`prop_\${(() => 42)()}\`",
+      "text": "[\`prop_\${(() => 42)()}\`]: 42,",
     },
     "line": 41,
-    "message": "Replace \`··[·\`prop_\${··(()·=>·42)()}\`·\` with \`[\`prop_\${(()·=>·42)()}\`\`",
+    "message": "Replace \`··[\`prop_\${(()·=>·42)()}\`]:·42\` with \`[\`prop_\${(()·=>·42)()}\`]:·42,\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
@@ -357,8 +357,8 @@ Array [
     "endLine": 44,
     "fix": Object {
       "range": Array [
-        893,
-        894,
+        889,
+        890,
       ],
       "text": "",
     },

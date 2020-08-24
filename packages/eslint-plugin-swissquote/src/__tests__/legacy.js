@@ -25,7 +25,7 @@ describe("ES5 formatting", () => {
       engine,
       `
 /* global jQuery */
-(function($) {
+(function ($) {
   "use strict";
 
   function getjQueryObject(string) {
@@ -39,11 +39,11 @@ describe("ES5 formatting", () => {
     return jqObj;
   }
 
-  $.print = $.fn.print = function(newOptions) {
+  $.print = $.fn.print = function (newOptions) {
     var defaults = {
       globalStyles: true,
       mediaPrint: false,
-      someObject: "actuallyNot"
+      someObject: "actuallyNot",
     };
 
     // Print a given set of elements

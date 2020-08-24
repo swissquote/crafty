@@ -80,7 +80,7 @@ const obj = {
      return \`d \${  super.toString()}\`;
     },
     // Computed (dynamic) property names
-    [ \`prop_\${  (() => 42)()}\` ]: 42
+    [\`prop_\${(() => 42)()}\`]: 42
 };
 
 `
@@ -138,7 +138,7 @@ import PropTypes from "prop-types";
 export default class MyComponent extends React.Component {
   componentDidMount() {
     this.setState({
-      name: this.props.name.toUpperCase()
+      name: this.props.name.toUpperCase(),
     });
   }
   render() {
@@ -147,7 +147,7 @@ export default class MyComponent extends React.Component {
 }
 
 MyComponent.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 `
     );

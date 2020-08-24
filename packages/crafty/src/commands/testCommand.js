@@ -6,7 +6,7 @@ exports.description = "Run tests from any test runners";
 exports.command = function test(crafty, input, cli) {
   debug("Registering Runners");
 
-  const tasks = crafty.getImplementations("test").map(preset => preset.test);
+  const tasks = crafty.getImplementations("test").map((preset) => preset.test);
 
   // Some libraries don't want a NODE_ENV set.
   // We restore the original values here
@@ -42,7 +42,7 @@ exports.command = function test(crafty, input, cli) {
       finishWhenDone();
     }
 
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       try {
         task(crafty, input, cli).then(finishWhenDone, failedRunning);
       } catch (e) {

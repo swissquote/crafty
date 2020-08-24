@@ -6,7 +6,7 @@ const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEn
 
 const ruleName = "swissquote/no-utility-reassignment";
 const messages = {
-  rejected: "You cannot reassign a utility"
+  rejected: "You cannot reassign a utility",
 };
 
 const isUtility = /^u-/;
@@ -17,21 +17,21 @@ function fail(result, rule, selectorNode) {
     node: rule,
     index: selectorNode.sourceIndex,
     ruleName,
-    result
+    result,
   });
 }
 
-module.exports = function(/*mainOption, moreOptions*/) {
+module.exports = function (/*mainOption, moreOptions*/) {
   return (root, result) => {
-    root.walkRules(rule => {
+    root.walkRules((rule) => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
         return;
       }
 
       // Resolve nested selectors
-      resolveNestedSelector(rule.selector, rule).forEach(selector => {
-        selectorParser(selectorAST => {
-          selectorAST.walk(selectorNode => {
+      resolveNestedSelector(rule.selector, rule).forEach((selector) => {
+        selectorParser((selectorAST) => {
+          selectorAST.walk((selectorNode) => {
             // If the selector is a utility class and it has more than
             // one element in the selector, it's considered a reassignment
             if (

@@ -22,12 +22,12 @@ function nest(array, prop) {
   const nested = [];
   const lookup = new Map();
 
-  array.forEach(item => {
+  array.forEach((item) => {
     const key = item[prop];
     if (!lookup.has(key)) {
       lookup.set(key, {
         key,
-        items: []
+        items: [],
       });
 
       nested.push(lookup.get(key));
@@ -63,17 +63,17 @@ function showTruncatedWarnings(warnings) {
 }
 
 const immediateHandlers = {
-  DEPRECATED_OPTIONS: warning => {
+  DEPRECATED_OPTIONS: (warning) => {
     title("Some options have been renamed");
     info(
       "https://gist.github.com/Rich-Harris/d472c50732dab03efeb37472b08a3f32"
     );
-    warning.deprecations.forEach(option => {
+    warning.deprecations.forEach((option) => {
       stderr(`${colors.bold(option.old)} is now ${option.new}`);
     });
   },
 
-  MISSING_NODE_BUILTINS: warning => {
+  MISSING_NODE_BUILTINS: (warning) => {
     title("Missing shims for Node.js built-ins");
 
     let detail = `'${warning.modules[0]}'`;
@@ -81,7 +81,7 @@ const immediateHandlers = {
     if (warning.modules.length > 1) {
       detail = `${warning.modules
         .slice(0, -1)
-        .map(name => `'${name}'`)
+        .map((name) => `'${name}'`)
         .join(", ")} and '${warning.modules.slice(-1)}'`;
     }
 
@@ -99,100 +99,100 @@ const immediateHandlers = {
 
   EMPTY_BUNDLE: () => {
     title("Generated an empty bundle");
-  }
+  },
 };
 
 const deferredHandlers = {
   UNUSED_EXTERNAL_IMPORT: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Unused external imports");
-      warnings.forEach(warning => {
+      warnings.forEach((warning) => {
         stderr(
           `${warning.names} imported from external module '${warning.source}' but never used`
         );
       });
-    }
+    },
   },
 
   UNRESOLVED_IMPORT: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Unresolved dependencies");
       info(
         "https://github.com/rollup/rollup/wiki/Troubleshooting#treating-module-as-external-dependency"
       );
 
       const dependencies = new Map();
-      warnings.forEach(warning => {
+      warnings.forEach((warning) => {
         if (!dependencies.has(warning.source)) {
           dependencies.set(warning.source, []);
         }
         dependencies.get(warning.source).push(warning.importer);
       });
 
-      Array.from(dependencies.keys()).forEach(dependency => {
+      Array.from(dependencies.keys()).forEach((dependency) => {
         const importers = dependencies.get(dependency);
         stderr(
           `${colors.bold(dependency)} (imported by ${importers.join(", ")})`
         );
       });
-    }
+    },
   },
 
   MISSING_EXPORT: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Missing exports");
       info(
         "https://github.com/rollup/rollup/wiki/Troubleshooting#name-is-not-exported-by-module"
       );
 
-      warnings.forEach(warning => {
+      warnings.forEach((warning) => {
         stderr(colors.bold(warning.importer));
         stderr(`${warning.missing} is not exported by ${warning.exporter}`);
         stderr(colors.grey(warning.frame));
       });
-    }
+    },
   },
 
   THIS_IS_UNDEFINED: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("`this` has been rewritten to `undefined`");
       info(
         "https://github.com/rollup/rollup/wiki/Troubleshooting#this-is-undefined"
       );
       showTruncatedWarnings(warnings);
-    }
+    },
   },
 
   EVAL: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Use of eval is strongly discouraged");
       info(
         "https://github.com/rollup/rollup/wiki/Troubleshooting#avoiding-eval"
       );
       showTruncatedWarnings(warnings);
-    }
+    },
   },
 
   NON_EXISTENT_EXPORT: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title(
         `Import of non-existent ${warnings.length > 1 ? "exports" : "export"}`
       );
       showTruncatedWarnings(warnings);
-    }
+    },
   },
 
   NAMESPACE_CONFLICT: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Conflicting re-exports");
-      warnings.forEach(warning => {
+      warnings.forEach((warning) => {
         stderr(
           `${colors.bold(relativeId(warning.reexporter))} re-exports '${
             warning.name
@@ -201,34 +201,34 @@ const deferredHandlers = {
           )} (will be ignored)`
         );
       });
-    }
+    },
   },
 
   MISSING_GLOBAL_NAME: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title(
         `Missing global variable ${warnings.length > 1 ? "names" : "name"}`
       );
       stderr(
         "Use options.globals to specify browser global variable names corresponding to external modules"
       );
-      warnings.forEach(warning => {
+      warnings.forEach((warning) => {
         stderr(`${colors.bold(warning.source)} (guessing '${warning.guess}')`);
       });
-    }
+    },
   },
 
   SOURCEMAP_BROKEN: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       title("Broken sourcemap");
       info(
         "https://github.com/rollup/rollup/wiki/Troubleshooting#sourcemap-is-likely-to-be-incorrect"
       );
 
       const plugins = Array.from(
-        new Set(warnings.map(w => w.plugin).filter(Boolean))
+        new Set(warnings.map((w) => w.plugin).filter(Boolean))
       );
 
       let detail = "";
@@ -236,7 +236,7 @@ const deferredHandlers = {
       if (plugins.length > 1) {
         detail = ` (such as ${plugins
           .slice(0, -1)
-          .map(p => `'${p}'`)
+          .map((p) => `'${p}'`)
           .join(", ")} and '${plugins.slice(-1)}')`;
       } else if (plugins.length === 1) {
         detail = ` (such as '${plugins[0]}')`;
@@ -245,12 +245,12 @@ const deferredHandlers = {
       stderr(
         `Plugins that transform code${detail} should generate accompanying sourcemaps`
       );
-    }
+    },
   },
 
   PLUGIN_WARNING: {
     priority: 1,
-    fn: warnings => {
+    fn: (warnings) => {
       const nestedByPlugin = nest(warnings, "plugin");
 
       nestedByPlugin.forEach(({ key: plugin, items }) => {
@@ -260,7 +260,7 @@ const deferredHandlers = {
 
         nestedByMessage.forEach(({ key: message, items: innerItems }) => {
           title(`${plugin} plugin: ${message}`);
-          innerItems.forEach(warning => {
+          innerItems.forEach((warning) => {
             if (warning.url !== lastUrl) {
               lastUrl = warning.url;
               info(lastUrl);
@@ -278,8 +278,8 @@ const deferredHandlers = {
           });
         });
       });
-    }
-  }
+    },
+  },
 };
 
 module.exports = function batchWarnings(taskName) {
@@ -291,7 +291,7 @@ module.exports = function batchWarnings(taskName) {
       return count;
     },
 
-    add: warning => {
+    add: (warning) => {
       if (typeof warning === "string") {
         //eslint-disable-next-line no-param-reassign
         warning = { code: "UNKNOWN", message: warning };
@@ -329,14 +329,14 @@ module.exports = function batchWarnings(taskName) {
         return allWarnings.get(b).length - allWarnings.get(a).length;
       });
 
-      codes.forEach(code => {
+      codes.forEach((code) => {
         const handler = deferredHandlers[code];
         const warnings = allWarnings.get(code);
 
         if (handler) {
           handler.fn(warnings);
         } else {
-          warnings.forEach(warning => {
+          warnings.forEach((warning) => {
             stderr(
               `[${taskName}] ${colors.bold.yellow(`(!) ${warning.message}`)}`
             );
@@ -364,6 +364,6 @@ module.exports = function batchWarnings(taskName) {
 
       allWarnings = new Map();
       count = 0;
-    }
+    },
   };
 };

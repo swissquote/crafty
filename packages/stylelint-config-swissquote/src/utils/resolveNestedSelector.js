@@ -3,7 +3,7 @@ const parentBeginningCompound = /^\s?&(?!\s)/;
 const parentEnd = /\s*&\s*$/;
 
 function hasParentSelector(selector) {
-  return selector.some(part => part.selector.indexOf("&") !== -1);
+  return selector.some((part) => part.selector.indexOf("&") !== -1);
 }
 
 function insertParent(parentSelector, selector) {
@@ -47,7 +47,7 @@ function insertParent(parentSelector, selector) {
     }
 
     // Selector in the middle
-    const parts = part.selector.split("&").map(item => item.trim());
+    const parts = part.selector.split("&").map((item) => item.trim());
     const before = { selector: parts[0], node: part.node.clone() };
     const after = { selector: parts[1], node: part.node.clone() };
     selector.splice(index, 1, before, ...parentSelector, after);
@@ -75,7 +75,7 @@ function resolveNestedSelector(initialSelector, node) {
   }
 
   var parentSelectors = parentIsNestAtRule
-    ? parent.params.split(",").map(s => s.trim())
+    ? parent.params.split(",").map((s) => s.trim())
     : parent.selectors;
 
   return parentSelectors.reduce((result, parentSelector) => {
@@ -83,7 +83,7 @@ function resolveNestedSelector(initialSelector, node) {
       var newlyResolvedSelectors = resolveNestedSelector(
         parentSelector,
         parent
-      ).map(resolvedParentSelector =>
+      ).map((resolvedParentSelector) =>
         insertParent(resolvedParentSelector, selector)
       );
 

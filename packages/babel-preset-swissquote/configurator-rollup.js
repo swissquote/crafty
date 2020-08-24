@@ -1,11 +1,11 @@
 const babelConfigurator = require("./configurator");
 const getBabelRuntimePath = require("./get-runtime");
 
-module.exports = function(crafty, bundle) {
+module.exports = function (crafty, bundle) {
   const runtimePath = getBabelRuntimePath(bundle);
 
   const configuratorOptions = {
-    deduplicateHelpers: !!runtimePath
+    deduplicateHelpers: !!runtimePath,
   };
 
   if (runtimePath) {
@@ -24,6 +24,6 @@ module.exports = function(crafty, bundle) {
 
   return {
     hasRuntime: !!runtimePath,
-    options
+    options,
   };
 };

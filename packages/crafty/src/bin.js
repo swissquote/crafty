@@ -34,11 +34,11 @@ const commands = getCommands(crafty);
 
 // Run the user selected command
 cli(crafty, commands).then(
-  exitCode => {
+  (exitCode) => {
     // Wait for the stdout buffer to drain.
     process.on("exit", () => process.exit(exitCode));
   },
-  error => {
+  (error) => {
     if (!events.wasLogged(error)) {
       console.error(formatError(error));
     }

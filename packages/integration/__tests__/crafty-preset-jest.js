@@ -26,7 +26,7 @@ it("Succeeds without transpiling", async () => {
 it("Creates IDE Integration files", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide", [
     "jest.config.js",
-    ".gitignore"
+    ".gitignore",
   ]);
 
   const result = await testUtils.run(["ide"], cwd);
@@ -40,7 +40,7 @@ it("Creates IDE Integration files", async () => {
 it("Creates IDE Integration files with Babel", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide-babel", [
     "jest.config.js",
-    ".gitignore"
+    ".gitignore",
   ]);
 
   const result = await testUtils.run(["ide"], cwd);

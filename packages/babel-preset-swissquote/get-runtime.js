@@ -17,7 +17,7 @@ function hasBabelRuntimeDependency() {
 
 function resolveBabelRuntimeRelativeTo(cwd) {
   const pkgRoot = findUp.sync(
-    dir => {
+    (dir) => {
       const testedPath = path.join(dir, babelRuntimePackageFile);
 
       if (fs.existsSync(testedPath)) {
