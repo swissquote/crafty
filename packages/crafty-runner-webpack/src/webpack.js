@@ -107,7 +107,7 @@ module.exports = function (crafty, bundle, webpackPort) {
     .filename(bundle.destination) // Generated JS file names (with nested folders).
     .chunkFilename(`[name].${bundle.destination}`)
     .libraryTarget(bundle.libraryTarget || "umd") // The destination type
-    .jsonpFunction(generateJsonpName(isWatching, bundle))
+    .set("chunkLoadingGlobal", generateJsonpName(isWatching, bundle))
     .set("ecmaVersion", 5);
 
   if (bundle.library) {
