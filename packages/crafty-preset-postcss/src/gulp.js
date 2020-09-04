@@ -1,5 +1,5 @@
 function cssTask(crafty, StreamHandler, bundle) {
-  return function() {
+  return function () {
     // Init
     const destination =
       crafty.config.destination_css +
@@ -16,7 +16,7 @@ function cssTask(crafty, StreamHandler, bundle) {
       .add(sourcemaps.init())
       .add(
         postcss(getProcessors(crafty.config, crafty, bundle), {
-          parser: scssParser
+          parser: scssParser,
         })
       )
       .add(rename(bundle.destination))
@@ -27,10 +27,10 @@ function cssTask(crafty, StreamHandler, bundle) {
 }
 
 function createLinter(gulp, crafty, name) {
-  gulp.task(name, cb => {
+  gulp.task(name, (cb) => {
     const reporterConfig = {
       throwError: crafty.getEnvironment() === "production",
-      clearReportedMessages: true
+      clearReportedMessages: true,
     };
 
     const reporter = require("./lint_reporter")(reporterConfig);
@@ -41,7 +41,7 @@ function createLinter(gulp, crafty, name) {
           ? crafty.config.stylelint_legacy
           : crafty.config.stylelint
       ),
-      reporter
+      reporter,
     ];
 
     const postcss = require("gulp-postcss");
@@ -52,7 +52,7 @@ function createLinter(gulp, crafty, name) {
 
     const eos = require("end-of-stream");
     const exhaust = require("stream-exhaust");
-    eos(exhaust(stream), { error: false }, err => {
+    eos(exhaust(stream), { error: false }, (err) => {
       const result = reporter.report();
 
       if (err) {

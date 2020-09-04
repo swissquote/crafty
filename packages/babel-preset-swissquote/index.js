@@ -17,9 +17,11 @@ module.exports = function buildPreset(context, opts) {
 
   if (!isEnvDevelopment && !isEnvProduction && !isEnvTest) {
     throw new Error(
-      `${"Using `babel-preset-swissquote` requires that you specify `NODE_ENV` or " +
+      `${
+        "Using `babel-preset-swissquote` requires that you specify `NODE_ENV` or " +
         '`BABEL_ENV` environment variables. Valid values are "development", ' +
-        '"test", and "production". Instead, received: '}${JSON.stringify(env)}.`
+        '"test", and "production". Instead, received: '
+      }${JSON.stringify(env)}.`
     );
   }
 
@@ -32,9 +34,9 @@ module.exports = function buildPreset(context, opts) {
       require.resolve("@babel/preset-env"),
       {
         targets: {
-          node: "current"
-        }
-      }
+          node: "current",
+        },
+      },
     ]);
   } else {
     const targets = {};
@@ -56,8 +58,8 @@ module.exports = function buildPreset(context, opts) {
         // Do not transform modules to CJS
         modules: false,
         // Exclude transforms that make all code slower
-        exclude: ["transform-typeof-symbol"]
-      }
+        exclude: ["transform-typeof-symbol"],
+      },
     ]);
   }
 
@@ -70,8 +72,8 @@ module.exports = function buildPreset(context, opts) {
       development: isEnvDevelopment || isEnvTest,
       // Will use the native built-in instead of trying to polyfill
       // behavior for any plugins that require one.
-      useBuiltIns: true
-    }
+      useBuiltIns: true,
+    },
   ]);
 
   // Plugins
@@ -81,8 +83,8 @@ module.exports = function buildPreset(context, opts) {
   plugins.push([
     require.resolve("@babel/plugin-proposal-class-properties"),
     {
-      loose: true
-    }
+      loose: true,
+    },
   ]);
 
   const babelRuntime = path.dirname(
@@ -101,7 +103,7 @@ module.exports = function buildPreset(context, opts) {
     version: require(path.join(chosenRuntime, "package.json")).version,
     regenerator: true,
     // https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
-    useESModules: opts.useESModules || false
+    useESModules: opts.useESModules || false,
   };
 
   if (!opts.runtimeDependency) {
@@ -114,7 +116,7 @@ module.exports = function buildPreset(context, opts) {
   // Polyfills the runtime needed for async/await and generators
   plugins.push([
     require.resolve("@babel/plugin-transform-runtime"),
-    transformRuntimeOption
+    transformRuntimeOption,
   ]);
 
   // Remove PropTypes from production build
@@ -122,8 +124,8 @@ module.exports = function buildPreset(context, opts) {
     plugins.push([
       require("babel-plugin-transform-react-remove-prop-types").default,
       {
-        removeImport: true
-      }
+        removeImport: true,
+      },
     ]);
   }
 
@@ -138,6 +140,6 @@ module.exports = function buildPreset(context, opts) {
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };

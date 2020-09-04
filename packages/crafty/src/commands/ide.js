@@ -8,7 +8,7 @@ exports.command = async function run(crafty, input, cli) {
 
   let files = {};
 
-  crafty.getImplementations("ide").forEach(preset => {
+  crafty.getImplementations("ide").forEach((preset) => {
     debug(`${preset.presetName}.ide(crafty, input, cli)`);
     files = Object.assign(files, preset.ide(crafty, input, cli));
   });
@@ -28,10 +28,11 @@ exports.command = async function run(crafty, input, cli) {
       .split(/\r?\n/);
   }
 
-  Object.keys(files).forEach(file => {
-    const { content, serializer = obj => JSON.stringify(obj, null, 4) } = files[
-      file
-    ];
+  Object.keys(files).forEach((file) => {
+    const {
+      content,
+      serializer = (obj) => JSON.stringify(obj, null, 4),
+    } = files[file];
     const destination = path.join(process.cwd(), file);
 
     fs.writeFileSync(destination, serializer(content));

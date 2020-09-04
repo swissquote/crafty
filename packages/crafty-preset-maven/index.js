@@ -32,7 +32,7 @@ function getEffectivePom() {
 
   const pomWorkingDirectory = forEachAncestorDirectory(
     process.cwd(),
-    directory => {
+    (directory) => {
       return fs.existsSync(path.join(directory, "pom.xml"))
         ? directory
         : undefined;
@@ -44,7 +44,7 @@ function getEffectivePom() {
   }
 
   childProcess.execSync(`mvn help:effective-pom -Doutput="${tmpfile}" 2>&1`, {
-    cwd: pomWorkingDirectory
+    cwd: pomWorkingDirectory,
   });
 
   xml2js.parseString(
@@ -65,7 +65,7 @@ function getEffectivePom() {
 function getDestination(config) {
   const paths = {
     webapp: "resources",
-    webjar: "META-INF/resources/webjars"
+    webjar: "META-INF/resources/webjars",
   };
 
   const appName = config.name ? `/${config.name}` : "";
@@ -107,5 +107,5 @@ module.exports = {
     }
 
     return config;
-  }
+  },
 };

@@ -27,7 +27,7 @@ if (!configuration.rules) {
 // Make sure extends is an array
 if (!configuration.extends) {
   configuration.extends = [
-    require.resolve("@swissquote/stylelint-config-swissquote/recommended")
+    require.resolve("@swissquote/stylelint-config-swissquote/recommended"),
   ];
 } else if (typeof configuration.extends === "string") {
   configuration.extends = [configuration.extends];

@@ -27,7 +27,7 @@ const assigned = {};
 function isPortTaken(port, fn) {
   const tester = net
     .createServer()
-    .once("error", err => {
+    .once("error", (err) => {
       if (err.code === "EADDRINUSE") {
         fn(null, true);
       } else {
@@ -97,5 +97,5 @@ module.exports = {
 
   release(buildname) {
     delete assigned[buildname];
-  }
+  },
 };

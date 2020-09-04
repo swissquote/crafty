@@ -46,7 +46,7 @@ module.exports = {
     "no-unused-labels": "error",
     "no-unused-vars": [
       "error",
-      { args: "none", vars: "local", ignoreRestSiblings: true }
+      { args: "none", vars: "local", ignoreRestSiblings: true },
     ],
 
     "no-useless-return": "error",
@@ -85,8 +85,8 @@ module.exports = {
     "no-unsafe-negation": "error",
     "use-isnan": "error",
     "valid-typeof": "error",
-    "@swissquote/swissquote/sonarjs/no-duplicate-string": ["error", 10]
-  }
+    "@swissquote/swissquote/sonarjs/no-duplicate-string": ["error", 10],
+  },
 };
 
 addMissingRules(

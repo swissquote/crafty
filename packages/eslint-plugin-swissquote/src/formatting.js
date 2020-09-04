@@ -7,7 +7,7 @@ module.exports = {
   env: {
     browser: true,
     node: false,
-    amd: true
+    amd: true,
   },
   rules: {
     "@swissquote/swissquote/prettier/prettier": [warn(), { parser: "babel" }],
@@ -28,6 +28,6 @@ module.exports = {
     "no-sparse-arrays": warn(),
     "no-useless-concat": warn(),
     "no-void": warn(),
-    "no-with": warn()
-  }
+    "no-with": warn(),
+  },
 };

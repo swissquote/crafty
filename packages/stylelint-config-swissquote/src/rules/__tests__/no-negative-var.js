@@ -20,8 +20,8 @@ describe("no-negative-var", () => {
       {
         column: 23,
         line: 1,
-        text: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
-      }
+        text: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`,
+      },
     ]);
   });
 });

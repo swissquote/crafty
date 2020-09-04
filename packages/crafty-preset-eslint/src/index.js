@@ -4,7 +4,7 @@ const path = require("path");
 const {
   configurationBuilder,
   stringifyConfiguration,
-  toTempFile
+  toTempFile,
 } = require("./eslintConfigurator");
 
 const debug = require("debug")("crafty:preset-eslint");
@@ -18,8 +18,8 @@ module.exports = {
       // ESLint Override Rules
       eslint: {
         extends: ["plugin:@swissquote/swissquote/recommended"],
-        plugins: ["@swissquote/swissquote"]
-      }
+        plugins: ["@swissquote/swissquote"],
+      },
     };
   },
   config(config) {
@@ -28,13 +28,13 @@ module.exports = {
 
     let extendedEslintConfig = {
       config: eslintConfig,
-      extensions: ["js", "jsx"]
+      extensions: ["js", "jsx"],
     };
 
     // Apply overrides to clean up configuration
     config.loadedPresets
-      .filter(preset => preset.eslint)
-      .forEach(preset => {
+      .filter((preset) => preset.eslint)
+      .forEach((preset) => {
         debug(`${preset.presetName}.eslint(config, eslint)`);
         if (typeof preset.eslint == "function") {
           extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
@@ -57,8 +57,8 @@ module.exports = {
     return {
       ".eslintrc.js": {
         content: configurationBuilder(process.argv).configuration,
-        serializer: stringifyConfiguration
-      }
+        serializer: stringifyConfiguration,
+      },
     };
   },
   commands() {
@@ -69,8 +69,8 @@ module.exports = {
           global.craftyConfig = crafty.config;
           require("./commands/jsLint");
         },
-        description: "Lint JavaScript for errors"
-      }
+        description: "Lint JavaScript for errors",
+      },
     };
   },
   rollup(crafty, bundle, rollupConfig) {
@@ -83,9 +83,9 @@ module.exports = {
         throwOnError: crafty.getEnvironment() === "production",
         exclude: ["node_modules/**"],
         include: crafty.config.eslintExtensions.map(
-          extension => new RegExp(`\.${extension}$`)
-        )
-      }
+          (extension) => new RegExp(`\.${extension}$`)
+        ),
+      },
     };
   },
   webpack(crafty, bundle, chain) {
@@ -105,7 +105,7 @@ module.exports = {
       .use("eslint")
       .loader(require.resolve("eslint-loader"))
       .options({
-        configFile: toTempFile(crafty.config.eslint)
+        configFile: toTempFile(crafty.config.eslint),
       });
-  }
+  },
 };

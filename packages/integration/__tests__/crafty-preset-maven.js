@@ -40,7 +40,7 @@ it("Reads env. var before pom.xml", async () => {
   );
 
   const result = await testUtils.run(["run", "default"], cwd, {
-    env: { TARGET_BASEDIR: path.join(cwd, "target/some_basedir") }
+    env: { TARGET_BASEDIR: path.join(cwd, "target/some_basedir") },
   });
 
   expect(result).toMatchSnapshot();

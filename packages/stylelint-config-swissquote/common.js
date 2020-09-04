@@ -18,7 +18,7 @@ module.exports = {
     require.resolve("./index"),
     require.resolve("stylelint-prettier"),
     require.resolve("stylelint-scss"),
-    require.resolve("stylelint-no-unsupported-browser-features")
+    require.resolve("stylelint-no-unsupported-browser-features"),
   ],
   rules: {
     // Formatting
@@ -47,7 +47,7 @@ module.exports = {
     "color-no-invalid-hex": true,
     "declaration-block-no-duplicate-properties": [
       true,
-      { ignore: "consecutive-duplicates-with-different-values" }
+      { ignore: "consecutive-duplicates-with-different-values" },
     ],
     "declaration-block-no-redundant-longhand-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
@@ -60,7 +60,7 @@ module.exports = {
     "selector-max-compound-selectors": 6,
     "selector-pseudo-class-no-unknown": [
       true,
-      { ignorePseudoClasses: ["global"] }
+      { ignorePseudoClasses: ["global"] },
     ],
     "selector-pseudo-element-no-unknown": true,
     "selector-pseudo-element-colon-notation": "single",
@@ -77,6 +77,6 @@ module.exports = {
 
     // SCSS Rules
     // ---------------------------------------------------------------------
-    "scss/at-rule-no-unknown": true
-  }
+    "scss/at-rule-no-unknown": true,
+  },
 };

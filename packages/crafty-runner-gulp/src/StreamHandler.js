@@ -13,7 +13,7 @@ module.exports = class StreamHandler {
     // if we are in watch mode
     if (crafty.isWatching()) {
       this.add(
-        plumber(error => {
+        plumber((error) => {
           crafty.error(error);
 
           if (errorCallback) {
@@ -33,7 +33,7 @@ module.exports = class StreamHandler {
   generate() {
     let stream = gulp.src(this.source);
 
-    this.handlers.forEach(handler => {
+    this.handlers.forEach((handler) => {
       stream = stream.pipe(handler);
     });
 
@@ -41,7 +41,7 @@ module.exports = class StreamHandler {
   }
 };
 
-module.exports.init = function(outerCrafty, outerGulp) {
+module.exports.init = function (outerCrafty, outerGulp) {
   crafty = outerCrafty;
   gulp = outerGulp;
 };

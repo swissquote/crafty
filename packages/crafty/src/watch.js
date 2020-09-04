@@ -14,7 +14,7 @@ const defaultOpts = {
   events: ["add", "change", "unlink"],
   ignored: [],
   ignoreInitial: true,
-  queue: true
+  queue: true,
 };
 
 function listenerCount(ee, evtName) {

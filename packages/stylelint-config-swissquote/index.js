@@ -14,5 +14,5 @@ module.exports = [
     noStateWithoutComponent
   ),
   stylelint.createPlugin(noTypeOutsideScope.ruleName, noTypeOutsideScope),
-  stylelint.createPlugin(noNegativeVar.ruleName, noNegativeVar)
+  stylelint.createPlugin(noNegativeVar.ruleName, noNegativeVar),
 ];
