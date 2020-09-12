@@ -10,7 +10,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-Starting type checking service...
   size  name         module                           status
   1 kB  2            multi ./js/script.ts             built
   1 kB  3            ./js/script.ts + 1 modules       built
@@ -147,7 +146,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-Starting type checking service...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
   1 kB  1     ./js/typescript.ts + 2 modules  built ✖
@@ -180,7 +178,17 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-  Δt ____ms ✖ 1 problem (1 error, 0 warnings)
+js/typescript.ts:5:17
+TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+    3 |         console.log(\\"Something happens here\\");
+    4 |
+  > 5 |         new D().someNonExistingMethod();
+      |                 ^^^^^^^^^^^^^^^^^^^^^
+    6 |     }
+    7 |
+    8 |     someMethod() {
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 [__:__:__] 'js_myTSBundle' errored after ____ ms
 [__:__:__] Webpack compilation failed
