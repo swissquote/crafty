@@ -30,7 +30,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
         // eslint
         json: {
           plugin: require("@rollup/plugin-json"),
-          weight: 10,
+          weight: 10
         },
         // babel
         // typescript
@@ -38,42 +38,42 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           plugin: require("@rollup/plugin-replace"),
           weight: 30,
           options: {
-            "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`,
-          },
+            "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
+          }
         },
         pnpResolve: {
           plugin: require("rollup-plugin-pnp-resolve"),
-          weight: 35,
+          weight: 35
         },
         resolve: {
           plugin: require("@rollup/plugin-node-resolve"),
           weight: 40,
           options: {
-            browser: true,
-          },
+            browser: true
+          }
         },
         commonjs: {
           plugin: require("@rollup/plugin-commonjs"),
-          weight: 50,
+          weight: 50
         },
         terser: {
           plugin: require("rollup-plugin-terser").terser,
           weight: 100,
-          options: terserOptions,
-        },
+          options: terserOptions
+        }
       },
-      external: bundle.externals,
+      external: bundle.externals
     },
     output: {
       file: destination,
       format: bundle.format || "es",
       sourcemap: true,
-      sourcemapFile: `${destination}.map`,
-    },
+      sourcemapFile: `${destination}.map`
+    }
   };
 
   // Apply preset configuration
-  crafty.getImplementations("rollup").forEach((preset) => {
+  crafty.getImplementations("rollup").forEach(preset => {
     debug(`${preset.presetName}.rollup(Crafty, bundle, rollupConfig)`);
     preset.rollup(crafty, bundle, config);
     debug("preset executed");
@@ -81,7 +81,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
 
   // Order and Initialize plugins
   config.input.plugins = Object.keys(config.input.plugins)
-    .map((key) => config.input.plugins[key])
+    .map(key => config.input.plugins[key])
     .sort((a, b) => {
       const weightA = a.weight || 0;
       const weightB = b.weight || 0;
@@ -95,7 +95,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
 
       return 0;
     })
-    .map((plugin) => {
+    .map(plugin => {
       if (plugin.init) {
         return plugin.init(plugin);
       }
@@ -107,7 +107,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
 
   const onwarn = config.input.onwarn;
   config.input.onwarn = onwarn
-    ? (warning) => onwarn(warning, warnings.add)
+    ? warning => onwarn(warning, warnings.add)
     : warnings.add;
 
   debug(`Final configuration for '${taskName}':`, config);
@@ -145,12 +145,12 @@ module.exports = function jsTaskES6(crafty, bundle) {
       const watchOptions = {
         ...config.input,
         output: config.output,
-        watch: config.watch,
+        watch: config.watch
       };
 
       const watcher = rollup.watch(watchOptions);
 
-      watcher.on("event", (event) => {
+      watcher.on("event", event => {
         switch (event.code) {
           case "FATAL":
             handleError(event.error, true);
@@ -185,10 +185,10 @@ module.exports = function jsTaskES6(crafty, bundle) {
           ///crafty.log(`'${colors.cyan(taskName)}' is Waiting for changes...`);
         }
       });
-    },
+    }
   });
 
-  crafty.undertaker.task(taskName, (cb) => {
+  crafty.undertaker.task(taskName, cb => {
     const rollup = require("rollup");
     const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
@@ -201,7 +201,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
     return rollup
       .rollup(config.input)
-      .then((builtBundle) => {
+      .then(builtBundle => {
         debug(`Rollup finished parsing files for '${taskName}'`);
 
         return builtBundle.write(config.output);

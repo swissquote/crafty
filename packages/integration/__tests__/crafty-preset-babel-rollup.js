@@ -6,6 +6,9 @@ const testUtils = require("../utils");
 // Tests would be unreliable if they timeout >_<
 jest.setTimeout(30000);
 
+const BUNDLE = "dist/js/myBundle.min.js";
+const BUNDLE_MAP = "dist/js/myBundle.min.js.map";
+
 it("Compiles JavaScript with rollup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/compiles"
@@ -15,12 +18,10 @@ it("Compiles JavaScript with rollup", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
 it("Keeps imports unresolved for Babel Runtime", async () => {
@@ -31,12 +32,10 @@ it("Keeps imports unresolved for Babel Runtime", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
 it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
@@ -48,29 +47,10 @@ it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
-});
-
-it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-babel-rollup/compiles-import-runtime-commonjs"
-  );
-
-  const result = await testUtils.run(["run", "default"], cwd);
-
-  expect(result).toMatchSnapshot();
-
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
 it("Fails gracefully on broken markup", async () => {
@@ -82,8 +62,8 @@ it("Fails gracefully on broken markup", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });
 
 it("Lints JavaScript with rollup", async () => {
@@ -96,6 +76,6 @@ it("Lints JavaScript with rollup", async () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });

@@ -2,7 +2,7 @@ const { addMissingRules } = require("./utils");
 
 module.exports = {
   parserOptions: {
-    sourceType: "module",
+    sourceType: "module"
   },
   rules: {
     // Override of JavaScript recommended
@@ -17,26 +17,26 @@ module.exports = {
       "error",
       {
         selector: "default",
-        format: ["camelCase", "PascalCase"],
+        format: ["camelCase", "PascalCase"]
       },
       {
         selector: "enumMember",
-        format: ["UPPER_CASE"],
+        format: ["UPPER_CASE"]
       },
       {
         selector: "variable",
-        format: ["camelCase", "PascalCase", "UPPER_CASE"],
+        format: ["camelCase", "PascalCase", "UPPER_CASE"]
       },
       {
         // Properties can come from legacy systems / libraries, don't block because of this
         selector: "property",
-        format: null,
+        format: null
       },
       {
         // A function parameter can be a class or property
         selector: "parameter",
-        format: ["camelCase", "PascalCase"],
-      },
+        format: ["camelCase", "PascalCase"]
+      }
     ],
 
     // Disable this rule for the time being, enforcing it suddenly would be too harsh
@@ -53,7 +53,7 @@ module.exports = {
     "no-unused-vars": "off",
     "@swissquote/swissquote/@typescript-eslint/no-unused-vars": [
       "error",
-      { args: "none", vars: "local", ignoreRestSiblings: true },
+      { args: "none", vars: "local", ignoreRestSiblings: true }
     ],
 
     // Overrides of TypeScript recommended
@@ -62,8 +62,8 @@ module.exports = {
     "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility":
       "off",
     "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
-    "@swissquote/swissquote/@typescript-eslint/ban-types": "warn",
-  },
+    "@swissquote/swissquote/@typescript-eslint/ban-types": "warn"
+  }
 };
 
 addMissingRules(

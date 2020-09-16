@@ -11,7 +11,7 @@ export default class NewStuff {
     console.log(test(2, 4));
 
     import(/* webpackChunkName: "someLibrary" */ "./SomeLibrary").then(
-      (SomeLibrary) => {
+      SomeLibrary => {
         const som = new SomeLibrary.default();
 
         // eslint-disable-next-line no-console

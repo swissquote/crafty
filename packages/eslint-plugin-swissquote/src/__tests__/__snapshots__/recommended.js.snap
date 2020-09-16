@@ -89,11 +89,11 @@ Array [
       "text": "
   op: a,
   lhs: { op: b },
-  rhs: c,
+  rhs: c
 ",
     },
     "line": 25,
-    "message": "Replace \`·op:·a,·lhs:·{·op:·b·},·rhs:·c·\` with \`⏎··op:·a,⏎··lhs:·{·op:·b·},⏎··rhs:·c,⏎\`",
+    "message": "Replace \`·op:·a,·lhs:·{·op:·b·},·rhs:·c·\` with \`⏎··op:·a,⏎··lhs:·{·op:·b·},⏎··rhs:·c⏎\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,
@@ -336,17 +336,17 @@ Array [
   },
   Object {
     "column": 3,
-    "endColumn": 33,
+    "endColumn": 5,
     "endLine": 41,
     "fix": Object {
       "range": Array [
         855,
-        885,
+        857,
       ],
-      "text": "[\`prop_\${(() => 42)()}\`]: 42,",
+      "text": "",
     },
     "line": 41,
-    "message": "Replace \`··[\`prop_\${(()·=>·42)()}\`]:·42\` with \`[\`prop_\${(()·=>·42)()}\`]:·42,\`",
+    "message": "Delete \`··\`",
     "nodeType": null,
     "ruleId": "@swissquote/swissquote/prettier/prettier",
     "severity": 2,

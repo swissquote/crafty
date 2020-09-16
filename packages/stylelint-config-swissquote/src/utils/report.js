@@ -44,7 +44,7 @@ function isInDisabledRange(result, startLine, ruleName) {
  * @param {number} [violation.line] - Line number of the violation
  * @returns {void}
  */
-module.exports = function (violation) {
+module.exports = function(violation) {
   const ruleName = violation.ruleName,
     result = violation.result,
     message = violation.message,
@@ -91,7 +91,7 @@ module.exports = function (violation) {
 
   const warningProperties = {
     severity,
-    rule: ruleName,
+    rule: ruleName
   };
   if (node) {
     warningProperties.node = node;

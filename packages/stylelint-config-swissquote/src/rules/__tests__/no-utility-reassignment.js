@@ -24,8 +24,8 @@ describe("tests for no-utility-reassignment", () => {
       {
         column: 11,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -38,8 +38,8 @@ describe("tests for no-utility-reassignment", () => {
       {
         column: 14,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -49,8 +49,8 @@ describe("tests for no-utility-reassignment", () => {
       {
         column: 6,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -60,8 +60,8 @@ describe("tests for no-utility-reassignment", () => {
       {
         column: 13,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -71,8 +71,8 @@ describe("tests for no-utility-reassignment", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 });

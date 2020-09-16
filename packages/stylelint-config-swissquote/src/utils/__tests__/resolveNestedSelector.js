@@ -10,27 +10,27 @@ const resolveNestedSelector = require("../resolveNestedSelector");
 
 function getResolvedSelectors(results) {
   return (root, result) => {
-    root.walkRules((rule) => {
+    root.walkRules(rule => {
       if (
         !isStandardSyntaxRule(rule) ||
         !isStandardSyntaxSelector(rule.selector) ||
-        rule.selectors.some((s) => isKeyframeSelector(s))
+        rule.selectors.some(s => isKeyframeSelector(s))
       ) {
         return;
       }
 
       // Skip unresolved nested selectors
       if (
-        rule.nodes.some((node) => ["rule", "atrule"].indexOf(node.type) !== -1)
+        rule.nodes.some(node => ["rule", "atrule"].indexOf(node.type) !== -1)
       ) {
         return;
       }
 
-      rule.selectors.forEach((selector) => {
-        resolveNestedSelector(selector, rule).forEach((resolvedSelector) => {
+      rule.selectors.forEach(selector => {
+        resolveNestedSelector(selector, rule).forEach(resolvedSelector => {
           if (
             resolvedSelector.some(
-              (resolved) => !isStandardSyntaxSelector(resolved.selector)
+              resolved => !isStandardSyntaxSelector(resolved.selector)
             )
           ) {
             return;
@@ -49,8 +49,8 @@ async function postcssProcess(code) {
     .use(getResolvedSelectors(resultContainer))
     .process(code, { syntax: scssSyntax, from: undefined });
 
-  return resultContainer.map((selectorContainer) =>
-    selectorContainer.map((selector) => selector.selector)
+  return resultContainer.map(selectorContainer =>
+    selectorContainer.map(selector => selector.selector)
   );
 }
 
@@ -73,7 +73,7 @@ it("Multiple nested selector", async () => {
   const t = await postcssProcess(".Component { a:hover, a:focus {} }");
   expect(t).toEqual([
     [".Component", "a:hover"],
-    [".Component", "a:focus"],
+    [".Component", "a:focus"]
   ]);
 });
 
@@ -81,7 +81,7 @@ it("Multiple nested selector, more levels", async () => {
   const t = await postcssProcess(".Component { a:hover, a:focus { span {} } }");
   expect(t).toEqual([
     [".Component", "a:hover", "span"],
-    [".Component", "a:focus", "span"],
+    [".Component", "a:focus", "span"]
   ]);
 });
 
@@ -97,7 +97,7 @@ it("Complex nested selector", async () => {
     [".Component", "strong"],
     [".OtherComponent", "strong"],
     [".Component", "em"],
-    [".OtherComponent", "em"],
+    [".OtherComponent", "em"]
   ]);
 });
 
@@ -112,7 +112,7 @@ it("Nested with parent selector, beginning, multiple", async () => {
   const t = await postcssProcess(".Component { & a:hover, .notParent {} }");
   expect(t).toEqual([
     [".Component", "a:hover"],
-    [".Component", ".notParent"],
+    [".Component", ".notParent"]
   ]);
 });
 
@@ -121,7 +121,7 @@ it("Nested with parent selector, beginning, multiple 2", async () => {
   const t = await postcssProcess(".Component { & a:hover, & a:focus {} }");
   expect(t).toEqual([
     [".Component", "a:hover"],
-    [".Component", "a:focus"],
+    [".Component", "a:focus"]
   ]);
 });
 
@@ -134,7 +134,7 @@ it("Nested with parent selector, end, multiple", async () => {
   const t = await postcssProcess(".Component { a:hover &, .notParent {} }");
   expect(t).toEqual([
     ["a:hover", ".Component"],
-    [".Component", ".notParent"],
+    [".Component", ".notParent"]
   ]);
 });
 
@@ -143,7 +143,7 @@ it("Nested with parent selector, end, multiple 2", async () => {
   const t = await postcssProcess(".Component { a:hover &, a:focus & {} }");
   expect(t).toEqual([
     ["a:hover", ".Component"],
-    ["a:focus", ".Component"],
+    ["a:focus", ".Component"]
   ]);
 });
 
@@ -160,7 +160,7 @@ it("Nested on many levels, with parent selector, multiple", async () => {
   );
   expect(t).toEqual([
     [".Parent3", ".Parent1", ".Parent2", ".Parent4"],
-    [".Parent3", ".Parent1", ".Parent2", ".Parent5"],
+    [".Parent3", ".Parent1", ".Parent2", ".Parent5"]
   ]);
 });
 

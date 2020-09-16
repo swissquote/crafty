@@ -6,7 +6,7 @@ const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEn
 
 const ruleName = "swissquote/no-block-inside-block";
 const messages = {
-  rejected: "A block should not depend on another block directly",
+  rejected: "A block should not depend on another block directly"
 };
 
 const isBlock = /^[A-Z][a-zA-Z0-9]*$/;
@@ -41,19 +41,19 @@ function isInsideBlock(selectorNode) {
 
   // If there is at least one component in the group, we're good
   return group.some(
-    (element) => element.type === "class" && element.value.match(isBlock)
+    element => element.type === "class" && element.value.match(isBlock)
   );
 }
 
-module.exports = function () {
+module.exports = function() {
   return (root, result) => {
-    root.walkRules((rule) => {
+    root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
         return;
       }
-      resolveNestedSelector(rule.selector, rule).forEach((selector) => {
-        selectorParser((selectorAST) => {
-          selectorAST.walk((selectorNode) => {
+      resolveNestedSelector(rule.selector, rule).forEach(selector => {
+        selectorParser(selectorAST => {
+          selectorAST.walk(selectorNode => {
             // No need to check if the current element isn't a Block
             if (
               selectorNode.type !== "class" ||
@@ -68,7 +68,7 @@ module.exports = function () {
                 node: rule,
                 index: selectorNode.sourceIndex,
                 ruleName,
-                result,
+                result
               });
             }
           });

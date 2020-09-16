@@ -6,33 +6,33 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
 
     // typescript-eslint specific options
-    warnOnUnsupportedTypeScriptVersion: true,
+    warnOnUnsupportedTypeScriptVersion: true
   },
   settings: {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"],
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
       // use <root>/tsconfig.json
       typescript: {
-        alwaysTryTypes: true, // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
-      },
-    },
+        alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
+      }
+    }
   },
   rules: {
     "@swissquote/swissquote/prettier/prettier": [
       warn(),
-      { parser: "typescript" },
+      { parser: "typescript" }
     ],
 
     // Has a TypeScript replacement
     "no-array-constructor": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn(),
-  },
+    "@swissquote/swissquote/@typescript-eslint/no-array-constructor": warn()
+  }
 };
 
 // Disable all the rules from ESLint that are handled by @typescript-eslint

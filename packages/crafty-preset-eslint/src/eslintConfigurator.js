@@ -8,7 +8,7 @@ function configurationBuilder(args) {
     plugins: ["@swissquote/swissquote"],
     extends: ["plugin:@swissquote/swissquote/format"],
     rules: {},
-    settings: {},
+    settings: {}
   };
 
   function mergeConfiguration(newConfiguration) {
@@ -23,7 +23,7 @@ function configurationBuilder(args) {
       if (typeof newConfiguration.extends === "string") {
         configuration.extends.push(newConfiguration.extends);
       } else {
-        newConfiguration.extends.forEach((item) =>
+        newConfiguration.extends.forEach(item =>
           configuration.extends.push(item)
         );
       }
@@ -82,7 +82,7 @@ function configurationBuilder(args) {
 
   return {
     configuration,
-    args,
+    args
   };
 }
 
@@ -108,5 +108,5 @@ function toTempFile(configuration) {
 module.exports = {
   configurationBuilder,
   stringifyConfiguration,
-  toTempFile,
+  toTempFile
 };

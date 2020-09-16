@@ -59,5 +59,5 @@ module.exports = {
         .use("react-hot-loader")
         .loader(require.resolve("react-hot-loader/webpack"));
     }
-  },
+  }
 };

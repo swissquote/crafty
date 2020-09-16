@@ -13,7 +13,7 @@ class ProcessorMap extends ChainedMap {
   }
 }
 
-module.exports = function (config) {
+module.exports = function(config) {
   const env = config.environment || process.env.NODE_ENV || "production";
 
   // All processors used to make the CSS readable by a browser
@@ -40,7 +40,7 @@ module.exports = function (config) {
     .enableIfUnsupported(["css-variables"], config.browsers)
     .setOptions({
       preserve: false,
-      appendVariables: true,
+      appendVariables: true
     })
     .before("postcss-calc");
 
@@ -122,7 +122,7 @@ module.exports = function (config) {
   processors.processor("postcss-assets").setOptions({
     cachebuster: true,
     loadPaths: ["images"],
-    relative: true,
+    relative: true
   });
 
   // Only add postcss-opacity and postcss-filter-gradient if old IE needs to be supported
@@ -139,7 +139,7 @@ module.exports = function (config) {
 
   // Options to apply to autoprefixer
   processors.processor("autoprefixer").setOptions({
-    overrideBrowserslist: config.browsers,
+    overrideBrowserslist: config.browsers
   });
 
   // CSSO :: Minify and Optimize CSS
@@ -147,7 +147,7 @@ module.exports = function (config) {
 
   // Report problems encountered during build
   processors.processor("postcss-reporter").setOptions({
-    clearReportedMessages: true,
+    clearReportedMessages: true
   });
 
   // List the used plugins (sends output to debug)

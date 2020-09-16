@@ -16,7 +16,7 @@ function logSyncTask(crafty) {
     if (!taskKeys.length) {
       return;
     }
-    const taskNames = taskKeys.map((key) => tasks[key]).join(", ");
+    const taskNames = taskKeys.map(key => tasks[key]).join(", ");
     crafty.log.warn(
       colors.red("The following tasks did not complete:"),
       colors.cyan(taskNames)

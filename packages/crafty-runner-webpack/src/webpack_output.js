@@ -65,7 +65,7 @@ function sortFiles(files) {
   // to create differences in various environments
   // without differences in the actual output's size
   if (process.env.TESTING_CRAFTY) {
-    return final.map((item) => {
+    return final.map(item => {
       if (item[0] !== "" && item[0] !== "size") {
         item[0] = 1000;
       }
@@ -77,11 +77,11 @@ function sortFiles(files) {
   return final;
 }
 
-module.exports = function (stats, compiler) {
+module.exports = function(stats, compiler) {
   const opts = {
     cached: false,
     cachedAssets: false,
-    exclude: ["node_modules"],
+    exclude: ["node_modules"]
   };
 
   const json = stats.toJson(opts, true);
@@ -98,13 +98,13 @@ module.exports = function (stats, compiler) {
   // If errors exist, only show errors.
   if (messages.errors.length) {
     console.log(`\n  ${colors.red("Failed to compile.")}\n`);
-    messages.errors.forEach((message) => {
+    messages.errors.forEach(message => {
       console.log(`${message}\n`);
     });
   } else if (messages.warnings.length) {
     console.log(`\n  ${colors.yellow("Compiled with warnings.")}\n`);
     // Show warnings if no errors were found.
-    messages.warnings.forEach((message) => {
+    messages.warnings.forEach(message => {
       console.log(`${message}\n`);
     });
   } else {
@@ -120,7 +120,7 @@ module.exports = function (stats, compiler) {
       time,
       style.footer({
         errors: messages.errors.length,
-        warnings: messages.warnings.length,
+        warnings: messages.warnings.length
       })
     );
   } else {

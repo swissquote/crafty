@@ -20,8 +20,8 @@ module.exports = {
     "selector-class-pattern": [
       /^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$/,
       {
-        resolveNestedSelectors: true,
-      },
+        resolveNestedSelectors: true
+      }
     ],
 
     // - a state (is-*|has-*) MUST NOT be alone in the dom, it must be adjacent to the component it is related to.
@@ -34,6 +34,6 @@ module.exports = {
     "swissquote/no-utility-reassignment": true,
 
     // - bare tags (a, div, p ...) MUST NOT be reassigned outside of a scope (with the exception of base typography rules that will be applied to the whole page)
-    "swissquote/no-type-outside-scope": true,
-  },
+    "swissquote/no-type-outside-scope": true
+  }
 };

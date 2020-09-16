@@ -1,5 +1,5 @@
 module.exports = function createTask(crafty, bundle, StreamHandler) {
-  return (cb) => {
+  return cb => {
     // Init
     const stream = new StreamHandler(
       bundle.source,
@@ -16,7 +16,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Linting
     const {
-      toTempFile,
+      toTempFile
     } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
     const eslint = require("gulp-eslint7");
     stream.add(eslint(toTempFile(crafty.config.eslint))).add(eslint.format());
@@ -25,7 +25,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     // errors and we build directly
     if (!crafty.isWatching()) {
       stream.add(
-        eslint.results((results) => {
+        eslint.results(results => {
           const count = results.errorCount;
           if (count) {
             const message = `ESLint failed with ${count}${

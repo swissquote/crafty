@@ -10,7 +10,7 @@ function isAllSupported(items, browsers) {
 
   const allItems = Array.isArray(items) ? items : [items];
 
-  return allItems.every((item) => isSupported(item, browsers));
+  return allItems.every(item => isSupported(item, browsers));
 }
 
 module.exports = class Processor {
@@ -31,7 +31,7 @@ module.exports = class Processor {
    */
   module(moduleName) {
     const modulePath = require.resolve(moduleName);
-    this.moduleInit = (options) => require(modulePath)(options);
+    this.moduleInit = options => require(modulePath)(options);
 
     return this;
   }

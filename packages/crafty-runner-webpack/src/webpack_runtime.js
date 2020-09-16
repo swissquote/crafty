@@ -28,9 +28,9 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
 function copyToDisk(stats, compiler) {
   Object.keys(stats.compilation.assets)
-    .map((key) => stats.compilation.assets[key])
-    .filter((asset) => asset.emitted)
-    .forEach((asset) => {
+    .map(key => stats.compilation.assets[key])
+    .filter(asset => asset.emitted)
+    .forEach(asset => {
       const file = asset.existsAt;
       compiler.outputFileSystem.readFile(file, (err, result) => {
         if (err) {
@@ -39,7 +39,7 @@ function copyToDisk(stats, compiler) {
 
         mkdirp.sync(path.dirname(file));
 
-        fs.writeFile(file, result, (err2) => {
+        fs.writeFile(file, result, err2 => {
           if (err2) {
             throw err2;
           }
@@ -65,7 +65,7 @@ function printError(summary, error) {
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
   const getCompiler = () => {
-    return portFinder.getFree(taskName).then((freePort) => {
+    return portFinder.getFree(taskName).then(freePort => {
       const config = prepareConfiguration(crafty, bundle, freePort);
       const webpack = require("webpack");
       const compiler = webpack(config);
@@ -82,7 +82,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
         console.log("Compiling...");
       });
 
-      compiler.hooks.done.tap("CraftyRuntime", (stats) => {
+      compiler.hooks.done.tap("CraftyRuntime", stats => {
         // If we are in watch mode, the bundle is only generated in memory
         // This will copy it to disk, to make refreshes work fine
         // as we don't use the dev-server as a proxy
@@ -103,7 +103,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
     start: () => {
       const compilerReady = getCompiler();
 
-      compilerReady.catch((e) => {
+      compilerReady.catch(e => {
         crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
       });
 
@@ -116,7 +116,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
           runningWatcher.listen(
             config.devServer.port,
             config.devServer.host,
-            (err) => {
+            err => {
               if (err) {
                 throw err;
               }
@@ -127,17 +127,17 @@ module.exports = function jsTaskES6(crafty, bundle) {
             }
           );
         })
-        .catch((e) => {
+        .catch(e => {
           crafty.log.error("[webpack-dev-server]", "Could not start", e);
         });
-    },
+    }
   });
 
   // This is executed in single-run only
-  crafty.undertaker.task(taskName, (cb) => {
+  crafty.undertaker.task(taskName, cb => {
     const compilerReady = getCompiler();
 
-    compilerReady.catch((e) => {
+    compilerReady.catch(e => {
       cb(e);
     });
 
@@ -161,7 +161,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
           return cb();
         });
       })
-      .catch((e) => {
+      .catch(e => {
         printError("Failed to compile.", e);
         cb(e);
       });

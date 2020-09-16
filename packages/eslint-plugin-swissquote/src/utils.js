@@ -4,7 +4,7 @@
 // replaces `extends: "plugin:react/recommended",`
 
 function addMissingRules(source, destination, except = []) {
-  Object.keys(source).forEach((ruleName) => {
+  Object.keys(source).forEach(ruleName => {
     // Only define the rules we don't have configured yet
     const key =
       ruleName.indexOf("/") > -1
@@ -24,5 +24,5 @@ function warn() {
 
 module.exports = {
   addMissingRules,
-  warn,
+  warn
 };

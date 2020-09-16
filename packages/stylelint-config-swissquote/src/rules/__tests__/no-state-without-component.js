@@ -80,8 +80,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 11,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -91,8 +91,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 11,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -102,8 +102,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 13,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -113,8 +113,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 14,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -124,8 +124,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -135,8 +135,8 @@ describe("tests for no-state-without-component", () => {
       {
         line: 1,
         column: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 });

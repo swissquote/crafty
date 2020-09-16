@@ -29,10 +29,10 @@ function formatMessage(originalMessage, isError) {
 
   // Strip Webpack-added headers off errors/warnings
   // https://github.com/webpack/webpack/blob/master/lib/ModuleError.js
-  lines = lines.filter((line) => !/Module [A-z ]+\(from/.test(line));
+  lines = lines.filter(line => !/Module [A-z ]+\(from/.test(line));
 
   // Transform parsing error into syntax error
-  lines = lines.map((line) => {
+  lines = lines.map(line => {
     const parsingError = /Line (\d+):(?:(\d+):)?\s*Parsing error: (.+)$/.exec(
       line
     );
@@ -74,7 +74,7 @@ function formatMessage(originalMessage, isError) {
   // Clean up file name
   lines[0] = lines[0].replace(/^(.*) \d+:\d+-\d+$/, "$1");
 
-  lines = lines.filter((line) => {
+  lines = lines.filter(line => {
     // Webpack adds a list of entry points to warning messages:
     //  @ ./src/index.js
     //  @ multi react-scripts/~/react-dev-utils/webpackHotDevClient.js ...
@@ -89,7 +89,7 @@ function formatMessage(originalMessage, isError) {
       lines[0],
       lines[1]
         .replace("Error: ", "")
-        .replace("Module not found: Cannot find file:", "Cannot find file:"),
+        .replace("Module not found: Cannot find file:", "Cannot find file:")
     ];
   }
 
@@ -119,15 +119,15 @@ function formatMessage(originalMessage, isError) {
 }
 
 function formatWebpackMessages(json) {
-  const formattedErrors = json.errors.map((message) =>
+  const formattedErrors = json.errors.map(message =>
     formatMessage(message, true)
   );
-  const formattedWarnings = json.warnings.map((message) =>
+  const formattedWarnings = json.warnings.map(message =>
     formatMessage(message, false)
   );
   const result = {
     errors: formattedErrors,
-    warnings: formattedWarnings,
+    warnings: formattedWarnings
   };
   if (result.errors.some(isLikelyASyntaxError)) {
     // If there are any syntax errors, show just them.

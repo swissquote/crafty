@@ -28,7 +28,7 @@ Gulp.prototype.symlink = vfs.symlink;
  * @param {Array | Function} task Names of task(s) to run when a file changes, added with gulp.task() or Callback to be called on each change.
  * @return {EventEmitter} EventEmitter that emits change events.
  */
-Gulp.prototype.watch = function (glob, opt, task) {
+Gulp.prototype.watch = function(glob, opt, task) {
   let options = opt;
   let taskOrCb = task;
   if (
@@ -62,10 +62,10 @@ Gulp.prototype.watch = function (glob, opt, task) {
     start: () => {
       this.crafty.log(`Start watching '${glob}'`);
       const watch = require("crafty/src/watcher");
-      watch(glob, options, fn).on("change", (event) => {
+      watch(glob, options, fn).on("change", event => {
         emitter.emit("change", event);
       });
-    },
+    }
   });
 
   return emitter;

@@ -11,7 +11,7 @@ function parseArguments(args) {
   return { input, flags };
 }
 
-module.exports = function (crafty, commands) {
+module.exports = function(crafty, commands) {
   const cli = parseArguments(process.argv.slice(2));
 
   // Make the list of commands available on the crafty object

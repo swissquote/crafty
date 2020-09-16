@@ -7,17 +7,17 @@ test("gets one preset", () => {
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "--preset",
     "@swissquote/crafty-preset-babel",
-    "run",
+    "run"
   ];
 
   expect(configuration.extractPresets(entry)).toEqual([
-    "@swissquote/crafty-preset-babel",
+    "@swissquote/crafty-preset-babel"
   ]);
 
   expect(entry).toEqual([
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
-    "run",
+    "run"
   ]);
 });
 
@@ -29,18 +29,18 @@ test("gets multiple presets", () => {
     "@swissquote/crafty-preset-babel",
     "--preset",
     "@swissquote/crafty-preset-postcss",
-    "run",
+    "run"
   ];
 
   expect(configuration.extractPresets(entry)).toEqual([
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-preset-postcss",
+    "@swissquote/crafty-preset-postcss"
   ]);
 
   expect(entry).toEqual([
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
-    "run",
+    "run"
   ]);
 });
 
@@ -54,12 +54,12 @@ test("gets multiple presets, but only before command", () => {
     "@swissquote/crafty-preset-postcss",
     "jsLint",
     "--preset",
-    "recommended",
+    "recommended"
   ];
 
   expect(configuration.extractPresets(entry)).toEqual([
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-preset-postcss",
+    "@swissquote/crafty-preset-postcss"
   ]);
 
   expect(entry).toEqual([
@@ -67,6 +67,6 @@ test("gets multiple presets, but only before command", () => {
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "jsLint",
     "--preset",
-    "recommended",
+    "recommended"
   ]);
 });

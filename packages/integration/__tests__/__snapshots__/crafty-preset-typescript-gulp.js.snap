@@ -266,7 +266,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-gulp/lints/js/sc
    7:1   error    Insert \`·\`                                             @swissquote/swissquote/prettier/prettier
   10:5   warning  Unexpected console statement                           no-console
   10:17  error    Replace \`·test(·\` with \`test(\`                         @swissquote/swissquote/prettier/prettier
-  12:34  error    Replace \`·SomeLibrary·=>⏎···\` with \`(SomeLibrary)·=>\`  @swissquote/swissquote/prettier/prettier
+  12:34  error    Replace \`·(SomeLibrary)·=>⏎···\` with \`SomeLibrary·=>\`  @swissquote/swissquote/prettier/prettier
   16:7   warning  Unexpected console statement                           no-console
   17:7   error    Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
 

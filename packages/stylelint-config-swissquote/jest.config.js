@@ -2,8 +2,8 @@ module.exports = {
   collectCoverageFrom: [
     "**/*.{js,jsx}",
     "!**/node_modules/**",
-    "!**/vendor/**",
+    "!**/vendor/**"
   ],
   testEnvironment: "node",
-  verbose: true,
+  verbose: true
 };

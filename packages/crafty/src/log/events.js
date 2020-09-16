@@ -21,16 +21,16 @@ function recordLogged(event) {
 
 // Wire up logging events
 function logEvents(crafty) {
-  crafty.undertaker.on("start", (evt) => {
+  crafty.undertaker.on("start", evt => {
     crafty.log.info(`Starting '${colors.cyan(evt.name)}' ...`);
   });
-  crafty.undertaker.on("stop", (evt) => {
+  crafty.undertaker.on("stop", evt => {
     const time = prettyTime(evt.duration);
     crafty.log.info(
       `Finished '${colors.cyan(evt.name)}' after ${colors.magenta(time)}`
     );
   });
-  crafty.undertaker.on("error", (evt) => {
+  crafty.undertaker.on("error", evt => {
     const time = prettyTime(evt.duration);
     const level = evt.branch ? "info" : "error";
     crafty.log[level](

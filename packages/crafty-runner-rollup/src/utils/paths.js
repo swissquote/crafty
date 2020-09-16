@@ -25,5 +25,5 @@ function resolve(relative) {
 module.exports = {
   absolutePath,
   absolutePaths,
-  resolve,
+  resolve
 };

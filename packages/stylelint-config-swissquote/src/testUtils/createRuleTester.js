@@ -17,7 +17,7 @@ function postcssProcess(rule, schema) {
   processor.use(assignDisabledRanges);
 
   if (schema.preceedingPlugins) {
-    schema.preceedingPlugins.forEach((plugin) => processor.use(plugin));
+    schema.preceedingPlugins.forEach(plugin => processor.use(plugin));
   }
 
   return processor

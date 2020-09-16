@@ -1,6 +1,6 @@
 const debug = require("debug")("crafty:preset-babel");
 
-module.exports = function (crafty, bundle, babelOptions) {
+module.exports = function(crafty, bundle, babelOptions) {
   const babelConfiguration = {
     babelrc: false,
     presets: [
@@ -12,15 +12,15 @@ module.exports = function (crafty, bundle, babelOptions) {
             crafty.getEnvironment() === "production"
               ? "production"
               : "development",
-          ...babelOptions,
-        },
-      ],
+          ...babelOptions
+        }
+      ]
     ],
-    plugins: [],
+    plugins: []
   };
 
   // Apply preset configuration
-  crafty.getImplementations("babel").forEach((preset) => {
+  crafty.getImplementations("babel").forEach(preset => {
     debug(`${preset.presetName}.babel(Crafty, bundle, babelConfig)`);
     preset.babel(crafty, bundle, babelConfiguration);
     debug("preset executed");

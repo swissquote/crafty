@@ -10,7 +10,7 @@ function makeSpaces(length) {
 function describeCommands(descriptions, padding) {
   return Object.keys(descriptions)
     .map(
-      (command) =>
+      command =>
         makeSpaces(2) +
         command +
         makeSpaces(2 + padding - command.length) +
@@ -28,7 +28,7 @@ function describeTasks(undertaker) {
 function showHelp(commands, crafty) {
   crafty.createTasks();
   const padding = Object.keys(commands)
-    .map((string) => string.length)
+    .map(string => string.length)
     .reduce((max, length) => Math.max(max, length), 0);
   return `
 Usage:

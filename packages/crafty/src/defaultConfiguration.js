@@ -9,7 +9,7 @@ const defaultBrowsers = [
   "Chrome >= 66",
   "Firefox >= 60",
   "IE >= 11",
-  "not op_mini all",
+  "not op_mini all"
 ].join(", ");
 
 function getDefaultBrowsers() {
@@ -28,5 +28,5 @@ module.exports = {
   // Add empty bundleTypes
   bundleTypes: {},
   // Autoprefixer
-  browsers: getDefaultBrowsers(),
+  browsers: getDefaultBrowsers()
 };

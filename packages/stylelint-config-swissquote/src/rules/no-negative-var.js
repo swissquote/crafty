@@ -7,17 +7,17 @@ const valueParser = require("postcss-value-parser");
 const ruleName = "swissquote/no-negative-var";
 
 const messages = {
-  rejected: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`,
+  rejected: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
 };
 
 const negativeVar = "-var";
 
-const rule = function () {
+const rule = function() {
   return (root, result) => {
-    root.walkDecls((decl) => {
+    root.walkDecls(decl => {
       const value = decl.value;
 
-      valueParser(value).walk((node) => {
+      valueParser(value).walk(node => {
         if (node.type !== "function") {
           return;
         }
@@ -35,7 +35,7 @@ const rule = function () {
           node: decl,
           index: declarationValueIndex(decl) + node.sourceIndex,
           result,
-          ruleName,
+          ruleName
         });
       });
     });

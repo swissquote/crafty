@@ -3,7 +3,7 @@ const colors = require("ansi-colors");
 const run = require("./commands/run");
 
 function listTasks(tasks) {
-  return tasks.map((item) => `'${colors.cyan(item)}'`).join(", ");
+  return tasks.map(item => `'${colors.cyan(item)}'`).join(", ");
 }
 
 class Watcher {
@@ -30,7 +30,7 @@ class Watcher {
         this.runOnce = this.runOnce.concat(tasks);
         const watch = require("./watcher");
         this.watchers[regex].running = watch(regex, {}, parallelRun);
-      },
+      }
     };
   }
   addRaw(runner) {
@@ -44,15 +44,15 @@ class Watcher {
 
     this.runOnce = [];
 
-    Object.keys(this.watchers).forEach((watcher) =>
+    Object.keys(this.watchers).forEach(watcher =>
       this.watchers[watcher].start()
     );
 
-    this.rawWatchers.forEach((watcher) => watcher.start());
+    this.rawWatchers.forEach(watcher => watcher.start());
 
     if (this.runOnce.length) {
       this.crafty.log("First run on watch tasks:", listTasks(this.runOnce));
-      run.command(this.crafty, this.runOnce).catch((e) => {
+      run.command(this.crafty, this.runOnce).catch(e => {
         this.crafty.log("An error occured while running tasks", e);
       });
     }
