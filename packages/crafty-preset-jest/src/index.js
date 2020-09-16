@@ -1,14 +1,9 @@
 const { join } = require("path");
-const { writeFileSync, unlinkSync, existsSync } = require("fs");
+const { writeFileSync, unlinkSync } = require("fs");
 
 function normalizeJestOptions(crafty, input, cli) {
-  const moduleDirectories = new Set(
-    [
-      join(process.cwd(), "node_modules"),
-      join(__dirname, "..", "node_modules"),
-      join(__dirname, "..", "..", "..", "node_modules")
-    ].filter(existsSync)
-  );
+  const moduleDirectories = new Set(["node_modules"]);
+
   if (cli.flags.moduleDirectories) {
     cli.flags.moduleDirectories
       .split(",")
