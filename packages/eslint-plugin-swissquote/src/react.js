@@ -55,6 +55,12 @@ addMissingRules(
   module.exports.rules
 );
 
+// Add all recommended configurations from eslint-plugin-react-hooks
+addMissingRules(
+  require("eslint-plugin-react-hooks").configs.recommended.rules,
+  module.exports.rules
+);
+
 // Disable all the rules from eslint-plugin-react that are handled by Prettier
 addMissingRules(
   require("eslint-config-prettier/react").rules,

@@ -2,6 +2,7 @@ module.exports = {};
 
 const plugins = {
   react: require("eslint-plugin-react"),
+  "react-hooks": require("eslint-plugin-react-hooks"),
   import: require("eslint-plugin-import"),
   sonarjs: require("eslint-plugin-sonarjs"),
   prettier: require("eslint-plugin-prettier"),

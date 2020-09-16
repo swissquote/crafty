@@ -35,12 +35,13 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.
   18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/utils.ts
-   6:9   error    Type string trivially inferred from a string literal, remove type annotation  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
-   7:3   warning  Unexpected console statement                                                  no-console
-  34:25  error    Expected '===' and instead saw '=='                                           eqeqeq
-  35:16  error    Redundant use of \`await\` on a return value                                    no-return-await
+   6:9   error    Type string trivially inferred from a string literal, remove type annotation                                                                                                                  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
+   7:3   warning  Unexpected console statement                                                                                                                                                                  no-console
+  29:10  error    React Hook \\"useSWROrig\\" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  34:25  error    Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
+  35:16  error    Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
-✖ 26 problems (22 errors, 4 warnings)
+✖ 27 problems (23 errors, 4 warnings)
   20 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
@@ -120,12 +121,13 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.
   18:6   error    Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/utils.ts
-   6:9   error    Type string trivially inferred from a string literal, remove type annotation  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
-   7:3   warning  Unexpected console statement                                                  no-console
-  34:25  error    Expected '===' and instead saw '=='                                           eqeqeq
-  35:16  error    Redundant use of \`await\` on a return value                                    no-return-await
+   6:9   error    Type string trivially inferred from a string literal, remove type annotation                                                                                                                  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
+   7:3   warning  Unexpected console statement                                                                                                                                                                  no-console
+  29:10  error    React Hook \\"useSWROrig\\" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  34:25  error    Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
+  35:16  error    Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
-✖ 26 problems (22 errors, 4 warnings)
+✖ 27 problems (23 errors, 4 warnings)
   20 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",
@@ -164,11 +166,12 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/script.
   18:6   error  Replace \`·,·300)\` with \`,·300);\`             @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration/fixtures/crafty-preset-typescript/lints/js/utils.ts
-   6:9   error  Type string trivially inferred from a string literal, remove type annotation  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
-  34:25  error  Expected '===' and instead saw '=='                                           eqeqeq
-  35:16  error  Redundant use of \`await\` on a return value                                    no-return-await
+   6:9   error  Type string trivially inferred from a string literal, remove type annotation                                                                                                                  @swissquote/swissquote/@typescript-eslint/no-inferrable-types
+  29:10  error  React Hook \\"useSWROrig\\" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  34:25  error  Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
+  35:16  error  Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
-✖ 22 problems (22 errors, 0 warnings)
+✖ 23 problems (23 errors, 0 warnings)
   20 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
 ",

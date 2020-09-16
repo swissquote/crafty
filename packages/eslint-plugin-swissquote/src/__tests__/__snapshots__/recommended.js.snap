@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Incorrect usage of hooks fails with setState in componentDidMount 1`] = `
+Array [
+  Object {
+    "column": 16,
+    "endColumn": 23,
+    "endLine": 5,
+    "line": 5,
+    "message": "'setName' is assigned a value but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 5,
+    "endColumn": 14,
+    "endLine": 9,
+    "line": 9,
+    "message": "React Hook \\"useEffect\\" is called conditionally. React Hooks must be called in the exact same order in every component render.",
+    "nodeType": "Identifier",
+    "ruleId": "@swissquote/swissquote/react-hooks/rules-of-hooks",
+    "severity": 2,
+  },
+  Object {
+    "column": 19,
+    "endColumn": 29,
+    "endLine": 15,
+    "line": 15,
+    "message": "'setSurname' is assigned a value but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+]
+`;
+
 exports[`Uses sonar plugin 1`] = `
 Array [
   Object {

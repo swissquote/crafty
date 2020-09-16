@@ -154,6 +154,43 @@ MyComponent.propTypes = {
 
     expect(result.messages).toMatchSnapshot();
     expect(result.warningCount).toBe(0, "no warnings expected");
-    expect(result.errorCount).toBe(1, "one errir expected");
+    expect(result.errorCount).toBe(1, "one error expected");
+  });
+});
+
+describe("Incorrect usage of hooks", () => {
+  it("fails with setState in componentDidMount", async () => {
+    const result = await lint(
+      engine,
+      `
+import React, { useState, useEffect } from "react";
+
+export default function MyComponent() {
+  // 1. Use the name state variable
+  const [name, setName] = useState("Mary");
+
+  // 2. Use an effect for persisting the form
+  if (name !== null) {
+    useEffect(() => {
+      localStorage.setItem("formData", name);
+    });
+  }
+
+  // 3. Use the surname state variable
+  const [surname, setSurname] = useState("Poppins");
+
+  // 4. Use an effect for updating the title
+  useEffect(() => {
+    document.title = \`\${name} \${surname}\`;
+  });
+
+  return <div>{name}</div>;
+}
+`
+    );
+
+    expect(result.messages).toMatchSnapshot();
+    expect(result.warningCount).toBe(0, "no warnings expected");
+    expect(result.errorCount).toBe(3, "three errors expected");
   });
 });

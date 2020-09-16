@@ -81,5 +81,5 @@ export function useSWR<T, Error = any>(
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toBe(0, "no warnings");
-  expect(result.errorCount).toBe(3, "no errors");
+  expect(result.errorCount).toBe(4, "no errors");
 });
