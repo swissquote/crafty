@@ -183,7 +183,17 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-  Δt ____ms ✖ 1 problem (1 error, 0 warnings)
+js/typescript.ts:5:17
+TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+    3 |         console.log(\\"Something happens here\\");
+    4 |
+  > 5 |         new D().someNonExistingMethod();
+      |                 ^^^^^^^^^^^^^^^^^^^^^
+    6 |     }
+    7 |
+    8 |     someMethod() {
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
 [__:__:__] 'js_myTSBundle' errored after ____ ms
 [__:__:__] Webpack compilation failed
@@ -290,7 +300,7 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
    7:1   error    Insert \`·\`                                             @swissquote/swissquote/prettier/prettier
   10:5   warning  Unexpected console statement                           no-console
   10:17  error    Replace \`·test(·\` with \`test(\`                         @swissquote/swissquote/prettier/prettier
-  12:34  error    Replace \`·SomeLibrary·=>⏎···\` with \`(SomeLibrary)·=>\`  @swissquote/swissquote/prettier/prettier
+  12:34  error    Replace \`·(SomeLibrary)·=>⏎···\` with \`SomeLibrary·=>\`  @swissquote/swissquote/prettier/prettier
   16:7   warning  Unexpected console statement                           no-console
   17:7   error    Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
 

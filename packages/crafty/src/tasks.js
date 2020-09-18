@@ -17,7 +17,7 @@ function initBundle(crafty, bundle, bundleCreators, type, chosenRunner) {
 
 function registerTasks(crafty) {
   let bundleCreators = {};
-  crafty.getImplementations("bundleCreator").forEach((preset) => {
+  crafty.getImplementations("bundleCreator").forEach(preset => {
     debug(`${preset.presetName}.bundleCreator(crafty)`);
     bundleCreators = merge.recursive(
       true,
@@ -32,7 +32,7 @@ function registerTasks(crafty) {
     )
   );
 
-  bundleTypes.forEach((type) => {
+  bundleTypes.forEach(type => {
     // This is a creator override, ignore it.
     if (type.indexOf("__") === 0) {
       return;
@@ -50,7 +50,7 @@ function registerTasks(crafty) {
 
     const tasks = [];
 
-    Object.keys(crafty.config[type]).forEach((bundleName) => {
+    Object.keys(crafty.config[type]).forEach(bundleName => {
       const bundle = crafty.config[type][bundleName];
 
       // Store the task name and bundle type inside
@@ -98,7 +98,7 @@ function registerTasks(crafty) {
       }
 
       const shortNamefilters = configurators.filter(
-        (runner) => shortName(runner) === bundle.runner
+        runner => shortName(runner) === bundle.runner
       );
       if (shortNamefilters.length > 1) {
         throw new Error(
@@ -114,7 +114,7 @@ function registerTasks(crafty) {
           bundle,
           bundleCreators,
           type,
-          configurators.first((runner) => shortName(runner) === bundle.runner)
+          configurators.first(runner => shortName(runner) === bundle.runner)
         );
         tasks.push(bundle.taskName);
         return;
@@ -134,7 +134,7 @@ function registerTasks(crafty) {
   });
 
   // Arbitrary task creation, not related to bundles
-  crafty.getImplementations("tasks").forEach((preset) => {
+  crafty.getImplementations("tasks").forEach(preset => {
     debug(`${preset.presetName}.tasks(crafty)`);
     preset.tasks(crafty);
   });

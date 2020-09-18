@@ -47,7 +47,7 @@ class Crafty {
     // We assume that when "watch" is present in the arguments,
     // the application is in watch mode even if the watch command
     // hasn't been started yet.
-    if (process.argv.some((arg) => arg === "watch")) {
+    if (process.argv.some(arg => arg === "watch")) {
       this.watching = true;
       return this.watching;
     }
@@ -70,7 +70,7 @@ class Crafty {
   }
 
   getImplementations(method) {
-    return this.config.loadedPresets.filter((preset) => preset[method]);
+    return this.config.loadedPresets.filter(preset => preset[method]);
   }
 
   get isPNP() {
@@ -88,7 +88,7 @@ class Crafty {
       return 3;
     }
     // Check for the verbose flag in CLI
-    if (process.argv.some((arg) => arg === "--verbose")) {
+    if (process.argv.some(arg => arg === "--verbose")) {
       return 2;
     }
     return 1;

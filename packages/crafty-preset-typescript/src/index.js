@@ -6,12 +6,6 @@ const createTask = require("./gulp");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
-// Use another watch mode for TypeScript
-// https://blog.johnnyreilly.com/2019/05/typescript-and-high-cpu-usage-watch.html
-// https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/236
-// https://github.com/Realytics/fork-ts-checker-webpack-plugin/pull/256
-process.env.TSC_WATCHFILE = "UseFsEventsWithFallbackDynamicPolling";
-
 function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
@@ -20,7 +14,7 @@ module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-eslint")],
   defaultConfig() {
     return {
-      bundleTypes: { js: "js" },
+      bundleTypes: { js: "js" }
     };
   },
   bundleCreator(crafty) {
@@ -28,7 +22,7 @@ module.exports = {
 
     if (
       crafty.config.loadedPresets.some(
-        (preset) => preset.presetName === "@swissquote/crafty-runner-gulp"
+        preset => preset.presetName === "@swissquote/crafty-runner-gulp"
       )
     ) {
       configurators.js["gulp/typescript"] = (
@@ -57,10 +51,10 @@ module.exports = {
             // Transpile to esnext so that Babel can apply all its magic
             target: "ESNext",
             // Preserve JSX so babel can optimize it, or add development/debug information
-            jsx: "Preserve",
-          },
-        },
-      },
+            jsx: "Preserve"
+          }
+        }
+      }
     };
 
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-rollup");
@@ -74,7 +68,7 @@ module.exports = {
     rollupConfig.input.plugins.babelTypeScript = {
       plugin: require("@rollup/plugin-babel"),
       weight: 30,
-      options,
+      options
     };
   },
   eslint(config, eslint) {
@@ -114,13 +108,13 @@ module.exports = {
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     const babelOptions = babelConfigurator(crafty, bundle, {
       deduplicateHelpers: true,
-      useESModules: true,
+      useESModules: true
     });
 
     // Cache can be disabled for experimentation and when running Crafty's tests
     if (
       crafty.getEnvironment() === "production" &&
-      !process.argv.some((arg) => arg === "--no-cache") &&
+      !process.argv.some(arg => arg === "--no-cache") &&
       !process.env.TESTING_CRAFTY
     ) {
       babelOptions.cacheDirectory = true;
@@ -139,8 +133,8 @@ module.exports = {
         // Transpile to esnext so that Babel can apply all its magic
         target: "ESNext",
         // Preserve JSX so babel can optimize it, or add development/debug information
-        jsx: "Preserve",
-      },
+        jsx: "Preserve"
+      }
     };
 
     // Get the current configuration to know what configuration options we have to set
@@ -163,10 +157,8 @@ module.exports = {
       // We set the value this way to respect backwards compatibility,
       // Ideally, the value should be without the `/js` at the end
       tsOptions.compilerOptions.declarationDir = absolutePath(
-        `${
-          crafty.config.destination_js +
-          (bundle.directory ? `/${bundle.directory}` : "")
-        }/js`
+        `${crafty.config.destination_js +
+          (bundle.directory ? `/${bundle.directory}` : "")}/js`
       );
     }
 
@@ -180,26 +172,18 @@ module.exports = {
       tsOptions.transpileOnly = true;
 
       const forkCheckerOptions = {
-        useTypescriptIncrementalApi: true,
-        typescript: require.resolve("typescript"),
-        compilerOptions: tsOptions.compilerOptions,
+        typescript: {
+          typescriptPath: require.resolve("typescript"),
+          configOverwrite: {
+            compilerOptions: tsOptions.compilerOptions
+          }
+        }
       };
-
-      if (crafty.isPNP) {
-        forkCheckerOptions.resolveModuleNameModule = path.join(
-          __dirname,
-          "resolvers.js"
-        );
-        forkCheckerOptions.resolveTypeReferenceDirectiveModule = path.join(
-          __dirname,
-          "resolvers.js"
-        );
-      }
 
       chain
         .plugin("fork-ts-checker")
         .use(require.resolve("fork-ts-checker-webpack-plugin"), [
-          forkCheckerOptions,
+          forkCheckerOptions
         ]);
     }
 
@@ -207,5 +191,5 @@ module.exports = {
       .use("ts-loader")
       .loader(require.resolve("ts-loader"))
       .options(tsOptions);
-  },
+  }
 };

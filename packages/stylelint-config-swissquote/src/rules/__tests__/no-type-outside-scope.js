@@ -55,8 +55,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -66,8 +66,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -77,8 +77,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -88,8 +88,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -99,8 +99,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 8,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -113,8 +113,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -127,8 +127,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -141,8 +141,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 1,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 
@@ -163,8 +163,8 @@ describe("tests for no-type-outside-scope", () => {
       {
         column: 16,
         line: 1,
-        text: rule.messages.rejected,
-      },
+        text: rule.messages.rejected
+      }
     ]);
   });
 });

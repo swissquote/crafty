@@ -15,7 +15,7 @@ module.exports = {
 
       // Merge global externals into packages
       if (config.externals && config.externals.length) {
-        config.externals.forEach((item) => {
+        config.externals.forEach(item => {
           if (config.js[j].externals.indexOf(item) === -1) {
             config.js[j].externals.push(item);
           }
@@ -28,8 +28,8 @@ module.exports = {
   bundleCreator(crafty) {
     return {
       js: {
-        rollup: generateTask,
-      },
+        rollup: generateTask
+      }
     };
-  },
+  }
 };

@@ -21,7 +21,7 @@ it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    (preset) => preset.presetName
+    preset => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
 
@@ -34,13 +34,13 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
   const crafty = getCrafty(
     [
       "@swissquote/crafty-preset-typescript",
-      "@swissquote/crafty-runner-webpack",
+      "@swissquote/crafty-runner-webpack"
     ],
     config
   );
 
   const loadedPresets = crafty.config.loadedPresets.map(
-    (preset) => preset.presetName
+    preset => preset.presetName
   );
   expect(loadedPresets).toContain("@swissquote/crafty-preset-typescript");
   expect(loadedPresets).toContain("@swissquote/crafty-runner-webpack");
@@ -49,7 +49,7 @@ it("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack 
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "js_myBundle",
     "js",
-    "default",
+    "default"
   ]);
 });
 

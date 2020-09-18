@@ -101,30 +101,6 @@ exports[`Keeps imports unresolved for Babel Runtime, using commonjs 2`] = `
 "
 `;
 
-exports[`Keeps imports unresolved for Babel Runtime, using commonjs 3`] = `
-Object {
-  "status": 0,
-  "stdall": "
-[__:__:__] Starting Crafty __version__...
-[__:__:__] Files will be stored in:
-            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-rollup/compiles-import-runtime-commonjs/dist/js
-[__:__:__] Starting 'default' ...
-[__:__:__] Starting 'js' ...
-[__:__:__] Starting 'js_myBundle' ...
-Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, which means for CommonJS output that its default export is assigned to \\"module.exports\\". For many tools, such CommonJS output will not be interchangeable with the original ES module. If this is intended, explicitly set \\"output.exports\\" to either \\"auto\\" or \\"default\\", otherwise you might want to consider changing the signature of \\"js/script.js\\" to use named exports only.
-[__:__:__] Finished 'js_myBundle' after ____ ms
-[__:__:__] Finished 'js' after ____ ms
-[__:__:__] Finished 'default' after ____ ms
-",
-}
-`;
-
-exports[`Keeps imports unresolved for Babel Runtime, using commonjs 4`] = `
-"\\"use strict\\";var e=require(\\"@babel/runtime/helpers/classCallCheck\\");var t=require(\\"@babel/runtime/helpers/createClass\\");var r=require(\\"@babel/runtime/helpers/inherits\\");var a=require(\\"@babel/runtime/helpers/createSuper\\");function n(e){return e&&\\"object\\"===typeof e&&\\"default\\"in e?e:{default:e}}var l=n(e);var u=n(t);var i=n(r);var c=n(a);var o=function(e){i.default(r,e);var t=c.default(r);function r(){var e;l.default(this,r);for(var a=arguments.length,n=new Array(a),u=0;u<a;u++)n[u]=arguments[u];return e=t.call.apply(t,[this].concat(n)),e.handleClick=function(){e.setState({hey:!0})},e}return u.default(r,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),r}(React.Component);var s=function(){function e(){l.default(this,e),console.log(\\"init class\\")}return u.default(e,[{key:\\"method\\",value:function(){console.log(o)}}]),e}();module.exports=s;
-//# sourceMappingURL=myBundle.min.js.map
-"
-`;
-
 exports[`Lints JavaScript with rollup 1`] = `
 Object {
   "status": 1,

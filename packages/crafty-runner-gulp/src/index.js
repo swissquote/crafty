@@ -14,14 +14,14 @@ module.exports = {
     return {
       __gulp(craftyAgain, bundle, creator) {
         creator(craftyAgain, bundle, gulp, StreamHandler);
-      },
+      }
     };
   },
   tasks(crafty) {
-    crafty.getImplementations("gulp").forEach((preset) => {
+    crafty.getImplementations("gulp").forEach(preset => {
       debug(`${preset.presetName}.gulp(Crafty, Gulp, StreamHandler)`);
       preset.gulp(crafty, gulp, StreamHandler);
       debug("tasks registered");
     });
-  },
+  }
 };

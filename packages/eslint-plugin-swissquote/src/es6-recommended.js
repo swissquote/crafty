@@ -25,22 +25,22 @@ module.exports = {
       "always",
       {
         ignoreConstructors: false,
-        avoidQuotes: true,
-      },
+        avoidQuotes: true
+      }
     ],
     "prefer-arrow-callback": [
       "error",
       {
         allowNamedFunctions: false,
-        allowUnboundThis: true,
-      },
+        allowUnboundThis: true
+      }
     ],
     "prefer-const": [
       "error",
       {
         destructuring: "all",
-        ignoreReadBeforeAssign: true,
-      },
+        ignoreReadBeforeAssign: true
+      }
     ],
     "prefer-numeric-literals": "error",
     "prefer-rest-params": "error",
@@ -48,6 +48,6 @@ module.exports = {
     "prefer-template": "error",
     strict: ["error", "never"], // babel inserts `'use strict';` for us
     "symbol-description": "error",
-    "no-useless-rename": "error",
-  },
+    "no-useless-rename": "error"
+  }
 };

@@ -2,10 +2,11 @@ module.exports = {};
 
 const plugins = {
   react: require("eslint-plugin-react"),
+  "react-hooks": require("eslint-plugin-react-hooks"),
   import: require("eslint-plugin-import"),
   sonarjs: require("eslint-plugin-sonarjs"),
   prettier: require("eslint-plugin-prettier"),
-  "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
+  "@typescript-eslint": require("@typescript-eslint/eslint-plugin")
 };
 
 // Eslint can't load plugins transitively (from a shared config)
@@ -16,7 +17,7 @@ for (const i in plugins) {
     continue;
   }
   const plugin = plugins[i];
-  Object.keys(plugin.rules).forEach((ruleName) => {
+  Object.keys(plugin.rules).forEach(ruleName => {
     module.exports[`${i}/${ruleName}`] = plugin.rules[ruleName];
   });
 }

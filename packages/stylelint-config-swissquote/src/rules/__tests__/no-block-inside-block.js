@@ -12,8 +12,8 @@ describe("no-block-inside-block", () => {
       {
         column: 15,
         line: 1,
-        text: "A block should not depend on another block directly",
-      },
+        text: "A block should not depend on another block directly"
+      }
     ]);
   });
 
@@ -27,8 +27,8 @@ describe("no-block-inside-block", () => {
       {
         column: 38,
         line: 1,
-        text: "A block should not depend on another block directly",
-      },
+        text: "A block should not depend on another block directly"
+      }
     ]);
   });
 
@@ -42,8 +42,8 @@ describe("no-block-inside-block", () => {
       {
         column: 40,
         line: 1,
-        text: "A block should not depend on another block directly",
-      },
+        text: "A block should not depend on another block directly"
+      }
     ]);
   });
 
@@ -57,8 +57,8 @@ describe("no-block-inside-block", () => {
       {
         column: 15,
         line: 1,
-        text: "A block should not depend on another block directly",
-      },
+        text: "A block should not depend on another block directly"
+      }
     ]);
   });
 
@@ -72,8 +72,8 @@ describe("no-block-inside-block", () => {
       {
         column: 15,
         line: 1,
-        text: "A block should not depend on another block directly",
-      },
+        text: "A block should not depend on another block directly"
+      }
     ]);
   });
 

@@ -5,7 +5,7 @@ module.exports = {
   defaultConfig() {
     return {
       // List of provided libraries, these will not be embedded inside the content
-      externals: [],
+      externals: []
     };
   },
   config(config) {
@@ -21,7 +21,7 @@ module.exports = {
 
       // Merge global externals into packages
       if (config.externals && config.externals.length) {
-        config.externals.forEach((item) => {
+        config.externals.forEach(item => {
           if (config.js[j].externals.indexOf(item) === -1) {
             config.js[j].externals.push(item);
           }
@@ -34,8 +34,8 @@ module.exports = {
   bundleCreator(crafty) {
     return {
       js: {
-        webpack: generateTask,
-      },
+        webpack: generateTask
+      }
     };
-  },
+  }
 };

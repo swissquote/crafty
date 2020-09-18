@@ -1,21 +1,21 @@
 module.exports = {
   env: {
-    es6: true,
+    es6: true
   },
   parserOptions: {
-    sourceType: "module",
+    sourceType: "module"
   },
   settings: {
     "import/extensions": [".js", ".jsx"],
     "import/ignore": [
       "node_modules",
-      "\\.(coffee|scss|css|less|hbs|svg|json)$",
+      "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
     "import/resolver": {
       node: {
-        extensions: [".js", ".json"],
-      },
-    },
+        extensions: [".js", ".json"]
+      }
+    }
   },
   rules: {
     // -> Helpful warnings
@@ -28,6 +28,6 @@ module.exports = {
     "@swissquote/swissquote/import/first": "error", // Ensure all imports appear before other statements
     "@swissquote/swissquote/import/newline-after-import": "error", // Enforce a newline after import statements
     "@swissquote/swissquote/import/no-absolute-path": "error",
-    "@swissquote/swissquote/import/no-webpack-loader-syntax": "error", // Forbid Webpack loader syntax in imports.
-  },
+    "@swissquote/swissquote/import/no-webpack-loader-syntax": "error" // Forbid Webpack loader syntax in imports.
+  }
 };

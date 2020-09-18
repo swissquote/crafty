@@ -21,7 +21,7 @@ module.exports = class {
     const names = Object.keys(entries);
     const order = [...names];
 
-    names.forEach((name) => {
+    names.forEach(name => {
       if (!entries[name]) {
         return;
       }
@@ -53,7 +53,7 @@ module.exports = class {
   values() {
     const { entries, order } = this.order();
 
-    return order.map((name) => entries[name]);
+    return order.map(name => entries[name]);
   }
 
   get(key) {

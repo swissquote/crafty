@@ -9,13 +9,13 @@ module.exports = {
     return {
       bundleTypes: { img: "images" },
       img_basedir: "images",
-      img_extensions: ["png", "jpg", "jpeg", "gif"],
+      img_extensions: ["png", "jpg", "jpeg", "gif"]
     };
   },
   gulp(crafty, gulp, StreamHandler) {
     if (
       Object.keys(crafty.undertaker._registry.tasks()).some(
-        (task) => task === "images"
+        task => task === "images"
       )
     ) {
       throw new Error(
@@ -23,7 +23,7 @@ module.exports = {
       );
     }
 
-    const sourcesPath = crafty.config.img_extensions.map((extension) => {
+    const sourcesPath = crafty.config.img_extensions.map(extension => {
       return path.join(crafty.config.img_basedir, "**", `*.${extension}`);
     });
 
@@ -60,5 +60,5 @@ module.exports = {
     crafty.watcher.add(path.join(crafty.config.img_basedir, "**/*"), "images");
 
     crafty.addDefaultTask("images");
-  },
+  }
 };

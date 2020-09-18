@@ -1,5 +1,5 @@
 const foo = {
-  catch() {},
+  catch() {}
 };
 
 //eslint-disable-next-line no-console

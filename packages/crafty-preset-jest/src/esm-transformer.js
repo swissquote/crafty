@@ -22,7 +22,7 @@ function shouldCompile(code) {
     // If we had to find `import()` statements that would be more complicated, but as
     // They would certainly have an export anyway, we're covered.
     const hasImportOrExport = tree.body.filter(
-      (item) =>
+      item =>
         item.type === "ImportDeclaration" ||
         item.type === "ExportNamedDeclaration" ||
         item.type === "ExportDefaultDeclaration"
@@ -62,9 +62,9 @@ module.exports = {
     const options = {
       babelrc: false,
       compact: false,
-      plugins: [require.resolve("@babel/plugin-transform-modules-commonjs")],
+      plugins: [require.resolve("@babel/plugin-transform-modules-commonjs")]
     };
 
     return babel.transform(src, options).code;
-  },
+  }
 };

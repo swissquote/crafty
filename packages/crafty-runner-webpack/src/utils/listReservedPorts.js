@@ -24,7 +24,7 @@ function put(n) {
   }
 }
 
-ports.forEach((entry) => {
+ports.forEach(entry => {
   const name = entry.ServiceName;
   const description = entry.Description;
   const protocol = entry.TransportProtocol;

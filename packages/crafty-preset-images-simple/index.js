@@ -4,7 +4,7 @@ module.exports = {
   defaultConfig() {
     return {
       bundleTypes: { img: "images" },
-      img_basedir: "images",
+      img_basedir: "images"
     };
   },
   gulp(crafty, gulp /*, StreamHandler*/) {
@@ -12,7 +12,7 @@ module.exports = {
     // Only register this task if there is not any other images task
     if (
       Object.keys(crafty.undertaker._registry.tasks()).some(
-        (task) => task === "images"
+        task => task === "images"
       )
     ) {
       throw new Error(
@@ -33,5 +33,5 @@ module.exports = {
     crafty.watcher.add(sourcesPath, "images");
 
     crafty.addDefaultTask("images");
-  },
+  }
 };

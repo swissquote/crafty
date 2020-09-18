@@ -1,5 +1,5 @@
 module.exports = function createTask(crafty, bundle, StreamHandler) {
-  return (cb) => {
+  return cb => {
     // Init
     const stream = new StreamHandler(
       bundle.source,
@@ -16,7 +16,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Linting
     const {
-      toTempFile,
+      toTempFile
     } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
     const eslint = require("gulp-eslint7");
     stream
@@ -27,7 +27,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     // errors and we build directly
     if (!crafty.isWatching()) {
       stream.add(
-        eslint.results((results) => {
+        eslint.results(results => {
           const count = results.errorCount;
           if (count) {
             const message = `ESLint failed with ${count}${
@@ -48,7 +48,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       // Transpile to esnext so that Babel can apply all its magic
       target: "ESNext",
       // Preserve JSX so babel can optimize it, or add development/debug information
-      jsx: "Preserve",
+      jsx: "Preserve"
     };
     const typescript = require("gulp-typescript");
     const tsProject = typescript.createProject("tsconfig.json", tsOptions);

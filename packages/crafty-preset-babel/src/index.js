@@ -5,11 +5,11 @@ const MODULES = path.join(__dirname, "..", "node_modules");
 module.exports = {
   presets: [
     require.resolve("@swissquote/crafty-preset-eslint"),
-    require.resolve("@swissquote/crafty-preset-terser"),
+    require.resolve("@swissquote/crafty-preset-terser")
   ],
   defaultConfig(config) {
     return {
-      bundleTypes: { js: "js" },
+      bundleTypes: { js: "js" }
     };
   },
   jest(crafty, options) {
@@ -29,7 +29,7 @@ module.exports = {
 
     if (
       crafty.config.loadedPresets.some(
-        (preset) => preset.presetName === "@swissquote/crafty-runner-gulp"
+        preset => preset.presetName === "@swissquote/crafty-runner-gulp"
       )
     ) {
       configurators.js["gulp/babel"] = (
@@ -57,7 +57,7 @@ module.exports = {
     rollupConfig.input.plugins.babel = {
       plugin: require("@rollup/plugin-babel"),
       weight: 20,
-      options,
+      options
     };
   },
   webpack(crafty, bundle, chain) {
@@ -68,13 +68,13 @@ module.exports = {
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     const options = babelConfigurator(crafty, bundle, {
       deduplicateHelpers: true,
-      useESModules: true,
+      useESModules: true
     });
 
     // Cache can be disabled for experimentation and when running Crafty's tests
     if (
       crafty.getEnvironment() === "production" &&
-      !process.argv.some((arg) => arg === "--no-cache") &&
+      !process.argv.some(arg => arg === "--no-cache") &&
       !process.env.TESTING_CRAFTY
     ) {
       options.cacheDirectory = true;
@@ -89,5 +89,5 @@ module.exports = {
       .use("babel")
       .loader(require.resolve("babel-loader"))
       .options(options);
-  },
+  }
 };
