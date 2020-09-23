@@ -52,7 +52,7 @@ module.exports = function buildPreset(context, opts) {
       {
         targets,
         useBuiltIns: "entry",
-        corejs: 2,
+        corejs: 3,
         // Do not transform modules to CJS
         modules: false,
         // Exclude transforms that make all code slower
