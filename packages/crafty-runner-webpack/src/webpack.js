@@ -106,13 +106,14 @@ module.exports = function(crafty, bundle, webpackPort) {
   const destination =
     config.destination_js + (bundle.directory ? `/${bundle.directory}` : "");
 
+  chain.set("target", "es5");
+
   chain.output
     .path(absolutePath(destination)) // The build folder.
     .filename(bundle.destination) // Generated JS file names (with nested folders).
     .chunkFilename(`[name].${bundle.destination}`)
     .libraryTarget(bundle.libraryTarget || "umd") // The destination type
-    .set("chunkLoadingGlobal", generateJsonpName(isWatching, bundle))
-    .set("ecmaVersion", 5);
+    .set("chunkLoadingGlobal", generateJsonpName(isWatching, bundle));
 
   if (bundle.library) {
     chain.output.library(bundle.library) // The library name
