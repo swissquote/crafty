@@ -106,6 +106,8 @@ module.exports = function(crafty, bundle, webpackPort) {
   const destination =
     config.destination_js + (bundle.directory ? `/${bundle.directory}` : "");
 
+  // TODO :: experiment with our browserslist configuration
+  //chain.set("target", `browserslist:${config.browsers}`);
   chain.set("target", "es5");
 
   chain.output

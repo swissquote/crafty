@@ -10,19 +10,19 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-Starting type checking service...
 (node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
-  size  name         module                                                       status
-  1000               ./js/SomeLibrary.ts                                          built
-  1 kB  131          (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
-  1 kB  315          (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
-  1 kB  810          ./js/script.ts + 1 modules                                   built
-
-  size  name         asset                                                        status
-  1 kB  default      myBundle.min.js                                              emitted
-  1 kB  someLibrary  someLibrary.myBundle.min.js                                  emitted
-
-  (9 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset someLibrary.myBundle.min.js ___ bytes [emitted] [minimized] (name: someLibrary)
+  sourceMap someLibrary.myBundle.min.js.map ___ bytes [emitted] [dev] (auxiliary name: someLibrary)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+Chunk Group someLibrary ___ bytes (___ bytes) = someLibrary.myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 4 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -58,20 +58,22 @@ Object {
 BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
 	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
 	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
-  size  name     module                                                       status
-  1000           ./js/SomeLibrary.ts                                          built
-  1 kB  131      (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
-  1 kB  315      (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
-  1 kB  810      ./js/script.ts + 1 modules                                   built
-
-  size  name     asset                                                        status
-  1 kB  js       0.myBundle.min.js                                            emitted
-  1 kB  ts       js/Component.d.ts                                            emitted
-  1 kB  ts       js/SomeLibrary.d.ts                                          emitted
-  1 kB  ts       js/script.d.ts                                               emitted
-  1 kB  default  myBundle.min.js                                              emitted
-
-  (9 modules hidden)
+assets by path js/*.ts ___ bytes
+  asset js/SomeLibrary.d.ts ___ bytes [emitted]
+  asset js/script.d.ts ___ bytes [emitted]
+  asset js/Component.d.ts ___ bytes [emitted]
+assets by path *.js ___ KiB
+  asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+    sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+  asset 0.myBundle.min.js ___ bytes [emitted] [minimized]
+    sourceMap 0.myBundle.min.js.map ___ bytes [emitted] [dev]
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) 0.myBundle.min.js ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 4 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -112,10 +114,11 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  591   ./js/typescript.ts + 2 modules  built failed ✖
-
-  (2 assets, 5 modules hidden)
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
 
@@ -151,12 +154,12 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-Starting type checking service...
 (node:11111) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
-  size  name  module                          status
-  1 kB  591   ./js/typescript.ts + 2 modules  built failed ✖
-
-  (1 asset, 5 modules hidden)
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
 
@@ -183,7 +186,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-js/typescript.ts:5:17
 TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
     3 |         console.log(\\"Something happens here\\");
     4 |
@@ -213,10 +215,11 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  591   ./js/typescript.ts + 2 modules  built failed ✖
-
-  (2 assets, 5 modules hidden)
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
 
@@ -270,13 +273,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                                                       status
-  1000        ./js/SomeLibrary.ts                                          built
-  1 kB  131   (node_modules)/@babel/runtime/helpers/esm/createClass.js     built
-  1 kB  315   (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js  built
-  1 kB  810   ./js/script.ts + 1 modules                                   built failed ✖
-
-  (5 assets, 9 modules hidden)
+assets by status ___ KiB [cached] 5 assets
+Entrypoint default = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) 0.myBundle.min.js ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 4 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated] [2 errors]
 
   Failed to compile.
 
@@ -335,15 +339,14 @@ Object {
 BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
 	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
 	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
-  size  name     module                       status
-  1 kB  391      ./js/index.ts + 3 modules    built
-
-  size  name     asset                        status
-  1 kB  ts       js/imported-typescript.d.ts  emitted
-  1 kB  ts       js/index.d.ts                emitted
-  1 kB  default  myBundle.min.js              emitted
-
-  (4 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset js/imported-typescript.d.ts ___ bytes [emitted]
+asset js/index.d.ts ___ bytes [emitted]
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 1 module
+  ./js/index.ts + 3 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms

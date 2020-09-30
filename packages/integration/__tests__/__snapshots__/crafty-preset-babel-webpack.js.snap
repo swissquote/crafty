@@ -10,15 +10,13 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                                              status
-  1 kB  79       (node_modules)/regenerator-runtime/runtime.js       built
-  1 kB  893      ./js/script.js                                      built
-  1 kB  911      (node_modules)/@babel/runtime/regenerator/index.js  built
-
-  size  name     asset                                               status
-  1 kB  default  myBundle.min.js                                     emitted
-
-  (4 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 4 modules
+  dependent modules ___ KiB [dependent] 2 modules
+  ./js/script.js ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -484,13 +482,12 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                      status
-  1 kB  769      ./js/script.js + 1 modules  built
-
-  size  name     asset                       status
-  1 kB  default  myBundle.min.js             emitted
-
-  (4 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/script.js + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -517,10 +514,10 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module          status
-  1 kB  893   ./js/script.js  built failed ✖
-
-  (1 asset hidden)
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ bytes [entry] [rendered]
+  ./js/script.js ___ bytes [built] [code generated] [2 errors]
 
   Failed to compile.
 
@@ -611,13 +608,12 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                     status
-  1 kB  113      ./js/index.js + 3 modules  built
-
-  size  name     asset                      status
-  1 kB  default  myBundle.min.js            emitted
-
-  (4 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 1 module
+  ./js/index.js + 3 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
