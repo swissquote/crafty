@@ -105,20 +105,20 @@ module.exports = {
     tsRule.test(/\.tsx?$/);
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(crafty, bundle, {
-      deduplicateHelpers: true,
-      useESModules: true
-    });
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
+    const babelOptions = babelConfigurator(crafty, bundle);
 
-    // Cache can be disabled for experimentation and when running Crafty's tests
-    if (
-      crafty.getEnvironment() === "production" &&
-      !process.argv.some(arg => arg === "--no-cache") &&
-      !process.env.TESTING_CRAFTY
-    ) {
-      babelOptions.cacheDirectory = true;
-    }
+    // We have to apply a second loader specifically for the babel runtime 
+    // since its own internal imports aren't esm-compatible
+    // TODO :: make sure it's not added twice with crafty-preset-babel
+    chain.module
+      .rule("babel-runtime")
+      .test(/\.js$/)
+      .include.add(/(node_modules\/@babel\/runtime)/)
+      .end()
+      .use("babel")
+      .loader(require.resolve("babel-loader"))
+      .options(babelConfigurator.runtimeLoaderConfiguration(crafty, bundle));
 
     // EcmaScript 2015+
     tsRule
