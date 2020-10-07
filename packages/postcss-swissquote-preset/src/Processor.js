@@ -120,7 +120,13 @@ module.exports = class Processor {
       this.module(this.name);
     }
 
-    return this.moduleInit(this.options);
+    try {
+      return this.moduleInit(this.options);
+    } catch (e) {
+      console.error(`Failed to load PostCSS plugin`, this.name);
+      throw e;
+    }
+    
   }
 
   /**

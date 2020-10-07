@@ -47,6 +47,10 @@
         "groupName": "all webpack dependencies",
         "groupSlug": "webpack-minor-patch"
       }
+    },
+    {
+      "packageNames": ["postcss-attribute-case-insensitive"],
+      "allowedVersions": "!/4\\.0\\.2/"
     }
   ],
   "ignoreDeps": ["postcss-custom-properties"],
