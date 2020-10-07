@@ -52,8 +52,9 @@ asset myBundle-default.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-default.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes (javascript) ___ bytes (css/mini-extract) [dependent] 2 modules
-  ./js/app.js + 1 modules ___ bytes [built] [code generated]
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -66,7 +67,7 @@ chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){var e={397:function(e,t,o){\\"use strict\\";function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});o(258);var r=function e(){n(this,e)}},258:function(){}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={397:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -94,8 +95,9 @@ asset myBundle-object.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-object.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes (javascript) ___ bytes (css/mini-extract) [dependent] 2 modules
-  ./js/app.js + 1 modules ___ bytes [built] [code generated]
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -108,7 +110,7 @@ chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ 
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){var e={397:function(e,t,o){\\"use strict\\";function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});o(258);var r=function e(){n(this,e)}},258:function(){}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={397:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -136,8 +138,9 @@ asset myBundle-string.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-string.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes (javascript) ___ bytes (css/mini-extract) [dependent] 2 modules
-  ./js/app.js + 1 modules ___ bytes [built] [code generated]
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -150,7 +153,7 @@ chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ 
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){var e={397:function(e,t,o){\\"use strict\\";function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});o(258);var r=function e(){n(this,e)}},258:function(){}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={397:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(397)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
