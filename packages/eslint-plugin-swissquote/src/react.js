@@ -31,7 +31,9 @@ module.exports = {
     ],
 
     // Swissquote Rules
-    "@swissquote/swissquote/react/jsx-handler-names": "error",
+    // Disabled for now as it has false positives on inline handlers
+    // TODO :: file a bug report
+    "@swissquote/swissquote/react/jsx-handler-names": "off",
     "@swissquote/swissquote/react/jsx-pascal-case": "error",
     "@swissquote/swissquote/react/no-did-mount-set-state": "error",
     "@swissquote/swissquote/react/no-did-update-set-state": "error",
