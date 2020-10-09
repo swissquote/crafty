@@ -28,7 +28,7 @@ class Watcher {
           "on change"
         );
         this.runOnce = this.runOnce.concat(tasks);
-        const watch = require("./watcher");
+        const watch = require("./watch");
         this.watchers[regex].running = watch(regex, {}, parallelRun);
       }
     };
