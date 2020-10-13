@@ -12,7 +12,10 @@ function hasBabelRuntimeDependency() {
   }
 
   const packageJson = require(packageJsonPath);
-  return packageJson.dependencies.hasOwnProperty("@babel/runtime");
+  return (
+    packageJson.hasOwnProperty("dependencies") &&
+    packageJson.dependencies.hasOwnProperty("@babel/runtime")
+  );
 }
 
 function resolveBabelRuntimeRelativeTo(cwd) {

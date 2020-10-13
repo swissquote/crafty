@@ -126,7 +126,6 @@ module.exports = class Processor {
       console.error(`Failed to load PostCSS plugin`, this.name);
       throw e;
     }
-    
   }
 
   /**
