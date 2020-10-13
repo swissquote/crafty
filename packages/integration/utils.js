@@ -30,6 +30,10 @@ function snapshotizeOutput(ret) {
         ""
       ) // This error is triggered starting with Node 10, it seems it's internal to the node engine and somewhat related to webpack tests ...
       .replace(
+        /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
+        ""
+      ) // Node 14 specific output
+      .replace(
         /result \[webpack\/bootstrap (.*?)\]/g,
         "result [webpack/bootstrap UNIQUE_ID]"
       ) // Remove hash from webpack results
