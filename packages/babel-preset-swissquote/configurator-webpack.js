@@ -15,13 +15,6 @@ module.exports = function(crafty, bundle) {
     deduplicateHelpers: true,
     useESModules: true
   });
-
-  // This plugin is needed to rewrite babel imports as they don't have an extension appended
-  // It can be removed after switching to Babel 8
-  // https://github.com/babel/babel/issues/8462
-  options.plugins.push(
-    require.resolve("./transform-runtime-extensions-outside.js")
-  );
   
   if (hasCache(crafty)) {
     options.cacheDirectory = true;
@@ -29,20 +22,3 @@ module.exports = function(crafty, bundle) {
 
   return options;
 };
-
-// This plugin is needed to rewrite babel imports as they don't have an extension appended
-// It can be removed after switching to Babel 8
-// https://github.com/babel/babel/issues/8462
-module.exports.runtimeLoaderConfiguration = function(crafty, bundle) {
-  const options = {
-    plugins: [
-      require.resolve("./transform-runtime-extensions-inside.js")
-    ]
-  };
-
-  if (hasCache(crafty)) {
-    options.cacheDirectory = true;
-  }
-
-  return options;
-}

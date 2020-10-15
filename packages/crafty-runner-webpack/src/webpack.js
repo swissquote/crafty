@@ -131,7 +131,6 @@ module.exports = function(crafty, bundle, webpackPort) {
     .minimizer("terser")
     .use(require.resolve("terser-webpack-plugin"), [
       {
-        sourceMap: true,
         terserOptions: { ...config.terser }
       }
     ]);
