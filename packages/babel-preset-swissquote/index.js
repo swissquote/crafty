@@ -104,7 +104,10 @@ module.exports = function buildPreset(context, opts) {
     useESModules: opts.useESModules || false
   };
 
-  if (!opts.runtimeDependency) {
+  // We specify only the absoluteRuntime if
+  // 1. deduplicateHelpers is true, meaning that a bundler will inline them once for all packages
+  // 2. no runtimeDependency is provided, meaning that we wish to inline them by a bundler
+  if (opts.deduplicateHelpers && !opts.runtimeDependency) {
     // Undocumented option that lets us encapsulate our runtime, ensuring
     // the correct version is used
     // https://github.com/babel/babel/blob/090c364a90fe73d36a30707fc612ce037bdbbb24/packages/babel-plugin-transform-runtime/src/index.js#L35-L42

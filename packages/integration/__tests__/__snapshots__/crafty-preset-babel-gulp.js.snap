@@ -159,6 +159,93 @@ exports[`Compiles JavaScript, keeps runtime external 3`] = `
 "
 `;
 
+exports[`Compiles JavaScript, new features transpiled 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-new-features/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, new features transpiled 2`] = `
+"import _regeneratorRuntime from \\"@babel/runtime/regenerator\\";
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"next\\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"throw\\", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* global test */
+import \\"./otherfile\\";
+
+var Test = /*#__PURE__*/function () {
+  function Test(name) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+  }
+
+  _createClass(Test, [{
+    key: \\"sayHi\\",
+    value: function () {
+      var _sayHi = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                //eslint-disable-next-line no-console
+                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                _context.next = 3;
+                return Promise.resolve();
+
+              case 3:
+              case \\"end\\":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function sayHi() {
+        return _sayHi.apply(this, arguments);
+      }
+
+      return sayHi;
+    }()
+  }]);
+
+  return Test;
+}();
+
+var test = new Test(\\"Stéphane\\");
+test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, new features transpiled 3`] = `
+"setTimeout(function () {
+  //eslint-disable-next-line no-console
+  console.log(\\"Welcome to this website\\");
+}, 1000);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
