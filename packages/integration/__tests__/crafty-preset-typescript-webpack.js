@@ -156,9 +156,8 @@ it("Fails gracefully on invalid TS - fork checker", async () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed types
-  // TODO :: see if it can be done with fork TS Checker
-  //expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeFalsy();
-  //expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeFalsy();
 });
 
 it("Removes unused classes", async () => {
