@@ -97,13 +97,64 @@ Object {
 `;
 
 exports[`Compiles JavaScript, keeps runtime external 2`] = `
-"import _regeneratorRuntime from\\"@babel/runtime/regenerator\\";import _asyncToGenerator from\\"@babel/runtime/helpers/asyncToGenerator\\";import _classCallCheck from\\"@babel/runtime/helpers/classCallCheck\\";import _createClass from\\"@babel/runtime/helpers/createClass\\";import\\"./otherfile\\";var Test=/*#__PURE__*/function(){function e(r){_classCallCheck(this,e),this.name=r}return _createClass(e,[{key:\\"sayHi\\",value:function(){var e=_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark((function e(){return _regeneratorRuntime.wrap((function(e){while(1)switch(e.prev=e.next){case 0:return console.log(\\"Hello \\".concat(this.name,\\" !\\")),e.next=3,Promise.resolve();case 3:case\\"end\\":return e.stop()}}),e,this)})));function r(){return e.apply(this,arguments)}return r}()}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"import _regeneratorRuntime from \\"@babel/runtime/regenerator\\";
+import _asyncToGenerator from \\"@babel/runtime/helpers/asyncToGenerator\\";
+import _classCallCheck from \\"@babel/runtime/helpers/classCallCheck\\";
+import _createClass from \\"@babel/runtime/helpers/createClass\\";
+
+/* global test */
+import \\"./otherfile\\";
+
+var Test = /*#__PURE__*/function () {
+  function Test(name) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+  }
+
+  _createClass(Test, [{
+    key: \\"sayHi\\",
+    value: function () {
+      var _sayHi = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                //eslint-disable-next-line no-console
+                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                _context.next = 3;
+                return Promise.resolve();
+
+              case 3:
+              case \\"end\\":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function sayHi() {
+        return _sayHi.apply(this, arguments);
+      }
+
+      return sayHi;
+    }()
+  }]);
+
+  return Test;
+}();
+
+var test = new Test(\\"Stéphane\\");
+test.sayHi();
 //# sourceMappingURL=script.js.map
 "
 `;
 
 exports[`Compiles JavaScript, keeps runtime external 3`] = `
-"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
+"setTimeout(function () {
+  //eslint-disable-next-line no-console
+  console.log(\\"Welcome to this website\\");
+}, 1000);
 //# sourceMappingURL=otherfile.js.map
 "
 `;

@@ -7,9 +7,11 @@ class Test {
     this.name = name;
   }
 
-  sayHi() {
+  async sayHi() {
     //eslint-disable-next-line no-console
     console.log(`Hello ${this.name} !`);
+
+    await Promise.resolve();
   }
 }
 
