@@ -242,7 +242,7 @@ Object {
 `;
 
 exports[`Works with rollup 2`] = `
-"function e(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}function n(e,n){for(var t=0;t<n.length;t++){var o=n[t];o.enumerable=o.enumerable||!1,o.configurable=!0,\\"value\\"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function t(e,t,o){return t&&n(e.prototype,t),o&&n(e,o),e}var o=function(){function n(){e(this,n),console.log(\\"Something happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();var r=function(){function n(){e(this,n),console.log(\\"Something else happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();export{o as C,r as D};
+"function e(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}function n(e,n){for(var t=0;t<n.length;t++){var o=n[t];o.enumerable=o.enumerable||!1,o.configurable=!0,\\"value\\"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function t(e,t,o){return t&&n(e.prototype,t),o&&n(e,o),e}var o=/*#__PURE__*/function(){function n(){e(this,n),console.log(\\"Something happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();var r=/*#__PURE__*/function(){function n(){e(this,n),console.log(\\"Something else happens here\\")}return t(n,[{key:\\"someMethod\\",value:function(){alert(\\"yes, alert still exists\\")}}]),n}();export{o as C,r as D};
 //# sourceMappingURL=myTSBundle.min.js.map
 "
 `;
