@@ -10,6 +10,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -18,7 +19,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript 2`] = `
-"function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,n,t){return n&&_defineProperties(e.prototype,n),t&&_defineProperties(e,t),e}import\\"./otherfile\\";var Test=function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,n){for(var t=0;t<n.length;t++){var a=n[t];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,n,t){return n&&_defineProperties(e.prototype,n),t&&_defineProperties(e,t),e}import\\"./otherfile\\";var Test=/*#__PURE__*/function(){function e(n){_classCallCheck(this,e),this.name=n}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=script.js.map
 "
 `;
@@ -39,6 +40,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -47,7 +49,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript and concatenates 2`] = `
-"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);var Test=function(){function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);var Test=/*#__PURE__*/function(){function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
@@ -62,6 +64,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -89,6 +92,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__] Finished 'js_myBundle' after ____ ms
 [__:__:__] Finished 'js' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -97,13 +101,152 @@ Object {
 `;
 
 exports[`Compiles JavaScript, keeps runtime external 2`] = `
-"import _classCallCheck from\\"@babel/runtime/helpers/classCallCheck\\";import _createClass from\\"@babel/runtime/helpers/createClass\\";import\\"./otherfile\\";var Test=function(){function e(s){_classCallCheck(this,e),this.name=s}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"import _regeneratorRuntime from \\"@babel/runtime/regenerator\\";
+import _asyncToGenerator from \\"@babel/runtime/helpers/asyncToGenerator\\";
+import _classCallCheck from \\"@babel/runtime/helpers/classCallCheck\\";
+import _createClass from \\"@babel/runtime/helpers/createClass\\";
+
+/* global test */
+import \\"./otherfile\\";
+
+var Test = /*#__PURE__*/function () {
+  function Test(name) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+  }
+
+  _createClass(Test, [{
+    key: \\"sayHi\\",
+    value: function () {
+      var _sayHi = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                //eslint-disable-next-line no-console
+                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                _context.next = 3;
+                return Promise.resolve();
+
+              case 3:
+              case \\"end\\":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function sayHi() {
+        return _sayHi.apply(this, arguments);
+      }
+
+      return sayHi;
+    }()
+  }]);
+
+  return Test;
+}();
+
+var test = new Test(\\"Stéphane\\");
+test.sayHi();
 //# sourceMappingURL=script.js.map
 "
 `;
 
 exports[`Compiles JavaScript, keeps runtime external 3`] = `
-"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
+"setTimeout(function () {
+  //eslint-disable-next-line no-console
+  console.log(\\"Welcome to this website\\");
+}, 1000);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
+exports[`Compiles JavaScript, new features transpiled 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-new-features/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, new features transpiled 2`] = `
+"import _regeneratorRuntime from \\"@babel/runtime/regenerator\\";
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"next\\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"throw\\", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* global test */
+import \\"./otherfile\\";
+
+var Test = /*#__PURE__*/function () {
+  function Test(name) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+  }
+
+  _createClass(Test, [{
+    key: \\"sayHi\\",
+    value: function () {
+      var _sayHi = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                //eslint-disable-next-line no-console
+                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                _context.next = 3;
+                return Promise.resolve();
+
+              case 3:
+              case \\"end\\":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function sayHi() {
+        return _sayHi.apply(this, arguments);
+      }
+
+      return sayHi;
+    }()
+  }]);
+
+  return Test;
+}();
+
+var test = new Test(\\"Stéphane\\");
+test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, new features transpiled 3`] = `
+"setTimeout(function () {
+  //eslint-disable-next-line no-console
+  console.log(\\"Welcome to this website\\");
+}, 1000);
 //# sourceMappingURL=otherfile.js.map
 "
 `;
@@ -118,6 +261,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js
   14:7  error  Parsing error: Unexpected token
@@ -149,6 +293,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5/js/script.js
   3:14  error  Replace \`·(one,\` with \`(one,·\`       @swissquote/swissquote/prettier/prettier
@@ -177,6 +322,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
+\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/lints-es5-dev/js/script.js
   3:14  warning  Replace \`·(one,\` with \`(one,·\`  @swissquote/swissquote/prettier/prettier

@@ -32,7 +32,7 @@ module.exports = {
 
     // Swissquote Rules
     // Disabled for now as it has false positives on inline handlers
-    // TODO :: file a bug report
+    // TODO :: re-enable jsx-handler-names once https://github.com/yannickcr/eslint-plugin-react/issues/2832 is fixed
     "@swissquote/swissquote/react/jsx-handler-names": "off",
     "@swissquote/swissquote/react/jsx-pascal-case": "error",
     "@swissquote/swissquote/react/no-did-mount-set-state": "error",

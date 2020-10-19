@@ -16,39 +16,13 @@ function snapshotizeOutput(ret) {
       .replace(/^\[[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]/gm, "[__:__:__]") // Remove timestamps
       .replace(/after ([0-9]*(?:\.[0-9]*)?) (h|min|[mnμ]?s)/g, "after ____ ms") // Remove durations
       .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
-      .replace(/｢atl｣: Time: ([0-9]*)ms/g, "｢atl｣: Time:  ____ms") // Remove durations
       .replace(/\d+(?:\.\d+)? KiB/g, "___ KiB") // Remove sizes from webpack
       .replace(/\d+ bytes/g, "___ bytes") // Remove sizes from webpack
       .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
-      // TODO :: find a way to cleanly handle promise rejection
-      .replace(
-        /(.*)DeprecationWarning: Unhandled promise rejections are deprecated.(.*)\n/g,
-        ""
-      ) // Remove unhandled rejections
-      .replace(
-        /(.*)DeprecationWarning: Using a domain property in MakeCallback is deprecated. Use the async_context variant of MakeCallback or the AsyncResource class instead.(.*)\n/g,
-        ""
-      ) // This error is triggered starting with Node 10, it seems it's internal to the node engine and somewhat related to webpack tests ...
-      .replace(
-        /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
-        ""
-      ) // Node 14 specific output
-      .replace(
-        /result \[webpack\/bootstrap (.*?)\]/g,
-        "result [webpack/bootstrap UNIQUE_ID]"
-      ) // Remove hash from webpack results
       .replace(
         /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
         "Starting Crafty __version__"
       ) // Remove version information in crafty output
-      .replace(
-        /Using typescript@([0-9]+\.[0-9]+\.[0-9]+)/g,
-        "Using typescript@__version__"
-      ) // Remove version information in typescript loader output
-      .replace(
-        /postcss-loader\/lib\?({.*})!/g,
-        "postcss-loader?{__POSTCSS_OPTIONS__}!"
-      ) // Remove very custom postcss options
       .replace(/^(\s*)PASS(\s*)/gm, "PASS ") // Fix weird space in some case with nested jest runs (Jest)
       .replace(/^(\s*)FAIL(\s*)/gm, "FAIL ") // Fix weird space in some case with nested jest runs (Jest)
       .replace(
