@@ -20,6 +20,10 @@ function snapshotizeOutput(ret) {
       .replace(/\d+ bytes/g, "___ bytes") // Remove sizes from webpack
       .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
       .replace(
+        /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
+        ""
+      ) // Node 14 specific output
+      .replace(
         /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
         "Starting Crafty __version__"
       ) // Remove version information in crafty output
