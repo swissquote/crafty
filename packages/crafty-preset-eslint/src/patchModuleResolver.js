@@ -13,8 +13,9 @@
 const path = require("path");
 const fs = require("fs");
 
-function getFolderFromModule() {
+function getESLintFolderFromModule() {
   let currentModule = module;
+
   while (
     !/[\\/]eslint[\\/]lib[\\/]cli-engine[\\/]config-array-factory\.js/i.test(
       currentModule.filename
@@ -29,6 +30,25 @@ function getFolderFromModule() {
     currentModule = currentModule.parent;
   }
   return path.join(path.dirname(currentModule.filename), "../..");
+}
+
+function getESLintrcFolderFromModule() {
+  let currentModule = module;
+
+  while (
+    !/@eslint[\\/]eslintrc[\\/]lib[\\/]config-array-factory.js/i.test(
+      currentModule.filename
+    )
+  ) {
+    if (!currentModule.parent) {
+      // This was tested with ESLint 7.5.0; other versions may not work
+      throw new Error(
+        "Failed to patch ESLint because the calling module was not recognized"
+      );
+    }
+    currentModule = currentModule.parent;
+  }
+  return path.join(path.dirname(currentModule.filename), "..");
 }
 
 function checkESLintVersion(eslintPath) {
@@ -80,7 +100,17 @@ const errors = [];
 
 // Get from currently loaded module
 try {
-  const eslintFolder = getFolderFromModule();
+  const eslintFolder = getESLintFolderFromModule();
+  checkESLintVersion(eslintFolder);
+  patch(eslintFolder);
+  succeeded = true;
+} catch (e) {
+  errors.push(e);
+}
+
+// Get from currently loaded module
+try {
+  const eslintFolder = getESLintrcFolderFromModule();
   checkESLintVersion(eslintFolder);
   patch(eslintFolder);
   succeeded = true;
@@ -102,10 +132,31 @@ try {
 
 // Get relative to this module
 try {
+  const relativeEslintrcFolder = require
+    .resolve("@eslint/eslintrc/package.json")
+    .replace(/\/package\.json$/, "");
+  patch(relativeEslintrcFolder);
+  succeeded = true;
+} catch (e) {
+  errors.push(e);
+}
+
+// Get relative to this module
+try {
   const mainEslintFolder = path.join(process.cwd(), "node_modules", "eslint");
   if (fs.existsSync(mainEslintFolder)) {
     checkESLintVersion(mainEslintFolder);
     patch(mainEslintFolder);
+    succeeded = true;
+  }
+} catch (e) {
+  errors.push(e);
+}
+
+try {
+  const mainEslintrcFolder = path.join(process.cwd(), "node_modules", "@eslint", "eslintrc");
+  if (fs.existsSync(mainEslintrcFolder)) {
+    patch(mainEslintrcFolder);
     succeeded = true;
   }
 } catch (e) {
