@@ -16,7 +16,13 @@ function snapshotizeOutput(ret) {
       .replace(/^\[[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]/gm, "[__:__:__]") // Remove timestamps
       .replace(/after ([0-9]*(?:\.[0-9]*)?) (h|min|[mnμ]?s)/g, "after ____ ms") // Remove durations
       .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
+      .replace(/\d+(?:\.\d+)? KiB/g, "___ KiB") // Remove sizes from webpack
+      .replace(/\d+ bytes/g, "___ bytes") // Remove sizes from webpack
       .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
+      .replace(
+        /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
+        ""
+      ) // Node 14 specific output
       .replace(
         /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
         "Starting Crafty __version__"
@@ -43,6 +49,7 @@ function snapshotizeOutput(ret) {
         /"moduleDirectories": \[([\s\S]*?)\]/g,
         `"moduleDirectories": [ /* Ignored paths for diff */ ]`
       ) // Fix paths that tend to vary by environment
+      .replace(/\(node:[0-9]*\)/gm, "(node:11111)")
       .replace(/webpackJsonp_([a-z0-9]{8})/gm, "webpackJsonp_UNIQID") // make random webpackjsonp less random
       .replace(/\/.pnp\/externals\/pnp-[a-f0-9]{40}/, "") // Normalize Yarn PNP Paths
       .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0

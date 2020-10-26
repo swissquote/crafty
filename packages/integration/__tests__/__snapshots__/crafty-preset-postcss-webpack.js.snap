@@ -11,16 +11,13 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                           status
-  1 kB  0        postcss-loader!./css/style.scss  built
-  1 kB  3        multi ./js/app.js                built
-  1 kB  4        ./js/app.js + 2 modules          built
-
-  size  name     asset                            status
-  1 kB  default  myBundle.min.js                  emitted
-  1 kB  default  myBundle.min.js.map              emitted
-
-  (2 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 4 modules
+  dependent modules ___ KiB [dependent] 3 modules
+  ./js/app.js + 2 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -33,7 +30,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack 2`] = `
-"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,(function(){return function(e){var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}return t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:r})},t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(t.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&n&&\\"string\\"!=typeof e)for(var o in e)t.d(r,o,function(n){return e[n]}.bind(null,o));return r},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,\\"a\\",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p=\\"\\",t(t.s=3)}([function(e,n,t){\\"use strict\\";var r=t(2);var o=t.n(r);var a=o()((function(e){return e[1]}));a.push([e.i,\\"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}\\",\\"\\"]),n.a=a},function(e,n,t){\\"use strict\\";var r=function(){var e;return function(){return\\"undefined\\"===typeof e&&(e=Boolean(window&&document&&document.all&&!window.atob)),e}}();var o=function(){var e={};return function(n){if(\\"undefined\\"===typeof e[n]){var t=document.querySelector(n);if(window.HTMLIFrameElement&&t instanceof window.HTMLIFrameElement)try{t=t.contentDocument.head}catch(e){t=null}e[n]=t}return e[n]}}();var a=[];function i(e){var n=-1;for(var t=0;t<a.length;t++)if(a[t].identifier===e){n=t;break}return n}function u(e,n){var t={};var r=[];for(var o=0;o<e.length;o++){var u=e[o];var c=n.base?u[0]+n.base:u[0];var f=t[c]||0;var l=\\"\\".concat(c,\\" \\").concat(f);t[c]=f+1;var s=i(l);var d={css:u[1],media:u[2],sourceMap:u[3]};-1!==s?(a[s].references++,a[s].updater(d)):a.push({identifier:l,updater:h(d,n),references:1}),r.push(l)}return r}function c(e){var n=document.createElement(\\"style\\");var r=e.attributes||{};if(\\"undefined\\"===typeof r.nonce){var a=t.nc;a&&(r.nonce=a)}if(Object.keys(r).forEach((function(e){n.setAttribute(e,r[e])})),\\"function\\"===typeof e.insert)e.insert(n);else{var i=o(e.insert||\\"head\\");if(!i)throw new Error(\\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\\");i.appendChild(n)}return n}function f(e){if(null===e.parentNode)return!1;e.parentNode.removeChild(e)}var l=function(){var e=[];return function(n,t){return e[n]=t,e.filter(Boolean).join(\\"\\\\n\\")}}();function s(e,n,t,r){var o=t?\\"\\":r.media?\\"@media \\".concat(r.media,\\" {\\").concat(r.css,\\"}\\"):r.css;if(e.styleSheet)e.styleSheet.cssText=l(n,o);else{var a=document.createTextNode(o);var i=e.childNodes;i[n]&&e.removeChild(i[n]),i.length?e.insertBefore(a,i[n]):e.appendChild(a)}}function d(e,n,t){var r=t.css;var o=t.media;var a=t.sourceMap;if(o?e.setAttribute(\\"media\\",o):e.removeAttribute(\\"media\\"),a&&\\"undefined\\"!==typeof btoa&&(r+=\\"\\\\n/*# sourceMappingURL=data:application/json;base64,\\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(a)))),\\" */\\")),e.styleSheet)e.styleSheet.cssText=r;else{while(e.firstChild)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}var v=null;var p=0;function h(e,n){var t;var r;var o;if(n.singleton){var a=p++;t=v||(v=c(n)),r=s.bind(null,t,a,!1),o=s.bind(null,t,a,!0)}else t=c(n),r=d.bind(null,t,n),o=function(){f(t)};return r(e),function(n){if(n){if(n.css===e.css&&n.media===e.media&&n.sourceMap===e.sourceMap)return;r(e=n)}else o()}}e.exports=function(e,n){n=n||{},n.singleton||\\"boolean\\"===typeof n.singleton||(n.singleton=r()),e=e||[];var t=u(e,n);return function(e){if(e=e||[],\\"[object Array]\\"!==Object.prototype.toString.call(e))return;for(var r=0;r<t.length;r++){var o=t[r];var c=i(o);a[c].references--}var f=u(e,n);for(var l=0;l<t.length;l++){var s=t[l];var d=i(s);0===a[d].references&&(a[d].updater(),a.splice(d,1))}t=f}}},function(e,n,t){\\"use strict\\";e.exports=function(e){var n=[];return n.toString=function(){return this.map((function(n){var t=e(n);if(n[2])return\\"@media \\".concat(n[2],\\" {\\").concat(t,\\"}\\");return t})).join(\\"\\")},n.i=function(e,t,r){\\"string\\"===typeof e&&(e=[[null,e,\\"\\"]]);var o={};if(r)for(var a=0;a<this.length;a++){var i=this[a][0];null!=i&&(o[i]=!0)}for(var u=0;u<e.length;u++){var c=[].concat(e[u]);if(r&&o[c[0]])continue;t&&(c[2]?c[2]=\\"\\".concat(t,\\" and \\").concat(c[2]):c[2]=t),n.push(c)}},n}},function(e,n,t){e.exports=t(4)},function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.r(n),t.d(n,\\"default\\",(function(){return c}));var o=t(1);var a=t.n(o);var i=t(0);var u={};u.insert=\\"head\\",u.singleton=!1;a()(i.a,u);i.a.locals;var c=function e(){r(this,e)}}])}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(self,(function(){return function(){\\"use strict\\";var e={475:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.r(n),t.d(n,{default:function(){return u}});var o=t(191);var a=t.n(o);var i=t(176);var c={};c.insert=\\"head\\",c.singleton=!1;a()(i.Z,c);i.Z.locals;var u=function e(){r(this,e)}},176:function(e,n,t){var r=t(70);var o=t.n(r);var a=o()((function(e){return e[1]}));a.push([e.id,\\"a{color:#00f}.Child{background:#000}.Parent{background:#fff}.Parent--before{color:#333}.Parent--after{color:#eee}.Button{color:orange}.Menu{width:800px}.MenuLink{color:red;background:#056ef0;width:200px}\\",\\"\\"]),n.Z=a},70:function(e){e.exports=function(e){var n=[];return n.toString=function(){return this.map((function(n){var t=e(n);if(n[2])return\\"@media \\".concat(n[2],\\" {\\").concat(t,\\"}\\");return t})).join(\\"\\")},n.i=function(e,t,r){\\"string\\"===typeof e&&(e=[[null,e,\\"\\"]]);var o={};if(r)for(var a=0;a<this.length;a++){var i=this[a][0];null!=i&&(o[i]=!0)}for(var c=0;c<e.length;c++){var u=[].concat(e[c]);if(r&&o[u[0]])continue;t&&(u[2]?u[2]=\\"\\".concat(t,\\" and \\").concat(u[2]):u[2]=t),n.push(u)}},n}},191:function(e,n,t){var r=function(){var e;return function(){return\\"undefined\\"===typeof e&&(e=Boolean(window&&document&&document.all&&!window.atob)),e}}();var o=function(){var e={};return function(n){if(\\"undefined\\"===typeof e[n]){var t=document.querySelector(n);if(window.HTMLIFrameElement&&t instanceof window.HTMLIFrameElement)try{t=t.contentDocument.head}catch(e){t=null}e[n]=t}return e[n]}}();var a=[];function i(e){var n=-1;for(var t=0;t<a.length;t++)if(a[t].identifier===e){n=t;break}return n}function c(e,n){var t={};var r=[];for(var o=0;o<e.length;o++){var c=e[o];var u=n.base?c[0]+n.base:c[0];var f=t[u]||0;var s=\\"\\".concat(u,\\" \\").concat(f);t[u]=f+1;var l=i(s);var d={css:c[1],media:c[2],sourceMap:c[3]};-1!==l?(a[l].references++,a[l].updater(d)):a.push({identifier:s,updater:h(d,n),references:1}),r.push(s)}return r}function u(e){var n=document.createElement(\\"style\\");var r=e.attributes||{};if(\\"undefined\\"===typeof r.nonce){var a=t.nc;a&&(r.nonce=a)}if(Object.keys(r).forEach((function(e){n.setAttribute(e,r[e])})),\\"function\\"===typeof e.insert)e.insert(n);else{var i=o(e.insert||\\"head\\");if(!i)throw new Error(\\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\\");i.appendChild(n)}return n}function f(e){if(null===e.parentNode)return!1;e.parentNode.removeChild(e)}var s=function(){var e=[];return function(n,t){return e[n]=t,e.filter(Boolean).join(\\"\\\\n\\")}}();function l(e,n,t,r){var o=t?\\"\\":r.media?\\"@media \\".concat(r.media,\\" {\\").concat(r.css,\\"}\\"):r.css;if(e.styleSheet)e.styleSheet.cssText=s(n,o);else{var a=document.createTextNode(o);var i=e.childNodes;i[n]&&e.removeChild(i[n]),i.length?e.insertBefore(a,i[n]):e.appendChild(a)}}function d(e,n,t){var r=t.css;var o=t.media;var a=t.sourceMap;if(o?e.setAttribute(\\"media\\",o):e.removeAttribute(\\"media\\"),a&&\\"undefined\\"!==typeof btoa&&(r+=\\"\\\\n/*# sourceMappingURL=data:application/json;base64,\\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(a)))),\\" */\\")),e.styleSheet)e.styleSheet.cssText=r;else{while(e.firstChild)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(r))}}var v=null;var p=0;function h(e,n){var t;var r;var o;if(n.singleton){var a=p++;t=v||(v=u(n)),r=l.bind(null,t,a,!1),o=l.bind(null,t,a,!0)}else t=u(n),r=d.bind(null,t,n),o=function(){f(t)};return r(e),function(n){if(n){if(n.css===e.css&&n.media===e.media&&n.sourceMap===e.sourceMap)return;r(e=n)}else o()}}e.exports=function(e,n){n=n||{},n.singleton||\\"boolean\\"===typeof n.singleton||(n.singleton=r()),e=e||[];var t=c(e,n);return function(e){if(e=e||[],\\"[object Array]\\"!==Object.prototype.toString.call(e))return;for(var r=0;r<t.length;r++){var o=t[r];var u=i(o);a[u].references--}var f=c(e,n);for(var s=0;s<t.length;s++){var l=t[s];var d=i(l);0===a[d].references&&(a[d].updater(),a.splice(d,1))}t=f}}}};var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={id:r,exports:{}};return e[r](o,o.exports,t),o.exports}return t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,{a:n}),n},t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},t(475)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -48,17 +45,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                        status
-  1 kB  0        multi ./js/app.js             built
-  1 kB  1        ./js/app.js + 2 modules       built
-
-  size  name     asset                         status
-  1 kB  default  myBundle-default.min.css      emitted
-  1 kB  default  myBundle-default.min.css.map  emitted
-  1 kB  default  myBundle.min.js               emitted
-  1 kB  default  myBundle.min.js.map           emitted
-
-  (1 module hidden)
+asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset myBundle-default.min.css ___ bytes [emitted] (name: default)
+  sourceMap myBundle-default.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle-default.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
+chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -71,7 +67,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t),n.d(t,\\"default\\",(function(){return o}));var o=function e(){r(this,e)}}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={185:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(185)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -92,17 +88,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                       status
-  1 kB  0        multi ./js/app.js            built
-  1 kB  1        ./js/app.js + 2 modules      built
-
-  size  name     asset                        status
-  1 kB  default  myBundle-object.min.css      emitted
-  1 kB  default  myBundle-object.min.css.map  emitted
-  1 kB  default  myBundle.min.js              emitted
-  1 kB  default  myBundle.min.js.map          emitted
-
-  (1 module hidden)
+asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset myBundle-object.min.css ___ bytes [emitted] (name: default)
+  sourceMap myBundle-object.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle-object.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
+chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -115,7 +110,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' object option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t),n.d(t,\\"default\\",(function(){return o}));var o=function e(){r(this,e)}}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={185:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(185)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -136,17 +131,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                       status
-  1 kB  0        multi ./js/app.js            built
-  1 kB  1        ./js/app.js + 2 modules      built
-
-  size  name     asset                        status
-  1 kB  default  myBundle-string.min.css      emitted
-  1 kB  default  myBundle-string.min.css.map  emitted
-  1 kB  default  myBundle.min.js              emitted
-  1 kB  default  myBundle.min.js.map          emitted
-
-  (1 module hidden)
+asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset myBundle-string.min.css ___ bytes [emitted] (name: default)
+  sourceMap myBundle-string.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle-string.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
+chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
+    ./js/app.js + 1 modules ___ bytes [built] [code generated]
+    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -159,7 +153,7 @@ Object {
 `;
 
 exports[`Compiles CSS within webpack, extracts CSS ('extractCSS' string option) 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}n.r(t),n.d(t,\\"default\\",(function(){return o}));var o=function e(){r(this,e)}}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)(\\"object\\"===typeof exports?exports:e)[n]=o[n]}})(self,(function(){return function(){\\"use strict\\";var e={185:function(e,t,o){function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}o.r(t),o.d(t,{default:function(){return r}});var r=function e(){n(this,e)}}};var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={exports:{}};return e[n](r,r.exports,o),r.exports}return o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},o(185)}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -180,18 +174,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                           status
-  1 kB  0     postcss-loader!./css/style.scss  built failed ✖
-  1 kB  2     multi ./js/app.js                built
-  1 kB  3     ./js/app.js + 2 modules          built ✖
-
-  (2 assets, 1 module hidden)
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 4 modules
+  dependent modules ___ KiB [dependent] 2 modules
+  ./js/app.js + 2 modules ___ bytes [built] [code generated] [1 error]
 
   Failed to compile.
 
-./css/style.scss (__PATH__/node_modules/css-loader/dist/cjs.js??ref--4-1!__PATH__/node_modules/postcss-loader/dist/cjs.js??ref--4-2!./css/style.scss)
 Syntax error: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpack/fails/css/style.scss Unknown word (10:13)
-
    8 |     @at-root {
    9 |         .Child
 > 10 |             background: black;
