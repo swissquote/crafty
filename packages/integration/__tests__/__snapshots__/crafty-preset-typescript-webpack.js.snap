@@ -10,7 +10,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
 asset someLibrary.myBundle.min.js ___ bytes [emitted] [minimized] (name: someLibrary)
@@ -54,11 +53,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
-(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 assets by path js/*.ts ___ bytes
   asset js/SomeLibrary.d.ts ___ bytes [emitted]
   asset js/script.d.ts ___ bytes [emitted]
@@ -115,7 +109,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
@@ -138,10 +131,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -156,7 +145,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 assets by status ___ KiB [cached] 1 asset
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
@@ -217,7 +205,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
@@ -258,10 +245,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -276,7 +259,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
 assets by status ___ KiB [cached] 5 assets
 Entrypoint default = myBundle.min.js 1 auxiliary asset
 chunk (runtime: default) 0.myBundle.min.js ___ bytes [rendered]
@@ -321,10 +303,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/lints/js
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 ",
 }
 `;
@@ -339,11 +317,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-\`resolve/lib/core\` is deprecated; please use \`is-core-module\` directly
-(node:11111) [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
-BREAKING CHANGE: No more changes should happen to Compilation.assets after sealing the Compilation.
-	Do changes to assets earlier, e. g. in Compilation.hooks.processAssets.
-	Make sure to select an appropriate stage from Compilation.PROCESS_ASSETS_STAGE_*.
 asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
 asset js/imported-typescript.d.ts ___ bytes [emitted]
