@@ -52,13 +52,13 @@ css/imported.scss
  1:1  ✖  Types are allowed only inside a scope  swissquote/no-type-outside-scope
 
 css/style.scss
-  4:1   ✖  Types are allowed only inside a scope                                 swissquote/no-type-outside-scope
-  6:14  ⚠  Unexpected unit                                                       length-zero-no-unit
- 10:1   ✖  Expected class selector \\".notAComponent\\" to match specified pattern   selector-class-pattern
- 15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
- 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 ID selectors                 selector-max-id
- 28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
- 31:6   ⚠  Insert \\"⏎\\"                                                            prettier/prettier
+  4:1   ✖  Types are allowed only inside a scope                                                                                                                                                                                           swissquote/no-type-outside-scope
+  6:14  ⚠  Unexpected unit                                                                                                                                                                                                                 length-zero-no-unit
+ 10:1   ✖  Expected class selector \\".notAComponent\\" to match pattern \\"/^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$/\\"   selector-class-pattern
+ 15:1   ✖  A state must be linked to a component                                                                                                                                                                                           swissquote/no-state-without-component
+ 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 ID selectors                                                                                                                                                                           selector-max-id
+ 28:13  ✖  Expected nesting depth to be no more than 2                                                                                                                                                                                     max-nesting-depth
+ 31:6   ⚠  Insert \\"⏎\\"                                                                                                                                                                                                                      prettier/prettier
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -80,13 +80,13 @@ css/imported.scss
  1:1  ✖  Types are allowed only inside a scope  swissquote/no-type-outside-scope
 
 css/style.scss
-  4:1   ✖  Types are allowed only inside a scope                                 swissquote/no-type-outside-scope
-  6:14  ✖  Unexpected unit                                                       length-zero-no-unit
- 10:1   ✖  Expected class selector \\".notAComponent\\" to match specified pattern   selector-class-pattern
- 15:1   ✖  A state must be linked to a component                                 swissquote/no-state-without-component
- 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 ID selectors                 selector-max-id
- 28:13  ✖  Expected nesting depth to be no more than 2                           max-nesting-depth
- 31:6   ✖  Insert \\"⏎\\"                                                            prettier/prettier
+  4:1   ✖  Types are allowed only inside a scope                                                                                                                                                                                           swissquote/no-type-outside-scope
+  6:14  ✖  Unexpected unit                                                                                                                                                                                                                 length-zero-no-unit
+ 10:1   ✖  Expected class selector \\".notAComponent\\" to match pattern \\"/^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$/\\"   selector-class-pattern
+ 15:1   ✖  A state must be linked to a component                                                                                                                                                                                           swissquote/no-state-without-component
+ 20:1   ✖  Expected \\"#no-id\\" to have no more than 0 ID selectors                                                                                                                                                                           selector-max-id
+ 28:13  ✖  Expected nesting depth to be no more than 2                                                                                                                                                                                     max-nesting-depth
+ 31:6   ✖  Insert \\"⏎\\"                                                                                                                                                                                                                      prettier/prettier
 
 [__:__:__] 'css__lint' errored after ____ ms
 [__:__:__] Stylelint: Errors were found
@@ -116,9 +116,9 @@ css/math.scss
  6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
 
 css/style.scss
- 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11, Edge 17,18, iOS Safari 14,11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.4,13.0-13.1,13.2,13.3,13.4-13.7, Samsung Internet 4   plugin/no-unsupported-browser-features
- 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is only partially supported by IE 11                                                                                                                plugin/no-unsupported-browser-features
- 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 11, Edge 17                                                                                                      plugin/no-unsupported-browser-features
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11, Edge 17,18, iOS Safari 14,9.3,10.3,11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.4,13.0-13.1,13.2,13.3,13.4-13.7, Samsung Internet 4   plugin/no-unsupported-browser-features
+ 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is only partially supported by IE 11                                                                                                                         plugin/no-unsupported-browser-features
+ 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 11, Edge 17                                                                                                               plugin/no-unsupported-browser-features
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms

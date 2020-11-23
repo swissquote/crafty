@@ -154,13 +154,13 @@ __webpack_require__.d(__webpack_exports__, {
   \\"default\\": function() { return /* binding */ newStuff; }
 });
 
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError(\\"Cannot call a class as a function\\");
   }
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/createClass.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/createClass.js
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -176,7 +176,7 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -185,7 +185,7 @@ function _setPrototypeOf(o, p) {
 
   return _setPrototypeOf(o, p);
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/inherits.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/inherits.js
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== \\"function\\" && superClass !== null) {
@@ -201,14 +201,14 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
   return _getPrototypeOf(o);
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js
 function _isNativeReflectConstruct() {
   if (typeof Reflect === \\"undefined\\" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
@@ -221,7 +221,7 @@ function _isNativeReflectConstruct() {
     return false;
   }
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/typeof.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/typeof.js
 function _typeof(obj) {
   \\"@babel/helpers - typeof\\";
 
@@ -237,7 +237,7 @@ function _typeof(obj) {
 
   return _typeof(obj);
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");
@@ -245,7 +245,7 @@ function _assertThisInitialized(self) {
 
   return self;
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
 
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === \\"object\\" || typeof call === \\"function\\")) {
@@ -254,7 +254,7 @@ function _possibleConstructorReturn(self, call) {
 
   return _assertThisInitialized(self);
 }
-// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/createSuper.js
+;// CONCATENATED MODULE: ../../../../../node_modules/@babel/runtime/helpers/esm/createSuper.js
 
 function _createSuper(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct();
@@ -272,7 +272,7 @@ function _createSuper(Derived) {
     return _possibleConstructorReturn(this, result);
   };
 }
-// CONCATENATED MODULE: ./js/Component.js
+;// CONCATENATED MODULE: ./js/Component.js
 
 /* global React */
 var MyComponent = /*#__PURE__*/function (_React$Component) {
@@ -312,7 +312,7 @@ var MyComponent = /*#__PURE__*/function (_React$Component) {
   return MyComponent;
 }(React.Component);
 
-// CONCATENATED MODULE: ./js/script.js
+;// CONCATENATED MODULE: ./js/script.js
 
 var newStuff = /*#__PURE__*/function () {
   function newStuff() {
