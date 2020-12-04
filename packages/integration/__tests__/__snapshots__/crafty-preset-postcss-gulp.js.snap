@@ -116,9 +116,10 @@ css/math.scss
  6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
 
 css/style.scss
- 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11, Edge 17,18, iOS Safari 14,9.3,10.3,11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.4,13.0-13.1,13.2,13.3,13.4-13.7, Samsung Internet 4   plugin/no-unsupported-browser-features
- 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is only partially supported by IE 11                                                                                                                         plugin/no-unsupported-browser-features
- 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 11, Edge 17                                                                                                               plugin/no-unsupported-browser-features
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 9,11, Edge 17,18, iOS Safari 11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.4,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.2, Samsung Internet 4   plugin/no-unsupported-browser-features
+ 158:5  ⚠  Unexpected browser feature \\"css-animation\\" is not supported by IE 9                                                                                                                               plugin/no-unsupported-browser-features
+ 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is not supported by IE 9 and only partially supported by IE 11                                                                                               plugin/no-unsupported-browser-features
+ 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 9,11, Edge 17                                                                                                             plugin/no-unsupported-browser-features
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -450,6 +451,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 
 .Buy {
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
 
 .Heading.Heading--small {
