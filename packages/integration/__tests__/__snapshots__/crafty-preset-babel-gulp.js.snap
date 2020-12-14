@@ -246,6 +246,55 @@ exports[`Compiles JavaScript, new features transpiled 3`] = `
 "
 `;
 
+exports[`Compiles JavaScript, target node > 12 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/compiles-target-node/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, target node > 12 2`] = `
+"/* global test */
+import \\"./otherfile\\";
+
+class Test {
+  constructor(name) {
+    this.name = name;
+  }
+
+  async sayHi() {
+    //eslint-disable-next-line no-console
+    console.log(\`Hello \${this.name} !\`);
+    await Promise.resolve();
+  }
+
+}
+
+const test = new Test(\\"Stéphane\\");
+test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, target node > 12 3`] = `
+"setTimeout(() => {
+  //eslint-disable-next-line no-console
+  console.log(\\"Welcome to this website\\");
+}, 1000);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 Object {
   "status": 1,
