@@ -23,8 +23,10 @@
     "stylelint": "13.8.0"
   },
   "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
   },
   "engines": {
     "node": ">=10.0.0"

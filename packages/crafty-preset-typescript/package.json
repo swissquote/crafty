@@ -6,6 +6,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+  },
   "main": "src/index.js",
   "dependencies": {
     "@babel/core": "7.12.10",

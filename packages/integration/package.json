@@ -4,6 +4,7 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' '__tests__/*.js' '__mocks__/*.js'",
     "test": "jest",
     "test:watch": "jest --watch"
   },

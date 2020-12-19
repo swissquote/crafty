@@ -64,6 +64,81 @@ function uniqueName(isWatching, bundle) {
     .substring(0, 8);
 }
 
+function configureHotReload(crafty, bundle, webpackPort, chain, isWatching) {
+  if (crafty.getEnvironment() === "production" || !isWatching) {
+    return;
+  }
+
+  // Don't finish early in case of errors in development.
+  chain.bail(false);
+  chain.devtool("cheap-module-source-map");
+
+  // Watcher doesn't work well if you mistype casing in a path so we use
+  // a plugin that prints an error when you attempt to do this.
+  // See https://github.com/facebookincubator/create-react-app/issues/240
+  chain
+    .plugin("case-sensitive")
+    .use(require.resolve("case-sensitive-paths-webpack-plugin"));
+
+  // This is necessary to emit hot updates:
+  if (bundle.hot) {
+    chain
+      .plugin("hot")
+      .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
+
+    chain
+      .entry("default")
+      .prepend(
+        `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
+      ) // WebpackDevServer host and port
+      .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
+  }
+
+  chain.devServer
+    .hot(bundle.hot)
+    .host("localhost")
+    .port(webpackPort)
+    .hotOnly(true)
+    .stats(false)
+    .contentBase(crafty.config.destination)
+    .watchOptions({
+      // Ignore the default dist folder as otherwise
+      // webpack can enter a rebuild loop
+      ignored: ["node_modules", `${chain.output.get("path")}/**`]
+    })
+    .headers({
+      "Access-Control-Allow-Origin": "*"
+    });
+}
+
+function configureProfiling(bundle, chain) {
+  // If --profile is passed, we create a
+  // profile that we'll later write to disk
+  if (!process.argv.some(arg => arg === "--profile")) {
+    return;
+  }
+
+  chain.profile(true);
+
+  chain
+    .plugin("bundle-analyzer")
+    .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
+    .use(require.resolve("webpack-bundle-analyzer"), [
+      {
+        analyzerMode: "static",
+        openAnalyzer: false,
+        reportFilename: `${bundle.name}_report.html`,
+        generateStatsFile: true,
+        statsFilename: `${bundle.name}_stats.json`
+      }
+    ]);
+
+  chain
+    .plugin("inspectpack")
+    .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
+    .use(require.resolve("inspectpack/plugin"), [{}]);
+}
+
 module.exports = function(crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
@@ -118,7 +193,7 @@ module.exports = function(crafty, bundle, webpackPort) {
     .set("uniqueName", uniqueName(isWatching, bundle));
 
   if (bundle.library) {
-    chain.output.library(bundle.library) // The library name
+    chain.output.library(bundle.library); // The library name
   }
 
   chain.externals(prepareExternals(bundle.externals));
@@ -141,72 +216,8 @@ module.exports = function(crafty, bundle, webpackPort) {
   }
 
   // Hot Reloading
-  if (crafty.getEnvironment() !== "production" && isWatching) {
-    // Don't finish early in case of errors in development.
-    chain.bail(false);
-    chain.devtool("cheap-module-source-map");
-
-    // Watcher doesn't work well if you mistype casing in a path so we use
-    // a plugin that prints an error when you attempt to do this.
-    // See https://github.com/facebookincubator/create-react-app/issues/240
-    chain
-      .plugin("case-sensitive")
-      .use(require.resolve("case-sensitive-paths-webpack-plugin"));
-
-    // This is necessary to emit hot updates:
-    if (bundle.hot) {
-      chain
-        .plugin("hot")
-        .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
-
-      chain
-        .entry("default")
-        .prepend(
-          `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
-        ) // WebpackDevServer host and port
-        .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
-    }
-
-    chain.devServer
-      .hot(bundle.hot)
-      .host("localhost")
-      .port(webpackPort)
-      .hotOnly(true)
-      .stats(false)
-      .contentBase(config.destination)
-      .watchOptions({
-        // Ignore the default dist folder as otherwise
-        // webpack can enter a rebuild loop
-        ignored: ["node_modules", `${chain.output.get("path")}/**`]
-      })
-      .headers({
-        "Access-Control-Allow-Origin": "*"
-      });
-  }
-
-  // If --profile is passed, we create a
-  // profile that we'll later write to disk
-  if (process.argv.some(arg => arg === "--profile")) {
-    chain.profile(true);
-
-    chain
-      .plugin("bundle-analyzer")
-      .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
-      .use(require.resolve("webpack-bundle-analyzer"), [
-        {
-          analyzerMode: "static",
-          openAnalyzer: false,
-          reportFilename: `${bundle.name}_report.html`,
-          generateStatsFile: true,
-          statsFilename: `${bundle.name}_stats.json`
-        }
-      ]);
-
-    chain
-      .plugin("inspectpack")
-      .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
-      .use(require.resolve("inspectpack/plugin"), [{}]);
-  }
+  configureHotReload(crafty, bundle, webpackPort, chain, isWatching);
+  configureProfiling(bundle, chain);
 
   // Apply preset configuration
   crafty.getImplementations("webpack").forEach(preset => {

@@ -3,6 +3,7 @@ const path = require("path");
 const resolveFrom = require("resolve-from");
 const tmp = require("tmp");
 
+// eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity
 function configurationBuilder(args) {
   const configuration = {
     plugins: ["@swissquote/swissquote"],

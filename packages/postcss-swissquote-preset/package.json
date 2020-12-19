@@ -7,6 +7,9 @@
     "access": "public"
   },
   "main": "index.js",
+  "scripts": {
+    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src"
+  },
   "dependencies": {
     "autoprefixer": "9.8.6",
     "browserslist": "4.16.0",

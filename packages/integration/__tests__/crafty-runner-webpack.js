@@ -29,9 +29,7 @@ it("Compiles Only with Webpack", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-runner-webpack/fails"
-  );
+  const cwd = await testUtils.getCleanFixtures("crafty-runner-webpack/fails");
 
   const result = await testUtils.run(["run", "default"], cwd);
 
