@@ -17,6 +17,7 @@
     "lint:docs": "sh lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "test": "jest --projects packages/integration packages/eslint-plugin-swissquote packages/stylelint-config-swissquote packages/crafty-runner-webpack packages/crafty && cd packages/rollup-plugin-eslint && yarn test",
+    "test:ci": "oao run-script test:ci",
     "publish:canary": "oao publish --no-git-commit --no-check-uncommitted --no-changelog --publish-tag canary --bump-dependent-reqs=exact",
     "publish:all": "oao publish --no-changelog --bump-dependent-reqs=exact"
   },
