@@ -31,7 +31,7 @@ jobs:
     - name: Linting
       run: yarn lint:ci
     - name: Testing
-      run: yarn test
+      run: yarn test:ci
       env:
         CI: true
         

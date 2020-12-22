@@ -5,5 +5,9 @@ module.exports = {
     "!**/vendor/**"
   ],
   testEnvironment: "node",
-  verbose: true
+  verbose: true,
+  coveragePathIgnorePatterns: [
+    "node_modules",
+    "coverage"
+  ]
 };
