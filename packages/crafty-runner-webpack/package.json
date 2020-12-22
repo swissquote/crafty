@@ -7,7 +7,7 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage"
