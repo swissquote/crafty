@@ -7,6 +7,9 @@
     "access": "public"
   },
   "main": "src/index.js",
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+  },
   "dependencies": {
     "@swissquote/crafty-preset-prettier": "1.13.5",
     "@swissquote/postcss-swissquote-preset": "1.13.5",

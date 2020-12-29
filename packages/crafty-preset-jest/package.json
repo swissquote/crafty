@@ -7,6 +7,9 @@
     "access": "public"
   },
   "main": "src/index.js",
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+  },
   "dependencies": {
     "@babel/core": "7.12.10",
     "@babel/plugin-transform-modules-commonjs": "7.12.1",

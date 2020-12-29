@@ -34,6 +34,7 @@ function getPattern(val) {
 }
 
 /* eslint-disable no-param-reassign */
+// eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity
 function watch(glob, options, cb) {
   if (typeof options === "function") {
     cb = options;

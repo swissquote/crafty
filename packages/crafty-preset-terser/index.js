@@ -39,7 +39,7 @@ module.exports = {
           evaluate: true,
           properties: true,
           unused: true,
-          sequences: true,
+          sequences: true
         },
         format: {
           // preserve annotations like /*#__PURE__*/
@@ -48,11 +48,14 @@ module.exports = {
            * We set this method since by default the option "some" only keeps the comments
            * containing : @preserve|@lic|@cc_on|^\**!
            * But we also need the comments with annotations : [@#]__(PURE|INLINE|NOINLINE)__
-           */ 
+           */
+
           comments(node, comment) {
             return (
-                (comment.type === "comment2" || comment.type === "comment1")
-                && /@preserve|@lic|@cc_on|^\**!|[@#]__(PURE|INLINE|NOINLINE)__/i.test(comment.value)
+              (comment.type === "comment2" || comment.type === "comment1") &&
+              /@preserve|@lic|@cc_on|^\**!|[@#]__(PURE|INLINE|NOINLINE)__/i.test(
+                comment.value
+              )
             );
           }
         },

@@ -4,8 +4,10 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' '__tests__/*.js' '__mocks__/*.js'",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --reporter=text --reporter=lcov --reporter=html jest"
   },
   "dependencies": {
     "@babel/core": "7.12.10",
@@ -22,6 +24,7 @@
     "@swissquote/crafty-runner-rollup": "1.13.5",
     "@swissquote/crafty-runner-webpack": "1.13.5",
     "@types/jest": "^26.0.19",
+    "c8": "^7.3.5",
     "execa": "5.0.0",
     "jest": "26.6.3",
     "react": "17.0.1",

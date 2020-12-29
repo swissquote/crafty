@@ -12,7 +12,9 @@
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage",
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'"
   },
   "dependencies": {
     "ansi-colors": "^4.0.0",

@@ -15,6 +15,7 @@ function initBundle(crafty, bundle, bundleCreators, type, chosenRunner) {
   }
 }
 
+// eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity
 function registerTasks(crafty) {
   let bundleCreators = {};
   crafty.getImplementations("bundleCreator").forEach(preset => {

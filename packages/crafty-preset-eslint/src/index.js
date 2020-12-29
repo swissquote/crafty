@@ -94,11 +94,11 @@ module.exports = {
     chain.resolveLoader.modules.add(MODULES);
 
     // JavaScript linting
-    chain
-      .plugin("lint-js")
-      .use(require.resolve("eslint-webpack-plugin"), [{
+    chain.plugin("lint-js").use(require.resolve("eslint-webpack-plugin"), [
+      {
         extensions: crafty.config.eslintExtensions,
         overrideConfigFile: toTempFile(crafty.config.eslint)
-      }]);
+      }
+    ]);
   }
 };

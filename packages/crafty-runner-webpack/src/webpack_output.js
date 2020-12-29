@@ -1,6 +1,6 @@
 const colors = require("ansi-colors");
-const plur = require('plur');
-const symbols = require('log-symbols');
+const plur = require("plur");
+const symbols = require("log-symbols");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
@@ -17,7 +17,10 @@ function styleTime(ms) {
 
   const styles = [colors.red.bold, colors.red, colors.yellow, colors.green];
   const values = [ubound, ubound / 2, lbound * 2, lbound];
-  const closest = Math.max.apply(null, values.filter(v => v <= ms));
+  const closest = Math.max.apply(
+    null,
+    values.filter(v => v <= ms)
+  );
   const style = styles[values.indexOf(closest)];
 
   return style(out);
@@ -30,17 +33,21 @@ function footer(counts) {
   if (problems > 0) {
     const symbol = counts.errors > 0 ? symbols.error : symbols.warning;
     const style = {
-      errors: counts.errors > 0 ? 'red' : 'dim',
-      problems: problems > 0 ? 'bold' : 'dim',
-      warnings: counts.warnings > 0 ? 'yellow' : 'dim'
+      errors: counts.errors > 0 ? "red" : "dim",
+      problems: problems > 0 ? "bold" : "dim",
+      warnings: counts.warnings > 0 ? "yellow" : "dim"
     };
     const labels = {
-      errors: plur('error', counts.errors),
-      problems: colors[style.problems](`${problems} ${plur('problem', problems)}`),
-      warnings: plur('warning', counts.warnings)
+      errors: plur("error", counts.errors),
+      problems: colors[style.problems](
+        `${problems} ${plur("problem", problems)}`
+      ),
+      warnings: plur("warning", counts.warnings)
     };
     const errors = colors[style.errors](`${counts.errors} ${labels.errors}`);
-    const warnings = colors[style.warnings](`${counts.warnings} ${labels.warnings}`);
+    const warnings = colors[style.warnings](
+      `${counts.warnings} ${labels.warnings}`
+    );
 
     if (counts.errors > 0) {
       labels.problems = colors[style.errors](labels.problems);
@@ -51,7 +58,7 @@ function footer(counts) {
     result.push(`${symbol} ${labels.problems} (${errors}, ${warnings})`);
   }
 
-  return result.join('\n');
+  return result.join("\n");
 }
 
 module.exports = function(stats, compiler) {
@@ -97,7 +104,7 @@ module.exports = function(stats, compiler) {
   } else {
     console.log(`\n  ${colors.green("Compiled successfully!")}`);
   }
-  
+
   const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${styleTime(
     json.time
   )}`;

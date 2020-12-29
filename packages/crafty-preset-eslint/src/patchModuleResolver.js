@@ -154,7 +154,12 @@ try {
 }
 
 try {
-  const mainEslintrcFolder = path.join(process.cwd(), "node_modules", "@eslint", "eslintrc");
+  const mainEslintrcFolder = path.join(
+    process.cwd(),
+    "node_modules",
+    "@eslint",
+    "eslintrc"
+  );
   if (fs.existsSync(mainEslintrcFolder)) {
     patch(mainEslintrcFolder);
     succeeded = true;
@@ -164,7 +169,7 @@ try {
 }
 
 if (!succeeded) {
-  errors.forEach((error) => console.error(error));
+  errors.forEach(error => console.error(error));
   throw new Error(
     "Impossible to patch ESLint for module resolution. All attempts failed."
   );

@@ -28,8 +28,10 @@ jobs:
         java-version: '11'
     - name: yarn install
       run: yarn install
-    - name: yarn test
-      run: yarn test
+    - name: Linting
+      run: yarn lint:ci
+    - name: Testing
+      run: yarn test:ci
       env:
         CI: true
         
