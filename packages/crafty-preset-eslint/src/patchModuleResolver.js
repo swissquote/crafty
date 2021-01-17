@@ -98,73 +98,51 @@ function patch(eslintPath) {
 let succeeded = false;
 const errors = [];
 
-// Get from currently loaded module
-try {
-  const eslintFolder = getESLintFolderFromModule();
-  checkESLintVersion(eslintFolder);
-  patch(eslintFolder);
-  succeeded = true;
-} catch (e) {
-  errors.push(e);
-}
+// Patch ESLint directly
+// This works if it's a version from before it was separated into @eslint/eslintrc
+const eslintPossiblePaths = [
+  getESLintFolderFromModule,
+  () => require.resolve("eslint/package.json").replace(/\/package\.json$/, ""),
+  () => path.join(process.cwd(), "node_modules", "eslint")
+];
 
-// Get from currently loaded module
-try {
-  const eslintFolder = getESLintrcFolderFromModule();
-  checkESLintVersion(eslintFolder);
-  patch(eslintFolder);
-  succeeded = true;
-} catch (e) {
-  errors.push(e);
-}
-
-// Get relative to this module
-try {
-  const relativeEslintFolder = require
-    .resolve("eslint/package.json")
-    .replace(/\/package\.json$/, "");
-  checkESLintVersion(relativeEslintFolder);
-  patch(relativeEslintFolder);
-  succeeded = true;
-} catch (e) {
-  errors.push(e);
-}
-
-// Get relative to this module
-try {
-  const relativeEslintrcFolder = require
-    .resolve("@eslint/eslintrc/package.json")
-    .replace(/\/package\.json$/, "");
-  patch(relativeEslintrcFolder);
-  succeeded = true;
-} catch (e) {
-  errors.push(e);
-}
-
-// Get relative to this module
-try {
-  const mainEslintFolder = path.join(process.cwd(), "node_modules", "eslint");
-  if (fs.existsSync(mainEslintFolder)) {
-    checkESLintVersion(mainEslintFolder);
-    patch(mainEslintFolder);
-    succeeded = true;
+eslintPossiblePaths.forEach(mainEslintFolderFn => {
+  try {
+    const mainEslintFolder = mainEslintFolderFn();
+    if (fs.existsSync(mainEslintFolder)) {
+      checkESLintVersion(mainEslintFolder);
+      patch(mainEslintFolder);
+      succeeded = true;
+    }
+  } catch (e) {
+    errors.push(e);
   }
-} catch (e) {
-  errors.push(e);
-}
+});
 
-try {
-  const mainEslintrcFolder = path.join(process.cwd(), "node_modules", "@eslint", "eslintrc");
-  if (fs.existsSync(mainEslintrcFolder)) {
-    patch(mainEslintrcFolder);
-    succeeded = true;
+// Patch @eslint/eslintrc when it's found
+const eslintrcPossiblePaths = [
+  getESLintrcFolderFromModule,
+  () =>
+    require
+      .resolve("@eslint/eslintrc/package.json")
+      .replace(/\/package\.json$/, ""),
+  () => path.join(process.cwd(), "node_modules", "@eslint", "eslintrc")
+];
+
+eslintrcPossiblePaths.forEach(mainEslintrcFolderFn => {
+  try {
+    const mainEslintrcFolder = mainEslintrcFolderFn();
+    if (fs.existsSync(mainEslintrcFolder)) {
+      patch(mainEslintrcFolder);
+      succeeded = true;
+    }
+  } catch (e) {
+    errors.push(e);
   }
-} catch (e) {
-  errors.push(e);
-}
+});
 
 if (!succeeded) {
-  errors.forEach((error) => console.error(error));
+  errors.forEach(error => console.error(error));
   throw new Error(
     "Impossible to patch ESLint for module resolution. All attempts failed."
   );
