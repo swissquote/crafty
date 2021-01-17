@@ -6,6 +6,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'"
+  },
   "dependencies": {
     "tmp": "0.2.1",
     "xml2js": "0.4.23"

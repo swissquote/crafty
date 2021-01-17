@@ -7,9 +7,12 @@
     "access": "public"
   },
   "main": "index.js",
+  "scripts": {
+    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src"
+  },
   "dependencies": {
     "autoprefixer": "9.8.6",
-    "browserslist": "4.14.5",
+    "browserslist": "4.16.1",
     "caniuse-api": "^3.0.0",
     "debug": "^4.1.0",
     "pixrem": "5.0.0",

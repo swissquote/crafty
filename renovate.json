@@ -53,6 +53,9 @@
       "allowedVersions": "!/4\\.0\\.2/"
     }
   ],
+  "postUpdateOptions": [
+    "yarnDedupeFewer"
+  ],
   "ignoreDeps": ["postcss-custom-properties"],
   "ignorePaths": ["packages/integration/fixtures"]
 }

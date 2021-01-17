@@ -8,8 +8,7 @@
   },
   "main": "./src/index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
     "@swissquote/crafty": "1.13.7",

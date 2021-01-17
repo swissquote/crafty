@@ -7,12 +7,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node-version: [10.x, 12.x]
+        node-version: [10.x, 12.x, 14.x]
         # TODO : add macos and windows as targets
         # TODO : add Yarn PNP as failable build
         exclude:
         - os: macos-latest
-          node-version: 12.x
+          node-version: 14.x
           
     runs-on: ${{ matrix.os }}
 
@@ -28,8 +28,10 @@ jobs:
         java-version: '11'
     - name: yarn install
       run: yarn install
-    - name: yarn test
-      run: yarn test
+    - name: Linting
+      run: yarn lint:ci
+    - name: Testing
+      run: yarn test:ci
       env:
         CI: true
         
