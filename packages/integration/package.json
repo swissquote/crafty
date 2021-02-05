@@ -10,7 +10,7 @@
     "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --reporter=text --reporter=lcov --reporter=html jest --runInBand"
   },
   "dependencies": {
-    "@babel/core": "7.12.10",
+    "@babel/core": "7.12.13",
     "@swissquote/crafty": "1.13.7",
     "@swissquote/crafty-preset-babel": "1.13.7",
     "@swissquote/crafty-preset-eslint": "1.13.7",
@@ -24,7 +24,7 @@
     "@swissquote/crafty-runner-rollup": "1.13.7",
     "@swissquote/crafty-runner-webpack": "1.13.7",
     "@types/jest": "^26.0.19",
-    "c8": "7.3.5",
+    "c8": "7.5.0",
     "execa": "5.0.0",
     "jest": "26.6.3",
     "react": "17.0.1",
@@ -33,7 +33,7 @@
     "rmfr": "2.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-property-literals": "7.12.1",
+    "@babel/plugin-transform-property-literals": "7.12.13",
     "lodash-es": "4.17.20"
   },
   "engines": {
