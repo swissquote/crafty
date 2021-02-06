@@ -52,9 +52,8 @@ asset myBundle-default.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-default.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
-    ./js/app.js + 1 modules ___ bytes [built] [code generated]
-    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
+  dependent modules ___ bytes [dependent] 1 module
+  ./js/app.js + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -95,9 +94,8 @@ asset myBundle-object.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-object.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
-    ./js/app.js + 1 modules ___ bytes [built] [code generated]
-    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
+  dependent modules ___ bytes [dependent] 1 module
+  ./js/app.js + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -138,9 +136,8 @@ asset myBundle-string.min.css ___ bytes [emitted] (name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle-string.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
 chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  code generated modules ___ bytes (javascript) ___ bytes (css/mini-extract) [code generated]
-    ./js/app.js + 1 modules ___ bytes [built] [code generated]
-    css ../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./css/style.scss ___ bytes [code generated]
+  dependent modules ___ bytes [dependent] 1 module
+  ./js/app.js + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms

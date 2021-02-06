@@ -17,6 +17,7 @@ function snapshotizeOutput(ret) {
     .replace(/Δt ([0-9]*(?:\.[0-9]*)?)(h|min|[mnμ]?s)/g, "Δt ____ms") // Remove durations
     .replace(/\d+(?:\.\d+)? KiB/g, "___ KiB") // Remove sizes from webpack
     .replace(/\d+ bytes/g, "___ bytes") // Remove sizes from webpack
+    .replace(/LOG .*\n(?:<[we]>.*\n)+\+.*\n/gm, "") // Remove profiling logs from webpack
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
     .replace(
       /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
