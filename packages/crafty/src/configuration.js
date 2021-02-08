@@ -1,7 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 const findUp = require("find-up");
-const merge = require("merge");
+const { copy } = require("copy-anything");
+const { merge } = require("merge-anything");
 const resolve = require("enhanced-resolve");
 
 const Crafty = require("./Crafty");
@@ -108,7 +109,8 @@ function loadPreset(initialConfig, preset) {
   }
 
   debug(`${loadedModule.presetName}.defaultConfig()`);
-  return merge.recursive(true, config, loadedModule.defaultConfig());
+
+  return copy(merge(config, loadedModule.defaultConfig()));
 }
 
 function endCounter(start, preset) {
@@ -144,13 +146,15 @@ function getCrafty(presets, craftyConfig) {
   debug("getCrafty");
   LOADING = new Set();
 
-  let config = merge(true, defaultConfiguration, {
-    destination: require("path").join(process.cwd(), "dist"),
-    presets: presets.concat(craftyConfig.presets || []),
-    loadedPresets: []
-  });
+  let config = copy(
+    merge(defaultConfiguration, {
+      destination: require("path").join(process.cwd(), "dist"),
+      presets: presets.concat(craftyConfig.presets || []),
+      loadedPresets: []
+    })
+  );
   config = loadMissingPresets(config, config.presets);
-  config = merge.recursive(true, config, craftyConfig);
+  config = copy(merge(config, craftyConfig));
 
   // Use `crafty.config.js` like a preset
   // Add the preset as last item in order to be
