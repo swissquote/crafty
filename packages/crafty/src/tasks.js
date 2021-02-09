@@ -1,5 +1,6 @@
 const debug = require("debug")("crafty:tasks");
-const merge = require("merge");
+const { copy } = require("copy-anything");
+const { merge } = require("merge-anything");
 
 function shortName(runner) {
   return runner.indexOf("/") > -1 ? runner.split("/")[0] : runner;
@@ -19,11 +20,7 @@ function registerTasks(crafty) {
   let bundleCreators = {};
   crafty.getImplementations("bundleCreator").forEach(preset => {
     debug(`${preset.presetName}.bundleCreator(crafty)`);
-    bundleCreators = merge.recursive(
-      true,
-      bundleCreators,
-      preset.bundleCreator(crafty)
-    );
+    bundleCreators = copy(merge(bundleCreators, preset.bundleCreator(crafty)));
   });
 
   const bundleTypes = new Set(

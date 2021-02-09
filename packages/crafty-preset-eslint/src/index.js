@@ -1,5 +1,6 @@
-const merge = require("merge");
 const path = require("path");
+const { copy } = require("copy-anything");
+const { merge } = require("merge-anything");
 
 const {
   configurationBuilder,
@@ -39,9 +40,8 @@ module.exports = {
         if (typeof preset.eslint == "function") {
           extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
         } else {
-          extendedEslintConfig.config = merge.recursive(
-            extendedEslintConfig.config,
-            preset.eslint
+          extendedEslintConfig.config = copy(
+            merge(extendedEslintConfig.config, preset.eslint)
           );
         }
       });

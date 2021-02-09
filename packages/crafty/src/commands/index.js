@@ -1,12 +1,13 @@
 const debug = require("debug")("crafty:commands");
-const merge = require("merge");
+const { copy } = require("copy-anything");
+const { merge } = require("merge-anything");
 
 function getCommands(crafty) {
   debug("Registering Commands");
   let commands = {};
   crafty.getImplementations("commands").forEach(preset => {
     debug(`${preset.presetName}.commands(crafty)`);
-    commands = merge.recursive(true, commands, preset.commands(crafty));
+    commands = copy(merge(commands, preset.commands(crafty)));
   });
   commands.help = require("./help.js");
   commands.run = require("./run.js");
