@@ -7,9 +7,7 @@
     "access": "public"
   },
   "main": "./src/index.js",
-  "bin": {
-    "crafty": "./src/bin.js"
-  },
+  "bin": "./src/bin.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
