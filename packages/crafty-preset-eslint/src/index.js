@@ -81,7 +81,7 @@ module.exports = {
       options: {
         overrideConfigFile: toTempFile(crafty.config.eslint),
         throwOnError: crafty.getEnvironment() === "production",
-        exclude: ["node_modules/**"],
+        exclude: [/node_modules/],
         include: crafty.config.eslintExtensions.map(
           extension => new RegExp(`\.${extension}$`)
         )
