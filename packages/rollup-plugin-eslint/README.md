@@ -2,22 +2,21 @@
 
 [Rollup](https://github.com/rollup/rollup) plugin to verify entry point and all imported files with ESLint.
 
-> This plugin is a fork of [rollup-plugin-eslint](https://www.npmjs.com/package/rollup-plugin-eslint) with a few differences
-> 1. It's compatible with ESLint 7
-> 2. Linting is done on all files and a single report is printed at the end of the run
->    this allows to lint all files and not fail after the first one.
+> This plugin is a fork of [rollup-plugin-eslint](https://www.npmjs.com/package/@rollup/plugin-eslint) with one difference
+> Linting is done on all files and a single report is printed at the end of 
+> the run this allows to lint all files and not fail after the first one.
 
 ## Install
 
 ```sh
-yarn add rollup-plugin-eslint --dev
+yarn add @swissquote/rollup-plugin-eslint --dev
 ```
 
 ## Usage
 
 ```js
 import { rollup } from "rollup";
-import eslint from "rollup-plugin-eslint";
+import eslint from "@swissquote/rollup-plugin-eslint";
 
 export default {
   input: "main.js",
@@ -65,8 +64,8 @@ A single file, or array of files, to include when linting.
 
 ### exclude
 
-Type: `array` or `string`  
-Default: `node_modules/**`
+Type: `array` or `string` or RegExp 
+Default: `/node_modules/`
 
 A single file, or array of files, to exclude when linting.
 

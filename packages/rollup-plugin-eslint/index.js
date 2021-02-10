@@ -31,7 +31,7 @@ function getConfiguration(options) {
 module.exports = function eslintPlugin(options = {}) {
   const {
     include,
-    exclude = "node_modules/**",
+    exclude = /node_modules/,
     formatter = "stylish",
     throwOnWarning,
     throwOnError,
@@ -48,7 +48,8 @@ module.exports = function eslintPlugin(options = {}) {
 
     async transform(code, id) {
       const file = normalizePath(id);
-      if ((await eslint.isPathIgnored(file)) || !filter(file)) {
+
+      if (!filter(file) || await eslint.isPathIgnored(file)) {
         return;
       }
 
