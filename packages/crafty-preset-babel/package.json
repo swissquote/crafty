@@ -11,9 +11,9 @@
     "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@babel/core": "7.12.13",
+    "@babel/core": "7.12.16",
     "@babel/runtime": "7.12.13",
-    "@rollup/plugin-babel": "5.2.3",
+    "@rollup/plugin-babel": "5.3.0",
     "@swissquote/babel-preset-swissquote": "1.13.7",
     "@swissquote/crafty-preset-eslint": "1.13.7",
     "@swissquote/crafty-preset-terser": "1.13.7",
