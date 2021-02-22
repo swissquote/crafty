@@ -38,7 +38,10 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           plugin: require("@rollup/plugin-replace"),
           weight: 30,
           options: {
-            "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
+            preventAssignment: true,
+            values: {
+              "process.env.NODE_ENV": `"${crafty.getEnvironment()}"`
+            }
           }
         },
         pnpResolve: {

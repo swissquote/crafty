@@ -8,8 +8,8 @@ const scssSyntax = require("postcss-scss");
 
 function postcssProcess(rule, schema) {
   const ruleOptions = normalizeRuleSettings(schema.config, rule.ruleName);
-  const rulePrimaryOptions = ruleOptions[0];
-  const ruleSecondaryOptions = ruleOptions[1];
+  const rulePrimaryOptions = ruleOptions && ruleOptions[0];
+  const ruleSecondaryOptions = ruleOptions && ruleOptions[1];
 
   const postcssProcessOptions = { syntax: scssSyntax, from: undefined };
 
