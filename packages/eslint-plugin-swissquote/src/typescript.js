@@ -44,6 +44,6 @@ addMissingRules(
 
 // Disable all the rules from @typescript-eslint that are handled by Prettier
 addMissingRules(
-  require("eslint-config-prettier/@typescript-eslint").rules,
+  require("eslint-config-prettier").rules,
   module.exports.rules
 );

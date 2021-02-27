@@ -10,18 +10,18 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name         module                           status
-  1 kB  2            multi ./js/script.ts             built
-  1 kB  3            ./js/script.ts + 1 modules       built
-  1 kB  4            ./js/SomeLibrary.ts              built
+  size  name         module                                                                   status
+  1 kB  0            (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js + 1 modules  built
+  1 kB  1            (node_modules)/@babel/runtime/helpers/esm/createClass.js + 1 modules     built
+  1 kB  2            multi ./js/script.ts                                                     built
+  1 kB  3            ./js/script.ts + 1 modules                                               built
+  1 kB  4            ./js/SomeLibrary.ts                                                      built
 
-  size  name         asset                            status
-  1 kB  default      myBundle.min.js                  emitted
-  1 kB  default      myBundle.min.js.map              emitted
-  1 kB  someLibrary  someLibrary.myBundle.min.js      emitted
-  1 kB  someLibrary  someLibrary.myBundle.min.js.map  emitted
-
-  (2 modules hidden)
+  size  name         asset                                                                    status
+  1 kB  default      myBundle.min.js                                                          emitted
+  1 kB  default      myBundle.min.js.map                                                      emitted
+  1 kB  someLibrary  someLibrary.myBundle.min.js                                              emitted
+  1 kB  someLibrary  someLibrary.myBundle.min.js.map                                          emitted
 
   Compiled successfully!
   Δt ____ms
@@ -53,21 +53,21 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                      status
-  1 kB  2        multi ./js/script.ts        built
-  1 kB  3        ./js/script.ts + 1 modules  built
-  1 kB  4        ./js/SomeLibrary.ts         built
+  size  name     module                                                                   status
+  1 kB  0        (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js + 1 modules  built
+  1 kB  1        (node_modules)/@babel/runtime/helpers/esm/createClass.js + 1 modules     built
+  1 kB  2        multi ./js/script.ts                                                     built
+  1 kB  3        ./js/script.ts + 1 modules                                               built
+  1 kB  4        ./js/SomeLibrary.ts                                                      built
 
-  size  name     asset                       status
-  1 kB  js       1.myBundle.min.js           emitted
-  1 kB  map      1.myBundle.min.js.map       emitted
-  1 kB  ts       js/Component.d.ts           emitted
-  1 kB  ts       js/SomeLibrary.d.ts         emitted
-  1 kB  ts       js/script.d.ts              emitted
-  1 kB  default  myBundle.min.js             emitted
-  1 kB  default  myBundle.min.js.map         emitted
-
-  (2 modules hidden)
+  size  name     asset                                                                    status
+  1 kB  js       1.myBundle.min.js                                                        emitted
+  1 kB  map      1.myBundle.min.js.map                                                    emitted
+  1 kB  ts       js/Component.d.ts                                                        emitted
+  1 kB  ts       js/SomeLibrary.d.ts                                                      emitted
+  1 kB  ts       js/script.d.ts                                                           emitted
+  1 kB  default  myBundle.min.js                                                          emitted
+  1 kB  default  myBundle.min.js.map                                                      emitted
 
   Compiled successfully!
   Δt ____ms
@@ -110,7 +110,7 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
+  1 kB  1     ./js/typescript.ts + 4 modules  built ✖
 
   (3 assets hidden)
 
@@ -148,7 +148,7 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
+  1 kB  1     ./js/typescript.ts + 4 modules  built ✖
 
   (2 assets hidden)
 
@@ -210,7 +210,7 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
   size  name  module                          status
   1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built ✖
+  1 kB  1     ./js/typescript.ts + 4 modules  built ✖
 
   (3 assets hidden)
 
@@ -264,12 +264,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                      status
-  1 kB  2     multi ./js/script.ts        built
-  1 kB  3     ./js/script.ts + 1 modules  built ✖
-  1 kB  4     ./js/SomeLibrary.ts         built ✖
+  size  name  module                                                                   status
+  1 kB  0     (node_modules)/@babel/runtime/helpers/esm/classCallCheck.js + 1 modules  built
+  1 kB  1     (node_modules)/@babel/runtime/helpers/esm/createClass.js + 1 modules     built
+  1 kB  2     multi ./js/script.ts                                                     built
+  1 kB  3     ./js/script.ts + 1 modules                                               built ✖
+  1 kB  4     ./js/SomeLibrary.ts                                                      built ✖
 
-  (7 assets, 2 modules hidden)
+  (7 assets hidden)
 
   Failed to compile.
 
@@ -325,7 +327,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
   1 kB  0        multi ./js/index.ts          built
-  1 kB  1        ./js/index.ts + 3 modules    built
+  1 kB  1        ./js/index.ts + 5 modules    built
 
   size  name     asset                        status
   1 kB  ts       js/imported-typescript.d.ts  emitted
