@@ -14,7 +14,7 @@ Object {
   size  name     module                           status
   1 kB  0        postcss-loader!./css/style.scss  built
   1 kB  3        multi ./js/app.js                built
-  1 kB  4        ./js/app.js + 3 modules          built
+  1 kB  4        ./js/app.js + 2 modules          built
 
   size  name     asset                            status
   1 kB  default  myBundle.min.js                  emitted
@@ -50,7 +50,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                        status
   1 kB  0        multi ./js/app.js             built
-  1 kB  1        ./js/app.js + 3 modules       built
+  1 kB  1        ./js/app.js + 2 modules       built
 
   size  name     asset                         status
   1 kB  default  myBundle-default.min.css      emitted
@@ -94,7 +94,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
   1 kB  0        multi ./js/app.js            built
-  1 kB  1        ./js/app.js + 3 modules      built
+  1 kB  1        ./js/app.js + 2 modules      built
 
   size  name     asset                        status
   1 kB  default  myBundle-object.min.css      emitted
@@ -138,7 +138,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
   1 kB  0        multi ./js/app.js            built
-  1 kB  1        ./js/app.js + 3 modules      built
+  1 kB  1        ./js/app.js + 2 modules      built
 
   size  name     asset                        status
   1 kB  default  myBundle-string.min.css      emitted
@@ -183,7 +183,7 @@ Object {
   size  name  module                           status
   1 kB  0     postcss-loader!./css/style.scss  built failed ✖
   1 kB  2     multi ./js/app.js                built
-  1 kB  3     ./js/app.js + 3 modules          built ✖
+  1 kB  3     ./js/app.js + 2 modules          built ✖
 
   (2 assets, 1 module hidden)
 

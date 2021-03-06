@@ -46,12 +46,14 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
-  1 kB  0        multi ./js/script.js         built
-  1 kB  1        ./js/script.js + 15 modules  built
+  1 kB  1        multi ./js/script.js         built
+  1 kB  2        ./js/script.js + 10 modules  built
 
   size  name     asset                        status
   1 kB  default  myBundle.min.js              emitted
   1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -64,7 +66,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript 2`] = `
-"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e();else if(\\"function\\"===typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,(function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=0)}([function(t,e,n){t.exports=n(1)},function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}function c(t,e){return c=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},c(t,e)}function i(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&c(t,e)}function f(t){return f=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},f(t)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}function a(t){return a=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},a(t)}function p(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function s(t,e){if(e&&(\\"object\\"===a(e)||\\"function\\"===typeof e))return e;return p(t)}function y(t){var e=l();return function(){var n,r=f(t);if(e){var o=f(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return s(this,n)}}n.r(e),n.d(e,\\"default\\",(function(){return d}));var b=function(t){i(n,t);var e=y(n);function n(){var t;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return t=e.call.apply(e,[this].concat(u)),t.handleClick=function(){t.setState({hey:!0})},t}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var d=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(b)}}]),t}()}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(e,t){function n(t){return\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?(e.exports=n=function(e){return typeof e},e.exports.default=e.exports,e.exports.__esModule=!0):(e.exports=n=function(e){return e&&\\"function\\"===typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?\\"symbol\\":typeof e},e.exports.default=e.exports,e.exports.__esModule=!0),n(t)}e.exports=n,e.exports.default=e.exports,e.exports.__esModule=!0},function(e,t,n){e.exports=n(2)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function u(e,t,n){return t&&o(e.prototype,t),n&&o(e,n),e}function c(e,t){return c=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},c(e,t)}function f(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&c(e,t)}function i(e){return i=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},i(e)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}n.r(t),n.d(t,\\"default\\",(function(){return v}));var a=n(0);var s=n.n(a);function p(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function y(e,t){if(t&&(\\"object\\"===s()(t)||\\"function\\"===typeof t))return t;return p(e)}function d(e){var t=l();return function(){var n,r=i(e);if(t){var o=i(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return y(this,n)}}var b=function(e){f(n,e);var t=d(n);function n(){var e;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return e=t.call.apply(t,[this].concat(u)),e.handleClick=function(){e.setState({hey:!0})},e}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var v=function(){function e(){r(this,e),console.log(\\"init class\\")}return u(e,[{key:\\"method\\",value:function(){console.log(b)}}]),e}()}])}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -80,12 +82,14 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                              status
   1 kB  0        external \\"somelibrary/thing/stuff\\"  built
-  1 kB  1        multi ./js/script.js                built
-  1 kB  2        ./js/script.js + 15 modules         built
+  1 kB  2        multi ./js/script.js                built
+  1 kB  3        ./js/script.js + 10 modules         built
 
   size  name     asset                               status
   1 kB  default  myBundle.min.js                     emitted
   1 kB  default  myBundle.min.js.map                 emitted
+
+  (1 module hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -98,7 +102,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript with externals 2`] = `
-"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e(require(\\"somelibrary/thing/stuff\\"));else if(\\"function\\"===typeof define&&define.amd)define([\\"somelibrary/thing/stuff\\"],e);else{var n=\\"object\\"===typeof exports?e(require(\\"somelibrary/thing/stuff\\")):e(t[\\"somelibrary/thing/stuff\\"]);for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,(function(t){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=1)}([function(e,n){e.exports=t},function(t,e,n){t.exports=n(2)},function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}n.r(e),n.d(e,\\"default\\",(function(){return v}));var i=n(0);var f=n.n(i);function c(t,e){return c=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},c(t,e)}function l(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&c(t,e)}function a(t){return a=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},a(t)}function s(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}function p(t){return p=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},p(t)}function y(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function b(t,e){if(e&&(\\"object\\"===p(e)||\\"function\\"===typeof e))return e;return y(t)}function d(t){var e=s();return function(){var n,r=a(t);if(e){var o=a(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return b(this,n)}}var h=function(t){l(n,t);var e=d(n);function n(){var t;r(this,n);for(var o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];return t=e.call.apply(e,[this].concat(u)),t.handleClick=function(){t.setState({hey:!0})},t}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var v=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(h,f.a)}}]),t}()}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t(require(\\"somelibrary/thing/stuff\\"));else if(\\"function\\"===typeof define&&define.amd)define([\\"somelibrary/thing/stuff\\"],t);else{var r=\\"object\\"===typeof exports?t(require(\\"somelibrary/thing/stuff\\")):t(e[\\"somelibrary/thing/stuff\\"]);for(var n in r)(\\"object\\"===typeof exports?exports:e)[n]=r[n]}})(window,(function(e){return function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,\\"a\\",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p=\\"\\",r(r.s=2)}([function(t,r){t.exports=e},function(e,t){function r(t){return\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?(e.exports=r=function(e){return typeof e},e.exports.default=e.exports,e.exports.__esModule=!0):(e.exports=r=function(e){return e&&\\"function\\"===typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?\\"symbol\\":typeof e},e.exports.default=e.exports,e.exports.__esModule=!0),r(t)}e.exports=r,e.exports.default=e.exports,e.exports.__esModule=!0},function(e,t,r){e.exports=r(3)},function(e,t,r){\\"use strict\\";function n(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,\\"value\\"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function u(e,t,r){return t&&o(e.prototype,t),r&&o(e,r),e}r.r(t),r.d(t,\\"default\\",(function(){return m}));var f=r(0);var i=r.n(f);function c(e,t){return c=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},c(e,t)}function l(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&c(e,t)}function a(e){return a=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},a(e)}function s(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}var p=r(1);var y=r.n(p);function b(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function d(e,t){if(t&&(\\"object\\"===y()(t)||\\"function\\"===typeof t))return t;return b(e)}function v(e){var t=s();return function(){var r,n=a(e);if(t){var o=a(this).constructor;r=Reflect.construct(n,arguments,o)}else r=n.apply(this,arguments);return d(this,r)}}var h=function(e){l(r,e);var t=v(r);function r(){var e;n(this,r);for(var o=arguments.length,u=new Array(o),f=0;f<o;f++)u[f]=arguments[f];return e=t.call.apply(t,[this].concat(u)),e.handleClick=function(){e.setState({hey:!0})},e}return u(r,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),r}(React.Component);var m=function(){function e(){n(this,e),console.log(\\"init class\\")}return u(e,[{key:\\"method\\",value:function(){console.log(h,i.a)}}]),e}()}])}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -114,12 +118,14 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__] Merging SQ webpack config with __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/compiles-merge-webpack-config/webpack.config.js
   size  name     module                       status
-  1 kB  0        multi ./js/script.js         built
-  1 kB  1        ./js/script.js + 15 modules  built
+  1 kB  1        multi ./js/script.js         built
+  1 kB  2        ./js/script.js + 10 modules  built
 
   size  name     asset                        status
   1 kB  default  myBundle.min.js              emitted
   1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -225,17 +231,44 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(1);
+function _typeof(obj) {
+  \\"@babel/helpers - typeof\\";
+
+  if (typeof Symbol === \\"function\\" && typeof Symbol.iterator === \\"symbol\\") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+
+    module.exports[\\"default\\"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === \\"function\\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \\"symbol\\" : typeof obj;
+    };
+
+    module.exports[\\"default\\"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+module.exports[\\"default\\"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+/***/ }),
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 \\"use strict\\";
@@ -245,15 +278,13 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, \\"default\\", function() { return /* binding */ script_newStuff; });
 
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/classCallCheck/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError(\\"Cannot call a class as a function\\");
   }
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/createClass/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/createClass.js
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -269,9 +300,7 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/createClass.js
-
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/setPrototypeOf/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -280,7 +309,7 @@ function _setPrototypeOf(o, p) {
 
   return _setPrototypeOf(o, p);
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/inherits/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/inherits.js
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== \\"function\\" && superClass !== null) {
@@ -296,16 +325,14 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/inherits.js
-
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/getPrototypeOf/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
   return _getPrototypeOf(o);
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/isNativeReflectConstruct/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js
 function _isNativeReflectConstruct() {
   if (typeof Reflect === \\"undefined\\" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
@@ -318,23 +345,11 @@ function _isNativeReflectConstruct() {
     return false;
   }
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/typeof/_index.mjs
-function _typeof(obj) {
-  \\"@babel/helpers - typeof\\";
+// EXTERNAL MODULE: __PATH__/node_modules/@babel/runtime/helpers/typeof.js
+var helpers_typeof = __webpack_require__(0);
+var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
-  if (typeof Symbol === \\"function\\" && typeof Symbol.iterator === \\"symbol\\") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === \\"function\\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \\"symbol\\" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/assertThisInitialized/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");
@@ -342,16 +357,16 @@ function _assertThisInitialized(self) {
 
   return self;
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/possibleConstructorReturn/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
 
 function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === \\"object\\" || typeof call === \\"function\\")) {
+  if (call && (typeof_default()(call) === \\"object\\" || typeof call === \\"function\\")) {
     return call;
   }
 
   return _assertThisInitialized(self);
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/createSuper/_index.mjs
+// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/createSuper.js
 
 function _createSuper(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct();
@@ -369,8 +384,6 @@ function _createSuper(Derived) {
     return _possibleConstructorReturn(this, result);
   };
 }
-// CONCATENATED MODULE: __PATH__/node_modules/@babel/runtime/helpers/esm/createSuper.js
-
 // CONCATENATED MODULE: ./js/Component.js
 
 /* global React */
@@ -454,12 +467,14 @@ Duplicate Sources / Packages - No duplicates found. 🚀
 Webpack Bundle Analyzer saved report to __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/profiles/dist/js/myBundle_report.html
 Webpack Bundle Analyzer saved stats file to __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/profiles/dist/js/myBundle_stats.json
   size  name     module                       status
-  1 kB  0        multi ./js/script.js         built
-  1 kB  1        ./js/script.js + 15 modules  built
+  1 kB  1        multi ./js/script.js         built
+  1 kB  2        ./js/script.js + 10 modules  built
 
   size  name     asset                        status
   1 kB  default  myBundle.min.js              emitted
   1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -472,7 +487,7 @@ Webpack Bundle Analyzer saved stats file to __PATH__/packages/integration/fixtur
 `;
 
 exports[`Creates profiles 2`] = `
-"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e();else if(\\"function\\"===typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,(function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=0)}([function(t,e,n){t.exports=n(1)},function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}function c(t,e){return c=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},c(t,e)}function i(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&c(t,e)}function f(t){return f=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},f(t)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}function a(t){return a=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},a(t)}function p(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function s(t,e){if(e&&(\\"object\\"===a(e)||\\"function\\"===typeof e))return e;return p(t)}function y(t){var e=l();return function(){var n,r=f(t);if(e){var o=f(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return s(this,n)}}n.r(e),n.d(e,\\"default\\",(function(){return d}));var b=function(t){i(n,t);var e=y(n);function n(){var t;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return t=e.call.apply(e,[this].concat(u)),t.handleClick=function(){t.setState({hey:!0})},t}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var d=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(b)}}]),t}()}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(e,t){function n(t){return\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?(e.exports=n=function(e){return typeof e},e.exports.default=e.exports,e.exports.__esModule=!0):(e.exports=n=function(e){return e&&\\"function\\"===typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?\\"symbol\\":typeof e},e.exports.default=e.exports,e.exports.__esModule=!0),n(t)}e.exports=n,e.exports.default=e.exports,e.exports.__esModule=!0},function(e,t,n){e.exports=n(2)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function u(e,t,n){return t&&o(e.prototype,t),n&&o(e,n),e}function c(e,t){return c=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},c(e,t)}function f(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&c(e,t)}function i(e){return i=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},i(e)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}n.r(t),n.d(t,\\"default\\",(function(){return v}));var a=n(0);var s=n.n(a);function p(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function y(e,t){if(t&&(\\"object\\"===s()(t)||\\"function\\"===typeof t))return t;return p(e)}function d(e){var t=l();return function(){var n,r=i(e);if(t){var o=i(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return y(this,n)}}var b=function(e){f(n,e);var t=d(n);function n(){var e;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return e=t.call.apply(t,[this].concat(u)),e.handleClick=function(){e.setState({hey:!0})},e}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var v=function(){function e(){r(this,e),console.log(\\"init class\\")}return u(e,[{key:\\"method\\",value:function(){console.log(b)}}]),e}()}])}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -487,12 +502,14 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                       status
-  1 kB  0        multi ./js/script.js         built
-  1 kB  1        ./js/script.js + 16 modules  built
+  1 kB  1        multi ./js/script.js         built
+  1 kB  2        ./js/script.js + 11 modules  built
 
   size  name     asset                        status
   1 kB  default  myBundle.min.js              emitted
   1 kB  default  myBundle.min.js.map          emitted
+
+  (1 module hidden)
 
   Compiled successfully!
   Δt ____ms
@@ -505,7 +522,7 @@ Object {
 `;
 
 exports[`Deduplicates helpers 2`] = `
-"(function(t,e){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=e();else if(\\"function\\"===typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)(\\"object\\"===typeof exports?exports:t)[r]=n[r]}})(window,(function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:t}),2&e&&\\"string\\"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,\\"a\\",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p=\\"\\",n(n.s=0)}([function(t,e,n){t.exports=n(1)},function(t,e,n){\\"use strict\\";function r(t,e){if(!(t instanceof e))throw new TypeError(\\"Cannot call a class as a function\\")}function o(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function u(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}function c(t,e){return c=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t},c(t,e)}function i(t,e){if(\\"function\\"!==typeof e&&null!==e)throw new TypeError(\\"Super expression must either be null or a function\\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&c(t,e)}function f(t){return f=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)},f(t)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}function a(t){return a=\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\\"function\\"===typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\\"symbol\\":typeof t},a(t)}function s(t){if(void 0===t)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return t}function p(t,e){if(e&&(\\"object\\"===a(e)||\\"function\\"===typeof e))return e;return s(t)}function y(t){var e=l();return function(){var n,r=f(t);if(e){var o=f(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return p(this,n)}}n.r(e),n.d(e,\\"default\\",(function(){return h}));var d=function(t){i(n,t);var e=y(n);function n(){var t;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return t=e.call.apply(e,[this].concat(u)),t.handleClick=function(){t.setState({hey:!0})},t}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var b=function(t){i(n,t);var e=y(n);function n(){var t;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return t=e.call.apply(e,[this].concat(u)),t.handleClick=function(){t.setState({hey:!0})},t}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var h=function(){function t(){r(this,t),console.log(\\"init class\\")}return u(t,[{key:\\"method\\",value:function(){console.log(d,b)}}]),t}()}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(e,t){function n(t){return\\"function\\"===typeof Symbol&&\\"symbol\\"===typeof Symbol.iterator?(e.exports=n=function(e){return typeof e},e.exports.default=e.exports,e.exports.__esModule=!0):(e.exports=n=function(e){return e&&\\"function\\"===typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?\\"symbol\\":typeof e},e.exports.default=e.exports,e.exports.__esModule=!0),n(t)}e.exports=n,e.exports.default=e.exports,e.exports.__esModule=!0},function(e,t,n){e.exports=n(2)},function(e,t,n){\\"use strict\\";function r(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function o(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function u(e,t,n){return t&&o(e.prototype,t),n&&o(e,n),e}function c(e,t){return c=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},c(e,t)}function i(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&c(e,t)}function f(e){return f=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},f(e)}function l(){if(\\"undefined\\"===typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if(\\"function\\"===typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}n.r(t),n.d(t,\\"default\\",(function(){return h}));var a=n(0);var s=n.n(a);function p(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function y(e,t){if(t&&(\\"object\\"===s()(t)||\\"function\\"===typeof t))return t;return p(e)}function d(e){var t=l();return function(){var n,r=f(e);if(t){var o=f(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return y(this,n)}}var b=function(e){i(n,e);var t=d(n);function n(){var e;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return e=t.call.apply(t,[this].concat(u)),e.handleClick=function(){e.setState({hey:!0})},e}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var v=function(e){i(n,e);var t=d(n);function n(){var e;r(this,n);for(var o=arguments.length,u=new Array(o),c=0;c<o;c++)u[c]=arguments[c];return e=t.call.apply(t,[this].concat(u)),e.handleClick=function(){e.setState({hey:!0})},e}return u(n,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var h=function(){function e(){r(this,e),console.log(\\"init class\\")}return u(e,[{key:\\"method\\",value:function(){console.log(b,v)}}]),e}()}])}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
@@ -600,10 +617,10 @@ Object {
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
   size  name  module                       status
-  1 kB  0     multi ./js/script.js         built
-  1 kB  1     ./js/script.js + 15 modules  built ✖
+  1 kB  1     multi ./js/script.js         built
+  1 kB  2     ./js/script.js + 10 modules  built ✖
 
-  (2 assets hidden)
+  (2 assets, 1 module hidden)
 
   Failed to compile.
 
@@ -655,7 +672,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name     module                     status
   1 kB  0        multi ./js/index.js        built
-  1 kB  1        ./js/index.js + 5 modules  built
+  1 kB  1        ./js/index.js + 3 modules  built
 
   size  name     asset                      status
   1 kB  default  myBundle.min.js            emitted
