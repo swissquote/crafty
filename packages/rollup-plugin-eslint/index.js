@@ -49,7 +49,7 @@ module.exports = function eslintPlugin(options = {}) {
     async transform(code, id) {
       const file = normalizePath(id);
 
-      if (!filter(file) || await eslint.isPathIgnored(file)) {
+      if (!filter(file) || (await eslint.isPathIgnored(file))) {
         return;
       }
 

@@ -65,6 +65,102 @@ function generateJsonpName(isWatching, bundle) {
   return `webpackJsonp_${hashed}`;
 }
 
+function configureWatcher(chain, bundle, config, webpackPort) {
+  // Don't finish early in case of errors in development.
+  chain.bail(false);
+  chain.devtool("cheap-module-source-map");
+
+  // Watcher doesn't work well if you mistype casing in a path so we use
+  // a plugin that prints an error when you attempt to do this.
+  // See https://github.com/facebookincubator/create-react-app/issues/240
+  chain
+    .plugin("case-sensitive")
+    .use(require.resolve("case-sensitive-paths-webpack-plugin"));
+
+  // This is necessary to emit hot updates:
+  if (bundle.hot) {
+    chain
+      .plugin("hot")
+      .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
+
+    chain
+      .entry("default")
+      .prepend(
+        `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
+      ) // WebpackDevServer host and port
+      .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
+  }
+
+  chain.devServer
+    .hot(bundle.hot)
+    .host("localhost")
+    .port(webpackPort)
+    .hotOnly(true)
+    .stats(false)
+    .contentBase(config.destination)
+    .watchOptions({
+      // Ignore the default dist folder as otherwise
+      // webpack can enter a rebuild loop
+      ignored: ["node_modules", `${chain.output.get("path")}/**`]
+    })
+    .headers({
+      "Access-Control-Allow-Origin": "*"
+    });
+}
+
+function configureProfiling(chain, bundle) {
+  chain.profile(true);
+
+  chain
+    .plugin("bundle-analyzer")
+    .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
+    .use(require.resolve("webpack-bundle-analyzer"), [
+      {
+        analyzerMode: "static",
+        openAnalyzer: false,
+        reportFilename: `${bundle.name}_report.html`,
+        generateStatsFile: true,
+        statsFilename: `${bundle.name}_stats.json`
+      }
+    ]);
+
+  chain
+    .plugin("inspectpack")
+    .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
+    .use(require.resolve("inspectpack/plugin"), [{}]);
+}
+
+function finalizeWatcher(chain) {
+  // Read theses values from webpack chain as they could have been overriden with a preset
+  const protocol = chain.devServer.get("https") ? "https" : "http";
+  const host = chain.devServer.get("host");
+  const port = chain.devServer.get("port");
+  const urlPrefix = `${protocol}://${host}:${port}`;
+
+  // Set the final URL for the Dev Server
+  const defaultEntries = chain.entry("default");
+
+  const entries = defaultEntries
+    .values()
+    .map(value => value.replace("__DEV_SERVER_URL__", urlPrefix));
+
+  defaultEntries.clear();
+
+  entries.forEach(entry => {
+    defaultEntries.add(entry);
+  });
+
+  // Setting the public path to find the compiled assets,
+  // only if it hasn't already been set
+  const definedPublicPath = chain.output.get("publicPath");
+  if (!definedPublicPath) {
+    const contentBase = chain.devServer.get("contentBase");
+    const outputPath = chain.output.get("path");
+    const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
+    chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
+  }
+}
+
 module.exports = function(crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
@@ -150,70 +246,13 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Hot Reloading
   if (crafty.getEnvironment() !== "production" && isWatching) {
-    // Don't finish early in case of errors in development.
-    chain.bail(false);
-    chain.devtool("cheap-module-source-map");
-
-    // Watcher doesn't work well if you mistype casing in a path so we use
-    // a plugin that prints an error when you attempt to do this.
-    // See https://github.com/facebookincubator/create-react-app/issues/240
-    chain
-      .plugin("case-sensitive")
-      .use(require.resolve("case-sensitive-paths-webpack-plugin"));
-
-    // This is necessary to emit hot updates:
-    if (bundle.hot) {
-      chain
-        .plugin("hot")
-        .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
-
-      chain
-        .entry("default")
-        .prepend(
-          `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
-        ) // WebpackDevServer host and port
-        .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
-    }
-
-    chain.devServer
-      .hot(bundle.hot)
-      .host("localhost")
-      .port(webpackPort)
-      .hotOnly(true)
-      .stats(false)
-      .contentBase(config.destination)
-      .watchOptions({
-        // Ignore the default dist folder as otherwise
-        // webpack can enter a rebuild loop
-        ignored: ["node_modules", `${chain.output.get("path")}/**`]
-      })
-      .headers({
-        "Access-Control-Allow-Origin": "*"
-      });
+    configureWatcher(chain, bundle, config, webpackPort);
   }
 
   // If --profile is passed, we create a
   // profile that we'll later write to disk
   if (process.argv.some(arg => arg === "--profile")) {
-    chain.profile(true);
-
-    chain
-      .plugin("bundle-analyzer")
-      .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
-      .use(require.resolve("webpack-bundle-analyzer"), [
-        {
-          analyzerMode: "static",
-          openAnalyzer: false,
-          reportFilename: `${bundle.name}_report.html`,
-          generateStatsFile: true,
-          statsFilename: `${bundle.name}_stats.json`
-        }
-      ]);
-
-    chain
-      .plugin("inspectpack")
-      .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
-      .use(require.resolve("inspectpack/plugin"), [{}]);
+    configureProfiling(chain, bundle);
   }
 
   // Apply preset configuration
@@ -226,34 +265,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process
   if (crafty.getEnvironment() !== "production" && isWatching && bundle.hot) {
-    // Read theses values from webpack chain as they could have been overriden with a preset
-    const protocol = chain.devServer.get("https") ? "https" : "http";
-    const host = chain.devServer.get("host");
-    const port = chain.devServer.get("port");
-    const urlPrefix = `${protocol}://${host}:${port}`;
-
-    // Set the final URL for the Dev Server
-    const defaultEntries = chain.entry("default");
-
-    const entries = defaultEntries
-      .values()
-      .map(value => value.replace("__DEV_SERVER_URL__", urlPrefix));
-
-    defaultEntries.clear();
-
-    entries.forEach(entry => {
-      defaultEntries.add(entry);
-    });
-
-    // Setting the public path to find the compiled assets,
-    // only if it hasn't already been set
-    const definedPublicPath = chain.output.get("publicPath");
-    if (!definedPublicPath) {
-      const contentBase = chain.devServer.get("contentBase");
-      const outputPath = chain.output.get("path");
-      const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
-      chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
-    }
+    finalizeWatcher(chain);
   }
 
   return chain.toConfig();

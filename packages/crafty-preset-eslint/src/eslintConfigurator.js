@@ -3,6 +3,43 @@ const path = require("path");
 const resolveFrom = require("resolve-from");
 const tmp = require("tmp");
 
+function mergeConfiguration(configuration, args, newConfiguration) {
+  if (
+    newConfiguration.useEslintrc === false &&
+    args.indexOf("--no-eslintrc") === -1
+  ) {
+    args.push("--no-eslintrc");
+  }
+
+  if (newConfiguration.extends) {
+    if (typeof newConfiguration.extends === "string") {
+      configuration.extends.push(newConfiguration.extends);
+    } else {
+      newConfiguration.extends.forEach(item =>
+        configuration.extends.push(item)
+      );
+    }
+  }
+
+  Object.assign(configuration.rules, newConfiguration.rules || {});
+
+  if (newConfiguration.baseConfig && newConfiguration.baseConfig.settings) {
+    Object.assign(configuration.settings, newConfiguration.baseConfig.settings);
+  }
+
+  if (newConfiguration.settings) {
+    Object.assign(configuration.settings, newConfiguration.settings);
+  }
+
+  if (newConfiguration.configFile) {
+    mergeConfiguration(
+      configuration,
+      args,
+      require(newConfiguration.configFile)
+    );
+  }
+}
+
 function configurationBuilder(args) {
   const configuration = {
     plugins: ["@swissquote/swissquote"],
@@ -11,45 +48,9 @@ function configurationBuilder(args) {
     settings: {}
   };
 
-  function mergeConfiguration(newConfiguration) {
-    if (
-      newConfiguration.useEslintrc === false &&
-      args.indexOf("--no-eslintrc") === -1
-    ) {
-      args.push("--no-eslintrc");
-    }
-
-    if (newConfiguration.extends) {
-      if (typeof newConfiguration.extends === "string") {
-        configuration.extends.push(newConfiguration.extends);
-      } else {
-        newConfiguration.extends.forEach(item =>
-          configuration.extends.push(item)
-        );
-      }
-    }
-
-    Object.assign(configuration.rules, newConfiguration.rules || {});
-
-    if (newConfiguration.baseConfig && newConfiguration.baseConfig.settings) {
-      Object.assign(
-        configuration.settings,
-        newConfiguration.baseConfig.settings
-      );
-    }
-
-    if (newConfiguration.settings) {
-      Object.assign(configuration.settings, newConfiguration.settings);
-    }
-
-    if (newConfiguration.configFile) {
-      mergeConfiguration(require(newConfiguration.configFile));
-    }
-  }
-
   // Override from default config if it exists
   if (global.craftyConfig) {
-    mergeConfiguration(global.craftyConfig.eslint);
+    mergeConfiguration(configuration, args, global.craftyConfig.eslint);
   }
 
   // Merge configuration that can be passed in cli arguments
@@ -59,6 +60,8 @@ function configurationBuilder(args) {
     args.splice(idx, 2);
 
     mergeConfiguration(
+      configuration,
+      args,
       require(resolveFrom.silent(process.cwd(), configFile) ||
         path.join(process.cwd(), configFile))
     );

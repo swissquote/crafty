@@ -33,7 +33,7 @@ function getPattern(val) {
   return val.pattern;
 }
 
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign,@swissquote/swissquote/sonarjs/cognitive-complexity */
 function watch(glob, options, cb) {
   if (typeof options === "function") {
     cb = options;

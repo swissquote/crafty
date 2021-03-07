@@ -4,14 +4,7 @@ const parse = require("webpack-stylish/lib/parse");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
-/**
- * Sort the files order.
- * The main reason is that test snapshots need the order to stay the same.
- * For some reason this isn't the case sometimes.
- *
- * @param {*} files
- */
-function sortFiles(files) {
+function categorize(files) {
   const modules = [];
   const assets = [];
 
@@ -33,6 +26,22 @@ function sortFiles(files) {
     }
   }
 
+  return {
+    modules,
+    assets
+  };
+}
+
+/**
+ * Sort the files order.
+ * The main reason is that test snapshots need the order to stay the same.
+ * For some reason this isn't the case sometimes.
+ *
+ * @param {*} files
+ */
+function sortFiles(files) {
+  const { modules, assets } = categorize(files);
+
   const final = [];
 
   if (modules.length) {
@@ -46,17 +55,7 @@ function sortFiles(files) {
 
   if (assets.length) {
     final.push(["size", "name", "asset", "status"]);
-    final.push(
-      ...assets.sort((a, b) => {
-        if (a[2] < b[2]) {
-          return -1;
-        }
-        if (a[2] > b[2]) {
-          return 1;
-        }
-        return 0;
-      })
-    );
+    final.push(...assets.sort((a, b) => a[2].localeCompare(b[2])));
   }
 
   // Replacing the file sizes in output log

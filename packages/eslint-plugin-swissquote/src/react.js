@@ -64,7 +64,4 @@ addMissingRules(
 );
 
 // Disable all the rules from eslint-plugin-react that are handled by Prettier
-addMissingRules(
-  require("eslint-config-prettier").rules,
-  module.exports.rules
-);
+addMissingRules(require("eslint-config-prettier").rules, module.exports.rules);
