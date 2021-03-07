@@ -11,7 +11,7 @@ Those two commands install all dependencies in each package.
 
 ## Using the experiment project
 
-We provide a small example project within Crafty to experiment with features outside of integration tests.
+We provide a small example project within Crafty to experiment with features not covered by integration tests.
 You can tweak the configuration in any way you like in this project.
 
 ```bash
@@ -50,10 +50,9 @@ export YARN_PLUGNPLAY_OVERRIDE=0
 # Do a proper install
 rm -rf node_modules yarn.lock .pnp .pnp.js packages/*/node_modules
 
-# Will fail on gifsicle, optipng, mozjpeg behind a corporate proxy, you can ignore this
 yarn install
 
-# Run tests (Behind a corporate proxy, the image compression test WILL fail and should be ignored)
+# Run tests
 yarn test
 
 # Release a canary version to test in a project

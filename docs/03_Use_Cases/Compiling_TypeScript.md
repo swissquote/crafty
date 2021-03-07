@@ -77,7 +77,7 @@ The advantage of the second approach is that the Tree-Shaking that can be done
 in the final application is much more efficient if the compiled files stay
 separate. (Like a component library).
 
-This approach is not recommended if you know that the majority of your library
+This approach is not recommended if you know that most of your library
 will always be used, as we would recommend to use rollup.js in that case.
 
 ### Installing the preset with Gulp
