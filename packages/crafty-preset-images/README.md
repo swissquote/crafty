@@ -1,4 +1,4 @@
-This module is a crafty preset to compress images if they're jpg, png, gif or
+This module is a crafty preset to compress images if they're webp, jpg, png, gif or
 svg
 
 ## Installation
@@ -16,25 +16,13 @@ module.exports = {
 };
 ```
 
-## Behind a corporate proxy
+## WASM
 
-If you are behind a corporate proxy, or your build machine doesn't have internet
-access, this preset's dependencies will fail.
+Starting with version 1.14 of Crafty, this preset comes bundled with WASM versions of the various compilers.
+This means that they don't need to be downloaded from the internet and thus will work in any environment even behind a Corporate Proxy.
 
-### The problem
+Currently we embed the codecs for PNG, JPEG and WEBP.
+GIF has no codec for the moment (it will just copy the files without compressing them)
+SVGs are handled through a different system
 
-jpg/png/gif compression tools are not bundled with their NPM packages, but
-downloaded from GitHub directly.
-
-### Open issues about that
-
-- https://github.com/imagemin/optipng-bin/issues/71
-- https://github.com/imagemin/jpegtran-bin (no open issue, same issue as
-  `optipng-bin`)
-- https://github.com/imagemin/gifsicle-bin/issues/77
-
-### The alternative
-
-You can use [`crafty-preset-images-simple`](./05_crafty-preset-images-simple.md)
-instead that will provide the same feature for SVG, but will copy other images
-over to the destination directory.
+The codecs are taken from https://github.com/GoogleChromeLabs/squoosh/tree/dev/codecs by using the same technique as https://github.com/vercel/next.js/tree/v10.0.8/packages/next/next-server/server/lib/squoosh.

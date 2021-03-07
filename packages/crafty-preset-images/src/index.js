@@ -1,6 +1,6 @@
 const path = require("path");
 
-const imagemin = require("gulp-imagemin");
+const imagemin = require("./gulp-imagemin.js");
 const newer = require("gulp-newer");
 const svgmin = require("gulp-svgmin");
 
@@ -9,7 +9,7 @@ module.exports = {
     return {
       bundleTypes: { img: "images" },
       img_basedir: "images",
-      img_extensions: ["png", "jpg", "jpeg", "gif"]
+      img_extensions: ["png", "jpg", "jpeg", "gif", "webp"]
     };
   },
   gulp(crafty, gulp, StreamHandler) {
@@ -38,7 +38,7 @@ module.exports = {
         stream.add(newer(crafty.config.destination_img));
       }
 
-      stream.add(imagemin());
+      stream.add(imagemin(crafty.log));
 
       return stream.generate();
     });
