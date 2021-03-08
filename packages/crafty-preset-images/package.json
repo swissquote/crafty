@@ -9,6 +9,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "dependencies": {
