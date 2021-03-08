@@ -10,11 +10,11 @@ async function decodeBuffer(_buffer) {
     .join("");
   const key = Object.entries(supportedFormats).find(([, { detectors }]) =>
     detectors.some(detector => detector.exec(firstChunkString))
-  )?.[0];
+  );
   if (!key) {
     throw Error(`Buffer has an unsupported format`);
   }
-  const d = await supportedFormats[key].dec();
+  const d = await supportedFormats[key[0]].dec();
   return d.decode(new Uint8Array(buffer));
 }
 
