@@ -4,22 +4,23 @@
   "statusCheckVerify": true,
   "packageRules": [
     {
-      "groupName": "@types",
-      "packagePatterns": ["@types/*"],
-      "rangeStrategy": "update-lockfile"
-    },
-    {
       "matchManagers": ["npm"],
       "rangeStrategy": "pin"
     },
     {
-      "matchPackageNames": [
+      "groupName": "@types",
+      "packagePatterns": [
+        "@types/*",
         "ansi-colors",
         "debug",
         "prettier",
         "caniuse-lite"
       ],
       "rangeStrategy": "update-lockfile"
+    },
+    {
+      "matchPackageNames": [ "node" ],
+      "rangeStrategy": "replace"
     },
     {
       "groupName": "rollup",

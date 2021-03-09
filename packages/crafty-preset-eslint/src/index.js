@@ -93,19 +93,12 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    const extensions = crafty.config.eslintExtensions;
-
     // JavaScript linting
-    chain.module
-      .rule("lint-js")
-      .pre()
-      .test(new RegExp(`\\.(${extensions.join("|")})$`))
-      .exclude.add(/(node_modules|bower_components)/)
-      .end()
-      .use("eslint")
-      .loader(require.resolve("eslint-loader"))
-      .options({
-        configFile: toTempFile(crafty.config.eslint)
-      });
+    chain.plugin("lint-js").use(require.resolve("eslint-webpack-plugin"), [
+      {
+        extensions: crafty.config.eslintExtensions,
+        overrideConfigFile: toTempFile(crafty.config.eslint)
+      }
+    ]);
   }
 };

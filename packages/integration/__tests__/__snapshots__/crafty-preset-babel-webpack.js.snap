@@ -578,6 +578,13 @@ Object {
   Failed to compile.
 
 ./js/script.js
+SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js: Unexpected token (15:0)
+
+  13 |
+  14 | }
+> 15 |
+     | ^
+
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js
   15:1  error  Parsing error: Unexpected token
 
@@ -587,14 +594,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/scri
      | ^
 
 ✖ 1 problem (1 error, 0 warnings)
-
-./js/script.js
-SyntaxError: __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/fails/js/script.js: Unexpected token (15:0)
-
-  13 |
-  14 | }
-> 15 |
-     | ^
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
@@ -618,39 +617,32 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
   size  name  module                       status
   1 kB  1     multi ./js/script.js         built
-  1 kB  2     ./js/script.js + 10 modules  built ✖
+  1 kB  2     ./js/script.js + 10 modules  built
 
   (2 assets, 1 module hidden)
 
   Failed to compile.
 
-./js/Component.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/Component.js
    4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
    6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
   10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
   12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
 
-✖ 4 problems (4 errors, 0 warnings)
-  4 errors and 0 warnings potentially fixable with the \`--fix\` option.
-
-./js/script.js
 __PATH__/packages/integration/fixtures/crafty-preset-babel-webpack/lints/js/script.js
-   3:23  error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
-   5:10  error    'test' is defined but never used                 no-unused-vars
-   5:14  error    Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
-   6:1   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
-  11:5   warning  Unexpected console statement                     no-console
-  14:9   error    Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
-  15:5   warning  Unexpected console statement                     no-console
-  15:17  error    Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
-  18:11  error    Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
-  20:14  error    Expected '===' and instead saw '=='              eqeqeq
+   3:23  error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+   5:10  error  'test' is defined but never used                 no-unused-vars
+   5:14  error  Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+   6:1   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  14:9   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  15:17  error  Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
+  18:11  error  Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+  20:14  error  Expected '===' and instead saw '=='              eqeqeq
 
-✖ 10 problems (8 errors, 2 warnings)
-  6 errors and 0 warnings potentially fixable with the \`--fix\` option.
+✖ 14 problems (12 errors, 2 warnings)
+  10 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
 
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Webpack compilation failed

@@ -105,20 +105,8 @@ module.exports = {
     tsRule.test(/\.tsx?$/);
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
-    const babelOptions = babelConfigurator(crafty, bundle, {
-      deduplicateHelpers: true,
-      useESModules: true
-    });
-
-    // Cache can be disabled for experimentation and when running Crafty's tests
-    if (
-      crafty.getEnvironment() === "production" &&
-      !process.argv.some(arg => arg === "--no-cache") &&
-      !process.env.TESTING_CRAFTY
-    ) {
-      babelOptions.cacheDirectory = true;
-    }
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
+    const babelOptions = babelConfigurator(crafty, bundle);
 
     // EcmaScript 2015+
     tsRule
