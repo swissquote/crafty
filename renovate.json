@@ -9,6 +9,19 @@
       "rangeStrategy": "update-lockfile"
     },
     {
+      "matchManagers": ["npm"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchPackageNames": [
+        "ansi-colors",
+        "debug",
+        "prettier",
+        "caniuse-lite"
+      ],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
       "groupName": "rollup",
       "packagePatterns": ["@rollup/*", "^rollup"],
       "minor": {

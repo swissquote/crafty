@@ -162,10 +162,6 @@ module.exports = {
       );
     }
 
-    if (crafty.isPNP) {
-      tsOptions.resolveModuleName = require("ts-pnp").resolveModuleName;
-    }
-
     // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
     // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
     if (!hasDeclarations) {
