@@ -103,6 +103,7 @@ module.exports = function(config) {
 
   processors
     .processor("postcss-selector-not")
+    .init(options => require("postcss-selector-not").default(options))
     .enableIfUnsupported(["css-not-sel-list"], config.browsers);
 
   processors.processor("postcss-pseudo-class-any-link");
@@ -143,7 +144,26 @@ module.exports = function(config) {
   });
 
   // CSSO :: Minify and Optimize CSS
-  processors.processor("postcss-csso").enableIf(() => env === "production");
+  processors
+    .processor("postcss-csso")
+    .init(options => {
+      // Inline the index.js of postcss-csso until https://github.com/lahmatiy/postcss-csso/pull/20 is fixed
+      // FIXME https://github.com/lahmatiy/postcss-csso/pull/20
+      const { compress } = require("csso").syntax;
+      const postcssToCsso = require("postcss-csso/lib/postcssToCsso.js");
+      const cssoToPostcss = require("postcss-csso/lib/cssoToPostcss.js");
+
+      return {
+        postcssPlugin: "postcss-csso",
+        OnceExit(root, { result, postcss }) {
+          result.root = cssoToPostcss(
+            compress(postcssToCsso(root), options).ast,
+            postcss
+          );
+        }
+      };
+    })
+    .enableIf(() => env === "production");
 
   // Report problems encountered during build
   processors.processor("postcss-reporter").setOptions({
@@ -151,9 +171,7 @@ module.exports = function(config) {
   });
 
   // List the used plugins (sends output to debug)
-  processors
-    .processor("plugin-list")
-    .module(require.resolve("./postcss-plugin-list"));
+  processors.processor("plugin-list").module("./postcss-plugin-list");
 
   return processors;
 };
