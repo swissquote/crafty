@@ -227,6 +227,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
       .use("postcss-loader")
       .loader(require.resolve("postcss-loader"))
       .options({
+        implementation: require("postcss"),
         postcssOptions: {
           parser: require("postcss-scss"),
           plugins: getProcessors(crafty.config, crafty, bundle)
