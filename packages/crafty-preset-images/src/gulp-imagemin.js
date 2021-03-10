@@ -17,6 +17,8 @@ function createWorker() {
   });
 }
 
+const nodeVersion = parseInt(process.version.replace("v", ""));
+
 const PLUGIN_NAME = "gulp-imagemin";
 
 async function compress(worker, file, extension) {
@@ -66,6 +68,8 @@ module.exports = log => {
 
   let worker;
 
+  let loggedOldNodeMessage = false;
+
   function endWorker() {
     if (worker && worker.end) {
       worker.end();
@@ -85,6 +89,19 @@ module.exports = log => {
 
       if (file.isStream()) {
         callback(new PluginError(PLUGIN_NAME, "Streaming not supported"));
+        return;
+      }
+
+      if (nodeVersion <= 10) {
+
+        if (!loggedOldNodeMessage && !options.silent) {
+          log(
+            `${PLUGIN_NAME}: Skipping image compression using WebAssembly as your node version doesn't support it.`
+          );
+          loggedOldNodeMessage = true;
+        }
+
+        callback(null, file);
         return;
       }
 

@@ -5,6 +5,9 @@ const path = require("path");
 const configuration = require("@swissquote/crafty/src/configuration");
 const testUtils = require("../utils");
 
+const itif = (condition) => condition ? it : it.skip;
+const nodeVersion = parseInt(process.version.replace("v", ""));
+
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
 // Tests would be unreliable if they timeout >_<
 jest.setTimeout(30000);
@@ -44,7 +47,7 @@ it("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", () 
   ]);
 });
 
-it("Copies and compresses images", async () => {
+itif(nodeVersion > 10)("Copies and compresses images", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-images");
 
   const result = await testUtils.run(["run", "images"], cwd);
@@ -63,6 +66,32 @@ it("Copies and compresses images", async () => {
   expect(
     fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
   ).toBeLessThan(
+    fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size
+  );
+});
+
+itif(nodeVersion == 10)("Copies and compresses images, Fallback on Node 10", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-images");
+
+  const result = await testUtils.run(["run", "images"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/images/batman.svg")).toBeTruthy();
+  expect(
+    testUtils.exists(cwd, "dist/images/somedir/cute-cats-2.jpg")
+  ).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/images/notcopied.txt")).toBeFalsy();
+
+  // Compression works for SVG
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/batman.svg")).size
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/batman.svg")).size);
+
+  // But is skipped for binary formats
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
+  ).toEqual(
     fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size
   );
 });

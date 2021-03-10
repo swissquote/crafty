@@ -17,3 +17,22 @@ Object {
 ",
 }
 `;
+
+exports[`Copies and compresses images, Fallback on Node 10 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            img: __PATH__/packages/integration/fixtures/crafty-preset-images/dist/images
+[__:__:__] Starting 'images' ...
+[__:__:__] Starting 'images_all' ...
+[__:__:__] gulp-imagemin: Skipping image compression using WebAssembly as your node version doesn't support it.
+[__:__:__] gulp-imagemin: Minified 0 images
+[__:__:__] Finished 'images_all' after ____ ms
+[__:__:__] Starting 'images_svg' ...
+[__:__:__] Finished 'images_svg' after ____ ms
+[__:__:__] Finished 'images' after ____ ms
+",
+}
+`;
