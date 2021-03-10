@@ -10,18 +10,18 @@
   "main": "index.js",
   "dependencies": {
     "postcss-resolve-nested-selector": "0.1.1",
-    "postcss-scss": "2.1.1",
+    "postcss-scss": "4.0.2",
     "postcss-selector-parser": "6.0.6",
     "postcss-value-parser": "4.1.0",
     "prettier": "^1.19.1",
     "stylelint-no-unsupported-browser-features": "5.0.2",
     "stylelint-prettier": "1.2.0",
-    "stylelint-scss": "3.21.0"
+    "stylelint-scss": "4.0.0"
   },
   "devDependencies": {
     "jest": "27.3.1",
-    "postcss": "7.0.39",
-    "stylelint": "13.13.1"
+    "postcss": "8.3.11",
+    "stylelint": "14.0.1"
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",

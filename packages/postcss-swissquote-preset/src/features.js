@@ -145,21 +145,6 @@ module.exports = function(config) {
       relative: true
     });
 
-  // Only add postcss-opacity and postcss-filter-gradient if old IE needs to be supported
-  processors
-    .processor("postcss-filter-gradient")
-    .embedded()
-    .enableIf(() => {
-      const list = require("browserslist")(config.browsers);
-
-      return (
-        list.indexOf("ie 9") >= 0 ||
-        list.indexOf("ie 8") >= 0 ||
-        list.indexOf("ie 7") >= 0 ||
-        list.indexOf("ie 6") >= 0
-      );
-    });
-
   // Options to apply to autoprefixer
   processors
     .processor("autoprefixer")
@@ -183,9 +168,7 @@ module.exports = function(config) {
     });
 
   // List the used plugins (sends output to debug)
-  processors
-    .processor("plugin-list")
-    .module(require.resolve("./postcss-plugin-list"));
+  processors.processor("plugin-list").module("./postcss-plugin-list");
 
   return processors;
 };

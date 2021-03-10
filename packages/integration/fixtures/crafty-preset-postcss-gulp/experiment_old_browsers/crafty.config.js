@@ -1,5 +1,5 @@
 module.exports = {
-  browsers: "ie 9, safari 10",
+  browsers: "ie 11, safari 10",
   presets: ["@swissquote/crafty-preset-postcss", "@swissquote/crafty-runner-gulp"],
   css: {
     myBundle: {

@@ -11,7 +11,6 @@ All included plugins have a short example accompanying them below.
 | Plugin                               | Description                                 |
 | ------------------------------------ | ------------------------------------------- |
 | `postcss-assets`                     | Embed images & size functions               |
-| `postcss-filter-gradient`            | Gradient fallback for IE9                   |
 | `postcss-import`                     | Import files                                |
 | `postcss-scss`                       | Inline comments support                     |
 | `postcss-url`                        | Update relative URLs after import           |
@@ -809,7 +808,7 @@ You can write your CSS following the W3C standards and Autoprefixer will handle 
 }
 ```
 
-### Browser support (`postcss-font-family-system-ui`, `postcss-pseudoelements`, `postcss-replace-overflow-wrap`, `postcss-filter-gradient`, `postcss-font-variant`)
+### Browser support (`postcss-font-family-system-ui`, `postcss-pseudoelements`, `postcss-replace-overflow-wrap`, `postcss-font-variant`)
 
 Some ways of writing CSS are compatible with modern browsers but not with older ones.
 These plugins ensure some properties include a fallback.
