@@ -17,7 +17,7 @@ function createWorker() {
   });
 }
 
-const nodeVersion = parseInt(process.version.replace("v", ""));
+const nodeVersion = parseInt(process.version.replace("v", ""), 10);
 
 const PLUGIN_NAME = "gulp-imagemin";
 
@@ -26,31 +26,75 @@ async function compress(worker, file, extension) {
 
   const quality = 75;
 
-  let optimizedBuffer;
   if (extension === ".webp") {
-    optimizedBuffer = await encodeWebp(worker, bitmap, { quality });
-  } else if (extension === ".png") {
-    optimizedBuffer = await encodePng(worker, bitmap);
-  } else if (extension === ".jpg" || extension === ".jpeg") {
-    optimizedBuffer = await encodeJpeg(worker, bitmap, { quality });
+    return encodeWebp(worker, bitmap, { quality });
   }
 
-  const data = optimizedBuffer;
-  const originalSize = file.contents.length;
-  const optimizedSize = data.length;
-  const saved = originalSize - optimizedSize;
-  const percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
-  const savedMsg = `saved ${prettyBytes(saved)} - ${percent
-    .toFixed(1)
-    .replace(/\.0$/, "")}%`;
-  const msg = saved > 0 ? savedMsg : "already optimized";
+  if (extension === ".png") {
+    return encodePng(worker, bitmap);
+  }
 
-  return {
-    originalSize,
-    saved,
-    data,
-    msg
-  };
+  if (extension === ".jpg" || extension === ".jpeg") {
+    return encodeJpeg(worker, bitmap, { quality });
+  }
+
+  return file.contents;
+}
+
+class Reporter {
+  constructor(options, log) {
+    this.options = options;
+    this.log = log;
+
+    this.totalBytes = 0;
+    this.totalSavedBytes = 0;
+    this.totalFiles = 0;
+  }
+
+  addFile(originalSize, optimizedSize, name) {
+    const saved = originalSize - optimizedSize;
+
+    if (saved > 0) {
+      this.totalBytes += originalSize;
+      this.totalSavedBytes += saved;
+      this.totalFiles++;
+    }
+
+    if (this.options.verbose) {
+      const percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
+      const savedMsg = `saved ${prettyBytes(saved)} - ${percent
+        .toFixed(1)
+        .replace(/\.0$/, "")}%`;
+      const msg = saved > 0 ? savedMsg : "already optimized";
+
+      this.log(
+        `${PLUGIN_NAME}:`,
+        colors.green("✔ ") + name + colors.gray(` (${msg})`)
+      );
+    }
+  }
+
+  report() {
+    if (this.options.silent) {
+      return;
+    }
+
+    const percent =
+      this.totalBytes > 0 ? (this.totalSavedBytes / this.totalBytes) * 100 : 0;
+    let msg = `Minified ${this.totalFiles} ${
+      this.totalFiles === 1 ? "image" : "images"
+    }`;
+
+    if (this.totalFiles > 0) {
+      msg += colors.gray(
+        ` (saved ${prettyBytes(this.totalSavedBytes)} - ${percent
+          .toFixed(1)
+          .replace(/\.0$/, "")}%)`
+      );
+    }
+
+    this.log(`${PLUGIN_NAME}:`, msg);
+  }
 }
 
 module.exports = log => {
@@ -62,9 +106,7 @@ module.exports = log => {
 
   const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
 
-  let totalBytes = 0;
-  let totalSavedBytes = 0;
-  let totalFiles = 0;
+  const reporter = new Reporter(options, log);
 
   let worker;
 
@@ -93,7 +135,6 @@ module.exports = log => {
       }
 
       if (nodeVersion <= 10) {
-
         if (!loggedOldNodeMessage && !options.silent) {
           log(
             `${PLUGIN_NAME}: Skipping image compression using WebAssembly as your node version doesn't support it.`
@@ -126,26 +167,16 @@ module.exports = log => {
             worker = await createWorker();
           }
 
-          const { originalSize, saved, data, msg } = await compress(
-            worker,
-            file,
-            extension
+          const optimizedBuffer = await compress(worker, file, extension);
+
+          reporter.addFile(
+            file.contents.length,
+            optimizedBuffer.length,
+            file.relative
           );
 
-          if (saved > 0) {
-            totalBytes += originalSize;
-            totalSavedBytes += saved;
-            totalFiles++;
-          }
+          file.contents = optimizedBuffer;
 
-          if (options.verbose) {
-            log(
-              `${PLUGIN_NAME}:`,
-              colors.green("✔ ") + file.relative + colors.gray(` (${msg})`)
-            );
-          }
-
-          file.contents = data;
           callback(null, file);
         } catch (error) {
           // End the worker in case of error as the stream will be interrupted
@@ -160,23 +191,7 @@ module.exports = log => {
       // Once all images are compressed, we end the worker
       endWorker();
 
-      if (!options.silent) {
-        const percent =
-          totalBytes > 0 ? (totalSavedBytes / totalBytes) * 100 : 0;
-        let msg = `Minified ${totalFiles} ${
-          totalFiles === 1 ? "image" : "images"
-        }`;
-
-        if (totalFiles > 0) {
-          msg += colors.gray(
-            ` (saved ${prettyBytes(totalSavedBytes)} - ${percent
-              .toFixed(1)
-              .replace(/\.0$/, "")}%)`
-          );
-        }
-
-        log(`${PLUGIN_NAME}:`, msg);
-      }
+      reporter.report();
 
       callback();
     }
