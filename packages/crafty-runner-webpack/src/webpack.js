@@ -33,11 +33,11 @@ function prepareExternals(externals) {
  * @param {Boolean} isWatching
  * @param {Bundle} bundle
  */
-function generateJsonpName(isWatching, bundle) {
+function uniqueName(isWatching, bundle) {
   // For testing we need to pre-hardcode it
   // If we don't, the minification will have weird effects
   if (process.env.TESTING_CRAFTY) {
-    return "webpackJsonp_UNIQID";
+    return "UNIQID";
   }
 
   let name;
@@ -47,6 +47,7 @@ function generateJsonpName(isWatching, bundle) {
     name = `${process.cwd()}-${bundle.taskName}`;
   } else {
     // In production mode, we want this id to be as unique as possible
+    // TODO :: maybe in the future this could be changed to a more predictible name as caching will be affected by it
     name =
       Math.random()
         .toString(36)
@@ -56,13 +57,11 @@ function generateJsonpName(isWatching, bundle) {
         .substring(2, 15);
   }
 
-  const hashed = crypto
+  return crypto
     .createHash("sha1")
     .update(name)
     .digest("hex")
     .substring(0, 8);
-
-  return `webpackJsonp_${hashed}`;
 }
 
 function configureWatcher(chain, bundle, config, webpackPort) {
@@ -84,7 +83,7 @@ function configureWatcher(chain, bundle, config, webpackPort) {
   chain
     .plugin("WatchIgnorePlugin")
     .use(require.resolve("webpack/lib/WatchIgnorePlugin"), [
-      [/\.d\.ts$/, outputPath]
+      { paths: [/\.d\.ts$/, outputPath] }
     ]);
 
   // Ignore the default dist folder as otherwise
@@ -191,29 +190,23 @@ module.exports = function(crafty, bundle, webpackPort) {
   const destination =
     config.destination_js + (bundle.directory ? `/${bundle.directory}` : "");
 
+  // Automatically use the most up-to-date syntax by leveraging Browerslist
+  // TODO :: this feature doesn't work yet as IE 11 is detected as supporting ES6 which is incorrect
+  //chain.set("target", `browserslist:${config.browsers}`);
+  chain.set("target", ["web", "es5"]);
+
   chain.output
     .path(absolutePath(destination)) // The build folder.
     .filename(bundle.destination) // Generated JS file names (with nested folders).
     .chunkFilename(`[name].${bundle.destination}`)
     .libraryTarget(bundle.libraryTarget || "umd") // The destination type
-    .library(bundle.library || "") // The library name
-    .jsonpFunction(generateJsonpName(isWatching, bundle)); // TODO :: change that
+    .set("uniqueName", uniqueName(isWatching, bundle));
+
+  if (bundle.library) {
+    chain.output.library(bundle.library); // The library name
+  }
 
   chain.externals(prepareExternals(bundle.externals));
-
-  // Enable support for Yarn PNP
-  const PnpWebpackPlugin = require(`pnp-webpack-plugin`);
-  chain.resolve
-    .plugin("pnp-webpack-plugin")
-    // Cloning the plugin exports as this would otherwise
-    // fail with `Cannot redefine property: __pluginArgs`
-    .init(Plugin => ({ ...Plugin }))
-    .use(PnpWebpackPlugin);
-
-  chain.resolveLoader
-    .plugin("pnp-webpack-plugin")
-    .init(Plugin => Plugin.moduleLoader(module))
-    .use(PnpWebpackPlugin);
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
@@ -223,14 +216,13 @@ module.exports = function(crafty, bundle, webpackPort) {
     .minimizer("terser")
     .use(require.resolve("terser-webpack-plugin"), [
       {
-        sourceMap: true,
         terserOptions: { ...config.terser }
       }
     ]);
 
   if (crafty.getEnvironment() === "production") {
     // Don't emit files if an error occured (forces to check what the error is)
-    chain.optimization.noEmitOnErrors(true);
+    chain.optimization.set("emitOnErrors", false);
   }
 
   // Hot Reloading

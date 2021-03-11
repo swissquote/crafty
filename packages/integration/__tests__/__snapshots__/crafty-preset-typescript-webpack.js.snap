@@ -10,18 +10,18 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name         module                           status
-  1 kB  2            multi ./js/script.ts             built
-  1 kB  3            ./js/script.ts + 1 modules       built
-  1 kB  4            ./js/SomeLibrary.ts              built
-
-  size  name         asset                            status
-  1 kB  default      myBundle.min.js                  emitted
-  1 kB  default      myBundle.min.js.map              emitted
-  1 kB  someLibrary  someLibrary.myBundle.min.js      emitted
-  1 kB  someLibrary  someLibrary.myBundle.min.js.map  emitted
-
-  (2 modules hidden)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset someLibrary.myBundle.min.js ___ bytes [emitted] [minimized] (name: someLibrary)
+  sourceMap someLibrary.myBundle.min.js.map ___ bytes [emitted] [dev] (auxiliary name: someLibrary)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+Chunk Group someLibrary ___ bytes (___ bytes) = someLibrary.myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -34,12 +34,12 @@ Object {
 `;
 
 exports[`Compiles TypeScript - fork checker 2`] = `
-"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,(function(){return function(e){function n(n){var t=n[0];var o=n[1];var u,i,a=0,c=[];for(;a<t.length;a++)i=t[a],Object.prototype.hasOwnProperty.call(r,i)&&r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(n);while(c.length)c.shift()()}var t={};var r={0:0};function o(e){return u.p+\\"\\"+({1:\\"someLibrary\\"}[e]||e)+\\".myBundle.min.js\\"}function u(n){if(t[n])return t[n].exports;var r=t[n]={i:n,l:!1,exports:{}};return e[n].call(r.exports,r,r.exports,u),r.l=!0,r.exports}u.e=function(e){var n=[];var t=r[e];if(0!==t)if(t)n.push(t[2]);else{var i=new Promise((function(n,o){t=r[e]=[n,o]}));n.push(t[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(n){a.onerror=a.onload=null,clearTimeout(l);var t=r[e];if(0!==t){if(t){var o=n&&(\\"load\\"===n.type?\\"missing\\":n.type);var u=n&&n.target&&n.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.name=\\"ChunkLoadError\\",f.type=o,f.request=u,t[1](f)}r[e]=void 0}};var l=setTimeout((function(){c({type:\\"timeout\\",target:a})}),12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(n)},u.m=e,u.c=t,u.d=function(e,n,t){u.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:t})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},u.t=function(e,n){if(1&n&&(e=u(e)),8&n)return e;if(4&n&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(u.r(t),Object.defineProperty(t,\\"default\\",{enumerable:!0,value:e}),2&n&&\\"string\\"!=typeof e)for(var r in e)u.d(t,r,function(n){return e[n]}.bind(null,r));return t},u.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(n,\\"a\\",n),n},u.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var a=i.push.bind(i);i.push=n,i=i.slice();for(var c=0;c<i.length;c++)n(i[c]);var f=a;return u(u.s=2)}([function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"a\\",(function(){return r}))},function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"a\\",(function(){return o}))},function(e,n,t){e.exports=t(3)},function(e,n,t){\\"use strict\\";t.r(n),t.d(n,\\"default\\",(function(){return i}));var r=t(0);var o=t(1);function u(e,n){return e+n}var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),t.e(1).then(t.bind(null,4)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),e}()}])}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(self,(function(){return function(){\\"use strict\\";var e={904:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},947:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})}};var n={};function t(r){var o=n[r];if(void 0!==o)return o.exports;var i=n[r]={exports:{}};return e[r](i,i.exports,t),i.exports}t.m=e,t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))},t.u=function(e){return\\"someLibrary.myBundle.min.js\\"},t.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},function(){var e={};var n=\\"UNIQID:\\";t.l=function(r,o,i,u){if(e[r])return void e[r].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==r||s.getAttribute(\\"data-webpack\\")==n+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,t.nc&&a.setAttribute(\\"nonce\\",t.nc),a.setAttribute(\\"data-webpack\\",n+i),a.src=r),e[r]=[o];var d=function(n,t){a.onerror=a.onload=null,clearTimeout(p);var o=e[r];if(delete e[r],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(t)})),n)return n(t)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;t.g.importScripts&&(e=t.g.location+\\"\\");var n=t.g.document;if(!e&&n&&(n.currentScript&&(e=n.currentScript.src),!e)){var r=n.getElementsByTagName(\\"script\\");r.length&&(e=r[r.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),t.p=e}(),function(){var e={913:0};t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var i=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=i);var u=t.p+t.u(n);var a=new Error;var c=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var i=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var u=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};t.l(u,c,\\"chunk-\\"+n,n)}};var n=function(n,r){var o=r[0];var i=r[1];var u=r[2];var a,c,f=0;if(o.some((function(n){return 0!==e[n]}))){for(a in i)t.o(i,a)&&(t.m[a]=i[a]);if(u)u(t)}for(n&&n(r);f<o.length;f++)c=o[f],t.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];r.forEach(n.bind(null,0)),r.push=n.bind(null,r.push.bind(r))}();var r={};return function(){t.r(r),t.d(r,{default:function(){return i}});var e=t(904);var n=t(947);function o(e,n){return e+n}var i=/*#__PURE__*/function(){function r(){(0,e.Z)(this,r),console.log(\\"init class\\")}return(0,n.Z)(r,[{key:\\"method\\",value:function(){console.log(o(2,4)),t.e(399).then(t.bind(t,570)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),r}()}(),r}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript - fork checker 3`] = `
-"(window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[]).push([[1],{4:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",(function(){return a}));var e=u(0);var r=u(1);var a=function(){function n(){Object(e.a)(this,n)}return Object(r.a)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
+"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[399],{570:function(n,u,e){e.r(u),e.d(u,{default:function(){return a}});var t=e(904);var r=e(947);var a=/*#__PURE__*/function(){function n(){(0,t.Z)(this,n)}return(0,r.Z)(n,[{key:\\"add\\",value:function(n,u){return n+u}},{key:\\"substract\\",value:function(n,u){return n-u}},{key:\\"divide\\",value:function(n,u){return n/u}}]),n}()}}]);
 //# sourceMappingURL=someLibrary.myBundle.min.js.map"
 `;
 
@@ -53,21 +53,22 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                      status
-  1 kB  2        multi ./js/script.ts        built
-  1 kB  3        ./js/script.ts + 1 modules  built
-  1 kB  4        ./js/SomeLibrary.ts         built
-
-  size  name     asset                       status
-  1 kB  js       1.myBundle.min.js           emitted
-  1 kB  map      1.myBundle.min.js.map       emitted
-  1 kB  ts       js/Component.d.ts           emitted
-  1 kB  ts       js/script.d.ts              emitted
-  1 kB  ts       js/SomeLibrary.d.ts         emitted
-  1 kB  default  myBundle.min.js             emitted
-  1 kB  default  myBundle.min.js.map         emitted
-
-  (2 modules hidden)
+assets by path js/*.ts ___ bytes
+  asset js/SomeLibrary.d.ts ___ bytes [emitted]
+  asset js/script.d.ts ___ bytes [emitted]
+  asset js/Component.d.ts ___ bytes [emitted]
+assets by path *.js ___ KiB
+  asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+    sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+  asset 570.myBundle.min.js ___ bytes [emitted] [minimized]
+    sourceMap 570.myBundle.min.js.map ___ bytes [emitted] [dev]
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) 570.myBundle.min.js ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -80,13 +81,13 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(window,(function(){return function(e){function n(n){var t=n[0];var o=n[1];var u,i,a=0,c=[];for(;a<t.length;a++)i=t[a],Object.prototype.hasOwnProperty.call(r,i)&&r[i]&&c.push(r[i][0]),r[i]=0;for(u in o)Object.prototype.hasOwnProperty.call(o,u)&&(e[u]=o[u]);f&&f(n);while(c.length)c.shift()()}var t={};var r={0:0};function o(e){return u.p+\\"\\"+({}[e]||e)+\\".myBundle.min.js\\"}function u(n){if(t[n])return t[n].exports;var r=t[n]={i:n,l:!1,exports:{}};return e[n].call(r.exports,r,r.exports,u),r.l=!0,r.exports}u.e=function(e){var n=[];var t=r[e];if(0!==t)if(t)n.push(t[2]);else{var i=new Promise((function(n,o){t=r[e]=[n,o]}));n.push(t[2]=i);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,u.nc&&a.setAttribute(\\"nonce\\",u.nc),a.src=o(e);var f=new Error;c=function(n){a.onerror=a.onload=null,clearTimeout(l);var t=r[e];if(0!==t){if(t){var o=n&&(\\"load\\"===n.type?\\"missing\\":n.type);var u=n&&n.target&&n.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+u+\\")\\",f.name=\\"ChunkLoadError\\",f.type=o,f.request=u,t[1](f)}r[e]=void 0}};var l=setTimeout((function(){c({type:\\"timeout\\",target:a})}),12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(n)},u.m=e,u.c=t,u.d=function(e,n,t){u.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:t})},u.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},u.t=function(e,n){if(1&n&&(e=u(e)),8&n)return e;if(4&n&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(u.r(t),Object.defineProperty(t,\\"default\\",{enumerable:!0,value:e}),2&n&&\\"string\\"!=typeof e)for(var r in e)u.d(t,r,function(n){return e[n]}.bind(null,r));return t},u.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return u.d(n,\\"a\\",n),n},u.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},u.p=\\"\\",u.oe=function(e){throw console.error(e),e};var i=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var a=i.push.bind(i);i.push=n,i=i.slice();for(var c=0;c<i.length;c++)n(i[c]);var f=a;return u(u.s=2)}([function(e,n,t){\\"use strict\\";function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,\\"a\\",(function(){return r}))},function(e,n,t){\\"use strict\\";function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,\\"a\\",(function(){return o}))},function(e,n,t){e.exports=t(3)},function(e,n,t){\\"use strict\\";t.r(n),t.d(n,\\"default\\",(function(){return i}));var r=t(0);var o=t(1);function u(e,n){return e+n}var i=function(){function e(){Object(r.a)(this,e),console.log(\\"init class\\")}return Object(o.a)(e,[{key:\\"method\\",value:function(){console.log(u(2,4)),t.e(1).then(t.bind(null,4)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),e}()}])}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(self,(function(){return function(){\\"use strict\\";var e={904:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},947:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})}};var n={};function t(r){var o=n[r];if(void 0!==o)return o.exports;var i=n[r]={exports:{}};return e[r](i,i.exports,t),i.exports}t.m=e,t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))},t.u=function(e){return e+\\".myBundle.min.js\\"},t.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},function(){var e={};var n=\\"UNIQID:\\";t.l=function(r,o,i,u){if(e[r])return void e[r].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==r||s.getAttribute(\\"data-webpack\\")==n+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,t.nc&&a.setAttribute(\\"nonce\\",t.nc),a.setAttribute(\\"data-webpack\\",n+i),a.src=r),e[r]=[o];var d=function(n,t){a.onerror=a.onload=null,clearTimeout(p);var o=e[r];if(delete e[r],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(t)})),n)return n(t)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;t.g.importScripts&&(e=t.g.location+\\"\\");var n=t.g.document;if(!e&&n&&(n.currentScript&&(e=n.currentScript.src),!e)){var r=n.getElementsByTagName(\\"script\\");r.length&&(e=r[r.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),t.p=e}(),function(){var e={913:0};t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var i=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=i);var u=t.p+t.u(n);var a=new Error;var c=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var i=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var u=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};t.l(u,c,\\"chunk-\\"+n,n)}};var n=function(n,r){var o=r[0];var i=r[1];var u=r[2];var a,c,f=0;if(o.some((function(n){return 0!==e[n]}))){for(a in i)t.o(i,a)&&(t.m[a]=i[a]);if(u)u(t)}for(n&&n(r);f<o.length;f++)c=o[f],t.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];r.forEach(n.bind(null,0)),r.push=n.bind(null,r.push.bind(r))}();var r={};return function(){t.r(r),t.d(r,{default:function(){return i}});var e=t(904);var n=t(947);function o(e,n){return e+n}var i=/*#__PURE__*/function(){function r(){(0,e.Z)(this,r),console.log(\\"init class\\")}return(0,n.Z)(r,[{key:\\"method\\",value:function(){console.log(o(2,4)),t.e(570).then(t.bind(t,570)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),r}()}(),r}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 3`] = `
-"(window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[]).push([[1],{4:function(n,t,u){\\"use strict\\";u.r(t),u.d(t,\\"default\\",(function(){return a}));var e=u(0);var r=u(1);var a=function(){function n(){Object(e.a)(this,n)}return Object(r.a)(n,[{key:\\"add\\",value:function(n,t){return n+t}},{key:\\"substract\\",value:function(n,t){return n-t}},{key:\\"divide\\",value:function(n,t){return n/t}}]),n}()}}]);
-//# sourceMappingURL=1.myBundle.min.js.map"
+"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[570],{570:function(n,u,e){e.r(u),e.d(u,{default:function(){return a}});var t=e(904);var r=e(947);var a=/*#__PURE__*/function(){function n(){(0,t.Z)(this,n)}return(0,r.Z)(n,[{key:\\"add\\",value:function(n,u){return n+u}},{key:\\"substract\\",value:function(n,u){return n-u}},{key:\\"divide\\",value:function(n,u){return n/u}}]),n}()}}]);
+//# sourceMappingURL=570.myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 4`] = `
@@ -108,11 +109,11 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built
-
-  (3 assets hidden)
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
 
   Failed to compile.
 
@@ -121,7 +122,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js
 
 ✖ 1 problem (1 error, 0 warnings)
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/fails/js/typescript.ts(14,1)
       TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 
@@ -145,11 +145,12 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built
-
-  (2 assets hidden)
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
+webpack compiled with 1 warning
 
   Failed to compile.
 
@@ -174,7 +175,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid-
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-js/typescript.ts:5:17
 TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
     3 |         console.log(\\"Something happens here\\");
     4 |
@@ -204,11 +204,12 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-  size  name  module                          status
-  1 kB  0     multi ./js/typescript.ts        built
-  1 kB  1     ./js/typescript.ts + 2 modules  built
-
-  (3 assets hidden)
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default = myTSBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 3 modules
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
+webpack compiled with 1 warning
 
   Failed to compile.
 
@@ -233,7 +234,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/
 ✖ 18 problems (16 errors, 2 warnings)
   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
 
-__PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts
 [tsl] ERROR in __PATH__/packages/integration/fixtures/crafty-preset-typescript-webpack/invalid/js/typescript.ts(5,17)
       TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
 
@@ -257,12 +257,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                      status
-  1 kB  2     multi ./js/script.ts        built
-  1 kB  3     ./js/script.ts + 1 modules  built
-  1 kB  4     ./js/SomeLibrary.ts         built
-
-  (7 assets, 2 modules hidden)
+assets by status ___ KiB [cached] 5 assets
+Entrypoint default = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) 570.myBundle.min.js ___ bytes [rendered]
+  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
+  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
+webpack compiled with 1 warning
 
   Failed to compile.
 
@@ -304,15 +307,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                       status
-  1 kB  0        multi ./js/index.ts          built
-  1 kB  1        ./js/index.ts + 3 modules    built
-
-  size  name     asset                        status
-  1 kB  ts       js/imported-typescript.d.ts  emitted
-  1 kB  ts       js/index.d.ts                emitted
-  1 kB  default  myBundle.min.js              emitted
-  1 kB  default  myBundle.min.js.map          emitted
+asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset js/imported-typescript.d.ts ___ bytes [emitted]
+asset js/index.d.ts ___ bytes [emitted]
+Entrypoint default ___ bytes (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+  runtime modules ___ bytes 1 module
+  ./js/index.ts + 3 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
