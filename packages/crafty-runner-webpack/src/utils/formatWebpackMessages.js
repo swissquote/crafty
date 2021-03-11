@@ -25,7 +25,7 @@ function isLikelyASyntaxError(message) {
 // Cleans up webpack error messages.
 // eslint-disable-next-line no-unused-vars
 function formatMessage(originalMessage, isError) {
-  let lines = originalMessage.split("\n");
+  let lines = (originalMessage.message || originalMessage).split("\n");
 
   // Strip Webpack-added headers off errors/warnings
   // https://github.com/webpack/webpack/blob/master/lib/ModuleError.js
