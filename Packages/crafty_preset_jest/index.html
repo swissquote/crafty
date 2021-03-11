@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>crafty-preset-jest - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item  has-children'><a href="../../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item '><a href="../../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../../CLI.html">CLI</a></li><li class='Nav__item '><a href="../../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../../Packages/index.html">Packages</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../Packages/crafty_preset_jest/index.html">crafty-preset-jest</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <table>
+<tr><th>Compatible Runners</th><td>
+<p>Not tied to any runner</p>
+</td></tr>
+<tr><th>Linters</th><td>
+<p>N/A</p>
+</td></tr>
+<tr><th>Commands</th><td>
+<ul>
+<li>
+<code>test</code>: Jest integrates itself with the <code>crafty test</code> command</li>
+</ul>
+</td></tr>
+<tr><th>Related presets</th><td>
+<ul>
+<li>
+<a href="../crafty_preset_babel/index.html">Babel</a>
+</li>
+<li>
+<a href="../crafty_preset_typescript/index.html">TypeScript</a>
+</li>
+</ul>
+</td></tr>
+</table>
+<p>Crafty provides a preset that will run <a href="https://facebook.github.io/jest/" class="Link--external" rel="noopener noreferrer">Jest</a>
+once <code>crafty test</code> is executed.</p>
+<p>It adds safe defaults to be able to run your tests with your configuration and
+provides an extension hook that allows you and other presets to extend its
+configuration.</p>
+<p>Jest is a Node-based runner. This means that the tests always run in a Node
+environment and not in a real browser. This lets us enable fast iteration speed
+and prevent flakiness.</p>
+<p>While Jest provides browser global variables such as <code>window</code> thanks to
+<a href="https://github.com/tmpvar/jsdom" class="Link--external" rel="noopener noreferrer">jsdom</a>, they are approximations of the real
+browser behavior. Jest is intended to be used for unit tests of your logic and
+your components rather than the DOM quirks.</p>
+<p>We recommend that you use a separate tool for browser end-to-end tests if you
+need them.</p>
+<div class="TableOfContentsContainer">
+    <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
+    <div class="TableOfContentsContainer__content">
+        <ul class="TableOfContents">
+<li>
+<p><a href="#page_File_name_Conventions">File name Conventions</a></p>
+</li>
+<li>
+<p><a href="#page_section_2"><code>crafty test</code></a></p>
+</li>
+<li>
+<p><a href="#page_Writing_Tests">Writing Tests</a></p>
+</li>
+<li>
+<p><a href="#page_Focusing_and_Excluding_Tests">Focusing and Excluding Tests</a></p>
+</li>
+<li>
+<p><a href="#page_Coverage_Reporting">Coverage Reporting</a></p>
+</li>
+<li>
+<p><a href="#page_Snapshot_Testing">Snapshot Testing</a></p>
+</li>
+<li>
+<p><a href="#page_Extending_the_configuration">Extending the configuration</a></p>
+</li>
+</ul>    </div>
+</div>
+<h2 id="page_File_name_Conventions">File name Conventions</h2>
+<p>Jest will look for test files with any of the following popular naming
+conventions:</p>
+<ul>
+<li>Files with <code>.js</code> suffix in <code>__tests__</code> folders.</li>
+<li>Files with <code>.test.js</code> suffix.</li>
+<li>Files with <code>.spec.js</code> suffix.</li>
+</ul>
+<p>The <code>.test.js</code> / <code>.spec.js</code> files (or the <code>__tests__</code> folders) can be located at
+any depth under the <code>src</code> top level folder.</p>
+<p>We recommend to put the test files (or <code>__tests__</code> folders) next to the code
+they are testing so that relative imports appear shorter. For example, if
+<code>App.test.js</code> and <code>App.js</code> are in the same folder, the test needs to <code>import App from './App'</code> instead of a long relative path.</p>
+<blockquote>
+<p>Using <a href="../crafty_preset_babel/index.html"><code>crafty-preset-babel</code></a> will add
+<code>jsx</code> as a supported test file extension and
+<a href="../crafty_preset_typescript/index.html"><code>crafty-preset-typescript</code></a> will
+add the support for <code>ts</code> and <code>tsx</code></p>
+</blockquote>
+<p>To be able to use <code>.ts</code> or <code>.tsx</code> test files, you’ll have to add <code>@types/jest</code> as a dependency :</p>
+<pre><code class="hljs bash">npm install --save @types/jest
+</code></pre>
+<h2 id="page_section_2"><code>crafty test</code></h2>
+<p>Running <code>crafty test</code> will run all test and exit. But you can use any option
+provided by Jest itself.</p>
+<p>For example <code>crafty test --watch</code> will run your tests in watch mode. This mode
+will run all your tests once and once it’s done will wait for code or test
+changes to re-run the concerned tests.</p>
+<h2 id="page_Writing_Tests">Writing Tests</h2>
+<p>To create tests, add <code>it()</code> (or <code>test()</code>) blocks with the name of the test and
+its code. You may optionally wrap them in <code>describe()</code> blocks for logical
+grouping but this is neither required nor recommended.</p>
+<p>Jest provides a built-in <code>expect()</code> global function for making assertions. A
+basic test could look like this:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> sum <span class="hljs-keyword">from</span> <span class="hljs-string">"./sum"</span>;
+
+it(<span class="hljs-string">"sums numbers"</span>, () =&gt; {
+  expect(sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toEqual(<span class="hljs-number">3</span>);
+  expect(sum(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)).toEqual(<span class="hljs-number">4</span>);
+});
+</code></pre>
+<p>All <code>expect()</code> matchers supported by Jest are
+<a href="http://facebook.github.io/jest/docs/expect.html" class="Link--external" rel="noopener noreferrer">extensively documented here</a>.<br />
+You can also use
+<a href="http://facebook.github.io/jest/docs/expect.html#tohavebeencalled" class="Link--external" rel="noopener noreferrer"><code>jest.fn()</code> and <code>expect(fn).toBeCalled()</code></a>
+to create “spies” or mock functions.</p>
+<h2 id="page_Focusing_and_Excluding_Tests">Focusing and Excluding Tests</h2>
+<p>You can replace <code>it()</code> with <code>xit()</code> to temporarily exclude a test from being
+executed.<br /> Similarly, <code>fit()</code> lets you focus on a specific test without
+running any other tests.</p>
+<h2 id="page_Coverage_Reporting">Coverage Reporting</h2>
+<p>Jest has an integrated coverage reporter that works well with EcmaScript 2015+
+and requires no configuration.<br /> Run <code>crafty test --coverage</code> to include a
+coverage report like this:</p>
+<p><img src="http://i.imgur.com/5bFhnTS.png" alt="coverage report" /></p>
+<p>Note that tests run much slower with coverage. We recommend to run it separately
+from your normal workflow.</p>
+<h2 id="page_Snapshot_Testing">Snapshot Testing</h2>
+<p>Snapshot testing is a feature of Jest that automatically generates text
+snapshots of your components and saves them on the disk so if the UI output
+changes, you get notified without manually writing any assertions on the
+component output.
+<a href="http://facebook.github.io/jest/blog/2016/07/27/jest-14.html" class="Link--external" rel="noopener noreferrer">Read more about snapshot testing.</a></p>
+<h2 id="page_Extending_the_configuration">Extending the configuration</h2>
+<p>Each preset and <code>crafty.config.js</code> can define the <code>jest(crafty, options)</code>
+function to override Jest’s configuration.</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> MODULES = path.join(__dirname, <span class="hljs-string">".."</span>, <span class="hljs-string">"node_modules"</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">/**
+   * Represents the extension point for rollup configuration
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Crafty}</span> <span class="hljs-variable">crafty</span></span> - The instance of Crafty.
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> <span class="hljs-variable">options</span></span> - The Jest configuration object
+   */</span>
+  jest(crafty, options) {
+    <span class="hljs-comment">// Adds this directory to resolve modules</span>
+    options.moduleDirectories.push(MODULES);
+
+    <span class="hljs-comment">// Add a transformer for TypeScript</span>
+    options.transform[<span class="hljs-string">"^.+\\.tsx?$"</span>] = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"ts-jest"</span>);
+
+    <span class="hljs-comment">// Add file extensions to resolve imports</span>
+    options.moduleFileExtensions.push(<span class="hljs-string">"ts"</span>);
+    options.moduleFileExtensions.push(<span class="hljs-string">"tsx"</span>);
+  }
+};
+</code></pre>
+<p>The full list of available configuration option is available
+<a href="https://facebook.github.io/jest/docs/en/configuration.html" class="Link--external" rel="noopener noreferrer">on the official website</a>.</p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../../Packages/crafty_preset_images_simple.html">Previous</a></li>            <li class=Pager--next><a href="../../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../../'})
+    </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Postcss Extension API - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item  has-children'><a href="../../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item '><a href="../../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item Nav__item--active'><a href="../../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../../CLI.html">CLI</a></li><li class='Nav__item '><a href="../../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../../Packages/index.html">Packages</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../Packages/crafty_preset_postcss/index.html">crafty-preset-postcss</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <p>PostCSS’ API isn’t well suited to configure which extensions should be executed or not, this task is left to the final user.</p>
+<p>But Crafty has a bundle of PostCSS plugins that have their own configuration.</p>
+<p>With this API, we try to provide a rich API that allows you to add, remove, reconfigure and reorder plugins.
+Even better, we provide some ways to conditionally enable plugins.</p>
+<h2 id="page_Extending_from_your">Extending from your <code>crafty.config.js</code></h2>
+<p>For this you need to add a <code>postcss</code> method to your <code>crafty.config.js</code></p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">/**
+   * Represents the extension point for Postcss configuration
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Crafty}</span> <span class="hljs-variable">crafty</span></span> - The instance of Crafty.
+   * <span class="hljs-doctag">@param <span class="hljs-type">{ProcessorMap}</span> <span class="hljs-variable">config</span></span> - The list of configured plugins
+   */</span>
+  postcss(crafty, config) {
+    <span class="hljs-comment">// Add postcss-fixes</span>
+    <span class="hljs-comment">// We recommend that for all plugins you add, you set a "before",</span>
+    <span class="hljs-comment">// because otherwise they run as last plugins and some other plugins might miss some optimizations</span>
+    <span class="hljs-comment">// For example if your plugin adds a `calc()` or a `var()` postcss-calc and postcss-custom-properties will already have run</span>
+    config.processor(<span class="hljs-string">"postcss-fixes"</span>).before(<span class="hljs-string">"autoprefixer"</span>);
+
+    <span class="hljs-comment">// Replace postcss-csso with cssnano,</span>
+    <span class="hljs-comment">// - enabled in production, disabled otherwise</span>
+    <span class="hljs-comment">// - runs before postcss-reporter</span>
+    <span class="hljs-comment">// - use cssnano's default preset</span>
+    config.delete(<span class="hljs-string">"postcss-csso"</span>);
+    config
+      .processor(<span class="hljs-string">"cssnano"</span>)
+      .enableIf(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span> crafty.getEnvironment() === <span class="hljs-string">"production"</span>)
+      .before(<span class="hljs-string">"postcss-reporter"</span>)
+      .setOptions({
+        <span class="hljs-attr">preset</span>: <span class="hljs-string">"default"</span>
+      });
+
+    <span class="hljs-comment">// Change autoprefixer's options to disable autoprefixing for flexbox</span>
+    <span class="hljs-keyword">const</span> autoprefixerOptions = config.processor(<span class="hljs-string">"autoprefixer"</span>).options;
+    autoprefixerOptions.flexbox = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// Override CSS custom properties in code</span>
+    <span class="hljs-keyword">const</span> customProperties = config.processor(<span class="hljs-string">"postcss-custom-properties"</span>)
+      .options;
+    customProperties.variables = {
+      <span class="hljs-attr">color</span>: <span class="hljs-string">"#fa5b35"</span>
+    };
+  }
+};
+</code></pre>
+<h2 id="page_section_2"><code>ProcessorMap</code></h2>
+<p>The main object allows you add or remove elements from the map</p>
+<pre><code class="hljs typescript"><span class="hljs-keyword">class</span> ProcessorMap {
+  <span class="hljs-comment">/**
+   * Allows you to add or change a processor,
+   * The name will be used to load the plugin if nothing else is specified.
+   */</span>
+  processor(moduleName: <span class="hljs-built_in">string</span>): Processor;
+
+  <span class="hljs-comment">/**
+   * Remove all entries
+   */</span>
+  clear(): ProcessorMap;
+
+  <span class="hljs-comment">/**
+   * Delete a single processor
+   * @param name The processor to remove
+   */</span>
+  <span class="hljs-keyword">delete</span>(name: <span class="hljs-built_in">string</span>): ProcessorMap;
+
+  <span class="hljs-comment">/**
+   * Check if a processor is configured
+   */</span>
+  has(name: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span>;
+
+  <span class="hljs-comment">/**
+   * An array of all the values in the map, sorted.
+   */</span>
+  values(): Processor[];
+
+  <span class="hljs-comment">/*
+   * Returns an object of all the entries in the backing Map
+   * where the key is the object property, and the value
+   * corresponding to the key. Will return `undefined` if the backing
+   * Map is empty.
+   * This will order properties by their name if the value is
+   * a ProcessorMap that used .before() or .after().
+   */</span>
+
+  entries(): { [name: <span class="hljs-built_in">string</span>]: Processor };
+}
+</code></pre>
+<h2 id="page_section_3"><code>Processor</code></h2>
+<pre><code class="hljs typescript"><span class="hljs-keyword">class</span> &lt;OPTIONS&gt; Processor&lt;OPTIONS = <span class="hljs-built_in">Object</span>&gt; {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>);
+
+  options: OPTIONS
+
+  <span class="hljs-comment">/**
+   * Same as the constructor parameter, allows you to change
+   * which module will be loaded for this processor.
+   */</span>
+  <span class="hljs-keyword">module</span>(moduleName: string): Processor;
+
+  /**
+   * Provide a custom init callback, needed if your plugin
+   * is a function or needs more than one parameter.
+   * This is an alternative to `.<span class="hljs-keyword">module</span>(name)`.
+   *
+   * .init(options =&gt; require("my-postcss-plugin")(options))
+   *
+   * @param fun The function that will return the instance of the plugin
+   */
+  init(fun: (options: OPTIONS): PluginInstance): Processor;
+
+  /**
+   * Returns a boolean to tell if the processor is enabled or not.
+   *
+   * @param fun
+   */
+  enableIf(fun: (options: OPTIONS): boolean): Processor;
+
+  /**
+   * Enables the plugin if the spec it implements isn't
+   * supported by all browsers that are targeted
+   *
+   * @param caniuseFeature The name of the CSS spec that it implements
+   * @param browsers the list of browsers that target
+   */
+  enableIfUnsupported(caniuseFeature: string|string[], browsers: string): Processor;
+
+  /**
+   * Change all the options at once.
+   *
+   * @param {<span class="hljs-built_in">Object</span>} options The <span class="hljs-keyword">new</span> options object
+   *<span class="hljs-regexp">/
+  setOptions(options: OPTIONS): Processor;
+
+  /</span>**
+   * Specify before which plugin <span class="hljs-keyword">this</span> plugin has to run.
+   * Must not be <span class="hljs-keyword">set</span> at the same time <span class="hljs-keyword">as</span> <span class="hljs-string">".after()"</span>
+   *
+   * <span class="hljs-meta">@param</span> {<span class="hljs-built_in">string</span>} name The name of the plugin before which we must run
+   *<span class="hljs-regexp">/
+  before(name): Processor;
+
+  /</span>**
+   * Specify after which plugin <span class="hljs-keyword">this</span> plugin has to run.
+   * Must not be <span class="hljs-keyword">set</span> at the same time <span class="hljs-keyword">as</span> <span class="hljs-string">".before()"</span>
+   *
+   * <span class="hljs-meta">@param</span> {<span class="hljs-built_in">string</span>} name The name of the plugin before which we must run
+   *<span class="hljs-regexp">/
+  after(name): Processor;
+}
+</span></code></pre>
+<h2 id="page_Examples">Examples</h2>
+<h3 id="page_Add_a_new_processor_after_another_one">Add a new processor after another one</h3>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../../Packages/crafty_preset_postcss/CSS_Linting.html">Previous</a></li>            <li class=Pager--next><a href="../../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../../'})
+    </script>
+</body>
+</html>

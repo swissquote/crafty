@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>crafty-runner-gulp - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item  has-children'><a href="../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item '><a href="../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item Nav__item--active'><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../CLI.html">CLI</a></li><li class='Nav__item '><a href="../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../Packages/index.html">Packages</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <h2 id="page_Description">Description</h2>
+<p>“Automate and enhance your workflow” This is how Gulp presents itself, Gulp is a
+task runner, combined with an API of file streams.</p>
+<p>This runner is based on Gulp 4.</p>
+<div class="TableOfContentsContainer">
+    <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
+    <div class="TableOfContentsContainer__content">
+        <ul class="TableOfContents">
+<li>
+<p><a href="#page_Description">Description</a></p>
+</li>
+<li>
+<p><a href="#page_Features">Features</a></p>
+</li>
+<li>
+<p><a href="#page_Adding_Gulp_tasks">Adding Gulp tasks</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Slight_change_in_behavior_of">Slight change in behavior of <code>gulp.watch()</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_5"><code>StreamHandler</code></a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_6"><code>new StreamHandler(source, destination[, errorCallback])</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_7"><code>stream.add(handler)</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_8"><code>generate()</code></a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>    </div>
+</div>
+<h2 id="page_Features">Features</h2>
+<ul>
+<li>Create any gulp task</li>
+<li>Combine tasks in parallel or in series</li>
+<li>Create file watchers that run tasks or anything else on change.</li>
+</ul>
+<h2 id="page_Adding_Gulp_tasks">Adding Gulp tasks</h2>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">/**
+   * Represents the extension point for rollup configuration
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Crafty}</span> <span class="hljs-variable">crafty</span></span> - The instance of Crafty.
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Gulp}</span> <span class="hljs-variable">gulp</span></span> - The instance of Gulp.
+   * <span class="hljs-doctag">@param <span class="hljs-type">{StreamHandler}</span> <span class="hljs-variable">StreamHandler</span></span> - A wrapper to create your tasks.
+   */</span>
+  gulp(crafty, gulp, StreamHandler) {
+    <span class="hljs-comment">// Create tasks</span>
+    gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">new</span> StreamHandler(<span class="hljs-string">"images/**/*.svg"</span>, <span class="hljs-string">"dist/images"</span>);
+
+      stream.add(svgmin());
+
+      <span class="hljs-keyword">return</span> stream.generate();
+    });
+
+    <span class="hljs-comment">// Group tasks into other tasks</span>
+    gulp.task(<span class="hljs-string">"images"</span>, gulp.parallel(<span class="hljs-string">"images_svg"</span>));
+
+    <span class="hljs-comment">// Register this task to run automatically</span>
+    crafty.addDefaultTask(<span class="hljs-string">"images"</span>);
+
+    <span class="hljs-comment">// Create custom watchers</span>
+    gulp.watch([<span class="hljs-string">"js/*.js"</span>]).on(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">path</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Change happened to"</span>, path);
+    });
+  }
+};
+</code></pre>
+<p>The <a href="https://github.com/gulpjs/gulp/blob/4.0/docs/API.md" class="Link--external" rel="noopener noreferrer">full API of Gulp</a> is
+supported</p>
+<h3 id="page_Slight_change_in_behavior_of">Slight change in behavior of <code>gulp.watch()</code></h3>
+<p>We changed the behavior of <code>gulp.watch()</code> in Crafty compared to how it works in
+Gulp: Instead of watching directly, the watch will start when running <code>crafty watch</code>.</p>
+<p>This creates a clear separation between development and production builds.</p>
+<h3 id="page_section_5"><code>StreamHandler</code></h3>
+<p><code>StreamHandler</code> is a utility class to help you create your streams.</p>
+<p>It works the same way as <code>gulp.src()...pipe(gulp.dest())</code> but with some added
+syntactic sugar:</p>
+<ul>
+<li>Doesn’t return a new instance on every <code>pipe</code> thus allowing you to create
+complex streams without re-assigning the variable every time</li>
+<li>Includes <code>gulp-plumber</code> to catch errors</li>
+</ul>
+<pre><code class="hljs javascript">gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">new</span> StreamHandler(<span class="hljs-string">"images/**/*.svg"</span>, <span class="hljs-string">"dist/images"</span>);
+
+  stream.add(svgmin());
+
+  <span class="hljs-keyword">return</span> stream.generate();
+});
+</code></pre>
+<h4 id="page_section_6"><code>new StreamHandler(source, destination[, errorCallback])</code></h4>
+<ul>
+<li>
+<code>source</code> is a glob or array of globs</li>
+<li>
+<code>destination</code> is a destination file or directory</li>
+<li>
+<code>errorCallback</code> is an optional callback that you can set to define what to do
+with errors in your stream</li>
+</ul>
+<h4 id="page_section_7"><code>stream.add(handler)</code></h4>
+<p>Same as <code>.pipe(handler)</code></p>
+<h4 id="page_section_8"><code>generate()</code></h4>
+<p>Generates the stream and returns it.</p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../Packages/crafty/The_Crafty_instance.html">Previous</a></li>            <li class=Pager--next><a href="../Packages/crafty_runner_rollup.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../'})
+    </script>
+</body>
+</html>

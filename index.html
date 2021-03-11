@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Crafty </title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="homepage">
+    
+
+<div class="Navbar NoPrint">
+    <div class="Container">
+        <a class="Brand" href="index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+    </div>
+</div>
+
+<div class="Homepage">
+    <div class="HomepageTitle Container">
+        <h2>The task runner that binds them all</h2>    </div>
+
+    <div class="HomepageImage Container">
+            </div>
+
+    <div class="HomepageButtons">
+        <div class="Container">
+                           <a href="https://github.com/swissquote/crafty" class="Button Button--secondary Button--hero" rel="noopener noreferrer">
+                   View On GitHub               </a>
+            <a href="Getting_Started.html" class="Button Button--primary Button--hero">View Documentation</a>        </div>
+    </div>
+</div>
+
+<div class="HomepageContent">
+    <div class="Container">
+        <div class="Container--inner">
+            <div class="doc_content s-content">
+                <p><strong>Crafty</strong> is a package bundled with all needed configurations to make your
+Frontend build environment a joy to work with.</p>
+<h2 id="page_Installation_and_usage">Installation and usage</h2>
+<h3 id="page_Install">Install</h3>
+<pre><code class="hljs bash">npm install @swissquote/crafty \
+  @swissquote/crafty-preset-babel \
+  @swissquote/crafty-preset-postcss \
+  @swissquote/crafty-preset-jest \
+  @swissquote/crafty-runner-webpack \
+  @swissquote/crafty-runner-gulp
+</code></pre>
+<h3 id="page_Configure">Configure</h3>
+<p>In <code>crafty.config.js</code> add</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">presets</span>: [
+    <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
+    <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
+    <span class="hljs-string">"@swissquote/crafty-preset-jest"</span>,
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>
+  ],
+  <span class="hljs-attr">js</span>: {
+    <span class="hljs-attr">app</span>: {
+      <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>
+    }
+  },
+  <span class="hljs-attr">css</span>: {
+    <span class="hljs-attr">app</span>: {
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"css/app.scss"</span>,
+      <span class="hljs-attr">watch</span>: [<span class="hljs-string">"css/**"</span>]
+    }
+  }
+};
+</code></pre>
+<h3 id="page_Run">Run</h3>
+<p>You can run the commands using
+<a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" class="Link--external" rel="noopener noreferrer">npx</a>
+or by adding them to the <code>scripts</code> section of your <code>package.json</code></p>
+<pre><code class="hljs bash">npx crafty run
+npx crafty <span class="hljs-built_in">test</span>
+</code></pre>
+<p>With this configuration you get:</p>
+<ul>
+<li>Create a JavaScript bundle compiled with <a href="https://webpack.js.org/" class="Link--external" rel="noopener noreferrer">Webpack</a>
+and <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferrer">Babel</a>.</li>
+<li>Linted your JavaScript with <a href="https://eslint.org/" class="Link--external" rel="noopener noreferrer">ESLint</a>.</li>
+<li>Create a CSS bundle compiled with <a href="http://postcss.org/" class="Link--external" rel="noopener noreferrer">PostCSS</a>.</li>
+<li>Lint your CSS with <a href="https://stylelint.io/" class="Link--external" rel="noopener noreferrer">Stylelint</a>.</li>
+<li>Run your tests with <a href="https://facebook.github.io/jest/" class="Link--external" rel="noopener noreferrer">Jest</a> and compile them
+with <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferrer">Babel</a>.</li>
+</ul>
+<h2 id="page_Why">Why</h2>
+<p>Getting started in a web application is easy, write an <code>index.html</code>, a
+<code>style.css</code>, and a <code>script.js</code> file and you’re good to go.</p>
+<p>But on bigger apps you might want some CSS preprocessing ? but which one to
+choose ? <strong>Sass</strong>, <strong>Less</strong>, <strong>Stylus</strong>, <strong>PostCSS</strong> ? Then you want to write
+your JavaScript using EcmaScript 2015+, but do you transpile it with <strong>Traceur</strong> or
+<strong>Babel</strong> ? Then you have to package your JavaScript in bundles, you have the
+choice between <strong>rollup.js</strong>, <strong>Browserify</strong>, <strong>Webpack</strong> or <strong>Pundle</strong>. Now you
+want to lint your JavaScript, do you choose <strong>ESLint</strong> or <strong>JSHint</strong> ? To
+orchestrate all this, do you use <strong>Gulp</strong>, <strong>Broccoli</strong> or <strong>Grunt</strong> ?</p>
+<p>You guessed it, each tool in the JavaScript stack has at least two alternatives,
+and there is not always a clear winner. This lead to a “JavaScript Fatigue” in
+the community these last years and some people got lost in what tools to choose
+to do these tasks.</p>
+<p>But even when you chose the tool you want to work with, you still have to
+configure it, maintain it up to date and follow up on changes.</p>
+<p><strong>Crafty</strong> is an attempt to create a package that is simple to install and
+configure. Specify your JavaScript and CSS files in entry and get them compiled,
+compressed and linted with the best tools available.</p>
+<p>Each tool is fine-tuned to give the best and to follow Swissquote’s Guidelines
+and best practices for Frontend development.</p>
+<p>Most aspects of <strong>Crafty</strong> are configurable and updates are painless.</p>
+<p><a href="Why.html">More on Why</a></p>
+<h2 id="page_Features">Features</h2>
+<p>The main feature of <strong>Crafty</strong> is to compile your JavaScript, CSS, compress your
+images and deliver them in the target directory.</p>
+<p>But shortening the list of features you gain with <strong>Crafty</strong> to one sentence
+doesn’t give it’s full measure. Here’s some other features it has:</p>
+<h3 id="page_JavaScript">JavaScript</h3>
+<ul>
+<li>Write <strong>EcmaScript 2015</strong>, transpiled to JavaScript all browsers understand
+with Babel.</li>
+<li>Write <strong>TypeScript</strong>, transpiled to EcmaScript 5 with the TypeScript compiler.</li>
+<li>Bundle all JavaScript files together with the help of <strong>Webpack</strong>.</li>
+<li>Compress the output with <strong>Terser</strong> to create the smallest possible bundles.</li>
+<li>Lint your code with <strong>ESLint</strong>, points you to possible mistakes and formatting
+errors.</li>
+<li>Simple debugging with Source Maps.</li>
+</ul>
+<p><a href="Use_Cases/Compiling_JavaScript.html">Read more about features here</a></p>
+<h3 id="page_CSS">CSS</h3>
+<ul>
+<li>Preprocess your CSS using <strong>PostCSS</strong> and plugins that will allow to
+write in a syntax approaching the one of Sass.</li>
+<li>Some plugins include <code>postcss-nested</code> to nest your styles, some plugins to use
+Future CSS features today and <code>postcss-advanced-variables</code> to define mixins</li>
+<li>Compress the CSS output with <code>postcss-csso</code> to get the smallest possible file.</li>
+<li>Automatically add vendor prefixes to properties with <code>autoprefixer</code>.</li>
+<li>Simple Debugging with Source Maps</li>
+</ul>
+<p><a href="Use_Cases/Compiling_CSS.html">Read more about features here</a></p>
+<h3 id="page_Images">Images</h3>
+<p>With the help of
+<a href="Packages/crafty_preset_images.html"><code>crafty-preset-images</code></a> you can also
+compress your images (svg/png/jpg/gif).</p>
+<p><a href="Use_Cases/Compressing_Images.html">Read more about features and configuration here</a></p>
+<h3 id="page_Watching_for_Changes_Hot_Module_Replacement">Watching for Changes / Hot Module Replacement</h3>
+<p>By running the <code>gulp watch</code> command, a process is launched to trigger a rebuild
+of your asset on each change in <code>src/main/frontend</code>.</p>
+<p>A change on the configuration while Watching will reconfigure itself.</p>
+<p>For Assets built with <strong>Webpack</strong> this can be even more powerful : after
+compiling your code, it can change the code within the browsers <strong>without
+reloading</strong>.</p>
+<p>Here’s an example:</p>
+<p><img src="react-hot-loader.gif" alt="React Hot Module Reload example" /></p>
+<p><a href="User_Guides/Developing_Faster_with_Crafty_watch.html">Read more about <code>watch</code></a></p>
+<h2 id="page_Maven,_Node.js_and_Gulp">Maven, Node.js and Gulp</h2>
+<p>Swissquote’s build environment is based mainly on Maven and it’s plugin
+ecosystem. But the Frontend world relies on Node.js tooling to build
+JavaScript and CSS assets.</p>
+<p>To use the best of both worlds, we take advantage of the
+<code>maven-frontend-plugin</code>. This plugin will ensure a Node.js version is installed and
+will run an <code>npm install</code> to install our JavaScript dependencies.</p>
+<p>We also use Gulp, a JavaScript task runner (can be seen a bit like Ant but for
+the JavaScript world).</p>
+<p><strong>Crafty</strong> is the glue that will take all these pieces we mentioned, and build
+you assets with the best-in-class tools. Working with Swissquote’s JavaScript and CSS Guidelines as well.</p>
+<p>Everything bundled in a way that <code>mvn clean install</code> will build your assets like
+you would expect with pure Java plugins.</p>
+<h2 id="page_Getting_started">Getting started</h2>
+<p>To get started, follow <a href="Getting_Started.html">the guide</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="HomepageFooter">
+    <div class="Container">
+        <div class="Container--inner">
+                            <ul class="HomepageFooter__links">
+                                            <li><a href="https://medium.com/swissquote-engineering" target="_blank" rel="noopener noreferrer">Technical blog</a></li>
+                                            <li><a href="https://swissquote.com/" target="_blank" rel="noopener noreferrer">Swissquote</a></li>
+                                            <li><a href="http://github.com/swissquote/crafty" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                    </ul>
+            
+                    </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': ''})
+    </script>
+</body>
+</html>

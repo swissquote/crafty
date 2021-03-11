@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>CSS Features - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item  has-children'><a href="../../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item '><a href="../../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item Nav__item--open has-children'><a href="../../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../../CLI.html">CLI</a></li><li class='Nav__item '><a href="../../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../../Packages/index.html">Packages</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../Packages/crafty_preset_postcss/index.html">crafty-preset-postcss</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <p><strong>PostCSS</strong> is a CSS Parser that can be extended with plugins.
+We made a selection of plugins useful for Swissquote.
+Here are some features made possible by them.</p>
+<div class="TableOfContentsContainer">
+    <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
+    <div class="TableOfContentsContainer__content">
+        <ul class="TableOfContents">
+<li>
+<p><a href="#page_All_plugins">All plugins</a></p>
+</li>
+<li>
+<p><a href="#page_Organization">Organization</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Nested_Styles_(_,_,_)">Nested Styles (<code>postcss-nesting</code>, <code>postcss-nested</code>, <code>postcss-atroot</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Import_CSS_Files_(_,_)">Import CSS Files (<code>postcss-import</code>, <code>postcss-url</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Mixins_(_)">Mixins (<code>sassy-mixins</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Comments_(_)">Comments (<code>postcss-scss</code>)</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Variables">Variables</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Variables_(_,_)">Variables (<code>postcss-advanced-variables</code>, <code>postcss-custom-properties</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Property_Lookup_(_)">Property Lookup (<code>postcss-property-lookup</code>)</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Images">Images</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Images_in_CSS_(_)">Images in CSS (<code>postcss-assets</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Image_set_(_)">Image set (<code>postcss-image-set-polyfill</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Help_with_Right_to_left_languages_(_,_)">Help with Right-to-left languages (<code>postcss-logical</code>, <code>postcss-dir-pseudo-class</code>)</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Dynamic_Styles">Dynamic Styles</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Math_in_your_CSS_(_)">Math in your CSS (<code>postcss-calc</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Conditionals_(_)">Conditionals (<code>postcss-advanced-variables</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Loops_(_)">Loops (<code>postcss-advanced-variables</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Initial_Values_(_)">Initial Values (<code>postcss-initial</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Colors_(_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Color_Fallbacks">Color Fallbacks</a></p>
+</li>
+<li>
+<p><a href="#page_Color_manipulation">Color manipulation</a></p>
+</li>
+<li>
+<p><a href="#page_Levels_of_gray">Levels of gray</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Syntax_simplification">Syntax simplification</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Selectors_(_,_,_,_)">Selectors (<code>postcss-selector-matches</code>, <code>postcss-selector-not</code>, <code>postcss-pseudo-class-any-link</code>, <code>postcss-custom-selectors</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Media_Queries_(_,_)">Media Queries (<code>postcss-custom-media</code>, <code>postcss-media-minmax</code>)</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Fallbacks">Fallbacks</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Vendor_Prefixes_(_)">Vendor Prefixes (<code>autoprefixer</code>)</a></p>
+</li>
+<li>
+<p><a href="#page_Browser_support_(_,_,_,_,_)">Browser support (<code>postcss-font-family-system-ui</code>, <code>postcss-pseudoelements</code>, <code>postcss-replace-overflow-wrap</code>, <code>postcss-filter-gradient</code>, <code>postcss-font-variant</code>)</a></p>
+</li>
+</ul>
+</li>
+</ul>    </div>
+</div>
+<h2 id="page_All_plugins">All plugins</h2>
+<p>All included plugins have a short example accompanying them below.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>postcss-assets</code></td>
+<td>Embed images &amp; size functions</td>
+</tr>
+<tr>
+<td><code>postcss-filter-gradient</code></td>
+<td>Gradient fallback for IE9</td>
+</tr>
+<tr>
+<td><code>postcss-import</code></td>
+<td>Import files</td>
+</tr>
+<tr>
+<td><code>postcss-scss</code></td>
+<td>Inline comments support</td>
+</tr>
+<tr>
+<td><code>postcss-url</code></td>
+<td>Update relative URLs after import</td>
+</tr>
+<tr>
+<td><code>postcss-advanced-variables</code></td>
+<td>Sass-like variables, mixins and loops</td>
+</tr>
+<tr>
+<td><code>postcss-nested</code></td>
+<td>Sass-like nested selectors</td>
+</tr>
+<tr>
+<td><code>postcss-atroot</code></td>
+<td>place rules back up to the root</td>
+</tr>
+<tr>
+<td><code>postcss-property-lookup</code></td>
+<td>reference other property values</td>
+</tr>
+<tr>
+<td><code>postcss-dir-pseudo-class</code></td>
+<td>Use the <code>:dir()</code> pseudo class for LTR/RTL</td>
+</tr>
+<tr>
+<td><code>postcss-logical</code></td>
+<td>New LTR/RTL and flow related properties</td>
+</tr>
+<tr>
+<td><code>autoprefixer</code></td>
+<td>Add or remove Vendor prefixes</td>
+</tr>
+<tr>
+<td><code>postcss-csso</code></td>
+<td>Minify CSS</td>
+</tr>
+<tr>
+<td><code>postcss-attribute-case-insensitive</code></td>
+<td>Support case insensitive attributes</td>
+</tr>
+<tr>
+<td><code>postcss-calc</code></td>
+<td>Resolves calculations</td>
+</tr>
+<tr>
+<td><code>postcss-color-function</code></td>
+<td>W3C color methods</td>
+</tr>
+<tr>
+<td><code>postcss-color-gray</code></td>
+<td>Shades of gray</td>
+</tr>
+<tr>
+<td><code>postcss-color-hex-alpha</code></td>
+<td><code>#rrggbbaa</code> colors</td>
+</tr>
+<tr>
+<td><code>postcss-color-hsl</code></td>
+<td>Allow to define colors using <code>hsl()</code></td>
+</tr>
+<tr>
+<td><code>postcss-color-hwb</code></td>
+<td><code>hwb()</code> color function</td>
+</tr>
+<tr>
+<td><code>postcss-color-rebeccapurple</code></td>
+<td>Adds the <code>rebbeccapurple</code> color</td>
+</tr>
+<tr>
+<td><code>postcss-color-rgb</code></td>
+<td>Change W3C Color Level 4 <code>rgb()</code> to Level 3</td>
+</tr>
+<tr>
+<td><code>postcss-color-rgba-fallback</code></td>
+<td>Add an RGB fallback to RGBA colors</td>
+</tr>
+<tr>
+<td><code>postcss-custom-media</code></td>
+<td>W3C custom media queries</td>
+</tr>
+<tr>
+<td><code>postcss-custom-properties</code></td>
+<td>W3C custom variables</td>
+</tr>
+<tr>
+<td><code>postcss-custom-selectors</code></td>
+<td>W3C custom selectors</td>
+</tr>
+<tr>
+<td><code>postcss-font-family-system-ui</code></td>
+<td>Change <code>system-ui</code> to a font-family list</td>
+</tr>
+<tr>
+<td><code>postcss-font-variant</code></td>
+<td>Transformed to <code>font-feature-settings</code></td>
+</tr>
+<tr>
+<td><code>postcss-image-set-polyfill</code></td>
+<td>Use <code>image-set()</code> for image selection</td>
+</tr>
+<tr>
+<td><code>postcss-initial</code></td>
+<td>Use initial value for a property</td>
+</tr>
+<tr>
+<td><code>postcss-media-minmax</code></td>
+<td>W3C &lt; &lt;= &gt;= &gt; media queries</td>
+</tr>
+<tr>
+<td><code>postcss-nesting</code></td>
+<td>W3C nested selectors</td>
+</tr>
+<tr>
+<td><code>postcss-pseudo-class-any-link</code></td>
+<td>Allows you to use :any-link pseudo class.</td>
+</tr>
+<tr>
+<td><code>postcss-pseudoelements</code></td>
+<td>Adjust <code>::</code> to <code>:</code></td>
+</tr>
+<tr>
+<td><code>postcss-replace-overflow-wrap</code></td>
+<td>Converts <code>overflow-wrap</code> to <code>word-wrap</code></td>
+</tr>
+<tr>
+<td><code>postcss-selector-matches</code></td>
+<td>W3C <code>:matches()</code> pseudo-classes</td>
+</tr>
+<tr>
+<td><code>postcss-selector-not</code></td>
+<td>W3C <code>:not()</code> pseudo-classes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="page_Organization">Organization</h2>
+<h3 id="page_Nested_Styles_(_,_,_)">Nested Styles (<code>postcss-nesting</code>, <code>postcss-nested</code>, <code>postcss-atroot</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-class">.parent</span> {
+  <span class="hljs-attribute">background</span>: white;
+
+  .before {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  }
+
+  <span class="hljs-keyword">@at-root</span> {
+    <span class="hljs-selector-class">.child</span> {
+      <span class="hljs-attribute">background</span>: black;
+    }
+  }
+
+  <span class="hljs-selector-class">.after</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
+  }
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.child</span> {
+  <span class="hljs-attribute">background</span>: black;
+}
+
+<span class="hljs-selector-class">.parent</span> {
+  <span class="hljs-attribute">background</span>: white;
+}
+
+<span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.before</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+}
+
+<span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.after</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
+}
+</code></pre>
+<h3 id="page_Import_CSS_Files_(_,_)">Import CSS Files (<code>postcss-import</code>, <code>postcss-url</code>)</h3>
+<p>With <code>@import</code>, you can import your CSS files to create a single CSS output file.
+All relative links are updated when they are imported.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-comment">/** foo.scss **/</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
+}
+
+<span class="hljs-comment">/** media/bar.scss **/</span>
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../../images/buttons/background.png"</span>);
+}
+
+<span class="hljs-comment">/** style.scss **/</span>
+
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"foo.scss"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"media/bar.scss"</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>);
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>) {
+  <span class="hljs-selector-class">.button</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/buttons/background.png"</span>); <span class="hljs-comment">/* the path has been rebased */</span>
+  }
+}
+</code></pre>
+<h3 id="page_Mixins_(_)">Mixins (<code>sassy-mixins</code>)</h3>
+<p><code>@mixin</code> allows to create Sass style mixins.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-keyword">@mixin</span> icon($name) {
+  <span class="hljs-selector-tag">padding-left</span>: 16<span class="hljs-selector-tag">px</span>;
+
+  &amp;<span class="hljs-selector-pseudo">::after</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(/icons/$(name).png);
+  }
+}
+
+<span class="hljs-selector-class">.search</span> {
+  @include icon(search);
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.search</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.search</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(/icons/search.png);
+}
+</code></pre>
+<h3 id="page_Comments_(_)">Comments (<code>postcss-scss</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+// <span class="hljs-selector-tag">single</span> <span class="hljs-selector-tag">line</span> <span class="hljs-selector-tag">comment</span>
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">color</span>: orange;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-comment">/* single line comment */</span>
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">color</span>: orange;
+}
+</code></pre>
+<h2 id="page_Variables">Variables</h2>
+<h3 id="page_Variables_(_,_)">Variables (<code>postcss-advanced-variables</code>, <code>postcss-custom-properties</code>)</h3>
+<p>We have two possible ways of using variables:</p>
+<ol>
+<li>Sass style variables : <code>$variable</code>
+</li>
+<li>CSS properties (Official specification): <code>--variable</code>
+</li>
+</ol>
+<p>Sass style variables are provided as a compatibility layer.
+We recommend to use the CSS properties as they are future proof and will be directly supported in browsers in the future.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--color</span>: <span class="hljs-number">#f00</span>;
+}
+
+$<span class="hljs-selector-tag">blue</span>: <span class="hljs-selector-id">#056ef0</span>;
+$<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-tag">px</span>;
+
+<span class="hljs-selector-class">.menu</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">4</span> * $column);
+}
+
+<span class="hljs-selector-class">.menu_link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--color);
+  <span class="hljs-attribute">background</span>: $blue;
+  <span class="hljs-attribute">width</span>: $column;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.menu</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">4</span> * <span class="hljs-number">200px</span>);
+}
+
+<span class="hljs-selector-class">.menu_link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#056ef0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
+<h3 id="page_Property_Lookup_(_)">Property Lookup (<code>postcss-property-lookup</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-class">.heading</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: @margin;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.heading</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+</code></pre>
+<h2 id="page_Images">Images</h2>
+<h3 id="page_Images_in_CSS_(_)">Images in CSS (<code>postcss-assets</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">inline</span>(
+    <span class="hljs-string">"background.png"</span>
+  ); <span class="hljs-comment">/* Be careful to not use this on big files */</span>
+}
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">resolve</span>(<span class="hljs-string">"foobar.jpg"</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">resolve</span>(<span class="hljs-string">"icons/baz.png"</span>);
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">width</span>(<span class="hljs-string">"foobar.png"</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">height</span>(<span class="hljs-string">"foobar.png"</span>);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-built_in">size</span>(<span class="hljs-string">"foobar.png"</span>);
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(data:image/gif;base64,...);
+}
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/foobar.jpg?14a931c501f"</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icons/baz.png?14a931c501f"</span>);
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">320px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">240px</span>;
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">320px</span> <span class="hljs-number">240px</span>;
+}
+</code></pre>
+<h3 id="page_Image_set_(_)">Image set (<code>postcss-image-set-polyfill</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-class">.BigImage</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(
+    url(img/test.png) <span class="hljs-number">1</span>x,
+    <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png) <span class="hljs-number">2</span>x,
+    <span class="hljs-built_in">url</span>(my-img-print.png) <span class="hljs-number">600dpi</span>
+  );
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.BigImage</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test.png);
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>),
+  (<span class="hljs-attribute">-o-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>/<span class="hljs-number">1</span>),
+  (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">192dpi</span>) {
+  <span class="hljs-selector-class">.BigImage</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png);
+  }
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">6.25</span>),
+  (<span class="hljs-attribute">-o-min-device-pixel-ratio:</span> <span class="hljs-number">25</span>/<span class="hljs-number">4</span>),
+  (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">600dpi</span>) {
+  <span class="hljs-selector-class">.BigImage</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(my-img-print.png);
+  }
+}
+</code></pre>
+<h3 id="page_Help_with_Right_to_left_languages_(_,_)">Help with Right-to-left languages (<code>postcss-logical</code>, <code>postcss-dir-pseudo-class</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.Banner</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#222222</span>;
+  <span class="hljs-attribute">inset</span>: logical <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">padding-inline</span>: <span class="hljs-number">20px</span> <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">resize</span>: block;
+}
+
+// `<span class="hljs-selector-tag">postcss-dir-psseudo-class</span>`
+<span class="hljs-selector-class">.Banner__title</span><span class="hljs-selector-pseudo">:dir(rtl)</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-class">.Banner__title</span><span class="hljs-selector-pseudo">:dir(ltr)</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.Banner</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#222222</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">5px</span>;
+}
+
+<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:dir(ltr)</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
+}
+
+<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:dir(rtl)</span> {
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;
+}
+
+<span class="hljs-selector-class">.Banner</span> {
+  <span class="hljs-attribute">resize</span>: vertical;
+}
+
+// `<span class="hljs-selector-tag">postcss-dir-psseudo-class</span>`
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"rtl"</span>]</span> <span class="hljs-selector-class">.Banner__title</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"ltr"</span>]</span> <span class="hljs-selector-class">.Banner__title</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
+}
+</code></pre>
+<h2 id="page_Dynamic_Styles">Dynamic Styles</h2>
+<h3 id="page_Math_in_your_CSS_(_)">Math in your CSS (<code>postcss-calc</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--main-font-size</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">var</span>(--main-font-size);
+}
+
+<span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">calc</span>(var(--main-font-size) * <span class="hljs-number">2</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> - <span class="hljs-number">2em</span>);
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-built_in">calc</span>(var(--main-font-size) * <span class="hljs-number">1.5</span>);
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> - <span class="hljs-number">2em</span>); // em's won't be resolved
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
+}
+</code></pre>
+<h3 id="page_Conditionals_(_)">Conditionals (<code>postcss-advanced-variables</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-class">.notice--clear</span> {
+  @if 3 &lt; 5 {
+    <span class="hljs-attribute">background</span>: green;
+  } <span class="hljs-keyword">@else</span> {
+    <span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;
+  }
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.notice--clear</span> {
+  <span class="hljs-attribute">background</span>: green;
+}
+</code></pre>
+<h3 id="page_Loops_(_)">Loops (<code>postcss-advanced-variables</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-keyword">@each</span> $icon in (foo, bar, baz) {
+  <span class="hljs-selector-class">.icon-</span>$(<span class="hljs-selector-tag">icon</span>) {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/$(icon).png"</span>);
+  }
+}
+
+<span class="hljs-keyword">@for</span> $i from <span class="hljs-number">1</span> to <span class="hljs-number">3</span> {
+  <span class="hljs-selector-class">.b-</span>$<span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">width</span>: #{i}<span class="hljs-selector-tag">px</span>;
+  }
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.icon-foo</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/foo.png"</span>);
+}
+
+<span class="hljs-selector-class">.icon-bar</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/bar.png"</span>);
+}
+
+<span class="hljs-selector-class">.icon-baz</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/baz.png"</span>);
+}
+
+<span class="hljs-selector-class">.b-1</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
+}
+<span class="hljs-selector-class">.b-2</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">2px</span>;
+}
+<span class="hljs-selector-class">.b-3</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">3px</span>;
+}
+</code></pre>
+<h3 id="page_Initial_Values_(_)">Initial Values (<code>postcss-initial</code>)</h3>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">animation</span>: initial;
+  <span class="hljs-attribute">background</span>: initial;
+  <span class="hljs-attribute">white-space</span>: initial;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">animation</span>: none <span class="hljs-number">0s</span> ease <span class="hljs-number">0s</span> <span class="hljs-number">1</span> normal none running;
+  <span class="hljs-attribute">animation</span>: initial;
+  <span class="hljs-attribute">background</span>: transparent none repeat <span class="hljs-number">0</span> <span class="hljs-number">0</span> / auto auto padding-box border-box
+    scroll;
+  <span class="hljs-attribute">background</span>: initial;
+  <span class="hljs-attribute">white-space</span>: normal;
+}
+</code></pre>
+<h3 id="page_Colors_(_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</h3>
+<h4 id="page_Color_Fallbacks">Color Fallbacks</h4>
+<p>Some colors functions don’t work in all browsers, these plugins will create fallbacks.</p>
+<p><code>rebeccapurple</code> is a whole different story, it’s an homage to <a href="https://github.com/postcss/%60postcss-color-rebeccapurple%60#why-this-plugin-" class="Link--external" rel="noopener noreferrer">Eric Meyer’s daughter</a>.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(
+    <span class="hljs-number">153</span>,
+    <span class="hljs-number">221</span>,
+    <span class="hljs-number">153</span>,
+    <span class="hljs-number">0.8</span>
+  ); // This will create a fallback without the alpha
+
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#9d9c</span>; // This will be transformed to rgba
+
+  <span class="hljs-attribute">color</span>: rebeccapurple; // ... sad story, homage to eric meyer
+}
+
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">250.5</span> <span class="hljs-number">255</span> <span class="hljs-number">255</span>); // Allows to declare colors with rgb() level 4
+
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsl</span>(
+    <span class="hljs-number">200grad</span> <span class="hljs-number">100%</span> <span class="hljs-number">50%</span> / <span class="hljs-number">20%</span>
+  ); // This will declare colors with hsl() level 4
+
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">90</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0.5</span>); // This will transform colors to rgba()
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#9d9</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">153</span>, <span class="hljs-number">221</span>, <span class="hljs-number">153</span>, <span class="hljs-number">0.8</span>);
+
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#9d9</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">153</span>, <span class="hljs-number">221</span>, <span class="hljs-number">153</span>, <span class="hljs-number">0.8</span>);
+
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#639</span>;
+}
+
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">251</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>);
+
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsla</span>(<span class="hljs-number">180</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>, <span class="hljs-number">0.2</span>);
+
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#80ff00</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">128</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+}
+</code></pre>
+<h4 id="page_Color_manipulation">Color manipulation</h4>
+<p>You can change a color by applying modifiers.
+Apart from the ones presented here, there are <a href="https://github.com/postcss/%60postcss-color-function%60#list-of-color-adjuster" class="Link--external" rel="noopener noreferrer">a lot of modifiers</a> available</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(red alpha(-<span class="hljs-number">10%</span>)); // Change the opacity of red
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(red blackness(<span class="hljs-number">80%</span>)); // Darken the color
+}
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">90</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0.6</span>); // This will be transformed to rgba
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: red;
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.9</span>);
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#300</span>;
+}
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#80ff00</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">128</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.6</span>);
+}
+</code></pre>
+<h4 id="page_Levels_of_gray">Levels of gray</h4>
+<p>You can also get levels of gray.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">85</span>); // Level of gray
+
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">10%</span>, <span class="hljs-number">50%</span>); // Level of gray with opacity
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#555</span>;
+
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#1a1a1a</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">26</span>, <span class="hljs-number">26</span>, <span class="hljs-number">26</span>, <span class="hljs-number">0.5</span>);
+}
+</code></pre>
+<h2 id="page_Syntax_simplification">Syntax simplification</h2>
+<h3 id="page_Selectors_(_,_,_,_)">Selectors (<code>postcss-selector-matches</code>, <code>postcss-selector-not</code>, <code>postcss-pseudo-class-any-link</code>, <code>postcss-custom-selectors</code>)</h3>
+<p>These plugins help with the creation</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-keyword">@custom-selector</span> :--button button, .button;
+<span class="hljs-keyword">@custom-selector</span> :--enter :hover, :focus;
+
+<span class="hljs-selector-pseudo">:--button</span> {
+  <span class="hljs-comment">/* styles for your buttons */</span>
+}
+<span class="hljs-selector-pseudo">:--button</span><span class="hljs-selector-pseudo">:--enter</span> {
+  <span class="hljs-comment">/* hover/focus styles for your button */</span>
+}
+
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:matches(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:any-link</span> {
+  <span class="hljs-attribute">background-color</span>: yellow;
+}
+
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span> i]</span> {
+  <span class="hljs-attribute">border-style</span>: solid none;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-class">.button</span>,
+<span class="hljs-selector-tag">button</span> {
+  <span class="hljs-comment">/* styles for your buttons */</span>
+}
+
+<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span>,
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:focus</span>,
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-comment">/* hover/focus styles for your button */</span>
+}
+
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span><span class="hljs-selector-pseudo">:not(.special)</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.special</span>,
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:link</span>,
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0</span>;
+}
+
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"Hsides"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSides"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSides"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDes"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDEs"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsideS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsideS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSideS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSideS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDeS"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDES"</span>]</span>,
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDES"</span>]</span> {
+  <span class="hljs-attribute">border-style</span>: solid none;
+}
+</code></pre>
+<h3 id="page_Media_Queries_(_,_)">Media Queries (<code>postcss-custom-media</code>, <code>postcss-media-minmax</code>)</h3>
+<p>Media queries should be written with <code>min-width</code> and <code>max-width</code> but it leads to unclear declarations.</p>
+<p>With custom media queries, and query ranges, it’s much easier to write.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-keyword">@media</span> (width &gt;= <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (width &lt;= <span class="hljs-number">1200px</span>) {
+  <span class="hljs-comment">/* your styles */</span>
+}
+
+<span class="hljs-comment">/* or coupled with custom media queries */</span>
+<span class="hljs-keyword">@custom-media</span> --medium-screen (width &lt; <span class="hljs-number">500px</span>) <span class="hljs-keyword">or</span> (width &gt; <span class="hljs-number">1200px</span>);
+
+<span class="hljs-keyword">@media</span> (--medium-screen) {
+  <span class="hljs-comment">/* your styles */</span>
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">1200px</span>) {
+  <span class="hljs-comment">/* your styles */</span>
+}
+
+<span class="hljs-comment">/* or coupled with custom media queries */</span>
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">499px</span>) <span class="hljs-keyword">or</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">1201px</span>) {
+  <span class="hljs-comment">/* your styles */</span>
+}
+</code></pre>
+<h2 id="page_Fallbacks">Fallbacks</h2>
+<p>Browsers have the tendency to do everything their way, either with vendor prefixes or by using a custom syntax no other browser supports. These plugins make it easy for you.</p>
+<h3 id="page_Vendor_Prefixes_(_)">Vendor Prefixes (<code>autoprefixer</code>)</h3>
+<p>Tired of having to look for what prefix to use in your CSS ?
+You don’t need this anymore!
+With <strong>Autoprefixer</strong> this is all done for you.
+You can write your CSS following the W3C standards and Autoprefixer will handle the rest for you</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-pseudo">:-webkit-full-screen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -webkit-flex;
+  <span class="hljs-attribute">display</span>: flex;
+}
+<span class="hljs-selector-pseudo">:-moz-full-screen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: flex;
+}
+<span class="hljs-selector-pseudo">:-ms-fullscreen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+}
+<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -webkit-flex;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+}
+</code></pre>
+<h3 id="page_Browser_support_(_,_,_,_,_)">Browser support (<code>postcss-font-family-system-ui</code>, <code>postcss-pseudoelements</code>, <code>postcss-replace-overflow-wrap</code>, <code>postcss-filter-gradient</code>, <code>postcss-font-variant</code>)</h3>
+<p>Some ways of writing CSS are compatible with modern browsers but not with older ones.
+These plugins ensure some properties include a fallback.</p>
+<p>They are enabled if your target browsers need those fixes.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-family</span>: system-ui;
+}
+
+<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-built_in">attr</span>(href);
+}
+
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">overflow-wrap</span>: break-word;
+}
+
+<span class="hljs-selector-class">.buy</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #<span class="hljs-number">1</span>e5799, #<span class="hljs-number">7</span>db9e8);
+}
+
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
+}
+
+<span class="hljs-selector-tag">table</span> {
+  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
+}
+
+<span class="hljs-comment">/* After */</span>
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-family</span>: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
+}
+
+<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-built_in">attr</span>(href);
+}
+
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">word-wrap</span>: break-word;
+}
+
+<span class="hljs-selector-class">.buy</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #<span class="hljs-number">1</span>e5799, #<span class="hljs-number">7</span>db9e8);
+  <span class="hljs-attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="hljs-built_in">gradient</span>(startColorstr=<span class="hljs-string">"#ff1e5799"</span>, endColorstr=<span class="hljs-string">"#ff7db9e8"</span>, GradientType=<span class="hljs-number">0</span>);
+}
+
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"smcp"</span>;
+  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
+}
+
+<span class="hljs-selector-tag">table</span> {
+  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"lnum"</span>;
+  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
+}
+</code></pre>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../../Packages/crafty_preset_postcss/index.html">Previous</a></li>            <li class=Pager--next><a href="../../Packages/crafty_preset_postcss/CSS_Linting.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../../'})
+    </script>
+</body>
+</html>
