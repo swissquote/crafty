@@ -25,6 +25,10 @@ function styleTime(ms) {
   return style(out);
 }
 
+function plur(word, count) {
+  return `${word}${count === 1 ? "" : "s"}`;
+}
+
 function footer(counts) {
   const problems = counts.errors + counts.warnings;
   const result = [];
@@ -37,11 +41,11 @@ function footer(counts) {
       warnings: counts.warnings > 0 ? "yellow" : "dim"
     };
     const labels = {
-      errors: "error" + (counts.errors == 1 ? "" : "s"),
+      errors: plur("error", counts.errors),
       problems: colors[style.problems](
-        `${problems} ${"problem" + (problems == 1 ? "" : "s")}`
+        `${problems} ${plur("problem", problems)}`
       ),
-      warnings: "warning" + (counts.warnings == 1 ? "" : "s")
+      warnings: plur("warning", counts.warnings)
     };
     const errors = colors[style.errors](`${counts.errors} ${labels.errors}`);
     const warnings = colors[style.warnings](
