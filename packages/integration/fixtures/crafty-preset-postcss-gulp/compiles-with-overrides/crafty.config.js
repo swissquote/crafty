@@ -8,8 +8,10 @@ module.exports = {
   postcss(crafty, config, bundle) {
     // Override CSS custom properties in code
     const customProperties = config.processor("postcss-custom-properties").options;
-    customProperties.variables = {
-        color: "#fa5b35"
+    customProperties.importFrom = {
+      customProperties: {
+        "--color": "#fa5b35"
+      }
     }
   }
 };
