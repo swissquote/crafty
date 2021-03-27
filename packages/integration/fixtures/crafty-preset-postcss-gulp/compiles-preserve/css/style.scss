@@ -1,0 +1,10 @@
+@import "imported.scss";
+
+:root {
+    --BodyComponent-color: var(--color);
+}
+
+.BodyComponent {
+    color: var(--BodyComponent-color);
+    margin: 0;
+}

@@ -124,3 +124,25 @@ it("Compiles CSS, configuration has overrides", async () => {
     ".Link{color:#fa5b35}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
+
+it("Compiles CSS, configuration preserve", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/compiles-preserve"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
+
+  expect(testUtils.readFile(cwd, "dist/css/myBundle.min.css")).toEqual(
+    ":root{--color:blue}" +
+      ".Link{color:#fa5b35;color:var(--color)}" +
+      ":root{--BodyComponent-color:var(--color)}" +
+      ".BodyComponent{color:#fa5b35;color:var(--BodyComponent-color);margin:0}\n" +
+      "/*# sourceMappingURL=myBundle.min.css.map */\n"
+  );
+});

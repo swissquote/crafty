@@ -38,6 +38,25 @@ Object {
 }
 `;
 
+exports[`Compiles CSS, configuration preserve 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/compiles-preserve/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] Finished 'css_myBundle' after ____ ms
+[__:__:__] Finished 'css' after ____ ms
+[__:__:__] Starting 'css__lint' ...
+[__:__:__] Finished 'css__lint' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
 exports[`Doesn't compile without a task, but lints (doesn't throw in development) 1`] = `
 Object {
   "status": 0,
