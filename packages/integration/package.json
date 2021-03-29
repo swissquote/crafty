@@ -10,7 +10,7 @@
     "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --reporter=text --reporter=lcov --reporter=html jest --runInBand"
   },
   "dependencies": {
-    "@babel/core": "7.13.13",
+    "@babel/core": "7.13.14",
     "@swissquote/crafty": "1.14.0",
     "@swissquote/crafty-preset-babel": "1.14.0",
     "@swissquote/crafty-preset-eslint": "1.14.0",
