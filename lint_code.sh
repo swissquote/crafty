@@ -45,6 +45,10 @@ echo "${GREEN}Linting crafty-preset-prettier$NC"
 cd "$DIR/packages/crafty-preset-prettier"
 yarn lint --fix
 
+echo "${GREEN}Linting crafty-preset-swc$NC"
+cd "$DIR/packages/crafty-preset-swc"
+yarn lint --fix
+
 echo "${GREEN}Linting crafty-preset-react$NC"
 cd "$DIR/packages/crafty-preset-react"
 yarn lint --fix

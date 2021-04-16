@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiles JavaScript 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript 2`] = `
+"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}import\\"./otherfile\\";var Test=function(){\\"use strict\\";function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript 3`] = `
+"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
+exports[`Compiles JavaScript and concatenates 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/concatenates/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript and concatenates 2`] = `
+"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);var Test=function(){\\"use strict\\";function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+//# sourceMappingURL=myBundle.min.js.map
+"
+`;
+
+exports[`Compiles JavaScript, keeps runtime external 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, keeps runtime external 2`] = `
+"import * as swcHelpers from \\"@swc/helpers\\";
+var regeneratorRuntime = require(\\"regenerator-runtime\\");
+/* global test */ import   \\"./otherfile\\";
+var Test = function() {
+    \\"use strict\\";
+    function Test(name) {
+        swcHelpers.classCallCheck(this, Test);
+        this.name = name;
+    }
+    swcHelpers.createClass(Test, [
+        {
+            key: \\"sayHi\\",
+            value: function sayHi() {
+                return swcHelpers.asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+                    return regeneratorRuntime.wrap(function _callee$(_ctx) {
+                        while(1)switch(_ctx.prev = _ctx.next){
+                            case 0:
+                                //eslint-disable-next-line no-console
+                                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                                _ctx.next = 3;
+                                return Promise.resolve();
+                            case 3:
+                            case \\"end\\":
+                                return _ctx.stop();
+                        }
+                    }, _callee, this);
+                }).bind(this))();
+            }
+        }
+    ]);
+    return Test;
+}();
+var test = new Test(\\"St\\\\xe9phane\\");
+test.sayHi();
+
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, keeps runtime external 3`] = `
+"setTimeout(function() {
+    //eslint-disable-next-line no-console
+    console.log(\\"Welcome to this website\\");
+}, 1000);
+
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
+exports[`Compiles JavaScript, new features transpiled 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/compiles-new-features/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript, new features transpiled 2`] = `
+"function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"next\\", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"throw\\", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError(\\"Cannot call a class as a function\\");
+    }
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if (\\"value\\" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+}
+var regeneratorRuntime = require(\\"regenerator-runtime\\");
+/* global test */ import   \\"./otherfile\\";
+var Test = function() {
+    \\"use strict\\";
+    function Test(name) {
+        _classCallCheck(this, Test);
+        this.name = name;
+    }
+    _createClass(Test, [
+        {
+            key: \\"sayHi\\",
+            value: function sayHi() {
+                return _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+                    return regeneratorRuntime.wrap(function _callee$(_ctx) {
+                        while(1)switch(_ctx.prev = _ctx.next){
+                            case 0:
+                                //eslint-disable-next-line no-console
+                                console.log(\\"Hello \\".concat(this.name, \\" !\\"));
+                                _ctx.next = 3;
+                                return Promise.resolve();
+                            case 3:
+                            case \\"end\\":
+                                return _ctx.stop();
+                        }
+                    }, _callee, this);
+                }).bind(this))();
+            }
+        }
+    ]);
+    return Test;
+}();
+var test = new Test(\\"St\\\\xe9phane\\");
+test.sayHi();
+
+//# sourceMappingURL=script.js.map
+"
+`;
+
+exports[`Compiles JavaScript, new features transpiled 3`] = `
+"setTimeout(function() {
+    //eslint-disable-next-line no-console
+    console.log(\\"Welcome to this website\\");
+}, 1000);
+
+//# sourceMappingURL=otherfile.js.map
+"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/fails/js/script.js
+  14:7  error  Parsing error: Unexpected token
+
+  12 | }
+  13 |
+> 14 | const test = new Test(\\"Stéphane\\");
+     |       ^
+  15 | test.sayHi();
+  16 |
+
+✖ 1 problem (1 error, 0 warnings)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 1 error
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+error: Unexpected token \`test\`. Expected * for generator, private key, identifier or async
+  --> __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/fails/js/script.js:14:7
+   |
+14 | const test = new Test(\\"Stéphane\\");
+   |       ^^^^
+
+",
+}
+`;
+
+exports[`Lints JavaScript 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/lints-es5/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/lints-es5/js/script.js
+  3:14  error  Replace \`·(one,\` with \`(one,·\`       @swissquote/swissquote/prettier/prettier
+  4:1   error  Delete \`·\`                           @swissquote/swissquote/prettier/prettier
+  7:23  error  Replace \`⏎\` with \`·\`                 @swissquote/swissquote/prettier/prettier
+  9:12  error  Expected '===' and instead saw '=='  eqeqeq
+
+✖ 4 problems (4 errors, 0 warnings)
+  3 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] ESLint failed with 4 errors
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`Lints JavaScript, doesn't fail in development 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/lints-es5-dev/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__]
+__PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/lints-es5-dev/js/script.js
+  3:14  warning  Replace \`·(one,\` with \`(one,·\`  @swissquote/swissquote/prettier/prettier
+  4:1   warning  Delete \`·\`                      @swissquote/swissquote/prettier/prettier
+  7:23  warning  Replace \`⏎\` with \`·\`            @swissquote/swissquote/prettier/prettier
+
+✖ 3 problems (0 errors, 3 warnings)
+  0 errors and 3 warnings potentially fixable with the \`--fix\` option.
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

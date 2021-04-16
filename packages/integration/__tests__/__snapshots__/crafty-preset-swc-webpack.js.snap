@@ -1,0 +1,1962 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiles Generators 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles-generators/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                status
+  1 kB  0        multi ./js/script.js  built
+  1 kB  1        ./js/script.js        built
+
+  size  name     asset                 status
+  1 kB  default  myBundle.min.js       emitted
+  1 kB  default  myBundle.min.js.map   emitted
+
+  (1 module hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles Generators 2`] = `
+"(function(t,r){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=r();else if(\\"function\\"===typeof define&&define.amd)define([],r);else{var e=r();for(var n in e)(\\"object\\"===typeof exports?exports:t)[n]=e[n]}})(window,(function(){return function(t){var r={};function e(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,e),o.l=!0,o.exports}return e.m=t,e.c=r,e.d=function(t,r,n){e.o(t,r)||Object.defineProperty(t,r,{enumerable:!0,get:n})},e.r=function(t){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(t,\\"__esModule\\",{value:!0})},e.t=function(t,r){if(1&r&&(t=e(t)),8&r)return t;if(4&r&&\\"object\\"===typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(e.r(n),Object.defineProperty(n,\\"default\\",{enumerable:!0,value:t}),2&r&&\\"string\\"!=typeof t)for(var o in t)e.d(n,o,function(r){return t[r]}.bind(null,o));return n},e.n=function(t){var r=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(r,\\"a\\",r),r},e.o=function(t,r){return Object.prototype.hasOwnProperty.call(t,r)},e.p=\\"\\",e(e.s=0)}([function(t,r,e){t.exports=e(1)},function(t,r,e){\\"use strict\\";e.r(r),e.d(r,\\"default\\",(function(){return o}));var n=e(2);function o(){return n.wrap((function(t){while(1)switch(t.prev=t.next){case 0:return t.next=2,1;case 2:case\\"end\\":return t.stop()}}),o)}},function(t,r,e){var n=function(t){\\"use strict\\";var r=Object.prototype;var e=r.hasOwnProperty;var n;var o=\\"function\\"===typeof Symbol?Symbol:{};var i=o.iterator||\\"@@iterator\\";var a=o.asyncIterator||\\"@@asyncIterator\\";var u=o.toStringTag||\\"@@toStringTag\\";function c(t,r,e){return Object.defineProperty(t,r,{value:e,enumerable:!0,configurable:!0,writable:!0}),t[r]}try{c({},\\"\\")}catch(t){c=function(t,r,e){return t[r]=e}}function f(t,r,e,n){var o=r&&r.prototype instanceof d?r:d;var i=Object.create(o.prototype);var a=new k(n||[]);return i._invoke=_(t,e,a),i}function l(t,r,e){try{return{type:\\"normal\\",arg:t.call(r,e)}}catch(t){return{type:\\"throw\\",arg:t}}}t.wrap=f;var s=\\"suspendedStart\\";var h=\\"suspendedYield\\";var p=\\"executing\\";var v=\\"completed\\";var y={};function d(){}function g(){}function m(){}var w={};w[i]=function(){return this};var x=Object.getPrototypeOf;var b=x&&x(x(G([])));b&&b!==r&&e.call(b,i)&&(w=b);var L=m.prototype=d.prototype=Object.create(w);function E(t){[\\"next\\",\\"throw\\",\\"return\\"].forEach((function(r){c(t,r,(function(t){return this._invoke(r,t)}))}))}function j(t,r){function n(o,i,a,u){var c=l(t[o],t,i);if(\\"throw\\"!==c.type){var f=c.arg;var s=f.value;if(s&&\\"object\\"===typeof s&&e.call(s,\\"__await\\"))return r.resolve(s.__await).then((function(t){n(\\"next\\",t,a,u)}),(function(t){n(\\"throw\\",t,a,u)}));return r.resolve(s).then((function(t){f.value=t,a(f)}),(function(t){return n(\\"throw\\",t,a,u)}))}u(c.arg)}var o;function i(t,e){function i(){return new r((function(r,o){n(t,e,r,o)}))}return o=o?o.then(i,i):i()}this._invoke=i}function _(t,r,e){var n=s;return function(o,i){if(n===p)throw new Error(\\"Generator is already running\\");if(n===v){if(\\"throw\\"===o)throw i;return N()}e.method=o,e.arg=i;while(1){var a=e.delegate;if(a){var u=O(a,e);if(u){if(u===y)continue;return u}}if(\\"next\\"===e.method)e.sent=e._sent=e.arg;else if(\\"throw\\"===e.method){if(n===s)throw n=v,e.arg;e.dispatchException(e.arg)}else\\"return\\"===e.method&&e.abrupt(\\"return\\",e.arg);n=p;var c=l(t,r,e);if(\\"normal\\"===c.type){if(n=e.done?v:h,c.arg===y)continue;return{value:c.arg,done:e.done}}\\"throw\\"===c.type&&(n=v,e.method=\\"throw\\",e.arg=c.arg)}}}function O(t,r){var e=t.iterator[r.method];if(e===n){if(r.delegate=null,\\"throw\\"===r.method){if(t.iterator.return&&(r.method=\\"return\\",r.arg=n,O(t,r),\\"throw\\"===r.method))return y;r.method=\\"throw\\",r.arg=new TypeError(\\"The iterator does not provide a 'throw' method\\")}return y}var o=l(e,t.iterator,r.arg);if(\\"throw\\"===o.type)return r.method=\\"throw\\",r.arg=o.arg,r.delegate=null,y;var i=o.arg;if(!i)return r.method=\\"throw\\",r.arg=new TypeError(\\"iterator result is not an object\\"),r.delegate=null,y;if(!i.done)return i;return r[t.resultName]=i.value,r.next=t.nextLoc,\\"return\\"!==r.method&&(r.method=\\"next\\",r.arg=n),r.delegate=null,y}function P(t){var r={tryLoc:t[0]};1 in t&&(r.catchLoc=t[1]),2 in t&&(r.finallyLoc=t[2],r.afterLoc=t[3]),this.tryEntries.push(r)}function S(t){var r=t.completion||{};r.type=\\"normal\\",delete r.arg,t.completion=r}function k(t){this.tryEntries=[{tryLoc:\\"root\\"}],t.forEach(P,this),this.reset(!0)}function G(t){if(t){var r=t[i];if(r)return r.call(t);if(\\"function\\"===typeof t.next)return t;if(!isNaN(t.length)){var o=-1,a=function r(){while(++o<t.length)if(e.call(t,o))return r.value=t[o],r.done=!1,r;return r.value=n,r.done=!0,r};return a.next=a}}return{next:N}}function N(){return{value:n,done:!0}}return g.prototype=L.constructor=m,m.constructor=g,g.displayName=c(m,u,\\"GeneratorFunction\\"),t.isGeneratorFunction=function(t){var r=\\"function\\"===typeof t&&t.constructor;return!!r&&(r===g||\\"GeneratorFunction\\"===(r.displayName||r.name))},t.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,m):(t.__proto__=m,c(t,u,\\"GeneratorFunction\\")),t.prototype=Object.create(L),t},t.awrap=function(t){return{__await:t}},E(j.prototype),j.prototype[a]=function(){return this},t.AsyncIterator=j,t.async=function(r,e,n,o,i){void 0===i&&(i=Promise);var a=new j(f(r,e,n,o),i);return t.isGeneratorFunction(e)?a:a.next().then((function(t){return t.done?t.value:a.next()}))},E(L),c(L,u,\\"Generator\\"),L[i]=function(){return this},L.toString=function(){return\\"[object Generator]\\"},t.keys=function(t){var r=[];for(var e in t)r.push(e);return r.reverse(),function e(){while(r.length){var n=r.pop();if(n in t)return e.value=n,e.done=!1,e}return e.done=!0,e}},t.values=G,k.prototype={constructor:k,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=n,this.done=!1,this.delegate=null,this.method=\\"next\\",this.arg=n,this.tryEntries.forEach(S),!t)for(var r in this)\\"t\\"===r.charAt(0)&&e.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=n)},stop:function(){this.done=!0;var t=this.tryEntries[0];var r=t.completion;if(\\"throw\\"===r.type)throw r.arg;return this.rval},dispatchException:function(t){if(this.done)throw t;var r=this;function o(e,o){return u.type=\\"throw\\",u.arg=t,r.next=e,o&&(r.method=\\"next\\",r.arg=n),!!o}for(var i=this.tryEntries.length-1;i>=0;--i){var a=this.tryEntries[i];var u=a.completion;if(\\"root\\"===a.tryLoc)return o(\\"end\\");if(a.tryLoc<=this.prev){var c=e.call(a,\\"catchLoc\\");var f=e.call(a,\\"finallyLoc\\");if(c&&f){if(this.prev<a.catchLoc)return o(a.catchLoc,!0);if(this.prev<a.finallyLoc)return o(a.finallyLoc)}else if(c){if(this.prev<a.catchLoc)return o(a.catchLoc,!0)}else{if(!f)throw new Error(\\"try statement without catch or finally\\");if(this.prev<a.finallyLoc)return o(a.finallyLoc)}}}},abrupt:function(t,r){for(var n=this.tryEntries.length-1;n>=0;--n){var o=this.tryEntries[n];if(o.tryLoc<=this.prev&&e.call(o,\\"finallyLoc\\")&&this.prev<o.finallyLoc){var i=o;break}}i&&(\\"break\\"===t||\\"continue\\"===t)&&i.tryLoc<=r&&r<=i.finallyLoc&&(i=null);var a=i?i.completion:{};if(a.type=t,a.arg=r,i)return this.method=\\"next\\",this.next=i.finallyLoc,y;return this.complete(a)},complete:function(t,r){if(\\"throw\\"===t.type)throw t.arg;return\\"break\\"===t.type||\\"continue\\"===t.type?this.next=t.arg:\\"return\\"===t.type?(this.rval=this.arg=t.arg,this.method=\\"return\\",this.next=\\"end\\"):\\"normal\\"===t.type&&r&&(this.next=r),y},finish:function(t){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.finallyLoc===t)return this.complete(e.completion,e.afterLoc),S(e),y}},catch:function(t){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc===t){var n=e.completion;if(\\"throw\\"===n.type){var o=n.arg;S(e)}return o}}throw new Error(\\"illegal catch attempt\\")},delegateYield:function(t,r,e){return this.delegate={iterator:G(t),resultName:r,nextLoc:e},\\"next\\"===this.method&&(this.arg=n),y}},t}(t.exports);try{regeneratorRuntime=n}catch(t){Function(\\"r\\",\\"regeneratorRuntime = r\\")(n)}}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/script.js         built
+  1 kB  1        ./js/script.js + 66 modules  built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function o(e){this.wrapped=e}function u(e){var t,n;function r(e,r){return new Promise((function(o,i){var c={key:e,arg:r,resolve:o,reject:i,next:null};n?n=n.next=c:(t=n=c,u(e,r))}))}function u(t,n){try{var r=e[t](n);var c=r.value;var f=c instanceof o;Promise.resolve(f?c.wrapped:c).then((function(e){if(f)return void u(\\"next\\",e);i(r.done?\\"return\\":\\"normal\\",e)}),(function(e){u(\\"throw\\",e)}))}catch(e){i(\\"throw\\",e)}}function i(e,r){switch(e){case\\"return\\":t.resolve({value:r,done:!0});break;case\\"throw\\":t.reject(r);break;default:t.resolve({value:r,done:!1});break}t=t.next,t?u(t.key,t.arg):n=null}this._invoke=r,\\"function\\"!==typeof e.return&&(this.return=void 0)}function i(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function c(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function f(e,t,n){return t&&c(e.prototype,t),n&&c(e,n),e}function a(e){return e&&e.constructor===Symbol?\\"symbol\\":typeof e}function l(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function s(e){return s=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},s(e)}function p(e){return s(e)}function y(e,t){return y=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},y(e,t)}function b(e,t){return y(e,t)}function d(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&b(e,t)}function v(e,t){if(t&&(\\"object\\"===a(t)||\\"function\\"===typeof t))return t;return r(e)}n.r(t),n.d(t,\\"default\\",(function(){return m})),\\"function\\"===typeof Symbol&&Symbol.asyncIterator&&(u.prototype[Symbol.asyncIterator]=function(){return this}),u.prototype.next=function(e){return this._invoke(\\"next\\",e)},u.prototype.throw=function(e){return this._invoke(\\"throw\\",e)},u.prototype.return=function(e){return this._invoke(\\"return\\",e)};var h=function(e){function t(){var e;return i(this,t),e=v(this,p(t).apply(this,arguments)),l(r(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return d(t,e),f(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var m=function(){function e(){i(this,e),console.log(\\"init class\\")}return f(e,[{key:\\"method\\",value:function(){console.log(h)}}]),e}()}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript with externals 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/externals/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                              status
+  1 kB  0        external \\"somelibrary/thing/stuff\\"  built
+  1 kB  1        multi ./js/script.js                built
+  1 kB  2        ./js/script.js + 66 modules         built
+
+  size  name     asset                               status
+  1 kB  default  myBundle.min.js                     emitted
+  1 kB  default  myBundle.min.js.map                 emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript with externals 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t(require(\\"somelibrary/thing/stuff\\"));else if(\\"function\\"===typeof define&&define.amd)define([\\"somelibrary/thing/stuff\\"],t);else{var n=\\"object\\"===typeof exports?t(require(\\"somelibrary/thing/stuff\\")):t(e[\\"somelibrary/thing/stuff\\"]);for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(e){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(t,n){t.exports=e},function(e,t,n){e.exports=n(2)},function(e,t,n){\\"use strict\\";function r(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function o(e){this.wrapped=e}function u(e){var t,n;function r(e,r){return new Promise((function(o,i){var f={key:e,arg:r,resolve:o,reject:i,next:null};n?n=n.next=f:(t=n=f,u(e,r))}))}function u(t,n){try{var r=e[t](n);var f=r.value;var c=f instanceof o;Promise.resolve(c?f.wrapped:f).then((function(e){if(c)return void u(\\"next\\",e);i(r.done?\\"return\\":\\"normal\\",e)}),(function(e){u(\\"throw\\",e)}))}catch(e){i(\\"throw\\",e)}}function i(e,r){switch(e){case\\"return\\":t.resolve({value:r,done:!0});break;case\\"throw\\":t.reject(r);break;default:t.resolve({value:r,done:!1});break}t=t.next,t?u(t.key,t.arg):n=null}this._invoke=r,\\"function\\"!==typeof e.return&&(this.return=void 0)}function i(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function f(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function c(e,t,n){return t&&f(e.prototype,t),n&&f(e,n),e}function a(e){return e&&e.constructor===Symbol?\\"symbol\\":typeof e}function l(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function s(e){return s=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},s(e)}function p(e){return s(e)}function y(e,t){return y=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},y(e,t)}function b(e,t){return y(e,t)}function d(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&b(e,t)}function v(e,t){if(t&&(\\"object\\"===a(t)||\\"function\\"===typeof t))return t;return r(e)}n.r(t),n.d(t,\\"default\\",(function(){return w})),\\"function\\"===typeof Symbol&&Symbol.asyncIterator&&(u.prototype[Symbol.asyncIterator]=function(){return this}),u.prototype.next=function(e){return this._invoke(\\"next\\",e)},u.prototype.throw=function(e){return this._invoke(\\"throw\\",e)},u.prototype.return=function(e){return this._invoke(\\"return\\",e)};var h=n(0);var m=n.n(h);var j=function(e){function t(){var e;return i(this,t),e=v(this,p(t).apply(this,arguments)),l(r(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return d(t,e),c(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var w=function(){function e(){i(this,e),console.log(\\"init class\\")}return c(e,[{key:\\"method\\",value:function(){console.log(j,m.a)}}]),e}()}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript with webpack overrides 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles-merge-webpack-config/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Merging SQ webpack config with __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles-merge-webpack-config/webpack.config.js
+  size  name     module                       status
+  1 kB  0        multi ./js/script.js         built
+  1 kB  1        ./js/script.js + 66 modules  built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript with webpack overrides 2`] = `
+"(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(window, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, \\"default\\", function() { return /* binding */ script_newStuff; });
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_apply_decorated_descriptor.js
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_array_with_holes.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_array_without_holes.js
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_assert_this_initialized.js
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");
+  }
+
+  return self;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_await_value.js
+function _AwaitValue(value) {
+  this.wrapped = value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_async_generator.js
+
+function AsyncGenerator(gen) {
+  var front, back;
+
+  function send(key, arg) {
+    return new Promise(function (resolve, reject) {
+      var request = {
+        key: key,
+        arg: arg,
+        resolve: resolve,
+        reject: reject,
+        next: null
+      };
+
+      if (back) {
+        back = back.next = request;
+      } else {
+        front = back = request;
+        resume(key, arg);
+      }
+    });
+  }
+
+  function resume(key, arg) {
+    try {
+      var result = gen[key](arg);
+      var value = result.value;
+      var wrappedAwait = value instanceof _AwaitValue;
+      Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) {
+        if (wrappedAwait) {
+          resume(\\"next\\", arg);
+          return;
+        }
+
+        settle(result.done ? \\"return\\" : \\"normal\\", arg);
+      }, function (err) {
+        resume(\\"throw\\", err);
+      });
+    } catch (err) {
+      settle(\\"throw\\", err);
+    }
+  }
+
+  function settle(type, value) {
+    switch (type) {
+      case \\"return\\":
+        front.resolve({
+          value: value,
+          done: true
+        });
+        break;
+
+      case \\"throw\\":
+        front.reject(value);
+        break;
+
+      default:
+        front.resolve({
+          value: value,
+          done: false
+        });
+        break;
+    }
+
+    front = front.next;
+
+    if (front) {
+      resume(front.key, front.arg);
+    } else {
+      back = null;
+    }
+  }
+
+  this._invoke = send;
+
+  if (typeof gen.return !== \\"function\\") {
+    this.return = undefined;
+  }
+}
+
+if (typeof Symbol === \\"function\\" && Symbol.asyncIterator) {
+  AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+    return this;
+  };
+}
+
+AsyncGenerator.prototype.next = function (arg) {
+  return this._invoke(\\"next\\", arg);
+};
+
+AsyncGenerator.prototype.throw = function (arg) {
+  return this._invoke(\\"throw\\", arg);
+};
+
+AsyncGenerator.prototype.return = function (arg) {
+  return this._invoke(\\"return\\", arg);
+};
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_async_generator_delegate.js
+function _asyncGeneratorDelegate(inner, awaitWrap) {
+  var iter = {},
+    waiting = false;
+
+  function pump(key, value) {
+    waiting = true;
+    value = new Promise(function (resolve) {
+      resolve(inner[key](value));
+    });
+    return {
+      done: false,
+      value: awaitWrap(value)
+    };
+  }
+
+  ;
+
+  if (typeof Symbol === \\"function\\" && Symbol.iterator) {
+    iter[Symbol.iterator] = function () {
+      return this;
+    };
+  }
+
+  iter.next = function (value) {
+    if (waiting) {
+      waiting = false;
+      return value;
+    }
+
+    return pump(\\"next\\", value);
+  };
+
+  if (typeof inner.throw === \\"function\\") {
+    iter.throw = function (value) {
+      if (waiting) {
+        waiting = false;
+        throw value;
+      }
+
+      return pump(\\"throw\\", value);
+    };
+  }
+
+  if (typeof inner.return === \\"function\\") {
+    iter.return = function (value) {
+      return pump(\\"return\\", value);
+    };
+  }
+
+  return iter;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_async_iterator.js
+function _asyncIterator(iterable) {
+  var method;
+
+  if (typeof Symbol === \\"function\\") {
+    if (Symbol.asyncIterator) {
+      method = iterable[Symbol.asyncIterator];
+      if (method != null) return method.call(iterable);
+    }
+
+    if (Symbol.iterator) {
+      method = iterable[Symbol.iterator];
+      if (method != null) return method.call(iterable);
+    }
+  }
+
+  throw new TypeError(\\"Object is not async iterable\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_async_to_generator.js
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+      args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"next\\", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, \\"throw\\", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_await_async_generator.js
+
+function _awaitAsyncGenerator(value) {
+  return new _AwaitValue(value);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_call_check.js
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError(\\"Cannot call a class as a function\\");
+  }
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_name_tdz_error.js
+function _classNameTDZError(name) {
+  throw new Error(\\"Class \\\\\\"\\" + name + \\"\\\\\\" cannot be referenced in computed property keys.\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_private_field_get.js
+function _classPrivateFieldGet(receiver, privateMap) {
+  if (!privateMap.has(receiver)) {
+    throw new TypeError(\\"attempted to get private field on non-instance\\");
+  }
+
+  return privateMap.get(receiver).value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_private_field_loose_base.js
+function _classPrivateFieldBase(receiver, privateKey) {
+  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
+    throw new TypeError(\\"attempted to use private field on non-instance\\");
+  }
+
+  return receiver;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_private_field_set.js
+function _classPrivateFieldSet(receiver, privateMap, value) {
+  if (!privateMap.has(receiver)) {
+    throw new TypeError(\\"attempted to set private field on non-instance\\");
+  }
+
+  var descriptor = privateMap.get(receiver);
+
+  if (!descriptor.writable) {
+    throw new TypeError(\\"attempted to set read only private field\\");
+  }
+
+  descriptor.value = value;
+  return value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_private_method_get.js
+function _classPrivateMethodGet(receiver, privateSet, fn) {
+  if (!privateSet.has(receiver)) {
+    throw new TypeError(\\"attempted to get private field on non-instance\\");
+  }
+
+  return fn;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_private_method_set.js
+function _classPrivateMethodSet() {
+  throw new TypeError(\\"attempted to reassign private method\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_static_private_field_spec_get.js
+function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) {
+  if (receiver !== classConstructor) {
+    throw new TypeError(\\"Private static access of wrong provenance\\");
+  }
+
+  return descriptor.value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_class_static_private_field_spec_set.js
+function _classStaticPrivateFieldSpecSet(receiver, classConstructor, descriptor, value) {
+  if (receiver !== classConstructor) {
+    throw new TypeError(\\"Private static access of wrong provenance\\");
+  }
+
+  if (!descriptor.writable) {
+    throw new TypeError(\\"attempted to set read only private field\\");
+  }
+
+  descriptor.value = value;
+  return value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_construct.js
+function isNativeReflectConstruct() {
+  if (typeof Reflect === \\"undefined\\" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === \\"function\\") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () { }));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function construct(Parent, args, Class) {
+  if (isNativeReflectConstruct()) {
+    construct = Reflect.construct;
+  } else {
+    construct = function construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return construct.apply(null, arguments);
+}
+
+function _construct(Parent, args, Class) {
+  return construct.apply(null, arguments);
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_create_class.js
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if (\\"value\\" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_iterable_to_array.js
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \\"[object Arguments]\\") return Array.from(iter);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_non_iterable_rest.js
+function _nonIterableRest() {
+  throw new TypeError(\\"Invalid attempt to destructure non-iterable instance\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_to_array.js
+
+function _toArray(arr) {
+  return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_type_of.js
+function _type_of_typeof(obj) {
+    return obj && obj.constructor === Symbol ? \\"symbol\\" : typeof obj;
+};
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_to_primitive.js
+
+function _toPrimitive(input, hint) {
+  if (_type_of_typeof(input) !== \\"object\\" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || \\"default\\");
+    if (_type_of_typeof(res) !== \\"object\\") return res;
+    throw new TypeError(\\"@@toPrimitive must return a primitive value.\\");
+  }
+
+  return (hint === \\"string\\" ? String : Number)(input);
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_to_property_key.js
+
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, \\"string\\");
+  return _type_of_typeof(key) === \\"symbol\\" ? key : String(key);
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_decorate.js
+
+function _decorate(decorators, factory, superClass) {
+  var r = factory(function initialize(O) {
+    _initializeInstanceElements(O, decorated.elements);
+  }, superClass);
+
+  var decorated = _decorateClass(_coalesceClassElements(r.d.map(_createElementDescriptor)), decorators);
+
+  _initializeClassElements(r.F, decorated.elements);
+
+  return _runClassFinishers(r.F, decorated.finishers);
+}
+
+function _createElementDescriptor(def) {
+  var key = _toPropertyKey(def.key);
+  var descriptor;
+
+  if (def.kind === \\"method\\") {
+    descriptor = {
+      value: def.value,
+      writable: true,
+      configurable: true,
+      enumerable: false
+    };
+    Object.defineProperty(def.value, \\"name\\", {
+      value: _typeof(key) === \\"symbol\\" ? \\"\\" : key,
+      configurable: true
+    });
+  } else if (def.kind === \\"get\\") {
+    descriptor = {
+      get: def.value,
+      configurable: true,
+      enumerable: false
+    };
+  } else if (def.kind === \\"set\\") {
+    descriptor = {
+      set: def.value,
+      configurable: true,
+      enumerable: false
+    };
+  } else if (def.kind === \\"field\\") {
+    descriptor = {
+      configurable: true,
+      writable: true,
+      enumerable: true
+    };
+  }
+
+  var element = {
+    kind: def.kind === \\"field\\" ? \\"field\\" : \\"method\\",
+    key: key,
+    placement: def.static ? \\"static\\" : def.kind === \\"field\\" ? \\"own\\" : \\"prototype\\",
+    descriptor: descriptor
+  };
+  if (def.decorators) element.decorators = def.decorators;
+  if (def.kind === \\"field\\") element.initializer = def.value;
+  return element;
+}
+
+function _coalesceGetterSetter(element, other) {
+  if (element.descriptor.get !== undefined) {
+    other.descriptor.get = element.descriptor.get;
+  } else {
+    other.descriptor.set = element.descriptor.set;
+  }
+}
+
+function _coalesceClassElements(elements) {
+  var newElements = [];
+
+  var isSameElement = function isSameElement(other) {
+    return other.kind === \\"method\\" && other.key === element.key && other.placement === element.placement;
+  };
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    var other;
+
+    if (element.kind === \\"method\\" && (other = newElements.find(isSameElement))) {
+      if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) {
+        if (_hasDecorators(element) || _hasDecorators(other)) {
+          throw new ReferenceError(\\"Duplicated methods (\\" + element.key + \\") can't be decorated.\\");
+        }
+
+        other.descriptor = element.descriptor;
+      } else {
+        if (_hasDecorators(element)) {
+          if (_hasDecorators(other)) {
+            throw new ReferenceError(\\"Decorators can't be placed on different accessors with for \\" + \\"the same property (\\" + element.key + \\").\\");
+          }
+
+          other.decorators = element.decorators;
+        }
+
+        _coalesceGetterSetter(element, other);
+      }
+    } else {
+      newElements.push(element);
+    }
+  }
+
+  return newElements;
+}
+
+function _hasDecorators(element) {
+  return element.decorators && element.decorators.length;
+}
+
+function _isDataDescriptor(desc) {
+  return desc !== undefined && !(desc.value === undefined && desc.writable === undefined);
+}
+
+function _initializeClassElements(F, elements) {
+  var proto = F.prototype;
+  [\\"method\\", \\"field\\"].forEach(function (kind) {
+    elements.forEach(function (element) {
+      var placement = element.placement;
+
+      if (element.kind === kind && (placement === \\"static\\" || placement === \\"prototype\\")) {
+        var receiver = placement === \\"static\\" ? F : proto;
+
+        _defineClassElement(receiver, element);
+      }
+    });
+  });
+}
+
+function _initializeInstanceElements(O, elements) {
+  [\\"method\\", \\"field\\"].forEach(function (kind) {
+    elements.forEach(function (element) {
+      if (element.kind === kind && element.placement === \\"own\\") {
+        _defineClassElement(O, element);
+      }
+    });
+  });
+}
+
+function _defineClassElement(receiver, element) {
+  var descriptor = element.descriptor;
+
+  if (element.kind === \\"field\\") {
+    var initializer = element.initializer;
+    descriptor = {
+      enumerable: descriptor.enumerable,
+      writable: descriptor.writable,
+      configurable: descriptor.configurable,
+      value: initializer === void 0 ? void 0 : initializer.call(receiver)
+    };
+  }
+
+  Object.defineProperty(receiver, element.key, descriptor);
+}
+
+function _decorateClass(elements, decorators) {
+  var newElements = [];
+  var finishers = [];
+  var placements = {
+    static: [],
+    prototype: [],
+    own: []
+  };
+  elements.forEach(function (element) {
+    _addElementPlacement(element, placements);
+  });
+  elements.forEach(function (element) {
+    if (!_hasDecorators(element)) return newElements.push(element);
+
+    var elementFinishersExtras = _decorateElement(element, placements);
+
+    newElements.push(elementFinishersExtras.element);
+    newElements.push.apply(newElements, elementFinishersExtras.extras);
+    finishers.push.apply(finishers, elementFinishersExtras.finishers);
+  });
+
+  if (!decorators) {
+    return {
+      elements: newElements,
+      finishers: finishers
+    };
+  }
+
+  var result = _decorateConstructor(newElements, decorators);
+
+  finishers.push.apply(finishers, result.finishers);
+  result.finishers = finishers;
+  return result;
+}
+
+function _addElementPlacement(element, placements, silent) {
+  var keys = placements[element.placement];
+
+  if (!silent && keys.indexOf(element.key) !== -1) {
+    throw new TypeError(\\"Duplicated element (\\" + element.key + \\")\\");
+  }
+
+  keys.push(element.key);
+}
+
+function _decorateElement(element, placements) {
+  var extras = [];
+  var finishers = [];
+
+  for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) {
+    var keys = placements[element.placement];
+    keys.splice(keys.indexOf(element.key), 1);
+
+    var elementObject = _fromElementDescriptor(element);
+
+    var elementFinisherExtras = _toElementFinisherExtras((0, decorators[i])(elementObject) || elementObject);
+
+    element = elementFinisherExtras.element;
+
+    _addElementPlacement(element, placements);
+
+    if (elementFinisherExtras.finisher) {
+      finishers.push(elementFinisherExtras.finisher);
+    }
+
+    var newExtras = elementFinisherExtras.extras;
+
+    if (newExtras) {
+      for (var j = 0; j < newExtras.length; j++) {
+        _addElementPlacement(newExtras[j], placements);
+      }
+
+      extras.push.apply(extras, newExtras);
+    }
+  }
+
+  return {
+    element: element,
+    finishers: finishers,
+    extras: extras
+  };
+}
+
+function _decorateConstructor(elements, decorators) {
+  var finishers = [];
+
+  for (var i = decorators.length - 1; i >= 0; i--) {
+    var obj = _fromClassDescriptor(elements);
+
+    var elementsAndFinisher = _toClassDescriptor((0, decorators[i])(obj) || obj);
+
+    if (elementsAndFinisher.finisher !== undefined) {
+      finishers.push(elementsAndFinisher.finisher);
+    }
+
+    if (elementsAndFinisher.elements !== undefined) {
+      elements = elementsAndFinisher.elements;
+
+      for (var j = 0; j < elements.length - 1; j++) {
+        for (var k = j + 1; k < elements.length; k++) {
+          if (elements[j].key === elements[k].key && elements[j].placement === elements[k].placement) {
+            throw new TypeError(\\"Duplicated element (\\" + elements[j].key + \\")\\");
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    elements: elements,
+    finishers: finishers
+  };
+}
+
+function _fromElementDescriptor(element) {
+  var obj = {
+    kind: element.kind,
+    key: element.key,
+    placement: element.placement,
+    descriptor: element.descriptor
+  };
+  var desc = {
+    value: \\"Descriptor\\",
+    configurable: true
+  };
+  Object.defineProperty(obj, Symbol.toStringTag, desc);
+  if (element.kind === \\"field\\") obj.initializer = element.initializer;
+  return obj;
+}
+
+function _toElementDescriptors(elementObjects) {
+  if (elementObjects === undefined) return;
+  return _toArray(elementObjects).map(function (elementObject) {
+    var element = _toElementDescriptor(elementObject);
+
+    _disallowProperty(elementObject, \\"finisher\\", \\"An element descriptor\\");
+
+    _disallowProperty(elementObject, \\"extras\\", \\"An element descriptor\\");
+
+    return element;
+  });
+}
+
+function _toElementDescriptor(elementObject) {
+  var kind = String(elementObject.kind);
+
+  if (kind !== \\"method\\" && kind !== \\"field\\") {
+    throw new TypeError('An element descriptor\\\\'s .kind property must be either \\"method\\" or' + ' \\"field\\", but a decorator created an element descriptor with' + ' .kind \\"' + kind + '\\"');
+  }
+
+  var key = _toPropertyKey(elementObject.key);
+  var placement = String(elementObject.placement);
+
+  if (placement !== \\"static\\" && placement !== \\"prototype\\" && placement !== \\"own\\") {
+    throw new TypeError('An element descriptor\\\\'s .placement property must be one of \\"static\\",' + ' \\"prototype\\" or \\"own\\", but a decorator created an element descriptor' + ' with .placement \\"' + placement + '\\"');
+  }
+
+  var descriptor = elementObject.descriptor;
+
+  _disallowProperty(elementObject, \\"elements\\", \\"An element descriptor\\");
+
+  var element = {
+    kind: kind,
+    key: key,
+    placement: placement,
+    descriptor: Object.assign({}, descriptor)
+  };
+
+  if (kind !== \\"field\\") {
+    _disallowProperty(elementObject, \\"initializer\\", \\"A method descriptor\\");
+  } else {
+    _disallowProperty(descriptor, \\"get\\", \\"The property descriptor of a field descriptor\\");
+
+    _disallowProperty(descriptor, \\"set\\", \\"The property descriptor of a field descriptor\\");
+
+    _disallowProperty(descriptor, \\"value\\", \\"The property descriptor of a field descriptor\\");
+
+    element.initializer = elementObject.initializer;
+  }
+
+  return element;
+}
+
+function _toElementFinisherExtras(elementObject) {
+  var element = _toElementDescriptor(elementObject);
+
+  var finisher = _optionalCallableProperty(elementObject, \\"finisher\\");
+
+  var extras = _toElementDescriptors(elementObject.extras);
+
+  return {
+    element: element,
+    finisher: finisher,
+    extras: extras
+  };
+}
+
+function _fromClassDescriptor(elements) {
+  var obj = {
+    kind: \\"class\\",
+    elements: elements.map(_fromElementDescriptor)
+  };
+  var desc = {
+    value: \\"Descriptor\\",
+    configurable: true
+  };
+  Object.defineProperty(obj, Symbol.toStringTag, desc);
+  return obj;
+}
+
+function _toClassDescriptor(obj) {
+  var kind = String(obj.kind);
+
+  if (kind !== \\"class\\") {
+    throw new TypeError('A class descriptor\\\\'s .kind property must be \\"class\\", but a decorator' + ' created a class descriptor with .kind \\"' + kind + '\\"');
+  }
+
+  _disallowProperty(obj, \\"key\\", \\"A class descriptor\\");
+
+  _disallowProperty(obj, \\"placement\\", \\"A class descriptor\\");
+
+  _disallowProperty(obj, \\"descriptor\\", \\"A class descriptor\\");
+
+  _disallowProperty(obj, \\"initializer\\", \\"A class descriptor\\");
+
+  _disallowProperty(obj, \\"extras\\", \\"A class descriptor\\");
+
+  var finisher = _optionalCallableProperty(obj, \\"finisher\\");
+
+  var elements = _toElementDescriptors(obj.elements);
+
+  return {
+    elements: elements,
+    finisher: finisher
+  };
+}
+
+function _disallowProperty(obj, name, objectType) {
+  if (obj[name] !== undefined) {
+    throw new TypeError(objectType + \\" can't have a .\\" + name + \\" property.\\");
+  }
+}
+
+function _optionalCallableProperty(obj, name) {
+  var value = obj[name];
+
+  if (value !== undefined && typeof value !== \\"function\\") {
+    throw new TypeError(\\"Expected '\\" + name + \\"' to be a function\\");
+  }
+
+  return value;
+}
+
+function _runClassFinishers(constructor, finishers) {
+  for (var i = 0; i < finishers.length; i++) {
+    var newConstructor = (0, finishers[i])(constructor);
+
+    if (newConstructor !== undefined) {
+      if (typeof newConstructor !== \\"function\\") {
+        throw new TypeError(\\"Finishers must return a constructor.\\");
+      }
+
+      constructor = newConstructor;
+    }
+  }
+
+  return constructor;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_defaults.js
+function _defaults(obj, defaults) {
+  var keys = Object.getOwnPropertyNames(defaults);
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var value = Object.getOwnPropertyDescriptor(defaults, key);
+
+    if (value && value.configurable && obj[key] === undefined) {
+      Object.defineProperty(obj, key, value);
+    }
+  }
+
+  return obj;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_define_enumerable_properties.js
+function _defineEnumerableProperties(obj, descs) {
+  for (var key in descs) {
+    var desc = descs[key];
+    desc.configurable = desc.enumerable = true;
+    if (\\"value\\" in desc) desc.writable = true;
+    Object.defineProperty(obj, key, desc);
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    var objectSymbols = Object.getOwnPropertySymbols(descs);
+
+    for (var i = 0; i < objectSymbols.length; i++) {
+      var sym = objectSymbols[i];
+      var desc = descs[sym];
+      desc.configurable = desc.enumerable = true;
+      if (\\"value\\" in desc) desc.writable = true;
+      Object.defineProperty(obj, sym, desc);
+    }
+  }
+
+  return obj;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_define_property.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_extends.js
+function extends_() {
+  extends_ = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return extends_.apply(this, arguments);
+}
+
+function _extends() {
+  return extends_.apply(this, arguments);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_get_prototype_of.js
+function getPrototypeOf(o) {
+  getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return getPrototypeOf(o);
+}
+
+function _getPrototypeOf(o) {
+  return getPrototypeOf(o);
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_super_prop_base.js
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_get.js
+
+function _get_get(target, property, receiver) {
+  if (typeof Reflect !== \\"undefined\\" && Reflect.get) {
+    _get_get = Reflect.get;
+  } else {
+    _get_get = function get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver || target);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return _get_get(target, property, receiver);
+}
+
+function _get(target, property, reciever) {
+  return _get_get(target, property, reciever);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_set_prototype_of.js
+function setPrototypeOf(o, p) {
+  setPrototypeOf = Object.setPrototypeOf || function setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return setPrototypeOf(o, p);
+}
+
+function _set_prototype_of_setPrototypeOf(o, p) {
+  return setPrototypeOf(o, p);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_inherits.js
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== \\"function\\" && superClass !== null) {
+    throw new TypeError(\\"Super expression must either be null or a function\\");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _set_prototype_of_setPrototypeOf(subClass, superClass);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_inherits_loose.js
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_initializer_define_property.js
+function _initializerDefineProperty(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_initializer_warning_helper.js
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.');
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_instanceof.js
+function _instanceof(left, right) {
+  if (right != null && typeof Symbol !== \\"undefined\\" && right[Symbol.hasInstance]) {
+    return right[Symbol.hasInstance](left);
+  } else {
+    return left instanceof right;
+  }
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_interop_require_default.js
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_interop_require_wildcard.js
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};
+
+    if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+
+          if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }
+
+    newObj.default = obj;
+    return newObj;
+  }
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_is_native_function.js
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf(\\"[native code]\\") !== -1;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_iterable_to_array_limit.js
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i[\\"return\\"] != null) _i[\\"return\\"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_iterable_to_array_limit_loose.js
+function _iterableToArrayLimitLoose(arr, i) {
+  var _arr = [];
+
+  for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) {
+    _arr.push(_step.value);
+
+    if (i && _arr.length === i) break;
+  }
+
+  return _arr;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_jsx.js
+var REACT_ELEMENT_TYPE;
+
+function _createRawReactElement(type, props, key, children) {
+  if (!REACT_ELEMENT_TYPE) {
+    REACT_ELEMENT_TYPE = typeof Symbol === \\"function\\" && Symbol.for && Symbol.for(\\"react.element\\") || 0xeac7;
+  }
+
+  var defaultProps = type && type.defaultProps;
+  var childrenLength = arguments.length - 3;
+
+  if (!props && childrenLength !== 0) {
+    props = {
+      children: void 0
+    };
+  }
+
+  if (props && defaultProps) {
+    for (var propName in defaultProps) {
+      if (props[propName] === void 0) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  } else if (!props) {
+    props = defaultProps || {};
+  }
+
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = new Array(childrenLength);
+
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 3];
+    }
+
+    props.children = childArray;
+  }
+
+  return {
+    $$typeof: REACT_ELEMENT_TYPE,
+    type: type,
+    key: key === undefined ? null : '' + key,
+    ref: null,
+    props: props,
+    _owner: null
+  };
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_new_arrow_check.js
+function _newArrowCheck(innerThis, boundThis) {
+  if (innerThis !== boundThis) {
+    throw new TypeError(\\"Cannot instantiate an arrow function\\");
+  }
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_non_iterable_spread.js
+function _nonIterableSpread() {
+  throw new TypeError(\\"Invalid attempt to spread non-iterable instance\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_object_spread.js
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_object_without_properties_loose.js
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_object_without_properties.js
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_possible_constructor_return.js
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_type_of_typeof(call) === \\"object\\" || typeof call === \\"function\\")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_read_only_error.js
+function _readOnlyError(name) {
+  throw new Error(\\"\\\\\\"\\" + name + \\"\\\\\\" is read-only\\");
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_set.js
+
+function _set_set(target, property, value, receiver) {
+  if (typeof Reflect !== \\"undefined\\" && Reflect.set) {
+    _set_set = Reflect.set;
+  } else {
+    _set_set = function set(target, property, value, receiver) {
+      var base = _superPropBase(target, property);
+      var desc;
+
+      if (base) {
+        desc = Object.getOwnPropertyDescriptor(base, property);
+
+        if (desc.set) {
+          desc.set.call(receiver, value);
+          return true;
+        } else if (!desc.writable) {
+          return false;
+        }
+      }
+
+      desc = Object.getOwnPropertyDescriptor(receiver, property);
+
+      if (desc) {
+        if (!desc.writable) {
+          return false;
+        }
+
+        desc.value = value;
+        Object.defineProperty(receiver, property, desc);
+      } else {
+        _defineProperty(receiver, property, value);
+      }
+
+      return true;
+    };
+  }
+
+  return _set_set(target, property, value, receiver);
+}
+
+function _set(target, property, value, receiver, isStrict) {
+  var s = _set_set(target, property, value, receiver || target);
+
+  if (!s && isStrict) {
+    throw new Error('failed to set property');
+  }
+
+  return value;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_skip_first_generator_next.js
+function _skipFirstGeneratorNext(fn) {
+  return function () {
+    var it = fn.apply(this, arguments);
+    it.next();
+    return it;
+  };
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_sliced_to_array.js
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArray(arr, i) || _nonIterableRest();
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_sliced_to_array_loose.js
+
+function _slicedToArrayLoose(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimitLoose(arr, i) || _nonIterableRest();
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_tagged_template_literal.js
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_tagged_template_literal_loose.js
+function _taggedTemplateLiteralLoose(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  strings.raw = raw;
+  return strings;
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_throw.js
+function _throw(e) {
+    throw e;
+}
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_to_consumable_array.js
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_wrap_async_generator.js
+
+function _wrapAsyncGenerator(fn) {
+  return function () {
+    return new AsyncGenerator(fn.apply(this, arguments));
+  };
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/_wrap_native_super.js
+
+function _wrap_native_super_wrapNativeSuper(Class) {
+  var _cache = typeof Map === \\"function\\" ? new Map() : undefined;
+
+  _wrap_native_super_wrapNativeSuper = function wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== \\"function\\") {
+      throw new TypeError(\\"Super expression must either be null or a function\\");
+    }
+
+    if (typeof _cache !== \\"undefined\\") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _set_prototype_of_setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrap_native_super_wrapNativeSuper(Class);
+}
+
+function _wrapNativeSuper(Class) {
+  return _wrap_native_super_wrapNativeSuper(Class);
+}
+
+// CONCATENATED MODULE: __PATH__/node_modules/@swc/helpers/src/index.js
+
+// CONCATENATED MODULE: ./js/Component.js
+
+var Component_MyComponent = function(_Component) {
+    \\"use strict\\";
+    _inherits(MyComponent, _Component);
+    function MyComponent() {
+        _classCallCheck(this, MyComponent);
+        var _this;
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(MyComponent).apply(this, arguments));
+        _defineProperty(_assertThisInitialized(_this), \\"handleClick\\", function() {
+            _this.setState({
+                hey: true
+            });
+        });
+        return _this;
+    }
+    _createClass(MyComponent, [
+        {
+            key: \\"render\\",
+            value: function render() {
+                return React.createElement(\\"div\\", {
+                    onClick: this.handleClick
+                }, \\"Hey \\", this.state.hey);
+            }
+        }
+    ]);
+    return MyComponent;
+}(React.Component);
+/* global React */
+
+// CONCATENATED MODULE: ./js/script.js
+
+var script_newStuff = function() {
+    \\"use strict\\";
+    function newStuff() {
+        _classCallCheck(this, newStuff);
+        //eslint-disable-next-line no-console
+        console.log(\\"init class\\");
+    }
+    _createClass(newStuff, [
+        {
+            key: \\"method\\",
+            value: function method() {
+                //eslint-disable-next-line no-console
+                console.log(Component_MyComponent);
+            }
+        }
+    ]);
+    return newStuff;
+}();
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Creates profiles 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/profiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+
+Duplicate Sources / Packages - No duplicates found. 🚀
+
+Webpack Bundle Analyzer saved report to __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/profiles/dist/js/myBundle_report.html
+Webpack Bundle Analyzer saved stats file to __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/profiles/dist/js/myBundle_stats.json
+  size  name     module                       status
+  1 kB  0        multi ./js/script.js         built
+  1 kB  1        ./js/script.js + 66 modules  built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Creates profiles 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function o(e){this.wrapped=e}function u(e){var t,n;function r(e,r){return new Promise((function(o,i){var c={key:e,arg:r,resolve:o,reject:i,next:null};n?n=n.next=c:(t=n=c,u(e,r))}))}function u(t,n){try{var r=e[t](n);var c=r.value;var f=c instanceof o;Promise.resolve(f?c.wrapped:c).then((function(e){if(f)return void u(\\"next\\",e);i(r.done?\\"return\\":\\"normal\\",e)}),(function(e){u(\\"throw\\",e)}))}catch(e){i(\\"throw\\",e)}}function i(e,r){switch(e){case\\"return\\":t.resolve({value:r,done:!0});break;case\\"throw\\":t.reject(r);break;default:t.resolve({value:r,done:!1});break}t=t.next,t?u(t.key,t.arg):n=null}this._invoke=r,\\"function\\"!==typeof e.return&&(this.return=void 0)}function i(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function c(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function f(e,t,n){return t&&c(e.prototype,t),n&&c(e,n),e}function a(e){return e&&e.constructor===Symbol?\\"symbol\\":typeof e}function l(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function s(e){return s=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},s(e)}function p(e){return s(e)}function y(e,t){return y=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},y(e,t)}function b(e,t){return y(e,t)}function d(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&b(e,t)}function v(e,t){if(t&&(\\"object\\"===a(t)||\\"function\\"===typeof t))return t;return r(e)}n.r(t),n.d(t,\\"default\\",(function(){return m})),\\"function\\"===typeof Symbol&&Symbol.asyncIterator&&(u.prototype[Symbol.asyncIterator]=function(){return this}),u.prototype.next=function(e){return this._invoke(\\"next\\",e)},u.prototype.throw=function(e){return this._invoke(\\"throw\\",e)},u.prototype.return=function(e){return this._invoke(\\"return\\",e)};var h=function(e){function t(){var e;return i(this,t),e=v(this,p(t).apply(this,arguments)),l(r(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return d(t,e),f(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var m=function(){function e(){i(this,e),console.log(\\"init class\\")}return f(e,[{key:\\"method\\",value:function(){console.log(h)}}]),e}()}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Deduplicates helpers 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles-deduplicates/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/script.js         built
+  1 kB  1        ./js/script.js + 67 modules  built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Deduplicates helpers 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e){if(void 0===e)throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\");return e}function o(e){this.wrapped=e}function u(e){var t,n;function r(e,r){return new Promise((function(o,i){var c={key:e,arg:r,resolve:o,reject:i,next:null};n?n=n.next=c:(t=n=c,u(e,r))}))}function u(t,n){try{var r=e[t](n);var c=r.value;var f=c instanceof o;Promise.resolve(f?c.wrapped:c).then((function(e){if(f)return void u(\\"next\\",e);i(r.done?\\"return\\":\\"normal\\",e)}),(function(e){u(\\"throw\\",e)}))}catch(e){i(\\"throw\\",e)}}function i(e,r){switch(e){case\\"return\\":t.resolve({value:r,done:!0});break;case\\"throw\\":t.reject(r);break;default:t.resolve({value:r,done:!1});break}t=t.next,t?u(t.key,t.arg):n=null}this._invoke=r,\\"function\\"!==typeof e.return&&(this.return=void 0)}function i(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function c(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function f(e,t,n){return t&&c(e.prototype,t),n&&c(e,n),e}function a(e){return e&&e.constructor===Symbol?\\"symbol\\":typeof e}function l(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function s(e){return s=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},s(e)}function p(e){return s(e)}function y(e,t){return y=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},y(e,t)}function d(e,t){return y(e,t)}function b(e,t){if(\\"function\\"!==typeof t&&null!==t)throw new TypeError(\\"Super expression must either be null or a function\\");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&d(e,t)}function h(e,t){if(t&&(\\"object\\"===a(t)||\\"function\\"===typeof t))return t;return r(e)}n.r(t),n.d(t,\\"default\\",(function(){return w})),\\"function\\"===typeof Symbol&&Symbol.asyncIterator&&(u.prototype[Symbol.asyncIterator]=function(){return this}),u.prototype.next=function(e){return this._invoke(\\"next\\",e)},u.prototype.throw=function(e){return this._invoke(\\"throw\\",e)},u.prototype.return=function(e){return this._invoke(\\"return\\",e)};var v=function(e){function t(){var e;return i(this,t),e=h(this,p(t).apply(this,arguments)),l(r(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return b(t,e),f(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var m=function(e){function t(){var e;return i(this,t),e=h(this,p(t).apply(this,arguments)),l(r(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return b(t,e),f(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var w=function(){function e(){i(this,e),console.log(\\"init class\\")}return f(e,[{key:\\"method\\",value:function(){console.log(v,m)}}]),e}()}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Does not transpile on modern browsers 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/no-old-browser/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                       status
+  1 kB  0        multi ./js/script.js         built
+  1 kB  1        ./js/script.js + 66 modules  built
+
+  size  name     asset                        status
+  1 kB  default  myBundle.min.js              emitted
+  1 kB  default  myBundle.min.js.map          emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Does not transpile on modern browsers 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";function r(e){this.wrapped=e}function o(e){var t,n;function o(e,r){return new Promise((function(o,i){var c={key:e,arg:r,resolve:o,reject:i,next:null};n?n=n.next=c:(t=n=c,u(e,r))}))}function u(t,n){try{var o=e[t](n);var c=o.value;var f=c instanceof r;Promise.resolve(f?c.wrapped:c).then((function(e){if(f)return void u(\\"next\\",e);i(o.done?\\"return\\":\\"normal\\",e)}),(function(e){u(\\"throw\\",e)}))}catch(e){i(\\"throw\\",e)}}function i(e,r){switch(e){case\\"return\\":t.resolve({value:r,done:!0});break;case\\"throw\\":t.reject(r);break;default:t.resolve({value:r,done:!1});break}t=t.next,t?u(t.key,t.arg):n=null}this._invoke=o,\\"function\\"!==typeof e.return&&(this.return=void 0)}function u(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}n.r(t),n.d(t,\\"default\\",(function(){return c})),\\"function\\"===typeof Symbol&&Symbol.asyncIterator&&(o.prototype[Symbol.asyncIterator]=function(){return this}),o.prototype.next=function(e){return this._invoke(\\"next\\",e)},o.prototype.throw=function(e){return this._invoke(\\"throw\\",e)},o.prototype.return=function(e){return this._invoke(\\"return\\",e)};class i extends React.Component{render(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}constructor(...e){super(...e),u(this,\\"handleClick\\",(()=>{this.setState({hey:!0})}))}}class c{method(){console.log(i)}constructor(){console.log(\\"init class\\")}}}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+error: Expected }, got <eof>
+  --> __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js:14:1
+   |
+14 | }
+   | ^
+
+  size  name  module                status
+  1 kB  0     multi ./js/script.js  built
+  1 kB  1     ./js/script.js        built failed ✖
+
+  (2 assets hidden)
+
+  Failed to compile.
+
+./js/script.js
+Error: failed to process js file
+
+Caused by:
+    failed to parse module
+
+__PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js
+  15:1  error  Parsing error: Unexpected token
+
+  13 |
+  14 | }
+> 15 |
+     | ^
+
+✖ 1 problem (1 error, 0 warnings)
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for SWC Runtime 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                      status
+  1 kB  0        external \\"@swc/helpers\\"     built
+  1 kB  1        multi ./js/script.js        built
+  1 kB  2        ./js/script.js + 2 modules  built
+
+  size  name     asset                       status
+  1 kB  default  myBundle.min.js             emitted
+  1 kB  default  myBundle.min.js.map         emitted
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for SWC Runtime 2`] = `
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t(require(\\"@swc/helpers\\"));else if(\\"function\\"===typeof define&&define.amd)define([\\"@swc/helpers\\"],t);else{var n=\\"object\\"===typeof exports?t(require(\\"@swc/helpers\\")):t(e[\\"@swc/helpers\\"]);for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(e){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,\\"a\\",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p=\\"\\",n(n.s=1)}([function(t,n){t.exports=e},function(e,t,n){e.exports=n(2)},function(e,t,n){\\"use strict\\";n.r(t),n.d(t,\\"default\\",(function(){return s}));var r=n(0);var o=function(e){function t(){var e;return r.classCallCheck(this,t),e=r.possibleConstructorReturn(this,r.getPrototypeOf(t).apply(this,arguments)),r.defineProperty(r.assertThisInitialized(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return r.inherits(t,e),r.createClass(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var i=function(e){function t(){var e;return r.classCallCheck(this,t),e=r.possibleConstructorReturn(this,r.getPrototypeOf(t).apply(this,arguments)),r.defineProperty(r.assertThisInitialized(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return r.inherits(t,e),r.createClass(t,[{key:\\"render\\",value:function(){return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var s=function(){function e(){r.classCallCheck(this,e),console.log(\\"init class\\")}return r.createClass(e,[{key:\\"method\\",value:function(){console.log(o,i)}}]),e}()}])}));
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Lints JavaScript with webpack 1`] = `
+Object {
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/lints/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name  module                       status
+  1 kB  0     multi ./js/script.js         built
+  1 kB  1     ./js/script.js + 66 modules  built
+
+  (2 assets hidden)
+
+  Failed to compile.
+
+__PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/lints/js/Component.js
+   4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+   6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
+
+__PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/lints/js/script.js
+   3:23  error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+   5:10  error  'test' is defined but never used                 no-unused-vars
+   5:14  error  Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+   6:1   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  14:9   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  15:17  error  Replace \`··\\"some·method\\"·\` with \`\\"some·method\\"\`  @swissquote/swissquote/prettier/prettier
+  18:11  error  Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+  20:14  error  Expected '===' and instead saw '=='              eqeqeq
+
+✖ 14 problems (12 errors, 2 warnings)
+  10 errors and 0 warnings potentially fixable with the \`--fix\` option.
+
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Webpack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
