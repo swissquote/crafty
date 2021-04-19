@@ -123,9 +123,7 @@ it("Compiles JavaScript, new features transpiled", async () => {
 });
 
 it("Fails gracefully on broken markup", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-swc-gulp/fails"
-  );
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc-gulp/fails");
 
   const result = await testUtils.run(["run", "default"], cwd);
 
