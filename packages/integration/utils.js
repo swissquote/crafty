@@ -45,6 +45,7 @@ function snapshotizeOutput(ret) {
     .replace(/webpackJsonp_([a-z0-9]{8})/gm, "webpackJsonp_UNIQID") // make random webpackjsonp less random
     .replace(/\/.pnp\/externals\/pnp-[a-f0-9]{40}/, "") // Normalize Yarn PNP Paths
     .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0
+    .replace(/Error \[GenericFailure\]:/, "Error:") // Node 10 specific errors
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\.\/([A-Za-z\/\.]*)\n\n__PATH__/gm, `./$1\n__PATH__`) // Sometimes lint output has more line breaks for no known reason ...
