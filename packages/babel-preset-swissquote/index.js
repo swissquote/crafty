@@ -78,9 +78,7 @@ module.exports = function buildPreset(context, opts) {
   // --------------------------------------------
 
   // class { handleClick = () => { } }
-  plugins.push(
-    require.resolve("@babel/plugin-proposal-class-properties")
-  );
+  plugins.push(require.resolve("@babel/plugin-proposal-class-properties"));
 
   const babelRuntime = path.dirname(
     require.resolve("@babel/runtime/package.json")
