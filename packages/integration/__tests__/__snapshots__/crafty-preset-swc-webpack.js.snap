@@ -359,7 +359,7 @@ function _defineProperty(obj, key, value) {
 
 // CONCATENATED MODULE: ./js/Component.js
 
-var Component_MyComponent = function(_Component) {
+var Component_MyComponent = /*#__PURE__*/ function(_Component) {
     \\"use strict\\";
     _inherits(MyComponent, _Component);
     function MyComponent() {
@@ -377,7 +377,7 @@ var Component_MyComponent = function(_Component) {
         {
             key: \\"render\\",
             value: function render() {
-                return( /*#__PURE__*/ React.createElement(\\"div\\", {
+                return(/*#__PURE__*/ React.createElement(\\"div\\", {
                     onClick: this.handleClick
                 }, \\"Hey \\", this.state.hey));
             }
@@ -389,7 +389,7 @@ var Component_MyComponent = function(_Component) {
 
 // CONCATENATED MODULE: ./js/script.js
 
-var script_newStuff = function() {
+var script_newStuff = /*#__PURE__*/ function() {
     \\"use strict\\";
     function newStuff() {
         _classCallCheck(this, newStuff);
@@ -651,6 +651,36 @@ __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/lints/js/script
 [__:__:__] Webpack compilation failed
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`Removes unused classes 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/tree-shaking/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+  size  name     module                     status
+  1 kB  0        multi ./js/index.js        built
+  1 kB  1        ./js/index.js + 3 modules  built
+
+  size  name     asset                      status
+  1 kB  default  myBundle.min.js            emitted
+  1 kB  default  myBundle.min.js.map        emitted
+
+  (63 modules hidden)
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
 ",
 }
 `;

@@ -160,7 +160,7 @@ it("Fails gracefully on broken markup", async () => {
 });
 
 // Doesn't seem to work yet
-/*it("Removes unused classes", async () => {
+it("Removes unused classes", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/tree-shaking"
   );
@@ -176,4 +176,4 @@ it("Fails gracefully on broken markup", async () => {
 
   expect(content.indexOf("From class A") > -1).toBeTruthy();
   expect(content.indexOf("From class B") > -1).toBeFalsy();
-});*/
+});
