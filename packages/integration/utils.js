@@ -48,7 +48,7 @@ function snapshotizeOutput(ret) {
     .replace(/Error \[GenericFailure\]:/, "Error:") // Node 10 specific errors
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
     .replace(
-      /\(node:([0-9]+)\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*\n\(Use `node --trace-deprecation ...` to show where the warning was created\)\n/gm,
+      /\(node:([0-9]+)\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*\n(\(Use `node --trace-deprecation ...` to show where the warning was created\)\n)?/gm,
       ""
     ) // Remove Node exports warnings
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
