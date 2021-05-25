@@ -84,15 +84,15 @@ module.exports = function eslintPlugin(options = {}) {
         throwOnError && reports.some(report => report.errorCount > 0);
 
       if (hasWarnings && hasErrors) {
-        throw Error("Warnings or errors were found");
+        this.error(new Error("Warnings or errors were found"));
       }
 
       if (hasWarnings) {
-        throw Error("Warnings were found");
+        this.warn(new Error("Warnings were found"));
       }
 
       if (hasErrors) {
-        throw Error("Errors were found");
+        this.error(new Error("Errors were found"));
       }
     }
   };
