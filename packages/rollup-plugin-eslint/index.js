@@ -88,7 +88,7 @@ module.exports = function eslintPlugin(options = {}) {
       }
 
       if (hasWarnings) {
-        this.warn(new Error("Warnings were found"));
+        this.error(new Error("Warnings were found"));
       }
 
       if (hasErrors) {

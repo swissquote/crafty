@@ -3,7 +3,7 @@ const PluginError = require("plugin-error");
 const through = require("through2-concurrent");
 const prettyBytes = require("pretty-bytes");
 const colors = require("ansi-colors");
-const JestWorker = require("jest-worker").default;
+const { Worker } = require("jest-worker");
 const {
   decodeBuffer,
   encodeJpeg,
@@ -12,7 +12,7 @@ const {
 } = require("./squoosh/main");
 
 function createWorker() {
-  return new JestWorker(require.resolve("./squoosh/impl.js"), {
+  return new Worker(require.resolve("./squoosh/impl.js"), {
     enableWorkerThreads: true
   });
 }

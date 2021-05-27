@@ -8,21 +8,19 @@ const THIS_FILE = fs.readFileSync(__filename);
 
 module.exports = {
   canInstrument: true,
-  getCacheKey(fileData, filename, configString, { instrument }) {
+  getCacheKey(fileData, filename, instance) {
     return crypto
       .createHash("md5")
       .update(THIS_FILE)
       .update("\0", "utf8")
       .update(fileData)
       .update("\0", "utf8")
-      .update(configString)
+      .update(instance.configString)
       .update("\0", "utf8")
       .update(filename)
-      .update("\0", "utf8")
-      .update(instrument ? "instrument" : "")
       .digest("hex");
   },
-  process(src, filename, config, transformOptions) {
+  process(src, filename, { config }, transformOptions) {
     if (babel.util && !babel.util.canCompile(filename)) {
       return src;
     }

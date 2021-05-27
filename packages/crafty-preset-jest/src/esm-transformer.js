@@ -37,14 +37,14 @@ function shouldCompile(code) {
 }
 
 module.exports = {
-  getCacheKey(fileData, filename, configString) {
+  getCacheKey(fileData, filename, instance) {
     return crypto
       .createHash("md5")
       .update(THIS_FILE)
       .update("\0", "utf8")
       .update(fileData)
       .update("\0", "utf8")
-      .update(configString)
+      .update(instance.configString)
       .update("\0", "utf8")
       .update(filename)
       .digest("hex");
