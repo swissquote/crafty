@@ -36,7 +36,7 @@ function shouldCompile(code) {
   }
 }
 
-module.exports = {
+const transformer = {
   getCacheKey(fileData, filename, instance) {
     return crypto
       .createHash("md5")
@@ -68,3 +68,7 @@ module.exports = {
     return babel.transform(src, options).code;
   }
 };
+
+transformer.createTransformer = () => transformer;
+
+module.exports = transformer;
