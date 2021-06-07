@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-postcss",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -12,9 +12,9 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty-preset-prettier": "1.14.0",
-    "@swissquote/postcss-swissquote-preset": "1.14.0",
-    "@swissquote/stylelint-config-swissquote": "1.14.0",
+    "@swissquote/crafty-preset-prettier": "1.15.0",
+    "@swissquote/postcss-swissquote-preset": "1.15.0",
+    "@swissquote/stylelint-config-swissquote": "1.15.0",
     "css-loader": "5.2.6",
     "end-of-stream": "1.4.4",
     "gulp-postcss": "8.0.0",
