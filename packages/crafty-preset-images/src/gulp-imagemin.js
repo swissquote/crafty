@@ -3,39 +3,61 @@ const PluginError = require("plugin-error");
 const through = require("through2-concurrent");
 const prettyBytes = require("pretty-bytes");
 const colors = require("ansi-colors");
-const { Worker } = require("jest-worker");
-const {
-  decodeBuffer,
-  encodeJpeg,
-  encodePng,
-  encodeWebp
-} = require("./squoosh/main");
-
-function createWorker() {
-  return new Worker(require.resolve("./squoosh/impl.js"), {
-    enableWorkerThreads: true
-  });
-}
-
-const nodeVersion = parseInt(process.version.replace("v", ""), 10);
+const { ImagePool } = require("@squoosh/lib");
 
 const PLUGIN_NAME = "gulp-imagemin";
 
-async function compress(worker, file, extension) {
-  const bitmap = await decodeBuffer(worker, file.contents);
+async function compress(imagePool, file, extension) {
+  const image = imagePool.ingestImage(file.contents);
 
   const quality = 75;
 
+  if (extension === ".avif") {
+    await image.encode({
+      avif: { }
+    });
+    const { binary } = await image.encodedWith.avif;
+    return Buffer.from(binary);
+  }
+
   if (extension === ".webp") {
-    return encodeWebp(worker, bitmap, { quality });
+    await image.encode({
+      webp: { quality }
+    });
+    const { binary } = await image.encodedWith.webp;
+    return Buffer.from(binary);
+  }
+
+  if (extension === ".wp2") {
+    await image.encode({
+      wp2: { }
+    });
+    const { binary } = await image.encodedWith.wp2;
+    return Buffer.from(binary);
   }
 
   if (extension === ".png") {
-    return encodePng(worker, bitmap);
+    await image.encode({
+      oxipng: { }
+    });
+    const { binary } = await image.encodedWith.oxipng;
+    return Buffer.from(binary);
+  }
+
+  if (extension === ".jxl") {
+    await image.encode({
+      jxl: { }
+    });
+    const { binary } = await image.encodedWith.jxl;
+    return Buffer.from(binary);
   }
 
   if (extension === ".jpg" || extension === ".jpeg") {
-    return encodeJpeg(worker, bitmap, { quality });
+    await image.encode({
+      mozjpeg: { quality }
+    });
+    const { binary } = await image.encodedWith.mozjpeg;
+    return Buffer.from(binary);
   }
 
   return file.contents;
@@ -110,11 +132,9 @@ module.exports = log => {
 
   let worker;
 
-  let loggedOldNodeMessage = false;
-
   function endWorker() {
-    if (worker && worker.end) {
-      worker.end();
+    if (worker && worker.close) {
+      worker.close();
       worker = null;
     }
   }
@@ -131,18 +151,6 @@ module.exports = log => {
 
       if (file.isStream()) {
         callback(new PluginError(PLUGIN_NAME, "Streaming not supported"));
-        return;
-      }
-
-      if (nodeVersion <= 10) {
-        if (!loggedOldNodeMessage && !options.silent) {
-          log(
-            `${PLUGIN_NAME}: Skipping image compression using WebAssembly as your node version doesn't support it.`
-          );
-          loggedOldNodeMessage = true;
-        }
-
-        callback(null, file);
         return;
       }
 
@@ -164,7 +172,7 @@ module.exports = log => {
       (async () => {
         try {
           if (!worker) {
-            worker = await createWorker();
+            worker = new ImagePool();
           }
 
           const optimizedBuffer = await compress(worker, file, extension);
