@@ -14,7 +14,7 @@ async function compress(imagePool, file, extension) {
 
   if (extension === ".avif") {
     await image.encode({
-      avif: { }
+      avif: {}
     });
     const { binary } = await image.encodedWith.avif;
     return Buffer.from(binary);
@@ -30,7 +30,7 @@ async function compress(imagePool, file, extension) {
 
   if (extension === ".wp2") {
     await image.encode({
-      wp2: { }
+      wp2: {}
     });
     const { binary } = await image.encodedWith.wp2;
     return Buffer.from(binary);
@@ -38,7 +38,7 @@ async function compress(imagePool, file, extension) {
 
   if (extension === ".png") {
     await image.encode({
-      oxipng: { }
+      oxipng: {}
     });
     const { binary } = await image.encodedWith.oxipng;
     return Buffer.from(binary);
@@ -46,7 +46,7 @@ async function compress(imagePool, file, extension) {
 
   if (extension === ".jxl") {
     await image.encode({
-      jxl: { }
+      jxl: {}
     });
     const { binary } = await image.encodedWith.jxl;
     return Buffer.from(binary);
