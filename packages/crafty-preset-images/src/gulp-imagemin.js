@@ -3,7 +3,7 @@ const PluginError = require("plugin-error");
 const through = require("through2-concurrent");
 const prettyBytes = require("pretty-bytes");
 const colors = require("ansi-colors");
-const { ImagePool } = require("@squoosh/lib");
+const { ImagePool } = require("@squoosh/lib/build/index.js");
 
 const PLUGIN_NAME = "gulp-imagemin";
 
