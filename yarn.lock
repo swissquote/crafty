@@ -5577,11 +5577,12 @@ gulp-sourcemaps@3.0.0:
     strip-bom-string "^1.0.0"
     through2 "^2.0.0"
 
-gulp-svgmin@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-svgmin/-/gulp-svgmin-4.0.0.tgz#318c580e36a7197199424a233a5f1745bcf10348"
-  integrity sha512-YXOBreZG+qyrbGMVtW+xGVSeHqTghOk3ADeb8/UVDq5ddPTP6gan+zO5WO8NrBKxl1kXL/fPCQILXYcbrxrpeg==
+gulp-svgmin@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-svgmin/-/gulp-svgmin-4.0.1.tgz#27b1d4f47532f75f35b52893220001b6f05667b0"
+  integrity sha512-MLFqlN8sP4LqyvgzYXomDQ3S8HwYRe6wzuQn7cd+yZ4Tb54eN+4l24Iyz9Z8Q2daPSpc1v49rvv6u9/qpAHoWQ==
   dependencies:
+    lodash.clonedeep "^4.5.0"
     plugin-error "^1.0.1"
     svgo "^2.3.1"
 
