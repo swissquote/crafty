@@ -362,7 +362,7 @@ describe("Flags errors when using unknown at rules", () => {
           rule: "scss/at-rule-no-unknown",
           severity: "error",
           text:
-            'Unexpected unknown at-rule "@unknown" (at-rule-no-unknown) (scss/at-rule-no-unknown)'
+            'Unexpected unknown at-rule "@unknown" (scss/at-rule-no-unknown)'
         }
       ]);
     });
