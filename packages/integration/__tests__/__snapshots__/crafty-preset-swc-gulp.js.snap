@@ -72,7 +72,7 @@ Object {
 exports[`Compiles JavaScript, keeps runtime external 2`] = `
 "import * as swcHelpers from \\"@swc/helpers\\";
 import regeneratorRuntime from \\"regenerator-runtime\\";
-/* global test */ import   \\"./otherfile\\";
+/* global test */ import \\"./otherfile\\";
 var Test = /*#__PURE__*/ function() {
     \\"use strict\\";
     function Test(name) {
@@ -138,7 +138,7 @@ Object {
 
 exports[`Compiles JavaScript, new features transpiled 2`] = `
 "import regeneratorRuntime from \\"regenerator-runtime\\";
-/* global test */ import   \\"./otherfile\\";
+/* global test */ import \\"./otherfile\\";
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);

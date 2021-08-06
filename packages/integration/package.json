@@ -10,7 +10,7 @@
     "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --reporter=text --reporter=lcov --reporter=html jest --runInBand"
   },
   "dependencies": {
-    "@babel/core": "7.14.8",
+    "@babel/core": "7.15.0",
     "@swissquote/crafty": "1.15.0",
     "@swissquote/crafty-preset-babel": "1.15.0",
     "@swissquote/crafty-preset-eslint": "1.15.0",
@@ -25,7 +25,7 @@
     "@swissquote/crafty-runner-rollup": "1.15.0",
     "@swissquote/crafty-runner-webpack": "1.15.0",
     "@types/jest": "^26.0.19",
-    "c8": "7.7.3",
+    "c8": "7.8.0",
     "execa": "5.1.1",
     "jest": "27.0.6",
     "react": "17.0.2",
