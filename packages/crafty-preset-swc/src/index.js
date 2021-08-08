@@ -39,7 +39,7 @@ module.exports = {
 
     rollupConfig.input.plugins.swc = {
       plugin: require("./rollup-plugin-swc.js"),
-      weight: 20,
+      weight: 80,
       options: getConfigurationRollup(crafty, bundle)
     };
   },

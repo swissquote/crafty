@@ -56,7 +56,7 @@ module.exports = {
 
     rollupConfig.input.plugins.babel = {
       plugin: require("@rollup/plugin-babel"),
-      weight: 20,
+      weight: 80,
       options
     };
   },

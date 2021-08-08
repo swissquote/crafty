@@ -44,7 +44,7 @@ module.exports = {
   rollup(crafty, bundle, rollupConfig) {
     rollupConfig.input.plugins.typescript = {
       plugin: require("rollup-plugin-typescript2"),
-      weight: 20,
+      weight: 80,
       options: {
         tsconfigOverride: {
           compilerOptions: {
@@ -67,7 +67,7 @@ module.exports = {
 
     rollupConfig.input.plugins.babelTypeScript = {
       plugin: require("@rollup/plugin-babel"),
-      weight: 30,
+      weight: 85,
       options
     };
   },
