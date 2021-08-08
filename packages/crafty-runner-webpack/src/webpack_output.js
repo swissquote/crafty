@@ -110,9 +110,8 @@ module.exports = function(stats, compiler) {
     console.log(`\n  ${colors.green("Compiled successfully!")}`);
   }
 
-  const time = `${colors.gray(`  Δ${colors.italic("t")}`)} ${style.time(
-    json.time
-  )}`;
+  const timeTitle = colors.gray(`  Δ${colors.italic("t")}`);
+  const time = `${timeTitle} ${style.time(json.time)}`;
 
   if (messages.warnings.length || messages.errors.length) {
     console.log(

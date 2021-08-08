@@ -149,9 +149,9 @@ module.exports = {
       // Write declaration files in the destination folder
       // We set the value this way to respect backwards compatibility,
       // Ideally, the value should be without the `/js` at the end
+      const subdirectory = bundle.directory ? `/${bundle.directory}` : "";
       tsOptions.compilerOptions.declarationDir = absolutePath(
-        `${crafty.config.destination_js +
-          (bundle.directory ? `/${bundle.directory}` : "")}/js`
+        `${crafty.config.destination_js}${subdirectory}/js`
       );
     }
 

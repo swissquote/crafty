@@ -12,9 +12,10 @@ exports.command = function run(crafty, input /*, cli*/) {
   }
 
   const bundleTypes = Object.keys(crafty.config.bundleTypes);
-  const destinations = bundleTypes.map(
-    type => `           ${type}: ${crafty.config[`destination_${type}`]}`
-  );
+  const destinations = bundleTypes.map(type => {
+    const destination = `destination_${type}`;
+    return `           ${type}: ${crafty.config[destination]}`;
+  });
 
   crafty.log(`Files will be stored in:\n ${destinations.join("\n")}`);
 

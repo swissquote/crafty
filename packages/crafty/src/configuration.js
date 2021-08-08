@@ -162,11 +162,11 @@ function getCrafty(presets, craftyConfig) {
   craftyConfig.presetName = "crafty.config.js";
   config.loadedPresets.push(craftyConfig);
 
-  debug(
-    `Finished loading\n${config.loadedPresets
-      .map(preset => ` - ${preset.presetName}`)
-      .join("\n")}`
-  );
+  const loadedPresets = config.loadedPresets
+    .map(preset => ` - ${preset.presetName}`)
+    .join("\n");
+
+  debug(`Finished loading\n${loadedPresets}`);
 
   // Apply overrides to clean up configuration
   config.loadedPresets

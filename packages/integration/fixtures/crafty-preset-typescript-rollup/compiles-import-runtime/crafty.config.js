@@ -6,7 +6,6 @@ module.exports = {
     }
   },
   rollup(crafty, bundle, rollupConfig) {
-    //console.log(rollupConfig);
     delete rollupConfig.input.plugins.terser;
   }
 };
