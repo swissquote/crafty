@@ -59,6 +59,9 @@ function getConfigurationWebpack(crafty, bundle, hasHelperDependency) {
   // This makes sure it doesn't happen
   options.env.targets += ", chrome 71";
 
+  // Force ES6 exports even if a module has a specific module syntax in a `.swcrc`
+  options.module = { type: "es6" };
+
   return options;
 }
 
@@ -70,9 +73,11 @@ function getConfigurationRollup(crafty, bundle) {
   // Pass that information to the rollup plugin
   options.hasHelperDependency = hasHelperDependency;
 
-  // Disabling external helpers for rollup as they seem
-  // to not work really well with circular dependencies
-  //options.jsc.externalHelpers = true;
+  // Always enabled
+  options.jsc.externalHelpers = true;
+
+  // Force ES6 exports even if a module has a specific module syntax in a `.swcrc`
+  options.module = { type: "es6" };
 
   return options;
 }
