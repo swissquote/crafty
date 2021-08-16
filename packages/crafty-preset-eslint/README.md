@@ -47,7 +47,7 @@ This linter will leverage ESLint to lint your JavaScript files with the Swissquo
 The additions made by this command are:
 
 - Pre-configured rules, defined by [`eslint-plugin-swissquote`](05_Packages/10_eslint-plugin-swissquote.md) activated using `--preset`.
-- Uses `babel-eslint` as a parser to support new syntax that ESLint doesn't understand yet.
+- Uses `@babel/eslint-parser` as a parser to support new syntax that ESLint doesn't understand yet.
 
 there are 4 presets available for you :
 

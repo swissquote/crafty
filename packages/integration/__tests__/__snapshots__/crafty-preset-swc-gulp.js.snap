@@ -245,14 +245,7 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__]
 __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/fails/js/script.js
-  14:7  error  Parsing error: Unexpected token
-
-  12 | }
-  13 |
-> 14 | const test = new Test(\\"Stéphane\\");
-     |       ^
-  15 | test.sayHi();
-  16 |
+  14:6  error  Parsing error: Unexpected token (14:6)
 
 ✖ 1 problem (1 error, 0 warnings)
 

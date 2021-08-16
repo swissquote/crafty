@@ -2,10 +2,18 @@ function resolveModules(...args) {
   return args.map(arg => require.resolve(`./src/${arg}.js`));
 }
 
+const parserOptions = {
+  requireConfigFile: false,
+  babelOptions: {
+    "presets": [require.resolve("@swissquote/babel-preset-swissquote")]
+  }
+}
+
 module.exports = {
   configs: {
     format: {
-      parser: require.resolve("babel-eslint"),
+      parser: require.resolve("@babel/eslint-parser"),
+      parserOptions,
       extends: resolveModules("formatting", "es6-format"),
       overrides: [
         {
@@ -17,7 +25,8 @@ module.exports = {
       ]
     },
     node: {
-      parser: require.resolve("babel-eslint"),
+      parser: require.resolve("@babel/eslint-parser"),
+      parserOptions,
       extends: resolveModules("node"),
       overrides: [
         {
@@ -37,7 +46,8 @@ module.exports = {
       }
     },
     recommended: {
-      parser: require.resolve("babel-eslint"),
+      parser: require.resolve("@babel/eslint-parser"),
+      parserOptions,
       env: {
         browser: true,
         amd: true

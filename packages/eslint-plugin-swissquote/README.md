@@ -4,7 +4,7 @@
 
 - Provide a style guide for your JavaScript
 - Warns on common mistakes in JavaScript
-- Works with EcmaScript 2015+ using the `babel-eslint` parser
+- Works with EcmaScript 2015+ using the `@babel/eslint-parser` parser
 
 ## Presets
 
