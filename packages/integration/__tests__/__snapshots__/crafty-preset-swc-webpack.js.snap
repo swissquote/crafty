@@ -534,12 +534,6 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-error: Expected }, got <eof>
-  --> __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js:14:1
-   |
-14 | }
-   | ^
-
   size  name  module                status
   1 kB  0     multi ./js/script.js  built
   1 kB  1     ./js/script.js        built failed ✖
@@ -549,10 +543,15 @@ error: Expected }, got <eof>
   Failed to compile.
 
 ./js/script.js
-Error: failed to process js file
+Error: error: Expected }, got <eof>
+  --> __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js:14:1
+   |
+14 | }
+   | ^
 
 Caused by:
-    failed to parse module
+    0: failed to process js file
+    1: failed to parse module
 
 __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js
   15:1  error  Parsing error: Unexpected token
