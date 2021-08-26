@@ -83,17 +83,15 @@ module.exports = function jsTaskES6(crafty, bundle) {
           const WebpackDevServer = require("webpack-dev-server");
           runningWatcher = new WebpackDevServer(config.devServer, compiler);
 
-          runningWatcher.startCallback(
-            err => {
-              if (err) {
-                throw err;
-              }
-              crafty.log(
-                "[webpack-dev-server]",
-                `Started, listening on ${config.devServer.host}:${config.devServer.port}`
-              );
+          runningWatcher.startCallback(err => {
+            if (err) {
+              throw err;
             }
-          );
+            crafty.log(
+              "[webpack-dev-server]",
+              `Started, listening on ${config.devServer.host}:${config.devServer.port}`
+            );
+          });
         })
         .catch(e => {
           crafty.log.error("[webpack-dev-server]", "Could not start", e);

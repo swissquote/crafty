@@ -77,43 +77,36 @@ function configureWatcher(chain, bundle, config, webpackPort) {
     .plugin("case-sensitive")
     .use(require.resolve("case-sensitive-paths-webpack-plugin"));
 
-  const outputPath = new RegExp("^" + chain.output.get("path").replace(/\//g, "\/"));
+  const outputPath = new RegExp(
+    `^${chain.output.get("path").replace(/\//g, "/")}`
+  );
 
   // Ignore the default dist folder as otherwise
   // webpack can enter a rebuild loop
   chain
     .plugin("WatchIgnorePlugin")
     .use(require.resolve("webpack/lib/WatchIgnorePlugin"), [
-      [/\.d\.ts$/, outputPath],
+      [/\.d\.ts$/, outputPath]
     ]);
 
-    // Ignore the default dist folder as otherwise
+  // Ignore the default dist folder as otherwise
   // webpack can enter a rebuild loop
   chain.watchOptions({
-    ignored: [
-      "node_modules",
-      outputPath
-    ]
+    ignored: ["node_modules", outputPath]
   });
 
   chain.devServer
     .hot(bundle.hot ? "only" : false)
     .host("localhost")
     .port(webpackPort)
-    .set(
-      "devMiddleware",
-      {
-        stats: false,
-        writeToDisk: true
-      }
-    )
-    .set(
-      "static",
-      {
-        directory: config.destination,
-        watch: false
-      }
-    )
+    .set("devMiddleware", {
+      stats: false,
+      writeToDisk: true
+    })
+    .set("static", {
+      directory: config.destination,
+      watch: false
+    })
     .headers({
       "Access-Control-Allow-Origin": "*"
     });

@@ -5,9 +5,14 @@ function resolveModules(...args) {
 const parserOptions = {
   requireConfigFile: false,
   babelOptions: {
-    "presets": [require.resolve("@swissquote/babel-preset-swissquote")]
+    presets: [
+      [
+        require.resolve("@swissquote/babel-preset-swissquote"),
+        { environment: "test" }
+      ]
+    ]
   }
-}
+};
 
 module.exports = {
   configs: {
