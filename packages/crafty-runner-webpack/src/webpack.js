@@ -77,32 +77,43 @@ function configureWatcher(chain, bundle, config, webpackPort) {
     .plugin("case-sensitive")
     .use(require.resolve("case-sensitive-paths-webpack-plugin"));
 
-  // This is necessary to emit hot updates:
-  if (bundle.hot) {
-    chain
-      .plugin("hot")
-      .use(require.resolve("webpack/lib/HotModuleReplacementPlugin"));
+  const outputPath = new RegExp("^" + chain.output.get("path").replace(/\//g, "\/"));
 
-    chain
-      .entry("default")
-      .prepend(
-        `${require.resolve("webpack-dev-server/client")}?__DEV_SERVER_URL__`
-      ) // WebpackDevServer host and port
-      .prepend(require.resolve("webpack/hot/only-dev-server")); // "only" prevents reload on syntax errors
-  }
+  // Ignore the default dist folder as otherwise
+  // webpack can enter a rebuild loop
+  chain
+    .plugin("WatchIgnorePlugin")
+    .use(require.resolve("webpack/lib/WatchIgnorePlugin"), [
+      [/\.d\.ts$/, outputPath],
+    ]);
+
+    // Ignore the default dist folder as otherwise
+  // webpack can enter a rebuild loop
+  chain.watchOptions({
+    ignored: [
+      "node_modules",
+      outputPath
+    ]
+  });
 
   chain.devServer
-    .hot(bundle.hot)
+    .hot(bundle.hot ? "only" : false)
     .host("localhost")
     .port(webpackPort)
-    .hotOnly(true)
-    .stats(false)
-    .contentBase(config.destination)
-    .watchOptions({
-      // Ignore the default dist folder as otherwise
-      // webpack can enter a rebuild loop
-      ignored: ["node_modules", `${chain.output.get("path")}/**`]
-    })
+    .set(
+      "devMiddleware",
+      {
+        stats: false,
+        writeToDisk: true
+      }
+    )
+    .set(
+      "static",
+      {
+        directory: config.destination,
+        watch: false
+      }
+    )
     .headers({
       "Access-Control-Allow-Origin": "*"
     });
@@ -136,19 +147,6 @@ function finalizeWatcher(chain) {
   const host = chain.devServer.get("host");
   const port = chain.devServer.get("port");
   const urlPrefix = `${protocol}://${host}:${port}`;
-
-  // Set the final URL for the Dev Server
-  const defaultEntries = chain.entry("default");
-
-  const entries = defaultEntries
-    .values()
-    .map(value => value.replace("__DEV_SERVER_URL__", urlPrefix));
-
-  defaultEntries.clear();
-
-  entries.forEach(entry => {
-    defaultEntries.add(entry);
-  });
 
   // Setting the public path to find the compiled assets,
   // only if it hasn't already been set

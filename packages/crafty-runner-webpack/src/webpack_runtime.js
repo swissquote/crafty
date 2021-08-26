@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 
 const colors = require("ansi-colors");
-const mkdirp = require("mkdirp");
 const debug = require("debug")("crafty:runner-webpack");
 
 const portFinder = require("./utils/find-port");
@@ -24,28 +23,6 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
   debug("Webpack configuration", webpackConfig);
 
   return webpackConfig;
-}
-
-function copyToDisk(stats, compiler) {
-  Object.keys(stats.compilation.assets)
-    .map(key => stats.compilation.assets[key])
-    .filter(asset => asset.emitted)
-    .forEach(asset => {
-      const file = asset.existsAt;
-      compiler.outputFileSystem.readFile(file, (err, result) => {
-        if (err) {
-          throw err;
-        }
-
-        mkdirp.sync(path.dirname(file));
-
-        fs.writeFile(file, result, err2 => {
-          if (err2) {
-            throw err2;
-          }
-        });
-      });
-    });
 }
 
 // Print out errors
@@ -83,13 +60,6 @@ module.exports = function jsTaskES6(crafty, bundle) {
       });
 
       compiler.hooks.done.tap("CraftyRuntime", stats => {
-        // If we are in watch mode, the bundle is only generated in memory
-        // This will copy it to disk, to make refreshes work fine
-        // as we don't use the dev-server as a proxy
-        if (crafty.isWatching()) {
-          copyToDisk(stats, compiler);
-        }
-
         webpackOutput(stats, compiler);
       });
 
@@ -111,11 +81,9 @@ module.exports = function jsTaskES6(crafty, bundle) {
         .then(({ compiler, config }) => {
           // Prepare the Hot Reload Server
           const WebpackDevServer = require("webpack-dev-server");
-          runningWatcher = new WebpackDevServer(compiler, config.devServer);
+          runningWatcher = new WebpackDevServer(config.devServer, compiler);
 
-          runningWatcher.listen(
-            config.devServer.port,
-            config.devServer.host,
+          runningWatcher.startCallback(
             err => {
               if (err) {
                 throw err;

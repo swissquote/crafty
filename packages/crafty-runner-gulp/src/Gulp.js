@@ -61,7 +61,7 @@ Gulp.prototype.watch = function(glob, opt, task) {
   this.crafty.watcher.addRaw({
     start: () => {
       this.crafty.log(`Start watching '${glob}'`);
-      const watch = require("crafty/src/watcher");
+      const watch = require("@swissquote/crafty/src/watch.js");
       watch(glob, options, fn).on("change", event => {
         emitter.emit("change", event);
       });
