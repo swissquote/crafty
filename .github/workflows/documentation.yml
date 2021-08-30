@@ -12,7 +12,7 @@ jobs:
       with:
         persist-credentials: false
     - name: Setup PHP
-      uses: shivammathur/setup-php@2.9.0
+      uses: shivammathur/setup-php@2.13.0
       with:
         php-version: 7.4
         extensions: mbstring, dom, intl  
@@ -21,8 +21,7 @@ jobs:
     - name: Generate documentation
       run: vendor/bin/daux generate --themes=docs_theme
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@2.0.3
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       env:
-        FOLDER: "static"
-        BRANCH: gh-pages
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        folder: "static"
+        branch: gh-pages
