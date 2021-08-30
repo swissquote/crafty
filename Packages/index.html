@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Packages - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item  has-children'><a href="../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item '><a href="../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../CLI.html">CLI</a></li><li class='Nav__item '><a href="../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../Packages/index.html">Packages</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <p>Crafty is composed of small packages and can be used separately.</p>
+<p>Here is an overview of their features.</p>
+<div class="TableOfContentsContainer">
+    <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
+    <div class="TableOfContentsContainer__content">
+        <ul class="TableOfContents">
+<li>
+<p><a href="#page_section_1"><code>crafty</code></a></p>
+</li>
+<li>
+<p><a href="#page_Runners">Runners</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_3"><code>crafty-runner-webpack</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_4"><code>crafty-runner-gulp</code></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Presets">Presets</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_6"><code>crafty-preset-babel</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_7"><code>crafty-preset-postcss</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_8"><code>crafty-preset-typescript</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_9"><code>crafty-preset-images</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_10"><code>crafty-preset-images-simple</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_11"><code>crafty-preset-maven</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_12"><code>crafty-preset-react</code></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Test_runners">Test runners</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_14"><code>crafty-preset-jest</code></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Utility_packages">Utility packages</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_16"><code>babel-preset-swissquote</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_17"><code>eslint-plugin-swissquote</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_18"><code>postcss-swissquote-preset</code></a></p>
+</li>
+<li>
+<p><a href="#page_section_19"><code>stylelint-config-swissquote</code></a></p>
+</li>
+</ul>
+</li>
+</ul>    </div>
+</div>
+<h2 id="page_section_1"><code>crafty</code></h2>
+<p>Command runner, this is the package that allows all other packages to run.</p>
+<pre><code class="hljs bash">crafty --preset crafty-preset-babel jsLint presets/* --preset recommended --preset node
+</code></pre>
+<p>Also automatically reads your <code>crafty.config.js</code> (in the current working
+directory) and loads those presets as well.</p>
+<h2 id="page_Runners">Runners</h2>
+<h3 id="page_section_3"><code>crafty-runner-webpack</code></h3>
+<p>Use this runner to bundle your code with Webpack.</p>
+<p><a href="crafty_runner_webpack.html">Features and options</a></p>
+<h3 id="page_section_4"><code>crafty-runner-gulp</code></h3>
+<p>Use this runner to be able to create Gulp tasks in your projects.</p>
+<p><a href="crafty_runner_gulp.html">Features and options</a></p>
+<h2 id="page_Presets">Presets</h2>
+<h3 id="page_section_6"><code>crafty-preset-babel</code></h3>
+<p>This preset provides EcmaScript 2015+ support with Babel for the Gulp, Webpack
+and rollup.js runners.</p>
+<p>It also configures ESLint with our linting rules. Both in the runners and as a
+separate command.</p>
+<p><a href="crafty_preset_babel/index.html">Features and options</a></p>
+<h3 id="page_section_7"><code>crafty-preset-postcss</code></h3>
+<p>Compile your CSS using <strong>PostCSS</strong>, works with <strong>Webpack</strong> and Gulp.</p>
+<p><a href="crafty_preset_postcss/index.html">Features and options</a></p>
+<h3 id="page_section_8"><code>crafty-preset-typescript</code></h3>
+<p>This preset provides TypeScript support for the Gulp, Webpack and rollup.js
+runners.</p>
+<p>It also configures ESLint with our linting rules</p>
+<p><a href="crafty_preset_typescript/index.html">Features and options</a></p>
+<h3 id="page_section_9"><code>crafty-preset-images</code></h3>
+<p>This preset leverages Gulp to compress your SVG/PNG/JPG/GIF files and placing
+them in the destination folder.</p>
+<p><a href="crafty_preset_images.html">Features and options</a></p>
+<h3 id="page_section_10"><code>crafty-preset-images-simple</code></h3>
+<p>In some cases, you might not have an internet connection on your build machine.
+As the tools to compress PNG/JPG/GIF need to be downloaded from GitHub, this
+preset will copy the files instead of copying them.</p>
+<p>SVG is also compressed with this preset.</p>
+<p>It works as a drop-in replacement for <code>crafty-preset-images</code>.</p>
+<p><a href="crafty_preset_images_simple.html">Features and options</a></p>
+<h3 id="page_section_11"><code>crafty-preset-maven</code></h3>
+<p>If your code is inside a Maven project, this preset overrides the destination to
+move your compiled assets to the right directory in <code>target</code></p>
+<p><a href="crafty_preset_maven.html">Features and options</a></p>
+<h3 id="page_section_12"><code>crafty-preset-react</code></h3>
+<p>A preset that provides utilities for Jest and Hot Module Replacement in React
+projects.</p>
+<p>JSX Compilation is handled by the <code>crafty-preset-babel</code> already.</p>
+<p><a href="crafty_preset_react.html">Features and options</a></p>
+<h2 id="page_Test_runners">Test runners</h2>
+<h3 id="page_section_14"><code>crafty-preset-jest</code></h3>
+<p>This preset will add Jest to the <code>crafty test</code> command.</p>
+<p>Its usage with the Babel and TypeScript preset allows you to test your
+EcmaScript 2015+ and TypeScript code effortlessly.</p>
+<p><a href="crafty_preset_jest/index.html">Features and options</a></p>
+<h2 id="page_Utility_packages">Utility packages</h2>
+<h3 id="page_section_16"><code>babel-preset-swissquote</code></h3>
+<p>A Babel preset that supports EcmaScript 2015+, React and more</p>
+<p><a href="babel_preset_swissquote.html">Features and options</a></p>
+<h3 id="page_section_17"><code>eslint-plugin-swissquote</code></h3>
+<p>An ESLint plugin that contains all our recommended options and plugins.</p>
+<p><a href="eslint_plugin_swissquote.html">Features and presets</a></p>
+<h3 id="page_section_18"><code>postcss-swissquote-preset</code></h3>
+<p>All PostCSS plugins used in the Crafty styles preset are defined in this
+package.</p>
+<p><a href="postcss_swissquote_preset.html">Features and presets</a></p>
+<h3 id="page_section_19"><code>stylelint-config-swissquote</code></h3>
+<p>Stylelint linting rules following the Swissquote CSS Guideline. Provides some
+custom Stylelint rules.</p>
+<p><a href="stylelint_config_swissquote.html">Features and presets</a></p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../User_Guides/Developing_Faster_with_Crafty_watch.html">Previous</a></li>            <li class=Pager--next><a href="../Packages/crafty/index.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../'})
+    </script>
+</body>
+</html>

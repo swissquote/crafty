@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>crafty.config.js Available Options - Crafty</title>
+    <meta name="description" content="The task runner that binds them all">
+    <meta name="author" content="Swissquote Bank SA">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../themes/swissquote/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script>
+        window.base_url = "../";
+        document.documentElement.classList.remove('no-js');
+    </script>
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+            <link href='../themes/swissquote/css/theme.min.css' rel='stylesheet' type='text/css'>
+            <link href='../daux_libraries/search.css' rel='stylesheet' type='text/css'>
+    </head>
+<body class="">
+    <div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger" aria-controls="sidebar_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../index.html">Crafty</a>
+
+    <form role='search' action="/" method="get" class="Search" id="search_form">
+        <label for="search_input">
+            <span class='u-visuallyHidden'>Search</span>
+        </label>
+        <input
+            type="search"
+            id="search_input"
+            class="Search__field"
+            placeholder="Search..."
+            aria-label="Search..."
+            autocomplete="on"
+            results=25
+            autosave=text_search
+        >
+        <label>
+            <input type="submit" class='u-visuallyHidden' />
+            <span class='u-visuallyHidden'>Search...</span>
+            <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+                <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+            </svg>
+        </label>
+    </form>
+
+        <div class="Collapsible__content" id="sidebar_content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item '><a href="../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../Use_Cases/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Use Cases</a><ul class='Nav'><li class='Nav__item '><a href="../Use_Cases/Compiling_CSS.html">Compiling CSS</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_JavaScript.html">Compiling JavaScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compiling_TypeScript.html">Compiling TypeScript</a></li><li class='Nav__item '><a href="../Use_Cases/Compressing_Images.html">Compressing Images</a></li><li class='Nav__item '><a href="../Use_Cases/Testing_your_code.html">Testing your code</a></li></ul></li><li class='Nav__item Nav__item--open has-children'><a href="../User_Guides/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>User Guides</a><ul class='Nav'><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_blank_project.html">Configuring the build in a blank project</a></li><li class='Nav__item '><a href="../User_Guides/Configuring_the_build_in_a_maven_project.html">Configuring the build in a maven project</a></li><li class='Nav__item '><a href="../User_Guides/Create_a_configuration_file.html">Create a configuration file</a></li><li class='Nav__item '><a href="../User_Guides/Autofix_Resources.html">Autofix Resources</a></li><li class='Nav__item Nav__item--active'><a href="../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></li><li class='Nav__item '><a href="../User_Guides/Developing_Faster_with_Crafty_watch.html">Developing Faster with Crafty watch</a></li></ul></li><li class='Nav__item  has-children'><a href="../Packages/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>Packages</a><ul class='Nav'><li class='Nav__item  has-children'><a href="../Packages/crafty/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li><li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li><li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_eslint/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-eslint</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/ESLint_IDE_Integration.html">ESLint IDE Integration</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/JavaScript_Linting.html">JavaScript Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_eslint/TypeScript_Linting.html">TypeScript Linting</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_images.html">crafty-preset-images</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_images_simple.html">crafty-preset-images-simple</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_jest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-jest</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_jest/Jest_IDE_Integration.html">Jest IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_maven.html">crafty-preset-maven</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_postcss/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-postcss</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Features.html">CSS Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/CSS_Linting.html">CSS Linting</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Postcss_Extension_API.html">Postcss Extension API</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_postcss/Stylelint_IDE_Integration.html">Stylelint IDE Integration</a></li></ul></li><li class='Nav__item '><a href="../Packages/crafty_preset_prettier.html">crafty-preset-prettier</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_react.html">crafty-preset-react</a></li><li class='Nav__item  has-children'><a href="../Packages/crafty_preset_typescript/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-typescript</a><ul class='Nav'><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li><li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li><li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li><li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li><li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li><li class='Nav__item '><a href="../Packages/stylelint_config_swissquote.html">stylelint-config-swissquote</a></li></ul></li><li class='Nav__item '><a href="../CLI.html">CLI</a></li><li class='Nav__item '><a href="../IDE_Integration.html">IDE Integration</a></li><li class='Nav__item '><a href="../Troubleshooting.html">Troubleshooting</a></li><li class='Nav__item '><a href="../Why.html">Why</a></li></ul>
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://medium.com/swissquote-engineering" target="_blank"  rel="noopener noreferrer">Technical blog</a>
+                        <br />
+                                            <a href="https://swissquote.com/" target="_blank"  rel="noopener noreferrer">Swissquote</a>
+                        <br />
+                                            <a href="http://github.com/swissquote/crafty" target="_blank"  rel="noopener noreferrer">GitHub</a>
+                        <br />
+                                                </div>
+
+            
+                
+                                    <div class="PoweredBy">
+                        <hr/>
+                        © 2018 Swissquote Bank SA. Powered by Daux.io.                    </div>
+                        </div>
+    </aside>
+    <div class="Columns__right">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../User_Guides/index.html">User Guides</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../User_Guides/crafty.config.js_Available_Options.html">crafty.config.js Available Options</a></h1>
+                    </div>
+
+    <div class="s-content">
+        <div class="TableOfContentsContainer">
+    <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
+    <div class="TableOfContentsContainer__content">
+        <ul class="TableOfContents">
+<li>
+<p><a href="#page_All_Options">All Options</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_section_2"><code>destination</code></a></p>
+</li>
+<li>
+<p><a href="#page_Browser_compatibility"><code>browser</code>: Browser compatibility</a></p>
+</li>
+<li>
+<p><a href="#page_JavaScript_compression"><code>terser</code> : JavaScript compression</a></p>
+</li>
+<li>
+<p><a href="#page_Which_files_to_lint"><code>stylelint_pattern</code>: Which files to lint</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#page_Bundles">Bundles</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Common_Bundle_options">Common Bundle options</a></p>
+</li>
+<li>
+<p><a href="#page_CSS_Bundles">CSS Bundles</a></p>
+</li>
+<li>
+<p><a href="#page_JavaScript_Bundles">JavaScript Bundles</a></p>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_JavaScript_External_assets">JavaScript External assets</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>    </div>
+</div>
+<h2 id="page_All_Options">All Options</h2>
+<p>All the options in <code>crafty.config.js</code> apart from your bundles in the <code>js</code> and
+<code>css</code> bundles are optional.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+<th>Preset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>browsers</code></td>
+<td>See below</td>
+<td>The browser compatibility we wish in the compiled files. Read more below</td>
+<td>Core</td>
+</tr>
+<tr>
+<td><code>destination</code></td>
+<td>See below</td>
+<td>The destination at which to put all files</td>
+<td>Core</td>
+</tr>
+<tr>
+<td><code>destination_&lt;bundleType&gt;</code></td>
+<td><code>destination + &quot;/&quot; + bundleType</code></td>
+<td>The destination for JavaScript/TypeScript files</td>
+<td>Core</td>
+</tr>
+<tr>
+<td><code>eslint</code></td>
+<td>Swissquote JavaScript Guideline</td>
+<td>This defines the rules for all JavaScript source files that go through the Gulp builder</td>
+<td><code>crafty-preset-babel</code></td>
+</tr>
+<tr>
+<td><code>externals</code></td>
+<td><code>[]</code></td>
+<td>What libraries are already provided in the final application, see below for more information</td>
+<td><code>crafty-runner-rollup</code> / <code>crafty-runner-webpack</code></td>
+</tr>
+<tr>
+<td><code>img_basedir</code></td>
+<td><code>&quot;images&quot;</code></td>
+<td>Where to take images from (Relative to current working directory)</td>
+<td><code>crafty-preset-images</code> / <code>crafty-preset-images-simple</code></td>
+</tr>
+<tr>
+<td><code>img_extensions</code></td>
+<td><code>[&quot;png&quot;, &quot;jpg&quot;, &quot;jpeg&quot;, &quot;gif&quot;]</code></td>
+<td>What extensions to compress (excludes svg)</td>
+<td><code>crafty-preset-images</code></td>
+</tr>
+<tr>
+<td><code>legacy_css</code></td>
+<td><code>false</code></td>
+<td>When enabling this feature, the CSS will be linted for errors and formatting instead of the Swissquote CSS Guideline</td>
+<td><code>crafty-preset-postcss</code></td>
+</tr>
+<tr>
+<td><code>mavenType</code></td>
+<td>See below</td>
+<td>Defines wether this application is a <code>webapp</code> or <code>webjar</code>.</td>
+<td><code>crafty-preset-maven</code></td>
+</tr>
+<tr>
+<td><code>stylelint</code></td>
+<td>Swissquote CSS Guideline</td>
+<td>This defines the rules for all CSS source files, it contains the naming conventions</td>
+<td><code>crafty-preset-postcss</code></td>
+</tr>
+<tr>
+<td><code>stylelint_legacy</code></td>
+<td>Swissquote CSS Guideline</td>
+<td>This defines the rules for all CSS source files, it contains the base formatting rules and best practices</td>
+<td><code>crafty-preset-postcss</code></td>
+</tr>
+<tr>
+<td><code>stylelint_pattern</code></td>
+<td>See Below</td>
+<td>Define the file types you want to target when linting CSS files.</td>
+<td><code>crafty-preset-postcss</code></td>
+</tr>
+<tr>
+<td><code>terser</code></td>
+<td>See below</td>
+<td>Configure the compression level of your JavaScript assets.</td>
+<td><code>crafty-preset-terser</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="page_section_2"><code>destination</code></h3>
+<p>By default, your compiled assets will be in <code>dist/&lt;bundleType&gt;</code>. But you can
+override the <code>config.destination</code> or <code>config.destination_&lt;bundleType&gt;</code> option.</p>
+<p>You can also use the <code>crafty-preset-maven</code> with the <code>mavenType</code> option to move
+your assets to Maven’s <code>target</code> directory.</p>
+<p><a href="../Packages/crafty_preset_maven.html">More about <code>crafty-preset-maven</code></a></p>
+<h3 id="page_Browser_compatibility"><code>browser</code>: Browser compatibility</h3>
+<p>Default: <code>&gt; 0.25%, Edge &gt;= 17, Safari &gt;= 11, iOS &gt;= 11, Chrome &gt;= 66, Firefox &gt;= 60, IE &gt;= 11, not op_mini all</code></p>
+<p>Depending on the target browsers, some optimization might be enabled or disabled
+to create the smallest possible package for the browsers requirements we have.</p>
+<p>This option is for example used by Autoprefixer to define which CSS Prefixes it
+needs to add to the CSS file.</p>
+<p>The default browsers we defined was taken from the statistics of browser usage
+we have seen across all Swissquote Platforms</p>
+<p>If you want a different list, you can override those defaults using any valid <a href="https://github.com/browserslist/browserslist#queries" class="Link--external" rel="noopener noreferrer">Browserslist query source</a></p>
+<h3 id="page_JavaScript_compression"><code>terser</code> : JavaScript compression</h3>
+<p>Default: <code>{ compress: true, sourceMap: true }</code></p>
+<p>By default, we compress our JavaScript with safe parameters, if you wish you can
+go further and enable more advanced compression techniques.</p>
+<p>The options are described
+<a href="https://github.com/terser/terser#minify-options" class="Link--external" rel="noopener noreferrer">in Terser’s documentation</a></p>
+<h3 id="page_Which_files_to_lint"><code>stylelint_pattern</code>: Which files to lint</h3>
+<p>Default: <code>[&quot;css/**/*.scss&quot;, &quot;css/**/*.css&quot;, &quot;!*.min.css&quot;, &quot;!**/vendor/**/*.scss&quot;, &quot;!**/vendor/**/*.css&quot;, &quot;!**/vendor/*.scss&quot;, &quot;!**/vendor/*.css&quot;]</code></p>
+<p>Define the file types you want to target when linting CSS files.</p>
+<h2 id="page_Bundles">Bundles</h2>
+<p>A bundle is a set of one or more source files that will be compiled in on or
+more destination files.</p>
+<p>Each bundle has one mandatory option : <code>source</code>.</p>
+<p>If we take this JavaScript bundle :</p>
+<pre><code class="hljs javascript">app: { <span class="hljs-comment">// name of the bundle</span>
+ <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
+}
+</code></pre>
+<p>This will automatically create a file in <code>&lt;destination_js&gt;/app.min.js</code>
+containing both source files that will be minified.</p>
+<p>The file name is taken from the bundle name if no <code>destination</code> is specified</p>
+<h3 id="page_Common_Bundle_options">Common Bundle options</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Optional ?</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>String/Array</td>
+<td>No</td>
+<td>One single file or an array of files you wish to compile. Glob expressions are valid.</td>
+</tr>
+<tr>
+<td><code>runner</code></td>
+<td>String</td>
+<td>No</td>
+<td>The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded</td>
+</tr>
+<tr>
+<td><code>destination</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>The name to give to the final file. Defaults to <code>&lt;bundle_name&gt;.min.&lt;bundle_type&gt;</code></td>
+</tr>
+<tr>
+<td><code>watch</code></td>
+<td>String/Array</td>
+<td>Yes</td>
+<td>The watch expression to use to rebuild this asset. Any glob expression is valid, is needed for Gulp in watch mode.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="page_CSS_Bundles">CSS Bundles</h3>
+<pre><code class="hljs javascript">testIndex: {
+    <span class="hljs-attr">source</span>: <span class="hljs-string">'css/test/test.scss'</span>,
+    <span class="hljs-attr">destination</span>: <span class="hljs-string">'index.min.css'</span>,
+    <span class="hljs-attr">watch</span>: <span class="hljs-string">'css/test/**.scss'</span>
+}
+</code></pre>
+<p><code>testIndex</code> is the bundle name, you will be able to call <code>gulp css_testIndex</code> to
+build it.</p>
+<p>Apart from the common options, here are the options you can use for CSS bundles.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Runner</th>
+<th>Preset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extractCSS</code></td>
+<td>Boolean / String / Object</td>
+<td>Webpack</td>
+<td><code>crafty-preset-postcss</code></td>
+<td>This will extract the CSS out of the bundle, all <a href="https://github.com/webpack-contrib/mini-css-extract-plugin#configuration" class="Link--external" rel="noopener noreferrer">Official options</a> work, you can also pass <code>true</code> which will use <code>[bundle]-[name].min.css</code> as file name, you can use <code>[bundle]</code> in the file name which is replaced by your bundle name.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="page_JavaScript_Bundles">JavaScript Bundles</h3>
+<pre><code class="hljs javascript">app: {
+    <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
+    <span class="hljs-attr">destination</span>: <span class="hljs-string">'app.min.js'</span>
+}
+</code></pre>
+<p><code>app</code> is the bundle name, you will be able to call <code>gulp js_app</code> to build it.</p>
+<p>Apart from the common options, here are the options you can use for JavaScript
+bundles.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Runner</th>
+<th>Preset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>rollup.js</td>
+<td><code>crafty-runner-rollup</code></td>
+<td>Define the output format can be any of <code>amd</code>, <code>iife</code>, <code>cjs</code>, <code>es</code> or <code>umd</code>. Defaults to <code>es</code>.</td>
+</tr>
+<tr>
+<td><code>externals</code></td>
+<td>Array&lt;String&gt;</td>
+<td>rollup.js / Webpack</td>
+<td><code>crafty-runner-webpack</code> / <code>crafty-runner-rollup</code></td>
+<td>Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn’t understand globs)</td>
+</tr>
+<tr>
+<td><code>hot</code></td>
+<td>Boolean</td>
+<td>Webpack</td>
+<td><code>crafty-runner-webpack</code></td>
+<td>Allows to use Hot Module Replacement in watch mode (<code>false</code> by default)</td>
+</tr>
+<tr>
+<td><code>libraryTarget</code></td>
+<td>String</td>
+<td>Webpack</td>
+<td><code>crafty-runner-webpack</code></td>
+<td>Define the library type to export. By default we use <code>amd</code>. <a href="https://webpack.js.org/configuration/output/#output-librarytarget" class="Link--external" rel="noopener noreferrer">Possible values</a></td>
+</tr>
+<tr>
+<td><code>library</code></td>
+<td>String</td>
+<td>Webpack</td>
+<td><code>crafty-runner-webpack</code></td>
+<td>Define the library name for the Webpack module or export.</td>
+</tr>
+<tr>
+<td><code>concat</code></td>
+<td>Boolean</td>
+<td>Gulp</td>
+<td><code>crafty-preset-babel</code></td>
+<td>This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack or rollup.js for this)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="page_JavaScript_External_assets">JavaScript External assets</h4>
+<p>By default, all bundlers include all external dependencies in the final bundle,
+this works fine for applications, but if you wish to build a multi-tenant
+application or a library, you don’t wish to include all dependencies, because
+you’ll end up with the same dependency more than one time.</p>
+<p>The <code>externals</code> option allows you to define a list of libraries that are
+provided and should not be embedded in the build, here is an example :</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+    ...
+    <span class="hljs-comment">// patterns are strings or globs</span>
+    <span class="hljs-attr">externals</span>: [<span class="hljs-string">"react"</span>, <span class="hljs-string">"react-dom"</span>, <span class="hljs-string">"squp"</span>, <span class="hljs-string">"squp/**"</span>],
+    ...
+    js: {
+        <span class="hljs-attr">app</span>: {
+            <span class="hljs-comment">// You can provide more items here, they will be merged with the main list for this bundle</span>
+            <span class="hljs-attr">externals</span>: [<span class="hljs-string">"my-plugin"</span>, <span class="hljs-string">"my-plugin/**"</span>]
+            ...
+        }
+    }
+    ...
+}
+</code></pre>
+<p>In this example <code>react</code>, <code>react-dom</code> and all modules starting with <code>squp/</code> will
+be treated as external</p>
+<blockquote>
+<p>You can see that globs were used here, note that they work for Webpack but not
+for rollup.js that needs complete strings.</p>
+</blockquote>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../User_Guides/Autofix_Resources.html">Previous</a></li>            <li class=Pager--next><a href="../User_Guides/Developing_Faster_with_Crafty_watch.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-113355094-2', '');
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- JS -->
+            <script src="../themes/swissquote/js/daux.min.js"></script>
+    
+        <script>
+        
+        window.searchLanguage = "";
+        window.searchTranslation = {"Search_one_result":"1 result","Search_results":"!count results","Search_no_results":"Nothing found","Search_common_words_ignored":"Common words are largely ignored","Search_too_short":"Search too short","Search_one_character_or_more":"Should be one character or more","Search_should_be_x_or_more":"Should be !min characters or more","Link_previous":"Previous","Link_next":"Next"};
+    </script>
+
+    <!-- Search -->
+    <script type="text/javascript" src="../daux_libraries/search.min.js"></script>
+
+    <script>
+        window.search({'base_url': '../'})
+    </script>
+</body>
+</html>
