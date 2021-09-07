@@ -77,9 +77,7 @@ function configureWatcher(chain, bundle, config, webpackPort) {
     .plugin("case-sensitive")
     .use(require.resolve("case-sensitive-paths-webpack-plugin"));
 
-  const outputPath = new RegExp(
-    `^${chain.output.get("path").replace(/\//g, "/")}`
-  );
+  const outputPath = `${chain.output.get("path").replace(/\/$/g, "")}/**`;
 
   // Ignore the default dist folder as otherwise
   // webpack can enter a rebuild loop

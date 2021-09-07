@@ -79,6 +79,12 @@ function watch(glob, options, cb) {
 
     const positiveMatch = anymatch(toWatch, path, true);
 
+    // If we have a negative match but never had a positive match
+    // it should be ignored
+    if (positiveMatch === -1 && negativeMatch !== -1) {
+      return true;
+    }
+
     // If the negative is "less than" the positive, that means
     // it came later in the glob array before we reversed them
     return negatives[negativeMatch].index < positives[positiveMatch].index;
