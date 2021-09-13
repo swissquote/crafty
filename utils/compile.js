@@ -1,5 +1,5 @@
 const ncc = require("@vercel/ncc");
-const fs = require("fs/promises");
+const fs = require("fs");
 const { existsSync } = require("fs");
 const path = require("path");
 
@@ -10,13 +10,13 @@ module.exports = async function compile(input, output, options = {}) {
     const dirname = path.dirname(output);
 
     if (!existsSync(dirname)) {
-      await fs.mkdir(dirname, { recursive: true });
+      await fs.promises.mkdir(dirname, { recursive: true });
     }
 
-    await fs.writeFile(output, code);
+    await fs.promises.writeFile(output, code);
 
     if (map) {
-      await fs.writeFile(`${output}.map`, map);
+      await fs.promises.writeFile(`${output}.map`, map);
     }
   });
 };
