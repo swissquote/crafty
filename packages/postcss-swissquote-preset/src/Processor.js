@@ -36,6 +36,12 @@ module.exports = class Processor {
     return this;
   }
 
+  embedded() {
+    return this.module(
+      `@swissquote/postcss-swissquote-preset/packages/${this.name}.js`
+    );
+  }
+
   /**
    * Provide a custom init callback, needed if your plugin
    * is just a function or needs more than one parameter.

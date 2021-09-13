@@ -9,16 +9,19 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src"
+    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src packages",
+    "build": "node build.js"
   },
   "dependencies": {
-    "autoprefixer": "9.8.6",
     "browserslist": "4.17.0",
     "caniuse-api": "3.0.0",
     "debug": "^4.1.0",
+    "postcss": "7.0.36"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.8.6",
     "pixrem": "5.0.0",
     "pleeease-filters": "4.0.0",
-    "postcss": "7.0.36",
     "postcss-advanced-variables": "3.0.1",
     "postcss-assets": "5.0.0",
     "postcss-atroot": "0.1.3",

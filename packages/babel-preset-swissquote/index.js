@@ -29,7 +29,7 @@ module.exports = function buildPreset(context, opts) {
   if (isEnvTest) {
     // ES features necessary for user's Node version
     presets.push([
-      require.resolve("@babel/preset-env"),
+      require.resolve("./packages/preset-env"),
       {
         targets: {
           node: "current"
@@ -48,7 +48,7 @@ module.exports = function buildPreset(context, opts) {
 
     // Latest stable ECMAScript features
     presets.push([
-      require.resolve("@babel/preset-env"),
+      require.resolve("./packages/preset-env"),
       {
         targets,
         useBuiltIns: "entry",
@@ -63,7 +63,7 @@ module.exports = function buildPreset(context, opts) {
 
   // JSX and React specific plugins
   presets.push([
-    require.resolve("@babel/preset-react"),
+    require.resolve("./packages/preset-react"),
     {
       // Adds component stack to warning messages
       // Adds __self attribute to JSX which React will use for some warnings
@@ -78,7 +78,7 @@ module.exports = function buildPreset(context, opts) {
   // --------------------------------------------
 
   // class { handleClick = () => { } }
-  plugins.push(require.resolve("@babel/plugin-proposal-class-properties"));
+  plugins.push(require.resolve("./packages/plugin-proposal-class-properties"));
 
   const babelRuntime = path.dirname(
     require.resolve("@babel/runtime/package.json")
@@ -111,14 +111,14 @@ module.exports = function buildPreset(context, opts) {
 
   // Polyfills the runtime needed for async/await and generators
   plugins.push([
-    require.resolve("@babel/plugin-transform-runtime"),
+    require.resolve("./packages/plugin-transform-runtime"),
     transformRuntimeOption
   ]);
 
   // Remove PropTypes from production build
   if (isEnvProduction) {
     plugins.push([
-      require("babel-plugin-transform-react-remove-prop-types").default,
+      require("./packages/plugin-transform-react-remove-prop-types").default,
       {
         removeImport: true
       }
@@ -129,9 +129,9 @@ module.exports = function buildPreset(context, opts) {
   // but not yet supported in webpack due to support missing from acorn.
   // These can be removed once webpack has support.
   // See https://github.com/facebook/create-react-app/issues/8445#issuecomment-588512250
-  plugins.push(require.resolve("@babel/plugin-proposal-optional-chaining"));
+  plugins.push(require.resolve("./packages/plugin-proposal-optional-chaining"));
   plugins.push(
-    require.resolve("@babel/plugin-proposal-nullish-coalescing-operator")
+    require.resolve("./packages/plugin-proposal-nullish-coalescing-operator")
   );
 
   return {
