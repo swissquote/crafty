@@ -1438,7 +1438,7 @@
   resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.2.85.tgz#5c2966543dd26345baf778159d7953f76f748263"
   integrity sha512-LmvpyEXL1q2Cq7TxCOX89oSHhgj29CMIk9jMmMJtng/1Ud75jU9POmzHN4sUyIRbO0hicjFwQ5TWOt0GTl+kQg==
 
-"@swc/core@1.2.85", "@swc/core@^1.2.52":
+"@swc/core@1.2.85":
   version "1.2.85"
   resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.2.85.tgz#557d80c91a1d6d5a12b10fc2d654a58883aef44e"
   integrity sha512-P0yKca8CfKE+Kf4LlAmLDUGZ8W9wLvdnkeXo8SjG/vV21scAkoo1qVyWyAHsWNxNxHTxw2E/oqDWqI+yEn7qMg==
@@ -11106,12 +11106,11 @@ svgo@^2.3.1:
     csso "^4.2.0"
     stable "^0.1.8"
 
-swc-loader@0.1.14:
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/swc-loader/-/swc-loader-0.1.14.tgz#822f45e5cad45137da8f8ac7f54861baf8caefb8"
-  integrity sha512-JNSnwWj2EK5tbSWHELcYe8sJVQEHoezLYZRwRTW6HcelsLgsy+i4V1HFW8x1tcfZLvWyyTyompeVUuwpVudtTQ==
+swc-loader@0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/swc-loader/-/swc-loader-0.1.15.tgz#cb9c630ccfbb46dabc5aebc5560cced658e32992"
+  integrity sha512-cn1WPIeQJvXM4bbo3OwdEIapsQ4uUGOfyFj0h2+2+brT0k76DCGnZXDE2KmcqTd2JSQ+b61z2NPMib7eEwMYYw==
   dependencies:
-    "@swc/core" "^1.2.52"
     loader-utils "^2.0.0"
 
 symbol-tree@^3.2.4:
