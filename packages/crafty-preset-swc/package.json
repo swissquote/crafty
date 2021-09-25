@@ -12,9 +12,9 @@
     "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swc/core": "1.2.88",
+    "@swc/core": "1.2.91",
     "@swc/helpers": "0.2.13",
-    "@swc/jest": "0.2.3",
+    "@swc/jest": "0.2.4",
     "@swissquote/crafty-preset-eslint": "1.15.0",
     "@swissquote/crafty-preset-terser": "1.15.0",
     "debug": "^4.1.0",
