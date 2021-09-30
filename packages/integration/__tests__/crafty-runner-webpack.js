@@ -17,14 +17,14 @@ it("Compiles Only with Webpack", async () => {
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/1.myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/1.myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/690.myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/690.myBundle.min.js.map")).toBeTruthy();
 
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
   ).toMatchSnapshot();
   expect(
-    testUtils.readForSnapshot(cwd, "dist/js/1.myBundle.min.js")
+    testUtils.readForSnapshot(cwd, "dist/js/690.myBundle.min.js")
   ).toMatchSnapshot();
 });
 

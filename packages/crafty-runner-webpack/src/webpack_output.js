@@ -1,99 +1,97 @@
 const colors = require("ansi-colors");
-const style = require("webpack-stylish/lib/style");
-const parse = require("webpack-stylish/lib/parse");
+const symbols = require("log-symbols");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
-function categorize(files) {
-  const modules = [];
-  const assets = [];
+function styleTime(ms) {
+  const out = `${ms.toString()}ms`;
+  const ubound = 1600;
+  const lbound = 200;
 
-  let isAssets = false;
-
-  for (const row of files) {
-    if (row[0] === "size" && row[2] === "asset") {
-      isAssets = true;
-    }
-
-    if (row[0] === "size" || row[0] === "") {
-      continue;
-    }
-
-    if (isAssets) {
-      assets.push(row);
-    } else {
-      modules.push(row);
-    }
+  if (ms > ubound) {
+    return colors.bgRed(out);
+  } else if (ms <= lbound) {
+    return colors.green.bold(out);
   }
 
-  return {
-    modules,
-    assets
-  };
+  const styles = [colors.red.bold, colors.red, colors.yellow, colors.green];
+  const values = [ubound, ubound / 2, lbound * 2, lbound];
+  const closest = Math.max.apply(
+    null,
+    values.filter(v => v <= ms)
+  );
+  const style = styles[values.indexOf(closest)];
+
+  return style(out);
 }
 
-/**
- * Sort the files order.
- * The main reason is that test snapshots need the order to stay the same.
- * For some reason this isn't the case sometimes.
- *
- * @param {*} files
- */
-function sortFiles(files) {
-  const { modules, assets } = categorize(files);
+function plur(word, count) {
+  return `${word}${count === 1 ? "" : "s"}`;
+}
 
-  const final = [];
+function footer(counts) {
+  const problems = counts.errors + counts.warnings;
+  const result = [];
 
-  if (modules.length) {
-    final.push(["size", "name", "module", "status"]);
-    final.push(...modules.sort((a, b) => a[1] - b[1]));
+  if (problems > 0) {
+    const symbol = counts.errors > 0 ? symbols.error : symbols.warning;
+    const style = {
+      errors: counts.errors > 0 ? "red" : "dim",
+      problems: problems > 0 ? "bold" : "dim",
+      warnings: counts.warnings > 0 ? "yellow" : "dim"
+    };
+    const labels = {
+      errors: plur("error", counts.errors),
+      problems: colors[style.problems](
+        `${problems} ${plur("problem", problems)}`
+      ),
+      warnings: plur("warning", counts.warnings)
+    };
+    const errors = colors[style.errors](`${counts.errors} ${labels.errors}`);
+    const warnings = colors[style.warnings](
+      `${counts.warnings} ${labels.warnings}`
+    );
+
+    if (counts.errors > 0) {
+      labels.problems = colors[style.errors](labels.problems);
+    } else if (counts.warnings) {
+      labels.problems = ` ${colors[style.warnings](labels.problems)}`;
+    }
+
+    result.push(`${symbol} ${labels.problems} (${errors}, ${warnings})`);
   }
 
-  if (modules.length && assets.length) {
-    final.push(["", "", "", ""]);
-  }
-
-  if (assets.length) {
-    final.push(["size", "name", "asset", "status"]);
-    final.push(...assets.sort((a, b) => a[2].localeCompare(b[2])));
-  }
-
-  // Replacing the file sizes in output log
-  // to have predictable snapshot output
-  // when testing Crafty. As webpack seems
-  // to create differences in various environments
-  // without differences in the actual output's size
-  if (process.env.TESTING_CRAFTY) {
-    return final.map(item => {
-      if (item[0] !== "" && item[0] !== "size") {
-        item[0] = 1000;
-      }
-
-      return item;
-    });
-  }
-
-  return final;
+  return result.join("\n");
 }
 
 module.exports = function(stats, compiler) {
-  const opts = {
-    cached: false,
-    cachedAssets: false,
-    exclude: ["node_modules"]
+  // Write stats
+  console.log(
+    stats.toString({
+      version: false, // This is just noise
+      errors: false, // Errors are printed separately
+      errorsCount: false,
+      warnings: false, // Warnings are printed separately
+      warnignsCount: false,
+      timings: false, // Displayed separately
+      relatedAssets: true,
+      entrypoints: true,
+      chunkGroups: true,
+      chunks: true
+    })
+  );
+
+  const jsonOpts = {
+    all: false,
+    timings: true,
+    warnings: true,
+    errors: true,
+    errorDetails: true
   };
-
-  const json = stats.toJson(opts, true);
-
-  // List compiled files
-  console.log(style.files(sortFiles(parse.files(json)), compiler.options));
-  console.log(`\n  ${style.hidden(parse.hidden(json))}`);
-
-  // Disabled and replaced by our system
-  //console.log(style.problems(parse.problems(json)));
+  const json = stats.toJson(jsonOpts, true);
 
   // Nicer Error/Warning Messages
-  const messages = formatWebpackMessages(stats.toJson({}, true));
+  const messages = formatWebpackMessages(json);
   // If errors exist, only show errors.
   if (messages.errors.length) {
     console.log(`\n  ${colors.red("Failed to compile.")}\n`);
@@ -111,12 +109,12 @@ module.exports = function(stats, compiler) {
   }
 
   const timeTitle = colors.gray(`  Δ${colors.italic("t")}`);
-  const time = `${timeTitle} ${style.time(json.time)}`;
+  const time = `${timeTitle} ${styleTime(json.time)}`;
 
   if (messages.warnings.length || messages.errors.length) {
     console.log(
       time,
-      style.footer({
+      footer({
         errors: messages.errors.length,
         warnings: messages.warnings.length
       })

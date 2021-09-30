@@ -10,16 +10,16 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name     module                 status
-  1 kB  0        multi ./js/script.js   built
-  1 kB  1        ./js/script.js         built
-  1 kB  2        ./js/SomeClass.js      built
-
-  size  name     asset                  status
-  1 kB  js       1.myBundle.min.js      emitted
-  1 kB  map      1.myBundle.min.js.map  emitted
-  1 kB  default  myBundle.min.js        emitted
-  1 kB  default  myBundle.min.js.map    emitted
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset 690.myBundle.min.js ___ bytes [emitted] [minimized]
+  sourceMap 690.myBundle.min.js.map ___ bytes [emitted] [dev]
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) 690.myBundle.min.js ___ bytes [rendered]
+  ./js/SomeClass.js ___ bytes [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 9 modules
+  ./js/script.js ___ bytes [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -32,13 +32,13 @@ Object {
 `;
 
 exports[`Compiles Only with Webpack 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)(\\"object\\"===typeof exports?exports:e)[r]=n[r]}})(window,(function(){return function(e){function t(t){var n=t[0];var o=t[1];var i,u,a=0,c=[];for(;a<n.length;a++)u=n[a],Object.prototype.hasOwnProperty.call(r,u)&&r[u]&&c.push(r[u][0]),r[u]=0;for(i in o)Object.prototype.hasOwnProperty.call(o,i)&&(e[i]=o[i]);f&&f(t);while(c.length)c.shift()()}var n={};var r={0:0};function o(e){return i.p+\\"\\"+({}[e]||e)+\\".myBundle.min.js\\"}function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.e=function(e){var t=[];var n=r[e];if(0!==n)if(n)t.push(n[2]);else{var u=new Promise((function(t,o){n=r[e]=[t,o]}));t.push(n[2]=u);var a=document.createElement(\\"script\\");var c;a.charset=\\"utf-8\\",a.timeout=120,i.nc&&a.setAttribute(\\"nonce\\",i.nc),a.src=o(e);var f=new Error;c=function(t){a.onerror=a.onload=null,clearTimeout(l);var n=r[e];if(0!==n){if(n){var o=t&&(\\"load\\"===t.type?\\"missing\\":t.type);var i=t&&t.target&&t.target.src;f.message=\\"Loading chunk \\"+e+\\" failed.\\\\n(\\"+o+\\": \\"+i+\\")\\",f.name=\\"ChunkLoadError\\",f.type=o,f.request=i,n[1](f)}r[e]=void 0}};var l=setTimeout((function(){c({type:\\"timeout\\",target:a})}),12e4);a.onerror=a.onload=c,document.head.appendChild(a)}return Promise.all(t)},i.m=e,i.c=n,i.d=function(e,t,n){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},i.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&\\"object\\"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,\\"default\\",{enumerable:!0,value:e}),2&t&&\\"string\\"!=typeof e)for(var r in e)i.d(n,r,function(t){return e[t]}.bind(null,r));return n},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,\\"a\\",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p=\\"\\",i.oe=function(e){throw console.error(e),e};var u=window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[];var a=u.push.bind(u);u.push=t,u=u.slice();for(var c=0;c<u.length;c++)t(u[c]);var f=a;return i(i.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){\\"use strict\\";n.r(t),n.d(t,\\"default\\",(function(){return r}));class r{constructor(){console.log(\\"init class\\")}method(){n.e(1).then(n.bind(null,2)).then((function(e){const t=new e.default(\\"Bill\\");t.sayHi()}))}}}])}));
+"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)(\\"object\\"===typeof exports?exports:e)[n]=r[n]}})(self,(function(){return function(){\\"use strict\\";var e={};var t={};function r(n){var o=t[n];if(void 0!==o)return o.exports;var i=t[n]={exports:{}};return e[n](i,i.exports,r),i.exports}r.m=e,r.d=function(e,t){for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.f={},r.e=function(e){return Promise.all(Object.keys(r.f).reduce((function(t,n){return r.f[n](e,t),t}),[]))},r.u=function(e){return e+\\".myBundle.min.js\\"},r.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){var e={};var t=\\"UNIQID:\\";r.l=function(n,o,i,u){if(e[n])return void e[n].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==n||s.getAttribute(\\"data-webpack\\")==t+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,r.nc&&a.setAttribute(\\"nonce\\",r.nc),a.setAttribute(\\"data-webpack\\",t+i),a.src=n),e[n]=[o];var d=function(t,r){a.onerror=a.onload=null,clearTimeout(p);var o=e[n];if(delete e[n],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(r)})),t)return t(r)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),r.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;r.g.importScripts&&(e=r.g.location+\\"\\");var t=r.g.document;if(!e&&t&&(t.currentScript&&(e=t.currentScript.src),!e)){var n=t.getElementsByTagName(\\"script\\");n.length&&(e=n[n.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),r.p=e}(),function(){var e={913:0};r.f.j=function(t,n){var o=r.o(e,t)?e[t]:void 0;if(0!==o)if(o)n.push(o[2]);else{var i=new Promise((function(r,n){o=e[t]=[r,n]}));n.push(o[2]=i);var u=r.p+r.u(t);var a=new Error;var c=function(n){if(r.o(e,t)&&(o=e[t],0!==o&&(e[t]=void 0),o)){var i=n&&(\\"load\\"===n.type?\\"missing\\":n.type);var u=n&&n.target&&n.target.src;a.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};r.l(u,c,\\"chunk-\\"+t,t)}};var t=function(t,n){var o=n[0];var i=n[1];var u=n[2];var a,c,f=0;if(o.some((function(t){return 0!==e[t]}))){for(a in i)r.o(i,a)&&(r.m[a]=i[a]);if(u)u(r)}for(t&&t(n);f<o.length;f++)c=o[f],r.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var n=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];n.forEach(t.bind(null,0)),n.push=t.bind(null,n.push.bind(n))}();var n={};r.r(n),r.d(n,{default:function(){return o}});class o{constructor(){console.log(\\"init class\\")}method(){r.e(690).then(r.bind(r,690)).then((function(e){const t=new e.default(\\"Bill\\");t.sayHi()}))}}return n}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles Only with Webpack 3`] = `
-"(window.webpackJsonp_UNIQID=window.webpackJsonp_UNIQID||[]).push([[1],{2:function(s,n,o){\\"use strict\\";o.r(n),o.d(n,\\"default\\",(function(){return i}));class i{constructor(s){this.field=s}sayHi(){console.log(this.field)}}}}]);
-//# sourceMappingURL=1.myBundle.min.js.map"
+"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[690],{690:function(s,e,t){t.r(e),t.d(e,{default:function(){return c}});class c{constructor(s){this.field=s}sayHi(){console.log(this.field)}}}}]);
+//# sourceMappingURL=690.myBundle.min.js.map"
 `;
 
 exports[`Fails gracefully on broken markup 1`] = `
@@ -51,15 +51,13 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-  size  name  module                status
-  1 kB  0     multi ./js/script.js  built
-  1 kB  1     ./js/script.js        built failed ✖
-
-  (2 assets hidden)
+assets by status ___ bytes [cached] 1 asset
+Entrypoint default = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ bytes [entry] [rendered]
+  ./js/script.js ___ bytes [built] [code generated] [1 error]
 
   Failed to compile.
 
-./js/script.js 15:0
 Module parse failed: Unexpected token (15:0)
 You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
 |

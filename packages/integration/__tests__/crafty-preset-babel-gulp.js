@@ -10,6 +10,9 @@ jest.setTimeout(30000);
 
 const getCrafty = configuration.getCrafty;
 
+const mainBundle = "dist/js/myBundle.min.js";
+const mainBundleMap = "dist/js/myBundle.min.js.map";
+
 it("Loads crafty-preset-babel and does not register gulp tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-babel"], {});
 
@@ -50,6 +53,8 @@ it("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", () =
   ]);
 });
 
+const mainScript = "dist/js/script.js";
+
 it("Compiles JavaScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles"
@@ -59,16 +64,16 @@ it("Compiles JavaScript", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
   ).toMatchSnapshot();
@@ -83,16 +88,16 @@ it("Compiles JavaScript, keeps runtime external", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
   ).toMatchSnapshot();
@@ -107,16 +112,40 @@ it("Compiles JavaScript, new features transpiled", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
+});
+
+it("Compiles JavaScript, target node > 12", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/compiles-target-node"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
+
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
+
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
   ).toMatchSnapshot();
@@ -131,8 +160,8 @@ it("Fails gracefully on broken markup", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });
 
 it("Compiles JavaScript with custom babel plugin", async () => {
@@ -144,13 +173,13 @@ it("Compiles JavaScript with custom babel plugin", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
 });
 
 it("Compiles JavaScript and concatenates", async () => {
@@ -162,18 +191,16 @@ it("Compiles JavaScript and concatenates", async () => {
 
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeTruthy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeTruthy();
 
-  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainScript)).toBeFalsy();
   expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeFalsy();
 
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, mainBundle)).toMatchSnapshot();
 });
 
 it("Lints JavaScript", async () => {
@@ -186,8 +213,8 @@ it("Lints JavaScript", async () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });
 
 it("Lints JavaScript, doesn't fail in development", async () => {
@@ -200,6 +227,6 @@ it("Lints JavaScript, doesn't fail in development", async () => {
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });
