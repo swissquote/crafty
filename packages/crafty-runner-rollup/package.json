@@ -12,7 +12,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@rollup/plugin-commonjs": "20.0.0",
+    "@rollup/plugin-commonjs": "21.0.0",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.0.5",
     "@rollup/plugin-replace": "3.0.0",
@@ -20,7 +20,7 @@
     "ansi-colors": "^4.0.0",
     "debug": "^4.1.0",
     "pretty-hrtime": "1.0.3",
-    "rollup": "2.57.0",
+    "rollup": "2.58.0",
     "rollup-plugin-pnp-resolve": "2.0.0",
     "rollup-plugin-terser": "7.0.2"
   },
