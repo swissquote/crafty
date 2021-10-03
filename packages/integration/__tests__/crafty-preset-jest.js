@@ -31,6 +31,7 @@ it("Creates IDE Integration files", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
   expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
 
@@ -45,6 +46,7 @@ it("Creates IDE Integration files with Babel", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
   expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
 });
@@ -54,6 +56,7 @@ testIfNotPnp("Succeeds with typescript", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 });
 
@@ -62,6 +65,7 @@ it("Succeeds with babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 });
 
@@ -72,6 +76,7 @@ it("Fails with babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 });
 
@@ -82,6 +87,7 @@ testIfNotPnp("Succeeds with babel and React", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 });
 
@@ -90,6 +96,7 @@ it("Succeeds with esm module", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 });
 
@@ -98,5 +105,6 @@ it("Succeeds with esm module and babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 });

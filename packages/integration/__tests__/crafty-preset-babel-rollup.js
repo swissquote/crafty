@@ -16,6 +16,7 @@ it("Compiles JavaScript with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -30,6 +31,7 @@ it("Keeps imports unresolved for Babel Runtime", async () => {
   );
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -45,6 +47,7 @@ it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -60,6 +63,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
@@ -73,6 +77,7 @@ it("Lints JavaScript with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint

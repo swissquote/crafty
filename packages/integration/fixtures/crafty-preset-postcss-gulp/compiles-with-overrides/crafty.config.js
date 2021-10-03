@@ -1,4 +1,5 @@
 module.exports = {
+  browsers: "ie 11",
   presets: ["@swissquote/crafty-preset-postcss", "@swissquote/crafty-runner-gulp"],
   css: {
     myBundle: {

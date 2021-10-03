@@ -19,6 +19,7 @@ it("Works with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
@@ -35,6 +36,7 @@ it("Deletes rollup terser plugin using crafty.config.js", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
@@ -51,6 +53,7 @@ it("Keeps imports unresolved for Babel Runtime", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
@@ -67,6 +70,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -81,6 +85,7 @@ it("Lints TypeScript with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint

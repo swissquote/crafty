@@ -60,6 +60,7 @@ it("Compiles TypeScript", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
@@ -85,6 +86,7 @@ it("Compiles TypeScript - fork checker", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
@@ -125,6 +127,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -139,6 +142,7 @@ it("Fails gracefully on invalid TS", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed types
@@ -153,6 +157,7 @@ it("Fails gracefully on invalid TS - fork checker", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed types
@@ -167,6 +172,7 @@ it("Removes unused classes", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();

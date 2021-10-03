@@ -14,6 +14,9 @@ it("Fails if no pom is found", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
+  expect(result.stdall).toContain("Could not define destination using maven, falling back to default.")
+  expect(result.stdall).toContain("No pom.xml found")
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
@@ -24,6 +27,7 @@ it("Places files in target of a webapp", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(
@@ -43,6 +47,7 @@ it("Reads env. var before pom.xml", async () => {
     env: { TARGET_BASEDIR: path.join(cwd, "target/some_basedir") }
   });
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(
@@ -57,6 +62,7 @@ it("Places files in target of a webapp from within a subfolder", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(
@@ -72,6 +78,7 @@ it("Places files in target of a webjar", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(

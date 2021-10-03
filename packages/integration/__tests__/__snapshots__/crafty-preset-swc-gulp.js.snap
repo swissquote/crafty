@@ -18,13 +18,13 @@ Object {
 `;
 
 exports[`Compiles JavaScript 2`] = `
-"import\\"./otherfile\\";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}var Test=/*#__PURE__*/function(){\\"use strict\\";function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"import\\"./otherfile\\";class Test{sayHi(){console.log(\`Hello \${this.name} !\`)}constructor(t){this.name=t}}const test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=script.js.map
 "
 `;
 
 exports[`Compiles JavaScript 3`] = `
-"setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);
+"setTimeout((()=>{console.log(\\"Welcome to this website\\")}),1e3);
 //# sourceMappingURL=otherfile.js.map
 "
 `;
@@ -47,7 +47,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript and concatenates 2`] = `
-"function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError(\\"Cannot call a class as a function\\")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,\\"value\\"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}setTimeout((function(){console.log(\\"Welcome to this website\\")}),1e3);var Test=/*#__PURE__*/function(){\\"use strict\\";function e(t){_classCallCheck(this,e),this.name=t}return _createClass(e,[{key:\\"sayHi\\",value:function(){console.log(\\"Hello \\".concat(this.name,\\" !\\"))}}]),e}();var test=new Test(\\"Stéphane\\");test.sayHi();
+"setTimeout((()=>{console.log(\\"Welcome to this website\\")}),1e3);class Test{sayHi(){console.log(\`Hello \${this.name} !\`)}constructor(e){this.name=e}}const test=new Test(\\"Stéphane\\");test.sayHi();
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;

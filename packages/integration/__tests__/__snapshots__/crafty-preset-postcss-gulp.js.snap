@@ -135,9 +135,7 @@ css/math.scss
  6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
 
 css/style.scss
- 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11, Edge 17,18, Safari on iOS 15,11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.4,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.7, Android Browser 4.4.3-4.4.4, Samsung Internet 4   plugin/no-unsupported-browser-features
- 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is only partially supported by IE 11                                                                                                                                                                    plugin/no-unsupported-browser-features
- 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 11, Edge 17                                                                                                                                                          plugin/no-unsupported-browser-features
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by Edge 18, Safari on iOS 15,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.7   plugin/no-unsupported-browser-features
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -146,6 +144,390 @@ css/style.scss
 `;
 
 exports[`Experiment with all CSS 2`] = `
+"/* Import CSS Files (postcss-import, postcss-url) */
+
+.Body { background: #eee; }
+
+:root {
+    --Component-margin: 5px;
+}
+
+.Component {
+    margin: var(--Component-margin) -var(--Component-margin);
+}
+
+@media (min-width: 25em) {
+.Button {
+    background: url(\\"../images/buttons/background.png\\");
+} }
+
+/* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
+
+.Child {
+            background: black;
+        }
+
+.Parent {
+    background: white;
+}
+
+.Parent--before {
+        color: #333;
+    }
+
+.Parent--after {
+        color: #eee;
+    }
+
+/* Mixins (postcss-advanced-variables) */
+
+.Search {
+    padding-left: 16px;
+}
+
+.Search:after {
+        content: \\"\\";
+        background: url(\\"/icons/search.png\\");
+    }
+
+/* Comments (postcss-scss) */
+
+/* single line comment*/
+
+.Button {
+    color: orange;
+}
+
+/* Variables (postcss-advanced-variables, postcss-custom-properties) */
+
+:root {
+    --color: #f00;
+}
+
+.Menu {
+    width: 800px;
+}
+
+.MenuLink {
+    color: var(--color);
+    background: #056ef0;
+    width: 200px;
+}
+
+/* Property Lookup (postcss-property-lookup) */
+
+.Heading {
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Images in CSS (postcss-assets) */
+
+.Card {
+    background: url(../images/background.jpg?CACHEBUST); /* use only on small files */
+}
+
+.Button {
+    background: url('data:image/png;base64,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');
+    background-size: 68px 34px;
+    width: 68px;
+    height: 34px;
+}
+
+/* Image set (postcss-image-set-polyfill) */
+
+.BigImage {
+    background-image: url(img/test.png);
+}
+
+/* Help with RTL languages (postcss-logical, postcss-dir-pseudo-class) */
+
+.Banner:dir(ltr) {
+    padding-left: 20px;
+    padding-right: 40px; }
+
+.Banner:dir(rtl) {
+    padding-right: 20px;
+    padding-left: 40px; }
+
+.Banner {
+    color: #222;
+    top: 0;
+    left: 5px;
+    bottom: 10px;
+    right: 5px;
+    resize: vertical;
+}
+
+[dir=\\"rtl\\"] .Banner__title {
+    margin-right: 10px;
+}
+
+[dir=\\"ltr\\"] .Banner__title {
+    margin-left: 10px;
+}
+
+/* Math in your CSS (postcss-calc) */
+
+:root {
+    --main-font-size: 16px;
+}
+
+.Header {
+    font-size: var(--main-font-size);
+}
+
+.Header {
+    font-size: calc(var(--main-font-size)*2);
+    height: calc(100px - 2em);
+    margin-top: calc(var(--main-font-size)*1.5);
+}
+
+/* Conditionals (postcss-advanced-variables) */
+
+.Notice--clear {
+        background: green
+}
+
+/* Loops (postcss-advanced-variables) */
+
+.icon-foo {
+        background: url(\\"icons/foo.png\\");
+    }
+
+.icon-bar {
+        background: url(\\"icons/bar.png\\");
+    }
+
+.icon-baz {
+        background: url(\\"icons/baz.png\\");
+    }
+
+.Button--1 {
+        width: 1px;
+    }
+
+.Button--2 {
+        width: 2px;
+    }
+
+.Button--3 {
+        width: 3px;
+    }
+
+/* Initial Values (postcss-initial) */
+
+.Link {
+    animation: none 0s ease 0s 1 normal none running;
+    animation: initial;
+    background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
+    background: initial;
+    white-space: normal;
+    white-space: initial;
+}
+
+/* Colors:
+ * postcss-color-function
+ * postcss-color-gray
+ * postcss-color-hex-alpha
+ * postcss-color-hsl
+ * postcss-color-hwb
+ * postcss-color-rebeccapurple
+ * postcss-color-rgb
+ * postcss-color-rgba-fallback
+ */
+
+.Quote {
+    /* This will create a fallback without the alpha*/
+    background: rgba(153, 221, 153, .8);
+
+    /* This will be transformed to rgba*/
+    border-color: rgba(153,221,153,0.8);
+
+    /* ... sad story, homage to Eric Meyer*/
+    color: rebeccapurple;
+}
+
+.Quote--clear {
+    /* Allows to declare colors with rgb() level 4*/
+    background: rgb(251, 255, 255);
+
+    /* This will declare colors with hsl() level 4*/
+    color: hsla(180, 100%, 50%, .2);
+
+    /* This will transform colors to rgba()*/
+    border-color: rgba(128, 255, 0, .5);
+}
+
+/* Color manipulation */
+
+.Link {
+    /* Change the opacity of red*/
+    color: rgba(255, 0, 0, 0.9);
+}
+
+.Link:hover {
+    /* Darken the color*/
+    color: rgb(51, 0, 0);
+}
+
+.Link {
+    /* This will be transformed to rgba*/
+    color: rgba(128, 255, 0, .6);
+}
+
+/* Levels of gray */
+
+.Text {
+    /* Level of gray*/
+    color: rgb(212,212,212);
+
+    /* Level of gray with opacity*/
+    background: gray(10%, 50%);
+}
+
+/* Selectors:
+ * postcss-selector-matches
+ * postcss-selector-not
+ * postcss-pseudo-class-any-link
+ * postcss-custom-selectors
+ * postcss-attribute-case-insensitive
+ */
+
+button,.button {
+    /* styles for your buttons */
+}
+
+button:hover,button:focus,.button:hover,.button:focus {
+    /* hover/focus styles for your button */
+}
+
+.Text:not(:first-child):not(.Special) {
+    color: red;
+}
+
+.Text:first-child, .Text.Special {
+    color: red;
+}
+
+.Navigation :link,.Navigation :visited {
+    background-color: yellow;
+}
+
+.Navigation :any-link {
+    background-color: yellow;
+}
+
+[frame=\\"hsides\\"],[frame=\\"Hsides\\"],[frame=\\"hSides\\"],[frame=\\"HSides\\"],[frame=\\"hsIdes\\"],[frame=\\"HsIdes\\"],[frame=\\"hSIdes\\"],[frame=\\"HSIdes\\"],[frame=\\"hsiDes\\"],[frame=\\"HsiDes\\"],[frame=\\"hSiDes\\"],[frame=\\"HSiDes\\"],[frame=\\"hsIDes\\"],[frame=\\"HsIDes\\"],[frame=\\"hSIDes\\"],[frame=\\"HSIDes\\"],[frame=\\"hsidEs\\"],[frame=\\"HsidEs\\"],[frame=\\"hSidEs\\"],[frame=\\"HSidEs\\"],[frame=\\"hsIdEs\\"],[frame=\\"HsIdEs\\"],[frame=\\"hSIdEs\\"],[frame=\\"HSIdEs\\"],[frame=\\"hsiDEs\\"],[frame=\\"HsiDEs\\"],[frame=\\"hSiDEs\\"],[frame=\\"HSiDEs\\"],[frame=\\"hsIDEs\\"],[frame=\\"HsIDEs\\"],[frame=\\"hSIDEs\\"],[frame=\\"HSIDEs\\"],[frame=\\"hsideS\\"],[frame=\\"HsideS\\"],[frame=\\"hSideS\\"],[frame=\\"HSideS\\"],[frame=\\"hsIdeS\\"],[frame=\\"HsIdeS\\"],[frame=\\"hSIdeS\\"],[frame=\\"HSIdeS\\"],[frame=\\"hsiDeS\\"],[frame=\\"HsiDeS\\"],[frame=\\"hSiDeS\\"],[frame=\\"HSiDeS\\"],[frame=\\"hsIDeS\\"],[frame=\\"HsIDeS\\"],[frame=\\"hSIDeS\\"],[frame=\\"HSIDeS\\"],[frame=\\"hsidES\\"],[frame=\\"HsidES\\"],[frame=\\"hSidES\\"],[frame=\\"HSidES\\"],[frame=\\"hsIdES\\"],[frame=\\"HsIdES\\"],[frame=\\"hSIdES\\"],[frame=\\"HSIdES\\"],[frame=\\"hsiDES\\"],[frame=\\"HsiDES\\"],[frame=\\"hSiDES\\"],[frame=\\"HSiDES\\"],[frame=\\"hsIDES\\"],[frame=\\"HsIDES\\"],[frame=\\"hSIDES\\"],[frame=\\"HSIDES\\"] {
+    border-style: solid none;
+}
+
+/* Media Queries (postcss-custom-media, postcss-media-minmax) */
+
+@media (min-width: 500px) and (max-width: 1200px) {
+    /* your styles */
+}
+
+/* or coupled with custom media queries */
+
+@media (max-width: 499px) or (min-width: 1201px) {
+    /* your styles */
+}
+
+/* Vendor Prefixes (autoprefixer) */
+
+:-webkit-full-screen .Link {
+    display: flex;
+}
+
+:fullscreen .Link {
+    display: flex;
+}
+
+/*
+ * Browser Support:
+ * postcss-font-family-system-ui
+ * postcss-pseudoelements
+ * postcss-replace-overflow-wrap
+ * postcss-filter-gradient
+ * postcss-font-variant
+ */
+
+.Body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
+}
+
+.Button:before {
+    content: attr(href);
+}
+
+.Foo {
+    overflow-wrap: break-word;
+}
+
+.Buy {
+    background: linear-gradient(to bottom, #1e5799, #7db9e8);
+}
+
+.Heading.Heading--small {
+    font-feature-settings: \\"smcp\\";
+    font-variant-caps: small-caps;
+}
+
+.Table {
+    font-feature-settings: \\"lnum\\";
+    font-variant-numeric: lining-nums;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+.BigImage {
+    background-image: url(img/test-2x.png);
+} }
+
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+
+.BigImage {
+    background-image: url(my-img-print.png);
+} }
+
+/*# sourceMappingURL=myBundle.min.css.map */
+"
+`;
+
+exports[`Experiment with all CSS, old browsers 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/experiment_old_browsers/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] Finished 'css_myBundle' after ____ ms
+[__:__:__] Finished 'css' after ____ ms
+[__:__:__] Starting 'css__lint' ...
+
+css/foo.scss
+ 1:8  ⚠  Replace \\"·background:·#eee;·\\" with \\"⏎····background:·#eee;⏎\\"   prettier/prettier
+
+css/math.scss
+ 6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
+
+css/style.scss
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 9            plugin/no-unsupported-browser-features
+ 158:5  ⚠  Unexpected browser feature \\"css-animation\\" is not supported by IE 9         plugin/no-unsupported-browser-features
+ 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is not supported by IE 9               plugin/no-unsupported-browser-features
+ 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 9   plugin/no-unsupported-browser-features
+
+[__:__:__] Finished 'css__lint' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Experiment with all CSS, old browsers 2`] = `
 "/* Import CSS Files (postcss-import, postcss-url) */
 
 .Body { background: #eee; }
@@ -308,10 +690,8 @@ exports[`Experiment with all CSS 2`] = `
 /* Initial Values (postcss-initial) */
 
 .Link {
-    -webkit-animation: none 0s ease 0s 1 normal none running;
-            animation: none 0s ease 0s 1 normal none running;
-    -webkit-animation: initial;
-            animation: initial;
+    animation: none 0s ease 0s 1 normal none running;
+    animation: initial;
     background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
     background: initial;
     white-space: normal;
@@ -406,10 +786,6 @@ button:hover,button:focus,.button:hover,.button:focus {
     background-color: yellow;
 }
 
-.Navigation :-webkit-any-link {
-    background-color: yellow;
-}
-
 .Navigation :any-link {
     background-color: yellow;
 }
@@ -433,14 +809,6 @@ button:hover,button:focus,.button:hover,.button:focus {
 /* Vendor Prefixes (autoprefixer) */
 
 :-webkit-full-screen .Link {
-    display: flex;
-}
-
-:-moz-full-screen .Link {
-    display: flex;
-}
-
-:-ms-fullscreen .Link {
     display: flex;
 }
 
@@ -471,17 +839,16 @@ button:hover,button:focus,.button:hover,.button:focus {
 
 .Buy {
     background: linear-gradient(to bottom, #1e5799, #7db9e8);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1e5799', endColorstr='#ff7db9e8', GradientType=0);
 }
 
 .Heading.Heading--small {
-    -webkit-font-feature-settings: \\"smcp\\";
-            font-feature-settings: \\"smcp\\";
+    font-feature-settings: \\"smcp\\";
     font-variant-caps: small-caps;
 }
 
 .Table {
-    -webkit-font-feature-settings: \\"lnum\\";
-            font-feature-settings: \\"lnum\\";
+    font-feature-settings: \\"lnum\\";
     font-variant-numeric: lining-nums;
 }
 

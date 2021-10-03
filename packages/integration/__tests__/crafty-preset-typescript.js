@@ -12,6 +12,7 @@ it("Lints TypeScript using the command", async () => {
 
   const result = await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -29,6 +30,7 @@ it("Lints TypeScript using the command, --preset recommended, --preset node", as
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -46,6 +48,7 @@ it("Lints TypeScript using the command, --preset recommended", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -63,6 +66,7 @@ it("Lints TypeScript using the command, --preset format", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint

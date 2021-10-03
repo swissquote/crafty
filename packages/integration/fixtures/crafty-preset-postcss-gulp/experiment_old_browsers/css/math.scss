@@ -1,0 +1,7 @@
+:root {
+    --Component-margin: 5px;
+}
+
+.Component {
+    margin: var(--Component-margin) -var(--Component-margin);
+}

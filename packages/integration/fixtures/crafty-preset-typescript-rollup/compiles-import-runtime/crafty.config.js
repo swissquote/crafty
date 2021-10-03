@@ -1,4 +1,5 @@
 module.exports = {
+  browsers: "ie 11",
   presets: ["@swissquote/crafty-preset-babel", "@swissquote/crafty-preset-typescript", "@swissquote/crafty-runner-rollup"],
   js: {
     myTSBundle: {

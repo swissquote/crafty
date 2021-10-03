@@ -134,6 +134,7 @@ it("Compiles JavaScript, target node > 12", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
@@ -158,6 +159,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
@@ -171,6 +173,7 @@ it("Compiles JavaScript with custom babel plugin", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
@@ -189,6 +192,7 @@ it("Compiles JavaScript and concatenates", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, mainBundle)).toBeTruthy();
@@ -210,6 +214,7 @@ it("Lints JavaScript", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -224,6 +229,7 @@ it("Lints JavaScript, doesn't fail in development", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint

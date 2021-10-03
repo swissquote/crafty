@@ -16,6 +16,7 @@ it("Compiles JavaScript", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -31,6 +32,7 @@ it("Compiles JavaScript with webpack overrides", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -46,6 +48,7 @@ it("Compiles Generators", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -61,6 +64,7 @@ it("Deduplicates helpers", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -76,6 +80,7 @@ it("Does not transpile on modern browsers", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -91,6 +96,7 @@ it("Compiles JavaScript with externals", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -106,6 +112,7 @@ it("Creates profiles", async () => {
 
   const result = await testUtils.run(["run", "default", "--profile"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
@@ -123,6 +130,7 @@ it("Lints JavaScript with webpack", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -137,6 +145,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -151,6 +160,7 @@ it("Removes unused classes", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();

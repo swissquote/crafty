@@ -166,6 +166,7 @@ it("Lints JavaScript using command", async () => {
 
   const result = await testUtils.run(["jsLint", "js/**/*.js"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -182,6 +183,7 @@ it("Generates IDE Helper", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.readForSnapshot(cwd, ".eslintrc.js")).toMatchSnapshot();
@@ -209,6 +211,7 @@ it("Lints JavaScript using command, ignore crafty.config.js", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -224,6 +227,7 @@ it("Lints JavaScript using command, legacy", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -239,6 +243,7 @@ it("Lints JavaScript using command, format preset", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -254,6 +259,7 @@ it("Lints JavaScript using command, recommended preset", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint
@@ -269,6 +275,7 @@ it("Lints JavaScript using command, explicit configuration", async () => {
     cwd
   );
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   // Files aren't generated on failed lint

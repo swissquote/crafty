@@ -53,6 +53,7 @@ it("Doesn't compile without a task, but lints (doesn't throw in development)", a
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
@@ -65,6 +66,7 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
@@ -77,6 +79,7 @@ it("Experiment with all CSS", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
@@ -89,6 +92,27 @@ it("Experiment with all CSS", async () => {
   ).toMatchSnapshot();
 });
 
+it("Experiment with all CSS, old browsers", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/experiment_old_browsers"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(result).toMatchSnapshot();
+
+  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+
+  expect(
+    testUtils.snapshotizeCSS(
+      testUtils.readFile(cwd, "dist/css/myBundle.min.css")
+    )
+  ).toMatchSnapshot();
+});
+
+
 it("Compiles CSS", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles"
@@ -96,6 +120,7 @@ it("Compiles CSS", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
@@ -114,6 +139,7 @@ it("Compiles CSS, configuration has overrides", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
@@ -132,6 +158,7 @@ it("Compiles CSS, configuration preserve", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
+  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
