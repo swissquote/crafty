@@ -122,8 +122,8 @@ component.</li>
 <code>no-utility-reassignment</code>: Utilities (<code>.u-*</code>) must be applied directly on the
 concerned element.</li>
 <li>
-<code>no-negative-var</code>: Using <code>var()</code> doesn’t work as you would expect it to return
-a negative value, but it just parses the function as <code>-var()</code> and never executes it.</li>
+<code>no-negative-var</code>: Using <code>-var(...)</code> does not work, it should be <code>calc(var(...) * -1)</code>
+</li>
 </ul>
 <h2 id="page_Usage_within_Crafty">Usage within Crafty</h2>
 <p>Crafty includes those rules and presets by default, you don’t need to do any
