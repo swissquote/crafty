@@ -3,5 +3,5 @@
 }
 
 .Component {
-    margin: var(--Component-margin) -var(--Component-margin);
+    margin: var(--Component-margin) calc(var(--Component-margin) * -1);
 }

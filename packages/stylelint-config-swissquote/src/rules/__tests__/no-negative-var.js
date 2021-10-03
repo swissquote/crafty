@@ -24,4 +24,18 @@ describe("no-negative-var", () => {
       }
     ]);
   });
+
+  it("negative var fails on multi vars", async () => {
+    const t = await createRuleTester.test(
+      rule,
+      ".Component1 { margin: var(--Component-margin) -var(--Component-margin); }"
+    );
+    expect(t).toEqual([
+      {
+        column: 47,
+        line: 1,
+        text: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
+      }
+    ]);
+  });
 });

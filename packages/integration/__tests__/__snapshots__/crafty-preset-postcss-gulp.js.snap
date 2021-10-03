@@ -128,12 +128,6 @@ Object {
 [__:__:__] Finished 'css' after ____ ms
 [__:__:__] Starting 'css__lint' ...
 
-css/foo.scss
- 1:8  ⚠  Replace \\"·background:·#eee;·\\" with \\"⏎····background:·#eee;⏎\\"   prettier/prettier
-
-css/math.scss
- 6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
-
 css/style.scss
  104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by Edge 18, Safari on iOS 15,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.7   plugin/no-unsupported-browser-features
 
@@ -146,20 +140,23 @@ css/style.scss
 exports[`Experiment with all CSS 2`] = `
 "/* Import CSS Files (postcss-import, postcss-url) */
 
-.Body { background: #eee; }
+.Body {
+    background: #eee;
+}
 
 :root {
     --Component-margin: 5px;
 }
 
 .Component {
-    margin: var(--Component-margin) -var(--Component-margin);
+    margin: var(--Component-margin) calc(var(--Component-margin)*-1);
 }
 
 @media (min-width: 25em) {
 .Button {
     background: url(\\"../images/buttons/background.png\\");
-} }
+}
+}
 
 /* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
 
@@ -244,11 +241,13 @@ exports[`Experiment with all CSS 2`] = `
 
 .Banner:dir(ltr) {
     padding-left: 20px;
-    padding-right: 40px; }
+    padding-right: 40px;
+}
 
 .Banner:dir(rtl) {
     padding-right: 20px;
-    padding-left: 40px; }
+    padding-left: 40px;
+}
 
 .Banner {
     color: #222;
@@ -483,13 +482,15 @@ button:hover,button:focus,.button:hover,.button:focus {
 
 .BigImage {
     background-image: url(img/test-2x.png);
-} }
+}
+}
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);
-} }
+}
+}
 
 /*# sourceMappingURL=myBundle.min.css.map */
 "
@@ -509,12 +510,6 @@ Object {
 [__:__:__] Finished 'css' after ____ ms
 [__:__:__] Starting 'css__lint' ...
 
-css/foo.scss
- 1:8  ⚠  Replace \\"·background:·#eee;·\\" with \\"⏎····background:·#eee;⏎\\"   prettier/prettier
-
-css/math.scss
- 6:37  ✖  Using \\"-\\" in front of \\"var()\\" doesn't work, use \\"calc(var(...) * -1)\\"  swissquote/no-negative-var
-
 css/style.scss
  104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 9            plugin/no-unsupported-browser-features
  158:5  ⚠  Unexpected browser feature \\"css-animation\\" is not supported by IE 9         plugin/no-unsupported-browser-features
@@ -530,16 +525,19 @@ css/style.scss
 exports[`Experiment with all CSS, old browsers 2`] = `
 "/* Import CSS Files (postcss-import, postcss-url) */
 
-.Body { background: #eee; }
+.Body {
+    background: #eee;
+}
 
 .Component {
-    margin: 5px -var(--Component-margin);
+    margin: 5px -5px;
 }
 
 @media (min-width: 25em) {
 .Button {
     background: url(\\"../images/buttons/background.png\\");
-} }
+}
+}
 
 /* Nested Styles (postcss-nesting, postcss-nested, postcss-atroot) */
 
@@ -620,11 +618,13 @@ exports[`Experiment with all CSS, old browsers 2`] = `
 
 .Banner:dir(ltr) {
     padding-left: 20px;
-    padding-right: 40px; }
+    padding-right: 40px;
+}
 
 .Banner:dir(rtl) {
     padding-right: 20px;
-    padding-left: 40px; }
+    padding-left: 40px;
+}
 
 .Banner {
     color: #222;
@@ -856,13 +856,15 @@ button:hover,button:focus,.button:hover,.button:focus {
 
 .BigImage {
     background-image: url(img/test-2x.png);
-} }
+}
+}
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);
-} }
+}
+}
 
 /*# sourceMappingURL=myBundle.min.css.map */
 "
