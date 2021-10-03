@@ -15,8 +15,10 @@ it("Fails if no pom is found", async () => {
   const result = await testUtils.run(["run", "default"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall).toContain("Could not define destination using maven, falling back to default.")
-  expect(result.stdall).toContain("No pom.xml found")
+  expect(result.stdall).toContain(
+    "Could not define destination using maven, falling back to default."
+  );
+  expect(result.stdall).toContain("No pom.xml found");
   expect(result).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();

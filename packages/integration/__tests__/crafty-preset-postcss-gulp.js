@@ -5,6 +5,9 @@ const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
+const BUNDLED_CSS = "dist/css/myBundle.min.css";
+const BUNDLED_CSS_MAPS = "dist/css/myBundle.min.css.map";
+
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942
 // Tests would be unreliable if they timeout >_<
 jest.setTimeout(30000);
@@ -82,13 +85,11 @@ it("Experiment with all CSS", async () => {
   expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
   expect(
-    testUtils.snapshotizeCSS(
-      testUtils.readFile(cwd, "dist/css/myBundle.min.css")
-    )
+    testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))
   ).toMatchSnapshot();
 });
 
@@ -102,16 +103,13 @@ it("Experiment with all CSS, old browsers", async () => {
   expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
   expect(
-    testUtils.snapshotizeCSS(
-      testUtils.readFile(cwd, "dist/css/myBundle.min.css")
-    )
+    testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))
   ).toMatchSnapshot();
 });
-
 
 it("Compiles CSS", async () => {
   const cwd = await testUtils.getCleanFixtures(
@@ -123,11 +121,11 @@ it("Compiles CSS", async () => {
   expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(testUtils.readFile(cwd, "dist/css/myBundle.min.css")).toEqual(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toEqual(
     ".Link{color:#00f}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
@@ -142,11 +140,11 @@ it("Compiles CSS, configuration has overrides", async () => {
   expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(testUtils.readFile(cwd, "dist/css/myBundle.min.css")).toEqual(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toEqual(
     ".Link{color:#fa5b35}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
@@ -161,11 +159,11 @@ it("Compiles CSS, configuration preserve", async () => {
   expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
 
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/css/myBundle.min.css.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(testUtils.readFile(cwd, "dist/css/myBundle.min.css")).toEqual(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toEqual(
     ":root{--color:blue}" +
       ".Link{color:#fa5b35;color:var(--color)}" +
       ":root{--BodyComponent-color:var(--color)}" +
