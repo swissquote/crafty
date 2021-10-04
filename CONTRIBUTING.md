@@ -52,6 +52,8 @@ rm -rf node_modules yarn.lock .pnp .pnp.js packages/*/node_modules
 
 yarn install
 
+yarn build
+
 # Run tests
 yarn test
 
