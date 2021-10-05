@@ -1,5 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
+function pluginIstanbul() {
+  return require("babel-plugin-istanbul");
+}
+
 function pluginProposalClassProperties() {
   return require("@babel/plugin-proposal-class-properties");
 }
@@ -32,11 +36,16 @@ function presetEnv() {
   return require("@babel/preset-env");
 }
 
+function presetJest() {
+  return require("babel-preset-jest");
+}
+
 function presetReact() {
   return require("@babel/preset-react");
 }
 
 module.exports = {
+  pluginIstanbul,
   pluginProposalClassProperties,
   pluginProposalNullishCoalescingOperator,
   pluginProposalOptionalChaining,
@@ -45,5 +54,6 @@ module.exports = {
   pluginTransformReactRemovePropTypes,
   pluginTransformRuntime,
   presetEnv,
+  presetJest,
   presetReact
 };
