@@ -157,7 +157,7 @@ Here are some features made possible by them.</p>
 <p><a href="#page_Initial_Values_(_)">Initial Values (<code>postcss-initial</code>)</a></p>
 </li>
 <li>
-<p><a href="#page_Colors_(_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</a></p>
+<p><a href="#page_Colors_(_,_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-mod-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</a></p>
 <ul class="TableOfContents">
 <li>
 <p><a href="#page_Color_Fallbacks">Color Fallbacks</a></p>
@@ -267,8 +267,8 @@ Here are some features made possible by them.</p>
 <td>Resolves calculations</td>
 </tr>
 <tr>
-<td><code>postcss-color-function</code></td>
-<td>W3C color methods</td>
+<td><code>postcss-color-mod-function</code></td>
+<td><code>color()</code> / <code>color-mod()</code> Removed from spec</td>
 </tr>
 <tr>
 <td><code>postcss-color-gray</code></td>
@@ -752,7 +752,7 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
   <span class="hljs-attribute">white-space</span>: normal;
 }
 </code></pre>
-<h3 id="page_Colors_(_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</h3>
+<h3 id="page_Colors_(_,_,_,_,_,_,_,_,_)">Colors (<code>postcss-color-function</code>, <code>postcss-color-mod-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</h3>
 <h4 id="page_Color_Fallbacks">Color Fallbacks</h4>
 <p>Some colors functions don’t work in all browsers, these plugins will create fallbacks.</p>
 <p><code>rebeccapurple</code> is a whole different story, it’s an homage to <a href="https://github.com/postcss/%60postcss-color-rebeccapurple%60#why-this-plugin-" class="Link--external" rel="noopener noreferrer">Eric Meyer’s daughter</a>.</p>
@@ -804,7 +804,8 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 </code></pre>
 <h4 id="page_Color_manipulation">Color manipulation</h4>
 <p>You can change a color by applying modifiers.
-Apart from the ones presented here, there are <a href="https://github.com/postcss/%60postcss-color-function%60#list-of-color-adjuster" class="Link--external" rel="noopener noreferrer">a lot of modifiers</a> available</p>
+Apart from the ones presented here, there are <a href="https://github.com/postcss/postcss-color-function#list-of-color-adjuster" class="Link--external" rel="noopener noreferrer">a lot of modifiers</a> available</p>
+<p>The <code>color</code> and <code>color-mod</code> functions are identical, though we don’t recommend using them as they were removed from the CSS specification.</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 
 <span class="hljs-selector-tag">a</span> {
@@ -812,7 +813,7 @@ Apart from the ones presented here, there are <a href="https://github.com/postcs
 }
 
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(red blackness(<span class="hljs-number">80%</span>)); // Darken the color
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color-mod</span>(red blackness(<span class="hljs-number">80%</span>)); // Darken the color
 }
 
 <span class="hljs-selector-tag">body</span> {
