@@ -188,6 +188,6 @@ it("Compiles CSS, compiles color-function", async () => {
 
   expect(testUtils.readFile(cwd, BUNDLED_CSS)).toEqual(
     ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}\n" +
-    "/*# sourceMappingURL=myBundle.min.css.map */\n"
+      "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
