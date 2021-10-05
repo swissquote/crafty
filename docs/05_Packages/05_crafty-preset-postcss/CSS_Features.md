@@ -25,7 +25,7 @@ All included plugins have a short example accompanying them below.
 | `postcss-csso`                       | Minify CSS                                  |
 | `postcss-attribute-case-insensitive` | Support case insensitive attributes         |
 | `postcss-calc`                       | Resolves calculations                       |
-| `postcss-color-function`             | W3C color methods                           |
+| `postcss-color-mod-function`         | `color()` / `color-mod()` Removed from spec |
 | `postcss-color-gray`                 | Shades of gray                              |
 | `postcss-color-hex-alpha`            | `#rrggbbaa` colors                          |
 | `postcss-color-hsl`                  | Allow to define colors using `hsl()`        |
@@ -488,7 +488,7 @@ a {
 }
 ```
 
-### Colors (`postcss-color-function`, `postcss-color-gray`, `postcss-color-hex-alpha`, `postcss-color-hwb`, `postcss-color-rebeccapurple`, `postcss-color-rgb`, `postcss-color-rgba-fallback`, `postcss-color-hsl`)
+### Colors (`postcss-color-function`, `postcss-color-mod-function`, `postcss-color-gray`, `postcss-color-hex-alpha`, `postcss-color-hwb`, `postcss-color-rebeccapurple`, `postcss-color-rgb`, `postcss-color-rgba-fallback`, `postcss-color-hsl`)
 
 #### Color Fallbacks
 
@@ -547,7 +547,9 @@ blockquote {
 #### Color manipulation
 
 You can change a color by applying modifiers.
-Apart from the ones presented here, there are [a lot of modifiers](https://github.com/postcss/`postcss-color-function`#list-of-color-adjuster) available
+Apart from the ones presented here, there are [a lot of modifiers](https://github.com/postcss/postcss-color-function#list-of-color-adjuster) available
+
+The `color` and `color-mod` functions are identical, though we don't recommend using them as they were removed from the CSS specification.
 
 ```css
 /* Before */
@@ -557,7 +559,7 @@ a {
 }
 
 a:hover {
-  color: color(red blackness(80%)); // Darken the color
+  color: color-mod(red blackness(80%)); // Darken the color
 }
 
 body {

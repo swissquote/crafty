@@ -161,7 +161,7 @@ $column: 200px;
 }
 
 /* Colors:
- * postcss-color-function
+ * postcss-color-mod-function
  * postcss-color-gray
  * postcss-color-hex-alpha
  * postcss-color-hsl
@@ -202,7 +202,7 @@ $column: 200px;
 
 .Link:hover {
     // Darken the color
-    color: color(red blackness(80%));
+    color: color-mod(red blackness(80%));
 }
 
 .Link {

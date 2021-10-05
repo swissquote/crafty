@@ -171,3 +171,23 @@ it("Compiles CSS, configuration preserve", async () => {
       "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
+
+it("Compiles CSS, compiles color-function", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/compiles-color-function"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
+
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
+
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toEqual(
+    ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}\n" +
+    "/*# sourceMappingURL=myBundle.min.css.map */\n"
+  );
+});

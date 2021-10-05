@@ -34,8 +34,8 @@ function postcssCalc() {
   return require("postcss-calc");
 }
 
-function postcssColorFunction() {
-  return require("postcss-color-function");
+function postcssColorModFunction() {
+  return require("postcss-color-mod-function");
 }
 
 function postcssColorGray() {
@@ -168,7 +168,7 @@ module.exports = {
   postcssAtroot,
   postcssAttributeCaseInsensitive,
   postcssCalc,
-  postcssColorFunction,
+  postcssColorModFunction,
   postcssColorGray,
   postcssColorHexAlpha,
   postcssColorHsl,

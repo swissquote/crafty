@@ -1,0 +1,9 @@
+:root {
+    --color-default: #d1d1d1;
+    --color-light: var(--color-default);
+}
+
+.Button {
+    color: color(var(--color-light) tint(90%));
+    background-color: var(--color-light);
+}

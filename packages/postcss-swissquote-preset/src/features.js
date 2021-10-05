@@ -83,7 +83,7 @@ module.exports = function(config) {
     .embedded()
     .enableIfUnsupported(["css-rrggbbaa"], config.browsers);
 
-  processors.processor("postcss-color-function").embedded();
+  processors.processor("postcss-color-mod-function").embedded();
 
   processors.processor("postcss-font-family-system-ui").embedded();
 

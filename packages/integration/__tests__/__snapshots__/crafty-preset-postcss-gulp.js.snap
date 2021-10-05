@@ -19,6 +19,25 @@ Object {
 }
 `;
 
+exports[`Compiles CSS, compiles color-function 1`] = `
+Object {
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/compiles-color-function/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] Finished 'css_myBundle' after ____ ms
+[__:__:__] Finished 'css' after ____ ms
+[__:__:__] Starting 'css__lint' ...
+[__:__:__] Finished 'css__lint' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
 exports[`Compiles CSS, configuration has overrides 1`] = `
 Object {
   "status": 0,
@@ -326,7 +345,7 @@ exports[`Experiment with all CSS 2`] = `
 }
 
 /* Colors:
- * postcss-color-function
+ * postcss-color-mod-function
  * postcss-color-gray
  * postcss-color-hex-alpha
  * postcss-color-hsl
@@ -699,7 +718,7 @@ exports[`Experiment with all CSS, old browsers 2`] = `
 }
 
 /* Colors:
- * postcss-color-function
+ * postcss-color-mod-function
  * postcss-color-gray
  * postcss-color-hex-alpha
  * postcss-color-hsl

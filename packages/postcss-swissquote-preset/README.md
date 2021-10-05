@@ -16,7 +16,7 @@
   - Conditionals (`postcss-advanced-variables`)
   - Loops (`postcss-advanced-variables`)
   - Initial Values (`postcss-initial`)
-  - Colors (`postcss-color-function`, `postcss-color-gray`,
+  - Colors (`postcss-color-mod-function`, `postcss-color-gray`,
     `postcss-color-hex-alpha`, `postcss-color-hwb`,
     `postcss-color-rebeccapurple`, `postcss-color-rgba-fallback`)
 - **Syntax simplification**
