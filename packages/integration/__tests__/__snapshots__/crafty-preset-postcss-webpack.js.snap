@@ -177,6 +177,7 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ byte
   dependent modules ___ KiB [dependent] 7 modules
   runtime modules ___ bytes 4 modules
   ./js/app.js + 1 modules ___ KiB [built] [code generated]
+webpack compiled with 1 warning
 
   Failed to compile.
 
@@ -188,7 +189,7 @@ Syntax error: __PATH__/packages/integration/fixtures/crafty-preset-postcss-webpa
   11 |         }
   12 |     }
 
-  Δt ____ms ✖ 1 problem (1 error, 0 warnings)
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
 
 [__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] Webpack compilation failed
