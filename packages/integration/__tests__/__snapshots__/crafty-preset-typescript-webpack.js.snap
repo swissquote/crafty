@@ -18,8 +18,9 @@ Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
 Chunk Group someLibrary ___ bytes (___ bytes) = someLibrary.myBundle.min.js 1 auxiliary asset
 chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ bytes [rendered]
   ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
   ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
@@ -33,12 +34,12 @@ chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ Ki
 `;
 
 exports[`Compiles TypeScript - fork checker 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)(\\"object\\"===typeof exports?exports:e)[n]=r[n]}})(self,(function(){return function(){\\"use strict\\";var e={};var t={};function r(n){var o=t[n];if(void 0!==o)return o.exports;var i=t[n]={exports:{}};return e[n](i,i.exports,r),i.exports}r.m=e,r.d=function(e,t){for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.f={},r.e=function(e){return Promise.all(Object.keys(r.f).reduce((function(t,n){return r.f[n](e,t),t}),[]))},r.u=function(e){return\\"someLibrary.myBundle.min.js\\"},r.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){var e={};var t=\\"UNIQID:\\";r.l=function(n,o,i,u){if(e[n])return void e[n].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==n||s.getAttribute(\\"data-webpack\\")==t+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,r.nc&&a.setAttribute(\\"nonce\\",r.nc),a.setAttribute(\\"data-webpack\\",t+i),a.src=n),e[n]=[o];var d=function(t,r){a.onerror=a.onload=null,clearTimeout(p);var o=e[n];if(delete e[n],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(r)})),t)return t(r)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),r.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;r.g.importScripts&&(e=r.g.location+\\"\\");var t=r.g.document;if(!e&&t&&(t.currentScript&&(e=t.currentScript.src),!e)){var n=t.getElementsByTagName(\\"script\\");n.length&&(e=n[n.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),r.p=e}(),function(){var e={913:0};r.f.j=function(t,n){var o=r.o(e,t)?e[t]:void 0;if(0!==o)if(o)n.push(o[2]);else{var i=new Promise((function(r,n){o=e[t]=[r,n]}));n.push(o[2]=i);var u=r.p+r.u(t);var a=new Error;var c=function(n){if(r.o(e,t)&&(o=e[t],0!==o&&(e[t]=void 0),o)){var i=n&&(\\"load\\"===n.type?\\"missing\\":n.type);var u=n&&n.target&&n.target.src;a.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};r.l(u,c,\\"chunk-\\"+t,t)}};var t=function(t,n){var o=n[0];var i=n[1];var u=n[2];var a,c,f=0;if(o.some((function(t){return 0!==e[t]}))){for(a in i)r.o(i,a)&&(r.m[a]=i[a]);if(u)u(r)}for(t&&t(n);f<o.length;f++)c=o[f],r.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var n=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];n.forEach(t.bind(null,0)),n.push=t.bind(null,n.push.bind(n))}();var n={};function o(e,t){return e+t}r.r(n),r.d(n,{default:function(){return i}});class i{constructor(){console.log(\\"init class\\")}method(){console.log(o(2,4)),r.e(399).then(r.bind(r,570)).then((e=>{const t=new e.default;console.log(t.add(2,4))}))}}return n}()}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(self,(function(){return function(){\\"use strict\\";var e={904:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},947:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})}};var n={};function t(r){var o=n[r];if(void 0!==o)return o.exports;var i=n[r]={exports:{}};return e[r](i,i.exports,t),i.exports}t.m=e,t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))},t.u=function(e){return\\"someLibrary.myBundle.min.js\\"},t.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},function(){var e={};var n=\\"UNIQID:\\";t.l=function(r,o,i,u){if(e[r])return void e[r].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==r||s.getAttribute(\\"data-webpack\\")==n+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,t.nc&&a.setAttribute(\\"nonce\\",t.nc),a.setAttribute(\\"data-webpack\\",n+i),a.src=r),e[r]=[o];var d=function(n,t){a.onerror=a.onload=null,clearTimeout(p);var o=e[r];if(delete e[r],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(t)})),n)return n(t)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;t.g.importScripts&&(e=t.g.location+\\"\\");var n=t.g.document;if(!e&&n&&(n.currentScript&&(e=n.currentScript.src),!e)){var r=n.getElementsByTagName(\\"script\\");r.length&&(e=r[r.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),t.p=e}(),function(){var e={913:0};t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var i=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=i);var u=t.p+t.u(n);var a=new Error;var c=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var i=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var u=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};t.l(u,c,\\"chunk-\\"+n,n)}};var n=function(n,r){var o=r[0];var i=r[1];var u=r[2];var a,c,f=0;if(o.some((function(n){return 0!==e[n]}))){for(a in i)t.o(i,a)&&(t.m[a]=i[a]);if(u)u(t)}for(n&&n(r);f<o.length;f++)c=o[f],t.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];r.forEach(n.bind(null,0)),r.push=n.bind(null,r.push.bind(r))}();var r={};return function(){t.r(r),t.d(r,{default:function(){return i}});var e=t(904);var n=t(947);function o(e,n){return e+n}var i=/*#__PURE__*/function(){function r(){(0,e.Z)(this,r),console.log(\\"init class\\")}return(0,n.Z)(r,[{key:\\"method\\",value:function(){console.log(o(2,4)),t.e(399).then(t.bind(t,570)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),r}()}(),r}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript - fork checker 3`] = `
-"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[399],{570:function(u,e,r){r.r(e),r.d(e,{default:function(){return t}});class t{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[399],{570:function(n,u,e){e.r(u),e.d(u,{default:function(){return a}});var t=e(904);var r=e(947);var a=/*#__PURE__*/function(){function n(){(0,t.Z)(this,n)}return(0,r.Z)(n,[{key:\\"add\\",value:function(n,u){return n+u}},{key:\\"substract\\",value:function(n,u){return n-u}},{key:\\"divide\\",value:function(n,u){return n/u}}]),n}()}}]);
 //# sourceMappingURL=someLibrary.myBundle.min.js.map"
 `;
 
@@ -64,8 +65,9 @@ assets by path *.js ___ KiB
 Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
 chunk (runtime: default) 570.myBundle.min.js ___ bytes [rendered]
   ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
   ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 
   Compiled successfully!
@@ -79,12 +81,12 @@ chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ Ki
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"(function(e,t){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=t();else if(\\"function\\"===typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)(\\"object\\"===typeof exports?exports:e)[n]=r[n]}})(self,(function(){return function(){\\"use strict\\";var e={};var t={};function r(n){var o=t[n];if(void 0!==o)return o.exports;var i=t[n]={exports:{}};return e[n](i,i.exports,r),i.exports}r.m=e,r.d=function(e,t){for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.f={},r.e=function(e){return Promise.all(Object.keys(r.f).reduce((function(t,n){return r.f[n](e,t),t}),[]))},r.u=function(e){return e+\\".myBundle.min.js\\"},r.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){var e={};var t=\\"UNIQID:\\";r.l=function(n,o,i,u){if(e[n])return void e[n].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==n||s.getAttribute(\\"data-webpack\\")==t+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,r.nc&&a.setAttribute(\\"nonce\\",r.nc),a.setAttribute(\\"data-webpack\\",t+i),a.src=n),e[n]=[o];var d=function(t,r){a.onerror=a.onload=null,clearTimeout(p);var o=e[n];if(delete e[n],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(r)})),t)return t(r)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),r.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;r.g.importScripts&&(e=r.g.location+\\"\\");var t=r.g.document;if(!e&&t&&(t.currentScript&&(e=t.currentScript.src),!e)){var n=t.getElementsByTagName(\\"script\\");n.length&&(e=n[n.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),r.p=e}(),function(){var e={913:0};r.f.j=function(t,n){var o=r.o(e,t)?e[t]:void 0;if(0!==o)if(o)n.push(o[2]);else{var i=new Promise((function(r,n){o=e[t]=[r,n]}));n.push(o[2]=i);var u=r.p+r.u(t);var a=new Error;var c=function(n){if(r.o(e,t)&&(o=e[t],0!==o&&(e[t]=void 0),o)){var i=n&&(\\"load\\"===n.type?\\"missing\\":n.type);var u=n&&n.target&&n.target.src;a.message=\\"Loading chunk \\"+t+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};r.l(u,c,\\"chunk-\\"+t,t)}};var t=function(t,n){var o=n[0];var i=n[1];var u=n[2];var a,c,f=0;if(o.some((function(t){return 0!==e[t]}))){for(a in i)r.o(i,a)&&(r.m[a]=i[a]);if(u)u(r)}for(t&&t(n);f<o.length;f++)c=o[f],r.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var n=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];n.forEach(t.bind(null,0)),n.push=t.bind(null,n.push.bind(n))}();var n={};function o(e,t){return e+t}r.r(n),r.d(n,{default:function(){return i}});class i{constructor(){console.log(\\"init class\\")}method(){console.log(o(2,4)),r.e(570).then(r.bind(r,570)).then((e=>{const t=new e.default;console.log(t.add(2,4))}))}}return n}()}));
+"(function(e,n){if(\\"object\\"===typeof exports&&\\"object\\"===typeof module)module.exports=n();else if(\\"function\\"===typeof define&&define.amd)define([],n);else{var t=n();for(var r in t)(\\"object\\"===typeof exports?exports:e)[r]=t[r]}})(self,(function(){return function(){\\"use strict\\";var e={904:function(e,n,t){function r(e,n){if(!(e instanceof n))throw new TypeError(\\"Cannot call a class as a function\\")}t.d(n,{Z:function(){return r}})},947:function(e,n,t){function r(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,\\"value\\"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function o(e,n,t){return n&&r(e.prototype,n),t&&r(e,t),e}t.d(n,{Z:function(){return o}})}};var n={};function t(r){var o=n[r];if(void 0!==o)return o.exports;var i=n[r]={exports:{}};return e[r](i,i.exports,t),i.exports}t.m=e,t.d=function(e,n){for(var r in n)t.o(n,r)&&!t.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},t.f={},t.e=function(e){return Promise.all(Object.keys(t.f).reduce((function(n,r){return t.f[r](e,n),n}),[]))},t.u=function(e){return e+\\".myBundle.min.js\\"},t.g=function(){if(\\"object\\"===typeof globalThis)return globalThis;try{return this||new Function(\\"return this\\")()}catch(e){if(\\"object\\"===typeof window)return window}}(),t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},function(){var e={};var n=\\"UNIQID:\\";t.l=function(r,o,i,u){if(e[r])return void e[r].push(o);var a,c;if(void 0!==i){var f=document.getElementsByTagName(\\"script\\");for(var l=0;l<f.length;l++){var s=f[l];if(s.getAttribute(\\"src\\")==r||s.getAttribute(\\"data-webpack\\")==n+i){a=s;break}}}a||(c=!0,a=document.createElement(\\"script\\"),a.charset=\\"utf-8\\",a.timeout=120,t.nc&&a.setAttribute(\\"nonce\\",t.nc),a.setAttribute(\\"data-webpack\\",n+i),a.src=r),e[r]=[o];var d=function(n,t){a.onerror=a.onload=null,clearTimeout(p);var o=e[r];if(delete e[r],a.parentNode&&a.parentNode.removeChild(a),o&&o.forEach((function(e){return e(t)})),n)return n(t)};var p=setTimeout(d.bind(null,void 0,{type:\\"timeout\\",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}}(),t.r=function(e){\\"undefined\\"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\\"Module\\"}),Object.defineProperty(e,\\"__esModule\\",{value:!0})},function(){var e;t.g.importScripts&&(e=t.g.location+\\"\\");var n=t.g.document;if(!e&&n&&(n.currentScript&&(e=n.currentScript.src),!e)){var r=n.getElementsByTagName(\\"script\\");r.length&&(e=r[r.length-1].src)}if(!e)throw new Error(\\"Automatic publicPath is not supported in this browser\\");e=e.replace(/#.*$/,\\"\\").replace(/\\\\?.*$/,\\"\\").replace(/\\\\/[^\\\\/]+$/,\\"/\\"),t.p=e}(),function(){var e={913:0};t.f.j=function(n,r){var o=t.o(e,n)?e[n]:void 0;if(0!==o)if(o)r.push(o[2]);else{var i=new Promise((function(t,r){o=e[n]=[t,r]}));r.push(o[2]=i);var u=t.p+t.u(n);var a=new Error;var c=function(r){if(t.o(e,n)&&(o=e[n],0!==o&&(e[n]=void 0),o)){var i=r&&(\\"load\\"===r.type?\\"missing\\":r.type);var u=r&&r.target&&r.target.src;a.message=\\"Loading chunk \\"+n+\\" failed.\\\\n(\\"+i+\\": \\"+u+\\")\\",a.name=\\"ChunkLoadError\\",a.type=i,a.request=u,o[1](a)}};t.l(u,c,\\"chunk-\\"+n,n)}};var n=function(n,r){var o=r[0];var i=r[1];var u=r[2];var a,c,f=0;if(o.some((function(n){return 0!==e[n]}))){for(a in i)t.o(i,a)&&(t.m[a]=i[a]);if(u)u(t)}for(n&&n(r);f<o.length;f++)c=o[f],t.o(e,c)&&e[c]&&e[c][0](),e[o[f]]=0};var r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[];r.forEach(n.bind(null,0)),r.push=n.bind(null,r.push.bind(r))}();var r={};return function(){t.r(r),t.d(r,{default:function(){return i}});var e=t(904);var n=t(947);function o(e,n){return e+n}var i=/*#__PURE__*/function(){function r(){(0,e.Z)(this,r),console.log(\\"init class\\")}return(0,n.Z)(r,[{key:\\"method\\",value:function(){console.log(o(2,4)),t.e(570).then(t.bind(t,570)).then((function(e){var n=new e.default;console.log(n.add(2,4))}))}}]),r}()}(),r}()}));
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`Compiles TypeScript 3`] = `
-"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[570],{570:function(u,e,r){r.r(e),r.d(e,{default:function(){return t}});class t{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+"\\"use strict\\";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([[570],{570:function(n,u,e){e.r(u),e.d(u,{default:function(){return a}});var t=e(904);var r=e(947);var a=/*#__PURE__*/function(){function n(){(0,t.Z)(this,n)}return(0,r.Z)(n,[{key:\\"add\\",value:function(n,u){return n+u}},{key:\\"substract\\",value:function(n,u){return n-u}},{key:\\"divide\\",value:function(n,u){return n/u}}]),n}()}}]);
 //# sourceMappingURL=570.myBundle.min.js.map"
 `;
 
@@ -109,9 +111,9 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated] [1 error]
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
 
   Failed to compile.
 
@@ -143,11 +145,11 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-assets by status ___ bytes [cached] 1 asset
+assets by status ___ KiB [cached] 1 asset
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated]
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
 webpack compiled with 1 warning
 
   Failed to compile.
@@ -204,9 +206,9 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated] [1 error]
+  ./js/typescript.ts + 2 modules ___ KiB [built] [code generated]
 webpack compiled with 1 warning
 
   Failed to compile.
@@ -259,8 +261,9 @@ assets by status ___ KiB [cached] 5 assets
 Entrypoint default = myBundle.min.js 1 auxiliary asset
 chunk (runtime: default) 570.myBundle.min.js ___ bytes [rendered]
   ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
+  dependent modules ___ bytes [dependent] 2 modules
   ./js/script.ts + 1 modules ___ bytes [built] [code generated]
 webpack compiled with 1 warning
 
@@ -309,9 +312,9 @@ asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
 asset js/imported-typescript.d.ts ___ bytes [emitted]
 asset js/index.d.ts ___ bytes [emitted]
 Entrypoint default ___ bytes (___ KiB) = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
   runtime modules ___ bytes 1 module
-  ./js/index.ts + 1 modules ___ bytes [built] [code generated]
+  ./js/index.ts + 3 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms

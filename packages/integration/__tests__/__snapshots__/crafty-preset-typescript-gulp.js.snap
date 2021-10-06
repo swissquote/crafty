@@ -18,24 +18,39 @@ Object {
 `;
 
 exports[`Compiles TypeScript 2`] = `
-"import test from \\"./Component\\";
-export default class NewStuff {
-  constructor() {
+"function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+import test from \\"./Component\\";
+
+var NewStuff = /*#__PURE__*/function () {
+  function NewStuff() {
+    _classCallCheck(this, NewStuff);
+
     // eslint-disable-next-line no-console
     console.log(\\"init class\\");
   }
 
-  method() {
-    // eslint-disable-next-line no-console
-    console.log(test(2, 4));
-    import(\\"./SomeLibrary\\").then(SomeLibrary => {
-      const som = new SomeLibrary.default(); // eslint-disable-next-line no-console
+  _createClass(NewStuff, [{
+    key: \\"method\\",
+    value: function method() {
+      // eslint-disable-next-line no-console
+      console.log(test(2, 4));
+      import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
+        var som = new SomeLibrary.default(); // eslint-disable-next-line no-console
 
-      console.log(som.add(2, 4));
-    });
-  }
+        console.log(som.add(2, 4));
+      });
+    }
+  }]);
 
-}
+  return NewStuff;
+}();
+
+export { NewStuff as default };
 //# sourceMappingURL=script.js.map
 "
 `;
@@ -69,38 +84,71 @@ exports[`Compiles TypeScript and concatenates 2`] = `
 "export default function test(a, b) {
   return a + b;
 }
-export default class SomeLibrary {
-  add(a, b) {
-    return a + b;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SomeLibrary = /*#__PURE__*/function () {
+  function SomeLibrary() {
+    _classCallCheck(this, SomeLibrary);
   }
 
-  substract(a, b) {
-    return a - b;
-  }
+  _createClass(SomeLibrary, [{
+    key: \\"add\\",
+    value: function add(a, b) {
+      return a + b;
+    }
+  }, {
+    key: \\"substract\\",
+    value: function substract(a, b) {
+      return a - b;
+    }
+  }, {
+    key: \\"divide\\",
+    value: function divide(a, b) {
+      return a / b;
+    }
+  }]);
 
-  divide(a, b) {
-    return a / b;
-  }
+  return SomeLibrary;
+}();
 
-}
+export { SomeLibrary as default };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 import test from \\"./Component\\";
-export default class NewStuff {
-  constructor() {
+
+var NewStuff = /*#__PURE__*/function () {
+  function NewStuff() {
+    _classCallCheck(this, NewStuff);
+
     // eslint-disable-next-line no-console
     console.log(\\"init class\\");
   }
 
-  method() {
-    // eslint-disable-next-line no-console
-    console.log(test(2, 4));
-    import(\\"./SomeLibrary\\").then(SomeLibrary => {
-      const som = new SomeLibrary.default(); // eslint-disable-next-line no-console
+  _createClass(NewStuff, [{
+    key: \\"method\\",
+    value: function method() {
+      // eslint-disable-next-line no-console
+      console.log(test(2, 4));
+      import(\\"./SomeLibrary\\").then(function (SomeLibrary) {
+        var som = new SomeLibrary.default(); // eslint-disable-next-line no-console
 
-      console.log(som.add(2, 4));
-    });
-  }
+        console.log(som.add(2, 4));
+      });
+    }
+  }]);
 
-}
+  return NewStuff;
+}();
+
+export { NewStuff as default };
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;

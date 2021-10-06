@@ -148,7 +148,9 @@ Object {
 [__:__:__] Starting 'css__lint' ...
 
 css/style.scss
- 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by Edge 18, Safari on iOS 15,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.8   plugin/no-unsupported-browser-features
+ 104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11, Edge 17,18, Safari on iOS 15,11.0-11.2,11.3-11.4,12.0-12.1,12.2-12.5,13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.8   plugin/no-unsupported-browser-features
+ 274:5  ⚠  Unexpected browser feature \\"flexbox\\" is only partially supported by IE 11                                                                                                                   plugin/no-unsupported-browser-features
+ 295:5  ⚠  Unexpected browser feature \\"wordwrap\\" is only partially supported by IE 11, Edge 17                                                                                                         plugin/no-unsupported-browser-features
 
 [__:__:__] Finished 'css__lint' after ____ ms
 [__:__:__] Finished 'default' after ____ ms
@@ -163,12 +165,8 @@ exports[`Experiment with all CSS 2`] = `
     background: #eee;
 }
 
-:root {
-    --Component-margin: 5px;
-}
-
 .Component {
-    margin: var(--Component-margin) calc(var(--Component-margin)*-1);
+    margin: 5px -5px;
 }
 
 @media (min-width: 25em) {
@@ -216,16 +214,12 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Variables (postcss-advanced-variables, postcss-custom-properties) */
 
-:root {
-    --color: #f00;
-}
-
 .Menu {
     width: 800px;
 }
 
 .MenuLink {
-    color: var(--color);
+    color: #f00;
     background: #056ef0;
     width: 200px;
 }
@@ -287,18 +281,14 @@ exports[`Experiment with all CSS 2`] = `
 
 /* Math in your CSS (postcss-calc) */
 
-:root {
-    --main-font-size: 16px;
+.Header {
+    font-size: 16px;
 }
 
 .Header {
-    font-size: var(--main-font-size);
-}
-
-.Header {
-    font-size: calc(var(--main-font-size)*2);
+    font-size: 32px;
     height: calc(100px - 2em);
-    margin-top: calc(var(--main-font-size)*1.5);
+    margin-top: 24px;
 }
 
 /* Conditionals (postcss-advanced-variables) */
@@ -363,7 +353,7 @@ exports[`Experiment with all CSS 2`] = `
     border-color: rgba(153,221,153,0.8);
 
     /* ... sad story, homage to Eric Meyer*/
-    color: rebeccapurple;
+    color: #639;
 }
 
 .Quote--clear {
@@ -432,6 +422,10 @@ button:hover,button:focus,.button:hover,.button:focus {
     background-color: yellow;
 }
 
+.Navigation :-webkit-any-link {
+    background-color: yellow;
+}
+
 .Navigation :any-link {
     background-color: yellow;
 }
@@ -458,6 +452,14 @@ button:hover,button:focus,.button:hover,.button:focus {
     display: flex;
 }
 
+:-moz-full-screen .Link {
+    display: flex;
+}
+
+:-ms-fullscreen .Link {
+    display: flex;
+}
+
 :fullscreen .Link {
     display: flex;
 }
@@ -480,7 +482,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 .Foo {
-    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .Buy {
