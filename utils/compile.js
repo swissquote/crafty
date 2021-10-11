@@ -5,6 +5,7 @@ const path = require("path");
 
 module.exports = async function compile(input, output, options = {}) {
   await ncc(path.join(process.cwd(), input), {
+    sourceMapRegister: false,
     ...options,
   }).then(async ({ code, map, assets }) => {
     const dirname = path.dirname(output);

@@ -43,7 +43,7 @@ module.exports = {
   },
   rollup(crafty, bundle, rollupConfig) {
     rollupConfig.input.plugins.typescript = {
-      plugin: require("rollup-plugin-typescript2"),
+      plugin: require("../packages/rollup-plugin-typescript2"),
       weight: 20,
       options: {
         tsconfigOverride: {
@@ -66,7 +66,7 @@ module.exports = {
     }
 
     rollupConfig.input.plugins.babelTypeScript = {
-      plugin: require("@rollup/plugin-babel"),
+      plugin: require("../packages/rollup-plugin-babel"),
       weight: 30,
       options
     };
@@ -81,7 +81,7 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.tsx?$"] = require.resolve("ts-jest");
+    options.transform["^.+\\.tsx?$"] = require.resolve("../packages/ts-jest");
     options.globals["ts-jest"] = {
       compiler: require.resolve("typescript"),
       useESM: false,
@@ -116,7 +116,7 @@ module.exports = {
     // EcmaScript 2015+
     tsRule
       .use("babel")
-      .loader(require.resolve("babel-loader"))
+      .loader(require.resolve("../packages/babel-loader"))
       .options(babelOptions);
 
     const tsOptions = {
@@ -178,7 +178,7 @@ module.exports = {
 
     tsRule
       .use("ts-loader")
-      .loader(require.resolve("ts-loader"))
+      .loader(require.resolve("../packages/ts-loader"))
       .options(tsOptions);
   }
 };
