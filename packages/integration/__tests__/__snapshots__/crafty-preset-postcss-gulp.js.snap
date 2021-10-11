@@ -426,6 +426,10 @@ button:hover,button:focus,.button:hover,.button:focus {
     background-color: yellow;
 }
 
+.Navigation :-moz-any-link {
+    background-color: yellow;
+}
+
 .Navigation :any-link {
     background-color: yellow;
 }
@@ -453,6 +457,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 :-moz-full-screen .Link {
+    display: -moz-box;
     display: flex;
 }
 
@@ -461,6 +466,7 @@ button:hover,button:focus,.button:hover,.button:focus {
 }
 
 :fullscreen .Link {
+    display: -moz-box;
     display: flex;
 }
 
@@ -499,14 +505,14 @@ button:hover,button:focus,.button:hover,.button:focus {
     font-variant-numeric: lining-nums;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
 .BigImage {
     background-image: url(img/test-2x.png);
 }
 }
 
-@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+@media (-webkit-min-device-pixel-ratio: 6.25), (min--moz-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
 
 .BigImage {
     background-image: url(my-img-print.png);
