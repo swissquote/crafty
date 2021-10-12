@@ -36,6 +36,9 @@
     "ts-jest": "27.0.5",
     "ts-loader": "9.2.6"
   },
+  "peerDependencies": {
+    "@swissquote/crafty-runner-webpack": "1.16.0"
+  },
   "engines": {
     "node": ">=12"
   }
