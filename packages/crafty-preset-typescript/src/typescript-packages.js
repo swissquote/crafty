@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 function babelLoader() {
   return require("babel-loader");
 }
