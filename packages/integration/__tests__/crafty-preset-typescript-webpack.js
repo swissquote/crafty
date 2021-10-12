@@ -65,14 +65,14 @@ it("Compiles TypeScript", async () => {
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/570.myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/570.myBundle.min.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/897.myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/897.myBundle.min.js.map")).toBeTruthy();
 
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
   ).toMatchSnapshot();
   expect(
-    testUtils.readForSnapshot(cwd, "dist/js/570.myBundle.min.js")
+    testUtils.readForSnapshot(cwd, "dist/js/897.myBundle.min.js")
   ).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")

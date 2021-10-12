@@ -10,7 +10,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
-      const newer = require("gulp-newer");
+      const newer = require("../packages/gulp-newer");
       stream.add(newer(crafty.config.destination_js + bundle.destination));
     }
 
@@ -64,7 +64,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(babel(babelOptions));
 
     if (bundle.concat) {
-      const concat = require("gulp-concat");
+      const concat = require("../packages/gulp-concat");
       stream.add(concat(bundle.destination));
     }
 
