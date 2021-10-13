@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-eslint",
-  "version": "1.16.2",
+  "version": "1.16.3",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -12,9 +12,9 @@
     "lint": "node src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty-preset-prettier": "1.16.2",
-    "@swissquote/eslint-plugin-swissquote": "1.16.2",
-    "@swissquote/rollup-plugin-eslint": "1.16.2",
+    "@swissquote/crafty-preset-prettier": "1.16.3",
+    "@swissquote/eslint-plugin-swissquote": "1.16.3",
+    "@swissquote/rollup-plugin-eslint": "1.16.3",
     "copy-anything": "2.0.3",
     "debug": "^4.1.0",
     "eslint": "7.32.0",
