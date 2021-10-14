@@ -17,4 +17,4 @@ if (process.argv[2] === "jsLint") {
 process.argv.push("--config");
 process.argv.push(tmpfile);
 
-require("eslint/bin/eslint");
+require(".bin/eslint");

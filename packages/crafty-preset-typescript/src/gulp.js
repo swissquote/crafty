@@ -18,9 +18,13 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     const {
       toTempFile
     } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
-    const eslint = require("gulp-eslint7");
+    const eslint = require("gulp-eslint-new");
     stream
-      .add(eslint({ configFile: toTempFile(crafty.config.eslint) }))
+      .add(
+        eslint({
+          overrideConfigFile: toTempFile(crafty.config.eslint)
+        })
+      )
       .add(eslint.format());
 
     // Fail the build if we have linting
