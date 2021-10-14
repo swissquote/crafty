@@ -31,8 +31,8 @@ it("Creates IDE Integration files", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
   expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
 
   expect(testUtils.readForSnapshot(cwd, ".gitignore")).toMatchSnapshot();
@@ -46,8 +46,8 @@ it("Creates IDE Integration files with Babel", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
   expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
 });
 
@@ -56,8 +56,8 @@ testIfNotPnp("Succeeds with typescript", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 });
 
 it("Succeeds with babel", async () => {
@@ -65,8 +65,8 @@ it("Succeeds with babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 });
 
 it("Fails with babel", async () => {
@@ -76,8 +76,8 @@ it("Fails with babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 });
 
 testIfNotPnp("Succeeds with babel and React", async () => {
@@ -87,8 +87,8 @@ testIfNotPnp("Succeeds with babel and React", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 });
 
 it("Succeeds with esm module", async () => {
@@ -96,8 +96,8 @@ it("Succeeds with esm module", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 });
 
 it("Succeeds with esm module and babel", async () => {
@@ -105,6 +105,6 @@ it("Succeeds with esm module and babel", async () => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 });

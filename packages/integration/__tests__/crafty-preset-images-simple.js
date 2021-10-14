@@ -72,8 +72,8 @@ it("Copies and compresses images", async () => {
 
   const result = await testUtils.run(["run", "images"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist/images/batman.svg")).toBeTruthy();
   expect(

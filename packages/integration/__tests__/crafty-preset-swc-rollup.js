@@ -16,8 +16,8 @@ it("Compiles JavaScript with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
@@ -31,8 +31,8 @@ it("Keeps imports unresolved for SWC Runtime", async () => {
   );
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
@@ -47,8 +47,8 @@ it("Keeps imports unresolved for SWC Runtime, using commonjs", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
@@ -63,8 +63,8 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
   expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
@@ -77,8 +77,8 @@ it("Lints JavaScript with rollup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
   expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();

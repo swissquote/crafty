@@ -13,8 +13,8 @@ it("Compiles CSS within webpack", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
@@ -31,8 +31,8 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
@@ -45,8 +45,8 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", as
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
@@ -72,8 +72,8 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", asy
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
@@ -97,8 +97,8 @@ it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", asy
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();

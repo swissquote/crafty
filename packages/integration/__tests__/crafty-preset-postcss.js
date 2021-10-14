@@ -80,8 +80,8 @@ it("Creates IDE Integration files", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
   expect(
     testUtils.readForSnapshot(cwd, "stylelint.config.js")
   ).toMatchSnapshot();

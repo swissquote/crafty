@@ -56,8 +56,8 @@ it("Doesn't compile without a task, but lints (doesn't throw in development)", a
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
@@ -69,8 +69,8 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
@@ -82,8 +82,8 @@ it("Experiment with all CSS", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
@@ -100,8 +100,8 @@ it("Experiment with all CSS, old browsers", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
@@ -118,8 +118,8 @@ it("Compiles CSS", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
@@ -137,8 +137,8 @@ it("Compiles CSS, configuration has overrides", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
@@ -156,8 +156,8 @@ it("Compiles CSS, configuration preserve", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();

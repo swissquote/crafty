@@ -134,8 +134,8 @@ it("Compiles JavaScript, target node > 12", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
   expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
@@ -159,8 +159,8 @@ it("Fails gracefully on broken markup", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
   expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
@@ -173,8 +173,8 @@ it("Compiles JavaScript with custom babel plugin", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
   expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
@@ -192,8 +192,8 @@ it("Compiles JavaScript and concatenates", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   expect(testUtils.exists(cwd, mainBundle)).toBeTruthy();
   expect(testUtils.exists(cwd, mainBundleMap)).toBeTruthy();
@@ -214,8 +214,8 @@ it("Lints JavaScript", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(1);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
@@ -229,8 +229,8 @@ it("Lints JavaScript, doesn't fail in development", async () => {
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result.status).toBe(0);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   // Files aren't generated on failed lint
   expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
