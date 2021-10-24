@@ -12,9 +12,9 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@rollup/plugin-commonjs": "21.0.0",
+    "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.5",
+    "@rollup/plugin-node-resolve": "13.0.6",
     "@rollup/plugin-replace": "3.0.0",
     "@swissquote/crafty-preset-terser": "1.16.3",
     "ansi-colors": "^4.0.0",
