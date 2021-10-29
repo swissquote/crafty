@@ -2,15 +2,12 @@ const path = require("path");
 const browserslist = require("browserslist");
 
 const defaultBrowsers = [
-  "> 0.25%",
-  "Edge >= 17",
-  "Safari >= 11",
-  "iOS >= 11",
-  "Chrome >= 66",
-  "and_chr >= 66",
-  "Firefox >= 60",
-  "IE >= 11",
-  "not op_mini all"
+  "Edge >= 18",
+  "Safari >= 13",
+  "iOS >= 13",
+  "Chrome >= 77",
+  "and_chr >= 77",
+  "Firefox >= 69"
 ].join(", ");
 
 function getDefaultBrowsers() {

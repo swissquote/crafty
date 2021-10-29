@@ -33,8 +33,8 @@ it("Lints with the command", async () => {
 
   const result = await testUtils.run(["cssLint", "css/*.scss"], cwd);
 
-  expect(result.status).toBe(2);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(2);
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
@@ -49,8 +49,8 @@ it("Lints with the command in legacy mode", async () => {
     cwd
   );
 
-  expect(result.status).toBe(2);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(2);
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
@@ -65,8 +65,8 @@ it("Lints with the command with custom config", async () => {
     cwd
   );
 
-  expect(result.status).toBe(2);
   expect(result).toMatchSnapshot();
+  expect(result.status).toBe(2);
 
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
