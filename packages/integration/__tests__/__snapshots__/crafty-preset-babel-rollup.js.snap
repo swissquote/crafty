@@ -18,7 +18,7 @@ Object {
 `;
 
 exports[`Compiles JavaScript with rollup 2`] = `
-"function e(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}class t extends React.Component{constructor(...t){super(...t),e(this,\\"handleClick\\",(()=>{this.setState({hey:!0})}))}render(){/*#__PURE__*/
+"function e(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}class t extends React.Component{constructor(){super(...arguments),e(this,\\"handleClick\\",(()=>{this.setState({hey:!0})}))}render(){/*#__PURE__*/
 return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}class n{constructor(){console.log(\\"init class\\")}method(){console.log(t)}}export{n as default};
 //# sourceMappingURL=myBundle.min.js.map
 "
