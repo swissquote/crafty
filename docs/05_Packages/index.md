@@ -23,21 +23,36 @@ Use this runner to bundle your code with Webpack.
 
 [Features and options](02_crafty-runner-webpack.md)
 
+### `crafty-runner-rollup`
+
+Use this runner to bundle your code with rollup.js .
+
+[Features and options](02_crafty-runner-rollup.md)
+
 ### `crafty-runner-gulp`
 
 Use this runner to be able to create Gulp tasks in your projects.
 
 [Features and options](02_crafty-runner-gulp.md)
 
+## Test runners
+
+### `crafty-preset-jest`
+
+This preset will add Jest to the `crafty test` command.
+
+Its usage with the Babel and TypeScript preset allows you to test your
+EcmaScript 2015+ and TypeScript code effortlessly.
+
+[Features and options](05_crafty-preset-jest.md)
+
 ## Presets
 
 ### `crafty-preset-babel`
 
-This preset provides EcmaScript 2015+ support with Babel for the Gulp, Webpack
-and rollup.js runners.
+This preset provides EcmaScript 2015+ support with Babel for Gulp, Webpack, Jest and rollup.js .
 
-It also configures ESLint with our linting rules. Both in the runners and as a
-separate command.
+This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
 [Features and options](05_crafty-preset-babel)
 
@@ -49,10 +64,9 @@ Compile your CSS using **PostCSS**, works with **Webpack** and Gulp.
 
 ### `crafty-preset-typescript`
 
-This preset provides TypeScript support for the Gulp, Webpack and rollup.js
-runners.
+This preset provides TypeScript support for Gulp, Webpack, Jest and rollup.js .
 
-It also configures ESLint with our linting rules
+This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
 [Features and options](05_crafty-preset-typescript)
 
@@ -91,16 +105,30 @@ JSX Compilation is handled by the `crafty-preset-babel` already.
 
 [Features and options](05_crafty-preset-react.md)
 
-## Test runners
+### `crafty-preset-prettier`
 
-### `crafty-preset-jest`
+Provides Prettier defaults for other presets
 
-This preset will add Jest to the `crafty test` command.
+[Features and options](05_crafty-preset-prettier.md)
 
-Its usage with the Babel and TypeScript preset allows you to test your
-EcmaScript 2015+ and TypeScript code effortlessly.
+### `crafty-preset-eslint`
 
-[Features and options](05_crafty-preset-jest.md)
+Check your code with ESLint, this preset will provide a standalone `jsLint` command and configure Webpack and rollup.js .
+
+Utilities from this package are leveraged to configure Gulp builds.
+
+[Features and options](05_crafty-preset-eslint)
+
+### `crafty-preset-swc`
+
+This preset provides EcmaScript 2015+ support with [SWC](https://swc.rs/) for Gulp, Webpack, Jest and rollup.js .
+
+While SWC is able to compile TypeScript, this preset does not offer this feature at the moment.
+
+It also configures ESLint with our linting rules. Both in the runners and as a
+separate command.
+
+[Features and options](05_crafty-preset-babel)
 
 ## Utility packages
 

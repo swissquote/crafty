@@ -1,0 +1,1 @@
+../../packages/crafty-preset-swc/README.md
