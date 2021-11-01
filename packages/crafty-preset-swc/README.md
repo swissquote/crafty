@@ -23,13 +23,13 @@
 
 `@swissquote/crafty-preset-swc` is able to configure **SWC** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case it concatenates and minifies the files, it doesn't resolve imports.
 
-[Read more](./JavaScript_Features.md)
+[Read more](./05_crafty-preset-babel/JavaScript_Features.md)
 
 ## Linting
 
 In `@swissquote/crafty-preset-swc` JavaScript is linted with **ESLint**, a powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline through our `@swissquote/crafty-preset-eslint` preset.
 
-[Read more](../05_crafty-preset-eslint/JavaScript_Linting.md)
+[Read more](./05_crafty-preset-eslint/JavaScript_Linting.md)
 
 ## Installation
 
