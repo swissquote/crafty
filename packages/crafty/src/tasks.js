@@ -1,6 +1,6 @@
-const debug = require("debug")("crafty:tasks");
-const { copy } = require("copy-anything");
-const { merge } = require("merge-anything");
+const debug = require("../packages/debug")("crafty:tasks");
+const { copy } = require("../packages/copy-anything");
+const { merge } = require("../packages/merge-anything");
 
 function shortName(runner) {
   return runner.indexOf("/") > -1 ? runner.split("/")[0] : runner;

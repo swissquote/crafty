@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const log = require("fancy-log");
-const loudRejection = require("loud-rejection");
+const log = require("../packages/fancy-log");
+const loudRejection = require("../packages/loud-rejection");
 
 const cli = require("./cli");
 const configuration = require("./configuration");

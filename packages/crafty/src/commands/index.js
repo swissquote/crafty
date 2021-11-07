@@ -1,6 +1,6 @@
-const debug = require("debug")("crafty:commands");
-const { copy } = require("copy-anything");
-const { merge } = require("merge-anything");
+const debug = require("../../packages/debug")("crafty:commands");
+const { copy } = require("../../packages/copy-anything");
+const { merge } = require("../../packages/merge-anything");
 
 function getCommands(crafty) {
   debug("Registering Commands");

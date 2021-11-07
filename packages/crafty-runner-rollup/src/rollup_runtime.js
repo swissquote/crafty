@@ -1,5 +1,5 @@
-const colors = require("ansi-colors");
-const prettyTime = require("pretty-hrtime");
+const colors = require("@swissquote/crafty/packages/ansi-colors");
+const prettyTime = require("@swissquote/crafty/packages/pretty-hrtime");
 
 const paths = require("./utils/paths");
 
@@ -11,7 +11,7 @@ const batchWarnings = require("./utils/logging");
 const handleError = require("./utils/handleError");
 const relativeId = require("./utils/relativeId");
 
-const debug = require("debug")("crafty:runner-rollup");
+const debug = require("@swissquote/crafty/packages/debug")("crafty:runner-rollup");
 
 function buildConfiguration(crafty, taskName, bundle, warnings) {
   const destination = path.join(

@@ -1,5 +1,5 @@
 const path = require("path");
-const browserslist = require("browserslist");
+const browserslist = require("../packages/browserslist");
 
 const defaultBrowsers = [
   "Edge >= 18",

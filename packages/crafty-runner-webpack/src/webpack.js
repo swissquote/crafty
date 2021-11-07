@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const debug = require("debug")("crafty:runner-webpack");
+const debug = require("@swissquote/crafty/packages/debug")("crafty:runner-webpack");
 const path = require("path");
 const fs = require("fs");
 const WebpackChain = require("webpack-chain");

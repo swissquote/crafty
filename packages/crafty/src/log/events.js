@@ -1,5 +1,5 @@
-const colors = require("ansi-colors");
-const prettyTime = require("pretty-hrtime");
+const colors = require("../../packages/ansi-colors");
+const prettyTime = require("../../packages/pretty-hrtime");
 
 const formatError = require("./formatError");
 

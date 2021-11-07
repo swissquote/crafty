@@ -2,7 +2,7 @@ const path = require("path");
 const PluginError = require("plugin-error");
 const through = require("through2-concurrent");
 const prettyBytes = require("pretty-bytes");
-const colors = require("ansi-colors");
+const colors = require("@swissquote/crafty/packages/ansi-colors");
 const { ImagePool } = require("@squoosh/lib/build/index.js");
 
 const PLUGIN_NAME = "gulp-imagemin";

@@ -7,13 +7,15 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "main": "./src/index.js",
+  "main": "dist/compiled/index.js",
   "scripts": {
+    "build": "node ../../utils/build.js",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.17.2",
-    "debug": "^4.1.0",
+    "@swissquote/crafty": "1.17.2"
+  },
+  "devDependencies": {
     "gulp-plumber": "1.2.1",
     "vinyl-fs": "3.0.3"
   },

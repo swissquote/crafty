@@ -1,4 +1,4 @@
-const colors = require("ansi-colors");
+const colors = require("../../packages/ansi-colors");
 
 const tasks = {};
 

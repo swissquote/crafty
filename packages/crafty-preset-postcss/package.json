@@ -12,6 +12,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
+    "@swissquote/crafty": "1.17.2",
     "@swissquote/crafty-preset-prettier": "1.17.2",
     "@swissquote/postcss-swissquote-preset": "1.17.2",
     "@swissquote/stylelint-config-swissquote": "1.17.2",
@@ -30,7 +31,6 @@
     "style-loader": "3.3.1",
     "stylelint": "13.13.1",
     "through2": "4.0.2",
-    "tmp": "0.2.1",
     "webpack": "5.61.0"
   },
   "engines": {

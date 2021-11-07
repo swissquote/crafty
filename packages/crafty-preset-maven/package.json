@@ -7,11 +7,15 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
+  "main": "dist/compiled/index.js",
   "scripts": {
-    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'"
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
+    "build": "node ../../utils/build.js"
   },
   "dependencies": {
-    "tmp": "0.2.1",
+    "@swissquote/crafty": "1.17.2"
+  },
+  "devDependencies": {
     "xml2js": "0.4.23"
   },
   "engines": {

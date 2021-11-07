@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const childProcess = require("child_process");
 
-const tmp = require("tmp");
+const tmp = require("@swissquote/crafty/packages/tmp");
 const xml2js = require("xml2js");
 
 let loadedPom;

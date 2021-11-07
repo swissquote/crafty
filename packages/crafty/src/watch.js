@@ -3,11 +3,11 @@
  * as glob-watcher will not be upgraded for the forseeable future
  */
 
-const chokidar = require("chokidar");
-const debounce = require("just-debounce");
-const asyncDone = require("async-done");
-const isNegatedGlob = require("is-negated-glob");
-const anymatch = require("anymatch");
+const chokidar = require("../packages/chokidar");
+const debounce = require("../packages/just-debounce");
+const asyncDone = require("../packages/async-done");
+const isNegatedGlob = require("../packages/is-negated-glob");
+const anymatch = require("../packages/anymatch");
 
 const defaultOpts = {
   delay: 200,

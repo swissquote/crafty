@@ -14,7 +14,7 @@
 // This is quite hacky and hopefully won't be needed when Webpack fixes this.
 // https://github.com/webpack/webpack/issues/2878
 
-const colors = require("ansi-colors");
+const colors = require("@swissquote/crafty/packages/ansi-colors");
 
 const friendlySyntaxErrorLabel = "Syntax error:";
 

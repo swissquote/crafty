@@ -12,16 +12,13 @@
     "lint": "node src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
+    "@swissquote/crafty": "1.17.2",
     "@swissquote/crafty-preset-prettier": "1.17.2",
     "@swissquote/eslint-plugin-swissquote": "1.17.2",
     "@swissquote/rollup-plugin-eslint": "1.17.2",
-    "copy-anything": "2.0.3",
-    "debug": "^4.1.0",
     "eslint": "8.2.0",
     "eslint-webpack-plugin": "3.1.0",
-    "merge-anything": "4.0.1",
-    "resolve-from": "5.0.0",
-    "tmp": "0.2.1"
+    "resolve-from": "5.0.0"
   },
   "engines": {
     "node": ">=12"

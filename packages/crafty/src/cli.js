@@ -1,5 +1,5 @@
-const yargs = require("yargs-parser");
-const camelcaseKeys = require("camelcase-keys");
+const yargs = require("../packages/yargs-parser");
+const camelcaseKeys = require("../packages/camelcase-keys");
 
 function parseArguments(args) {
   const argv = yargs(args);

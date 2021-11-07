@@ -1,4 +1,4 @@
-const colors = require("ansi-colors");
+const colors = require("@swissquote/crafty/packages/ansi-colors");
 const symbols = require("log-symbols");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");

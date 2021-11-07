@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const resolveFrom = require("resolve-from");
-const tmp = require("tmp");
+const tmp = require("@swissquote/crafty/packages/tmp");
 
 function mergeConfiguration(configuration, args, newConfiguration) {
   if (

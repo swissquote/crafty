@@ -1,14 +1,14 @@
 const path = require("path");
 const fs = require("fs");
-const findUp = require("find-up");
-const { copy } = require("copy-anything");
-const { merge } = require("merge-anything");
-const resolve = require("enhanced-resolve");
+const findUp = require("../packages/find-up");
+const { copy } = require("../packages/copy-anything");
+const { merge } = require("../packages/merge-anything");
+const resolve = require("../packages/enhanced-resolve");
 
 const Crafty = require("./Crafty");
 const defaultConfiguration = require("./defaultConfiguration");
 
-const debug = require("debug")("crafty:configuration");
+const debug = require("../packages/debug")("crafty:configuration");
 
 const craftyPresetNames = "crafty-preset-names";
 

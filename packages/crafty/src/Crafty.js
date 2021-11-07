@@ -1,5 +1,5 @@
-const Undertaker = require("undertaker");
-const log = require("fancy-log");
+const Undertaker = require("../packages/undertaker");
+const log = require("../packages/fancy-log");
 
 const events = require("./log/events");
 const formatError = require("./log/formatError");
@@ -8,7 +8,7 @@ const Watcher = require("./Watcher");
 const Information = require("./log/Information");
 const registerTasks = require("./tasks");
 
-const debug = require("debug")("crafty:core");
+const debug = require("../packages/debug")("crafty:core");
 
 class Crafty {
   constructor(config) {

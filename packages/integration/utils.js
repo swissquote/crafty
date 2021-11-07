@@ -50,6 +50,7 @@ function snapshotizeOutput(ret) {
       `"moduleDirectories": [ /* Ignored paths for diff */ ]`
     ) // Fix paths that tend to vary by environment
     .replace(/\(node:[0-9]*\)/gm, "(node:11111)")
+    .replace(/\n\(node:11111\).*?DeprecationWarning: Buffer\(\).*?instead.$/gm, "") // Remove Buffer warnings as they come from compiled dependencies
     .replace(/webpackJsonp_([a-z0-9]{8})/gm, "webpackJsonp_UNIQID") // make random webpackjsonp less random
     .replace(/\/.pnp\/externals\/pnp-[a-f0-9]{40}/, "") // Normalize Yarn PNP Paths
     .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0

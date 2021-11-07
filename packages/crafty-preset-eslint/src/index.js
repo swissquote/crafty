@@ -1,6 +1,6 @@
 const path = require("path");
-const { copy } = require("copy-anything");
-const { merge } = require("merge-anything");
+const { copy } = require("@swissquote/crafty/packages/copy-anything");
+const { merge } = require("@swissquote/crafty/packages/merge-anything");
 
 const {
   configurationBuilder,
@@ -8,7 +8,7 @@ const {
   toTempFile
 } = require("./eslintConfigurator");
 
-const debug = require("debug")("crafty:preset-eslint");
+const debug = require("@swissquote/crafty/packages/debug")("crafty:preset-eslint");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
