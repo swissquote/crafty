@@ -29,13 +29,13 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
       plugins: {
         // eslint
         json: {
-          plugin: require("@rollup/plugin-json"),
+          plugin: require("../packages/rollup-plugin-json"),
           weight: 10
         },
         // babel
         // typescript
         replace: {
-          plugin: require("@rollup/plugin-replace"),
+          plugin: require("../packages/rollup-plugin-replace"),
           weight: 30,
           options: {
             preventAssignment: true,
@@ -45,18 +45,18 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           }
         },
         pnpResolve: {
-          plugin: require("rollup-plugin-pnp-resolve"),
+          plugin: require("../packages/rollup-plugin-pnp-resolve"),
           weight: 35
         },
         resolve: {
-          plugin: require("@rollup/plugin-node-resolve"),
+          plugin: require("../packages/rollup-plugin-node-resolve"),
           weight: 40,
           options: {
             browser: true
           }
         },
         commonjs: {
-          plugin: require("@rollup/plugin-commonjs"),
+          plugin: require("../packages/rollup-plugin-commonjs"),
           weight: 50
         },
         terser: {
@@ -141,7 +141,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
   // This is executed in watch mode only
   crafty.watcher.addRaw({
     start: () => {
-      const rollup = require("rollup");
+      const rollup = require("../packages/rollup");
       const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
       crafty.log(`Start watching with webpack in '${colors.cyan(taskName)}'`);
@@ -192,7 +192,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
   });
 
   crafty.undertaker.task(taskName, cb => {
-    const rollup = require("rollup");
+    const rollup = require("../packages/rollup");
     const config = buildConfiguration(crafty, taskName, bundle, warnings.add);
 
     function onError(e) {
