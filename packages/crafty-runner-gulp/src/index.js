@@ -1,4 +1,6 @@
-const debug = require("@swissquote/crafty/packages/debug")("crafty:runner-gulp");
+const debug = require("@swissquote/crafty/packages/debug")(
+  "crafty:runner-gulp"
+);
 
 const StreamHandler = require("./StreamHandler");
 const Gulp = require("./Gulp.js");
