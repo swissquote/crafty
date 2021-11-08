@@ -8,7 +8,9 @@ const {
   toTempFile
 } = require("./eslintConfigurator");
 
-const debug = require("@swissquote/crafty/packages/debug")("crafty:preset-eslint");
+const debug = require("@swissquote/crafty/packages/debug")(
+  "crafty:preset-eslint"
+);
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
