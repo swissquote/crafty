@@ -360,14 +360,10 @@ chunk (runtime: default) myBundle.min.js (default) ___ bytes [entry] [rendered]
 
   Failed to compile.
 
-Error: error: Expected '}', got '<eof>'
+__PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js: Expected '}', got '<eof>'
    |
 14 | }
    | ^
-
-Caused by:
-    0: failed to process js file
-    1: Syntax Error
 
 __PATH__/packages/integration/fixtures/crafty-preset-swc-webpack/fails/js/script.js
   15:0  error  Parsing error: Unexpected token (15:0)
