@@ -2,7 +2,9 @@ const path = require("path");
 const fs = require("fs");
 
 const colors = require("@swissquote/crafty/packages/ansi-colors");
-const debug = require("@swissquote/crafty/packages/debug")("crafty:runner-webpack");
+const debug = require("@swissquote/crafty/packages/debug")(
+  "crafty:runner-webpack"
+);
 
 const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");
