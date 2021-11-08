@@ -10,11 +10,17 @@
     {
       "groupName": "@types",
       "packagePatterns": [
+        "@types/*"
+      ]
+    },
+    {
+      "packagePatterns": [
         "@types/*",
         "ansi-colors",
         "debug",
         "prettier",
-        "caniuse-lite"
+        "caniuse-lite",
+        "fsevents"
       ],
       "rangeStrategy": "update-lockfile"
     },
