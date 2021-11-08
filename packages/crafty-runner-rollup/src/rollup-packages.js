@@ -1,21 +1,21 @@
 function rollupPluginCommonJs() {
-    return require("@rollup/plugin-commonjs");
+  return require("@rollup/plugin-commonjs");
 }
 
 function rollupPluginJson() {
-    return require("@rollup/plugin-json");
+  return require("@rollup/plugin-json");
 }
 
 function rollupPluginNodeResolve() {
-    return require("@rollup/plugin-node-resolve");
+  return require("@rollup/plugin-node-resolve");
 }
 
 function rollupPluginReplace() {
-    return require("@rollup/plugin-replace");
+  return require("@rollup/plugin-replace");
 }
 
 function rollupPluginPNPResolve() {
-    return require("rollup-plugin-pnp-resolve");
+  return require("rollup-plugin-pnp-resolve");
 }
 
 /*function rollupPluginTerser() {
@@ -23,15 +23,15 @@ function rollupPluginPNPResolve() {
 }*/
 
 function rollup() {
-    return require("rollup");
+  return require("rollup");
 }
 
 module.exports = {
-    rollupPluginCommonJs,
-    rollupPluginJson,
-    rollupPluginNodeResolve,
-    rollupPluginReplace,
-    rollupPluginPNPResolve,
-    //rollupPluginTerser,
-    rollup
-}
+  rollupPluginCommonJs,
+  rollupPluginJson,
+  rollupPluginNodeResolve,
+  rollupPluginReplace,
+  rollupPluginPNPResolve,
+  //rollupPluginTerser,
+  rollup
+};
