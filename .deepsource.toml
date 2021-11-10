@@ -2,6 +2,8 @@ version = 1
 
 test_patterns = ["__tests__/**"]
 
+exclude_patterns = ["packages/integration/fixtures/**"]
+
 [[analyzers]]
 name = "javascript"
 enabled = true
