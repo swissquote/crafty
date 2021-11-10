@@ -1,3 +1,43 @@
+const { PassThrough } = require("stream");
+
+/**
+ * I'm not sure I know what I'm doing ...
+ * But the idea is :
+ * - Create an outer stream that will be left untouched,
+ * - An inner stream with SWC
+ * - When an error is thrown by SWC, capture, transform and send it to the outer stream
+ *
+ * A lot of time has been lost here, if you know a better way please contribute :)
+ */
+function swcWrapper(crafty, swcTransform) {
+  const outerStream = new PassThrough({
+    bubbleErrors: true,
+    objectMode: true
+  });
+
+  const innerStream = new PassThrough({
+    bubbleErrors: true,
+    objectMode: true
+  }).pipe(swcTransform);
+
+  innerStream.on("error", error => {
+    // Reporting this error seems to make it loop
+    // Here we're making sure it doesn't happen
+    if (!error.fileName) {
+      console.log("This is a loop");
+      return;
+    }
+
+    const message = `${error.fileName}: ${error.message
+      .replace(/\n+Caused by:\n(?: {4}([0-9]+):.*$\n?)+/gm, "")
+      .replace(/^(Error: )+/i, "")}`;
+
+    outerStream.emit("error", new crafty.Information(message));
+  });
+
+  return outerStream.pipe(innerStream);
+}
+
 module.exports = function createTask(crafty, bundle, StreamHandler) {
   return cb => {
     // Init
@@ -47,7 +87,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     const { getConfigurationGulp } = require("./configuration.js");
     const swcOptions = getConfigurationGulp(crafty, bundle);
 
-    stream.add(swc(swcOptions, bundle));
+    stream.add(swcWrapper(crafty, swc(swcOptions, bundle)));
 
     // Process
     const sourcemaps = require("gulp-sourcemaps");

@@ -62,13 +62,17 @@ function formatMessage(originalMessage, isError) {
 
   if (isSWC) {
     const filenameRegex = /Real\("(.*?)"\)/;
-    const filenameInMessage = filenameRegex.exec(message)
-    const filename = filenameInMessage? filenameInMessage[1] : originalMessage.moduleIdentifier.substring(originalMessage.moduleIdentifier.lastIndexOf("!")+1)
+    const filenameInMessage = filenameRegex.exec(message);
+    const filename = filenameInMessage
+      ? filenameInMessage[1]
+      : originalMessage.moduleIdentifier.substring(
+          originalMessage.moduleIdentifier.lastIndexOf("!") + 1
+        );
 
     // SWC adds a weird "Caused by" at the end that's very verbose and not very helpful
-    message = filename + ": " + message
-      .replace(/\n+Caused by:\n(?:    ([0-9]+):.*$\n?)+/gm, "")
-      .replace(/^(Error: )+/i, "");
+    message = `${filename}: ${message
+      .replace(/\n+Caused by:\n(?: {4}([0-9]+):.*$\n?)+/gm, "")
+      .replace(/^(Error: )+/i, "")}`;
   }
 
   // Smoosh syntax errors (commonly found in CSS)

@@ -253,15 +253,6 @@ __PATH__/packages/integration/fixtures/crafty-preset-swc-gulp/fails/js/script.js
 [__:__:__] ESLint failed with 1 error
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-Error: error: Unexpected token \`test\`. Expected * for generator, private key, identifier or async
-
-   |
-14 | const test = new Test(\\"Stéphane\\");
-   |       ^^^^
-
-Caused by:
-    0: failed to process js file
-    1: Syntax Error
 ",
 }
 `;
