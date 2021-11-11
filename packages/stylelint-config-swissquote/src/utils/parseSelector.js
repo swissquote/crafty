@@ -1,4 +1,4 @@
-const selectorParser = require("postcss-selector-parser");
+const selectorParser = require("../../packages/postcss-selector-parser");
 
 function parseSelector(resolvedSelector) {
   const container = selectorParser.selector();

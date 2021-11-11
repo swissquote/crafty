@@ -1,5 +1,5 @@
-const selectorParser = require("postcss-selector-parser");
-const resolveNestedSelector = require("postcss-resolve-nested-selector");
+const selectorParser = require("../../packages/postcss-selector-parser");
+const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
 const report = require("stylelint/lib/utils/report");
 
 const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
