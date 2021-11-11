@@ -86,10 +86,6 @@ function postcssDirPseudoClass() {
   return require("postcss-dir-pseudo-class");
 }
 
-function postcssFilterGradient() {
-  return require("postcss-filter-gradient");
-}
-
 function postcssFontFamilySystemUI() {
   return require("postcss-font-family-system-ui");
 }
@@ -151,7 +147,7 @@ function postcssSelectorMatches() {
 }
 
 function postcssSelectorNot() {
-  return require("postcss-selector-not");
+  return require("postcss-selector-not").default;
 }
 
 function postcssUrl() {
@@ -181,7 +177,6 @@ module.exports = {
   postcssCustomProperties,
   postcssCustomSelectors,
   postcssDirPseudoClass,
-  postcssFilterGradient,
   postcssFontFamilySystemUI,
   postcssFontVariant,
   postcssImageSetPolyfill,

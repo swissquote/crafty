@@ -1,6 +1,5 @@
 const declarationValueIndex = require("stylelint/lib/utils/declarationValueIndex");
 const isStandardSyntaxFunction = require("stylelint/lib/utils/isStandardSyntaxFunction");
-const postcss = require("postcss");
 const report = require("stylelint/lib/utils/report");
 const valueParser = require("postcss-value-parser");
 
@@ -26,7 +25,8 @@ const rule = function() {
           return;
         }
 
-        if (postcss.vendor.unprefixed(node.value) !== negativeVar) {
+        // Remove prefixes and check if it's a negativeVar
+        if (node.value.replace(/^-\w+-/, "") !== negativeVar) {
           return;
         }
 

@@ -25,8 +25,7 @@
   - Media Queries (`postcss-custom-media`, `postcss-media-minmax`)
 - **Fallbacks**
   - Vendor Prefixes (`autoprefixer`)
-  - Browser support (`postcss-pseudoelements`, `postcss-replace-overflow-wrap`,
-    `postcss-filter-gradient`, `postcss-font-variant`)
+  - Browser support (`postcss-pseudoelements`, `postcss-replace-overflow-wrap`, `postcss-font-variant`)
 
 See details in [CSS Features](05_crafty-preset-postcss/CSS_Features.md).
 

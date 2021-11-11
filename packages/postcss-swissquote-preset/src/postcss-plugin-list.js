@@ -1,7 +1,6 @@
-const postcss = require("postcss");
 const debug = require("debug")("postcss-swissquote-preset");
 
-module.exports = postcss.plugin("plugin-list", () => {
+module.exports = () => {
   const listed = [];
 
   function reportOnPlugin(plugin) {
@@ -15,8 +14,12 @@ module.exports = postcss.plugin("plugin-list", () => {
     return `-  ${plugin.postcssPlugin} ${isNewPlugin ? " (duplicate)" : ""}`;
   }
 
-  return (source, result) => {
-    const plugins = result.processor.plugins.map(reportOnPlugin);
-    debug("Used plugins:", plugins.join("\n"));
+  return {
+    postcssPlugin: "plugin-list",
+    Once(root, { result }) {
+      const plugins = result.processor.plugins.map(reportOnPlugin);
+      debug("Used plugins:", plugins.join("\n"));
+    }
   };
-});
+};
+module.exports.postcss = true;
