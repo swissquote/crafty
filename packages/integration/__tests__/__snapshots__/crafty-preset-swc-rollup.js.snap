@@ -68,8 +68,8 @@ Object {
 `;
 
 exports[`Keeps imports unresolved for SWC Runtime 2`] = `
-"import*as e from\\"@swc/helpers\\";var t=/*#__PURE__*/function(t){function n(){var t;return e.classCallCheck(this,n),t=e.possibleConstructorReturn(this,e.getPrototypeOf(n).apply(this,arguments)),e.defineProperty(e.assertThisInitialized(t),\\"handleClick\\",(function(){t.setState({hey:!0})})),t}return e.inherits(n,t),e.createClass(n,[{key:\\"render\\",value:function(){/*#__PURE__*/
-return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var n=/*#__PURE__*/function(){function n(){e.classCallCheck(this,n),console.log(\\"init class\\")}return e.createClass(n,[{key:\\"method\\",value:function(){console.log(t)}}]),n}();export{n as default};
+"import*as e from\\"@swc/helpers\\";var t=/*#__PURE__*/function(t){e.inherits(a,t);var n=e.createSuper(a);function a(){var t;return e.classCallCheck(this,a),t=n.apply(this,arguments),e.defineProperty(e.assertThisInitialized(t),\\"handleClick\\",(function(){t.setState({hey:!0})})),t}return e.createClass(a,[{key:\\"render\\",value:function(){/*#__PURE__*/
+return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),a}(React.Component);var n=/*#__PURE__*/function(){function n(){e.classCallCheck(this,n),console.log(\\"init class\\")}return e.createClass(n,[{key:\\"method\\",value:function(){console.log(t)}}]),n}();export{n as default};
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
@@ -93,8 +93,8 @@ Entry module \\"js/script.js\\" is implicitly using \\"default\\" export mode, w
 `;
 
 exports[`Keeps imports unresolved for SWC Runtime, using commonjs 2`] = `
-"\\"use strict\\";var e=require(\\"@swc/helpers\\");function t(e){if(e&&e.__esModule)return e;var t=Object.create(null);return e&&Object.keys(e).forEach((function(r){if(\\"default\\"!==r){var n=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,n.get?n:{enumerable:!0,get:function(){return e[r]}})}})),t.default=e,Object.freeze(t)}var r=/*#__PURE__*/t(e);var n=/*#__PURE__*/function(e){function t(){var e;return r.classCallCheck(this,t),e=r.possibleConstructorReturn(this,r.getPrototypeOf(t).apply(this,arguments)),r.defineProperty(r.assertThisInitialized(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return r.inherits(t,e),r.createClass(t,[{key:\\"render\\",value:function(){/*#__PURE__*/
-return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),t}(React.Component);var c=/*#__PURE__*/function(){function e(){r.classCallCheck(this,e),console.log(\\"init class\\")}return r.createClass(e,[{key:\\"method\\",value:function(){console.log(n)}}]),e}();module.exports=c;
+"\\"use strict\\";var e=require(\\"@swc/helpers\\");function t(e){if(e&&e.__esModule)return e;var t=Object.create(null);return e&&Object.keys(e).forEach((function(r){if(\\"default\\"!==r){var n=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,n.get?n:{enumerable:!0,get:function(){return e[r]}})}})),t.default=e,Object.freeze(t)}var r=/*#__PURE__*/t(e);var n=/*#__PURE__*/function(e){r.inherits(n,e);var t=r.createSuper(n);function n(){var e;return r.classCallCheck(this,n),e=t.apply(this,arguments),r.defineProperty(r.assertThisInitialized(e),\\"handleClick\\",(function(){e.setState({hey:!0})})),e}return r.createClass(n,[{key:\\"render\\",value:function(){/*#__PURE__*/
+return React.createElement(\\"div\\",{onClick:this.handleClick},\\"Hey \\",this.state.hey)}}]),n}(React.Component);var c=/*#__PURE__*/function(){function e(){r.classCallCheck(this,e),console.log(\\"init class\\")}return r.createClass(e,[{key:\\"method\\",value:function(){console.log(n)}}]),e}();module.exports=c;
 //# sourceMappingURL=myBundle.min.js.map
 "
 `;
