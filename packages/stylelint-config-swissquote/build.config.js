@@ -9,7 +9,8 @@ module.exports = [
       "postcss-scss": "postcss-scss",
       prettier: "prettier",
       stylelint: "stylelint",
-      "stylelint/lib/utils/optionsMatches": "stylelint/lib/utils/optionsMatches",
+      "stylelint/lib/utils/optionsMatches":
+       "stylelint/lib/utils/optionsMatches",
       "caniuse-lite": "caniuse-lite"
     }
   }
