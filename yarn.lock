@@ -1563,7 +1563,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/node@*":
+"@types/node@*", "@types/node@^16.11.7":
   version "16.11.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
   integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
@@ -4744,11 +4744,13 @@ gulp-concat@2.6.1:
     through2 "^2.0.0"
     vinyl "^2.0.0"
 
-gulp-eslint-new@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/gulp-eslint-new/-/gulp-eslint-new-0.6.0.tgz#f6229b4c4b750771a7e9ca78be27815d96d27e84"
-  integrity sha512-Yew+ZGcBrVl2lKmJWTigP/iOcTQWzgTjwrkeQ/QzB0bcuVSgIXoVCP4Fl+1cBPb5+8n62kO9z5JxJrBzFL77TA==
+gulp-eslint-new@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-eslint-new/-/gulp-eslint-new-1.0.0.tgz#6b54f3034aaf2aa6f4e8f099037bdcda4be30f07"
+  integrity sha512-YpE1Dmy2G0SsaLVxpQ9CBT9jdbhCS+EfQP/aIJDbS5Bw2cW50dXIqPSrOsPEs+eahdcAd97yH4uvDNMmN3NH2g==
   dependencies:
+    "@types/eslint" "^7.28.2"
+    "@types/node" "^16.11.7"
     eslint "^8.2.0"
     fancy-log "^1.3.3"
     plugin-error "^1.0.1"
