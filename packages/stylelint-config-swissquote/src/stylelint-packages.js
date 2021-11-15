@@ -1,33 +1,32 @@
-
 function postcssResolveNestedSelector() {
-    return require("postcss-resolve-nested-selector");
+  return require("postcss-resolve-nested-selector");
 }
 
 function postcssSelectorParser() {
-    return require("postcss-selector-parser");
+  return require("postcss-selector-parser");
 }
 
 function postcssValueParser() {
-    return require("postcss-value-parser");
+  return require("postcss-value-parser");
 }
 
 function stylelintNoUnsupportedBrowserFeatures() {
-    return require("stylelint-no-unsupported-browser-features");
+  return require("stylelint-no-unsupported-browser-features");
 }
 
 function stylelintPrettier() {
-    return require("stylelint-prettier");
+  return require("stylelint-prettier");
 }
 
 function stylelintScss() {
-    return require("stylelint-scss");
+  return require("stylelint-scss");
 }
 
 module.exports = {
-    postcssResolveNestedSelector,
-    postcssSelectorParser,
-    postcssValueParser,
-    stylelintNoUnsupportedBrowserFeatures,
-    stylelintPrettier,
-    stylelintScss
-}
+  postcssResolveNestedSelector,
+  postcssSelectorParser,
+  postcssValueParser,
+  stylelintNoUnsupportedBrowserFeatures,
+  stylelintPrettier,
+  stylelintScss
+};
