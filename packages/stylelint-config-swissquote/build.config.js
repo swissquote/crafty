@@ -10,7 +10,7 @@ module.exports = [
       prettier: "prettier",
       stylelint: "stylelint",
       "stylelint/lib/utils/optionsMatches":
-       "stylelint/lib/utils/optionsMatches",
+        "stylelint/lib/utils/optionsMatches",
       "caniuse-lite": "caniuse-lite"
     }
   }
