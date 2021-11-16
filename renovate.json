@@ -8,6 +8,13 @@
       "rangeStrategy": "pin"
     },
     {
+      "matchDepTypes": [
+        "engines",
+        "peerDependencies"
+      ],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
       "groupName": "@types",
       "packagePatterns": [
         "@types/*"
