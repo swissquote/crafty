@@ -10,8 +10,8 @@ async function main() {
   rimraf.sync(process.cwd() + '/dist/compiled');
 
   for (const bundle of configuration) {
-    const { name, ...options } = bundle;
-    await compile(`./src/${name}.js`, `dist/compiled/${name}.js`, options);
+    const name = bundle.name;
+    await compile(`./src/${name}.js`, `dist/compiled/${name}.js`, bundle);
   }
 }
 
