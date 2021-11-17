@@ -56,8 +56,6 @@ module.exports = function(config) {
     .embedded()
     .enableIfUnsupported(["css-image-set"], config.browsers);
 
-  processors.processor("postcss-nesting").embedded();
-
   processors.processor("postcss-custom-media").embedded();
   processors.processor("postcss-media-minmax").embedded();
 

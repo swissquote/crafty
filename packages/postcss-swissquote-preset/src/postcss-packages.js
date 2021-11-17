@@ -118,10 +118,6 @@ function postcssNested() {
   return require("postcss-nested");
 }
 
-function postcssNesting() {
-  return require("postcss-nesting");
-}
-
 function postcssPropertyLookup() {
   return require("postcss-property-lookup");
 }
@@ -185,7 +181,6 @@ module.exports = {
   postcssLogical,
   postcssMediaMinmax,
   postcssNested,
-  postcssNesting,
   postcssPropertyLookup,
   postcssPseudoClassAnyLink,
   postcssPseudoelements,

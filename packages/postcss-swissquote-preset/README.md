@@ -3,7 +3,7 @@
 ## Features
 
 - **Organization**
-  - Nested Styles (`postcss-nesting`, `postcss-nested`, `postcss-atroot`)
+  - Nested Styles (`postcss-nested`, `postcss-atroot`)
   - Import CSS Files (`postcss-import`, `postcss-url`)
   - Comments (`postcss-scss`)
 - **Variables**
