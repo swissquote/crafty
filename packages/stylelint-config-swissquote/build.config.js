@@ -24,7 +24,7 @@ module.exports = [
       "./parser-yaml": "prettier/parser-yaml.js",
 
       // We mock the few lodash functions really used
-      "lodash": "../../src/not-lodash.js"
+      lodash: "../../src/not-lodash.js"
     }
   }
 ];

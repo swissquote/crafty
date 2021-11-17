@@ -18,8 +18,9 @@ function isString(value) {
 }
 
 /**
- * All credits go to https://github.com/developit/dlvˆ
+ * All credits go to https://github.com/developit/dlv
  */
+/* eslint-disable no-param-reassign */
 function get(obj, key, def, p, undef) {
   key = key.split ? key.split(".") : key;
   for (p = 0; p < key.length; p++) {
@@ -30,7 +31,7 @@ function get(obj, key, def, p, undef) {
 
 function pick(obj, keys) {
   return Object.fromEntries(
-    Object.entries(obj).filter((entry) => keys.indexOf(entry[0]) > -1)
+    Object.entries(obj).filter(entry => keys.indexOf(entry[0]) > -1)
   );
 }
 
@@ -40,5 +41,5 @@ module.exports = {
   isRegExp,
   isString,
   get,
-  pick,
+  pick
 };
