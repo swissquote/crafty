@@ -11,6 +11,7 @@ async function main() {
 
   for (const bundle of configuration) {
     const name = bundle.name;
+    console.log(name, "\n==========================");
     await compile(`./src/${name}.js`, `dist/compiled/${name}.js`, bundle);
   }
 }

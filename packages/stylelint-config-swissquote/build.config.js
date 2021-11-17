@@ -1,27 +1,64 @@
+const commonExternals = {
+  stylelint: "stylelint"
+};
+
 module.exports = [
   {
-    name: "stylelint-packages",
+    name: "stylelint-prettier-package",
     externals: {
-      browserslist: "@swissquote/crafty/packages/browserslist",
+      ...commonExternals,
+
+      // We don't need most prettier parsers
+      "./parser-angular.js": "prettier/parser-angular.js",
+      "./parser-babel.js": "prettier/parser-babel.js",
+      "./parser-espree.js": "prettier/parser-espree.js",
+      "./parser-flow.js": "prettier/parser-flow.js",
+      "./parser-glimmer.js": "prettier/parser-glimmer.js",
+      "./parser-graphql.js": "prettier/parser-graphql.js",
+      "./parser-html.js": "prettier/parser-html.js",
+      "./parser-markdown.js": "prettier/parser-markdown.js",
+      "./parser-meriyah.js": "prettier/parser-meriyah.js",
+      "./parser-typescript.js": "prettier/parser-typescript.js",
+      "./parser-yaml.js": "prettier/parser-yaml.js"
+    }
+  },
+  {
+    name: "postcss-selector-parser-package",
+    externals: {}
+  },
+  {
+    name: "stylelint-scss-package",
+    externals: {
+      ...commonExternals,
+
+      // We use other packages created here
+      "postcss-selector-parser": "./postcss-selector-parser-package.js",
+
+      // We mock the few lodash functions really used
+      lodash: "../../src/not-lodash.js"
+    }
+  },
+  {
+    name: "stylelint-config-packages",
+    externals: {
+      ...commonExternals,
+
+      // We keep postcss-scss external so we can have it in common with preset-postcss
       postcss: "postcss",
       "postcss/lib/result": "postcss/lib/result",
       "postcss/lib/list": "postcss/lib/list",
       "postcss-scss": "postcss-scss",
-      stylelint: "stylelint",
+
+      // Used by stylelint-no-unsupported-browser-features
+      browserslist: "@swissquote/crafty/packages/browserslist",
       "stylelint/lib/utils/optionsMatches":
         "stylelint/lib/utils/optionsMatches",
       "caniuse-lite": "caniuse-lite",
 
-      // We don't need most prettier parsers
-      "./parser-angular": "prettier/parser-angular",
-      "./parser-babylon": "prettier/parser-babylon.js",
-      "./parser-flow": "prettier/parser-flow.js",
-      "./parser-glimmer": "prettier/parser-glimmer.js",
-      "./parser-graphql": "prettier/parser-graphql.js",
-      "./parser-html": "prettier/parser-html.js",
-      "./parser-markdown": "prettier/parser-markdown.js",
-      "./parser-typescript": "prettier/parser-typescript.js",
-      "./parser-yaml": "prettier/parser-yaml.js",
+      // We use other packages created here
+      "stylelint-prettier": "./stylelint-prettier-package.js",
+      "stylelint-scss": "./stylelint-scss-package.js",
+      "postcss-selector-parser": "./postcss-selector-parser-package.js",
 
       // We mock the few lodash functions really used
       lodash: "../../src/not-lodash.js"

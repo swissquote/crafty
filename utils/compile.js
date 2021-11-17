@@ -2,6 +2,7 @@ const ncc = require("@vercel/ncc");
 const fs = require("fs");
 const { existsSync } = require("fs");
 const path = require("path");
+const filesize = require("filesize");
 
 const {
   dependencySizeTree,
@@ -26,32 +27,42 @@ module.exports = async function compile(input, output, bundle) {
       await fs.promises.mkdir(dirname, { recursive: true });
     }
 
-    console.log("Writing", output);
+    console.log("Writing", output, filesize(code.length));
     await fs.promises.writeFile(output, code);
 
     if (assets) {
       const dirname = path.dirname(output);
 
       for (const [file, data] of Object.entries(assets)) {
-        console.log("Writing", `${dirname}/${file}`);
+        console.log(
+          "Writing",
+          `${dirname}/${file}`,
+          filesize(data.source.length)
+        );
         await fs.promises.writeFile(`${dirname}/${file}`, data.source);
       }
     }
 
     if (map) {
-      console.log("Writing", `${output}.map`);
+      console.log("Writing", `${output}.map`, filesize(map.length));
       await fs.promises.writeFile(`${output}.map`, map);
     }
 
     const bundleStats = stats.toJson();
+    const bundleStatsString = JSON.stringify(bundleStats);
 
-    console.log("Writing", `${dirname}/${name}-stats.json`);
+    console.log(
+      "Writing",
+      `${dirname}/${name}-stats.json`,
+      filesize(bundleStatsString.length)
+    );
     await fs.promises.writeFile(
       `${dirname}/${name}-stats.json`,
-      JSON.stringify(bundleStats)
+      bundleStatsString
     );
 
-    console.log("\nBundle Stats\n============");
+    console.log("\nBundle Stats\n------------");
     printStats(bundleStats);
+    console.log("");
   });
 };

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/stylelint-packages.js").postcssValueParser();
+module.exports = require("../dist/compiled/stylelint-config-packages.js").postcssValueParser();
