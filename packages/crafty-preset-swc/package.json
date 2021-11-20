@@ -12,7 +12,7 @@
     "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swc/core": "1.2.110",
+    "@swc/core": "1.2.111",
     "@swc/helpers": "0.2.14",
     "@swc/jest": "0.2.5",
     "@swissquote/crafty": "1.17.2",
@@ -22,7 +22,7 @@
     "gulp-eslint-new": "1.0.0",
     "gulp-newer": "1.4.0",
     "gulp-sourcemaps": "3.0.0",
-    "gulp-swc": "1.2.1",
+    "gulp-swc": "1.2.3",
     "gulp-terser": "2.1.0",
     "swc-loader": "0.1.15"
   },
