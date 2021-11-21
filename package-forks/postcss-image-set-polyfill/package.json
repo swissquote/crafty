@@ -1,0 +1,40 @@
+{
+  "name": "@swissquote/postcss-image-set-polyfill",
+  "version": "1.17.2",
+  "description": "PostCSS plugin for fallback image-set",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "image-set",
+    "background",
+    "image"
+  ],
+  "author": "SuperOl3g <oleglykasov@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperOl3g/postcss-image-set-polyfill.git"
+  },
+  "dependencies": {
+    "postcss-media-query-parser": "^0.2.3",
+    "postcss-value-parser": "^4.1.0"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "private": true
+}

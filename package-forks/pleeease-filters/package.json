@@ -1,0 +1,43 @@
+{
+  "name": "@swissquote/pleeease-filters",
+  "version": "1.17.2",
+  "description": "Convert CSS shorthand filters to SVG ones",
+  "author": {
+    "name": "Vincent De Oliveira"
+  },
+  "main": "./index",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "postprocessor",
+    "css",
+    "postcss",
+    "pleeease",
+    "filters"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamvdo/pleeease-filters.git"
+  },
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "dependencies": {
+    "colord": "2.9.1"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "private": true
+}

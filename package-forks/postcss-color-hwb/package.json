@@ -1,0 +1,44 @@
+{
+  "name": "@swissquote/postcss-color-hwb",
+  "version": "1.17.2",
+  "description": "PostCSS plugin to transform W3C CSS hwb() color to more compatible CSS (rgb() (or rgba()))",
+  "keywords": [
+    "css",
+    "postcss",
+    "postcss-plugin",
+    "color",
+    "colour",
+    "rgb",
+    "hwb"
+  ],
+  "author": "Maxime Thirouin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/postcss/postcss-color-hwb.git"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "colord": "2.9.1",
+    "postcss-functions": "4.0.2"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "private": true
+}

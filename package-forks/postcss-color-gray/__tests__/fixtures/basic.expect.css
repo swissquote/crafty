@@ -1,0 +1,13 @@
+.test-gray {
+	color: rgb(94,94,94);
+	color: rgb(119,119,119);
+	color: rgba(145,145,145,0.5);
+	color: rgb(171,171,171);
+	color: rgba(198,198,198,0.5);
+}
+
+.test-invalid-gray {
+	color: gray();
+	color: gray(40, 1);
+	color: gray(40 / 1 / 1);
+}

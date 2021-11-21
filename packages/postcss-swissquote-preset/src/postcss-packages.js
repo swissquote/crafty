@@ -3,15 +3,15 @@ function autoprefixer() {
 }
 
 function pixrem() {
-  return require("pixrem");
+  return require("@swissquote/pixrem");
 }
 
 function pleeeaseFilters() {
-  return require("pleeease-filters");
+  return require("@swissquote/pleeease-filters/index.js");
 }
 
 function postcssAdvancedVariables() {
-  return require("postcss-advanced-variables");
+  return require("@knagis/postcss-advanced-variables");
 }
 
 function postcss() {
@@ -35,11 +35,11 @@ function postcssCalc() {
 }
 
 function postcssColorModFunction() {
-  return require("postcss-color-mod-function");
+  return require("@swissquote/postcss-color-mod-function");
 }
 
 function postcssColorGray() {
-  return require("postcss-color-gray");
+  return require("@swissquote/postcss-color-gray");
 }
 
 function postcssColorHexAlpha() {
@@ -47,11 +47,11 @@ function postcssColorHexAlpha() {
 }
 
 function postcssColorHsl() {
-  return require("postcss-color-hsl");
+  return require("@swissquote/postcss-color-hsl");
 }
 
 function postcssColorHwb() {
-  return require("postcss-color-hwb");
+  return require("@swissquote/postcss-color-hwb");
 }
 
 function postcssColorRebeccapurple() {
@@ -59,11 +59,11 @@ function postcssColorRebeccapurple() {
 }
 
 function postcssColorRgb() {
-  return require("postcss-color-rgb");
+  return require("@swissquote/postcss-color-rgb");
 }
 
 function postcssColorRgbaFallback() {
-  return require("postcss-color-rgba-fallback");
+  return require("@swissquote/postcss-color-rgba-fallback");
 }
 
 function postcssCsso() {
@@ -95,7 +95,7 @@ function postcssFontVariant() {
 }
 
 function postcssImageSetPolyfill() {
-  return require("postcss-image-set-polyfill");
+  return require("@swissquote/postcss-image-set-polyfill");
 }
 
 function postcssImport() {
@@ -127,7 +127,7 @@ function postcssPseudoClassAnyLink() {
 }
 
 function postcssPseudoelements() {
-  return require("postcss-pseudoelements");
+  return require("@swissquote/postcss-pseudoelements");
 }
 
 function postcssReplaceOverflowWrap() {
@@ -139,7 +139,7 @@ function postcssReporter() {
 }
 
 function postcssSelectorMatches() {
-  return require("postcss-selector-matches");
+  return require("@swissquote/postcss-selector-matches");
 }
 
 function postcssSelectorNot() {

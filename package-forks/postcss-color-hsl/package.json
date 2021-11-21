@@ -1,0 +1,47 @@
+{
+  "name": "@swissquote/postcss-color-hsl",
+  "version": "1.17.2",
+  "description": "PostCSS plugin to transform W3C CSS Color Module Level 4 hsl() new syntax to more compatible CSS (comma-separated hsl() or hsla())",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "color",
+    "hsl",
+    "hsla"
+  ],
+  "author": "David Marchena",
+  "license": "MIT",
+  "repository": "dmarchena/postcss-color-hsl",
+  "bugs": {
+    "url": "https://github.com/dmarchena/postcss-color-hsl/issues"
+  },
+  "homepage": "https://github.com/dmarchena/postcss-color-hsl",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "!**/__tests__"
+  ],
+  "dependencies": {
+    "colord": "2.9.1",
+    "units-css": "0.4.0",
+    "postcss-value-parser": "^4.1.0"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "private": true
+}

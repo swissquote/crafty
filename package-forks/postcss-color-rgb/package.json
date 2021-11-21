@@ -1,0 +1,45 @@
+{
+  "name": "@swissquote/postcss-color-rgb",
+  "version": "1.17.2",
+  "description": "PostCSS plugin to transform W3C CSS Color Module Level 4 rgb() new syntax to more compatible CSS (comma-separated rgb() or rgba())",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "color",
+    "rgb",
+    "rgba"
+  ],
+  "author": "David Marchena",
+  "license": "MIT",
+  "repository": "dmarchena/postcss-color-rgb",
+  "bugs": {
+    "url": "https://github.com/dmarchena/postcss-color-rgb/issues"
+  },
+  "homepage": "https://github.com/dmarchena/postcss-color-rgb",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "!**/__tests__"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "postcss-value-parser": "^4.1.0"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "private": true
+}

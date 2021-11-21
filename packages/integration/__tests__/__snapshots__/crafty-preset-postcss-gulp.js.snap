@@ -360,7 +360,7 @@ exports[`Experiment with all CSS 2`] = `
     background: rgba(153, 221, 153, .8);
 
     /* This will be transformed to rgba*/
-    border-color: rgba(153,221,153,0.8);
+    border-color: rgba(153, 221, 153, .8);
 
     /* ... sad story, homage to Eric Meyer*/
     color: rebeccapurple;
@@ -381,7 +381,7 @@ exports[`Experiment with all CSS 2`] = `
 
 .Link {
     /* Change the opacity of red*/
-    color: rgba(255, 0, 0, 0.9);
+    color: rgba(255, 0, 0, .9);
 }
 
 .Link:hover {
@@ -398,7 +398,7 @@ exports[`Experiment with all CSS 2`] = `
 
 .Text {
     /* Level of gray*/
-    color: rgb(212,212,212);
+    color: rgb(212, 212, 212);
 
     /* Level of gray with opacity*/
     background: gray(10%, 50%);
@@ -731,7 +731,7 @@ exports[`Experiment with all CSS, old browsers 2`] = `
     background: rgba(153, 221, 153, .8);
 
     /* This will be transformed to rgba*/
-    border-color: rgba(153,221,153,0.8);
+    border-color: rgba(153, 221, 153, .8);
 
     /* ... sad story, homage to Eric Meyer*/
     color: #639;
@@ -752,7 +752,7 @@ exports[`Experiment with all CSS, old browsers 2`] = `
 
 .Link {
     /* Change the opacity of red*/
-    color: rgba(255, 0, 0, 0.9);
+    color: rgba(255, 0, 0, .9);
 }
 
 .Link:hover {
@@ -769,7 +769,7 @@ exports[`Experiment with all CSS, old browsers 2`] = `
 
 .Text {
     /* Level of gray*/
-    color: rgb(212,212,212);
+    color: rgb(212, 212, 212);
 
     /* Level of gray with opacity*/
     background: gray(10%, 50%);

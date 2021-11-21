@@ -8,7 +8,8 @@
   "author": "Stephane Goetz",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "package-forks/*"
     ]
   },
   "scripts": {
@@ -20,15 +21,13 @@
     "test": "sh run_all.sh test",
     "test:ci": "sh run_all.sh test:ci",
     "publish:canary": "oao publish --no-git-commit --no-check-uncommitted --no-changelog --publish-tag canary --bump-dependent-reqs=exact",
-    "publish:all": "oao publish --no-changelog --bump-dependent-reqs=exact",
-    "postinstall": "patch-package"
+    "publish:all": "oao publish --no-changelog --bump-dependent-reqs=exact"
   },
   "dependencies": {
     "@vercel/ncc": "0.31.1",
     "jest": "27.3.1",
     "markdown-spellcheck": "1.3.1",
     "oao": "2.0.2",
-    "patch-package": "6.4.7",
     "webpack-bundle-size-analyzer": "3.1.0",
     "write-good": "1.0.8"
   },

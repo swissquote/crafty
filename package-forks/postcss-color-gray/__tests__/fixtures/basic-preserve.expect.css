@@ -1,0 +1,18 @@
+.test-gray {
+	color: rgb(94,94,94);
+	color: gray(40);
+	color: rgb(119,119,119);
+	color: gray(50 / 1);
+	color: rgba(145,145,145,0.5);
+	color: gray(60 / .5);
+	color: rgb(171,171,171);
+	color: gray(70 / 100%);
+	color: rgba(198,198,198,0.5);
+	color: gray(80 / 50%);
+}
+
+.test-invalid-gray {
+	color: gray();
+	color: gray(40, 1);
+	color: gray(40 / 1 / 1);
+}

@@ -1,0 +1,65 @@
+{
+  "name": "@swissquote/postcss-color-mod-function",
+  "version": "1.17.2",
+  "description": "Modify colors using the color-mod() function in CSS",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-color-mod-function",
+  "homepage": "https://github.com/jonathantneal/postcss-color-mod-function#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-color-mod-function/issues",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "@csstools/convert-colors": "^1.4.0",
+    "postcss-values-parser": "6.0.1"
+  },
+  "devDependencies": {
+    "jest": "27.3.1",
+    "postcss": "8.3.11"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "colors",
+    "colours",
+    "modifications",
+    "mods",
+    "adjusters",
+    "adjustments",
+    "csswg",
+    "rgba",
+    "hsla",
+    "white",
+    "black",
+    "red",
+    "green",
+    "blue",
+    "alpha",
+    "hue",
+    "saturation",
+    "lightness",
+    "whiteness",
+    "blackness",
+    "tint",
+    "shade",
+    "blenda",
+    "contrast"
+  ],
+  "private": true
+}
