@@ -75,7 +75,7 @@ function postcssCustomMedia() {
 }
 
 function postcssCustomProperties() {
-  return require("postcss-custom-properties");
+  return require("@swissquote/postcss-custom-properties");
 }
 
 function postcssCustomSelectors() {
