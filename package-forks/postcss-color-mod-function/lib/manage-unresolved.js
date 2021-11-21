@@ -1,7 +1,7 @@
 module.exports = function manageUnresolved(node, opts, word, message) {
-	if ('warn' === opts.unresolved) {
-		opts.decl.warn(opts.result, message, { word });
-	} else if ('ignore' !== opts.unresolved) {
-		throw opts.decl.error(message, { word });
-	}
-}
+  if (opts.unresolved === "warn") {
+    opts.decl.warn(opts.result, message, { word });
+  } else if (opts.unresolved !== "ignore") {
+    throw opts.decl.error(message, { word });
+  }
+};

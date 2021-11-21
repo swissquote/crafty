@@ -17,19 +17,19 @@ function clamp(num, min, max) {
 module.exports = () => ({
   ...functions({
     functions: {
-      hwb(h, w, b, a) {
-        h = ((parseFloat(h) % 360) + 360) % 360;
-        w = clamp(parseFloat(w), 0, 100);
-        b = clamp(parseFloat(b), 0, 100);
+      hwb(hue, whiteness, blackness, alpha) {
+        const h = ((parseFloat(hue) % 360) + 360) % 360;
+        const w = clamp(parseFloat(whiteness), 0, 100);
+        const b = clamp(parseFloat(blackness), 0, 100);
 
-        const alpha = parseFloat(a);
-        a = clamp(isNaN(alpha) ? 1 : alpha, 0, 1);
+        const parsedAlpha = parseFloat(alpha);
+        const a = clamp(isNaN(parsedAlpha) ? 1 : parsedAlpha, 0, 1);
 
         return colord({ h, w, b, a }).toRgbString();
-      },
-    },
+      }
+    }
   }),
-  postcssPlugin: "postcss-color-hwb",
+  postcssPlugin: "postcss-color-hwb"
 });
 
 module.exports.postcss = true;

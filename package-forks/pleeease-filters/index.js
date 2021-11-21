@@ -1,32 +1,32 @@
 /* eslint-disable prefer-destructuring */
-const { colord, extend } = require('colord');
+const { colord, extend } = require("colord");
 
 extend([require("colord/plugins/names")]);
 
 // SVG
 function createSVG(filterElements) {
-  const xmlns = 'http://www.w3.org/2000/svg';
+  const xmlns = "http://www.w3.org/2000/svg";
   let svg = `<svg xmlns="${xmlns}">`;
 
   svg += '<filter id="filter">';
-  svg += filterElements.join('');
-  svg += '</filter>';
-  svg += '</svg>';
+  svg += filterElements.join("");
+  svg += "</filter>";
+  svg += "</svg>";
 
   return svg;
 }
 
 function createSVGElement(tagname, attributes, subElements) {
   let elem = `<${tagname}`;
-  Object.entries(attributes).forEach((attribute) => {
+  Object.entries(attributes).forEach(attribute => {
     elem += ` ${attribute[0]}="${attribute[1]}"`;
   });
   if (subElements !== undefined) {
-    elem += '>';
-    elem += subElements.join('');
+    elem += ">";
+    elem += subElements.join("");
     elem += `</${tagname}>`;
   } else {
-    elem += ' />';
+    elem += " />";
   }
   return elem;
 }
@@ -34,151 +34,147 @@ function createSVGElement(tagname, attributes, subElements) {
 const helpers = {
   length(amount, unit) {
     switch (unit) {
-      case 'em':
-      case 'rem':
+      case "em":
+      case "rem":
         return amount * 16;
-      case 'px':
+      case "px":
       default:
         return amount;
     }
   },
   angle(amount, unit) {
     switch (unit) {
-      case 'grad':
+      case "grad":
         return (180 * amount) / 200;
-      case 'rad':
+      case "rad":
         return (180 * amount) / Math.PI;
-      case 'turn':
+      case "turn":
         return 360 * amount;
-      case 'deg':
+      case "deg":
       default:
         return amount;
     }
-  },
+  }
 };
 
 // Filter object
 const filters = {
-
   // None
   none() {
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = ['none'];
+    const filtersCSS = ["none"];
 
     // SVG
-    properties.filtersSVG = ['none'];
+    const filtersSVG = ["none"];
 
     // IE
     // properties.filtersIE = ['none'];
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG
+    };
   },
 
   // Grayscale
   grayscale(inputAmount, unit) {
     let amount = inputAmount || 0;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`grayscale(${amount})`];
+    const filtersCSS = [`grayscale(${amount})`];
 
     // SVG
-    const svg = createSVGElement('feColorMatrix', {
-      type: 'matrix',
-      'color-interpolation-filters': 'sRGB',
-      values: `${0.2126 + 0.7874 * (1 - amount)} ${
-        0.7152 - 0.7152 * (1 - amount)} ${
-        0.0722 - 0.0722 * (1 - amount)} 0 0 ${
-        0.2126 - 0.2126 * (1 - amount)} ${
-        0.7152 + 0.2848 * (1 - amount)} ${
-        0.0722 - 0.0722 * (1 - amount)} 0 0 ${
-        0.2126 - 0.2126 * (1 - amount)} ${
-        0.7152 - 0.7152 * (1 - amount)} ${
-        0.0722 + 0.9278 * (1 - amount)} 0 0 0 0 0 1 0`,
+    const svg = createSVGElement("feColorMatrix", {
+      type: "matrix",
+      "color-interpolation-filters": "sRGB",
+      values: `${0.2126 + 0.7874 * (1 - amount)} ${0.7152 -
+        0.7152 * (1 - amount)} ${0.0722 - 0.0722 * (1 - amount)} 0 0 ${0.2126 -
+        0.2126 * (1 - amount)} ${0.7152 + 0.2848 * (1 - amount)} ${0.0722 -
+        0.0722 * (1 - amount)} 0 0 ${0.2126 - 0.2126 * (1 - amount)} ${0.7152 -
+        0.7152 * (1 - amount)} ${0.0722 + 0.9278 * (1 - amount)} 0 0 0 0 0 1 0`
     });
-    properties.filtersSVG = [svg];
+    const filtersSVG = [svg];
 
     // IE
-    properties.filtersIE = amount >= 0.5 ? ['gray'] : [];
+    const filtersIE = amount >= 0.5 ? ["gray"] : [];
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG,
+      filtersIE
+    };
   },
 
   // Sepia
   sepia(inputAmount, unit) {
     let amount = inputAmount || 0;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`sepia(${amount})`];
+    const filtersCSS = [`sepia(${amount})`];
 
     // SVG
-    const svg = createSVGElement('feColorMatrix', {
-      type: 'matrix',
-      'color-interpolation-filters': 'sRGB',
-      values: `${0.393 + 0.607 * (1 - amount)} ${
-        0.769 - 0.769 * (1 - amount)} ${
-        0.189 - 0.189 * (1 - amount)} 0 0 ${
-        0.349 - 0.349 * (1 - amount)} ${
-        0.686 + 0.314 * (1 - amount)} ${
-        0.168 - 0.168 * (1 - amount)} 0 0 ${
-        0.272 - 0.272 * (1 - amount)} ${
-        0.534 - 0.534 * (1 - amount)} ${
-        0.131 + 0.869 * (1 - amount)} 0 0 0 0 0 1 0`,
+    const svg = createSVGElement("feColorMatrix", {
+      type: "matrix",
+      "color-interpolation-filters": "sRGB",
+      values: `${0.393 + 0.607 * (1 - amount)} ${0.769 -
+        0.769 * (1 - amount)} ${0.189 - 0.189 * (1 - amount)} 0 0 ${0.349 -
+        0.349 * (1 - amount)} ${0.686 + 0.314 * (1 - amount)} ${0.168 -
+        0.168 * (1 - amount)} 0 0 ${0.272 - 0.272 * (1 - amount)} ${0.534 -
+        0.534 * (1 - amount)} ${0.131 + 0.869 * (1 - amount)} 0 0 0 0 0 1 0`
     });
-    properties.filtersSVG = [svg];
+    const filtersSVG = [svg];
 
     // IE
-    properties.filtersIE = amount >= 0.5 ? ['gray', 'progid:DXImageTransform.Microsoft.Light()'] : [];
+    const filtersIE =
+      amount >= 0.5
+        ? ["gray", "progid:DXImageTransform.Microsoft.Light()"]
+        : [];
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG,
+      filtersIE
+    };
   },
 
   // Saturate
   saturate(inputAmount, unit) {
     let amount = inputAmount || 1;
 
-    const properties = {};
-
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
     // CSS
-    properties.filtersCSS = [`saturate(${amount})`];
+    const filtersCSS = [`saturate(${amount})`];
 
     // SVG
-    const svg = createSVGElement('feColorMatrix', {
-      type: 'matrix',
-      'color-interpolation-filters': 'sRGB',
-      values: `${0.213 + 0.787 * (amount)} ${
-        0.715 - 0.715 * (amount)} ${
-        0.072 - 0.072 * (amount)} 0 0 ${
-        0.213 - 0.213 * (amount)} ${
-        0.715 + 0.295 * (amount)} ${
-        0.072 - 0.072 * (amount)} 0 0 ${
-        0.213 - 0.213 * (amount)} ${
-        0.715 - 0.715 * (amount)} ${
-        0.072 + 0.928 * (amount)} 0 0 0 0 0 1 0`,
+    const svg = createSVGElement("feColorMatrix", {
+      type: "matrix",
+      "color-interpolation-filters": "sRGB",
+      values: `${0.213 + 0.787 * amount} ${0.715 - 0.715 * amount} ${0.072 -
+        0.072 * amount} 0 0 ${0.213 - 0.213 * amount} ${0.715 +
+        0.295 * amount} ${0.072 - 0.072 * amount} 0 0 ${0.213 -
+        0.213 * amount} ${0.715 - 0.715 * amount} ${0.072 +
+        0.928 * amount} 0 0 0 0 0 1 0`
     });
-    properties.filtersSVG = [svg];
+    const filtersSVG = [svg];
 
     // IE
     // no filter
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG
+    };
   },
 
   // Hue-rotate
@@ -187,166 +183,188 @@ const filters = {
 
     angle = helpers.angle(angle, unit);
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`hue-rotate(${angle}deg)`];
+    const filtersCSS = [`hue-rotate(${angle}deg)`];
 
     // SVG
-    const svg = createSVGElement('feColorMatrix', {
-      type: 'hueRotate',
-      'color-interpolation-filters': 'sRGB',
-      values: angle,
+    const svg = createSVGElement("feColorMatrix", {
+      type: "hueRotate",
+      "color-interpolation-filters": "sRGB",
+      values: angle
     });
-    properties.filtersSVG = [svg];
+    const filtersSVG = [svg];
 
     // IE
     // no filter
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG
+    };
   },
 
   // Invert
   invert(inputAmount, unit) {
     let amount = inputAmount || 0;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`invert(${amount})`];
+    const filtersCSS = [`invert(${amount})`];
 
     // SVG
-    const svgSub1 = createSVGElement('feFuncR', {
-      type: 'table',
-      tableValues: `${amount} ${1 - amount}`,
+    const svgSub1 = createSVGElement("feFuncR", {
+      type: "table",
+      tableValues: `${amount} ${1 - amount}`
     });
-    const svgSub2 = createSVGElement('feFuncG', {
-      type: 'table',
-      tableValues: `${amount} ${1 - amount}`,
+    const svgSub2 = createSVGElement("feFuncG", {
+      type: "table",
+      tableValues: `${amount} ${1 - amount}`
     });
-    const svgSub3 = createSVGElement('feFuncB', {
-      type: 'table',
-      tableValues: `${amount} ${1 - amount}`,
+    const svgSub3 = createSVGElement("feFuncB", {
+      type: "table",
+      tableValues: `${amount} ${1 - amount}`
     });
-    const svg = createSVGElement('feComponentTransfer', {
-      'color-interpolation-filters': 'sRGB',
-    }, [svgSub1, svgSub2, svgSub3]);
-    properties.filtersSVG = [svg];
+    const svg = createSVGElement(
+      "feComponentTransfer",
+      {
+        "color-interpolation-filters": "sRGB"
+      },
+      [svgSub1, svgSub2, svgSub3]
+    );
+    const filtersSVG = [svg];
 
     // IE
-    properties.filtersIE = amount >= 0.5 ? ['invert'] : [];
+    const filtersIE = amount >= 0.5 ? ["invert"] : [];
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG,
+      filtersIE
+    };
   },
 
   // Opacity
   opacity(inputAmount, unit) {
     let amount = inputAmount || 1;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`opacity(${amount})`];
+    const filtersCSS = [`opacity(${amount})`];
 
     // SVG
-    const svgSub1 = createSVGElement('feFuncA', {
-      type: 'table',
-      tableValues: `0 ${amount}`,
+    const svgSub1 = createSVGElement("feFuncA", {
+      type: "table",
+      tableValues: `0 ${amount}`
     });
-    const svg = createSVGElement('feComponentTransfer', {
-      'color-interpolation-filters': 'sRGB',
-    }, [svgSub1]);
-    properties.filtersSVG = [svg];
+    const svg = createSVGElement(
+      "feComponentTransfer",
+      {
+        "color-interpolation-filters": "sRGB"
+      },
+      [svgSub1]
+    );
+    const filtersSVG = [svg];
 
     // IE
     // no filter
-
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG
+    };
   },
 
   // Brightness
   brightness(inputAmount, unit) {
     let amount = inputAmount || 1;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`brightness(${amount})`];
+    const filtersCSS = [`brightness(${amount})`];
 
     // SVG
-    const svgSub1 = createSVGElement('feFuncR', {
-      type: 'linear',
-      slope: amount,
+    const svgSub1 = createSVGElement("feFuncR", {
+      type: "linear",
+      slope: amount
     });
-    const svgSub2 = createSVGElement('feFuncG', {
-      type: 'linear',
-      slope: amount,
+    const svgSub2 = createSVGElement("feFuncG", {
+      type: "linear",
+      slope: amount
     });
-    const svgSub3 = createSVGElement('feFuncB', {
-      type: 'linear',
-      slope: amount,
+    const svgSub3 = createSVGElement("feFuncB", {
+      type: "linear",
+      slope: amount
     });
-    const svg = createSVGElement('feComponentTransfer', {
-      'color-interpolation-filters': 'sRGB',
-    }, [svgSub1, svgSub2, svgSub3]);
-    properties.filtersSVG = [svg];
+    const svg = createSVGElement(
+      "feComponentTransfer",
+      {
+        "color-interpolation-filters": "sRGB"
+      },
+      [svgSub1, svgSub2, svgSub3]
+    );
+    const filtersSVG = [svg];
 
     // IE
-    properties.filtersIE = ['progid:DXImageTransform.Microsoft.Light()'];
+    const filtersIE = ["progid:DXImageTransform.Microsoft.Light()"];
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG,
+      filtersIE
+    };
   },
 
   // Contrast
   contrast(inputAmount, unit) {
     let amount = inputAmount || 1;
 
-    if (typeof unit !== 'undefined') {
+    if (typeof unit !== "undefined") {
       amount /= 100;
     }
 
-    const properties = {};
-
     // CSS
-    properties.filtersCSS = [`contrast(${amount})`];
+    const filtersCSS = [`contrast(${amount})`];
 
     // SVG
-    const svgSub1 = createSVGElement('feFuncR', {
-      type: 'linear',
+    const svgSub1 = createSVGElement("feFuncR", {
+      type: "linear",
       slope: amount,
-      intercept: -(0.5 * amount) + 0.5,
+      intercept: -(0.5 * amount) + 0.5
     });
-    const svgSub2 = createSVGElement('feFuncG', {
-      type: 'linear',
+    const svgSub2 = createSVGElement("feFuncG", {
+      type: "linear",
       slope: amount,
-      intercept: -(0.5 * amount) + 0.5,
+      intercept: -(0.5 * amount) + 0.5
     });
-    const svgSub3 = createSVGElement('feFuncB', {
-      type: 'linear',
+    const svgSub3 = createSVGElement("feFuncB", {
+      type: "linear",
       slope: amount,
-      intercept: -(0.5 * amount) + 0.5,
+      intercept: -(0.5 * amount) + 0.5
     });
-    const svg = createSVGElement('feComponentTransfer', {
-      'color-interpolation-filters': 'sRGB',
-    }, [svgSub1, svgSub2, svgSub3]);
-    properties.filtersSVG = [svg];
+    const svg = createSVGElement(
+      "feComponentTransfer",
+      {
+        "color-interpolation-filters": "sRGB"
+      },
+      [svgSub1, svgSub2, svgSub3]
+    );
+    const filtersSVG = [svg];
 
     // IE
     // no filter
 
-    return properties;
+    return {
+      filtersCSS,
+      filtersSVG
+    };
   },
 
   // Blur
@@ -355,7 +373,7 @@ const filters = {
 
     const properties = {};
 
-    if (unit === '' && amount !== 0) {
+    if (unit === "" && amount !== 0) {
       return properties;
     }
 
@@ -365,30 +383,44 @@ const filters = {
     properties.filtersCSS = [`blur(${amount}px)`];
 
     // SVG
-    const svg = createSVGElement('feGaussianBlur', {
-      stdDeviation: amount,
+    const svg = createSVGElement("feGaussianBlur", {
+      stdDeviation: amount
     });
     properties.filtersSVG = [svg];
 
     // IE
-    properties.filtersIE = [`progid:DXImageTransform.Microsoft.Blur(pixelradius=${amount})`];
+    properties.filtersIE = [
+      `progid:DXImageTransform.Microsoft.Blur(pixelradius=${amount})`
+    ];
 
     return properties;
   },
 
   // Drop Shadow
   dropShadow(
-    inputOffsetX, unitX, inputOffsetY, unitY,
-    inputRadius, unitRadius, spread, unitSpread, inputColor,
+    inputOffsetX,
+    unitX,
+    inputOffsetY,
+    unitY,
+    inputRadius,
+    unitRadius,
+    spread,
+    unitSpread,
+    inputColor
   ) {
     let offsetX = Math.round(inputOffsetX) || 0;
     let offsetY = Math.round(inputOffsetY) || 0;
     let radius = Math.round(inputRadius) || 0;
-    const color = inputColor || '#000000';
+    const color = inputColor || "#000000";
 
     const properties = {};
 
-    if ((unitX === ' ' && offsetX !== 0) || (unitY === ' ' && offsetY !== 0) || (unitRadius === ' ' && radius !== 0) || spread) {
+    if (
+      (unitX === " " && offsetX !== 0) ||
+      (unitY === " " && offsetY !== 0) ||
+      (unitRadius === " " && radius !== 0) ||
+      spread
+    ) {
       return properties;
     }
 
@@ -397,37 +429,44 @@ const filters = {
     radius = helpers.length(radius, unitRadius);
 
     // CSS
-    properties.filtersCSS = [`drop-shadow(${offsetX}px ${offsetY}px ${radius}px ${color})`];
+    properties.filtersCSS = [
+      `drop-shadow(${offsetX}px ${offsetY}px ${radius}px ${color})`
+    ];
 
     // SVG
-    const svg1 = createSVGElement('feGaussianBlur', {
-      in: 'SourceAlpha',
-      stdDeviation: radius,
+    const svg1 = createSVGElement("feGaussianBlur", {
+      in: "SourceAlpha",
+      stdDeviation: radius
     });
-    const svg2 = createSVGElement('feOffset', {
+    const svg2 = createSVGElement("feOffset", {
       dx: offsetX + 1,
       dy: offsetY + 1,
-      result: 'offsetblur',
+      result: "offsetblur"
     });
-    const svg3 = createSVGElement('feFlood', {
-      'flood-color': colord(color).toRgbString().replace(/\s+/g, ""),
+    const svg3 = createSVGElement("feFlood", {
+      "flood-color": colord(color)
+        .toRgbString()
+        .replace(/\s+/g, "")
     });
-    const svg4 = createSVGElement('feComposite', {
-      in2: 'offsetblur',
-      operator: 'in',
+    const svg4 = createSVGElement("feComposite", {
+      in2: "offsetblur",
+      operator: "in"
     });
-    const svg5Sub1 = createSVGElement('feMergeNode', {});
-    const svg5Sub2 = createSVGElement('feMergeNode', {
-      in: 'SourceGraphic',
+    const svg5Sub1 = createSVGElement("feMergeNode", {});
+    const svg5Sub2 = createSVGElement("feMergeNode", {
+      in: "SourceGraphic"
     });
-    const svg5 = createSVGElement('feMerge', {}, [svg5Sub1, svg5Sub2]);
+    const svg5 = createSVGElement("feMerge", {}, [svg5Sub1, svg5Sub2]);
     properties.filtersSVG = [svg1, svg2, svg3, svg4, svg5];
 
     // IE
-    properties.filtersIE = [`progid:DXImageTransform.Microsoft.Glow(color=${color},strength=0)`, `progid:DXImageTransform.Microsoft.Shadow(color=${color},strength=0)`];
+    properties.filtersIE = [
+      `progid:DXImageTransform.Microsoft.Glow(color=${color},strength=0)`,
+      `progid:DXImageTransform.Microsoft.Shadow(color=${color},strength=0)`
+    ];
 
     return properties;
-  },
+  }
 };
 
 function convert(value) {
@@ -505,7 +544,9 @@ function convert(value) {
     properties = filters.blur(amount, unit);
   }
   // Drop Shadow
-  fmatch = value.match(/(drop-shadow)\((\s*[0-9.]+)(px|em|rem| )\s*([0-9.]+)(px|em|rem| )\s*([0-9.]+)(px|em|rem| )(\s*([0-9.]+)(px|em|rem| ))?\s*([a-z0-9#%,.\s()]*)(?=\s*\))/i);
+  fmatch = value.match(
+    /(drop-shadow)\((\s*[0-9.]+)(px|em|rem| )\s*([0-9.]+)(px|em|rem| )\s*([0-9.]+)(px|em|rem| )(\s*([0-9.]+)(px|em|rem| ))?\s*([a-z0-9#%,.\s()]*)(?=\s*\))/i
+  );
   if (fmatch !== null) {
     const offsetX = parseFloat(fmatch[2], 10);
     const unitX = fmatch[3];
@@ -517,21 +558,42 @@ function convert(value) {
     const unitSpread = fmatch[10];
     const color = fmatch[11].trim();
     properties = filters.dropShadow(
-      offsetX, unitX, offsetY, unitY, radius,
-      unitRadius, spread, unitSpread, color,
+      offsetX,
+      unitX,
+      offsetY,
+      unitY,
+      radius,
+      unitRadius,
+      spread,
+      unitSpread,
+      color
     );
   }
 
   return properties;
 }
 
+function insertIfNotExisting(decl, newDecl, position) {
+  let add = true;
+  decl.parent.walkDecls(d => {
+    if (newDecl.value === d.value) {
+      add = false;
+      return false;
+    }
+    return true;
+  });
+  if (add) {
+    decl.parent[position](decl, newDecl);
+  }
+}
+
 module.exports = (opts = {}) => {
   const options = {
-    oldIE: opts.oldIE || false,
+    oldIE: opts.oldIE || false
   };
 
   return {
-    postcssPlugin: 'pleeease-filters',
+    postcssPlugin: "pleeease-filters",
     Declaration: {
       filter(decl) {
         // get values
@@ -539,7 +601,7 @@ module.exports = (opts = {}) => {
         const properties = {
           filtersCSS: [],
           filtersSVG: [],
-          filtersIE: [],
+          filtersIE: []
         };
 
         // eslint-disable-next-line no-plusplus
@@ -547,55 +609,40 @@ module.exports = (opts = {}) => {
           let value = values[i];
           // when splitting values, re-add closing parenthesis
           if (i !== values.length - 1) {
-            value += ')';
+            value += ")";
           }
           const currentProperties = convert(value);
           // eslint-disable-next-line no-restricted-syntax
           for (const j in currentProperties) {
-            if (typeof properties[j] !== 'undefined') {
+            if (typeof properties[j] !== "undefined") {
               properties[j] = properties[j].concat(currentProperties[j]);
             }
           }
         }
 
         if (options.oldIE && properties.filtersIE.length > 0) {
-          const filtersIE = properties.filtersIE.join(' ');
+          const filtersIE = properties.filtersIE.join(" ");
 
           // insert IE filters, only if it's not already present
-          const newDecl = { prop: 'filter', value: filtersIE };
-          let add = true;
-          decl.parent.walkDecls((d) => {
-            if (newDecl.value === d.value) {
-              add = false;
-              return false;
-            }
-            return true;
-          });
-          if (add) {
-            decl.parent.insertAfter(decl, newDecl);
-          }
+          const newDecl = { prop: "filter", value: filtersIE };
+
+          insertIfNotExisting(decl, newDecl, "insertAfter");
         }
 
-        if (properties.filtersSVG.length > 0 && !properties.filtersSVG.includes('none')) {
+        if (
+          properties.filtersSVG.length > 0 &&
+          !properties.filtersSVG.includes("none")
+        ) {
           const svgString = createSVG(properties.filtersSVG);
           const filtersSVG = `url('data:image/svg+xml;charset=utf-8,${svgString}#filter')`;
 
           // insert SVG filters, only if it's not already present
-          const newDecl = { prop: 'filter', value: filtersSVG };
-          let add = true;
-          decl.parent.walkDecls((d) => {
-            if (newDecl.value === d.value) {
-              add = false;
-              return false;
-            }
-            return true;
-          });
-          if (add) {
-            decl.parent.insertBefore(decl, newDecl);
-          }
+          const newDecl = { prop: "filter", value: filtersSVG };
+
+          insertIfNotExisting(decl, newDecl, "insertBefore");
         }
-      },
-    },
+      }
+    }
   };
 };
 

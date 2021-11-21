@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define,no-nested-ternary,eqeqeq */
+/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 // tooling
 const {
   convertDtoD,
@@ -5,7 +7,7 @@ const {
   convertRtoD,
   convertTtoD,
   convertNtoRGB,
-  convertHtoRGB,
+  convertHtoRGB
 } = require("./conversions");
 const Color = require("./color");
 const manageUnresolved = require("./manage-unresolved");
@@ -16,7 +18,7 @@ const Operator = require("postcss-values-parser/lib/nodes/Operator");
 /* ========================================================================== */
 
 module.exports = function transformAST(node, opts) {
-  node.walkFuncs((child) => {
+  node.walkFuncs(child => {
     if (isColorModFunction(child)) {
       // transform any variables within the color-mod() function
       if (opts.transformVars) {
@@ -31,7 +33,7 @@ module.exports = function transformAST(node, opts) {
         child.replaceWith(
           new Word({
             raws: child.raws,
-            value: opts.stringifier(color),
+            value: opts.stringifier(color)
           })
         );
       }
@@ -45,12 +47,12 @@ module.exports = function transformAST(node, opts) {
 /* ========================================================================== */
 
 function transformVariables(node, opts) {
-  node.walkFuncs((child) => {
+  node.walkFuncs(child => {
     if (isVariable(child)) {
       // get the custom property and fallback value from var()
       const [prop, fallbackNode] = transformArgsByParams(child, [
         // <value> , [ <fallback> ]?
-        [transformWord, isComma, transformNode],
+        [transformWord, isComma, transformNode]
       ]);
 
       // if the custom property is known
@@ -71,7 +73,7 @@ function transformVariables(node, opts) {
           customPropertyValue.nodes.length === 1 &&
           customPropertyValue.nodes[0]
         ) {
-          customPropertyValue.nodes.forEach((customPropertyChild) => {
+          customPropertyValue.nodes.forEach(customPropertyChild => {
             child.parent.insertBefore(child, customPropertyChild);
           });
         }
@@ -121,7 +123,7 @@ function transformRGBFunction(node, opts) {
       transformPercentage,
       transformPercentage,
       isSlash,
-      transformAlpha,
+      transformAlpha
     ],
     // <number> <number> <number> [ , <alpha-value> ]?
     [
@@ -129,7 +131,7 @@ function transformRGBFunction(node, opts) {
       transformRGBNumber,
       transformRGBNumber,
       isSlash,
-      transformAlpha,
+      transformAlpha
     ],
     // <percentage> , <percentage> , <percentage> [ , <alpha-value> ]?
     [
@@ -139,7 +141,7 @@ function transformRGBFunction(node, opts) {
       isComma,
       transformPercentage,
       isComma,
-      transformAlpha,
+      transformAlpha
     ],
     // <number> , <number> , <number> [ , <alpha-value> ]?
     [
@@ -149,14 +151,12 @@ function transformRGBFunction(node, opts) {
       isComma,
       transformRGBNumber,
       isComma,
-      transformAlpha,
-    ],
+      transformAlpha
+    ]
   ]);
 
   if (red !== undefined) {
-    const color = new Color({ red, green, blue, alpha, colorspace: "rgb" });
-
-    return color;
+    return new Color({ red, green, blue, alpha, colorspace: "rgb" });
   } else {
     return manageUnresolved(
       node,
@@ -178,7 +178,7 @@ function transformHSLFunction(node, opts) {
         transformPercentage,
         transformPercentage,
         isSlash,
-        transformAlpha,
+        transformAlpha
       ],
       // <hue> , <percentage> , <percentage> [ , <alpha-value> ]?
       [
@@ -188,21 +188,19 @@ function transformHSLFunction(node, opts) {
         isComma,
         transformPercentage,
         isComma,
-        transformAlpha,
-      ],
+        transformAlpha
+      ]
     ]
   );
 
   if (lightness !== undefined) {
-    const color = new Color({
+    return new Color({
       hue,
       saturation,
       lightness,
       alpha,
-      colorspace: "hsl",
+      colorspace: "hsl"
     });
-
-    return color;
   } else {
     return manageUnresolved(
       node,
@@ -222,20 +220,18 @@ function transformHWBFunction(node, opts) {
       transformPercentage,
       transformPercentage,
       isSlash,
-      transformAlpha,
-    ],
+      transformAlpha
+    ]
   ]);
 
   if (blackness !== undefined) {
-    const color = new Color({
+    return new Color({
       hue,
       whiteness,
       blackness,
       alpha,
-      colorspace: "hwb",
+      colorspace: "hwb"
     });
-
-    return color;
   } else {
     return manageUnresolved(
       node,
@@ -258,18 +254,12 @@ function transformColorModFunction(node, opts) {
           saturation: 100,
           lightness: 50,
           alpha: 100,
-          colorspace: "hsl",
+          colorspace: "hsl"
         })
       : transformColor(colorOrHueNode, opts);
 
     if (color) {
-      const adjustedColor = transformColorByAdjusters(
-        color,
-        adjusterNodes,
-        opts
-      );
-
-      return adjustedColor;
+      return transformColorByAdjusters(color, adjusterNodes, opts);
     } else {
       return manageUnresolved(node, opts, node.value, `Expected a valid color`);
     }
@@ -289,9 +279,7 @@ function transformHexColor(node, opts) {
     // #<hex-color>{3,4,6,8}
     const [red, green, blue, alpha] = convertHtoRGB(node.value);
 
-    const color = new Color({ red, green, blue, alpha });
-
-    return color;
+    return new Color({ red, green, blue, alpha });
   } else {
     return manageUnresolved(
       node,
@@ -308,15 +296,13 @@ function transformNamedColor(node, opts) {
     // <named-color>
     const [red, green, blue] = convertNtoRGB(node.value);
 
-    const color = new Color({
+    return new Color({
       red,
       green,
       blue,
       alpha: 100,
-      colorspace: "rgb",
+      colorspace: "rgb"
     });
-
-    return color;
   } else {
     return manageUnresolved(
       node,
@@ -332,7 +318,7 @@ function transformNamedColor(node, opts) {
 
 // return a transformed color using adjustments
 function transformColorByAdjusters(color, adjusterNodes, opts) {
-  const adjustedColor = adjusterNodes.reduce((base, node) => {
+  return adjusterNodes.reduce((base, node) => {
     if (isAlphaBlueGreenRedAdjuster(node)) {
       return transformAlphaBlueGreenRedAdjuster(base, node, opts);
     } else if (isRGBAdjuster(node)) {
@@ -362,8 +348,6 @@ function transformColorByAdjusters(color, adjusterNodes, opts) {
       return base;
     }
   }, color);
-
-  return adjustedColor;
 }
 
 function separateOperator(originalNode) {
@@ -406,7 +390,7 @@ function transformAlphaBlueGreenRedAdjuster(base, originalNode, opts) {
           // * <percentage>
           [transformTimesOperator, transformPercentage],
           // <alpha-value>
-          [transformAlpha],
+          [transformAlpha]
         ]
       : // blue/green/red adjustments
         [
@@ -419,7 +403,7 @@ function transformAlphaBlueGreenRedAdjuster(base, originalNode, opts) {
           // <percentage>
           [transformPercentage],
           // <number>
-          [transformRGBNumber],
+          [transformRGBNumber]
         ]
   );
 
@@ -440,9 +424,7 @@ function transformAlphaBlueGreenRedAdjuster(base, originalNode, opts) {
           : Number(adjustment)
         : Number(operatorOrValue);
 
-    const modifiedColor = base[channel](modifiedValue);
-
-    return modifiedColor;
+    return base[channel](modifiedValue);
   } else {
     return manageUnresolved(
       node,
@@ -461,45 +443,35 @@ function transformRGBAdjuster(base, node, opts) {
       transformMinusPlusOperator,
       transformPercentage,
       transformPercentage,
-      transformPercentage,
+      transformPercentage
     ],
     // [ + | - ] <number> <number> <number>
     [
       transformMinusPlusOperator,
       transformRGBNumber,
       transformRGBNumber,
-      transformRGBNumber,
+      transformRGBNumber
     ],
     // [ + | - ] <hash-token>
     [transformMinusPlusOperator, transformHexColor],
     // [ * ] <percentage>
-    [transformTimesOperator, transformPercentage],
+    [transformTimesOperator, transformPercentage]
   ]);
 
   if (arg2 !== undefined && arg2.color) {
-    const modifiedColor = base.rgb(
+    return base.rgb(
       arg1 === "+" ? base.red() + arg2.red() : base.red() - arg2.red(),
       arg1 === "+" ? base.green() + arg2.green() : base.green() - arg2.green(),
       arg1 === "+" ? base.blue() + arg2.blue() : base.blue() - arg2.blue()
     );
-
-    return modifiedColor;
   } else if (arg1 !== undefined && minusPlusMatch.test(arg1)) {
-    const modifiedColor = base.rgb(
+    return base.rgb(
       arg1 === "+" ? base.red() + arg2 : base.red() - arg2,
       arg1 === "+" ? base.green() + arg3 : base.green() - arg3,
       arg1 === "+" ? base.blue() + arg4 : base.blue() - arg4
     );
-
-    return modifiedColor;
   } else if (arg1 !== undefined && arg2 !== undefined) {
-    const modifiedColor = base.rgb(
-      base.red() * arg2,
-      base.green() * arg2,
-      base.blue() * arg2
-    );
-
-    return modifiedColor;
+    return base.rgb(base.red() * arg2, base.green() * arg2, base.blue() * arg2);
   } else {
     return manageUnresolved(
       node,
@@ -513,15 +485,13 @@ function transformRGBAdjuster(base, node, opts) {
 // return a transformed color using a blend/blenda adjustment
 function transformBlendAdjuster(base, node, isAlphaBlend, opts) {
   const [color, percentage, colorspace = "rgb"] = transformArgsByParams(node, [
-    [transformColor, transformPercentage, transformColorSpace],
+    [transformColor, transformPercentage, transformColorSpace]
   ]);
 
   if (percentage !== undefined) {
-    const modifiedColor = isAlphaBlend
+    return isAlphaBlend
       ? base.blenda(color.color, percentage, colorspace)
       : base.blend(color.color, percentage, colorspace);
-
-    return modifiedColor;
   } else {
     return manageUnresolved(
       node,
@@ -536,13 +506,11 @@ function transformBlendAdjuster(base, node, isAlphaBlend, opts) {
 function transformContrastAdjuster(base, node, opts) {
   const [percentage] = transformArgsByParams(node, [
     // <percentage>
-    [transformPercentage],
+    [transformPercentage]
   ]);
 
   if (percentage !== undefined) {
-    const modifiedColor = base.contrast(percentage);
-
-    return modifiedColor;
+    return base.contrast(percentage);
   } else {
     return manageUnresolved(
       node,
@@ -559,7 +527,7 @@ function transformHueAdjuster(base, node, opts) {
     // [ + | - | * ] <angle>
     [transformMinusPlusTimesOperator, transformHue],
     // <angle>
-    [transformHue],
+    [transformHue]
   ]);
 
   if (operatorOrHue !== undefined) {
@@ -601,7 +569,7 @@ function transformBlacknessLightnessSaturationWhitenessAdjuster(
     .replace(/^w$/, "whiteness");
   const [operatorOrValue, adjustment] = transformArgsByParams(node, [
     [transformMinusPlusTimesOperator, transformPercentage],
-    [transformPercentage],
+    [transformPercentage]
   ]);
 
   if (operatorOrValue !== undefined) {
@@ -634,7 +602,7 @@ function transformShadeTintAdjuster(base, node, opts) {
   const channel = node.name.toLowerCase();
   const [percentage] = transformArgsByParams(node, [
     // [ shade | tint ]( <percentage> )
-    [transformPercentage],
+    [transformPercentage]
   ]);
 
   if (percentage !== undefined) {
@@ -806,31 +774,17 @@ function transformArgsByParams(node, params) {
 
   return (
     params
-      .map((param) =>
+      .map(param =>
         nodes
           .map((childNode, index) =>
             typeof param[index] === "function"
               ? param[index](childNode, opts)
               : undefined
           )
-          .filter((child) => typeof child !== "boolean")
+          .filter(child => typeof child !== "boolean")
       )
-      .filter((param) => param.every((result) => result !== undefined))[0] || []
+      .filter(param => param.every(result => result !== undefined))[0] || []
   );
-}
-
-/* Walk helper (required because the default walker is affected by mutations)
-/* ========================================================================== */
-
-// run a function over each node and hen walk each child node of that node
-function walk(node, fn) {
-  fn(node);
-
-  if (Object(node.nodes).length) {
-    node.nodes.slice().forEach((childNode) => {
-      walk(childNode, fn);
-    });
-  }
 }
 
 /* Variable validators

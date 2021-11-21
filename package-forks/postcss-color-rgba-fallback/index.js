@@ -4,7 +4,6 @@
 const valueParser = require("postcss-value-parser");
 const { colord } = require("colord");
 
-
 /**
  * Calculate the color of a chanel
  * based upon two 0-255 colors and a 0-1 alpha value
@@ -25,11 +24,34 @@ function calculateRGB(backgroundColor, foregroundColor) {
     return [
       calcChannel(backgroundColor[0], foregroundColor[0], foregroundColor[3]),
       calcChannel(backgroundColor[1], foregroundColor[1], foregroundColor[3]),
-      calcChannel(backgroundColor[2], foregroundColor[2], foregroundColor[3]),
+      calcChannel(backgroundColor[2], foregroundColor[2], foregroundColor[3])
     ];
   } else {
     return [foregroundColor[0], foregroundColor[1], foregroundColor[2]];
   }
+}
+
+function getIEConfig(options) {
+  let oldie = options.oldie;
+  if (oldie === true) {
+    oldie = ["background-color", "background"];
+  } else if (!Array.isArray(oldie)) {
+    oldie = false;
+  }
+
+  return oldie;
+}
+
+function isRGBA(declaration, properties) {
+  return (
+    declaration.value &&
+    declaration.value.indexOf("rgba") > -1 &&
+    properties.indexOf(declaration.prop) > -1
+  );
+}
+
+function isPrecededBySameProp(declaration) {
+  return declaration.prev() && declaration.prev().prop === declaration.prop;
 }
 
 /**
@@ -43,53 +65,46 @@ module.exports = function(options = {}) {
     "border",
     "border-color",
     "outline",
-    "outline-color",
+    "outline-color"
   ];
 
   const backgroundColor = options.backgroundColor || null;
 
-  let oldie = options.oldie;
-  if (oldie === true) {
-    oldie = ["background-color", "background"];
-  } else if (!Array.isArray(oldie)) {
-    oldie = false;
-  }
+  const oldie = getIEConfig(options);
 
   return {
     postcssPlugin: "postcss-color-rgba-fallback",
     Declaration(declaration, { decl }) {
-      if (
-        !declaration.value ||
-        declaration.value.indexOf("rgba") === -1 ||
-        properties.indexOf(declaration.prop) === -1
-      ) {
+      if (!isRGBA(declaration, properties)) {
         return;
       }
 
       // if previous prop equals current prop
       // no need fallback
-      if (declaration.prev() && declaration.prev().prop === declaration.prop) {
+      if (isPrecededBySameProp(declaration)) {
         return;
       }
 
       let hex;
       let alpha;
       const value = valueParser(declaration.value)
-        .walk(function(node) {
+        .walk(node => {
           const nodes = node.nodes;
           if (node.type === "function" && node.value === "rgba") {
             try {
               alpha = parseFloat(nodes[6].value);
-              const [r,g,b] = calculateRGB(backgroundColor, [
+              const [r, g, b] = calculateRGB(backgroundColor, [
                 parseInt(nodes[0].value, 10),
                 parseInt(nodes[2].value, 10),
                 parseInt(nodes[4].value, 10),
-                alpha,
+                alpha
               ]);
-              hex = colord({r, g, b}).toHex().substring(1);
-              
+              hex = colord({ r, g, b })
+                .toHex()
+                .substring(1);
+
               node.type = "word";
-              node.value = "#" + hex;
+              node.value = `#${hex}`;
             } catch (e) {
               console.error(e);
 
@@ -97,40 +112,42 @@ module.exports = function(options = {}) {
             }
             return false;
           }
+
+          return true;
         })
         .toString();
 
       if (value !== declaration.value) {
-        declaration.cloneBefore({ value: value });
+        declaration.cloneBefore({ value });
 
         if (
           oldie &&
           oldie.indexOf(declaration.prop) !== -1 &&
-          0 < alpha &&
+          alpha > 0 &&
           alpha < 1
         ) {
-          hex = "#" + Math.round(alpha * 255).toString(16) + hex;
+          hex = `#${Math.round(alpha * 255).toString(16)}${hex}`;
           const ieFilter = [
             "progid:DXImageTransform.Microsoft.gradient(startColorStr=",
             hex,
             ",endColorStr=",
             hex,
-            ")",
+            ")"
           ].join("");
           const gteIE8 = decl({
             prop: "-ms-filter",
-            value: '"' + ieFilter + '"',
+            value: `"${ieFilter}"`
           });
           const ltIE8 = decl({
             prop: "filter",
-            value: ieFilter,
+            value: ieFilter
           });
 
           declaration.parent.insertBefore(declaration, gteIE8);
           declaration.parent.insertBefore(declaration, ltIE8);
         }
       }
-    },
+    }
   };
 };
 

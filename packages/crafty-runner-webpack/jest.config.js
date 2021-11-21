@@ -6,5 +6,10 @@ module.exports = {
   ],
   testEnvironment: "node",
   verbose: true,
-  coveragePathIgnorePatterns: ["node_modules", "coverage", "dist/compiled", "jest.config.js"]
+  coveragePathIgnorePatterns: [
+    "node_modules",
+    "coverage",
+    "dist/compiled",
+    "jest.config.js"
+  ]
 };

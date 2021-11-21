@@ -14,7 +14,7 @@
   },
   "scripts": {
     "lint:ci": "oao run-script lint && yarn lint:docs",
-    "lint:code": "sh lint_code.sh",
+    "lint:code": "sh run_all.sh lint --fix",
     "lint:docs": "sh lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "build": "oao run-script build",

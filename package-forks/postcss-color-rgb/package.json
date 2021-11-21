@@ -36,7 +36,7 @@
     "postcss": "^8.0.0"
   },
   "scripts": {
-    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage"

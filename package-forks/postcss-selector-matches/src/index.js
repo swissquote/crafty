@@ -5,10 +5,10 @@ function postcssSelectorMatches(options = {}) {
     postcssPlugin: "postcss-selector-matches",
     Rule(rule, { list }) {
       if (rule.selector && rule.selector.indexOf(":matches") > -1) {
-        rule.selector = replaceRuleSelector(rule, options, list)
+        rule.selector = replaceRuleSelector(rule, options, list);
       }
-    },
-  }
+    }
+  };
 }
 postcssSelectorMatches.postcss = true;
 

@@ -1,156 +1,161 @@
-const mediaParser = require('postcss-media-query-parser').default;
-const valueParser = require('postcss-value-parser');
+const mediaParser = require("postcss-media-query-parser").default;
+const valueParser = require("postcss-value-parser");
 
 const DPI_RATIO = {
-    x: 96,
-    dppx: 96,
-    dpcm: 2.54,
-    dpi: 1
+  x: 96,
+  dppx: 96,
+  dpcm: 2.54,
+  dpi: 1
 };
 
 // convert all sizes to dpi for sorting
 const convertSize = (size, decl) => {
-    if (!size) {
-        return DPI_RATIO.x;
-    }
+  if (!size) {
+    return DPI_RATIO.x;
+  }
 
-    const m = size.match(/^([0-9|\.]+)(.*?)$/);
+  const m = size.match(/^([0-9|\.]+)(.*?)$/);
 
-    if (m && DPI_RATIO[m[2]]) {
-        const dpi = m[1] * DPI_RATIO[m[2]];
+  if (m && DPI_RATIO[m[2]]) {
+    const dpi = m[1] * DPI_RATIO[m[2]];
 
-        return {
-            dpi: Math.floor(dpi),
-            pxRatio: Math.floor(dpi / DPI_RATIO.x * 100) / 100
-        };
-    }
+    return {
+      dpi: Math.floor(dpi),
+      pxRatio: Math.floor((dpi / DPI_RATIO.x) * 100) / 100
+    };
+  }
 
-    throw decl.error('Incorrect size value', { word: m && m[2] });
+  throw decl.error("Incorrect size value", { word: m && m[2] });
 };
 
 const stringify = chunk => valueParser.stringify(chunk);
 
 const parseValue = (value, decl) => {
-    const valueChunks = valueParser(value).nodes;
+  const valueChunks = valueParser(value).nodes;
 
-    const imageSetChunks = valueChunks.shift().nodes;
+  const imageSetChunks = valueChunks.shift().nodes;
 
-    const sizes = imageSetChunks
-            .filter(chunk => chunk.type === 'word')
-            .map(chunk => convertSize(stringify(chunk), decl));
+  const sizes = imageSetChunks
+    .filter(chunk => chunk.type === "word")
+    .map(chunk => convertSize(stringify(chunk), decl));
 
-    const urls = imageSetChunks
-            .filter(chunk => chunk.type === 'function' || chunk.type === 'string')
-            .map(chunk => {
-                const str = stringify(chunk);
-                return chunk.type === 'string' ? `url(${str})` : str;
-            });
-
-    const suffix = valueChunks.length ?
-        valueChunks
-            .map(stringify)
-            .join('') :
-        '';
-
-    return {
-        images: {
-            size: sizes,
-            url: urls
-        },
-        suffix
-    };
-};
-
-function transform(decl, {list, atRule}) {
-    // make sure we have image-set
-    if (!decl.value || decl.value.indexOf('image-set') === -1) {
-        return;
-    }
-
-    const commaSeparatedValues = list.comma(decl.value);
-    const mediaQueryList = {};
-
-    const parsedValues = commaSeparatedValues.map(value => {
-        const result = {};
-
-        if (value.indexOf('image-set') === -1) {
-            result.default = value;
-            return result;
-        }
-
-        const parsedValue = parseValue(value, decl);
-        const images = parsedValue.images;
-        const suffix = parsedValue.suffix;
-
-        result.default = images.url[0] + suffix;
-
-        // for each image add a media query
-        if (images.url.length > 1) {
-            for (let i = 0, len = images.url.length; i < len; i++) {
-                const size = images.size[i].dpi;
-
-                if (size !== DPI_RATIO.x) {
-                    if (!mediaQueryList[size]) {
-                        mediaQueryList[size] = images.size[i].pxRatio;
-                    }
-                    result[size] = images.url[i] + suffix;
-                } else {
-                    result.default = images.url[i] + suffix;
-                }
-            }
-        }
-
-        return result;
+  const urls = imageSetChunks
+    .filter(chunk => chunk.type === "function" || chunk.type === "string")
+    .map(chunk => {
+      const str = stringify(chunk);
+      return chunk.type === "string" ? `url(${str})` : str;
     });
 
-    // add the default image to the decl
-    decl.value = parsedValues.map(val => val.default).join(',');
+  const suffix = valueChunks.length ? valueChunks.map(stringify).join("") : "";
 
-    // check for the media queries
-    const media = decl.parent.parent.params;
-    const parsedMedia = media && mediaParser(media);
+  return {
+    images: {
+      size: sizes,
+      url: urls
+    },
+    suffix
+  };
+};
 
-    Object.keys(mediaQueryList)
-        .sort()
-        .forEach(size => {
-            const minResQuery = `(min-resolution: ${size}dpi)`;
-            const minDPRQuery = `(-webkit-min-device-pixel-ratio: ${mediaQueryList[size]})`;
+function getValues(decl, list) {
+  const commaSeparatedValues = list.comma(decl.value);
+  const mediaQueryList = {};
 
-            const paramStr = parsedMedia ?
-                parsedMedia.nodes
-                    .map(queryNode => `${queryNode.value} and ${minDPRQuery}, ${queryNode.value} and ${minResQuery}`)
-                    .join(',') :
-                `${minDPRQuery}, ${minResQuery}`;
+  const parsedValues = commaSeparatedValues.map(value => {
+    const result = {};
 
-            const atrule = atRule({
-                name: 'media',
-                params: paramStr
-            });
+    if (value.indexOf("image-set") === -1) {
+      result.default = value;
+      return result;
+    }
 
-            // clone empty parent with only relevant decls
-            const parent = decl.parent.clone({
-                nodes: []
-            });
+    const parsedValue = parseValue(value, decl);
+    const images = parsedValue.images;
+    const suffix = parsedValue.suffix;
 
-            const d = decl.clone({
-                value: parsedValues.map(val => val[size] || val.default).join(',')
-            });
+    result.default = images.url[0] + suffix;
 
-            parent.append(d);
-            atrule.append(parent);
+    // for each image add a media query
+    if (images.url.length > 1) {
+      for (let i = 0, len = images.url.length; i < len; i++) {
+        const size = images.size[i].dpi;
 
-            decl.root().append(atrule);
-        });
+        if (size !== DPI_RATIO.x) {
+          if (!mediaQueryList[size]) {
+            mediaQueryList[size] = images.size[i].pxRatio;
+          }
+          result[size] = images.url[i] + suffix;
+        } else {
+          result.default = images.url[i] + suffix;
+        }
+      }
+    }
+
+    return result;
+  });
+
+  return { mediaQueryList, parsedValues };
+}
+
+function transform(decl, { list, atRule }) {
+  // make sure we have image-set
+  if (!decl.value || decl.value.indexOf("image-set") === -1) {
+    return;
+  }
+
+  const { mediaQueryList, parsedValues } = getValues(decl, list);
+
+  // add the default image to the decl
+  decl.value = parsedValues.map(val => val.default).join(",");
+
+  // check for the media queries
+  const media = decl.parent.parent.params;
+  const parsedMedia = media && mediaParser(media);
+
+  Object.keys(mediaQueryList)
+    .sort()
+    .forEach(size => {
+      const minResQuery = `(min-resolution: ${size}dpi)`;
+      const minDPRQuery = `(-webkit-min-device-pixel-ratio: ${mediaQueryList[size]})`;
+
+      const paramStr = parsedMedia
+        ? parsedMedia.nodes
+            .map(
+              queryNode =>
+                `${queryNode.value} and ${minDPRQuery}, ${queryNode.value} and ${minResQuery}`
+            )
+            .join(",")
+        : `${minDPRQuery}, ${minResQuery}`;
+
+      const atrule = atRule({
+        name: "media",
+        params: paramStr
+      });
+
+      // clone empty parent with only relevant decls
+      const parent = decl.parent.clone({
+        nodes: []
+      });
+
+      const d = decl.clone({
+        value: parsedValues.map(val => val[size] || val.default).join(",")
+      });
+
+      parent.append(d);
+      atrule.append(parent);
+
+      decl.root().append(atrule);
+    });
 }
 
 module.exports = () => {
-    return {
-        postcssPlugin: 'postcss-image-set-polyfill',
-        Declaration: {
-            "background-image": transform,
-            background: transform
-        }
-    };
+  return {
+    postcssPlugin: "postcss-image-set-polyfill",
+    Declaration: {
+      "background-image": transform,
+      background: transform
+    }
+  };
 };
 
 module.exports.postcss = true;

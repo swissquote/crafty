@@ -13,7 +13,7 @@
     "lib"
   ],
   "scripts": {
-    "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' lib",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage"
@@ -22,7 +22,7 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@csstools/convert-colors": "^1.4.0",
+    "@csstools/convert-colors": "1.4.0",
     "postcss-values-parser": "6.0.1"
   },
   "devDependencies": {

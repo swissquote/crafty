@@ -3,6 +3,8 @@ const importCustomPropertiesFromSources = require("./lib/import-from");
 const { parse } = require("postcss-values-parser");
 const transformAST = require("./lib/transform");
 
+const colorModFunctionMatch = /(^|[^\w-])color(?:-mod)?\(/i;
+
 module.exports = (opts = {}) => {
   // how unresolved functions and arguments should be handled (default: "throw")
   const unresolvedOpt = String(
@@ -11,7 +13,7 @@ module.exports = (opts = {}) => {
 
   // how transformed colors will be produced in CSS
   const stringifierOpt =
-    Object(opts).stringifier || ((color) => color.toLegacy());
+    Object(opts).stringifier || (color => color.toLegacy());
 
   // sources to import custom selectors from
   const importFrom = [].concat(Object(opts).importFrom || []);
@@ -31,32 +33,30 @@ module.exports = (opts = {}) => {
         getCustomProperties(root, { preserve: true })
       );
 
-      root.walkDecls((decl) => {
-       const originalValue = decl.value;
+      root.walkDecls(decl => {
+        const originalValue = decl.value;
 
-          if (colorModFunctionMatch.test(originalValue)) {
-            const ast = parse(originalValue, { loose: true });
+        if (colorModFunctionMatch.test(originalValue)) {
+          const ast = parse(originalValue, { loose: true });
 
-            transformAST(ast, {
-              unresolved: unresolvedOpt,
-              stringifier: stringifierOpt,
-              transformVars: transformVarsOpt,
-              decl,
-              result,
-              customProperties,
-            });
+          transformAST(ast, {
+            unresolved: unresolvedOpt,
+            stringifier: stringifierOpt,
+            transformVars: transformVarsOpt,
+            decl,
+            result,
+            customProperties
+          });
 
-            const modifiedValue = ast.toString();
+          const modifiedValue = ast.toString();
 
-            if (originalValue !== modifiedValue) {
-              decl.value = modifiedValue;
-            }
+          if (originalValue !== modifiedValue) {
+            decl.value = modifiedValue;
           }
+        }
       });
-    },
+    }
   };
 };
 
 module.exports.postcss = true;
-
-const colorModFunctionMatch = /(^|[^\w-])color(?:-mod)?\(/i;
