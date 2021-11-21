@@ -8,15 +8,16 @@ export default class MyComponent extends React.Component {
       clicked: false
     };
   }
+
   handleClick = () => {
-    this.setState({ clicked: true });
+    this.setState(state => ({ clicked: !state.clicked }));
   };
 
   render() {
     return (
-      <div onClick={this.handleClick} className="foo">
-        Hey
-      </div>
+      <button onClick={this.handleClick} className="foo">
+        {this.state.clicked ? "Clicked" : "Please Click Me"}
+      </button>
     );
   }
 }

@@ -30,6 +30,9 @@ module.exports = {
       watch: ["css/**"]
     }
   },
+  jest(crafty, options) {
+    options.testEnvironment = "jsdom";
+  },
   gulp(crafty, gulp, StreamHandler) {
     gulp.watch(["js/*.js"]).on('change', function (path) {
       console.log("Change happened to", path);

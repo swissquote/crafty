@@ -1,26 +1,50 @@
 import React from "react";
-import { shallow, mount, render } from "enzyme";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
 
 import Component from "../Component";
 
-it('should be selectable by class "foo"', function() {
-  expect(shallow(<Component />).is(".foo")).toBe(true);
+let container = null;
+beforeEach(() => {
+  // met en place un élément DOM comme cible de rendu
+  container = document.createElement("div");
+  document.body.appendChild(container);
 });
 
-it("should mount in a full DOM", function() {
-  expect(mount(<Component />).find(".foo").length).toBe(1);
+afterEach(() => {
+  // nettoie en sortie de test
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+it('should be selectable by class "foo"', function() {
+  act(() => {
+    render(<Component />, container);
+  });
+
+  expect(container.querySelectorAll(".foo")).toHaveLength(1);
 });
 
 it("should render to static HTML", function() {
-  expect(render(<Component />).text()).toEqual("Hey");
+  act(() => {
+    render(<Component />, container);
+  });
+  expect(container.textContent).toEqual("Please Click Me");
 });
 
 it("simulates click events", () => {
-  const wrapper = mount(<Component />);
+  act(() => {
+    render(<Component />, container);
+  });
 
-  expect(wrapper.state().clicked).toBe(false);
+  expect(container.textContent).toEqual("Please Click Me");
 
-  wrapper.find("div").simulate("click");
+  const button = container.querySelector("button");
 
-  expect(wrapper.state().clicked).toBe(true);
+  act(() => {
+    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+
+  expect(container.textContent).toEqual("Clicked");
 });
