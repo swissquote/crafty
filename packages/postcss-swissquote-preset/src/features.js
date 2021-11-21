@@ -155,6 +155,9 @@ module.exports = function(config) {
   processors
     .processor("postcss-csso")
     .embedded()
+    .setOptions({
+      restructure: false
+    })
     .enableIf(() => env === "production");
 
   // Report problems encountered during build

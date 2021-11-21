@@ -23,7 +23,7 @@ function postcssAssets() {
 }
 
 function postcssAtroot() {
-  return require("postcss-atroot");
+  return require("@swissquote/postcss-atroot");
 }
 
 function postcssAttributeCaseInsensitive() {

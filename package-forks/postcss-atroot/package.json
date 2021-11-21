@@ -1,24 +1,11 @@
 {
-  "name": "@swissquote/pleeease-filters",
+  "name": "@swissquote/postcss-atroot",
   "version": "1.17.2",
-  "description": "Convert CSS shorthand filters to SVG ones",
-  "author": {
-    "name": "Vincent De Oliveira"
-  },
-  "main": "./index",
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "postprocessor",
-    "css",
-    "postcss",
-    "pleeease",
-    "filters"
-  ],
+  "description": "PostCSS plugin to place rules directly at the root",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iamvdo/pleeease-filters.git"
+    "url": "https://github.com/OEvgeny/postcss-atroot.git"
   },
   "scripts": {
     "lint": "node ../../package-forks/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
@@ -26,8 +13,18 @@
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage"
   },
-  "dependencies": {
-    "colord": "2.9.1"
+  "keywords": [
+    "postcss",
+    "at-root",
+    "postcss-plugin",
+    "sass",
+    "atroot",
+    "css"
+  ],
+  "author": "OEvgeny",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
   },
   "devDependencies": {
     "jest": "27.3.1",
@@ -35,9 +32,6 @@
   },
   "peerDependencies": {
     "postcss": "^8.0.0"
-  },
-  "engines": {
-    "node": ">=12"
   },
   "private": true
 }
