@@ -14,8 +14,8 @@
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
     "test": "jest",
-    "test:watch": "--watch",
-    "test:ci": "--coverage"
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage"
   },
   "engines": {
     "node": ">=12"
