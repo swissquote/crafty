@@ -23,6 +23,6 @@ module.exports = [
       // make-dir is also not that needed since we depend on Node 12 at least
       // This smaller version does reduces dependencies and is just enough to run
       "make-dir": "../../src/make-dir.js"
-    },
-  },
+    }
+  }
 ];

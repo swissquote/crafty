@@ -1,11 +1,10 @@
-"use strict";
 const { mkdirSync } = require("fs");
 const { mkdir } = require("fs/promises");
 const path = require("path");
 
 // https://github.com/nodejs/node/issues/8987
 // https://github.com/libuv/libuv/pull/1088
-const checkPath = (pth) => {
+function checkPath(pth) {
   if (process.platform === "win32") {
     const pathHasInvalidWinCharacters = /[<>:"|?*]/.test(
       pth.replace(path.parse(pth).root, "")
@@ -17,21 +16,21 @@ const checkPath = (pth) => {
       throw error;
     }
   }
-};
+}
 
-const processOptions = (options) => {
+function processOptions(options) {
   // https://github.com/sindresorhus/make-dir/issues/18
   const defaults = {
-    mode: 0o777,
+    mode: 0o777
   };
 
   return {
     ...defaults,
-    ...options,
+    ...options
   };
-};
+}
 
-const makeDir = async (input, options) => {
+async function makeDir(input, options) {
   checkPath(input);
   options = processOptions(options);
 
@@ -39,15 +38,13 @@ const makeDir = async (input, options) => {
 
   await mkdir(pth, {
     mode: options.mode,
-    recursive: true,
+    recursive: true
   });
 
   return pth;
-};
+}
 
-module.exports = makeDir;
-
-module.exports.sync = (input, options) => {
+function makeDirSync(input, options) {
   checkPath(input);
   options = processOptions(options);
 
@@ -55,8 +52,11 @@ module.exports.sync = (input, options) => {
 
   mkdirSync(pth, {
     mode: options.mode,
-    recursive: true,
+    recursive: true
   });
 
   return pth;
-};
+}
+
+module.exports = makeDir;
+module.exports.sync = makeDirSync;
