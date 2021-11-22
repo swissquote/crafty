@@ -142,24 +142,8 @@ module.exports = class Color {
       : new Color(assign(hwb, { whiteness }));
   }
 
-  toHSL() {
-    return color2hslString(this.color);
-  }
-
-  toHWB() {
-    return color2hwbString(this.color);
-  }
-
   toLegacy() {
     return color2legacyString(this.color);
-  }
-
-  toRGB() {
-    return color2rgbString(this.color);
-  }
-
-  toRGBLegacy() {
-    return color2rgbLegacyString(this.color);
   }
 
   toString() {
