@@ -32,7 +32,7 @@ function processOptions(options) {
 
 async function makeDir(input, rawOptions) {
   checkPath(input);
-  options = processOptions(rawOptions);
+  const options = processOptions(rawOptions);
 
   const pth = path.resolve(input);
 
@@ -46,7 +46,7 @@ async function makeDir(input, rawOptions) {
 
 function makeDirSync(input, rawOptions) {
   checkPath(input);
-  options = processOptions(rawOptions);
+  const options = processOptions(rawOptions);
 
   const pth = path.resolve(input);
 
