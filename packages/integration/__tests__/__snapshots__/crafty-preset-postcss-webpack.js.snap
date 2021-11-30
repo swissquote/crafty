@@ -14,9 +14,9 @@ Object {
 asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
 Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 9 modules
-  runtime modules ___ bytes 4 modules
+  runtime modules ___ KiB 4 modules
   ./js/app.js + 1 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
@@ -45,15 +45,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset myBundle-default.min.css ___ bytes [emitted] (name: default)
+asset myBundle-default.min.css ___ KiB [emitted] (name: default)
   sourceMap myBundle-default.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
-Entrypoint default ___ KiB (___ KiB) = myBundle-default.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
-chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes [dependent] 1 module
-  ./js/app.js ___ bytes [built] [code generated]
+Entrypoint default ___ KiB (___ KiB) = myBundle-default.min.css ___ KiB myBundle.min.js ___ KiB 2 auxiliary assets
+chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ KiB (javascript) ___ KiB (css/mini-extract) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/app.js ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -87,15 +87,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset myBundle-object.min.css ___ bytes [emitted] (name: default)
+asset myBundle-object.min.css ___ KiB [emitted] (name: default)
   sourceMap myBundle-object.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
-Entrypoint default ___ KiB (___ KiB) = myBundle-object.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
-chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes [dependent] 1 module
-  ./js/app.js ___ bytes [built] [code generated]
+Entrypoint default ___ KiB (___ KiB) = myBundle-object.min.css ___ KiB myBundle.min.js ___ KiB 2 auxiliary assets
+chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ KiB (javascript) ___ KiB (css/mini-extract) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/app.js ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -129,15 +129,15 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset myBundle-string.min.css ___ bytes [emitted] (name: default)
+asset myBundle-string.min.css ___ KiB [emitted] (name: default)
   sourceMap myBundle-string.min.css.map ___ KiB [emitted] [dev] (auxiliary name: default)
-Entrypoint default ___ KiB (___ KiB) = myBundle-string.min.css ___ bytes myBundle.min.js ___ bytes 2 auxiliary assets
-chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ bytes (javascript) ___ bytes (css/mini-extract) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  dependent modules ___ bytes [dependent] 1 module
-  ./js/app.js ___ bytes [built] [code generated]
+Entrypoint default ___ KiB (___ KiB) = myBundle-string.min.css ___ KiB myBundle.min.js ___ KiB 2 auxiliary assets
+chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ KiB (javascript) ___ KiB (css/mini-extract) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/app.js ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -173,9 +173,9 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 1 asset
 Entrypoint default = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ bytes (runtime) [entry] [rendered]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 7 modules
-  runtime modules ___ bytes 4 modules
+  runtime modules ___ KiB 4 modules
   ./js/app.js + 1 modules ___ KiB [built] [code generated]
 
   Failed to compile.

@@ -12,14 +12,14 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset 690.myBundle.min.js ___ bytes [emitted] [minimized]
-  sourceMap 690.myBundle.min.js.map ___ bytes [emitted] [dev]
+asset 690.myBundle.min.js ___ KiB [emitted] [minimized]
+  sourceMap 690.myBundle.min.js.map ___ KiB [emitted] [dev]
 Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) 690.myBundle.min.js ___ bytes [rendered]
-  ./js/SomeClass.js ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) 690.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeClass.js ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
-  ./js/script.js ___ bytes [built] [code generated]
+  ./js/script.js ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -51,10 +51,10 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by status ___ bytes [cached] 1 asset
+assets by status ___ KiB [cached] 1 asset
 Entrypoint default = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myBundle.min.js (default) ___ bytes [entry] [rendered]
-  ./js/script.js ___ bytes [built] [code generated] [1 error]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
+  ./js/script.js ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
 

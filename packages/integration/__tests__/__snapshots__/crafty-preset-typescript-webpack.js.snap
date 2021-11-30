@@ -12,15 +12,15 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset someLibrary.myBundle.min.js ___ bytes [emitted] [minimized] (name: someLibrary)
-  sourceMap someLibrary.myBundle.min.js.map ___ bytes [emitted] [dev] (auxiliary name: someLibrary)
+asset someLibrary.myBundle.min.js ___ KiB [emitted] [minimized] (name: someLibrary)
+  sourceMap someLibrary.myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: someLibrary)
 Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
-Chunk Group someLibrary ___ bytes (___ bytes) = someLibrary.myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ bytes [rendered]
-  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+Chunk Group someLibrary ___ KiB (___ KiB) = someLibrary.myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
-  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
+  ./js/script.ts + 1 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -52,21 +52,21 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by path js/*.ts ___ bytes
-  asset js/SomeLibrary.d.ts ___ bytes [emitted]
-  asset js/script.d.ts ___ bytes [emitted]
-  asset js/Component.d.ts ___ bytes [emitted]
+assets by path js/*.ts ___ KiB
+  asset js/SomeLibrary.d.ts ___ KiB [emitted]
+  asset js/script.d.ts ___ KiB [emitted]
+  asset js/Component.d.ts ___ KiB [emitted]
 assets by path *.js ___ KiB
   asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
     sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-  asset 897.myBundle.min.js ___ bytes [emitted] [minimized]
-    sourceMap 897.myBundle.min.js.map ___ bytes [emitted] [dev]
+  asset 897.myBundle.min.js ___ KiB [emitted] [minimized]
+    sourceMap 897.myBundle.min.js.map ___ KiB [emitted] [dev]
 Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) 897.myBundle.min.js ___ bytes [rendered]
-  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) 897.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
-  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
+  ./js/script.ts + 1 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -109,9 +109,9 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated] [1 error]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  ./js/typescript.ts ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
 
@@ -143,11 +143,11 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-assets by status ___ bytes [cached] 1 asset
+assets by status ___ KiB [cached] 1 asset
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  ./js/typescript.ts ___ KiB [built] [code generated]
 webpack compiled with 1 warning
 
   Failed to compile.
@@ -204,9 +204,9 @@ Object {
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
 Entrypoint default = myTSBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myTSBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 3 modules
-  ./js/typescript.ts ___ bytes [built] [code generated] [1 error]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  ./js/typescript.ts ___ KiB [built] [code generated] [1 error]
 webpack compiled with 1 warning
 
   Failed to compile.
@@ -257,11 +257,11 @@ Object {
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 5 assets
 Entrypoint default = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) 897.myBundle.min.js ___ bytes [rendered]
-  ./js/SomeLibrary.ts ___ bytes [built] [code generated]
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ KiB (runtime) [entry] [rendered]
+chunk (runtime: default) 897.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 9 modules
-  ./js/script.ts + 1 modules ___ bytes [built] [code generated]
+  ./js/script.ts + 1 modules ___ KiB [built] [code generated]
 webpack compiled with 1 warning
 
   Failed to compile.
@@ -304,14 +304,14 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-asset myBundle.min.js ___ bytes [emitted] [minimized] (name: default)
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
-asset js/imported-typescript.d.ts ___ bytes [emitted]
-asset js/index.d.ts ___ bytes [emitted]
-Entrypoint default ___ bytes (___ KiB) = myBundle.min.js 1 auxiliary asset
-chunk (runtime: default) myBundle.min.js (default) ___ bytes (javascript) ___ bytes (runtime) [entry] [rendered]
-  runtime modules ___ bytes 1 module
-  ./js/index.ts + 1 modules ___ bytes [built] [code generated]
+asset js/imported-typescript.d.ts ___ KiB [emitted]
+asset js/index.d.ts ___ KiB [emitted]
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 1 module
+  ./js/index.ts + 1 modules ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
