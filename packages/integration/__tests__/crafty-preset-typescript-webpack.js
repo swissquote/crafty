@@ -11,12 +11,6 @@ const getCrafty = configuration.getCrafty;
 // Tests would be unreliable if they timeout >_<
 jest.setTimeout(30000);
 
-// node-forge 0.6.33 doesn't work with jest.
-// but selfsigned is fixed on this version
-// as we don't use it for now, we can simply mock it
-// https://github.com/jfromaniello/selfsigned/issues/16
-jest.mock("node-forge");
-
 it("Loads crafty-preset-typescript and does not register webpack tasks", () => {
   const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
 

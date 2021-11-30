@@ -9,7 +9,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
     "@babel/core": "7.16.0",

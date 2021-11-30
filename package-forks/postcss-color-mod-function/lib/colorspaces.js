@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /*
  * https://drafts.csswg.org/css-color-4/#hsl-to-rgb
  * https://drafts.csswg.org/css-color-4/#hwb-to-rgb
@@ -10,17 +11,17 @@ function hsl2hsv(h, s, l) {
   s /= 100;
   l /= 100;
 
-  let v = l + s * Math.min(l, 1 - l);
+  const v = l + s * Math.min(l, 1 - l);
 
   return [
     h, // h is the same
     v === 0 ? 0 : 200 * (1 - l / v), // s
-    100 * v,
+    100 * v
   ];
 }
 
 function hsl2hwb(h, saturation, l) {
-  let [, s, v] = hsl2hsv(h, saturation, l);
+  const [, s, v] = hsl2hsv(h, saturation, l);
 
   return [h, (v * (100 - s)) / 100, 100 - v];
 }
@@ -31,14 +32,14 @@ function hwb2hsv(h, w, b) {
   b /= 100;
 
   // Achromatic check (white plus black >= 1)
-  let sum = w + b;
+  const sum = w + b;
   if (sum >= 1) {
-    let gray = w / sum;
+    const gray = w / sum;
     return [h, 0, gray * 100];
   }
 
-  let v = 1 - b;
-  let s = v === 0 ? 0 : 1 - w / v;
+  const v = 1 - b;
+  const s = v === 0 ? 0 : 1 - w / v;
   return [h, s * 100, v * 100];
 }
 
@@ -46,12 +47,12 @@ function hsv2hsl(h, s, v) {
   s /= 100;
   v /= 100;
 
-  let l = v * (1 - s / 2);
+  const l = v * (1 - s / 2);
 
   return [
     h, // h is the same
     l === 0 || l === 1 ? 0 : ((v - l) / Math.min(l, 1 - l)) * 100,
-    l * 100,
+    l * 100
   ];
 }
 
@@ -60,10 +61,10 @@ function hwb2hsl(h, w, b) {
 }
 
 function rgb2hsl(r, g, b, fallbackhue) {
-  let max = Math.max(r, g, b);
-  let min = Math.min(r, g, b);
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
   let [h, s, l] = [NaN, 0, (min + max) / 2];
-  let d = max - min;
+  const d = max - min;
 
   if (d !== 0) {
     s = l === 0 || l === 1 ? 0 : (max - l) / Math.min(l, 1 - l);
@@ -87,10 +88,10 @@ function rgb2hsl(r, g, b, fallbackhue) {
 
 function rgb2hwb(r, g, b, fallbackhue) {
   var hsl = rgb2hsl(r, g, b, fallbackhue);
-  let h = hsl[0];
+  const h = hsl[0];
   // calculate white and black
-  let whiteness = Math.min(r, g, b);
-  let blackness = 1 - Math.max(r, g, b);
+  const whiteness = Math.min(r, g, b);
+  const blackness = 1 - Math.max(r, g, b);
   return [h, whiteness * 100, blackness * 100];
 }
 
@@ -105,12 +106,12 @@ function hsl2rgb(h, s, l) {
   l /= 100;
 
   function f(n) {
-    let k = (n + h / 30) % 12;
-    let a = s * Math.min(l, 1 - l);
+    const k = (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
     return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
   }
 
-  return [f(0), f(8), f(4)].map((v) => v * 100);
+  return [f(0), f(8), f(4)].map(v => v * 100);
 }
 
 function hwb2rgb(h, w, b) {
@@ -127,8 +128,8 @@ function hwb2rgb(h, w, b) {
 
   // From https://drafts.csswg.org/css-color-4/#hwb-to-rgb
   return hsl2rgb(h, 100, 50)
-    .map((v) => v / 100)
-    .map((v) => {
+    .map(v => v / 100)
+    .map(v => {
       return (v * (1 - w - b) + w) * 100;
     });
 }
@@ -139,5 +140,5 @@ module.exports = {
   hsl2rgb,
   hsl2hwb,
   hwb2rgb,
-  hwb2hsl,
+  hwb2hsl
 };

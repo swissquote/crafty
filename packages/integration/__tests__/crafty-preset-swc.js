@@ -10,12 +10,6 @@ jest.setTimeout(30000);
 
 const getCrafty = configuration.getCrafty;
 
-// node-forge 0.6.33 doesn't work with jest.
-// but selfsigned is fixed on this version
-// as we don't use it for now, we can simply mock it
-// https://github.com/jfromaniello/selfsigned/issues/16
-jest.mock("node-forge");
-
 const PRESET_SWC = "@swissquote/crafty-preset-swc";
 
 it("Loads crafty-preset-swc and does not register webpack tasks", () => {

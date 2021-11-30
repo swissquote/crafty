@@ -294,7 +294,12 @@ function color2rgb(color) {
 function color2hsl(color) {
   const [hue, saturation, lightness] =
     color.colorspace === "rgb"
-      ? rgb2hsl(color.red / 100, color.green / 100, color.blue / 100, color.hue || 0)
+      ? rgb2hsl(
+          color.red / 100,
+          color.green / 100,
+          color.blue / 100,
+          color.hue || 0
+        )
       : color.colorspace === "hwb"
       ? hwb2hsl(color.hue, color.whiteness, color.blackness)
       : [color.hue, color.saturation, color.lightness];
@@ -305,7 +310,12 @@ function color2hsl(color) {
 function color2hwb(color) {
   const [hue, whiteness, blackness] =
     color.colorspace === "rgb"
-      ? rgb2hwb(color.red / 100, color.green / 100, color.blue / 100, color.hue || 0)
+      ? rgb2hwb(
+          color.red / 100,
+          color.green / 100,
+          color.blue / 100,
+          color.hue || 0
+        )
       : color.colorspace === "hsl"
       ? hsl2hwb(color.hue, color.saturation, color.lightness)
       : [color.hue, color.whiteness, color.blackness];

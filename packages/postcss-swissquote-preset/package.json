@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "yarn node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src packages",
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src packages",
     "build": "node ../../utils/build.js"
   },
   "dependencies": {
