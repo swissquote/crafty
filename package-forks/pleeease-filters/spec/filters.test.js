@@ -3,6 +3,9 @@
 // To run tests, run these commands from the project root:
 // 1. `npm test`
 
+const { test } = require("uvu");
+const assert = require("uvu/assert");
+
 const fs = require('fs');
 const path = require('path');
 const postcss = require('postcss');
@@ -10,7 +13,7 @@ const filter = require('../index');
 
 const specDir = path.join(__dirname, 'cases');
 
-function test(name, options) {
+function runTest(name, options) {
   // css
   const css = fs.readFileSync(path.join(specDir, `${name}.css`), 'utf-8');
   let expected;
@@ -24,71 +27,71 @@ function test(name, options) {
   // process
   const processed = postcss(filter(options)).process(css);
 
-  expect(processed.css).toBe(expected);
+  assert.is(processed.css, expected);
 }
 
-describe('pleeease-filters', () => {
-  it('should not add SVG filters when none', () => {
-    test('none');
-  });
-
-  it('should convert grayscale filters', () => {
-    test('grayscale');
-  });
-
-  it('should convert sepia filters', () => {
-    test('sepia');
-  });
-
-  it('should convert saturate filters', () => {
-    test('saturate');
-  });
-
-  it('should convert hue-rotate filters', () => {
-    test('hueRotate');
-  });
-
-  it('should convert invert filters', () => {
-    test('invert');
-  });
-
-  it('should convert opacity filters', () => {
-    test('opacity');
-  });
-
-  it('should convert brightness filters', () => {
-    test('brightness');
-  });
-
-  it('should convert contrast filters', () => {
-    test('contrast');
-  });
-
-  it('should convert blur filters', () => {
-    test('blur');
-  });
-
-  it('should convert drop-shadow filters', () => {
-    test('dropShadow');
-  });
-
-  it('should convert multiple filters', () => {
-    test('multiple');
-  });
-
-  it('should not convert invalid filters', () => {
-    test('invalid');
-  });
-
-  it('should deal correctly with edge cases', () => {
-    test('edge');
-  });
-
-  it('should add IE filter when asking', () => {
-    test('ie', { oldIE: true });
-  });
-
-  it('should not add filters if they are already present', () => {
-    test('present', { same: true, oldIE: true });
-  });
+test('should not add SVG filters when none', () => {
+  runTest('none');
 });
+
+test('should convert grayscale filters', () => {
+  runTest('grayscale');
+});
+
+test('should convert sepia filters', () => {
+  runTest('sepia');
+});
+
+test('should convert saturate filters', () => {
+  runTest('saturate');
+});
+
+test('should convert hue-rotate filters', () => {
+  runTest('hueRotate');
+});
+
+test('should convert invert filters', () => {
+  runTest('invert');
+});
+
+test('should convert opacity filters', () => {
+  runTest('opacity');
+});
+
+test('should convert brightness filters', () => {
+  runTest('brightness');
+});
+
+test('should convert contrast filters', () => {
+  runTest('contrast');
+});
+
+test('should convert blur filters', () => {
+  runTest('blur');
+});
+
+test('should convert drop-shadow filters', () => {
+  runTest('dropShadow');
+});
+
+test('should convert multiple filters', () => {
+  runTest('multiple');
+});
+
+test('should not convert invalid filters', () => {
+  runTest('invalid');
+});
+
+test('should deal correctly with edge cases', () => {
+  runTest('edge');
+});
+
+test('should add IE filter when asking', () => {
+  runTest('ie', { oldIE: true });
+});
+
+test('should not add filters if they are already present', () => {
+  runTest('present', { same: true, oldIE: true });
+});
+
+test.run();
