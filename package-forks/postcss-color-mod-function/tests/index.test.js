@@ -41,6 +41,10 @@ describe("postcss-color-mod-function", () => {
     return testFixture("very-basic");
   });
 
+  it("works with spec examples", () => {
+    return testFixture("spec-example");
+  });
+
   it("supports basic usage", () => {
     return testFixture("basic");
   });

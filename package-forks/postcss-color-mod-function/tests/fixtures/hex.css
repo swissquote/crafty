@@ -11,10 +11,10 @@ test {
 	color: color-mod(#000000 saturation(50%));
 	color: color-mod(#000000 l(50%));
 	color: color-mod(#000000 lightness(50%));
-	color: color-mod(#000000 w(50%));
-	color: color-mod(#000000 whiteness(50%));
-	color: color-mod(#000000 b(50%));
-	color: color-mod(#000000 blackness(50%));
+        color: color-mod(#ff0000 w(50%));
+        color: color-mod(#ff0000 whiteness(50%));
+        color: color-mod(#0000ff b(50%));
+        color: color-mod(#0000ff blackness(50%));
 	color: color-mod(#000000 tint(50%));
 	color: color-mod(#000000 shade(50%));
 	color: color-mod(#000000 blend(#ffffff 50%));

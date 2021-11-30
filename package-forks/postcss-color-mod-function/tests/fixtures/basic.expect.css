@@ -63,17 +63,17 @@ test-lightness-saturation-adjuster {
 	color: hsl(0, 100%, 70%);
 	color: hsl(0, 100%, 30%);
 	color: hsl(0, 100%, 75%);
-	color: hsl(60, 20%, 91.1764705882%);
-	color: hsl(60, 75.5555555556%, 91.1764705882%);
-	color: hsl(60, 35.5555555556%, 91.1764705882%);
-	color: hsl(60, 83.3333333333%, 91.1764705882%);
+	color: hsl(60, 20%, 91.176%);
+	color: hsl(60, 75.556%, 91.176%);
+	color: hsl(60, 35.556%, 91.176%);
+	color: hsl(60, 83.333%, 91.176%);
 }
 
 test-blackness-whiteness-adjuster {
-	color: rgb(204, 204, 220);
-	color: rgb(194, 194, 220);
+	color: rgb(207, 207, 207);
+	color: rgb(200, 200, 200);
 	color: rgb(248, 248, 220);
-	color: rgb(55, 55, 220);
+	color: rgb(134, 134, 134);
 	color: rgb(245, 245, 51);
 	color: rgb(245, 245, 223);
 	color: rgb(245, 245, 169);
@@ -111,13 +111,13 @@ test-combination-adjuster {
 
 test-sameness {
 	color: rgb(245, 245, 220);
-	color: hsl(60, 55.5555555556%, 91.1764705882%);
-	color: hsl(60, 55.5555555556%, 91.1764705882%);
-	color: hsl(60, 55.5555555556%, 91.1764705882%);
+	color: hsl(60, 55.556%, 91.176%);
+	color: hsl(60, 55.556%, 91.176%);
+	color: hsl(60, 55.556%, 91.176%);
 	color: rgb(245, 245, 220);
 	color: rgb(245, 245, 220);
 	color: rgb(245, 245, 220);
-	color: hsl(60, 55.5555555556%, 91.1764705882%);
+	color: hsl(60, 55.556%, 91.176%);
 }
 
 :root {

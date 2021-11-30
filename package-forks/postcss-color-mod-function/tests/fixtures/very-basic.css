@@ -1,5 +1,6 @@
 test-red-green-blue-alpha-adjuster {
-	color: color-mod(red alpha(- .75));
-	color: color(red alpha(- 10%));
-	color: color(red alpha(-10%));
+        color: color-mod(beige hue(+ 0deg));
+        color: color-mod(beige saturation(+ 0%));
+        color: color-mod(beige lightness(+ 0%));
+        color: color-mod(beige blend(beige 0% hsl));
 }

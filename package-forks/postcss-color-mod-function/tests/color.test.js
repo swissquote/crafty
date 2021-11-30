@@ -17,11 +17,11 @@ for (const [seed, ...calls] of tests) {
     const color = new Color(seed);
 
     for (const [name, args, retVal] of calls) {
-
       const result = color[name].apply(color, args);
 
-      expect(typeof result == "object" ? result.toString() : result).toEqual(retVal);
-    }
+      const strigified = typeof result == "object" ? result.toString() : result;
 
+      expect(strigified).toEqual(retVal);
+    }
   });
 }

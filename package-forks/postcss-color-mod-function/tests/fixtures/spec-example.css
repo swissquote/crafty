@@ -1,0 +1,17 @@
+spec-examples {
+    /* https://www.w3.org/TR/2016/WD-css-color-4-20160705/#example-bcc5a00f */
+    color: color-mod(blue w(+ 20%) s(+ 20%)); /* #33f */
+    /* It does seem that the actual value for lightness is 58.824%, cross-checked with culori */
+    color: color-mod(#787 w(+ 20%) s(+ 20%)); /* hsl(120deg, 20%, 56%) */
+
+    /* https://www.w3.org/TR/2016/WD-css-color-4-20160705/#example-e7b054d4 */
+    color: color-mod(red rgb(+ #004400)); /* #ff4400 */
+
+    /* https://www.w3.org/TR/2016/WD-css-color-4-20160705/#example-a87924f9 */
+    color: color-mod(yellow blend(blue 50%)); /* #808080 */
+    color: color-mod(yellow blend(blue 50% hsl)); /* hsl(150, 100%, 50%) */
+
+    /* https://www.w3.org/TR/2016/WD-css-color-4-20160705/#example-87095b48 */
+    /* This example can't be correct, all libraries give a result of  hsl(30, 50%, 50%) when blending yellow ( hsl(60, 100%, 50%) ) with 50% of purple ( hsl(300, 100%, 25.1%) ) */
+    /*color: color-mod(yellow blend(purple 50%)); /* hsl(0, 100%, 50%) */
+}
