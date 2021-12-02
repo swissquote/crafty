@@ -2,10 +2,8 @@ module.exports = [
   {
     name: "postcss-packages",
     externals: {
-      assets: "assets",
       browserslist: "browserslist",
       "caniuse-lite": "caniuse-lite", // caniuse-lite will still be imported by autoprefixer
-      "postcss-assets": "postcss-assets", // Depends on "assets" in a way that doesn't compile
 
       // TODO :: add a check to make sure no other direct imports are added
       postcss: "postcss",

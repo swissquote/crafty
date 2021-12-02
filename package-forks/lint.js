@@ -111,7 +111,7 @@ async function main() {
         warnings.push("Missing a package.json");
       }
 
-      await writeFile(path.join(__dirname, dir, "jest.config.js"), jestConfig)
+      //await writeFile(path.join(__dirname, dir, "jest.config.js"), jestConfig)
 
       if (warnings.length) {
         console.log("=>", dir);

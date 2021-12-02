@@ -1,0 +1,50 @@
+{
+  "name": "@swissquote/postcss-assets",
+  "version": "1.17.2",
+  "description": "PostCSS plugin to manage assets",
+  "keywords": [
+    "assets",
+    "base64",
+    "css",
+    "image",
+    "path",
+    "postcss",
+    "postcss-plugin",
+    "size",
+    "url"
+  ],
+  "bugs": "https://github.com/assetsjs/assets/issues",
+  "license": "MIT",
+  "author": "Vadym Borodin <borodean@gmail.com> (http://borodean.com)",
+  "contributors": [
+    "Alexey Plutalov (https://github.com/demiazz)",
+    "Andrey Sitnik (https://github.com/ai)",
+    "Dave Clayton (https://github.com/davedx)",
+    "Ivan Vlasenko (https://github.com/avanes)",
+    "Liucw (https://github.com/booxood)",
+    "Pascal Duez (https://github.com/pascalduez)"
+  ],
+  "main": "./lib",
+  "repository": "assetsjs/postcss-assets",
+  "scripts": {
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node lib",
+    "test": "uvu",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=lib uvu"
+  },
+  "dependencies": {
+    "@swissquote/assets": "1.17.2",
+    "postcss-functions": "4.0.2"
+  },
+  "devDependencies": {
+    "c8": "7.10.0",
+    "postcss": "8.4.4",
+    "uvu": "0.5.2"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "private": true
+}

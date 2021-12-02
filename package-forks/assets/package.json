@@ -1,0 +1,37 @@
+{
+  "name": "@swissquote/assets",
+  "version": "1.17.2",
+  "description": "An asset manager for node",
+  "keywords": [
+    "assets",
+    "base64",
+    "image",
+    "path",
+    "size",
+    "url"
+  ],
+  "bugs": "https://github.com/assetsjs/postcss-assets/issues",
+  "license": "MIT",
+  "author": "Vadym Borodin <borodean@gmail.com> (http://borodean.com)",
+  "main": "./lib",
+  "repository": "assetsjs/assets",
+  "scripts": {
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node lib",
+    "test": "uvu",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=lib uvu"
+  },
+  "dependencies": {
+    "glob": "7.2.0",
+    "image-size": "1.0.0",
+    "mrmime": "1.0.0"
+  },
+  "devDependencies": {
+    "c8": "7.10.0",
+    "sinon": "^12.0.1",
+    "uvu": "0.5.2"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "private": true
+}

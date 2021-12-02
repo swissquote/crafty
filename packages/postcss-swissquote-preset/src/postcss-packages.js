@@ -19,7 +19,7 @@ function postcss() {
 }
 
 function postcssAssets() {
-  return require("postcss-assets");
+  return require("@swissquote/postcss-assets");
 }
 
 function postcssAtroot() {
