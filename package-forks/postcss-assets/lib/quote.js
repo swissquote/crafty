@@ -1,11 +1,11 @@
 /* eslint quotes: 0 */
 
-const util = require('util');
+const util = require("util");
 
 const R_QUOTES = /'/g;
 
 function escapeQuote(match, offset, string) {
-  if (string[offset - 1] === '\\') {
+  if (string[offset - 1] === "\\") {
     return match;
   }
   return `\\${match}`;

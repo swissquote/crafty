@@ -2,7 +2,7 @@ const colors = require("../../packages/ansi-colors");
 
 exports.description = "List supported browsers";
 exports.command = async function run(crafty, input, cli) {
-  const browserslist = require("../../packages/browserslist");
+  const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
 
   console.log(`Your browserslist query:\n    '${crafty.config.browsers}'`);
 

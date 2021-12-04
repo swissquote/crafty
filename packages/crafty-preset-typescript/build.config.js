@@ -10,6 +10,7 @@ module.exports = [
       typescript: "typescript",
 
       // Provided by other Crafty packages
+      glob: "@swissquote/crafty-commons/packages/glob",
       webpack: "@swissquote/crafty-runner-webpack/packages/webpack",
     }
   }

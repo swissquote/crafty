@@ -1,4 +1,4 @@
-const debug = require("@swissquote/crafty/packages/debug")(
+const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:runner-gulp"
 );
 

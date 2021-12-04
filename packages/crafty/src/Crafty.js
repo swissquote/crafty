@@ -8,7 +8,9 @@ const Watcher = require("./Watcher");
 const Information = require("./log/Information");
 const registerTasks = require("./tasks");
 
-const debug = require("../packages/debug")("crafty:core");
+const debug = require("@swissquote/crafty-commons/packages/debug")(
+  "crafty:core"
+);
 
 class Crafty {
   constructor(config) {

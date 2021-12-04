@@ -10,10 +10,6 @@ function asyncDone() {
   return require("async-done");
 }
 
-function browserslist() {
-  return require("browserslist");
-}
-
 function camelcaseKeys() {
   return require("camelcase-keys");
 }
@@ -26,20 +22,12 @@ function copyAnything() {
   return require("copy-anything");
 }
 
-function debug() {
-  return require("debug");
-}
-
 function enhancedResolve() {
   return require("enhanced-resolve");
 }
 
 function fancyLog() {
   return require("fancy-log");
-}
-
-function findUp() {
-  return require("find-up");
 }
 
 function isNegatedGlob() {
@@ -62,13 +50,6 @@ function prettyHrTime() {
   return require("pretty-hrtime");
 }
 
-/**
- * We don't need it directly but many Crafty packages rely on it, providing it for convenience
- */
-function tmp() {
-  return require("tmp");
-}
-
 function undertaker() {
   return require("undertaker");
 }
@@ -81,20 +62,16 @@ module.exports = {
   ansiColors,
   anymatch,
   asyncDone,
-  browserslist,
   camelcaseKeys,
   copyAnything,
   chokidar,
-  debug,
   enhancedResolve,
   fancyLog,
-  findUp,
   isNegatedGlob,
   justDebounce,
   loudRejection,
   mergeAnything,
   prettyHrTime,
-  tmp,
   undertaker,
   yargsParser
 };

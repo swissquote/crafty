@@ -1,4 +1,6 @@
-const debug = require("../../packages/debug")("crafty:test");
+const debug = require("@swissquote/crafty-commons/packages/debug")(
+  "crafty:test"
+);
 
 const formatError = require("../log/formatError");
 

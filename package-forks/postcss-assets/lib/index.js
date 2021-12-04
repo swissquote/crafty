@@ -1,28 +1,63 @@
-const Assets = require('@swissquote/assets');
-const { dirname } = require('path');
-const functions = require('postcss-functions');
-const util = require('util');
-const quote = require('./quote');
-const unescapeCss = require('./unescape-css');
-const unquote = require('./unquote');
-const generateFileUniqueId = require('./__utils__/generateFileUniqueId');
+const Assets = require("@swissquote/assets");
+const { dirname } = require("path");
+const functions = require("postcss-functions");
+const util = require("util");
+const quote = require("./quote");
+const unescapeCss = require("./unescape-css");
+const unquote = require("./unquote");
+const generateFileUniqueId = require("./__utils__/generateFileUniqueId");
 
 const cachedDimensions = {};
 
 function formatUrl(url) {
-  return util.format('url(%s)', quote(url));
+  return util.format("url(%s)", quote(url));
 }
 
 function formatSize(measurements) {
-  return util.format('%dpx %dpx', measurements.width, measurements.height);
+  return util.format("%dpx %dpx", measurements.width, measurements.height);
 }
 
 function formatWidth(measurements) {
-  return util.format('%dpx', measurements.width);
+  return util.format("%dpx", measurements.width);
 }
 
 function formatHeight(measurements) {
-  return util.format('%dpx', measurements.height);
+  return util.format("%dpx", measurements.height);
+}
+
+function measure(params, resolver, path, density) {
+  let cached = null;
+  let id = "";
+  let getSizePromise = null;
+
+  return resolver.path(path).then(resolvedPath => {
+    if (params.cache) {
+      cached = cachedDimensions[resolvedPath];
+      id = generateFileUniqueId(resolvedPath);
+    }
+
+    if (cached && id && cached[id]) {
+      getSizePromise = Promise.resolve(cached[id]);
+    } else {
+      getSizePromise = resolver.size(path).then(size => {
+        if (params.cache && id) {
+          cachedDimensions[resolvedPath] = {};
+          cachedDimensions[resolvedPath][id] = size;
+        }
+        return size;
+      });
+    }
+
+    return getSizePromise.then(size => {
+      if (density !== undefined) {
+        return {
+          width: Number((size.width / density).toFixed(4)),
+          height: Number((size.height / density).toFixed(4))
+        };
+      }
+      return size;
+    });
+  });
 }
 
 module.exports = (params = {}) => {
@@ -31,41 +66,6 @@ module.exports = (params = {}) => {
   }
 
   const resolver = new Assets(params);
-
-  function measure(path, density) {
-    let cached = null;
-    let id = '';
-    let getSizePromise = null;
-
-    return resolver.path(path).then((resolvedPath) => {
-      if (params.cache) {
-        cached = cachedDimensions[resolvedPath];
-        id = generateFileUniqueId(resolvedPath);
-      }
-
-      if (cached && id && cached[id]) {
-        getSizePromise = Promise.resolve(cached[id]);
-      } else {
-        getSizePromise = resolver.size(path).then((size) => {
-          if (params.cache && id) {
-            cachedDimensions[resolvedPath] = {};
-            cachedDimensions[resolvedPath][id] = size;
-          }
-          return size;
-        });
-      }
-
-      return getSizePromise.then((size) => {
-        if (density !== undefined) {
-          return {
-            width: Number((size.width / density).toFixed(4)),
-            height: Number((size.height / density).toFixed(4)),
-          };
-        }
-        return size;
-      });
-    });
-  }
 
   return {
     // Initialize functions plugin as if it was this plugin
@@ -81,20 +81,26 @@ module.exports = (params = {}) => {
         },
         size: function size(path, density) {
           const normalizedPath = unquote(unescapeCss(path));
-          return measure(normalizedPath, density).then(formatSize);
+          return measure(params, resolver, normalizedPath, density).then(
+            formatSize
+          );
         },
         width: function width(path, density) {
           const normalizedPath = unquote(unescapeCss(path));
-          return measure(normalizedPath, density).then(formatWidth);
+          return measure(params, resolver, normalizedPath, density).then(
+            formatWidth
+          );
         },
         height: function height(path, density) {
           const normalizedPath = unquote(unescapeCss(path));
-          return measure(normalizedPath, density).then(formatHeight);
-        },
-      },
+          return measure(params, resolver, normalizedPath, density).then(
+            formatHeight
+          );
+        }
+      }
     }),
     // Override with our own features and name
-    postcssPlugin: 'postcss-assets',
+    postcssPlugin: "postcss-assets",
     Once(root) {
       let inputDir;
       if (root.source.input.file) {
@@ -108,10 +114,10 @@ module.exports = (params = {}) => {
         }
       }
 
-      if (typeof params.relative === 'string') {
+      if (typeof params.relative === "string") {
         resolver.options.relativeTo = params.relative;
       }
-    },
+    }
   };
 };
 

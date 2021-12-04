@@ -2,7 +2,7 @@ module.exports = [
   {
     name: "index",
     externals: [
-        "@swissquote/crafty/packages/tmp"
+        "@swissquote/crafty-commons/packages/tmp"
     ]
   },
 ];

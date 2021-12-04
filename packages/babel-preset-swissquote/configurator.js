@@ -1,4 +1,6 @@
-const debug = require("debug")("crafty:preset-babel");
+const debug = require("@swissquote/crafty-commons/packages/debug")(
+  "crafty:preset-babel"
+);
 
 module.exports = function(crafty, bundle, babelOptions) {
   const babelConfiguration = {

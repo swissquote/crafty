@@ -1,5 +1,5 @@
 const path = require("path");
-const browserslist = require("../packages/browserslist");
+const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
 
 const defaultBrowsers = [
   "Edge >= 18",

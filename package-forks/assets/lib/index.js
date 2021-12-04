@@ -18,8 +18,8 @@ Assets.size = size;
 Assets.url = url;
 
 ["data", "path", "size", "url"].forEach(resolver => {
-  Assets.prototype[resolver] = function(path, callback) {
-    return Assets[resolver](path, this.options, callback);
+  Assets.prototype[resolver] = function(filePath, callback) {
+    return Assets[resolver](filePath, this.options, callback);
   };
 });
 

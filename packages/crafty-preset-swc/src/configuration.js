@@ -1,5 +1,5 @@
-const debug = require("@swissquote/crafty/packages/debug");
-const findUp = require("@swissquote/crafty/packages/find-up");
+const debug = require("@swissquote/crafty-commons/packages/debug");
+const findUp = require("@swissquote/crafty-commons/packages/find-up");
 
 function hasSwcHelpersDependency() {
   const packageJsonPath = findUp.sync("package.json", { cwd: process.cwd() });

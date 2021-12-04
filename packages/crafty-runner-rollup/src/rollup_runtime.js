@@ -11,7 +11,7 @@ const batchWarnings = require("./utils/logging");
 const handleError = require("./utils/handleError");
 const relativeId = require("./utils/relativeId");
 
-const debug = require("@swissquote/crafty/packages/debug")(
+const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:runner-rollup"
 );
 

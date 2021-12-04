@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const findUp = require("find-up");
+const findUp = require("@swissquote/crafty-commons/packages/find-up");
 
 const babelRuntimePackageFile = "node_modules/@babel/runtime/package.json";
 

@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const resolveFrom = require("resolve-from");
-const tmp = require("@swissquote/crafty/packages/tmp");
+const tmp = require("@swissquote/crafty-commons/packages/tmp");
 
 let configuration = {};
 let idx;

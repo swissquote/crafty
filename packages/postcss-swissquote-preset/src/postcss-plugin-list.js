@@ -1,4 +1,6 @@
-const debug = require("debug")("postcss-swissquote-preset");
+const debug = require("@swissquote/crafty-commons/packages/debug")(
+  "postcss-swissquote-preset"
+);
 
 module.exports = () => {
   const listed = [];

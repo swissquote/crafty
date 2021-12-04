@@ -1,6 +1,6 @@
 const path = require("path");
 
-const findUp = require("@swissquote/crafty/packages/find-up");
+const findUp = require("@swissquote/crafty-commons/packages/find-up");
 
 const createTask = require("./gulp");
 

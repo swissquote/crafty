@@ -13,7 +13,8 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.17.2"
+    "@swissquote/crafty": "1.17.2",
+    "@swissquote/crafty-commons": "1.17.2"
   },
   "devDependencies": {
     "gulp-plumber": "1.2.1",

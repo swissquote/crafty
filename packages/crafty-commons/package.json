@@ -1,5 +1,5 @@
 {
-  "name": "@swissquote/crafty-preset-maven",
+  "name": "@swissquote/crafty-commons",
   "version": "1.17.2",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
@@ -7,16 +7,20 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "main": "dist/compiled/index.js",
   "scripts": {
-    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
     "build": "node ../../utils/build.js"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.17.2"
+    "caniuse-lite": "^1.0.30001271"
   },
   "devDependencies": {
-    "xml2js": "0.4.23"
+    "browserslist": "4.18.1",
+    "debug": "4.1.0",
+    "find-up": "5.0.0",
+    "glob": "7.2.0",
+    "minimatch": "3.0.4",
+    "tmp": "0.2.1"
   },
   "engines": {
     "node": ">=12"

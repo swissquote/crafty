@@ -50,7 +50,8 @@ module.exports = [
       "postcss-scss": "postcss-scss",
 
       // Used by stylelint-no-unsupported-browser-features
-      browserslist: "@swissquote/crafty/packages/browserslist",
+      browserslist: "@swissquote/crafty-commons/packages/browserslist",
+      minimatch: "@swissquote/crafty-commons/packages/minimatch",
       "stylelint/lib/utils/optionsMatches":
         "stylelint/lib/utils/optionsMatches",
       "caniuse-lite": "caniuse-lite",
