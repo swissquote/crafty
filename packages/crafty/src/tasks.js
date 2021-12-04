@@ -1,4 +1,6 @@
-const debug = require("@swissquote/crafty-commons/packages/debug")("crafty:tasks");
+const debug = require("@swissquote/crafty-commons/packages/debug")(
+  "crafty:tasks"
+);
 const { copy } = require("../packages/copy-anything");
 const { merge } = require("../packages/merge-anything");
 
