@@ -1,4 +1,4 @@
-const plumber = require("gulp-plumber");
+const plumber = require("@swissquote/gulp-plumber");
 
 let crafty;
 let gulp;

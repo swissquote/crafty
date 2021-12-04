@@ -4,7 +4,16 @@ module.exports = [
     externals: {
         "@swissquote/crafty-commons/packages/debug": "@swissquote/crafty-commons/packages/debug",
         "@swissquote/crafty/src/watch.js": "@swissquote/crafty/src/watch.js",
-        glob: "@swissquote/crafty-commons/packages/glob"
+
+        "ansi-colors": "@swissquote/crafty/packages/ansi-colors",
+        "fancy-log": "@swissquote/crafty/packages/fancy-log",
+        glob: "@swissquote/crafty-commons/packages/glob",
+
+        // "readable-stream" is a drop-in replacement of "stream"
+        // But its current version is big and outdated
+        "readable-stream": "stream",
+        "readable-stream/readable": "../../src/Readable.js",
+        "readable-stream/passthrough": "../../src/PassThrough.js",
     }
   },
 ];
