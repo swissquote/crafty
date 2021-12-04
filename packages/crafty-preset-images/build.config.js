@@ -5,7 +5,11 @@ module.exports = [
         glob: "@swissquote/crafty-commons/packages/glob",
         "@swissquote/crafty/packages/ansi-colors" : "@swissquote/crafty/packages/ansi-colors",
         "fsevents" : "fsevents", // it's an optional dependency that can only be installed on macOS. Leave that to npm and friends,
-        "url": "../../src/url"
+        "url": "../../src/url",
+
+        // "readable-stream" is a drop-in replacement of "stream"
+        // But its current version is big and outdated
+        "readable-stream": "stream",
     }
   },
 ];
