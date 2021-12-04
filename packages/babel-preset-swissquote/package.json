@@ -11,16 +11,6 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
     "build": "node ../../utils/build.js"
   },
-  "files": [
-    "dist/**",
-    "packages/**",
-    "index.js",
-    "configurator.js",
-    "configurator-gulp.js",
-    "configurator-rollup.js",
-    "configurator-webpack.js",
-    "get-runtime.js"
-  ],
   "dependencies": {
     "@babel/core": "7.16.0",
     "@babel/runtime": "7.16.3",
