@@ -1,0 +1,48 @@
+{
+  "name": "@swissquote/gulp-newer",
+  "version": "1.17.2",
+  "description": "Only pass through newer source files",
+  "homepage": "https://github.com/tschaub/gulp-newer",
+  "author": {
+    "name": "Tim Schaub",
+    "url": "http://tschaub.net/"
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "newer",
+    "mtime"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tschaub/gulp-newer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tschaub/gulp-newer/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "test": "uvu",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js uvu"
+  },
+  "devDependencies": {
+    "@swissquote/crafty-runner-gulp": "1.17.2",
+    "c8": "7.10.0",
+    "uvu": "0.5.2",
+    "mock-fs": "5.1.2",
+    "vinyl": "2.2.1"
+  },
+  "dependencies": {
+    "glob": "7.2.0",
+    "plugin-error": "1.0.1"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  }
+}

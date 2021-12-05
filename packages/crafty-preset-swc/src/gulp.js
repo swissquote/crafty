@@ -50,7 +50,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
-      const newer = require("gulp-newer");
+      const newer = require("@swissquote/crafty-commons-gulp/packages/gulp-newer");
       stream.add(newer(crafty.config.destination_js + bundle.destination));
     }
 
@@ -90,7 +90,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(swcWrapper(crafty, swc(swcOptions, bundle)));
 
     // Process
-    const sourcemaps = require("gulp-sourcemaps");
+    const sourcemaps = require("@swissquote/crafty-commons-gulp/packages/gulp-sourcemaps");
     stream.add(sourcemaps.init({ loadMaps: true }));
 
     if (bundle.concat) {

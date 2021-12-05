@@ -11,15 +11,6 @@ function gulpConcat() {
   return require("gulp-concat");
 }
 
-function gulpNewer() {
-  return require("gulp-newer");
-}
-
-function gulpSourcemaps() {
-  // Imports libraries still using `new Buffer()` which cause deprecation warnigns
-  //return require("gulp-sourcemaps");
-}
-
 function gulpTypescript() {
   // Imports libraries still using `new Buffer()` which cause deprecation warnigns
   //return require("gulp-typescript");
@@ -45,8 +36,6 @@ module.exports = {
   babelLoader,
   gulpBabel,
   gulpConcat,
-  gulpNewer,
-  gulpSourcemaps,
   gulpTypescript,
   rollupPluginBabel,
   rollupPluginTypescript,

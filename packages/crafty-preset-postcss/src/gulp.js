@@ -9,7 +9,7 @@ function cssTask(crafty, StreamHandler, bundle) {
     const postcss = require("gulp-postcss");
     const rename = require("gulp-rename");
     const scssParser = require("postcss-scss");
-    const sourcemaps = require("gulp-sourcemaps");
+    const sourcemaps = require("@swissquote/crafty-commons-gulp/packages/gulp-sourcemaps");
     const touch = require("./touch.js");
 
     return new StreamHandler(bundle.source, destination)

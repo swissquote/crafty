@@ -1,4 +1,3 @@
-
 module.exports = [
   {
     name: "typescript-packages",
@@ -11,11 +10,14 @@ module.exports = [
 
       // Provided by other Crafty packages
       glob: "@swissquote/crafty-commons/packages/glob",
+      "plugin-error" : "@swissquote/crafty-commons-gulp/packages/plugin-error",
       webpack: "@swissquote/crafty-runner-webpack/packages/webpack",
 
       // "readable-stream" is a drop-in replacement of "stream"
       // But its current version is big and outdated
       "readable-stream": "stream",
+      "readable-stream/readable": "../../src/Readable.js",
+      "readable-stream/passthrough": "../../src/PassThrough.js",
     }
   }
 ];

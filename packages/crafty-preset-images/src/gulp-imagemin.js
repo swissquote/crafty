@@ -1,5 +1,5 @@
 const path = require("path");
-const PluginError = require("plugin-error");
+const PluginError = require("@swissquote/crafty-commons-gulp/packages/plugin-error");
 const through = require("through2-concurrent");
 const prettyBytes = require("pretty-bytes");
 const colors = require("@swissquote/crafty/packages/ansi-colors");

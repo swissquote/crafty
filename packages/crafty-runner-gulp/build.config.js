@@ -7,6 +7,7 @@ module.exports = [
 
         "ansi-colors": "@swissquote/crafty/packages/ansi-colors",
         "fancy-log": "@swissquote/crafty/packages/fancy-log",
+        "plugin-error" : "@swissquote/crafty-commons-gulp/packages/plugin-error",
         glob: "@swissquote/crafty-commons/packages/glob",
 
         // "readable-stream" is a drop-in replacement of "stream"
