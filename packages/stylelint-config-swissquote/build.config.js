@@ -1,5 +1,6 @@
 const commonExternals = {
-  stylelint: "stylelint"
+  stylelint: "stylelint",
+  "/stylelint(/.*)/": "stylelint$1",
 };
 
 module.exports = [
@@ -52,9 +53,8 @@ module.exports = [
       // Used by stylelint-no-unsupported-browser-features
       browserslist: "@swissquote/crafty-commons/packages/browserslist",
       minimatch: "@swissquote/crafty-commons/packages/minimatch",
-      "stylelint/lib/utils/optionsMatches":
-        "stylelint/lib/utils/optionsMatches",
       "caniuse-lite": "caniuse-lite",
+      "/caniuse-lite(/.*)/": "caniuse-lite$1",
 
       // We use other packages created here
       "stylelint-prettier": "./stylelint-prettier-package.js",

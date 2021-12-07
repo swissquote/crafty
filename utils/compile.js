@@ -17,10 +17,11 @@ function printStats(bundleStats) {
 module.exports = async function compile(input, output, bundle) {
   const { name, ...options } = bundle;
   await ncc(path.join(process.cwd(), input), {
+    filename: path.basename(input),
     sourceMap: true,
     sourceMapRegister: true,
     ...options,
-  }).then(async ({ code, map, assets, stats }) => {
+  }).then(async ({ code, assets, stats }) => {
     const dirname = path.dirname(output);
 
     if (!existsSync(dirname)) {
@@ -41,11 +42,6 @@ module.exports = async function compile(input, output, bundle) {
         );
         await fs.promises.writeFile(`${dirname}/${file}`, data.source);
       }
-    }
-
-    if (map) {
-      console.log("Writing", `${output}.map`, filesize(map.length));
-      await fs.promises.writeFile(`${output}.map`, map);
     }
 
     const bundleStats = stats.toJson();

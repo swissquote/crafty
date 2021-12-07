@@ -1,12 +1,10 @@
 module.exports = [
   {
     name: "common-packages",
-    externals: [
+    externals: {
       // To make sure we get up-to-date data
-      "caniuse-lite",
-      "caniuse-lite/dist/unpacker/agents",
-      "caniuse-lite/dist/unpacker/feature",
-      "caniuse-lite/dist/unpacker/region"
-    ]
+      "caniuse-lite": "caniuse-lite",
+      "/caniuse-lite(/.*)/": "caniuse-lite$1",
+    }
   }
 ];

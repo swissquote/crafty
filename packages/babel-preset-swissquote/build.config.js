@@ -7,11 +7,8 @@ module.exports = [
       glob: "@swissquote/crafty-commons/packages/glob",
       minimatch: "@swissquote/crafty-commons/packages/minimatch",
 
-      "caniuse-lite": "caniuse-lite", // FIXME: `autoprefixer` will still bundle this because it uses direct imports
-      "caniuse-lite/data/features/border-radius":
-        "caniuse-lite/data/features/border-radius",
-      "caniuse-lite/data/features/css-featurequeries.js":
-        "caniuse-lite/data/features/css-featurequeries",
+      "caniuse-lite": "caniuse-lite",
+      "/caniuse-lite(/.*)/": "caniuse-lite$1",
 
       chalk: "chalk",
 
