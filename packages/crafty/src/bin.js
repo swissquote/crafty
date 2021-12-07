@@ -5,8 +5,6 @@ const loudRejection = require("../packages/loud-rejection");
 
 const cli = require("./cli");
 const configuration = require("./configuration");
-const events = require("./log/events");
-const formatError = require("./log/formatError");
 const getCommands = require("./commands");
 const version = require("../package.json").version;
 
@@ -39,9 +37,9 @@ cli(crafty, commands).then(
     process.on("exit", () => process.exit(exitCode));
   },
   error => {
-    if (!events.wasLogged(error)) {
-      console.error(formatError(error));
-    }
+    // Using crafty.error will make sure that it won't
+    // show an error that was already shown
+    crafty.error(error);
 
     process.on("exit", () => process.exit(1));
   }

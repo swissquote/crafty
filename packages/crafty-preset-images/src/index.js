@@ -27,10 +27,11 @@ module.exports = {
       return path.join(crafty.config.img_basedir, "**", `*.${extension}`);
     });
 
-    gulp.task("images_all", () => {
+    gulp.task("images_all", cb => {
       const stream = new StreamHandler(
         sourcesPath,
-        crafty.config.destination_img
+        crafty.config.destination_img,
+        cb
       );
 
       //Only work on images that were changed
@@ -43,10 +44,11 @@ module.exports = {
       return stream.generate();
     });
 
-    gulp.task("images_svg", () => {
+    gulp.task("images_svg", cb => {
       const stream = new StreamHandler(
         path.join(crafty.config.img_basedir, "**", "*.svg"),
-        crafty.config.destination_img
+        crafty.config.destination_img,
+        cb
       );
 
       stream.add(svgmin());

@@ -1,5 +1,5 @@
 function cssTask(crafty, StreamHandler, bundle) {
-  return function() {
+  return function(cb) {
     // Init
     const destination =
       crafty.config.destination_css +
@@ -12,7 +12,7 @@ function cssTask(crafty, StreamHandler, bundle) {
     const sourcemaps = require("@swissquote/crafty-commons-gulp/packages/gulp-sourcemaps");
     const touch = require("./touch.js");
 
-    return new StreamHandler(bundle.source, destination)
+    return new StreamHandler(bundle.source, destination, cb)
       .add(sourcemaps.init())
       .add(
         postcss(getProcessors(crafty.config, crafty, bundle), {

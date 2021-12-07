@@ -1,13 +1,15 @@
 const plumber = require("@swissquote/gulp-plumber");
+const pump = require("pump");
 
 let crafty;
 let gulp;
 
 module.exports = class StreamHandler {
-  constructor(source, destination, errorCallback) {
+  constructor(source, destination, callback) {
     this.source = source;
     this.destination = destination;
     this.handlers = [];
+    this.callback = callback;
 
     // Prevent the build from stopping
     // if we are in watch mode
@@ -16,8 +18,8 @@ module.exports = class StreamHandler {
         plumber(error => {
           crafty.error(error);
 
-          if (errorCallback) {
-            errorCallback();
+          if (callback) {
+            callback(error);
           }
         })
       );
@@ -32,13 +34,19 @@ module.exports = class StreamHandler {
 
   generate() {
     const sourceStream = gulp.src(this.source);
+    const destStream = gulp.dest(this.destination);
 
-    const mergedStream = this.handlers.reduce(
-      (stream, handler) => stream.pipe(handler),
-      sourceStream
-    );
+    return pump(sourceStream, ...this.handlers, destStream, err => {
+      // Display the error if there is any
+      if (err) {
+        crafty.error(err);
+      }
 
-    return mergedStream.pipe(gulp.dest(this.destination));
+      // Signal completion
+      if (this.callback) {
+        this.callback(err);
+      }
+    });
   }
 };
 

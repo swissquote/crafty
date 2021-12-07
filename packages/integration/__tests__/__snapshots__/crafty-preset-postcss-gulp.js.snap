@@ -899,10 +899,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'css' ...
 [__:__:__] Starting 'css_myBundle' ...
-[__:__:__] 'css_myBundle' errored after ____ ms
-[__:__:__] CssSyntaxError in plugin \\"gulp-postcss\\"
-Message:
-    __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/css/style.scss:3:5: Unknown word
+[__:__:__] __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/fails/css/style.scss:3:5: Unknown word
 
   1 |
   2 | .BodyComponent
@@ -911,6 +908,7 @@ Message:
   4 | }
   5 |
 
+[__:__:__] 'css_myBundle' errored after ____ ms
 [__:__:__] 'css' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
 ",

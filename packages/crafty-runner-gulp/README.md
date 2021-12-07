@@ -78,12 +78,11 @@ gulp.task("images_svg", function() {
 });
 ```
 
-#### `new StreamHandler(source, destination[, errorCallback])`
+#### `new StreamHandler(source, destination[, callback])`
 
 - `source` is a glob or array of globs
 - `destination` is a destination file or directory
-- `errorCallback` is an optional callback that you can set to define what to do
-  with errors in your stream
+- `callback(error)` is an optional node-style callback that you can set to be called once the stream has finished processing
 
 #### `stream.add(handler)`
 

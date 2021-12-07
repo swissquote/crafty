@@ -2,6 +2,7 @@ const Undertaker = require("../packages/undertaker");
 const log = require("../packages/fancy-log");
 
 const events = require("./log/events");
+const { wasLogged, recordLogged } = require("./log/eventLog");
 const formatError = require("./log/formatError");
 const syncTask = require("./log/syncTask");
 const Watcher = require("./Watcher");
@@ -32,7 +33,11 @@ class Crafty {
   }
 
   error(error) {
-    this.log.error(formatError(error));
+    // If we haven't logged this before, log it and add to list
+    if (!wasLogged(error)) {
+      this.log.error(formatError(error));
+      recordLogged(error);
+    }
   }
 
   addDefaultTask(task) {

@@ -306,10 +306,7 @@ Object {
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-[__:__:__] 'js_myBundle' errored after ____ ms
-[__:__:__] SyntaxError in plugin \\"gulp-babel\\"
-Message:
-    __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js: Unexpected token (14:6)
+[__:__:__] __PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js: Unexpected token (14:6)
 
   12 | }
   13 |
@@ -317,14 +314,9 @@ Message:
      |       ^
   15 | test.sayHi();
   16 |
+[__:__:__] 'js_myBundle' errored after ____ ms
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-[__:__:__]
-__PATH__/packages/integration/fixtures/crafty-preset-babel-gulp/fails/js/script.js
-  14:6  error  Parsing error: Unexpected token (14:6)
-
-✖ 1 problem (1 error, 0 warnings)
-
 ",
 }
 `;
