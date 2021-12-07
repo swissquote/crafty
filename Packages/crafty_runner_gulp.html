@@ -113,7 +113,7 @@ task runner, combined with an API of file streams.</p>
 <p><a href="#page_section_5"><code>StreamHandler</code></a></p>
 <ul class="TableOfContents">
 <li>
-<p><a href="#page_section_6"><code>new StreamHandler(source, destination[, errorCallback])</code></a></p>
+<p><a href="#page_section_6"><code>new StreamHandler(source, destination[, callback])</code></a></p>
 </li>
 <li>
 <p><a href="#page_section_7"><code>stream.add(handler)</code></a></p>
@@ -187,15 +187,14 @@ complex streams without re-assigning the variable every time</li>
   <span class="hljs-keyword">return</span> stream.generate();
 });
 </code></pre>
-<h4 id="page_section_6"><code>new StreamHandler(source, destination[, errorCallback])</code></h4>
+<h4 id="page_section_6"><code>new StreamHandler(source, destination[, callback])</code></h4>
 <ul>
 <li>
 <code>source</code> is a glob or array of globs</li>
 <li>
 <code>destination</code> is a destination file or directory</li>
 <li>
-<code>errorCallback</code> is an optional callback that you can set to define what to do
-with errors in your stream</li>
+<code>callback(error)</code> is an optional node-style callback that you can set to be called once the stream has finished processing</li>
 </ul>
 <h4 id="page_section_7"><code>stream.add(handler)</code></h4>
 <p>Same as <code>.pipe(handler)</code></p>
