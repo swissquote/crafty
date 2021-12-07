@@ -4,6 +4,8 @@
 const { suite } = require("uvu");
 const assert = require("uvu/assert");
 
+const { Transform } = require("stream");
+
 var es = require("event-stream"),
   through2 = require("through2"),
   EE = require("events").EventEmitter,
@@ -112,7 +114,7 @@ it.skip("default error handler should work", function() {
 
 it("should attach error handler in non-flowing mode", function() {
   return new Promise((done) => {
-    var delayed = through2.obj();
+    var delayed = new Transform({objectMode: true, transform(file, enc, cb) { cb(null, file); }});
     setTimeout(delayed.write.bind(delayed, "data"), delay);
     setTimeout(delayed.write.bind(delayed, "data"), delay);
     delayed
@@ -122,7 +124,7 @@ it("should attach error handler in non-flowing mode", function() {
 });
 
 // it.only('in flowing mode', function (done) {
-//     var delayed = through2.obj();
+//     var delayed = new Transform({objectMode: true, transform(file, enc, cb) { cb(null, file); }});
 //     setTimeout(delayed.write.bind(delayed, 'data'), delay);
 //     setTimeout(delayed.write.bind(delayed, 'data'), delay);
 //     delayed

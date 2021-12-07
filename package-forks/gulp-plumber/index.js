@@ -1,4 +1,4 @@
-var through2 = require("through2");
+const { Transform } = require("stream");
 var EE = require("events").EventEmitter;
 var fancyLog = require("fancy-log");
 const colors = require("ansi-colors");
@@ -47,7 +47,12 @@ function plumber(opts) {
     opts = { errorHandler: opts };
   }
 
-  var through = through2.obj();
+  var through = new Transform({
+    objectMode: true,
+    transform(file, enc, cb) {
+      cb(null, file);
+    },
+  });
   through._plumber = true;
 
   if (opts.errorHandler !== false) {
@@ -109,7 +114,12 @@ function plumber(opts) {
 module.exports = plumber;
 
 module.exports.stop = function() {
-  var through = through2.obj();
+  var through = new Transform({
+    objectMode: true,
+    transform(file, enc, cb) {
+      cb(null, file);
+    },
+  });
   through._unplumbed = true;
   return through;
 };

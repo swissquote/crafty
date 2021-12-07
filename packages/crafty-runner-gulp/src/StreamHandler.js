@@ -31,13 +31,14 @@ module.exports = class StreamHandler {
   }
 
   generate() {
-    let stream = gulp.src(this.source);
+    const sourceStream = gulp.src(this.source);
 
-    this.handlers.forEach(handler => {
-      stream = stream.pipe(handler);
-    });
+    const mergedStream = this.handlers.reduce(
+      (stream, handler) => stream.pipe(handler),
+      sourceStream
+    );
 
-    return stream.pipe(gulp.dest(this.destination));
+    return mergedStream.pipe(gulp.dest(this.destination));
   }
 };
 

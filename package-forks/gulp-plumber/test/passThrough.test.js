@@ -4,8 +4,9 @@
 const { suite } = require("uvu");
 const assert = require("uvu/assert");
 
-var through2 = require("through2"),
-  es = require("event-stream"),
+const { Transform } = require("stream");
+
+var es = require("event-stream"),
   Crafty = require("@swissquote/crafty/src/Crafty"),
   Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 
@@ -23,7 +24,7 @@ it("piping into second plumber should keep piping", function(done) {
     gulp
       .src(fixturesGlob)
       .pipe(plumber())
-      .pipe(through2.obj())
+      .pipe(new Transform({objectMode: true, transform(file, enc, cb) { cb(null, file); }}))
       .pipe(plumber())
       .pipe(
         es.writeArray(
