@@ -51,7 +51,7 @@ function plumber(opts) {
     objectMode: true,
     transform(file, enc, cb) {
       cb(null, file);
-    },
+    }
   });
   through._plumber = true;
 
@@ -118,7 +118,7 @@ module.exports.stop = function() {
     objectMode: true,
     transform(file, enc, cb) {
       cb(null, file);
-    },
+    }
   });
   through._unplumbed = true;
   return through;

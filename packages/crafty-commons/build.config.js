@@ -4,7 +4,7 @@ module.exports = [
     externals: {
       // To make sure we get up-to-date data
       "caniuse-lite": "caniuse-lite",
-      "/caniuse-lite(/.*)/": "caniuse-lite$1",
+      "/caniuse-lite(/.*)/": "caniuse-lite$1"
     }
   }
 ];

@@ -1,6 +1,6 @@
 const commonExternals = {
   stylelint: "stylelint",
-  "/stylelint(/.*)/": "stylelint$1",
+  "/stylelint(/.*)/": "stylelint$1"
 };
 
 module.exports = [

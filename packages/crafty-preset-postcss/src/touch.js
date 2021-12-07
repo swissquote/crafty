@@ -7,11 +7,11 @@ module.exports = function() {
       if (file.isNull()) {
         return cb(null, file);
       }
-  
+
       file.stat.mtime = Date.now();
       file.stat.ctime = Date.now();
-  
+
       return cb(null, file);
     }
-  })
+  });
 };
