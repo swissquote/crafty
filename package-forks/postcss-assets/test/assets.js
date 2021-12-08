@@ -103,7 +103,7 @@ test("inlines svg unencoded", () =>
     loadPaths: ["fonts", "images"],
   }).then((result) => {
     assert.is(result.css.slice(0, 32), "a { b: url('data:image/svg+xml;c");
-    assert.is(result.css.slice(-32), "z%22%2F%3E%0D%0A%3C%2Fsvg%3E') }");
+    assert.is(result.css.slice(-32), "h80z%22%2F%3E%0A%3C%2Fsvg%3E') }");
   }));
 
 test("throws when trying to inline a non-existing file", () =>
