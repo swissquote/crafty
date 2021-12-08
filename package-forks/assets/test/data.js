@@ -29,7 +29,7 @@ test("discard query + preserve hash", async () => {
 test("svg", async () => {
   const resolvedDataUrl = await resolveData("test/fixtures/images/vector.svg");
   assert.is(resolvedDataUrl.slice(0, 32), "data:image/svg+xml;charset=utf-8");
-  assert.is(resolvedDataUrl.slice(-32), "0h80z%22%2F%3E%0D%0A%3C%2Fsvg%3E");
+  assert.is(resolvedDataUrl.slice(-32), "-120h80z%22%2F%3E%0A%3C%2Fsvg%3E");
 });
 
 test("non-existing file", async () => {

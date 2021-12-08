@@ -10,7 +10,7 @@ set -e
 PACKAGES=$(grep "\"$1\"" package*/*/package.json | awk '{ print $1 }' | sed -e 's/\/package.json://')
 
 for PACKAGE in $PACKAGES; do
-    echo "${GREEN}Running '$@' in $PACKAGE$NC"
+    echo -e "${GREEN}Running '$@' in $PACKAGE$NC"
     cd "$DIR/$PACKAGE"
     yarn "$@"
 done
