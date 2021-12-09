@@ -59,4 +59,4 @@ if (process.argv.indexOf("--custom-syntax") === -1) {
   process.argv.push("postcss-scss");
 }
 
-require("stylelint/bin/stylelint");
+require("../../packages/stylelint-bin");

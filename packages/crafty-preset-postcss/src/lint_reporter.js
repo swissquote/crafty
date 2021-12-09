@@ -16,10 +16,11 @@ function getLocation(message) {
 
   const location = {
     line: message.line,
-    column: message.column,
+    column: message.column
   };
 
-  const messageInput = messageNode && messageNode.source && messageNode.source.input;
+  const messageInput =
+    messageNode && messageNode.source && messageNode.source.input;
 
   if (!messageInput) {
     return location;
@@ -33,7 +34,7 @@ function getLocation(message) {
 
   location.file = messageInput.file || messageInput.id;
   return location;
-};
+}
 
 function shouldThrowError(sources) {
   return sources.length && sources.some(entry => entry.errored);

@@ -36,7 +36,7 @@ function createLinter(gulp, crafty, name) {
     const reporter = require("./lint_reporter")(reporterConfig);
 
     const processors = [
-      require("stylelint")(
+      require("../packages/stylelint.js")(
         crafty.config.legacy_css
           ? crafty.config.stylelint_legacy
           : crafty.config.stylelint

@@ -12,6 +12,8 @@ module.exports = [
       glob: "@swissquote/crafty-commons/packages/glob",
       "plugin-error" : "@swissquote/crafty-commons-gulp/packages/plugin-error",
       webpack: "@swissquote/crafty-runner-webpack/packages/webpack",
+      micromatch: "@swissquote/crafty-commons/packages/micromatch",
+      picomatch: "@swissquote/crafty-commons/packages/picomatch",
 
       // "readable-stream" is a drop-in replacement of "stream"
       // But its current version is big and outdated

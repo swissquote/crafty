@@ -4,7 +4,12 @@ const path = require("path");
 const externals = {
   "schema-utils": "schema-utils",
   postcss: "postcss",
-  "/postcss(/.*)": "postcss$1",
+  "/postcss\/lib(/.*)/": "postcss/lib$1",
+  "@babel/code-frame": "@babel/code-frame",
+
+  // Not used as we pass the configuration directly, can be excluded from the bundle
+  "postcss-load-config": "../../src/dummy.js",
+  "cosmiconfig": "../../src/dummy.js"
 };
 
 /**
@@ -32,19 +37,20 @@ var copyRecursiveSync = function(src, dest) {
 module.exports = [
   {
     name: "packages-webpack",
-    externals: {
-      ...externals,
-
-      "@babel/code-frame": "@babel/code-frame",
-    },
+    externals,
   },
   {
     name: "packages-gulp",
     externals: {
       ...externals,
 
+      glob: "@swissquote/crafty-commons/packages/glob",
+      debug: "@swissquote/crafty-commons/packages/debug",
+      minimatch: "@swissquote/crafty-commons/packages/minimatch",
+      micromatch: "@swissquote/crafty-commons/packages/micromatch",
       "plugin-error": "@swissquote/crafty-commons-gulp/packages/plugin-error",
       "fancy-log": "@swissquote/crafty/packages/fancy-log",
+      "postcss-selector-parser": "@swissquote/stylelint-config-swissquote/packages/postcss-selector-parser"
     },
   },
   async function() {

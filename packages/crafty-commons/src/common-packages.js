@@ -14,8 +14,17 @@ function glob() {
   return require("glob");
 }
 
+// TODO :: is it possible to replicate the class-style Minimatch with micromatch ?
 function minimatch() {
   return require("minimatch");
+}
+
+function micromatch() {
+  return require("micromatch");
+}
+
+function picomatch() {
+  return require("picomatch");
 }
 
 function tmp() {
@@ -28,5 +37,7 @@ module.exports = {
   findUp,
   glob,
   minimatch,
+  micromatch,
+  picomatch,
   tmp
 };

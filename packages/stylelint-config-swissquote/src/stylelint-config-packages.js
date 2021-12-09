@@ -2,10 +2,6 @@ function postcssResolveNestedSelector() {
   return require("postcss-resolve-nested-selector");
 }
 
-function postcssSelectorParser() {
-  return require("postcss-selector-parser");
-}
-
 function postcssValueParser() {
   return require("postcss-value-parser");
 }
@@ -24,7 +20,6 @@ function stylelintScss() {
 
 module.exports = {
   postcssResolveNestedSelector,
-  postcssSelectorParser,
   postcssValueParser,
   stylelintNoUnsupportedBrowserFeatures,
   stylelintPrettier,
