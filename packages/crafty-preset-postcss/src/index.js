@@ -202,6 +202,8 @@ module.exports = ${JSON.stringify(content, null, 4)};
 
     if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
       // Initialize extraction plugin
+      // TODO :: seems to not be compileable (utils file)
+      // https://github.com/vercel/next.js/blob/8fb5ef18e7958a19874e11b8037ac0f71c48baef/packages/next/taskfile.js#L792-L825
       const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
       // Create a list of loaders that also contains the extraction loader
@@ -211,12 +213,13 @@ module.exports = ${JSON.stringify(content, null, 4)};
         .plugin("extractCSS")
         .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
     } else {
-      styleRule.use("style-loader").loader(require.resolve("style-loader"));
+      // TODO :: seems to not be compileable (runtime folder)
+      styleRule.use("style-loader").loader(require.resolve("../packages/style-loader.js"));
     }
 
     styleRule
       .use("css-loader")
-      .loader(require.resolve("css-loader"))
+      .loader(require.resolve("../packages/css-loader.js"))
       .options({
         importLoaders: 1,
         sourceMap:
@@ -225,7 +228,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
 
     styleRule
       .use("postcss-loader")
-      .loader(require.resolve("postcss-loader"))
+      .loader(require.resolve("../packages/postcss-loader.js"))
       .options({
         implementation: require("postcss"),
         postcssOptions: {

@@ -1,4 +1,3 @@
-const util = require("postcss-reporter/lib/util");
 const formatter = require("stylelint/lib/formatters/stringFormatter");
 
 function hasError(messages) {
@@ -11,6 +10,30 @@ function hasError(messages) {
     }
   });
 }
+
+function getLocation(message) {
+  const messageNode = message.node;
+
+  const location = {
+    line: message.line,
+    column: message.column,
+  };
+
+  const messageInput = messageNode && messageNode.source && messageNode.source.input;
+
+  if (!messageInput) {
+    return location;
+  }
+
+  const originLocation =
+    messageInput.origin && messageInput.origin(message.line, message.column);
+  if (originLocation) {
+    return originLocation;
+  }
+
+  location.file = messageInput.file || messageInput.id;
+  return location;
+};
 
 function shouldThrowError(sources) {
   return sources.length && sources.some(entry => entry.errored);
@@ -33,7 +56,7 @@ module.exports = opts => {
 
       const sourceGroupedMessages = messagesToLog.reduce(
         (innerResult, message) => {
-          const key = util.getLocation(message).file || resultSource;
+          const key = getLocation(message).file || resultSource;
           if (!message.severity) {
             message.severity = message.type || "warning";
           }

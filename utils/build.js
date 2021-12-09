@@ -1,18 +1,26 @@
 #!/usr/bin/env node
 
 const rimraf = require("rimraf");
-const compile = require("./compile.js");
+const compileUtils = require("./compile.js");
 const configuration = require(process.cwd() + "/build.config.js");
 
 async function main() {
-
   // Start with a cleanup
-  rimraf.sync(process.cwd() + '/dist/compiled');
+  rimraf.sync(process.cwd() + "/dist/compiled");
 
   for (const bundle of configuration) {
-    const name = bundle.name;
-    console.log(name, "\n==========================");
-    await compile(`./src/${name}.js`, `dist/compiled/${name}.js`, bundle);
+    if (bundle.name) {
+      const name = bundle.name;
+      console.log(name, "\n==========================");
+      await compileUtils.compile(
+        `./src/${name}.js`,
+        `dist/compiled/${name}.js`,
+        bundle
+      );
+      continue;
+    }
+
+    await bundle(compileUtils);
   }
 }
 
