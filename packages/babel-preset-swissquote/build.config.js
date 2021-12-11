@@ -6,6 +6,9 @@ module.exports = [
       browserslist: "@swissquote/crafty-commons/packages/browserslist",
       glob: "@swissquote/crafty-commons/packages/glob",
       minimatch: "@swissquote/crafty-commons/packages/minimatch",
+      semver: "@swissquote/crafty-commons/packages/semver",
+      "semver/functions/cmp": "@swissquote/crafty-commons/packages/semver-cmp",
+      "semver/functions/coerce": "@swissquote/crafty-commons/packages/semver-coerce",
 
       "caniuse-lite": "caniuse-lite",
       "/caniuse-lite(/.*)/": "caniuse-lite$1",

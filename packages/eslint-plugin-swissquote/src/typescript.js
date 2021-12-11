@@ -37,10 +37,13 @@ module.exports = {
 
 // Disable all the rules from ESLint that are handled by @typescript-eslint
 addMissingRules(
-  require("@typescript-eslint/eslint-plugin").configs["eslint-recommended"]
+  require("../packages/typescript-eslint_eslint-plugin").configs["eslint-recommended"]
     .overrides[0].rules,
   module.exports.rules
 );
 
 // Disable all the rules from @typescript-eslint that are handled by Prettier
-addMissingRules(require("eslint-config-prettier").rules, module.exports.rules);
+addMissingRules(
+  require("../packages/eslint-config-prettier").rules,
+  module.exports.rules
+);

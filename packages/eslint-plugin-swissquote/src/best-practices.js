@@ -1,4 +1,4 @@
-const restrictedGlobals = require("confusing-browser-globals");
+const restrictedGlobals = require("../packages/confusing-browser-globals");
 
 const { addMissingRules } = require("./utils");
 
@@ -90,6 +90,6 @@ module.exports = {
 };
 
 addMissingRules(
-  require("eslint-plugin-sonarjs").configs.recommended.rules,
+  require("../packages/eslint-plugin-sonarjs").configs.recommended.rules,
   module.exports.rules
 );

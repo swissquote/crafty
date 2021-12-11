@@ -13,13 +13,23 @@
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
+    "build": "node ../../utils/build.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage"
   },
   "dependencies": {
     "@babel/eslint-parser": "7.16.3",
+    "@swissquote/crafty-commons": "1.17.2",
     "@swissquote/babel-preset-swissquote": "1.17.2",
+    "prettier": "1.19.1",
+    "typescript": "4.5.3"
+  },
+  "peerDependency": {
+    "eslint": "^6.0.0 | ^7.0.0 | ^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "8.4.1",
     "@typescript-eslint/eslint-plugin": "5.7.0",
     "@typescript-eslint/parser": "5.7.0",
     "confusing-browser-globals": "1.0.10",
@@ -30,14 +40,6 @@
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-sonarjs": "0.11.0",
-    "prettier": "1.19.1",
-    "typescript": "4.5.3"
-  },
-  "peerDependency": {
-    "eslint": "^6.0.0 | ^7.0.0 | ^8.0.0"
-  },
-  "devDependencies": {
-    "eslint": "8.4.1",
     "jest": "27.4.5"
   },
   "engines": {

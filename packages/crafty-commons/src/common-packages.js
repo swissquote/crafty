@@ -27,6 +27,30 @@ function picomatch() {
   return require("picomatch");
 }
 
+function semver() {
+  return require("semver");
+}
+
+function semverClean() {
+  return require("semver/functions/clean");
+}
+
+function semverCmp() {
+  return require("semver/functions/cmp");
+}
+
+function semverCoerce() {
+  return require("semver/functions/coerce");
+}
+
+function semverParse() {
+  return require("semver/functions/parse");
+}
+
+function semverValid() {
+  return require("semver/functions/valid");
+}
+
 function tmp() {
   return require("tmp");
 }
@@ -39,5 +63,11 @@ module.exports = {
   minimatch,
   micromatch,
   picomatch,
+  semver,
+  semverClean,
+  semverCmp,
+  semverCoerce,
+  semverParse,
+  semverValid,
   tmp
 };

@@ -11,7 +11,7 @@ const {
 
 function printStats(bundleStats) {
   const depTrees = dependencySizeTree(bundleStats);
-  depTrees.forEach((tree) => printDependencySizeTree(tree, true));
+  depTrees.forEach((tree) => printDependencySizeTree(tree, false));
 }
 
 async function handleNCCResult(name, output, { code, assets, stats }) {
@@ -28,6 +28,12 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
     const dirname = path.dirname(output);
 
     for (const [file, data] of Object.entries(assets)) {
+
+      const dir = path.dirname(`${dirname}/${file}`);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, {recursive: true});
+      }
+
       console.log(
         "Writing",
         `${dirname}/${file}`,
