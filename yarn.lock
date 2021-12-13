@@ -7412,12 +7412,12 @@ postcss-custom-selectors@6.0.0:
   dependencies:
     postcss-selector-parser "^6.0.4"
 
-postcss-dir-pseudo-class@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.0.tgz#7026a070a4849072a232eaf0cdd960de3013658d"
-  integrity sha512-TC4eB5ZnLRSV1PLsAPualEjxFysU9IVEBx8h+Md2qzo8iWdNqwWCckx5fTWfe6dJxUpB0TWEpWEFhZ/YHvjSCA==
+postcss-dir-pseudo-class@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.1.tgz#90958de910870b9c20bff4279a0b74d54c880224"
+  integrity sha512-nA6+XVUc5VDe6LrJ5KWFqJ05dxZXzoYiUQJFZSuwLW/8aI462w7gCEhB+RnOA+N3dtrj8B2WTSfcjCac6RJW0A==
   dependencies:
-    postcss-selector-parser "6.0.6"
+    postcss-selector-parser "^6.0.7"
 
 postcss-font-family-system-ui@5.0.0:
   version "5.0.0"
@@ -7471,10 +7471,10 @@ postcss-loader@6.2.1:
     klona "^2.0.5"
     semver "^7.3.5"
 
-postcss-logical@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-logical/-/postcss-logical-5.0.0.tgz#f646ef6a3562890e1123a32e695d14cc271afb21"
-  integrity sha512-fWEWMn/xf6F9SMzAD7OS0GTm8Qh1BlBmEbVT/YZGYhwipQEwOpO7YOOu+qnzLksDg9JjLRj5tLmeN8OW8+ogIA==
+postcss-logical@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-logical/-/postcss-logical-5.0.1.tgz#48dcdfca520d00ac5a450289d37d5db8f532de70"
+  integrity sha512-cKekWCoZrxdQktbj8PyCOqQWxsYAPyHjoeBPedkQzfWuEqRm0KVFRHypsHAiH2dDVUae52yx8PBtWS+V3BqT5w==
 
 postcss-media-minmax@5.0.0:
   version "5.0.0"
@@ -7528,12 +7528,12 @@ postcss-property-lookup@3.0.0:
   dependencies:
     tcomb "^3.2.21"
 
-postcss-pseudo-class-any-link@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-pseudo-class-any-link/-/postcss-pseudo-class-any-link-7.0.0.tgz#b06483c8a241cee1e420f9ebd08680d4f95b2b20"
-  integrity sha512-Q4KjHlyBo91nvW+wTDZHGYcjtlSSkYwxweMuq1g8+dx1S8qAnedItvHLnbdAAdqJCZP1is5dLqiI8TvfJ+cjVQ==
+postcss-pseudo-class-any-link@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-pseudo-class-any-link/-/postcss-pseudo-class-any-link-7.0.1.tgz#9b7b3572b78b0d6e2016bcc8762b254e341ebdde"
+  integrity sha512-Zt+VMw9qX7Um/cYOaywOQvXipDw/U3U83L6MFHocbjVIhLd+x5G4SSDmKm8sW2/HlaTno2Cazub8USrDvJ4DLA==
   dependencies:
-    postcss-selector-parser "^6"
+    postcss-selector-parser "^6.0.7"
 
 postcss-replace-overflow-wrap@4.0.0:
   version "4.0.0"
@@ -7574,15 +7574,7 @@ postcss-selector-not@5.0.0:
   dependencies:
     balanced-match "^1.0.0"
 
-postcss-selector-parser@6.0.6:
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.6.tgz#2c5bba8174ac2f6981ab631a42ab0ee54af332ea"
-  integrity sha512-9LXrvaaX3+mcv5xkg5kFwqSzSH1JIObIx51PrndZwlmznwXRfxMddDvo9gve3gVR8ZTKgoFDdWkbRFmEhT4PMg==
-  dependencies:
-    cssesc "^3.0.0"
-    util-deprecate "^1.0.2"
-
-postcss-selector-parser@6.0.7, postcss-selector-parser@^6, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.6:
+postcss-selector-parser@6.0.7, postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.6, postcss-selector-parser@^6.0.7:
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.7.tgz#48404830a635113a71fd79397de8209ed05a66fc"
   integrity sha512-U+b/Deoi4I/UmE6KOVPpnhS7I7AYdKbhGcat+qTQ27gycvaACvNEw11ba6RrkwVmDVRW7sigWgLj4/KbbJjeDA==
