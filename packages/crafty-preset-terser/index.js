@@ -1,5 +1,5 @@
 module.exports = {
-  defaultConfig(config) {
+  defaultConfig(/*config*/) {
     return {
       // Pass options to Terser, used by all runners
       // We disable most of the compress options as they account for most of the

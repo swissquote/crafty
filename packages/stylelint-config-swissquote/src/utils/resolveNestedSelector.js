@@ -18,12 +18,12 @@ function insertParent(parentSelector, selector) {
     }
 
     // Selector at the beginning
-    if (part.selector.match(parentBeginning)) {
+    if (parentBeginning.test(part.selector)) {
       // We have a compound parent selector
       // In this case, we append the current selector to the parent one,
       // so that we keep the compound part
       // Sadly, we loose the node information in the operation
-      if (part.selector.match(parentBeginningCompound)) {
+      if (parentBeginningCompound.test(part.selector)) {
         const last = parentSelector[parentSelector.length - 1];
         last.selector += part.selector.replace(parentBeginning, "");
 
@@ -39,7 +39,7 @@ function insertParent(parentSelector, selector) {
     }
 
     // Selector at the end
-    if (part.selector.match(parentEnd)) {
+    if (parentEnd.test(part.selector)) {
       part.selector = part.selector.replace(parentEnd, "");
       selector.splice(index + 1, 0, ...parentSelector);
 

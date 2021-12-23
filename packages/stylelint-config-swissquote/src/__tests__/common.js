@@ -1,4 +1,4 @@
-/* global jest, describe, it, beforeEach, expect */
+/* global jest, it, expect */
 
 const stylelint = require("stylelint");
 

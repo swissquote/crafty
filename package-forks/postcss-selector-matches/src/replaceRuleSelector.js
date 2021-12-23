@@ -5,8 +5,7 @@ const pseudoClass = ":matches";
 const selectorElementRE = /^[a-zA-Z]/;
 
 function isElementSelector(selector) {
-  // console.log({selector, matches})
-  return selectorElementRE.exec(selector);
+  return selectorElementRE.test(selector);
 }
 
 function normalizeSelector(selector, preWhitespace, pre) {

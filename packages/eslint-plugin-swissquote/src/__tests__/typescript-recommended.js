@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global it, expect */
 
 const { prepareESLint, lint } = require("../../test_utils");
 

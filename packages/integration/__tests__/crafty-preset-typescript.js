@@ -1,4 +1,4 @@
-/* global jest, describe, it, expect */
+/* global jest, it, expect */
 const testUtils = require("../utils");
 
 // Add a high timeout because of https://github.com/facebook/jest/issues/8942

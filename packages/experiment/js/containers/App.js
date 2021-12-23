@@ -1,4 +1,4 @@
-/* global process, module */
+/* global module */
 import React from "react";
 import loadable from "react-loadable";
 import { hot } from "react-hot-loader";

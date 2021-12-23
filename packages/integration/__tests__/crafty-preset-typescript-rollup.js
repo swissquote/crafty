@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global it, expect, jest */
 
 const testUtils = require("../utils");
 

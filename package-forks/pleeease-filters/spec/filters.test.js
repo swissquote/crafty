@@ -1,4 +1,3 @@
-/* global it, expect, describe */
 // Jasmine unit tests
 // To run tests, run these commands from the project root:
 // 1. `npm test`

@@ -7,7 +7,7 @@ module.exports = {
     require.resolve("@swissquote/crafty-preset-eslint"),
     require.resolve("@swissquote/crafty-preset-terser")
   ],
-  defaultConfig(config) {
+  defaultConfig(/* config */) {
     return {
       bundleTypes: { js: "js" }
     };

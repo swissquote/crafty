@@ -36,7 +36,7 @@ module.exports = function(/*mainOption, moreOptions*/) {
             // one element in the selector, it's considered a reassignment
             if (
               selectorNode.type === "class" &&
-              selectorNode.value.match(isUtility) &&
+              isUtility.test(selectorNode.value) &&
               selectorNode.parent.nodes.length > 1
             ) {
               fail(result, rule, selectorNode);

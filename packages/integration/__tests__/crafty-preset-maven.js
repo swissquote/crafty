@@ -1,4 +1,4 @@
-/* global jest, describe, it, expect */
+/* global jest, it, expect */
 
 const path = require("path");
 const testUtils = require("../utils");

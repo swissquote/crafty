@@ -9,7 +9,7 @@ const scssSyntax = require("postcss-scss");
 const resolveNestedSelector = require("../resolveNestedSelector");
 
 function getResolvedSelectors(results) {
-  return (root, result) => {
+  return root => {
     root.walkRules(rule => {
       if (
         !isStandardSyntaxRule(rule) ||

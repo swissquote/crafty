@@ -1,4 +1,3 @@
-/*global describe, it, before, beforeEach */
 "use strict";
 
 const { suite } = require("uvu");
@@ -20,17 +19,11 @@ var errorMessage = "Error: Bang!";
 var fixturesGlob = ["./test/fixtures/index.js", "./test/fixtures/test.js"];
 var delay = 20;
 
-let expected = null;
-let failingEmitStream = null;
 let failingQueueStream = null;
 
 const it = suite("errorHandler");
 
 it.before.each(function() {
-  failingEmitStream = new es.through(function(file) {
-    this.emit("data", file);
-    this.emit("error", new Error("Bang!"));
-  });
   var i = 0;
   failingQueueStream = new es.through(function(file) {
     this.queue(file);
@@ -44,8 +37,7 @@ it.before.each(function() {
 it.before(function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
-      es.writeArray(function(err, array) {
-        expected = array;
+      es.writeArray(() => {
         done();
       })
     );

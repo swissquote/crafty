@@ -1,4 +1,3 @@
-/*global describe, it, before */
 "use strict";
 
 const { suite } = require("uvu");
@@ -19,7 +18,7 @@ let expected = null;
 
 const it = suite("stream");
 
-it("piping into second plumber should keep piping", function(done) {
+it("piping into second plumber should keep piping", function() {
   return new Promise((done) => {
     gulp
       .src(fixturesGlob)
@@ -82,7 +81,7 @@ it.before(function() {
   });
 });
 
-it("should passThrough all incoming files in non-flowing mode", function(done) {
+it("should passThrough all incoming files in non-flowing mode", function() {
   return new Promise((done, fail) => {
     gulp
       .src(fixturesGlob)

@@ -1,4 +1,3 @@
-/*global describe, it, before */
 "use strict";
 
 const { suite } = require("uvu");
@@ -15,8 +14,6 @@ var plumber = require("../");
 var fixturesGlob = ["./test/fixtures/*"];
 
 const it = suite("pipe");
-
-let expected = null;
 
 it("should keep piping after error", function() {
   return new Promise((done, fail) => {
@@ -87,12 +84,7 @@ it("piping into second plumber should does nothing", function() {
 it.before(async function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
-      es.writeArray(
-        function(err, array) {
-          expected = array;
-          done();
-        }
-      )
+      es.writeArray(() => done())
     );
   });
 });
@@ -104,7 +96,7 @@ it2("in non-flowing mode", function() {
   return new Promise((done) => {
     var lastNoop = noop();
     var mario = plumber();
-    var m = gulp
+    gulp
       .src(fixturesGlob)
       .pipe(mario)
       .pipe(noop())

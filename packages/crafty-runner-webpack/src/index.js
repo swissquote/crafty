@@ -31,7 +31,7 @@ module.exports = {
 
     return config;
   },
-  bundleCreator(crafty) {
+  bundleCreator(/* crafty */) {
     return {
       js: {
         webpack: generateTask

@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global it, expect, jest */
 
 const fs = require("fs");
 const path = require("path");

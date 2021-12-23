@@ -1,4 +1,3 @@
-/*global describe, it, before */
 "use strict";
 
 const { suite } = require("uvu");
@@ -14,8 +13,6 @@ var plumber = require("../");
 var fixturesGlob = ["./test/fixtures/*"];
 
 const it = suite("unpipe");
-
-let expected = null;
 
 it("should not keep piping after error", function() {
   return new Promise((done, fail) => {
@@ -63,8 +60,7 @@ it.before(function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
       es.writeArray(
-        function(err, array) {
-          expected = array;
+        function() {
           done();
         }
       )

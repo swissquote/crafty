@@ -110,7 +110,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
     });
 
     compilerReady
-      .then(({ compiler, config }) => {
+      .then(({ compiler }) => {
         compiler.run((err, stats) => {
           if (err) {
             if (err instanceof Error) {

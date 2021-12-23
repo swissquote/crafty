@@ -64,7 +64,7 @@ function footer(counts) {
   return result.join("\n");
 }
 
-module.exports = function(stats, compiler) {
+module.exports = function(stats) {
   // Write stats
   console.log(
     stats.toString({

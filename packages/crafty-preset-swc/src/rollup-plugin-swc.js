@@ -18,7 +18,7 @@ module.exports = function swcPlugin(options = {}) {
       options.filename = filename;
       return transform(code, options);
     },
-    resolveId(importee, importer) {
+    resolveId(importee /*, importer*/) {
       if (importee === "@swc/helpers" || importee === HELPERS_INDEX) {
         if (hasHelperDependency) {
           return {

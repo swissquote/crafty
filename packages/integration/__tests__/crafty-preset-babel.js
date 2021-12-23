@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global it, expect, jest */
 
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");

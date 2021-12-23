@@ -79,6 +79,8 @@ function rounded(value, precision) {
   return Math.floor(value * precision) / precision;
 }
 
+const hasNumberRegex = /\d/;
+
 /* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */
 module.exports = (opts = {}) => {
   var options = {
@@ -120,7 +122,10 @@ module.exports = (opts = {}) => {
             rule.walkDecls(decl => {
               if (decl.prop === "font-size") {
                 options.rootValue = decl.value;
-              } else if (decl.prop === "font" && decl.value.match(/\d/)) {
+              } else if (
+                decl.prop === "font" &&
+                hasNumberRegex.test(decl.value)
+              ) {
                 options.rootValue = decl.value.match(
                   /.*?([\d\.]*(em|px|rem|%|pt|pc))/
                 )[1];

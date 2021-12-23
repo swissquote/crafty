@@ -11,7 +11,7 @@ function shouldCompile(code) {
   try {
     // Quick check with a regex,
     // Allows to eliminate most cases right away without a more expensive parsing.
-    if (!code.match(importExportRegex)) {
+    if (!importExportRegex.test(code)) {
       return false;
     }
 

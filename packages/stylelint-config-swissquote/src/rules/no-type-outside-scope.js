@@ -12,8 +12,10 @@ const messages = {
   rejected: "Types are allowed only inside a scope"
 };
 
+const scopeRegex = /^s-/;
+
 function isScope(node) {
-  return node && node.type === "class" && node.value.match(/^s-/);
+  return node && node.type === "class" && scopeRegex.test(node.value);
 }
 
 function getOriginalNode(node) {

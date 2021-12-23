@@ -16,7 +16,7 @@ const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
-  defaultConfig(config) {
+  defaultConfig(/* config */) {
     return {
       // ESLint Override Rules
       eslint: {
@@ -39,7 +39,7 @@ module.exports = {
       .filter(preset => preset.eslint)
       .forEach(preset => {
         debug(`${preset.presetName}.eslint(config, eslint)`);
-        if (typeof preset.eslint == "function") {
+        if (typeof preset.eslint === "function") {
           extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
         } else {
           extendedEslintConfig.config = copy(
@@ -85,7 +85,7 @@ module.exports = {
         throwOnError: crafty.getEnvironment() === "production",
         exclude: [/node_modules/],
         include: crafty.config.eslintExtensions.map(
-          extension => new RegExp(`\.${extension}$`)
+          extension => new RegExp(`\\.${extension}$`)
         )
       }
     };

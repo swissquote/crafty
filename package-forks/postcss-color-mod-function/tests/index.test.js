@@ -17,7 +17,7 @@ function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
   let fixtureName = name;
   let fixtureExpect = `${name}.expect`;
 
-  if (typeof name != "string") {
+  if (typeof name !== "string") {
     fixtureName = name.input;
     fixtureExpect = name.output;
 

@@ -143,17 +143,12 @@ Newer.prototype.lazyExtraStats = async function() {
       return latestStat;
     })
     .catch(error => {
-      if (error && error.path) {
-        throw new PluginError(
-          PLUGIN_NAME,
-          `Failed to read stats for an extra file: ${error.path}`
-        );
-      } else {
-        throw new PluginError(
-          PLUGIN_NAME,
-          `Failed to stat extra files; unknown error: ${error}`
-        );
-      }
+      throw new PluginError(
+        PLUGIN_NAME,
+        error && error.path
+          ? `Failed to read stats for an extra file: ${error.path}`
+          : `Failed to stat extra files; unknown error: ${error}`
+      );
     });
 };
 

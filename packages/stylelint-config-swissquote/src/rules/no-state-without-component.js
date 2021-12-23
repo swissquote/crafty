@@ -63,7 +63,7 @@ function isOrphanState(selectorNode) {
 
   // If there is at least one component in the group, we're good
   return !group.some(
-    element => element.type === "class" && element.value.match(isComponent)
+    element => element.type === "class" && isComponent.test(element.value)
   );
 }
 
@@ -80,7 +80,7 @@ module.exports = function() {
             // No need to check if the current element isn't a state
             if (
               selectorNode.type !== "class" ||
-              !selectorNode.value.match(containsState)
+              !containsState.test(selectorNode.value)
             ) {
               return;
             }

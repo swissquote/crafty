@@ -41,7 +41,7 @@ function isInsideBlock(selectorNode) {
 
   // If there is at least one component in the group, we're good
   return group.some(
-    element => element.type === "class" && element.value.match(isBlock)
+    element => element.type === "class" && isBlock.test(element.value)
   );
 }
 
@@ -57,7 +57,7 @@ module.exports = function() {
             // No need to check if the current element isn't a Block
             if (
               selectorNode.type !== "class" ||
-              !selectorNode.value.match(isBlock)
+              !isBlock.test(selectorNode.value)
             ) {
               return;
             }

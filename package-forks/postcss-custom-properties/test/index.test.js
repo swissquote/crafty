@@ -20,7 +20,7 @@ function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
   let before = () => {};
   let after = () => {};
 
-  if (typeof name != "string") {
+  if (typeof name !== "string") {
     fixtureName = name.input;
     fixtureExpect = name.output;
 
@@ -226,7 +226,7 @@ describe("postcss-custom-properties", () => {
         input: "basic",
         output: "basic.expect",
         after() {
-          expect(__exportPropertiesObject.customProperties["--color"]).toEqual(
+          expect(global.__exportPropertiesObject.customProperties["--color"]).toEqual(
             "rgb(255, 0, 0)"
           );
         },

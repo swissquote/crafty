@@ -55,7 +55,7 @@ it("should ignore files according .eslintignore", () => {
     input: "./test/fixtures/ignored.js",
     plugins: [
       eslint({
-        formatter: results => {
+        formatter: () => {
           count += 1;
         }
       })

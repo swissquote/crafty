@@ -19,7 +19,7 @@ for (const [seed, ...calls] of tests) {
     for (const [name, args, retVal] of calls) {
       const result = color[name].apply(color, args);
 
-      const strigified = typeof result == "object" ? result.toString() : result;
+      const strigified = typeof result === "object" ? result.toString() : result;
 
       expect(strigified).toEqual(retVal);
     }
