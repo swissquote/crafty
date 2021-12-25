@@ -1,3 +1,5 @@
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 module.exports = {};
 
 const plugins = {
@@ -13,7 +15,7 @@ const plugins = {
 // So we have to include the file ourselves and include the rules as if they were ours.
 // Solution proposed by @nzakas himself : https://github.com/eslint/eslint/issues/3458#issuecomment-257161846
 for (const i in plugins) {
-  if (!plugins.hasOwnProperty(i)) {
+  if (!hasOwnProperty.call(plugins, i)) {
     continue;
   }
   const plugin = plugins[i];

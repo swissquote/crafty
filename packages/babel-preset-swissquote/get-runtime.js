@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const findUp = require("@swissquote/crafty-commons/packages/find-up");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const babelRuntimePackageFile = "node_modules/@babel/runtime/package.json";
 
 function hasBabelRuntimeDependency() {
@@ -13,8 +15,8 @@ function hasBabelRuntimeDependency() {
 
   const packageJson = require(packageJsonPath);
   return (
-    packageJson.hasOwnProperty("dependencies") &&
-    packageJson.dependencies.hasOwnProperty("@babel/runtime")
+    hasOwnProperty.call(packageJson, "dependencies") &&
+    hasOwnProperty.call(packageJson.dependencies, "@babel/runtime")
   );
 }
 

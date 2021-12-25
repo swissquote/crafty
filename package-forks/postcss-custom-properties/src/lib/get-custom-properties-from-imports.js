@@ -5,6 +5,8 @@ const { parse: postcssParse } = require("postcss");
 const { parse } = require("postcss-values-parser");
 const getCustomPropertiesFromRoot = require("./get-custom-properties-from-root");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 /* Get Custom Properties from CSS File
 /* ========================================================================== */
 
@@ -26,7 +28,7 @@ function getCustomPropertiesFromObject(object) {
   );
 
   for (const key in customProperties) {
-    if (customProperties.hasOwnProperty(key)) {
+    if (hasOwnProperty.call(customProperties, key)) {
       customProperties[key] = parse(String(customProperties[key])).nodes;
     }
   }

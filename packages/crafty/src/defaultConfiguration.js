@@ -1,6 +1,8 @@
 const path = require("path");
 const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const defaultBrowsers = [
   "Edge >= 18",
   "Safari >= 13",
@@ -13,7 +15,7 @@ const defaultBrowsers = [
 function getDefaultBrowsers() {
   // There seems to be a bug with browserslist's data
   for (var name in browserslist.data) {
-    if (browserslist.data.hasOwnProperty(name)) {
+    if (hasOwnProperty.call(browserslist.data, name)) {
       browserslist.data[name].released.sort((a, b) => Number(a) - Number(b));
     }
   }

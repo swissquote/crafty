@@ -91,8 +91,9 @@ module.exports = (opts = {}) => {
     unitPrecision: opts.unitPrecision !== undefined ? opts.unitPrecision : 3
   };
 
-  options.browsers = opts.browsers !== undefined ? opts.browsers : "ie <= 8";
-  options.browsers = browserslist(options.browsers);
+  options.browsers = browserslist(
+    opts.browsers !== undefined ? opts.browsers : "ie <= 8"
+  );
 
   return {
     postcssPlugin: "pixrem",

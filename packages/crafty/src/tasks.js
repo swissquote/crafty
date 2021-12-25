@@ -4,6 +4,8 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 const { copy } = require("../packages/copy-anything");
 const { merge } = require("../packages/merge-anything");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function shortName(runner) {
   return runner.indexOf("/") > -1 ? runner.split("/")[0] : runner;
 }
@@ -41,7 +43,7 @@ function registerTasks(crafty) {
     debug(`Creating bundles for type '${type}'`);
 
     if (
-      !crafty.config.hasOwnProperty(type) ||
+      !hasOwnProperty.call(crafty.config, type) ||
       typeof crafty.config[type] !== "object"
     ) {
       debug("Nothing to see here");
@@ -64,7 +66,7 @@ function registerTasks(crafty) {
       }
 
       if (
-        !bundleCreators.hasOwnProperty(type) ||
+        !hasOwnProperty.call(bundleCreators, type) ||
         Object.keys(bundleCreators[type]).length === 0
       ) {
         crafty.log.error(

@@ -5,6 +5,7 @@ const getProcessors = require("@swissquote/postcss-swissquote-preset/processors"
 const gulpTasks = require("./gulp");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function resolve(relative) {
   return path.resolve(process.cwd(), relative);
@@ -107,7 +108,7 @@ module.exports = {
 
     // Add missing informations to CSS configurations
     for (const i in config.css) {
-      if (!config.css.hasOwnProperty(i)) {
+      if (!hasOwnProperty.call(config.css, i)) {
         continue;
       }
 
@@ -162,7 +163,7 @@ module.exports = {
       }
     };
   },
-  gulp(crafty, gulp, StreamHandler) {
+  gulp(crafty, gulp /*, StreamHandler */) {
     // CSS Linter
     const lintTaskName = "css__lint";
     crafty.watcher.add(crafty.config.stylelint_pattern, lintTaskName);

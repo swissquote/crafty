@@ -2,6 +2,8 @@ const { existsSync } = require("fs");
 const { readdir, writeFile } = require("fs/promises");
 const path = require("path");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const scripts = {
   lint:
     "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
@@ -10,23 +12,11 @@ const scripts = {
   "test:ci": "jest --coverage",
 };
 
-const jestConfig = `module.exports = {
-  collectCoverageFrom: [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/vendor/**"
-  ],
-  testEnvironment: "node",
-  verbose: true,
-  coveragePathIgnorePatterns: ["node_modules", "coverage", "jest.config.js"]
-};
-`;
-
 async function main() {
   const dirs = await readdir(__dirname);
 
   for (const dir of dirs) {
-    if (dir == "lint.js") {
+    if (dir === "lint.js") {
       continue;
     }
 
@@ -38,7 +28,7 @@ async function main() {
         const pkg = require(file);
 
         // version check
-        if (pkg.version != "1.17.2") {
+        if (pkg.version !== "1.17.2") {
           warnings.push("Version must be set to 1.17.2");
           pkg.version = "1.17.2";
         }
@@ -50,27 +40,27 @@ async function main() {
         }
 
         // not private
-        if (!pkg.hasOwnProperty("private") || pkg.private != true) {
+        if (!hasOwnProperty.call(pkg, "private") || pkg.private !== true) {
           warnings.push("Package is not private");
           pkg.private = true;
         }
 
         // license
-        if (!pkg.hasOwnProperty("license") && !pkg.hasOwnProperty("licenses")) {
+        if (!hasOwnProperty.call(pkg, "license") && !hasOwnProperty.call(pkg, "licenses")) {
           warnings.push("Missing a license");
         }
 
         // author
-        if (!pkg.hasOwnProperty("author")) {
+        if (!hasOwnProperty.call(pkg, "author")) {
           warnings.push("Missing an author");
         }
 
-        if (!pkg.hasOwnProperty("description")) {
+        if (!hasOwnProperty.call(pkg, "description")) {
           warnings.push("Missing an description");
         }
 
         pkg.scripts = scripts;
-        /*if (!pkg.hasOwnProperty("scripts")) {
+        /*if (!hasOwnProperty.call(pkg, "scripts")) {
           warnings.push("Missing 'scripts'");
           pkg.scripts = scripts;
         } else {
@@ -110,8 +100,6 @@ async function main() {
       } else {
         warnings.push("Missing a package.json");
       }
-
-      //await writeFile(path.join(__dirname, dir, "jest.config.js"), jestConfig)
 
       if (warnings.length) {
         console.log("=>", dir);

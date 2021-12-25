@@ -1,6 +1,8 @@
 const { join } = require("path");
 const { writeFileSync, unlinkSync } = require("fs");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function normalizeJestOptions(crafty, input, cli) {
   const moduleDirectories = new Set(["node_modules"]);
 
@@ -48,7 +50,7 @@ function normalizeJestOptions(crafty, input, cli) {
   });
 
   // Support all extensions that can be transformed for test files extensions, except for json
-  if (!options.hasOwnProperty("testRegex")) {
+  if (!hasOwnProperty.call(options, "testRegex")) {
     const extensions = options.moduleFileExtensions
       .filter(extension => extension !== "json")
       .join("|");

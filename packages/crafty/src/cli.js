@@ -1,6 +1,8 @@
 const yargs = require("../packages/yargs-parser");
 const camelcaseKeys = require("../packages/camelcase-keys");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function parseArguments(args) {
   const argv = yargs(args);
 
@@ -26,7 +28,7 @@ module.exports = function(crafty, commands) {
   const [run, ...input] = cli.input;
 
   // Ensure the command is declared
-  if (!commands.hasOwnProperty(run)) {
+  if (!hasOwnProperty.call(commands, run)) {
     commands.help.command(crafty, input, cli);
     return Promise.resolve(2);
   }

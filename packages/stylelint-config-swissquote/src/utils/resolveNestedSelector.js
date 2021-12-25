@@ -1,3 +1,5 @@
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const parentBeginning = /^\s*&\s*/;
 const parentBeginningCompound = /^\s?&(?!\s)/;
 const parentEnd = /\s*&\s*$/;
@@ -8,7 +10,7 @@ function hasParentSelector(selector) {
 
 function insertParent(parentSelector, selector) {
   for (const index in selector) {
-    if (!selector.hasOwnProperty(index)) {
+    if (!hasOwnProperty.call(selector, index)) {
       continue;
     }
 

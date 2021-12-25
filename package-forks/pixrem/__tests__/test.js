@@ -304,8 +304,9 @@ test("should add fallback when IE8 is in scope", function() {
   var processed1 = process(pixrem({ browsers: "ie 8" }), css);
   var processed2 = process(pixrem({ browsers: "ie >= 8" }), css);
   var processed3 = process(pixrem({ browsers: "ie <= 8" }), css);
-  assert.equal(processed1, processed2);
-  assert.equal(processed2, processed3);
+  assert.equal(processed1, expected);
+  assert.equal(processed2, expected);
+  assert.equal(processed3, expected);
 });
 
 test("should add fallback when only IE6 is in scope", function() {

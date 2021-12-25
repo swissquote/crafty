@@ -1,3 +1,5 @@
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 /**
  * Check whether a rule has a selector ending in a colon
  *
@@ -6,9 +8,9 @@
  */
 module.exports = function(rule) {
   const selector =
-    (rule.hasOwnProperty("raws") &&
-      rule.raws.hasOwnProperty("selector") &&
-      rule.raws.selector.hasOwnProperty("raw") &&
+    (hasOwnProperty.call(rule, "raws") &&
+      hasOwnProperty.call(rule.raws, "selector") &&
+      hasOwnProperty.call(rule.raws.selector, "raw") &&
       rule.raws.selector.raw) ||
     rule.selector;
 

@@ -1,11 +1,13 @@
 const generateTask = require("./rollup_runtime");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-terser")],
   config(config) {
     // Add missing informations to JavaScript configurations
     for (const j in config.js) {
-      if (!config.js.hasOwnProperty(j)) {
+      if (!hasOwnProperty.call(config.js, j)) {
         continue;
       }
 
@@ -25,7 +27,7 @@ module.exports = {
 
     return config;
   },
-  bundleCreator(crafty) {
+  bundleCreator(/* crafty */) {
     return {
       js: {
         rollup: generateTask

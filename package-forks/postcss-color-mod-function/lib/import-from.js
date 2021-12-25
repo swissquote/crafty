@@ -4,6 +4,8 @@ const postcss = require("postcss");
 const getCustomProperties = require("./get-custom-properties");
 const { parse } = require("postcss-values-parser");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 /* Helper utilities
 /* ========================================================================== */
 
@@ -47,7 +49,7 @@ function importCustomPropertiesFromObject(object) {
   );
 
   for (const prop in customProperties) {
-    if (customProperties.hasOwnProperty(prop)) {
+    if (hasOwnProperty.call(customProperties, prop)) {
       customProperties[prop] = parse(customProperties[prop]);
     }
   }

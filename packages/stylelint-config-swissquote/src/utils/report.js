@@ -1,3 +1,5 @@
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function isInDisabledRange(result, startLine, ruleName) {
   if (!result.stylelint.disabledRanges) {
     return false;
@@ -7,7 +9,7 @@ function isInDisabledRange(result, startLine, ruleName) {
   for (const i in result.stylelint.disabledRanges) {
     const range = result.stylelint.disabledRanges[i];
     if (
-      result.stylelint.disabledRanges.hasOwnProperty(i) &&
+      hasOwnProperty.call(result.stylelint.disabledRanges, i) &&
       // If the violation is within a disabledRange,
       // and that disabledRange's rules include this one,
       // do not register a warning
@@ -72,8 +74,8 @@ module.exports = function(violation) {
   }
 
   const severity =
-    (result.stylelint.hasOwnProperty("ruleSeverities") &&
-      result.stylelint.ruleSeverities.hasOwnProperty(ruleName) &&
+    (hasOwnProperty.call(result.stylelint, "ruleSeverities") &&
+      hasOwnProperty.call(result.stylelint.ruleSeverities, ruleName) &&
       result.stylelint.ruleSeverities[ruleName]) ||
     "ignore";
 
@@ -104,8 +106,8 @@ module.exports = function(violation) {
   }
 
   const warningMessage =
-    (result.stylelint.hasOwnProperty("customMessages") &&
-      result.stylelint.customMessages.hasOwnProperty(ruleName) &&
+    (hasOwnProperty.call(result.stylelint, "customMessages") &&
+      hasOwnProperty.call(result.stylelint.customMessages, ruleName) &&
       result.stylelint.customMessages[ruleName]) ||
     message;
   result.warn(warningMessage, warningProperties);

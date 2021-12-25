@@ -1,7 +1,9 @@
 const colors = require("../../packages/ansi-colors");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 exports.description = "List supported browsers";
-exports.command = async function run(crafty, input, cli) {
+exports.command = async function run(crafty /* , input, cli */) {
   const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
 
   console.log(`Your browserslist query:\n    '${crafty.config.browsers}'`);
@@ -14,7 +16,7 @@ exports.command = async function run(crafty, input, cli) {
     totalBrowsers++;
     const [browser, version] = tuple.split(/\s/);
 
-    if (!browsers.hasOwnProperty(browser)) {
+    if (!hasOwnProperty.call(browsers, browser)) {
       browsers[browser] = [];
     }
 

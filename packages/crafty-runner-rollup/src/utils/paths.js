@@ -1,5 +1,7 @@
 const path = require("path");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
@@ -10,7 +12,7 @@ function absolutePaths(arr) {
   }
 
   for (const i in arr) {
-    if (arr.hasOwnProperty(i)) {
+    if (hasOwnProperty.call(arr, i)) {
       arr[i] = absolutePath(arr[i]);
     }
   }

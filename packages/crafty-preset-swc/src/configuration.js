@@ -1,6 +1,8 @@
 const debug = require("@swissquote/crafty-commons/packages/debug");
 const findUp = require("@swissquote/crafty-commons/packages/find-up");
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function hasSwcHelpersDependency() {
   const packageJsonPath = findUp.sync("package.json", { cwd: process.cwd() });
   if (!packageJsonPath) {
@@ -10,8 +12,8 @@ function hasSwcHelpersDependency() {
 
   const packageJson = require(packageJsonPath);
   return (
-    packageJson.hasOwnProperty("dependencies") &&
-    packageJson.dependencies.hasOwnProperty("@swc/helpers")
+    hasOwnProperty.call(packageJson, "dependencies") &&
+    hasOwnProperty.call(packageJson.dependencies, "@swc/helpers")
   );
 }
 

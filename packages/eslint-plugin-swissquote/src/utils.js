@@ -3,6 +3,8 @@
 // Solution proposed by @nzakas himself : https://github.com/eslint/eslint/issues/3458#issuecomment-257161846
 // replaces `extends: "plugin:react/recommended",`
 
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function addMissingRules(source, destination, except = []) {
   Object.keys(source).forEach(ruleName => {
     // Only define the rules we don't have configured yet
@@ -10,7 +12,7 @@ function addMissingRules(source, destination, except = []) {
       ruleName.indexOf("/") > -1
         ? `@swissquote/swissquote/${ruleName}`
         : ruleName;
-    if (!destination.hasOwnProperty(key) && except.indexOf(key) === -1) {
+    if (!hasOwnProperty.call(destination, key) && except.indexOf(key) === -1) {
       destination[key] = source[ruleName];
     }
   });

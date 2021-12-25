@@ -1,3 +1,5 @@
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
 const generateTask = require("./webpack_runtime");
 
 module.exports = {
@@ -11,7 +13,7 @@ module.exports = {
   config(config) {
     // Add missing informations to JavaScript configurations
     for (const j in config.js) {
-      if (!config.js.hasOwnProperty(j)) {
+      if (!hasOwnProperty.call(config.js, j)) {
         continue;
       }
 
