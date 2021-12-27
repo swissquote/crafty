@@ -14,7 +14,6 @@ function resolveFrom() {
   return require("resolve-from");
 }
 
-
 function stylelint() {
   return require("stylelint");
 }

@@ -1,9 +1,7 @@
-'use strict';
+const fancyLog = require("fancy-log");
+const { formatters } = require("stylelint");
 
-const fancyLog = require('fancy-log');
-const {formatters} = require('stylelint');
-
-const writer = require('./writer');
+const writer = require("./writer");
 
 /**
  * Creates a reporter from the given config.
@@ -12,7 +10,6 @@ const writer = require('./writer');
  * @return {Function} Reporter.
  */
 module.exports = function reporterFactory(config = {}, options = {}) {
-
   /**
    * Formatter for stylelint results.
    *
@@ -21,9 +18,10 @@ module.exports = function reporterFactory(config = {}, options = {}) {
    *
    * @type {Function}
    */
-  const formatter = typeof config.formatter === 'string' ?
-    formatters[config.formatter] :
-    config.formatter;
+  const formatter =
+    typeof config.formatter === "string"
+      ? formatters[config.formatter]
+      : config.formatter;
 
   /**
    * Reporter.
@@ -31,7 +29,6 @@ module.exports = function reporterFactory(config = {}, options = {}) {
    * @return {Promise} Resolved when writer and logger are done.
    */
   return function reporter(results) {
-
     /**
      * Async tasks performed by the reporter.
      * @type [Promise]
@@ -45,9 +42,7 @@ module.exports = function reporterFactory(config = {}, options = {}) {
     const formattedText = formatter(results);
 
     if (config.console && formattedText.trim()) {
-      asyncTasks.push(
-        fancyLog.info(`\n${formattedText}\n`)
-      );
+      asyncTasks.push(fancyLog.info(`\n${formattedText}\n`));
     }
 
     if (config.save) {

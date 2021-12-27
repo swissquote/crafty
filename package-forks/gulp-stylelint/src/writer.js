@@ -1,8 +1,6 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const stripAnsi = require('strip-ansi');
+const fs = require("fs");
+const path = require("path");
+const stripAnsi = require("strip-ansi");
 
 /**
  * Creates the output folder and writes formatted text to a file.

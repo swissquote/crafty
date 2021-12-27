@@ -1,18 +1,16 @@
-'use strict';
-
-const PluginError = require('plugin-error');
+const PluginError = require("plugin-error");
 const { Transform } = require("stream");
-const {formatters, lint} = require('stylelint');
+const { formatters, lint } = require("stylelint");
 
 // Disable sourcemaps as Crafty only lints original source files
 //const applySourcemap = require('./apply-sourcemap');
-const reporterFactory = require('./reporter-factory');
+const reporterFactory = require("./reporter-factory");
 
 /**
  * Name of this plugin for reporting purposes.
  * @type {String}
  */
-const pluginName = 'gulp-stylelint';
+const pluginName = "gulp-stylelint";
 
 /**
  * Stylelint results processor.
@@ -24,15 +22,17 @@ const pluginName = 'gulp-stylelint';
  * @return {Stream} Object stream usable in Gulp pipes.
  */
 module.exports = function gulpStylelint(options) {
-
   /**
    * Plugin options with defaults applied.
    * @type Object
    */
-  const pluginOptions = Object.assign({
-    failAfterError: true,
-    debug: false
-  }, options);
+  const pluginOptions = Object.assign(
+    {
+      failAfterError: true,
+      debug: false
+    },
+    options
+  );
 
   /**
    * Lint options for stylelint's `lint` function.
@@ -44,8 +44,9 @@ module.exports = function gulpStylelint(options) {
    * List of gulp-stylelint reporters.
    * @type [Function]
    */
-  const reporters = (pluginOptions.reporters || [])
-    .map(config => reporterFactory(config, pluginOptions));
+  const reporters = (pluginOptions.reporters || []).map(config =>
+    reporterFactory(config, pluginOptions)
+  );
 
   /**
    * List of stylelint's lint result promises.
@@ -75,7 +76,6 @@ module.exports = function gulpStylelint(options) {
    * @return {undefined} Nothing is returned (done callback is used instead).
    */
   function onFile(file, encoding, done) {
-
     if (file.isNull()) {
       done(null, file);
 
@@ -83,7 +83,10 @@ module.exports = function gulpStylelint(options) {
     }
 
     if (file.isStream()) {
-      this.emit('error', new PluginError(pluginName, 'Streaming is not supported'));
+      this.emit(
+        "error",
+        new PluginError(pluginName, "Streaming is not supported")
+      );
       done();
 
       return;
@@ -127,12 +130,14 @@ module.exports = function gulpStylelint(options) {
    * @return {Promise} Resolved with original lint results.
    */
   function passLintResultsThroughReporters(lintResults) {
-    const warnings = lintResults
-      .reduce((accumulated, res) => accumulated.concat(res.results), []);
+    const warnings = lintResults.reduce(
+      (accumulated, res) => accumulated.concat(res.results),
+      []
+    );
 
-    return Promise
-      .all(reporters.map(reporter => reporter(warnings)))
-      .then(() => lintResults);
+    return Promise.all(reporters.map(reporter => reporter(warnings))).then(
+      () => lintResults
+    );
   }
 
   /**
@@ -141,7 +146,7 @@ module.exports = function gulpStylelint(options) {
    * @return {Boolean} True if warning's severity is "error", false otherwise.
    */
   function isErrorSeverity(warning) {
-    return warning.severity === 'error';
+    return warning.severity === "error";
   }
 
   /**
@@ -150,18 +155,29 @@ module.exports = function gulpStylelint(options) {
    * @return {undefined} Nothing is returned (done callback is used instead).
    */
   function onStreamEnd(done) {
-    Promise
-      .all(lintPromiseList)
+    Promise.all(lintPromiseList)
       .then(passLintResultsThroughReporters)
       .then(lintResults => {
         process.nextTick(() => {
           // if the file was skipped, for example, by .stylelintignore, then res.results will be []
-          const errorCount = lintResults.filter(res => res.results.length).reduce((sum, res) => {
-            return sum + res.results[0].warnings.filter(isErrorSeverity).length;
-          }, 0);
+          const errorCount = lintResults
+            .filter(res => res.results.length)
+            .reduce((sum, res) => {
+              return (
+                sum + res.results[0].warnings.filter(isErrorSeverity).length
+              );
+            }, 0);
 
           if (pluginOptions.failAfterError && errorCount > 0) {
-            this.emit('error', new PluginError(pluginName, `Failed with ${errorCount} ${errorCount === 1 ? 'error' : 'errors'}`));
+            this.emit(
+              "error",
+              new PluginError(
+                pluginName,
+                `Failed with ${errorCount} ${
+                  errorCount === 1 ? "error" : "errors"
+                }`
+              )
+            );
           }
 
           done();
@@ -169,9 +185,12 @@ module.exports = function gulpStylelint(options) {
       })
       .catch(error => {
         process.nextTick(() => {
-          this.emit('error', new PluginError(pluginName, error, {
-            showStack: Boolean(pluginOptions.debug)
-          }));
+          this.emit(
+            "error",
+            new PluginError(pluginName, error, {
+              showStack: Boolean(pluginOptions.debug)
+            })
+          );
           done();
         });
       });
