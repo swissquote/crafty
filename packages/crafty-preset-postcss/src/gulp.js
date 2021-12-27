@@ -27,45 +27,24 @@ function cssTask(crafty, StreamHandler, bundle) {
 }
 
 function createLinter(gulp, crafty, name) {
-  gulp.task(name, cb => {
-    const reporterConfig = {
-      throwError: crafty.getEnvironment() === "production",
-      clearReportedMessages: true
+  gulp.task(name, () => {
+    const gulpStylelint = require("../packages/gulp-stylelint.js");
+
+    const config = {
+      ...(crafty.config.legacy_css
+        ? crafty.config.stylelint_legacy
+        : crafty.config.stylelint)
     };
 
-    const reporter = require("./lint_reporter")(reporterConfig);
+    config.customSyntax = require("postcss-scss");
 
-    const processors = [
-      require("../packages/stylelint.js")(
-        crafty.config.legacy_css
-          ? crafty.config.stylelint_legacy
-          : crafty.config.stylelint
-      ),
-      reporter
-    ];
-
-    const postcss = require("../packages/gulp-postcss.js");
-    const scssParser = require("postcss-scss");
-    const stream = gulp
-      .src(crafty.config.stylelint_pattern)
-      .pipe(postcss(processors, { parser: scssParser }));
-
-    const eos = require("../packages/end-of-stream.js");
-    const exhaust = require("../packages/stream-exhaust.js");
-    eos(exhaust(stream), { error: false }, err => {
-      const result = reporter.report();
-
-      if (err) {
-        cb(err);
-        return;
-      }
-
-      cb(
-        result ? null : new crafty.Information("Stylelint: Errors were found")
-      );
-    });
-
-    return stream;
+    return gulp.src(crafty.config.stylelint_pattern).pipe(
+      gulpStylelint({
+        config,
+        failAfterError: crafty.getEnvironment() === "production",
+        reporters: [{ formatter: "string", console: true }]
+      })
+    );
   });
 }
 

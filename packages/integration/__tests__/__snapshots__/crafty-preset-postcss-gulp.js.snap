@@ -85,6 +85,7 @@ Object {
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/no-bundle-dev/dist/css
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'css__lint' ...
+[__:__:__]
 
 css/imported.scss
  1:1  ✖  Types are allowed only inside a scope  swissquote/no-type-outside-scope
@@ -113,6 +114,7 @@ Object {
             css: __PATH__/packages/integration/fixtures/crafty-preset-postcss-gulp/no-bundle/dist/css
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'css__lint' ...
+[__:__:__]
 
 css/imported.scss
  1:1  ✖  Types are allowed only inside a scope  swissquote/no-type-outside-scope
@@ -127,7 +129,7 @@ css/style.scss
  31:6   ✖  Insert \\"⏎\\"                                                                                                                                                                                                                     prettier/prettier
 
 [__:__:__] 'css__lint' errored after ____ ms
-[__:__:__] Stylelint: Errors were found
+[__:__:__] Failed with 8 errors
 [__:__:__] 'default' errored after ____ ms
 ",
 }
@@ -146,6 +148,7 @@ Object {
 [__:__:__] Finished 'css_myBundle' after ____ ms
 [__:__:__] Finished 'css' after ____ ms
 [__:__:__] Starting 'css__lint' ...
+[__:__:__]
 
 css/style.scss
  104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by Edge 18, Safari on iOS 13.0-13.1,13.2,13.3,13.4-13.7,14.0-14.4,14.5-14.8,15.0-15.1,15.2  plugin/no-unsupported-browser-features
@@ -527,6 +530,7 @@ Object {
 [__:__:__] Finished 'css_myBundle' after ____ ms
 [__:__:__] Finished 'css' after ____ ms
 [__:__:__] Starting 'css__lint' ...
+[__:__:__]
 
 css/style.scss
  104:5  ⚠  Unexpected browser feature \\"css-resize\\" is not supported by IE 11           plugin/no-unsupported-browser-features

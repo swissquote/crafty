@@ -1,7 +1,3 @@
-function endOfStream() {
-  return require("end-of-stream");
-}
-
 function gulpPostcss() {
   return require("gulp-postcss");
 }
@@ -10,13 +6,14 @@ function gulpRename() {
   return require("gulp-rename");
 }
 
+function gulpStylelint() {
+  return require("@swissquote/gulp-stylelint");
+}
+
 function resolveFrom() {
   return require("resolve-from");
 }
 
-function streamExhaust() {
-  return require("stream-exhaust");
-}
 
 function stylelint() {
   return require("stylelint");
@@ -27,11 +24,10 @@ function stylelintBin() {
 }
 
 module.exports = {
-  endOfStream,
   gulpPostcss,
   gulpRename,
+  gulpStylelint,
   resolveFrom,
-  streamExhaust,
   stylelint,
   stylelintBin
 };

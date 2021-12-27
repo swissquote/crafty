@@ -86,8 +86,8 @@ async function main() {
         };
 
         pkg.devDependencies = {
-          jest: "27.3.1",
-          postcss: "8.3.11",
+          jest: "27.4.5",
+          postcss: "8.4.5",
         };
 
         pkg.peerDependencies = {
