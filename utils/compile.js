@@ -4,15 +4,7 @@ const { existsSync } = require("fs");
 const path = require("path");
 const filesize = require("filesize");
 
-const {
-  dependencySizeTree,
-  printDependencySizeTree,
-} = require("webpack-bundle-size-analyzer");
-
-function printStats(bundleStats) {
-  const depTrees = dependencySizeTree(bundleStats);
-  depTrees.forEach((tree) => printDependencySizeTree(tree, false));
-}
+const printStats = require("./stats.js");
 
 async function handleNCCResult(name, output, { code, assets, stats }) {
   const dirname = path.dirname(output);
