@@ -22,6 +22,9 @@ const externals = {
   "semver/functions/parse": "@swissquote/crafty-commons/packages/semver-parse",
   "semver/functions/valid": "@swissquote/crafty-commons/packages/semver-valid",
 
+  // Provide a simplified package data normalizer
+  "normalize-package-data": "../../packages/normalize-package-data.js",
+
   // Not used as we pass the configuration directly, can be excluded from the bundle
   "postcss-load-config": "../../src/dummy.js",
   "cosmiconfig": "../../src/dummy.js"

@@ -6,6 +6,7 @@ module.exports = [
       "fancy-log": "@swissquote/crafty/packages/fancy-log",
       "plugin-error": "@swissquote/crafty-commons-gulp/packages/plugin-error",
       "object-keys": "@swissquote/crafty-commons/packages/object-keys",
+      "object.assign": "@swissquote/crafty-commons/packages/object-assign",
       glob: "@swissquote/crafty-commons/packages/glob",
     
       // "readable-stream" is a drop-in replacement of "stream"

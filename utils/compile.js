@@ -40,8 +40,7 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
 
   console.log(
     "Writing",
-    `${dirname}/${name}-stats.json`,
-    filesize(bundleStatsString.length)
+    `${dirname}/${name}-stats.json`
   );
   await fs.promises.writeFile(
     `${dirname}/${name}-stats.json`,
