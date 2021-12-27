@@ -96,11 +96,13 @@ module.exports = {
     chain.resolveLoader.modules.add(MODULES);
 
     // JavaScript linting
-    chain.plugin("lint-js").use(require.resolve("eslint-webpack-plugin"), [
-      {
-        extensions: crafty.config.eslintExtensions,
-        overrideConfigFile: toTempFile(crafty.config.eslint)
-      }
-    ]);
+    chain
+      .plugin("lint-js")
+      .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
+        {
+          extensions: crafty.config.eslintExtensions,
+          overrideConfigFile: toTempFile(crafty.config.eslint)
+        }
+      ]);
   }
 };

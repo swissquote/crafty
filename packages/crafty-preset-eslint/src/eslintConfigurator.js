@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const resolveFrom = require("resolve-from");
+const resolveFrom = require("../packages/resolve-from");
 const tmp = require("@swissquote/crafty-commons/packages/tmp");
 
 function mergeConfiguration(configuration, args, newConfiguration) {
