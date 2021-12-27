@@ -3,8 +3,7 @@ function babelLoader() {
 }
 
 function gulpBabel() {
-  // Imports libraries still using `new Buffer()` which cause deprecation warnigns
-  //return require("gulp-babel");
+  return require("gulp-babel");
 }
 
 function gulpConcat() {
@@ -12,8 +11,7 @@ function gulpConcat() {
 }
 
 function gulpTypescript() {
-  // Imports libraries still using `new Buffer()` which cause deprecation warnigns
-  //return require("gulp-typescript");
+  return require("gulp-typescript");
 }
 
 function rollupPluginBabel() {

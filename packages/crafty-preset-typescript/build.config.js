@@ -10,8 +10,11 @@ module.exports = [
 
       // Provided by other Crafty packages
       glob: "@swissquote/crafty-commons/packages/glob",
+      "find-up": "@swissquote/crafty-commons/packages/find-up",
+      "object-keys" : "@swissquote/crafty-commons/packages/object-keys",
       "plugin-error" : "@swissquote/crafty-commons-gulp/packages/plugin-error",
       webpack: "@swissquote/crafty-runner-webpack/packages/webpack",
+      "vinyl-fs": "@swissquote/crafty-runner-gulp/packages/vinyl-fs",
       micromatch: "@swissquote/crafty-commons/packages/micromatch",
       picomatch: "@swissquote/crafty-commons/packages/picomatch",
       semver: "@swissquote/crafty-commons/packages/semver",

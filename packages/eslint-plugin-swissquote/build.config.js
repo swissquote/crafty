@@ -12,6 +12,8 @@ module.exports = [
 
       // Provided by other Crafty package
       debug: "@swissquote/crafty-commons/packages/debug",
+      "find-up": "@swissquote/crafty-commons/packages/find-up",
+      "object-keys" : "@swissquote/crafty-commons/packages/object-keys",
       glob: "@swissquote/crafty-commons/packages/glob",
       picomatch: "@swissquote/crafty-commons/packages/picomatch",
       micromatch: "@swissquote/crafty-commons/packages/micromatch",

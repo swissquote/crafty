@@ -9,11 +9,13 @@ const externals = {
 
   // Provided by other Crafty packages
   glob: "@swissquote/crafty-commons/packages/glob",
+  "find-up": "@swissquote/crafty-commons/packages/find-up",
   debug: "@swissquote/crafty-commons/packages/debug",
   minimatch: "@swissquote/crafty-commons/packages/minimatch",
   micromatch: "@swissquote/crafty-commons/packages/micromatch",
   "plugin-error": "@swissquote/crafty-commons-gulp/packages/plugin-error",
   "fancy-log": "@swissquote/crafty/packages/fancy-log",
+  "yargs-parser": "@swissquote/crafty/packages/yargs-parser",
   "postcss-selector-parser": "@swissquote/stylelint-config-swissquote/packages/postcss-selector-parser",
   semver: "@swissquote/crafty-commons/packages/semver",
   "semver/functions/clean": "@swissquote/crafty-commons/packages/semver-clean",
