@@ -5,8 +5,8 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 const path = require("path");
 const fs = require("fs");
 const WebpackChain = require("webpack-chain");
-const isGlob = require("is-glob");
-const globToRegex = require("glob-to-regexp");
+const isGlob = require("../packages/is-glob.js");
+const globToRegex = require("../packages/glob-to-regexp.js");
 const paths = require("./utils/paths");
 
 const absolutePath = paths.absolutePath;
@@ -76,7 +76,7 @@ function configureWatcher(chain, bundle, config, webpackPort) {
   // See https://github.com/facebookincubator/create-react-app/issues/240
   chain
     .plugin("case-sensitive")
-    .use(require.resolve("case-sensitive-paths-webpack-plugin"));
+    .use(require.resolve("../packages/case-sensitive-paths-webpack-plugin.js"));
 
   const outputPath = `${chain.output.get("path").replace(/\/$/g, "")}/**`;
 
@@ -130,7 +130,7 @@ function configureProfiling(chain, bundle) {
   chain
     .plugin("inspectpack")
     .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
-    .use(require.resolve("inspectpack/plugin"), [{}]);
+    .use(require.resolve("../packages/inspectpack.js"), [{}]);
 }
 
 function finalizeWatcher(chain) {

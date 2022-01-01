@@ -8,6 +8,7 @@
     "access": "public"
   },
   "scripts": {
+    "build": "node ../../utils/build.js",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -18,24 +19,24 @@
     "@swissquote/crafty": "1.17.2",
     "@swissquote/crafty-commons": "1.17.2",
     "@swissquote/crafty-preset-terser": "1.17.2",
+    "terser-webpack-plugin": "5.3.0",
+    "webpack": "5.65.0",
+    "webpack-bundle-analyzer": "4.5.0",
+    "webpack-chain": "6.5.1",
+    "webpack-dev-server": "4.7.2"
+  },
+  "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "glob-to-regexp": "0.4.1",
     "hash-index": "3.0.0",
     "inspectpack": "4.7.1",
     "is-glob": "4.0.3",
+    "jest": "27.4.5",
     "log-symbols": "4.1.0",
-    "terser-webpack-plugin": "5.3.0",
-    "webpack": "5.65.0",
-    "webpack-bundle-analyzer": "4.5.0",
-    "webpack-chain": "6.5.1",
-    "webpack-dev-server": "4.7.2",
+    "service-names-port-numbers": "2.0.0",
     "webpack-merge": "5.8.0"
   },
   "engines": {
     "node": ">=12"
-  },
-  "devDependencies": {
-    "jest": "27.4.5",
-    "service-names-port-numbers": "2.0.0"
   }
 }

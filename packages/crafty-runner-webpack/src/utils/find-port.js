@@ -1,7 +1,7 @@
 const net = require("net");
 const path = require("path");
 
-const hash = require("hash-index");
+const hash = require("../../packages/hash-index.js");
 
 function servicePort(name) {
   let i = 0;

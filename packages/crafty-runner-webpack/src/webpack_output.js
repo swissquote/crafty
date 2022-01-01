@@ -1,5 +1,5 @@
 const colors = require("@swissquote/crafty/packages/ansi-colors");
-const symbols = require("log-symbols");
+const symbols = require("../packages/log-symbols.js");
 
 const formatWebpackMessages = require("./utils/formatWebpackMessages");
 
