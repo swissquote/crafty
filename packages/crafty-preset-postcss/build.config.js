@@ -1,26 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
+const { getExternals } = require("../../utils/externals");
+
 const externals = {
+  // Provided by other Crafty packages
+  ...getExternals(),
+
   "schema-utils": "schema-utils",
   postcss: "postcss",
+  "postcss/package.json": "postcss/package.json",
   "/postcss\/lib(/.*)/": "postcss/lib$1",
   "@babel/code-frame": "@babel/code-frame",
-
-  // Provided by other Crafty packages
-  glob: "@swissquote/crafty-commons/packages/glob",
-  "find-up": "@swissquote/crafty-commons/packages/find-up",
-  debug: "@swissquote/crafty-commons/packages/debug",
-  minimatch: "@swissquote/crafty-commons/packages/minimatch",
-  micromatch: "@swissquote/crafty-commons/packages/micromatch",
-  "plugin-error": "@swissquote/crafty-commons-gulp/packages/plugin-error",
-  "fancy-log": "@swissquote/crafty/packages/fancy-log",
-  "yargs-parser": "@swissquote/crafty/packages/yargs-parser",
-  "postcss-selector-parser": "@swissquote/stylelint-config-swissquote/packages/postcss-selector-parser",
-  semver: "@swissquote/crafty-commons/packages/semver",
-  "semver/functions/clean": "@swissquote/crafty-commons/packages/semver-clean",
-  "semver/functions/parse": "@swissquote/crafty-commons/packages/semver-parse",
-  "semver/functions/valid": "@swissquote/crafty-commons/packages/semver-valid",
 
   // Provide a simplified package data normalizer
   "normalize-package-data": "../../packages/normalize-package-data.js",

@@ -1,12 +1,15 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "eslint-packages",
     externals: {
-      "eslint": "eslint",
-      "ajv": "ajv",
+      // Provided by other Crafty packages
+      ...getExternals(),
 
-      picomatch: "@swissquote/crafty-commons/packages/picomatch",
-      micromatch: "@swissquote/crafty-commons/packages/micromatch"
+      // Provided by this package
+      "eslint": "eslint",
+      "ajv": "ajv"
     }
   },
 ];

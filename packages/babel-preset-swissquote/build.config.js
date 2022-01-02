@@ -1,21 +1,15 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "babel-packages",
     externals: {
-      // Browserslist (post-css plugins)
-      browserslist: "@swissquote/crafty-commons/packages/browserslist",
-      glob: "@swissquote/crafty-commons/packages/glob",
-      minimatch: "@swissquote/crafty-commons/packages/minimatch",
-      semver: "@swissquote/crafty-commons/packages/semver",
-      "semver/functions/cmp": "@swissquote/crafty-commons/packages/semver-cmp",
-      "semver/functions/coerce":
-        "@swissquote/crafty-commons/packages/semver-coerce",
+      // Provided by other Crafty packages
+      ...getExternals(),
 
+      // Provided by this package
       "caniuse-lite": "caniuse-lite",
       "/caniuse-lite(/.*)/": "caniuse-lite$1",
-
-      chalk: "chalk",
-
       "@babel/code-frame": "@babel/code-frame",
       "@babel/generator": "@babel/generator",
       "@babel/traverse": "@babel/traverse",

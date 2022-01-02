@@ -1,14 +1,15 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "postcss-packages",
     externals: {
-      browserslist: "@swissquote/crafty-commons/packages/browserslist",
-      glob: "@swissquote/crafty-commons/packages/glob",
-      minimatch: "@swissquote/crafty-commons/packages/minimatch",
+      // Provided by other Crafty package
+      ...getExternals(),
 
+      // Provided by this package
       "caniuse-lite": "caniuse-lite",
       "/caniuse-lite(/.*)/": "caniuse-lite$1",
-
       postcss: "postcss",
       "/postcss(/.*)/": "postcss$1",
 
@@ -16,7 +17,10 @@ module.exports = [
       // Since make-dir depends on semver that makes a big dependency
       // make-dir is also not that needed since we depend on Node 12 at least
       // This smaller version does reduces dependencies and is just enough to run
-      "make-dir": "../../src/make-dir.js"
+      "make-dir": "../../src/make-dir.js",
+
+      // An optional embedded format we don't use
+      "sugarss": "sugarss"
     }
   }
 ];

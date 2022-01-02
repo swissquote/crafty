@@ -1,3 +1,5 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "packages-eslint",
@@ -11,15 +13,7 @@ module.exports = [
       "/eslint/lib(/.*)/": "eslint/lib$1",
 
       // Provided by other Crafty package
-      debug: "@swissquote/crafty-commons/packages/debug",
-      "find-up": "@swissquote/crafty-commons/packages/find-up",
-      "object-keys": "@swissquote/crafty-commons/packages/object-keys",
-      "object.assign": "@swissquote/crafty-commons/packages/object-assign",
-      glob: "@swissquote/crafty-commons/packages/glob",
-      picomatch: "@swissquote/crafty-commons/packages/picomatch",
-      micromatch: "@swissquote/crafty-commons/packages/micromatch",
-      minimatch: "@swissquote/crafty-commons/packages/minimatch",
-      semver: "@swissquote/crafty-commons/packages/semver",
+      ...getExternals(),
 
       // Replace functions that can be optimized
       "./report": "../../src/shims/eslint-plugin-react_report.js",

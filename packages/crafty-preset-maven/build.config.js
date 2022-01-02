@@ -1,8 +1,11 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "index",
-    externals: [
-        "@swissquote/crafty-commons/packages/tmp"
-    ]
+    externals: {
+      // Provided by other Crafty packages
+      ...getExternals(),
+    }
   },
 ];

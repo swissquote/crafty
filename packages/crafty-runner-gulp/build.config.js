@@ -1,13 +1,11 @@
+const { getExternals } = require("../../utils/externals");
+
 module.exports = [
   {
     name: "gulp-packages",
     externals: {
-      "ansi-colors": "@swissquote/crafty/packages/ansi-colors",
-      "fancy-log": "@swissquote/crafty/packages/fancy-log",
-      "plugin-error": "@swissquote/crafty-commons-gulp/packages/plugin-error",
-      "object-keys": "@swissquote/crafty-commons/packages/object-keys",
-      "object.assign": "@swissquote/crafty-commons/packages/object-assign",
-      glob: "@swissquote/crafty-commons/packages/glob",
+      // Provided by other Crafty packages
+      ...getExternals(),
     
       // "readable-stream" is a drop-in replacement of "stream"
       // But its current version is big and outdated

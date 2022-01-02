@@ -1,4 +1,9 @@
+const { getExternals } = require("../../utils/externals");
+
 const commonExternals = {
+  // Provided by other Crafty packages
+  ...getExternals(),
+
   stylelint: "stylelint",
   "/stylelint(/.*)/": "stylelint$1"
 };
@@ -51,8 +56,6 @@ module.exports = [
       "postcss-scss": "postcss-scss",
 
       // Used by stylelint-no-unsupported-browser-features
-      browserslist: "@swissquote/crafty-commons/packages/browserslist",
-      minimatch: "@swissquote/crafty-commons/packages/minimatch",
       "caniuse-lite": "caniuse-lite",
       "/caniuse-lite(/.*)/": "caniuse-lite$1",
 

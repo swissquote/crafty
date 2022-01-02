@@ -1,7 +1,7 @@
 const path = require("path");
 
 const imagemin = require("./gulp-imagemin.js");
-const newer = require("@swissquote/crafty-commons-gulp/packages/gulp-newer");
+const newer = require("gulp-newer");
 const svgmin = require("gulp-svgmin");
 
 module.exports = {
