@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const stripAnsi = require("strip-ansi");
+const { unstyle } = require("ansi-colors");
 
 /**
  * Creates the output folder and writes formatted text to a file.
@@ -14,5 +14,5 @@ module.exports = async function writer(text, dest, destRoot = process.cwd()) {
 
   await fs.promises.mkdir(path.dirname(fullpath), { recursive: true });
 
-  return fs.promises.writeFile(fullpath, stripAnsi(text));
+  return fs.promises.writeFile(fullpath, unstyle(text));
 };

@@ -1,5 +1,13 @@
+function ansiColors() {
+  return require("ansi-colors");
+}
+
 function browserslist() {
   return require("browserslist");
+}
+
+function colorizeTemplate() {
+  return require("colorize-template");
 }
 
 function debug() {
@@ -56,7 +64,9 @@ function tmp() {
 }
 
 module.exports = {
+  ansiColors,
   browserslist,
+  colorizeTemplate,
   debug,
   findUp,
   glob,

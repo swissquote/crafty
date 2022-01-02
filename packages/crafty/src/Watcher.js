@@ -1,4 +1,4 @@
-const colors = require("../packages/ansi-colors");
+const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 
 const run = require("./commands/run");
 

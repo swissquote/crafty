@@ -1,7 +1,3 @@
-function ansiColors() {
-  return require("ansi-colors");
-}
-
 function anymatch() {
   return require("anymatch");
 }
@@ -59,7 +55,6 @@ function yargsParser() {
 }
 
 module.exports = {
-  ansiColors,
   anymatch,
   asyncDone,
   camelcaseKeys,

@@ -1,4 +1,4 @@
-const colors = require("@swissquote/crafty/packages/ansi-colors");
+const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 const prettyTime = require("@swissquote/crafty/packages/pretty-hrtime");
 
 const paths = require("./utils/paths");

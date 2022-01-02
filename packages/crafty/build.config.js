@@ -8,11 +8,11 @@ module.exports = [
       ...getExternals(),
 
       // it's an optional dependency that can only be installed on macOS. Leave that to npm and friends
-      fsevents: "fsevents", 
+      fsevents: "fsevents",
 
       // To make sure we get up-to-date data
       "caniuse-lite": "caniuse-lite",
-      "/caniuse-lite(/.*)/": "caniuse-lite$1", 
+      "/caniuse-lite(/.*)/": "caniuse-lite$1"
     }
   }
 ];

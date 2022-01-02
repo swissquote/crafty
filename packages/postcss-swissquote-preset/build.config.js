@@ -20,7 +20,7 @@ module.exports = [
       "make-dir": "../../src/make-dir.js",
 
       // An optional embedded format we don't use
-      "sugarss": "sugarss"
+      sugarss: "sugarss"
     }
   }
 ];

@@ -5,7 +5,7 @@
  ** We might need to keep this up-to-date with new updates of Rollup
  */
 
-const colors = require("@swissquote/crafty/packages/ansi-colors");
+const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 
 const relativeId = require("./relativeId");
 

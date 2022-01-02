@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const colors = require("@swissquote/crafty/packages/ansi-colors");
+const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:runner-webpack"
 );
