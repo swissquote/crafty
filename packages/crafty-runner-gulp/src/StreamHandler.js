@@ -1,5 +1,5 @@
-const plumber = require("@swissquote/gulp-plumber");
-const pump = require("../packages/pump");
+const plumber = require("../packages/gulp-plumber.js");
+const pump = require("../packages/pump.js");
 
 let crafty;
 let gulp;
