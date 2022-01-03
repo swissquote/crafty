@@ -17,13 +17,16 @@
     "@swissquote/crafty-commons": "1.17.2",
     "@swissquote/crafty-preset-prettier": "1.17.2",
     "@swissquote/eslint-plugin-swissquote": "1.17.2",
-    "@swissquote/rollup-plugin-eslint": "1.17.2",
     "ajv": "6.12.6",
     "eslint": "8.6.0"
   },
   "devDependencies": {
+    "@swissquote/rollup-plugin-eslint": "1.17.2",
     "eslint-webpack-plugin": "3.1.1",
     "resolve-from": "5.0.0"
+  },
+  "peerDependencies": {
+    "@swissquote/crafty-runner-rollup": "1.17.2"
   },
   "engines": {
     "node": ">=12"
