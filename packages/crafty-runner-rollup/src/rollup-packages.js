@@ -18,6 +18,10 @@ function rollupPluginPNPResolve() {
   return require("rollup-plugin-pnp-resolve");
 }
 
+function rollupPluginUtils() {
+  return require("@rollup/pluginutils");
+}
+
 /*function rollupPluginTerser() {
     return require("rollup-plugin-terser");
 }*/
@@ -32,6 +36,7 @@ module.exports = {
   rollupPluginNodeResolve,
   rollupPluginReplace,
   rollupPluginPNPResolve,
+  rollupPluginUtils,
   //rollupPluginTerser,
   rollup
 };
