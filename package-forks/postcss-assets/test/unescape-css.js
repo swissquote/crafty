@@ -1,17 +1,14 @@
-const { test } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 const unescapeCss = require("../lib/unescape-css");
 
-test("unescapes plain chars", () => {
-  assert.is(unescapeCss("Romeo \\+ Juliette"), "Romeo + Juliette");
+test("unescapes plain chars", (t) => {
+  t.is(unescapeCss("Romeo \\+ Juliette"), "Romeo + Juliette");
 });
 
-test("unescapes ASCII chars", () => {
-  assert.is(unescapeCss("\\34\\32"), "42");
+test("unescapes ASCII chars", (t) => {
+  t.is(unescapeCss("\\34\\32"), "42");
 });
 
-test("unescapes Unicode chars", () => {
-  assert.is(unescapeCss("I \\2665  NY"), "I ♥ NY");
+test("unescapes Unicode chars", (t) => {
+  t.is(unescapeCss("I \\2665  NY"), "I ♥ NY");
 });
-
-test.run();

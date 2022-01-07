@@ -1,7 +1,6 @@
 "use strict";
 
-const { suite } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 var es = require("event-stream"),
 Crafty = require("@swissquote/crafty/src/Crafty"),
@@ -12,9 +11,7 @@ const gulp = new Gulp(new Crafty({}));
 var plumber = require("../");
 var fixturesGlob = ["./test/fixtures/*"];
 
-const it = suite("unpipe");
-
-it("should not keep piping after error", function() {
+test("should not keep piping after error", t => {
   return new Promise((done, fail) => {
     var expected = [1, 3, 5];
 
@@ -46,8 +43,8 @@ it("should not keep piping after error", function() {
       .pipe(plumber.stop())
       .pipe(badass)
       .on("error", function(err) {
-        assert.instance(err, Error);
-        assert.equal(actual, expected);
+        t.truthy(err instanceof Error);
+        t.deepEqual(actual, expected);
         done();
       })
       .on("end", function() {
@@ -56,7 +53,7 @@ it("should not keep piping after error", function() {
   });
 });
 
-it.before(function() {
+test.before(function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
       es.writeArray(
@@ -67,4 +64,3 @@ it.before(function() {
     );
   });
 });
-it.run();

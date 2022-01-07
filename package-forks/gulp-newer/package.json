@@ -24,13 +24,13 @@
   "main": "index.js",
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
-    "test": "uvu",
-    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js uvu"
+    "test": "ava",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "devDependencies": {
     "@swissquote/crafty-runner-gulp": "1.17.2",
+    "ava": "4.0.0",
     "c8": "7.11.0",
-    "uvu": "0.5.2",
     "mock-fs": "5.1.2",
     "vinyl": "2.2.1"
   },

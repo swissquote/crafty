@@ -1,7 +1,6 @@
 "use strict";
 
-const { suite } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 const { Transform } = require("stream");
 
@@ -16,9 +15,7 @@ var fixturesGlob = ["./test/fixtures/*"];
 
 let expected = null;
 
-const it = suite("stream");
-
-it("piping into second plumber should keep piping", function() {
+test("piping into second plumber should keep piping", function(t) {
   return new Promise((done) => {
     gulp
       .src(fixturesGlob)
@@ -28,7 +25,7 @@ it("piping into second plumber should keep piping", function() {
       .pipe(
         es.writeArray(
           function(err, array) {
-            assert.equal(array, expected);
+            t.deepEqual(array, expected);
             done();
           }
         )
@@ -39,7 +36,7 @@ it("piping into second plumber should keep piping", function() {
   });
 });
 
-it("should work with es.readarray", function() {
+test("should work with es.readarray", function(t) {
   return new Promise((done) => {
     var expected = ["1\n", "2\n", "3\n", "4\n", "5\n"];
 
@@ -48,7 +45,7 @@ it("should work with es.readarray", function() {
       .pipe(es.stringify())
       .pipe(
         es.writeArray(function(error, array) {
-          assert.equal(array, expected);
+          t.deepEqual(array, expected);
 
           done();
         })
@@ -56,19 +53,23 @@ it("should work with es.readarray", function() {
   });
 });
 
-it("should emit `end` after source emit `finish`", function() {
+test("should emit `end` after source emit `finish`", function(t) {
+  t.plan(1);
   return new Promise((done, fail) => {
     gulp
       .src(fixturesGlob)
       .pipe(plumber())
       // Fetchout data
       .on("data", function() {})
-      .on("end", done)
+      .on("end", () => {
+        t.truthy(true);
+        done();
+      })
       .on("error", fail);
   });
 });
 
-it.before(function() {
+test.before(function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
       es.writeArray(
@@ -81,7 +82,7 @@ it.before(function() {
   });
 });
 
-it("should passThrough all incoming files in non-flowing mode", function() {
+test("should passThrough all incoming files in non-flowing mode", function(t) {
   return new Promise((done, fail) => {
     gulp
       .src(fixturesGlob)
@@ -89,7 +90,7 @@ it("should passThrough all incoming files in non-flowing mode", function() {
       .pipe(
         es.writeArray(
           function(err, array) {
-            assert.equal(array, expected);
+            t.deepEqual(array, expected);
             done();
           }
         )
@@ -98,7 +99,7 @@ it("should passThrough all incoming files in non-flowing mode", function() {
   });
 });
 
-// it('in flowing mode', function (done) {
+// test('in flowing mode', function (done) {
 //     gulp.src(fixturesGlob)
 //         .pipe(plumber({ errorHandler: done }))
 // // You cant do on('data') and pipe simultaniously.
@@ -109,5 +110,3 @@ it("should passThrough all incoming files in non-flowing mode", function() {
 //         }.bind(this)))
 //         .on('error', done);
 // });
-
-it.run();

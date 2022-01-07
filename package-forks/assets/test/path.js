@@ -1,60 +1,59 @@
 const path = require("path");
-const { test } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 const resolvePath = require("../lib/path");
 
-test("w/o options", async () => {
+test("w/o options", async t => {
   const resolvedPath = await resolvePath("test/fixtures/duplicate-1.jpg");
 
-  assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("basePath", async () => {
+test("basePath", async t => {
   const resolvedPath = await resolvePath("duplicate-1.jpg", {
     basePath: "test/fixtures",
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("loadPaths", async () => {
+test("loadPaths", async t => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: ["test/fixtures/fonts", "test/fixtures/images"],
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("loadPaths string", async () => {
+test("loadPaths string", async t => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: "test/fixtures/images",
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("loadPaths glob", async () => {
+test("loadPaths glob", async t => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: "test/fixtures/*",
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("basePath + loadPaths", async () => {
+test("basePath + loadPaths", async t => {
   const resolvedPath = await resolvePath("picture.png", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("absolute needle + basePath", async () => {
+test("absolute needle + basePath", async t => {
   const absoluteTo = path.resolve("test/fixtures/duplicate-1.jpg");
   const resolvedPath = await resolvePath(absoluteTo, {
     basePath: "test/fixtures",
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("absolute basePath + loadPaths", async () => {
+test("absolute basePath + loadPaths", async t => {
   const resolvedPath = await resolvePath("picture.png", {
     basePath: path.resolve("test/fixtures"),
     loadPaths: [
@@ -62,46 +61,46 @@ test("absolute basePath + loadPaths", async () => {
       path.resolve("test/fixtures/images"),
     ],
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("non-existing file", async () => {
+test("non-existing file", async t => {
   try {
     await resolvePath("non-existing.gif");
-    assert.unreachable();
+    t.unreachable();
   } catch (err) {
-    assert.instance(err, Error);
-    assert.is(err.message, "Asset not found or unreadable: non-existing.gif");
+    t.truthy(err instanceof Error);
+    t.is(err.message, "Asset not found or unreadable: non-existing.gif");
   }
 });
 
-test("prioritize basePath over the loadPaths", async () => {
+test("prioritize basePath over the loadPaths", async t => {
   const resolvedPath = await resolvePath("duplicate-1.jpg", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("prioritize firsts loadPaths over the lasts", async () => {
+test("prioritize firsts loadPaths over the lasts", async t => {
   const resolvedPath = await resolvePath("duplicate-2.txt", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  assert.is(resolvedPath, path.resolve("test/fixtures/fonts/duplicate-2.txt"));
+  t.is(resolvedPath, path.resolve("test/fixtures/fonts/duplicate-2.txt"));
 });
 
-test("node-style callback w/ options", () => {
+test("node-style callback w/ options", (t) => {
   return new Promise((resolve) => {
     resolvePath("test/fixtures/duplicate-1.jpg", (err, resolvedPath) => {
-      assert.is(err, null);
-      assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+      t.is(err, null);
+      t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
       resolve();
     });
   });
 });
 
-test("node-style callback w/o options", () => {
+test("node-style callback w/o options", (t) => {
   return new Promise((resolve) => {
     resolvePath(
       "duplicate-1.jpg",
@@ -109,23 +108,21 @@ test("node-style callback w/o options", () => {
         basePath: "test/fixtures",
       },
       (err, resolvedPath) => {
-        assert.is(err, null);
-        assert.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+        t.is(err, null);
+        t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
         resolve();
       }
     );
   });
 });
 
-test("node-style callback + non-existing file", () => {
+test("node-style callback + non-existing file", (t) => {
   return new Promise((resolve) => {
     resolvePath("non-existing.gif", (err, resolvedPath) => {
-      assert.instance(err, Error);
-      assert.is(err.message, "Asset not found or unreadable: non-existing.gif");
-      assert.is(resolvedPath, undefined);
+      t.truthy(err instanceof Error);
+      t.is(err.message, "Asset not found or unreadable: non-existing.gif");
+      t.is(resolvedPath, undefined);
       resolve();
     });
   });
 });
-
-test.run();

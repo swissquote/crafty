@@ -3,8 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
-const { test } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 const plugin = require("..");
 
 function process(css, options, postcssOptions) {
@@ -13,19 +12,19 @@ function process(css, options, postcssOptions) {
     .process(css, { from: undefined, ...postcssOptions });
 }
 
-test("resolves urls", () =>
+test("resolves urls", (t) =>
   process("a { b: resolve('picture.png') }", {
     basePath: "test/fixtures",
     baseUrl: "http://example.com/wp-content/themes",
     loadPaths: ["fonts", "images"],
   }).then((result) => {
-    assert.is(
+    t.is(
       result.css,
       "a { b: url('http://example.com/wp-content/themes/images/picture.png') }"
     );
   }));
 
-test("resolves urls from the current path", () =>
+test("resolves urls from the current path", (t) =>
   process(
     "a { b: resolve('picture.png') }",
     {
@@ -36,13 +35,13 @@ test("resolves urls from the current path", () =>
       from: path.resolve("test/fixtures/images/style.css"),
     }
   ).then((result) => {
-    assert.is(
+    t.is(
       result.css,
       "a { b: url('http://example.com/wp-content/themes/images/picture.png') }"
     );
   }));
 
-test("resolves relative urls from the current path", () =>
+test("resolves relative urls from the current path", (t) =>
   process(
     "a { b: resolve('fonts/empty-sans.woff') }",
     {
@@ -53,18 +52,18 @@ test("resolves relative urls from the current path", () =>
       from: path.resolve("test/fixtures/images/style.css"),
     }
   ).then((result) => {
-    assert.is(result.css, "a { b: url('../fonts/empty-sans.woff') }");
+    t.is(result.css, "a { b: url('../fonts/empty-sans.woff') }");
   }));
 
-test("resolves relative urls from the provided path", () =>
+test("resolves relative urls from the provided path", (t) =>
   process("a { b: resolve('fonts/empty-sans.woff') }", {
     basePath: "test/fixtures",
     relative: "fonts",
   }).then((result) => {
-    assert.is(result.css, "a { b: url('empty-sans.woff') }");
+    t.is(result.css, "a { b: url('empty-sans.woff') }");
   }));
 
-test("busts cache when resolving urls", () =>
+test("busts cache when resolving urls", (t) =>
   process("a { b: resolve('picture.png') }", {
     basePath: "test/fixtures",
     baseUrl: "http://example.com/wp-content/themes",
@@ -73,49 +72,49 @@ test("busts cache when resolving urls", () =>
     },
     loadPaths: ["fonts", "images"],
   }).then((result) => {
-    assert.is(
+    t.is(
       result.css,
       "a { b: url('http://example.com/wp-content/themes/images/picture.png?3061') }"
     );
   }));
 
-test("throws when trying to resolve a non-existing file", () =>
+test("throws when trying to resolve a non-existing file", (t) =>
   process("a { b: resolve('non-existing.gif') }").then(
-    assert.unreachable,
+    t.unreachable,
     (err) => {
-      assert.instance(err, Error);
-      assert.is(err.message, "Asset not found or unreadable: non-existing.gif");
+      t.truthy(err instanceof Error);
+      t.is(err.message, "Asset not found or unreadable: non-existing.gif");
     }
   ));
 
-test("inlines data", () =>
+test("inlines data", (t) =>
   process("a { b: inline('picture.png') }", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   }).then((result) => {
-    assert.is(result.css.slice(0, 32), "a { b: url('data:image/png;base6");
-    assert.is(result.css.slice(-32), "ufaJraBKlQAAAABJRU5ErkJggg==') }");
+    t.is(result.css.slice(0, 32), "a { b: url('data:image/png;base6");
+    t.is(result.css.slice(-32), "ufaJraBKlQAAAABJRU5ErkJggg==') }");
   }));
 
-test("inlines svg unencoded", () =>
+test("inlines svg unencoded", (t) =>
   process("a { b: inline('vector.svg') }", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   }).then((result) => {
-    assert.is(result.css.slice(0, 32), "a { b: url('data:image/svg+xml;c");
-    assert.is(result.css.slice(-32), "h80z%22%2F%3E%0A%3C%2Fsvg%3E') }");
+    t.is(result.css.slice(0, 32), "a { b: url('data:image/svg+xml;c");
+    t.is(result.css.slice(-32), "h80z%22%2F%3E%0A%3C%2Fsvg%3E') }");
   }));
 
-test("throws when trying to inline a non-existing file", () =>
+test("throws when trying to inline a non-existing file", (t) =>
   process("a { b: inline('non-existing.gif') }").then(
-    assert.unreachable,
+    t.unreachable,
     (err) => {
-      assert.instance(err, Error);
-      assert.is(err.message, "Asset not found or unreadable: non-existing.gif");
+      t.truthy(err instanceof Error);
+      t.is(err.message, "Asset not found or unreadable: non-existing.gif");
     }
   ));
 
-test("measures images", () =>
+test("measures images", (t) =>
   process(
     "a { " +
       "b: size('vector.svg'); " +
@@ -127,10 +126,10 @@ test("measures images", () =>
       loadPaths: ["fonts", "images"],
     }
   ).then((result) => {
-    assert.is(result.css, "a { b: 160px 120px; c: 200px; d: 57px; }");
+    t.is(result.css, "a { b: 160px 120px; c: 200px; d: 57px; }");
   }));
 
-test("measures images with set cache dimensions", () => {
+test("measures images with set cache dimensions", (t) => {
   const options = {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
@@ -144,18 +143,18 @@ test("measures images with set cache dimensions", () => {
       "}",
     options
   ).then((firstResult) => {
-    assert.is(firstResult.css, "a { b: 160px 120px; c: 200px; d: 57px; }");
+    t.is(firstResult.css, "a { b: 160px 120px; c: 200px; d: 57px; }");
 
     return process(
       "a { " + "b: width('vector.svg'); " + "c: size('picture.png'); " + "}",
       options
     ).then((secondResult) => {
-      assert.is(secondResult.css, "a { b: 160px; c: 200px 57px; }");
+      t.is(secondResult.css, "a { b: 160px; c: 200px 57px; }");
     });
   });
 });
 
-test("measures images with density provided", () =>
+test("measures images with density provided", (t) =>
   process(
     "a { " +
       "b: size('vector.svg', 2); " +
@@ -167,39 +166,39 @@ test("measures images with density provided", () =>
       loadPaths: ["fonts", "images"],
     }
   ).then((result) => {
-    assert.is(result.css, "a { b: 80px 60px; c: 100px; d: 28.5px; }");
+    t.is(result.css, "a { b: 80px 60px; c: 100px; d: 28.5px; }");
   }));
 
-test("throws when trying to measure a non-existing image", () =>
+test("throws when trying to measure a non-existing image", (t) =>
   process("a { b: size('non-existing.gif') }").then(
-    assert.unreachable,
+    t.unreachable,
     (err) => {
-      assert.instance(err, Error);
-      assert.is(err.message, "Asset not found or unreadable: non-existing.gif");
+      t.truthy(err instanceof Error);
+      t.is(err.message, "Asset not found or unreadable: non-existing.gif");
     }
   ));
 
-test("throws when trying to measure an unsupported file", () =>
+test("throws when trying to measure an unsupported file", (t) =>
   process("a { b: size('test/fixtures/fonts/empty-sans.woff') }").then(
-    assert.unreachable,
+    t.unreachable,
     (err) => {
       const absolutePath = path.resolve("test/fixtures/fonts/empty-sans.woff");
-      assert.instance(err, Error);
-      assert.is(err.message, `Empty file: ${absolutePath}`);
+      t.truthy(err instanceof Error);
+      t.is(err.message, `Empty file: ${absolutePath}`);
     }
   ));
 
-test("throws when trying to measure an invalid file", () =>
+test("throws when trying to measure an invalid file", (t) =>
   process("a { b: size('test/fixtures/images/invalid.jpg') }").then(
-    assert.unreachable,
+    t.unreachable,
     (err) => {
       const absolutePath = path.resolve("test/fixtures/images/invalid.jpg");
-      assert.instance(err, Error);
-      assert.is(err.message, `Corrupt JPG, exceeded buffer limits: ${absolutePath}`);
+      t.truthy(err instanceof Error);
+      t.is(err.message, `Corrupt JPG, exceeded buffer limits: ${absolutePath}`);
     }
   ));
 
-test("handles quotes and escaped characters", () =>
+test("handles quotes and escaped characters", (t) =>
   process(
     "a {" +
       "b: resolve(picture.png);" +
@@ -211,7 +210,7 @@ test("handles quotes and escaped characters", () =>
       basePath: "test/fixtures/images",
     }
   ).then((result) => {
-    assert.is(
+    t.is(
       result.css,
       "a {" +
         "b: url('/picture.png');" +
@@ -222,11 +221,9 @@ test("handles quotes and escaped characters", () =>
     );
   }));
 
-test("allows usage inside media queries", () =>
+test("allows usage inside media queries", (t) =>
   process(
     "@media a and (b: height('test/fixtures/images/picture.png')) { c { d: e }}"
   ).then((result) => {
-    assert.is(result.css, "@media a and (b: 57px) { c { d: e }}");
+    t.is(result.css, "@media a and (b: 57px) { c { d: e }}");
   }));
-
-test.run();

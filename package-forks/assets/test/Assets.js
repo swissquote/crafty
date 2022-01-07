@@ -1,6 +1,5 @@
 const sinon = require("sinon");
-const { test } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 const Assets = require("..");
 
@@ -18,42 +17,40 @@ test.after(() => {
   Assets.url.restore();
 });
 
-test("constructor", () => {
-  assert.equal(typeof Assets, "function", "is a function");
+test("constructor", (t) => {
+  t.deepEqual(typeof Assets, "function", "is a function");
   // eslint-disable-next-line new-cap
-  assert.instance(Assets(), Assets, "instantiable without new");
-  assert.is(Object.isFrozen(new Assets()), true, "is frozen");
+  t.truthy(Assets() instanceof Assets);
+  t.is(Object.isFrozen(new Assets()), true, "is frozen");
 });
 
-test(".options", () => {
+test(".options", (t) => {
   const options = { basePath: "source" };
-  assert.equal(new Assets().options, {}, "defaults to an empty object");
-  assert.equal(new Assets(options).options.basePath, "source", "is initiable");
-  assert.is.not(new Assets(options).options, options, "breaks the reference");
+  t.deepEqual(new Assets().options, {}, "defaults to an empty object");
+  t.deepEqual(new Assets(options).options.basePath, "source", "is initiable");
+  t.not(new Assets(options).options, options, "breaks the reference");
 });
 
-test(".data()", () => {
+test(".data()", (t) => {
   const instance = new Assets();
   instance.data();
-  assert.is(Assets.data.called, true);
+  t.is(Assets.data.called, true);
 });
 
-test(".path()", () => {
+test(".path()", (t) => {
   const instance = new Assets();
   instance.path();
-  assert.is(Assets.path.called, true);
+  t.is(Assets.path.called, true);
 });
 
-test(".size()", () => {
+test(".size()", (t) => {
   const instance = new Assets();
   instance.size();
-  assert.is(Assets.size.called, true);
+  t.is(Assets.size.called, true);
 });
 
-test(".url()", () => {
+test(".url()", (t) => {
   const instance = new Assets();
   instance.url();
-  assert.is(Assets.url.called, true);
+  t.is(Assets.url.called, true);
 });
-
-test.run();

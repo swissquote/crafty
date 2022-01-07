@@ -1,7 +1,6 @@
 "use strict";
 
-const { suite } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 const { Transform } = require("stream");
 
@@ -21,9 +20,7 @@ var delay = 20;
 
 let failingQueueStream = null;
 
-const it = suite("errorHandler");
-
-it.before.each(function() {
+test.beforeEach(function() {
   var i = 0;
   failingQueueStream = new es.through(function(file) {
     this.queue(file);
@@ -34,7 +31,7 @@ it.before.each(function() {
   });
 });
 
-it.before(function() {
+test.before(function() {
   return new Promise((done) => {
     gulp.src(fixturesGlob).pipe(
       es.writeArray(() => {
@@ -44,14 +41,14 @@ it.before(function() {
   });
 });
 
-it("should attach custom error handler", function() {
+test("should attach custom error handler", function(t) {
   return new Promise((done) => {
     gulp
       .src(fixturesGlob)
       .pipe(
         plumber({
           errorHandler: function(error) {
-            assert.equal(error.toString(), errorMessage);
+            t.deepEqual(error.toString(), errorMessage);
             //error.toString().should.containEql(errorMessage);
             done();
           },
@@ -61,13 +58,13 @@ it("should attach custom error handler", function() {
   });
 });
 
-it("should attach custom error handler with function argument", function() {
+test("should attach custom error handler with function argument", function(t) {
   return new Promise((done) => {
     gulp
       .src(fixturesGlob)
       .pipe(
         plumber(function(error) {
-          assert.equal(error.toString(), errorMessage);
+          t.deepEqual(error.toString(), errorMessage);
           //error.toString().should.containEql(errorMessage);
           done();
         })
@@ -76,11 +73,11 @@ it("should attach custom error handler with function argument", function() {
   });
 });
 
-it("should attach default error handler", function() {
+test("should attach default error handler", function(t) {
   return new Promise((done) => {
     var mario = plumber();
     mario.errorHandler = function(error) {
-      assert.equal(error.toString(), errorMessage);
+      t.deepEqual(error.toString(), errorMessage);
       //error.toString().should.containEql(errorMessage);
       done();
     };
@@ -91,7 +88,7 @@ it("should attach default error handler", function() {
   });
 });
 
-it.skip("default error handler should work", function() {
+test.skip("default error handler should work", function(t) {
   // TODO: Find alternative way to test error handler (`gutil.log` was replaced by `fancyLog`)
   // var mario = plumber();
   // var _ = gutil.log;
@@ -104,13 +101,14 @@ it.skip("default error handler should work", function() {
   //     });
 });
 
-it("should attach error handler in non-flowing mode", function() {
+test("should attach error handler in non-flowing mode", function(t) {
+  t.plan(1);
   return new Promise((done) => {
     var delayed = new Transform({objectMode: true, transform(file, enc, cb) { cb(null, file); }});
     setTimeout(delayed.write.bind(delayed, "data"), delay);
     setTimeout(delayed.write.bind(delayed, "data"), delay);
     delayed
-      .pipe(plumber({ errorHandler: () => done() }))
+      .pipe(plumber({ errorHandler: () => { t.truthy(true); done();} }))
       .pipe(failingQueueStream);
   });
 });
@@ -126,21 +124,21 @@ it("should attach error handler in non-flowing mode", function() {
 //         .pipe(this.failingQueueStream);
 // });
 
-it("should not attach error handler in non-flowing mode", function() {
+test("should not attach error handler in non-flowing mode", function(t) {
   return new Promise((done) => {
     gulp
       .src(fixturesGlob)
       .pipe(plumber({ errorHandler: false }))
       .pipe(failingQueueStream)
       .on("error", (err) => {
-        assert.instance(err, Error);
+        t.truthy(err instanceof Error);
         done();
       })
       .on("end", () => {});
   });
 });
 
-// it('in flowing mode', function (done) {
+// test('in flowing mode', function (done) {
 //     (function () {
 //         gulp.src(fixturesGlob)
 //             .pipe(plumber({ errorHandler: false }))
@@ -152,27 +150,25 @@ it("should not attach error handler in non-flowing mode", function() {
 //     done();
 // });
 
-it("throw on piping to undefined", function() {
-  assert.throws(() => plumber.pipe());
+test("throw on piping to undefined", function(t) {
+  t.throws(() => plumber.pipe());
 });
 
-it("throw after cleanup", function() {
+test("throw after cleanup", function(t) {
   var mario = plumber({ errorHandler: false });
   var stream = mario.pipe(through2.obj());
 
-  assert.throws(() => {
+  t.throws(() => {
     stream.emit("error", new Error(errorMessage));
   });
 
-  assert.equal(EE.listenerCount(mario, "data"), 0);
-  assert.equal(EE.listenerCount(mario, "drain"), 0);
-  assert.equal(EE.listenerCount(mario, "error"), 0);
-  assert.equal(EE.listenerCount(mario, "close"), 0);
+  t.deepEqual(EE.listenerCount(mario, "data"), 0);
+  t.deepEqual(EE.listenerCount(mario, "drain"), 0);
+  t.deepEqual(EE.listenerCount(mario, "error"), 0);
+  t.deepEqual(EE.listenerCount(mario, "close"), 0);
 
-  assert.equal(EE.listenerCount(stream, "data"), 0);
-  assert.equal(EE.listenerCount(stream, "drain"), 0);
-  assert.equal(EE.listenerCount(stream, "error"), 0);
-  assert.equal(EE.listenerCount(stream, "close"), 0);
+  t.deepEqual(EE.listenerCount(stream, "data"), 0);
+  t.deepEqual(EE.listenerCount(stream, "drain"), 0);
+  t.deepEqual(EE.listenerCount(stream, "error"), 0);
+  t.deepEqual(EE.listenerCount(stream, "close"), 0);
 });
-
-it.run();

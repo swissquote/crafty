@@ -1,16 +1,13 @@
 /* eslint quotes: 0 */
 
-const { test } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 const unquote = require("../lib/unquote");
 
-test("removes quotes", () => {
-  assert.is(unquote('"foo"'), "foo");
-  assert.is(unquote("'bar'"), "bar");
+test("removes quotes", t => {
+  t.is(unquote('"foo"'), "foo");
+  t.is(unquote("'bar'"), "bar");
 });
 
-test("preserves unquoted strings", () => {
-  assert.is(unquote("foo"), "foo");
+test("preserves unquoted strings", t => {
+  t.is(unquote("foo"), "foo");
 });
-
-test.run();

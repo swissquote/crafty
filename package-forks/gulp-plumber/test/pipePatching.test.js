@@ -1,7 +1,6 @@
 "use strict";
 
-const { suite } = require("uvu");
-const assert = require("uvu/assert");
+const test = require("ava");
 
 var es = require("event-stream"),
   noop = require("./util").noop,
@@ -13,9 +12,15 @@ var es = require("event-stream"),
 var plumber = require("../");
 var fixturesGlob = ["./test/fixtures/*"];
 
-const it = suite("pipe");
+test.before(async function() {
+  return new Promise((done) => {
+    gulp.src(fixturesGlob).pipe(
+      es.writeArray(() => done())
+    );
+  });
+});
 
-it("should keep piping after error", function() {
+test("should keep piping after error", (t) => {
   return new Promise((done, fail) => {
     var expected = [1, 3, 5];
 
@@ -41,13 +46,13 @@ it("should keep piping after error", function() {
         fail(err);
       })
       .on("end", function() {
-        assert.equal(actual, expected);
+        t.deepEqual(actual, expected);
         done();
       });
   });
 });
 
-it("should skip patching with `inherit` === false", function() {
+test("should skip patching with `inherit` === false", (t) => {
   return new Promise((done) => {
     var lastNoop = noop();
     var mario = plumber({ inherit: false });
@@ -58,13 +63,13 @@ it("should skip patching with `inherit` === false", function() {
       .pipe(noop())
       .pipe(lastNoop)
       .on("end", function() {
-        assert.not.ok(lastNoop._plumbed);
+        t.falsy(lastNoop._plumbed);
         done();
       });
   });
 });
 
-it("piping into second plumber should does nothing", function() {
+test("piping into second plumber should does nothing", (t) => {
   return new Promise((done) => {
     var lastNoop = noop();
     gulp
@@ -75,58 +80,8 @@ it("piping into second plumber should does nothing", function() {
       .pipe(plumber())
       .pipe(lastNoop)
       .on("end", function() {
-        assert.ok(lastNoop._plumbed);
+        t.truthy(lastNoop._plumbed);
         done();
       });
   });
 });
-
-it.before(async function() {
-  return new Promise((done) => {
-    gulp.src(fixturesGlob).pipe(
-      es.writeArray(() => done())
-    );
-  });
-});
-
-it.run();
-
-const it2 = suite("should be patched at itself and underlying streams");
-it2("in non-flowing mode", function() {
-  return new Promise((done) => {
-    var lastNoop = noop();
-    var mario = plumber();
-    gulp
-      .src(fixturesGlob)
-      .pipe(mario)
-      .pipe(noop())
-      .pipe(noop())
-      .pipe(lastNoop)
-      .on("end", function() {
-        assert.ok(lastNoop._plumbed);
-        done();
-      });
-  });
-});
-
-it2("in flowing mode", function() {
-  return new Promise((done) => {
-    var lastNoop = noop();
-    var mario = plumber();
-    gulp
-      .src(fixturesGlob)
-      .pipe(mario)
-      .on("data", function(file) {
-        assert.ok(file);
-      })
-      .pipe(noop())
-      .pipe(noop())
-      .pipe(lastNoop)
-      .on("end", function() {
-        assert.ok(lastNoop._plumbed);
-        done();
-      });
-  });
-});
-
-it2.run();
