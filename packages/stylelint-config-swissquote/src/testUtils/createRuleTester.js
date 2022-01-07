@@ -26,8 +26,6 @@ function postcssProcess(rule, schema) {
 }
 
 module.exports.test = async function OK(rule, schema) {
-  expect.assertions(1);
-
   const postcssResult = postcssProcess(
     rule,
     typeof schema === "string" ? { code: schema } : schema

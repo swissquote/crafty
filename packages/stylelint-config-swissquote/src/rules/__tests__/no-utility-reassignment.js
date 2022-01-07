@@ -1,26 +1,26 @@
-/* global describe, it, expect */
+const test = require("ava");
+
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-utility-reassignment");
 
-describe("tests for no-utility-reassignment", () => {
-  it("works on non-utility", async () => {
-    const t = await createRuleTester.test(rule, ".somethingElse {}");
-    expect(t).toEqual([]);
+  test("works on non-utility", async (t) => {
+    const result = await createRuleTester.test(rule, ".somethingElse {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on simple utility", async () => {
-    const t = await createRuleTester.test(rule, ".u-okayDude {}");
-    expect(t).toEqual([]);
+  test("works on simple utility", async (t) => {
+    const result = await createRuleTester.test(rule, ".u-okayDude {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on simple utility", async () => {
-    const t = await createRuleTester.test(rule, ".u-test {}");
-    expect(t).toEqual([]);
+  test("works on simple utility 2", async (t) => {
+    const result = await createRuleTester.test(rule, ".u-test {}");
+    t.deepEqual(result, []);
   });
 
-  it("Fails on utility with ID", async () => {
-    const t = await createRuleTester.test(rule, "#something.u-test {}");
-    expect(t).toEqual([
+  test("Fails on utility with ID", async (t) => {
+    const result = await createRuleTester.test(rule, "#something.u-test {}");
+    t.deepEqual(result, [
       {
         column: 11,
         line: 1,
@@ -29,12 +29,12 @@ describe("tests for no-utility-reassignment", () => {
     ]);
   });
 
-  it("Fails on scoped utility", async () => {
-    const t = await createRuleTester.test(
+  test("Fails on scoped utility", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".s-something .u-someUtility {}"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 14,
         line: 1,
@@ -43,9 +43,9 @@ describe("tests for no-utility-reassignment", () => {
     ]);
   });
 
-  it("Fails on utility with type", async () => {
-    const t = await createRuleTester.test(rule, "body .u-other {}");
-    expect(t).toEqual([
+  test("Fails on utility with type", async (t) => {
+    const result = await createRuleTester.test(rule, "body .u-other {}");
+    t.deepEqual(result, [
       {
         column: 6,
         line: 1,
@@ -54,9 +54,9 @@ describe("tests for no-utility-reassignment", () => {
     ]);
   });
 
-  it("Fails on nested utility", async () => {
-    const t = await createRuleTester.test(rule, "body { .u-other {} }");
-    expect(t).toEqual([
+  test("Fails on nested utility", async (t) => {
+    const result = await createRuleTester.test(rule, "body { .u-other {} }");
+    t.deepEqual(result, [
       {
         column: 13,
         line: 1,
@@ -65,9 +65,9 @@ describe("tests for no-utility-reassignment", () => {
     ]);
   });
 
-  it("Fails on sub-assignment", async () => {
-    const t = await createRuleTester.test(rule, ".u-other a {}");
-    expect(t).toEqual([
+  test("Fails on sub-assignment", async (t) => {
+    const result = await createRuleTester.test(rule, ".u-other a {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -75,4 +75,3 @@ describe("tests for no-utility-reassignment", () => {
       }
     ]);
   });
-});

@@ -1,26 +1,26 @@
-/* global describe, it, expect */
+const test = require("ava");
+
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-hack-reassignment");
 
-describe("no-hack-reassignment", () => {
-  it("works on non-hack", async () => {
-    const t = await createRuleTester.test(rule, ".somethingElse {}");
-    expect(t).toEqual([]);
+  test("works on non-hack", async (t) => {
+    const result = await createRuleTester.test(rule, ".somethingElse {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on simple hack", async () => {
-    const t = await createRuleTester.test(rule, "._okayDude {}");
-    expect(t).toEqual([]);
+  test("works on simple hack", async (t) => {
+    const result = await createRuleTester.test(rule, "._okayDude {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on simple hack", async () => {
-    const t = await createRuleTester.test(rule, "._test {}");
-    expect(t).toEqual([]);
+  test("works on simple hack 2", async (t) => {
+    const result = await createRuleTester.test(rule, "._test {}");
+    t.deepEqual(result, []);
   });
 
-  it("Fails on hack with ID", async () => {
-    const t = await createRuleTester.test(rule, "#something._test {}");
-    expect(t).toEqual([
+  test("Fails on hack with ID", async (t) => {
+    const result = await createRuleTester.test(rule, "#something._test {}");
+    t.deepEqual(result, [
       {
         column: 11,
         line: 1,
@@ -29,12 +29,12 @@ describe("no-hack-reassignment", () => {
     ]);
   });
 
-  it("Fails on scoped hack", async () => {
-    const t = await createRuleTester.test(
+  test("Fails on scoped hack", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".s-something ._someUtility {}"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 14,
         line: 1,
@@ -43,9 +43,9 @@ describe("no-hack-reassignment", () => {
     ]);
   });
 
-  it("Fails on hack with type", async () => {
-    const t = await createRuleTester.test(rule, "body ._other {}");
-    expect(t).toEqual([
+  test("Fails on hack with type", async (t) => {
+    const result = await createRuleTester.test(rule, "body ._other {}");
+    t.deepEqual(result, [
       {
         column: 6,
         line: 1,
@@ -54,9 +54,9 @@ describe("no-hack-reassignment", () => {
     ]);
   });
 
-  it("Fails on nested hack", async () => {
-    const t = await createRuleTester.test(rule, "body { ._other {} }");
-    expect(t).toEqual([
+  test("Fails on nested hack", async (t) => {
+    const result = await createRuleTester.test(rule, "body { ._other {} }");
+    t.deepEqual(result, [
       {
         column: 13,
         line: 1,
@@ -65,9 +65,9 @@ describe("no-hack-reassignment", () => {
     ]);
   });
 
-  it("Fails on sub-assignment", async () => {
-    const t = await createRuleTester.test(rule, "._other a {}");
-    expect(t).toEqual([
+  test("Fails on sub-assignment", async (t) => {
+    const result = await createRuleTester.test(rule, "._other a {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -75,4 +75,3 @@ describe("no-hack-reassignment", () => {
       }
     ]);
   });
-});

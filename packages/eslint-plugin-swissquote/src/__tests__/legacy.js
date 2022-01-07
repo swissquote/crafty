@@ -1,10 +1,10 @@
-/* global describe, it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("legacy");
 
-it("Doesn't work with ES6", async () => {
+test("Doesn't work with ES6", async (t) => {
   const result = await lint(
     engine,
     `
@@ -14,13 +14,12 @@ something.push("a value");
 `
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(1);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 1);
 });
 
-describe("ES5 formatting", () => {
-  it("Gives no warning on correct code", async () => {
+  test("Gives no warning on correct code", async (t) => {
     const result = await lint(
       engine,
       `
@@ -62,12 +61,12 @@ describe("ES5 formatting", () => {
 `
     );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0);
-    expect(result.errorCount).toBe(0);
+    t.snapshot(result.messages);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 0);
   });
 
-  it("Warns on wrong format", async () => {
+  test("Warns on wrong format", async (t) => {
     const result = await lint(
       engine,
       `
@@ -79,8 +78,7 @@ test()
 `
     );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0);
-    expect(result.errorCount).toBe(2);
+    t.snapshot(result.messages);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 2);
   });
-});

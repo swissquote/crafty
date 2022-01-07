@@ -1,18 +1,18 @@
-/* global it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended", "node");
 
-it("Doesn't warn on console.log", async () => {
+test("Doesn't warn on console.log", async (t) => {
   const result = await lint(engine, `console.log("Yeah");\n`);
 
-  expect(result.messages).toEqual([], "no messages");
-  expect(result.warningCount).toBe(0, "no warnings");
-  expect(result.errorCount).toBe(0, "no errors");
+  t.is(result.messages.length, 0);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
 });
 
-it("Works with ES6", async () => {
+test("Works with ES6", async (t) => {
   const result = await lint(
     engine,
     `
@@ -24,12 +24,12 @@ console.log(something);
 `
   );
 
-  expect(result.messages).toEqual([], "no messages");
-  expect(result.warningCount).toBe(0, "no warnings");
-  expect(result.errorCount).toBe(0, "no errors");
+  t.is(result.messages.length, 0);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
 });
 
-it("Works with TypeScript", async () => {
+test("Works with TypeScript", async (t) => {
   const result = await lint(
     engine,
     `
@@ -79,7 +79,7 @@ export function useSWR<T, Error = any>(
     "utils.ts"
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0, "no warnings");
-  expect(result.errorCount).toBe(4, "no errors");
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 4);
 });

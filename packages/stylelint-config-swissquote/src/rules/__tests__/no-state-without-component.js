@@ -1,82 +1,82 @@
-/* global describe, it, expect */
+const test = require("ava");
+
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-state-without-component");
 
-describe("tests for no-state-without-component", () => {
-  it("works on is state", async () => {
-    const t = await createRuleTester.test(rule, ".Component.is-state {}");
-    expect(t).toEqual([]);
+  test("works on is state", async (t) => {
+    const result = await createRuleTester.test(rule, ".Component.is-state {}");
+    t.deepEqual(result, []);
   });
-  it("works on has state", async () => {
-    const t = await createRuleTester.test(rule, ".Component.has-state {}");
-    expect(t).toEqual([]);
+  test("works on has state", async (t) => {
+    const result = await createRuleTester.test(rule, ".Component.has-state {}");
+    t.deepEqual(result, []);
   });
-  it("works on nested state", async () => {
-    const t = await createRuleTester.test(
+  test("works on nested state", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Component { &.has-state {} }"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on scoped component", async () => {
-    const t = await createRuleTester.test(
+  test("works on scoped component", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".s-something .Component.has-state {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on long-scoped component", async () => {
-    const t = await createRuleTester.test(
+  test("works on long-scoped component", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".someNamespace-something .Component.has-state {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on prefixed component", async () => {
-    const t = await createRuleTester.test(
+  test("works on prefixed component", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".prefixed-Component.has-state {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on sub-element", async () => {
-    const t = await createRuleTester.test(
+  test("works on sub-element", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Menu__item.has-submenu > .Caret {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on double state", async () => {
-    const t = await createRuleTester.test(
+  test("works on double state", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Menu__item.has-submenu.is-open {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
-  it("works on component after the state", async () => {
-    const t = await createRuleTester.test(rule, ".is-open.Menu__item {}");
-    expect(t).toEqual([]);
+  test("works on component after the state", async (t) => {
+    const result = await createRuleTester.test(rule, ".is-open.Menu__item {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on complex selectors", async () => {
-    const t = await createRuleTester.test(
+  test("works on complex selectors", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Menu--block .Menu__item.has-submenu.is-open > .Caret {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
 
-  it("works with :not()", async () => {
-    const t = await createRuleTester.test(
+  test("works with :not()", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".InputDate__placeholder:not(.is-empty) {}"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
 
-  it("Fails on state on ID", async () => {
-    const t = await createRuleTester.test(rule, "#Something.is-state {}");
-    expect(t).toEqual([
+  test("Fails on state on ID", async (t) => {
+    const result = await createRuleTester.test(rule, "#Something.is-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 11,
@@ -85,9 +85,9 @@ describe("tests for no-state-without-component", () => {
     ]);
   });
 
-  it("Fails on state on ID", async () => {
-    const t = await createRuleTester.test(rule, "#something.is-state {}");
-    expect(t).toEqual([
+  test("Fails on state on ID 2", async (t) => {
+    const result = await createRuleTester.test(rule, "#something.is-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 11,
@@ -96,9 +96,9 @@ describe("tests for no-state-without-component", () => {
     ]);
   });
 
-  it("Fails on state on scope", async () => {
-    const t = await createRuleTester.test(rule, ".s-something.is-state {}");
-    expect(t).toEqual([
+  test("Fails on state on scope", async (t) => {
+    const result = await createRuleTester.test(rule, ".s-something.is-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 13,
@@ -107,9 +107,9 @@ describe("tests for no-state-without-component", () => {
     ]);
   });
 
-  it("Fails on state within scope", async () => {
-    const t = await createRuleTester.test(rule, ".s-something .is-state {}");
-    expect(t).toEqual([
+  test("Fails on state within scope", async (t) => {
+    const result = await createRuleTester.test(rule, ".s-something .is-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 14,
@@ -118,9 +118,9 @@ describe("tests for no-state-without-component", () => {
     ]);
   });
 
-  it("Fails on orphan state", async () => {
-    const t = await createRuleTester.test(rule, ".is-state {}");
-    expect(t).toEqual([
+  test("Fails on orphan state", async (t) => {
+    const result = await createRuleTester.test(rule, ".is-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 1,
@@ -129,9 +129,9 @@ describe("tests for no-state-without-component", () => {
     ]);
   });
 
-  it("Fails on orphan state", async () => {
-    const t = await createRuleTester.test(rule, ".has-state {}");
-    expect(t).toEqual([
+  test("Fails on orphan state 2", async (t) => {
+    const result = await createRuleTester.test(rule, ".has-state {}");
+    t.deepEqual(result, [
       {
         line: 1,
         column: 1,
@@ -139,4 +139,3 @@ describe("tests for no-state-without-component", () => {
       }
     ]);
   });
-});

@@ -1,4 +1,5 @@
-/* global it, expect */
+const test = require("ava");
+
 /* eslint-disable @swissquote/swissquote/sonarjs/no-duplicate-string */
 const isKeyframeSelector = require("stylelint/lib/utils/isKeyframeSelector");
 const isStandardSyntaxRule = require("stylelint/lib/utils/isStandardSyntaxRule");
@@ -54,42 +55,42 @@ async function postcssProcess(code) {
   );
 }
 
-it("Non nested selector", async () => {
-  const t = await postcssProcess("header {}");
-  expect(t).toEqual([["header"]]);
+test("Non nested selector", async (t) => {
+  const result = await postcssProcess("header {}");
+  t.deepEqual(result, [["header"]]);
 });
 
-it("Multiple non nested selector", async () => {
-  const t = await postcssProcess("h1, h2 {}");
-  expect(t).toEqual([["h1"], ["h2"]]);
+test("Multiple non nested selector", async (t) => {
+  const result = await postcssProcess("h1, h2 {}");
+  t.deepEqual(result, [["h1"], ["h2"]]);
 });
 
-it("Simple nested selector", async () => {
-  const t = await postcssProcess(".Main { .Child {} }");
-  expect(t).toEqual([[".Main", ".Child"]]);
+test("Simple nested selector", async (t) => {
+  const result = await postcssProcess(".Main { .Child {} }");
+  t.deepEqual(result, [[".Main", ".Child"]]);
 });
 
-it("Multiple nested selector", async () => {
-  const t = await postcssProcess(".Component { a:hover, a:focus {} }");
-  expect(t).toEqual([
+test("Multiple nested selector", async (t) => {
+  const result = await postcssProcess(".Component { a:hover, a:focus {} }");
+  t.deepEqual(result, [
     [".Component", "a:hover"],
     [".Component", "a:focus"]
   ]);
 });
 
-it("Multiple nested selector, more levels", async () => {
-  const t = await postcssProcess(".Component { a:hover, a:focus { span {} } }");
-  expect(t).toEqual([
+test("Multiple nested selector, more levels", async (t) => {
+  const result = await postcssProcess(".Component { a:hover, a:focus { span {} } }");
+  t.deepEqual(result, [
     [".Component", "a:hover", "span"],
     [".Component", "a:focus", "span"]
   ]);
 });
 
-it("Complex nested selector", async () => {
-  const t = await postcssProcess(
+test("Complex nested selector", async (t) => {
+  const result = await postcssProcess(
     ".Component, .OtherComponent { a:hover, a:focus {} strong, em {} }"
   );
-  expect(t).toEqual([
+  t.deepEqual(result, [
     [".Component", "a:hover"],
     [".OtherComponent", "a:hover"],
     [".Component", "a:focus"],
@@ -101,85 +102,85 @@ it("Complex nested selector", async () => {
   ]);
 });
 
-it("Nested with parent selector, beginning", async () => {
+test("Nested with parent selector, beginning", async (t) => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
-  const t = await postcssProcess(".Component { & a:hover {} }");
-  expect(t).toEqual([[".Component", "a:hover"]]);
+  const result = await postcssProcess(".Component { & a:hover {} }");
+  t.deepEqual(result, [[".Component", "a:hover"]]);
 });
 
-it("Nested with parent selector, beginning, multiple", async () => {
+test("Nested with parent selector, beginning, multiple", async (t) => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
-  const t = await postcssProcess(".Component { & a:hover, .notParent {} }");
-  expect(t).toEqual([
+  const result = await postcssProcess(".Component { & a:hover, .notParent {} }");
+  t.deepEqual(result, [
     [".Component", "a:hover"],
     [".Component", ".notParent"]
   ]);
 });
 
-it("Nested with parent selector, beginning, multiple 2", async () => {
+test("Nested with parent selector, beginning, multiple 2", async (t) => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
-  const t = await postcssProcess(".Component { & a:hover, & a:focus {} }");
-  expect(t).toEqual([
+  const result = await postcssProcess(".Component { & a:hover, & a:focus {} }");
+  t.deepEqual(result, [
     [".Component", "a:hover"],
     [".Component", "a:focus"]
   ]);
 });
 
-it("Nested with parent selector, end", async () => {
-  const t = await postcssProcess(".Component { a:hover & {} }");
-  expect(t).toEqual([["a:hover", ".Component"]]);
+test("Nested with parent selector, end", async (t) => {
+  const result = await postcssProcess(".Component { a:hover & {} }");
+  t.deepEqual(result, [["a:hover", ".Component"]]);
 });
 
-it("Nested with parent selector, end, multiple", async () => {
-  const t = await postcssProcess(".Component { a:hover &, .notParent {} }");
-  expect(t).toEqual([
+test("Nested with parent selector, end, multiple", async (t) => {
+  const result = await postcssProcess(".Component { a:hover &, .notParent {} }");
+  t.deepEqual(result, [
     ["a:hover", ".Component"],
     [".Component", ".notParent"]
   ]);
 });
 
-it("Nested with parent selector, end, multiple 2", async () => {
+test("Nested with parent selector, end, multiple 2", async (t) => {
   // I'm well aware that using "&" at the beginning of a selector is pointless
-  const t = await postcssProcess(".Component { a:hover &, a:focus & {} }");
-  expect(t).toEqual([
+  const result = await postcssProcess(".Component { a:hover &, a:focus & {} }");
+  t.deepEqual(result, [
     ["a:hover", ".Component"],
     ["a:focus", ".Component"]
   ]);
 });
 
-it("Nested on many levels, with parent selector", async () => {
-  const t = await postcssProcess(
+test("Nested on many levels, with parent selector", async (t) => {
+  const result = await postcssProcess(
     ".Parent1 { .Parent2 { .Parent3 & { .Parent4 {} } } }"
   );
-  expect(t).toEqual([[".Parent3", ".Parent1", ".Parent2", ".Parent4"]]);
+  t.deepEqual(result, [[".Parent3", ".Parent1", ".Parent2", ".Parent4"]]);
 });
 
-it("Nested on many levels, with parent selector, multiple", async () => {
-  const t = await postcssProcess(
+test("Nested on many levels, with parent selector, multiple", async (t) => {
+  const result = await postcssProcess(
     ".Parent1 { .Parent2 { .Parent3 & { .Parent4, .Parent5 {} } } }"
   );
-  expect(t).toEqual([
+  t.deepEqual(result, [
     [".Parent3", ".Parent1", ".Parent2", ".Parent4"],
     [".Parent3", ".Parent1", ".Parent2", ".Parent5"]
   ]);
 });
 
-it("Nested with compound parent selector", async () => {
-  const t = await postcssProcess("header { &.class {} }");
-  expect(t).toEqual([["header.class"]]);
+test("Nested with compound parent selector", async (t) => {
+  const result = await postcssProcess("header { &.class {} }");
+  t.deepEqual(result, [["header.class"]]);
 });
 
-it("Nested with parent selector, middle", async () => {
-  const t = await postcssProcess(".Component { .Wrapper & .SubComponent {} }");
-  expect(t).toEqual([[".Wrapper", ".Component", ".SubComponent"]]);
+test("Nested with parent selector, middle", async (t) => {
+  const result = await postcssProcess(".Component { .Wrapper & .SubComponent {} }");
+  t.deepEqual(result, [[".Wrapper", ".Component", ".SubComponent"]]);
 });
 
-it("Works on compound selector concatenating class names", async () => {
-  const t = await postcssProcess(`
+test("Works on compound selector concatenating class names", async (t) => {
+  const result = await postcssProcess(`
   .Parent {
     &--before { }
     &--after { }
   }
   `);
-  expect(t).toEqual([[".Parent--before"], [".Parent--after"]]);
+  t.deepEqual(result, [[".Parent--before"], [".Parent--after"]]);
 });

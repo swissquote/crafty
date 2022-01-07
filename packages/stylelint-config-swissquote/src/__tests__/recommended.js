@@ -1,12 +1,9 @@
-/* global jest, describe, it, expect */
+const test = require("ava");
 
 const stylelint = require("stylelint");
+const { t } = require("../../dist/compiled/stylelint-prettier-package");
 
 const config = require("../../recommended");
-
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
 
 const validCss = `/** @define Form */
 
@@ -309,18 +306,17 @@ const validCss = `/** @define Form */
 }
 `;
 
-describe("flags no warnings with valid css", () => {
-  it("flags no warnings nor errors", () => {
-    const result = stylelint.lint({ code: validCss, config });
+test("flags no warnings nor errors with valid css", (t) => {
+  const result = stylelint.lint({ code: validCss, config });
 
-    return result.then(data => {
-      expect(data.errored).toBeFalsy();
-      expect(data.results[0].warnings.length).toBe(0);
-    });
+  return result.then((data) => {
+    t.falsy(data.errored);
+    t.is(data.results[0].warnings.length, 0);
   });
 });
 
-it("Works with namespaces", () => {
+test("Works with namespaces", (t) => {
+    t.plan(1);
   const result = stylelint.lint({
     code:
       ".Component {\n    top: 10px;\n}\n\n" +
@@ -331,11 +327,12 @@ it("Works with namespaces", () => {
   });
 
   return result.then(data => {
-    expect(data.results[0].warnings).toMatchSnapshot();
+    t.is(data.results[0].warnings.length, 0);
   });
 });
 
-describe("Flags errors when using unknown at rules", () => {
+test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'", (t) => {
+    t.plan(2);
   const result = stylelint.lint({
     code: `@while ($i == 1) {
     .Button {
@@ -349,45 +346,40 @@ describe("Flags errors when using unknown at rules", () => {
     }
 }
 `,
-    config
+    config,
   });
 
-  it("raised one 'scss/at-rule-no-unknown' error", () => {
-    return result.then(data => {
-      expect(data.errored).toBeTruthy();
-      expect(data.results[0].warnings).toEqual([
-        {
-          line: 7,
-          column: 1,
-          rule: "scss/at-rule-no-unknown",
-          severity: "error",
-          text:
-            'Unexpected unknown at-rule "@unknown" (scss/at-rule-no-unknown)'
-        }
-      ]);
-    });
+  return result.then((data) => {
+    t.truthy(data.errored);
+    t.deepEqual(data.results[0].warnings, [
+      {
+        line: 7,
+        column: 1,
+        rule: "scss/at-rule-no-unknown",
+        severity: "error",
+        text: 'Unexpected unknown at-rule "@unknown" (scss/at-rule-no-unknown)',
+      }
+    ]);
   });
 });
 
-describe("flags warnings when using ids", () => {
+test("flags warnings when using ids raised one 'selector-max-id' error", (t) => {
+    t.plan(2);
   const result = stylelint.lint({
     code: "#ids-not-allowed {\n    top: 10px;\n}\n",
-    config
+    config,
   });
 
-  it("raised one 'selector-max-id' error", () => {
-    return result.then(data => {
-      expect(data.errored).toBeTruthy();
-      expect(data.results[0].warnings).toEqual([
-        {
-          line: 1,
-          column: 1,
-          rule: "selector-max-id",
-          severity: "error",
-          text:
-            'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
-        }
-      ]);
-    });
+  return result.then((data) => {
+    t.truthy(data.errored);
+    t.deepEqual(data.results[0].warnings, [
+      {
+        line: 1,
+        column: 1,
+        rule: "selector-max-id",
+        severity: "error",
+        text: 'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)',
+      }
+    ]);
   });
 });

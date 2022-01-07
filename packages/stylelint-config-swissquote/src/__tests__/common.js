@@ -1,12 +1,8 @@
-/* global jest, it, expect */
+const test = require("ava");
 
 const stylelint = require("stylelint");
 
 const config = require("../../common");
-
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
 
 const validCss = `
 .Form {
@@ -58,14 +54,14 @@ const validCss = `
 }
 `;
 
-it("flags no warnings with valid css", async () => {
+test("flags no warnings with valid css", async (t) => {
   const result = await stylelint.lint({
     code: validCss.replace(/^\n/, ""),
     config
   });
 
-  expect(result.errored).toBeFalsy();
-  expect(result.results[0].warnings.length).toBe(0);
+  t.falsy(result.errored);
+  t.is(result.results[0].warnings.length, 0);
 });
 
 const errors = [
@@ -105,15 +101,15 @@ const errors = [
 ];
 
 errors.forEach(error => {
-  it(`Error: ${error.message}`, async () => {
+  test(`Error: ${error.message}`, async (t) => {
     const result = await stylelint.lint({ code: `${error.code}\n`, config });
 
-    expect(result.errored).toBeTruthy();
+    t.truthy(result.errored);
     //console.log(result.results[0].warnings);
-    expect(result.results[0].warnings.length).toBe(1);
-    expect(result.results[0].warnings[0].text).toBe(error.message);
-    expect(result.results[0].warnings[0].severity).toBe("error");
-    expect(result.results[0].warnings[0].line).toBe(error.line);
-    expect(result.results[0].warnings[0].column).toBe(error.column);
+    t.is(result.results[0].warnings.length, 1);
+    t.is(result.results[0].warnings[0].text, error.message);
+    t.is(result.results[0].warnings[0].severity, "error");
+    t.is(result.results[0].warnings[0].line, error.line);
+    t.is(result.results[0].warnings[0].column, error.column);
   });
 });

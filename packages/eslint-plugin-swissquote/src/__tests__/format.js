@@ -1,14 +1,13 @@
-/* global describe, it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("format");
 
-describe("ES6 Formatting", () => {
-  it("Gives no warning on correct code", async () => {
-    const result = await lint(
-      engine,
-      `
+test("Gives no warning on correct code", async (t) => {
+  const result = await lint(
+    engine,
+    `
 module.exports = function initJS(gulp, config, watchers) {
   const js = config.js,
     jsTasks = [];
@@ -33,17 +32,17 @@ module.exports = function initJS(gulp, config, watchers) {
   return ["js"];
 };
 `
-    );
+  );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0);
-    expect(result.errorCount).toBe(0);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
+});
 
-  it("Fails on badly formatted code", async () => {
-    const result = await lint(
-      engine,
-      `
+test("Fails on badly formatted code", async (t) => {
+  const result = await lint(
+    engine,
+    `
 module.exports = function initJS(gulp, config, watchers) {
   const js = config.js,
      jsTasks = [];
@@ -68,10 +67,9 @@ module.exports = function initJS(gulp, config, watchers) {
   return ["js"];
 };
 `
-    );
+  );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0);
-    expect(result.errorCount).toBe(4);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 4);
 });

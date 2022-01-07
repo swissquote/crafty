@@ -1,22 +1,22 @@
-/* global describe, it, expect */
+const test = require("ava");
+
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-negative-var");
 
-describe("no-negative-var", () => {
-  it("normal vars don't trigger", async () => {
-    const t = await createRuleTester.test(
+  test("normal vars don't trigger", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Component1 { margin: var(--test); }"
     );
-    expect(t).toEqual([]);
+    t.deepEqual(result, []);
   });
 
-  it("negative vars fail", async () => {
-    const t = await createRuleTester.test(
+  test("negative vars fail", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Component1 { margin: -var(--test); }"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 23,
         line: 1,
@@ -25,12 +25,12 @@ describe("no-negative-var", () => {
     ]);
   });
 
-  it("negative var fails on multi vars", async () => {
-    const t = await createRuleTester.test(
+  test("negative var fails on multi vars", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       ".Component1 { margin: var(--Component-margin) -var(--Component-margin); }"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 47,
         line: 1,
@@ -38,4 +38,3 @@ describe("no-negative-var", () => {
       }
     ]);
   });
-});

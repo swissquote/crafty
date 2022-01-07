@@ -1,10 +1,10 @@
-/* global it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("format");
 
-it("Fails on badly formatted TypeScript code", async () => {
+test("Fails on badly formatted TypeScript code", async (t) => {
   const result = await lint(
     engine,
     `
@@ -35,12 +35,12 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
     "file.ts"
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(5);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 5);
 });
 
-it("Works with complex types", async () => {
+test("Works with complex types", async (t) => {
   const result = await lint(
     engine,
     `
@@ -131,6 +131,6 @@ export default class SplitButton extends React.Component<
     "Component.tsx"
   );
 
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(0);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
 });

@@ -1,18 +1,18 @@
-/* global describe, it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended");
 
-it("Warns on console.log", async () => {
+test("Warns on console.log", async (t) => {
   const result = await lint(engine, `console.log("Yeah");\n`);
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(1);
-  expect(result.errorCount).toBe(0);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 1);
+  t.is(result.errorCount, 0);
 });
 
-it("Uses sonar plugin", async () => {
+test("Uses sonar plugin", async (t) => {
   const result = await lint(
     engine,
     `
@@ -31,12 +31,12 @@ function changeWindow(param) {
 `
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(2);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 2);
 });
 
-it("Works fine with ES6 code", async () => {
+test("Works fine with ES6 code", async (t) => {
   const result = await lint(
     engine,
     `
@@ -86,13 +86,12 @@ const obj = {
 `
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(22);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 22);
 });
 
-describe("jsx-no-duplicate-props", () => {
-  it("works with different props", async () => {
+  test("jsx-no-duplicate-props: works with different props", async (t) => {
     const result = await lint(
       engine,
       `
@@ -104,12 +103,12 @@ export default function SomeComponent() {
 `
     );
 
-    expect(result.messages).toEqual([], "no messages expected");
-    expect(result.warningCount).toBe(0, "no warnings expected");
-    expect(result.errorCount).toBe(0, "no errors expected");
+    t.is(result.messages.length, 0);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 0);
   });
 
-  it("works fails with the same prop", async () => {
+  test("jsx-no-duplicate-props: works fails with the same prop", async (t) => {
     const result = await lint(
       engine,
       `
@@ -121,14 +120,12 @@ export default function SomeComponent() {
 `
     );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0, "no warnings expectec");
-    expect(result.errorCount).toBe(1, "one error expected");
+    t.snapshot(result.messages);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 1);
   });
-});
 
-describe("no-did-mount-set-state", () => {
-  it("fails with setState in componentDidMount", async () => {
+  test("no-did-mount-set-state: fails with setState in componentDidMount", async (t) => {
     const result = await lint(
       engine,
       `
@@ -152,14 +149,12 @@ MyComponent.propTypes = {
 `
     );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0, "no warnings expected");
-    expect(result.errorCount).toBe(1, "one error expected");
+    t.snapshot(result.messages);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 1);
   });
-});
 
-describe("Incorrect usage of hooks", () => {
-  it("fails with setState in componentDidMount", async () => {
+  test("Incorrect usage of hooks: fails with setState in componentDidMount", async (t) => {
     const result = await lint(
       engine,
       `
@@ -189,8 +184,7 @@ export default function MyComponent() {
 `
     );
 
-    expect(result.messages).toMatchSnapshot();
-    expect(result.warningCount).toBe(0, "no warnings expected");
-    expect(result.errorCount).toBe(3, "three errors expected");
+    t.snapshot(result.messages);
+    t.is(result.warningCount, 0);
+    t.is(result.errorCount, 3);
   });
-});

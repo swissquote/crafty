@@ -1,57 +1,57 @@
-/* global describe, it, expect */
+const test = require("ava");
+
 /* eslint-disable @swissquote/swissquote/sonarjs/no-identical-functions */
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-type-outside-scope");
 
-describe("tests for no-type-outside-scope", () => {
-  it("works on class", async () => {
-    const t = await createRuleTester.test(rule, ".somethingElse {}");
-    expect(t).toEqual([]);
+  test("works on class", async (t) => {
+    const result = await createRuleTester.test(rule, ".somethingElse {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on id", async () => {
-    const t = await createRuleTester.test(rule, "#someId {}");
-    expect(t).toEqual([]);
+  test("works on id", async (t) => {
+    const result = await createRuleTester.test(rule, "#someId {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on mixed, class-id", async () => {
-    const t = await createRuleTester.test(rule, ".someClass #someId {}");
-    expect(t).toEqual([]);
+  test("works on mixed, class-id", async (t) => {
+    const result = await createRuleTester.test(rule, ".someClass #someId {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on mixed, id-class", async () => {
-    const t = await createRuleTester.test(rule, "#someId .someClass {}");
-    expect(t).toEqual([]);
+  test("works on mixed, id-class", async (t) => {
+    const result = await createRuleTester.test(rule, "#someId .someClass {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on mixed, idclass", async () => {
-    const t = await createRuleTester.test(rule, "#someId.someClass {}");
-    expect(t).toEqual([]);
+  test("works on mixed, idclass", async (t) => {
+    const result = await createRuleTester.test(rule, "#someId.someClass {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on nested with parent selector", async () => {
-    const t = await createRuleTester.test(rule, "section { .s-scope & {} }");
-    expect(t).toEqual([]);
+  test("works on nested with parent selector", async (t) => {
+    const result = await createRuleTester.test(rule, "section { .s-scope & {} }");
+    t.deepEqual(result, []);
   });
 
-  it("works on scoped class", async () => {
-    const t = await createRuleTester.test(rule, ".s-something h1 {}");
-    expect(t).toEqual([]);
+  test("works on scoped class", async (t) => {
+    const result = await createRuleTester.test(rule, ".s-something h1 {}");
+    t.deepEqual(result, []);
   });
 
-  it("works on nested scoped class", async () => {
-    const t = await createRuleTester.test(rule, ".s-something { h1 {} }");
-    expect(t).toEqual([]);
+  test("works on nested scoped class", async (t) => {
+    const result = await createRuleTester.test(rule, ".s-something { h1 {} }");
+    t.deepEqual(result, []);
   });
 
-  it("works on multiple types after scope", async () => {
-    const t = await createRuleTester.test(rule, ".s-something ul li {}");
-    expect(t).toEqual([]);
+  test("works on multiple types after scope", async (t) => {
+    const result = await createRuleTester.test(rule, ".s-something ul li {}");
+    t.deepEqual(result, []);
   });
 
-  it("Fails on type", async () => {
-    const t = await createRuleTester.test(rule, "header {}");
-    expect(t).toEqual([
+  test("Fails on type", async (t) => {
+    const result = await createRuleTester.test(rule, "header {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -60,9 +60,9 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on type with compound class", async () => {
-    const t = await createRuleTester.test(rule, "header.class {}");
-    expect(t).toEqual([
+  test("Fails on type with compound class", async (t) => {
+    const result = await createRuleTester.test(rule, "header.class {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -71,9 +71,9 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on type with compund class, nested", async () => {
-    const t = await createRuleTester.test(rule, "header { &.class {} }");
-    expect(t).toEqual([
+  test("Fails on type with compund class, nested", async (t) => {
+    const result = await createRuleTester.test(rule, "header { &.class {} }");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -82,9 +82,9 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on type with class", async () => {
-    const t = await createRuleTester.test(rule, "header.class {}");
-    expect(t).toEqual([
+  test("Fails on type with class", async (t) => {
+    const result = await createRuleTester.test(rule, "header.class {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -93,9 +93,9 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on class with type", async () => {
-    const t = await createRuleTester.test(rule, ".class header {}");
-    expect(t).toEqual([
+  test("Fails on class with type", async (t) => {
+    const result = await createRuleTester.test(rule, ".class header {}");
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -104,12 +104,12 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on nested with parent selector", async () => {
-    const t = await createRuleTester.test(
+  test("Fails on nested with parent selector", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       "section { .not-a-scope & {} }"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -118,12 +118,12 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails once multiple selectors", async () => {
-    const t = await createRuleTester.test(
+  test("Fails once multiple selectors", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       "header.class, .s-hey header {}"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -132,12 +132,12 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails on multiple selectors 2", async () => {
-    const t = await createRuleTester.test(
+  test("Fails on multiple selectors 2", async (t) => {
+    const result = await createRuleTester.test(
       rule,
       "header.class {} .s-hey { header {} }"
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -146,12 +146,12 @@ describe("tests for no-type-outside-scope", () => {
     ]);
   });
 
-  it("Fails only once for multiple selectors", async () => {
+  test("Fails only once for multiple selectors", async (t) => {
     // This is a tricky case, here the `a:focus` is the case
     // That should trigger the rule
     // But since we check with the nested elements as well,
     // we must make sure that it reports the error only once
-    const t = await createRuleTester.test(
+    const result = await createRuleTester.test(
       rule,
       `.Section--news a:focus {
         .MediaObject, .MediaObject__content {
@@ -159,7 +159,7 @@ describe("tests for no-type-outside-scope", () => {
         }
       }`
     );
-    expect(t).toEqual([
+    t.deepEqual(result, [
       {
         column: 1,
         line: 1,
@@ -167,4 +167,3 @@ describe("tests for no-type-outside-scope", () => {
       }
     ]);
   });
-});

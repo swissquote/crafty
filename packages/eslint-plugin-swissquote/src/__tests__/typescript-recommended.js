@@ -1,10 +1,10 @@
-/* global it, expect */
+const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended");
 
-it("Warns on console.log", async () => {
+test("Warns on console.log", async (t) => {
   const result = await lint(
     engine,
     `
@@ -18,12 +18,12 @@ if (foo?.bar?.baz) {
     "file.ts"
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(1);
-  expect(result.errorCount).toBe(0);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 1);
+  t.is(result.errorCount, 0);
 });
 
-it("Uses sonar plugin", async () => {
+test("Uses sonar plugin", async (t) => {
   const result = await lint(
     engine,
     `
@@ -43,12 +43,12 @@ function changeWindow(param: number) {
     "file.ts"
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(2);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 2);
 });
 
-it("Works with complex types", async () => {
+test("Works with complex types", async (t) => {
   const result = await lint(
     engine,
     `
@@ -140,7 +140,7 @@ export default class SplitButton extends React.Component<
     "Component.tsx"
   );
 
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toBe(0);
-  expect(result.errorCount).toBe(0);
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
 });
