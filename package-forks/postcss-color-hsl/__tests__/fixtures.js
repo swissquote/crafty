@@ -1,3 +1,4 @@
+const test = require("ava");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
@@ -12,25 +13,25 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(t,name, pluginOpts = {}, postcssOpts = {}) {
   postcssOpts.from = fixturePath(name);
   const expected = readFixture(`${name}.expected`);
   return postcss([plugin(pluginOpts)])
     .process(readFixture(name), postcssOpts)
     .then(result => {
-      expect(result.css).toEqual(expected);
-      expect(result.warnings().length).toEqual(0);
+      t.deepEqual(result.css, expected);
+      t.is(result.warnings().length, 0);
     });
 }
 
-it("Transforms hsl()", () => {
-  return testFixture("hsl");
+test("Transforms hsl()", (t) => {
+  return testFixture(t,"hsl");
 });
 
-it("Transforms hsl() using new comma-separated syntax", () => {
-  return testFixture("alternative-syntax");
+test("Transforms hsl() using new comma-separated syntax", (t) => {
+  return testFixture(t,"alternative-syntax");
 });
 
-it("Actual hsl() is not affected", () => {
-  return testFixture("actual-syntax");
+test("Actual hsl() is not affected", (t) => {
+  return testFixture(t,"actual-syntax");
 });

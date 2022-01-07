@@ -1,3 +1,4 @@
+const test = require("ava");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
@@ -12,7 +13,7 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
   let expectedWarnings = 0;
   let fixtureName = name;
   let fixtureExpect = `${name}.expect`;
@@ -31,99 +32,99 @@ function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
   return postcss([plugin(pluginOpts)])
     .process(readFixture(fixtureName), postcssOpts)
     .then((result) => {
-      expect(result.css).toEqual(expected);
-      expect(result.warnings().length).toEqual(expectedWarnings);
+      t.deepEqual(result.css, expected);
+      t.is(result.warnings().length, expectedWarnings);
     });
 }
 
-describe("postcss-color-mod-function", () => {
-  it("supports very basic usage", () => {
-    return testFixture("very-basic");
-  });
+test("supports very basic usage", (t) => {
+  return testFixture(t, "very-basic");
+});
 
-  it("works with spec examples", () => {
-    return testFixture("spec-example");
-  });
+test("works with spec examples", (t) => {
+  return testFixture(t, "spec-example");
+});
 
-  it("supports basic usage", () => {
-    return testFixture("basic");
-  });
+test("supports basic usage", (t) => {
+  return testFixture(t, "basic");
+});
 
-  it("supports { stringifier } usage", () => {
-    return testFixture(
-      { input: "basic", output: "basic.colors.expect" },
+test("supports { stringifier } usage", (t) => {
+  return testFixture(
+    t,
+    { input: "basic", output: "basic.colors.expect" },
+    {
+      stringifier: (color) => color.toString(),
+    }
+  );
+});
+
+test("supports { transformVars: false } usage", async (t) => {
+  await t.throwsAsync(() =>
+    testFixture(t, "basic", {
+      transformVars: false,
+    }), {message:/Expected a color/ }
+  );
+});
+
+test("supports { unresolved } usage", (t) => {
+  return testFixture(
+    t,
+    { input: "warn", output: "warn", warnings: 43 },
+    {
+      unresolved: "warn",
+    }
+  );
+});
+
+test("supports hex usage", (t) => {
+  return testFixture(t, "hex");
+});
+
+test('supports { importFrom: "test/import-root.css" } usage', (t) => {
+  return testFixture(t, "import", {
+    importFrom: "tests/fixtures/import-root.css",
+  });
+});
+
+test('supports { importFrom: ["test/import-root.css"] } usage', (t) => {
+  return testFixture(t, "import", {
+    importFrom: ["tests/fixtures/import-root.css"],
+  });
+});
+
+test('supports { importFrom: [["css", "test/import-root.css" ]] } usage', (t) => {
+  return testFixture(t, "import", {
+    importFrom: { from: "tests/fixtures/import-root.css", type: "css" },
+  });
+});
+
+test('supports { importFrom: "test/import-root.js" } usage', (t) => {
+  return testFixture(t, "import", {
+    importFrom: "tests/fixtures/import-root.js",
+  });
+});
+
+test('supports { importFrom: "test/import-root.json" } usage', (t) => {
+  return testFixture(t, "import", {
+    importFrom: "tests/fixtures/import-root.json",
+  });
+});
+
+test("supports { importFrom: { customProperties: {} } } usage", (t) => {
+  return testFixture(t, "import", {
+    importFrom: [
       {
-        stringifier: (color) => color.toString(),
-      }
-    );
-  });
-
-  it("supports { transformVars: false } usage", async () => {
-    await expect(() =>
-      testFixture("basic", {
-        transformVars: false,
-      })
-    ).rejects.toThrow(/Expected a color/);
-  });
-
-  it("supports { unresolved } usage", () => {
-    return testFixture(
-      { input: "warn", output: "warn", warnings: 43 },
+        customProperties: {
+          "--color": "var(--color-blue)",
+        },
+      },
       {
-        unresolved: "warn",
-      }
-    );
-  });
-
-  it("supports hex usage", () => {
-    return testFixture("hex");
-  });
-
-  it('supports { importFrom: "test/import-root.css" } usage', () => {
-    return testFixture("import", {
-      importFrom: "tests/fixtures/import-root.css",
-    });
-  });
-
-  it('supports { importFrom: ["test/import-root.css"] } usage', () => {
-    return testFixture("import", {
-      importFrom: ["tests/fixtures/import-root.css"],
-    });
-  });
-
-  it('supports { importFrom: [["css", "test/import-root.css" ]] } usage', () => {
-    return testFixture("import", {
-      importFrom: { from: "tests/fixtures/import-root.css", type: "css" },
-    });
-  });
-
-  it('supports { importFrom: "test/import-root.js" } usage', () => {
-    return testFixture("import", {
-      importFrom: "tests/fixtures/import-root.js",
-    });
-  });
-
-  it('supports { importFrom: "test/import-root.json" } usage', () => {
-    return testFixture("import", {
-      importFrom: "tests/fixtures/import-root.json",
-    });
-  });
-
-  it("supports { importFrom: { customProperties: {} } } usage", () => {
-    return testFixture("import", {
-      importFrom: [
-        {
-          customProperties: {
-            "--color": "var(--color-blue)",
-          },
+        customProperties: {
+          "--color-blue": "blue",
+          "--color-red": "red",
         },
-        {
-          customProperties: {
-            "--color-blue": "blue",
-            "--color-red": "red",
-          },
-        },
-      ],
-    });
+      },
+    ],
   });
 });

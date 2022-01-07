@@ -1,3 +1,4 @@
+const test = require("ava");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
@@ -12,7 +13,7 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
   let expectedWarnings = 0;
   let fixtureName = name;
   let fixtureExpect = `${name}.expect`;
@@ -46,18 +47,17 @@ function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
     .then((result) => {
       after();
 
-      expect(result.css).toEqual(expected);
-      expect(result.warnings().length).toEqual(expectedWarnings);
+      t.deepEqual(result.css, expected);
+      t.is(result.warnings().length, expectedWarnings);
     });
 }
 
-describe("postcss-custom-properties", () => {
-  it("supports basic usage", () => {
-    return testFixture("basic");
+  test("supports basic usage", (t) => {
+    return testFixture(t, "basic");
   });
 
-  it("supports { preserve: false } usage", () => {
-    return testFixture(
+  test("supports { preserve: false } usage", (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.preserve.expect" },
       {
         preserve: false,
@@ -65,8 +65,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it("supports { importFrom: { customProperties: { ... } } } usage", () => {
-    return testFixture(
+  test("supports { importFrom: { customProperties: { ... } } } usage", (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: {
@@ -81,8 +81,8 @@ describe("postcss-custom-properties", () => {
       }
     );
   });
-  it("supports { importFrom() } usage", () => {
-    return testFixture(
+  test("supports { importFrom() } usage", (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom() {
@@ -100,8 +100,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it("supports { async importFrom() } usage", () => {
-    return testFixture(
+  test("supports { async importFrom() } usage", (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom() {
@@ -120,8 +120,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: "test/import-properties.json" } usage', () => {
-    return testFixture(
+  test('supports { importFrom: "test/import-properties.json" } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: "test/fixtures/import-properties.json",
@@ -129,8 +129,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: "test/import-properties{-2}?.js" } usage', () => {
-    return testFixture(
+  test('supports { importFrom: "test/import-properties{-2}?.js" } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -141,8 +141,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: "test/import-properties{-2}?.css" } usage', () => {
-    return testFixture(
+  test('supports { importFrom: "test/import-properties{-2}?.css" } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -153,8 +153,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage', () => {
-    return testFixture(
+  test('supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -165,8 +165,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: "test/import-properties.{p}?css" } usage', () => {
-    return testFixture(
+  test('supports { importFrom: "test/import-properties.{p}?css" } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -177,8 +177,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: { from: "test/import-properties.css" } } usage', () => {
-    return testFixture(
+  test('supports { importFrom: { from: "test/import-properties.css" } } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -189,8 +189,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage', () => {
-    return testFixture(
+  test('supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage', (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import.expect" },
       {
         importFrom: [
@@ -201,8 +201,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it("importFrom with { preserve: false } should override root properties", () => {
-    return testFixture(
+  test("importFrom with { preserve: false } should override root properties", (t) => {
+    return testFixture(t, 
       { input: "basic", output: "basic.import-override.expect" },
       {
         preserve: false,
@@ -220,13 +220,13 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it("supports { exportTo: { customProperties: { ... } } } usage", () => {
-    return testFixture(
+  test("supports { exportTo: { customProperties: { ... } } } usage", (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         after() {
-          expect(global.__exportPropertiesObject.customProperties["--color"]).toEqual(
+          t.deepEqual(global.__exportPropertiesObject.customProperties["--color"], 
             "rgb(255, 0, 0)"
           );
         },
@@ -239,10 +239,12 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it("supports { exportTo() } usage", () => {
+  test("supports { exportTo() } usage", (t) => {
     let called = false;
 
-    return testFixture(
+    t.plan(4);
+
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
@@ -250,18 +252,20 @@ describe("postcss-custom-properties", () => {
       {
         exportTo(customProperties) {
           called = true;
-          expect(customProperties["--color"]).toEqual("rgb(255, 0, 0)");
+          t.deepEqual(customProperties["--color"], "rgb(255, 0, 0)");
         },
       }
     ).then(() => {
-      expect(called).toBeTruthy();
+      t.truthy(called);
     });
   });
 
-  it("supports { async exportTo() } usage", () => {
+  test("supports { async exportTo() } usage", (t) => {
     let called = false;
 
-    return testFixture(
+    t.plan(4);
+
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
@@ -269,35 +273,38 @@ describe("postcss-custom-properties", () => {
       {
         async exportTo(customProperties) {
           called = true;
-          expect(customProperties["--color"]).toEqual("rgb(255, 0, 0)");
+          t.deepEqual(customProperties["--color"], "rgb(255, 0, 0)");
         },
       }
     ).then(() => {
-      expect(called).toBeTruthy();
+      t.truthy(called);
     });
   });
 
-  it('supports { exportTo: "test/export-properties.scss" } usage', () => {
-    return testFixture(
+  test('supports { exportTo: "test/export-properties.scss" } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.scss",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.scss",
               "utf8"
             )
           ) {
             throw new Error(
-              "The original file did not match the freshly exported copy"
+              "The original file did not match the freshly exported copy, content was: " + require("fs").readFileSync(
+                "test/fixtures/export-properties.scss",
+                "utf8"
+              )
             );
           }
         },
@@ -308,20 +315,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: "test/export-properties.json" } usage', () => {
-    return testFixture(
+  test('supports { exportTo: "test/export-properties.json" } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.json",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.json",
               "utf8"
@@ -339,20 +346,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: "test/export-properties.js" } usage', () => {
-    return testFixture(
+  test('supports { exportTo: "test/export-properties.js" } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.js",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.js",
               "utf8"
@@ -370,20 +377,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: "test/export-properties.mjs" } usage', () => {
-    return testFixture(
+  test('supports { exportTo: "test/export-properties.mjs" } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.mjs",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.mjs",
               "utf8"
@@ -401,20 +408,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: "test/export-properties.css" } usage', () => {
-    return testFixture(
+  test('supports { exportTo: "test/export-properties.css" } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.css",
               "utf8"
@@ -432,20 +439,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: { to: "test/export-properties.css" } } usage', () => {
-    return testFixture(
+  test('supports { exportTo: { to: "test/export-properties.css" } } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.css",
               "utf8"
@@ -463,20 +470,20 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', () => {
-    return testFixture(
+  test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
         before() {
-          global.__exportPropertiesString = require("fs").readFileSync(
+          global[`export_${t.title}`] = require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           );
         },
         after() {
           if (
-            global.__exportPropertiesString !==
+            global[`export_${t.title}`] !==
             require("fs").readFileSync(
               "test/fixtures/export-properties.css",
               "utf8"
@@ -494,8 +501,8 @@ describe("postcss-custom-properties", () => {
     );
   });
 
-  it('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', () => {
-    return testFixture(
+  test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage 2', (t) => {
+    return testFixture(t, 
       {
         input: "basic",
         output: "basic.expect",
@@ -505,4 +512,3 @@ describe("postcss-custom-properties", () => {
       }
     );
   });
-});

@@ -7,9 +7,8 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 const scripts = {
   lint:
     "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
-  test: "jest",
-  "test:watch": "jest --watch",
-  "test:ci": "jest --coverage",
+  test: "ava",
+  "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
 };
 
 async function main() {
@@ -86,7 +85,8 @@ async function main() {
         };
 
         pkg.devDependencies = {
-          jest: "27.4.5",
+          ava: "4.0.0",
+          c8: "7.11.0",
           postcss: "8.4.5",
         };
 

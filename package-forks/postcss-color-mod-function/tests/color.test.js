@@ -1,3 +1,4 @@
+const test = require("ava");
 const tests = require("./fixtures/color.json");
 
 const Color = require("../lib/color");
@@ -13,7 +14,7 @@ function stringifyTest(seed, calls) {
 }
 
 for (const [seed, ...calls] of tests) {
-  it(stringifyTest(seed, calls), () => {
+  test(stringifyTest(seed, calls), (t) => {
     const color = new Color(seed);
 
     for (const [name, args, retVal] of calls) {
@@ -21,7 +22,7 @@ for (const [seed, ...calls] of tests) {
 
       const strigified = typeof result === "object" ? result.toString() : result;
 
-      expect(strigified).toEqual(retVal);
+      t.deepEqual(strigified, retVal);
     }
   });
 }

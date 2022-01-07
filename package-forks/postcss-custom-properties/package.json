@@ -12,10 +12,9 @@
   "bugs": "https://github.com/postcss/postcss-custom-properties/issues",
   "main": "src/index.js",
   "scripts": {
-    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --coverage"
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
+    "test": "ava",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"
   },
   "engines": {
     "node": ">=12"
@@ -27,7 +26,8 @@
     "postcss": "^8.0.0"
   },
   "devDependencies": {
-    "jest": "27.4.5",
+    "ava": "4.0.0",
+    "c8": "7.11.0",
     "postcss": "8.4.5"
   },
   "keywords": [

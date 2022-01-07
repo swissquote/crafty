@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
-    "test": "jest",
-    "test:ci": "jest --coverage"
+    "test": "ava",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
@@ -29,7 +29,8 @@
   "author": "Bogdan Chadkin <trysound@yandex.ru>",
   "license": "MIT",
   "devDependencies": {
-    "jest": "27.4.5",
+    "ava": "4.0.0",
+    "c8": "7.11.0",
     "rollup": "2.62.0",
     "@rollup/plugin-node-resolve": "13.1.2"
   },

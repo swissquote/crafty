@@ -1,3 +1,4 @@
+const test = require("ava");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
@@ -12,21 +13,21 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(t,name, pluginOpts = {}, postcssOpts = {}) {
   postcssOpts.from = fixturePath(name);
   let expected = readFixture(`${name}.expect`);
   return postcss([plugin(pluginOpts)])
     .process(readFixture(name), postcssOpts)
     .then((result) => {
-      expect(result.css).toEqual(expected);
-      expect(result.warnings().length).toEqual(0);
+      t.deepEqual(result.css, expected);
+      t.is(result.warnings().length, 0);
     });
 }
 
-it("Transforms gray()", () => {
-  return testFixture("basic");
+test("Transforms gray()", (t) => {
+  return testFixture(t,"basic");
 });
 
-it("Transforms gray(), preserve original", () => {
-  return testFixture("basic-preserve", { preserve: true });
+test("Transforms gray(), preserve original", (t) => {
+  return testFixture(t,"basic-preserve", { preserve: true });
 });

@@ -1,3 +1,4 @@
+const test = require("ava");
 var fs = require("fs");
 
 var postcss = require("postcss");
@@ -10,7 +11,7 @@ function read(name) {
   return fs.readFileSync(name, "utf8");
 }
 
-function compareFixtures(name, opts, postcssOpts) {
+function compareFixtures(t, name, opts, postcssOpts) {
   postcssOpts = postcssOpts || {};
   postcssOpts.from = filename("fixtures/" + name);
   opts = opts || {};
@@ -19,37 +20,37 @@ function compareFixtures(name, opts, postcssOpts) {
     .process(read(postcssOpts.from), postcssOpts)
     .then((result) => {
       var expected = read(filename("fixtures/" + name + ".expected"));
-      expect(result.css).toEqual(expected);
-      expect(result.warnings().length).toEqual(0);
+      t.deepEqual(result.css, expected);
+      t.is(result.warnings().length, 0);
     });
 }
 
-it("should transform rgba", () => {
-  return compareFixtures("rgba-fallback");
+test("should transform rgba", (t) => {
+  return compareFixtures(t, "rgba-fallback");
 });
 
-it("should transform rgba", () => {
-  return compareFixtures("rgba-double-fallback");
+test("should transform rgba 2", (t) => {
+  return compareFixtures(t, "rgba-double-fallback");
 });
 
-it("should not transform rgba", () => {
-  return compareFixtures("no-rgba-fallback");
+test("should not transform rgba", (t) => {
+  return compareFixtures(t, "no-rgba-fallback");
 });
 
-it("should transform rgba in shadow", () => {
-  return compareFixtures("rgba-fallback-option", {
+test("should transform rgba in shadow", (t) => {
+  return compareFixtures(t, "rgba-fallback-option", {
     properties: ["box-shadow"],
   });
 });
 
-it("should transform background", () => {
-  return compareFixtures("rgba-background-fallback", {
+test("should transform background", (t) => {
+  return compareFixtures(t, "rgba-background-fallback", {
     backgroundColor: [255, 255, 255],
   });
 });
 
-it("should add old IE filters", () => {
-  return compareFixtures("rgba-oldie-fallback", {
+test("should add old IE filters", (t) => {
+  return compareFixtures(t, "rgba-oldie-fallback", {
     oldie: true,
   });
 });
