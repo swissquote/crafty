@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("legacy");
 
-test("Doesn't work with ES6", async (t) => {
+test("Doesn't work with ES6", async t => {
   const result = await lint(
     engine,
     `
@@ -19,10 +19,10 @@ something.push("a value");
   t.is(result.errorCount, 1);
 });
 
-  test("Gives no warning on correct code", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("Gives no warning on correct code", async t => {
+  const result = await lint(
+    engine,
+    `
 /* global jQuery */
 (function($) {
   "use strict";
@@ -59,26 +59,26 @@ something.push("a value");
   };
 })(jQuery);
 `
-    );
+  );
 
-    t.snapshot(result.messages);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 0);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
+});
 
-  test("Warns on wrong format", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("Warns on wrong format", async t => {
+  const result = await lint(
+    engine,
+    `
 
 function test() { "use strict"; fetch("This is spartaaa"); }
 
 test()
 
 `
-    );
+  );
 
-    t.snapshot(result.messages);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 2);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 2);
+});

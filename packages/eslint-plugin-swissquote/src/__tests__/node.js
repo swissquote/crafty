@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended", "node");
 
-test("Doesn't warn on console.log", async (t) => {
+test("Doesn't warn on console.log", async t => {
   const result = await lint(engine, `console.log("Yeah");\n`);
 
   t.is(result.messages.length, 0);
@@ -12,7 +12,7 @@ test("Doesn't warn on console.log", async (t) => {
   t.is(result.errorCount, 0);
 });
 
-test("Works with ES6", async (t) => {
+test("Works with ES6", async t => {
   const result = await lint(
     engine,
     `
@@ -29,7 +29,7 @@ console.log(something);
   t.is(result.errorCount, 0);
 });
 
-test("Works with TypeScript", async (t) => {
+test("Works with TypeScript", async t => {
   const result = await lint(
     engine,
     `

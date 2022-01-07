@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("format");
 
-test("Gives no warning on correct code", async (t) => {
+test("Gives no warning on correct code", async t => {
   const result = await lint(
     engine,
     `
@@ -39,7 +39,7 @@ module.exports = function initJS(gulp, config, watchers) {
   t.is(result.errorCount, 0);
 });
 
-test("Fails on badly formatted code", async (t) => {
+test("Fails on badly formatted code", async t => {
   const result = await lint(
     engine,
     `

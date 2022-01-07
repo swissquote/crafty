@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("format");
 
-test("Fails on badly formatted TypeScript code", async (t) => {
+test("Fails on badly formatted TypeScript code", async t => {
   const result = await lint(
     engine,
     `
@@ -40,7 +40,7 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
   t.is(result.errorCount, 5);
 });
 
-test("Works with complex types", async (t) => {
+test("Works with complex types", async t => {
   const result = await lint(
     engine,
     `

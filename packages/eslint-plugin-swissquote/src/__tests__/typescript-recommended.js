@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended");
 
-test("Warns on console.log", async (t) => {
+test("Warns on console.log", async t => {
   const result = await lint(
     engine,
     `
@@ -23,7 +23,7 @@ if (foo?.bar?.baz) {
   t.is(result.errorCount, 0);
 });
 
-test("Uses sonar plugin", async (t) => {
+test("Uses sonar plugin", async t => {
   const result = await lint(
     engine,
     `
@@ -48,7 +48,7 @@ function changeWindow(param: number) {
   t.is(result.errorCount, 2);
 });
 
-test("Works with complex types", async (t) => {
+test("Works with complex types", async t => {
   const result = await lint(
     engine,
     `

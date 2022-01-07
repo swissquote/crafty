@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("recommended");
 
-test("Warns on console.log", async (t) => {
+test("Warns on console.log", async t => {
   const result = await lint(engine, `console.log("Yeah");\n`);
 
   t.snapshot(result.messages);
@@ -12,7 +12,7 @@ test("Warns on console.log", async (t) => {
   t.is(result.errorCount, 0);
 });
 
-test("Uses sonar plugin", async (t) => {
+test("Uses sonar plugin", async t => {
   const result = await lint(
     engine,
     `
@@ -36,7 +36,7 @@ function changeWindow(param) {
   t.is(result.errorCount, 2);
 });
 
-test("Works fine with ES6 code", async (t) => {
+test("Works fine with ES6 code", async t => {
   const result = await lint(
     engine,
     `
@@ -91,44 +91,44 @@ const obj = {
   t.is(result.errorCount, 22);
 });
 
-  test("jsx-no-duplicate-props: works with different props", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("jsx-no-duplicate-props: works with different props", async t => {
+  const result = await lint(
+    engine,
+    `
 import * as React from "react";
 
 export default function SomeComponent() {
   return <div id="" className="" />;
 }
 `
-    );
+  );
 
-    t.is(result.messages.length, 0);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 0);
-  });
+  t.is(result.messages.length, 0);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 0);
+});
 
-  test("jsx-no-duplicate-props: works fails with the same prop", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("jsx-no-duplicate-props: works fails with the same prop", async t => {
+  const result = await lint(
+    engine,
+    `
 import * as React from "react";
 
 export default function SomeComponent() {
   return <div id="" id="" />;
 }
 `
-    );
+  );
 
-    t.snapshot(result.messages);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 1);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 1);
+});
 
-  test("no-did-mount-set-state: fails with setState in componentDidMount", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
+  const result = await lint(
+    engine,
+    `
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -147,17 +147,17 @@ MyComponent.propTypes = {
   name: PropTypes.string.isRequired
 };
 `
-    );
+  );
 
-    t.snapshot(result.messages);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 1);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 1);
+});
 
-  test("Incorrect usage of hooks: fails with setState in componentDidMount", async (t) => {
-    const result = await lint(
-      engine,
-      `
+test("Incorrect usage of hooks: fails with setState in componentDidMount", async t => {
+  const result = await lint(
+    engine,
+    `
 import React, { useState, useEffect } from "react";
 
 export default function MyComponent() {
@@ -182,9 +182,9 @@ export default function MyComponent() {
   return <div>{name}</div>;
 }
 `
-    );
+  );
 
-    t.snapshot(result.messages);
-    t.is(result.warningCount, 0);
-    t.is(result.errorCount, 3);
-  });
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 3);
+});

@@ -54,7 +54,7 @@ const validCss = `
 }
 `;
 
-test("flags no warnings with valid css", async (t) => {
+test("flags no warnings with valid css", async t => {
   const result = await stylelint.lint({
     code: validCss.replace(/^\n/, ""),
     config
@@ -101,7 +101,7 @@ const errors = [
 ];
 
 errors.forEach(error => {
-  test(`Error: ${error.message}`, async (t) => {
+  test(`Error: ${error.message}`, async t => {
     const result = await stylelint.lint({ code: `${error.code}\n`, config });
 
     t.truthy(result.errored);

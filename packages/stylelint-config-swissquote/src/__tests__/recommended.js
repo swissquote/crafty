@@ -1,7 +1,6 @@
 const test = require("ava");
 
 const stylelint = require("stylelint");
-const { t } = require("../../dist/compiled/stylelint-prettier-package");
 
 const config = require("../../recommended");
 
@@ -306,17 +305,17 @@ const validCss = `/** @define Form */
 }
 `;
 
-test("flags no warnings nor errors with valid css", (t) => {
+test("flags no warnings nor errors with valid css", t => {
   const result = stylelint.lint({ code: validCss, config });
 
-  return result.then((data) => {
+  return result.then(data => {
     t.falsy(data.errored);
     t.is(data.results[0].warnings.length, 0);
   });
 });
 
-test("Works with namespaces", (t) => {
-    t.plan(1);
+test("Works with namespaces", t => {
+  t.plan(1);
   const result = stylelint.lint({
     code:
       ".Component {\n    top: 10px;\n}\n\n" +
@@ -331,8 +330,8 @@ test("Works with namespaces", (t) => {
   });
 });
 
-test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'", (t) => {
-    t.plan(2);
+test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'", t => {
+  t.plan(2);
   const result = stylelint.lint({
     code: `@while ($i == 1) {
     .Button {
@@ -346,10 +345,10 @@ test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'",
     }
 }
 `,
-    config,
+    config
   });
 
-  return result.then((data) => {
+  return result.then(data => {
     t.truthy(data.errored);
     t.deepEqual(data.results[0].warnings, [
       {
@@ -357,20 +356,20 @@ test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'",
         column: 1,
         rule: "scss/at-rule-no-unknown",
         severity: "error",
-        text: 'Unexpected unknown at-rule "@unknown" (scss/at-rule-no-unknown)',
+        text: 'Unexpected unknown at-rule "@unknown" (scss/at-rule-no-unknown)'
       }
     ]);
   });
 });
 
-test("flags warnings when using ids raised one 'selector-max-id' error", (t) => {
-    t.plan(2);
+test("flags warnings when using ids raised one 'selector-max-id' error", t => {
+  t.plan(2);
   const result = stylelint.lint({
     code: "#ids-not-allowed {\n    top: 10px;\n}\n",
-    config,
+    config
   });
 
-  return result.then((data) => {
+  return result.then(data => {
     t.truthy(data.errored);
     t.deepEqual(data.results[0].warnings, [
       {
@@ -378,7 +377,8 @@ test("flags warnings when using ids raised one 'selector-max-id' error", (t) => 
         column: 1,
         rule: "selector-max-id",
         severity: "error",
-        text: 'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)',
+        text:
+          'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
       }
     ]);
   });
