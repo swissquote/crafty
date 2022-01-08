@@ -1,3 +1,7 @@
+function gulpEslintNew() {
+  return require("gulp-eslint-new");
+}
+
 function gulpSourcemaps() {
   return require("gulp-sourcemaps");
 }
@@ -11,6 +15,7 @@ function pluginError() {
 }
 
 module.exports = {
+  gulpEslintNew,
   gulpSourcemaps,
   gulpNewer,
   pluginError

@@ -22,10 +22,6 @@ function enhancedResolve() {
   return require("enhanced-resolve");
 }
 
-function fancyLog() {
-  return require("fancy-log");
-}
-
 function isNegatedGlob() {
   return require("is-negated-glob");
 }
@@ -61,7 +57,6 @@ module.exports = {
   copyAnything,
   chokidar,
   enhancedResolve,
-  fancyLog,
   isNegatedGlob,
   justDebounce,
   loudRejection,

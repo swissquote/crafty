@@ -18,7 +18,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     const {
       toTempFile
     } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
-    const eslint = require("gulp-eslint-new");
+    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new");
     stream
       .add(
         eslint({

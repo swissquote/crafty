@@ -41,12 +41,24 @@ function getProvidedPackages(parents) {
   return pkgs;
 }
 
-function getParents(pkg, set) {
+function getParents(root, pkg, set) {
   Object.keys({ ...(pkg.dependencies || {}), ...(pkg.peerDependencies || {}) })
     .filter((dependency) => dependency.indexOf("@swissquote/") === 0)
     .forEach((dependency) => {
+
+      if (root.name === dependency) {
+        console.error("Skipping loop.", pkg.name, "points back to", root.name, ", listed dependencies:", set);
+        return;
+      }
+
+      if (set.has(dependency)) {
+        //console.error("We already have", dependency, "in set", set);
+        return;
+      }
+
       set.add(dependency);
-      getParents(require(`${dependency}/package.json`), set);
+      getParents(root, require(`${dependency}/package.json`), set);
+      
     });
 
   return set;
@@ -54,7 +66,8 @@ function getParents(pkg, set) {
 
 module.exports = {
   getExternals() {
-    const parents = getParents(require(currentPackage), new Set());
+    const pkg = require(currentPackage);
+    const parents = getParents(pkg, pkg, new Set());
     return getProvidedPackages(parents);
   },
 };

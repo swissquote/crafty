@@ -1,5 +1,5 @@
 const Undertaker = require("../packages/undertaker");
-const log = require("../packages/fancy-log");
+const log = require("@swissquote/crafty-commons/packages/fancy-log");
 
 const events = require("./log/events");
 const { wasLogged, recordLogged } = require("./log/eventLog");

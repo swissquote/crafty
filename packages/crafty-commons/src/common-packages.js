@@ -14,6 +14,10 @@ function debug() {
   return require("debug");
 }
 
+function fancyLog() {
+  return require("fancy-log");
+}
+
 function findUp() {
   return require("find-up");
 }
@@ -68,6 +72,7 @@ module.exports = {
   browserslist,
   colorizeTemplate,
   debug,
+  fancyLog,
   findUp,
   glob,
   minimatch,

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const log = require("../packages/fancy-log");
+const log = require("@swissquote/crafty-commons/packages/fancy-log");
 const loudRejection = require("../packages/loud-rejection");
 
 const cli = require("./cli");
