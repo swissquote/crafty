@@ -9,9 +9,6 @@ const gulpSourcemaps = require("gulp-sourcemaps");
 const path = require("path");
 
 const gulpStylelint = require("../src/index");
-const {
-  t,
-} = require("@swissquote/crafty-commons/dist/compiled/common-packages");
 
 /**
  * Creates a full path to the fixtures glob.
@@ -86,6 +83,7 @@ test("should ignore file", (t) => {
               ignorePath: fixtures("ignore"),
             })
           )
+          .on("error", reject)
           .on("finish", resolve);
       })
   );

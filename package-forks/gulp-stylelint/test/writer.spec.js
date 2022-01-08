@@ -29,7 +29,7 @@ test.serial("writer should write to cwd if base dir is not specified", (t) => {
       t.truthy(fs.statSync(reportFilePath).isFile());
       t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => t.is(error, undefined))
+    .catch((error) => t.is(typeof error, "undefined"))
     .then(() => {
       fs.unlinkSync(reportFilePath);
     });
@@ -47,7 +47,7 @@ test.serial("writer should write to a base folder if it is specified", (t) => {
       t.truthy(fs.statSync(reportFilePath).isFile());
       t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => t.is(error, undefined))
+    .catch((error) => t.is(typeof error, "undefined"))
     .then(() => {
       fs.unlinkSync(reportFilePath);
       fs.rmdirSync(reportSubdirPath);
@@ -64,7 +64,7 @@ test.serial("writer should strip colors from formatted output", (t) => {
     .then(() => {
       t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => t.is(error, undefined))
+    .catch((error) => t.is(typeof error, "undefined"))
     .then(() => {
       fs.unlinkSync(reportFilePath);
     });

@@ -1,5 +1,3 @@
-/* global expect */
-
 const assignDisabledRanges = require("stylelint/lib/assignDisabledRanges");
 //const basicChecks = require("./basicChecks")
 const normalizeRuleSettings = require("stylelint/lib/normalizeRuleSettings");
