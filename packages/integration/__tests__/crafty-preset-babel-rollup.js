@@ -1,86 +1,84 @@
-/* global jest, it, expect */
-
+const test = require("ava");
 const testUtils = require("../utils");
-
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
 
 const BUNDLE = "dist/js/myBundle.min.js";
 const BUNDLE_MAP = "dist/js/myBundle.min.js.map";
 
-it("Compiles JavaScript with rollup", async () => {
+test.serial("Compiles JavaScript with rollup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
-  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+  t.truthy(testUtils.exists(cwd, BUNDLE));
+  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
 
-  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
 });
 
-it("Keeps imports unresolved for Babel Runtime", async () => {
+test.serial("Keeps imports unresolved for Babel Runtime", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/compiles-import-runtime"
   );
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
-  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+  t.truthy(testUtils.exists(cwd, BUNDLE));
+  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
 
-  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
 });
 
-it("Keeps imports unresolved for Babel Runtime, using commonjs", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-babel-rollup/compiles-import-runtime-commonjs"
-  );
+test.serial(
+  "Keeps imports unresolved for Babel Runtime, using commonjs",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-babel-rollup/compiles-import-runtime-commonjs"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+    t.snapshot(result);
+    t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
-  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+    t.truthy(testUtils.exists(cwd, BUNDLE));
+    t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
 
-  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
-});
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  }
+);
 
-it("Fails gracefully on broken markup", async () => {
+test.serial("Fails gracefully on broken markup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
-  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
-  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, BUNDLE));
+  t.falsy(testUtils.exists(cwd, BUNDLE_MAP));
 });
 
-it("Lints JavaScript with rollup", async () => {
+test.serial("Lints JavaScript with rollup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-rollup/lints"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
-  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, BUNDLE));
+  t.falsy(testUtils.exists(cwd, BUNDLE_MAP));
 });

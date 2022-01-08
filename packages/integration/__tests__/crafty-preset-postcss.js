@@ -1,45 +1,40 @@
-/* global jest, it, expect */
-
+const test = require("ava");
 const configuration = require("@swissquote/crafty/src/configuration");
 const getCommands = require("@swissquote/crafty/src/commands/index");
 
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
 const getCrafty = configuration.getCrafty;
 
-it("Loads crafty-preset-postcss and does not register gulp tasks", () => {
+test("Loads crafty-preset-postcss and does not register gulp tasks", t => {
   const crafty = getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
     preset => preset.presetName
   );
-  expect(loadedPresets).toContain("@swissquote/crafty-preset-postcss");
+  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-postcss"));
 
   const commands = getCommands(crafty);
-  expect(Object.keys(commands)).toContain("cssLint");
+  t.truthy(Object.keys(commands).includes("cssLint"));
 
   crafty.createTasks();
-  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
+  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-it("Lints with the command", async () => {
+test.serial("Lints with the command", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss/no-bundle"
   );
 
   const result = await testUtils.run(["cssLint", "css/*.scss"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(2);
+  t.snapshot(result);
+  t.is(result.status, 2);
 
-  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist"));
 });
 
-it("Lints with the command in legacy mode", async () => {
+test.serial("Lints with the command in legacy mode", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss/no-bundle"
   );
@@ -49,13 +44,13 @@ it("Lints with the command in legacy mode", async () => {
     cwd
   );
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(2);
+  t.snapshot(result);
+  t.is(result.status, 2);
 
-  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist"));
 });
 
-it("Lints with the command with custom config", async () => {
+test.serial("Lints with the command with custom config", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss/no-bundle"
   );
@@ -65,13 +60,13 @@ it("Lints with the command with custom config", async () => {
     cwd
   );
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(2);
+  t.snapshot(result);
+  t.is(result.status, 2);
 
-  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist"));
 });
 
-it("Creates IDE Integration files", async () => {
+test.serial("Creates IDE Integration files", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-postcss/ide", [
     "stylelint.config.js",
     "prettier.config.js",
@@ -80,15 +75,11 @@ it("Creates IDE Integration files", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
-  expect(
-    testUtils.readForSnapshot(cwd, "stylelint.config.js")
-  ).toMatchSnapshot();
+  t.snapshot(result);
+  t.is(result.status, 0);
+  t.snapshot(testUtils.readForSnapshot(cwd, "stylelint.config.js"));
 
-  expect(
-    testUtils.readForSnapshot(cwd, "prettier.config.js")
-  ).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.js"));
 
-  expect(testUtils.readForSnapshot(cwd, ".gitignore")).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, ".gitignore"));
 });

@@ -1,62 +1,64 @@
-/* global jest, it, expect */
+const test = require("ava");
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
-it("Lints TypeScript using the command", async () => {
+test.serial("Lints TypeScript using the command", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript/lints"
   );
 
   const result = await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
 
-it("Lints TypeScript using the command, --preset recommended, --preset node", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/lints"
-  );
+test.serial(
+  "Lints TypeScript using the command, --preset recommended, --preset node",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints"
+    );
 
-  const result = await testUtils.run(
-    ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
-    cwd
-  );
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
+      cwd
+    );
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+    t.snapshot(result);
+    t.is(result.status, 1);
 
-  // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-});
+    // Files aren't generated on failed lint
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  }
+);
 
-it("Lints TypeScript using the command, --preset recommended", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/lints"
-  );
+test.serial(
+  "Lints TypeScript using the command, --preset recommended",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints"
+    );
 
-  const result = await testUtils.run(
-    ["jsLint", "js/**/*.ts", "--preset", "recommended"],
-    cwd
-  );
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.ts", "--preset", "recommended"],
+      cwd
+    );
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+    t.snapshot(result);
+    t.is(result.status, 1);
 
-  // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-});
+    // Files aren't generated on failed lint
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  }
+);
 
-it("Lints TypeScript using the command, --preset format", async () => {
+test.serial("Lints TypeScript using the command, --preset format", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript/lints"
   );
@@ -66,10 +68,10 @@ it("Lints TypeScript using the command, --preset format", async () => {
     cwd
   );
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });

@@ -1,116 +1,107 @@
-/* global jest, it, expect */
-
+const test = require("ava");
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
-it("Compiles CSS within webpack", async () => {
+test.serial("Compiles CSS within webpack", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-webpack/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
 });
 
-it("Fails gracefully on broken markup", async () => {
+test.serial("Fails gracefully on broken markup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-webpack/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
 
-it("Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-postcss-webpack/extract-boolean"
-  );
+test.serial(
+  "Compiles CSS within webpack, extracts CSS ('extractCSS' boolean option)",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-postcss-webpack/extract-boolean"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+    t.snapshot(result);
+    t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(
-    testUtils.exists(cwd, "dist/js/myBundle-default.min.css")
-  ).toBeTruthy();
-  expect(
-    testUtils.exists(cwd, "dist/js/myBundle-default.min.css.map")
-  ).toBeTruthy();
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css.map"));
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle-default.min.css")
+    );
+  }
+);
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
-  expect(
-    testUtils.readFile(cwd, "dist/js/myBundle-default.min.css")
-  ).toMatchSnapshot();
-});
+test.serial(
+  "Compiles CSS within webpack, extracts CSS ('extractCSS' string option)",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-postcss-webpack/extract-string"
+    );
 
-it("Compiles CSS within webpack, extracts CSS ('extractCSS' string option)", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-postcss-webpack/extract-string"
-  );
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    t.snapshot(result);
+    t.is(result.status, 0);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-string.min.css"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-string.min.css.map"));
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle-string.min.css")).toBeTruthy();
-  expect(
-    testUtils.exists(cwd, "dist/js/myBundle-string.min.css.map")
-  ).toBeTruthy();
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle-string.min.css")
+    );
+  }
+);
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
-  expect(
-    testUtils.readFile(cwd, "dist/js/myBundle-string.min.css")
-  ).toMatchSnapshot();
-});
+test.serial(
+  "Compiles CSS within webpack, extracts CSS ('extractCSS' object option)",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-postcss-webpack/extract-object"
+    );
 
-it("Compiles CSS within webpack, extracts CSS ('extractCSS' object option)", async () => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-postcss-webpack/extract-object"
-  );
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    t.snapshot(result);
+    t.is(result.status, 0);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-object.min.css"));
+    t.truthy(testUtils.exists(cwd, "dist/js/myBundle-object.min.css.map"));
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle-object.min.css")).toBeTruthy();
-  expect(
-    testUtils.exists(cwd, "dist/js/myBundle-object.min.css.map")
-  ).toBeTruthy();
-
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
-  expect(
-    testUtils.readFile(cwd, "dist/js/myBundle-object.min.css")
-  ).toMatchSnapshot();
-});
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle-object.min.css")
+    );
+  }
+);

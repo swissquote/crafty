@@ -5,9 +5,8 @@
   "private": true,
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' '__tests__/*.js'",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --exclude=\"**/dist/**\" --reporter=text --reporter=lcov --reporter=html jest --runInBand"
+    "test": "ava '__tests__/*.js'",
+    "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --exclude=\"**/dist/**\" --reporter=text --reporter=lcov --reporter=html ava '__tests__/*.js'"
   },
   "dependencies": {
     "@babel/core": "7.16.7",
@@ -24,10 +23,9 @@
     "@swissquote/crafty-runner-gulp": "1.17.2",
     "@swissquote/crafty-runner-rollup": "1.17.2",
     "@swissquote/crafty-runner-webpack": "1.17.2",
-    "@types/jest": "^27.0.0",
+    "ava": "4.0.0",
     "c8": "7.11.0",
     "execa": "5.1.1",
-    "jest": "27.4.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
