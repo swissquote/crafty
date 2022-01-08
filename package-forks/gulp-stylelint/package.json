@@ -8,9 +8,8 @@
   ],
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --coverage"
+    "test": "ava",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"
   },
   "repository": {
     "type": "git",
@@ -40,13 +39,15 @@
     "plugin-error": "1.0.1"
   },
   "devDependencies": {
+    "ava": "4.0.0",
     "ansi-colors": "^4.0.0",
+    "c8": "7.11.0",
     "gulp-clean-css": "4.3.0",
     "gulp-concat": "2.6.1",
     "gulp-rename": "2.0.0",
     "gulp-sourcemaps": "3.0.0",
-    "jest": "27.4.5",
-    "postcss": "8.4.5"
+    "postcss": "8.4.5",
+    "sinon": "12.0.1"
   },
   "private": true
 }

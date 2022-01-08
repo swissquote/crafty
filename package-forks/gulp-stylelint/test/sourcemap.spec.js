@@ -1,4 +1,4 @@
-"use strict";
+const test = require("ava");
 
 const Crafty = require("@swissquote/crafty/src/Crafty");
 const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
@@ -21,23 +21,26 @@ function fixtures(glob) {
   return path.join(__dirname, "fixtures", glob);
 }
 
-test("should emit no errors when stylelint rules are satisfied", () => {
-  return new Promise((resolve) => {
-    gulp
-      .src(fixtures("original-*.css"))
-      .pipe(gulpSourcemaps.init())
-      .pipe(
-        gulpStylelint({
-          config: { rules: {} },
-        })
-      )
-      .on("finish", resolve);
-  });
+test("should emit no errors when stylelint rules are satisfied", (t) => {
+  return t.notThrowsAsync(
+    () =>
+      new Promise((resolve) => {
+        gulp
+          .src(fixtures("original-*.css"))
+          .pipe(gulpSourcemaps.init())
+          .pipe(
+            gulpStylelint({
+              config: { rules: {} },
+            })
+          )
+          .on("finish", resolve);
+      })
+  );
 });
 
 // Disable sourcemaps as Crafty only lints original source files
-test.skip("should apply sourcemaps correctly", () => {
-  expect.assertions(5);
+test.skip("should apply sourcemaps correctly", (t) => {
+  t.plan(5);
 
   return new Promise((resolve, reject) => {
     gulp
@@ -56,14 +59,14 @@ test.skip("should apply sourcemaps correctly", () => {
           reporters: [
             {
               formatter(lintResult) {
-                expect(lintResult.map((r) => r.source)).toEqual([
-                  "original-a.css",
-                  "original-b.css",
-                ]);
-                expect(lintResult[0].warnings[0].line).toEqual(2);
-                expect(lintResult[0].warnings[0].column).toEqual(9);
-                expect(lintResult[1].warnings[0].line).toEqual(2);
-                expect(lintResult[1].warnings[0].column).toEqual(9);
+                t.deepEqual(
+                  lintResult.map((r) => r.source),
+                  ["original-a.css", "original-b.css"]
+                );
+                t.deepEqual(lintResult[0].warnings[0].line, 2);
+                t.deepEqual(lintResult[0].warnings[0].column, 9);
+                t.deepEqual(lintResult[1].warnings[0].line, 2);
+                t.deepEqual(lintResult[1].warnings[0].column, 9);
 
                 resolve();
               },
@@ -75,8 +78,8 @@ test.skip("should apply sourcemaps correctly", () => {
   });
 });
 
-test("should ignore empty sourcemaps", () => {
-  expect.assertions(5);
+test("should ignore empty sourcemaps", (t) => {
+  t.plan(5);
 
   return new Promise((resolve, reject) => {
     gulp
@@ -92,14 +95,17 @@ test("should ignore empty sourcemaps", () => {
           reporters: [
             {
               formatter(lintResult) {
-                expect(lintResult.map((r) => r.source)).toEqual([
-                  path.join(__dirname, "fixtures", "original-a.css"),
-                  path.join(__dirname, "fixtures", "original-b.css"),
-                ]);
-                expect(lintResult[0].warnings[0].line).toEqual(2);
-                expect(lintResult[0].warnings[0].column).toEqual(15);
-                expect(lintResult[1].warnings[0].line).toEqual(2);
-                expect(lintResult[1].warnings[0].column).toEqual(16);
+                t.deepEqual(
+                  lintResult.map((r) => r.source),
+                  [
+                    path.join(__dirname, "fixtures", "original-a.css"),
+                    path.join(__dirname, "fixtures", "original-b.css"),
+                  ]
+                );
+                t.deepEqual(lintResult[0].warnings[0].line, 2);
+                t.deepEqual(lintResult[0].warnings[0].column, 15);
+                t.deepEqual(lintResult[1].warnings[0].line, 2);
+                t.deepEqual(lintResult[1].warnings[0].column, 16);
                 resolve();
               },
             },

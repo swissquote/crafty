@@ -1,25 +1,25 @@
-"use strict";
+const test = require("ava");
 
 const fancyLog = require("fancy-log");
-const { stub } = require("sinon");
+const sinon = require("sinon");
 
 const reporterFactory = require("../src/reporter-factory");
 
-beforeEach(() => {
-  stub(fancyLog, "info");
+test.beforeEach((t) => {
+  t.context.fancyLogInfo = sinon.stub(fancyLog, "info");
 });
 
-afterEach(() => {
-  fancyLog.info.restore();
+test.afterEach((t) => {
+  t.context.fancyLogInfo.restore();
 });
 
-test("reporter factory should return a function", () => {
-  expect.assertions(1);
-  expect(typeof reporterFactory()).toEqual("function");
+test.serial("reporter factory should return a function", (t) => {
+  t.plan(1);
+  t.is(typeof reporterFactory(), "function");
 });
 
-test("reporter should return a promise", () => {
-  expect.assertions(1);
+test.serial("reporter should return a promise", (t) => {
+  t.plan(1);
 
   const reporter = reporterFactory({
     formatter() {
@@ -27,61 +27,70 @@ test("reporter should return a promise", () => {
     },
   });
 
-  expect(typeof reporter({}).then).toEqual("function");
+  t.is(typeof reporter({}).then, "function");
 });
 
-test("reporter should write to console if console param is true", () => {
-  expect.assertions(1);
+test.serial(
+  "reporter should write to console if console param is true",
+  (t) => {
+    t.plan(1);
 
+    const reporter = reporterFactory({
+      formatter() {
+        return "foo";
+      },
+      console: true,
+    });
+
+    reporter({});
+
+    t.truthy(fancyLog.info.calledWith("\nfoo\n"));
+  }
+);
+
+test.serial(
+  "reporter should NOT write to console if console param is false",
+  (t) => {
+    t.plan(1);
+    const reporter = reporterFactory({
+      formatter() {
+        return "foo";
+      },
+      console: false,
+    });
+
+    reporter({});
+
+    t.falsy(fancyLog.info.called);
+  }
+);
+
+test.serial(
+  "reporter should NOT write to console if formatter returned only whitespace",
+  (t) => {
+    t.plan(1);
+    const reporter = reporterFactory({
+      formatter() {
+        return "  \n";
+      },
+      console: true,
+    });
+
+    reporter({});
+
+    t.falsy(fancyLog.info.called);
+  }
+);
+
+test.serial("reporter should NOT write to console by default", (t) => {
+  t.plan(1);
   const reporter = reporterFactory({
     formatter() {
       return "foo";
     },
-    console: true,
   });
 
   reporter({});
 
-  expect(fancyLog.info.calledWith("\nfoo\n")).toBe(true);
-});
-
-test("reporter should NOT write to console if console param is false", () => {
-  expect.assertions(1);
-  const reporter = reporterFactory({
-    formatter() {
-      return "foo";
-    },
-    console: false,
-  });
-
-  reporter({});
-
-  expect(fancyLog.info.called).toEqual(false);
-});
-
-test("reporter should NOT write to console if formatter returned only whitespace", () => {
-  expect.assertions(1);
-  const reporter = reporterFactory({
-    formatter() {
-      return "  \n";
-    },
-    console: true,
-  });
-
-  reporter({});
-
-  expect(fancyLog.info.called).toEqual(false);
-});
-
-test("reporter should NOT write to console by default", () => {
-  expect.assertions(1);
-  const reporter = reporterFactory({
-    formatter() {
-      return "foo";
-    },
-  });
-
-  reporter({});
-
-  expect(fancyLog.info.called).toBe(false);
+  t.falsy(fancyLog.info.called);
 });

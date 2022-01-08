@@ -1,64 +1,53 @@
-'use strict';
+"use strict";
 
-const colors = require('ansi-colors');
-const fs = require('fs');
-const path = require('path');
+const test = require("ava");
+const sinon = require("sinon");
+const colors = require("ansi-colors");
+const fs = require("fs");
+const path = require("path");
 
-const writer = require('../src/writer');
+const writer = require("../src/writer");
 
-const tmpDir = path.resolve(__dirname, '../tmp');
+const tmpDir = path.resolve(__dirname, "../tmp");
 
-let spy
+test.beforeEach((t) => {
+  t.context.processCWDStub = sinon.stub(process, "cwd");
+  t.context.processCWDStub.returns(tmpDir);
+});
 
-beforeEach(() => {
-  spy = jest.spyOn(process, 'cwd');
-  spy.mockReturnValue(tmpDir);
-})
+test.afterEach((t) => {
+  t.context.processCWDStub.restore();
+});
 
-afterEach(() => {
-  spy.mockRestore();
-})
+test.serial("writer should write to cwd if base dir is not specified", (t) => {
+  const reportFilePath = path.join(process.cwd(), "foo.txt");
 
-test('writer should write to cwd if base dir is not specified', () => {
-  
-  const reportFilePath = path.join(process.cwd(), 'foo.txt');
+  t.plan(2);
 
-  expect.assertions(2);
-
-  return writer('footext', 'foo.txt')
+  return writer("footext", "foo.txt")
     .then(() => {
-      expect(
-        fs.statSync(reportFilePath).isFile()
-      ).toBe(true);
-      expect(
-        fs.readFileSync(reportFilePath, 'utf8')).toEqual(
-        'footext'
-      );
+      t.truthy(fs.statSync(reportFilePath).isFile());
+      t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => expect(error).toBeUndefined())
+    .catch((error) => t.is(error, undefined))
     .then(() => {
-      
       fs.unlinkSync(reportFilePath);
     });
 });
 
-test('writer should write to a base folder if it is specified', () => {
-  const reportDirPath = path.join(process.cwd(), 'foodir');
-  const reportSubdirPath = path.join(reportDirPath, '/subdir');
-  const reportFilePath = path.join(reportSubdirPath, 'foo.txt');
+test.serial("writer should write to a base folder if it is specified", (t) => {
+  const reportDirPath = path.join(process.cwd(), "foodir");
+  const reportSubdirPath = path.join(reportDirPath, "/subdir");
+  const reportFilePath = path.join(reportSubdirPath, "foo.txt");
 
-  expect.assertions(2);
+  t.plan(2);
 
-  return writer('footext', 'foo.txt', reportSubdirPath)
+  return writer("footext", "foo.txt", reportSubdirPath)
     .then(() => {
-      expect(
-        fs.statSync(reportFilePath).isFile()).toBe(true);
-      expect(
-        fs.readFileSync(reportFilePath, 'utf8')).toEqual(
-        'footext'
-      );
+      t.truthy(fs.statSync(reportFilePath).isFile());
+      t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => expect(error).toBeUndefined())
+    .catch((error) => t.is(error, undefined))
     .then(() => {
       fs.unlinkSync(reportFilePath);
       fs.rmdirSync(reportSubdirPath);
@@ -66,19 +55,16 @@ test('writer should write to a base folder if it is specified', () => {
     });
 });
 
-test('writer should strip colors from formatted output', () => {
-  const reportFilePath = path.join(process.cwd(), 'foo.txt');
+test.serial("writer should strip colors from formatted output", (t) => {
+  const reportFilePath = path.join(process.cwd(), "foo.txt");
 
-  expect.assertions(1);
+  t.plan(1);
 
-  return writer(colors.blue('footext'), 'foo.txt')
+  return writer(colors.blue("footext"), "foo.txt")
     .then(() => {
-      expect(
-        fs.readFileSync(reportFilePath, 'utf8')).toEqual(
-        'footext'
-      );
+      t.deepEqual(fs.readFileSync(reportFilePath, "utf8"), "footext");
     })
-    .catch((error) => expect(error).toBeUndefined())
+    .catch((error) => t.is(error, undefined))
     .then(() => {
       fs.unlinkSync(reportFilePath);
     });

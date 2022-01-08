@@ -1,4 +1,4 @@
-"use strict";
+const test = require("ava");
 
 const fs = require("fs");
 const Crafty = require("@swissquote/crafty/src/Crafty");
@@ -9,6 +9,9 @@ const gulpSourcemaps = require("gulp-sourcemaps");
 const path = require("path");
 
 const gulpStylelint = require("../src/index");
+const {
+  t,
+} = require("@swissquote/crafty-commons/dist/compiled/common-packages");
 
 /**
  * Creates a full path to the fixtures glob.
@@ -19,36 +22,39 @@ function fixtures(glob) {
   return path.join(__dirname, "fixtures", glob);
 }
 
-it("should not throw when no arguments are passed", () => {
-  expect.assertions(1);
-  expect(gulpStylelint).not.toThrow();
+test("should not throw when no arguments are passed", (t) => {
+  t.plan(1);
+  t.notThrows(gulpStylelint);
 });
 
-test("should emit an error on streamed file", () => {
-  expect.assertions(1);
+test("should emit an error on streamed file", (t) => {
+  t.plan(1);
   return new Promise((resolve) => {
     gulp
       .src(fixtures("basic.css"), { buffer: false })
       .pipe(gulpStylelint())
       .on("error", (error) => {
-        expect(error.message).toEqual("Streaming is not supported");
+        t.deepEqual(error.message, "Streaming is not supported");
         resolve();
       });
   });
 });
 
-test("should NOT emit an error when configuration is set", () => {
-  return new Promise((resolve, reject) => {
-    gulp
-      .src(fixtures("basic.css"))
-      .pipe(gulpStylelint({ config: { rules: [] } }))
-      .on("error", reject)
-      .on("finish", resolve);
-  });
+test("should NOT emit an error when configuration is set", (t) => {
+  return t.notThrowsAsync(
+    () =>
+      new Promise((resolve, reject) => {
+        gulp
+          .src(fixtures("basic.css"))
+          .pipe(gulpStylelint({ config: { rules: [] } }))
+          .on("error", reject)
+          .on("finish", resolve);
+      })
+  );
 });
 
-test("should emit an error when linter complains", () => {
-  expect.assertions(1);
+test("should emit an error when linter complains", (t) => {
+  t.plan(1);
   return new Promise((resolve) => {
     gulp
       .src(fixtures("invalid.css"))
@@ -62,28 +68,31 @@ test("should emit an error when linter complains", () => {
         })
       )
       .on("error", (error) => {
-        expect(error).toBeInstanceOf(Error);
+        t.truthy(error instanceof Error);
         resolve();
       });
   });
 });
 
-test("should ignore file", () => {
-  return new Promise((resolve, reject) => {
-    gulp
-      .src([fixtures("basic.css"), fixtures("invalid.css")])
-      .pipe(
-        gulpStylelint({
-          config: { rules: { "color-hex-case": "lower" } },
-          ignorePath: fixtures("ignore"),
-        })
-      )
-      .on("finish", resolve);
-  });
+test("should ignore file", (t) => {
+  return t.notThrowsAsync(
+    () =>
+      new Promise((resolve, reject) => {
+        gulp
+          .src([fixtures("basic.css"), fixtures("invalid.css")])
+          .pipe(
+            gulpStylelint({
+              config: { rules: { "color-hex-case": "lower" } },
+              ignorePath: fixtures("ignore"),
+            })
+          )
+          .on("finish", resolve);
+      })
+  );
 });
 
-test("should fix the file without emitting errors", () => {
-  expect.assertions(1);
+test("should fix the file without emitting errors", (t) => {
+  t.plan(1);
 
   return new Promise((resolve, reject) => {
     gulp
@@ -98,21 +107,25 @@ test("should fix the file without emitting errors", () => {
       .pipe(gulp.dest(path.resolve(__dirname, "../tmp")))
       .on("error", reject)
       .on("finish", () => {
-        expect(
-          fs.readFileSync(path.resolve(__dirname, "../tmp/invalid.css"), "utf8")
-        ).toEqual(".foo {\n  color: #fff;\n}\n");
+        t.deepEqual(
+          fs.readFileSync(
+            path.resolve(__dirname, "../tmp/invalid.css"),
+            "utf8"
+          ),
+          ".foo {\n  color: #fff;\n}\n"
+        );
         resolve();
       });
   });
 });
 
-test("should expose an object with stylelint formatter functions", () => {
-  expect.assertions(2);
-  expect(typeof gulpStylelint.formatters).toEqual("object");
+test("should expose an object with stylelint formatter functions", (t) => {
+  t.plan(2);
+  t.deepEqual(typeof gulpStylelint.formatters, "object");
 
   const formatters = Object.keys(gulpStylelint.formatters).map(
     (fName) => gulpStylelint.formatters[fName]
   );
 
-  expect(formatters.every((f) => typeof f === "function")).toBe(true);
+  t.truthy(formatters.every((f) => typeof f === "function"));
 });

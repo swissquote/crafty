@@ -12,11 +12,10 @@
     "crafty": "./src/bin.js"
   },
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --coverage",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
-    "build": "node ../../utils/build.js"
+    "build": "node ../../utils/build.js",
+    "test": "ava",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"
   },
   "dependencies": {
     "@swissquote/crafty-commons": "1.17.2"
@@ -25,15 +24,16 @@
     "fsevents": "~2.3.2"
   },
   "devDependencies": {
+    "ava": "4.0.0",
     "anymatch": "3.1.2",
     "async-done": "1.3.2",
+    "c8": "7.11.0",
     "camelcase-keys": "7.0.1",
     "chokidar": "3.5.2",
     "copy-anything": "2.0.3",
     "enhanced-resolve": "5.8.3",
     "fancy-log": "1.3.3",
     "is-negated-glob": "1.0.0",
-    "jest": "27.4.5",
     "just-debounce": "1.1.0",
     "loud-rejection": "2.2.0",
     "merge-anything": "4.0.2",

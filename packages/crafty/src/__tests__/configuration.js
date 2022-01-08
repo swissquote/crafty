@@ -1,7 +1,7 @@
-/* global test, expect */
+const test = require("ava");
 const configuration = require("../configuration");
 
-test("gets one preset", () => {
+test("gets one preset", t => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -10,18 +10,18 @@ test("gets one preset", () => {
     "run"
   ];
 
-  expect(configuration.extractPresets(entry)).toEqual([
+  t.deepEqual(configuration.extractPresets(entry), [
     "@swissquote/crafty-preset-babel"
   ]);
 
-  expect(entry).toEqual([
+  t.deepEqual(entry, [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "run"
   ]);
 });
 
-test("gets multiple presets", () => {
+test("gets multiple presets", t => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -32,19 +32,19 @@ test("gets multiple presets", () => {
     "run"
   ];
 
-  expect(configuration.extractPresets(entry)).toEqual([
+  t.deepEqual(configuration.extractPresets(entry), [
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-postcss"
   ]);
 
-  expect(entry).toEqual([
+  t.deepEqual(entry, [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "run"
   ]);
 });
 
-test("gets multiple presets, but only before command", () => {
+test("gets multiple presets, but only before command", t => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -57,12 +57,12 @@ test("gets multiple presets, but only before command", () => {
     "recommended"
   ];
 
-  expect(configuration.extractPresets(entry)).toEqual([
+  t.deepEqual(configuration.extractPresets(entry), [
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-postcss"
   ]);
 
-  expect(entry).toEqual([
+  t.deepEqual(entry, [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "jsLint",

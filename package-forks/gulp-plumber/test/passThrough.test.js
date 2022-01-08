@@ -25,7 +25,7 @@ test("piping into second plumber should keep piping", function(t) {
       .pipe(
         es.writeArray(
           function(err, array) {
-            t.deepEqual(array, expected);
+            t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
             done();
           }
         )
@@ -45,7 +45,7 @@ test("should work with es.readarray", function(t) {
       .pipe(es.stringify())
       .pipe(
         es.writeArray(function(error, array) {
-          t.deepEqual(array, expected);
+          t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
 
           done();
         })
@@ -90,7 +90,7 @@ test("should passThrough all incoming files in non-flowing mode", function(t) {
       .pipe(
         es.writeArray(
           function(err, array) {
-            t.deepEqual(array, expected);
+            t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
             done();
           }
         )
