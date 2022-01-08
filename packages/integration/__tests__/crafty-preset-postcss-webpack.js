@@ -1,6 +1,9 @@
 const test = require("ava");
 const testUtils = require("../utils");
 
+const BUNDLE = "dist/js/myBundle.min.js";
+const BUNDLE_MAP = `${BUNDLE}.map`;
+
 test.serial("Compiles CSS within webpack", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-webpack/compiles"
@@ -11,10 +14,10 @@ test.serial("Compiles CSS within webpack", async t => {
   t.snapshot(result);
   t.is(result.status, 0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, BUNDLE));
+  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
 });
 
 test.serial("Fails gracefully on broken markup", async t => {
@@ -27,8 +30,8 @@ test.serial("Fails gracefully on broken markup", async t => {
   t.snapshot(result);
   t.is(result.status, 1);
 
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  t.falsy(testUtils.exists(cwd, BUNDLE));
+  t.falsy(testUtils.exists(cwd, BUNDLE_MAP));
 });
 
 test.serial(
@@ -43,13 +46,13 @@ test.serial(
     t.snapshot(result);
     t.is(result.status, 0);
 
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, BUNDLE));
+    t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css"));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css"));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-default.min.css.map"));
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
     t.snapshot(
       testUtils.readForSnapshot(cwd, "dist/js/myBundle-default.min.css")
     );
@@ -68,13 +71,13 @@ test.serial(
     t.snapshot(result);
     t.is(result.status, 0);
 
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, BUNDLE));
+    t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-string.min.css"));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-string.min.css.map"));
 
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
     t.snapshot(
       testUtils.readForSnapshot(cwd, "dist/js/myBundle-string.min.css")
     );
@@ -93,13 +96,13 @@ test.serial(
     t.snapshot(result);
     t.is(result.status, 0);
 
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    t.truthy(testUtils.exists(cwd, BUNDLE));
+    t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-object.min.css"));
     t.truthy(testUtils.exists(cwd, "dist/js/myBundle-object.min.css.map"));
 
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-    t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+    t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
     t.snapshot(
       testUtils.readForSnapshot(cwd, "dist/js/myBundle-object.min.css")
     );
