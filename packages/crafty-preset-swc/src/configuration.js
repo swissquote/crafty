@@ -85,7 +85,13 @@ function getConfigurationRollup(crafty, bundle) {
 }
 
 function getConfigurationGulp(crafty, bundle) {
-  return getConfiguration(crafty, bundle, hasSwcHelpersDependency());
+  const options = getConfiguration(crafty, bundle, hasSwcHelpersDependency());
+
+  if (crafty.getEnvironment() === "production") {
+    options.minify = true;
+  }
+
+  return options;
 }
 
 module.exports = {

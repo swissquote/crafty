@@ -14,7 +14,7 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["\\.(js|jsx)$"] = require.resolve("@swc/jest");
+    options.transform["\\.(js|jsx)$"] = require.resolve("../packages/swc-jest.js");
     options.moduleFileExtensions.push("jsx");
   },
   bundleCreator(crafty) {
@@ -72,7 +72,7 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("swc")
-      .loader(require.resolve("swc-loader"))
+      .loader(require.resolve("../packages/swc-loader.js"))
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
   }
 };

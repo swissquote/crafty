@@ -83,7 +83,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       );
     }
 
-    const swc = require("gulp-swc");
+    const swc = require("../packages/gulp-swc");
     const { getConfigurationGulp } = require("./configuration.js");
     const swcOptions = getConfigurationGulp(crafty, bundle);
 
@@ -94,13 +94,8 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(sourcemaps.init({ loadMaps: true }));
 
     if (bundle.concat) {
-      const concat = require("gulp-concat");
+      const concat = require("../packages/gulp-concat");
       stream.add(concat(bundle.destination));
-    }
-
-    if (crafty.getEnvironment() === "production") {
-      const terser = require("gulp-terser");
-      stream.add(terser({ ...crafty.config.terser, sourceMap: {} }));
     }
 
     stream.add(sourcemaps.write("./"));

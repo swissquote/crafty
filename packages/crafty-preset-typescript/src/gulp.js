@@ -54,12 +54,12 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       // Preserve JSX so babel can optimize it, or add development/debug information
       jsx: "Preserve"
     };
-    const typescript = require("gulp-typescript");
+    const typescript = require("../packages/gulp-typescript");
     const tsProject = typescript.createProject("tsconfig.json", tsOptions);
     stream.add(tsProject());
 
     // Then finalize with Babel
-    const babel = require("gulp-babel");
+    const babel = require("../packages/gulp-babel");
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
     const babelOptions = babelConfigurator(crafty, bundle);
 
