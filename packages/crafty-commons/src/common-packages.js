@@ -63,6 +63,10 @@ function semverValid() {
   return require("semver/functions/valid");
 }
 
+function sourceMapJs() {
+  return require("source-map-js");
+}
+
 function tmp() {
   return require("tmp");
 }
@@ -84,5 +88,6 @@ module.exports = {
   semverCoerce,
   semverParse,
   semverValid,
+  sourceMapJs,
   tmp
 };
