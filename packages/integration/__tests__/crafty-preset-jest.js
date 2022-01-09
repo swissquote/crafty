@@ -1,29 +1,15 @@
-/* global jest, it, expect */
-
+const test = require("ava");
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
-let testIfNotPnp = it;
-
-try {
-  require("pnpapi");
-  testIfNotPnp = it.skip;
-} catch (error) {
-  // not in PnP; not a problem
-}
-
-it("Succeeds without transpiling", async () => {
+test.serial("Succeeds without transpiling", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/succeeds");
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
+  t.snapshot(result);
 });
 
-it("Creates IDE Integration files", async () => {
+test.serial("Creates IDE Integration files", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide", [
     "jest.config.js",
     ".gitignore"
@@ -31,14 +17,14 @@ it("Creates IDE Integration files", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
-  expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
+  t.snapshot(result);
+  t.is(result.status, 0);
+  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.js"));
 
-  expect(testUtils.readForSnapshot(cwd, ".gitignore")).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, ".gitignore"));
 });
 
-it("Creates IDE Integration files with Babel", async () => {
+test.serial("Creates IDE Integration files with Babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide-babel", [
     "jest.config.js",
     ".gitignore"
@@ -46,65 +32,65 @@ it("Creates IDE Integration files with Babel", async () => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
-  expect(testUtils.readForSnapshot(cwd, "jest.config.js")).toMatchSnapshot();
+  t.snapshot(result);
+  t.is(result.status, 0);
+  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.js"));
 });
 
-testIfNotPnp("Succeeds with typescript", async () => {
+test.serial("Succeeds with typescript", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/typescript");
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 });
 
-it("Succeeds with babel", async () => {
+test.serial("Succeeds with babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/babel");
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 });
 
-it("Fails with babel", async () => {
+test.serial("Fails with babel", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-jest/babel-fails"
   );
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 });
 
-testIfNotPnp("Succeeds with babel and React", async () => {
+test.serial("Succeeds with babel and React", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-jest/babel-react"
   );
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 });
 
-it("Succeeds with esm module", async () => {
+test.serial("Succeeds with esm module", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/esm");
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 });
 
-it("Succeeds with esm module and babel", async () => {
+test.serial("Succeeds with esm module and babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/esm-babel");
 
   const result = await testUtils.run(["test"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 });

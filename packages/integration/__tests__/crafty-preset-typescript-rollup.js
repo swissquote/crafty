@@ -1,88 +1,77 @@
-/* global it, expect, jest */
-
+const test = require("ava");
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
-it("Works with rollup", async () => {
+test.serial("Works with rollup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
-  ).toMatchSnapshot();
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js"));
 });
 
-it("Deletes rollup terser plugin using crafty.config.js", async () => {
+test.serial("Deletes rollup terser plugin using crafty.config.js", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/compiles-no-terser"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
-  ).toMatchSnapshot();
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js"));
 });
 
-it("Keeps imports unresolved for Babel Runtime", async () => {
+test.serial("Keeps imports unresolved for Babel Runtime", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js")
-  ).toMatchSnapshot();
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myTSBundle.min.js"));
 });
 
-it("Fails gracefully on broken markup", async () => {
+test.serial("Fails gracefully on broken markup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
 
-it("Lints TypeScript with rollup", async () => {
+test.serial("Lints TypeScript with rollup", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-rollup/lints"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
   // Files aren't generated on failed lint
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });

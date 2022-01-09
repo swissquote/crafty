@@ -1,42 +1,34 @@
-/* global jest, it, expect */
-
+const test = require("ava");
 const testUtils = require("../utils");
 
-// Add a high timeout because of https://github.com/facebook/jest/issues/8942
-// Tests would be unreliable if they timeout >_<
-jest.setTimeout(30000);
-
-it("Compiles Only with Webpack", async () => {
+test.serial("Compiles Only with Webpack", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-runner-webpack/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(0);
+  t.snapshot(result);
+  t.is(result.status, 0);
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/690.myBundle.min.js")).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/690.myBundle.min.js.map")).toBeTruthy();
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/690.myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/690.myBundle.min.js.map"));
 
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
-  ).toMatchSnapshot();
-  expect(
-    testUtils.readForSnapshot(cwd, "dist/js/690.myBundle.min.js")
-  ).toMatchSnapshot();
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/690.myBundle.min.js"));
 });
 
-it("Fails gracefully on broken markup", async () => {
+test.serial("Fails gracefully on broken markup", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-runner-webpack/fails");
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  expect(result).toMatchSnapshot();
-  expect(result.status).toBe(1);
+  t.snapshot(result);
+  t.is(result.status, 1);
 
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
