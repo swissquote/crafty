@@ -10,11 +10,13 @@ class ProcessorMap extends ChainedMap {
 
   getBrowsers = () => {
     if (!this.browsers) {
-      this.browsers = browserslist(this.browsersQuery, {ignoreUnknownVersions: true});
+      this.browsers = browserslist(this.browsersQuery, {
+        ignoreUnknownVersions: true
+      });
     }
-    
+
     return this.browsers;
-  }
+  };
 
   /**
    * Create a processor, returns the existing one if there is already one with the same name

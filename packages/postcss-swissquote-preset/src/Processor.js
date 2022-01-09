@@ -7,21 +7,26 @@ let caniuseFeatures;
 function isSupported(feature, browsers) {
   // Load only when it's needed for the first time
   if (!caniuseFeatures) {
-    const { features, feature } = require("caniuse-lite");
+    const { features, feature: featureUnpack } = require("caniuse-lite");
     caniuseFeatures = features;
-    caniuseFeature = feature;
+    caniuseFeature = featureUnpack;
   }
 
-  let data
+  let data;
   try {
-    data = caniuseFeature(caniuseFeatures[feature])
-  } catch(e) {
-    throw new ReferenceError(`Please provide a proper feature name. Cannot find ${feature}`)
+    data = caniuseFeature(caniuseFeatures[feature]);
+  } catch (e) {
+    throw new ReferenceError(
+      `Please provide a proper feature name. Cannot find ${feature}`
+    );
   }
 
   return browsers
-    .map((browser) => browser.split(" "))
-    .every((browser) => data.stats[browser[0]] && data.stats[browser[0]][browser[1]] === "y")
+    .map(browser => browser.split(" "))
+    .every(
+      browser =>
+        data.stats[browser[0]] && data.stats[browser[0]][browser[1]] === "y"
+    );
 }
 
 function isAllSupported(features, browsers) {
@@ -116,8 +121,8 @@ module.exports = class Processor {
    * @param {string} browsers the list of browsers that we currently target
    * @returns {this}
    */
-  enableIfUnsupported(caniuseFeature) {
-    this.caniuseFeature = caniuseFeature;
+  enableIfUnsupported(feature) {
+    this.caniuseFeature = feature;
 
     return this;
   }
