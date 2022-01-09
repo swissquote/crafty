@@ -1,25 +1,44 @@
-// Lazy load caniuse's API
-let isSupported;
+// Lazy load caniuse's data
+let caniuseFeature;
+let caniuseFeatures;
 
-function isAllSupported(items, browsers) {
+// To better bundle the dependencies, we don't need the full caniuse-api
+// we inline this function instead : https://github.com/Nyalab/caniuse-api/blob/master/src/index.js#L34-L50
+function isSupported(feature, browsers) {
   // Load only when it's needed for the first time
-  if (!isSupported) {
-    const caniuse = require("caniuse-api");
-    isSupported = caniuse.isSupported;
+  if (!caniuseFeatures) {
+    const { features, feature } = require("caniuse-lite");
+    caniuseFeatures = features;
+    caniuseFeature = feature;
   }
 
-  const allItems = Array.isArray(items) ? items : [items];
+  let data
+  try {
+    data = caniuseFeature(caniuseFeatures[feature])
+  } catch(e) {
+    throw new ReferenceError(`Please provide a proper feature name. Cannot find ${feature}`)
+  }
 
-  return allItems.every(item => isSupported(item, browsers));
+  return browsers
+    .map((browser) => browser.split(" "))
+    .every((browser) => data.stats[browser[0]] && data.stats[browser[0]][browser[1]] === "y")
+}
+
+function isAllSupported(features, browsers) {
+  const allFeatures = Array.isArray(features) ? features : [features];
+
+  return allFeatures.every(feature => isSupported(feature, browsers));
 }
 
 module.exports = class Processor {
-  constructor(name) {
+  constructor(name, getBrowsers) {
     this.name = name;
     this.options = {};
 
     this.enableCallback = null;
     this.caniuseFeature = null;
+
+    this.getBrowsers = getBrowsers;
   }
 
   /**
@@ -65,7 +84,7 @@ module.exports = class Processor {
   isEnabled() {
     if (
       this.caniuseFeature &&
-      isAllSupported(this.caniuseFeature, this.browserslist)
+      isAllSupported(this.caniuseFeature, this.getBrowsers())
     ) {
       return false;
     }
@@ -97,9 +116,8 @@ module.exports = class Processor {
    * @param {string} browsers the list of browsers that we currently target
    * @returns {this}
    */
-  enableIfUnsupported(caniuseFeature, browsers) {
+  enableIfUnsupported(caniuseFeature) {
     this.caniuseFeature = caniuseFeature;
-    this.browserslist = browsers;
 
     return this;
   }

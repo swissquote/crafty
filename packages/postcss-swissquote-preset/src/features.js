@@ -1,7 +1,21 @@
 const ChainedMap = require("./ChainedMap");
 const Processor = require("./Processor");
+const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
 
 class ProcessorMap extends ChainedMap {
+  constructor(browsersQuery) {
+    super();
+    this.browsersQuery = browsersQuery;
+  }
+
+  getBrowsers = () => {
+    if (!this.browsers) {
+      this.browsers = browserslist(this.browsersQuery, {ignoreUnknownVersions: true});
+    }
+    
+    return this.browsers;
+  }
+
   /**
    * Create a processor, returns the existing one if there is already one with the same name
    *
@@ -9,7 +23,7 @@ class ProcessorMap extends ChainedMap {
    * @returns {Processor}
    */
   processor(name) {
-    return this.getOrCompute(name, () => new Processor(name));
+    return this.getOrCompute(name, () => new Processor(name, this.getBrowsers));
   }
 }
 
@@ -17,7 +31,7 @@ module.exports = function(config) {
   const env = config.environment || process.env.NODE_ENV || "production";
 
   // All processors used to make the CSS readable by a browser
-  const processors = new ProcessorMap();
+  const processors = new ProcessorMap(config.browsers);
 
   // Handle @import and rebase urls
   processors.processor("postcss-import").embedded();
@@ -42,7 +56,7 @@ module.exports = function(config) {
   processors
     .processor("postcss-custom-properties")
     .embedded()
-    .enableIfUnsupported(["css-variables"], config.browsers)
+    .enableIfUnsupported(["css-variables"])
     .setOptions({
       preserve: false,
       appendVariables: true
@@ -54,7 +68,7 @@ module.exports = function(config) {
   processors
     .processor("postcss-image-set-polyfill")
     .embedded()
-    .enableIfUnsupported(["css-image-set"], config.browsers);
+    .enableIfUnsupported(["css-image-set"]);
 
   processors.processor("postcss-custom-media").embedded();
   processors.processor("postcss-media-minmax").embedded();
@@ -64,12 +78,12 @@ module.exports = function(config) {
   processors
     .processor("postcss-attribute-case-insensitive")
     .embedded()
-    .enableIfUnsupported(["css-case-insensitive"], config.browsers);
+    .enableIfUnsupported(["css-case-insensitive"]);
 
   processors
     .processor("postcss-color-rebeccapurple")
     .embedded()
-    .enableIfUnsupported(["css-rebeccapurple"], config.browsers);
+    .enableIfUnsupported(["css-rebeccapurple"]);
 
   processors.processor("postcss-color-hwb").embedded();
   processors.processor("postcss-color-hsl").embedded();
@@ -79,7 +93,7 @@ module.exports = function(config) {
   processors
     .processor("postcss-color-hex-alpha")
     .embedded()
-    .enableIfUnsupported(["css-rrggbbaa"], config.browsers);
+    .enableIfUnsupported(["css-rrggbbaa"]);
 
   processors.processor("postcss-color-mod-function").embedded();
 
@@ -90,45 +104,45 @@ module.exports = function(config) {
   processors
     .processor("pleeease-filters")
     .embedded()
-    .enableIfUnsupported(["css-filters"], config.browsers);
+    .enableIfUnsupported(["css-filters"]);
 
   processors
     .processor("postcss-initial")
     .embedded()
-    .enableIfUnsupported(["css-all", "css-initial-value"], config.browsers);
+    .enableIfUnsupported(["css-all", "css-initial-value"]);
 
   processors
     .processor("pixrem")
     .embedded()
     .setOptions({ browsers: config.browsers })
-    .enableIfUnsupported(["rem"], config.browsers);
+    .enableIfUnsupported(["rem"]);
 
   processors
     .processor("postcss-pseudoelements")
     .embedded()
-    .enableIfUnsupported(["css-gencontent"], config.browsers);
+    .enableIfUnsupported(["css-gencontent"]);
 
   processors
     .processor("postcss-selector-matches")
     .embedded()
-    .enableIfUnsupported(["css-matches-pseudo"], config.browsers);
+    .enableIfUnsupported(["css-matches-pseudo"]);
 
   processors
     .processor("postcss-selector-not")
     .embedded()
-    .enableIfUnsupported(["css-not-sel-list"], config.browsers);
+    .enableIfUnsupported(["css-not-sel-list"]);
 
   processors.processor("postcss-pseudo-class-any-link").embedded();
 
   processors
     .processor("postcss-color-rgba-fallback")
     .embedded()
-    .enableIfUnsupported(["css3-colors"], config.browsers);
+    .enableIfUnsupported(["css3-colors"]);
 
   processors
     .processor("postcss-replace-overflow-wrap")
     .embedded()
-    .enableIfUnsupported(["wordwrap"], config.browsers);
+    .enableIfUnsupported(["wordwrap"]);
 
   // Also support sass-style nesting
   processors.processor("postcss-nested").embedded();
