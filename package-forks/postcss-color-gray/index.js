@@ -1,10 +1,32 @@
 const { parse } = require("postcss-values-parser");
-const { colord, extend } = require("colord");
-const labPlugin = require("colord/plugins/lab");
 const Numeric = require("postcss-values-parser/lib/nodes/Numeric");
 const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
 
-extend([labPlugin]);
+// https://github.com/antimatter15/rgb-lab/blob/master/color.js#L4
+// based on the pseudocode found on www.easyrgb.com
+function lab2rgb(lab) {
+  var y = (lab[0] + 16) / 116,
+    x = lab[1] / 500 + y,
+    z = y - lab[2] / 200;
+
+  x = 0.95047 * (x * x * x > 0.008856 ? x * x * x : (x - 16 / 116) / 7.787);
+  y = 1.0 * (y * y * y > 0.008856 ? y * y * y : (y - 16 / 116) / 7.787);
+  z = 1.08883 * (z * z * z > 0.008856 ? z * z * z : (z - 16 / 116) / 7.787);
+
+  let r = x * 3.2406 + y * -1.5372 + z * -0.4986;
+  let g = x * -0.9689 + y * 1.8758 + z * 0.0415;
+  let b = x * 0.0557 + y * -0.204 + z * 1.057;
+
+  r = r > 0.0031308 ? 1.055 * Math.pow(r, 1 / 2.4) - 0.055 : 12.92 * r;
+  g = g > 0.0031308 ? 1.055 * Math.pow(g, 1 / 2.4) - 0.055 : 12.92 * g;
+  b = b > 0.0031308 ? 1.055 * Math.pow(b, 1 / 2.4) - 0.055 : 12.92 * b;
+
+  return [
+    Math.round(Math.max(0, Math.min(1, r)) * 255),
+    Math.round(Math.max(0, Math.min(1, g)) * 255),
+    Math.round(Math.max(0, Math.min(1, b)) * 255)
+  ];
+}
 
 // return whether a string contains a gray() function
 const hasGrayFunctionRegExp = /(^|[^\w-])gray\(/i;
@@ -93,7 +115,7 @@ module.exports = function creator(opts) {
             node.name = "rgb";
 
             // convert the lab gray lightness into rgb
-            const { r, g, b } = colord({ l: lightness, a: 0, b: 0 }).toRgb();
+            const [r, g, b] = lab2rgb([lightness, 0, 0]);
 
             node
               .removeAll()

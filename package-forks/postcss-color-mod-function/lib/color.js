@@ -6,7 +6,7 @@ const {
   hsl2hwb,
   hwb2rgb,
   hwb2hsl
-} = require("./colorspaces");
+} = require("@swissquote/color-fns");
 
 module.exports = class Color {
   /* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */

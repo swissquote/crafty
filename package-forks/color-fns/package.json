@@ -1,0 +1,11 @@
+{
+  "name": "@swissquote/color-fns",
+  "version": "1.17.2",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'"
+  },
+  "private": true
+}

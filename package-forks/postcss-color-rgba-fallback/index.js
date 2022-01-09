@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 const valueParser = require("postcss-value-parser");
-const { colord } = require("colord");
 
 /**
  * Calculate the color of a chanel
@@ -54,6 +53,11 @@ function isPrecededBySameProp(declaration) {
   return declaration.prev() && declaration.prev().prop === declaration.prop;
 }
 
+function formatHex(number) {
+  const hex = number.toString(16);
+  return hex.length < 2 ? "0" + hex : hex;
+};
+
 /**
  * PostCSS plugin to transform rgba() to hexadecimal
  */
@@ -99,9 +103,7 @@ module.exports = function(options = {}) {
                 parseInt(nodes[4].value, 10),
                 alpha
               ]);
-              hex = colord({ r, g, b })
-                .toHex()
-                .substring(1);
+              hex = `${formatHex(r)}${formatHex(g)}${formatHex(b)}`;
 
               node.type = "word";
               node.value = `#${hex}`;

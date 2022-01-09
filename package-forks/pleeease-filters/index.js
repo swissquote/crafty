@@ -1,7 +1,4 @@
 /* eslint-disable prefer-destructuring */
-const { colord, extend } = require("colord");
-
-extend([require("colord/plugins/names")]);
 
 // SVG
 function createSVG(filterElements) {
@@ -444,9 +441,7 @@ const filters = {
       result: "offsetblur"
     });
     const svg3 = createSVGElement("feFlood", {
-      "flood-color": colord(color)
-        .toRgbString()
-        .replace(/\s+/g, "")
+      "flood-color": color
     });
     const svg4 = createSVGElement("feComposite", {
       in2: "offsetblur",

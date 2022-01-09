@@ -25,9 +25,6 @@
     "test": "ava",
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
-  "dependencies": {
-    "colord": "2.9.2"
-  },
   "devDependencies": {
     "ava": "4.0.1",
     "c8": "7.11.0",
