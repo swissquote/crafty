@@ -1572,7 +1572,7 @@
     "@types/eslint" "*"
     "@types/estree" "*"
 
-"@types/eslint@*", "@types/eslint@^7.28.2", "@types/eslint@^8.0.0", "@types/eslint@^8.2.1":
+"@types/eslint@*", "@types/eslint@^7.28.2", "@types/eslint@^8.0.0", "@types/eslint@^8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.2.2.tgz#b64dbdb64b1957cfc8a698c68297fcf8983e94c7"
   integrity sha512-nQxgB8/Sg+QKhnV8e0WzPpxjIGT3tuJDDzybkDi8ItE/IgTlHo07U0shaIjzhcvQxlq9SDRE42lsJ23uvEgJ2A==
@@ -1675,15 +1675,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/node@*":
+"@types/node@*", "@types/node@^17.0.8":
   version "17.0.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.8.tgz#50d680c8a8a78fe30abe6906453b21ad8ab0ad7b"
   integrity sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==
-
-"@types/node@^16.11.11":
-  version "16.11.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.19.tgz#1afa165146997b8286b6eabcb1c2d50729055169"
-  integrity sha512-BPAcfDPoHlRQNKktbsbnpACGdypPFBuX4xQlsWDE7B8XXcfII+SpOLay3/qZmCLb39kV5S1RTYwXdkx2lwLYng==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -4192,7 +4187,7 @@ eslint-webpack-plugin@3.1.1:
     normalize-path "^3.0.0"
     schema-utils "^3.1.1"
 
-eslint@8.6.0, eslint@^8.4.0:
+eslint@8.6.0, eslint@^8.6.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.6.0.tgz#4318c6a31c5584838c1a2e940c478190f58d558e"
   integrity sha512-UvxdOJ7mXFlw7iuHZA4jmzPaUqIw54mZrv+XPYKNbKdLR0et4rf60lIZUU9kiNtnzzMzGWxMV+tQ7uG7JG8DPw==
@@ -4453,7 +4448,7 @@ external-editor@^3.0.3:
     iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
-fancy-log@2.0.0:
+fancy-log@2.0.0, fancy-log@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fancy-log/-/fancy-log-2.0.0.tgz#cad207b8396d69ae4796d74d17dff5f68b2f7343"
   integrity sha512-9CzxZbACXMUXW13tS0tI8XsGGmxWzO2DmYrGuBJOJ8k8q2K7hwfJA5qHjuPPe8wtsco33YR9wc+Rlr5wYFvhSA==
@@ -5001,15 +4996,15 @@ gulp-concat@2.6.1:
     through2 "^2.0.0"
     vinyl "^2.0.0"
 
-gulp-eslint-new@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-eslint-new/-/gulp-eslint-new-1.1.0.tgz#0ce5419c08e1056adedaeaa82d4095dd95ddc817"
-  integrity sha512-YOuaetK80dsibyp6suEsggJ2KY3wIVdeRuDLtp7zQtNJsaXN5YMJRl3gApxfMYlS3xjA+EVUIRRLB3mQYnrHPw==
+gulp-eslint-new@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gulp-eslint-new/-/gulp-eslint-new-1.1.1.tgz#98091f51eec1bf54d0aa84dfc4c5c40a2a9c7573"
+  integrity sha512-G2KR7dabUIbhMKyka2pFIcqm1OL+VPzubEZoB4EGseeERsWXLd+TmRxpBufFMojuzgR9nKF7uN9r3YgIitoTMg==
   dependencies:
-    "@types/eslint" "^8.2.1"
-    "@types/node" "^16.11.11"
-    eslint "^8.4.0"
-    fancy-log "^1.3.3"
+    "@types/eslint" "^8.2.2"
+    "@types/node" "^17.0.8"
+    eslint "^8.6.0"
+    fancy-log "^2.0.0"
     plugin-error "^1.0.1"
 
 gulp-postcss@9.0.1:
