@@ -35,7 +35,7 @@ module.exports = {
     const options = {
       babelrc: false,
       compact: false,
-      plugins: [require.resolve("@babel/plugin-transform-modules-commonjs")],
+      plugins: [require.resolve("@babel/plugin-transform-modules-commonjs")]
     };
 
     const ast = babel.parseSync(src, options);
@@ -43,20 +43,18 @@ module.exports = {
     // Imports and exports have to be at the first level on a file
     // This makes it easy for us to traverse the file, a simple filter does the trick
     // If we had to find `import()` statements that would be more complicated, but as
-    // They would certainly have an export anyway, we're covered.
+    // They would certainly have an import or export anyway, we're covered.
     const hasImportOrExport = ast.program.body.filter(
-      (item) =>
+      item =>
         item.type === "ImportDeclaration" ||
         item.type === "ExportNamedDeclaration" ||
         item.type === "ExportDefaultDeclaration"
     );
 
-    if (hasImportOrExport.length == 0) {
+    if (hasImportOrExport.length === 0) {
       return src;
     }
 
-
-
     return babel.transformFromAstSync(ast, src, options).code;
-  },
+  }
 };
