@@ -39,7 +39,7 @@ module.exports = () => ({
         const parsedAlpha = parseFloat(alpha);
         const a = clamp(isNaN(parsedAlpha) ? 1 : parsedAlpha, 0, 1);
 
-        return color2rgbLegacyString(hwb2rgb(h,w,b), a);
+        return color2rgbLegacyString(hwb2rgb(h, w, b), a);
       }
     }
   }),

@@ -19,7 +19,7 @@ function isGlob() {
 }
 
 function logSymbols() {
-  return require("log-symbols");
+  return require("log-symbols").default;
 }
 
 /* Isn't friends with automatic imports

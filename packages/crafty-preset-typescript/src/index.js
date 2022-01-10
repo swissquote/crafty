@@ -1,6 +1,6 @@
 const path = require("path");
 
-const findUp = require("@swissquote/crafty-commons/packages/find-up");
+const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 
 const createTask = require("./gulp");
 
@@ -92,7 +92,7 @@ module.exports = {
     options.moduleFileExtensions.push("tsx");
   },
   webpack(crafty, bundle, chain) {
-    const configFile = findUp.sync("tsconfig.json", { cwd: process.cwd() });
+    const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
 
     if (!configFile) {
       crafty.log.error(

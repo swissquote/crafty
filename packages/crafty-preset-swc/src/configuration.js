@@ -1,10 +1,10 @@
 const debug = require("@swissquote/crafty-commons/packages/debug");
-const findUp = require("@swissquote/crafty-commons/packages/find-up");
+const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function hasSwcHelpersDependency() {
-  const packageJsonPath = findUp.sync("package.json", { cwd: process.cwd() });
+  const packageJsonPath = findUpSync("package.json", { cwd: process.cwd() });
   if (!packageJsonPath) {
     // If we can't find a package.json, we won't be able to know which version of the @swc/helpers we have
     return false;

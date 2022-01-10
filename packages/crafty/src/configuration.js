@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const findUp = require("@swissquote/crafty-commons/packages/find-up");
+const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 const { copy } = require("../packages/copy-anything");
 const { merge } = require("../packages/merge-anything");
 const resolve = require("../packages/enhanced-resolve");
@@ -21,7 +21,7 @@ let LOADING = new Set();
  * @param {*} file
  */
 function getPresetName(file) {
-  const packageJson = findUp.sync("package.json", { cwd: path.dirname(file) });
+  const packageJson = findUpSync("package.json", { cwd: path.dirname(file) });
 
   if (packageJson) {
     return require(packageJson).name || file;

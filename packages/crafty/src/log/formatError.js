@@ -3,7 +3,6 @@ const Information = require("./Information");
 // Format orchestrator errors
 function formatError(e) {
   if (!e.error) {
-
     if (e.showStack) {
       return e.toString();
     }

@@ -55,8 +55,8 @@ function isPrecededBySameProp(declaration) {
 
 function formatHex(number) {
   const hex = number.toString(16);
-  return hex.length < 2 ? "0" + hex : hex;
-};
+  return hex.length < 2 ? `0${hex}` : hex;
+}
 
 /**
  * PostCSS plugin to transform rgba() to hexadecimal

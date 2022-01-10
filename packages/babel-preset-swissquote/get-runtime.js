@@ -1,13 +1,13 @@
 const fs = require("fs");
 const path = require("path");
-const findUp = require("@swissquote/crafty-commons/packages/find-up");
+const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const babelRuntimePackageFile = "node_modules/@babel/runtime/package.json";
 
 function hasBabelRuntimeDependency() {
-  const packageJsonPath = findUp.sync("package.json", { cwd: process.cwd() });
+  const packageJsonPath = findUpSync("package.json", { cwd: process.cwd() });
   if (!packageJsonPath) {
     // If we can't find a package.json, we won't be able to know which version of the @babel/runtime we have
     return false;
@@ -21,7 +21,7 @@ function hasBabelRuntimeDependency() {
 }
 
 function resolveBabelRuntimeRelativeTo(cwd) {
-  const pkgRoot = findUp.sync(
+  const pkgRoot = findUpSync(
     dir => {
       const testedPath = path.join(dir, babelRuntimePackageFile);
 

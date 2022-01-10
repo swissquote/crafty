@@ -14,7 +14,9 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["\\.(js|jsx)$"] = require.resolve("../packages/swc-jest.js");
+    options.transform["\\.(js|jsx)$"] = require.resolve(
+      "../packages/swc-jest.js"
+    );
     options.moduleFileExtensions.push("jsx");
   },
   bundleCreator(crafty) {
