@@ -20,14 +20,13 @@
     "build": "yarn workspaces foreach -t -v run build",
     "test": "./run_all.sh test",
     "test:ci": "./run_all.sh test:ci",
-    "publish:canary": "oao publish --no-git-commit --no-check-uncommitted --no-changelog --publish-tag canary --bump-dependent-reqs=exact",
-    "publish:all": "oao publish --no-changelog --bump-dependent-reqs=exact"
+    "publish:canary": "./utils/publish.js --pre-release",
+    "publish:all": "./utils/publish.js"
   },
   "dependencies": {
     "@types/eslint": "^8.0.0",
     "@types/jest": "^27.4.0",
     "@vercel/ncc": "0.33.1",
-    "oao": "2.0.2",
     "webpack-bundle-size-analyzer": "3.1.0",
     "write-good": "1.0.8"
   },
