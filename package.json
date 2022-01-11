@@ -13,7 +13,8 @@
     ]
   },
   "scripts": {
-    "lint:ci": "./run_all.sh lint && yarn lint:docs",
+    "lint:ci": "yarn lint:code:ci && yarn lint:docs",
+    "lint:code:ci": "yarn workspaces foreach -vp run lint",
     "lint:code": "./run_all.sh lint --fix",
     "lint:docs": "./lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
