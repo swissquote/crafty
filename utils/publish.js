@@ -59,6 +59,29 @@ async function confirmPublish({ pkgList, numPublic, nextVersion }) {
   return out;
 }
 
+function bumpDeps(allSpecs, specs, version) {
+  const dep_types = [
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "optionalDependencies",
+  ];
+
+  const pkgList = Object.keys(allSpecs);
+
+  for (const type of dep_types) {
+    if (!specs.hasOwnProperty(type)) {
+      continue;
+    }
+
+    for (const pkgDep of pkgList) {
+      if (specs[type].hasOwnProperty(pkgDep)) {
+        specs[type][pkgDep] = version;
+      }
+    }
+  }
+}
+
 async function setVersion(allSpecs, rootPackage, newVersion, skipConfirm) {
   // Get list of packages to be updated. This is NOT the list of packages to
   // be published, since some of them might be private. But all of them will
@@ -72,7 +95,7 @@ async function setVersion(allSpecs, rootPackage, newVersion, skipConfirm) {
   });
   if (!pkgList.length) {
     console.error("No packages found!");
-    package.exit(1);
+    process.exit(1);
   }
 
   // Determine a suitable new version number
@@ -98,35 +121,12 @@ async function setVersion(allSpecs, rootPackage, newVersion, skipConfirm) {
     specs.version = nextVersion;
 
     // Bump dependent requirements
-    await bumpDeps(allSpecs, specs, nextVersion);
+    bumpDeps(allSpecs, specs, nextVersion);
 
     fs.writeFileSync(specPath, `${JSON.stringify(specs, null, 2)}\n`, "utf8");
   }
 
   return nextVersion;
-}
-
-async function bumpDeps(allSpecs, specs, version) {
-  const dep_types = [
-    "dependencies",
-    "devDependencies",
-    "peerDependencies",
-    "optionalDependencies",
-  ];
-
-  const pkgList = Object.keys(allSpecs);
-
-  for (const type of dep_types) {
-    if (!specs.hasOwnProperty(type)) {
-      continue;
-    }
-
-    for (const pkgDep of pkgList) {
-      if (specs[type].hasOwnProperty(pkgDep)) {
-        specs[type][pkgDep] = version;
-      }
-    }
-  }
 }
 
 async function exec(cmd, args, options = {}) {
@@ -156,7 +156,7 @@ async function commit(files, nextVersion) {
   await gitPushWithTags();
 }
 
-async function readPackageSpecs(paths) {
+function readPackageSpecs(paths) {
   return paths.reduce((acc, specPath) => {
     const pkg = {};
     pkg.pkgPath = path.join(process.cwd(), path.dirname(specPath));
@@ -177,7 +177,7 @@ async function readPackageSpecs(paths) {
 
 function readNewVersion(newVersion) {
   if (!newVersion) {
-    return undefined;
+    return;
   }
 
   if (Array.isArray(newVersion)) {
@@ -221,7 +221,7 @@ async function publish(allSpecs, preRelease) {
 
   paths.push(rootPackagePath);
 
-  const allSpecs = await readPackageSpecs(paths);
+  const allSpecs = readPackageSpecs(paths);
   const nextVersion = await setVersion(
     allSpecs,
     rootPackage,
