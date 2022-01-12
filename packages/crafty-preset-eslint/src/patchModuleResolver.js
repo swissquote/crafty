@@ -33,6 +33,7 @@ function getESLintrcFolderFromModule() {
 }
 
 function patch(eslintPath) {
+  console.log("Patching", eslintPath);
   const moduleResolverPath = path.join(eslintPath, "dist/eslintrc.cjs");
   const ModuleResolver = require(moduleResolverPath).Legacy.ModuleResolver;
 
