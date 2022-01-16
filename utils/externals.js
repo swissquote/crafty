@@ -68,6 +68,13 @@ module.exports = {
   getExternals() {
     const pkg = require(currentPackage);
     const parents = getParents(pkg, pkg, new Set());
-    return getProvidedPackages(parents);
+    const externals = getProvidedPackages(parents);
+
+    // Node 14 introduced a prefix for node modules
+    // but it isn't supported in Node 12
+    // This auto-converts all those imports to old-style
+    externals["/node:(.*)/"] = "$1";
+
+    return externals;
   },
 };

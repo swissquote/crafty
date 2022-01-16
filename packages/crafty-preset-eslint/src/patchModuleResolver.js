@@ -33,7 +33,6 @@ function getESLintrcFolderFromModule() {
 }
 
 function patch(eslintPath) {
-  console.log("Patching", eslintPath);
   const moduleResolverPath = path.join(eslintPath, "dist/eslintrc.cjs");
   const ModuleResolver = require(moduleResolverPath).Legacy.ModuleResolver;
 
@@ -45,28 +44,12 @@ function patch(eslintPath) {
 
   ModuleResolver.__patched = true;
   ModuleResolver.resolve = function(moduleName, relativeToPath) {
-    console.log("Resolving", {moduleName, relativeToPath, __filename});
     try {
       // First check for the module relative to the current location
-      const result = originalResolve(moduleName, __filename);
-      console.log("resolved", result);
-
-      try {
-        const required = require(result);
-        console.log("required", required);
-      } catch (e2) {
-        console.log("Failed to require", e2);
-      }
-
-
-      return result;
+      return originalResolve(moduleName, __filename);
     } catch (e) {
-      console.log("Falling back to original");
       // OR fallback to the default behaviour of ESLint
-      const result = originalResolve(moduleName, relativeToPath);
-      console.log("resolved", result);
-
-      return result;
+      return originalResolve(moduleName, relativeToPath);
     }
   };
 }
