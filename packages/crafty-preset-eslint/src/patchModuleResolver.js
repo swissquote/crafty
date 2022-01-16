@@ -45,10 +45,12 @@ function patch(eslintPath) {
 
   ModuleResolver.__patched = true;
   ModuleResolver.resolve = function(moduleName, relativeToPath) {
+    console.log("Resolving", {moduleName, relativeToPath, __filename});
     try {
       // First check for the module relative to the current location
       return originalResolve(moduleName, __filename);
     } catch (e) {
+      console.log("Falling back to original");
       // OR fallback to the default behaviour of ESLint
       return originalResolve(moduleName, relativeToPath);
     }
