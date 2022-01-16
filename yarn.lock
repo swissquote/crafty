@@ -14,7 +14,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/compat-data@npm:^7.13.11, @babel/compat-data@npm:^7.16.4":
+"@babel/compat-data@npm:^7.13.11, @babel/compat-data@npm:^7.16.4, @babel/compat-data@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/compat-data@npm:7.16.8"
   checksum: 10da2dac5ea9589c251412b00920889910e476c1ab24cd7095577635bc3a27c785151c89db4e26285fd39f509510ec29ab9d7e721f4fc16e4aec221cacde784b
@@ -146,6 +146,24 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.4.0-0
   checksum: 372378ac4235c4fe135f1cd6d0f63697e7cb3ef63a884eb14f4b439984846bcaec0b7a32cf8df6756a21557ae3ebb3c2ee18d9a191260705a583333e5e60df7c
+  languageName: node
+  linkType: hard
+
+"@babel/helper-define-polyfill-provider@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@babel/helper-define-polyfill-provider@npm:0.3.1"
+  dependencies:
+    "@babel/helper-compilation-targets": ^7.13.0
+    "@babel/helper-module-imports": ^7.12.13
+    "@babel/helper-plugin-utils": ^7.13.0
+    "@babel/traverse": ^7.13.0
+    debug: ^4.1.1
+    lodash.debounce: ^4.0.8
+    resolve: ^1.14.2
+    semver: ^6.1.2
+  peerDependencies:
+    "@babel/core": ^7.4.0-0
+  checksum: e3e93cb22febfc0449a210cdafb278e5e1a038af2ca2b02f5dee71c7a49e8ba26e469d631ee11a4243885961a62bb2e5b0a4deb3ec1d7918a33c953d05c3e584
   languageName: node
   linkType: hard
 
@@ -378,7 +396,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-async-generator-functions@npm:^7.16.7":
+"@babel/plugin-proposal-async-generator-functions@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/plugin-proposal-async-generator-functions@npm:7.16.8"
   dependencies:
@@ -775,7 +793,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-async-to-generator@npm:^7.16.7":
+"@babel/plugin-transform-async-to-generator@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/plugin-transform-async-to-generator@npm:7.16.8"
   dependencies:
@@ -944,21 +962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-modules-commonjs@npm:7.16.7":
-  version: 7.16.7
-  resolution: "@babel/plugin-transform-modules-commonjs@npm:7.16.7"
-  dependencies:
-    "@babel/helper-module-transforms": ^7.16.7
-    "@babel/helper-plugin-utils": ^7.16.7
-    "@babel/helper-simple-access": ^7.16.7
-    babel-plugin-dynamic-import-node: ^2.3.3
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 793c579c2cb71be99180e54b1cccfdd9cd599959e2408afb40a0b6225bac56d1e7c176516ad6bf25561e6eb6b31c5acc34ef6de02b9662c7237672ebecfa4d92
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-commonjs@npm:^7.16.7":
+"@babel/plugin-transform-modules-commonjs@npm:7.16.8, @babel/plugin-transform-modules-commonjs@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/plugin-transform-modules-commonjs@npm:7.16.8"
   dependencies:
@@ -999,7 +1003,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-named-capturing-groups-regex@npm:^7.16.7":
+"@babel/plugin-transform-named-capturing-groups-regex@npm:^7.16.8":
   version: 7.16.8
   resolution: "@babel/plugin-transform-named-capturing-groups-regex@npm:7.16.8"
   dependencies:
@@ -1126,19 +1130,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:7.16.7":
-  version: 7.16.7
-  resolution: "@babel/plugin-transform-runtime@npm:7.16.7"
+"@babel/plugin-transform-runtime@npm:7.16.8":
+  version: 7.16.8
+  resolution: "@babel/plugin-transform-runtime@npm:7.16.8"
   dependencies:
     "@babel/helper-module-imports": ^7.16.7
     "@babel/helper-plugin-utils": ^7.16.7
     babel-plugin-polyfill-corejs2: ^0.3.0
-    babel-plugin-polyfill-corejs3: ^0.4.0
+    babel-plugin-polyfill-corejs3: ^0.5.0
     babel-plugin-polyfill-regenerator: ^0.3.0
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 7213cdec7e170d5772e6f454a795d3089009cb12ab5446c75b5f18bd55511ca56da7c2d2c6d8f03300b1bc73e1a65c0c49a28c440ccf618d718d48beca9fe9fa
+  checksum: e5cbbe2a57115f43c958be42fe417180075f024752d5e80deb935838791b212fe3fcd9d6f8f80a141fcdc9f9bd7bac2e373abb2bd89d439f669db9c272061859
   languageName: node
   linkType: hard
 
@@ -1221,17 +1225,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:7.16.7":
-  version: 7.16.7
-  resolution: "@babel/preset-env@npm:7.16.7"
+"@babel/preset-env@npm:7.16.8":
+  version: 7.16.8
+  resolution: "@babel/preset-env@npm:7.16.8"
   dependencies:
-    "@babel/compat-data": ^7.16.4
+    "@babel/compat-data": ^7.16.8
     "@babel/helper-compilation-targets": ^7.16.7
     "@babel/helper-plugin-utils": ^7.16.7
     "@babel/helper-validator-option": ^7.16.7
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": ^7.16.7
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": ^7.16.7
-    "@babel/plugin-proposal-async-generator-functions": ^7.16.7
+    "@babel/plugin-proposal-async-generator-functions": ^7.16.8
     "@babel/plugin-proposal-class-properties": ^7.16.7
     "@babel/plugin-proposal-class-static-block": ^7.16.7
     "@babel/plugin-proposal-dynamic-import": ^7.16.7
@@ -1261,7 +1265,7 @@ __metadata:
     "@babel/plugin-syntax-private-property-in-object": ^7.14.5
     "@babel/plugin-syntax-top-level-await": ^7.14.5
     "@babel/plugin-transform-arrow-functions": ^7.16.7
-    "@babel/plugin-transform-async-to-generator": ^7.16.7
+    "@babel/plugin-transform-async-to-generator": ^7.16.8
     "@babel/plugin-transform-block-scoped-functions": ^7.16.7
     "@babel/plugin-transform-block-scoping": ^7.16.7
     "@babel/plugin-transform-classes": ^7.16.7
@@ -1275,10 +1279,10 @@ __metadata:
     "@babel/plugin-transform-literals": ^7.16.7
     "@babel/plugin-transform-member-expression-literals": ^7.16.7
     "@babel/plugin-transform-modules-amd": ^7.16.7
-    "@babel/plugin-transform-modules-commonjs": ^7.16.7
+    "@babel/plugin-transform-modules-commonjs": ^7.16.8
     "@babel/plugin-transform-modules-systemjs": ^7.16.7
     "@babel/plugin-transform-modules-umd": ^7.16.7
-    "@babel/plugin-transform-named-capturing-groups-regex": ^7.16.7
+    "@babel/plugin-transform-named-capturing-groups-regex": ^7.16.8
     "@babel/plugin-transform-new-target": ^7.16.7
     "@babel/plugin-transform-object-super": ^7.16.7
     "@babel/plugin-transform-parameters": ^7.16.7
@@ -1293,15 +1297,15 @@ __metadata:
     "@babel/plugin-transform-unicode-escapes": ^7.16.7
     "@babel/plugin-transform-unicode-regex": ^7.16.7
     "@babel/preset-modules": ^0.1.5
-    "@babel/types": ^7.16.7
+    "@babel/types": ^7.16.8
     babel-plugin-polyfill-corejs2: ^0.3.0
-    babel-plugin-polyfill-corejs3: ^0.4.0
+    babel-plugin-polyfill-corejs3: ^0.5.0
     babel-plugin-polyfill-regenerator: ^0.3.0
-    core-js-compat: ^3.19.1
+    core-js-compat: ^3.20.2
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 778ad99e1bc81f60b4f328987d38a094b2b808993297c59d0654117820f60793b735f1301817167d2576b731ce7397d11352bd716d9b828d7193d45302f5110a
+  checksum: 834fc0638b26e9a118a4deaac828ebb9cc17c4d1aa6497e6588003de1ff3768b1ee9bfddd055ccc6be526c65b92d5c463168da2425d26a53c836b38eeb3362cb
   languageName: node
   linkType: hard
 
@@ -1538,7 +1542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/create-cache-key-function@npm:^27.3.1":
+"@jest/create-cache-key-function@npm:^27.4.2":
   version: 27.4.2
   resolution: "@jest/create-cache-key-function@npm:27.4.2"
   dependencies:
@@ -1925,115 +1929,115 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-android-arm-eabi@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-android-arm-eabi@npm:1.2.127"
+"@swc/core-android-arm-eabi@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-android-arm-eabi@npm:1.2.129"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-android-arm64@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-android-arm64@npm:1.2.127"
+"@swc/core-android-arm64@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-android-arm64@npm:1.2.129"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-darwin-arm64@npm:1.2.127"
+"@swc/core-darwin-arm64@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-darwin-arm64@npm:1.2.129"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-darwin-x64@npm:1.2.127"
+"@swc/core-darwin-x64@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-darwin-x64@npm:1.2.129"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-freebsd-x64@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-freebsd-x64@npm:1.2.127"
+"@swc/core-freebsd-x64@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-freebsd-x64@npm:1.2.129"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.127"
+"@swc/core-linux-arm-gnueabihf@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.129"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.127"
+"@swc/core-linux-arm64-gnu@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.129"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-linux-arm64-musl@npm:1.2.127"
+"@swc/core-linux-arm64-musl@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-linux-arm64-musl@npm:1.2.129"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-linux-x64-gnu@npm:1.2.127"
+"@swc/core-linux-x64-gnu@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-linux-x64-gnu@npm:1.2.129"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-linux-x64-musl@npm:1.2.127"
+"@swc/core-linux-x64-musl@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-linux-x64-musl@npm:1.2.129"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.127"
+"@swc/core-win32-arm64-msvc@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.129"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.127"
+"@swc/core-win32-ia32-msvc@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.129"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core-win32-x64-msvc@npm:1.2.127"
+"@swc/core-win32-x64-msvc@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core-win32-x64-msvc@npm:1.2.129"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:1.2.127":
-  version: 1.2.127
-  resolution: "@swc/core@npm:1.2.127"
+"@swc/core@npm:1.2.129":
+  version: 1.2.129
+  resolution: "@swc/core@npm:1.2.129"
   dependencies:
     "@node-rs/helper": ^1.0.0
-    "@swc/core-android-arm-eabi": 1.2.127
-    "@swc/core-android-arm64": 1.2.127
-    "@swc/core-darwin-arm64": 1.2.127
-    "@swc/core-darwin-x64": 1.2.127
-    "@swc/core-freebsd-x64": 1.2.127
-    "@swc/core-linux-arm-gnueabihf": 1.2.127
-    "@swc/core-linux-arm64-gnu": 1.2.127
-    "@swc/core-linux-arm64-musl": 1.2.127
-    "@swc/core-linux-x64-gnu": 1.2.127
-    "@swc/core-linux-x64-musl": 1.2.127
-    "@swc/core-win32-arm64-msvc": 1.2.127
-    "@swc/core-win32-ia32-msvc": 1.2.127
-    "@swc/core-win32-x64-msvc": 1.2.127
+    "@swc/core-android-arm-eabi": 1.2.129
+    "@swc/core-android-arm64": 1.2.129
+    "@swc/core-darwin-arm64": 1.2.129
+    "@swc/core-darwin-x64": 1.2.129
+    "@swc/core-freebsd-x64": 1.2.129
+    "@swc/core-linux-arm-gnueabihf": 1.2.129
+    "@swc/core-linux-arm64-gnu": 1.2.129
+    "@swc/core-linux-arm64-musl": 1.2.129
+    "@swc/core-linux-x64-gnu": 1.2.129
+    "@swc/core-linux-x64-musl": 1.2.129
+    "@swc/core-win32-arm64-msvc": 1.2.129
+    "@swc/core-win32-ia32-msvc": 1.2.129
+    "@swc/core-win32-x64-msvc": 1.2.129
   dependenciesMeta:
     "@swc/core-android-arm-eabi":
       optional: true
@@ -2061,7 +2065,7 @@ __metadata:
       optional: true
     "@swc/core-win32-x64-msvc":
       optional: true
-  checksum: 37ed5e7ccadc6ad4c4a4328419f3d170c90f3200fe9822f09f5e5336b88e4444dccc303e4f25c30c3b5a9eee259d0a9f663b9cb11d34dbef5b3f814b6469d7ec
+  checksum: a263ab78f181ebb2fc22c9d715d444608cf9e6edf2c1640aa6b52499185a61ff8687b63ea33716585e77e604214f2dce55bc0561a647f4ba17cc9c66ac373b82
   languageName: node
   linkType: hard
 
@@ -2072,18 +2076,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/jest@npm:0.2.15":
-  version: 0.2.15
-  resolution: "@swc/jest@npm:0.2.15"
+"@swc/jest@npm:0.2.17":
+  version: 0.2.17
+  resolution: "@swc/jest@npm:0.2.17"
   dependencies:
-    "@jest/create-cache-key-function": ^27.3.1
+    "@jest/create-cache-key-function": ^27.4.2
   peerDependencies:
     "@swc/core": "*"
-  checksum: 37cc4012df91fbcb583131c0c8b399475c3bb6d85a4328bf5ac4207fa94d7b5a172347d038911d28655de23038ee3c566f9d392382bd8c837706a0dc62262be8
+  checksum: 33e08c71adaa3d46f47b888b954c8f61513804a1b3ee24fdc13ccbbb89ca6c96b474eef4002b96edcd6090a308a1aafd313073ae4bcd6339fcc3a22e2f29f1b7
   languageName: node
   linkType: hard
 
-"@swissquote/assets@1.17.2, @swissquote/assets@workspace:package-forks/assets":
+"@swissquote/assets@workspace:*, @swissquote/assets@workspace:package-forks/assets":
   version: 0.0.0-use.local
   resolution: "@swissquote/assets@workspace:package-forks/assets"
   dependencies:
@@ -2096,7 +2100,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/babel-preset-swissquote@1.17.2, @swissquote/babel-preset-swissquote@workspace:packages/babel-preset-swissquote":
+"@swissquote/babel-preset-swissquote@workspace:*, @swissquote/babel-preset-swissquote@workspace:packages/babel-preset-swissquote":
   version: 0.0.0-use.local
   resolution: "@swissquote/babel-preset-swissquote@workspace:packages/babel-preset-swissquote"
   dependencies:
@@ -2104,36 +2108,36 @@ __metadata:
     "@babel/plugin-proposal-class-properties": 7.16.7
     "@babel/plugin-proposal-nullish-coalescing-operator": 7.16.7
     "@babel/plugin-proposal-optional-chaining": 7.16.7
-    "@babel/plugin-transform-runtime": 7.16.7
-    "@babel/preset-env": 7.16.7
+    "@babel/plugin-transform-runtime": 7.16.8
+    "@babel/preset-env": 7.16.8
     "@babel/preset-react": 7.16.7
     "@babel/runtime": 7.16.7
-    "@swissquote/crafty-commons": 1.17.2
+    "@swissquote/crafty-commons": "workspace:*"
     babel-plugin-istanbul: 6.1.1
     babel-plugin-transform-react-remove-prop-types: 0.4.24
     babel-preset-jest: 27.4.0
   languageName: unknown
   linkType: soft
 
-"@swissquote/color-fns@1.17.2, @swissquote/color-fns@workspace:package-forks/color-fns":
+"@swissquote/color-fns@workspace:*, @swissquote/color-fns@workspace:package-forks/color-fns":
   version: 0.0.0-use.local
   resolution: "@swissquote/color-fns@workspace:package-forks/color-fns"
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-commons-gulp@1.17.2, @swissquote/crafty-commons-gulp@workspace:packages/crafty-commons-gulp":
+"@swissquote/crafty-commons-gulp@workspace:*, @swissquote/crafty-commons-gulp@workspace:packages/crafty-commons-gulp":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-commons-gulp@workspace:packages/crafty-commons-gulp"
   dependencies:
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/gulp-newer": 1.17.2
-    gulp-eslint-new: 1.1.1
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/gulp-newer": "workspace:*"
+    gulp-eslint-new: 1.1.2
     gulp-sourcemaps: 3.0.0
     plugin-error: 1.0.1
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-commons@1.17.2, @swissquote/crafty-commons@workspace:packages/crafty-commons":
+"@swissquote/crafty-commons@workspace:*, @swissquote/crafty-commons@workspace:packages/crafty-commons":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-commons@workspace:packages/crafty-commons"
   dependencies:
@@ -2153,17 +2157,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-babel@1.17.2, @swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel":
+"@swissquote/crafty-preset-babel@workspace:*, @swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel"
   dependencies:
     "@babel/core": 7.16.7
     "@babel/runtime": 7.16.7
     "@rollup/plugin-babel": 5.3.0
-    "@swissquote/babel-preset-swissquote": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
-    "@swissquote/crafty-preset-eslint": 1.17.2
-    "@swissquote/crafty-preset-terser": 1.17.2
+    "@swissquote/babel-preset-swissquote": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/crafty-preset-eslint": "workspace:*"
+    "@swissquote/crafty-preset-terser": "workspace:*"
     babel-loader: 8.2.3
     gulp-babel: 8.0.0
     gulp-concat: 2.6.1
@@ -2171,39 +2175,39 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-eslint@1.17.2, @swissquote/crafty-preset-eslint@workspace:packages/crafty-preset-eslint":
+"@swissquote/crafty-preset-eslint@workspace:*, @swissquote/crafty-preset-eslint@workspace:packages/crafty-preset-eslint":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-eslint@workspace:packages/crafty-preset-eslint"
   dependencies:
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-preset-prettier": 1.17.2
-    "@swissquote/eslint-plugin-swissquote": 1.17.2
-    "@swissquote/rollup-plugin-eslint": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-preset-prettier": "workspace:*"
+    "@swissquote/eslint-plugin-swissquote": "workspace:*"
+    "@swissquote/rollup-plugin-eslint": "workspace:*"
     ajv: 6.12.6
-    eslint: 8.6.0
+    eslint: 8.7.0
     eslint-webpack-plugin: 3.1.1
     resolve-from: 5.0.0
   peerDependencies:
-    "@swissquote/crafty-preset-eslint": 1.17.2
-    "@swissquote/crafty-runner-rollup": 1.17.2
+    "@swissquote/crafty-preset-eslint": "workspace:*"
+    "@swissquote/crafty-runner-rollup": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-images-simple@1.17.2, @swissquote/crafty-preset-images-simple@workspace:packages/crafty-preset-images-simple":
+"@swissquote/crafty-preset-images-simple@workspace:*, @swissquote/crafty-preset-images-simple@workspace:packages/crafty-preset-images-simple":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-images-simple@workspace:packages/crafty-preset-images-simple"
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-images@1.17.2, @swissquote/crafty-preset-images@workspace:packages/crafty-preset-images":
+"@swissquote/crafty-preset-images@workspace:*, @swissquote/crafty-preset-images@workspace:packages/crafty-preset-images":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-images@workspace:packages/crafty-preset-images"
   dependencies:
     "@squoosh/lib": 0.4.0
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
     fsevents: ~2.3.2
     gulp-svgmin: 4.1.0
     pretty-bytes: 5.6.0
@@ -2219,37 +2223,37 @@ __metadata:
   resolution: "@swissquote/crafty-preset-jest@workspace:packages/crafty-preset-jest"
   dependencies:
     "@babel/core": 7.16.7
-    "@babel/plugin-transform-modules-commonjs": 7.16.7
+    "@babel/plugin-transform-modules-commonjs": 7.16.8
     "@jest/core": 27.4.7
     jest-cli: 27.4.7
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-maven@1.17.2, @swissquote/crafty-preset-maven@workspace:packages/crafty-preset-maven":
+"@swissquote/crafty-preset-maven@workspace:*, @swissquote/crafty-preset-maven@workspace:packages/crafty-preset-maven":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-maven@workspace:packages/crafty-preset-maven"
   dependencies:
-    "@swissquote/crafty-commons": 1.17.2
+    "@swissquote/crafty-commons": "workspace:*"
     xml2js: 0.4.23
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-postcss@1.17.2, @swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss":
+"@swissquote/crafty-preset-postcss@workspace:*, @swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss"
   dependencies:
     "@babel/code-frame": 7.16.7
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
-    "@swissquote/crafty-preset-prettier": 1.17.2
-    "@swissquote/gulp-stylelint": 1.17.2
-    "@swissquote/postcss-swissquote-preset": 1.17.2
-    "@swissquote/stylelint-config-swissquote": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/crafty-preset-prettier": "workspace:*"
+    "@swissquote/gulp-stylelint": "workspace:*"
+    "@swissquote/postcss-swissquote-preset": "workspace:*"
+    "@swissquote/stylelint-config-swissquote": "workspace:*"
     css-loader: 6.5.1
     gulp-postcss: 9.0.1
     gulp-rename: 2.0.0
-    mini-css-extract-plugin: 2.4.6
+    mini-css-extract-plugin: 2.5.0
     postcss: 8.4.5
     postcss-loader: 6.2.1
     postcss-scss: 4.0.3
@@ -2260,7 +2264,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-prettier@1.17.2, @swissquote/crafty-preset-prettier@workspace:packages/crafty-preset-prettier":
+"@swissquote/crafty-preset-prettier@workspace:*, @swissquote/crafty-preset-prettier@workspace:packages/crafty-preset-prettier":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-prettier@workspace:packages/crafty-preset-prettier"
   languageName: unknown
@@ -2274,30 +2278,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-swc@1.17.2, @swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc":
+"@swissquote/crafty-preset-swc@workspace:*, @swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc"
   dependencies:
-    "@swc/core": 1.2.127
+    "@swc/core": 1.2.129
     "@swc/helpers": 0.3.2
-    "@swc/jest": 0.2.15
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
-    "@swissquote/crafty-preset-eslint": 1.17.2
-    "@swissquote/crafty-preset-terser": 1.17.2
+    "@swc/jest": 0.2.17
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/crafty-preset-eslint": "workspace:*"
+    "@swissquote/crafty-preset-terser": "workspace:*"
     gulp-concat: 2.6.1
     gulp-swc: 1.2.3
     swc-loader: 0.1.15
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-terser@1.17.2, @swissquote/crafty-preset-terser@workspace:packages/crafty-preset-terser":
+"@swissquote/crafty-preset-terser@workspace:*, @swissquote/crafty-preset-terser@workspace:packages/crafty-preset-terser":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-terser@workspace:packages/crafty-preset-terser"
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-typescript@1.17.2, @swissquote/crafty-preset-typescript@workspace:packages/crafty-preset-typescript":
+"@swissquote/crafty-preset-typescript@workspace:*, @swissquote/crafty-preset-typescript@workspace:packages/crafty-preset-typescript":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-typescript@workspace:packages/crafty-preset-typescript"
   dependencies:
@@ -2305,10 +2309,10 @@ __metadata:
     "@babel/helper-module-imports": 7.16.7
     "@babel/runtime": 7.16.7
     "@rollup/plugin-babel": 5.3.0
-    "@swissquote/babel-preset-swissquote": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
-    "@swissquote/crafty-preset-eslint": 1.17.2
+    "@swissquote/babel-preset-swissquote": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/crafty-preset-eslint": "workspace:*"
     babel-loader: 8.2.3
     fork-ts-checker-webpack-plugin: 6.5.0
     gulp-babel: 8.0.0
@@ -2319,26 +2323,26 @@ __metadata:
     ts-loader: 9.2.6
     typescript: 4.5.4
   peerDependencies:
-    "@swissquote/crafty-runner-gulp": 1.17.2
-    "@swissquote/crafty-runner-rollup": 1.17.2
-    "@swissquote/crafty-runner-webpack": 1.17.2
+    "@swissquote/crafty-runner-gulp": "workspace:*"
+    "@swissquote/crafty-runner-rollup": "workspace:*"
+    "@swissquote/crafty-runner-webpack": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-runner-gulp@1.17.2, @swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp":
+"@swissquote/crafty-runner-gulp@workspace:*, @swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp"
   dependencies:
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-commons-gulp": 1.17.2
-    "@swissquote/gulp-plumber": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/gulp-plumber": "workspace:*"
     pump: 3.0.0
     vinyl-fs: 3.0.3
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-runner-rollup@1.17.2, @swissquote/crafty-runner-rollup@workspace:packages/crafty-runner-rollup":
+"@swissquote/crafty-runner-rollup@workspace:*, @swissquote/crafty-runner-rollup@workspace:packages/crafty-runner-rollup":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-rollup@workspace:packages/crafty-runner-rollup"
   dependencies:
@@ -2347,11 +2351,11 @@ __metadata:
     "@rollup/plugin-node-resolve": 13.1.3
     "@rollup/plugin-replace": 3.0.1
     "@rollup/pluginutils": 4.1.2
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-preset-terser": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-preset-terser": "workspace:*"
     fsevents: ~2.3.2
-    rollup: 2.63.0
+    rollup: 2.64.0
     rollup-plugin-pnp-resolve: 2.0.0
     rollup-plugin-terser: 7.0.2
   dependenciesMeta:
@@ -2360,13 +2364,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-runner-webpack@1.17.2, @swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack":
+"@swissquote/crafty-runner-webpack@workspace:*, @swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack"
   dependencies:
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/crafty-preset-terser": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-preset-terser": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     case-sensitive-paths-webpack-plugin: 2.4.0
@@ -2377,19 +2381,19 @@ __metadata:
     log-symbols: 5.1.0
     service-names-port-numbers: 2.0.0
     terser-webpack-plugin: 5.3.0
-    webpack: 5.65.0
+    webpack: 5.66.0
     webpack-bundle-analyzer: 4.5.0
     webpack-chain: 6.5.1
-    webpack-dev-server: 4.7.2
+    webpack-dev-server: 4.7.3
     webpack-merge: 5.8.0
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty@1.17.2, @swissquote/crafty@workspace:packages/crafty":
+"@swissquote/crafty@workspace:*, @swissquote/crafty@workspace:packages/crafty":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty@workspace:packages/crafty"
   dependencies:
-    "@swissquote/crafty-commons": 1.17.2
+    "@swissquote/crafty-commons": "workspace:*"
     anymatch: 3.1.2
     async-done: 1.3.2
     ava: 4.0.1
@@ -2414,19 +2418,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/eslint-plugin-swissquote@1.17.2, @swissquote/eslint-plugin-swissquote@workspace:packages/eslint-plugin-swissquote":
+"@swissquote/eslint-plugin-swissquote@workspace:*, @swissquote/eslint-plugin-swissquote@workspace:packages/eslint-plugin-swissquote":
   version: 0.0.0-use.local
   resolution: "@swissquote/eslint-plugin-swissquote@workspace:packages/eslint-plugin-swissquote"
   dependencies:
     "@babel/eslint-parser": 7.16.5
-    "@swissquote/babel-preset-swissquote": 1.17.2
-    "@swissquote/crafty-commons": 1.17.2
+    "@swissquote/babel-preset-swissquote": "workspace:*"
+    "@swissquote/crafty-commons": "workspace:*"
     "@typescript-eslint/eslint-plugin": 5.9.1
     "@typescript-eslint/parser": 5.9.1
     ava: 4.0.1
     c8: 7.11.0
     confusing-browser-globals: 1.0.11
-    eslint: 8.6.0
+    eslint: 8.7.0
     eslint-config-prettier: 8.3.0
     eslint-import-resolver-typescript: 2.5.0
     eslint-plugin-import: 2.25.4
@@ -2439,11 +2443,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/gulp-newer@1.17.2, @swissquote/gulp-newer@workspace:package-forks/gulp-newer":
+"@swissquote/gulp-newer@workspace:*, @swissquote/gulp-newer@workspace:package-forks/gulp-newer":
   version: 0.0.0-use.local
   resolution: "@swissquote/gulp-newer@workspace:package-forks/gulp-newer"
   dependencies:
-    "@swissquote/crafty-runner-gulp": 1.17.2
+    "@swissquote/crafty-runner-gulp": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     glob: 7.2.0
@@ -2455,11 +2459,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/gulp-plumber@1.17.2, @swissquote/gulp-plumber@workspace:package-forks/gulp-plumber":
+"@swissquote/gulp-plumber@workspace:*, @swissquote/gulp-plumber@workspace:package-forks/gulp-plumber":
   version: 0.0.0-use.local
   resolution: "@swissquote/gulp-plumber@workspace:package-forks/gulp-plumber"
   dependencies:
-    "@swissquote/crafty-runner-gulp": 1.17.2
+    "@swissquote/crafty-runner-gulp": "workspace:*"
     ansi-colors: ^4.0.0
     ava: 4.0.1
     c8: 7.11.0
@@ -2473,7 +2477,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/gulp-stylelint@1.17.2, @swissquote/gulp-stylelint@workspace:package-forks/gulp-stylelint":
+"@swissquote/gulp-stylelint@workspace:*, @swissquote/gulp-stylelint@workspace:package-forks/gulp-stylelint":
   version: 0.0.0-use.local
   resolution: "@swissquote/gulp-stylelint@workspace:package-forks/gulp-stylelint"
   dependencies:
@@ -2493,7 +2497,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/pixrem@1.17.2, @swissquote/pixrem@workspace:package-forks/pixrem":
+"@swissquote/pixrem@workspace:*, @swissquote/pixrem@workspace:package-forks/pixrem":
   version: 0.0.0-use.local
   resolution: "@swissquote/pixrem@workspace:package-forks/pixrem"
   dependencies:
@@ -2507,7 +2511,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/pleeease-filters@1.17.2, @swissquote/pleeease-filters@workspace:package-forks/pleeease-filters":
+"@swissquote/pleeease-filters@workspace:*, @swissquote/pleeease-filters@workspace:package-forks/pleeease-filters":
   version: 0.0.0-use.local
   resolution: "@swissquote/pleeease-filters@workspace:package-forks/pleeease-filters"
   dependencies:
@@ -2519,11 +2523,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-assets@1.17.2, @swissquote/postcss-assets@workspace:package-forks/postcss-assets":
+"@swissquote/postcss-assets@workspace:*, @swissquote/postcss-assets@workspace:package-forks/postcss-assets":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-assets@workspace:package-forks/postcss-assets"
   dependencies:
-    "@swissquote/assets": 1.17.2
+    "@swissquote/assets": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     postcss: 8.4.5
@@ -2533,7 +2537,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-atroot@1.17.2, @swissquote/postcss-atroot@workspace:package-forks/postcss-atroot":
+"@swissquote/postcss-atroot@workspace:*, @swissquote/postcss-atroot@workspace:package-forks/postcss-atroot":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-atroot@workspace:package-forks/postcss-atroot"
   dependencies:
@@ -2545,7 +2549,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-gray@1.17.2, @swissquote/postcss-color-gray@workspace:package-forks/postcss-color-gray":
+"@swissquote/postcss-color-gray@workspace:*, @swissquote/postcss-color-gray@workspace:package-forks/postcss-color-gray":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-gray@workspace:package-forks/postcss-color-gray"
   dependencies:
@@ -2558,7 +2562,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-hsl@1.17.2, @swissquote/postcss-color-hsl@workspace:package-forks/postcss-color-hsl":
+"@swissquote/postcss-color-hsl@workspace:*, @swissquote/postcss-color-hsl@workspace:package-forks/postcss-color-hsl":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-hsl@workspace:package-forks/postcss-color-hsl"
   dependencies:
@@ -2572,11 +2576,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-hwb@1.17.2, @swissquote/postcss-color-hwb@workspace:package-forks/postcss-color-hwb":
+"@swissquote/postcss-color-hwb@workspace:*, @swissquote/postcss-color-hwb@workspace:package-forks/postcss-color-hwb":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-hwb@workspace:package-forks/postcss-color-hwb"
   dependencies:
-    "@swissquote/color-fns": 1.17.2
+    "@swissquote/color-fns": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     postcss: 8.4.5
@@ -2586,11 +2590,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-mod-function@1.17.2, @swissquote/postcss-color-mod-function@workspace:package-forks/postcss-color-mod-function":
+"@swissquote/postcss-color-mod-function@workspace:*, @swissquote/postcss-color-mod-function@workspace:package-forks/postcss-color-mod-function":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-mod-function@workspace:package-forks/postcss-color-mod-function"
   dependencies:
-    "@swissquote/color-fns": 1.17.2
+    "@swissquote/color-fns": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     postcss: 8.4.5
@@ -2600,7 +2604,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-rgb@1.17.2, @swissquote/postcss-color-rgb@workspace:package-forks/postcss-color-rgb":
+"@swissquote/postcss-color-rgb@workspace:*, @swissquote/postcss-color-rgb@workspace:package-forks/postcss-color-rgb":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-rgb@workspace:package-forks/postcss-color-rgb"
   dependencies:
@@ -2613,7 +2617,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-color-rgba-fallback@1.17.2, @swissquote/postcss-color-rgba-fallback@workspace:package-forks/postcss-color-rgba-fallback":
+"@swissquote/postcss-color-rgba-fallback@workspace:*, @swissquote/postcss-color-rgba-fallback@workspace:package-forks/postcss-color-rgba-fallback":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-color-rgba-fallback@workspace:package-forks/postcss-color-rgba-fallback"
   dependencies:
@@ -2626,7 +2630,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-custom-properties@1.17.2, @swissquote/postcss-custom-properties@workspace:package-forks/postcss-custom-properties":
+"@swissquote/postcss-custom-properties@workspace:*, @swissquote/postcss-custom-properties@workspace:package-forks/postcss-custom-properties":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-custom-properties@workspace:package-forks/postcss-custom-properties"
   dependencies:
@@ -2639,7 +2643,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-image-set-polyfill@1.17.2, @swissquote/postcss-image-set-polyfill@workspace:package-forks/postcss-image-set-polyfill":
+"@swissquote/postcss-image-set-polyfill@workspace:*, @swissquote/postcss-image-set-polyfill@workspace:package-forks/postcss-image-set-polyfill":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-image-set-polyfill@workspace:package-forks/postcss-image-set-polyfill"
   dependencies:
@@ -2653,7 +2657,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-pseudoelements@1.17.2, @swissquote/postcss-pseudoelements@workspace:package-forks/postcss-pseudoelements":
+"@swissquote/postcss-pseudoelements@workspace:*, @swissquote/postcss-pseudoelements@workspace:package-forks/postcss-pseudoelements":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-pseudoelements@workspace:package-forks/postcss-pseudoelements"
   dependencies:
@@ -2665,7 +2669,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-selector-matches@1.17.2, @swissquote/postcss-selector-matches@workspace:package-forks/postcss-selector-matches":
+"@swissquote/postcss-selector-matches@workspace:*, @swissquote/postcss-selector-matches@workspace:package-forks/postcss-selector-matches":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-selector-matches@workspace:package-forks/postcss-selector-matches"
   dependencies:
@@ -2678,42 +2682,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/postcss-swissquote-preset@1.17.2, @swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset":
+"@swissquote/postcss-swissquote-preset@workspace:*, @swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset"
   dependencies:
     "@knagis/postcss-advanced-variables": 4.0.0
-    "@swissquote/crafty-commons": 1.17.2
-    "@swissquote/pixrem": 1.17.2
-    "@swissquote/pleeease-filters": 1.17.2
-    "@swissquote/postcss-assets": 1.17.2
-    "@swissquote/postcss-atroot": 1.17.2
-    "@swissquote/postcss-color-gray": 1.17.2
-    "@swissquote/postcss-color-hsl": 1.17.2
-    "@swissquote/postcss-color-hwb": 1.17.2
-    "@swissquote/postcss-color-mod-function": 1.17.2
-    "@swissquote/postcss-color-rgb": 1.17.2
-    "@swissquote/postcss-color-rgba-fallback": 1.17.2
-    "@swissquote/postcss-custom-properties": 1.17.2
-    "@swissquote/postcss-image-set-polyfill": 1.17.2
-    "@swissquote/postcss-pseudoelements": 1.17.2
-    "@swissquote/postcss-selector-matches": 1.17.2
+    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/pixrem": "workspace:*"
+    "@swissquote/pleeease-filters": "workspace:*"
+    "@swissquote/postcss-assets": "workspace:*"
+    "@swissquote/postcss-atroot": "workspace:*"
+    "@swissquote/postcss-color-gray": "workspace:*"
+    "@swissquote/postcss-color-hsl": "workspace:*"
+    "@swissquote/postcss-color-hwb": "workspace:*"
+    "@swissquote/postcss-color-mod-function": "workspace:*"
+    "@swissquote/postcss-color-rgb": "workspace:*"
+    "@swissquote/postcss-color-rgba-fallback": "workspace:*"
+    "@swissquote/postcss-custom-properties": "workspace:*"
+    "@swissquote/postcss-image-set-polyfill": "workspace:*"
+    "@swissquote/postcss-pseudoelements": "workspace:*"
+    "@swissquote/postcss-selector-matches": "workspace:*"
     autoprefixer: 10.4.2
     caniuse-lite: ^1.0.30001294
     postcss: 8.4.5
     postcss-attribute-case-insensitive: 5.0.0
-    postcss-calc: 8.2.0
+    postcss-calc: 8.2.2
     postcss-color-hex-alpha: 8.0.2
     postcss-color-rebeccapurple: 7.0.2
     postcss-csso: 6.0.0
     postcss-custom-media: 8.0.0
     postcss-custom-selectors: 6.0.0
-    postcss-dir-pseudo-class: 6.0.2
+    postcss-dir-pseudo-class: 6.0.3
     postcss-font-family-system-ui: 5.0.0
     postcss-font-variant: 5.0.0
     postcss-import: 14.0.2
     postcss-initial: 4.0.1
-    postcss-logical: 5.0.2
+    postcss-logical: 5.0.3
     postcss-media-minmax: 5.0.0
     postcss-nested: 5.0.6
     postcss-property-lookup: 3.0.0
@@ -2727,7 +2731,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/rollup-plugin-eslint@1.17.2, @swissquote/rollup-plugin-eslint@workspace:packages/rollup-plugin-eslint":
+"@swissquote/rollup-plugin-eslint@workspace:*, @swissquote/rollup-plugin-eslint@workspace:packages/rollup-plugin-eslint":
   version: 0.0.0-use.local
   resolution: "@swissquote/rollup-plugin-eslint@workspace:packages/rollup-plugin-eslint"
   dependencies:
@@ -2735,16 +2739,16 @@ __metadata:
     "@rollup/pluginutils": 4.1.2
     ava: 4.0.1
     c8: 7.11.0
-    eslint: 8.6.0
-    rollup: 2.63.0
+    eslint: 8.7.0
+    rollup: 2.64.0
   languageName: unknown
   linkType: soft
 
-"@swissquote/stylelint-config-swissquote@1.17.2, @swissquote/stylelint-config-swissquote@workspace:packages/stylelint-config-swissquote":
+"@swissquote/stylelint-config-swissquote@workspace:*, @swissquote/stylelint-config-swissquote@workspace:packages/stylelint-config-swissquote":
   version: 0.0.0-use.local
   resolution: "@swissquote/stylelint-config-swissquote@workspace:packages/stylelint-config-swissquote"
   dependencies:
-    "@swissquote/crafty": 1.17.2
+    "@swissquote/crafty": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     caniuse-lite: ^1.0.30001294
@@ -4276,15 +4280,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-polyfill-corejs3@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "babel-plugin-polyfill-corejs3@npm:0.4.0"
+"babel-plugin-polyfill-corejs3@npm:^0.5.0":
+  version: 0.5.1
+  resolution: "babel-plugin-polyfill-corejs3@npm:0.5.1"
   dependencies:
-    "@babel/helper-define-polyfill-provider": ^0.3.0
-    core-js-compat: ^3.18.0
+    "@babel/helper-define-polyfill-provider": ^0.3.1
+    core-js-compat: ^3.20.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 18dce9a09a608b4844bce468a1d7b3abfc8a2a4c0df317ad6eb5951c0c95f3d1cc99699d8e67642cdd629f5074499d481481ae5e203ce85b8ed73e8295e25da8
+  checksum: a8945755a1c718c0a18d3137efd962b0555caab4f9186f257e47e95ea077262dfedc4ab6bbbc5d8c09e0455a49fc1d3a97cc24a49d33ca8a093344b9f1ae73e8
   languageName: node
   linkType: hard
 
@@ -4664,10 +4668,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30000655, caniuse-lite@npm:^1.0.30001179, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001294, caniuse-lite@npm:^1.0.30001297":
+"caniuse-lite@npm:^1.0.30000655, caniuse-lite@npm:^1.0.30001179, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001297":
   version: 1.0.30001298
   resolution: "caniuse-lite@npm:1.0.30001298"
   checksum: 43566732d1b8746e3dfae57f558471c701b26b2c166fb9fc53ad750d83128b2eb680a5e08233717e64055779b408c72d3b2cfad6d4ae33a3e647a11dc1c0d515
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001294":
+  version: 1.0.30001299
+  resolution: "caniuse-lite@npm:1.0.30001299"
+  checksum: c770f60ebf3e0cc8043ba4db0ebec12d7a595a6b50cb4437c3c5c55b04de9d2413f711f2828be761e8c37bb46b927a8abe6b199b8f0ffc1a34af0ebdee84be27
   languageName: node
   linkType: hard
 
@@ -5211,13 +5222,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:^3.18.0, core-js-compat@npm:^3.19.1":
-  version: 3.20.2
-  resolution: "core-js-compat@npm:3.20.2"
+"core-js-compat@npm:^3.20.0, core-js-compat@npm:^3.20.2":
+  version: 3.20.3
+  resolution: "core-js-compat@npm:3.20.3"
   dependencies:
     browserslist: ^4.19.1
     semver: 7.0.0
-  checksum: 303fcf5dede7363d484ebacdbdb6924e8c8493168b5db0536f8afe3c0fadc54333616d311e70146ab4e35b7c7bc8982a68af18a58085a767c9162c3242ba3451
+  checksum: ebb7af23e798e87b9a5fc00cb304089160b5e259db7002a1026d81d928a74a32cd9c4adda4959526fa75382f074e635fedd6590d16bda60df751734d033988e6
   languageName: node
   linkType: hard
 
@@ -6340,6 +6351,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-visitor-keys@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "eslint-visitor-keys@npm:3.2.0"
+  checksum: fdadbb26f9e6417d3db7ad4f00bb0d573b6031c32fa72e8cdae32d038223faaeddff2ee443c90cb489bf774e75bff765c00912b8f9106d65e4f202ccd78c1b18
+  languageName: node
+  linkType: hard
+
 "eslint-webpack-plugin@npm:3.1.1":
   version: 3.1.1
   resolution: "eslint-webpack-plugin@npm:3.1.1"
@@ -6356,7 +6374,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:8.6.0, eslint@npm:^8.6.0":
+"eslint@npm:8.7.0":
+  version: 8.7.0
+  resolution: "eslint@npm:8.7.0"
+  dependencies:
+    "@eslint/eslintrc": ^1.0.5
+    "@humanwhocodes/config-array": ^0.9.2
+    ajv: ^6.10.0
+    chalk: ^4.0.0
+    cross-spawn: ^7.0.2
+    debug: ^4.3.2
+    doctrine: ^3.0.0
+    escape-string-regexp: ^4.0.0
+    eslint-scope: ^7.1.0
+    eslint-utils: ^3.0.0
+    eslint-visitor-keys: ^3.2.0
+    espree: ^9.3.0
+    esquery: ^1.4.0
+    esutils: ^2.0.2
+    fast-deep-equal: ^3.1.3
+    file-entry-cache: ^6.0.1
+    functional-red-black-tree: ^1.0.1
+    glob-parent: ^6.0.1
+    globals: ^13.6.0
+    ignore: ^5.2.0
+    import-fresh: ^3.0.0
+    imurmurhash: ^0.1.4
+    is-glob: ^4.0.0
+    js-yaml: ^4.1.0
+    json-stable-stringify-without-jsonify: ^1.0.1
+    levn: ^0.4.1
+    lodash.merge: ^4.6.2
+    minimatch: ^3.0.4
+    natural-compare: ^1.4.0
+    optionator: ^0.9.1
+    regexpp: ^3.2.0
+    strip-ansi: ^6.0.1
+    strip-json-comments: ^3.1.0
+    text-table: ^0.2.0
+    v8-compile-cache: ^2.0.3
+  bin:
+    eslint: bin/eslint.js
+  checksum: 1c80375a48b0fe3ccae3c6354323e4f0e92e970f23abc5b9705b90b7aef514b69ebd0a63e74962d30789986c91fa41c0e25cd2f98f19e9e2a2d36aafdfc9ccc9
+  languageName: node
+  linkType: hard
+
+"eslint@npm:^8.6.0":
   version: 8.6.0
   resolution: "eslint@npm:8.6.0"
   dependencies:
@@ -6588,23 +6651,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "experiment@workspace:packages/experiment"
   dependencies:
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-preset-babel": 1.17.2
-    "@swissquote/crafty-preset-images": 1.17.2
-    "@swissquote/crafty-preset-images-simple": 1.17.2
-    "@swissquote/crafty-preset-maven": 1.17.2
-    "@swissquote/crafty-preset-postcss": 1.17.2
-    "@swissquote/crafty-preset-typescript": 1.17.2
-    "@swissquote/crafty-runner-gulp": 1.17.2
-    "@swissquote/crafty-runner-rollup": 1.17.2
-    "@swissquote/crafty-runner-webpack": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-preset-babel": "workspace:*"
+    "@swissquote/crafty-preset-images": "workspace:*"
+    "@swissquote/crafty-preset-images-simple": "workspace:*"
+    "@swissquote/crafty-preset-maven": "workspace:*"
+    "@swissquote/crafty-preset-postcss": "workspace:*"
+    "@swissquote/crafty-preset-typescript": "workspace:*"
+    "@swissquote/crafty-runner-gulp": "workspace:*"
+    "@swissquote/crafty-runner-rollup": "workspace:*"
+    "@swissquote/crafty-runner-webpack": "workspace:*"
     "@types/react": ^17.0.3
     react: 17.0.2
     react-dom: 17.0.2
     react-loadable: 5.5.0
     react-tabs: 3.2.3
     serve: 13.0.2
-    webpack: 5.65.0
+    webpack: 5.66.0
   languageName: unknown
   linkType: soft
 
@@ -7350,7 +7413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.0.0, graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.9
   resolution: "graceful-fs@npm:4.2.9"
   checksum: 68ea4e07ff2c041ada184f9278b830375f8e0b75154e3f080af6b70f66172fabb4108d19b3863a96b53fc068a310b9b6493d86d1291acc5f3861eb4b79d26ad6
@@ -7394,16 +7457,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:1.1.1":
-  version: 1.1.1
-  resolution: "gulp-eslint-new@npm:1.1.1"
+"gulp-eslint-new@npm:1.1.2":
+  version: 1.1.2
+  resolution: "gulp-eslint-new@npm:1.1.2"
   dependencies:
     "@types/eslint": ^8.2.2
     "@types/node": ^17.0.8
     eslint: ^8.6.0
     fancy-log: ^2.0.0
     plugin-error: ^1.0.1
-  checksum: a6b78628678cc34acb80a14c7d0303af652e867457dce9cff3708d4e0993646ba43f480472fb9d4370d2409b6900635bed300eacd32fe812d96e3e0ce08e5d2a
+  checksum: ed8b87fd2d98c78761cf6be68f3ea90b334d750fe280103efd48a5c1f0214b6441df1966c47e5c46684ebed1ed0f47bd7ada0776c8a8b775fb52cec93f095f73
   languageName: node
   linkType: hard
 
@@ -7952,19 +8015,19 @@ __metadata:
   dependencies:
     "@babel/core": 7.16.7
     "@babel/plugin-transform-property-literals": 7.16.7
-    "@swissquote/crafty": 1.17.2
-    "@swissquote/crafty-preset-babel": 1.17.2
-    "@swissquote/crafty-preset-eslint": 1.17.2
-    "@swissquote/crafty-preset-images": 1.17.2
-    "@swissquote/crafty-preset-images-simple": 1.17.2
-    "@swissquote/crafty-preset-maven": 1.17.2
-    "@swissquote/crafty-preset-postcss": 1.17.2
-    "@swissquote/crafty-preset-prettier": 1.17.2
-    "@swissquote/crafty-preset-swc": 1.17.2
-    "@swissquote/crafty-preset-typescript": 1.17.2
-    "@swissquote/crafty-runner-gulp": 1.17.2
-    "@swissquote/crafty-runner-rollup": 1.17.2
-    "@swissquote/crafty-runner-webpack": 1.17.2
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-preset-babel": "workspace:*"
+    "@swissquote/crafty-preset-eslint": "workspace:*"
+    "@swissquote/crafty-preset-images": "workspace:*"
+    "@swissquote/crafty-preset-images-simple": "workspace:*"
+    "@swissquote/crafty-preset-maven": "workspace:*"
+    "@swissquote/crafty-preset-postcss": "workspace:*"
+    "@swissquote/crafty-preset-prettier": "workspace:*"
+    "@swissquote/crafty-preset-swc": "workspace:*"
+    "@swissquote/crafty-preset-typescript": "workspace:*"
+    "@swissquote/crafty-runner-gulp": "workspace:*"
+    "@swissquote/crafty-runner-rollup": "workspace:*"
+    "@swissquote/crafty-runner-webpack": "workspace:*"
     ava: 4.0.1
     c8: 7.11.0
     execa: 5.1.1
@@ -9845,14 +9908,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:2.4.6":
-  version: 2.4.6
-  resolution: "mini-css-extract-plugin@npm:2.4.6"
+"mini-css-extract-plugin@npm:2.5.0":
+  version: 2.5.0
+  resolution: "mini-css-extract-plugin@npm:2.5.0"
   dependencies:
     schema-utils: ^4.0.0
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 7eb3dcbf1e46d5a9cdb6ed1c2b687f6ad5a739e420208511b01f59d45d69328fa7ba57aa44c9b3f7beff8e27cd9fe5188ecd636b4c33f9199ea3bdb9f4a5218e
+  checksum: 7afb9a28da385b728eeeda60f39840576913822a903a2bc0155412d7b21265fbb22eadf457c5d10de9996e7b6018ee5c0b52f5a622ef2e07cd345573d667a5b0
   languageName: node
   linkType: hard
 
@@ -10123,10 +10186,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-forge@npm:^0.10.0":
-  version: 0.10.0
-  resolution: "node-forge@npm:0.10.0"
-  checksum: 5aa6dc9922e424a20ef101d2f517418e2bc9cfc0255dd22e0701c0fad1568445f510ee67f6f3fcdf085812c4ca1b847b8ba45683b34776828e41f5c1794e42e1
+"node-forge@npm:^1.2.0":
+  version: 1.2.1
+  resolution: "node-forge@npm:1.2.1"
+  checksum: af4f88c3f69362359f35f6a9e231b35c96d906eeb6e976fb92742afe7fcdd76439dc22b41ce3755389d171f6320756ec7505bdfa7b252466c091b8c519a22674
   languageName: node
   linkType: hard
 
@@ -10930,15 +10993,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-calc@npm:8.2.0":
-  version: 8.2.0
-  resolution: "postcss-calc@npm:8.2.0"
+"postcss-calc@npm:8.2.2":
+  version: 8.2.2
+  resolution: "postcss-calc@npm:8.2.2"
   dependencies:
     postcss-selector-parser: ^6.0.2
     postcss-value-parser: ^4.0.2
   peerDependencies:
     postcss: ^8.2.2
-  checksum: 87ce7e64cacbab77b52a52be95d8b0b04c92ad11284fdf23263941d5411ae8fd0435eef9173952c93fe0b9c47405cb1aad121d90d9efef586a8744475f58ede5
+  checksum: aa60cbb01ae48ae8b708bc8c056e8ad6ddcc9f56af88c8e898c0b5d5d7c24f3448ec61698628d6c2e70893a657e99917ad77f18214c3d3bcab32477e855bccb4
   languageName: node
   linkType: hard
 
@@ -10995,14 +11058,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-dir-pseudo-class@npm:6.0.2":
-  version: 6.0.2
-  resolution: "postcss-dir-pseudo-class@npm:6.0.2"
+"postcss-dir-pseudo-class@npm:6.0.3":
+  version: 6.0.3
+  resolution: "postcss-dir-pseudo-class@npm:6.0.3"
   dependencies:
     postcss-selector-parser: ^6.0.8
   peerDependencies:
     postcss: ^8.3
-  checksum: 6d9311d7d9dc673fefb2220b9d7825a64b123a86f9dea1f4a896596897a7c89a897dc83fc95b24e958bc0c9dbdd1052c693db52d7b7ccf3c67b9545343cc9532
+  checksum: a567d3533168722d3d0c1f8792362109358a7959bfbfc4a2055ad1bb70e4a69f2bad6b39acd807ddbcd3f9fb01864d7505c69201df4ac33d71a241c8f23275c2
   languageName: node
   linkType: hard
 
@@ -11089,12 +11152,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-logical@npm:5.0.2":
-  version: 5.0.2
-  resolution: "postcss-logical@npm:5.0.2"
+"postcss-logical@npm:5.0.3":
+  version: 5.0.3
+  resolution: "postcss-logical@npm:5.0.3"
   peerDependencies:
     postcss: ^8.3
-  checksum: dfee654af3245def55938aad31bb6cb11b624a9e59148549bce3c90995176e7dceda0a5cfb28dd12e435a8161152cdcb5ac2731e865c1e683e772c8afccff5cf
+  checksum: e98fdd0637ce82cf7e9c39dc981bf91992e63db90a9b319ce135e5090ef19fe04ef24ba35ce60d456bb264580be66eb6383112cde4963c0c18d519d788d566d1
   languageName: node
   linkType: hard
 
@@ -12198,9 +12261,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.63.0":
-  version: 2.63.0
-  resolution: "rollup@npm:2.63.0"
+"rollup@npm:2.64.0":
+  version: 2.64.0
+  resolution: "rollup@npm:2.64.0"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -12208,7 +12271,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 23db16ea9d222ad5ae9620ba51d4f45c834927038c1e43d87f7dd3d240aa54422e51c2660437479af4b771e13f9529df236a3d43a3b9f4229bf241347d5f2c8f
+  checksum: dc5b28538002ed635ea54af4c2ced05c52146322c61dbe0e84f294ee62e4f232a15760fdcef9bbeb742883edf9bf093ace5389bbdd816d18b9f5740555135180
   languageName: node
   linkType: hard
 
@@ -12320,12 +12383,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selfsigned@npm:^1.10.11":
-  version: 1.10.14
-  resolution: "selfsigned@npm:1.10.14"
+"selfsigned@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "selfsigned@npm:2.0.0"
   dependencies:
-    node-forge: ^0.10.0
-  checksum: 616d131b18516ba2876398f0230987511d50a13816e0709b9f0d20246a524a2e83dfb27ea46ce2bfe331519583a156afa67bc3ece8bf0f9804aec06e2e8c7a21
+    node-forge: ^1.2.0
+  checksum: 43fca39a5aded2a8e97c1756af74c049a9dde12d47d302820f7d507d25c2ad7da4b04bc439a36620d63b4c0149bcf34ae7a729f978bf3b1bf48859c36ae34cee
   languageName: node
   linkType: hard
 
@@ -14301,9 +14364,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-server@npm:4.7.2":
-  version: 4.7.2
-  resolution: "webpack-dev-server@npm:4.7.2"
+"webpack-dev-server@npm:4.7.3":
+  version: 4.7.3
+  resolution: "webpack-dev-server@npm:4.7.3"
   dependencies:
     "@types/bonjour": ^3.5.9
     "@types/connect-history-api-fallback": ^1.3.5
@@ -14327,7 +14390,7 @@ __metadata:
     p-retry: ^4.5.0
     portfinder: ^1.0.28
     schema-utils: ^4.0.0
-    selfsigned: ^1.10.11
+    selfsigned: ^2.0.0
     serve-index: ^1.9.1
     sockjs: ^0.3.21
     spdy: ^4.0.2
@@ -14341,7 +14404,7 @@ __metadata:
       optional: true
   bin:
     webpack-dev-server: bin/webpack-dev-server.js
-  checksum: d3dd7d61f25a2ac1ac64d4298396043b1b8b46c009afc12c7af4d7c7724b077baa84d4ea353f1956e3f591ab09cde1d15f18d94e8884c1adaa2e1d816c37f814
+  checksum: 6062db1ba62e372ab3bd127f0c1a575a0758ad15338bff56e65f344bfa495d566049752a3e0c18d44469123e2f0cd2ba26cc0cab8d4ca704e8b4ace596871b21
   languageName: node
   linkType: hard
 
@@ -14362,9 +14425,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.65.0":
-  version: 5.65.0
-  resolution: "webpack@npm:5.65.0"
+"webpack@npm:5.66.0":
+  version: 5.66.0
+  resolution: "webpack@npm:5.66.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.50
@@ -14380,7 +14443,7 @@ __metadata:
     eslint-scope: 5.1.1
     events: ^3.2.0
     glob-to-regexp: ^0.4.1
-    graceful-fs: ^4.2.4
+    graceful-fs: ^4.2.9
     json-parse-better-errors: ^1.0.2
     loader-runner: ^4.2.0
     mime-types: ^2.1.27
@@ -14395,7 +14458,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 221ab8ccd440cb678269e86689704bbef81cf41393eb266625873e30c6980ffaa055bb1a7d14bf9fc0f5a2e6f03d15d068cbb995bc876757c01a4ca27fd2870c
+  checksum: 5a44664a840fd64c5383aa78847b205ae0b42b607f85ee1d6a568617a210c1b9caab1822bce40a89a3b5eb0f626a83fb5fe2055c638aa230897bf224030d28e8
   languageName: node
   linkType: hard
 

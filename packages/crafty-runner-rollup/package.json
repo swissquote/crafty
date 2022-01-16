@@ -13,9 +13,9 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.17.2",
-    "@swissquote/crafty-commons": "1.17.2",
-    "@swissquote/crafty-preset-terser": "1.17.2",
+    "@swissquote/crafty": "workspace:*",
+    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/crafty-preset-terser": "workspace:*",
     "rollup-plugin-terser": "7.0.2"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "@rollup/plugin-node-resolve": "13.1.3",
     "@rollup/plugin-replace": "3.0.1",
     "@rollup/pluginutils": "4.1.2",
-    "rollup": "2.63.0",
+    "rollup": "2.64.0",
     "rollup-plugin-pnp-resolve": "2.0.0"
   },
   "optionalDependencies": {

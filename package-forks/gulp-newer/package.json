@@ -28,7 +28,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "devDependencies": {
-    "@swissquote/crafty-runner-gulp": "1.17.2",
+    "@swissquote/crafty-runner-gulp": "workspace:*",
     "ava": "4.0.1",
     "c8": "7.11.0",
     "mock-fs": "5.1.2",

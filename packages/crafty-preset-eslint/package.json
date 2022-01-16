@@ -13,21 +13,21 @@
     "lint": "node src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.17.2",
-    "@swissquote/crafty-commons": "1.17.2",
-    "@swissquote/crafty-preset-prettier": "1.17.2",
-    "@swissquote/eslint-plugin-swissquote": "1.17.2",
+    "@swissquote/crafty": "workspace:*",
+    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/crafty-preset-prettier": "workspace:*",
+    "@swissquote/eslint-plugin-swissquote": "workspace:*",
     "ajv": "6.12.6",
-    "eslint": "8.6.0"
+    "eslint": "8.7.0"
   },
   "devDependencies": {
-    "@swissquote/rollup-plugin-eslint": "1.17.2",
+    "@swissquote/rollup-plugin-eslint": "workspace:*",
     "eslint-webpack-plugin": "3.1.1",
     "resolve-from": "5.0.0"
   },
   "peerDependencies": {
-    "@swissquote/crafty-preset-eslint": "1.17.2",
-    "@swissquote/crafty-runner-rollup": "1.17.2"
+    "@swissquote/crafty-preset-eslint": "workspace:*",
+    "@swissquote/crafty-runner-rollup": "workspace:*"
   },
   "engines": {
     "node": ">=12"

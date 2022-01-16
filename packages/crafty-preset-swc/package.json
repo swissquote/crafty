@@ -13,15 +13,15 @@
     "build": "node ../../utils/build.js"
   },
   "dependencies": {
-    "@swc/core": "1.2.127",
+    "@swc/core": "1.2.129",
     "@swc/helpers": "0.3.2",
-    "@swissquote/crafty-commons": "1.17.2",
-    "@swissquote/crafty-commons-gulp": "1.17.2",
-    "@swissquote/crafty-preset-eslint": "1.17.2",
-    "@swissquote/crafty-preset-terser": "1.17.2"
+    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/crafty-commons-gulp": "workspace:*",
+    "@swissquote/crafty-preset-eslint": "workspace:*",
+    "@swissquote/crafty-preset-terser": "workspace:*"
   },
   "devDependencies": {
-    "@swc/jest": "0.2.15",
+    "@swc/jest": "0.2.17",
     "gulp-concat": "2.6.1",
     "gulp-swc": "1.2.3",
     "swc-loader": "0.1.15"

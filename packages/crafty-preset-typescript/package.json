@@ -16,10 +16,10 @@
     "@babel/core": "7.16.7",
     "@babel/helper-module-imports": "7.16.7",
     "@babel/runtime": "7.16.7",
-    "@swissquote/babel-preset-swissquote": "1.17.2",
-    "@swissquote/crafty-commons": "1.17.2",
-    "@swissquote/crafty-commons-gulp": "1.17.2",
-    "@swissquote/crafty-preset-eslint": "1.17.2",
+    "@swissquote/babel-preset-swissquote": "workspace:*",
+    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/crafty-commons-gulp": "workspace:*",
+    "@swissquote/crafty-preset-eslint": "workspace:*",
     "fork-ts-checker-webpack-plugin": "6.5.0",
     "typescript": "4.5.4"
   },
@@ -34,9 +34,9 @@
     "ts-loader": "9.2.6"
   },
   "peerDependencies": {
-    "@swissquote/crafty-runner-gulp": "1.17.2",
-    "@swissquote/crafty-runner-rollup": "1.17.2",
-    "@swissquote/crafty-runner-webpack": "1.17.2"
+    "@swissquote/crafty-runner-gulp": "workspace:*",
+    "@swissquote/crafty-runner-rollup": "workspace:*",
+    "@swissquote/crafty-runner-webpack": "workspace:*"
   },
   "engines": {
     "node": ">=12"

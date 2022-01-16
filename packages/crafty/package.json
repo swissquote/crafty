@@ -16,7 +16,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.17.2"
+    "@swissquote/crafty-commons": "workspace:*"
   },
   "optionalDependencies": {
     "fsevents": "~2.3.2"

@@ -15,14 +15,14 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@swissquote/crafty": "1.17.2",
-    "@swissquote/crafty-commons": "1.17.2",
-    "@swissquote/crafty-preset-terser": "1.17.2",
+    "@swissquote/crafty": "workspace:*",
+    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/crafty-preset-terser": "workspace:*",
     "terser-webpack-plugin": "5.3.0",
-    "webpack": "5.65.0",
+    "webpack": "5.66.0",
     "webpack-bundle-analyzer": "4.5.0",
     "webpack-chain": "6.5.1",
-    "webpack-dev-server": "4.7.2"
+    "webpack-dev-server": "4.7.3"
   },
   "devDependencies": {
     "ava": "4.0.1",
