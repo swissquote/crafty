@@ -104,8 +104,6 @@ module.exports = ${JSON.stringify(configuration, null, 4)};
 function toTempFile(configuration) {
   const tmpfile = tmp.fileSync({ postfix: ".js" }).name;
 
-  console.log("eslint config:\n", stringifyConfiguration(configuration));
-
   fs.writeFileSync(tmpfile, stringifyConfiguration(configuration));
 
   return tmpfile;

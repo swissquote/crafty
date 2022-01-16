@@ -48,11 +48,17 @@ function patch(eslintPath) {
     console.log("Resolving", {moduleName, relativeToPath, __filename});
     try {
       // First check for the module relative to the current location
-      return originalResolve(moduleName, __filename);
+      const result = originalResolve(moduleName, __filename);
+      console.log("resolved", result);
+
+      return result;
     } catch (e) {
       console.log("Falling back to original");
       // OR fallback to the default behaviour of ESLint
-      return originalResolve(moduleName, relativeToPath);
+      const result = originalResolve(moduleName, relativeToPath);
+      console.log("resolved", result);
+
+      return result;
     }
   };
 }
