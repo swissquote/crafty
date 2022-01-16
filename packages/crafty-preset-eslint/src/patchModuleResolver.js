@@ -51,6 +51,14 @@ function patch(eslintPath) {
       const result = originalResolve(moduleName, __filename);
       console.log("resolved", result);
 
+      try {
+        const required = require(result);
+        console.log("required", required);
+      } catch (e2) {
+        console.log("Failed to require", e2);
+      }
+
+
       return result;
     } catch (e) {
       console.log("Falling back to original");
