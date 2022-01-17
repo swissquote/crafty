@@ -3,6 +3,9 @@ const fs = require("fs");
 const { rollup } = require("rollup");
 const nodeResolve = require("@rollup/plugin-node-resolve").default;
 const eslint = require("../");
+const colors = require("ansi-colors");
+
+const cwd = process.cwd();
 
 class FakeConsole {
   constructor() {
@@ -10,7 +13,11 @@ class FakeConsole {
   }
 
   log() {
-    this.out = this.out.concat(Array.prototype.slice.call(arguments));
+    const args = Array.prototype.slice.call(arguments)
+      .map(colors.unstyle)
+      .map(str => str.replace(cwd, "__PATH__"))
+
+    this.out = this.out.concat(args);
   }
 }
 
