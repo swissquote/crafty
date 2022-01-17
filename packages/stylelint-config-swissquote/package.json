@@ -34,7 +34,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
     "build": "node ../../utils/build.js",
     "test": "ava",
-    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src --include=packages --include=*.js ava"
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src --include=packages --include='*.js' ava"
   },
   "engines": {
     "node": ">=12"
