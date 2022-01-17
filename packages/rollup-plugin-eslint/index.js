@@ -25,6 +25,10 @@ function getConfiguration(options) {
     finalOptions.useEslintrc = false; // Tell eslint not to look for configuration files.
   }
 
+  if (!finalOptions.hasOwnProperty("__customConsole")) {
+    finalOptions.__customConsole = console;
+  }
+
   return finalOptions;
 }
 
@@ -35,6 +39,7 @@ module.exports = function eslintPlugin(options = {}) {
     formatter = "stylish",
     throwOnWarning,
     throwOnError,
+    __customConsole,
     ...eslintOptions
   } = getConfiguration(options);
 
@@ -75,7 +80,7 @@ module.exports = function eslintPlugin(options = {}) {
 
       const output = (await getFormatter(eslint, formatter)).format(reports);
       if (output && output.length > 0) {
-        console.log(output);
+        __customConsole.log(output);
       }
 
       const hasWarnings =

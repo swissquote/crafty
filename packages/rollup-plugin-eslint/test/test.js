@@ -4,6 +4,20 @@ const { rollup } = require("rollup");
 const nodeResolve = require("@rollup/plugin-node-resolve").default;
 const eslint = require("../");
 
+class FakeConsole {
+  constructor() {
+    this.out = [];
+  }
+
+  log() {
+    this.out = this.out.concat(Array.prototype.slice.call(arguments));
+  }
+}
+
+test.beforeEach((t) => {
+  t.context.fakeConsole = new FakeConsole();
+});
+
 test("should lint files", (t) => {
   t.plan(2);
   let count = 0;
@@ -23,13 +37,13 @@ test("should lint files", (t) => {
   });
 });
 
-test("should not fail with default options", (t) => {
-  return t.notThrowsAsync(() =>
-    rollup({
-      input: "./test/fixtures/undeclared.js",
-      plugins: [eslint()],
-    })
-  );
+test("should not fail with default options", async (t) => {
+  await rollup({
+    input: "./test/fixtures/undeclared.js",
+    plugins: [eslint({ __customConsole: t.context.fakeConsole })],
+  });
+
+  t.snapshot(t.context.fakeConsole.out);
 });
 
 test("should ignore node_modules with exclude option", (t) => {
@@ -154,17 +168,18 @@ test("should fail with not found formatter", (t) => {
   );
 });
 
-test("should not fail with found formatter", (t) => {
-  return t.notThrowsAsync(() =>
-    rollup({
-      input: "./test/fixtures/use-strict.js",
-      plugins: [
-        eslint({
-          formatter: "stylish",
-        }),
-      ],
-    })
-  );
+test("should not fail with found formatter", async (t) => {
+  await rollup({
+    input: "./test/fixtures/use-strict.js",
+    plugins: [
+      eslint({
+        __customConsole: t.context.fakeConsole,
+        formatter: "stylish",
+      }),
+    ],
+  });
+
+  t.snapshot(t.context.fakeConsole.out);
 });
 
 test("should fix source code", (t) => {
