@@ -18,11 +18,12 @@
     "lint:code": "./run_all.sh lint --fix",
     "lint:docs": "./lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
-    "build": "yarn workspaces foreach -t -v run build",
+    "build": "./run_all.sh build",
     "test": "./run_all.sh test",
     "test:ci": "./run_all.sh test:ci",
     "publish:canary": "./utils/publish.js --pre-release",
-    "publish:all": "./utils/publish.js"
+    "publish:all": "./utils/publish.js",
+    "upgrade": "yarn up -R '**'"
   },
   "dependencies": {
     "@types/eslint": "^8.0.0",

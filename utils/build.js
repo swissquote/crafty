@@ -11,7 +11,7 @@ async function main() {
   for (const bundle of configuration) {
     if (bundle.name) {
       const name = bundle.name;
-      console.log(name, "\n==========================");
+      console.log(`${name}\n${'='.repeat(name.length)}`);
       await compileUtils.compile(
         `./src/${name}.js`,
         `dist/compiled/${name}.js`,
