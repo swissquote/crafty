@@ -43,7 +43,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       );
     }
 
-    const babel = require("gulp-babel");
+    const babel = require("../packages/gulp-babel");
     const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
     const babelOptions = babelConfigurator(crafty, bundle);
 
@@ -54,12 +54,12 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(sourcemaps.init({ loadMaps: true }));
 
     if (bundle.concat) {
-      const concat = require("gulp-concat");
+      const concat = require("../packages/gulp-concat");
       stream.add(concat(bundle.destination));
     }
 
     if (crafty.getEnvironment() === "production") {
-      const terser = require("gulp-terser");
+      const terser = require("../packages/gulp-terser");
       stream.add(terser({ ...crafty.config.terser, sourceMap: {} }));
     }
 

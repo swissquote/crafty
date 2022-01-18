@@ -55,7 +55,7 @@ module.exports = {
     }
 
     rollupConfig.input.plugins.babel = {
-      plugin: require("@rollup/plugin-babel"),
+      plugin: require("../packages/rollup-plugin-babel.js"),
       weight: 20,
       options
     };
@@ -75,7 +75,7 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("babel")
-      .loader(require.resolve("babel-loader"))
+      .loader(require.resolve("../packages/babel-loader"))
       .options(options);
   }
 };
