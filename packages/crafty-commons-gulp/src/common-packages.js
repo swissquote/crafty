@@ -1,3 +1,7 @@
+function gulpConcat() {
+  return require("gulp-concat");
+}
+
 function gulpEslintNew() {
   return require("gulp-eslint-new");
 }
@@ -15,6 +19,7 @@ function pluginError() {
 }
 
 module.exports = {
+  gulpConcat,
   gulpEslintNew,
   gulpSourcemaps,
   gulpNewer,

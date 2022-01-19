@@ -68,7 +68,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(babel(babelOptions));
 
     if (bundle.concat) {
-      const concat = require("../packages/gulp-concat");
+      const concat = require("@swissquote/crafty-commons-gulp/packages/gulp-concat");
       stream.add(concat(bundle.destination));
     }
 
