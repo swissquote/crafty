@@ -2096,7 +2096,7 @@ __metadata:
   dependencies:
     "@swissquote/crafty-commons": "workspace:*"
     "@swissquote/gulp-newer": "workspace:*"
-    gulp-eslint-new: 1.1.2
+    gulp-eslint-new: 1.2.0
     gulp-sourcemaps: 3.0.0
     plugin-error: 1.0.1
   languageName: unknown
@@ -2988,10 +2988,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.8":
-  version: 17.0.10
-  resolution: "@types/node@npm:17.0.10"
-  checksum: 979e83d642a2b4f18fa1a4233f884822c05abc7acd0836024aa964187f8446432b21f7913e72fe2b3927c4a811c27a0b6cd60ac7c4ac6a6762cfbab70782aa6a
+"@types/node@npm:*, @types/node@npm:^17.0.13":
+  version: 17.0.13
+  resolution: "@types/node@npm:17.0.13"
+  checksum: 8b87c850c1604c65e3474bd03d122914464b7970caed20f65f4a7706ab429353b896a3916be4d2581164eccda9e3dd95c338fbccf686ff85a824c40d15e8f3fa
   languageName: node
   linkType: hard
 
@@ -5858,6 +5858,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"duplexify@npm:^4.1.1":
+  version: 4.1.2
+  resolution: "duplexify@npm:4.1.2"
+  dependencies:
+    end-of-stream: ^1.4.1
+    inherits: ^2.0.3
+    readable-stream: ^3.1.1
+    stream-shift: ^1.0.0
+  checksum: 964376c61c0e92f6ed0694b3ba97c84f199413dc40ab8dfdaef80b7a7f4982fcabf796214e28ed614a5bc1ec45488a29b81e7d46fa3f5ddf65bcb118c20145ad
+  languageName: node
+  linkType: hard
+
 "e-prime@npm:^0.10.4":
   version: 0.10.4
   resolution: "e-prime@npm:0.10.4"
@@ -5937,7 +5949,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"end-of-stream@npm:^1.0.0, end-of-stream@npm:^1.1.0":
+"end-of-stream@npm:^1.0.0, end-of-stream@npm:^1.1.0, end-of-stream@npm:^1.4.1":
   version: 1.4.4
   resolution: "end-of-stream@npm:1.4.4"
   dependencies:
@@ -6325,7 +6337,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:8.7.0, eslint@npm:^8.6.0":
+"eslint@npm:8.7.0":
   version: 8.7.0
   resolution: "eslint@npm:8.7.0"
   dependencies:
@@ -6367,6 +6379,51 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: 1c80375a48b0fe3ccae3c6354323e4f0e92e970f23abc5b9705b90b7aef514b69ebd0a63e74962d30789986c91fa41c0e25cd2f98f19e9e2a2d36aafdfc9ccc9
+  languageName: node
+  linkType: hard
+
+"eslint@npm:^8.8.0":
+  version: 8.8.0
+  resolution: "eslint@npm:8.8.0"
+  dependencies:
+    "@eslint/eslintrc": ^1.0.5
+    "@humanwhocodes/config-array": ^0.9.2
+    ajv: ^6.10.0
+    chalk: ^4.0.0
+    cross-spawn: ^7.0.2
+    debug: ^4.3.2
+    doctrine: ^3.0.0
+    escape-string-regexp: ^4.0.0
+    eslint-scope: ^7.1.0
+    eslint-utils: ^3.0.0
+    eslint-visitor-keys: ^3.2.0
+    espree: ^9.3.0
+    esquery: ^1.4.0
+    esutils: ^2.0.2
+    fast-deep-equal: ^3.1.3
+    file-entry-cache: ^6.0.1
+    functional-red-black-tree: ^1.0.1
+    glob-parent: ^6.0.1
+    globals: ^13.6.0
+    ignore: ^5.2.0
+    import-fresh: ^3.0.0
+    imurmurhash: ^0.1.4
+    is-glob: ^4.0.0
+    js-yaml: ^4.1.0
+    json-stable-stringify-without-jsonify: ^1.0.1
+    levn: ^0.4.1
+    lodash.merge: ^4.6.2
+    minimatch: ^3.0.4
+    natural-compare: ^1.4.0
+    optionator: ^0.9.1
+    regexpp: ^3.2.0
+    strip-ansi: ^6.0.1
+    strip-json-comments: ^3.1.0
+    text-table: ^0.2.0
+    v8-compile-cache: ^2.0.3
+  bin:
+    eslint: bin/eslint.js
+  checksum: 41a7e85bf84cf9f2d758ef3e8d08020a39a2836703728b59535684681349bd021c2c6e24174462b844a914870d707d2151e0371198899d957b444de91adaa435
   languageName: node
   linkType: hard
 
@@ -6913,6 +6970,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fork-stream@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "fork-stream@npm:0.0.4"
+  checksum: 07e72ba6ec810724ae9fbb76bc966214347cac966f89cf9a56ab0f70162b7806eb2a5a4333d5a92ae045da2b55bb107afe7ef32011acffb65d1067c5c85b0e5a
+  languageName: node
+  linkType: hard
+
 "fork-ts-checker-webpack-plugin@npm:6.5.0":
   version: 6.5.0
   resolution: "fork-ts-checker-webpack-plugin@npm:6.5.0"
@@ -7360,16 +7424,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:1.1.2":
-  version: 1.1.2
-  resolution: "gulp-eslint-new@npm:1.1.2"
+"gulp-eslint-new@npm:1.2.0":
+  version: 1.2.0
+  resolution: "gulp-eslint-new@npm:1.2.0"
   dependencies:
-    "@types/eslint": ^8.2.2
-    "@types/node": ^17.0.8
-    eslint: ^8.6.0
+    "@types/eslint": ^8.4.1
+    "@types/node": ^17.0.13
+    eslint: ^8.8.0
     fancy-log: ^2.0.0
     plugin-error: ^1.0.1
-  checksum: ed8b87fd2d98c78761cf6be68f3ea90b334d750fe280103efd48a5c1f0214b6441df1966c47e5c46684ebed1ed0f47bd7ada0776c8a8b775fb52cec93f095f73
+    ternary-stream: ^3.0.0
+    vinyl-fs: ^3.0.3
+  checksum: c557d03c2908cd06c0c39bca4a3f8703230f8de8c62ef616281e614fc513fbaee57bba32f93c8fcf6200b601db33ab68b5d111ef3e65fdc60ae27b5886c3e89a
   languageName: node
   linkType: hard
 
@@ -11716,7 +11782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:^3.0.6, readable-stream@npm:^3.6.0":
+"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.6.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0"
   dependencies:
@@ -13285,6 +13351,18 @@ __metadata:
     ansi-escapes: ^4.2.1
     supports-hyperlinks: ^2.0.0
   checksum: ce3d2cd3a438c4a9453947aa664581519173ea40e77e2534d08c088ee6dda449eabdbe0a76d2a516b8b73c33262fedd10d5270ccf7576ae316e3db170ce6562f
+  languageName: node
+  linkType: hard
+
+"ternary-stream@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "ternary-stream@npm:3.0.0"
+  dependencies:
+    duplexify: ^4.1.1
+    fork-stream: ^0.0.4
+    merge-stream: ^2.0.0
+    through2: ^3.0.1
+  checksum: 16dc329d2725edcd8ecb1379252b0cb8f24f7ebd7baf2351259e48e1d0deae5fd9a011e8502b54e9e35e27fab9cc421525198b862c3f6d82070b79781c3f2c24
   languageName: node
   linkType: hard
 
