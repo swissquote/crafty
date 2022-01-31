@@ -23,5 +23,5 @@ module.exports = {
   gulpBabel,
   gulpConcat,
   gulpTerser,
-  rollupPluginBabel,
+  rollupPluginBabel
 };
