@@ -94,20 +94,20 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Installing">Installing</a></p>
+<a href="#installing">Installing</a>
 </li>
 <li>
-<p><a href="#page_Your_first_test">Your first test</a></p>
+<a href="#your-first-test">Your first test</a>
 </li>
 <li>
-<p><a href="#page_With_Babel_or_Typescript">With Babel or Typescript</a></p>
+<a href="#with-babel-or-typescript">With Babel or Typescript</a>
 </li>
 </ul>    </div>
 </div>
 <p>Crafty comes with a <code>crafty test</code> command by default, but no test runner comes
 built-in.</p>
 <p>For that we made an integration with Jest.</p>
-<h2 id="page_Installing">Installing</h2>
+<h2><a id="installing" href="#installing" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing</h2>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-jest --save
 </code></pre>
@@ -116,7 +116,7 @@ npm install @swissquote/crafty @swissquote/crafty-preset-jest --save
   <span class="hljs-attr">presets</span>: [<span class="hljs-string">"@swissquote/crafty-preset-jest"</span>]
 };
 </code></pre>
-<h2 id="page_Your_first_test">Your first test</h2>
+<h2><a id="your-first-test" href="#your-first-test" class="Permalink" aria-hidden="true" title="Permalink">#</a>Your first test</h2>
 <p>in <code>js</code> create a file named <code>math.js</code></p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports.add = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>{
   <span class="hljs-keyword">return</span> a + b;
@@ -140,7 +140,7 @@ test(<span class="hljs-string">"multiply something"</span>, () =&gt; {
 <p>You can now run <code>crafty test</code> and see that the test is discovered and executed
 automatically.</p>
 <p>Read more about <a href="../Packages/crafty_preset_jest/index.html"><code>crafty-preset-jest</code></a>.</p>
-<h2 id="page_With_Babel_or_Typescript">With Babel or Typescript</h2>
+<h2><a id="with-babel-or-typescript" href="#with-babel-or-typescript" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Babel or Typescript</h2>
 <p>You can also use EcmaScript 2015+ and TypeScript features by installing and
 adding their respective presets.</p>
 <p>They are configured automatically once you include them in <code>presets</code> from your

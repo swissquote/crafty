@@ -94,30 +94,30 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Compiling_JavaScript_for_a_webapp_(_Webpack_rollup.js_)">Compiling JavaScript for a webapp ( Webpack / rollup.js )</a></p>
-<ul class="TableOfContents">
+<a href="#compiling-javascript-for-a-webapp-webpack-rollup-js">Compiling JavaScript for a webapp ( Webpack / rollup.js )</a>
+<ul>
 <li>
-<p><a href="#page_Installing_the_preset_with_Webpack">Installing the preset with Webpack</a></p>
+<a href="#installing-the-preset-with-webpack">Installing the preset with Webpack</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Compiling_JavaScript_for_a_library_(_Gulp_)">Compiling JavaScript for a library ( Gulp )</a></p>
-<ul class="TableOfContents">
+<a href="#compiling-javascript-for-a-library-gulp">Compiling JavaScript for a library ( Gulp )</a>
+<ul>
 <li>
-<p><a href="#page_Installing_the_preset_with_Gulp">Installing the preset with Gulp</a></p>
+<a href="#installing-the-preset-with-gulp">Installing the preset with Gulp</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 </ul>    </div>
 </div>
 <p>When compiling JavaScript, you have to know wether you are going to develop in
 an application or a library. The good news is that Crafty makes it a breeze to
 switch from one to the other.</p>
-<h2 id="page_Compiling_JavaScript_for_a_webapp_(_Webpack_rollup.js_)">Compiling JavaScript for a webapp ( Webpack / rollup.js )</h2>
+<h2><a id="compiling-javascript-for-a-webapp-webpack-rollup-js" href="#compiling-javascript-for-a-webapp-webpack-rollup-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Compiling JavaScript for a webapp ( Webpack / rollup.js )</h2>
 <p>When developing for a webapp, you wish for all files to be packed into the
 smallest number of files, because the number of requests that a final
 application will make are directly related to the performance of that
@@ -125,7 +125,7 @@ application.</p>
 <p>Webpack and rollup.js do a great job at optimizing your bundles into the
 smallest possible package. For this use case, we are going to use Webpack, but
 they are interchangeable in this example.</p>
-<h3 id="page_Installing_the_preset_with_Webpack">Installing the preset with Webpack</h3>
+<h3><a id="installing-the-preset-with-webpack" href="#installing-the-preset-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Webpack</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-babel @swissquote/crafty-runner-webpack --save
 </code></pre>
@@ -149,7 +149,7 @@ with Webpack.</p>
 <p>Read more about <a href="../Packages/crafty_preset_babel/index.html"><code>crafty-preset-babel</code></a>.</p>
 <p>You can also know more about
 <a href="../Packages/crafty_runner_webpack.html">Webpack’s features and options</a></p>
-<h2 id="page_Compiling_JavaScript_for_a_library_(_Gulp_)">Compiling JavaScript for a library ( Gulp )</h2>
+<h2><a id="compiling-javascript-for-a-library-gulp" href="#compiling-javascript-for-a-library-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Compiling JavaScript for a library ( Gulp )</h2>
 <p>When developing a library, you can either go the same direction as a webapp and
 merge all the files into one bundle, or you can keep each source file in a
 separate compiled file and use them as-is.</p>
@@ -158,7 +158,7 @@ in the final application is much more efficient if the compiled files stay
 separate. (Like a component library).</p>
 <p>This approach is not recommended if you know that most of your library
 will always be used, as we would recommend to use rollup.js in that case.</p>
-<h3 id="page_Installing_the_preset_with_Gulp">Installing the preset with Gulp</h3>
+<h3><a id="installing-the-preset-with-gulp" href="#installing-the-preset-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Gulp</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-babel @swissquote/crafty-runner-gulp --save
 </code></pre>
@@ -183,7 +183,7 @@ the files won’t be resolved (like Webpack or rollup.js would do).</p>
 <p>You are now ready to run <code>crafty run</code> and compile your JavaScript source files
 with Gulp.</p>
 <p>Read more about <a href="../Packages/crafty_preset_babel/index.html"><code>crafty-preset-babel</code></a>.</p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p>By leveraging Babel we are able to use EcmaScript 2015+ and compile to
 EcmaScript 5.</p>
 <p>Read more about

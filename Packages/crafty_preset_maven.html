@@ -105,33 +105,33 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Installation">Installation</a></p>
+<a href="#installation">Installation</a>
 </li>
 <li>
-<p><a href="#page_Usage">Usage</a></p>
-<ul class="TableOfContents">
+<a href="#usage">Usage</a>
+<ul>
 <li>
-<p><a href="#page_Example">Example</a></p>
+<a href="#example">Example</a>
 </li>
 <li>
-<p><a href="#page_Override_destination_with_an_environment_variable">Override destination with an environment variable</a></p>
+<a href="#override-destination-with-an-environment-variable">Override destination with an environment variable</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Options">Options</a></p>
+<a href="#options">Options</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Description">Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>This preset allows you to use crafty within a Maven build (with
 <code>frontend-maven-plugin</code>). This will discover you <code>pom.xml</code> and get the right
 folder in <code>target</code> for you.</p>
 <p>You can use it either with <strong>Webjars</strong> or <strong>Webapps</strong>.</p>
-<h2 id="page_Installation">Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-maven --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -139,7 +139,7 @@ folder in <code>target</code> for you.</p>
   <span class="hljs-attr">mavenType</span>: <span class="hljs-string">"webapp"</span> <span class="hljs-comment">// or "webjar"</span>
 };
 </code></pre>
-<h2 id="page_Usage">Usage</h2>
+<h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage</h2>
 <p>The destination directory is calculated using <code>crafty-preset-maven</code> and the
 <code>mavenType</code> option.</p>
 <p>You can set the destination path manually but it’s recommended to change the
@@ -155,7 +155,7 @@ folder in <code>target</code> for you.</p>
 </ul>
 <p>This preset’s role is to replace <code>config.destination</code> which is used to create
 the destination for each <code>bundleType</code> (<code>destination_js</code>, <code>destination_css</code> …)</p>
-<h3 id="page_Example">Example</h3>
+<h3><a id="example" href="#example" class="Permalink" aria-hidden="true" title="Permalink">#</a>Example</h3>
 <p>If we take the following configuration:</p>
 <pre><code class="hljs xml">module.exports = {
     presets: [
@@ -176,7 +176,7 @@ the destination for each <code>bundleType</code> (<code>destination_js</code>, <
 &lt;maven_root&gt;/target/classes/META-INF/resources/webjars/js/library.min.js
              ↑ Default path for webjars                   ↑ Inferred from the bundle name
 </code></pre>
-<h3 id="page_Override_destination_with_an_environment_variable">Override destination with an environment variable</h3>
+<h3><a id="override-destination-with-an-environment-variable" href="#override-destination-with-an-environment-variable" class="Permalink" aria-hidden="true" title="Permalink">#</a>Override destination with an environment variable</h3>
 <p>If your build is running from within Maven, it’s pointless to re-calculate the
 destination path, you can pass it using the <code>TARGET_BASEDIR</code> environment
 variable.</p>
@@ -199,7 +199,7 @@ variable.</p>
    ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
 </code></pre>
-<h2 id="page_Options">Options</h2>
+<h2><a id="options" href="#options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Options</h2>
 <table>
 <thead>
 <tr>

@@ -90,7 +90,7 @@
 
     <div class="s-content">
         <p>Like for an EcmaScript 2015 bundle, you must set <code>webpack: true</code> in your <code>crafty.config.js</code> for your bundle.</p>
-<h2 id="page_Prerequisite">Prerequisite</h2>
+<h2><a id="prerequisite" href="#prerequisite" class="Permalink" aria-hidden="true" title="Permalink">#</a>Prerequisite</h2>
 <p>To make the compilation work with TypeScript, you need to add a <code>tsconfig.json</code> file at the root of your project with the following content.</p>
 <pre><code class="hljs json">{
   <span class="hljs-attr">"exclude"</span>: [<span class="hljs-string">"node_modules"</span>, <span class="hljs-string">"node"</span>],
@@ -106,7 +106,7 @@
 }
 </code></pre>
 <p><a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" class="Link--external" rel="noopener noreferrer">All configuration options</a>.</p>
-<h3 id="page_If_you_plan_to_create_a_library">If you plan to create a library</h3>
+<h3><a id="if-you-plan-to-create-a-library" href="#if-you-plan-to-create-a-library" class="Permalink" aria-hidden="true" title="Permalink">#</a>If you plan to create a library</h3>
 <p>You can ask TypeScript to also export all Type definitions along with the code, this is how you do it:</p>
 <pre><code class="hljs json">{
   <span class="hljs-attr">"compilerOptions"</span>: {
@@ -119,7 +119,7 @@
 optimization that uses workers to check the validity of your TypeScript files.
 So make sure that you actually need declarations as they have a non-negligible generation cost.</p>
 </blockquote>
-<h2 id="page_Most_basic_example">Most basic example</h2>
+<h2><a id="most-basic-example" href="#most-basic-example" class="Permalink" aria-hidden="true" title="Permalink">#</a>Most basic example</h2>
 <p>Create a bundle like this:</p>
 <pre><code class="hljs javascript">{
     <span class="hljs-attr">yourBundleName</span>: {
@@ -144,7 +144,7 @@ So make sure that you actually need declarations as they have a non-negligible g
 </code></pre>
 <p>When running Gulp, you will get your compiled TypeScript file in <code>js/yourBundleName.min.js</code></p>
 <p><a href="TypeScript_Features.html">More features</a></p>
-<h2 id="page_Using_Typings">Using Typings</h2>
+<h2><a id="using-typings" href="#using-typings" class="Permalink" aria-hidden="true" title="Permalink">#</a>Using Typings</h2>
 <p>To leverage external libraries in your project, you need to configure TypeScript to be able to read your definition files.</p>
 <p>If you use Typings from the <code>@types</code> scoped packages you don’t need this configuration.</p>
 <p>But for the definitions downloaded with <code>typings</code> or your own, you need to tell TypeScript to load them.</p>

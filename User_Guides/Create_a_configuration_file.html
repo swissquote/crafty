@@ -95,51 +95,51 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Foreword">Foreword</a></p>
+<a href="#foreword">Foreword</a>
 </li>
 <li>
-<p><a href="#page_Presets">Presets</a></p>
+<a href="#presets">Presets</a>
 </li>
 <li>
-<p><a href="#page_Bundles">Bundles</a></p>
-<ul class="TableOfContents">
+<a href="#bundles">Bundles</a>
+<ul>
 <li>
-<p><a href="#page_Common_Bundle_options">Common Bundle options</a></p>
+<a href="#common-bundle-options">Common Bundle options</a>
 </li>
 <li>
-<p><a href="#page_CSS_Bundles_(_)">CSS Bundles (<code>crafty-preset-postcss</code>)</a></p>
+<a href="#css-bundles-crafty-preset-postcss">CSS Bundles (crafty-preset-postcss)</a>
 </li>
 <li>
-<p><a href="#page_JavaScript_Bundles_(_or_)">JavaScript Bundles (<code>crafty-preset-babel</code> or <code>crafty-preset-typescript</code>)</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p><a href="#page_Images_(_or_)">Images (<code>crafty-preset-images</code> or <code>crafty-preset-images-simple</code>)</a></p>
-</li>
-<li>
-<p><a href="#page_Naming_and_locations_conventions">Naming and locations conventions</a></p>
-<ul class="TableOfContents">
-<li>
-<p><a href="#page_Locations">Locations</a></p>
-</li>
-<li>
-<p><a href="#page_Bundle_names">Bundle names</a></p>
-</li>
-<li>
-<p><a href="#page_Bundle_destinations">Bundle destinations</a></p>
+<a href="#javascript-bundles-crafty-preset-babel-or-crafty-preset-typescript">JavaScript Bundles (crafty-preset-babel or crafty-preset-typescript)</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Destination_directory">Destination directory</a></p>
+<a href="#images-crafty-preset-images-or-crafty-preset-images-simple">Images (crafty-preset-images or crafty-preset-images-simple)</a>
 </li>
 <li>
-<p><a href="#page_All_Options">All Options</a></p>
+<a href="#naming-and-locations-conventions">Naming and locations conventions</a>
+<ul>
+<li>
+<a href="#locations">Locations</a>
+</li>
+<li>
+<a href="#bundle-names">Bundle names</a>
+</li>
+<li>
+<a href="#bundle-destinations">Bundle destinations</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#destination-directory">Destination directory</a>
+</li>
+<li>
+<a href="#all-options">All Options</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Foreword">Foreword</h2>
+<h2><a id="foreword" href="#foreword" class="Permalink" aria-hidden="true" title="Permalink">#</a>Foreword</h2>
 <blockquote>
 <p>All Paths are relative to the current working directory. Maven projects
 default to <code>src/main/frontend</code>.</p>
@@ -190,14 +190,14 @@ default to <code>src/main/frontend</code>.</p>
   }
 };
 </code></pre>
-<h2 id="page_Presets">Presets</h2>
+<h2><a id="presets" href="#presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Presets</h2>
 <p>Each feature of Crafty is declared through a preset, if you wish to compile your
 JavaScript with Babel, we created <code>crafty-preset-babel</code>. If you wish to compile
 your CSS with PostCSS, we created <code>crafty-preset-postcss</code>.</p>
 <p>All these presets can create Tasks which are then taken by a Runner. We provide
 three runners: <code>crafty-runner-gulp</code>, <code>crafty-runner-webpack</code> and
 <code>crafty-runner-rollup</code>.</p>
-<h2 id="page_Bundles">Bundles</h2>
+<h2><a id="bundles" href="#bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundles</h2>
 <p>A bundle is a set of one or more source files that will be compiled in a single
 destination file.</p>
 <p>Each bundle has one mandatory option : <code>source</code>.</p>
@@ -209,7 +209,7 @@ destination file.</p>
 <p>This will automatically create a file in <code>&lt;destination_js&gt;/app.min.js</code>
 containing both source files that will be minified.</p>
 <p>The file name is taken from the bundle name if no <code>destination</code> is specified</p>
-<h3 id="page_Common_Bundle_options">Common Bundle options</h3>
+<h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Common Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -250,7 +250,7 @@ containing both source files that will be minified.</p>
 <p>Bundles have more options that are specific to the selected runners and bundle
 types.</p>
 </blockquote>
-<h3 id="page_CSS_Bundles_(_)">CSS Bundles (<code>crafty-preset-postcss</code>)</h3>
+<h3><a id="css-bundles-crafty-preset-postcss" href="#css-bundles-crafty-preset-postcss" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Bundles (<code>crafty-preset-postcss</code>)</h3>
 <pre><code class="hljs javascript">testIndex: {
     <span class="hljs-attr">source</span>: <span class="hljs-string">'css/test/test.scss'</span>,
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'index.min.css'</span>,
@@ -261,7 +261,7 @@ types.</p>
 to build it.</p>
 <p>The preset itself documents all options and features that are available to you.</p>
 <p><a href="../Packages/crafty_preset_postcss/index.html">More about <code>crafty-preset-postcss</code></a></p>
-<h3 id="page_JavaScript_Bundles_(_or_)">JavaScript Bundles (<code>crafty-preset-babel</code> or <code>crafty-preset-typescript</code>)</h3>
+<h3><a id="javascript-bundles-crafty-preset-babel-or-crafty-preset-typescript" href="#javascript-bundles-crafty-preset-babel-or-crafty-preset-typescript" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript Bundles (<code>crafty-preset-babel</code> or <code>crafty-preset-typescript</code>)</h3>
 <pre><code class="hljs javascript">app: {
     <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'app.min.js'</span>
@@ -274,14 +274,14 @@ bundles. The presets document all options and features that are available to
 you.</p>
 <p><a href="../Packages/crafty_preset_babel/index.html">More about <code>crafty-preset-babel</code></a><br />
 <a href="../Packages/crafty_preset_typescript/index.html">More about <code>crafty-preset-typescript</code></a></p>
-<h2 id="page_Images_(_or_)">Images (<code>crafty-preset-images</code> or <code>crafty-preset-images-simple</code>)</h2>
+<h2><a id="images-crafty-preset-images-or-crafty-preset-images-simple" href="#images-crafty-preset-images-or-crafty-preset-images-simple" class="Permalink" aria-hidden="true" title="Permalink">#</a>Images (<code>crafty-preset-images</code> or <code>crafty-preset-images-simple</code>)</h2>
 <p>You can add the <code>crafty-preset-images</code> or <code>crafty-preset-images-simple</code> package
 to your project to be able to compress your jpg, png, gif and svg files
 (<code>images-simple</code> will compress svg and copy the rest).</p>
 <p><a href="../Packages/crafty_preset_images.html">More about <code>crafty-preset-images</code></a><br />
 <a href="../Packages/crafty_preset_images_simple.html">More about <code>crafty-preset-images-simple</code></a></p>
-<h2 id="page_Naming_and_locations_conventions">Naming and locations conventions</h2>
-<h3 id="page_Locations">Locations</h3>
+<h2><a id="naming-and-locations-conventions" href="#naming-and-locations-conventions" class="Permalink" aria-hidden="true" title="Permalink">#</a>Naming and locations conventions</h2>
+<h3><a id="locations" href="#locations" class="Permalink" aria-hidden="true" title="Permalink">#</a>Locations</h3>
 <p>Your assets can be located anywhere you want next to your <code>package.json</code> and
 <code>crafty.config.js</code> but we recommend putting them inside a sub-directory:</p>
 <ul>
@@ -295,10 +295,10 @@ to your project to be able to compress your jpg, png, gif and svg files
 <p>If you have some external JavaScript or CSS that aren’t available in NPM. You
 can also use create a <code>vendor</code> directory either in the <code>js</code>/<code>css</code> folder or in
 <code>frontend</code> if your libraries contains both JavaScript and CSS files.</p>
-<h3 id="page_Bundle_names">Bundle names</h3>
+<h3><a id="bundle-names" href="#bundle-names" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle names</h3>
 <p>Your bundle names should have an expressive name, if you have a single bundle,
 name it either “app” or the name of your application.</p>
-<h3 id="page_Bundle_destinations">Bundle destinations</h3>
+<h3><a id="bundle-destinations" href="#bundle-destinations" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle destinations</h3>
 <p>When setting a destination, you should always prefix the extension with “.min”
 for example <code>file.min.js</code> or <code>file.min.css</code></p>
 <p>This is a convention that allows some tools to know the content is minified. And
@@ -308,13 +308,13 @@ will bring you the following benefits :</p>
 minified again, thus you get a performance boost.</li>
 <li>Files with “.min” in their names won’t go through the linting hooks.</li>
 </ul>
-<h2 id="page_Destination_directory">Destination directory</h2>
+<h2><a id="destination-directory" href="#destination-directory" class="Permalink" aria-hidden="true" title="Permalink">#</a>Destination directory</h2>
 <p>By default, your compiled assets will be in <code>dist/&lt;bundleType&gt;</code>. But you can
 override the <code>config.destination</code> or <code>config.destination_&lt;bundleType&gt;</code> option.</p>
 <p>You can also use the <code>crafty-preset-maven</code> with the <code>mavenType</code> option to move
 your assets to Maven’s <code>target</code> directory.</p>
 <p><a href="../Packages/crafty_preset_maven.html">More about <code>crafty-preset-maven</code></a></p>
-<h2 id="page_All_Options">All Options</h2>
+<h2><a id="all-options" href="#all-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>All Options</h2>
 <p><strong>Crafty</strong> has options that can be tweaked, the exhaustive documentation is
 <a href="crafty.config.js_Available_Options.html">available here</a>.</p>
     </div>

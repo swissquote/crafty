@@ -115,67 +115,67 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Linting">Linting</a></p>
+<a href="#linting">Linting</a>
 </li>
 <li>
-<p><a href="#page_Installation">Installation</a></p>
+<a href="#installation">Installation</a>
 </li>
 <li>
-<p><a href="#page_Usage_with_Webpack">Usage with Webpack</a></p>
-<ul class="TableOfContents">
+<a href="#usage-with-webpack">Usage with Webpack</a>
+<ul>
 <li>
-<p><a href="#page_Hot_Module_Replacement">Hot Module Replacement</a></p>
+<a href="#hot-module-replacement">Hot Module Replacement</a>
 </li>
 <li>
-<p><a href="#page_Extracting_CSS">Extracting CSS</a></p>
-<ul class="TableOfContents">
+<a href="#extracting-css">Extracting CSS</a>
+<ul>
 <li>
-<p><a href="#page_Side_effects">Side effects</a></p>
-</li>
-</ul>
+<a href="#side-effects">Side effects</a>
 </li>
 </ul>
-</li>
-<li>
-<p><a href="#page_Usage_with_Gulp">Usage with Gulp</a></p>
-</li>
-<li>
-<p><a href="#page_Extending_from_your">Extending from your <code>crafty.config.js</code></a></p>
-</li>
-<li>
-<p><a href="#page_Commands">Commands</a></p>
-<ul class="TableOfContents">
-<li>
-<p><a href="#page_section_12"><code>crafty cssLint</code></a></p>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Bundle_Options">Bundle Options</a></p>
-<ul class="TableOfContents">
+<a href="#usage-with-gulp">Usage with Gulp</a>
+</li>
 <li>
-<p><a href="#page_Linting_options">Linting options</a></p>
+<a href="#extending-from-your-crafty-config-js">Extending from your crafty.config.js</a>
+</li>
+<li>
+<a href="#commands">Commands</a>
+<ul>
+<li>
+<a href="#crafty-csslint">crafty cssLint</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#bundle-options">Bundle Options</a>
+<ul>
+<li>
+<a href="#linting-options">Linting options</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Description">Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>The principle of CSS is easy to grasp, yet CSS is complicated to write at large scales.</p>
 <p>We want to offer the best experience for writing CSS that is compatible with most browsers without the long configuration process.</p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p><strong>PostCSS</strong> is a CSS parser that supports plugins, countless plugins are maintained by a big community, we use a handful of them.</p>
 <p><a href="CSS_Features.html">Features and examples</a></p>
-<h2 id="page_Linting">Linting</h2>
+<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting</h2>
 <p><strong>Stylelint</strong> is a wonderful tool to lint CSS in according to your rules, we have a custom configuration preset for Stylelint that comes pre-configured.</p>
 <p><a href="CSS_Linting.html">Read more about it here</a></p>
-<h2 id="page_Installation">Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-postcss --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -186,19 +186,19 @@
   ]
 };
 </code></pre>
-<h2 id="page_Usage_with_Webpack">Usage with Webpack</h2>
+<h2><a id="usage-with-webpack" href="#usage-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack</h2>
 <p>Webpack defines the right loaders to support CSS.</p>
 <p>To use it, add <code>import &quot;myfile.scss&quot;</code> in your Webpack imported file.</p>
-<h3 id="page_Hot_Module_Replacement">Hot Module Replacement</h3>
+<h3><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h3>
 <p>When setting <code>hot: true</code> in your <code>crafty.config.js</code> for your main JavaScript bundle, you can enable Hot Module Replacement.</p>
 <p>With this, the CSS files imported in your Webpack bundles are automatically reloaded upon changes.</p>
 <p>This is used inside <code>crafty watch</code>, the build mode will not take it into account.</p>
-<h3 id="page_Extracting_CSS">Extracting CSS</h3>
+<h3><a id="extracting-css" href="#extracting-css" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extracting CSS</h3>
 <p>By default, the CSS will be embedded in your bundle, but you can provide the <code>extractCSS</code> option to extract your styles using the <code>MiniCssExtractPlugin</code>.</p>
-<h4 id="page_Side_effects">Side effects</h4>
+<h4><a id="side-effects" href="#side-effects" class="Permalink" aria-hidden="true" title="Permalink">#</a>Side effects</h4>
 <p>Be careful when using <code>extractCSS</code> option and <code>sideEffects: false</code> in <code>package.json</code> of your project. Crafty is using <code>css-loader</code> and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.</p>
 <p><a href="https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free" class="Link--external" rel="noopener noreferrer">Webpack docs and examples</a></p>
-<h2 id="page_Usage_with_Gulp">Usage with Gulp</h2>
+<h2><a id="usage-with-gulp" href="#usage-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Gulp</h2>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
@@ -213,7 +213,7 @@
   }
 };
 </code></pre>
-<h2 id="page_Extending_from_your">Extending from your <code>crafty.config.js</code></h2>
+<h2><a id="extending-from-your-crafty-config-js" href="#extending-from-your-crafty-config-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending from your <code>crafty.config.js</code></h2>
 <p>For this you need to add a <code>postcss</code> method to your <code>crafty.config.js</code></p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**
@@ -256,8 +256,8 @@
 };
 </code></pre>
 <p><a href="Postcss_Extension_API.html">Read about the full API</a></p>
-<h2 id="page_Commands">Commands</h2>
-<h3 id="page_section_12"><code>crafty cssLint</code></h3>
+<h2><a id="commands" href="#commands" class="Permalink" aria-hidden="true" title="Permalink">#</a>Commands</h2>
+<h3><a id="crafty-csslint" href="#crafty-csslint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty cssLint</code></h3>
 <p>This command will lint CSS files using Stylelint’s CLI too, you can get it’s documentation <a href="https://stylelint.io/user-guide/cli/" class="Link--external" rel="noopener noreferrer">here</a>.</p>
 <p>The additions made by this command are:</p>
 <ul>
@@ -279,7 +279,7 @@
 <pre><code class="hljs bash">crafty cssLint css/**/*.scss --preset recommended
 </code></pre>
 <p>If no preset is specified <code>recommended</code> is used.</p>
-<h2 id="page_Bundle_Options">Bundle Options</h2>
+<h2><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle Options</h2>
 <table>
 <thead>
 <tr>
@@ -300,7 +300,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="page_Linting_options">Linting options</h3>
+<h3><a id="linting-options" href="#linting-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting options</h3>
 <p>You can read about the linting options in the page about <a href="CSS_Linting.html">CSS Linting</a></p>
     </div>
 

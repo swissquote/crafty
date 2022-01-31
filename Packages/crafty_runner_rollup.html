@@ -89,7 +89,7 @@
                     </div>
 
     <div class="s-content">
-        <h2 id="page_Description">Description</h2>
+        <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>rollup.js is a module bundler for JavaScript which compiles small pieces of code
 into something larger and more complex, such as a library or application.</p>
 <p>rollup.js works well with libraries because it’s able to output files with
@@ -103,50 +103,50 @@ and some that are not pinpointed yet.</p>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Options">Options</a></p>
+<a href="#options">Options</a>
 </li>
 <li>
-<p><a href="#page_Bundle_Options">Bundle Options</a></p>
-<ul class="TableOfContents">
+<a href="#bundle-options">Bundle Options</a>
+<ul>
 <li>
-<p><a href="#page_put_babelruntime_inline_or_keep_it_as_imports"><code>inlineRuntime</code> / put @babel/runtime inline or keep it as imports</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p><a href="#page_Extending_the_configuration">Extending the configuration</a></p>
-<ul class="TableOfContents">
-<li>
-<p><a href="#page_Adding_modifying_plugins">Adding / modifying plugins</a></p>
+<a href="#inlineruntime-put-babel-runtime-inline-or-keep-it-as-imports">inlineRuntime / put @babel/runtime inline or keep it as imports</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Known_issues">Known issues</a></p>
+<a href="#extending-the-configuration">Extending the configuration</a>
+<ul>
+<li>
+<a href="#adding-modifying-plugins">Adding / modifying plugins</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#known-issues">Known issues</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <ul>
 <li>Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports</li>
 <li>Your code is Uglified after compilation.</li>
 <li>Configurable output formats</li>
 <li>Watch mode, re-compiles your files on changes</li>
 </ul>
-<h2 id="page_Options">Options</h2>
+<h2><a id="options" href="#options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Options</h2>
 <p>We don’t provide any option to configure rollup.js outside bundles, but as
 <code>crafty.config.js</code> is considered as a preset, you can define the <code>rollup</code>
 override method in your configuration file and change the configuration to your
 needs.</p>
 <p>Check the <strong>Extending the configuration</strong> section below for more information on
 that.</p>
-<h2 id="page_Bundle_Options">Bundle Options</h2>
+<h2><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle Options</h2>
 <p>The rollup.js preset is compatible with our
 <a href="crafty_preset_babel/index.html">Babel</a> and
 <a href="crafty_preset_typescript/index.html">TypeScript</a></p>
@@ -180,7 +180,7 @@ that.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_put_babelruntime_inline_or_keep_it_as_imports"><code>inlineRuntime</code> / put @babel/runtime inline or keep it as imports</h3>
+<h3><a id="inlineruntime-put-babel-runtime-inline-or-keep-it-as-imports" href="#inlineruntime-put-babel-runtime-inline-or-keep-it-as-imports" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>inlineRuntime</code> / put @babel/runtime inline or keep it as imports</h3>
 <p>Default: <code>true</code> when nothing is specified, and to <code>false</code> when a dependency to <code>@babel/runtime</code> is found.</p>
 <p>When compiling newer EcmaScript to older versions, some helper functions can be needed to make it work. For example functions to create classes, rest, spread, etc…</p>
 <p>These helpers are quite small, however, if you are creating a library which will be included in another project, your bundle might end up containing the library along with the copies that the final project will contain as well.</p>
@@ -202,7 +202,7 @@ that.</p>
 </code></pre>
 <p>The way to do this is by adding a dependency to <code>@babel/runtime</code> in your project’s <code>package.json</code>.</p>
 <p>If for some reason you need a dependency to <code>@babel/runtime</code> but still wish helpers to be inline, you can force it with <code>inlineRuntime: true</code>.</p>
-<h2 id="page_Extending_the_configuration">Extending the configuration</h2>
+<h2><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending the configuration</h2>
 <p>Each preset and <code>crafty.config.js</code> can define the <code>rollup(crafty, bundle, rollupConfig)</code> function to override rollup.js’ configuration.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**
@@ -220,7 +220,7 @@ that.</p>
 <a href="https://rollupjs.org/#javascript-api" class="Link--external" rel="noopener noreferrer">on the official website</a>.</p>
 <p>The difference with the official configuration is how plugins are handled. The
 section below explains how plugins are configured.</p>
-<h3 id="page_Adding_modifying_plugins">Adding / modifying plugins</h3>
+<h3><a id="adding-modifying-plugins" href="#adding-modifying-plugins" class="Permalink" aria-hidden="true" title="Permalink">#</a>Adding / modifying plugins</h3>
 <p>In rollup.js, plugins are functions that are called with their options.</p>
 <p>As we want to be able to override those options during the preparation phase of
 the runner, those plugins are presented in the following way :</p>
@@ -255,7 +255,7 @@ rollup.js .</p>
   }
 };
 </code></pre>
-<h2 id="page_Known_issues">Known issues</h2>
+<h2><a id="known-issues" href="#known-issues" class="Permalink" aria-hidden="true" title="Permalink">#</a>Known issues</h2>
 <ul>
 <li>If you have two bundles that run with rollup.js, if one fails, the second one
 stops as well.</li>

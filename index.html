@@ -64,13 +64,13 @@
     <div class="HomepageImage Container">
             </div>
 
-    <div class="HomepageButtons">
+        <div class="HomepageButtons">
         <div class="Container">
                            <a href="https://github.com/swissquote/crafty" class="Button Button--secondary Button--hero" rel="noopener noreferrer">
                    View On GitHub               </a>
             <a href="Getting_Started.html" class="Button Button--primary Button--hero">View Documentation</a>        </div>
     </div>
-</div>
+    </div>
 
 <div class="HomepageContent">
     <div class="Container">
@@ -78,8 +78,8 @@
             <div class="doc_content s-content">
                 <p><strong>Crafty</strong> is a package bundled with all needed configurations to make your
 Frontend build environment a joy to work with.</p>
-<h2 id="page_Installation_and_usage">Installation and usage</h2>
-<h3 id="page_Install">Install</h3>
+<h2><a id="installation-and-usage" href="#installation-and-usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation and usage</h2>
+<h3><a id="install" href="#install" class="Permalink" aria-hidden="true" title="Permalink">#</a>Install</h3>
 <pre><code class="hljs bash">npm install @swissquote/crafty \
   @swissquote/crafty-preset-babel \
   @swissquote/crafty-preset-postcss \
@@ -87,7 +87,7 @@ Frontend build environment a joy to work with.</p>
   @swissquote/crafty-runner-webpack \
   @swissquote/crafty-runner-gulp
 </code></pre>
-<h3 id="page_Configure">Configure</h3>
+<h3><a id="configure" href="#configure" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configure</h3>
 <p>In <code>crafty.config.js</code> add</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
@@ -111,7 +111,7 @@ Frontend build environment a joy to work with.</p>
   }
 };
 </code></pre>
-<h3 id="page_Run">Run</h3>
+<h3><a id="run" href="#run" class="Permalink" aria-hidden="true" title="Permalink">#</a>Run</h3>
 <p>You can run the commands using
 <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" class="Link--external" rel="noopener noreferrer">npx</a>
 or by adding them to the <code>scripts</code> section of your <code>package.json</code></p>
@@ -128,7 +128,7 @@ and <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferre
 <li>Run your tests with <a href="https://facebook.github.io/jest/" class="Link--external" rel="noopener noreferrer">Jest</a> and compile them
 with <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferrer">Babel</a>.</li>
 </ul>
-<h2 id="page_Why">Why</h2>
+<h2><a id="why" href="#why" class="Permalink" aria-hidden="true" title="Permalink">#</a>Why</h2>
 <p>Getting started in a web application is easy, write an <code>index.html</code>, a
 <code>style.css</code>, and a <code>script.js</code> file and you’re good to go.</p>
 <p>But on bigger apps you might want some CSS preprocessing ? but which one to
@@ -151,12 +151,12 @@ compressed and linted with the best tools available.</p>
 and best practices for Frontend development.</p>
 <p>Most aspects of <strong>Crafty</strong> are configurable and updates are painless.</p>
 <p><a href="Why.html">More on Why</a></p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p>The main feature of <strong>Crafty</strong> is to compile your JavaScript, CSS, compress your
 images and deliver them in the target directory.</p>
 <p>But shortening the list of features you gain with <strong>Crafty</strong> to one sentence
 doesn’t give it’s full measure. Here’s some other features it has:</p>
-<h3 id="page_JavaScript">JavaScript</h3>
+<h3><a id="javascript" href="#javascript" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript</h3>
 <ul>
 <li>Write <strong>EcmaScript 2015</strong>, transpiled to JavaScript all browsers understand
 with Babel.</li>
@@ -168,7 +168,7 @@ errors.</li>
 <li>Simple debugging with Source Maps.</li>
 </ul>
 <p><a href="Use_Cases/Compiling_JavaScript.html">Read more about features here</a></p>
-<h3 id="page_CSS">CSS</h3>
+<h3><a id="css" href="#css" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS</h3>
 <ul>
 <li>Preprocess your CSS using <strong>PostCSS</strong> and plugins that will allow to
 write in a syntax approaching the one of Sass.</li>
@@ -179,12 +179,12 @@ Future CSS features today and <code>postcss-advanced-variables</code> to define 
 <li>Simple Debugging with Source Maps</li>
 </ul>
 <p><a href="Use_Cases/Compiling_CSS.html">Read more about features here</a></p>
-<h3 id="page_Images">Images</h3>
+<h3><a id="images" href="#images" class="Permalink" aria-hidden="true" title="Permalink">#</a>Images</h3>
 <p>With the help of
 <a href="Packages/crafty_preset_images.html"><code>crafty-preset-images</code></a> you can also
 compress your images (svg/png/jpg/gif).</p>
 <p><a href="Use_Cases/Compressing_Images.html">Read more about features and configuration here</a></p>
-<h3 id="page_Watching_for_Changes_Hot_Module_Replacement">Watching for Changes / Hot Module Replacement</h3>
+<h3><a id="watching-for-changes-hot-module-replacement" href="#watching-for-changes-hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Watching for Changes / Hot Module Replacement</h3>
 <p>By running the <code>gulp watch</code> command, a process is launched to trigger a rebuild
 of your asset on each change in <code>src/main/frontend</code>.</p>
 <p>A change on the configuration while Watching will reconfigure itself.</p>
@@ -194,7 +194,7 @@ reloading</strong>.</p>
 <p>Here’s an example:</p>
 <p><img src="react-hot-loader.gif" alt="React Hot Module Reload example" /></p>
 <p><a href="User_Guides/Developing_Faster_with_Crafty_watch.html">Read more about <code>watch</code></a></p>
-<h2 id="page_Maven,_Node.js_and_Gulp">Maven, Node.js and Gulp</h2>
+<h2><a id="maven-node-js-and-gulp" href="#maven-node-js-and-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Maven, Node.js and Gulp</h2>
 <p>Swissquote’s build environment is based mainly on Maven and it’s plugin
 ecosystem. But the Frontend world relies on Node.js tooling to build
 JavaScript and CSS assets.</p>
@@ -207,7 +207,7 @@ the JavaScript world).</p>
 you assets with the best-in-class tools. Working with Swissquote’s JavaScript and CSS Guidelines as well.</p>
 <p>Everything bundled in a way that <code>mvn clean install</code> will build your assets like
 you would expect with pure Java plugins.</p>
-<h2 id="page_Getting_started">Getting started</h2>
+<h2><a id="getting-started" href="#getting-started" class="Permalink" aria-hidden="true" title="Permalink">#</a>Getting started</h2>
 <p>To get started, follow <a href="Getting_Started.html">the guide</a></p>
             </div>
         </div>

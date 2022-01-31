@@ -91,11 +91,11 @@
     <div class="s-content">
         <p>Since Crafty 1.7.0, We use ESLint to lint TypeScript.</p>
 <p>This means that the tooling we used for JavaScript is now the same for TypeScript, which means that the documentation for <a href="JavaScript_Linting.html">JavaScript Linting</a> applies for TypeScript as well.</p>
-<h2 id="page_Differences">Differences</h2>
+<h2><a id="differences" href="#differences" class="Permalink" aria-hidden="true" title="Permalink">#</a>Differences</h2>
 <p>TypeScript, with its type system can apply more advanced checks to the code.
 But ESLint doesn’t understand types in its default rule set, that’s why we include the <code>@typescript-eslint/eslint-plugin</code> plugin to add more advanced rules.</p>
 <p>The <code>format</code> and <code>recommended</code> presets we have in our own ESLint plugin already include rules for TypeScript out of the box.</p>
-<h2 id="page_Customize_the_rules">Customize the rules</h2>
+<h2><a id="customize-the-rules" href="#customize-the-rules" class="Permalink" aria-hidden="true" title="Permalink">#</a>Customize the rules</h2>
 <p>ESLint <a href="http://eslint.org/docs/rules/" class="Link--external" rel="noopener noreferrer">contains a lot of rules</a>.</p>
 <p>We created a default set of rules following the Swissquote JavaScript Guideline, but if your project wants stricter rules, you can enable them like that :</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {

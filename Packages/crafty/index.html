@@ -89,30 +89,30 @@
                     </div>
 
     <div class="s-content">
-        <h2 id="page_Description">Description</h2>
+        <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p><code>crafty</code> is the core package of Crafty, it gives the foundations to load presets and execute the tasks and commands created by them.</p>
 <p>Crafty comes with three default commands, reads one configuration file and loads presets.
 All the rest is handled by presets.</p>
-<h2 id="page_The_philosophy">The philosophy</h2>
+<h2><a id="the-philosophy" href="#the-philosophy" class="Permalink" aria-hidden="true" title="Permalink">#</a>The philosophy</h2>
 <p>Crafty’s philosophy is that there are great build and automation tools out there, we don’t want to reinvent them.</p>
 <p>Gulp is awesome to create tasks and streams of work, Webpack is great at creating bundles, PostCSS and its plugin ecosystem is big. But what plugins and loaders should we use for our needs ?</p>
 <p>Crafty’s philosophy is that if you wish to use Gulp and Webpack together, it should be easy.
 If you want to use TypeScript instead of Babel, it should be a single configuration line change.</p>
 <p>The default configuration should allow you to get started in a couple of minutes, but you should be able to fine-tune the configuration to your needs.</p>
 <p>Another aspect is that configuring your build process once is one thing, keeping it up-to-date is more complicated. Does a new major version of PostCSS work with my existing plugins ? Does this minor update introduce a breaking change by mistake ? Crafty takes care of that heavy lifting and helps you keep your <code>package.json</code> small.</p>
-<h2 id="page_What_s_inside">What’s inside</h2>
-<h3 id="page_Bundles">Bundles</h3>
+<h2><a id="what-s-inside" href="#what-s-inside" class="Permalink" aria-hidden="true" title="Permalink">#</a>What’s inside</h2>
+<h3><a id="bundles" href="#bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundles</h3>
 <p>In Crafty, a bundle is a piece of configuration that represents one or more source files and one destination file. (In some cases, more than one destination file.)</p>
 <p>Each bundle has to be treated by a runner.</p>
-<h3 id="page_Runners">Runners</h3>
+<h3><a id="runners" href="#runners" class="Permalink" aria-hidden="true" title="Permalink">#</a>Runners</h3>
 <p>A runner’s purpose is to take a bundle and turn it into a task that will then take your files and compile them.</p>
 <p>Each runner can be augmented with presets.</p>
-<h3 id="page_Presets">Presets</h3>
+<h3><a id="presets" href="#presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Presets</h3>
 <p>Presets are a way to extend Crafty’s capabilities with new tasks, commands, runners and configuration.</p>
 <p>Each preset can use any number of extension points (functions) that will be executed by crafty or other presets.</p>
 <p>We have an extension point that can override the configuration, an extension point to add Babel plugins (provided by the Babel preset) and more.</p>
 <p>Read more about <a href="Anatomy_of_a_preset.html">the anatomy of a preset</a></p>
-<h2 id="page_Existing_runners_and_presets">Existing runners and presets</h2>
+<h2><a id="existing-runners-and-presets" href="#existing-runners-and-presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Existing runners and presets</h2>
 <ul>
 <li>
 <a href="../crafty_runner_webpack.html"><code>crafty-runner-webpack</code></a> Use this runner to bundle your code with Webpack.</li>

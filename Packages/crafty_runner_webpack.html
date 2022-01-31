@@ -89,7 +89,7 @@
                     </div>
 
     <div class="s-content">
-        <h2 id="page_Description">Description</h2>
+        <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>Webpack is an asset bundler, its purpose is to compile your JavaScript code to
 be the most efficient possible for production.</p>
 <div class="TableOfContentsContainer">
@@ -97,28 +97,28 @@ be the most efficient possible for production.</p>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Configuration">Configuration</a></p>
-<ul class="TableOfContents">
+<a href="#configuration">Configuration</a>
+<ul>
 <li>
-<p><a href="#page_Options">Options</a></p>
+<a href="#options">Options</a>
 </li>
 <li>
-<p><a href="#page_Bundle_Options">Bundle Options</a></p>
+<a href="#bundle-options">Bundle Options</a>
 </li>
 <li>
-<p><a href="#page_Extending_the_configuration">Extending the configuration</a></p>
-<ul class="TableOfContents">
+<a href="#extending-the-configuration">Extending the configuration</a>
+<ul>
 <li>
-<p><a href="#page_section_7"><code>webpack.config.js</code></a></p>
+<a href="#webpack-config-js">webpack.config.js</a>
 </li>
 <li>
-<p><a href="#page_section_8"><code>webpack(crafty, bundle, chain)</code></a></p>
+<a href="#webpack-crafty-bundle-chain">webpack(crafty, bundle, chain)</a>
 </li>
 </ul>
 </li>
@@ -126,7 +126,7 @@ be the most efficient possible for production.</p>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <ul>
 <li>Bundle your JavaScript using EcmaScript 2015 imports or commonjs imports</li>
 <li>Your code is Uglified after compilation.</li>
@@ -134,15 +134,15 @@ be the most efficient possible for production.</p>
 <li>Watch mode, re-compiles your files on changes</li>
 <li>Profile your bundles with <code>--profile</code> which will create a profile next to the generated JavaScript</li>
 </ul>
-<h2 id="page_Configuration">Configuration</h2>
-<h3 id="page_Options">Options</h3>
+<h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
+<h3><a id="options" href="#options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Options</h3>
 <p>We don’t provide any option to configure Webpack outside bundles, but as
 <code>crafty.config.js</code> is considered as a preset, you can define the <code>webpack</code>
 override method in your configuration file and change the configuration to your
 needs.</p>
 <p>Check the <strong>Extending the configuration</strong> section below for more information on
 that.</p>
-<h3 id="page_Bundle_Options">Bundle Options</h3>
+<h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle Options</h3>
 <table>
 <thead>
 <tr>
@@ -184,10 +184,10 @@ that.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_Extending_the_configuration">Extending the configuration</h3>
+<h3><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending the configuration</h3>
 <p>Extending Webpack’s configuration can be done in two different way, either with
 a <code>webpack.config.js</code> file or with the <code>webpack</code> extension point</p>
-<h4 id="page_section_7"><code>webpack.config.js</code></h4>
+<h4><a id="webpack-config-js" href="#webpack-config-js" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>webpack.config.js</code></h4>
 <p>In this solution, you have to create a <code>webpack.config.js</code> file next to your
 <code>package.json</code>.</p>
 <p>This file should contain the configuration you wish to change, the rest being
@@ -195,7 +195,7 @@ already configured inside <strong>Crafty</strong> we will merge your custom sett
 <p>This solution is a bit less powerful than the extension point: You can replace
 configuration but you can’t remove loaders and you can’t change the loader’s
 configuration.</p>
-<h4 id="page_section_8"><code>webpack(crafty, bundle, chain)</code></h4>
+<h4><a id="webpack-crafty-bundle-chain" href="#webpack-crafty-bundle-chain" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>webpack(crafty, bundle, chain)</code></h4>
 <p>Each preset and <code>crafty.config.js</code> can define the <code>webpack(crafty, bundle, chain)</code> function to override rollup.js’ configuration.</p>
 <p>Webpack’s configuration is built using
 <a href="https://github.com/mozilla-neutrino/webpack-chain#getting-started" class="Link--external" rel="noopener noreferrer"><code>webpack-chain</code></a>

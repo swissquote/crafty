@@ -95,43 +95,43 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Two_available_presets_Legacy_and_Recommended">Two available presets: Legacy and Recommended</a></p>
+<a href="#two-available-presets-legacy-and-recommended">Two available presets: Legacy and Recommended</a>
 </li>
 <li>
-<p><a href="#page_Linting_in_development">Linting in development</a></p>
+<a href="#linting-in-development">Linting in development</a>
 </li>
 <li>
-<p><a href="#page_Turning_off_linting_for_some_parts_of_your_code">Turning off linting for some parts of your code</a></p>
-<ul class="TableOfContents">
+<a href="#turning-off-linting-for-some-parts-of-your-code">Turning off linting for some parts of your code</a>
+<ul>
 <li>
-<p><a href="#page_Disable_linting_for_a_line">Disable linting for a line</a></p>
+<a href="#disable-linting-for-a-line">Disable linting for a line</a>
 </li>
 <li>
-<p><a href="#page_Disable_linting_for_a_section">Disable linting for a section</a></p>
+<a href="#disable-linting-for-a-section">Disable linting for a section</a>
 </li>
 <li>
-<p><a href="#page_Disable_linting_for_one_or_more_files">Disable linting for one or more files</a></p>
+<a href="#disable-linting-for-one-or-more-files">Disable linting for one or more files</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Customizing_the_rules">Customizing the rules</a></p>
+<a href="#customizing-the-rules">Customizing the rules</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Two_available_presets_Legacy_and_Recommended">Two available presets: Legacy and Recommended</h2>
+<h2><a id="two-available-presets-legacy-and-recommended" href="#two-available-presets-legacy-and-recommended" class="Permalink" aria-hidden="true" title="Permalink">#</a>Two available presets: Legacy and Recommended</h2>
 <p>Our linting rules come in two flavors, Legacy and Recommended.</p>
 <ul>
 <li>Legacy will check the formatting and common practices.</li>
 <li>Recommended is the full Swissquote CSS Guideline compliance set including the BEM naming conventions.</li>
 </ul>
 <p>By default, we check in <strong>Recommended</strong> mode, you can change this parameter with the <a href="../../User_Guides/crafty.config.js_Available_Options.html"><code>legacy_css</code> option in your <code>crafty.config.js</code></a></p>
-<h2 id="page_Linting_in_development">Linting in development</h2>
+<h2><a id="linting-in-development" href="#linting-in-development" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting in development</h2>
 <p>Linting is important but while writing code, formatting is not the most important thing and failing the build for something as insignificant as a space is more annoying than helpful. That’s why in Crafty, formatting rules are in warning mode during development (with <code>crafty watch</code>) so that you can focus on programming and not on formatting.</p>
-<h2 id="page_Turning_off_linting_for_some_parts_of_your_code">Turning off linting for some parts of your code</h2>
+<h2><a id="turning-off-linting-for-some-parts-of-your-code" href="#turning-off-linting-for-some-parts-of-your-code" class="Permalink" aria-hidden="true" title="Permalink">#</a>Turning off linting for some parts of your code</h2>
 <p>For obvious reasons, you shouldn’t disable linting on your files, but sometimes, it’s necessary.</p>
 <p>Some browser specific hacks or other tweaks may come as false positives in the linter or you want to ignore a folder containing external libraries.</p>
-<h3 id="page_Disable_linting_for_a_line">Disable linting for a line</h3>
+<h3><a id="disable-linting-for-a-line" href="#disable-linting-for-a-line" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting for a line</h3>
 <p>The best is to use this way to silence stylelint, to disable the parts you know to be correct.</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* stylelint-disable-next-line */</span>
 <span class="hljs-selector-id">#id</span> {
@@ -142,7 +142,7 @@
 <p>The next line gives a more interesting example : <code>/* stylelint-disable-next-line declaration-no-important */</code> we disable the linting for a specific rule.</p>
 <p>This is the recommended way as you won’t risk silencing errors that would have been useful to you, you can even specify more than one rule, separated by a comma.</p>
 <p>You can also use the alternative <code>/* stylelint-disable-line */</code> comment to disable the current line.</p>
-<h3 id="page_Disable_linting_for_a_section">Disable linting for a section</h3>
+<h3><a id="disable-linting-for-a-section" href="#disable-linting-for-a-section" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting for a section</h3>
 <p>You can also disable linting for one or more blocks</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* stylelint-disable selector-no-id, declaration-no-important  */</span>
 <span class="hljs-selector-id">#id</span> {
@@ -150,7 +150,7 @@
 }
 <span class="hljs-comment">/* stylelint-enable */</span>
 </code></pre>
-<h3 id="page_Disable_linting_for_one_or_more_files">Disable linting for one or more files</h3>
+<h3><a id="disable-linting-for-one-or-more-files" href="#disable-linting-for-one-or-more-files" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting for one or more files</h3>
 <p>When running, <strong>Stylelint</strong> will look for a <code>.stylelintignore</code> file in it’s working directory and apply all the patterns to ignore some files.</p>
 <p>The patterns in your <code>.stylelintignore</code> file must match the <a href="https://git-scm.com/docs/gitignore" class="Link--external" rel="noopener noreferrer"><code>.gitignore</code> syntax</a>.</p>
 <p>For example:</p>
@@ -161,7 +161,7 @@
 <p>For the hooks, the file must be at the root of your repository (next to your <code>.hgignore</code>/<code>.gitignore</code>).</p>
 <p>For <strong>Crafty</strong>, the file must be in the Gulp working directory (generally <code>src/main/frontend</code>).</p>
 </blockquote>
-<h2 id="page_Customizing_the_rules">Customizing the rules</h2>
+<h2><a id="customizing-the-rules" href="#customizing-the-rules" class="Permalink" aria-hidden="true" title="Permalink">#</a>Customizing the rules</h2>
 <p>The library we use for CSS linting (Stylelint) <a href="http://stylelint.io/user-guide/rules/" class="Link--external" rel="noopener noreferrer">contains a lot of rules</a>.</p>
 <p>We created a default set of rules following the Swissquote CSS Guideline, but if your project wants stricter rules, you can follow the example here.</p>
 <p>Be aware that these rules will not be applied to the mercurial hooks.</p>

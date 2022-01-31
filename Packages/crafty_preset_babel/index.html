@@ -116,59 +116,59 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Linting">Linting</a></p>
+<a href="#linting">Linting</a>
 </li>
 <li>
-<p><a href="#page_Installation">Installation</a></p>
+<a href="#installation">Installation</a>
 </li>
 <li>
-<p><a href="#page_Usage">Usage</a></p>
-<ul class="TableOfContents">
+<a href="#usage">Usage</a>
+<ul>
 <li>
-<p><a href="#page_With_Webpack_rollup.js">With Webpack / rollup.js</a></p>
-<ul class="TableOfContents">
+<a href="#with-webpack-rollup-js">With Webpack / rollup.js</a>
+<ul>
 <li>
-<p><a href="#page_JavaScript_External_assets">JavaScript External assets</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p><a href="#page_With_Gulp">With Gulp</a></p>
+<a href="#javascript-external-assets">JavaScript External assets</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Usage_with_Jest">Usage with Jest</a></p>
+<a href="#with-gulp">With Gulp</a>
+</li>
+</ul>
 </li>
 <li>
-<p><a href="#page_Configuration">Configuration</a></p>
-<ul class="TableOfContents">
-<li>
-<p><a href="#page_Bundle_options">Bundle options</a></p>
+<a href="#usage-with-jest">Usage with Jest</a>
 </li>
 <li>
-<p><a href="#page_Adding_Babel_plugins_and_presets">Adding Babel plugins and presets</a></p>
+<a href="#configuration">Configuration</a>
+<ul>
+<li>
+<a href="#bundle-options">Bundle options</a>
+</li>
+<li>
+<a href="#adding-babel-plugins-and-presets">Adding Babel plugins and presets</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Description">Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p><strong>Babel</strong> is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with <strong>ESLint</strong> to lint your code, you get the best preset to get started.</p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p><code>@swissquote/crafty-preset-babel</code> is able to configure <strong>Babel</strong> with <strong>Webpack</strong> and <strong>rollup.js</strong>. This preset also supports <strong>Gulp</strong> but in this case it concatenates and minifies the files, it doesn’t resolve imports.</p>
 <p><a href="../babel_preset_swissquote.html">Our Babel preset</a></p>
 <p><a href="JavaScript_Features.html">Read more</a></p>
-<h2 id="page_Linting">Linting</h2>
+<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting</h2>
 <p>In <code>@swissquote/crafty-preset-babel</code> JavaScript is linted with <strong>ESLint</strong>, a powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline through our <code>@swissquote/crafty-preset-eslint</code> preset.</p>
 <p><a href="../crafty_preset_eslint/JavaScript_Linting.html">Read more</a></p>
-<h2 id="page_Installation">Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-babel --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -185,11 +185,11 @@
   }
 };
 </code></pre>
-<h2 id="page_Usage">Usage</h2>
-<h3 id="page_With_Webpack_rollup.js">With Webpack / rollup.js</h3>
+<h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage</h2>
+<h3><a id="with-webpack-rollup-js" href="#with-webpack-rollup-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Webpack / rollup.js</h3>
 <p>Both runners have the same features in regards to Babel support.
 They will resolve your modules recursively and bundle them in one file or more if you do some code-splitting.</p>
-<h4 id="page_JavaScript_External_assets">JavaScript External assets</h4>
+<h4><a id="javascript-external-assets" href="#javascript-external-assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript External assets</h4>
 <p>By default, all bundlers include all external dependencies in the final bundle, this works fine for applications, but if you wish to build a multi-tenant application or a library, you don’t wish to include all dependencies, because you’ll end up with the same dependency duplicated.</p>
 <p>The <code>externals</code> option allows you to define a list of libraries that are provided and should not be embedded in the build, here is an example :</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -211,15 +211,15 @@ They will resolve your modules recursively and bundle them in one file or more i
 <blockquote>
 <p>You can see that globs were used here, note that they work for Webpack but rollup.js needs complete strings.</p>
 </blockquote>
-<h3 id="page_With_Gulp">With Gulp</h3>
+<h3><a id="with-gulp" href="#with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Gulp</h3>
 <p>Gulp will not bundle your files like Webpack and rollup.js do, instead it will generate one output file per input file.
 This is useful if you are creating a library as it’s the role of the final application to tree-shake what it doesn’t need from your library.</p>
 <p>Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren’t removed from your bundle even if they aren’t used.</p>
-<h2 id="page_Usage_with_Jest">Usage with Jest</h2>
+<h2><a id="usage-with-jest" href="#usage-with-jest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest</h2>
 <p>If you include both <code>crafty-preset-babel</code> and <code>crafty-preset-jest</code>.
 When running your tests with <code>crafty test</code> this preset will be use to convert all <code>.js</code> and <code>.jsx</code> files (source and test files)</p>
-<h2 id="page_Configuration">Configuration</h2>
-<h3 id="page_Bundle_options">Bundle options</h3>
+<h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
+<h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -240,7 +240,7 @@ When running your tests with <code>crafty test</code> this preset will be use to
 </tr>
 </tbody>
 </table>
-<h3 id="page_Adding_Babel_plugins_and_presets">Adding Babel plugins and presets</h3>
+<h3><a id="adding-babel-plugins-and-presets" href="#adding-babel-plugins-and-presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Adding Babel plugins and presets</h3>
 <p>You can add, replace or remove plugins and add options to our default Babel configuration.
 To see which plugins are already included, you can go to the <a href="../babel_preset_swissquote.html">Swissquote Preset for Babel</a> page.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {

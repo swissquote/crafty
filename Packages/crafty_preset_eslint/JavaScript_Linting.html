@@ -96,37 +96,37 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Fixing_linting_errors_automatically">Fixing linting errors automatically</a></p>
+<a href="#fixing-linting-errors-automatically">Fixing linting errors automatically</a>
 </li>
 <li>
-<p><a href="#page_Linting_in_development">Linting in development</a></p>
+<a href="#linting-in-development">Linting in development</a>
 </li>
 <li>
-<p><a href="#page_Turning_off_linting_for_some_parts_of_your_code">Turning off linting for some parts of your code</a></p>
-<ul class="TableOfContents">
+<a href="#turning-off-linting-for-some-parts-of-your-code">Turning off linting for some parts of your code</a>
+<ul>
 <li>
-<p><a href="#page_Disable_linting_on_a_line">Disable linting on a line</a></p>
+<a href="#disable-linting-on-a-line">Disable linting on a line</a>
 </li>
 <li>
-<p><a href="#page_Disable_linting_on_a_block_of_code">Disable linting on a block of code</a></p>
+<a href="#disable-linting-on-a-block-of-code">Disable linting on a block of code</a>
 </li>
 <li>
-<p><a href="#page_Disable_linting_for_one_or_more_files">Disable linting for one or more files</a></p>
+<a href="#disable-linting-for-one-or-more-files">Disable linting for one or more files</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Customizing_the_rules">Customizing the rules</a></p>
+<a href="#customizing-the-rules">Customizing the rules</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Fixing_linting_errors_automatically">Fixing linting errors automatically</h2>
+<h2><a id="fixing-linting-errors-automatically" href="#fixing-linting-errors-automatically" class="Permalink" aria-hidden="true" title="Permalink">#</a>Fixing linting errors automatically</h2>
 <p>Some linting errors, like variable renaming, require an human mind to be fixed, but others don’t.</p>
 <p><strong>ESLint</strong> comes with a useful command line flag to fix the errors automatically.</p>
 <p>We bundled a <a href="../../CLI.html">command line tool</a> that will leverage this and help you fix your JavaScript errors.</p>
-<h2 id="page_Linting_in_development">Linting in development</h2>
+<h2><a id="linting-in-development" href="#linting-in-development" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting in development</h2>
 <p>Linting is important but while writing code, formatting is not the most important thing and failing the build for something as insignificant as a space is more annoying than helpful. That’s why in Crafty, formatting rules are in warning mode during development (with <code>crafty watch</code>) so that you can focus on programming and not on formatting.</p>
-<h2 id="page_Turning_off_linting_for_some_parts_of_your_code">Turning off linting for some parts of your code</h2>
+<h2><a id="turning-off-linting-for-some-parts-of-your-code" href="#turning-off-linting-for-some-parts-of-your-code" class="Permalink" aria-hidden="true" title="Permalink">#</a>Turning off linting for some parts of your code</h2>
 <p>You might find yourself surprised with the number of errors you get when you lint your JavaScript files for the first time.</p>
 <p>Here I’ll explain how to disable linting on some files or part of files, but remember! The linting is here to help you! You should have good reasons to disable linting.</p>
 <p>Good reasons include:</p>
@@ -134,7 +134,7 @@
 <li>It’s an external library you downloaded, so it should not follow our conventions</li>
 <li>you are adding a <code>console.log</code> but wrapped in a <code>if</code> statement to check if “console” exists in the global scope.</li>
 </ul>
-<h3 id="page_Disable_linting_on_a_line">Disable linting on a line</h3>
+<h3><a id="disable-linting-on-a-line" href="#disable-linting-on-a-line" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting on a line</h3>
 <p>To be surgical you can also disable the linting on a single line with <code>eslint-disable-line</code></p>
 <p>An optional feature is to add which rules are disabled. In this example we disable the <code>no-console</code> rule. We recommend to do this whenever you need to disable linting in a file.
 You can find the rule name at the end of the error message you get when compiling.</p>
@@ -142,7 +142,7 @@ You can find the rule name at the end of the error message you get when compilin
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Les carottes sont cuites"</span>); <span class="hljs-comment">//eslint-disable-line no-console</span>
 }
 </code></pre>
-<h3 id="page_Disable_linting_on_a_block_of_code">Disable linting on a block of code</h3>
+<h3><a id="disable-linting-on-a-block-of-code" href="#disable-linting-on-a-block-of-code" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting on a block of code</h3>
 <p>You should use this possibility if you’re sure of what you do.
 To disable linting on a block you can add the following comments around your block</p>
 <pre><code class="hljs javascript"><span class="hljs-comment">/* eslint-disable */</span>
@@ -152,7 +152,7 @@ alert(<span class="hljs-string">"foo"</span>);
 
 <span class="hljs-comment">/* eslint-enable */</span>
 </code></pre>
-<h3 id="page_Disable_linting_for_one_or_more_files">Disable linting for one or more files</h3>
+<h3><a id="disable-linting-for-one-or-more-files" href="#disable-linting-for-one-or-more-files" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disable linting for one or more files</h3>
 <p>When running, <strong>ESLint</strong> will look for a <code>.eslintignore</code> file in it’s working directory and apply all the patterns to ignore some files.</p>
 <p>The patterns in your <code>.eslintignore</code> file must match the <a href="https://git-scm.com/docs/gitignore" class="Link--external" rel="noopener noreferrer"><code>.gitignore</code> syntax</a>.</p>
 <p>For example:</p>
@@ -163,7 +163,7 @@ alert(<span class="hljs-string">"foo"</span>);
 <p>For the hooks, the file must be at the root of your repository (next to your <code>.hgignore</code>/<code>.gitignore</code>).</p>
 <p>For <strong>Crafty</strong>, the file must be in the Gulp working directory (generally <code>src/main/frontend</code>).</p>
 </blockquote>
-<h2 id="page_Customizing_the_rules">Customizing the rules</h2>
+<h2><a id="customizing-the-rules" href="#customizing-the-rules" class="Permalink" aria-hidden="true" title="Permalink">#</a>Customizing the rules</h2>
 <p>ESLint <a href="http://eslint.org/docs/rules/" class="Link--external" rel="noopener noreferrer">contains a lot of rules</a>.</p>
 <p>We created a default set of rules following the Swissquote JavaScript Guideline, but if your project wants stricter rules, you can enable them like that :</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {

@@ -96,51 +96,51 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_section_1"><code>crafty</code></a></p>
+<a href="#crafty">crafty</a>
 </li>
 <li>
-<p><a href="#page_section_2"><code>crafty run [task [task...]]</code></a></p>
+<a href="#crafty-run-task-task">crafty run [task [task...]]</a>
 </li>
 <li>
-<p><a href="#page_section_3"><code>crafty watch</code></a></p>
+<a href="#crafty-watch">crafty watch</a>
 </li>
 <li>
-<p><a href="#page_section_4"><code>crafty test</code></a></p>
+<a href="#crafty-test">crafty test</a>
 </li>
 <li>
-<p><a href="#page_Commands_added_by_presets">Commands added by presets</a></p>
-<ul class="TableOfContents">
+<a href="#commands-added-by-presets">Commands added by presets</a>
+<ul>
 <li>
-<p><a href="#page_section_6"><code>crafty cssLint [file|dir|glob]*</code></a></p>
+<a href="#crafty-csslint-file-dir-glob">crafty cssLint [file|dir|glob]*</a>
 </li>
 <li>
-<p><a href="#page_section_7"><code>crafty jsLint [file|dir|glob]*</code></a></p>
+<a href="#crafty-jslint-file-dir-glob">crafty jsLint [file|dir|glob]*</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_section_1"><code>crafty</code></h2>
+<h2><a id="crafty" href="#crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty</code></h2>
 <p>Will list the available commands and tasks.</p>
-<h2 id="page_section_2"><code>crafty run [task [task...]]</code></h2>
+<h2><a id="crafty-run-task-task" href="#crafty-run-task-task" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty run [task [task...]]</code></h2>
 <p>This is the main entry point to execute one or more tasks in Crafty.</p>
 <p>Running <code>crafty run</code> without a task will execute the <code>default</code> task.</p>
 <p>You can specify one or more tasks to run, separated by space.</p>
-<h2 id="page_section_3"><code>crafty watch</code></h2>
+<h2><a id="crafty-watch" href="#crafty-watch" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty watch</code></h2>
 <p>Running the watch mode will execute all tasks once at the start. After that, it
 will watch for file system changes and re-execute related tasks once a change
 occurs.</p>
 <p>All presets can add watchers for any file pattern or use their embedded watcher
 (like Webpack).</p>
-<h2 id="page_section_4"><code>crafty test</code></h2>
+<h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty test</code></h2>
 <p>Presets can register test runners, when running <code>crafty test</code> all these test
 runners are invoked.</p>
 <p>We have one test runner which is provided as a preset; Jest.</p>
-<h2 id="page_Commands_added_by_presets">Commands added by presets</h2>
-<h3 id="page_section_6"><code>crafty cssLint [file|dir|glob]*</code></h3>
+<h2><a id="commands-added-by-presets" href="#commands-added-by-presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Commands added by presets</h2>
+<h3><a id="crafty-csslint-file-dir-glob" href="#crafty-csslint-file-dir-glob" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty cssLint [file|dir|glob]*</code></h3>
 <p>Bundled Stylelint with embedded presets,
 <a href="Packages/crafty_preset_postcss/index.html">read more here</a></p>
-<h3 id="page_section_7"><code>crafty jsLint [file|dir|glob]*</code></h3>
+<h3><a id="crafty-jslint-file-dir-glob" href="#crafty-jslint-file-dir-glob" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty jsLint [file|dir|glob]*</code></h3>
 <p>Bundled ESLint with embedded presets,
 <a href="Packages/crafty_preset_babel/index.html">read more here</a></p>
     </div>

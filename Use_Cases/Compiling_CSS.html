@@ -94,32 +94,32 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Compiling_your_CSS_on_its_own_(_Gulp_)">Compiling your CSS on its own ( Gulp )</a></p>
-<ul class="TableOfContents">
+<a href="#compiling-your-css-on-its-own-gulp">Compiling your CSS on its own ( Gulp )</a>
+<ul>
 <li>
-<p><a href="#page_Installing_the_preset_with_Gulp">Installing the preset with Gulp</a></p>
+<a href="#installing-the-preset-with-gulp">Installing the preset with Gulp</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Importing_your_CSS_in_Webpack">Importing your CSS in Webpack</a></p>
-<ul class="TableOfContents">
+<a href="#importing-your-css-in-webpack">Importing your CSS in Webpack</a>
+<ul>
 <li>
-<p><a href="#page_Installing_the_preset_with_Webpack">Installing the preset with Webpack</a></p>
+<a href="#installing-the-preset-with-webpack">Installing the preset with Webpack</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 </ul>    </div>
 </div>
 <p>To compile CSS we leverage PostCSS and a selection of plugins, the final result
 is a syntax that is almost Sass (SCSS style) with imports, nested styles,
 variables and more.</p>
-<h2 id="page_Compiling_your_CSS_on_its_own_(_Gulp_)">Compiling your CSS on its own ( Gulp )</h2>
+<h2><a id="compiling-your-css-on-its-own-gulp" href="#compiling-your-css-on-its-own-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Compiling your CSS on its own ( Gulp )</h2>
 <p>The easiest way to get started is to use Gulp to generate your final CSS bundle</p>
-<h3 id="page_Installing_the_preset_with_Gulp">Installing the preset with Gulp</h3>
+<h3><a id="installing-the-preset-with-gulp" href="#installing-the-preset-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Gulp</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-postcss @swissquote/crafty-runner-gulp --save
 </code></pre>
@@ -141,10 +141,10 @@ bundle.</p>
 <p>You are now ready to run <code>crafty run</code> and compile your CSS source files with
 PostCSS and Gulp.</p>
 <p>Read more about <a href="../Packages/crafty_preset_postcss/index.html"><code>crafty-preset-postcss</code></a>.</p>
-<h2 id="page_Importing_your_CSS_in_Webpack">Importing your CSS in Webpack</h2>
+<h2><a id="importing-your-css-in-webpack" href="#importing-your-css-in-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Importing your CSS in Webpack</h2>
 <p>The other way <code>crafty-preset-postcss</code> works is by adding PostCSS as a loader to
 Webpack. Allowing you to use <code>import</code> from EcmaScript 2015 for your CSS.</p>
-<h3 id="page_Installing_the_preset_with_Webpack">Installing the preset with Webpack</h3>
+<h3><a id="installing-the-preset-with-webpack" href="#installing-the-preset-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Webpack</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-postcss @swissquote/crafty-runner-webpack --save
 </code></pre>
@@ -170,7 +170,7 @@ bundle and into its own CSS file.</p>
 <p>You are now ready to run <code>crafty run</code> and compile your CSS source files with
 PostCSS and Webpack.</p>
 <p>Read more about <a href="../Packages/crafty_preset_postcss/index.html"><code>crafty-preset-postcss</code></a>.</p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p>We use more than 30 plugins for our PostCSS preset, including nesting,
 variables, imports, future CSS features and more.</p>
 <p>See details in

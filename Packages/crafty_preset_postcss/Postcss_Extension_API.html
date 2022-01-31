@@ -93,7 +93,7 @@
 <p>But Crafty has a bundle of PostCSS plugins that have their own configuration.</p>
 <p>With this API, we try to provide a rich API that allows you to add, remove, reconfigure and reorder plugins.
 Even better, we provide some ways to conditionally enable plugins.</p>
-<h2 id="page_Extending_from_your">Extending from your <code>crafty.config.js</code></h2>
+<h2><a id="extending-from-your-crafty-config-js" href="#extending-from-your-crafty-config-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending from your <code>crafty.config.js</code></h2>
 <p>For this you need to add a <code>postcss</code> method to your <code>crafty.config.js</code></p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**
@@ -134,7 +134,7 @@ Even better, we provide some ways to conditionally enable plugins.</p>
   }
 };
 </code></pre>
-<h2 id="page_section_2"><code>ProcessorMap</code></h2>
+<h2><a id="processormap" href="#processormap" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>ProcessorMap</code></h2>
 <p>The main object allows you add or remove elements from the map</p>
 <pre><code class="hljs typescript"><span class="hljs-keyword">class</span> ProcessorMap {
   <span class="hljs-comment">/**
@@ -176,7 +176,7 @@ Even better, we provide some ways to conditionally enable plugins.</p>
   entries(): { [name: <span class="hljs-built_in">string</span>]: Processor };
 }
 </code></pre>
-<h2 id="page_section_3"><code>Processor</code></h2>
+<h2><a id="processor" href="#processor" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>Processor</code></h2>
 <pre><code class="hljs typescript"><span class="hljs-keyword">class</span> &lt;OPTIONS&gt; Processor&lt;OPTIONS = <span class="hljs-built_in">Object</span>&gt; {
   <span class="hljs-keyword">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>);
 
@@ -239,8 +239,8 @@ Even better, we provide some ways to conditionally enable plugins.</p>
   after(name): Processor;
 }
 </span></code></pre>
-<h2 id="page_Examples">Examples</h2>
-<h3 id="page_Add_a_new_processor_after_another_one">Add a new processor after another one</h3>
+<h2><a id="examples" href="#examples" class="Permalink" aria-hidden="true" title="Permalink">#</a>Examples</h2>
+<h3><a id="add-a-new-processor-after-another-one" href="#add-a-new-processor-after-another-one" class="Permalink" aria-hidden="true" title="Permalink">#</a>Add a new processor after another one</h3>
     </div>
 
         <nav>

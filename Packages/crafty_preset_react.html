@@ -124,19 +124,19 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Installation">Installation</a></p>
+<a href="#installation">Installation</a>
 </li>
 <li>
-<p><a href="#page_Hot_Module_Replacement">Hot Module Replacement</a></p>
-<ul class="TableOfContents">
+<a href="#hot-module-replacement">Hot Module Replacement</a>
+<ul>
 <li>
-<p><a href="#page_TypeScript">TypeScript</a></p>
+<a href="#typescript">TypeScript</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Installation">Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-babel --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -155,7 +155,7 @@
   }
 };
 </code></pre>
-<h2 id="page_Hot_Module_Replacement">Hot Module Replacement</h2>
+<h2><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h2>
 <p>When doing modern JavaScript development, the usual process is <strong>Write code</strong>,
 <strong>Compile</strong>, <strong>Refresh the browser</strong>.</p>
 <ul>
@@ -185,7 +185,7 @@ state.</p>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> hot(<span class="hljs-built_in">module</span>)(App);
 </code></pre>
 <p>Only the root component needs this wrapping, the child components don’t need it.</p>
-<h3 id="page_TypeScript">TypeScript</h3>
+<h3><a id="typescript" href="#typescript" class="Permalink" aria-hidden="true" title="Permalink">#</a>TypeScript</h3>
 <p>If you’re using TypeScript you have one more step to make</p>
 <pre><code class="hljs bash">npm install --save @types/webpack-env
 </code></pre>

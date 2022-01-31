@@ -132,29 +132,29 @@ need them.</p>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_File_name_Conventions">File name Conventions</a></p>
+<a href="#file-name-conventions">File name Conventions</a>
 </li>
 <li>
-<p><a href="#page_section_2"><code>crafty test</code></a></p>
+<a href="#crafty-test">crafty test</a>
 </li>
 <li>
-<p><a href="#page_Writing_Tests">Writing Tests</a></p>
+<a href="#writing-tests">Writing Tests</a>
 </li>
 <li>
-<p><a href="#page_Focusing_and_Excluding_Tests">Focusing and Excluding Tests</a></p>
+<a href="#focusing-and-excluding-tests">Focusing and Excluding Tests</a>
 </li>
 <li>
-<p><a href="#page_Coverage_Reporting">Coverage Reporting</a></p>
+<a href="#coverage-reporting">Coverage Reporting</a>
 </li>
 <li>
-<p><a href="#page_Snapshot_Testing">Snapshot Testing</a></p>
+<a href="#snapshot-testing">Snapshot Testing</a>
 </li>
 <li>
-<p><a href="#page_Extending_the_configuration">Extending the configuration</a></p>
+<a href="#extending-the-configuration">Extending the configuration</a>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_File_name_Conventions">File name Conventions</h2>
+<h2><a id="file-name-conventions" href="#file-name-conventions" class="Permalink" aria-hidden="true" title="Permalink">#</a>File name Conventions</h2>
 <p>Jest will look for test files with any of the following popular naming
 conventions:</p>
 <ul>
@@ -176,13 +176,13 @@ add the support for <code>ts</code> and <code>tsx</code></p>
 <p>To be able to use <code>.ts</code> or <code>.tsx</code> test files, you’ll have to add <code>@types/jest</code> as a dependency :</p>
 <pre><code class="hljs bash">npm install --save @types/jest
 </code></pre>
-<h2 id="page_section_2"><code>crafty test</code></h2>
+<h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty test</code></h2>
 <p>Running <code>crafty test</code> will run all test and exit. But you can use any option
 provided by Jest itself.</p>
 <p>For example <code>crafty test --watch</code> will run your tests in watch mode. This mode
 will run all your tests once and once it’s done will wait for code or test
 changes to re-run the concerned tests.</p>
-<h2 id="page_Writing_Tests">Writing Tests</h2>
+<h2><a id="writing-tests" href="#writing-tests" class="Permalink" aria-hidden="true" title="Permalink">#</a>Writing Tests</h2>
 <p>To create tests, add <code>it()</code> (or <code>test()</code>) blocks with the name of the test and
 its code. You may optionally wrap them in <code>describe()</code> blocks for logical
 grouping but this is neither required nor recommended.</p>
@@ -200,24 +200,24 @@ it(<span class="hljs-string">"sums numbers"</span>, () =&gt; {
 You can also use
 <a href="http://facebook.github.io/jest/docs/expect.html#tohavebeencalled" class="Link--external" rel="noopener noreferrer"><code>jest.fn()</code> and <code>expect(fn).toBeCalled()</code></a>
 to create “spies” or mock functions.</p>
-<h2 id="page_Focusing_and_Excluding_Tests">Focusing and Excluding Tests</h2>
+<h2><a id="focusing-and-excluding-tests" href="#focusing-and-excluding-tests" class="Permalink" aria-hidden="true" title="Permalink">#</a>Focusing and Excluding Tests</h2>
 <p>You can replace <code>it()</code> with <code>xit()</code> to temporarily exclude a test from being
 executed.<br /> Similarly, <code>fit()</code> lets you focus on a specific test without
 running any other tests.</p>
-<h2 id="page_Coverage_Reporting">Coverage Reporting</h2>
+<h2><a id="coverage-reporting" href="#coverage-reporting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Coverage Reporting</h2>
 <p>Jest has an integrated coverage reporter that works well with EcmaScript 2015+
 and requires no configuration.<br /> Run <code>crafty test --coverage</code> to include a
 coverage report like this:</p>
 <p><img src="http://i.imgur.com/5bFhnTS.png" alt="coverage report" /></p>
 <p>Note that tests run much slower with coverage. We recommend to run it separately
 from your normal workflow.</p>
-<h2 id="page_Snapshot_Testing">Snapshot Testing</h2>
+<h2><a id="snapshot-testing" href="#snapshot-testing" class="Permalink" aria-hidden="true" title="Permalink">#</a>Snapshot Testing</h2>
 <p>Snapshot testing is a feature of Jest that automatically generates text
 snapshots of your components and saves them on the disk so if the UI output
 changes, you get notified without manually writing any assertions on the
 component output.
 <a href="http://facebook.github.io/jest/blog/2016/07/27/jest-14.html" class="Link--external" rel="noopener noreferrer">Read more about snapshot testing.</a></p>
-<h2 id="page_Extending_the_configuration">Extending the configuration</h2>
+<h2><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending the configuration</h2>
 <p>Each preset and <code>crafty.config.js</code> can define the <code>jest(crafty, options)</code>
 function to override Jest’s configuration.</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);

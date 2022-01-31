@@ -116,49 +116,49 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Linting">Linting</a></p>
+<a href="#linting">Linting</a>
 </li>
 <li>
-<p><a href="#page_Installation">Installation</a></p>
+<a href="#installation">Installation</a>
 </li>
 <li>
-<p><a href="#page_Usage_with_Webpack_rollup.js">Usage with Webpack / rollup.js</a></p>
+<a href="#usage-with-webpack-rollup-js">Usage with Webpack / rollup.js</a>
 </li>
 <li>
-<p><a href="#page_Usage_with_Jest">Usage with Jest</a></p>
+<a href="#usage-with-jest">Usage with Jest</a>
 </li>
 <li>
-<p><a href="#page_Type_definition_files">Type definition files</a></p>
+<a href="#type-definition-files">Type definition files</a>
 </li>
 <li>
-<p><a href="#page_Getting_Started">Getting Started</a></p>
-<ul class="TableOfContents">
+<a href="#getting-started">Getting Started</a>
+<ul>
 <li>
-<p><a href="#page_section_9"><code>crafty jsLint</code></a></p>
+<a href="#crafty-jslint">crafty jsLint</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Description">Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>Microsoft presents TypeScript as “JavaScript that scales”.
 TypeScript is a superset of JavaScript that allows you to type your code.
 Not everything needs to have a type as the tool is powerful enough to infer most of the types.</p>
 <p>TypeScript has types but it also supports the full EcmaScript 2015 Specification.</p>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <p>TypeScript being a superset of JavaScript, features supported by <a href="../crafty_preset_babel/JavaScript_Features.html">our Babel preset</a> apply here.</p>
 <p>Or you can check out the <a href="TypeScript_Features.html">TypeScript specific features</a></p>
-<h2 id="page_Linting">Linting</h2>
+<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting</h2>
 <p>Like any language, TypeScript has best practices and practices that you shouldn’t do.
 With the help of ESLint we check the code for common mistakes and formatting errors.</p>
 <p><a href="../crafty_preset_eslint/TypeScript_Linting.html">Read more</a></p>
-<h2 id="page_Installation">Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-typescript --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -175,15 +175,15 @@ With the help of ESLint we check the code for common mistakes and formatting err
   }
 };
 </code></pre>
-<h2 id="page_Usage_with_Webpack_rollup.js">Usage with Webpack / rollup.js</h2>
+<h2><a id="usage-with-webpack-rollup-js" href="#usage-with-webpack-rollup-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack / rollup.js</h2>
 <p>Both offer the same level of integration.</p>
 <p>You have to configure TypeScript with the <code>tsconfig.json</code> file that you put at the root of the project.</p>
 <p>Some options can’t be auto-configured through the loaders / plugins so that’s why you have to do it yourself.
 Moreover, the integration with your IDE is simplified if you have a complete <code>tsconfig.json</code> in your project.</p>
-<h2 id="page_Usage_with_Jest">Usage with Jest</h2>
+<h2><a id="usage-with-jest" href="#usage-with-jest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest</h2>
 <p>If you include both <code>crafty-preset-typescript</code> and <code>crafty-preset-jest</code>.
 When running your tests with <code>crafty test</code> this preset will be use to convert all <code>.ts</code> and <code>.tsx</code> files (source and test files)</p>
-<h2 id="page_Type_definition_files">Type definition files</h2>
+<h2><a id="type-definition-files" href="#type-definition-files" class="Permalink" aria-hidden="true" title="Permalink">#</a>Type definition files</h2>
 <p>TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.</p>
 <p>Some packages come with their own definitions, for the others there are two ways to consume these files.</p>
 <ol>
@@ -191,10 +191,10 @@ When running your tests with <code>crafty test</code> this preset will be use to
 <li>Create your own <code>*.d.ts</code> file</li>
 </ol>
 <p><a href="TypeScript_Typings.html">Read more</a></p>
-<h2 id="page_Getting_Started">Getting Started</h2>
+<h2><a id="getting-started" href="#getting-started" class="Permalink" aria-hidden="true" title="Permalink">#</a>Getting Started</h2>
 <p>We have a user guide to get started with TypeScript in your project</p>
 <p><a href="Getting_Started_with_TypeScript.html">Follow the guide</a></p>
-<h3 id="page_section_9"><code>crafty jsLint</code></h3>
+<h3><a id="crafty-jslint" href="#crafty-jslint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty jsLint</code></h3>
 <p>Leveraging ESLint, we add configuration to lint TypeScript.
 You can use that using the same command as for JavaScript.</p>
 <pre><code class="hljs bash">crafty jsLint src/**

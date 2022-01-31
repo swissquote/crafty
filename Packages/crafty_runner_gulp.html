@@ -89,7 +89,7 @@
                     </div>
 
     <div class="s-content">
-        <h2 id="page_Description">Description</h2>
+        <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
 <p>“Automate and enhance your workflow” This is how Gulp presents itself, Gulp is a
 task runner, combined with an API of file streams.</p>
 <p>This runner is based on Gulp 4.</p>
@@ -98,28 +98,28 @@ task runner, combined with an API of file streams.</p>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_Description">Description</a></p>
+<a href="#description">Description</a>
 </li>
 <li>
-<p><a href="#page_Features">Features</a></p>
+<a href="#features">Features</a>
 </li>
 <li>
-<p><a href="#page_Adding_Gulp_tasks">Adding Gulp tasks</a></p>
-<ul class="TableOfContents">
+<a href="#adding-gulp-tasks">Adding Gulp tasks</a>
+<ul>
 <li>
-<p><a href="#page_Slight_change_in_behavior_of">Slight change in behavior of <code>gulp.watch()</code></a></p>
+<a href="#slight-change-in-behavior-of-gulp-watch">Slight change in behavior of gulp.watch()</a>
 </li>
 <li>
-<p><a href="#page_section_5"><code>StreamHandler</code></a></p>
-<ul class="TableOfContents">
+<a href="#streamhandler">StreamHandler</a>
+<ul>
 <li>
-<p><a href="#page_section_6"><code>new StreamHandler(source, destination[, callback])</code></a></p>
+<a href="#new-streamhandler-source-destination-callback">new StreamHandler(source, destination[, callback])</a>
 </li>
 <li>
-<p><a href="#page_section_7"><code>stream.add(handler)</code></a></p>
+<a href="#stream-add-handler">stream.add(handler)</a>
 </li>
 <li>
-<p><a href="#page_section_8"><code>generate()</code></a></p>
+<a href="#generate">generate()</a>
 </li>
 </ul>
 </li>
@@ -127,13 +127,13 @@ task runner, combined with an API of file streams.</p>
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_Features">Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
 <ul>
 <li>Create any gulp task</li>
 <li>Combine tasks in parallel or in series</li>
 <li>Create file watchers that run tasks or anything else on change.</li>
 </ul>
-<h2 id="page_Adding_Gulp_tasks">Adding Gulp tasks</h2>
+<h2><a id="adding-gulp-tasks" href="#adding-gulp-tasks" class="Permalink" aria-hidden="true" title="Permalink">#</a>Adding Gulp tasks</h2>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**
    * Represents the extension point for rollup configuration
@@ -166,11 +166,11 @@ task runner, combined with an API of file streams.</p>
 </code></pre>
 <p>The <a href="https://github.com/gulpjs/gulp/blob/4.0/docs/API.md" class="Link--external" rel="noopener noreferrer">full API of Gulp</a> is
 supported</p>
-<h3 id="page_Slight_change_in_behavior_of">Slight change in behavior of <code>gulp.watch()</code></h3>
+<h3><a id="slight-change-in-behavior-of-gulp-watch" href="#slight-change-in-behavior-of-gulp-watch" class="Permalink" aria-hidden="true" title="Permalink">#</a>Slight change in behavior of <code>gulp.watch()</code></h3>
 <p>We changed the behavior of <code>gulp.watch()</code> in Crafty compared to how it works in
 Gulp: Instead of watching directly, the watch will start when running <code>crafty watch</code>.</p>
 <p>This creates a clear separation between development and production builds.</p>
-<h3 id="page_section_5"><code>StreamHandler</code></h3>
+<h3><a id="streamhandler" href="#streamhandler" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>StreamHandler</code></h3>
 <p><code>StreamHandler</code> is a utility class to help you create your streams.</p>
 <p>It works the same way as <code>gulp.src()...pipe(gulp.dest())</code> but with some added
 syntactic sugar:</p>
@@ -187,7 +187,7 @@ complex streams without re-assigning the variable every time</li>
   <span class="hljs-keyword">return</span> stream.generate();
 });
 </code></pre>
-<h4 id="page_section_6"><code>new StreamHandler(source, destination[, callback])</code></h4>
+<h4><a id="new-streamhandler-source-destination-callback" href="#new-streamhandler-source-destination-callback" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>new StreamHandler(source, destination[, callback])</code></h4>
 <ul>
 <li>
 <code>source</code> is a glob or array of globs</li>
@@ -196,9 +196,9 @@ complex streams without re-assigning the variable every time</li>
 <li>
 <code>callback(error)</code> is an optional node-style callback that you can set to be called once the stream has finished processing</li>
 </ul>
-<h4 id="page_section_7"><code>stream.add(handler)</code></h4>
+<h4><a id="stream-add-handler" href="#stream-add-handler" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>stream.add(handler)</code></h4>
 <p>Same as <code>.pipe(handler)</code></p>
-<h4 id="page_section_8"><code>generate()</code></h4>
+<h4><a id="generate" href="#generate" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>generate()</code></h4>
 <p>Generates the stream and returns it.</p>
     </div>
 

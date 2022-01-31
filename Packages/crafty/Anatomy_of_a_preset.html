@@ -89,7 +89,7 @@
                     </div>
 
     <div class="s-content">
-        <h2 id="page_Defining_a_preset">Defining a preset</h2>
+        <h2><a id="defining-a-preset" href="#defining-a-preset" class="Permalink" aria-hidden="true" title="Permalink">#</a>Defining a preset</h2>
 <p>A preset is defined with the following functions.</p>
 <p>All methods are optional; Use the methods you need, leave out the rest.</p>
 <pre><code class="hljs typescript">
@@ -169,7 +169,7 @@
     <span class="hljs-comment">// webpack</span>
 }
 </code></pre>
-<h2 id="page_Defining_a">Defining a <code>bundleCreator</code></h2>
+<h2><a id="defining-a-bundlecreator" href="#defining-a-bundlecreator" class="Permalink" aria-hidden="true" title="Permalink">#</a>Defining a <code>bundleCreator</code></h2>
 <p>Bundles can contain those fields by default, each <code>bundleType</code> can add more fields.</p>
 <pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> Bundle {
   <span class="hljs-comment">/**
@@ -227,7 +227,7 @@
 </code></pre>
 <p>In this example, you can see that this <code>bundleCreator</code> is meant for the <code>js</code> <code>bundleType</code>, and will be used if you specify <code>gulp</code> or <code>gulp/babel</code> as runner.</p>
 <p>You can also see that a watcher is created, so if the <code>bundle.watch</code> pattern is matched, <code>bundle.taskName</code> is executed.</p>
-<h2 id="page_Defining_a_command">Defining a command</h2>
+<h2><a id="defining-a-command" href="#defining-a-command" class="Permalink" aria-hidden="true" title="Permalink">#</a>Defining a command</h2>
 <p>Commands receive three parameters: a Crafty instance, the command input and the parsed arguments used in the CLI.</p>
 <pre><code class="hljs typescript"><span class="hljs-comment">/**
  * @param crafty The Crafty instance
@@ -243,7 +243,7 @@
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">0</span>);
 }
 </code></pre>
-<h2 id="page_The_Crafty_instance">The Crafty instance</h2>
+<h2><a id="the-crafty-instance" href="#the-crafty-instance" class="Permalink" aria-hidden="true" title="Permalink">#</a>The Crafty instance</h2>
 <p>The Crafty instance that is passed around contains all the configuration, commands and tasks generated.</p>
 <p><a href="The_Crafty_instance.html">Check out it’s API</a></p>
     </div>

@@ -94,36 +94,36 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<p><a href="#page_All_Options">All Options</a></p>
-<ul class="TableOfContents">
+<a href="#all-options">All Options</a>
+<ul>
 <li>
-<p><a href="#page_section_2"><code>destination</code></a></p>
+<a href="#destination">destination</a>
 </li>
 <li>
-<p><a href="#page_Browser_compatibility"><code>browser</code>: Browser compatibility</a></p>
+<a href="#browser-browser-compatibility">browser: Browser compatibility</a>
 </li>
 <li>
-<p><a href="#page_JavaScript_compression"><code>terser</code> : JavaScript compression</a></p>
+<a href="#terser-javascript-compression">terser : JavaScript compression</a>
 </li>
 <li>
-<p><a href="#page_Which_files_to_lint"><code>stylelint_pattern</code>: Which files to lint</a></p>
+<a href="#stylelint-pattern-which-files-to-lint">stylelint_pattern: Which files to lint</a>
 </li>
 </ul>
 </li>
 <li>
-<p><a href="#page_Bundles">Bundles</a></p>
-<ul class="TableOfContents">
+<a href="#bundles">Bundles</a>
+<ul>
 <li>
-<p><a href="#page_Common_Bundle_options">Common Bundle options</a></p>
+<a href="#common-bundle-options">Common Bundle options</a>
 </li>
 <li>
-<p><a href="#page_CSS_Bundles">CSS Bundles</a></p>
+<a href="#css-bundles">CSS Bundles</a>
 </li>
 <li>
-<p><a href="#page_JavaScript_Bundles">JavaScript Bundles</a></p>
-<ul class="TableOfContents">
+<a href="#javascript-bundles">JavaScript Bundles</a>
+<ul>
 <li>
-<p><a href="#page_JavaScript_External_assets">JavaScript External assets</a></p>
+<a href="#javascript-external-assets">JavaScript External assets</a>
 </li>
 </ul>
 </li>
@@ -131,7 +131,7 @@
 </li>
 </ul>    </div>
 </div>
-<h2 id="page_All_Options">All Options</h2>
+<h2><a id="all-options" href="#all-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>All Options</h2>
 <p>All the options in <code>crafty.config.js</code> apart from your bundles in the <code>js</code> and
 <code>css</code> bundles are optional.</p>
 <table>
@@ -224,13 +224,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="page_section_2"><code>destination</code></h3>
+<h3><a id="destination" href="#destination" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>destination</code></h3>
 <p>By default, your compiled assets will be in <code>dist/&lt;bundleType&gt;</code>. But you can
 override the <code>config.destination</code> or <code>config.destination_&lt;bundleType&gt;</code> option.</p>
 <p>You can also use the <code>crafty-preset-maven</code> with the <code>mavenType</code> option to move
 your assets to Maven’s <code>target</code> directory.</p>
 <p><a href="../Packages/crafty_preset_maven.html">More about <code>crafty-preset-maven</code></a></p>
-<h3 id="page_Browser_compatibility"><code>browser</code>: Browser compatibility</h3>
+<h3><a id="browser-browser-compatibility" href="#browser-browser-compatibility" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>browser</code>: Browser compatibility</h3>
 <p>Default: <code>Edge &gt;= 18, Safari &gt;= 13, iOS &gt;= 13, Chrome &gt;= 77, and_chr &gt;= 77, Firefox &gt;= 69</code></p>
 <p>Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.</p>
@@ -239,16 +239,16 @@ needs to add to the CSS file.</p>
 <p>The default browsers we defined was taken from the statistics of browser usage
 we have seen across all Swissquote Platforms</p>
 <p>If you want a different list, you can override those defaults using any valid <a href="https://github.com/browserslist/browserslist#queries" class="Link--external" rel="noopener noreferrer">Browserslist query source</a></p>
-<h3 id="page_JavaScript_compression"><code>terser</code> : JavaScript compression</h3>
+<h3><a id="terser-javascript-compression" href="#terser-javascript-compression" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>terser</code> : JavaScript compression</h3>
 <p>Default: <code>{ compress: true, sourceMap: true }</code></p>
 <p>By default, we compress our JavaScript with safe parameters, if you wish you can
 go further and enable more advanced compression techniques.</p>
 <p>The options are described
 <a href="https://github.com/terser/terser#minify-options" class="Link--external" rel="noopener noreferrer">in Terser’s documentation</a></p>
-<h3 id="page_Which_files_to_lint"><code>stylelint_pattern</code>: Which files to lint</h3>
+<h3><a id="stylelint-pattern-which-files-to-lint" href="#stylelint-pattern-which-files-to-lint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>stylelint_pattern</code>: Which files to lint</h3>
 <p>Default: <code>[&quot;css/**/*.scss&quot;, &quot;css/**/*.css&quot;, &quot;!*.min.css&quot;, &quot;!**/vendor/**/*.scss&quot;, &quot;!**/vendor/**/*.css&quot;, &quot;!**/vendor/*.scss&quot;, &quot;!**/vendor/*.css&quot;]</code></p>
 <p>Define the file types you want to target when linting CSS files.</p>
-<h2 id="page_Bundles">Bundles</h2>
+<h2><a id="bundles" href="#bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundles</h2>
 <p>A bundle is a set of one or more source files that will be compiled in on or
 more destination files.</p>
 <p>Each bundle has one mandatory option : <code>source</code>.</p>
@@ -260,7 +260,7 @@ more destination files.</p>
 <p>This will automatically create a file in <code>&lt;destination_js&gt;/app.min.js</code>
 containing both source files that will be minified.</p>
 <p>The file name is taken from the bundle name if no <code>destination</code> is specified</p>
-<h3 id="page_Common_Bundle_options">Common Bundle options</h3>
+<h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Common Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -297,7 +297,7 @@ containing both source files that will be minified.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_CSS_Bundles">CSS Bundles</h3>
+<h3><a id="css-bundles" href="#css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Bundles</h3>
 <pre><code class="hljs javascript">testIndex: {
     <span class="hljs-attr">source</span>: <span class="hljs-string">'css/test/test.scss'</span>,
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'index.min.css'</span>,
@@ -327,7 +327,7 @@ build it.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_JavaScript_Bundles">JavaScript Bundles</h3>
+<h3><a id="javascript-bundles" href="#javascript-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript Bundles</h3>
 <pre><code class="hljs javascript">app: {
     <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'app.min.js'</span>
@@ -391,7 +391,7 @@ bundles.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="page_JavaScript_External_assets">JavaScript External assets</h4>
+<h4><a id="javascript-external-assets" href="#javascript-external-assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript External assets</h4>
 <p>By default, all bundlers include all external dependencies in the final bundle,
 this works fine for applications, but if you wish to build a multi-tenant
 application or a library, you don’t wish to include all dependencies, because
