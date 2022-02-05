@@ -7,11 +7,7 @@ module.exports = [
       // Provided by other Crafty packages
       ...getExternals(),
 
-      "@swc/core": "@swc/core",
-
-      // "readable-stream" is a drop-in replacement of "stream"
-      // But its current version is big and outdated
-      "readable-stream": "stream"
+      "@swc/core": "@swc/core"
     }
   }
 ];

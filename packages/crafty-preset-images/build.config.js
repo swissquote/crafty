@@ -8,11 +8,7 @@ module.exports = [
         ...getExternals(),
 
         "fsevents" : "fsevents", // it's an optional dependency that can only be installed on macOS. Leave that to npm and friends,
-        "url": "../../src/url",
-
-        // "readable-stream" is a drop-in replacement of "stream"
-        // But its current version is big and outdated
-        "readable-stream": "stream",
+        "url": "../../src/url"
     }
   },
 ];

@@ -17,11 +17,7 @@ module.exports = [
       "@babel/core": "@babel/core",
       "@babel/code-frame": "@babel/code-frame",
       "@babel/helper-module-imports": "@babel/helper-module-imports",
-      "terser": "terser",
-
-      // "readable-stream" is a drop-in replacement of "stream"
-      // But its current version is big and outdated
-      "readable-stream": "stream"
+      "terser": "terser"
     }
   }
 ];

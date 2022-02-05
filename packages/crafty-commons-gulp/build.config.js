@@ -18,11 +18,7 @@ module.exports = [
       through2: "../through2/index.js",
 
       // Get ESLint from crafty-preset-eslint
-      eslint: "@swissquote/crafty-preset-eslint/packages/eslint",
-
-      // "readable-stream" is a drop-in replacement of "stream"
-      // But its current version is big and outdated
-      "readable-stream": "stream"
+      eslint: "@swissquote/crafty-preset-eslint/packages/eslint"
     }
   }
 ];
