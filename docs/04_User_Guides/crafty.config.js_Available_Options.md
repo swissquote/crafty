@@ -38,11 +38,11 @@ Default: `Edge >= 18, Safari >= 13, iOS >= 13, Chrome >= 77, and_chr >= 77, Fire
 Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.
 
-This option is for example used by Autoprefixer to define which CSS Prefixes it
+This option is, for example, used by Autoprefixer to define which CSS Prefixes it
 needs to add to the CSS file.
 
-The default browsers we defined was taken from the statistics of browser usage
-we have seen across all Swissquote Platforms
+We created this list of browsers based on the statistics of browser usage
+we have seen across all Swissquote Platforms.
 
 If you want a different list, you can override those defaults using any valid [Browserslist query source](https://github.com/browserslist/browserslist#queries)
 
@@ -50,11 +50,10 @@ If you want a different list, you can override those defaults using any valid [B
 
 Default: `{ compress: true, sourceMap: true }`
 
-By default, we compress our JavaScript with safe parameters, if you wish you can
+By default, we compress our JavaScript with safe parameters. If you wish, you can
 go further and enable more advanced compression techniques.
 
-The options are described
-[in Terser's documentation](https://github.com/terser/terser#minify-options)
+[Terser's documentation](https://github.com/terser/terser#minify-options) has all the details on its options.
 
 ### `stylelint_pattern`: Which files to lint
 
@@ -62,92 +61,21 @@ Default: `["css/**/*.scss", "css/**/*.css", "!*.min.css", "!**/vendor/**/*.scss"
 
 Define the file types you want to target when linting CSS files.
 
-## Bundles
+### `externals` to not bundle dependencies
 
-A bundle is a set of one or more source files that will be compiled in on or
-more destination files.
+By default, all bundlers include all external dependencies in the final bundle.
 
-Each bundle has one mandatory option : `source`.
-
-If we take this JavaScript bundle :
-
-```javascript
-app: { // name of the bundle
- source: ['js/panel.js', 'js/nothing.js'],
-}
-```
-
-This will automatically create a file in `<destination_js>/app.min.js`
-containing both source files that will be minified.
-
-The file name is taken from the bundle name if no `destination` is specified
-
-### Common Bundle options
-
-| Option        | Type         | Optional ? | Description                                                                                                        |
-| ------------- | ------------ | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| `source`      | String/Array | No         | One single file or an array of files you wish to compile. Glob expressions are valid.                              |
-| `runner`      | String       | No         | The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded                      |
-| `destination` | String       | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                                  |
-| `watch`       | String/Array | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid, is needed for Gulp in watch mode. |
-
-### CSS Bundles
-
-```javascript
-testIndex: {
-    source: 'css/test/test.scss',
-    destination: 'index.min.css',
-    watch: 'css/test/**.scss'
-}
-```
-
-`testIndex` is the bundle name, you will be able to call `gulp css_testIndex` to
-build it.
-
-Apart from the common options, here are the options you can use for CSS bundles.
-
-| Option       | Type                      | Runner  | Preset                  | Description                                                                                                                                                                                                                                                                                                        |
-| ------------ | ------------------------- | ------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `extractCSS` | Boolean / String / Object | Webpack | `crafty-preset-postcss` | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
-
-### JavaScript Bundles
-
-```javascript
-app: {
-    source: ['js/panel.js', 'js/nothing.js'],
-    destination: 'app.min.js'
-}
-```
-
-`app` is the bundle name, you will be able to call `gulp js_app` to build it.
-
-Apart from the common options, here are the options you can use for JavaScript
-bundles.
-
-| Option          | Type                | Runner              | Preset                                           | Description                                                                                                                                      |
-| --------------- | ------------------- | ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `format`        | String              | rollup.js           | `crafty-runner-rollup`                           | Define the output format can be any of `amd`, `iife`, `cjs`, `es` or `umd`. Defaults to `es`.                                                    |
-| `externals`     | Array&lt;String&gt; | rollup.js / Webpack | `crafty-runner-webpack` / `crafty-runner-rollup` | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs)                          |
-| `hot`           | Boolean             | Webpack             | `crafty-runner-webpack`                          | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                          |
-| `libraryTarget` | String              | Webpack             | `crafty-runner-webpack`                          | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget) |
-| `library`       | String              | Webpack             | `crafty-runner-webpack`                          | Define the library name for the Webpack module or export.                                                                                        |
-| `concat`        | Boolean             | Gulp                | `crafty-preset-babel`                            | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this)                  |
-
-#### JavaScript External assets
-
-By default, all bundlers include all external dependencies in the final bundle,
-this works fine for applications, but if you wish to build a multi-tenant
-application or a library, you don't wish to include all dependencies, because
+Including all dependencies works fine for applications, but if you wish to build a multi-tenant
+application or a library, you might not want to include all dependencies because
 you'll end up with the same dependency more than one time.
 
-The `externals` option allows you to define a list of libraries that are
-provided and should not be embedded in the build, here is an example :
+The `externals` option allows you to define a list of provided libraries and should not be embedded in the build. Here is an example :
 
 ```javascript
 module.exports = {
     ...
     // patterns are strings or globs
-    externals: ["react", "react-dom", "squp", "squp/**"],
+    externals: ["react", "react-dom", "moment", "moment/**"],
     ...
     js: {
         app: {
@@ -160,8 +88,113 @@ module.exports = {
 }
 ```
 
-In this example `react`, `react-dom` and all modules starting with `squp/` will
+In this example, `react`, `react-dom`, and all modules starting with `moment/` will
 be treated as external
 
-> You can see that globs were used here, note that they work for Webpack but not
-> for rollup.js that needs complete strings.
+> This configuration example uses glob patterns.
+> These patterns work fine for Webpack but are not supported by rollup.js.
+
+## `js` and `css` Bundles
+
+The two configuration objects inside `css` and `js` are what Crafty uses to create the build tasks when running `crafty run`.
+
+A bundle is a set of one or more **source files** that a **runner** compiles to one or
+more **destination files**.
+
+From these three options, one is mandatory; `source`.
+
+If we take this JavaScript bundle :
+
+```javascript
+{
+  presets: [
+      "@swissquote/crafty-runner-gulp",
+      "@swissquote/crafty-preset-babel"
+  ],
+  js: {
+    app: { // name of the bundle
+      source: ['js/panel.js', 'js/nothing.js'],
+      concat: true
+    }
+  }
+}
+```
+
+This configuration will:
+
+1. Use the `gulp/babel` runner implicitly, as no other runner is available.
+1. Read `js/panel.js` and `js/nothing.js`.
+1. Convert them using the Babel preset.
+1. Concatenate both files together; That option is exclusive to the gulp runner.
+1. Write the file to `<destination_js>/app.min.js`. Which is inferred from the bundle name because no destination was specified.
+
+### Common Bundle options
+
+| Option        | Type              | Optional ? | Description                                                                                                                   |
+| ------------- | ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `source`      | `string|string[]` | No         | One single file or an array of files you wish to compile. Glob expressions are valid.                                         |
+| `runner`      | `string`          | No         | The runner's name to use for this bundle. This option is mandatory if more than one runner is loaded                          |
+| `destination` | `string`          | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                                             |
+| `watch`       | `string|string[]` | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack and rollup.js don't use this option. |
+
+### Runners
+
+You can define which runner should run for which bundle. The different values are
+
+| Runner Name       | Bundle Type | Required presets                                                          |
+| ----------------- | ----------- | ------------------------------------------------------------------------- |
+| `webpack`         | JavaScript  | `@swissquote/crafty-runner-webpack`                                       |
+| `rollup`          | JavaScript  | `@swissquote/crafty-runner-rollup`                                        |
+| `gulp/babel`      | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-babel`      |
+| `gulp/typescript` | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-typescript` |
+| `gulp/swc`        | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-babel`      |
+| `gulp/postcss`    | CSS         | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-postcss`    |
+
+### CSS Bundles
+
+```javascript
+{
+  presets: [
+      "@swissquote/crafty-runner-gulp",
+      "@swissquote/crafty-preset-postcss"
+  ],
+  css: {
+    testIndex: {
+        source: 'css/test/test.scss',
+        destination: 'index.min.css',
+        watch: 'css/test/**.scss'
+    }
+  }
+}
+
+```
+
+`testIndex` is the bundle name; you will be able to call `crafty run css_testIndex` to
+build it.
+
+CSS bundling provides no particular option.
+When bundling your CSS inside your JavaScript, you must set the configuration in the JavaScript bundle.
+
+### JavaScript Bundles
+
+```javascript
+app: {
+    source: ['js/panel.js', 'js/nothing.js'],
+    destination: 'app.min.js'
+}
+```
+
+`app` is the bundle name; you will be able to call `crafty run js_app` to build it.
+
+Apart from the common options, here are the options you can use for JavaScript
+bundles.
+
+| Option          | Type                 | Runner              | Preset                                           | Description                                                                                                                                                                                                                                                                                                        |
+| --------------- | -------------------- | ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `format`        | `string`             | rollup.js           | `crafty-runner-rollup`                           | Define the output format can be any of `amd`, `iife`, `cjs`, `es` or `umd`. Defaults to `es`.                                                                                                                                                                                                                      |
+| `externals`     | `string[]`           | rollup.js / Webpack | `crafty-runner-webpack` / `crafty-runner-rollup` | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs)                                                                                                                                                                                            |
+| `hot`           | `bool`               | Webpack             | `crafty-runner-webpack`                          | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                                                                                                                                                                                            |
+| `libraryTarget` | `string`             | Webpack             | `crafty-runner-webpack`                          | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget)                                                                                                                                                                   |
+| `library`       | `string`             | Webpack             | `crafty-runner-webpack`                          | Define the library name for the Webpack module or export.                                                                                                                                                                                                                                                          |
+| `extractCSS`    | `bool|string|object` | Webpack             | `crafty-preset-postcss`                          | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
+| `concat`        | `bool`               | Gulp                | `crafty-preset-babel`                            | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this)                                                                                                                                                                                    |
