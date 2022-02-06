@@ -56,10 +56,13 @@ test.serial("Compiles TypeScript", async t => {
   t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
   t.truthy(testUtils.exists(cwd, "dist/js/897.myBundle.min.js"));
   t.truthy(testUtils.exists(cwd, "dist/js/897.myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/Component.d.ts"));
 
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/897.myBundle.min.js"));
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts"));
 });
 
 test.serial("Compiles TypeScript - fork checker", async t => {
