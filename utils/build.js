@@ -40,7 +40,7 @@ async function main() {
           bundle
         );
       } finally {
-        await fs.promises.rm(`src/${filename}`);
+        await fs.promises.unlink(`src/${filename}`);
       }
 
       continue;
