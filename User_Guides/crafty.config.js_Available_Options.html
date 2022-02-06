@@ -108,24 +108,25 @@
 <li>
 <a href="#stylelint-pattern-which-files-to-lint">stylelint_pattern: Which files to lint</a>
 </li>
+<li>
+<a href="#externals-to-not-bundle-dependencies">externals to not bundle dependencies</a>
+</li>
 </ul>
 </li>
 <li>
-<a href="#bundles">Bundles</a>
+<a href="#js-and-css-bundles">js and css Bundles</a>
 <ul>
 <li>
 <a href="#common-bundle-options">Common Bundle options</a>
+</li>
+<li>
+<a href="#runners">Runners</a>
 </li>
 <li>
 <a href="#css-bundles">CSS Bundles</a>
 </li>
 <li>
 <a href="#javascript-bundles">JavaScript Bundles</a>
-<ul>
-<li>
-<a href="#javascript-external-assets">JavaScript External assets</a>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -234,32 +235,73 @@ your assets to Maven’s <code>target</code> directory.</p>
 <p>Default: <code>Edge &gt;= 18, Safari &gt;= 13, iOS &gt;= 13, Chrome &gt;= 77, and_chr &gt;= 77, Firefox &gt;= 69</code></p>
 <p>Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.</p>
-<p>This option is for example used by Autoprefixer to define which CSS Prefixes it
+<p>This option is, for example, used by Autoprefixer to define which CSS Prefixes it
 needs to add to the CSS file.</p>
-<p>The default browsers we defined was taken from the statistics of browser usage
-we have seen across all Swissquote Platforms</p>
+<p>We created this list of browsers based on the statistics of browser usage
+we have seen across all Swissquote Platforms.</p>
 <p>If you want a different list, you can override those defaults using any valid <a href="https://github.com/browserslist/browserslist#queries" class="Link--external" rel="noopener noreferrer">Browserslist query source</a></p>
 <h3><a id="terser-javascript-compression" href="#terser-javascript-compression" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>terser</code> : JavaScript compression</h3>
 <p>Default: <code>{ compress: true, sourceMap: true }</code></p>
-<p>By default, we compress our JavaScript with safe parameters, if you wish you can
+<p>By default, we compress our JavaScript with safe parameters. If you wish, you can
 go further and enable more advanced compression techniques.</p>
-<p>The options are described
-<a href="https://github.com/terser/terser#minify-options" class="Link--external" rel="noopener noreferrer">in Terser’s documentation</a></p>
+<p><a href="https://github.com/terser/terser#minify-options" class="Link--external" rel="noopener noreferrer">Terser’s documentation</a> has all the details on its options.</p>
 <h3><a id="stylelint-pattern-which-files-to-lint" href="#stylelint-pattern-which-files-to-lint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>stylelint_pattern</code>: Which files to lint</h3>
 <p>Default: <code>[&quot;css/**/*.scss&quot;, &quot;css/**/*.css&quot;, &quot;!*.min.css&quot;, &quot;!**/vendor/**/*.scss&quot;, &quot;!**/vendor/**/*.css&quot;, &quot;!**/vendor/*.scss&quot;, &quot;!**/vendor/*.css&quot;]</code></p>
 <p>Define the file types you want to target when linting CSS files.</p>
-<h2><a id="bundles" href="#bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundles</h2>
-<p>A bundle is a set of one or more source files that will be compiled in on or
-more destination files.</p>
-<p>Each bundle has one mandatory option : <code>source</code>.</p>
-<p>If we take this JavaScript bundle :</p>
-<pre><code class="hljs javascript">app: { <span class="hljs-comment">// name of the bundle</span>
- <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
+<h3><a id="externals-to-not-bundle-dependencies" href="#externals-to-not-bundle-dependencies" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>externals</code> to not bundle dependencies</h3>
+<p>By default, all bundlers include all external dependencies in the final bundle.</p>
+<p>Including all dependencies works fine for applications, but if you wish to build a multi-tenant
+application or a library, you might not want to include all dependencies because
+you’ll end up with the same dependency more than one time.</p>
+<p>The <code>externals</code> option allows you to define a list of provided libraries and should not be embedded in the build. Here is an example :</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+    ...
+    <span class="hljs-comment">// patterns are strings or globs</span>
+    <span class="hljs-attr">externals</span>: [<span class="hljs-string">"react"</span>, <span class="hljs-string">"react-dom"</span>, <span class="hljs-string">"moment"</span>, <span class="hljs-string">"moment/**"</span>],
+    ...
+    js: {
+        <span class="hljs-attr">app</span>: {
+            <span class="hljs-comment">// You can provide more items here, they will be merged with the main list for this bundle</span>
+            <span class="hljs-attr">externals</span>: [<span class="hljs-string">"my-plugin"</span>, <span class="hljs-string">"my-plugin/**"</span>]
+            ...
+        }
+    }
+    ...
 }
 </code></pre>
-<p>This will automatically create a file in <code>&lt;destination_js&gt;/app.min.js</code>
-containing both source files that will be minified.</p>
-<p>The file name is taken from the bundle name if no <code>destination</code> is specified</p>
+<p>In this example, <code>react</code>, <code>react-dom</code>, and all modules starting with <code>moment/</code> will
+be treated as external</p>
+<blockquote>
+<p>This configuration example uses glob patterns.
+These patterns work fine for Webpack but are not supported by rollup.js.</p>
+</blockquote>
+<h2><a id="js-and-css-bundles" href="#js-and-css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>js</code> and <code>css</code> Bundles</h2>
+<p>The two configuration objects inside <code>css</code> and <code>js</code> are what Crafty uses to create the build tasks when running <code>crafty run</code>.</p>
+<p>A bundle is a set of one or more <strong>source files</strong> that a <strong>runner</strong> compiles to one or
+more <strong>destination files</strong>.</p>
+<p>From these three options, one is mandatory; <code>source</code>.</p>
+<p>If we take this JavaScript bundle :</p>
+<pre><code class="hljs javascript">{
+  <span class="hljs-attr">presets</span>: [
+      <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
+      <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>
+  ],
+  <span class="hljs-attr">js</span>: {
+    <span class="hljs-attr">app</span>: { <span class="hljs-comment">// name of the bundle</span>
+      <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
+      <span class="hljs-attr">concat</span>: <span class="hljs-literal">true</span>
+    }
+  }
+}
+</code></pre>
+<p>This configuration will:</p>
+<ol>
+<li>Use the <code>gulp/babel</code> runner implicitly, as no other runner is available.</li>
+<li>Read <code>js/panel.js</code> and <code>js/nothing.js</code>.</li>
+<li>Convert them using the Babel preset.</li>
+<li>Concatenate both files together; That option is exclusive to the gulp runner.</li>
+<li>Write the file to <code>&lt;destination_js&gt;/app.min.js</code>. Which is inferred from the bundle name because no destination was specified.</li>
+</ol>
 <h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Common Bundle options</h3>
 <table>
 <thead>
@@ -273,67 +315,100 @@ containing both source files that will be minified.</p>
 <tbody>
 <tr>
 <td><code>source</code></td>
-<td>String/Array</td>
+<td>`string</td>
+<td>string[]`</td>
 <td>No</td>
-<td>One single file or an array of files you wish to compile. Glob expressions are valid.</td>
 </tr>
 <tr>
 <td><code>runner</code></td>
-<td>String</td>
+<td><code>string</code></td>
 <td>No</td>
-<td>The name of the runner to use for this bundle. Is mandatory if more than one runner is loaded</td>
+<td>The runner’s name to use for this bundle. This option is mandatory if more than one runner is loaded</td>
 </tr>
 <tr>
 <td><code>destination</code></td>
-<td>String</td>
+<td><code>string</code></td>
 <td>Yes</td>
 <td>The name to give to the final file. Defaults to <code>&lt;bundle_name&gt;.min.&lt;bundle_type&gt;</code></td>
 </tr>
 <tr>
 <td><code>watch</code></td>
-<td>String/Array</td>
+<td>`string</td>
+<td>string[]`</td>
 <td>Yes</td>
-<td>The watch expression to use to rebuild this asset. Any glob expression is valid, is needed for Gulp in watch mode.</td>
 </tr>
 </tbody>
 </table>
-<h3><a id="css-bundles" href="#css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Bundles</h3>
-<pre><code class="hljs javascript">testIndex: {
-    <span class="hljs-attr">source</span>: <span class="hljs-string">'css/test/test.scss'</span>,
-    <span class="hljs-attr">destination</span>: <span class="hljs-string">'index.min.css'</span>,
-    <span class="hljs-attr">watch</span>: <span class="hljs-string">'css/test/**.scss'</span>
-}
-</code></pre>
-<p><code>testIndex</code> is the bundle name, you will be able to call <code>gulp css_testIndex</code> to
-build it.</p>
-<p>Apart from the common options, here are the options you can use for CSS bundles.</p>
+<h3><a id="runners" href="#runners" class="Permalink" aria-hidden="true" title="Permalink">#</a>Runners</h3>
+<p>You can define which runner should run for which bundle. The different values are</p>
 <table>
 <thead>
 <tr>
-<th>Option</th>
-<th>Type</th>
-<th>Runner</th>
-<th>Preset</th>
-<th>Description</th>
+<th>Runner Name</th>
+<th>Bundle Type</th>
+<th>Required presets</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>extractCSS</code></td>
-<td>Boolean / String / Object</td>
-<td>Webpack</td>
-<td><code>crafty-preset-postcss</code></td>
-<td>This will extract the CSS out of the bundle, all <a href="https://github.com/webpack-contrib/mini-css-extract-plugin#configuration" class="Link--external" rel="noopener noreferrer">Official options</a> work, you can also pass <code>true</code> which will use <code>[bundle]-[name].min.css</code> as file name, you can use <code>[bundle]</code> in the file name which is replaced by your bundle name.</td>
+<td><code>webpack</code></td>
+<td>JavaScript</td>
+<td><code>@swissquote/crafty-runner-webpack</code></td>
+</tr>
+<tr>
+<td><code>rollup</code></td>
+<td>JavaScript</td>
+<td><code>@swissquote/crafty-runner-rollup</code></td>
+</tr>
+<tr>
+<td><code>gulp/babel</code></td>
+<td>JavaScript</td>
+<td><code>@swissquote/crafty-runner-gulp</code> + <code>@swissquote/crafty-preset-babel</code></td>
+</tr>
+<tr>
+<td><code>gulp/typescript</code></td>
+<td>JavaScript</td>
+<td><code>@swissquote/crafty-runner-gulp</code> + <code>@swissquote/crafty-preset-typescript</code></td>
+</tr>
+<tr>
+<td><code>gulp/swc</code></td>
+<td>JavaScript</td>
+<td><code>@swissquote/crafty-runner-gulp</code> + <code>@swissquote/crafty-preset-babel</code></td>
+</tr>
+<tr>
+<td><code>gulp/postcss</code></td>
+<td>CSS</td>
+<td><code>@swissquote/crafty-runner-gulp</code> + <code>@swissquote/crafty-preset-postcss</code></td>
 </tr>
 </tbody>
 </table>
+<h3><a id="css-bundles" href="#css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Bundles</h3>
+<pre><code class="hljs javascript">{
+  <span class="hljs-attr">presets</span>: [
+      <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
+      <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>
+  ],
+  <span class="hljs-attr">css</span>: {
+    <span class="hljs-attr">testIndex</span>: {
+        <span class="hljs-attr">source</span>: <span class="hljs-string">'css/test/test.scss'</span>,
+        <span class="hljs-attr">destination</span>: <span class="hljs-string">'index.min.css'</span>,
+        <span class="hljs-attr">watch</span>: <span class="hljs-string">'css/test/**.scss'</span>
+    }
+  }
+}
+
+</code></pre>
+<p><code>testIndex</code> is the bundle name; you will be able to call <code>crafty run css_testIndex</code> to
+build it.</p>
+<p>CSS bundling provides no particular option.
+When bundling your CSS inside your JavaScript, you must set the configuration in the JavaScript bundle.</p>
 <h3><a id="javascript-bundles" href="#javascript-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript Bundles</h3>
 <pre><code class="hljs javascript">app: {
     <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'app.min.js'</span>
 }
 </code></pre>
-<p><code>app</code> is the bundle name, you will be able to call <code>gulp js_app</code> to build it.</p>
+<p><code>app</code> is the bundle name; you will be able to call <code>crafty run js_app</code> to build it.</p>
 <p>Apart from the common options, here are the options you can use for JavaScript
 bundles.</p>
 <table>
@@ -349,76 +424,55 @@ bundles.</p>
 <tbody>
 <tr>
 <td><code>format</code></td>
-<td>String</td>
+<td><code>string</code></td>
 <td>rollup.js</td>
 <td><code>crafty-runner-rollup</code></td>
 <td>Define the output format can be any of <code>amd</code>, <code>iife</code>, <code>cjs</code>, <code>es</code> or <code>umd</code>. Defaults to <code>es</code>.</td>
 </tr>
 <tr>
 <td><code>externals</code></td>
-<td>Array&lt;String&gt;</td>
+<td><code>string[]</code></td>
 <td>rollup.js / Webpack</td>
 <td><code>crafty-runner-webpack</code> / <code>crafty-runner-rollup</code></td>
 <td>Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn’t understand globs)</td>
 </tr>
 <tr>
 <td><code>hot</code></td>
-<td>Boolean</td>
+<td><code>bool</code></td>
 <td>Webpack</td>
 <td><code>crafty-runner-webpack</code></td>
 <td>Allows to use Hot Module Replacement in watch mode (<code>false</code> by default)</td>
 </tr>
 <tr>
 <td><code>libraryTarget</code></td>
-<td>String</td>
+<td><code>string</code></td>
 <td>Webpack</td>
 <td><code>crafty-runner-webpack</code></td>
 <td>Define the library type to export. By default we use <code>amd</code>. <a href="https://webpack.js.org/configuration/output/#output-librarytarget" class="Link--external" rel="noopener noreferrer">Possible values</a></td>
 </tr>
 <tr>
 <td><code>library</code></td>
-<td>String</td>
+<td><code>string</code></td>
 <td>Webpack</td>
 <td><code>crafty-runner-webpack</code></td>
 <td>Define the library name for the Webpack module or export.</td>
 </tr>
 <tr>
+<td><code>extractCSS</code></td>
+<td>`bool</td>
+<td>string</td>
+<td>object`</td>
+<td>Webpack</td>
+</tr>
+<tr>
 <td><code>concat</code></td>
-<td>Boolean</td>
+<td><code>bool</code></td>
 <td>Gulp</td>
 <td><code>crafty-preset-babel</code></td>
 <td>This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack or rollup.js for this)</td>
 </tr>
 </tbody>
 </table>
-<h4><a id="javascript-external-assets" href="#javascript-external-assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript External assets</h4>
-<p>By default, all bundlers include all external dependencies in the final bundle,
-this works fine for applications, but if you wish to build a multi-tenant
-application or a library, you don’t wish to include all dependencies, because
-you’ll end up with the same dependency more than one time.</p>
-<p>The <code>externals</code> option allows you to define a list of libraries that are
-provided and should not be embedded in the build, here is an example :</p>
-<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
-    ...
-    <span class="hljs-comment">// patterns are strings or globs</span>
-    <span class="hljs-attr">externals</span>: [<span class="hljs-string">"react"</span>, <span class="hljs-string">"react-dom"</span>, <span class="hljs-string">"squp"</span>, <span class="hljs-string">"squp/**"</span>],
-    ...
-    js: {
-        <span class="hljs-attr">app</span>: {
-            <span class="hljs-comment">// You can provide more items here, they will be merged with the main list for this bundle</span>
-            <span class="hljs-attr">externals</span>: [<span class="hljs-string">"my-plugin"</span>, <span class="hljs-string">"my-plugin/**"</span>]
-            ...
-        }
-    }
-    ...
-}
-</code></pre>
-<p>In this example <code>react</code>, <code>react-dom</code> and all modules starting with <code>squp/</code> will
-be treated as external</p>
-<blockquote>
-<p>You can see that globs were used here, note that they work for Webpack but not
-for rollup.js that needs complete strings.</p>
-</blockquote>
     </div>
 
         <nav>
