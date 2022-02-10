@@ -1,4 +1,5 @@
 const { getExternals } = require("../../utils/externals");
+const fs = require("fs");
 
 const externals = getExternals();
 
@@ -17,7 +18,35 @@ module.exports = [
       "@babel/core": "@babel/core",
       "@babel/code-frame": "@babel/code-frame",
       "@babel/helper-module-imports": "@babel/helper-module-imports",
-      typescript: "typescript"
-    }
-  }
+      typescript: "typescript",
+    },
+  },
+  {
+    name: "fork-ts-checker-webpack-plugin-packages",
+    externals: {
+      // Provided by other Crafty packages
+      ...externals,
+
+      // Dependencies of this package
+      "@babel/core": "@babel/core",
+      "@babel/code-frame": "@babel/code-frame",
+      "@babel/helper-module-imports": "@babel/helper-module-imports",
+      typescript: "typescript",
+    },
+  },
+  async function() {
+    fs.mkdirSync("dist/compiled/typescript/worker", { recursive: true });
+
+    await fs.promises.writeFile(
+      "dist/compiled/typescript/worker/get-dependencies-worker.js",
+      "module.exports = require('../../fork-ts-checker-webpack-plugin-packages.js').forkTsCheckerWebpackPluginWorkerDependencies();"
+    );
+
+    await fs.promises.writeFile(
+      "dist/compiled/typescript/worker/get-issues-worker.js",
+      "module.exports = require('../../fork-ts-checker-webpack-plugin-packages.js').forkTsCheckerWebpackPluginWorkerIssues();"
+    );
+
+    // Create worker files
+  },
 ];

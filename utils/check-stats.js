@@ -25,7 +25,7 @@ data.modules
 
 // All readable-stream packages must be external
 data.modules
-  .filter((m) => m.name.indexOf("readable-stream") > -1)
+  .filter((m) => m.name.indexOf("readable-stream") > -1 || m.name.indexOf("stylelint/") > -1)
   .filter((m) => m.name.indexOf("external ") !== 0)
   .map((m) => `Module "${m.name}" requested by "${m.issuerName}" should be external.`)
   .map(recordError);

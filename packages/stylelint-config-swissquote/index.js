@@ -1,4 +1,4 @@
-const stylelint = require("stylelint");
+const stylelint = require("./shims/stylelint");
 
 const noUtilityReassignment = require("./src/rules/no-utility-reassignment");
 const noHackReassignment = require("./src/rules/no-hack-reassignment");

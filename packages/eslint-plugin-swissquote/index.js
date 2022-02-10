@@ -23,7 +23,7 @@ module.exports = {
       overrides: [
         {
           files: ["*.ts", "*.tsx"],
-          parser: require.resolve("@typescript-eslint/parser"),
+          parser: require.resolve("./packages/typescript-eslint_parser.js"),
           // Extends doesn't work in overrides, so we add rules directly
           rules: require("./src/typescript.js").rules
         }
@@ -36,7 +36,7 @@ module.exports = {
       overrides: [
         {
           files: ["*.ts", "*.tsx"],
-          parser: require.resolve("@typescript-eslint/parser")
+          parser: require.resolve("./packages/typescript-eslint_parser.js")
         }
       ]
     },
@@ -67,7 +67,7 @@ module.exports = {
       overrides: [
         {
           files: ["*.ts", "*.tsx"],
-          parser: require.resolve("@typescript-eslint/parser"),
+          parser: require.resolve("./packages/typescript-eslint_parser.js"),
 
           // Extends doesn't work in overrides, so we add rules directly
           rules: {

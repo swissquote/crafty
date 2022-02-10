@@ -175,7 +175,7 @@ module.exports = {
 
     chain
       .plugin("fork-ts-checker")
-      .use(require.resolve("fork-ts-checker-webpack-plugin"), [
+      .use(require.resolve("../packages/fork-ts-checker-webpack-plugin"), [
         forkCheckerOptions
       ]);
   }

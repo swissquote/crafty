@@ -4,8 +4,9 @@ const commonExternals = {
   // Provided by other Crafty packages
   ...getExternals(),
 
-  stylelint: "stylelint",
-  "/stylelint(/.*)/": "stylelint$1"
+  stylelint: "../../shims/stylelint.js",
+  "stylelint/lib/utils/optionsMatches":
+    "../../shims/stylelint-optionsMatches.js"
 };
 
 module.exports = [
