@@ -16,17 +16,17 @@ module.exports = [
       ...commonExternals,
 
       // We don't need most prettier parsers
-      "./parser-angular.js": "prettier/parser-angular.js",
-      "./parser-babel.js": "prettier/parser-babel.js",
-      "./parser-espree.js": "prettier/parser-espree.js",
-      "./parser-flow.js": "prettier/parser-flow.js",
-      "./parser-glimmer.js": "prettier/parser-glimmer.js",
-      "./parser-graphql.js": "prettier/parser-graphql.js",
-      "./parser-html.js": "prettier/parser-html.js",
-      "./parser-markdown.js": "prettier/parser-markdown.js",
-      "./parser-meriyah.js": "prettier/parser-meriyah.js",
-      "./parser-typescript.js": "prettier/parser-typescript.js",
-      "./parser-yaml.js": "prettier/parser-yaml.js"
+      "./parser-angular.js": "../../shims/prettier-parser.js",
+      "./parser-babel.js": "../../shims/prettier-parser.js",
+      "./parser-espree.js": "../../shims/prettier-parser.js",
+      "./parser-flow.js": "../../shims/prettier-parser.js",
+      "./parser-glimmer.js": "../../shims/prettier-parser.js",
+      "./parser-graphql.js": "../../shims/prettier-parser.js",
+      "./parser-html.js": "../../shims/prettier-parser.js",
+      "./parser-markdown.js": "../../shims/prettier-parser.js",
+      "./parser-meriyah.js": "../../shims/prettier-parser.js",
+      "./parser-typescript.js": "../../shims/prettier-parser.js",
+      "./parser-yaml.js": "../../shims/prettier-parser.js"
     }
   },
   {

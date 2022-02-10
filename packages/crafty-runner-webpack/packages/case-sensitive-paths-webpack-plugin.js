@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/packages-webpack.js').caseSensitiveWebpackPlugin();
+module.exports = require('../dist/compiled/packages-webpack.js').caseSensitivePathsWebpackPlugin();
