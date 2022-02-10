@@ -68,5 +68,11 @@ module.exports = [
       // We mock the few lodash functions really used
       lodash: "../../src/not-lodash.js"
     }
+  },
+  {
+    name: "stylelint-utils-packages",
+    externals: {
+      "../reference/keywordSets": "../../shims/stylelint-keywordSets.js"
+    }
   }
 ];

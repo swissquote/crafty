@@ -1,6 +1,6 @@
-const declarationValueIndex = require("stylelint/lib/utils/declarationValueIndex");
-const isStandardSyntaxFunction = require("stylelint/lib/utils/isStandardSyntaxFunction");
-const report = require("stylelint/lib/utils/report");
+const declarationValueIndex = require("../../shims/stylelint-declarationValueIndex");
+const isStandardSyntaxFunction = require("../../shims/stylelint-isStandardSyntaxFunction");
+const report = require("../../shims/stylelint-report");
 const valueParser = require("../../packages/postcss-value-parser");
 
 const ruleName = "swissquote/no-negative-var";
