@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-runner-gulp",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -13,12 +13,12 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "workspace:*",
-    "@swissquote/crafty-commons": "workspace:*",
-    "@swissquote/crafty-commons-gulp": "workspace:*"
+    "@swissquote/crafty": "1.18.0",
+    "@swissquote/crafty-commons": "1.18.0",
+    "@swissquote/crafty-commons-gulp": "1.18.0"
   },
   "devDependencies": {
-    "@swissquote/gulp-plumber": "workspace:*",
+    "@swissquote/gulp-plumber": "1.18.0",
     "pump": "3.0.0",
     "vinyl-fs": "3.0.3"
   },

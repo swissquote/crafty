@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/eslint-plugin-swissquote",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "keywords": [
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "7.17.0",
-    "@swissquote/babel-preset-swissquote": "workspace:*",
-    "@swissquote/crafty-commons": "workspace:*",
+    "@swissquote/babel-preset-swissquote": "1.18.0",
+    "@swissquote/crafty-commons": "1.18.0",
     "prettier": "1.19.1",
     "typescript": "4.5.5"
   },

@@ -1,6 +1,6 @@
 {
   "name": "experiment",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "private": true,
   "scripts": {
     "_build": "crafty run",
@@ -16,16 +16,16 @@
     "webpack": "5.68.0"
   },
   "devDependencies": {
-    "@swissquote/crafty": "workspace:*",
-    "@swissquote/crafty-preset-babel": "workspace:*",
-    "@swissquote/crafty-preset-images": "workspace:*",
-    "@swissquote/crafty-preset-images-simple": "workspace:*",
-    "@swissquote/crafty-preset-maven": "workspace:*",
-    "@swissquote/crafty-preset-postcss": "workspace:*",
-    "@swissquote/crafty-preset-typescript": "workspace:*",
-    "@swissquote/crafty-runner-gulp": "workspace:*",
-    "@swissquote/crafty-runner-rollup": "workspace:*",
-    "@swissquote/crafty-runner-webpack": "workspace:*",
+    "@swissquote/crafty": "1.18.0",
+    "@swissquote/crafty-preset-babel": "1.18.0",
+    "@swissquote/crafty-preset-images": "1.18.0",
+    "@swissquote/crafty-preset-images-simple": "1.18.0",
+    "@swissquote/crafty-preset-maven": "1.18.0",
+    "@swissquote/crafty-preset-postcss": "1.18.0",
+    "@swissquote/crafty-preset-typescript": "1.18.0",
+    "@swissquote/crafty-runner-gulp": "1.18.0",
+    "@swissquote/crafty-runner-rollup": "1.18.0",
+    "@swissquote/crafty-runner-webpack": "1.18.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }

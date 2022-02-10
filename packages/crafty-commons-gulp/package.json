@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-commons-gulp",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -12,10 +12,10 @@
     "build": "node ../../utils/build.js"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "workspace:*"
+    "@swissquote/crafty-commons": "1.18.0"
   },
   "devDependencies": {
-    "@swissquote/gulp-newer": "workspace:*",
+    "@swissquote/gulp-newer": "1.18.0",
     "gulp-eslint-new": "1.3.0",
     "gulp-sourcemaps": "3.0.0",
     "plugin-error": "1.0.1",
