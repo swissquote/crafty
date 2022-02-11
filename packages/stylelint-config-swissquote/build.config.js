@@ -9,6 +9,8 @@ const commonExternals = {
     "../../shims/stylelint-optionsMatches.js"
 };
 
+const FAKE_PRETTIER_PARSER = "../../shims/prettier-parser.js";
+
 module.exports = [
   {
     name: "stylelint-prettier-package",
@@ -16,17 +18,17 @@ module.exports = [
       ...commonExternals,
 
       // We don't need most prettier parsers
-      "./parser-angular.js": "../../shims/prettier-parser.js",
-      "./parser-babel.js": "../../shims/prettier-parser.js",
-      "./parser-espree.js": "../../shims/prettier-parser.js",
-      "./parser-flow.js": "../../shims/prettier-parser.js",
-      "./parser-glimmer.js": "../../shims/prettier-parser.js",
-      "./parser-graphql.js": "../../shims/prettier-parser.js",
-      "./parser-html.js": "../../shims/prettier-parser.js",
-      "./parser-markdown.js": "../../shims/prettier-parser.js",
-      "./parser-meriyah.js": "../../shims/prettier-parser.js",
-      "./parser-typescript.js": "../../shims/prettier-parser.js",
-      "./parser-yaml.js": "../../shims/prettier-parser.js"
+      "./parser-angular.js": FAKE_PRETTIER_PARSER,
+      "./parser-babel.js": FAKE_PRETTIER_PARSER,
+      "./parser-espree.js": FAKE_PRETTIER_PARSER,
+      "./parser-flow.js": FAKE_PRETTIER_PARSER,
+      "./parser-glimmer.js": FAKE_PRETTIER_PARSER,
+      "./parser-graphql.js": FAKE_PRETTIER_PARSER,
+      "./parser-html.js": FAKE_PRETTIER_PARSER,
+      "./parser-markdown.js": FAKE_PRETTIER_PARSER,
+      "./parser-meriyah.js": FAKE_PRETTIER_PARSER,
+      "./parser-typescript.js": FAKE_PRETTIER_PARSER,
+      "./parser-yaml.js": FAKE_PRETTIER_PARSER
     }
   },
   {
