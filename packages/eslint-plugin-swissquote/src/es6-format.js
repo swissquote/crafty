@@ -12,7 +12,7 @@ module.exports = {
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
     "import/resolver": {
-      node: {
+      [require.resolve("../packages/eslint-import-resolver-node.js")]: {
         extensions: [".js", ".json"]
       }
     }

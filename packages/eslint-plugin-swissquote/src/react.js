@@ -4,7 +4,7 @@ const { addMissingRules } = require("./utils");
 module.exports = {
   settings: {
     "import/resolver": {
-      node: {
+      [require.resolve("../packages/eslint-import-resolver-node.js")]: {
         extensions: [".js", ".jsx", ".json"]
       }
     },

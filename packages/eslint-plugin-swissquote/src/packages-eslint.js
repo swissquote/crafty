@@ -14,6 +14,10 @@ function eslintConfigPrettier() {
   return require("eslint-config-prettier");
 }
 
+function eslintImportResolverNode() {
+  return require("eslint-import-resolver-node");
+}
+
 function eslintImportResolverTypescript() {
   return require("eslint-import-resolver-typescript");
 }
@@ -43,6 +47,7 @@ module.exports = {
   typescriptEslintParser,
   confusingBrowserGlobals,
   eslintConfigPrettier,
+  eslintImportResolverNode,
   eslintImportResolverTypescript,
   eslintPluginImport,
   eslintPluginPrettier,

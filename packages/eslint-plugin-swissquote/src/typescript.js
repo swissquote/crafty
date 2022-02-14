@@ -18,7 +18,7 @@ module.exports = {
     },
     "import/resolver": {
       // use <root>/tsconfig.json
-      typescript: {
+      [require.resolve("../packages/eslint-import-resolver-typescript.js")]: {
         alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
       }
     }
