@@ -2,6 +2,9 @@ module.exports = {
   extends: [require.resolve("./common")],
   plugins: [require.resolve("./index")],
   rules: {
+    // Swissquote Guidelines
+    // ---------------------------------------------------------------------
+
     // [SPEC] IDs MUST NOT be styled
     "selector-max-id": 0,
 
@@ -34,6 +37,19 @@ module.exports = {
     "swissquote/no-utility-reassignment": true,
 
     // - bare tags (a, div, p ...) MUST NOT be reassigned outside of a scope (with the exception of base typography rules that will be applied to the whole page)
-    "swissquote/no-type-outside-scope": true
+    "swissquote/no-type-outside-scope": true,
+
+    // Limiting Language features
+    // ---------------------------------------------------------------------
+    "at-rule-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+
+    // Misc
+    // ---------------------------------------------------------------------
+    
+    // Using a combination of big css files and many compound selectors can have a big performance impact.
+    "selector-max-compound-selectors": 6,
   }
 };

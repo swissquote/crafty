@@ -56,7 +56,6 @@ module.exports = {
     "keyframe-declaration-no-important": true,
     "media-feature-name-no-unknown": true,
     "property-no-unknown": true,
-    "selector-max-compound-selectors": 6,
     "selector-pseudo-class-no-unknown": [
       true,
       { ignorePseudoClasses: ["global"] }
@@ -66,13 +65,6 @@ module.exports = {
     "string-no-newline": true,
     "unit-no-unknown": [true, { ignoreUnits: ["x"] }],
     "swissquote/no-negative-var": true,
-
-    // Limiting Language features
-    // ---------------------------------------------------------------------
-    "at-rule-no-vendor-prefix": true,
-    "property-no-vendor-prefix": true,
-    "selector-no-vendor-prefix": true,
-    "value-no-vendor-prefix": true,
 
     // SCSS Rules
     // ---------------------------------------------------------------------
