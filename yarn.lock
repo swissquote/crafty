@@ -2149,7 +2149,7 @@ __metadata:
     find-up: 6.3.0
     glob: 7.2.0
     micromatch: 4.0.4
-    minimatch: 3.1.1
+    minimatch: 4.1.1
     semver: 7.3.5
     source-map-js: 1.0.2
     tmp: 0.2.1
@@ -9848,7 +9848,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:3.1.1, minimatch@npm:^3.0.4":
+"minimatch@npm:4.1.1":
+  version: 4.1.1
+  resolution: "minimatch@npm:4.1.1"
+  dependencies:
+    brace-expansion: ^1.1.7
+  checksum: e598cc16a97ef1504dd9419243c58b1b13de31eaf7743d08aa5d4896b72148046488de7b17c39933ffcef8abae09e2267a3e17508ce80e6953d65285a0c4a2bf
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^3.0.4":
   version: 3.1.1
   resolution: "minimatch@npm:3.1.1"
   dependencies:
