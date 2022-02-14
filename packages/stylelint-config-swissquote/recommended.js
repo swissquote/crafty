@@ -48,8 +48,8 @@ module.exports = {
 
     // Misc
     // ---------------------------------------------------------------------
-    
+
     // Using a combination of big css files and many compound selectors can have a big performance impact.
-    "selector-max-compound-selectors": 6,
+    "selector-max-compound-selectors": 6
   }
 };

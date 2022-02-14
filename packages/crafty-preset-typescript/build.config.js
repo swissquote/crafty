@@ -37,6 +37,7 @@ module.exports = [
   async function() {
     fs.mkdirSync("dist/compiled/typescript/worker", { recursive: true });
 
+    // Create worker files
     await fs.promises.writeFile(
       "dist/compiled/typescript/worker/get-dependencies-worker.js",
       "module.exports = require('../../fork-ts-checker-webpack-plugin-packages.js').forkTsCheckerWebpackPluginWorkerDependencies();"
@@ -47,6 +48,10 @@ module.exports = [
       "module.exports = require('../../fork-ts-checker-webpack-plugin-packages.js').forkTsCheckerWebpackPluginWorkerIssues();"
     );
 
-    // Create worker files
+    // Remove a compiled version of TypeScript
+    // Would be needed as fallback by fork-ts-checker-webpabk-plugin if no `typescriptPath` is provided
+    await fs.promises.unlink(
+      "dist/compiled/typescript.js",
+    );
   },
 ];
