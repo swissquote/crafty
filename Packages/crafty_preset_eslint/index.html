@@ -134,7 +134,7 @@
 <p>This preset comes with the Swissquote JavaScript Guideline.</p>
 <p><a href="JavaScript_Linting.html">Read more</a></p>
 <h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
-<p><code>crafty-prest-eslint</code> comes automatically with <code>@swissquote/crafty-preset-babel</code> so install this only if you only need the linter without the bundler.</p>
+<p><code>crafty-prest-eslint</code> comes automatically with <code>@swissquote/crafty-preset-babel</code>. Install this only if you only need the linter without the bundler.</p>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-eslint --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -143,33 +143,33 @@
 </code></pre>
 <h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
 <h3><a id="linting-options" href="#linting-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting options</h3>
-<p>You can read about the linting options in the page about <a href="JavaScript_Linting.html">Read more</a></p>
+<p>You can read about the linting options on the page about <a href="JavaScript_Linting.html">Read more</a></p>
 <h2><a id="commands" href="#commands" class="Permalink" aria-hidden="true" title="Permalink">#</a>Commands</h2>
 <h3><a id="crafty-jslint" href="#crafty-jslint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty jsLint</code></h3>
 <p>This linter will leverage ESLint to lint your JavaScript files with the Swissquote presets pre-configured. All <a href="https://eslint.org/docs/user-guide/command-line-interface" class="Link--external" rel="noopener noreferrer">ESLint CLI</a> options are valid here.</p>
 <p>The additions made by this command are:</p>
 <ul>
 <li>Pre-configured rules, defined by <a href="../eslint_plugin_swissquote.html"><code>eslint-plugin-swissquote</code></a> activated using <code>--preset</code>.</li>
-<li>Uses <code>@babel/eslint-parser</code> as a parser to support new syntax that ESLint doesn’t understand yet.</li>
+<li>Works for JavaScript and for TypeScript</li>
 </ul>
-<p>there are 4 presets available for you :</p>
+<p>there are four presets available for you :</p>
 <ul>
 <li>
-<code>format</code> Base formatting rules, should work on any code (included in <code>legacy</code> and <code>recommended</code>)</li>
+<code>format</code> Base formatting rules should work on any code (included in <code>legacy</code> and <code>recommended</code>)</li>
 <li>
 <code>node</code> Adds environment information for Node.js</li>
 <li>
 <code>legacy</code> For all your EcmaScript 5 code</li>
 <li>
-<code>recommended</code> For al your EcmaScript 2015+ code, also contains rules for React</li>
+<code>recommended</code> For all your EcmaScript 2015+ code, it also contains rules for React</li>
 </ul>
-<p>Setting presets is done with the <code>--preset</code> option</p>
-<p>The order of the presets is important as some rules might override previous ones.</p>
+<p>You can enable those preset with the <code>--preset {the_preset}</code> option on the command line</p>
+<p>The order of the presets is essential as some rules might override previous ones.</p>
 <p>For example:</p>
 <pre><code class="hljs bash">crafty jsLint src/** --preset format --preset node --preset recommended
 </code></pre>
-<p>If no preset is specified <code>recommended</code> is used.</p>
-<p>If you pass the <code>--fix</code> flag it will fix all the errors it can and write them directly to the file.</p>
+<p>If you don’t specify any preset, we’ll default to <code>recommended</code>.</p>
+<p>If you pass the <code>--fix</code> flag, it will fix all the errors it can and write them directly to the file.</p>
     </div>
 
         <nav>
