@@ -3,21 +3,15 @@ function resolveModules(...args) {
 }
 
 const parserOptions = {
-  requireConfigFile: false,
-  babelOptions: {
-    presets: [
-      [
-        require.resolve("@swissquote/babel-preset-swissquote"),
-        { environment: "test" }
-      ]
-    ]
+  ecmaVersion: "latest",
+  ecmaFeatures: {
+    jsx: true
   }
 };
 
 module.exports = {
   configs: {
     format: {
-      parser: require.resolve("@babel/eslint-parser"),
       parserOptions,
       extends: resolveModules("formatting", "es6-format"),
       overrides: [
@@ -30,7 +24,6 @@ module.exports = {
       ]
     },
     node: {
-      parser: require.resolve("@babel/eslint-parser"),
       parserOptions,
       extends: resolveModules("node"),
       overrides: [
@@ -51,7 +44,6 @@ module.exports = {
       }
     },
     recommended: {
-      parser: require.resolve("@babel/eslint-parser"),
       parserOptions,
       env: {
         browser: true,

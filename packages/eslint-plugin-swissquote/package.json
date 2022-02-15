@@ -18,8 +18,6 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.17.0",
-    "@swissquote/babel-preset-swissquote": "1.18.1",
     "@swissquote/crafty-commons": "1.18.1",
     "prettier": "1.19.1",
     "typescript": "4.5.5"

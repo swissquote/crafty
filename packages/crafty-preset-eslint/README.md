@@ -20,7 +20,7 @@ This preset comes with the Swissquote JavaScript Guideline.
 
 ## Installation
 
-`crafty-prest-eslint` comes automatically with `@swissquote/crafty-preset-babel` so install this only if you only need the linter without the bundler.
+`crafty-prest-eslint` comes automatically with `@swissquote/crafty-preset-babel`. Install this only if you only need the linter without the bundler.
 
 ```bash
 npm install @swissquote/crafty-preset-eslint --save
@@ -36,7 +36,7 @@ module.exports = {
 
 ### Linting options
 
-You can read about the linting options in the page about [Read more](./JavaScript_Linting.md)
+You can read about the linting options on the page about [Read more](./JavaScript_Linting.md)
 
 ## Commands
 
@@ -47,18 +47,18 @@ This linter will leverage ESLint to lint your JavaScript files with the Swissquo
 The additions made by this command are:
 
 - Pre-configured rules, defined by [`eslint-plugin-swissquote`](05_Packages/10_eslint-plugin-swissquote.md) activated using `--preset`.
-- Uses `@babel/eslint-parser` as a parser to support new syntax that ESLint doesn't understand yet.
+- Works for JavaScript and for TypeScript
 
-there are 4 presets available for you :
+there are four presets available for you :
 
-- `format` Base formatting rules, should work on any code (included in `legacy` and `recommended`)
+- `format` Base formatting rules should work on any code (included in `legacy` and `recommended`)
 - `node` Adds environment information for Node.js
 - `legacy` For all your EcmaScript 5 code
-- `recommended` For al your EcmaScript 2015+ code, also contains rules for React
+- `recommended` For all your EcmaScript 2015+ code, it also contains rules for React
 
-Setting presets is done with the `--preset` option
+You can enable those preset with the `--preset {the_preset}` option on the command line
 
-The order of the presets is important as some rules might override previous ones.
+The order of the presets is essential as some rules might override previous ones.
 
 For example:
 
@@ -66,6 +66,6 @@ For example:
 crafty jsLint src/** --preset format --preset node --preset recommended
 ```
 
-If no preset is specified `recommended` is used.
+If you don't specify any preset, we'll default to `recommended`.
 
-If you pass the `--fix` flag it will fix all the errors it can and write them directly to the file.
+If you pass the `--fix` flag, it will fix all the errors it can and write them directly to the file.

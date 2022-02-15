@@ -4,18 +4,6 @@ function pluginIstanbul() {
   return require("babel-plugin-istanbul");
 }
 
-function pluginProposalClassProperties() {
-  return require("@babel/plugin-proposal-class-properties");
-}
-
-function pluginProposalNullishCoalescingOperator() {
-  return require("@babel/plugin-proposal-nullish-coalescing-operator");
-}
-
-function pluginProposalOptionalChaining() {
-  return require("@babel/plugin-proposal-optional-chaining");
-}
-
 function pluginTransformModulesCommonjs() {
   return require("@babel/plugin-transform-modules-commonjs");
 }
@@ -46,9 +34,6 @@ function presetReact() {
 
 module.exports = {
   pluginIstanbul,
-  pluginProposalClassProperties,
-  pluginProposalNullishCoalescingOperator,
-  pluginProposalOptionalChaining,
   pluginTransformModulesCommonjs,
   pluginTransformPropertyLiterals,
   pluginTransformReactRemovePropTypes,

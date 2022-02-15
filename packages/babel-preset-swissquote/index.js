@@ -77,9 +77,6 @@ module.exports = function buildPreset(context, opts) {
   // Plugins
   // --------------------------------------------
 
-  // class { handleClick = () => { } }
-  plugins.push(require.resolve("./packages/plugin-proposal-class-properties"));
-
   const babelRuntime = path.dirname(
     require.resolve("@babel/runtime/package.json")
   );
@@ -124,15 +121,6 @@ module.exports = function buildPreset(context, opts) {
       }
     ]);
   }
-
-  // Optional chaining and nullish coalescing are supported in @babel/preset-env,
-  // but not yet supported in webpack due to support missing from acorn.
-  // These can be removed once webpack has support.
-  // See https://github.com/facebook/create-react-app/issues/8445#issuecomment-588512250
-  plugins.push(require.resolve("./packages/plugin-proposal-optional-chaining"));
-  plugins.push(
-    require.resolve("./packages/plugin-proposal-nullish-coalescing-operator")
-  );
 
   return {
     presets,
