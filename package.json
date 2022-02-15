@@ -19,6 +19,7 @@
     "lint:docs": "./lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
     "build": "./run_all.sh build",
+    "check-build": "find . -name '*-stats.json' -print0 | xargs -0 -n1 utils/check-stats.js",
     "test": "./run_all.sh test",
     "test:ci": "./run_all.sh test:ci",
     "publish:canary": "./utils/publish.js --pre-release",
