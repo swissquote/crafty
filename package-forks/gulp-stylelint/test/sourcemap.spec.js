@@ -5,7 +5,6 @@ const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 const gulpCleanCss = require("gulp-clean-css");
 const gulpConcat = require("gulp-concat");
 const gulpRename = require("gulp-rename");
-const gulpSourcemaps = require("gulp-sourcemaps");
 const path = require("path");
 
 const gulp = new Gulp(new Crafty({}));
@@ -26,8 +25,7 @@ test("should emit no errors when stylelint rules are satisfied", (t) => {
     () =>
       new Promise((resolve) => {
         gulp
-          .src(fixtures("original-*.css"))
-          .pipe(gulpSourcemaps.init())
+          .src(fixtures("original-*.css"), { sourcemaps: true })
           .pipe(
             gulpStylelint({
               config: { rules: {} },
@@ -44,8 +42,7 @@ test.skip("should apply sourcemaps correctly", (t) => {
 
   return new Promise((resolve, reject) => {
     gulp
-      .src(fixtures("original-*.css"))
-      .pipe(gulpSourcemaps.init())
+      .src(fixtures("original-*.css"), { sourcemaps: true })
       .pipe(gulpCleanCss())
       .pipe(gulpConcat("concatenated.css"))
       .pipe(gulpRename({ prefix: "renamed-" }))
@@ -83,8 +80,7 @@ test("should ignore empty sourcemaps", (t) => {
 
   return new Promise((resolve, reject) => {
     gulp
-      .src(fixtures("original-*.css"))
-      .pipe(gulpSourcemaps.init()) // empty sourcemaps here
+      .src(fixtures("original-*.css"), { sourcemaps: true })
       .pipe(
         gulpStylelint({
           config: {

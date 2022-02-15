@@ -5,7 +5,6 @@ const Crafty = require("@swissquote/crafty/src/Crafty");
 const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 
 const gulp = new Gulp(new Crafty({}));
-const gulpSourcemaps = require("gulp-sourcemaps");
 const path = require("path");
 
 const gulpStylelint = require("../src/index");
@@ -94,8 +93,7 @@ test("should fix the file without emitting errors", (t) => {
 
   return new Promise((resolve, reject) => {
     gulp
-      .src(fixtures("invalid.css"))
-      .pipe(gulpSourcemaps.init())
+      .src(fixtures("invalid.css"), { sourcemaps: true })
       .pipe(
         gulpStylelint({
           fix: true,

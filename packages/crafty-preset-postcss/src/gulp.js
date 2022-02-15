@@ -9,18 +9,21 @@ function cssTask(crafty, StreamHandler, bundle) {
     const postcss = require("../packages/gulp-postcss.js");
     const rename = require("../packages/gulp-rename.js");
     const scssParser = require("postcss-scss");
-    const sourcemaps = require("@swissquote/crafty-commons-gulp/packages/gulp-sourcemaps");
     const touch = require("./touch.js");
 
-    return new StreamHandler(bundle.source, destination, cb)
-      .add(sourcemaps.init())
+    return new StreamHandler(
+      bundle.source,
+      destination,
+      cb,
+      { sourcemaps: true },
+      { sourcemaps: "." }
+    )
       .add(
         postcss(getProcessors(crafty.config, crafty, bundle), {
           parser: scssParser
         })
       )
       .add(rename(bundle.destination))
-      .add(sourcemaps.write("./"))
       .add(touch())
       .generate();
   };

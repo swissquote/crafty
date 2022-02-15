@@ -6,10 +6,6 @@ function gulpEslintNew() {
   return require("gulp-eslint-new");
 }
 
-function gulpSourcemaps() {
-  return require("gulp-sourcemaps");
-}
-
 function gulpNewer() {
   return require("@swissquote/gulp-newer");
 }
@@ -21,7 +17,6 @@ function pluginError() {
 module.exports = {
   gulpConcat,
   gulpEslintNew,
-  gulpSourcemaps,
   gulpNewer,
   pluginError
 };

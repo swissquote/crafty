@@ -5,7 +5,9 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       bundle.source,
       crafty.config.destination_js +
         (bundle.directory ? `/${bundle.directory}` : ""),
-      cb
+      cb,
+      { sourcemaps: true },
+      { sourcemaps: "." }
     );
 
     // Avoid compressing if it's already at the latest version
@@ -50,9 +52,6 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     stream.add(babel(babelOptions));
 
     // Process
-    const sourcemaps = require("@swissquote/crafty-commons-gulp/packages/gulp-sourcemaps");
-    stream.add(sourcemaps.init({ loadMaps: true }));
-
     if (bundle.concat) {
       const concat = require("@swissquote/crafty-commons-gulp/packages/gulp-concat");
       stream.add(concat(bundle.destination));
@@ -62,8 +61,6 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       const terser = require("../packages/gulp-terser");
       stream.add(terser({ ...crafty.config.terser, sourceMap: {} }));
     }
-
-    stream.add(sourcemaps.write("./"));
 
     // Save
     return stream.generate();

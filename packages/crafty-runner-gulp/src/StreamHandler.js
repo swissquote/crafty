@@ -5,11 +5,13 @@ let crafty;
 let gulp;
 
 module.exports = class StreamHandler {
-  constructor(source, destination, callback) {
+  constructor(source, destination, callback, srcOptions, destOptions) {
     this.source = source;
     this.destination = destination;
     this.handlers = [];
     this.callback = callback;
+    this.srcOptions = srcOptions;
+    this.destOptions = destOptions;
 
     // Prevent the build from stopping
     // if we are in watch mode
@@ -33,8 +35,8 @@ module.exports = class StreamHandler {
   }
 
   generate() {
-    const sourceStream = gulp.src(this.source);
-    const destStream = gulp.dest(this.destination);
+    const sourceStream = gulp.src(this.source, this.srcOptions);
+    const destStream = gulp.dest(this.destination, this.destOptions);
 
     return pump(sourceStream, ...this.handlers, destStream, err => {
       // Display the error if there is any
