@@ -1,9 +1,21 @@
 const path = require("path");
 const PluginError = require("plugin-error");
-const through = require("through2-concurrent");
-const prettyBytes = require("pretty-bytes");
 const colors = require("ansi-colors");
 const { ImagePool } = require("@squoosh/lib/build/index.js");
+const { cpus } = require("os");
+
+const concurrent = require("./concurrent");
+
+function formatBytes(bytes) {
+  if (bytes === 0) return "0 Bytes";
+
+  const k = 1000;
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(0))} ${sizes[i]}`;
+}
 
 const PLUGIN_NAME = "gulp-imagemin";
 
@@ -84,7 +96,7 @@ class Reporter {
 
     if (this.options.verbose) {
       const percent = originalSize > 0 ? (saved / originalSize) * 100 : 0;
-      const savedMsg = `saved ${prettyBytes(saved)} - ${percent
+      const savedMsg = `saved ${formatBytes(saved)} - ${percent
         .toFixed(1)
         .replace(/\.0$/, "")}%`;
       const msg = saved > 0 ? savedMsg : "already optimized";
@@ -109,7 +121,7 @@ class Reporter {
 
     if (this.totalFiles > 0) {
       msg += colors.gray(
-        ` (saved ${prettyBytes(this.totalSavedBytes)} - ${percent
+        ` (saved ${formatBytes(this.totalSavedBytes)} - ${percent
           .toFixed(1)
           .replace(/\.0$/, "")}%)`
       );
@@ -139,7 +151,7 @@ module.exports = log => {
     }
   }
 
-  return through.obj(
+  return concurrent(
     {
       maxConcurrency: 8
     },
@@ -172,7 +184,7 @@ module.exports = log => {
       (async () => {
         try {
           if (!worker) {
-            worker = new ImagePool();
+            worker = new ImagePool(cpus().length);
           }
 
           const optimizedBuffer = await compress(worker, file, extension);
@@ -196,12 +208,15 @@ module.exports = log => {
       })();
     },
     callback => {
-      // Once all images are compressed, we end the worker
-      endWorker();
+      try {
+        // Once all images are compressed, we end the worker
+        endWorker();
 
-      reporter.report();
-
-      callback();
+        reporter.report();
+        callback();
+      } catch (e) {
+        callback(e);
+      }
     }
   );
 };
