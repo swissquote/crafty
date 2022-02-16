@@ -1,5 +1,6 @@
 const { getExternals } = require("../../utils/externals");
 const fs = require("fs");
+const crypto = require('crypto');
 
 const externals = getExternals();
 
@@ -53,5 +54,11 @@ module.exports = [
     await fs.promises.unlink(
       "dist/compiled/typescript.js",
     );
+
+    // Create a new digest for ts-jest
+    const fileBuffer = await fs.promises.readFile('dist/compiled/typescript-packages.js');
+    const hashSum = crypto.createHash('sha256');
+    hashSum.update(fileBuffer);
+    await fs.promises.writeFile('.ts-jest-digest', hashSum.digest('hex'));
   },
 ];
