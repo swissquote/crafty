@@ -1,13 +1,10 @@
 const { getExternals } = require("../../utils/externals");
 
 module.exports = [
-  {
-    name: "swc-packages",
-    externals: {
-      // Provided by other Crafty packages
-      ...getExternals(),
+  builder => builder("swc-packages").externals({
+    // Provided by other Crafty packages
+    ...getExternals(),
 
-      "@swc/core": "@swc/core"
-    }
-  }
+    "@swc/core": "@swc/core"
+  })
 ];

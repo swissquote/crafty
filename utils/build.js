@@ -5,48 +5,99 @@ const rimraf = require("rimraf");
 const compileUtils = require("./compile.js");
 const configuration = require(process.cwd() + "/build.config.js");
 
-async function main() {
-  // Start with a cleanup
-  rimraf.sync(process.cwd() + "/dist/compiled");
+class Builder {
+  constructor(name) {
+    this.values = {
+      name,
+      source: `./src/${name}.js`,
+      destination: `dist/compiled/${name}.js`,
+      options: {},
+    };
+  }
 
-  for (const bundle of configuration) {
-    if (bundle.name) {
-      const name = bundle.name;
-      console.log(`${name}\n${'='.repeat(name.length)}`);
-      await compileUtils.compile(
-        `./src/${name}.js`,
-        `dist/compiled/${name}.js`,
-        bundle
-      );
-      continue;
-    }
+  sourceFile(sourceFile) {
+    this.values.sourceFile = sourceFile;
 
-    if (bundle.package) {
-      const pkg = bundle.package;
-      console.log(`${pkg}\n${'='.repeat(pkg.length)}`);
+    return this;
+  }
 
-      const cleanPkg = pkg.replace('@', "").replace("/", "-");
-      const filename = `export_package_${cleanPkg}.js`;
+  source(source) {
+    this.values.source = source;
 
-      bundle.sourceMap = false;
-      bundle.sourceMapRegister = false;
+    return this;
+  }
 
-      try {
-        await fs.promises.writeFile(`src/${filename}`, `module.exports = require("${pkg}");`)
+  destination(destination) {
+    this.values.destination = destination;
 
-        await compileUtils.compile(
-          `./src/${filename}`,
-          `dist/${cleanPkg}/index.js`,
-          bundle
-        );
-      } finally {
-        await fs.promises.unlink(`src/${filename}`);
+    return this;
+  }
+
+  options(options) {
+    this.values.options = { ...this.values.options, ...options };
+
+    return this;
+  }
+
+  externals(externals) {
+    this.values.options.externals = externals;
+
+    return this;
+  }
+
+  package() {
+    const pkg = this.values.name;
+
+    const cleanPkg = pkg.replace("@", "").replace("/", "-");
+    this.values.sourceFile = `module.exports = require("${pkg}");`;
+    this.values.destination = `dist/${cleanPkg}/index.js`;
+
+    this.values.options.sourceMap = false;
+    this.values.options.sourceMapRegister = false;
+
+    return this;
+  }
+
+  async build() {
+    console.log(`${this.values.name}\n${"=".repeat(this.values.name.length)}`);
+
+    const tmpSourceFile = `src/temp_vcc.js`;
+
+    try {
+      if (this.values.sourceFile) {
+        await fs.promises.writeFile(tmpSourceFile, this.values.sourceFile);
+        this.values.options.filename =
+          this.values.name.replace("@", "").replace("/", "-") + ".js";
+        this.values.source = tmpSourceFile;
       }
 
-      continue;
+      await compileUtils.compile(this.values.source, this.values.destination, {
+        name: this.values.name,
+        ...this.values.options,
+      });
+    } finally {
+      if (this.values.sourceFile) {
+        await fs.promises.unlink(tmpSourceFile);
+      }
     }
+  }
 
-    await bundle(compileUtils);
+  // Simulate a promise, make it awaitable as a shortcut
+  then(...callbacks) {
+    return this.build().then(...callbacks);
+  }
+}
+
+function builder(name) {
+  return new Builder(name);
+}
+
+async function main() {
+  // Start with a cleanup
+  rimraf.sync(process.cwd() + "/dist");
+
+  for (const bundle of configuration) {
+    await bundle(builder, compileUtils);
   }
 }
 

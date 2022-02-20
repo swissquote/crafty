@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-gulp.js").gulpRename();
+module.exports = require("../dist/gulp-rename/index.js");

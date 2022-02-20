@@ -3,14 +3,39 @@ const path = require("path");
 
 const { getExternals } = require("../../utils/externals");
 
+const singlePackages = [
+  "balanced-match",
+  "color-convert",
+  "color-name",
+  "gulp-postcss",
+  "gulp-rename",
+  "is-fullwidth-code-point",
+  "is-plain-object",
+  "postcss-media-query-parser",
+  "resolve-from",
+  "slice-ansi",
+  "specificity",
+  "string-width",
+  "style-search",
+  "supports-color",
+  "supports-hyperlinks",
+  "table",
+];
+
 const externals = {
   // Provided by other Crafty packages
   ...getExternals(),
 
+  ...Object.fromEntries(
+    singlePackages.map((pkg) => [pkg, `../${pkg}/index.js`])
+  ),
+
+  "@swissquote/gulp-stylelint": "../swissquote-gulp-stylelint/index.js",
+
   "schema-utils": "schema-utils",
   postcss: "postcss",
   "postcss/package.json": "postcss/package.json",
-  "/postcss\/lib(/.*)/": "postcss/lib$1",
+  "/postcss/lib(/.*)/": "postcss/lib$1",
   "@babel/code-frame": "@babel/code-frame",
 
   // Provide a simplified package data normalizer
@@ -18,7 +43,7 @@ const externals = {
 
   // Not used as we pass the configuration directly, can be excluded from the bundle
   "postcss-load-config": "../../src/dummy.js",
-  "cosmiconfig": "../../src/dummy.js"
+  cosmiconfig: "../../src/dummy.js",
 };
 
 /**
@@ -43,14 +68,152 @@ var copyRecursiveSync = function(src, dest) {
   }
 };
 
+const formatters = fs
+  .readdirSync(
+    path.dirname(require.resolve("stylelint/lib/formatters/index.js"))
+  )
+  .filter((file) => file != "index.js")
+  .map((file) => (builder) =>
+    builder(`stylelint-formatters-${file.replace(".js", "")}`)
+      .source(
+        path.relative(
+          process.cwd(),
+          require.resolve(`stylelint/lib/formatters/${file}`)
+        )
+      )
+      .destination(`dist/stylelint/${file}`)
+      .options({
+        sourceMap: false,
+        externals,
+      })
+  );
+
+const ruleExternals = {
+  ...externals,
+};
+
+const stylelintSource = [];
+
+stylelintSource.push(
+  `module.exports.stylelint = function() { return require("stylelint"); };`
+);
+
+stylelintSource.push(
+  `module.exports.stylelintBin = function() { return require("stylelint/bin/stylelint"); };`
+);
+
+const stylelintRules = fs
+  .readdirSync(path.dirname(require.resolve("stylelint/lib/rules/index.js")))
+  .filter((file) => file != "index.js");
+
+const rules = stylelintRules
+  .map((file) => {
+    if (file.includes(".js")) {
+      ruleExternals[`../${file.replace(".js", "")}`] = `./rule-util-${file}`;
+      //ruleExternals[`stylelint/lib/rules/${file}`] = `./${file}`;
+
+      const functionName = file.replace(".js", "").replace(/-/g, "_");
+      stylelintSource.push(
+        `module.exports["${functionName}"] = function() { return require("stylelint/lib/rules/${file}"); };`
+      );
+
+      return false;
+    }
+
+    return (builder) =>
+      builder(`stylelint-rules-${file.replace(".js", "")}`)
+        .source(
+          path.relative(
+            process.cwd(),
+            require.resolve(`stylelint/lib/rules/${file}`)
+          )
+        )
+        .destination(
+          file.includes(".js")
+            ? `dist/stylelint/${file}`
+            : `dist/stylelint/${file}.js`
+        )
+        .options({
+          sourceMap: false,
+          externals: ruleExternals,
+        });
+  })
+  .filter(Boolean);
+
+const stylelintUtils = fs
+  .readdirSync(
+    path.dirname(require.resolve("stylelint/lib/utils/arrayEqual.js"))
+  )
+  .filter((file) => file.includes(".js"));
+
+stylelintUtils.forEach((file) => {
+  // Create externals to refer to the util
+  ruleExternals[`../../utils/${file.replace(".js", "")}`] = `./util-${file}`;
+
+  const functionName = file.replace(".js", "").replace(/-/g, "_");
+
+  stylelintSource.push(
+    `module.exports["${functionName}"] = function() { return require("stylelint/lib/utils/${file}"); };`
+  );
+});
+
 module.exports = [
-  {
-    name: "packages-webpack",
-    externals,
+  (builder) =>
+    builder("stylelint")
+      .sourceFile(stylelintSource.join("\n"))
+      .destination(`dist/stylelint/stylelint.js`)
+      .externals(externals),
+  (builder) => {
+    const newExternals = { ...externals };
+    delete newExternals["@swissquote/gulp-stylelint"];
+
+    return builder("@swissquote/gulp-stylelint")
+      .package()
+      .externals({ ...newExternals, stylelint: "../stylelint/index.js" });
   },
-  {
-    name: "packages-gulp",
-    externals,
+
+  ...singlePackages.map((pkg) => {
+    const newExternals = { ...externals };
+    delete newExternals[pkg];
+
+    return (builder) =>
+      builder(pkg)
+        .package()
+        .externals(newExternals);
+  }),
+  ...formatters,
+  ...rules,
+  (builder) => builder("packages-webpack").externals(externals),
+  async function() {
+    // Create placeholders
+
+    await fs.promises.writeFile(
+      `dist/stylelint/index.js`,
+      `module.exports = require("./stylelint.js").stylelint()`
+    );
+
+    await fs.promises.writeFile(
+      `dist/stylelint/bin.js`,
+      `module.exports = require("./stylelint.js").stylelintBin()`
+    );
+
+    for (const file of stylelintRules) {
+      if (file.includes(".js")) {
+        const functionName = file.replace(".js", "").replace(/-/g, "_");
+        await fs.promises.writeFile(
+          `dist/stylelint/rule-util-${file}`,
+          `module.exports = require("./stylelint.js").${functionName}()`
+        );
+      }
+    }
+
+    for (const file of stylelintUtils) {
+      const functionName = file.replace(".js", "").replace(/-/g, "_");
+      await fs.writeFile(
+        `dist/stylelint/util-${file}`,
+        `module.exports = require("./stylelint.js").${functionName}()`
+      );
+    }
   },
   async function() {
     console.log("Copying style-loader/dist/runtime to dist/compiled/runtime");

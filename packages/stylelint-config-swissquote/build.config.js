@@ -12,9 +12,8 @@ const commonExternals = {
 const FAKE_PRETTIER_PARSER = "../../shims/prettier-parser.js";
 
 module.exports = [
-  {
-    name: "stylelint-prettier-package",
-    externals: {
+  builder =>
+    builder("stylelint-prettier-package").externals({
       ...commonExternals,
 
       // We don't need most prettier parsers
@@ -29,15 +28,10 @@ module.exports = [
       "./parser-meriyah.js": FAKE_PRETTIER_PARSER,
       "./parser-typescript.js": FAKE_PRETTIER_PARSER,
       "./parser-yaml.js": FAKE_PRETTIER_PARSER
-    }
-  },
-  {
-    name: "postcss-selector-parser-package",
-    externals: {}
-  },
-  {
-    name: "stylelint-scss-package",
-    externals: {
+    }),
+  builder => builder("postcss-selector-parser-package"),
+  builder =>
+    builder("stylelint-scss-package").externals({
       ...commonExternals,
 
       // We use other packages created here
@@ -45,11 +39,9 @@ module.exports = [
 
       // We mock the few lodash functions really used
       lodash: "../../src/not-lodash.js"
-    }
-  },
-  {
-    name: "stylelint-config-packages",
-    externals: {
+    }),
+  builder =>
+    builder("stylelint-config-packages").externals({
       ...commonExternals,
 
       // We keep postcss-scss external so we can have it in common with preset-postcss
@@ -69,12 +61,9 @@ module.exports = [
 
       // We mock the few lodash functions really used
       lodash: "../../src/not-lodash.js"
-    }
-  },
-  {
-    name: "stylelint-utils-packages",
-    externals: {
+    }),
+  builder =>
+    builder("stylelint-utils-packages").externals({
       "../reference/keywordSets": "../../shims/stylelint-keywordSets.js"
-    }
-  }
+    })
 ];

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-gulp.js").resolveFrom();
+module.exports = require("../dist/resolve-from/index.js");

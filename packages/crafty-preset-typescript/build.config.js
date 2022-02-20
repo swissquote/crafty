@@ -9,32 +9,26 @@ const externals = getExternals();
 delete externals["source-map"];
 
 module.exports = [
-  {
-    name: "typescript-packages",
-    externals: {
-      // Provided by other Crafty packages
-      ...externals,
+  (builder) => builder("typescript-packages").externals({
+    // Provided by other Crafty packages
+    ...externals,
 
-      // Dependencies of this package
-      "@babel/core": "@babel/core",
-      "@babel/code-frame": "@babel/code-frame",
-      "@babel/helper-module-imports": "@babel/helper-module-imports",
-      typescript: "typescript",
-    },
-  },
-  {
-    name: "fork-ts-checker-webpack-plugin-packages",
-    externals: {
-      // Provided by other Crafty packages
-      ...externals,
+    // Dependencies of this package
+    "@babel/core": "@babel/core",
+    "@babel/code-frame": "@babel/code-frame",
+    "@babel/helper-module-imports": "@babel/helper-module-imports",
+    typescript: "typescript",
+  }),
+  (builder) => builder("fork-ts-checker-webpack-plugin-packages").externals({
+    // Provided by other Crafty packages
+    ...externals,
 
-      // Dependencies of this package
-      "@babel/core": "@babel/core",
-      "@babel/code-frame": "@babel/code-frame",
-      "@babel/helper-module-imports": "@babel/helper-module-imports",
-      typescript: "typescript",
-    },
-  },
+    // Dependencies of this package
+    "@babel/core": "@babel/core",
+    "@babel/code-frame": "@babel/code-frame",
+    "@babel/helper-module-imports": "@babel/helper-module-imports",
+    typescript: "typescript",
+  }),
   async function() {
     fs.mkdirSync("dist/compiled/typescript/worker", { recursive: true });
 

@@ -48,12 +48,7 @@ data.modules
     // Only accept stylelint in some files
     if (
       m.name.indexOf("node_modules/stylelint/") > -1 &&
-      !loadFile.includes(
-        "stylelint-config-swissquote/dist/compiled/stylelint-utils-packages-stats.json"
-      ) &&
-      !loadFile.includes(
-        "crafty-preset-postcss/dist/compiled/packages-gulp-stats.json"
-      )
+      !loadFile.includes("stylelint")
     ) {
       return true;
     }

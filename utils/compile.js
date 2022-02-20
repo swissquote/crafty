@@ -40,10 +40,10 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
 
   console.log(
     "Writing",
-    `${dirname}/${name}-stats.json`
+    `${dirname}/${name.replace("@", "").replace("/", "-")}-stats.json`
   );
   await fs.promises.writeFile(
-    `${dirname}/${name}-stats.json`,
+    `${dirname}/${name.replace("@", "").replace("/", "-")}-stats.json`,
     bundleStatsString
   );
 
@@ -55,6 +55,7 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
 async function compile(input, output, bundle) {
   const { name, ...options } = bundle;
   await ncc(path.join(process.cwd(), input), {
+    quiet: true,
     filename: path.basename(input),
     sourceMap: true,
     sourceMapRegister: true,

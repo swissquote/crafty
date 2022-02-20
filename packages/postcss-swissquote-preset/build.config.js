@@ -1,9 +1,8 @@
 const { getExternals } = require("../../utils/externals");
 
 module.exports = [
-  {
-    name: "postcss-packages",
-    externals: {
+  builder =>
+    builder("postcss-packages").externals({
       // Provided by other Crafty package
       ...getExternals(),
 
@@ -21,6 +20,5 @@ module.exports = [
 
       // An optional embedded format we don't use
       sugarss: "sugarss"
-    }
-  }
+    })
 ];

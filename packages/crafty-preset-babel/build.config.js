@@ -7,17 +7,14 @@ const externals = getExternals();
 delete externals["source-map"];
 
 module.exports = [
-  {
-    name: "babel-packages",
-    externals: {
-      // Provided by other Crafty packages
-      ...externals,
+  (builder) => builder("babel-packages").externals({
+    // Provided by other Crafty packages
+    ...externals,
 
-      // Dependencies of this package
-      "@babel/core": "@babel/core",
-      "@babel/code-frame": "@babel/code-frame",
-      "@babel/helper-module-imports": "@babel/helper-module-imports",
-      "terser": "terser"
-    }
-  }
+    // Dependencies of this package
+    "@babel/core": "@babel/core",
+    "@babel/code-frame": "@babel/code-frame",
+    "@babel/helper-module-imports": "@babel/helper-module-imports",
+    "terser": "terser"
+  })
 ];

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-gulp.js").gulpStylelint();
+module.exports = require("../dist/swissquote-gulp-stylelint/index.js");

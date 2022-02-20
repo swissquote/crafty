@@ -2217,7 +2217,7 @@ __metadata:
     resolve-from: 5.0.0
     schema-utils: 4.0.0
     style-loader: 3.3.1
-    stylelint: 14.3.0
+    stylelint: 14.5.1
   languageName: unknown
   linkType: soft
 
@@ -2705,7 +2705,7 @@ __metadata:
     postcss-selector-parser: 6.0.9
     postcss-value-parser: 4.2.0
     prettier: 2.5.1
-    stylelint: 14.3.0
+    stylelint: 14.5.1
     stylelint-no-unsupported-browser-features: 5.0.2
     stylelint-prettier: 2.0.0
     stylelint-scss: 4.1.0
@@ -5215,6 +5215,13 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 671cc7c7288c3a8406f3c69a3ae2fc85555c04169e9d611def9a675635472614f1c0ed0ef80955d5b6d4e724f6ced67f0ad1bb006c2ea643488fcfef994d7f52
+  languageName: node
+  linkType: hard
+
+"css-functions-list@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "css-functions-list@npm:3.0.1"
+  checksum: 8998406f9c6508180dad621bf91cfbf4649d922a57e2e5dd3fd909a2855e29d2f82cf176bd89a7598237b9e989126f8520e21479f2da51f37b1491a38fe72061
   languageName: node
   linkType: hard
 
@@ -11129,7 +11136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.6, postcss@npm:^8.2.4, postcss@npm:^8.3.6, postcss@npm:^8.4.5":
+"postcss@npm:8.4.6, postcss@npm:^8.2.4, postcss@npm:^8.3.6, postcss@npm:^8.4.5, postcss@npm:^8.4.6":
   version: 8.4.6
   resolution: "postcss@npm:8.4.6"
   dependencies:
@@ -12873,13 +12880,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:14.3.0":
-  version: 14.3.0
-  resolution: "stylelint@npm:14.3.0"
+"stylelint@npm:14.5.1":
+  version: 14.5.1
+  resolution: "stylelint@npm:14.5.1"
   dependencies:
     balanced-match: ^2.0.0
     colord: ^2.9.2
     cosmiconfig: ^7.0.1
+    css-functions-list: ^3.0.1
     debug: ^4.3.3
     execall: ^2.0.0
     fast-glob: ^3.2.11
@@ -12901,7 +12909,7 @@ __metadata:
     normalize-path: ^3.0.0
     normalize-selector: ^0.2.0
     picocolors: ^1.0.0
-    postcss: ^8.4.5
+    postcss: ^8.4.6
     postcss-media-query-parser: ^0.2.3
     postcss-resolve-nested-selector: ^0.1.1
     postcss-safe-parser: ^6.0.0
@@ -12916,10 +12924,10 @@ __metadata:
     svg-tags: ^1.0.0
     table: ^6.8.0
     v8-compile-cache: ^2.3.0
-    write-file-atomic: ^4.0.0
+    write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: aaec6712f875da4e71ad0b748ba2b001ab56ab892cd31aedb553fffc265ce427b668b817975a612c53e8f0e0d5b7edd211cc8842f201bc2622055a74befaedf0
+  checksum: 200b25897e1561ef17ef31064971ba11f50afbd9cb9aa6e98bd66efc1a74bd06b91b9c64c307d7f96f5fff50d76531f3082f6680fed06bbc6933c503543c27e3
   languageName: node
   linkType: hard
 
@@ -14290,7 +14298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"write-file-atomic@npm:^4.0.0":
+"write-file-atomic@npm:^4.0.1":
   version: 4.0.1
   resolution: "write-file-atomic@npm:4.0.1"
   dependencies:

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-gulp.js").gulpPostcss();
+module.exports = require("../dist/gulp-postcss/index.js");

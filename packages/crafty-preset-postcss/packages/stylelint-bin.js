@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-gulp.js").stylelintBin();
+module.exports = require("../dist/stylelint/bin.js");

@@ -1,9 +1,8 @@
 const { getExternals } = require("../../utils/externals");
 
 module.exports = [
-  {
-    name: "babel-packages",
-    externals: {
+  builder =>
+    builder("babel-packages").externals({
       // Provided by other Crafty packages
       ...getExternals(),
 
@@ -19,6 +18,5 @@ module.exports = [
       "@babel/core": "@babel/core",
       "@babel/helper-module-transforms": "@babel/helper-module-transforms",
       "@babel/helper-compilation-targets": "@babel/helper-compilation-targets"
-    }
-  }
+    })
 ];

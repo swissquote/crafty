@@ -1,9 +1,8 @@
 const { getExternals } = require("../../utils/externals");
 
 module.exports = [
-  {
-    name: "packages-eslint",
-    externals: {
+  builder =>
+    builder("packages-eslint").externals({
       // Provided by this package
       typescript: "typescript",
       prettier: "prettier",
@@ -31,6 +30,5 @@ module.exports = [
       "object.values": "../../src/shims/object-values.js",
       "string.prototype.matchall":
         "../../src/shims/string-prototype-matchall.js"
-    }
-  }
+    })
 ];
