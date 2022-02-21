@@ -2130,7 +2130,7 @@ __metadata:
     babel-loader: 8.2.3
     gulp-babel: 8.0.0
     gulp-terser: 2.1.0
-    terser: 5.10.0
+    terser: 5.11.0
   languageName: unknown
   linkType: soft
 
@@ -13099,21 +13099,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:5.10.0, terser@npm:^5.0.0, terser@npm:^5.7.2, terser@npm:^5.9.0":
-  version: 5.10.0
-  resolution: "terser@npm:5.10.0"
+"terser@npm:5.11.0, terser@npm:^5.0.0, terser@npm:^5.7.2, terser@npm:^5.9.0":
+  version: 5.11.0
+  resolution: "terser@npm:5.11.0"
   dependencies:
+    acorn: ^8.5.0
     commander: ^2.20.0
     source-map: ~0.7.2
     source-map-support: ~0.5.20
-  peerDependencies:
-    acorn: ^8.5.0
-  peerDependenciesMeta:
-    acorn:
-      optional: true
   bin:
     terser: bin/terser
-  checksum: 1080faeb6d5cd155bb39d9cc41d20a590eafc9869560d5285f255f6858604dcd135311e344188a106f87fedb12d096ad3799cfc2e65acd470b85d468b1c7bd4c
+  checksum: cc72b7a0e87421b5a6ef3f8a3c86ef251f6e7f8d6327b83c63045b8991a041cc4a42ea64e07701128e1786489902c8c44b5904056b0f12ceedb52924d493db04
   languageName: node
   linkType: hard
 
