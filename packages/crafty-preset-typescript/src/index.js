@@ -122,9 +122,6 @@ module.exports = {
     const tsOptions = {
       // https://webpack.js.org/guides/build-performance/#typescript-loader
       experimentalWatchApi: true,
-      // fork-ts-checker-webpack-plugin will handle the checking part
-      // ts-loaded only has to make this valid JavaScript and babel will handle the rest
-      transpileOnly: true,
       compilerOptions: {
         // Transpile to esnext so that Babel can apply all its magic
         target: "ESNext",
@@ -158,25 +155,30 @@ module.exports = {
       );
     }
 
+    // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
+    // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
+    if (!hasDeclarations) {
+      tsOptions.transpileOnly = true;
+
+      const forkCheckerOptions = {
+        typescript: {
+          typescriptPath: require.resolve("typescript"),
+          configOverwrite: {
+            compilerOptions: tsOptions.compilerOptions
+          }
+        }
+      };
+
+      chain
+        .plugin("fork-ts-checker")
+        .use(require.resolve("fork-ts-checker-webpack-plugin"), [
+          forkCheckerOptions
+        ]);
+    }
+
     tsRule
       .use("ts-loader")
       .loader(require.resolve("../packages/ts-loader"))
       .options(tsOptions);
-
-    const forkCheckerOptions = {
-      typescript: {
-        mode: hasDeclarations ? "write-dts" : "readonly",
-        typescriptPath: require.resolve("typescript"),
-        configOverwrite: {
-          compilerOptions: tsOptions.compilerOptions
-        }
-      }
-    };
-
-    chain
-      .plugin("fork-ts-checker")
-      .use(require.resolve("../packages/fork-ts-checker-webpack-plugin"), [
-        forkCheckerOptions
-      ]);
   }
 };
