@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').pluginTransformRuntime();
+module.exports = require('../dist/babel-packages/bundled.js').pluginTransformRuntime();

@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').pluginTransformPropertyLiterals();
+module.exports = require('../dist/babel-packages/bundled.js').pluginTransformPropertyLiterals();

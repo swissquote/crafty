@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/crafty-packages.js").asyncDone();
+module.exports = require("../dist/crafty-packages/bundled.js").asyncDone();

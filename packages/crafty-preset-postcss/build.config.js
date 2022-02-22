@@ -94,13 +94,25 @@ const ruleExternals = {
 
 const stylelintSource = [];
 
-stylelintSource.push(
-  `module.exports.stylelint = function() { return require("stylelint"); };`
-);
+stylelintSource.push({
+  pkg: "stylelint",
+  name: "stylelint",
+  entryFile: `dist/stylelint/index.js`,
+});
 
-stylelintSource.push(
-  `module.exports.stylelintBin = function() { return require("stylelint/bin/stylelint"); };`
-);
+stylelintSource.push({
+  pkg: "stylelint/bin/stylelint",
+  name: "stylelintBin",
+  entryFile: `dist/stylelint/bin.js`,
+});
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/keywordSets.js",
+  name: "libReferenceKeywordSets",
+  entryFile: `dist/stylelint/reference-keywordSets.js`,
+});
+
+ruleExternals["../../reference/keywordSets"] = "./reference-keywordSets.js";
 
 const stylelintRules = fs
   .readdirSync(path.dirname(require.resolve("stylelint/lib/rules/index.js")))
@@ -113,9 +125,11 @@ const rules = stylelintRules
       //ruleExternals[`stylelint/lib/rules/${file}`] = `./${file}`;
 
       const functionName = file.replace(".js", "").replace(/-/g, "_");
-      stylelintSource.push(
-        `module.exports["${functionName}"] = function() { return require("stylelint/lib/rules/${file}"); };`
-      );
+      stylelintSource.push({
+        pkg: `stylelint/lib/rules/${file}`,
+        name: functionName,
+        entryFile: `dist/stylelint/rule-util-${file}`,
+      });
 
       return false;
     }
@@ -152,15 +166,21 @@ stylelintUtils.forEach((file) => {
 
   const functionName = file.replace(".js", "").replace(/-/g, "_");
 
-  stylelintSource.push(
-    `module.exports["${functionName}"] = function() { return require("stylelint/lib/utils/${file}"); };`
-  );
+  stylelintSource.push({
+    pkg: `stylelint/lib/utils/${file}`,
+    name: functionName,
+    entryFile: `dist/stylelint/util-${file}`,
+  });
 });
 
 module.exports = [
   (builder) =>
     builder("stylelint")
-      .sourceFile(stylelintSource.join("\n"))
+      .packages((pkgBuilder) => {
+        stylelintSource.forEach((entry) => {
+          pkgBuilder.package(entry.pkg, entry.name, entry.entryFile);
+        });
+      })
       .destination(`dist/stylelint/stylelint.js`)
       .externals(externals),
   (builder) => {
@@ -184,37 +204,6 @@ module.exports = [
   ...formatters,
   ...rules,
   (builder) => builder("packages-webpack").externals(externals),
-  async function() {
-    // Create placeholders
-
-    await fs.promises.writeFile(
-      `dist/stylelint/index.js`,
-      `module.exports = require("./stylelint.js").stylelint()`
-    );
-
-    await fs.promises.writeFile(
-      `dist/stylelint/bin.js`,
-      `module.exports = require("./stylelint.js").stylelintBin()`
-    );
-
-    for (const file of stylelintRules) {
-      if (file.includes(".js")) {
-        const functionName = file.replace(".js", "").replace(/-/g, "_");
-        await fs.promises.writeFile(
-          `dist/stylelint/rule-util-${file}`,
-          `module.exports = require("./stylelint.js").${functionName}()`
-        );
-      }
-    }
-
-    for (const file of stylelintUtils) {
-      const functionName = file.replace(".js", "").replace(/-/g, "_");
-      await fs.writeFile(
-        `dist/stylelint/util-${file}`,
-        `module.exports = require("./stylelint.js").${functionName}()`
-      );
-    }
-  },
   async function() {
     console.log("Copying style-loader/dist/runtime to dist/compiled/runtime");
     const styleLoaderFolder = path.dirname(

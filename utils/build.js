@@ -1,9 +1,36 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
+const path = require("path");
 const rimraf = require("rimraf");
 const compileUtils = require("./compile.js");
 const configuration = require(process.cwd() + "/build.config.js");
+
+class PackagesBuilder {
+  constructor() {
+    this.sourceFile = [];
+    this.entryFiles = [];
+  }
+
+  package(pkg, name, entryFile) {
+    this.sourceFile.push(
+      `module.exports["${name}"] = function() { return require("${pkg}"); };`
+    );
+
+    if (entryFile) {
+      this.entryFiles.push({ entryFile, name });
+    }
+
+    return this;
+  }
+
+  build() {
+    return {
+      sourceFile: this.sourceFile.join("\n"),
+      entryFiles: this.entryFiles,
+    };
+  }
+}
 
 class Builder {
   constructor(name) {
@@ -49,8 +76,9 @@ class Builder {
     const pkg = this.values.name;
 
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
-    this.values.sourceFile = `module.exports = require("${pkg}");`;
     this.values.destination = `dist/${cleanPkg}/index.js`;
+
+    this.values.sourceFile = `module.exports = require("${pkg}");`;
 
     this.values.options.sourceMap = false;
     this.values.options.sourceMapRegister = false;
@@ -58,10 +86,27 @@ class Builder {
     return this;
   }
 
+  packages(callback) {
+    const pkg = this.values.name;
+    const cleanPkg = pkg.replace("@", "").replace("/", "-");
+    this.values.destination = `dist/${cleanPkg}/bundled.js`;
+
+    const builder = new PackagesBuilder();
+
+    callback(builder);
+
+    const { sourceFile, entryFiles } = builder.build();
+
+    this.values.sourceFile = sourceFile;
+    this.values.entryFiles = entryFiles;
+
+    return this;
+  }
+
   async build() {
     console.log(`${this.values.name}\n${"=".repeat(this.values.name.length)}`);
 
-    const tmpSourceFile = `src/temp_vcc.js`;
+    const tmpSourceFile = `_temp_vcc.js`;
 
     try {
       if (this.values.sourceFile) {
@@ -75,6 +120,31 @@ class Builder {
         name: this.values.name,
         ...this.values.options,
       });
+
+      if (this.values.entryFiles) {
+        for (const entryFile of this.values.entryFiles) {
+          let relativePath = path.relative(
+            path.dirname(entryFile.entryFile),
+            this.values.destination
+          );
+
+          if (relativePath[0] !== ".") {
+            relativePath = `./${relativePath}`;
+          }
+
+          fs.mkdirSync(path.dirname(entryFile.entryFile), { recursive: true });
+
+          //console.log({relativePath, source: this.values.destination, destination: entryFile.entryFile});
+
+          console.log("Writing", entryFile.entryFile);
+          await fs.promises.writeFile(
+            entryFile.entryFile,
+            `module.exports = require('${relativePath}')['${entryFile.name}']();`
+          );
+        }
+
+        console.log("");
+      }
     } finally {
       if (this.values.sourceFile) {
         await fs.promises.unlink(tmpSourceFile);

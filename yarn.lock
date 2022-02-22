@@ -2095,6 +2095,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swissquote/crafty-commons-webpack@1.18.1, @swissquote/crafty-commons-webpack@workspace:packages/crafty-commons-webpack":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/crafty-commons-webpack@workspace:packages/crafty-commons-webpack"
+  dependencies:
+    "@swissquote/crafty-commons": 1.18.1
+    big.js: 5.2.2
+    json5: 2.2.0
+    loader-utils: 2.0.2
+    uri-js: 4.4.1
+  languageName: unknown
+  linkType: soft
+
 "@swissquote/crafty-commons@1.18.1, @swissquote/crafty-commons@workspace:packages/crafty-commons":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-commons@workspace:packages/crafty-commons"
@@ -2125,6 +2137,7 @@ __metadata:
     "@rollup/plugin-babel": 5.3.0
     "@swissquote/babel-preset-swissquote": 1.18.1
     "@swissquote/crafty-commons-gulp": 1.18.1
+    "@swissquote/crafty-commons-webpack": 1.18.1
     "@swissquote/crafty-preset-eslint": 1.18.1
     "@swissquote/crafty-preset-terser": 1.18.1
     babel-loader: 8.2.3
@@ -2244,6 +2257,7 @@ __metadata:
     "@swc/jest": 0.2.17
     "@swissquote/crafty-commons": 1.18.1
     "@swissquote/crafty-commons-gulp": 1.18.1
+    "@swissquote/crafty-commons-webpack": 1.18.1
     "@swissquote/crafty-preset-eslint": 1.18.1
     "@swissquote/crafty-preset-terser": 1.18.1
     gulp-swc: 1.2.3
@@ -2268,6 +2282,7 @@ __metadata:
     "@swissquote/babel-preset-swissquote": 1.18.1
     "@swissquote/crafty-commons": 1.18.1
     "@swissquote/crafty-commons-gulp": 1.18.1
+    "@swissquote/crafty-commons-webpack": 1.18.1
     "@swissquote/crafty-preset-eslint": 1.18.1
     babel-loader: 8.2.3
     fork-ts-checker-webpack-plugin: 7.2.1
@@ -4286,7 +4301,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"big.js@npm:^5.2.2":
+"big.js@npm:5.2.2, big.js@npm:^5.2.2":
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
   checksum: b89b6e8419b097a8fb4ed2399a1931a68c612bce3cfd5ca8c214b2d017531191070f990598de2fc6f3f993d91c0f08aa82697717f6b3b8732c9731866d233c9e
@@ -9000,7 +9015,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:2.x, json5@npm:^2.1.2":
+"json5@npm:2.2.0, json5@npm:2.x, json5@npm:^2.1.2":
   version: 2.2.0
   resolution: "json5@npm:2.2.0"
   dependencies:
@@ -9180,6 +9195,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"loader-utils@npm:2.0.2, loader-utils@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "loader-utils@npm:2.0.2"
+  dependencies:
+    big.js: ^5.2.2
+    emojis-list: ^3.0.0
+    json5: ^2.1.2
+  checksum: 9078d1ed47cadc57f4c6ddbdb2add324ee7da544cea41de3b7f1128e8108fcd41cd3443a85b7ee8d7d8ac439148aa221922774efe4cf87506d4fb054d5889303
+  languageName: node
+  linkType: hard
+
 "loader-utils@npm:^1.1.0, loader-utils@npm:^1.4.0":
   version: 1.4.0
   resolution: "loader-utils@npm:1.4.0"
@@ -9188,17 +9214,6 @@ __metadata:
     emojis-list: ^3.0.0
     json5: ^1.0.1
   checksum: d150b15e7a42ac47d935c8b484b79e44ff6ab4c75df7cc4cb9093350cf014ec0b17bdb60c5d6f91a37b8b218bd63b973e263c65944f58ca2573e402b9a27e717
-  languageName: node
-  linkType: hard
-
-"loader-utils@npm:^2.0.0":
-  version: 2.0.2
-  resolution: "loader-utils@npm:2.0.2"
-  dependencies:
-    big.js: ^5.2.2
-    emojis-list: ^3.0.0
-    json5: ^2.1.2
-  checksum: 9078d1ed47cadc57f4c6ddbdb2add324ee7da544cea41de3b7f1128e8108fcd41cd3443a85b7ee8d7d8ac439148aa221922774efe4cf87506d4fb054d5889303
   languageName: node
   linkType: hard
 
@@ -13707,7 +13722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uri-js@npm:^4.2.2":
+"uri-js@npm:4.4.1, uri-js@npm:^4.2.2":
   version: 4.4.1
   resolution: "uri-js@npm:4.4.1"
   dependencies:

@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/typescript-packages.js').rollupPluginTypescript();
+module.exports = require('../dist/rollup-plugin-typescript2/index.js');

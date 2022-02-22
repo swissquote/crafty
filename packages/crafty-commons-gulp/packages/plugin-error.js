@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").pluginError();
+module.exports = require("../dist/common-packages/bundled.js").pluginError();

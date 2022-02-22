@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').pluginTransformReactRemovePropTypes();
+module.exports = require('../dist/babel-packages/bundled.js').pluginTransformReactRemovePropTypes();

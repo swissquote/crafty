@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/crafty-packages.js").isNegatedGlob();
+module.exports = require("../dist/crafty-packages/bundled.js").isNegatedGlob();

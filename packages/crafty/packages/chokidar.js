@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/crafty-packages.js").chokidar();
+module.exports = require("../dist/crafty-packages/bundled.js").chokidar();

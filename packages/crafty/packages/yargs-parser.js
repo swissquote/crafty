@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/crafty-packages.js").yargsParser();
+module.exports = require("../dist/crafty-packages/bundled.js").yargsParser();

@@ -1,2 +1,2 @@
 //package: @swc/jest
-module.exports = require('../dist/compiled/swc-packages.js').swcJest();
+module.exports = require('../dist/swc-packages/bundled.js').swcJest();

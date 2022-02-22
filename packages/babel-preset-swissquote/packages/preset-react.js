@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').presetReact();
+module.exports = require('../dist/babel-packages/bundled.js').presetReact();

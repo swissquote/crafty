@@ -1,6 +1,6 @@
 const EventEmitter = require("events");
 
-const vfs = require("../packages/vinyl-fs");
+const vfs = require("@swissquote/crafty-commons-gulp/packages/vinyl-fs");
 
 function Gulp(crafty) {
   this.crafty = crafty;

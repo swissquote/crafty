@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').presetJest();
+module.exports = require('../dist/babel-packages/bundled.js').presetJest();

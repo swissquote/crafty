@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/gulp-packages.js').pump();
+module.exports = require('../dist/gulp-packages/bundled.js').pump();

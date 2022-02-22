@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/swc-packages.js').gulpSwc();
+module.exports = require('../dist/swc-packages/bundled.js').gulpSwc();

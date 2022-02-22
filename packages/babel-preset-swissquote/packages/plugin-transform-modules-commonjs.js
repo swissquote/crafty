@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').pluginTransformModulesCommonjs();
+module.exports = require('../dist/babel-packages/bundled.js').pluginTransformModulesCommonjs();

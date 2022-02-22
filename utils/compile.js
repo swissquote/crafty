@@ -4,8 +4,6 @@ const { existsSync } = require("fs");
 const path = require("path");
 const filesize = require("filesize");
 
-const printStats = require("./stats.js");
-
 async function handleNCCResult(name, output, { code, assets, stats }) {
   const dirname = path.dirname(output);
 
@@ -47,8 +45,7 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
     bundleStatsString
   );
 
-  console.log("\nBundle Stats\n------------");
-  printStats(bundleStats);
+  console.log(bundleStats.modules.length, "modules");
   console.log("");
 }
 

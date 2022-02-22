@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/fork-ts-checker-webpack-plugin-packages.js').forkTsCheckerWebpackPlugin();
+module.exports = require('../dist/fork-ts-checker-webpack-plugin-packages/bundled.js').forkTsCheckerWebpackPlugin();

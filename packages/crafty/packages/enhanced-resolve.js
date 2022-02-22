@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/crafty-packages.js").enhancedResolve();
+module.exports = require("../dist/crafty-packages/bundled.js").enhancedResolve();

@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/typescript-packages.js').tsJest();
+module.exports = require('../dist/typescript-packages/bundled.js').tsJest();
