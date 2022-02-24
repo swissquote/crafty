@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-eslint",
-  "version": "1.18.3",
+  "version": "1.18.4",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
   "publishConfig": {
@@ -13,21 +13,21 @@
     "lint": "node src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.18.3",
-    "@swissquote/crafty-commons": "1.18.3",
-    "@swissquote/crafty-preset-prettier": "1.18.3",
-    "@swissquote/eslint-plugin-swissquote": "1.18.3",
+    "@swissquote/crafty": "1.18.4",
+    "@swissquote/crafty-commons": "1.18.4",
+    "@swissquote/crafty-preset-prettier": "1.18.4",
+    "@swissquote/eslint-plugin-swissquote": "1.18.4",
     "ajv": "6.12.6",
     "eslint": "8.9.0"
   },
   "devDependencies": {
-    "@swissquote/rollup-plugin-eslint": "1.18.3",
+    "@swissquote/rollup-plugin-eslint": "1.18.4",
     "eslint-webpack-plugin": "3.1.1",
     "resolve-from": "5.0.0"
   },
   "peerDependencies": {
-    "@swissquote/crafty-preset-eslint": "1.18.3",
-    "@swissquote/crafty-runner-rollup": "1.18.3"
+    "@swissquote/crafty-preset-eslint": "1.18.4",
+    "@swissquote/crafty-runner-rollup": "1.18.4"
   },
   "engines": {
     "node": ">=12"
