@@ -1,5 +1,4 @@
 // This is a clone of https://www.npmjs.com/package/concurrent-streams that uses raw streams
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 /* eslint-disable no-param-reassign */
 
 const { Transform } = require("stream");

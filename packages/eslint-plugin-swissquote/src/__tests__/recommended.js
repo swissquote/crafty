@@ -33,7 +33,7 @@ function changeWindow(param) {
 
   t.snapshot(result.messages);
   t.is(result.warningCount, 0);
-  t.is(result.errorCount, 2);
+  t.is(result.errorCount, 1);
 });
 
 test("Works fine with ES6 code", async t => {

@@ -9,7 +9,6 @@ const {
 } = require("@swissquote/color-fns");
 
 module.exports = class Color {
-  /* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */
   constructor(color) {
     this.color = Object(Object(color).color || color);
 

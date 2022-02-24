@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 const { parse } = require("postcss-values-parser");
 const transformValueAST = require("./transform-value-ast");
 const { isRuleIgnored } = require("./is-ignored");

@@ -20,7 +20,6 @@ function initBundle(crafty, bundle, bundleCreators, type, chosenRunner) {
   }
 }
 
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 function registerTasks(crafty) {
   let bundleCreators = {};
   crafty.getImplementations("bundleCreator").forEach(preset => {

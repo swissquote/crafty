@@ -1,6 +1,5 @@
 const test = require("ava");
 
-/* eslint-disable @swissquote/swissquote/sonarjs/no-duplicate-string */
 const isKeyframeSelector = require("../../../shims/stylelint-isKeyframeSelector");
 const isStandardSyntaxRule = require("../../../shims/stylelint-isStandardSyntaxRule");
 const isStandardSyntaxSelector = require("../../../shims/stylelint-isStandardSyntaxSelector");

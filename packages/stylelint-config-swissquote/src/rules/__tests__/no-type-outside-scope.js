@@ -1,6 +1,5 @@
 const test = require("ava");
 
-/* eslint-disable @swissquote/swissquote/sonarjs/no-identical-functions */
 var createRuleTester = require("../../testUtils/createRuleTester");
 var rule = require("../no-type-outside-scope");
 

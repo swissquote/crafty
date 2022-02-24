@@ -1,7 +1,5 @@
 const restrictedGlobals = require("../packages/confusing-browser-globals");
 
-const { addMissingRules } = require("./utils");
-
 module.exports = {
   rules: {
     // Best practices
@@ -84,12 +82,6 @@ module.exports = {
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "use-isnan": "error",
-    "valid-typeof": "error",
-    "@swissquote/swissquote/sonarjs/no-duplicate-string": ["error", 10]
+    "valid-typeof": "error"
   }
 };
-
-addMissingRules(
-  require("../packages/eslint-plugin-sonarjs").configs.recommended.rules,
-  module.exports.rules
-);

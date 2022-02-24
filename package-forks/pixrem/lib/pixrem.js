@@ -81,7 +81,6 @@ function rounded(value, precision) {
 
 const hasNumberRegex = /\d/;
 
-/* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */
 module.exports = (opts = {}) => {
   var options = {
     rootValue: opts.rootValue !== undefined ? opts.rootValue : BASE_FONT_SIZE,

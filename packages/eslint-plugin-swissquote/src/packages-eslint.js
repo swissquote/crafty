@@ -38,10 +38,6 @@ function eslintPluginReactHooks() {
   return require("eslint-plugin-react-hooks");
 }
 
-function eslintPluginSonarjs() {
-  return require("eslint-plugin-sonarjs");
-}
-
 module.exports = {
   typescriptEslintPlugin,
   typescriptEslintParser,
@@ -52,6 +48,5 @@ module.exports = {
   eslintPluginImport,
   eslintPluginPrettier,
   eslintPluginReact,
-  eslintPluginReactHooks,
-  eslintPluginSonarjs
+  eslintPluginReactHooks
 };

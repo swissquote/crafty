@@ -1,5 +1,3 @@
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
-/* eslint-disable @swissquote/swissquote/sonarjs/no-nested-template-literals */
 /*
  ** Taken from https://github.com/rollup/rollup/blob/941b3a4a1aa5de049bbbb18e776bfc157ad0d4c5/bin/src/run/batchWarnings.js
  ** We might need to keep this up-to-date with new updates of Rollup

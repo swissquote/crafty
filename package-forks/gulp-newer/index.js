@@ -158,7 +158,6 @@ Newer.prototype.lazyExtraStats = async function() {
  * @param {string} encoding Encoding (ignored).
  * @param {function(Error, File)} done Callback.
  */
-/* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */
 Newer.prototype._transform = async function(srcFile, encoding, done) {
   if (!srcFile || !srcFile.stat) {
     done(new PluginError(PLUGIN_NAME, "Expected a source file with stats"));

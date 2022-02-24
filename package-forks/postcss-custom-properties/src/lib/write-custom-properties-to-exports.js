@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 
 const fs = require("fs");
 const path = require("path");

@@ -37,7 +37,6 @@ function defaultErrorHandler(error) {
   }
 }
 
-/* eslint-disable-next-line @swissquote/swissquote/sonarjs/cognitive-complexity */
 function plumber(opts) {
   /* eslint-disable-next-line no-param-reassign */
   opts = opts || {};

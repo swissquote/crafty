@@ -23,7 +23,6 @@ the `recommended` preset includes three plugins:
 - `eslint-plugin-import` provides some rules to clean imports.
 - `eslint-plugin-react` ensures you follow some best practices with React.
 - `eslint-plugin-react-hooks` ensures you follow some best practices with React Hooks.
-- `eslint-plugin-sonarjs` provides some advanced rules made by the guys at [SonarQube](https://www.sonarqube.org/).
 
 To make it easy to install this plugin, those rules are added to ESLint automatically, but prefixed with `swissquote/`.
 This is due to a limitation with ESLint that doesn't allow us to add plugins to ESLint through an API.

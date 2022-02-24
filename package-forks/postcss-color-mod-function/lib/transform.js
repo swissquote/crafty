@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define,no-nested-ternary,eqeqeq */
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 // tooling
 const {
   convertDtoD,

@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable @swissquote/swissquote/sonarjs/cognitive-complexity */
 
 function transformValueAST(root, customProperties) {
   if (root.nodes && root.nodes.length) {

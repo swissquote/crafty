@@ -6,7 +6,6 @@ const plugins = {
   react: require("./packages/eslint-plugin-react"),
   "react-hooks": require("./packages/eslint-plugin-react-hooks"),
   import: require("./packages/eslint-plugin-import"),
-  sonarjs: require("./packages/eslint-plugin-sonarjs"),
   prettier: require("./packages/eslint-plugin-prettier"),
   "@typescript-eslint": require("./packages/typescript-eslint_eslint-plugin")
 };
