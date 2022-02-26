@@ -1,73 +1,101 @@
-#!/usr/bin/env node
-const path = require("path");
-const file = process.argv[2];
-const loadFile = path.join(process.cwd(), file);
+const { getModulePath, isModule, isExternal } = require("./functions.js");
 
-const data = require(loadFile);
+function printStats({ modules }) {
+  const packages = modules
+    .filter((m) => m.nameForCondition != null && isModule(m.name))
+    .map((m) => getModulePath(m.nameForCondition))
+    .reduce((acc, entry) => acc.add(entry), new Set());
 
-const errors = [];
+  const notPackage = modules.filter(
+    (m) =>
+      !isModule(m.name) &&
+      !isExternal(m.name) &&
+      m.name.indexOf("webpack/") !== 0
+  );
+  const externals = modules.filter((m) => isExternal(m.name));
 
-function recordError(error) {
-  errors.push(error);
+  console.log(
+    modules.length,
+    "modules,",
+    packages.size,
+    "packages,",
+    externals.length,
+    "externals,",
+    notPackage.length,
+    "non-package modules"
+  );
+  console.log("");
 }
 
-// All packages must be found
-data.modules
-  .filter((m) => m.name.indexOf("/ncc/@@notfound") > -1)
-  .map(
-    (m) =>
-      `Module "${m.name.split("?")[1]}" requested by "${
-        m.issuerName
-      }" was not found.`
-  )
-  .map(recordError);
+function checkStats(stats, statFile) {
+  printStats(stats);
 
-// Packages provided by another module should stay external
-data.modules
-  .filter((m) => m.name.indexOf("/packages/") > -1)
-  .filter((m) => m.name.indexOf("external ") !== 0)
-  .map(
-    (m) =>
-      `Module "${m.name}" requested by "${m.issuerName}" should be external.`
-  )
-  .map(recordError);
+  const errors = [];
 
-// All readable-stream packages must be external
-data.modules
-  .filter((m) => m.name.indexOf("external ") !== 0)
-  .filter((m) => {
+  function recordError(error) {
+    errors.push(error);
+  }
 
-    // Never accept those packages
-    if (
-      m.name.indexOf("node_modules/readable-stream/") > -1 ||
-      m.name.indexOf("node_modules/typescript/") > -1
-    ) {
-      return true;
-    }
+  // All packages must be found
+  stats.modules
+    .filter((m) => m.name.indexOf("/ncc/@@notfound") > -1)
+    .map(
+      (m) =>
+        `Module "${m.name.split("?")[1]}" requested by "${
+          m.issuerName
+        }" was not found.`
+    )
+    .map(recordError);
 
-    // Only accept stylelint in some files
-    if (
-      m.name.indexOf("node_modules/stylelint/") > -1 &&
-      !loadFile.includes("stylelint")
-    ) {
-      return true;
-    }
+  // Packages provided by another module should stay external
+  stats.modules
+    .filter((m) => m.name.indexOf("/packages/") > -1)
+    .filter((m) => !isExternal(m.name))
+    .map(
+      (m) =>
+        `Module "${m.name}" requested by "${m.issuerName}" should be external.`
+    )
+    .map(recordError);
 
-    return false;
-  })
-  .map(
-    (m) =>
-      `Module "${m.name}" requested by "${m.issuerName}" should be external.`
-  )
-  .map(recordError);
+  // All readable-stream packages must be external
+  stats.modules
+    .filter((m) => !isExternal(m.name))
+    .filter((m) => {
+      // Never accept those packages
+      if (
+        m.name.indexOf("node_modules/readable-stream/") > -1 ||
+        m.name.indexOf("node_modules/typescript/") > -1
+      ) {
+        return true;
+      }
 
-if (errors.length > 0) {
-  console.log(file);
-  console.log("=".repeat(file.length));
-  errors.forEach((m) => {
-    console.log(m);
-  });
+      // Only accept stylelint in some files
+      if (
+        m.name.indexOf("node_modules/stylelint/") > -1 &&
+        !statFile.includes("stylelint")
+      ) {
+        return true;
+      }
 
-  console.log();
-  process.exit(1);
+      return false;
+    })
+    .map(
+      (m) =>
+        `Module "${m.name}" requested by "${m.issuerName}" should be external.`
+    )
+    .map(recordError);
+
+  if (errors.length > 0) {
+    const message = `${errors.length} errors found`;
+    console.log(message);
+    console.log("=".repeat(message.length));
+    errors.forEach((m) => {
+      console.log(m);
+    });
+
+    console.log();
+    process.exit(1);
+  }
 }
+
+module.exports = checkStats;

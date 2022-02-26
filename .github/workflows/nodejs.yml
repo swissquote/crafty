@@ -32,8 +32,6 @@ jobs:
       run: yarn install
     - name: yarn build
       run: yarn build
-    - name: Check build stats
-      run: yarn check-build
     - name: Linting
       run: yarn lint:ci
     - name: Testing

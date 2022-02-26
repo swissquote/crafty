@@ -4,6 +4,8 @@ const { existsSync } = require("fs");
 const path = require("path");
 const filesize = require("filesize");
 
+const checkStats = require("./check-stats.js");
+
 async function handleNCCResult(name, output, { code, assets, stats }) {
   const dirname = path.dirname(output);
 
@@ -18,10 +20,9 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
     const dirname = path.dirname(output);
 
     for (const [file, data] of Object.entries(assets)) {
-
       const dir = path.dirname(`${dirname}/${file}`);
       if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, {recursive: true});
+        fs.mkdirSync(dir, { recursive: true });
       }
 
       console.log(
@@ -36,17 +37,14 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
   const bundleStats = stats.toJson();
   const bundleStatsString = JSON.stringify(bundleStats);
 
-  console.log(
-    "Writing",
-    `${dirname}/${name.replace("@", "").replace("/", "-")}-stats.json`
-  );
-  await fs.promises.writeFile(
-    `${dirname}/${name.replace("@", "").replace("/", "-")}-stats.json`,
-    bundleStatsString
-  );
+  const fileName = `${dirname}/${name
+    .replace("@", "")
+    .replace("/", "-")}-stats.json`;
 
-  console.log(bundleStats.modules.length, "modules");
-  console.log("");
+  console.log("Writing", fileName);
+  await fs.promises.writeFile(fileName, bundleStatsString);
+
+  checkStats(bundleStats, fileName);
 }
 
 async function compile(input, output, bundle) {
@@ -58,10 +56,10 @@ async function compile(input, output, bundle) {
     sourceMapRegister: true,
     ...options,
   }).then((out) => handleNCCResult(name, output, out));
-};
+}
 
 module.exports = {
   ncc,
   compile,
   handleNCCResult
-}
+};

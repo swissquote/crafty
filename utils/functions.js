@@ -9,12 +9,18 @@ function formatBytes(bytes) {
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(0))} ${sizes[i]}`;
 }
 
-function getModulePath(name) {
-  const indexOf = name.indexOf("node_modules/");
+function isModule(name) {
+  return name.includes("/node_modules/") || name.includes("/package-forks/");
+}
 
+function isExternal(name) {
+  return name.indexOf("external ") === 0;
+}
+
+function getModulePath(name) {
   const moduleNames = [];
 
-  const moduleParts = name.slice(indexOf).split("/");
+  const moduleParts = name.split("/");
 
   let isNodeModule = false;
   let i = 0;
@@ -22,7 +28,7 @@ function getModulePath(name) {
   while (i < arrayLength) {
     const part = moduleParts[i];
 
-    if (part == "node_modules") {
+    if (part == "node_modules" || part == "package-forks") {
       isNodeModule = true;
       i++;
       continue;
@@ -46,5 +52,7 @@ function getModulePath(name) {
 
 module.exports = {
   formatBytes,
-  getModulePath
+  getModulePath,
+  isModule,
+  isExternal
 };

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const path = require("path");
-const { formatBytes, getModulePath } = require("./functions.js");
+const { formatBytes, getModulePath, isModule } = require("./functions.js");
 
 const allModules = {};
 
@@ -11,7 +11,7 @@ for (const file of args) {
   const data = require(loadFile);
 
   const validModules = data.modules.filter(
-    (m) => m.nameForCondition != null && m.name.includes("/node_modules/")
+    (m) => m.nameForCondition != null && isModule(m.name)
   );
 
   for (const m of validModules) {
