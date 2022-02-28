@@ -2126,7 +2126,7 @@ __metadata:
   resolution: "@swissquote/crafty-commons-webpack@workspace:packages/crafty-commons-webpack"
   dependencies:
     "@swissquote/crafty-commons": 1.18.4
-    big.js: 5.2.2
+    big.js: 6.1.1
     json5: 2.2.0
     loader-utils: 2.0.2
     uri-js: 4.4.1
@@ -4326,7 +4326,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"big.js@npm:5.2.2, big.js@npm:^5.2.2":
+"big.js@npm:6.1.1":
+  version: 6.1.1
+  resolution: "big.js@npm:6.1.1"
+  checksum: ba5db278e7d6700d7f92b7421e851bb65b6336d90b882869696c50574623c6be31f81500c3195fb1b391045163ffe62745e1c2bc30b35cb15e1b3e3ed135266b
+  languageName: node
+  linkType: hard
+
+"big.js@npm:^5.2.2":
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
   checksum: b89b6e8419b097a8fb4ed2399a1931a68c612bce3cfd5ca8c214b2d017531191070f990598de2fc6f3f993d91c0f08aa82697717f6b3b8732c9731866d233c9e
