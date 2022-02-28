@@ -62,7 +62,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           weight: 50
         },
         terser: {
-          plugin: require("rollup-plugin-terser").terser,
+          plugin: require("../dist/rollup-plugin-terser/index.js").terser,
           weight: 100,
           options: terserOptions
         }

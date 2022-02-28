@@ -2294,6 +2294,8 @@ __metadata:
 "@swissquote/crafty-preset-terser@1.18.4, @swissquote/crafty-preset-terser@workspace:packages/crafty-preset-terser":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-terser@workspace:packages/crafty-preset-terser"
+  dependencies:
+    terser: 5.11.0
   languageName: unknown
   linkType: soft
 

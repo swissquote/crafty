@@ -22,10 +22,6 @@ function rollupPluginUtils() {
   return require("@rollup/pluginutils");
 }
 
-/*function rollupPluginTerser() {
-    return require("rollup-plugin-terser");
-}*/
-
 function rollup() {
   return require("rollup");
 }
@@ -37,6 +33,5 @@ module.exports = {
   rollupPluginReplace,
   rollupPluginPNPResolve,
   rollupPluginUtils,
-  //rollupPluginTerser,
   rollup
 };

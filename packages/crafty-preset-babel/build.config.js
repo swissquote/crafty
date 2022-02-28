@@ -14,7 +14,6 @@ module.exports = [
     // Dependencies of this package
     "@babel/core": "@babel/core",
     "@babel/code-frame": "@babel/code-frame",
-    "@babel/helper-module-imports": "@babel/helper-module-imports",
-    "terser": "terser"
+    "@babel/helper-module-imports": "@babel/helper-module-imports"
   })
 ];

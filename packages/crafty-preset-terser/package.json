@@ -9,7 +9,11 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'"
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
+    "build": "node ../../utils/build.js"
+  },
+  "devDependencies": {
+    "terser": "5.11.0"
   },
   "engines": {
     "node": ">=12"
