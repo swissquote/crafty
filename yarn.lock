@@ -1836,6 +1836,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ronilaukkarinen/gulp-stylelint@npm:14.0.6":
+  version: 14.0.6
+  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.6"
+  dependencies:
+    chalk: ^4.1.2
+    fancy-log: ^1.3.3
+    plugin-error: ^1.0.1
+    source-map: ^0.7.3
+    strip-ansi: ^6.0.0
+  peerDependencies:
+    stylelint: ^14.0.1
+  checksum: 3076149f5fbcbc379aad984feba212de5bd4c38ac9d952724cbab922309ed80d2eb79553caebf074ac5d01d8506a9ddc76fc61b8063387fc8a8cbb9e61173431
+  languageName: node
+  linkType: hard
+
 "@sinonjs/commons@npm:^1.6.0, @sinonjs/commons@npm:^1.7.0, @sinonjs/commons@npm:^1.8.3":
   version: 1.8.3
   resolution: "@sinonjs/commons@npm:1.8.3"
@@ -2115,6 +2130,7 @@ __metadata:
   dependencies:
     "@swissquote/crafty-commons": 1.18.4
     "@swissquote/gulp-newer": 1.18.4
+    gulp-concat: 2.6.1
     gulp-eslint-new: 1.4.2
     plugin-error: 1.0.1
     through2: 4.0.2
@@ -2169,7 +2185,6 @@ __metadata:
     babel-loader: 8.2.3
     gulp-babel: 8.0.0
     gulp-terser: 2.1.0
-    terser: 5.11.0
   languageName: unknown
   linkType: soft
 
@@ -2239,11 +2254,11 @@ __metadata:
   resolution: "@swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss"
   dependencies:
     "@babel/code-frame": 7.16.7
+    "@ronilaukkarinen/gulp-stylelint": 14.0.6
     "@swissquote/crafty": 1.18.4
     "@swissquote/crafty-commons": 1.18.4
     "@swissquote/crafty-commons-gulp": 1.18.4
     "@swissquote/crafty-preset-prettier": 1.18.4
-    "@swissquote/gulp-stylelint": 1.18.4
     "@swissquote/postcss-swissquote-preset": 1.18.4
     "@swissquote/stylelint-config-swissquote": 1.18.4
     css-loader: 6.6.0
@@ -2465,25 +2480,6 @@ __metadata:
     plugin-error: 1.0.1
     through: 2.3.8
     through2: 4.0.2
-  languageName: unknown
-  linkType: soft
-
-"@swissquote/gulp-stylelint@1.18.4, @swissquote/gulp-stylelint@workspace:package-forks/gulp-stylelint":
-  version: 0.0.0-use.local
-  resolution: "@swissquote/gulp-stylelint@workspace:package-forks/gulp-stylelint"
-  dependencies:
-    ansi-colors: ^4.0.0
-    ava: 4.0.1
-    c8: 7.11.0
-    fancy-log: 2.0.0
-    gulp-clean-css: 4.3.0
-    gulp-concat: 2.6.1
-    gulp-rename: 2.0.0
-    plugin-error: 1.0.1
-    postcss: 8.4.7
-    sinon: 13.0.1
-  peerDependencies:
-    postcss: ^8.0.0
   languageName: unknown
   linkType: soft
 
@@ -4757,15 +4753,6 @@ __metadata:
   version: 1.2.2
   resolution: "cjs-module-lexer@npm:1.2.2"
   checksum: 977f3f042bd4f08e368c890d91eecfbc4f91da0bc009a3c557bc4dfbf32022ad1141244ac1178d44de70fc9f3dea7add7cd9a658a34b9fae98a55d8f92331ce5
-  languageName: node
-  linkType: hard
-
-"clean-css@npm:4.2.3":
-  version: 4.2.3
-  resolution: "clean-css@npm:4.2.3"
-  dependencies:
-    source-map: ~0.6.0
-  checksum: 613129973a038b8bb13e3975ad6b679feccb8c98f2a9d03e6bec9e60291ef1e6b5037ee8cb09a3470751adc52f43782b1dcb4cb049360230b48062d6e3314072
   languageName: node
   linkType: hard
 
@@ -7308,18 +7295,6 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: 840ec07b1bf8587509e9d87bf55b31b714560bf66904f80fdb90d4f0dc50d1d536eb9f30f56c2e51249fbfb523cd6697fafd407bb3841e9980265fe60063308a
-  languageName: node
-  linkType: hard
-
-"gulp-clean-css@npm:4.3.0":
-  version: 4.3.0
-  resolution: "gulp-clean-css@npm:4.3.0"
-  dependencies:
-    clean-css: 4.2.3
-    plugin-error: 1.0.1
-    through2: 3.0.1
-    vinyl-sourcemaps-apply: 0.2.1
-  checksum: df0ac03206f4001c7c14114bd80123eb69a3e163b82219035617369b6909446d99cdaa915311dbd5fe812f0ff67f5edf40b4d46d004bbc4bd0513d6b51940218
   languageName: node
   linkType: hard
 
@@ -12551,7 +12526,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.0, source-map@npm:~0.6.1":
+"source-map@npm:^0.6.0, source-map@npm:^0.6.1, source-map@npm:~0.6.1":
   version: 0.6.1
   resolution: "source-map@npm:0.6.1"
   checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
@@ -13240,15 +13215,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"through2@npm:3.0.1":
-  version: 3.0.1
-  resolution: "through2@npm:3.0.1"
-  dependencies:
-    readable-stream: 2 || 3
-  checksum: ffac3931c1906b5d3a375b71e3d692228432299ba63213e65d686f95ea3abe1bb5726fa335fb7eba9c6f5f010da17c071a6c1c531bd091b2ec7650bc38bcaf13
-  languageName: node
-  linkType: hard
-
 "through2@npm:4.0.2, through2@npm:^4.0.2":
   version: 4.0.2
   resolution: "through2@npm:4.0.2"
@@ -13925,7 +13891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vinyl-sourcemaps-apply@npm:0.2.1, vinyl-sourcemaps-apply@npm:^0.2.0, vinyl-sourcemaps-apply@npm:^0.2.1":
+"vinyl-sourcemaps-apply@npm:^0.2.0, vinyl-sourcemaps-apply@npm:^0.2.1":
   version: 0.2.1
   resolution: "vinyl-sourcemaps-apply@npm:0.2.1"
   dependencies:

@@ -30,7 +30,7 @@ const externals = {
     singlePackages.map((pkg) => [pkg, `../${pkg}/index.js`])
   ),
 
-  "@swissquote/gulp-stylelint": "../swissquote-gulp-stylelint/index.js",
+  "@ronilaukkarinen/gulp-stylelint": "../ronilaukkarinen-gulp-stylelint/index.js",
 
   "schema-utils": "schema-utils",
   postcss: "postcss",
@@ -185,9 +185,9 @@ module.exports = [
       .externals(externals),
   (builder) => {
     const newExternals = { ...externals };
-    delete newExternals["@swissquote/gulp-stylelint"];
+    delete newExternals["@ronilaukkarinen/gulp-stylelint"];
 
-    return builder("@swissquote/gulp-stylelint")
+    return builder("@ronilaukkarinen/gulp-stylelint")
       .package()
       .externals({ ...newExternals, stylelint: "../stylelint/index.js" });
   },
