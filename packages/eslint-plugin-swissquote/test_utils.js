@@ -5,9 +5,12 @@ function prepareESLint(...args) {
     useEslintrc: false,
     overrideConfig: {
       plugins: ["@swissquote/swissquote"],
-      extends: args.map(preset => `plugin:@swissquote/swissquote/${preset}`),
+      extends: args
+        .filter(arg => typeof arg !== "object")
+        .map(preset => `plugin:@swissquote/swissquote/${preset}`),
       rules: {},
-      settings: {}
+      settings: {},
+      ...(args.find(arg => typeof arg === "object") || {})
     },
     plugins: {
       "@swissquote/swissquote": require("./index")

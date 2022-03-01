@@ -126,8 +126,11 @@ export default function SomeComponent() {
 });
 
 test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
+  const alternateEngine = prepareESLint("recommended", {
+    settings: { react: { version: "16.0.0" } }
+  });
   const result = await lint(
-    engine,
+    alternateEngine,
     `
 import React from "react";
 import PropTypes from "prop-types";
