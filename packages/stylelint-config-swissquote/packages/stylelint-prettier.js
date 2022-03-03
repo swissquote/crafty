@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/stylelint-config-packages.js").stylelintPrettier();
+module.exports = require("../dist/stylelint-prettier/index.js");

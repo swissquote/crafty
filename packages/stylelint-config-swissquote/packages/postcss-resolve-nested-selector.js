@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/stylelint-config-packages.js").postcssResolveNestedSelector();
+module.exports = require("../dist/postcss-resolve-nested-selector/index.js");

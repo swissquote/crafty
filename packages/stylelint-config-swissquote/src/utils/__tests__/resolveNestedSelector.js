@@ -1,8 +1,8 @@
 const test = require("ava");
 
-const isKeyframeSelector = require("../../../shims/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../../shims/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../../shims/stylelint-isStandardSyntaxSelector");
+const isKeyframeSelector = require("../../../dist/stylelint-utils/stylelint-isKeyframeSelector");
+const isStandardSyntaxRule = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
+const isStandardSyntaxSelector = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
 const postcss = require("postcss");
 const scssSyntax = require("postcss-scss");
 

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/postcss-selector-parser-package.js");
+module.exports = require("../dist/postcss-selector-parser/index.js");

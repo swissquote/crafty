@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/stylelint-config-packages.js").stylelintNoUnsupportedBrowserFeatures();
+module.exports = require("../dist/stylelint-no-unsupported-browser-features/index.js");

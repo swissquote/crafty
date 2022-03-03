@@ -1,7 +1,7 @@
-const isKeyframeSelector = require("../../shims/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../shims/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../shims/stylelint-isStandardSyntaxSelector");
-const report = require("../../shims/stylelint-report");
+const isKeyframeSelector = require("../../dist/stylelint-utils/stylelint-isKeyframeSelector");
+const isStandardSyntaxRule = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
+const isStandardSyntaxSelector = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
+const report = require("../../dist/stylelint-utils/stylelint-report");
 
 const resolveNestedSelector = require("../utils/resolveNestedSelector");
 const parseSelector = require("../utils/parseSelector");
