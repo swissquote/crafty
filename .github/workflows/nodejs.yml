@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3.0.0
       with:
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: SonarCloud Scan
       uses: sonarsource/sonarqube-scan-action@v1.1.0
       env:
