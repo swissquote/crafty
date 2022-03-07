@@ -100,12 +100,14 @@ But ESLint doesn’t understand types in its default rule set, that’s why we i
 <p>We created a default set of rules following the Swissquote JavaScript Guideline, but if your project wants stricter rules, you can enable them like that :</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">eslint</span>: {
-    <span class="hljs-attr">overrides</span>: {
-      <span class="hljs-attr">files</span>: [<span class="hljs-string">"**/*.ts"</span>, <span class="hljs-string">"**/*.tsx"</span>],
-      <span class="hljs-attr">rules</span>: {
-        <span class="hljs-string">"arrow-parens"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"always"</span>]
+    <span class="hljs-attr">overrides</span>: [
+      {
+        <span class="hljs-attr">files</span>: [<span class="hljs-string">"**/*.ts"</span>, <span class="hljs-string">"**/*.tsx"</span>],
+        <span class="hljs-attr">rules</span>: {
+          <span class="hljs-string">"arrow-parens"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"always"</span>]
+        }
       }
-    }
+    ]
   }
 };
 </code></pre>
