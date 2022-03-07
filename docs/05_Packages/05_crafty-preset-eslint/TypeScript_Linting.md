@@ -18,12 +18,14 @@ We created a default set of rules following the Swissquote JavaScript Guideline,
 ```javascript
 module.exports = {
   eslint: {
-    overrides: {
-      files: ["**/*.ts", "**/*.tsx"],
-      rules: {
-        "arrow-parens": ["error", "always"]
+    overrides: [
+      {
+        files: ["**/*.ts", "**/*.tsx"],
+        rules: {
+          "arrow-parens": ["error", "always"]
+        }
       }
-    }
+    ]
   }
 };
 ```
