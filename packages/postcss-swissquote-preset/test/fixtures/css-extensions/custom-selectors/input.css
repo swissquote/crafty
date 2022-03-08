@@ -1,0 +1,9 @@
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button {
+    color: blue;
+}
+:--button:--enter {
+    color: red;
+}

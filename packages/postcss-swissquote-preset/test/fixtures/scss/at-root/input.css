@@ -1,0 +1,11 @@
+.parent {
+  .before {
+    color: #333;
+  }
+
+  @at-root {
+    .child {
+      background: black;
+    }
+  }
+}

@@ -2,30 +2,12 @@
 
 ## Features
 
-- **Organization**
-  - Nested Styles (`postcss-nested`, `postcss-atroot`)
-  - Import CSS Files (`postcss-import`, `postcss-url`)
-  - Comments (`postcss-scss`)
-- **Variables**
-  - Variables and Mixins (`postcss-advanced-variables`, `postcss-custom-properties`)
-  - Property Lookup (`postcss-property-lookup`)
-- **Images**
-  - Images in CSS (`postcss-assets`)
-- **Dynamic Styles**
-  - Math in your CSS (`postcss-calc`)
-  - Conditionals (`postcss-advanced-variables`)
-  - Loops (`postcss-advanced-variables`)
-  - Initial Values (`postcss-initial`)
-  - Colors (`postcss-color-mod-function`, `postcss-color-gray`,
-    `postcss-color-hex-alpha`, `postcss-color-hwb`,
-    `postcss-color-rebeccapurple`, `postcss-color-rgba-fallback`)
-- **Syntax simplification**
-  - Selectors (`postcss-selector-matches`, `postcss-selector-not`,
-    `postcss-pseudo-class-any-link`, `postcss-custom-selectors`)
-  - Media Queries (`postcss-custom-media`, `postcss-media-minmax`)
-- **Fallbacks**
-  - Vendor Prefixes (`autoprefixer`)
-  - Browser support (`postcss-pseudoelements`, `postcss-replace-overflow-wrap`, `postcss-font-variant`)
+The features provided by this preset are mainly:
+
+* Provide future CSS Syntax today
+* Allow you to use some features from SCSS in your CSS
+* No need to worry about vendor prefixes; this preset will add them for you.
+* Advanced and fast minification
 
 See details in [CSS Features](05_crafty-preset-postcss/CSS_Features.md).
 
@@ -33,8 +15,7 @@ See details in [CSS Features](05_crafty-preset-postcss/CSS_Features.md).
 
 ## Usage within Crafty
 
-This preset is included in the styles preset, you don't need to include anything
-specific
+`@swissquote/crafty-preset-postcss` automatically configures this preset for you for Webpack and Gulp.
 
 ## Usage outside Crafty
 

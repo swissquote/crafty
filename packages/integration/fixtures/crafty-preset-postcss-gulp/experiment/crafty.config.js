@@ -12,7 +12,8 @@ module.exports = {
    * @param {Object} bundle - The bundle that is being prepared for build (name, input, source, destination)
    */
   postcss(crafty, config, bundle) {
-    // Delete minification to see the result
-    config.delete("postcss-csso");
+    // Disable minification to see the result
+    const options = config.processor("postcss-parcel-css").options
+    options.parcelCssOptions.minify = false;
   }
 };

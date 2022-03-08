@@ -1,0 +1,17 @@
+body {
+  background: inline(
+    "./images/icons/clock.png"
+  ); /* Be careful to not use this on big files */
+}
+
+.button {
+  /*
+   * relative paths or non-absolute paths are
+   * resolved relative to the current files
+   * and relative to the "images" directory
+   */
+  width: width("./images/some/button.png");
+  height: height("./images/some/button.png");
+  background-image: resolve("./images/icons/comment.png");
+  background-size: size("./images/some/button.png");
+}

@@ -55,14 +55,23 @@ module.exports = class Processor {
    */
   module(moduleName) {
     const modulePath = require.resolve(moduleName);
-    this.moduleInit = options => require(modulePath)(options);
+    this.moduleInit = options => {
+      let mod = require(modulePath);
+
+      if (mod.default) {
+        mod = mod.default;
+      }
+
+      return mod(options);
+    };
 
     return this;
   }
 
-  embedded() {
+  embedded(folder) {
     return this.module(
-      `@swissquote/postcss-swissquote-preset/packages/${this.name}.js`
+      `@swissquote/postcss-swissquote-preset/dist/${folder ||
+        this.name}/index.js`
     );
   }
 

@@ -1,0 +1,6 @@
+@custom-media --medium-screen (width < 500px) or (width > 1200px);
+
+@media (--medium-screen) {
+  .foo {
+  }
+}

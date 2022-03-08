@@ -118,12 +118,10 @@ doesn't give it's full measure. Here's some other features it has:
 
 ### CSS
 
-- Preprocess your CSS using **PostCSS** and plugins that will allow to
-  write in a syntax approaching the one of Sass.
-- Some plugins include `postcss-nested` to nest your styles, some plugins to use
-  Future CSS features today and `postcss-advanced-variables` to define mixins
-- Compress the CSS output with `postcss-csso` to get the smallest possible file.
-- Automatically add vendor prefixes to properties with `autoprefixer`.
+- Preprocess your CSS using **PostCSS** and plugins that will allow you to write in a syntax approaching the one of Scss.
+- Use future CSS Syntax and features today like nesting, advanced colors, and custom properties.
+- Compress the CSS output with `@parcel/css` to get the smallest possible file.
+- Automatically add or remove vendor prefixes where they are needed.
 - Simple Debugging with Source Maps
 
 [Read more about features here](03_Use_Cases/Compiling_CSS.md)

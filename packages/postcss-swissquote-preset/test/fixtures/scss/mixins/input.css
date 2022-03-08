@@ -1,0 +1,12 @@
+@mixin icon($name) {
+  padding-left: 16px;
+
+  &::after {
+    content: "";
+    background: url(/icons/$(name).png);
+  }
+}
+
+.search {
+  @include icon(search);
+}

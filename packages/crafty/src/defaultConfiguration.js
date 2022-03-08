@@ -27,6 +27,6 @@ function getDefaultBrowsers() {
 module.exports = {
   // Add empty bundleTypes
   bundleTypes: {},
-  // Autoprefixer
+  // Define the supported browsers so that tools needing them can be consistent
   browsers: getDefaultBrowsers()
 };

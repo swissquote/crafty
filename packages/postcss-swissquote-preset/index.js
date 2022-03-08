@@ -1,14 +1,14 @@
-const postcss = require("postcss");
-
 const prepareProcessors = require("./processors");
 
-module.exports = postcss.plugin("swissquote-preset", options => {
-  const proc = postcss();
+const plugin = options => {
   const processors = prepareProcessors(options.config);
 
-  Object.keys(processors).forEach(plugin => {
-    proc.use(processors[plugin]);
-  });
+  return {
+    postcssPlugin: "swissquote-preset",
+    plugins: Object.values(processors)
+  };
+};
 
-  return proc;
-});
+plugin.postcss = true;
+
+module.exports = plugin;

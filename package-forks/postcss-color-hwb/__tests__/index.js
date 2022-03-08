@@ -29,3 +29,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
 test("hwb", (t) => {
   return compareFixtures(t, "hwb", "should transform hwb");
 });
+
+test("hwb Colors Level 4", (t) => {
+  return compareFixtures(t, "hwb-4", "should transform hwb");
+});
