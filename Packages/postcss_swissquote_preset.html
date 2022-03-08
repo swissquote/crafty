@@ -91,61 +91,17 @@
     <div class="s-content">
         <h1><a id="postcss-swissquote-preset" href="#postcss-swissquote-preset" class="Permalink" aria-hidden="true" title="Permalink">#</a>PostCSS Swissquote Preset</h1>
 <h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
+<p>The features provided by this preset are mainly:</p>
 <ul>
-<li>
-<strong>Organization</strong>
-<ul>
-<li>Nested Styles (<code>postcss-nested</code>, <code>postcss-atroot</code>)</li>
-<li>Import CSS Files (<code>postcss-import</code>, <code>postcss-url</code>)</li>
-<li>Comments (<code>postcss-scss</code>)</li>
-</ul>
-</li>
-<li>
-<strong>Variables</strong>
-<ul>
-<li>Variables and Mixins (<code>postcss-advanced-variables</code>, <code>postcss-custom-properties</code>)</li>
-<li>Property Lookup (<code>postcss-property-lookup</code>)</li>
-</ul>
-</li>
-<li>
-<strong>Images</strong>
-<ul>
-<li>Images in CSS (<code>postcss-assets</code>)</li>
-</ul>
-</li>
-<li>
-<strong>Dynamic Styles</strong>
-<ul>
-<li>Math in your CSS (<code>postcss-calc</code>)</li>
-<li>Conditionals (<code>postcss-advanced-variables</code>)</li>
-<li>Loops (<code>postcss-advanced-variables</code>)</li>
-<li>Initial Values (<code>postcss-initial</code>)</li>
-<li>Colors (<code>postcss-color-mod-function</code>, <code>postcss-color-gray</code>,
-<code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>,
-<code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgba-fallback</code>)</li>
-</ul>
-</li>
-<li>
-<strong>Syntax simplification</strong>
-<ul>
-<li>Selectors (<code>postcss-selector-matches</code>, <code>postcss-selector-not</code>,
-<code>postcss-pseudo-class-any-link</code>, <code>postcss-custom-selectors</code>)</li>
-<li>Media Queries (<code>postcss-custom-media</code>, <code>postcss-media-minmax</code>)</li>
-</ul>
-</li>
-<li>
-<strong>Fallbacks</strong>
-<ul>
-<li>Vendor Prefixes (<code>autoprefixer</code>)</li>
-<li>Browser support (<code>postcss-pseudoelements</code>, <code>postcss-replace-overflow-wrap</code>, <code>postcss-font-variant</code>)</li>
-</ul>
-</li>
+<li>Provide future CSS Syntax today</li>
+<li>Allow you to use some features from SCSS in your CSS</li>
+<li>No need to worry about vendor prefixes; this preset will add them for you.</li>
+<li>Advanced and fast minification</li>
 </ul>
 <p>See details in <a href="crafty_preset_postcss/CSS_Features.html">CSS Features</a>.</p>
 <h2><a id="presets" href="#presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Presets</h2>
 <h2><a id="usage-within-crafty" href="#usage-within-crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage within Crafty</h2>
-<p>This preset is included in the styles preset, you don’t need to include anything
-specific</p>
+<p><code>@swissquote/crafty-preset-postcss</code> automatically configures this preset for you for Webpack and Gulp.</p>
 <h2><a id="usage-outside-crafty" href="#usage-outside-crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage outside Crafty</h2>
 <pre><code class="hljs bash">npm install @swissquote/postcss-swissquote-preset --save
 </code></pre>

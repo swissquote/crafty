@@ -89,276 +89,699 @@
                     </div>
 
     <div class="s-content">
-        <p><strong>PostCSS</strong> is a CSS Parser that can be extended with plugins.
-We made a selection of plugins useful for Swissquote.
-Here are some features made possible by them.</p>
+        <p><strong>PostCSS</strong> is a CSS Parser that supports plugins.
+We made a selection of plugins useful for Swissquote, and here are some features made possible by them.</p>
 <div class="TableOfContentsContainer">
     <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<a href="#all-plugins">All plugins</a>
-</li>
-<li>
-<a href="#organization">Organization</a>
+<a href="#css-cascading-and-inheritance-level-3">CSS Cascading and Inheritance Level 3</a>
 <ul>
 <li>
-<a href="#nested-styles-postcss-nesting-postcss-nested-postcss-atroot">Nested Styles (postcss-nesting, postcss-nested, postcss-atroot)</a>
+<a href="#all-property">all Property</a>
 </li>
 <li>
-<a href="#import-css-files-postcss-import-postcss-url">Import CSS Files (postcss-import, postcss-url)</a>
-</li>
-<li>
-<a href="#mixins-sassy-mixins">Mixins (sassy-mixins)</a>
-</li>
-<li>
-<a href="#comments-postcss-scss">Comments (postcss-scss)</a>
+<a href="#initial-value">initial Value</a>
 </li>
 </ul>
+</li>
+<li>
+<a href="#css-color-module-level-4">CSS Color Module Level 4</a>
+<ul>
+<li>
+<a href="#hexadecimal-alpha-notation">Hexadecimal Alpha Notation</a>
+</li>
+<li>
+<a href="#hsl-function">hsl() Function</a>
+</li>
+<li>
+<a href="#hwb-color">HWB Color</a>
+</li>
+<li>
+<a href="#color-functional-notation">Color Functional Notation</a>
+</li>
+<li>
+<a href="#rebeccapurple-color">rebeccapurple Color</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-custom-properties-for-cascading-variables-module-level-1">CSS Custom Properties for Cascading Variables Module Level 1</a>
+<ul>
+<li>
+<a href="#custom-properties">Custom Properties</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-extensions">CSS Extensions</a>
+<ul>
+<li>
+<a href="#custom-selectors">Custom Selectors</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-fonts-module-level-3">CSS Fonts Module Level 3</a>
+<ul>
+<li>
+<a href="#font-variant-property">font-variant Property</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-fonts-module-level-4">CSS Fonts Module Level 4</a>
+<ul>
+<li>
+<a href="#system-ui-value-for-font-family">system-ui value for font-family</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-image-values-and-replaced-content-module-level-4">CSS Image Values and Replaced Content Module Level 4</a>
+<ul>
+<li>
+<a href="#image-set-function">image-set() Function</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-logical-properties-and-values-level-1">CSS Logical Properties and Values Level 1</a>
+<ul>
+<li>
+<a href="#logical-properties-and-values">Logical Properties and Values</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-text-module-level-3">CSS Text Module Level 3</a>
+<ul>
+<li>
+<a href="#overflow-wrap-property">overflow-wrap Property</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#media-queries-level-4">Media Queries Level 4</a>
+<ul>
+<li>
+<a href="#media-query-ranges">Media Query Ranges</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#media-queries-level-5">Media Queries Level 5</a>
+<ul>
+<li>
+<a href="#custom-media-queries">Custom Media Queries</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#misc">Misc</a>
+<ul>
+<li>
+<a href="#automatic-vendor-prefixes">Automatic Vendor Prefixes</a>
+</li>
+<li>
+<a href="#assets">Assets</a>
+</li>
+<li>
+<a href="#imports">Imports</a>
+</li>
+<li>
+<a href="#property-lookup">Property lookup</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#scss">Scss</a>
+<ul>
+<li>
+<a href="#at-root-rule">@at-root Rule</a>
+</li>
+<li>
+<a href="#nesting-rules">Nesting Rules</a>
+</li>
+<li>
+<a href="#mixins">Mixins</a>
 </li>
 <li>
 <a href="#variables">Variables</a>
-<ul>
-<li>
-<a href="#variables-postcss-advanced-variables-postcss-custom-properties">Variables (postcss-advanced-variables, postcss-custom-properties)</a>
 </li>
 <li>
-<a href="#property-lookup-postcss-property-lookup">Property Lookup (postcss-property-lookup)</a>
-</li>
-</ul>
+<a href="#loops">Loops</a>
 </li>
 <li>
-<a href="#images">Images</a>
-<ul>
-<li>
-<a href="#images-in-css-postcss-assets">Images in CSS (postcss-assets)</a>
+<a href="#conditionals">Conditionals</a>
 </li>
 <li>
-<a href="#image-set-postcss-image-set-polyfill">Image set (postcss-image-set-polyfill)</a>
-</li>
-<li>
-<a href="#help-with-right-to-left-languages-postcss-logical-postcss-dir-pseudo-class">Help with Right-to-left languages (postcss-logical, postcss-dir-pseudo-class)</a>
+<a href="#single-line-comments">Single line comments</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#dynamic-styles">Dynamic Styles</a>
+<a href="#selectors-level-4">Selectors Level 4</a>
 <ul>
 <li>
-<a href="#math-in-your-css-postcss-calc">Math in your CSS (postcss-calc)</a>
+<a href="#any-link-hyperlink-pseudo-class">:any-link Hyperlink Pseudo-Class</a>
 </li>
 <li>
-<a href="#conditionals-postcss-advanced-variables">Conditionals (postcss-advanced-variables)</a>
+<a href="#case-insensitive-attributes">Case-Insensitive Attributes</a>
 </li>
 <li>
-<a href="#loops-postcss-advanced-variables">Loops (postcss-advanced-variables)</a>
+<a href="#not-negation-list-pseudo-class">:not() Negation List Pseudo-Class</a>
 </li>
 <li>
-<a href="#initial-values-postcss-initial">Initial Values (postcss-initial)</a>
-</li>
-<li>
-<a href="#colors-postcss-color-function-postcss-color-mod-function-postcss-color-gray-postcss-color-hex-alpha-postcss-color-hwb-postcss-color-rebeccapurple-postcss-color-rgb-postcss-color-rgba-fallback-postcss-color-hsl">Colors (postcss-color-function, postcss-color-mod-function, postcss-color-gray, postcss-color-hex-alpha, postcss-color-hwb, postcss-color-rebeccapurple, postcss-color-rgb, postcss-color-rgba-fallback, postcss-color-hsl)</a>
-<ul>
-<li>
-<a href="#color-fallbacks">Color Fallbacks</a>
-</li>
-<li>
-<a href="#color-manipulation">Color manipulation</a>
-</li>
-<li>
-<a href="#levels-of-gray">Levels of gray</a>
-</li>
-</ul>
+<a href="#dir-directionality-pseudo-class">:dir Directionality Pseudo-Class</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#syntax-simplification">Syntax simplification</a>
+<a href="#superseded-specifications">Superseded specifications</a>
 <ul>
 <li>
-<a href="#selectors-postcss-selector-matches-postcss-selector-not-postcss-pseudo-class-any-link-postcss-custom-selectors">Selectors (postcss-selector-matches, postcss-selector-not, postcss-pseudo-class-any-link, postcss-custom-selectors)</a>
+<a href="#matches-matches-any-pseudo-class">:matches() Matches-Any Pseudo-Class</a>
 </li>
 <li>
-<a href="#media-queries-postcss-custom-media-postcss-media-minmax">Media Queries (postcss-custom-media, postcss-media-minmax)</a>
-</li>
-</ul>
+<a href="#color-and-color-mod-color-manipulation">color() and color-mod() Color manipulation</a>
 </li>
 <li>
-<a href="#fallbacks">Fallbacks</a>
-<ul>
-<li>
-<a href="#vendor-prefixes-autoprefixer">Vendor Prefixes (autoprefixer)</a>
-</li>
-<li>
-<a href="#browser-support-postcss-font-family-system-ui-postcss-pseudoelements-postcss-replace-overflow-wrap-postcss-font-variant">Browser support (postcss-font-family-system-ui, postcss-pseudoelements, postcss-replace-overflow-wrap, postcss-font-variant)</a>
+<a href="#gray-color-function">gray() Color function</a>
 </li>
 </ul>
 </li>
 </ul>    </div>
 </div>
-<h2><a id="all-plugins" href="#all-plugins" class="Permalink" aria-hidden="true" title="Permalink">#</a>All plugins</h2>
-<p>All included plugins have a short example accompanying them below.</p>
-<table>
-<thead>
-<tr>
-<th>Plugin</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>postcss-assets</code></td>
-<td>Embed images &amp; size functions</td>
-</tr>
-<tr>
-<td><code>postcss-import</code></td>
-<td>Import files</td>
-</tr>
-<tr>
-<td><code>postcss-scss</code></td>
-<td>Inline comments support</td>
-</tr>
-<tr>
-<td><code>postcss-url</code></td>
-<td>Update relative URLs after import</td>
-</tr>
-<tr>
-<td><code>postcss-advanced-variables</code></td>
-<td>Sass-like variables, mixins and loops</td>
-</tr>
-<tr>
-<td><code>postcss-nested</code></td>
-<td>Sass-like nested selectors</td>
-</tr>
-<tr>
-<td><code>postcss-atroot</code></td>
-<td>place rules back up to the root</td>
-</tr>
-<tr>
-<td><code>postcss-property-lookup</code></td>
-<td>reference other property values</td>
-</tr>
-<tr>
-<td><code>postcss-dir-pseudo-class</code></td>
-<td>Use the <code>:dir()</code> pseudo class for LTR/RTL</td>
-</tr>
-<tr>
-<td><code>postcss-logical</code></td>
-<td>New LTR/RTL and flow related properties</td>
-</tr>
-<tr>
-<td><code>autoprefixer</code></td>
-<td>Add or remove Vendor prefixes</td>
-</tr>
-<tr>
-<td><code>postcss-csso</code></td>
-<td>Minify CSS</td>
-</tr>
-<tr>
-<td><code>postcss-attribute-case-insensitive</code></td>
-<td>Support case insensitive attributes</td>
-</tr>
-<tr>
-<td><code>postcss-calc</code></td>
-<td>Resolves calculations</td>
-</tr>
-<tr>
-<td><code>postcss-color-mod-function</code></td>
-<td><code>color()</code> / <code>color-mod()</code> Removed from spec</td>
-</tr>
-<tr>
-<td><code>postcss-color-gray</code></td>
-<td>Shades of gray</td>
-</tr>
-<tr>
-<td><code>postcss-color-hex-alpha</code></td>
-<td><code>#rrggbbaa</code> colors</td>
-</tr>
-<tr>
-<td><code>postcss-color-hsl</code></td>
-<td>Allow to define colors using <code>hsl()</code></td>
-</tr>
-<tr>
-<td><code>postcss-color-hwb</code></td>
-<td><code>hwb()</code> color function</td>
-</tr>
-<tr>
-<td><code>postcss-color-rebeccapurple</code></td>
-<td>Adds the <code>rebbeccapurple</code> color</td>
-</tr>
-<tr>
-<td><code>postcss-color-rgb</code></td>
-<td>Change W3C Color Level 4 <code>rgb()</code> to Level 3</td>
-</tr>
-<tr>
-<td><code>postcss-color-rgba-fallback</code></td>
-<td>Add an RGB fallback to RGBA colors</td>
-</tr>
-<tr>
-<td><code>postcss-custom-media</code></td>
-<td>W3C custom media queries</td>
-</tr>
-<tr>
-<td><code>postcss-custom-properties</code></td>
-<td>W3C custom variables</td>
-</tr>
-<tr>
-<td><code>postcss-custom-selectors</code></td>
-<td>W3C custom selectors</td>
-</tr>
-<tr>
-<td><code>postcss-font-family-system-ui</code></td>
-<td>Change <code>system-ui</code> to a font-family list</td>
-</tr>
-<tr>
-<td><code>postcss-font-variant</code></td>
-<td>Transformed to <code>font-feature-settings</code></td>
-</tr>
-<tr>
-<td><code>postcss-image-set-polyfill</code></td>
-<td>Use <code>image-set()</code> for image selection</td>
-</tr>
-<tr>
-<td><code>postcss-initial</code></td>
-<td>Use initial value for a property</td>
-</tr>
-<tr>
-<td><code>postcss-media-minmax</code></td>
-<td>W3C &lt; &lt;= &gt;= &gt; media queries</td>
-</tr>
-<tr>
-<td><code>postcss-nesting</code></td>
-<td>W3C nested selectors</td>
-</tr>
-<tr>
-<td><code>postcss-pseudo-class-any-link</code></td>
-<td>Allows you to use :any-link pseudo class.</td>
-</tr>
-<tr>
-<td><code>postcss-pseudoelements</code></td>
-<td>Adjust <code>::</code> to <code>:</code></td>
-</tr>
-<tr>
-<td><code>postcss-replace-overflow-wrap</code></td>
-<td>Converts <code>overflow-wrap</code> to <code>word-wrap</code></td>
-</tr>
-<tr>
-<td><code>postcss-selector-matches</code></td>
-<td>W3C <code>:matches()</code> pseudo-classes</td>
-</tr>
-<tr>
-<td><code>postcss-selector-not</code></td>
-<td>W3C <code>:not()</code> pseudo-classes</td>
-</tr>
-</tbody>
-</table>
-<h2><a id="organization" href="#organization" class="Permalink" aria-hidden="true" title="Permalink">#</a>Organization</h2>
-<h3><a id="nested-styles-postcss-nesting-postcss-nested-postcss-atroot" href="#nested-styles-postcss-nesting-postcss-nested-postcss-atroot" class="Permalink" aria-hidden="true" title="Permalink">#</a>Nested Styles (<code>postcss-nesting</code>, <code>postcss-nested</code>, <code>postcss-atroot</code>)</h3>
+<h1><a id="css-cascading-and-inheritance-level-3" href="#css-cascading-and-inheritance-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Cascading and Inheritance Level 3</h1>
+<h2><a id="all-property" href="#all-property" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>all</code> Property</h2>
+<p>A property for defining the reset of all properties of an element.</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">all</span>: initial;
+}
 
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">-webkit-backface-visibility</span>: visible;
+  <span class="hljs-attribute">backface-visibility</span>: visible;
+  <span class="hljs-attribute">border-collapse</span>: separate;
+  <span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">box-shadow</span>: none;
+  <span class="hljs-attribute">-webkit-box-sizing</span>: content-box;
+  <span class="hljs-attribute">-moz-box-sizing</span>: content-box;
+  <span class="hljs-attribute">box-sizing</span>: content-box;
+  <span class="hljs-attribute">caption-side</span>: top;
+  <span class="hljs-attribute">clear</span>: none;
+  <span class="hljs-attribute">clip</span>: auto;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">columns</span>: auto;
+  <span class="hljs-attribute">column-count</span>: auto;
+  <span class="hljs-attribute">column-fill</span>: balance;
+  <span class="hljs-attribute">column-rule</span>: medium none currentColor;
+  <span class="hljs-attribute">column-span</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">column-width</span>: auto;
+  <span class="hljs-attribute">content</span>: normal;
+  <span class="hljs-attribute">counter-increment</span>: none;
+  <span class="hljs-attribute">counter-reset</span>: none;
+  <span class="hljs-attribute">cursor</span>: auto;
+  <span class="hljs-attribute">direction</span>: ltr;
+  <span class="hljs-attribute">empty-cells</span>: show;
+  <span class="hljs-attribute">float</span>: none;
+  <span class="hljs-attribute">font-variant</span>: normal;
+  <span class="hljs-attribute">height</span>: auto;
+  <span class="hljs-attribute">-ms-hyphens</span>: none;
+  <span class="hljs-attribute">hyphens</span>: none;
+  <span class="hljs-attribute">letter-spacing</span>: normal;
+  <span class="hljs-attribute">max-height</span>: none;
+  <span class="hljs-attribute">max-width</span>: none;
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">orphans</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">outline</span>: medium none invert;
+  <span class="hljs-attribute">page-break-after</span>: auto;
+  <span class="hljs-attribute">page-break-before</span>: auto;
+  <span class="hljs-attribute">page-break-inside</span>: auto;
+  <span class="hljs-attribute">-webkit-perspective</span>: none;
+  <span class="hljs-attribute">perspective</span>: none;
+  <span class="hljs-attribute">-webkit-perspective-origin</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">perspective-origin</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">-moz-tab-size</span>: <span class="hljs-number">8</span>;
+  <span class="hljs-attribute">tab-size</span>: <span class="hljs-number">8</span>;
+  <span class="hljs-attribute">table-layout</span>: auto;
+  <span class="hljs-attribute">text-align</span>: left;
+  <span class="hljs-attribute">text-align-last</span>: auto;
+  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-shadow</span>: none;
+  <span class="hljs-attribute">text-transform</span>: none;
+  <span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">50%</span> <span class="hljs-number">50%</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-webkit-transform-style</span>: flat;
+  <span class="hljs-attribute">transform-style</span>: flat;
+  <span class="hljs-attribute">unicode-bidi</span>: normal;
+  <span class="hljs-attribute">vertical-align</span>: baseline;
+  <span class="hljs-attribute">visibility</span>: visible;
+  <span class="hljs-attribute">white-space</span>: normal;
+  <span class="hljs-attribute">widows</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">width</span>: auto;
+  <span class="hljs-attribute">word-spacing</span>: normal;
+  <span class="hljs-attribute">z-index</span>: auto;
+  <span class="hljs-attribute">all</span>: initial;
+  <span class="hljs-attribute">background</span>: none;
+  <span class="hljs-attribute">-webkit-border-image</span>: ;
+  <span class="hljs-attribute">-moz-border-image</span>: ;
+  <span class="hljs-attribute">border-image</span>: ;
+  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">column-gap</span>: normal;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-family</span>: serif;
+  <span class="hljs-attribute">font-size</span>: medium;
+  <span class="hljs-attribute">font-style</span>: normal;
+  <span class="hljs-attribute">font-weight</span>: normal;
+  <span class="hljs-attribute">font-stretch</span>: normal;
+  <span class="hljs-attribute">line-height</span>: normal;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">list-style</span>: disc;
+  <span class="hljs-attribute">-webkit-transition</span>: none;
+  <span class="hljs-attribute">-moz-transition</span>: none;
+  <span class="hljs-attribute">transition</span>: none;
+  <span class="hljs-attribute">-webkit-animation</span>: none;
+  <span class="hljs-attribute">animation</span>: none;
+  <span class="hljs-attribute">display</span>: inline;
+  <span class="hljs-attribute">position</span>: static;
+  <span class="hljs-attribute">top</span>: auto;
+  <span class="hljs-attribute">bottom</span>: auto;
+  <span class="hljs-attribute">left</span>: auto;
+  <span class="hljs-attribute">right</span>: auto;
+  <span class="hljs-attribute">overflow</span>: visible;
+  <span class="hljs-attribute">-webkit-transform</span>: none;
+  <span class="hljs-attribute">-moz-transform</span>: none;
+  <span class="hljs-attribute">transform</span>: none;
+}
+
+</code></pre>
+<h2><a id="initial-value" href="#initial-value" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>initial</code> Value</h2>
+<p>Reset a property to its initial value.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">background</span>: initial;
+  <span class="hljs-attribute">white-space</span>: initial;
+  <span class="hljs-attribute">animation</span>: initial;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">background</span>: none;
+  <span class="hljs-attribute">background</span>: initial;
+  <span class="hljs-attribute">white-space</span>: normal;
+  <span class="hljs-attribute">white-space</span>: initial;
+  <span class="hljs-attribute">-webkit-animation</span>: initial;
+  <span class="hljs-attribute">animation</span>: initial;
+}
+
+</code></pre>
+<h1><a id="css-color-module-level-4" href="#css-color-module-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Color Module Level 4</h1>
+<h2><a id="hexadecimal-alpha-notation" href="#hexadecimal-alpha-notation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hexadecimal Alpha Notation</h2>
+<p>A 4 &amp; 8 character hex color notation for specifying the opacity level</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#9d9c</span>;
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">153</span>, <span class="hljs-number">221</span>, <span class="hljs-number">153</span>, .<span class="hljs-number">8</span>);
+}
+
+</code></pre>
+<h2><a id="hsl-function" href="#hsl-function" class="Permalink" aria-hidden="true" title="Permalink">#</a>hsl() Function</h2>
+<p>A function for specifying colors by hue, saturation and lightness to mix into it</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsl</span>(<span class="hljs-number">200grad</span> <span class="hljs-number">100%</span> <span class="hljs-number">50%</span> / <span class="hljs-number">20%</span>);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">hsla</span>(<span class="hljs-number">200grad</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>, <span class="hljs-number">0.2</span>);
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, .<span class="hljs-number">2</span>);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, .<span class="hljs-number">2</span>);
+}
+
+</code></pre>
+<h2><a id="hwb-color" href="#hwb-color" class="Permalink" aria-hidden="true" title="Permalink">#</a>HWB Color</h2>
+<p>A function for specifying colors by hue and then a degree of whiteness and blackness to mix into it</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-comment">/* Colors Level 4 syntax */</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">120</span> <span class="hljs-number">44%</span> <span class="hljs-number">50%</span>);
+  <span class="hljs-comment">/* Legacy syntax */</span>
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">90</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0.5</span>);
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#708070</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">128</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">5</span>);
+}
+
+</code></pre>
+<h2><a id="color-functional-notation" href="#color-functional-notation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Color Functional Notation</h2>
+<p>A space and slash separated notation for specifying colors</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">250.5</span> <span class="hljs-number">255</span> <span class="hljs-number">255</span>);
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.Quote--clear</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fbffff</span>;
+}
+
+</code></pre>
+<h2><a id="rebeccapurple-color" href="#rebeccapurple-color" class="Permalink" aria-hidden="true" title="Permalink">#</a>rebeccapurple Color</h2>
+<p>A particularly lovely shade of purple in memory of Rebecca Alison Meyer</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">color</span>: rebeccapurple;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#639</span>;
+}
+
+</code></pre>
+<h1><a id="css-custom-properties-for-cascading-variables-module-level-1" href="#css-custom-properties-for-cascading-variables-module-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Custom Properties for Cascading Variables Module Level 1</h1>
+<h2><a id="custom-properties" href="#custom-properties" class="Permalink" aria-hidden="true" title="Permalink">#</a>Custom Properties</h2>
+<p>A syntax for defining custom values accepted by all CSS properties</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--color</span>: <span class="hljs-number">#f00</span>;
+}
+
+<span class="hljs-selector-class">.menu_link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--color);
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.menu_link</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+</code></pre>
+<h1><a id="css-extensions" href="#css-extensions" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Extensions</h1>
+<h2><a id="custom-selectors" href="#custom-selectors" class="Permalink" aria-hidden="true" title="Permalink">#</a>Custom Selectors</h2>
+<p>An at-rule for defining aliases that represent selectors</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-keyword">@custom-selector</span> :--button button, .button;
+<span class="hljs-keyword">@custom-selector</span> :--enter :hover, :focus;
+
+<span class="hljs-selector-pseudo">:--button</span> {
+    <span class="hljs-attribute">color</span>: blue;
+}
+<span class="hljs-selector-pseudo">:--button</span><span class="hljs-selector-pseudo">:--enter</span> {
+    <span class="hljs-attribute">color</span>: red;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">button</span>, <span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#00f</span>;
+}
+
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+</code></pre>
+<h1><a id="css-fonts-module-level-3" href="#css-fonts-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Fonts Module Level 3</h1>
+<h2><a id="font-variant-property" href="#font-variant-property" class="Permalink" aria-hidden="true" title="Permalink">#</a>font-variant Property</h2>
+<p>A property for defining the usage of alternate glyphs in a font</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
+}
+
+<span class="hljs-selector-tag">table</span> {
+  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"smcp"</span>;
+  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
+}
+
+<span class="hljs-selector-tag">table</span> {
+  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"lnum"</span>;
+  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
+}
+
+</code></pre>
+<h1><a id="css-fonts-module-level-4" href="#css-fonts-module-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Fonts Module Level 4</h1>
+<h2><a id="system-ui-value-for-font-family" href="#system-ui-value-for-font-family" class="Permalink" aria-hidden="true" title="Permalink">#</a>system-ui value for font-family</h2>
+<p>A generic font used to match the user’s interface</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-family</span>: system-ui;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-family</span>: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
+}
+
+</code></pre>
+<h1><a id="css-image-values-and-replaced-content-module-level-4" href="#css-image-values-and-replaced-content-module-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Image Values and Replaced Content Module Level 4</h1>
+<h2><a id="image-set-function" href="#image-set-function" class="Permalink" aria-hidden="true" title="Permalink">#</a>image-set() Function</h2>
+<p>A function for specifying image sources based on the user’s resolution</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.BigImage</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(
+    url(img/test.png) <span class="hljs-number">1</span>x,
+    <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png) <span class="hljs-number">2</span>x,
+    <span class="hljs-built_in">url</span>(my-img-print.png) <span class="hljs-number">600dpi</span>
+  );
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.BigImage</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test.png);
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>), (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">192dpi</span>) {
+  <span class="hljs-selector-class">.BigImage</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png);
+  }
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">6.25</span>), (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">600dpi</span>) {
+  <span class="hljs-selector-class">.BigImage</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(my-img-print.png);
+  }
+}
+
+</code></pre>
+<h1><a id="css-logical-properties-and-values-level-1" href="#css-logical-properties-and-values-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Logical Properties and Values Level 1</h1>
+<h2><a id="logical-properties-and-values" href="#logical-properties-and-values" class="Permalink" aria-hidden="true" title="Permalink">#</a>Logical Properties and Values</h2>
+<p>Flow-relative (left-to-right or right-to-left) properties and values</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.Banner</span> {
+  <span class="hljs-attribute">float</span>: inline-start;
+  <span class="hljs-attribute">padding-inline</span>: <span class="hljs-number">20px</span> <span class="hljs-number">40px</span>;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.Banner</span> {
+  <span class="hljs-attribute">float</span>: inline-start;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-built_in">var</span>(--ltr, <span class="hljs-number">20px</span>) <span class="hljs-built_in">var</span>(--rtl, <span class="hljs-number">40px</span>);
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-built_in">var</span>(--ltr, <span class="hljs-number">40px</span>) <span class="hljs-built_in">var</span>(--rtl, <span class="hljs-number">20px</span>);
+}
+
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"ltr"</span>]</span> {
+  <span class="hljs-attribute">--ltr</span>: initial;
+  <span class="hljs-attribute">--rtl</span>: ;
+}
+
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"rtl"</span>]</span> {
+  <span class="hljs-attribute">--ltr</span>: ;
+  <span class="hljs-attribute">--rtl</span>: initial;
+}
+
+</code></pre>
+<h1><a id="css-text-module-level-3" href="#css-text-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Text Module Level 3</h1>
+<h2><a id="overflow-wrap-property" href="#overflow-wrap-property" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>overflow-wrap</code> Property</h2>
+<p>A property for defining whether to insert line breaks within words to prevent overflowing</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">overflow-wrap</span>: break-word;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">word-wrap</span>: break-word;
+}
+
+</code></pre>
+<h1><a id="media-queries-level-4" href="#media-queries-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>Media Queries Level 4</h1>
+<h2><a id="media-query-ranges" href="#media-query-ranges" class="Permalink" aria-hidden="true" title="Permalink">#</a>Media Query Ranges</h2>
+<p>A syntax for defining media query ranges using ordinary comparison operators</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-keyword">@media</span> (width &gt;= <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (width &lt;= <span class="hljs-number">1200px</span>) {
+  <span class="hljs-selector-class">.foo</span> {}
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">1200px</span>) {
+  <span class="hljs-selector-class">.foo</span> {
+  }
+}
+
+</code></pre>
+<h1><a id="media-queries-level-5" href="#media-queries-level-5" class="Permalink" aria-hidden="true" title="Permalink">#</a>Media Queries Level 5</h1>
+<h2><a id="custom-media-queries" href="#custom-media-queries" class="Permalink" aria-hidden="true" title="Permalink">#</a>Custom Media Queries</h2>
+<p>An at-rule for defining aliases that represent media queries</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-keyword">@custom-media</span> --medium-screen (width &lt; <span class="hljs-number">500px</span>) <span class="hljs-keyword">or</span> (width &gt; <span class="hljs-number">1200px</span>);
+
+<span class="hljs-keyword">@media</span> (--medium-screen) {
+  <span class="hljs-selector-class">.foo</span> {
+  }
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">499.999px</span>) <span class="hljs-keyword">or</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">1200px</span>) {
+  <span class="hljs-selector-class">.foo</span> {
+  }
+}
+
+</code></pre>
+<h1><a id="misc" href="#misc" class="Permalink" aria-hidden="true" title="Permalink">#</a>Misc</h1>
+<h2><a id="automatic-vendor-prefixes" href="#automatic-vendor-prefixes" class="Permalink" aria-hidden="true" title="Permalink">#</a>Automatic Vendor Prefixes</h2>
+<p>Depending on the list of target browsers, automatically adds (and removes) vendor prefixes.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -moz-box;
+  <span class="hljs-attribute">display</span>: -webkit-flex;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">-webkit-box-orient</span>: horizontal;
+  <span class="hljs-attribute">-moz-box-orient</span>: horizontal;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+  <span class="hljs-attribute">-moz-box-direction</span>: normal;
+  <span class="hljs-attribute">-webkit-flex-direction</span>: row;
+  <span class="hljs-attribute">-ms-flex-direction</span>: row;
+  <span class="hljs-attribute">flex-direction</span>: row;
+}
+
+</code></pre>
+<h2><a id="assets" href="#assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Assets</h2>
+<p>Get image sizes and inlines files</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">inline</span>(
+    <span class="hljs-string">"./images/icons/clock.png"</span>
+  ); <span class="hljs-comment">/* Be careful to not use this on big files */</span>
+}
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-comment">/*
+   * relative paths or non-absolute paths are
+   * resolved relative to the current files
+   * and relative to the "images" directory
+   */</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">width</span>(<span class="hljs-string">"./images/some/button.png"</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">height</span>(<span class="hljs-string">"./images/some/button.png"</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">resolve</span>(<span class="hljs-string">"./images/icons/comment.png"</span>);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-built_in">size</span>(<span class="hljs-string">"./images/some/button.png"</span>);
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/<span class="hljs-number">9</span>hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMESURBVDjLXZNrSFNxGMYPgQQRfYv6EgR9kCgKohtFgRAVQUHQh24GQReqhViWlVYbZJlZmZmombfVpJXTdHa3reM8uszmWpqnmQuX5drmLsdjenR7ev9DR3Xgd3h43+d5/pw/HA4AN9zITSPUhJ14R0xn87+h2ZzJvZVInJpzAQOXQOQMt+/<span class="hljs-number">5</span>rvhMCLXv9Vjrt1rSXitmwj+Jua1+Ox+<span class="hljs-number">2</span>HfGNdGf6yW8l5sUKPNVcRsiaPDA22Ahv6/<span class="hljs-number">7</span>Ae/<span class="hljs-number">0</span>aKdviQ0G7B/c6f8Zg+gbfh079Mjno0MhS58lflOsgEjh3BXc+bM/<span class="hljs-number">0</span>DzbvDwj314znt/bjof0HdPw3FBq6kP+oCxVNfdDZvqPsrQmf6zdFRtyPJgbrFoqUTeS+FnPrekpmiC2lS+QcUx+qrf0wmFzodYfgC0nwhoYh9oegfdmLsmYXHj7JhV23erS7ZNYHyibGLiLtXsO19BoHSiwu6Ok09gwFg/gy8BO/STOkKFBk7EWh2YkLeh5Hy4Ws2B2w157iDvOpxw4UPRPRTSfL41FIsow7ZeXwUFF4dBQ1L96A/xLEFf1HMC/LxAt25PH+VN0HXH1gh2dEwdBoBGO0OKvW4L7hCdIvavBSsMIRVHCi0ArmZZl4wbYrz/yHSq1Ql9vQLylUEoE7GMal3OuxMG/<span class="hljs-number">7</span>CO848N6n4HheK5iXZeIFmy88Nu+<span class="hljs-number">8</span>aYJG24G3ziB+<span class="hljs-number">0</span>Ee7wwqemlvQ5w9hcAJwyUDtpwBOFLeBeVkmXpB0qlK9RV2HlLsCsvUivHRhQwoQjhCkA1TgJX1OK0JVzIN5WSZesPZ44XKia+P5BqSS4aq+BzZXABLdhyQrsJPOqv4MVcEbMA/zsky8gLHyYO7hI9laecOZWuzLfYXU2zzSblmQerMZqjwTknOeY9dlIw5kVcrMG/<span class="hljs-number">8</span>XpoQgCEkOhwNNJn5i7bFSrFDpsCrFEIPpLacr0WxpibYIQpS86/<span class="hljs-number">8</span>pMBqNswnJ6XSivqHBv3R3pmbxzgwz4Z+EaTXtwqIogrzjxIJ4QVVV1UyihxgjFv3/K09Bu/lEkBgg5rLZH+fT5dvfn7iFAAAAAElFTkSuQmCC);
+}
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">68px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">34px</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(images/icons/comment.png?<span class="hljs-number">17</span>f6b2eee3b);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">68px</span> <span class="hljs-number">34px</span>;
+}
+
+</code></pre>
+<h2><a id="imports" href="#imports" class="Permalink" aria-hidden="true" title="Permalink">#</a>Imports</h2>
+<p>With <code>@import</code>, you can import your CSS files to create a single CSS output file. All relative links are updated when they are imported.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"foo.css"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"media/bar.css"</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>);
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>) {
+  <span class="hljs-selector-class">.button</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(../images/buttons/background.png);
+  }
+}
+
+</code></pre>
+<h2><a id="property-lookup" href="#property-lookup" class="Permalink" aria-hidden="true" title="Permalink">#</a>Property lookup</h2>
+<p>Reference property values without a variable.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.heading</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: @margin;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.heading</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+
+</code></pre>
+<h1><a id="scss" href="#scss" class="Permalink" aria-hidden="true" title="Permalink">#</a>Scss</h1>
+<h2><a id="at-root-rule" href="#at-root-rule" class="Permalink" aria-hidden="true" title="Permalink">#</a>@at-root Rule</h2>
+<p>The @at-root causes one or more rules to be emitted at the root of the document, rather than being nested beneath their parent selectors</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 <span class="hljs-selector-class">.parent</span> {
-  <span class="hljs-attribute">background</span>: white;
-
   .before {
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
   }
@@ -368,20 +791,38 @@ Here are some features made possible by them.</p>
       <span class="hljs-attribute">background</span>: black;
     }
   }
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.child</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;
+}
+
+<span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.before</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+}
+
+</code></pre>
+<h2><a id="nesting-rules" href="#nesting-rules" class="Permalink" aria-hidden="true" title="Permalink">#</a>Nesting Rules</h2>
+<p>A syntax for nesting relative rules within rules. This is NOT the official CSS syntax as <code>&amp;</code> is implicit in this syntax.</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.parent</span> {
+  <span class="hljs-attribute">background</span>: white;
+
+  .before {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  }
 
   <span class="hljs-selector-class">.after</span> {
     <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
   }
 }
 
+
 <span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.child</span> {
-  <span class="hljs-attribute">background</span>: black;
-}
-
 <span class="hljs-selector-class">.parent</span> {
-  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fff</span>;
 }
 
 <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.before</span> {
@@ -391,45 +832,11 @@ Here are some features made possible by them.</p>
 <span class="hljs-selector-class">.parent</span> <span class="hljs-selector-class">.after</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
 }
+
 </code></pre>
-<h3><a id="import-css-files-postcss-import-postcss-url" href="#import-css-files-postcss-import-postcss-url" class="Permalink" aria-hidden="true" title="Permalink">#</a>Import CSS Files (<code>postcss-import</code>, <code>postcss-url</code>)</h3>
-<p>With <code>@import</code>, you can import your CSS files to create a single CSS output file.
-All relative links are updated when they are imported.</p>
+<h2><a id="mixins" href="#mixins" class="Permalink" aria-hidden="true" title="Permalink">#</a>Mixins</h2>
+<p>Create reusable mixins</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-comment">/** foo.scss **/</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
-}
-
-<span class="hljs-comment">/** media/bar.scss **/</span>
-
-<span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../../images/buttons/background.png"</span>);
-}
-
-<span class="hljs-comment">/** style.scss **/</span>
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"foo.scss"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"media/bar.scss"</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>);
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;
-}
-
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>) {
-  <span class="hljs-selector-class">.button</span> {
-    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/buttons/background.png"</span>); <span class="hljs-comment">/* the path has been rebased */</span>
-  }
-}
-</code></pre>
-<h3><a id="mixins-sassy-mixins" href="#mixins-sassy-mixins" class="Permalink" aria-hidden="true" title="Permalink">#</a>Mixins (<code>sassy-mixins</code>)</h3>
-<p><code>@mixin</code> allows to create Sass style mixins.</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
 <span class="hljs-keyword">@mixin</span> icon($name) {
   <span class="hljs-selector-tag">padding-left</span>: 16<span class="hljs-selector-tag">px</span>;
 
@@ -443,49 +850,21 @@ All relative links are updated when they are imported.</p>
   @include icon(search);
 }
 
-<span class="hljs-comment">/* After */</span>
 
+<span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.search</span> {
   <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;
 }
 
-<span class="hljs-selector-class">.search</span><span class="hljs-selector-pseudo">::after</span> {
+<span class="hljs-selector-class">.search</span><span class="hljs-selector-pseudo">:after</span> {
   <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
   <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(/icons/search.png);
 }
-</code></pre>
-<h3><a id="comments-postcss-scss" href="#comments-postcss-scss" class="Permalink" aria-hidden="true" title="Permalink">#</a>Comments (<code>postcss-scss</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 
-// <span class="hljs-selector-tag">single</span> <span class="hljs-selector-tag">line</span> <span class="hljs-selector-tag">comment</span>
-<span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">color</span>: orange;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-comment">/* single line comment */</span>
-<span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">color</span>: orange;
-}
 </code></pre>
 <h2><a id="variables" href="#variables" class="Permalink" aria-hidden="true" title="Permalink">#</a>Variables</h2>
-<h3><a id="variables-postcss-advanced-variables-postcss-custom-properties" href="#variables-postcss-advanced-variables-postcss-custom-properties" class="Permalink" aria-hidden="true" title="Permalink">#</a>Variables (<code>postcss-advanced-variables</code>, <code>postcss-custom-properties</code>)</h3>
-<p>We have two possible ways of using variables:</p>
-<ol>
-<li>Sass style variables : <code>$variable</code>
-</li>
-<li>CSS properties (Official specification): <code>--variable</code>
-</li>
-</ol>
-<p>Sass style variables are provided as a compatibility layer.
-We recommend to use the CSS properties as they are future proof and will be directly supported in browsers in the future.</p>
+<p>Prefer using Custom Properties, kept only for backwards compatibilty</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-pseudo">:root</span> {
-  <span class="hljs-attribute">--color</span>: <span class="hljs-number">#f00</span>;
-}
-
 $<span class="hljs-selector-tag">blue</span>: <span class="hljs-selector-id">#056ef0</span>;
 $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-tag">px</span>;
 
@@ -494,204 +873,25 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 }
 
 <span class="hljs-selector-class">.menu_link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--color);
   <span class="hljs-attribute">background</span>: $blue;
   <span class="hljs-attribute">width</span>: $column;
 }
 
-<span class="hljs-comment">/* After */</span>
 
+<span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.menu</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">4</span> * <span class="hljs-number">200px</span>);
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">800px</span>;
 }
 
 <span class="hljs-selector-class">.menu_link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#056ef0</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#056ef0</span>;
 }
+
 </code></pre>
-<h3><a id="property-lookup-postcss-property-lookup" href="#property-lookup-postcss-property-lookup" class="Permalink" aria-hidden="true" title="Permalink">#</a>Property Lookup (<code>postcss-property-lookup</code>)</h3>
+<h2><a id="loops" href="#loops" class="Permalink" aria-hidden="true" title="Permalink">#</a>Loops</h2>
+<p>Iterate on variables</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-class">.heading</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding</span>: @margin;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.heading</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
-}
-</code></pre>
-<h2><a id="images" href="#images" class="Permalink" aria-hidden="true" title="Permalink">#</a>Images</h2>
-<h3><a id="images-in-css-postcss-assets" href="#images-in-css-postcss-assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Images in CSS (<code>postcss-assets</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">inline</span>(
-    <span class="hljs-string">"background.png"</span>
-  ); <span class="hljs-comment">/* Be careful to not use this on big files */</span>
-}
-
-<span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">resolve</span>(<span class="hljs-string">"foobar.jpg"</span>);
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">resolve</span>(<span class="hljs-string">"icons/baz.png"</span>);
-  <span class="hljs-attribute">width</span>: <span class="hljs-built_in">width</span>(<span class="hljs-string">"foobar.png"</span>);
-  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">height</span>(<span class="hljs-string">"foobar.png"</span>);
-  <span class="hljs-attribute">background-size</span>: <span class="hljs-built_in">size</span>(<span class="hljs-string">"foobar.png"</span>);
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(data:image/gif;base64,...);
-}
-
-<span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/foobar.jpg?14a931c501f"</span>);
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/icons/baz.png?14a931c501f"</span>);
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">320px</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">240px</span>;
-  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">320px</span> <span class="hljs-number">240px</span>;
-}
-</code></pre>
-<h3><a id="image-set-postcss-image-set-polyfill" href="#image-set-postcss-image-set-polyfill" class="Permalink" aria-hidden="true" title="Permalink">#</a>Image set (<code>postcss-image-set-polyfill</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-class">.BigImage</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(
-    url(img/test.png) <span class="hljs-number">1</span>x,
-    <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png) <span class="hljs-number">2</span>x,
-    <span class="hljs-built_in">url</span>(my-img-print.png) <span class="hljs-number">600dpi</span>
-  );
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.BigImage</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test.png);
-}
-
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>),
-  (<span class="hljs-attribute">-o-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>/<span class="hljs-number">1</span>),
-  (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">192dpi</span>) {
-  <span class="hljs-selector-class">.BigImage</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png);
-  }
-}
-
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">6.25</span>),
-  (<span class="hljs-attribute">-o-min-device-pixel-ratio:</span> <span class="hljs-number">25</span>/<span class="hljs-number">4</span>),
-  (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">600dpi</span>) {
-  <span class="hljs-selector-class">.BigImage</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(my-img-print.png);
-  }
-}
-</code></pre>
-<h3><a id="help-with-right-to-left-languages-postcss-logical-postcss-dir-pseudo-class" href="#help-with-right-to-left-languages-postcss-logical-postcss-dir-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a>Help with Right-to-left languages (<code>postcss-logical</code>, <code>postcss-dir-pseudo-class</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-<span class="hljs-selector-class">.Banner</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#222222</span>;
-  <span class="hljs-attribute">inset</span>: logical <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;
-  <span class="hljs-attribute">padding-inline</span>: <span class="hljs-number">20px</span> <span class="hljs-number">40px</span>;
-  <span class="hljs-attribute">resize</span>: block;
-}
-
-// `<span class="hljs-selector-tag">postcss-dir-psseudo-class</span>`
-<span class="hljs-selector-class">.Banner__title</span><span class="hljs-selector-pseudo">:dir(rtl)</span> {
-  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
-}
-
-<span class="hljs-selector-class">.Banner__title</span><span class="hljs-selector-pseudo">:dir(ltr)</span> {
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.Banner</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#222222</span>;
-  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">left</span>: <span class="hljs-number">5px</span>;
-  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">10px</span>;
-  <span class="hljs-attribute">right</span>: <span class="hljs-number">5px</span>;
-}
-
-<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:dir(ltr)</span> {
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
-}
-
-<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:dir(rtl)</span> {
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;
-}
-
-<span class="hljs-selector-class">.Banner</span> {
-  <span class="hljs-attribute">resize</span>: vertical;
-}
-
-// `<span class="hljs-selector-tag">postcss-dir-psseudo-class</span>`
-<span class="hljs-selector-attr">[dir=<span class="hljs-string">"rtl"</span>]</span> <span class="hljs-selector-class">.Banner__title</span> {
-  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
-}
-
-<span class="hljs-selector-attr">[dir=<span class="hljs-string">"ltr"</span>]</span> <span class="hljs-selector-class">.Banner__title</span> {
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
-}
-</code></pre>
-<h2><a id="dynamic-styles" href="#dynamic-styles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Dynamic Styles</h2>
-<h3><a id="math-in-your-css-postcss-calc" href="#math-in-your-css-postcss-calc" class="Permalink" aria-hidden="true" title="Permalink">#</a>Math in your CSS (<code>postcss-calc</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-pseudo">:root</span> {
-  <span class="hljs-attribute">--main-font-size</span>: <span class="hljs-number">16px</span>;
-}
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">var</span>(--main-font-size);
-}
-
-<span class="hljs-selector-tag">h1</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">calc</span>(var(--main-font-size) * <span class="hljs-number">2</span>);
-  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> - <span class="hljs-number">2em</span>);
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-built_in">calc</span>(var(--main-font-size) * <span class="hljs-number">1.5</span>);
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
-}
-
-<span class="hljs-selector-tag">h1</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">32px</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100px</span> - <span class="hljs-number">2em</span>); // em's won't be resolved
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
-}
-</code></pre>
-<h3><a id="conditionals-postcss-advanced-variables" href="#conditionals-postcss-advanced-variables" class="Permalink" aria-hidden="true" title="Permalink">#</a>Conditionals (<code>postcss-advanced-variables</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-class">.notice--clear</span> {
-  @if 3 &lt; 5 {
-    <span class="hljs-attribute">background</span>: green;
-  } <span class="hljs-keyword">@else</span> {
-    <span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;
-  }
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.notice--clear</span> {
-  <span class="hljs-attribute">background</span>: green;
-}
-</code></pre>
-<h3><a id="loops-postcss-advanced-variables" href="#loops-postcss-advanced-variables" class="Permalink" aria-hidden="true" title="Permalink">#</a>Loops (<code>postcss-advanced-variables</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
 <span class="hljs-keyword">@each</span> $icon in (foo, bar, baz) {
   <span class="hljs-selector-class">.icon-</span>$(<span class="hljs-selector-tag">icon</span>) {
     <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/$(icon).png"</span>);
@@ -700,403 +900,195 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 
 <span class="hljs-keyword">@for</span> $i from <span class="hljs-number">1</span> to <span class="hljs-number">3</span> {
   <span class="hljs-selector-class">.b-</span>$<span class="hljs-selector-tag">i</span> {
-    <span class="hljs-attribute">width</span>: #{i}<span class="hljs-selector-tag">px</span>;
+    <span class="hljs-attribute">width</span>: #{$i}<span class="hljs-selector-tag">px</span>;
   }
 }
 
-<span class="hljs-comment">/* After */</span>
 
+<span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.icon-foo</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/foo.png"</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/foo.png);
 }
 
 <span class="hljs-selector-class">.icon-bar</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/bar.png"</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/bar.png);
 }
 
 <span class="hljs-selector-class">.icon-baz</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/baz.png"</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/baz.png);
 }
 
 <span class="hljs-selector-class">.b-1</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
 }
+
 <span class="hljs-selector-class">.b-2</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">2px</span>;
 }
+
 <span class="hljs-selector-class">.b-3</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">3px</span>;
 }
-</code></pre>
-<h3><a id="initial-values-postcss-initial" href="#initial-values-postcss-initial" class="Permalink" aria-hidden="true" title="Permalink">#</a>Initial Values (<code>postcss-initial</code>)</h3>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 
-<span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">animation</span>: initial;
-  <span class="hljs-attribute">background</span>: initial;
-  <span class="hljs-attribute">white-space</span>: initial;
+</code></pre>
+<h2><a id="conditionals" href="#conditionals" class="Permalink" aria-hidden="true" title="Permalink">#</a>Conditionals</h2>
+<p>Conditions to use with your</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.notice--clear</span> {
+  @if 3 &lt; 5 {
+    <span class="hljs-attribute">background</span>: green;
+  } <span class="hljs-keyword">@else</span> {
+    <span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">blue</span>;
+  }
 }
+
 
 <span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">animation</span>: none <span class="hljs-number">0s</span> ease <span class="hljs-number">0s</span> <span class="hljs-number">1</span> normal none running;
-  <span class="hljs-attribute">animation</span>: initial;
-  <span class="hljs-attribute">background</span>: transparent none repeat <span class="hljs-number">0</span> <span class="hljs-number">0</span> / auto auto padding-box border-box
-    scroll;
-  <span class="hljs-attribute">background</span>: initial;
-  <span class="hljs-attribute">white-space</span>: normal;
+<span class="hljs-selector-class">.notice--clear</span> {
+  <span class="hljs-attribute">background</span>: green;
 }
+
 </code></pre>
-<h3><a id="colors-postcss-color-function-postcss-color-mod-function-postcss-color-gray-postcss-color-hex-alpha-postcss-color-hwb-postcss-color-rebeccapurple-postcss-color-rgb-postcss-color-rgba-fallback-postcss-color-hsl" href="#colors-postcss-color-function-postcss-color-mod-function-postcss-color-gray-postcss-color-hex-alpha-postcss-color-hwb-postcss-color-rebeccapurple-postcss-color-rgb-postcss-color-rgba-fallback-postcss-color-hsl" class="Permalink" aria-hidden="true" title="Permalink">#</a>Colors (<code>postcss-color-function</code>, <code>postcss-color-mod-function</code>, <code>postcss-color-gray</code>, <code>postcss-color-hex-alpha</code>, <code>postcss-color-hwb</code>, <code>postcss-color-rebeccapurple</code>, <code>postcss-color-rgb</code>, <code>postcss-color-rgba-fallback</code>, <code>postcss-color-hsl</code>)</h3>
-<h4><a id="color-fallbacks" href="#color-fallbacks" class="Permalink" aria-hidden="true" title="Permalink">#</a>Color Fallbacks</h4>
-<p>Some colors functions don’t work in all browsers, these plugins will create fallbacks.</p>
-<p><code>rebeccapurple</code> is a whole different story, it’s an homage to <a href="https://github.com/postcss/%60postcss-color-rebeccapurple%60#why-this-plugin-" class="Link--external" rel="noopener noreferrer">Eric Meyer’s daughter</a>.</p>
+<h2><a id="single-line-comments" href="#single-line-comments" class="Permalink" aria-hidden="true" title="Permalink">#</a>Single line comments</h2>
+<p>A shorter syntax for comments</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-tag">blockquote</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(
-    <span class="hljs-number">153</span>,
-    <span class="hljs-number">221</span>,
-    <span class="hljs-number">153</span>,
-    <span class="hljs-number">0.8</span>
-  ); // This will create a fallback without the alpha
-
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#9d9c</span>; // This will be transformed to rgba
-
-  <span class="hljs-attribute">color</span>: rebeccapurple; // ... sad story, homage to eric meyer
+// <span class="hljs-selector-tag">single</span> <span class="hljs-selector-tag">line</span> <span class="hljs-selector-tag">comment</span>
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">color</span>: orange;
 }
 
-<span class="hljs-selector-class">.Quote--clear</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">250.5</span> <span class="hljs-number">255</span> <span class="hljs-number">255</span>); // Allows to declare colors with rgb() level 4
-
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsl</span>(
-    <span class="hljs-number">200grad</span> <span class="hljs-number">100%</span> <span class="hljs-number">50%</span> / <span class="hljs-number">20%</span>
-  ); // This will declare colors with hsl() level 4
-
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">90</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0.5</span>); // This will transform colors to rgba()
-}
 
 <span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">blockquote</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#9d9</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">153</span>, <span class="hljs-number">221</span>, <span class="hljs-number">153</span>, <span class="hljs-number">0.8</span>);
-
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#9d9</span>;
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">153</span>, <span class="hljs-number">221</span>, <span class="hljs-number">153</span>, <span class="hljs-number">0.8</span>);
-
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#639</span>;
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">color</span>: orange;
 }
 
-<span class="hljs-selector-class">.Quote--clear</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">251</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>);
-
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hsla</span>(<span class="hljs-number">180</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>, <span class="hljs-number">0.2</span>);
-
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#80ff00</span>;
-  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">128</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
-}
 </code></pre>
-<h4><a id="color-manipulation" href="#color-manipulation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Color manipulation</h4>
-<p>You can change a color by applying modifiers.
-Apart from the ones presented here, there are <a href="https://github.com/postcss/postcss-color-function#list-of-color-adjuster" class="Link--external" rel="noopener noreferrer">a lot of modifiers</a> available</p>
-<p>The <code>color</code> and <code>color-mod</code> functions are identical, though we don’t recommend using them as they were removed from the CSS specification.</p>
+<h1><a id="selectors-level-4" href="#selectors-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>Selectors Level 4</h1>
+<h2><a id="any-link-hyperlink-pseudo-class" href="#any-link-hyperlink-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a>:any-link Hyperlink Pseudo-Class</h2>
+<p>A pseudo-class for matching anchor elements independent of whether they have been visited</p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:any-link</span> {
+  <span class="hljs-attribute">background-color</span>: yellow;
+}
 
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:link</span>, <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0</span>;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:-moz-any-link</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0</span>;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:any-link</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0</span>;
+}
+
+</code></pre>
+<h2><a id="case-insensitive-attributes" href="#case-insensitive-attributes" class="Permalink" aria-hidden="true" title="Permalink">#</a>Case-Insensitive Attributes</h2>
+<p>An attribute selector matching attribute values case-insensitively</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span> i]</span> {
+  <span class="hljs-attribute">border-style</span>: solid none;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"Hsides"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSides"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSides"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDes"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDEs"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsideS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsideS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSideS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSideS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDeS"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDES"</span>]</span>, <span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDES"</span>]</span> {
+  <span class="hljs-attribute">border-style</span>: solid none;
+}
+
+</code></pre>
+<h2><a id="not-negation-list-pseudo-class" href="#not-negation-list-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>:not()</code> Negation List Pseudo-Class</h2>
+<p>A pseudo-class for ignoring elements in a selector list</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
+    <span class="hljs-attribute">color</span>: red;
+  }
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span><span class="hljs-selector-pseudo">:not(.special)</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+</code></pre>
+<h2><a id="dir-directionality-pseudo-class" href="#dir-directionality-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a>:dir Directionality Pseudo-Class</h2>
+<p>A pseudo-class for matching elements based on their directionality</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:dir(rtl)</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:dir(ltr)</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"rtl"</span>]</span> <span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-attr">[dir=<span class="hljs-string">"ltr"</span>]</span> <span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;
+}
+
+</code></pre>
+<h1><a id="superseded-specifications" href="#superseded-specifications" class="Permalink" aria-hidden="true" title="Permalink">#</a>Superseded specifications</h1>
+<p>Examples in this categories are Syntaxes for specifications that were abandoned</p>
+<h2><a id="matches-matches-any-pseudo-class" href="#matches-matches-any-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>:matches()</code> Matches-Any Pseudo-Class</h2>
+<p>A pseudo-class for matching elements in a selector list. Syntax is now <code>:is()</code></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:matches(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.special</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+</code></pre>
+<h2><a id="color-and-color-mod-color-manipulation" href="#color-and-color-mod-color-manipulation" class="Permalink" aria-hidden="true" title="Permalink">#</a>color() and color-mod() Color manipulation</h2>
+<p>Modify colors using the <code>color-mod()</code> function in CSS. Might come back as <code>color-mix()</code> in the future</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(red alpha(-<span class="hljs-number">10%</span>)); // Change the opacity of red
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(red alpha(-<span class="hljs-number">10%</span>));
 }
 
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color-mod</span>(red blackness(<span class="hljs-number">80%</span>)); // Darken the color
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color-mod</span>(red blackness(<span class="hljs-number">80%</span>));
 }
 
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">hwb</span>(<span class="hljs-number">90</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0%</span>, <span class="hljs-number">0.6</span>); // This will be transformed to rgba
-}
 
 <span class="hljs-comment">/* After */</span>
-
 <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: red;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.9</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">9</span>);
 }
 
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#300</span>;
 }
 
+</code></pre>
+<h2><a id="gray-color-function" href="#gray-color-function" class="Permalink" aria-hidden="true" title="Permalink">#</a>gray() Color function</h2>
+<p>Create shades of gray</p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 <span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#80ff00</span>;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">128</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.6</span>);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">100</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">0</span> / <span class="hljs-number">90%</span>);
 }
-</code></pre>
-<h4><a id="levels-of-gray" href="#levels-of-gray" class="Permalink" aria-hidden="true" title="Permalink">#</a>Levels of gray</h4>
-<p>You can also get levels of gray.</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 
-<span class="hljs-selector-tag">p</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">85</span>); // Level of gray
-
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">gray</span>(<span class="hljs-number">10%</span>, <span class="hljs-number">50%</span>); // Level of gray with opacity
-}
 
 <span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">p</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#555</span>;
-
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#1a1a1a</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">26</span>, <span class="hljs-number">26</span>, <span class="hljs-number">26</span>, <span class="hljs-number">0.5</span>);
-}
-</code></pre>
-<h2><a id="syntax-simplification" href="#syntax-simplification" class="Permalink" aria-hidden="true" title="Permalink">#</a>Syntax simplification</h2>
-<h3><a id="selectors-postcss-selector-matches-postcss-selector-not-postcss-pseudo-class-any-link-postcss-custom-selectors" href="#selectors-postcss-selector-matches-postcss-selector-not-postcss-pseudo-class-any-link-postcss-custom-selectors" class="Permalink" aria-hidden="true" title="Permalink">#</a>Selectors (<code>postcss-selector-matches</code>, <code>postcss-selector-not</code>, <code>postcss-pseudo-class-any-link</code>, <code>postcss-custom-selectors</code>)</h3>
-<p>These plugins help with the creation</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-keyword">@custom-selector</span> :--button button, .button;
-<span class="hljs-keyword">@custom-selector</span> :--enter :hover, :focus;
-
-<span class="hljs-selector-pseudo">:--button</span> {
-  <span class="hljs-comment">/* styles for your buttons */</span>
-}
-<span class="hljs-selector-pseudo">:--button</span><span class="hljs-selector-pseudo">:--enter</span> {
-  <span class="hljs-comment">/* hover/focus styles for your button */</span>
-}
-
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
-  <span class="hljs-attribute">color</span>: red;
-}
-
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:matches(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
-  <span class="hljs-attribute">color</span>: red;
-}
-
-<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:any-link</span> {
-  <span class="hljs-attribute">background-color</span>: yellow;
-}
-
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span> i]</span> {
-  <span class="hljs-attribute">border-style</span>: solid none;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-class">.button</span>,
-<span class="hljs-selector-tag">button</span> {
-  <span class="hljs-comment">/* styles for your buttons */</span>
-}
-
-<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
-<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span>,
-<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:focus</span>,
-<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-comment">/* hover/focus styles for your button */</span>
-}
-
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span><span class="hljs-selector-pseudo">:not(.special)</span> {
-  <span class="hljs-attribute">color</span>: red;
-}
-
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.special</span>,
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:first-child</span> {
-  <span class="hljs-attribute">color</span>: red;
-}
-
-<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:link</span>,
-<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ff0</span>;
-}
-
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsides"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"Hsides"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSides"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSides"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDes"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDEs"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsideS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsideS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSideS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSideS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDeS"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsidES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsidES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSidES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSidES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIdES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIdES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIdES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIdES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsiDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsiDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSiDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSiDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hsIDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HsIDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"hSIDES"</span>]</span>,
-<span class="hljs-selector-attr">[frame=<span class="hljs-string">"HSIDES"</span>]</span> {
-  <span class="hljs-attribute">border-style</span>: solid none;
-}
-</code></pre>
-<h3><a id="media-queries-postcss-custom-media-postcss-media-minmax" href="#media-queries-postcss-custom-media-postcss-media-minmax" class="Permalink" aria-hidden="true" title="Permalink">#</a>Media Queries (<code>postcss-custom-media</code>, <code>postcss-media-minmax</code>)</h3>
-<p>Media queries should be written with <code>min-width</code> and <code>max-width</code> but it leads to unclear declarations.</p>
-<p>With custom media queries, and query ranges, it’s much easier to write.</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-keyword">@media</span> (width &gt;= <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (width &lt;= <span class="hljs-number">1200px</span>) {
-  <span class="hljs-comment">/* your styles */</span>
-}
-
-<span class="hljs-comment">/* or coupled with custom media queries */</span>
-<span class="hljs-keyword">@custom-media</span> --medium-screen (width &lt; <span class="hljs-number">500px</span>) <span class="hljs-keyword">or</span> (width &gt; <span class="hljs-number">1200px</span>);
-
-<span class="hljs-keyword">@media</span> (--medium-screen) {
-  <span class="hljs-comment">/* your styles */</span>
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">1200px</span>) {
-  <span class="hljs-comment">/* your styles */</span>
-}
-
-<span class="hljs-comment">/* or coupled with custom media queries */</span>
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">499px</span>) <span class="hljs-keyword">or</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">1201px</span>) {
-  <span class="hljs-comment">/* your styles */</span>
-}
-</code></pre>
-<h2><a id="fallbacks" href="#fallbacks" class="Permalink" aria-hidden="true" title="Permalink">#</a>Fallbacks</h2>
-<p>Browsers have the tendency to do everything their way, either with vendor prefixes or by using a custom syntax no other browser supports. These plugins make it easy for you.</p>
-<h3><a id="vendor-prefixes-autoprefixer" href="#vendor-prefixes-autoprefixer" class="Permalink" aria-hidden="true" title="Permalink">#</a>Vendor Prefixes (<code>autoprefixer</code>)</h3>
-<p>Tired of having to look for what prefix to use in your CSS ?
-You don’t need this anymore!
-With <strong>Autoprefixer</strong> this is all done for you.
-You can write your CSS following the W3C standards and Autoprefixer will handle the rest for you</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
-<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">display</span>: flex;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-pseudo">:-webkit-full-screen</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -webkit-flex;
-  <span class="hljs-attribute">display</span>: flex;
-}
-<span class="hljs-selector-pseudo">:-moz-full-screen</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">display</span>: flex;
-}
-<span class="hljs-selector-pseudo">:-ms-fullscreen</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-}
-<span class="hljs-selector-pseudo">:fullscreen</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -webkit-flex;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-}
-</code></pre>
-<h3><a id="browser-support-postcss-font-family-system-ui-postcss-pseudoelements-postcss-replace-overflow-wrap-postcss-font-variant" href="#browser-support-postcss-font-family-system-ui-postcss-pseudoelements-postcss-replace-overflow-wrap-postcss-font-variant" class="Permalink" aria-hidden="true" title="Permalink">#</a>Browser support (<code>postcss-font-family-system-ui</code>, <code>postcss-pseudoelements</code>, <code>postcss-replace-overflow-wrap</code>, <code>postcss-font-variant</code>)</h3>
-<p>Some ways of writing CSS are compatible with modern browsers but not with older ones.
-These plugins ensure some properties include a fallback.</p>
-<p>They are enabled if your target browsers need those fixes.</p>
-<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
-
 <span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">font-family</span>: system-ui;
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">9</span>);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
 }
 
-<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">::before</span> {
-  <span class="hljs-attribute">content</span>: <span class="hljs-built_in">attr</span>(href);
-}
-
-<span class="hljs-selector-class">.foo</span> {
-  <span class="hljs-attribute">overflow-wrap</span>: break-word;
-}
-
-<span class="hljs-selector-class">.buy</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #<span class="hljs-number">1</span>e5799, #<span class="hljs-number">7</span>db9e8);
-}
-
-<span class="hljs-selector-tag">h2</span> {
-  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
-}
-
-<span class="hljs-selector-tag">table</span> {
-  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
-}
-
-<span class="hljs-comment">/* After */</span>
-
-<span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">font-family</span>: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
-}
-
-<span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:before</span> {
-  <span class="hljs-attribute">content</span>: <span class="hljs-built_in">attr</span>(href);
-}
-
-<span class="hljs-selector-class">.foo</span> {
-  <span class="hljs-attribute">word-wrap</span>: break-word;
-}
-
-<span class="hljs-selector-class">.buy</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #<span class="hljs-number">1</span>e5799, #<span class="hljs-number">7</span>db9e8);
-  <span class="hljs-attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="hljs-built_in">gradient</span>(startColorstr=<span class="hljs-string">"#ff1e5799"</span>, endColorstr=<span class="hljs-string">"#ff7db9e8"</span>, GradientType=<span class="hljs-number">0</span>);
-}
-
-<span class="hljs-selector-tag">h2</span> {
-  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"smcp"</span>;
-  <span class="hljs-attribute">font-variant-caps</span>: small-caps;
-}
-
-<span class="hljs-selector-tag">table</span> {
-  <span class="hljs-attribute">font-feature-settings</span>: <span class="hljs-string">"lnum"</span>;
-  <span class="hljs-attribute">font-variant-numeric</span>: lining-nums;
-}
 </code></pre>
     </div>
 
