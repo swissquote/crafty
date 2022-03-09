@@ -92,20 +92,9 @@ module.exports = function(config) {
   processors.processor("postcss-font-variant").embedded();
 
   processors
-    .processor("pleeease-filters")
-    .embedded("swissquote-pleeease-filters")
-    .enableIfUnsupported(["css-filters"]);
-
-  processors
     .processor("postcss-initial")
     .embedded()
     .enableIfUnsupported(["css-all", "css-initial-value"]);
-
-  processors
-    .processor("pixrem")
-    .embedded("swissquote-pixrem")
-    .setOptions({ browsers: config.browsers })
-    .enableIfUnsupported(["rem"]);
 
   // Old Spec, syntax was changed to ":is()"
   processors

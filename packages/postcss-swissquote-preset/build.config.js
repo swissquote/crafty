@@ -64,15 +64,6 @@ module.exports = [
             "dist/postcss-values-parser/nodesOperator.js"
           )
       ),
-
-  builder =>
-    builder("@swissquote/pixrem")
-      .externals(externals)
-      .package(),
-  builder =>
-    builder("@swissquote/pleeease-filters")
-      .externals(externals)
-      .package(),
   builder =>
     builder("@knagis/postcss-advanced-variables")
       .externals(externals)

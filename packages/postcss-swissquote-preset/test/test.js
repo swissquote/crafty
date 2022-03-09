@@ -42,13 +42,13 @@ const plugins = {
         name: "hsl() Function",
         description:
           "A function for specifying colors by hue, saturation and lightness to mix into it",
-        link: "",
+        link: null,
         implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "colors-4/color-hsl",
       },
       {
         // Level 4 colors could be handled by @parcel/css
-        name: "HWB Color",
+        name: "`hwb()` color function",
         description:
           "A function for specifying colors by hue and then a degree of whiteness and blackness to mix into it",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-hwb",
@@ -72,8 +72,20 @@ const plugins = {
         implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "colors-4/color-rebeccapurple",
       },
-      // TODO :: https://preset-env.netlify.app/features/#oklab-function
-      // TODO :: https://preset-env.netlify.app/features/#lab-function
+      {
+        name: "`lab()` color function",
+        description: "A function for specifying colors expressed in the CIE Lab color space",
+        link: "https://www.w3.org/TR/css-color-4/#funcdef-lab",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "colors-4/color-lab"
+      },
+      {
+        name: "`oklab()`and `oklch()` color functions",
+        description: "Functions that allow colors to be expressed in OKLab and OKLCH.",
+        link: "https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "colors-4/color-oklab"
+      }
     ],
   },
   "CSS Cascading and Inheritance Level 3": {
@@ -198,7 +210,7 @@ const plugins = {
         name: "system-ui value for font-family",
         description: "A generic font used to match the user’s interface",
         link: "https://drafts.csswg.org/css-fonts-4/#system-ui-def",
-        implementation: "",
+        implementation: "https://github.com/JLHwung/postcss-font-family-system-ui",
         files: "fonts-4/system-ui-value",
       },
     ],
@@ -256,7 +268,7 @@ const plugins = {
     ],
   },
   "Superseded specifications": {
-    link: "",
+    link: null,
     description:
       "Examples in this categories are Syntaxes for specifications that were abandoned",
     examples: [
@@ -288,7 +300,7 @@ const plugins = {
     ],
   },
   Scss: {
-    link: "",
+    link: "https://sass-lang.com/documentation",
     examples: [
       {
         name: "@at-root Rule",
@@ -351,7 +363,7 @@ const plugins = {
     ],
   },
   Misc: {
-    link: "",
+    link: null,
     examples: [
       {
         name: "Automatic Vendor Prefixes",
@@ -373,7 +385,7 @@ const plugins = {
         name: "Imports",
         description:
           "With `@import`, you can import your CSS files to create a single CSS output file. All relative links are updated when they are imported.",
-        link: "",
+        link: null,
         implementation: "https://github.com/postcss/postcss-import",
         files: "misc/imports",
       },
@@ -454,11 +466,29 @@ for (const spec of Object.keys(plugins).sort()) {
     content += `\n${data.description}\n`;
   }
 
+  if (data.link) {
+    content += `[Specification](${data.link})\n\n`;
+  }
+
   for (const example of data.examples) {
     content += `## ${example.name}\n\n`;
 
     if (example.description) {
       content += `${example.description}\n\n`;
+    }
+
+    if (example.link || example.implementation) {
+      const links = [];
+
+      if (example.link) {
+        links.push(`[Specification](${example.link})`);
+      }
+
+      if (example.implementation) {
+        links.push(`[Implementation](${example.implementation})`);
+      }
+
+      content += `${links.join(" ")}\n\n`;
     }
 
     const before = fs.readFileSync(
@@ -470,7 +500,7 @@ for (const spec of Object.keys(plugins).sort()) {
       "utf-8"
     );
 
-    content += `\`\`\`css\n/* Before */\n${before}\n\n/* After */\n${after}\n\`\`\`\n\n`;
+    content += `\`\`\`css\n/* Before */\n${before}\n\n/* After */\n${after.replace(/\n+$/, "")}\n\`\`\`\n\n`;
   }
 }
 
@@ -485,5 +515,5 @@ fs.writeFileSync(
     "05_crafty-preset-postcss",
     "CSS_Features.md"
   ),
-  content
+  content.replace(/\n+$/, "\n")
 );

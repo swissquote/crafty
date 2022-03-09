@@ -5,9 +5,13 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 # CSS Cascading and Inheritance Level 3
 
+[Specification](https://www.w3.org/TR/css-cascade-3/)
+
 ## `all` Property
 
 A property for defining the reset of all properties of an element.
+
+[Specification](https://www.w3.org/TR/css-cascade-3/#all-shorthand) [Implementation](https://github.com/maximkoretskiy/postcss-initial)
 
 ```css
 /* Before */
@@ -116,12 +120,13 @@ a {
   -moz-transform: none;
   transform: none;
 }
-
 ```
 
 ## `initial` Value
 
 Reset a property to its initial value.
+
+[Specification](https://www.w3.org/TR/css-cascade-3/#initial) [Implementation](https://github.com/maximkoretskiy/postcss-initial)
 
 ```css
 /* Before */
@@ -141,14 +146,17 @@ a {
   -webkit-animation: initial;
   animation: initial;
 }
-
 ```
 
 # CSS Color Module Level 4
 
+[Specification](https://www.w3.org/TR/css-color-4/)
+
 ## Hexadecimal Alpha Notation
 
 A 4 & 8 character hex color notation for specifying the opacity level
+
+[Specification](https://www.w3.org/TR/css-color-4/#hex-notation) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -160,12 +168,13 @@ blockquote {
 blockquote {
   border-color: rgba(153, 221, 153, .8);
 }
-
 ```
 
 ## hsl() Function
 
 A function for specifying colors by hue, saturation and lightness to mix into it
+
+[Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -180,12 +189,13 @@ A function for specifying colors by hue, saturation and lightness to mix into it
   color: rgba(0, 255, 255, .2);
   background-color: rgba(0, 255, 255, .2);
 }
-
 ```
 
-## HWB Color
+## `hwb()` color function
 
 A function for specifying colors by hue and then a degree of whiteness and blackness to mix into it
+
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-hwb) [Implementation](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-hwb-function)
 
 ```css
 /* Before */
@@ -202,12 +212,13 @@ p {
   color: #708070;
   border-color: rgba(128, 255, 0, .5);
 }
-
 ```
 
 ## Color Functional Notation
 
 A space and slash separated notation for specifying colors
+
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-rgb) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -220,12 +231,13 @@ A space and slash separated notation for specifying colors
 .Quote--clear {
   background: #fbffff;
 }
-
 ```
 
 ## rebeccapurple Color
 
 A particularly lovely shade of purple in memory of Rebecca Alison Meyer
+
+[Specification](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -238,14 +250,60 @@ html {
 html {
   color: #639;
 }
+```
 
+## `lab()` color function
+
+A function for specifying colors expressed in the CIE Lab color space
+
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-lab) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+body {
+  color: lab(80% 50 20);
+}
+
+
+/* After */
+body {
+  color: #ff9ea4;
+  color: lab(80% 50 20);
+}
+```
+
+## `oklab()`and `oklch()` color functions
+
+Functions that allow colors to be expressed in OKLab and OKLCH.
+
+[Specification](https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+p {
+  color: oklab(72.322% -0.0465 -0.115);
+  color: oklch(72.322% 0.12403 247.996);
+}
+
+
+/* After */
+p {
+  color: #62acef;
+  color: oklab(72.322% -.0465 -.115);
+  color: #62acef;
+  color: oklch(72.322% .12403 247.996);
+}
 ```
 
 # CSS Custom Properties for Cascading Variables Module Level 1
 
+[Specification](https://www.w3.org/TR/css-variables-1/)
+
 ## Custom Properties
 
 A syntax for defining custom values accepted by all CSS properties
+
+[Specification](https://www.w3.org/TR/css-variables-1/) [Implementation](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties)
 
 ```css
 /* Before */
@@ -262,14 +320,17 @@ A syntax for defining custom values accepted by all CSS properties
 .menu_link {
   color: red;
 }
-
 ```
 
 # CSS Extensions
 
+[Specification](https://drafts.csswg.org/css-extensions/)
+
 ## Custom Selectors
 
 An at-rule for defining aliases that represent selectors
+
+[Specification](https://drafts.csswg.org/css-extensions/#custom-selectors) [Implementation](https://github.com/postcss/postcss-custom-selectors)
 
 ```css
 /* Before */
@@ -292,14 +353,17 @@ button, .button {
 button:hover, button:focus, .button:hover, .button:focus {
   color: red;
 }
-
 ```
 
 # CSS Fonts Module Level 3
 
+[Specification](https://www.w3.org/TR/css-fonts-3/)
+
 ## font-variant Property
 
 A property for defining the usage of alternate glyphs in a font
+
+[Specification](https://www.w3.org/TR/css-fonts-3/#propdef-font-variant) [Implementation](https://github.com/postcss/postcss-font-variant)
 
 ```css
 /* Before */
@@ -322,14 +386,17 @@ table {
   font-feature-settings: "lnum";
   font-variant-numeric: lining-nums;
 }
-
 ```
 
 # CSS Fonts Module Level 4
 
+[Specification](https://drafts.csswg.org/css-fonts-4/)
+
 ## system-ui value for font-family
 
 A generic font used to match the user’s interface
+
+[Specification](https://drafts.csswg.org/css-fonts-4/#system-ui-def) [Implementation](https://github.com/JLHwung/postcss-font-family-system-ui)
 
 ```css
 /* Before */
@@ -342,14 +409,17 @@ body {
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
 }
-
 ```
 
 # CSS Image Values and Replaced Content Module Level 4
 
+[Specification](https://www.w3.org/TR/css-images-4/)
+
 ## image-set() Function
 
 A function for specifying image sources based on the user’s resolution
+
+[Specification](https://www.w3.org/TR/css-images-4/#image-set-notation) [Implementation](https://github.com/swissquote/crafty/tree/master/package-forks/postcss-image-set-polyfill)
 
 ```css
 /* Before */
@@ -378,14 +448,17 @@ A function for specifying image sources based on the user’s resolution
     background-image: url(my-img-print.png);
   }
 }
-
 ```
 
 # CSS Logical Properties and Values Level 1
 
+[Specification](https://www.w3.org/TR/css-logical-1/)
+
 ## Logical Properties and Values
 
 Flow-relative (left-to-right or right-to-left) properties and values
+
+[Specification](https://www.w3.org/TR/css-logical-1/) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -411,14 +484,17 @@ Flow-relative (left-to-right or right-to-left) properties and values
   --ltr: ;
   --rtl: initial;
 }
-
 ```
 
 # CSS Text Module Level 3
 
+[Specification](https://drafts.csswg.org/css-text-3/)
+
 ## `overflow-wrap` Property
 
 A property for defining whether to insert line breaks within words to prevent overflowing
+
+[Specification](https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap) [Implementation](https://github.com/mattdimu/postcss-replace-overflow-wrap)
 
 ```css
 /* Before */
@@ -431,14 +507,17 @@ A property for defining whether to insert line breaks within words to prevent ov
 .foo {
   word-wrap: break-word;
 }
-
 ```
 
 # Media Queries Level 4
 
+[Specification](https://www.w3.org/TR/mediaqueries-4/)
+
 ## Media Query Ranges
 
 A syntax for defining media query ranges using ordinary comparison operators
+
+[Specification](https://www.w3.org/TR/mediaqueries-4/#range-context) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -452,14 +531,17 @@ A syntax for defining media query ranges using ordinary comparison operators
   .foo {
   }
 }
-
 ```
 
 # Media Queries Level 5
 
+[Specification](https://www.w3.org/TR/mediaqueries-5/)
+
 ## Custom Media Queries
 
 An at-rule for defining aliases that represent media queries
+
+[Specification](https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -476,7 +558,6 @@ An at-rule for defining aliases that represent media queries
   .foo {
   }
 }
-
 ```
 
 # Misc
@@ -484,6 +565,8 @@ An at-rule for defining aliases that represent media queries
 ## Automatic Vendor Prefixes
 
 Depending on the list of target browsers, automatically adds (and removes) vendor prefixes.
+
+[Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -514,12 +597,13 @@ Depending on the list of target browsers, automatically adds (and removes) vendo
   -ms-flex-direction: row;
   flex-direction: row;
 }
-
 ```
 
 ## Assets
 
 Get image sizes and inlines files
+
+[Implementation](https://github.com/swissquote/crafty/tree/master/package-forks/postcss-assets)
 
 ```css
 /* Before */
@@ -553,12 +637,13 @@ body {
   background-image: url(images/icons/comment.png?17f6b2eee3b);
   background-size: 68px 34px;
 }
-
 ```
 
 ## Imports
 
 With `@import`, you can import your CSS files to create a single CSS output file. All relative links are updated when they are imported.
+
+[Implementation](https://github.com/postcss/postcss-import)
 
 ```css
 /* Before */
@@ -575,12 +660,13 @@ body {
     background: url(../images/buttons/background.png);
   }
 }
-
 ```
 
 ## Property lookup
 
 Reference property values without a variable.
+
+[Implementation](https://github.com/simonsmith/postcss-property-lookup)
 
 ```css
 /* Before */
@@ -595,14 +681,17 @@ Reference property values without a variable.
   margin: 20px;
   padding: 20px;
 }
-
 ```
 
 # Scss
 
+[Specification](https://sass-lang.com/documentation)
+
 ## @at-root Rule
 
 The @at-root causes one or more rules to be emitted at the root of the document, rather than being nested beneath their parent selectors
+
+[Specification](https://sass-lang.com/documentation/at-rules/at-root) [Implementation](https://github.com/swissquote/crafty/tree/master/package-forks/postcss-atroot)
 
 ```css
 /* Before */
@@ -627,12 +716,13 @@ The @at-root causes one or more rules to be emitted at the root of the document,
 .parent .before {
   color: #333;
 }
-
 ```
 
 ## Nesting Rules
 
 A syntax for nesting relative rules within rules. This is NOT the official CSS syntax as `&` is implicit in this syntax.
+
+[Specification](https://sass-lang.com/documentation/style-rules#nesting) [Implementation](https://www.npmjs.com/package/postcss-nested)
 
 ```css
 /* Before */
@@ -661,12 +751,13 @@ A syntax for nesting relative rules within rules. This is NOT the official CSS s
 .parent .after {
   color: #eee;
 }
-
 ```
 
 ## Mixins
 
 Create reusable mixins
+
+[Specification](https://sass-lang.com/documentation/at-rules/mixin) [Implementation](https://www.npmjs.com/package/@knagis/postcss-advanced-variables)
 
 ```css
 /* Before */
@@ -693,12 +784,13 @@ Create reusable mixins
   content: "";
   background: url(/icons/search.png);
 }
-
 ```
 
 ## Variables
 
 Prefer using Custom Properties, kept only for backwards compatibilty
+
+[Specification](https://sass-lang.com/documentation/variables) [Implementation](https://www.npmjs.com/package/@knagis/postcss-advanced-variables)
 
 ```css
 /* Before */
@@ -724,12 +816,13 @@ $column: 200px;
   width: 200px;
   background: #056ef0;
 }
-
 ```
 
 ## Loops
 
 Iterate on variables
+
+[Specification](https://sass-lang.com/documentation/at-rules/control/each) [Implementation](https://www.npmjs.com/package/@knagis/postcss-advanced-variables)
 
 ```css
 /* Before */
@@ -770,12 +863,13 @@ Iterate on variables
 .b-3 {
   width: 3px;
 }
-
 ```
 
 ## Conditionals
 
 Conditions to use with your
+
+[Specification](https://sass-lang.com/documentation/at-rules/control/if) [Implementation](https://www.npmjs.com/package/@knagis/postcss-advanced-variables)
 
 ```css
 /* Before */
@@ -792,12 +886,13 @@ Conditions to use with your
 .notice--clear {
   background: green;
 }
-
 ```
 
 ## Single line comments
 
 A shorter syntax for comments
+
+[Specification](https://sass-lang.com/documentation/syntax/comments#in-scss)
 
 ```css
 /* Before */
@@ -811,14 +906,17 @@ A shorter syntax for comments
 .button {
   color: orange;
 }
-
 ```
 
 # Selectors Level 4
 
+[Specification](https://www.w3.org/TR/selectors-4/)
+
 ## :any-link Hyperlink Pseudo-Class
 
 A pseudo-class for matching anchor elements independent of whether they have been visited
+
+[Specification](https://www.w3.org/TR/selectors-4/#any-link-pseudo) [Implementation](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-pseudo-class-any-link)
 
 ```css
 /* Before */
@@ -839,12 +937,13 @@ nav :-moz-any-link {
 nav :any-link {
   background-color: #ff0;
 }
-
 ```
 
 ## Case-Insensitive Attributes
 
 An attribute selector matching attribute values case-insensitively
+
+[Specification](https://www.w3.org/TR/selectors-4/#attribute-case) [Implementation](https://github.com/Semigradsky/postcss-attribute-case-insensitive)
 
 ```css
 /* Before */
@@ -857,12 +956,13 @@ An attribute selector matching attribute values case-insensitively
 [frame="hsides"], [frame="Hsides"], [frame="hSides"], [frame="HSides"], [frame="hsIdes"], [frame="HsIdes"], [frame="hSIdes"], [frame="HSIdes"], [frame="hsiDes"], [frame="HsiDes"], [frame="hSiDes"], [frame="HSiDes"], [frame="hsIDes"], [frame="HsIDes"], [frame="hSIDes"], [frame="HSIDes"], [frame="hsidEs"], [frame="HsidEs"], [frame="hSidEs"], [frame="HSidEs"], [frame="hsIdEs"], [frame="HsIdEs"], [frame="hSIdEs"], [frame="HSIdEs"], [frame="hsiDEs"], [frame="HsiDEs"], [frame="hSiDEs"], [frame="HSiDEs"], [frame="hsIDEs"], [frame="HsIDEs"], [frame="hSIDEs"], [frame="HSIDEs"], [frame="hsideS"], [frame="HsideS"], [frame="hSideS"], [frame="HSideS"], [frame="hsIdeS"], [frame="HsIdeS"], [frame="hSIdeS"], [frame="HSIdeS"], [frame="hsiDeS"], [frame="HsiDeS"], [frame="hSiDeS"], [frame="HSiDeS"], [frame="hsIDeS"], [frame="HsIDeS"], [frame="hSIDeS"], [frame="HSIDeS"], [frame="hsidES"], [frame="HsidES"], [frame="hSidES"], [frame="HSidES"], [frame="hsIdES"], [frame="HsIdES"], [frame="hSIdES"], [frame="HSIdES"], [frame="hsiDES"], [frame="HsiDES"], [frame="hSiDES"], [frame="HSiDES"], [frame="hsIDES"], [frame="HsIDES"], [frame="hSIDES"], [frame="HSIDES"] {
   border-style: solid none;
 }
-
 ```
 
 ## `:not()` Negation List Pseudo-Class
 
 A pseudo-class for ignoring elements in a selector list
+
+[Specification](https://www.w3.org/TR/selectors-4/#negation-pseudo) [Implementation](https://github.com/postcss/postcss-selector-not)
 
 ```css
 /* Before */
@@ -874,12 +974,13 @@ p:not(:first-child, .special) {
 p:not(:first-child):not(.special) {
   color: red;
 }
-
 ```
 
 ## :dir Directionality Pseudo-Class
 
 A pseudo-class for matching elements based on their directionality
+
+[Specification](https://www.w3.org/TR/selectors-4/#dir-pseudo) [Implementation](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class)
 
 ```css
 /* Before */
@@ -900,7 +1001,6 @@ blockquote:dir(ltr) {
 [dir="ltr"] blockquote {
   margin-left: 10px;
 }
-
 ```
 
 # Superseded specifications
@@ -910,6 +1010,8 @@ Examples in this categories are Syntaxes for specifications that were abandoned
 ## `:matches()` Matches-Any Pseudo-Class
 
 A pseudo-class for matching elements in a selector list. Syntax is now `:is()`
+
+[Specification](http://dev.w3.org/csswg/selectors-4/#matches) [Implementation](https://www.npmjs.com/package/postcss-selector-matches)
 
 ```css
 /* Before */
@@ -922,12 +1024,13 @@ p:matches(:first-child, .special) {
 p:first-child, p.special {
   color: red;
 }
-
 ```
 
 ## color() and color-mod() Color manipulation
 
 Modify colors using the `color-mod()` function in CSS. Might come back as `color-mix()` in the future
+
+[Specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705) [Implementation](https://github.com/swissquote/crafty/tree/master/package-forks/postcss-color-mod-function)
 
 ```css
 /* Before */
@@ -948,12 +1051,13 @@ a {
 a:hover {
   color: #300;
 }
-
 ```
 
 ## gray() Color function
 
 Create shades of gray
+
+[Specification](https://drafts.csswg.org/css-color/#changes-from-20191105) [Implementation](https://github.com/postcss/postcss-color-gray)
 
 ```css
 /* Before */
@@ -968,6 +1072,4 @@ body {
   color: rgba(0, 0, 0, .9);
   background-color: #fff;
 }
-
 ```
-

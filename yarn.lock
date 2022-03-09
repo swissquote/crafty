@@ -2549,32 +2549,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/pixrem@1.18.4, @swissquote/pixrem@workspace:package-forks/pixrem":
-  version: 0.0.0-use.local
-  resolution: "@swissquote/pixrem@workspace:package-forks/pixrem"
-  dependencies:
-    ava: 4.1.0
-    browserslist: 4.20.0
-    c8: 7.11.0
-    postcss: 8.4.8
-    reduce-css-calc: 2.1.8
-  peerDependencies:
-    postcss: ^8.0.0
-  languageName: unknown
-  linkType: soft
-
-"@swissquote/pleeease-filters@1.18.4, @swissquote/pleeease-filters@workspace:package-forks/pleeease-filters":
-  version: 0.0.0-use.local
-  resolution: "@swissquote/pleeease-filters@workspace:package-forks/pleeease-filters"
-  dependencies:
-    ava: 4.1.0
-    c8: 7.11.0
-    postcss: 8.4.8
-  peerDependencies:
-    postcss: ^8.0.0
-  languageName: unknown
-  linkType: soft
-
 "@swissquote/postcss-assets@1.18.4, @swissquote/postcss-assets@workspace:package-forks/postcss-assets":
   version: 0.0.0-use.local
   resolution: "@swissquote/postcss-assets@workspace:package-forks/postcss-assets"
@@ -2691,8 +2665,6 @@ __metadata:
     "@knagis/postcss-advanced-variables": 4.0.0
     "@parcel/css": 1.5.0
     "@swissquote/crafty-commons": 1.18.4
-    "@swissquote/pixrem": 1.18.4
-    "@swissquote/pleeease-filters": 1.18.4
     "@swissquote/postcss-assets": 1.18.4
     "@swissquote/postcss-atroot": 1.18.4
     "@swissquote/postcss-color-gray": 1.18.4
@@ -5289,13 +5261,6 @@ __metadata:
     mdn-data: 2.0.14
     source-map: ^0.6.1
   checksum: 79f9b81803991b6977b7fcb1588799270438274d89066ce08f117f5cdb5e20019b446d766c61506dd772c839df84caa16042d6076f20c97187f5abe3b50e7d1f
-  languageName: node
-  linkType: hard
-
-"css-unit-converter@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "css-unit-converter@npm:1.1.2"
-  checksum: 07888033346a5128f34dbe2f72884c966d24e9f29db24416dcde92860242490617ef9a178ac193a92f730834bbeea026cdc7027701d92ba9bbbe59db7a37eb2a
   languageName: node
   linkType: hard
 
@@ -11031,13 +10996,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^3.3.0":
-  version: 3.3.1
-  resolution: "postcss-value-parser@npm:3.3.1"
-  checksum: 62cd26e1cdbcf2dcc6bcedf3d9b409c9027bc57a367ae20d31dd99da4e206f730689471fd70a2abe866332af83f54dc1fa444c589e2381bf7f8054c46209ce16
-  languageName: node
-  linkType: hard
-
 "postcss-values-parser@npm:6.0.2":
   version: 6.0.2
   resolution: "postcss-values-parser@npm:6.0.2"
@@ -11551,16 +11509,6 @@ __metadata:
     indent-string: ^4.0.0
     strip-indent: ^3.0.0
   checksum: fa1ef20404a2d399235e83cc80bd55a956642e37dd197b4b612ba7327bf87fa32745aeb4a1634b2bab25467164ab4ed9c15be2c307923dd08b0fe7c52431ae6b
-  languageName: node
-  linkType: hard
-
-"reduce-css-calc@npm:2.1.8":
-  version: 2.1.8
-  resolution: "reduce-css-calc@npm:2.1.8"
-  dependencies:
-    css-unit-converter: ^1.1.1
-    postcss-value-parser: ^3.3.0
-  checksum: 8fd27c06c4b443b84749a69a8b97d10e6ec7d142b625b41923a8807abb22b9e37e44df14e26cc606a802957be07bdce5e8ee2976a6952a7b438a7727007101e9
   languageName: node
   linkType: hard
 
