@@ -7,6 +7,10 @@ const postcss = require("postcss");
 const postcssScss = require("postcss-scss");
 const postcssPreset = require("../index.js");
 
+function snapshotizeCSS(ret) {
+  return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
+}
+
 const FIXTURES = path.join(__dirname, "fixtures");
 
 /** @type {{
@@ -428,7 +432,7 @@ for (const variant of variants) {
             parser: postcssScss,
           });
 
-        t.is(result.css, after);
+        t.is(snapshotizeCSS(result.css), snapshotizeCSS(after));
       });
     }
   }
