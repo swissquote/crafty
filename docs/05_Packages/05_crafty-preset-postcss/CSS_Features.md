@@ -19,7 +19,6 @@ a {
   all: initial;
 }
 
-
 /* After */
 a {
   -webkit-backface-visibility: visible;
@@ -136,7 +135,6 @@ a {
   animation: initial;
 }
 
-
 /* After */
 a {
   background: none;
@@ -183,7 +181,6 @@ A function for specifying colors by hue, saturation and lightness to mix into it
   background-color: hsla(200grad, 100%, 50%, 0.2);
 }
 
-
 /* After */
 .Quote--clear {
   color: rgba(0, 255, 255, .2);
@@ -206,7 +203,6 @@ p {
   border-color: hwb(90, 0%, 0%, 0.5);
 }
 
-
 /* After */
 p {
   color: #708070;
@@ -226,7 +222,6 @@ A space and slash separated notation for specifying colors
   background: rgb(250.5 255 255);
 }
 
-
 /* After */
 .Quote--clear {
   background: #fbffff;
@@ -235,7 +230,7 @@ A space and slash separated notation for specifying colors
 
 ## rebeccapurple Color
 
-A particularly lovely shade of purple in memory of Rebecca Alison Meyer
+A lovely shade of purple in memory of Rebecca Alison Meyer
 
 [Specification](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
@@ -244,7 +239,6 @@ A particularly lovely shade of purple in memory of Rebecca Alison Meyer
 html {
   color: rebeccapurple;
 }
-
 
 /* After */
 html {
@@ -263,7 +257,6 @@ A function for specifying colors expressed in the CIE Lab color space
 body {
   color: lab(80% 50 20);
 }
-
 
 /* After */
 body {
@@ -284,7 +277,6 @@ p {
   color: oklab(72.322% -0.0465 -0.115);
   color: oklch(72.322% 0.12403 247.996);
 }
-
 
 /* After */
 p {
@@ -315,7 +307,6 @@ A syntax for defining custom values accepted by all CSS properties
   color: var(--color);
 }
 
-
 /* After */
 .menu_link {
   color: red;
@@ -343,7 +334,6 @@ An at-rule for defining aliases that represent selectors
 :--button:--enter {
     color: red;
 }
-
 
 /* After */
 button, .button {
@@ -375,7 +365,6 @@ table {
   font-variant-numeric: lining-nums;
 }
 
-
 /* After */
 h2 {
   font-feature-settings: "smcp";
@@ -404,7 +393,6 @@ body {
   font-family: system-ui;
 }
 
-
 /* After */
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
@@ -430,7 +418,6 @@ A function for specifying image sources based on the user’s resolution
     url(my-img-print.png) 600dpi
   );
 }
-
 
 /* After */
 .BigImage {
@@ -467,7 +454,6 @@ Flow-relative (left-to-right or right-to-left) properties and values
   padding-inline: 20px 40px;
 }
 
-
 /* After */
 .Banner {
   float: inline-start;
@@ -502,7 +488,6 @@ A property for defining whether to insert line breaks within words to prevent ov
   overflow-wrap: break-word;
 }
 
-
 /* After */
 .foo {
   word-wrap: break-word;
@@ -524,7 +509,6 @@ A syntax for defining media query ranges using ordinary comparison operators
 @media (width >= 500px) and (width <= 1200px) {
   .foo {}
 }
-
 
 /* After */
 @media (min-width: 500px) and (max-width: 1200px) {
@@ -552,7 +536,6 @@ An at-rule for defining aliases that represent media queries
   }
 }
 
-
 /* After */
 @media (max-width: 499.999px) or (min-width: 1200px) {
   .foo {
@@ -577,7 +560,6 @@ Depending on the list of target browsers, automatically adds (and removes) vendo
 .foo {
   flex-direction: row;
 }
-
 
 /* After */
 :fullscreen a {
@@ -624,7 +606,6 @@ body {
   background-image: resolve("./images/icons/comment.png");
   background-size: size("./images/some/button.png");
 }
-
 
 /* After */
 body {
@@ -675,7 +656,6 @@ Reference property values without a variable.
   padding: @margin;
 }
 
-
 /* After */
 .heading {
   margin: 20px;
@@ -707,7 +687,6 @@ The @at-root causes one or more rules to be emitted at the root of the document,
   }
 }
 
-
 /* After */
 .child {
   background: #000;
@@ -737,7 +716,6 @@ A syntax for nesting relative rules within rules. This is NOT the official CSS s
     color: #eee;
   }
 }
-
 
 /* After */
 .parent {
@@ -774,7 +752,6 @@ Create reusable mixins
   @include icon(search);
 }
 
-
 /* After */
 .search {
   padding-left: 16px;
@@ -788,7 +765,7 @@ Create reusable mixins
 
 ## Variables
 
-Prefer using Custom Properties, kept only for backwards compatibilty
+Prefer using Custom Properties, kept for backwards compatibilty
 
 [Specification](https://sass-lang.com/documentation/variables) [Implementation](https://www.npmjs.com/package/@knagis/postcss-advanced-variables)
 
@@ -805,7 +782,6 @@ $column: 200px;
   background: $blue;
   width: $column;
 }
-
 
 /* After */
 .menu {
@@ -837,7 +813,6 @@ Iterate on variables
     width: #{$i}px;
   }
 }
-
 
 /* After */
 .icon-foo {
@@ -881,7 +856,6 @@ Conditions to use with your
   }
 }
 
-
 /* After */
 .notice--clear {
   background: green;
@@ -900,7 +874,6 @@ A shorter syntax for comments
 .button {
   color: orange;
 }
-
 
 /* After */
 .button {
@@ -923,7 +896,6 @@ A pseudo-class for matching anchor elements independent of whether they have bee
 nav :any-link {
   background-color: yellow;
 }
-
 
 /* After */
 nav :link, nav :visited {
@@ -950,7 +922,6 @@ An attribute selector matching attribute values case-insensitively
 [frame="hsides" i] {
   border-style: solid none;
 }
-
 
 /* After */
 [frame="hsides"], [frame="Hsides"], [frame="hSides"], [frame="HSides"], [frame="hsIdes"], [frame="HsIdes"], [frame="hSIdes"], [frame="HSIdes"], [frame="hsiDes"], [frame="HsiDes"], [frame="hSiDes"], [frame="HSiDes"], [frame="hsIDes"], [frame="HsIDes"], [frame="hSIDes"], [frame="HSIDes"], [frame="hsidEs"], [frame="HsidEs"], [frame="hSidEs"], [frame="HSidEs"], [frame="hsIdEs"], [frame="HsIdEs"], [frame="hSIdEs"], [frame="HSIdEs"], [frame="hsiDEs"], [frame="HsiDEs"], [frame="hSiDEs"], [frame="HSiDEs"], [frame="hsIDEs"], [frame="HsIDEs"], [frame="hSIDEs"], [frame="HSIDEs"], [frame="hsideS"], [frame="HsideS"], [frame="hSideS"], [frame="HSideS"], [frame="hsIdeS"], [frame="HsIdeS"], [frame="hSIdeS"], [frame="HSIdeS"], [frame="hsiDeS"], [frame="HsiDeS"], [frame="hSiDeS"], [frame="HSiDeS"], [frame="hsIDeS"], [frame="HsIDeS"], [frame="hSIDeS"], [frame="HSIDeS"], [frame="hsidES"], [frame="HsidES"], [frame="hSidES"], [frame="HSidES"], [frame="hsIdES"], [frame="HsIdES"], [frame="hSIdES"], [frame="HSIdES"], [frame="hsiDES"], [frame="HsiDES"], [frame="hSiDES"], [frame="HSiDES"], [frame="hsIDES"], [frame="HsIDES"], [frame="hSIDES"], [frame="HSIDES"] {
@@ -992,7 +963,6 @@ blockquote:dir(ltr) {
   margin-left: 10px;
 }
 
-
 /* After */
 [dir="rtl"] blockquote {
   margin-right: 10px;
@@ -1019,7 +989,6 @@ p:matches(:first-child, .special) {
   color: red;
 }
 
-
 /* After */
 p:first-child, p.special {
   color: red;
@@ -1028,7 +997,7 @@ p:first-child, p.special {
 
 ## color() and color-mod() Color manipulation
 
-Modify colors using the `color-mod()` function in CSS. Might come back as `color-mix()` in the future
+Manipulate colors using the `color-mod()` function in CSS. Might come back as `color-mix()` in the future
 
 [Specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705) [Implementation](https://github.com/swissquote/crafty/tree/master/package-forks/postcss-color-mod-function)
 
@@ -1041,7 +1010,6 @@ a {
 a:hover {
   color: color-mod(red blackness(80%));
 }
-
 
 /* After */
 a {
@@ -1065,7 +1033,6 @@ body {
   background-color: gray(100);
   color: gray(0 / 90%);
 }
-
 
 /* After */
 body {

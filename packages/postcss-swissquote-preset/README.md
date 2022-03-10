@@ -4,10 +4,10 @@
 
 The features provided by this preset are mainly:
 
-* Provide future CSS Syntax today
-* Allow you to use some features from SCSS in your CSS
-* No need to worry about vendor prefixes; this preset will add them for you.
-* Advanced and fast minification
+- Provide future CSS Syntax today
+- Allow you to use some features from SCSS in your CSS
+- No need to worry about vendor prefixes; this preset will add them for you.
+- Advanced and fast minification
 
 See details in [CSS Features](05_crafty-preset-postcss/CSS_Features.md).
 

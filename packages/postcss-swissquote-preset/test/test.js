@@ -67,7 +67,7 @@ const plugins = {
       {
         name: "rebeccapurple Color",
         description:
-          "A particularly lovely shade of purple in memory of Rebecca Alison Meyer",
+          "A lovely shade of purple in memory of Rebecca Alison Meyer",
         link: "https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple",
         implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "colors-4/color-rebeccapurple",
@@ -284,7 +284,7 @@ const plugins = {
       {
         name: "color() and color-mod() Color manipulation",
         description:
-          "Modify colors using the `color-mod()` function in CSS. Might come back as `color-mix()` in the future",
+          "Manipulate colors using the `color-mod()` function in CSS. Might come back as `color-mix()` in the future",
         link: "https://www.w3.org/TR/css-color-4/#changes-from-20160705",
         implementation:
           "https://github.com/swissquote/crafty/tree/master/package-forks/postcss-color-mod-function",
@@ -331,7 +331,7 @@ const plugins = {
       {
         name: "Variables",
         description:
-          "Prefer using Custom Properties, kept only for backwards compatibilty",
+          "Prefer using Custom Properties, kept for backwards compatibilty",
         link: "https://sass-lang.com/documentation/variables",
         implementation:
           "https://www.npmjs.com/package/@knagis/postcss-advanced-variables",
@@ -500,7 +500,7 @@ for (const spec of Object.keys(plugins).sort()) {
       "utf-8"
     );
 
-    content += `\`\`\`css\n/* Before */\n${before}\n\n/* After */\n${after.replace(/\n+$/, "")}\n\`\`\`\n\n`;
+    content += `\`\`\`css\n/* Before */\n${before.replace(/\n+$/, "")}\n\n/* After */\n${after.replace(/\n+$/, "")}\n\`\`\`\n\n`;
   }
 }
 
