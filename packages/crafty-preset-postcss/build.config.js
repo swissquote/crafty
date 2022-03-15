@@ -6,7 +6,6 @@ const { getExternals } = require("../../utils/externals");
 const singlePackages = [
   "balanced-match",
   "color-convert",
-  "color-name",
   "gulp-postcss",
   "gulp-rename",
   "is-fullwidth-code-point",

@@ -34,8 +34,15 @@ module.exports = [
       .externals(commonExternals)
       .package(),
   builder =>
-    builder("postcss-values-parser")
+    builder("color-name")
       .externals(commonExternals)
+      .package(),
+  builder =>
+    builder("postcss-values-parser")
+      .externals({
+        ...commonExternals,
+        "color-name": "../color-name/index.js"
+      })
       .packages(pkg =>
         pkg
           .package(
