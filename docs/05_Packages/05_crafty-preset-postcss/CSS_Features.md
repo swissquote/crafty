@@ -86,12 +86,12 @@ a {
   z-index: auto;
   all: initial;
   background: none;
+  border: none;
   -webkit-border-image: ;
   -moz-border-image: ;
   border-image: ;
   -webkit-border-radius: 0;
   border-radius: 0;
-  border: none;
   column-gap: normal;
   margin: 0;
   padding: 0;
@@ -260,7 +260,7 @@ body {
 
 /* After */
 body {
-  color: #ff9ea4;
+  color: #ffb2b3;
   color: lab(80% 50 20);
 }
 ```
@@ -281,9 +281,9 @@ p {
 /* After */
 p {
   color: #62acef;
-  color: oklab(72.322% -.0465 -.115);
+  color: lab(67.5333% -8.68207 -41.6473);
   color: #62acef;
-  color: oklch(72.322% .12403 247.996);
+  color: lab(67.533% -8.67313 -41.6457);
 }
 ```
 
