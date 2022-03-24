@@ -1733,74 +1733,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/css-darwin-arm64@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-darwin-arm64@npm:1.7.1"
+"@parcel/css-darwin-arm64@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-darwin-arm64@npm:1.7.3"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@parcel/css-darwin-x64@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-darwin-x64@npm:1.7.1"
+"@parcel/css-darwin-x64@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-darwin-x64@npm:1.7.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm-gnueabihf@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.7.1"
+"@parcel/css-linux-arm-gnueabihf@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.7.3"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm64-gnu@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-linux-arm64-gnu@npm:1.7.1"
+"@parcel/css-linux-arm64-gnu@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-linux-arm64-gnu@npm:1.7.3"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm64-musl@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-linux-arm64-musl@npm:1.7.1"
+"@parcel/css-linux-arm64-musl@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-linux-arm64-musl@npm:1.7.3"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-x64-gnu@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-linux-x64-gnu@npm:1.7.1"
+"@parcel/css-linux-x64-gnu@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-linux-x64-gnu@npm:1.7.3"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-x64-musl@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-linux-x64-musl@npm:1.7.1"
+"@parcel/css-linux-x64-musl@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-linux-x64-musl@npm:1.7.3"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css-win32-x64-msvc@npm:1.7.1":
-  version: 1.7.1
-  resolution: "@parcel/css-win32-x64-msvc@npm:1.7.1"
+"@parcel/css-win32-x64-msvc@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@parcel/css-win32-x64-msvc@npm:1.7.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css@npm:1.7.1, @parcel/css@npm:^1.0.1":
-  version: 1.7.1
-  resolution: "@parcel/css@npm:1.7.1"
+"@parcel/css@npm:1.7.3, @parcel/css@npm:^1.0.1":
+  version: 1.7.3
+  resolution: "@parcel/css@npm:1.7.3"
   dependencies:
-    "@parcel/css-darwin-arm64": 1.7.1
-    "@parcel/css-darwin-x64": 1.7.1
-    "@parcel/css-linux-arm-gnueabihf": 1.7.1
-    "@parcel/css-linux-arm64-gnu": 1.7.1
-    "@parcel/css-linux-arm64-musl": 1.7.1
-    "@parcel/css-linux-x64-gnu": 1.7.1
-    "@parcel/css-linux-x64-musl": 1.7.1
-    "@parcel/css-win32-x64-msvc": 1.7.1
+    "@parcel/css-darwin-arm64": 1.7.3
+    "@parcel/css-darwin-x64": 1.7.3
+    "@parcel/css-linux-arm-gnueabihf": 1.7.3
+    "@parcel/css-linux-arm64-gnu": 1.7.3
+    "@parcel/css-linux-arm64-musl": 1.7.3
+    "@parcel/css-linux-x64-gnu": 1.7.3
+    "@parcel/css-linux-x64-musl": 1.7.3
+    "@parcel/css-win32-x64-msvc": 1.7.3
     detect-libc: ^1.0.3
   dependenciesMeta:
     "@parcel/css-darwin-arm64":
@@ -1819,7 +1819,7 @@ __metadata:
       optional: true
     "@parcel/css-win32-x64-msvc":
       optional: true
-  checksum: 1b4bf1a939215f90ea8eb1356065bee8916036a8b18e1f3d0c5c5c2438b0d98be1d4925ce3e87a246b019faf9eb2e05a09835e86defe19cf34f8db819483f19a
+  checksum: 437cdd50318112371a734ef807b53b0f242f3bbd55b591f1ad898cce9f16b2d91d3f664af6c9ed53c3935e470396aa4e0f23dfb02fa3f5f299dd174f46e9cc85
   languageName: node
   linkType: hard
 
@@ -2663,7 +2663,7 @@ __metadata:
   resolution: "@swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset"
   dependencies:
     "@knagis/postcss-advanced-variables": 4.0.0
-    "@parcel/css": 1.7.1
+    "@parcel/css": 1.7.3
     "@swissquote/crafty-commons": 1.18.4
     "@swissquote/postcss-assets": 1.18.4
     "@swissquote/postcss-atroot": 1.18.4
