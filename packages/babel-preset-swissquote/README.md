@@ -21,6 +21,8 @@ This preset will do the following for you:
 | `browsers`           | `babel-preset-env`'s default + IE9              | Sets the list of browsers to support, must be a valid Browserslist query                    |
 | `deduplicateHelpers` | `false`                                         | Defines if the babel helpers (like `createClass`) should be in each file or referenced once |
 | `useESModules`       | `false`                                         | Defines if `@babel/plugin-transform-runtime` should use ES modules or commonjs modules      |
+| `presetReact`        | `{}`                                            | Override [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) options     |
+| `presetEnv`          | `{}`                                            | Override [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) options         |
 
 ## Usage in Crafty
 

@@ -11,6 +11,8 @@ module.exports = function buildPreset(context, opts) {
   // https://github.com/facebook/create-react-app/issues/720
   // It’s also nice that we can enforce `NODE_ENV` being specified.
   const env = opts.environment || process.env.BABEL_ENV || process.env.NODE_ENV;
+  const presetEnv = opts.presetEnv || {};
+  const presetReact = opts.presetReact || {};
   const isEnvDevelopment = env === "development";
   const isEnvProduction = env === "production";
   const isEnvTest = env === "test";
@@ -33,7 +35,8 @@ module.exports = function buildPreset(context, opts) {
       {
         targets: {
           node: "current"
-        }
+        },
+        ...presetEnv
       }
     ]);
   } else {
@@ -56,7 +59,8 @@ module.exports = function buildPreset(context, opts) {
         // Do not transform modules to CJS
         modules: false,
         // Exclude transforms that make all code slower
-        exclude: ["transform-typeof-symbol"]
+        exclude: ["transform-typeof-symbol"],
+        ...presetEnv
       }
     ]);
   }
@@ -70,7 +74,8 @@ module.exports = function buildPreset(context, opts) {
       development: isEnvDevelopment || isEnvTest,
       // Will use the native built-in instead of trying to polyfill
       // behavior for any plugins that require one.
-      useBuiltIns: true
+      useBuiltIns: true,
+      ...presetReact
     }
   ]);
 
