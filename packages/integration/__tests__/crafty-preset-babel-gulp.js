@@ -172,24 +172,27 @@ test.serial("Compiles JavaScript with custom babel plugin", async t => {
   t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
 });
 
-test.serial("Compiles JavaScript with custom babel preset override", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-babel-gulp/compiles-babel-preset-override"
-  );
+test.serial(
+  "Compiles JavaScript with custom babel preset override",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-babel-gulp/compiles-babel-preset-override"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    t.snapshot(result);
+    t.is(result.status, 0);
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+    t.falsy(testUtils.exists(cwd, mainBundle));
+    t.falsy(testUtils.exists(cwd, mainBundleMap));
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+    t.truthy(testUtils.exists(cwd, mainScript));
+    t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
-});
+    t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
+  }
+);
 
 test.serial("Compiles JavaScript and concatenates", async t => {
   const cwd = await testUtils.getCleanFixtures(
