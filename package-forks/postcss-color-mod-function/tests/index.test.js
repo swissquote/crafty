@@ -49,6 +49,10 @@ test("supports basic usage", (t) => {
   return testFixture(t, "basic");
 });
 
+test("ignores w3c color functions", (t) => {
+  return testFixture(t, "w3c-color");
+});
+
 test("supports { stringifier } usage", (t) => {
   return testFixture(
     t,

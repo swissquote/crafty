@@ -287,6 +287,28 @@ p {
 }
 ```
 
+## `color()` Function
+
+This function allows you to specify a color in a color space.
+
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-color) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+blockquote {
+    color: color(rec2020 0.42053 0.979780 0.00579);
+    background: color(display-p3 -0.6112 1.0079 -0.2192);
+}
+
+/* After */
+blockquote {
+  color: #00fb37;
+  color: color(rec2020 .42053 .97978 .00579);
+  background: #00e578;
+  background: color(display-p3 -.6112 1.0079 -.2192);
+}
+```
+
 # CSS Custom Properties for Cascading Variables Module Level 1
 
 [Specification](https://www.w3.org/TR/css-variables-1/)

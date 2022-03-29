@@ -247,6 +247,10 @@ function transformColorModFunction(node, opts) {
   const [colorOrHueNode, ...adjusterNodes] = node.nodes || [] || [];
 
   if (colorOrHueNode !== undefined) {
+    if (isW3CColorFunction(colorOrHueNode)) {
+      return null;
+    }
+
     const color = isHue(colorOrHueNode)
       ? new Color({
           hue: transformHue(colorOrHueNode, opts),
@@ -939,6 +943,16 @@ function isWord(node) {
   return Object(node).type === "word";
 }
 
+// return wether this is a w3c color() function
+function isW3CColorFunction(node) {
+  const n = Object(node);
+  return (
+    n.type === "word" &&
+    w3cColorFunction.test(n.value) &&
+    n.parent.name === "color"
+  );
+}
+
 /* Matchers
 /* ========================================================================== */
 
@@ -962,3 +976,4 @@ const shadeTintMatch = /^(shade|tint)$/i;
 const varMatch = /^var$/i;
 const looseVarMatch = /(^|[^\w-])var\(/i;
 const timesMatch = /^[*]$/;
+const w3cColorFunction = /^(srgb|srgb-linear|display-p3|a98-rgb|prophoto-rgb|rec2020|xyz|xyz-d50|xyz-d65)$/;

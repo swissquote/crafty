@@ -85,6 +85,13 @@ const plugins = {
         link: "https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch",
         implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "colors-4/color-oklab"
+      },
+      {
+        name: "`color()` Function",
+        description: "This function allows you to specify a color in a color space.",
+        link: "https://www.w3.org/TR/css-color-4/#funcdef-color",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "colors-4/color-function"
       }
     ],
   },
