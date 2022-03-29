@@ -56,7 +56,7 @@ process.argv.push(tmpfile);
 // Define syntax if it isn't already defined
 if (process.argv.indexOf("--custom-syntax") === -1) {
   process.argv.push("--custom-syntax");
-  process.argv.push("postcss-scss");
+  process.argv.push(require.resolve("postcss-scss"));
 }
 
 require("../../packages/stylelint-bin");
