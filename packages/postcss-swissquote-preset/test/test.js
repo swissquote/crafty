@@ -155,7 +155,7 @@ const plugins = {
         name: "`:not()` Negation List Pseudo-Class",
         description: "A pseudo-class for ignoring elements in a selector list",
         link: "https://www.w3.org/TR/selectors-4/#negation-pseudo",
-        implementation: "https://github.com/postcss/postcss-selector-not",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "selectors-4/not-pseudo-class",
       },
       {

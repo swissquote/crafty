@@ -955,7 +955,7 @@ An attribute selector matching attribute values case-insensitively
 
 A pseudo-class for ignoring elements in a selector list
 
-[Specification](https://www.w3.org/TR/selectors-4/#negation-pseudo) [Implementation](https://github.com/postcss/postcss-selector-not)
+[Specification](https://www.w3.org/TR/selectors-4/#negation-pseudo) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */

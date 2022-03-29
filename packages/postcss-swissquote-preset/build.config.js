@@ -174,10 +174,6 @@ module.exports = [
       .externals(externals)
       .package(),
   builder =>
-    builder("postcss-selector-not")
-      .externals(externals)
-      .package(),
-  builder =>
     builder("postcss-url")
       .externals({
         ...externals,

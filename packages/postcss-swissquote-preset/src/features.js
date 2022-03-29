@@ -101,11 +101,6 @@ module.exports = function(config) {
     .processor("postcss-selector-matches")
     .embedded("swissquote-postcss-selector-matches");
 
-  processors
-    .processor("postcss-selector-not")
-    .embedded()
-    .enableIfUnsupported(["css-not-sel-list"]);
-
   processors.processor("postcss-pseudo-class-any-link").embedded();
 
   processors
