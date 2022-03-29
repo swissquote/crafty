@@ -130,6 +130,9 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <li>
 <a href="#oklab-and-oklch-color-functions">oklab()and oklch() color functions</a>
 </li>
+<li>
+<a href="#color-function">color() Function</a>
+</li>
 </ul>
 </li>
 <li>
@@ -513,6 +516,23 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lab</span>(<span class="hljs-number">67.5333%</span> -<span class="hljs-number">8.68207</span> -<span class="hljs-number">41.6473</span>);
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#62acef</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lab</span>(<span class="hljs-number">67.533%</span> -<span class="hljs-number">8.67313</span> -<span class="hljs-number">41.6457</span>);
+}
+</code></pre>
+<h2><a id="color-function" href="#color-function" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>color()</code> Function</h2>
+<p>This function allows you to specify a color in a color space.</p>
+<p><a href="https://www.w3.org/TR/css-color-4/#funcdef-color" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">blockquote</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(rec2020 <span class="hljs-number">0.42053</span> <span class="hljs-number">0.979780</span> <span class="hljs-number">0.00579</span>);
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">color</span>(display-p3 -<span class="hljs-number">0.6112</span> <span class="hljs-number">1.0079</span> -<span class="hljs-number">0.2192</span>);
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">blockquote</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#00fb37</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">color</span>(rec2020 .<span class="hljs-number">42053</span> .<span class="hljs-number">97978</span> .<span class="hljs-number">00579</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#00e578</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">color</span>(display-p3 -.<span class="hljs-number">6112</span> <span class="hljs-number">1.0079</span> -.<span class="hljs-number">2192</span>);
 }
 </code></pre>
 <h1><a id="css-custom-properties-for-cascading-variables-module-level-1" href="#css-custom-properties-for-cascading-variables-module-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Custom Properties for Cascading Variables Module Level 1</h1>
@@ -1026,7 +1046,7 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 </code></pre>
 <h2><a id="not-negation-list-pseudo-class" href="#not-negation-list-pseudo-class" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>:not()</code> Negation List Pseudo-Class</h2>
 <p>A pseudo-class for ignoring elements in a selector list</p>
-<p><a href="https://www.w3.org/TR/selectors-4/#negation-pseudo" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/postcss/postcss-selector-not" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<p><a href="https://www.w3.org/TR/selectors-4/#negation-pseudo" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 <span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child</span>, <span class="hljs-selector-class">.special</span>) {
     <span class="hljs-attribute">color</span>: red;
