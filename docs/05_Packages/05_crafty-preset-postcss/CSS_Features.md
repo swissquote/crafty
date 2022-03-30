@@ -309,6 +309,24 @@ blockquote {
 }
 ```
 
+## Support for percentages for `opacity`
+
+Syntactic sugar to use percentages instead of a float between 0 and 1.
+
+[Specification](https://www.w3.org/TR/css-color-4/#transparency) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+img {
+  opacity: 90%;
+}
+
+/* After */
+img {
+  opacity: .9;
+}
+```
+
 # CSS Custom Properties for Cascading Variables Module Level 1
 
 [Specification](https://www.w3.org/TR/css-variables-1/)
@@ -332,6 +350,48 @@ A syntax for defining custom values accepted by all CSS properties
 /* After */
 .menu_link {
   color: red;
+}
+```
+
+# CSS Display Module Level 3
+
+[Specification](https://preset-env.netlify.app/features/#display-two-values)
+
+## Two values syntax for `display`
+
+Syntax that allows definition of outer and inner displays types for an element.
+
+[Specification](https://www.w3.org/TR/css-display-3/#the-display-properties) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+.element {
+  display: inline flow-root;
+}
+
+.element2 {
+  display: inline flex;
+}
+
+.element3 {
+  display: block grid;
+}
+
+/* After */
+.element {
+  display: inline-block;
+}
+
+.element2 {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.element3 {
+  display: grid;
 }
 ```
 
@@ -459,6 +519,24 @@ A function for specifying image sources based on the user’s resolution
 }
 ```
 
+## Double Position Gradients
+
+A syntax for using two positions in a gradient. 
+
+[Specification](https://www.w3.org/TR/css-images-4/#color-stop-syntax) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+.pie_chart {
+  background-image: conic-gradient(yellowgreen 40%, gold 0deg 75%, #f06 0deg);
+}
+
+/* After */
+.pie_chart {
+  background-image: conic-gradient(#9acd32 40%, gold 0deg, gold 75%, #f06 0deg);
+}
+```
+
 # CSS Logical Properties and Values Level 1
 
 [Specification](https://www.w3.org/TR/css-logical-1/)
@@ -494,6 +572,29 @@ Flow-relative (left-to-right or right-to-left) properties and values
 }
 ```
 
+# CSS Overflow Module Level 3
+
+[Specification](https://www.w3.org/TR/css-overflow-3/)
+
+## `overflow` Shorthand Property
+
+A property for defining `overflow-x` and `overflow-y`
+
+[Specification](https://www.w3.org/TR/css-overflow-3/#propdef-overflow) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+html {
+  overflow: hidden auto;
+}
+
+/* After */
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+```
+
 # CSS Text Module Level 3
 
 [Specification](https://drafts.csswg.org/css-text-3/)
@@ -513,6 +614,28 @@ A property for defining whether to insert line breaks within words to prevent ov
 /* After */
 .foo {
   word-wrap: break-word;
+}
+```
+
+# CSS Values and Units Module Level 4
+
+[Specification](https://www.w3.org/TR/css-values-4/)
+
+## `clamp` Function
+
+The clamp() CSS function clamps a value between an upper and lower bound. It enables selecting a value within a range of values between a defined minimum and maximum.
+
+[Specification](https://www.w3.org/TR/css-values-4/#funcdef-clamp) [Implementation](https://github.com/parcel-bundler/parcel-css)
+
+```css
+/* Before */
+.foo {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* After */
+.foo {
+  font-size: max(1rem, min(2.5vw, 2rem));
 }
 ```
 

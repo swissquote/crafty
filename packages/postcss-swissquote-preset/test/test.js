@@ -74,25 +74,36 @@ const plugins = {
       },
       {
         name: "`lab()` color function",
-        description: "A function for specifying colors expressed in the CIE Lab color space",
+        description:
+          "A function for specifying colors expressed in the CIE Lab color space",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-lab",
         implementation: "https://github.com/parcel-bundler/parcel-css",
-        files: "colors-4/color-lab"
+        files: "colors-4/color-lab",
       },
       {
         name: "`oklab()`and `oklch()` color functions",
-        description: "Functions that allow colors to be expressed in OKLab and OKLCH.",
+        description:
+          "Functions that allow colors to be expressed in OKLab and OKLCH.",
         link: "https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch",
         implementation: "https://github.com/parcel-bundler/parcel-css",
-        files: "colors-4/color-oklab"
+        files: "colors-4/color-oklab",
       },
       {
         name: "`color()` Function",
-        description: "This function allows you to specify a color in a color space.",
+        description:
+          "This function allows you to specify a color in a color space.",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-color",
         implementation: "https://github.com/parcel-bundler/parcel-css",
-        files: "colors-4/color-function"
-      }
+        files: "colors-4/color-function",
+      },
+      {
+        name: "Support for percentages for `opacity`",
+        description:
+          "Syntactic sugar to use percentages instead of a float between 0 and 1.",
+        link: "https://www.w3.org/TR/css-color-4/#transparency",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "colors-4/opacity-percentages",
+      },
     ],
   },
   "CSS Cascading and Inheritance Level 3": {
@@ -195,6 +206,13 @@ const plugins = {
           "https://github.com/swissquote/crafty/tree/master/package-forks/postcss-image-set-polyfill",
         files: "images-4/image-set",
       },
+      {
+        name: "Double Position Gradients",
+        description: "A syntax for using two positions in a gradient. ",
+        link: "https://www.w3.org/TR/css-images-4/#color-stop-syntax",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "images-4/double-position-gradients",
+      },
     ],
   },
   "CSS Fonts Module Level 3": {
@@ -217,7 +235,8 @@ const plugins = {
         name: "system-ui value for font-family",
         description: "A generic font used to match the user’s interface",
         link: "https://drafts.csswg.org/css-fonts-4/#system-ui-def",
-        implementation: "https://github.com/JLHwung/postcss-font-family-system-ui",
+        implementation:
+          "https://github.com/JLHwung/postcss-font-family-system-ui",
         files: "fonts-4/system-ui-value",
       },
     ],
@@ -233,6 +252,44 @@ const plugins = {
         implementation:
           "https://github.com/mattdimu/postcss-replace-overflow-wrap",
         files: "text-3/overflow-wrap",
+      },
+    ],
+  },
+  "CSS Values and Units Module Level 4": {
+    link: "https://www.w3.org/TR/css-values-4/",
+    examples: [
+      {
+        name: "`clamp` Function",
+        description:
+          "The clamp() CSS function clamps a value between an upper and lower bound. It enables selecting a value within a range of values between a defined minimum and maximum.",
+        link: "https://www.w3.org/TR/css-values-4/#funcdef-clamp",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "values-4/clamp-function",
+      },
+    ],
+  },
+  "CSS Display Module Level 3": {
+    link: "https://preset-env.netlify.app/features/#display-two-values",
+    examples: [
+      {
+        name: "Two values syntax for `display`",
+        description:
+          "Syntax that allows definition of outer and inner displays types for an element.",
+        link: "https://www.w3.org/TR/css-display-3/#the-display-properties",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "display-3/two-values-display",
+      },
+    ],
+  },
+  "CSS Overflow Module Level 3": {
+    link: "https://www.w3.org/TR/css-overflow-3/",
+    examples: [
+      {
+        name: "`overflow` Shorthand Property",
+        description: "A property for defining `overflow-x` and `overflow-y`",
+        link: "https://www.w3.org/TR/css-overflow-3/#propdef-overflow",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
+        files: "overflow-3/overflow-shorthand",
       },
     ],
   },
@@ -507,7 +564,10 @@ for (const spec of Object.keys(plugins).sort()) {
       "utf-8"
     );
 
-    content += `\`\`\`css\n/* Before */\n${before.replace(/\n+$/, "")}\n\n/* After */\n${after.replace(/\n+$/, "")}\n\`\`\`\n\n`;
+    content += `\`\`\`css\n/* Before */\n${before.replace(
+      /\n+$/,
+      ""
+    )}\n\n/* After */\n${after.replace(/\n+$/, "")}\n\`\`\`\n\n`;
   }
 }
 
