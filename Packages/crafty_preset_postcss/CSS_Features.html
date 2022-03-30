@@ -133,6 +133,9 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <li>
 <a href="#color-function">color() Function</a>
 </li>
+<li>
+<a href="#support-for-percentages-for-opacity">Support for percentages for opacity</a>
+</li>
 </ul>
 </li>
 <li>
@@ -140,6 +143,14 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <ul>
 <li>
 <a href="#custom-properties">Custom Properties</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-display-module-level-3">CSS Display Module Level 3</a>
+<ul>
+<li>
+<a href="#two-values-syntax-for-display">Two values syntax for display</a>
 </li>
 </ul>
 </li>
@@ -173,6 +184,9 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <li>
 <a href="#image-set-function">image-set() Function</a>
 </li>
+<li>
+<a href="#double-position-gradients">Double Position Gradients</a>
+</li>
 </ul>
 </li>
 <li>
@@ -184,10 +198,26 @@ We made a selection of plugins useful for Swissquote, and here are some features
 </ul>
 </li>
 <li>
+<a href="#css-overflow-module-level-3">CSS Overflow Module Level 3</a>
+<ul>
+<li>
+<a href="#overflow-shorthand-property">overflow Shorthand Property</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="#css-text-module-level-3">CSS Text Module Level 3</a>
 <ul>
 <li>
 <a href="#overflow-wrap-property">overflow-wrap Property</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#css-values-and-units-module-level-4">CSS Values and Units Module Level 4</a>
+<ul>
+<li>
+<a href="#clamp-function">clamp Function</a>
 </li>
 </ul>
 </li>
@@ -535,6 +565,19 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">background</span>: <span class="hljs-built_in">color</span>(display-p3 -.<span class="hljs-number">6112</span> <span class="hljs-number">1.0079</span> -.<span class="hljs-number">2192</span>);
 }
 </code></pre>
+<h2><a id="support-for-percentages-for-opacity" href="#support-for-percentages-for-opacity" class="Permalink" aria-hidden="true" title="Permalink">#</a>Support for percentages for <code>opacity</code></h2>
+<p>Syntactic sugar to use percentages instead of a float between 0 and 1.</p>
+<p><a href="https://www.w3.org/TR/css-color-4/#transparency" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">90%</span>;
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">opacity</span>: .<span class="hljs-number">9</span>;
+}
+</code></pre>
 <h1><a id="css-custom-properties-for-cascading-variables-module-level-1" href="#css-custom-properties-for-cascading-variables-module-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Custom Properties for Cascading Variables Module Level 1</h1>
 <p><a href="https://www.w3.org/TR/css-variables-1/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
 <h2><a id="custom-properties" href="#custom-properties" class="Permalink" aria-hidden="true" title="Permalink">#</a>Custom Properties</h2>
@@ -552,6 +595,41 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.menu_link</span> {
   <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+<h1><a id="css-display-module-level-3" href="#css-display-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Display Module Level 3</h1>
+<p><a href="https://preset-env.netlify.app/features/#display-two-values" class="Link--external" rel="noopener noreferrer">Specification</a></p>
+<h2><a id="two-values-syntax-for-display" href="#two-values-syntax-for-display" class="Permalink" aria-hidden="true" title="Permalink">#</a>Two values syntax for <code>display</code></h2>
+<p>Syntax that allows definition of outer and inner displays types for an element.</p>
+<p><a href="https://www.w3.org/TR/css-display-3/#the-display-properties" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">display</span>: inline flow-root;
+}
+
+<span class="hljs-selector-class">.element2</span> {
+  <span class="hljs-attribute">display</span>: inline flex;
+}
+
+<span class="hljs-selector-class">.element3</span> {
+  <span class="hljs-attribute">display</span>: block grid;
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+}
+
+<span class="hljs-selector-class">.element2</span> {
+  <span class="hljs-attribute">display</span>: -webkit-inline-box;
+  <span class="hljs-attribute">display</span>: -moz-inline-box;
+  <span class="hljs-attribute">display</span>: -webkit-inline-flex;
+  <span class="hljs-attribute">display</span>: -ms-inline-flexbox;
+  <span class="hljs-attribute">display</span>: inline-flex;
+}
+
+<span class="hljs-selector-class">.element3</span> {
+  <span class="hljs-attribute">display</span>: grid;
 }
 </code></pre>
 <h1><a id="css-extensions" href="#css-extensions" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Extensions</h1>
@@ -650,6 +728,19 @@ We made a selection of plugins useful for Swissquote, and here are some features
   }
 }
 </code></pre>
+<h2><a id="double-position-gradients" href="#double-position-gradients" class="Permalink" aria-hidden="true" title="Permalink">#</a>Double Position Gradients</h2>
+<p>A syntax for using two positions in a gradient.</p>
+<p><a href="https://www.w3.org/TR/css-images-4/#color-stop-syntax" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.pie_chart</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">conic-gradient</span>(yellowgreen <span class="hljs-number">40%</span>, gold <span class="hljs-number">0deg</span> <span class="hljs-number">75%</span>, #f06 <span class="hljs-number">0deg</span>);
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.pie_chart</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">conic-gradient</span>(#<span class="hljs-number">9</span>acd32 <span class="hljs-number">40%</span>, gold <span class="hljs-number">0deg</span>, gold <span class="hljs-number">75%</span>, #f06 <span class="hljs-number">0deg</span>);
+}
+</code></pre>
 <h1><a id="css-logical-properties-and-values-level-1" href="#css-logical-properties-and-values-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Logical Properties and Values Level 1</h1>
 <p><a href="https://www.w3.org/TR/css-logical-1/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
 <h2><a id="logical-properties-and-values" href="#logical-properties-and-values" class="Permalink" aria-hidden="true" title="Permalink">#</a>Logical Properties and Values</h2>
@@ -678,6 +769,22 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">--rtl</span>: initial;
 }
 </code></pre>
+<h1><a id="css-overflow-module-level-3" href="#css-overflow-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Overflow Module Level 3</h1>
+<p><a href="https://www.w3.org/TR/css-overflow-3/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
+<h2><a id="overflow-shorthand-property" href="#overflow-shorthand-property" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>overflow</code> Shorthand Property</h2>
+<p>A property for defining <code>overflow-x</code> and <code>overflow-y</code></p>
+<p><a href="https://www.w3.org/TR/css-overflow-3/#propdef-overflow" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">overflow</span>: hidden auto;
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">overflow-x</span>: hidden;
+  <span class="hljs-attribute">overflow-y</span>: auto;
+}
+</code></pre>
 <h1><a id="css-text-module-level-3" href="#css-text-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Text Module Level 3</h1>
 <p><a href="https://drafts.csswg.org/css-text-3/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
 <h2><a id="overflow-wrap-property" href="#overflow-wrap-property" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>overflow-wrap</code> Property</h2>
@@ -691,6 +798,21 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.foo</span> {
   <span class="hljs-attribute">word-wrap</span>: break-word;
+}
+</code></pre>
+<h1><a id="css-values-and-units-module-level-4" href="#css-values-and-units-module-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Values and Units Module Level 4</h1>
+<p><a href="https://www.w3.org/TR/css-values-4/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
+<h2><a id="clamp-function" href="#clamp-function" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>clamp</code> Function</h2>
+<p>The clamp() CSS function clamps a value between an upper and lower bound. It enables selecting a value within a range of values between a defined minimum and maximum.</p>
+<p><a href="https://www.w3.org/TR/css-values-4/#funcdef-clamp" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">clamp</span>(<span class="hljs-number">1rem</span>, <span class="hljs-number">2.5vw</span>, <span class="hljs-number">2rem</span>);
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">max</span>(<span class="hljs-number">1rem</span>, min(<span class="hljs-number">2.5vw</span>, <span class="hljs-number">2rem</span>));
 }
 </code></pre>
 <h1><a id="media-queries-level-4" href="#media-queries-level-4" class="Permalink" aria-hidden="true" title="Permalink">#</a>Media Queries Level 4</h1>
