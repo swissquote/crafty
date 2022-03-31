@@ -3,7 +3,7 @@ const fs = require("fs");
 const childProcess = require("child_process");
 
 const tmp = require("tmp");
-const xml2js = require("xml2js");
+const XMLParser = require("fast-xml-parser/src/xmlparser/XMLParser");
 
 let loadedPom;
 
@@ -47,17 +47,14 @@ function getEffectivePom() {
     cwd: pomWorkingDirectory
   });
 
-  xml2js.parseString(
-    fs.readFileSync(tmpfile),
-    { trim: true, async: false },
-    (err, result) => {
-      if (!result.project) {
-        throw new Error("This is not a valid effective pom");
-      }
+  const parser = new XMLParser();
+  const result = parser.parse(fs.readFileSync(tmpfile));
 
-      loadedPom = result.project;
-    }
-  );
+  if (!result.project) {
+    throw new Error("This is not a valid effective pom");
+  }
+
+  loadedPom = result.project;
 
   return loadedPom;
 }
@@ -77,9 +74,9 @@ function getDestination(config) {
     const pom = getEffectivePom();
 
     if (config.mavenType === "webjar") {
-      basedir = pom.build[0].outputDirectory[0];
+      basedir = pom.build.outputDirectory;
     } else {
-      basedir = `${pom.build[0].directory[0]}/${pom.build[0].finalName[0]}`;
+      basedir = `${pom.build.directory}/${pom.build.finalName}`;
     }
   }
 
