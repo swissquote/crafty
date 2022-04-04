@@ -623,7 +623,7 @@ A property for defining whether to insert line breaks within words to prevent ov
 
 ## `clamp` Function
 
-The clamp() CSS function clamps a value between an upper and lower bound. It enables selecting a value within a range of values between a defined minimum and maximum.
+The clamp() CSS function clamps a value between an upper and lower bound.
 
 [Specification](https://www.w3.org/TR/css-values-4/#funcdef-clamp) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
