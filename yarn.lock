@@ -2687,7 +2687,7 @@ __metadata:
     postcss-nested: 5.0.6
     postcss-parcel-css: 0.5.0
     postcss-property-lookup: 3.0.0
-    postcss-pseudo-class-any-link: 7.1.1
+    postcss-pseudo-class-any-link: 7.1.2
     postcss-replace-overflow-wrap: 4.0.0
     postcss-reporter: 7.0.5
     postcss-url: 10.1.3
@@ -2719,7 +2719,7 @@ __metadata:
     postcss: 8.4.12
     postcss-resolve-nested-selector: 0.1.1
     postcss-scss: 4.0.3
-    postcss-selector-parser: 6.0.9
+    postcss-selector-parser: 6.0.10
     postcss-value-parser: 4.2.0
     prettier: 2.6.1
     stylelint: 14.6.1
@@ -10879,14 +10879,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-pseudo-class-any-link@npm:7.1.1":
-  version: 7.1.1
-  resolution: "postcss-pseudo-class-any-link@npm:7.1.1"
+"postcss-pseudo-class-any-link@npm:7.1.2":
+  version: 7.1.2
+  resolution: "postcss-pseudo-class-any-link@npm:7.1.2"
   dependencies:
-    postcss-selector-parser: ^6.0.9
+    postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.4
-  checksum: d177b7ad6025c1b0dd348b0efa49892d670bc5f4e742f53084625a3110595f45b30ae8fb60d19a09f57112e441d1e1e31421a0fb212e2fde5f8375dc07644efb
+  checksum: 0653c129790008c43762f79d59c4133eb54c60ca79a2a5953886cabf69de11d411db78096c8e25431de735be450a9fd4e43b0d5b16d08e4f2cf8fbd0bbcdb502
   languageName: node
   linkType: hard
 
@@ -10936,13 +10936,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:6.0.9, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.6, postcss-selector-parser@npm:^6.0.9":
-  version: 6.0.9
-  resolution: "postcss-selector-parser@npm:6.0.9"
+"postcss-selector-parser@npm:6.0.10, postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.6, postcss-selector-parser@npm:^6.0.9":
+  version: 6.0.10
+  resolution: "postcss-selector-parser@npm:6.0.10"
   dependencies:
     cssesc: ^3.0.0
     util-deprecate: ^1.0.2
-  checksum: f8161ab4d3e5c76b8467189c6d164ba0f6b6e74677435f29e34caa1df01e052b582b4ae4f7468b2243c4befdd8bdcdb7685542d1b2fca8deae21b3e849c78802
+  checksum: 46afaa60e3d1998bd7adf6caa374baf857cc58d3ff944e29459c9a9e4680a7fe41597bd5b755fc81d7c388357e9bf67c0251d047c640a09f148e13606b8a8608
   languageName: node
   linkType: hard
 
