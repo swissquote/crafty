@@ -755,18 +755,21 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.Banner</span> {
   <span class="hljs-attribute">float</span>: inline-start;
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-built_in">var</span>(--ltr, <span class="hljs-number">20px</span>) <span class="hljs-built_in">var</span>(--rtl, <span class="hljs-number">40px</span>);
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-built_in">var</span>(--ltr, <span class="hljs-number">40px</span>) <span class="hljs-built_in">var</span>(--rtl, <span class="hljs-number">20px</span>);
 }
 
-<span class="hljs-selector-attr">[dir=<span class="hljs-string">"ltr"</span>]</span> {
-  <span class="hljs-attribute">--ltr</span>: initial;
-  <span class="hljs-attribute">--rtl</span>: ;
+<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ae))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ar))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(arc))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(bcc))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(bqi))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ckb))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(dv))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(fa))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(glk))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(he))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ku))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(mzn))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(nqo))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(pnb))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ps))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(sd))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ug))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(ur))</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:lang(yi))</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
 }
 
-<span class="hljs-selector-attr">[dir=<span class="hljs-string">"rtl"</span>]</span> {
-  <span class="hljs-attribute">--ltr</span>: ;
-  <span class="hljs-attribute">--rtl</span>: initial;
+<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:-moz-any(</span><span class="hljs-selector-pseudo">:lang(ae)</span>, <span class="hljs-selector-pseudo">:lang(ar)</span>, <span class="hljs-selector-pseudo">:lang(arc)</span>, <span class="hljs-selector-pseudo">:lang(bcc)</span>, <span class="hljs-selector-pseudo">:lang(bqi)</span>, <span class="hljs-selector-pseudo">:lang(ckb)</span>, <span class="hljs-selector-pseudo">:lang(dv)</span>, <span class="hljs-selector-pseudo">:lang(fa)</span>, <span class="hljs-selector-pseudo">:lang(glk)</span>, <span class="hljs-selector-pseudo">:lang(he)</span>, <span class="hljs-selector-pseudo">:lang(ku)</span>, <span class="hljs-selector-pseudo">:lang(mzn)</span>, <span class="hljs-selector-pseudo">:lang(nqo)</span>, <span class="hljs-selector-pseudo">:lang(pnb)</span>, <span class="hljs-selector-pseudo">:lang(ps)</span>, <span class="hljs-selector-pseudo">:lang(sd)</span>, <span class="hljs-selector-pseudo">:lang(ug)</span>, <span class="hljs-selector-pseudo">:lang(ur)</span>, <span class="hljs-selector-pseudo">:lang(yi))</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.Banner</span><span class="hljs-selector-pseudo">:is(</span><span class="hljs-selector-pseudo">:lang(ae)</span>, <span class="hljs-selector-pseudo">:lang(ar)</span>, <span class="hljs-selector-pseudo">:lang(arc)</span>, <span class="hljs-selector-pseudo">:lang(bcc)</span>, <span class="hljs-selector-pseudo">:lang(bqi)</span>, <span class="hljs-selector-pseudo">:lang(ckb)</span>, <span class="hljs-selector-pseudo">:lang(dv)</span>, <span class="hljs-selector-pseudo">:lang(fa)</span>, <span class="hljs-selector-pseudo">:lang(glk)</span>, <span class="hljs-selector-pseudo">:lang(he)</span>, <span class="hljs-selector-pseudo">:lang(ku)</span>, <span class="hljs-selector-pseudo">:lang(mzn)</span>, <span class="hljs-selector-pseudo">:lang(nqo)</span>, <span class="hljs-selector-pseudo">:lang(pnb)</span>, <span class="hljs-selector-pseudo">:lang(ps)</span>, <span class="hljs-selector-pseudo">:lang(sd)</span>, <span class="hljs-selector-pseudo">:lang(ug)</span>, <span class="hljs-selector-pseudo">:lang(ur)</span>, <span class="hljs-selector-pseudo">:lang(yi))</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">20px</span>;
 }
 </code></pre>
 <h1><a id="css-overflow-module-level-3" href="#css-overflow-module-level-3" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Overflow Module Level 3</h1>
@@ -822,12 +825,15 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <p><a href="https://www.w3.org/TR/mediaqueries-4/#range-context" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/parcel-css" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
 <pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
 <span class="hljs-keyword">@media</span> (width &gt;= <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (width &lt;= <span class="hljs-number">1200px</span>) {
-  <span class="hljs-selector-class">.foo</span> {}
+  <span class="hljs-selector-class">.foo</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+  }
 }
 
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">500px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">1200px</span>) {
   <span class="hljs-selector-class">.foo</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   }
 }
 </code></pre>
@@ -841,12 +847,14 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 <span class="hljs-keyword">@media</span> (--medium-screen) {
   <span class="hljs-selector-class">.foo</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   }
 }
 
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">499.999px</span>) <span class="hljs-keyword">or</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">1200px</span>) {
   <span class="hljs-selector-class">.foo</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   }
 }
 </code></pre>
