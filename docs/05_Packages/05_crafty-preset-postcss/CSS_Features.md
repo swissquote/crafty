@@ -557,18 +557,21 @@ Flow-relative (left-to-right or right-to-left) properties and values
 /* After */
 .Banner {
   float: inline-start;
-  padding-left: var(--ltr, 20px) var(--rtl, 40px);
-  padding-right: var(--ltr, 40px) var(--rtl, 20px);
 }
 
-[dir="ltr"] {
-  --ltr: initial;
-  --rtl: ;
+.Banner:not(:lang(ae)):not(:lang(ar)):not(:lang(arc)):not(:lang(bcc)):not(:lang(bqi)):not(:lang(ckb)):not(:lang(dv)):not(:lang(fa)):not(:lang(glk)):not(:lang(he)):not(:lang(ku)):not(:lang(mzn)):not(:lang(nqo)):not(:lang(pnb)):not(:lang(ps)):not(:lang(sd)):not(:lang(ug)):not(:lang(ur)):not(:lang(yi)) {
+  padding-left: 20px;
+  padding-right: 40px;
 }
 
-[dir="rtl"] {
-  --ltr: ;
-  --rtl: initial;
+.Banner:-moz-any(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+.Banner:is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  padding-left: 40px;
+  padding-right: 20px;
 }
 ```
 
@@ -652,12 +655,15 @@ A syntax for defining media query ranges using ordinary comparison operators
 ```css
 /* Before */
 @media (width >= 500px) and (width <= 1200px) {
-  .foo {}
+  .foo {
+    opacity: 1;
+  }
 }
 
 /* After */
 @media (min-width: 500px) and (max-width: 1200px) {
   .foo {
+    opacity: 1;
   }
 }
 ```
@@ -678,12 +684,14 @@ An at-rule for defining aliases that represent media queries
 
 @media (--medium-screen) {
   .foo {
+    opacity: 1;
   }
 }
 
 /* After */
 @media (max-width: 499.999px) or (min-width: 1200px) {
   .foo {
+    opacity: 1;
   }
 }
 ```

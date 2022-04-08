@@ -130,8 +130,6 @@ const plugins = {
     link: "https://www.w3.org/TR/css-logical-1/",
     examples: [
       {
-        // TODO :: the old fallback uses css properties
-        // which are not supported by the target browsers
         name: "Logical Properties and Values",
         description:
           "Flow-relative (left-to-right or right-to-left) properties and values",
