@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import TestRenderer from "react-test-renderer";
-import { act } from "react-dom/test-utils";
+import { createRoot } from "react-dom/client";
+import { create, act } from "react-test-renderer";
 
 import Counter from "../Counter";
 import MyComponent from "../MyComponent";
@@ -9,17 +8,17 @@ import Foo from "../Foo";
 
 describe('<MyComponent />', () => {
   it('renders three <Foo /> components', () => {
-    const wrapper = TestRenderer.create(<MyComponent />);
+    const wrapper = create(<MyComponent />);
     expect(wrapper.root.findAllByType(Foo)).toHaveLength(3)
   });
 
   it('renders an `.icon-star`', () => {
-    const wrapper = TestRenderer.create(<MyComponent />);
+    const wrapper = create(<MyComponent />);
     expect(wrapper.root.findByProps({className: 'icon-star'}).type).toEqual("i");
   });
 
   it('renders children when passed in', () => {
-    const wrapper = TestRenderer.create((
+    const wrapper = create((
       <MyComponent>
         <div className="unique" />
       </MyComponent>
@@ -44,7 +43,8 @@ describe('<Counter />', () => {
   it('can render and update a counter', () => {
     // Test first render and componentDidMount
     act(() => {
-      ReactDOM.render(<Counter />, container);
+      const root = createRoot(container);
+      root.render(<Counter />);
     });
     const button = container.querySelector('button');
     const label = container.querySelector('p');
