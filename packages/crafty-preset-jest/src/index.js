@@ -5,6 +5,7 @@ function normalizeJestOptions(crafty, cli, args) {
   const moduleDirectories = new Set(["node_modules"]);
 
   if (cli.flags.moduleDirectories) {
+    let idx;
     while ((idx = args.indexOf("--moduleDirectories")) > -1) {
       args.splice(idx, 2);
     }
@@ -16,6 +17,7 @@ function normalizeJestOptions(crafty, cli, args) {
 
   const moduleFileExtensions = new Set(["js", "json"]);
   if (cli.flags.moduleFileExtensions) {
+    let idx;
     while ((idx = args.indexOf("--moduleFileExtensions")) > -1) {
       args.splice(idx, 2);
     }
