@@ -6,8 +6,8 @@ test.serial("Succeeds without transpiling", async t => {
 
   const result = await testUtils.run(["test"], cwd);
 
-  t.true(result.stdall.includes('src/__tests__/math.js'));
-  t.true(result.stdall.includes('src/__tests__/math-advanced.js'));
+  t.true(result.stdall.includes("src/__tests__/math.js"));
+  t.true(result.stdall.includes("src/__tests__/math-advanced.js"));
 
   t.snapshot(result);
 });
@@ -15,10 +15,13 @@ test.serial("Succeeds without transpiling", async t => {
 test.serial("Succeeds without transpiling, selects test", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/succeeds");
 
-  const result = await testUtils.run(["test", "__tests__/math-advanced.js"], cwd);
+  const result = await testUtils.run(
+    ["test", "__tests__/math-advanced.js"],
+    cwd
+  );
 
-  t.false(result.stdall.includes('src/__tests__/math.js'));
-  t.true(result.stdall.includes('src/__tests__/math-advanced.js'));
+  t.false(result.stdall.includes("src/__tests__/math.js"));
+  t.true(result.stdall.includes("src/__tests__/math-advanced.js"));
 
   t.snapshot(result);
 });
