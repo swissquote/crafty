@@ -1872,9 +1872,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:13.2.0":
-  version: 13.2.0
-  resolution: "@rollup/plugin-node-resolve@npm:13.2.0"
+"@rollup/plugin-node-resolve@npm:13.2.1":
+  version: 13.2.1
+  resolution: "@rollup/plugin-node-resolve@npm:13.2.1"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     "@types/resolve": 1.17.1
@@ -1884,7 +1884,7 @@ __metadata:
     resolve: ^1.19.0
   peerDependencies:
     rollup: ^2.42.0
-  checksum: 581c14586447a7319cfdb89c02107e3b69e98b57278570b858b8907b1763a6db00a428591abf8003e47df0885796bf153c0104096331363643f695f1155fb94e
+  checksum: d0ba3b6f35440b5ebc203a4f62a6c0d2c565491aed9746448288b71d0cd603d1d12fdd9d1381c1be0a4b192f167412e53c34b89fd25413db4ba7d1fa910a29a2
   languageName: node
   linkType: hard
 
@@ -1900,13 +1900,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:4.2.0, @rollup/pluginutils@npm:^4.1.2":
-  version: 4.2.0
-  resolution: "@rollup/pluginutils@npm:4.2.0"
+"@rollup/pluginutils@npm:4.2.1, @rollup/pluginutils@npm:^4.1.2":
+  version: 4.2.1
+  resolution: "@rollup/pluginutils@npm:4.2.1"
   dependencies:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
-  checksum: 2e86d9bfb95919727bcba0bbbdbedc98e25a1e51fe3047f18ec6d85e0743d1c73e1c0de3f9fdbd2ff6b90c32f30d4b2706c9e794f3c2e7a80156980081558e2e
+  checksum: 6bc41f22b1a0f1efec3043899e4d3b6b1497b3dea4d94292d8f83b4cf07a1073ecbaedd562a22d11913ff7659f459677b01b09e9598a98936e746780ecc93a12
   languageName: node
   linkType: hard
 
@@ -2424,14 +2424,14 @@ __metadata:
   dependencies:
     "@rollup/plugin-commonjs": 21.0.3
     "@rollup/plugin-json": 4.1.0
-    "@rollup/plugin-node-resolve": 13.2.0
+    "@rollup/plugin-node-resolve": 13.2.1
     "@rollup/plugin-replace": 4.0.0
-    "@rollup/pluginutils": 4.2.0
+    "@rollup/pluginutils": 4.2.1
     "@swissquote/crafty": 1.18.4
     "@swissquote/crafty-commons": 1.18.4
     "@swissquote/crafty-preset-terser": 1.18.4
     fsevents: ~2.3.2
-    rollup: 2.70.1
+    rollup: 2.70.2
     rollup-plugin-pnp-resolve: 2.0.0
     rollup-plugin-terser: 7.0.2
   dependenciesMeta:
@@ -2695,13 +2695,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/rollup-plugin-eslint@workspace:packages/rollup-plugin-eslint"
   dependencies:
-    "@rollup/plugin-node-resolve": 13.2.0
-    "@rollup/pluginutils": 4.2.0
+    "@rollup/plugin-node-resolve": 13.2.1
+    "@rollup/pluginutils": 4.2.1
     ansi-colors: ^4.0.0
     ava: 4.2.0
     c8: 7.11.0
     eslint: 8.13.0
-    rollup: 2.70.1
+    rollup: 2.70.2
   languageName: unknown
   linkType: soft
 
@@ -11807,9 +11807,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.70.1":
-  version: 2.70.1
-  resolution: "rollup@npm:2.70.1"
+"rollup@npm:2.70.2":
+  version: 2.70.2
+  resolution: "rollup@npm:2.70.2"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -11817,7 +11817,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 06c62933e6e81a1c8c684d7d576e507081aabdb63cc0c91bca86b7348b66df03b77827068e4990b8b6c738bd3ef66dcc8c7ed7e0ea40b736068e7618f693133e
+  checksum: eb04eb9b87b30517308cb41018d57a23976f42b269c3229e4124746d3136a77aa16ba8b891a3fa571931dd72419eea40642a334835fe4f33161fea30d0b803f7
   languageName: node
   linkType: hard
 
