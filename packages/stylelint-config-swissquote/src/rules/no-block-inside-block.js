@@ -1,6 +1,7 @@
+const stylelint = require("../../shims/stylelint");
+
 const selectorParser = require("../../packages/postcss-selector-parser");
 const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
-const report = require("../../dist/stylelint-utils/stylelint-report");
 
 const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
 
@@ -63,7 +64,7 @@ module.exports = function() {
             }
 
             if (isInsideBlock(selectorNode)) {
-              report({
+              stylelint.utils.report({
                 message: messages.rejected,
                 node: rule,
                 index: selectorNode.sourceIndex,
