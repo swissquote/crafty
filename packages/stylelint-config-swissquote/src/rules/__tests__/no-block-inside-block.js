@@ -19,6 +19,7 @@ testRule({
       description: "Two independent blocks should be allowed",
       code: ".Component1 {} .Component2 {}"
     }
+    // TODO :: .Component { @at-root { .Component } } should work fine
   ],
 
   reject: [

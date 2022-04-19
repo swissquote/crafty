@@ -39,6 +39,9 @@ module.exports = {
     // - bare tags (a, div, p ...) MUST NOT be reassigned outside of a scope (with the exception of base typography rules that will be applied to the whole page)
     "swissquote/no-type-outside-scope": true,
 
+    // TODO :: enable this
+    //"swissquote/no-block-inside-block": true,
+
     // Limiting Language features
     // ---------------------------------------------------------------------
     "at-rule-no-vendor-prefix": true,
