@@ -6,6 +6,7 @@ const noHackReassignment = require("./src/rules/no-hack-reassignment");
 const noStateWithoutComponent = require("./src/rules/no-state-without-component");
 const noTypeOutsideScope = require("./src/rules/no-type-outside-scope");
 const noNegativeVar = require("./src/rules/no-negative-var");
+const noVariableInTranspiledFunction = require("./src/rules/no-variable-in-transpiled-function");
 
 module.exports = [
   stylelint.createPlugin(noBlockInsideBlock.ruleName, noBlockInsideBlock),
@@ -16,5 +17,9 @@ module.exports = [
     noStateWithoutComponent
   ),
   stylelint.createPlugin(noTypeOutsideScope.ruleName, noTypeOutsideScope),
-  stylelint.createPlugin(noNegativeVar.ruleName, noNegativeVar)
+  stylelint.createPlugin(noNegativeVar.ruleName, noNegativeVar),
+  stylelint.createPlugin(
+    noVariableInTranspiledFunction.ruleName,
+    noVariableInTranspiledFunction
+  )
 ];
