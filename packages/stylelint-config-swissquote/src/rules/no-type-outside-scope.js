@@ -1,7 +1,8 @@
+const stylelint = require("../../shims/stylelint");
+
 const isKeyframeSelector = require("../../dist/stylelint-utils/stylelint-isKeyframeSelector");
 const isStandardSyntaxRule = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
 const isStandardSyntaxSelector = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
-const report = require("../../dist/stylelint-utils/stylelint-report");
 
 const resolveNestedSelector = require("../utils/resolveNestedSelector");
 const parseSelector = require("../utils/parseSelector");
@@ -59,7 +60,7 @@ function checkSelector(selectorNode, ruleNode, result) {
       return;
     }
 
-    report({
+    stylelint.utils.report({
       ruleName,
       result,
       node: originalNode,

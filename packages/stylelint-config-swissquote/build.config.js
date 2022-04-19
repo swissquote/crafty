@@ -104,11 +104,6 @@ module.exports = [
             "optionMatches",
             "dist/stylelint-utils/stylelint-optionsMatches.js"
           )
-          .package(
-            "stylelint/lib/utils/report",
-            "report",
-            "dist/stylelint-utils/stylelint-report.js"
-          )
       )
       .externals({
         "../reference/keywordSets": "../../shims/stylelint-keywordSets.js"

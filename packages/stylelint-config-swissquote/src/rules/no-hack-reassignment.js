@@ -1,6 +1,7 @@
+const stylelint = require("../../shims/stylelint");
+
 const selectorParser = require("../../packages/postcss-selector-parser");
 const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
-const report = require("../../dist/stylelint-utils/stylelint-report");
 
 const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
 
@@ -10,16 +11,6 @@ const messages = {
 };
 
 const isHack = /^_/;
-
-function fail(result, rule, selectorNode) {
-  report({
-    message: messages.rejected,
-    node: rule,
-    index: selectorNode.sourceIndex,
-    ruleName,
-    result
-  });
-}
 
 module.exports = function(/*mainOption, moreOptions*/) {
   return (root, result) => {
@@ -39,7 +30,13 @@ module.exports = function(/*mainOption, moreOptions*/) {
               isHack.test(selectorNode.value) &&
               selectorNode.parent.nodes.length > 1
             ) {
-              fail(result, rule, selectorNode);
+              stylelint.utils.report({
+                message: messages.rejected,
+                node: rule,
+                index: selectorNode.sourceIndex,
+                ruleName,
+                result
+              });
             }
           });
         }).process(selector);
