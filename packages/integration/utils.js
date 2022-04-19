@@ -39,7 +39,7 @@ function snapshotizeOutput(ret) {
     ) // Remove long test durations (Jest)
     .replace(
       /^ {2}( {2})?(✓|✕) (.*?) \(([0-9]*(?:\.[0-9]*)?)\s?(h|min|[mnμ]?s)\)/gm,
-      "  $1$2 $3 (__ms)"
+      "  $1$2 $3"
     ) // Remove test result duration (Jest)
     .replace(
       /\/[-\w\/\.]*?\/npm-([a-z-]{1,213})([0-9\.]*)-([a-z0-9]{40})/gm,
