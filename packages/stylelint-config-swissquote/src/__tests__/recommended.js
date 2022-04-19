@@ -353,6 +353,8 @@ test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'",
     t.deepEqual(data.results[0].warnings, [
       {
         line: 7,
+        endColumn: 2,
+        endLine: 11,
         column: 1,
         rule: "scss/at-rule-no-unknown",
         severity: "error",
@@ -375,6 +377,8 @@ test("flags warnings when using ids raised one 'selector-max-id' error", t => {
       {
         line: 1,
         column: 1,
+        endColumn: 17,
+        endLine: 1,
         rule: "selector-max-id",
         severity: "error",
         text:
