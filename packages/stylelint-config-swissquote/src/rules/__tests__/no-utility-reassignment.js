@@ -1,77 +1,52 @@
-const test = require("ava");
+const testRule = require("../../testUtils/ruleTester");
+const { ruleName, messages } = require("../no-utility-reassignment");
 
-var createRuleTester = require("../../testUtils/createRuleTester");
-var rule = require("../no-utility-reassignment");
+testRule({
+  plugins: ["./index.js"],
+  ruleName,
+  config: true,
 
-test("works on non-utility", async t => {
-  const result = await createRuleTester.test(rule, ".somethingElse {}");
-  t.deepEqual(result, []);
-});
+  accept: [
+    { description: "works on non-utility", code: ".somethingElse {}" },
+    { description: "works on simple utility", code: ".u-okayDude {}" },
+    { description: "works on simple utility 2", code: ".u-test {}" }
+  ],
 
-test("works on simple utility", async t => {
-  const result = await createRuleTester.test(rule, ".u-okayDude {}");
-  t.deepEqual(result, []);
-});
-
-test("works on simple utility 2", async t => {
-  const result = await createRuleTester.test(rule, ".u-test {}");
-  t.deepEqual(result, []);
-});
-
-test("Fails on utility with ID", async t => {
-  const result = await createRuleTester.test(rule, "#something.u-test {}");
-  t.deepEqual(result, [
+  reject: [
     {
+      description: "Fails on utility with ID",
+      code: "#something.u-test {}",
       column: 11,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on scoped utility", async t => {
-  const result = await createRuleTester.test(
-    rule,
-    ".s-something .u-someUtility {}"
-  );
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on scoped utility",
+      code: ".s-something .u-someUtility {}",
       column: 14,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on utility with type", async t => {
-  const result = await createRuleTester.test(rule, "body .u-other {}");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on utility with type",
+      code: "body .u-other {}",
       column: 6,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on nested utility", async t => {
-  const result = await createRuleTester.test(rule, "body { .u-other {} }");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on nested utility",
+      code: "body { .u-other {} }",
       column: 13,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on sub-assignment", async t => {
-  const result = await createRuleTester.test(rule, ".u-other a {}");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on sub-assignment",
+      code: ".u-other a {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
+      message: messages.rejected
     }
-  ]);
+  ]
 });

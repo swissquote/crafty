@@ -1,168 +1,104 @@
-const test = require("ava");
+const testRule = require("../../testUtils/ruleTester");
+const { ruleName, messages } = require("../no-type-outside-scope");
 
-var createRuleTester = require("../../testUtils/createRuleTester");
-var rule = require("../no-type-outside-scope");
+testRule({
+  plugins: ["./index.js"],
+  ruleName,
+  config: true,
 
-test("works on class", async t => {
-  const result = await createRuleTester.test(rule, ".somethingElse {}");
-  t.deepEqual(result, []);
-});
-
-test("works on id", async t => {
-  const result = await createRuleTester.test(rule, "#someId {}");
-  t.deepEqual(result, []);
-});
-
-test("works on mixed, class-id", async t => {
-  const result = await createRuleTester.test(rule, ".someClass #someId {}");
-  t.deepEqual(result, []);
-});
-
-test("works on mixed, id-class", async t => {
-  const result = await createRuleTester.test(rule, "#someId .someClass {}");
-  t.deepEqual(result, []);
-});
-
-test("works on mixed, idclass", async t => {
-  const result = await createRuleTester.test(rule, "#someId.someClass {}");
-  t.deepEqual(result, []);
-});
-
-test("works on nested with parent selector", async t => {
-  const result = await createRuleTester.test(rule, "section { .s-scope & {} }");
-  t.deepEqual(result, []);
-});
-
-test("works on scoped class", async t => {
-  const result = await createRuleTester.test(rule, ".s-something h1 {}");
-  t.deepEqual(result, []);
-});
-
-test("works on nested scoped class", async t => {
-  const result = await createRuleTester.test(rule, ".s-something { h1 {} }");
-  t.deepEqual(result, []);
-});
-
-test("works on multiple types after scope", async t => {
-  const result = await createRuleTester.test(rule, ".s-something ul li {}");
-  t.deepEqual(result, []);
-});
-
-test("Fails on type", async t => {
-  const result = await createRuleTester.test(rule, "header {}");
-  t.deepEqual(result, [
+  accept: [
+    { description: "works on class", code: ".somethingElse {}" },
+    { description: "works on id", code: "#someId {}" },
+    { description: "works on mixed, class-id", code: ".someClass #someId {}" },
+    { description: "works on mixed, id-class", code: "#someId .someClass {}" },
+    { description: "works on mixed, idclass", code: "#someId.someClass {}" },
     {
+      description: "works on nested with parent selector",
+      code: "section { .s-scope & {} }"
+    },
+    { description: "works on scoped class", code: ".s-something h1 {}" },
+    {
+      description: "works on nested scoped class",
+      code: ".s-something { h1 {} }"
+    },
+    {
+      description: "works on multiple types after scope",
+      code: ".s-something ul li {}"
+    }
+  ],
+
+  reject: [
+    {
+      description: "Fails on type",
+      code: "header {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on type with compound class", async t => {
-  const result = await createRuleTester.test(rule, "header.class {}");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on type with compound class",
+      code: "header.class {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on type with compund class, nested", async t => {
-  const result = await createRuleTester.test(rule, "header { &.class {} }");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on type with compund class, nested",
+      code: "header { &.class {} }",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on type with class", async t => {
-  const result = await createRuleTester.test(rule, "header.class {}");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on type with class",
+      code: "header.class {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on class with type", async t => {
-  const result = await createRuleTester.test(rule, ".class header {}");
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on class with type",
+      code: ".class header {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on nested with parent selector", async t => {
-  const result = await createRuleTester.test(
-    rule,
-    "section { .not-a-scope & {} }"
-  );
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on nested with parent selector",
+      code: "section { .not-a-scope & {} }",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails once multiple selectors", async t => {
-  const result = await createRuleTester.test(
-    rule,
-    "header.class, .s-hey header {}"
-  );
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails once multiple selectors",
+      code: "header.class, .s-hey header {}",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails on multiple selectors 2", async t => {
-  const result = await createRuleTester.test(
-    rule,
-    "header.class {} .s-hey { header {} }"
-  );
-  t.deepEqual(result, [
+      message: messages.rejected
+    },
     {
+      description: "Fails on multiple selectors 2",
+      code: "header.class {} .s-hey { header {} }",
       column: 1,
       line: 1,
-      text: rule.messages.rejected
-    }
-  ]);
-});
-
-test("Fails only once for multiple selectors", async t => {
-  // This is a tricky case, here the `a:focus` is the case
-  // That should trigger the rule
-  // But since we check with the nested elements as well,
-  // we must make sure that it reports the error only once
-  const result = await createRuleTester.test(
-    rule,
-    `.Section--news a:focus {
+      message: messages.rejected
+    },
+    {
+      // This is a tricky case, here the `a:focus` is the case
+      // That should trigger the rule
+      // But since we check with the nested elements as well,
+      // we must make sure that it reports the error only once
+      description: "Fails only once for multiple selectors",
+      code: `.Section--news a:focus {
         .MediaObject, .MediaObject__content {
             overflow: visible;
         }
-      }`
-  );
-  t.deepEqual(result, [
-    {
+      }`,
+      length: 1,
       column: 1,
       line: 1,
-      text: rule.messages.rejected
+      message: messages.rejected
     }
-  ]);
+  ]
 });
