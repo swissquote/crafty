@@ -60,6 +60,22 @@ function addUnsupportedBrowserSupportRule(rules, browsers) {
   }
 }
 
+function addNoVariableInTranspiledFunction(rules, browsers) {
+  const rule = "swissquote/no-variable-in-transpiled-function";
+
+  if (!rules[rule]) {
+    rules[rule] = [true, {}];
+  }
+
+  if (!rules[rule][1].severity) {
+    rules[rule][1].severity = "warning";
+  }
+
+  if (!rules[rule][1].browsers) {
+    rules[rule][1].browsers = browsers;
+  }
+}
+
 module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig() {
@@ -126,6 +142,8 @@ module.exports = {
       }
     }
 
+    // Add rules that need the current browsers configurations
+    addNoVariableInTranspiledFunction(config.stylelint.rules, config.browsers);
     addUnsupportedBrowserSupportRule(config.stylelint.rules, config.browsers);
     addUnsupportedBrowserSupportRule(
       config.stylelint_legacy.rules,

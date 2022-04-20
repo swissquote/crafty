@@ -25,6 +25,7 @@
 - `no-utility-reassignment`: Utilities (`.u-*`) must be applied directly on the
   concerned element.
 - `no-negative-var`: Using `-var(...)` does not work, it should be `calc(var(...) * -1)`
+- `no-variable-in-transpiled-function`: Using `var()` inside a transpiled function will make the value static. This means that some parts of your CSS will be dynamic, and some will not.
 
 ## Usage within Crafty
 
