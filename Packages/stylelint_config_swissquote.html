@@ -124,6 +124,8 @@ concerned element.</li>
 <li>
 <code>no-negative-var</code>: Using <code>-var(...)</code> does not work, it should be <code>calc(var(...) * -1)</code>
 </li>
+<li>
+<code>no-variable-in-transpiled-function</code>: Using <code>var()</code> inside a transpiled function will make the value static. This means that some parts of your CSS will be dynamic, and some will not.</li>
 </ul>
 <h2><a id="usage-within-crafty" href="#usage-within-crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage within Crafty</h2>
 <p>Crafty includes those rules and presets by default, you don’t need to do any
