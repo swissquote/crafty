@@ -57,12 +57,3 @@
 :fullscreen .Link {
     display: flex;
 }
-
-/* unsupported features warnings */
-:root {
-    --color: blue;
-}
-
-.Component {
-    color: color-mod(var(--color) blue(20));
-}

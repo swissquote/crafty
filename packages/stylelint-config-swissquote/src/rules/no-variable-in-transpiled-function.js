@@ -153,7 +153,7 @@ module.exports = (on, options) => {
       return;
     }
 
-    const browsers = on.browsers;
+    const browsers = options.browsers;
 
     // skip rule if css variables aren't supported; everything is transpiled anyway
     if (isUnsupportedFeature("css-variables", browsers)) {
