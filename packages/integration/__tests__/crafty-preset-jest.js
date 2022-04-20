@@ -6,10 +6,9 @@ test.serial("Succeeds without transpiling", async t => {
 
   const result = await testUtils.run(["test"], cwd);
 
+  t.is(result.status, 0);
   t.true(result.stdall.includes("src/__tests__/math.js"));
   t.true(result.stdall.includes("src/__tests__/math-advanced.js"));
-
-  t.snapshot(result);
 });
 
 test.serial("Succeeds without transpiling, selects test", async t => {
@@ -31,7 +30,9 @@ test.serial("Shows configuration", async t => {
 
   const result = await testUtils.run(["test", "--showConfig"], cwd);
 
-  t.snapshot(result);
+  t.is(result.status, 0);
+  t.true(result.stdall.includes("moduleNameMapper"));
+  t.true(result.stdall.includes("testRegex"));
 });
 
 test.serial("Creates IDE Integration files", async t => {
