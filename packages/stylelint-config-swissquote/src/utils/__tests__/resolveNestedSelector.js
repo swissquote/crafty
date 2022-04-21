@@ -191,3 +191,23 @@ test("Works on compound selector concatenating class names", async t => {
   `);
   t.deepEqual(result, [[".Parent--before"], [".Parent--after"]]);
 });
+
+test("Nesting and multiple selectors", async t => {
+  const result = await postcssProcess(`
+  .Button, [dir="rtl"] .Button, .Button2 {
+    .Button__icon, .Button__icon2 {
+        &:first-child:last-child {
+            margin: var(--Button--icon-margin) calc(-1 * var(--Button--icon-size));
+        }
+    }
+  }
+  `);
+  t.deepEqual(result, [
+    [".Button", ".Button__icon:first-child:last-child"],
+    ['[dir="rtl"] .Button', ".Button__icon:first-child:last-child"],
+    [".Button2", ".Button__icon:first-child:last-child"],
+    [".Button", ".Button__icon2:first-child:last-child"],
+    ['[dir="rtl"] .Button', ".Button__icon2:first-child:last-child"],
+    [".Button2", ".Button__icon2:first-child:last-child"]
+  ]);
+});
