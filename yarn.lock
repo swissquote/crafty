@@ -1424,7 +1424,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@istanbuljs/schema@npm:^0.1.2":
+"@istanbuljs/schema@npm:^0.1.2, @istanbuljs/schema@npm:^0.1.3":
   version: 0.1.3
   resolution: "@istanbuljs/schema@npm:0.1.3"
   checksum: 5282759d961d61350f33d9118d16bcaed914ebf8061a52f4fa474b2cb08720c9c81d165e13b82f2e5a8a212cc5af482f0c6fc1ac27b9e067e5394c9a6ed186c9
@@ -1642,9 +1642,9 @@ __metadata:
   linkType: hard
 
 "@jridgewell/resolve-uri@npm:^3.0.3":
-  version: 3.0.5
-  resolution: "@jridgewell/resolve-uri@npm:3.0.5"
-  checksum: 1ee652b693da7979ac4007926cc3f0a32b657ffeb913e111f44e5b67153d94a2f28a1d560101cc0cf8087625468293a69a00f634a2914e1a6d0817ba2039a913
+  version: 3.0.6
+  resolution: "@jridgewell/resolve-uri@npm:3.0.6"
+  checksum: e57cc08d2aaea6bd55e77e7a124beb2fcca87be28c0db6c2d69b7cb2cb4e14109bbef1d57ae6250bf5f4a4ad950f094ed99c8925adaf82336b66dab0ad6906e6
   languageName: node
   linkType: hard
 
@@ -1655,7 +1655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.0":
+"@jridgewell/trace-mapping@npm:^0.3.0, @jridgewell/trace-mapping@npm:^0.3.7":
   version: 0.3.9
   resolution: "@jridgewell/trace-mapping@npm:0.3.9"
   dependencies:
@@ -1844,9 +1844,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:21.1.0":
-  version: 21.1.0
-  resolution: "@rollup/plugin-commonjs@npm:21.1.0"
+"@rollup/plugin-commonjs@npm:22.0.0":
+  version: 22.0.0
+  resolution: "@rollup/plugin-commonjs@npm:22.0.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     commondir: ^1.0.1
@@ -1856,8 +1856,8 @@ __metadata:
     magic-string: ^0.25.7
     resolve: ^1.17.0
   peerDependencies:
-    rollup: ^2.38.3
-  checksum: e8280f4b6192729f2bdf878c48c451dc441075f2a12f22c688393f48a6b95e8ff83caaacc3df4eb1d81516e08a0e3a669213632879910d85dd630b37bb284df7
+    rollup: ^2.68.0
+  checksum: fdcce2bf58875fde0e06f001544c0d9a0509a12929393862f72dcef8fcbf4d5d0ba0d5db6cf10ba4351335caf67a3dbdb95000678c468585e3972994f92e2ce9
   languageName: node
   linkType: hard
 
@@ -2157,7 +2157,7 @@ __metadata:
   resolution: "@swissquote/assets@workspace:package-forks/assets"
   dependencies:
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     glob: 8.0.1
     image-size: 1.0.1
     mrmime: 1.0.0
@@ -2329,7 +2329,7 @@ __metadata:
     mini-css-extract-plugin: 2.6.0
     postcss: 8.4.12
     postcss-loader: 6.2.1
-    postcss-scss: 4.0.3
+    postcss-scss: 4.0.4
     resolve-from: 5.0.0
     schema-utils: 4.0.0
     style-loader: 3.3.1
@@ -2421,7 +2421,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-rollup@workspace:packages/crafty-runner-rollup"
   dependencies:
-    "@rollup/plugin-commonjs": 21.1.0
+    "@rollup/plugin-commonjs": 22.0.0
     "@rollup/plugin-json": 4.1.0
     "@rollup/plugin-node-resolve": 13.2.1
     "@rollup/plugin-replace": 4.0.0
@@ -2447,7 +2447,7 @@ __metadata:
     "@swissquote/crafty-commons": 1.19.0
     "@swissquote/crafty-preset-terser": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     case-sensitive-paths-webpack-plugin: 2.4.0
     glob-to-regexp: 0.4.1
     hash-index: 3.0.0
@@ -2472,7 +2472,7 @@ __metadata:
     anymatch: 3.1.2
     async-done: 1.3.2
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     camelcase-keys: 7.0.2
     chokidar: 3.5.3
     copy-anything: 3.0.2
@@ -2501,7 +2501,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.20.0
     "@typescript-eslint/parser": 5.20.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     confusing-browser-globals: 1.0.11
     eslint: 8.14.0
     eslint-config-prettier: 8.5.0
@@ -2521,7 +2521,7 @@ __metadata:
   dependencies:
     "@swissquote/crafty-runner-gulp": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     glob: 8.0.1
     mock-fs: 5.1.2
     plugin-error: 1.0.1
@@ -2536,7 +2536,7 @@ __metadata:
     "@swissquote/crafty-runner-gulp": 1.19.0
     ansi-colors: ^4.0.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     event-stream: 4.0.1
     fancy-log: 2.0.0
     plugin-error: 1.0.1
@@ -2551,7 +2551,7 @@ __metadata:
   dependencies:
     "@swissquote/assets": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-functions: 4.0.2
   peerDependencies:
@@ -2564,7 +2564,7 @@ __metadata:
   resolution: "@swissquote/postcss-atroot@workspace:package-forks/postcss-atroot"
   dependencies:
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
   peerDependencies:
     postcss: ^8.0.0
@@ -2576,7 +2576,7 @@ __metadata:
   resolution: "@swissquote/postcss-color-gray@workspace:package-forks/postcss-color-gray"
   dependencies:
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-values-parser: 6.0.2
   peerDependencies:
@@ -2590,7 +2590,7 @@ __metadata:
   dependencies:
     "@swissquote/color-fns": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-functions: 4.0.2
     postcss-value-parser: 4.2.0
@@ -2606,7 +2606,7 @@ __metadata:
   dependencies:
     "@swissquote/color-fns": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-values-parser: 6.0.2
   peerDependencies:
@@ -2619,7 +2619,7 @@ __metadata:
   resolution: "@swissquote/postcss-custom-properties@workspace:package-forks/postcss-custom-properties"
   dependencies:
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-values-parser: 6.0.2
   peerDependencies:
@@ -2632,7 +2632,7 @@ __metadata:
   resolution: "@swissquote/postcss-image-set-polyfill@workspace:package-forks/postcss-image-set-polyfill"
   dependencies:
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
     postcss-media-query-parser: 0.2.3
     postcss-value-parser: 4.2.0
@@ -2647,7 +2647,7 @@ __metadata:
   dependencies:
     ava: 4.2.0
     balanced-match: 2.0.0
-    c8: 7.11.0
+    c8: 7.11.2
     postcss: 8.4.12
   peerDependencies:
     postcss: ^8.0.0
@@ -2670,7 +2670,7 @@ __metadata:
     "@swissquote/postcss-image-set-polyfill": 1.19.0
     "@swissquote/postcss-selector-matches": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     caniuse-lite: ^1.0.30001319
     postcss: 8.4.12
     postcss-attribute-case-insensitive: 5.0.0
@@ -2698,7 +2698,7 @@ __metadata:
     "@rollup/pluginutils": 4.2.1
     ansi-colors: ^4.0.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     eslint: 8.14.0
     rollup: 2.70.2
   languageName: unknown
@@ -2710,11 +2710,11 @@ __metadata:
   dependencies:
     "@swissquote/crafty": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     caniuse-lite: ^1.0.30001319
     postcss: 8.4.12
     postcss-resolve-nested-selector: 0.1.1
-    postcss-scss: 4.0.3
+    postcss-scss: 4.0.4
     postcss-selector-parser: 6.0.10
     postcss-value-parser: 4.2.0
     prettier: 2.6.2
@@ -2974,9 +2974,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^17.0.21":
-  version: 17.0.25
-  resolution: "@types/node@npm:17.0.25"
-  checksum: 6a820bd624e69ea772f52a6cdb326484eff5829443dc981939373929ade109f58c21698b9f0a831bd6ceea799e722a75dc49c5fa7a6bc32a81e1cbdfc6507b64
+  version: 17.0.26
+  resolution: "@types/node@npm:17.0.26"
+  checksum: 59f92f46cc76703921ddf50d34b920afe3bbf916360e46321d54507b28c0ead4c3aed57cfdc64eee7c089ed12321dc4a728aa63a1205f7c1115105467f7a2b31
   languageName: node
   linkType: hard
 
@@ -3023,13 +3023,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:^18.0.0":
-  version: 18.0.5
-  resolution: "@types/react@npm:18.0.5"
+  version: 18.0.6
+  resolution: "@types/react@npm:18.0.6"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 70d3336d43ef25509fa89ef3278f57fdf1945fc921e69b7890a78ab9a52a55ee38e2f13aa71eb4f6032b7311e7557860ce8836c1acf3028304989571c9736a96
+  checksum: 368b40176f0dab30a611c3263bf1d9878cebede9ce8015bc5661a396787dbe41f0b667b8d6d448dea7bc8c0557bf3cb329ab2b16ad2dacb18eaa764358bd16d4
   languageName: node
   linkType: hard
 
@@ -4330,14 +4330,14 @@ __metadata:
   linkType: hard
 
 "bonjour-service@npm:^1.0.11":
-  version: 1.0.11
-  resolution: "bonjour-service@npm:1.0.11"
+  version: 1.0.12
+  resolution: "bonjour-service@npm:1.0.12"
   dependencies:
     array-flatten: ^2.1.2
     dns-equal: ^1.0.0
     fast-deep-equal: ^3.1.3
     multicast-dns: ^7.2.4
-  checksum: b6093a856de9bc303551f1639945318e93782d3c40f03e38def3e2f079f478afd5385cf46538ade86f07205ac4b5f059105832b01eb9ce142fc69d27c006982f
+  checksum: 0dde8504351dcf7b7c354c73cd34625aa0aa3a1c325e054242d8a20aaba3fe11e109b0588f13620643ceedbda9b00c5e0b0e0f8e3d19f0033dc70bf96bdd39a5
   languageName: node
   linkType: hard
 
@@ -4467,31 +4467,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"c8@npm:7.11.0":
-  version: 7.11.0
-  resolution: "c8@npm:7.11.0"
+"c8@npm:7.11.2":
+  version: 7.11.2
+  resolution: "c8@npm:7.11.2"
   dependencies:
     "@bcoe/v8-coverage": ^0.2.3
-    "@istanbuljs/schema": ^0.1.2
+    "@istanbuljs/schema": ^0.1.3
     find-up: ^5.0.0
     foreground-child: ^2.0.0
-    istanbul-lib-coverage: ^3.0.1
+    istanbul-lib-coverage: ^3.2.0
     istanbul-lib-report: ^3.0.0
-    istanbul-reports: ^3.0.2
-    rimraf: ^3.0.0
+    istanbul-reports: ^3.1.4
+    rimraf: ^3.0.2
     test-exclude: ^6.0.0
-    v8-to-istanbul: ^8.0.0
+    v8-to-istanbul: ^9.0.0
     yargs: ^16.2.0
-    yargs-parser: ^20.2.7
+    yargs-parser: ^20.2.9
   bin:
     c8: bin/c8.js
-  checksum: 3576fd62dfbef7ef8ae0ce95349d3b297c3b10fa77902b5067896f40a6a3a4bc89637fb81a5badc6b36b4da3f883edc96172c325629d3ec3e24ff9aefab6dcca
+  checksum: 86b515f3936e3e4ddd7843ca24740072f3714d1d96a400f4d7bdbd2746b6a9740d76484a2f838a014f2d4389b662db49269d49e02cd4009e7f83008b7bf39872
   languageName: node
   linkType: hard
 
 "cacache@npm:^16.0.2":
-  version: 16.0.5
-  resolution: "cacache@npm:16.0.5"
+  version: 16.0.6
+  resolution: "cacache@npm:16.0.6"
   dependencies:
     "@npmcli/fs": ^2.1.0
     "@npmcli/move-file": ^2.0.0
@@ -4511,7 +4511,7 @@ __metadata:
     ssri: ^9.0.0
     tar: ^6.1.11
     unique-filename: ^1.1.1
-  checksum: 636a375d6cc23422d3b8c2c34f1281101c8ad84256a1c6f3232f9709838e6ba22ec160a7073f6c4721ebf64070f70f754216cda9ff934b7e738b3889c2cc96c7
+  checksum: c9813d4aa0452ecfdb7f796d931d0b8068fc921a3575fb858c26ab12ed41634a995135dbd56afd64ec4de141bd78c7021ce5aeabce83453c7342d3ed126815df
   languageName: node
   linkType: hard
 
@@ -5115,12 +5115,12 @@ __metadata:
   linkType: hard
 
 "core-js-compat@npm:^3.20.2, core-js-compat@npm:^3.21.0":
-  version: 3.22.1
-  resolution: "core-js-compat@npm:3.22.1"
+  version: 3.22.2
+  resolution: "core-js-compat@npm:3.22.2"
   dependencies:
     browserslist: ^4.20.2
     semver: 7.0.0
-  checksum: 2f9f885ea006fed7717279e36e644734aea722f0d8e06e272636c030eb2efcf1bab1471fa82e8ef89a39d60e0257a3f24573a014c334dc5b6f2085da90221c98
+  checksum: 4460d99c1e618a543976ebcc329c5e063254d746bf1eeda5e2ab7b43589071e8627b950c10e6189d8d231982788969203dbcdc264a5bb6dcea6ddfb32cce0214
   languageName: node
   linkType: hard
 
@@ -6821,9 +6821,9 @@ __metadata:
   linkType: hard
 
 "fp-ts@npm:^2.6.1":
-  version: 2.11.10
-  resolution: "fp-ts@npm:2.11.10"
-  checksum: 4a6b5f99eeb2876bba85674d058b034f5bb3a728c4339f9ef7d45be36f100255eed3d5fe2c067b4a2a0efc00cda544895d43e30f90683e4bfc9b1a03d9b8d541
+  version: 2.12.0
+  resolution: "fp-ts@npm:2.12.0"
+  checksum: 0f078feb261529f1b709a791016ecaee1b8d64a69bf7d999c6dcfcf058b4150e8deab4ee8074a0840f5c237711a9680f06a8b46ff59ef27efddfaea6d2810c45
   languageName: node
   linkType: hard
 
@@ -7318,7 +7318,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"has-bigints@npm:^1.0.1":
+"has-bigints@npm:^1.0.1, has-bigints@npm:^1.0.2":
   version: 1.0.2
   resolution: "has-bigints@npm:1.0.2"
   checksum: 390e31e7be7e5c6fe68b81babb73dfc35d413604d7ee5f56da101417027a4b4ce6a27e46eff97ad040c835b5d228676eae99a9b5c3bc0e23c8e81a49241ff45b
@@ -7779,7 +7779,7 @@ __metadata:
     "@swissquote/crafty-runner-rollup": 1.19.0
     "@swissquote/crafty-runner-webpack": 1.19.0
     ava: 4.2.0
-    c8: 7.11.0
+    c8: 7.11.2
     execa: 5.1.1
     lodash-es: 4.17.21
     react: 18.0.0
@@ -8291,7 +8291,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-lib-coverage@npm:^3.0.0, istanbul-lib-coverage@npm:^3.0.1, istanbul-lib-coverage@npm:^3.2.0":
+"istanbul-lib-coverage@npm:^3.0.0, istanbul-lib-coverage@npm:^3.2.0":
   version: 3.2.0
   resolution: "istanbul-lib-coverage@npm:3.2.0"
   checksum: a2a545033b9d56da04a8571ed05c8120bf10e9bce01cf8633a3a2b0d1d83dff4ac4fe78d6d5673c27fc29b7f21a41d75f83a36be09f82a61c367b56aa73c1ff9
@@ -8333,7 +8333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-reports@npm:^3.0.2, istanbul-reports@npm:^3.1.3":
+"istanbul-reports@npm:^3.1.3, istanbul-reports@npm:^3.1.4":
   version: 3.1.4
   resolution: "istanbul-reports@npm:3.1.4"
   dependencies:
@@ -10921,12 +10921,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-scss@npm:4.0.3":
-  version: 4.0.3
-  resolution: "postcss-scss@npm:4.0.3"
+"postcss-scss@npm:4.0.4":
+  version: 4.0.4
+  resolution: "postcss-scss@npm:4.0.4"
   peerDependencies:
     postcss: ^8.3.3
-  checksum: d11110376ce2dcf624426d9edfb49d794d4f628aa4253849e841047761563ac2fe6e79a98aa46f8ed7f687cedd8c475a0956fa5e9e6802f8448ccd6538955b48
+  checksum: b4f240dd5eeb0c21738b673d9caf9a06b9a6db665a5b1c815ee4ca10c4c74a67c54f11cd5a4970dea98475cbb9e6d846e05dd3e48924189c2ecbf1f50cd44aa4
   languageName: node
   linkType: hard
 
@@ -13249,9 +13249,9 @@ __metadata:
   linkType: hard
 
 "tslib@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "tslib@npm:2.3.1"
-  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
@@ -13394,14 +13394,14 @@ __metadata:
   linkType: hard
 
 "unbox-primitive@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "unbox-primitive@npm:1.0.1"
+  version: 1.0.2
+  resolution: "unbox-primitive@npm:1.0.2"
   dependencies:
-    function-bind: ^1.1.1
-    has-bigints: ^1.0.1
-    has-symbols: ^1.0.2
+    call-bind: ^1.0.2
+    has-bigints: ^1.0.2
+    has-symbols: ^1.0.3
     which-boxed-primitive: ^1.0.2
-  checksum: 89d950e18fb45672bc6b3c961f1e72c07beb9640c7ceed847b571ba6f7d2af570ae1a2584cfee268b9d9ea1e3293f7e33e0bc29eaeb9f8e8a0bab057ff9e6bba
+  checksum: b7a1cf5862b5e4b5deb091672ffa579aa274f648410009c81cca63fed3b62b610c4f3b773f912ce545bb4e31edc3138975b5bc777fc6e4817dca51affb6380e9
   languageName: node
   linkType: hard
 
@@ -13589,7 +13589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"v8-to-istanbul@npm:^8.0.0, v8-to-istanbul@npm:^8.1.0":
+"v8-to-istanbul@npm:^8.1.0":
   version: 8.1.1
   resolution: "v8-to-istanbul@npm:8.1.1"
   dependencies:
@@ -13597,6 +13597,17 @@ __metadata:
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
   checksum: 54ce92bec2727879626f623d02c8d193f0c7e919941fa373ec135189a8382265117f5316ea317a1e12a5f9c13d84d8449052a731fe3306fa4beaafbfa4cab229
+  languageName: node
+  linkType: hard
+
+"v8-to-istanbul@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "v8-to-istanbul@npm:9.0.0"
+  dependencies:
+    "@jridgewell/trace-mapping": ^0.3.7
+    "@types/istanbul-lib-coverage": ^2.0.1
+    convert-source-map: ^1.6.0
+  checksum: d8ed2c39ba657dfd851a3c7b3f2b87e5b96c9face806ecfe5b627abe53b0c86f264f51425c591e451405b739e3f8a6728da59670f081790990710e813d8d3440
   languageName: node
   linkType: hard
 
@@ -14200,7 +14211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:20.x, yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3, yargs-parser@npm:^20.2.7":
+"yargs-parser@npm:20.x, yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3, yargs-parser@npm:^20.2.9":
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
