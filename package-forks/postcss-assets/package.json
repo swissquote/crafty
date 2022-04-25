@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/postcss-assets",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "PostCSS plugin to manage assets",
   "keywords": [
     "assets",
@@ -32,7 +32,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=lib ava"
   },
   "dependencies": {
-    "@swissquote/assets": "1.19.0",
+    "@swissquote/assets": "1.19.1",
     "postcss-functions": "4.0.2"
   },
   "devDependencies": {
