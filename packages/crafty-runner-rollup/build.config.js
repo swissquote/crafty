@@ -22,7 +22,7 @@ module.exports = [
       .options({ sourceMap: false })
       .externals(externals),
   async (builder, utils) => {
-    fs.promises.writeFile(
+    await fs.promises.writeFile(
       "dist/jest-worker/index.js",
       `const { Worker } = require("./bundled.js").jestWorker(); module.exports = { default: Worker, Worker }; `
     );
@@ -86,6 +86,25 @@ module.exports = [
         ...externals,
         "jest-worker": "../jest-worker/index.js"
       }),
+
+  async (builder, utils) => {
+    // transform.js in rollup-plugin-terser still has a reference to "terser"
+    // This changes it to @swissquote/crafty-preset-terser
+    const terserTransform = "dist/rollup-plugin-terser/transform.js";
+
+    const content = await fs.promises.readFile(terserTransform, {
+      encoding: "utf-8"
+    });
+
+    await fs.promises.writeFile(
+      terserTransform,
+      content.replace(
+        'require("terser")',
+        'require("@swissquote/crafty-preset-terser/dist/terser")'
+      )
+    );
+  },
+
   builder =>
     builder("rollup-packages").externals({
       // Provided by other Crafty packages
