@@ -214,11 +214,6 @@ module.exports = ${JSON.stringify(content, null, 4)};
     // The "style" loader enables hot editing of CSS.
     const styleRule = chain.module.rule("styles").test(/\.s?css$/);
 
-    styleRule.include
-      .add(resolve("css"))
-      .add(resolve(""))
-      .add(resolve("node_modules"));
-
     if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
       // Initialize extraction plugin
       const MiniCssExtractPlugin = require("mini-css-extract-plugin");

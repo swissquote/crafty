@@ -1,15 +1,15 @@
 .BigImage {
-  background-image: url(img/test.png);
+  background-image: url("img/test.png");
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .BigImage {
-    background-image: url(img/test-2x.png);
+    background-image: url("img/test-2x.png");
   }
 }
 
 @media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
   .BigImage {
-    background-image: url(my-img-print.png);
+    background-image: url("my-img-print.png");
   }
 }
