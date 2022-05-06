@@ -713,18 +713,18 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.BigImage</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test.png);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"img/test.png"</span>);
 }
 
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>), (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">192dpi</span>) {
   <span class="hljs-selector-class">.BigImage</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(img/test-<span class="hljs-number">2</span>x.png);
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"img/test-2x.png"</span>);
   }
 }
 
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">6.25</span>), (<span class="hljs-attribute">min-resolution:</span> <span class="hljs-number">600dpi</span>) {
   <span class="hljs-selector-class">.BigImage</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(my-img-print.png);
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"my-img-print.png"</span>);
   }
 }
 </code></pre>
@@ -914,7 +914,7 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/<span class="hljs-number">9</span>hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMESURBVDjLXZNrSFNxGMYPgQQRfYv6EgR9kCgKohtFgRAVQUHQh24GQReqhViWlVYbZJlZmZmombfVpJXTdHa3reM8uszmWpqnmQuX5drmLsdjenR7ev9DR3Xgd3h43+d5/pw/HA4AN9zITSPUhJ14R0xn87+h2ZzJvZVInJpzAQOXQOQMt+/<span class="hljs-number">5</span>rvhMCLXv9Vjrt1rSXitmwj+Jua1+Ox+<span class="hljs-number">2</span>HfGNdGf6yW8l5sUKPNVcRsiaPDA22Ahv6/<span class="hljs-number">7</span>Ae/<span class="hljs-number">0</span>aKdviQ0G7B/c6f8Zg+gbfh079Mjno0MhS58lflOsgEjh3BXc+bM/<span class="hljs-number">0</span>DzbvDwj314znt/bjof0HdPw3FBq6kP+oCxVNfdDZvqPsrQmf6zdFRtyPJgbrFoqUTeS+FnPrekpmiC2lS+QcUx+qrf0wmFzodYfgC0nwhoYh9oegfdmLsmYXHj7JhV23erS7ZNYHyibGLiLtXsO19BoHSiwu6Ok09gwFg/gy8BO/STOkKFBk7EWh2YkLeh5Hy4Ws2B2w157iDvOpxw4UPRPRTSfL41FIsow7ZeXwUFF4dBQ1L96A/xLEFf1HMC/LxAt25PH+VN0HXH1gh2dEwdBoBGO0OKvW4L7hCdIvavBSsMIRVHCi0ArmZZl4wbYrz/yHSq1Ql9vQLylUEoE7GMal3OuxMG/<span class="hljs-number">7</span>CO848N6n4HheK5iXZeIFmy88Nu+<span class="hljs-number">8</span>aYJG24G3ziB+<span class="hljs-number">0</span>Ee7wwqemlvQ5w9hcAJwyUDtpwBOFLeBeVkmXpB0qlK9RV2HlLsCsvUivHRhQwoQjhCkA1TgJX1OK0JVzIN5WSZesPZ44XKia+P5BqSS4aq+BzZXABLdhyQrsJPOqv4MVcEbMA/zsky8gLHyYO7hI9laecOZWuzLfYXU2zzSblmQerMZqjwTknOeY9dlIw5kVcrMG/<span class="hljs-number">8</span>XpoQgCEkOhwNNJn5i7bFSrFDpsCrFEIPpLacr0WxpibYIQpS86/<span class="hljs-number">8</span>pMBqNswnJ6XSivqHBv3R3pmbxzgwz4Z+EaTXtwqIogrzjxIJ4QVVV1UyihxgjFv3/K09Bu/lEkBgg5rLZH+fT5dvfn7iFAAAAAElFTkSuQmCC);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMESURBVDjLXZNrSFNxGMYPgQQRfYv6EgR9kCgKohtFgRAVQUHQh24GQReqhViWlVYbZJlZmZmombfVpJXTdHa3reM8uszmWpqnmQuX5drmLsdjenR7ev9DR3Xgd3h43+d5/pw/HA4AN9zITSPUhJ14R0xn87+h2ZzJvZVInJpzAQOXQOQMt+/5rvhMCLXv9Vjrt1rSXitmwj+Jua1+Ox+2HfGNdGf6yW8l5sUKPNVcRsiaPDA22Ahv6/7Ae/0aKdviQ0G7B/c6f8Zg+gbfh079Mjno0MhS58lflOsgEjh3BXc+bM/0DzbvDwj314znt/bjof0HdPw3FBq6kP+oCxVNfdDZvqPsrQmf6zdFRtyPJgbrFoqUTeS+FnPrekpmiC2lS+QcUx+qrf0wmFzodYfgC0nwhoYh9oegfdmLsmYXHj7JhV23erS7ZNYHyibGLiLtXsO19BoHSiwu6Ok09gwFg/gy8BO/STOkKFBk7EWh2YkLeh5Hy4Ws2B2w157iDvOpxw4UPRPRTSfL41FIsow7ZeXwUFF4dBQ1L96A/xLEFf1HMC/LxAt25PH+VN0HXH1gh2dEwdBoBGO0OKvW4L7hCdIvavBSsMIRVHCi0ArmZZl4wbYrz/yHSq1Ql9vQLylUEoE7GMal3OuxMG/7CO848N6n4HheK5iXZeIFmy88Nu+8aYJG24G3ziB+0Ee7wwqemlvQ5w9hcAJwyUDtpwBOFLeBeVkmXpB0qlK9RV2HlLsCsvUivHRhQwoQjhCkA1TgJX1OK0JVzIN5WSZesPZ44XKia+P5BqSS4aq+BzZXABLdhyQrsJPOqv4MVcEbMA/zsky8gLHyYO7hI9laecOZWuzLfYXU2zzSblmQerMZqjwTknOeY9dlIw5kVcrMG/8XpoQgCEkOhwNNJn5i7bFSrFDpsCrFEIPpLacr0WxpibYIQpS86/8pMBqNswnJ6XSivqHBv3R3pmbxzgwz4Z+EaTXtwqIogrzjxIJ4QVVV1UyihxgjFv3/K09Bu/lEkBgg5rLZH+fT5dvfn7iFAAAAAElFTkSuQmCC"</span>);
 }
 
 <span class="hljs-selector-class">.button</span> {
@@ -938,7 +938,7 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">25em</span>) {
   <span class="hljs-selector-class">.button</span> {
-    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(../images/buttons/background.png);
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/buttons/background.png"</span>);
   }
 }
 </code></pre>
@@ -1037,7 +1037,7 @@ We made a selection of plugins useful for Swissquote, and here are some features
 
 <span class="hljs-selector-class">.search</span><span class="hljs-selector-pseudo">:after</span> {
   <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(/icons/search.png);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"/icons/search.png"</span>);
 }
 </code></pre>
 <h2><a id="variables" href="#variables" class="Permalink" aria-hidden="true" title="Permalink">#</a>Variables</h2>
@@ -1084,15 +1084,15 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-class">.icon-foo</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/foo.png);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/foo.png"</span>);
 }
 
 <span class="hljs-selector-class">.icon-bar</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/bar.png);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/bar.png"</span>);
 }
 
 <span class="hljs-selector-class">.icon-baz</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(icons/baz.png);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"icons/baz.png"</span>);
 }
 
 <span class="hljs-selector-class">.b-1</span> {
