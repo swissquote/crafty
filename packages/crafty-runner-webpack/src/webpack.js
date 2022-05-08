@@ -98,17 +98,54 @@ function configureWatcher(chain, bundle, config, webpackPort) {
     .hot(bundle.hot ? "only" : false)
     .host("localhost")
     .port(webpackPort)
-    .set("devMiddleware", {
-      stats: false,
-      writeToDisk: true
-    })
-    .set("static", {
-      directory: config.destination,
-      watch: false
-    })
     .headers({
       "Access-Control-Allow-Origin": "*"
     });
+}
+
+function finalizeWatcher(chain) {
+  const devServerConfig = chain.devServer.toConfig();
+
+  // Read theses values from webpack chain as they could have been overriden with a preset
+  const protocol = chain.devServer.get("https") ? "https" : "http";
+  const host = devServerConfig.host;
+  const port = devServerConfig.port;
+  const urlPrefix = `${protocol}://${host}:${port}`;
+
+  // Setting the public path to find the compiled assets,
+  // only if it hasn't already been set
+  const definedPublicPath = chain.output.get("publicPath");
+  if (!definedPublicPath) {
+    const contentBase = chain.devServer.get("contentBase");
+    const outputPath = chain.output.get("path");
+    const publicPath = outputPath
+      .replace(process.cwd(), "")
+      .replace(contentBase, "")
+      .replace(/^\//, "");
+
+    chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
+  }
+
+  chain
+    .entry("default")
+    .prepend(require.resolve("../dist/webpack-plugin-serve-client/index.js"));
+
+  chain
+    .plugin("WebpackPluginServe")
+    .init((Plugin, args) => new Plugin.WebpackPluginServe(...args))
+    .use(require.resolve("../dist/webpack-plugin-serve/index.js"), [
+      {
+        host,
+        port,
+        // TODO :: automate this path
+        publicPath: "dist",
+        // FIXME :: ⬢ wps: Warning The value of `publicPath` was not found on the filesystem in any static paths specified
+        static: process.cwd(),
+        middleware: (app, builtins) => {
+          builtins.headers(devServerConfig.headers);
+        }
+      }
+    ]);
 }
 
 function configureProfiling(chain, bundle) {
@@ -131,24 +168,6 @@ function configureProfiling(chain, bundle) {
     .plugin("inspectpack")
     .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
     .use(require.resolve("../packages/inspectpack.js"), [{}]);
-}
-
-function finalizeWatcher(chain) {
-  // Read theses values from webpack chain as they could have been overriden with a preset
-  const protocol = chain.devServer.get("https") ? "https" : "http";
-  const host = chain.devServer.get("host");
-  const port = chain.devServer.get("port");
-  const urlPrefix = `${protocol}://${host}:${port}`;
-
-  // Setting the public path to find the compiled assets,
-  // only if it hasn't already been set
-  const definedPublicPath = chain.output.get("publicPath");
-  if (!definedPublicPath) {
-    const contentBase = chain.devServer.get("contentBase");
-    const outputPath = chain.output.get("path");
-    const publicPath = outputPath.replace(contentBase, "").replace(/^\//, "");
-    chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
-  }
 }
 
 module.exports = function(crafty, bundle, webpackPort) {
@@ -247,7 +266,7 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process
-  if (crafty.getEnvironment() !== "production" && isWatching && bundle.hot) {
+  if (crafty.getEnvironment() !== "production" && isWatching) {
     finalizeWatcher(chain);
   }
 

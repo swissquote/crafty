@@ -70,33 +70,20 @@ module.exports = function jsTaskES6(crafty, bundle) {
   };
 
   // This is executed in watch mode only
-  let runningWatcher = null;
   crafty.watcher.addRaw({
     start: () => {
       const compilerReady = getCompiler();
 
       compilerReady.catch(e => {
-        crafty.log.error("[webpack-dev-server]", "Could not initialize", e);
+        crafty.log.error("Could not initialize Webpack configuration", e);
       });
 
       compilerReady
         .then(({ compiler, config }) => {
-          // Prepare the Hot Reload Server
-          const WebpackDevServer = require("webpack-dev-server");
-          runningWatcher = new WebpackDevServer(config.devServer, compiler);
-
-          runningWatcher.startCallback(err => {
-            if (err) {
-              throw err;
-            }
-            crafty.log(
-              "[webpack-dev-server]",
-              `Started, listening on ${config.devServer.host}:${config.devServer.port}`
-            );
-          });
+          compiler.watch(config.watchOptions, () => {});
         })
         .catch(e => {
-          crafty.log.error("[webpack-dev-server]", "Could not start", e);
+          crafty.log.error("Webpack watch: Could not start", e);
         });
     }
   });
