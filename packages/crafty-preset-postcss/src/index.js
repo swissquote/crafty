@@ -7,10 +7,6 @@ const gulpTasks = require("./gulp");
 const MODULES = path.join(__dirname, "..", "node_modules");
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-function resolve(relative) {
-  return path.resolve(process.cwd(), relative);
-}
-
 function getExtractConfig(bundle) {
   let extractCSSConfig = bundle.extractCSS;
   if (extractCSSConfig === true) {
