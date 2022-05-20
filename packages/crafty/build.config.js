@@ -16,7 +16,7 @@ module.exports = [
           .package("loud-rejection", "loudRejection")
           .package("merge-anything", "mergeAnything")
           .package("pretty-hrtime", "prettyHrTime")
-          .package("undertaker", "undertaker")
+          .package("@swissquote/undertaker", "undertaker")
           .package("yargs-parser", "yargsParser")
       )
       .externals({

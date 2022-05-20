@@ -2,6 +2,8 @@ const { existsSync } = require("fs");
 const { readdir, writeFile } = require("fs/promises");
 const path = require("path");
 
+const rootVersion = require("../package.json").version;
+
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const scripts = {
@@ -27,9 +29,9 @@ async function main() {
         const pkg = require(file);
 
         // version check
-        if (pkg.version !== "1.17.2") {
-          warnings.push("Version must be set to 1.17.2");
-          pkg.version = "1.17.2";
+        if (pkg.version !== rootVersion) {
+          warnings.push(`Version must be set to ${rootVersion}`);
+          pkg.version = rootVersion;
         }
 
         // name check
@@ -84,7 +86,7 @@ async function main() {
           node: ">=12",
         };
 
-        pkg.devDependencies = {
+        /*pkg.devDependencies = {
           ava: "4.0.0",
           c8: "7.11.0",
           postcss: "8.4.5",
@@ -92,7 +94,7 @@ async function main() {
 
         pkg.peerDependencies = {
           postcss: "^8.0.0",
-        };
+        };*/
 
         if (warnings.length) {
           await writeFile(file, JSON.stringify(pkg, null, 2));
