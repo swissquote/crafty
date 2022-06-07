@@ -19,15 +19,15 @@ module.exports = {
       .update(filename)
       .digest("hex");
   },
-  process(src, filename) {
+  process(code, filename) {
     if (babel.util && !babel.util.canCompile(filename)) {
-      return src;
+      return { code };
     }
 
     // Quick check with a regex,
     // Allows to eliminate most cases right away without a more expensive parsing.
-    if (!importExportRegex.test(src)) {
-      return src;
+    if (!importExportRegex.test(code)) {
+      return { code };
     }
 
     // We add Babel with a single transform
@@ -38,7 +38,7 @@ module.exports = {
       plugins: [require.resolve("@babel/plugin-transform-modules-commonjs")]
     };
 
-    const ast = babel.parseSync(src, options);
+    const ast = babel.parseSync(code, options);
 
     // Imports and exports have to be at the first level on a file
     // This makes it easy for us to traverse the file, a simple filter does the trick
@@ -52,9 +52,9 @@ module.exports = {
     );
 
     if (hasImportOrExport.length === 0) {
-      return src;
+      return { code };
     }
 
-    return babel.transformFromAstSync(ast, src, options).code;
+    return { code: babel.transformFromAstSync(ast, code, options).code };
   }
 };

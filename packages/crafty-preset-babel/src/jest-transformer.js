@@ -20,9 +20,9 @@ module.exports = {
       .update(filename)
       .digest("hex");
   },
-  process(src, filename, { config }, transformOptions) {
+  process(code, filename, { config }, transformOptions) {
     if (babel.util && !babel.util.canCompile(filename)) {
-      return src;
+      return { code };
     }
 
     const options = {
@@ -57,6 +57,6 @@ module.exports = {
       ]);
     }
 
-    return babel.transform(src, options).code;
+    return { code: babel.transform(code, options).code };
   }
 };

@@ -8,6 +8,18 @@ const externals = getExternals();
 // Error: original.line and original.column are not numbers -- you probably meant to omit the original mapping entirely and only map the generated position. If so, pass null for the original mapping instead of an object with empty or null values.
 delete externals["source-map"];
 
+function replace(buf, a, b) {
+  if (!Buffer.isBuffer(buf)) buf = Buffer.from(buf);
+  const idx = buf.indexOf(a);
+  if (idx === -1) return buf;
+  if (!Buffer.isBuffer(b)) b = Buffer.from(b);
+
+  const before = buf.slice(0, idx);
+  const after = replace(buf.slice(idx + a.length), a, b);
+  const len = idx + b.length + after.length;
+  return Buffer.concat([ before, b, after ], len);
+}
+
 module.exports = [
   (builder) =>
     builder("fs-extra")
@@ -88,12 +100,18 @@ module.exports = [
       "dist/fork-ts-checker-webpack-plugin/typescript.js"
     );
 
+    const tsBundle = "dist/typescript-packages/bundled.js";
+
     // Create a new digest for ts-jest
-    const fileBuffer = await fs.promises.readFile(
-      "dist/typescript-packages/bundled.js"
-    );
+    const fileBuffer = await fs.promises.readFile(tsBundle);
+
+    // Fix path to .ts-jest-digest
+    const fileBufferEdited = replace(fileBuffer, "../../../.ts-jest-digest", "../../.ts-jest-digest");
+
     const hashSum = crypto.createHash("sha256");
-    hashSum.update(fileBuffer);
+    hashSum.update(fileBufferEdited);
     await fs.promises.writeFile(".ts-jest-digest", hashSum.digest("hex"));
+
+    await fs.promises.writeFile(tsBundle, fileBufferEdited);
   },
 ];
