@@ -467,7 +467,7 @@ table {
 
 A generic font used to match the user’s interface
 
-[Specification](https://drafts.csswg.org/css-fonts-4/#system-ui-def) [Implementation](https://github.com/JLHwung/postcss-font-family-system-ui)
+[Specification](https://drafts.csswg.org/css-fonts-4/#system-ui-def) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -477,7 +477,7 @@ body {
 
 /* After */
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue;
 }
 ```
 

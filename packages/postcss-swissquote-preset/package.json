@@ -15,7 +15,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "dependencies": {
-    "@parcel/css": "1.8.3",
+    "@parcel/css": "1.10.0",
     "@swissquote/crafty-commons": "1.19.1",
     "caniuse-lite": "^1.0.30001319",
     "postcss": "8.4.14"
@@ -35,7 +35,6 @@
     "postcss-attribute-case-insensitive": "5.0.1",
     "postcss-custom-selectors": "6.0.3",
     "postcss-dir-pseudo-class": "6.0.4",
-    "postcss-font-family-system-ui": "5.0.0",
     "postcss-font-variant": "5.0.0",
     "postcss-import": "14.1.0",
     "postcss-initial": "4.0.1",

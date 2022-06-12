@@ -13,7 +13,6 @@ const singlePackages = [
   "postcss-media-query-parser",
   "resolve-from",
   "slice-ansi",
-  "specificity",
   "string-width",
   "style-search",
   "supports-color",

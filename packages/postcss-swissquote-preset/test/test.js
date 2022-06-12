@@ -233,8 +233,7 @@ const plugins = {
         name: "system-ui value for font-family",
         description: "A generic font used to match the user’s interface",
         link: "https://drafts.csswg.org/css-fonts-4/#system-ui-def",
-        implementation:
-          "https://github.com/JLHwung/postcss-font-family-system-ui",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "fonts-4/system-ui-value",
       },
     ],

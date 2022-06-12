@@ -112,16 +112,6 @@ module.exports = [
       .externals(externals)
       .package(),
   builder =>
-    builder("postcss-font-family-system-ui")
-      .externals({
-        ...externals,
-
-        // Provided by this package
-        "caniuse-lite": "caniuse-lite",
-        "/caniuse-lite(/.*)/": "caniuse-lite$1"
-      })
-      .package(),
-  builder =>
     builder("postcss-font-variant")
       .externals(externals)
       .package(),

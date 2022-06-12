@@ -87,8 +87,6 @@ module.exports = function(config) {
     .processor("postcss-color-mod-function")
     .embedded("swissquote-postcss-color-mod-function");
 
-  processors.processor("postcss-font-family-system-ui").embedded();
-
   processors.processor("postcss-font-variant").embedded();
 
   processors
