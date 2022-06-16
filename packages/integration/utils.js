@@ -63,6 +63,10 @@ function snapshotizeOutput(ret) {
       /\(node:([0-9]+)\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*\n(\(Use `node --trace-deprecation ...` to show where the warning was created\)\n)?/gm,
       ""
     ) // Remove Node exports warnings
+    .replace(
+      /https:\/\/www\.npmjs\.com\/package\/gulp-eslint-new\/v\/(.*?)#autofix/gm,
+      "https://www.npmjs.com/package/gulp-eslint-new/v/VERSION#autofix"
+    )
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\.\/([A-Za-z\/\.]*)\n\n__PATH__/gm, `./$1\n__PATH__`) // Sometimes lint output has more line breaks for no known reason ...
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
