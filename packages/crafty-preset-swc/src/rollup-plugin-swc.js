@@ -1,6 +1,6 @@
 const { transform } = require("@swc/core");
 
-const HELPERS_INDEX = require.resolve("@swc/helpers/src/index.js");
+const HELPERS_INDEX = require.resolve("@swc/helpers/src/index.mjs");
 const isHelper = /\/node_modules\/@swc\/helpers\//;
 
 module.exports = function swcPlugin(options = {}) {
