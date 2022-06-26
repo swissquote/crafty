@@ -7,6 +7,6 @@ module.exports = [
 
     // Provided by this package
     "eslint": "eslint",
-    "ajv": "ajv"
+    "schema-utils": "schema-utils"
   })
 ];

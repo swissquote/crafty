@@ -25,9 +25,9 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "dependencies": {
-    "async-done": "1.3.2",
-    "async-settle": "1.0.0",
-    "now-and-later": "2.0.1"
+    "async-done": "2.0.0",
+    "async-settle": "2.0.0",
+    "now-and-later": "3.0.0"
   },
   "devDependencies": {
     "ava": "4.3.0",
