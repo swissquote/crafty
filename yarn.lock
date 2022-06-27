@@ -2371,7 +2371,7 @@ __metadata:
     babel-loader: 8.2.5
     gulp-babel: 8.0.0
     gulp-terser: 2.1.0
-    schema-utils: ^2.6.5
+    schema-utils: 2.7.1
   languageName: unknown
   linkType: soft
 
@@ -2387,7 +2387,7 @@ __metadata:
     eslint: 8.18.0
     eslint-webpack-plugin: 3.2.0
     resolve-from: 5.0.0
-    schema-utils: ^4.0.0
+    schema-utils: 4.0.0
   peerDependencies:
     "@swissquote/crafty-preset-eslint": 1.19.1
     "@swissquote/crafty-runner-rollup": 1.19.1
@@ -2519,7 +2519,7 @@ __metadata:
     gulp-babel: 8.0.0
     gulp-typescript: 5.0.1
     rollup-plugin-typescript2: 0.32.1
-    schema-utils: ^2.6.5
+    schema-utils: 2.7.1
     ts-jest: 28.0.5
     ts-loader: 9.3.1
     tslib: 2.4.0
@@ -11525,6 +11525,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"schema-utils@npm:2.7.1, schema-utils@npm:^2.6.5":
+  version: 2.7.1
+  resolution: "schema-utils@npm:2.7.1"
+  dependencies:
+    "@types/json-schema": ^7.0.5
+    ajv: ^6.12.4
+    ajv-keywords: ^3.5.2
+  checksum: 32c62fc9e28edd101e1bd83453a4216eb9bd875cc4d3775e4452b541908fa8f61a7bbac8ffde57484f01d7096279d3ba0337078e85a918ecbeb72872fb09fb2b
+  languageName: node
+  linkType: hard
+
 "schema-utils@npm:4.0.0, schema-utils@npm:^4.0.0":
   version: 4.0.0
   resolution: "schema-utils@npm:4.0.0"
@@ -11534,17 +11545,6 @@ __metadata:
     ajv-formats: ^2.1.1
     ajv-keywords: ^5.0.0
   checksum: c843e92fdd1a5c145dbb6ffdae33e501867f9703afac67bdf35a685e49f85b1dcc10ea250033175a64bd9d31f0555bc6785b8359da0c90bcea30cf6dfbb55a8f
-  languageName: node
-  linkType: hard
-
-"schema-utils@npm:^2.6.5":
-  version: 2.7.1
-  resolution: "schema-utils@npm:2.7.1"
-  dependencies:
-    "@types/json-schema": ^7.0.5
-    ajv: ^6.12.4
-    ajv-keywords: ^3.5.2
-  checksum: 32c62fc9e28edd101e1bd83453a4216eb9bd875cc4d3775e4452b541908fa8f61a7bbac8ffde57484f01d7096279d3ba0337078e85a918ecbeb72872fb09fb2b
   languageName: node
   linkType: hard
 
