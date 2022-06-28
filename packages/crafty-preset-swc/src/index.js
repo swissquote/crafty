@@ -64,7 +64,7 @@ module.exports = {
     // Make sure this module is resolved from the right path
     chain.resolve.alias.set(
       "@swc/helpers",
-      require.resolve("@swc/helpers/src/index.mjs")
+      path.dirname(require.resolve("@swc/helpers/package.json"))
     );
 
     // EcmaScript 2015+

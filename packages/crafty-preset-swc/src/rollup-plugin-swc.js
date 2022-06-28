@@ -1,6 +1,5 @@
 const { transform } = require("@swc/core");
 
-const HELPERS_INDEX = require.resolve("@swc/helpers/src/index.mjs");
 const isHelper = /\/node_modules\/@swc\/helpers\//;
 
 module.exports = function swcPlugin(options = {}) {
@@ -19,15 +18,15 @@ module.exports = function swcPlugin(options = {}) {
       return transform(code, options);
     },
     resolveId(importee /*, importer*/) {
-      if (importee === "@swc/helpers" || importee === HELPERS_INDEX) {
-        if (hasHelperDependency) {
-          return {
-            id: importee,
-            external: true
-          };
-        }
-
-        return HELPERS_INDEX;
+      if (
+        (importee === "@swc/helpers" ||
+          importee.indexOf("@swc/helpers/") > -1) &&
+        hasHelperDependency
+      ) {
+        return {
+          id: importee,
+          external: true
+        };
       }
 
       return null;
