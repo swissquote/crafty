@@ -2322,7 +2322,7 @@ __metadata:
     "@swissquote/gulp-newer": 1.19.1
     gulp-concat: 2.6.1
     gulp-eslint-new: 1.5.1
-    plugin-error: 1.0.1
+    plugin-error: 2.0.0
     through2: 4.0.2
   languageName: unknown
   linkType: soft
@@ -2657,7 +2657,7 @@ __metadata:
     c8: 7.11.3
     glob: 8.0.3
     mock-fs: 5.1.2
-    plugin-error: 1.0.1
+    plugin-error: 2.0.0
     vinyl: 2.2.1
   languageName: unknown
   linkType: soft
@@ -2672,7 +2672,7 @@ __metadata:
     c8: 7.11.3
     event-stream: 4.0.1
     fancy-log: 2.0.0
-    plugin-error: 1.0.1
+    plugin-error: 2.0.0
     through: 2.3.8
     through2: 4.0.2
   languageName: unknown
@@ -10336,7 +10336,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plugin-error@npm:1.0.1, plugin-error@npm:^1.0.1":
+"plugin-error@npm:2.0.0":
+  version: 2.0.0
+  resolution: "plugin-error@npm:2.0.0"
+  dependencies:
+    ansi-colors: ^1.0.1
+  checksum: 1602e52b954a434d906b6528b0c525457e316260bd64227aa8c6ba55b9e4fdc0912b1e595de815fd75d296ff6b06bbc214db11175a42e4065312fb1bacbda250
+  languageName: node
+  linkType: hard
+
+"plugin-error@npm:^1.0.1":
   version: 1.0.1
   resolution: "plugin-error@npm:1.0.1"
   dependencies:
