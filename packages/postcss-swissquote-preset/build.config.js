@@ -84,10 +84,6 @@ module.exports = [
       .externals(externals)
       .package(),
   builder =>
-    builder("postcss-attribute-case-insensitive")
-      .externals(externals)
-      .package(),
-  builder =>
     builder("@swissquote/postcss-color-mod-function")
       .externals(externals)
       .package(),
@@ -105,10 +101,6 @@ module.exports = [
       .package(),
   builder =>
     builder("postcss-custom-selectors")
-      .externals(externals)
-      .package(),
-  builder =>
-    builder("postcss-dir-pseudo-class")
       .externals(externals)
       .package(),
   builder =>
@@ -145,14 +137,6 @@ module.exports = [
       .package(),
   builder =>
     builder("postcss-property-lookup")
-      .externals(externals)
-      .package(),
-  builder =>
-    builder("postcss-pseudo-class-any-link")
-      .externals(externals)
-      .package(),
-  builder =>
-    builder("postcss-replace-overflow-wrap")
       .externals(externals)
       .package(),
   builder =>

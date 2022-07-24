@@ -50,9 +50,6 @@ module.exports = function(config) {
   processors.processor("postcss-atroot").embedded("swissquote-postcss-atroot");
   processors.processor("postcss-property-lookup").embedded();
 
-  // Add plugins from postcss-preset-env missing in postcss-cssnext
-  processors.processor("postcss-dir-pseudo-class").embedded();
-
   // Handle next generation features
   processors
     .processor("postcss-custom-properties")
@@ -69,11 +66,6 @@ module.exports = function(config) {
     .enableIfUnsupported(["css-image-set"]);
 
   processors.processor("postcss-custom-selectors").embedded();
-
-  processors
-    .processor("postcss-attribute-case-insensitive")
-    .embedded()
-    .enableIfUnsupported(["css-case-insensitive"]);
 
   processors
     .processor("postcss-color-gray")
@@ -98,13 +90,6 @@ module.exports = function(config) {
   processors
     .processor("postcss-selector-matches")
     .embedded("swissquote-postcss-selector-matches");
-
-  processors.processor("postcss-pseudo-class-any-link").embedded();
-
-  processors
-    .processor("postcss-replace-overflow-wrap")
-    .embedded()
-    .enableIfUnsupported(["wordwrap"]);
 
   // Also support sass-style nesting
   processors.processor("postcss-nested").embedded();

@@ -152,15 +152,6 @@ const plugins = {
         files: "selectors-4/any-link-pseudo-class",
       },
       {
-        name: "Case-Insensitive Attributes",
-        description:
-          "An attribute selector matching attribute values case-insensitively",
-        link: "https://www.w3.org/TR/selectors-4/#attribute-case",
-        implementation:
-          "https://github.com/Semigradsky/postcss-attribute-case-insensitive",
-        files: "selectors-4/case-insensitive-attributes",
-      },
-      {
         name: "`:not()` Negation List Pseudo-Class",
         description: "A pseudo-class for ignoring elements in a selector list",
         link: "https://www.w3.org/TR/selectors-4/#negation-pseudo",
@@ -172,8 +163,7 @@ const plugins = {
         description:
           "A pseudo-class for matching elements based on their directionality",
         link: "https://www.w3.org/TR/selectors-4/#dir-pseudo",
-        implementation:
-          "https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class",
+        implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "selectors-4/dir-pseudo-class",
       },
     ],
@@ -235,20 +225,6 @@ const plugins = {
         link: "https://drafts.csswg.org/css-fonts-4/#system-ui-def",
         implementation: "https://github.com/parcel-bundler/parcel-css",
         files: "fonts-4/system-ui-value",
-      },
-    ],
-  },
-  "CSS Text Module Level 3": {
-    link: "https://drafts.csswg.org/css-text-3/",
-    examples: [
-      {
-        name: "`overflow-wrap` Property",
-        description:
-          "A property for defining whether to insert line breaks within words to prevent overflowing",
-        link: "https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap",
-        implementation:
-          "https://github.com/mattdimu/postcss-replace-overflow-wrap",
-        files: "text-3/overflow-wrap",
       },
     ],
   },

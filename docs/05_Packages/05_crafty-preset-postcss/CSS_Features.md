@@ -598,28 +598,6 @@ html {
 }
 ```
 
-# CSS Text Module Level 3
-
-[Specification](https://drafts.csswg.org/css-text-3/)
-
-## `overflow-wrap` Property
-
-A property for defining whether to insert line breaks within words to prevent overflowing
-
-[Specification](https://drafts.csswg.org/css-text-3/#propdef-overflow-wrap) [Implementation](https://github.com/mattdimu/postcss-replace-overflow-wrap)
-
-```css
-/* Before */
-.foo {
-  overflow-wrap: break-word;
-}
-
-/* After */
-.foo {
-  word-wrap: break-word;
-}
-```
-
 # CSS Values and Units Module Level 4
 
 [Specification](https://www.w3.org/TR/css-values-4/)
@@ -1051,34 +1029,12 @@ nav :any-link {
 }
 
 /* After */
-nav :link, nav :visited {
-  background-color: #ff0;
-}
-
 nav :-moz-any-link {
   background-color: #ff0;
 }
 
 nav :any-link {
   background-color: #ff0;
-}
-```
-
-## Case-Insensitive Attributes
-
-An attribute selector matching attribute values case-insensitively
-
-[Specification](https://www.w3.org/TR/selectors-4/#attribute-case) [Implementation](https://github.com/Semigradsky/postcss-attribute-case-insensitive)
-
-```css
-/* Before */
-[frame="hsides" i] {
-  border-style: solid none;
-}
-
-/* After */
-[frame="hsides"], [frame="Hsides"], [frame="hSides"], [frame="HSides"], [frame="hsIdes"], [frame="HsIdes"], [frame="hSIdes"], [frame="HSIdes"], [frame="hsiDes"], [frame="HsiDes"], [frame="hSiDes"], [frame="HSiDes"], [frame="hsIDes"], [frame="HsIDes"], [frame="hSIDes"], [frame="HSIDes"], [frame="hsidEs"], [frame="HsidEs"], [frame="hSidEs"], [frame="HSidEs"], [frame="hsIdEs"], [frame="HsIdEs"], [frame="hSIdEs"], [frame="HSIdEs"], [frame="hsiDEs"], [frame="HsiDEs"], [frame="hSiDEs"], [frame="HSiDEs"], [frame="hsIDEs"], [frame="HsIDEs"], [frame="hSIDEs"], [frame="HSIDEs"], [frame="hsideS"], [frame="HsideS"], [frame="hSideS"], [frame="HSideS"], [frame="hsIdeS"], [frame="HsIdeS"], [frame="hSIdeS"], [frame="HSIdeS"], [frame="hsiDeS"], [frame="HsiDeS"], [frame="hSiDeS"], [frame="HSiDeS"], [frame="hsIDeS"], [frame="HsIDeS"], [frame="hSIDeS"], [frame="HSIDeS"], [frame="hsidES"], [frame="HsidES"], [frame="hSidES"], [frame="HSidES"], [frame="hsIdES"], [frame="HsIdES"], [frame="hSIdES"], [frame="HSIdES"], [frame="hsiDES"], [frame="HsiDES"], [frame="hSiDES"], [frame="HSiDES"], [frame="hsIDES"], [frame="HsIDES"], [frame="hSIDES"], [frame="HSIDES"] {
-  border-style: solid none;
 }
 ```
 
@@ -1104,7 +1060,7 @@ p:not(:first-child):not(.special) {
 
 A pseudo-class for matching elements based on their directionality
 
-[Specification](https://www.w3.org/TR/selectors-4/#dir-pseudo) [Implementation](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-dir-pseudo-class)
+[Specification](https://www.w3.org/TR/selectors-4/#dir-pseudo) [Implementation](https://github.com/parcel-bundler/parcel-css)
 
 ```css
 /* Before */
@@ -1117,11 +1073,15 @@ blockquote:dir(ltr) {
 }
 
 /* After */
-[dir="rtl"] blockquote {
+blockquote:-moz-any(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
   margin-right: 10px;
 }
 
-[dir="ltr"] blockquote {
+blockquote:is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  margin-right: 10px;
+}
+
+blockquote:not(:lang(ae)):not(:lang(ar)):not(:lang(arc)):not(:lang(bcc)):not(:lang(bqi)):not(:lang(ckb)):not(:lang(dv)):not(:lang(fa)):not(:lang(glk)):not(:lang(he)):not(:lang(ku)):not(:lang(mzn)):not(:lang(nqo)):not(:lang(pnb)):not(:lang(ps)):not(:lang(sd)):not(:lang(ug)):not(:lang(ur)):not(:lang(yi)) {
   margin-left: 10px;
 }
 ```
