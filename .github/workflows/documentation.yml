@@ -21,7 +21,7 @@ jobs:
     - name: Generate documentation
       run: vendor/bin/daux generate --themes=docs_theme
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.4
+      uses: JamesIves/github-pages-deploy-action@v4.4.0
       with:
         folder: "static"
         branch: gh-pages
