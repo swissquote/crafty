@@ -1,0 +1,28 @@
+[
+  {
+    "id": "top-20-biggest-modules",
+    "name": "Top 20 biggest modules",
+    "data": {},
+    "view": [
+      {
+        "data": "#.stats.($file: $.name; compilations.($compilation: $; modules.({ file: $file, size: getModuleSize($compilation.hash), item: { module: $, size: getModuleSize($compilation.hash), hash: $compilation.hash   } }))).sort(size.size desc)[:20]",
+        "view": "table",
+        "cols": [
+          {
+            "header": "File",
+            "data": "file"
+          },
+          {
+            "header": "Module",
+            "data": "item",
+            "view": "module-item"
+          },
+          {
+            "header": "Size",
+            "data": "size.size"
+          }
+        ]
+      }
+    ]
+  }
+]
