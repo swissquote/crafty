@@ -1,12 +1,12 @@
 {
-  "name": "experiment",
+  "name": "maven",
   "version": "1.19.1",
   "private": true,
   "scripts": {
     "_build": "crafty run",
     "test": "crafty test",
     "watch": "crafty watch",
-    "start": "serve"
+    "start": "serve ../../../target/my-app-1.0.0-SNAPSHOT/resources"
   },
   "dependencies": {
     "@types/react": "^18.0.0",

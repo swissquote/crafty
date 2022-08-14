@@ -5,9 +5,11 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 const path = require("path");
 const fs = require("fs");
 const WebpackChain = require("webpack-chain");
+const ancestor = require('common-ancestor-path');
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");
 const paths = require("./utils/paths");
+const { config } = require("process");
 
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
@@ -112,15 +114,22 @@ function finalizeWatcher(chain) {
   const port = devServerConfig.port;
   const urlPrefix = `${protocol}://${host}:${port}`;
 
+  let staticPath = config.destination;
+
   // Setting the public path to find the compiled assets,
   // only if it hasn't already been set
   const definedPublicPath = chain.output.get("publicPath");
   if (!definedPublicPath) {
-    const contentBase = chain.devServer.get("contentBase");
     const outputPath = chain.output.get("path");
+    const cwd = process.cwd();
+
+    // Since the target can be outside of current working directory (where the source is)
+    // the easiest to have access to the files is to expose the common ancestor
+    const commonAncestor = ancestor(outputPath, cwd);
+    staticPath = commonAncestor;
+
     const publicPath = outputPath
-      .replace(process.cwd(), "")
-      .replace(contentBase, "")
+      .replace(commonAncestor, "")
       .replace(/^\//, "");
 
     chain.output.publicPath(`${urlPrefix}/${publicPath}/`);
@@ -128,19 +137,22 @@ function finalizeWatcher(chain) {
 
   chain
     .entry("default")
-    .prepend(require.resolve("../dist/webpack-plugin-serve-client/index.js"));
+    .prepend(require.resolve("webpack-plugin-serve/client"));
 
   chain
     .plugin("WebpackPluginServe")
     .init((Plugin, args) => new Plugin.WebpackPluginServe(...args))
-    .use(require.resolve("../dist/webpack-plugin-serve/index.js"), [
+    .use(require.resolve("webpack-plugin-serve"), [
       {
         host,
         port,
-        // TODO :: automate this path
-        publicPath: "dist",
-        // FIXME :: ⬢ wps: Warning The value of `publicPath` was not found on the filesystem in any static paths specified
-        static: process.cwd(),
+
+        // publicPath is appended to static path by default
+        // since we use a custom `publicPath` with an http prefix
+        // setting an empty publicPath will just use static
+        publicPath: "",
+        static: staticPath,
+
         middleware: (app, builtins) => {
           builtins.headers(devServerConfig.headers);
         }

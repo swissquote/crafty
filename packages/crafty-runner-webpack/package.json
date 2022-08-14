@@ -18,10 +18,12 @@
     "@swissquote/crafty": "1.19.1",
     "@swissquote/crafty-commons": "1.19.1",
     "@swissquote/crafty-preset-terser": "1.19.1",
+    "common-ancestor-path": "1.0.1",
     "terser-webpack-plugin": "5.3.3",
     "webpack": "5.74.0",
     "webpack-bundle-analyzer": "4.5.0",
-    "webpack-chain": "6.5.1"
+    "webpack-chain": "6.5.1",
+    "webpack-plugin-serve": "1.6.0"
   },
   "devDependencies": {
     "ava": "4.3.1",
@@ -35,8 +37,7 @@
     "log-symbols": "5.1.0",
     "service-names-port-numbers": "2.0.0",
     "utf-8-validate": "5.0.9",
-    "webpack-merge": "5.8.0",
-    "webpack-plugin-serve": "1.6.0"
+    "webpack-merge": "5.8.0"
   },
   "engines": {
     "node": ">=12"

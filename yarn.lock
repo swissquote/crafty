@@ -2820,6 +2820,7 @@ __metadata:
     bufferutil: 4.0.6
     c8: 7.12.0
     case-sensitive-paths-webpack-plugin: 2.4.0
+    common-ancestor-path: 1.0.1
     glob-to-regexp: 0.4.1
     hash-index: 3.0.0
     inspectpack: 4.7.1
@@ -5131,6 +5132,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"common-ancestor-path@npm:1.0.1":
+  version: 1.0.1
+  resolution: "common-ancestor-path@npm:1.0.1"
+  checksum: 1d2e4186067083d8cc413f00fc2908225f04ae4e19417ded67faa6494fb313c4fcd5b28a52326d1a62b466e2b3a4325e92c31133c5fee628cdf8856b3a57c3d7
+  languageName: node
+  linkType: hard
+
 "common-path-prefix@npm:^3.0.0":
   version: 3.0.0
   resolution: "common-path-prefix@npm:3.0.0"
@@ -6481,30 +6489,6 @@ __metadata:
   checksum: 101e0090de300bcafedb7dbfd19223368a2251ce5fe0105bbb6de5720100b89fb6b64290ebfb42febc048324c76d6a4979cdc4b61eb77747857daf7a5de9b03d
   languageName: node
   linkType: hard
-
-"experiment@workspace:packages/experiment":
-  version: 0.0.0-use.local
-  resolution: "experiment@workspace:packages/experiment"
-  dependencies:
-    "@swissquote/crafty": 1.19.1
-    "@swissquote/crafty-preset-babel": 1.19.1
-    "@swissquote/crafty-preset-images": 1.19.1
-    "@swissquote/crafty-preset-images-simple": 1.19.1
-    "@swissquote/crafty-preset-maven": 1.19.1
-    "@swissquote/crafty-preset-postcss": 1.19.1
-    "@swissquote/crafty-preset-typescript": 1.19.1
-    "@swissquote/crafty-runner-gulp": 1.19.1
-    "@swissquote/crafty-runner-rollup": 1.19.1
-    "@swissquote/crafty-runner-webpack": 1.19.1
-    "@types/react": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-loadable: 5.5.0
-    react-tabs: 5.1.0
-    serve: 14.0.1
-    webpack: 5.74.0
-  languageName: unknown
-  linkType: soft
 
 "extend-shallow@npm:^3.0.2":
   version: 3.0.2
@@ -9480,6 +9464,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"maven@workspace:examples/maven/src/main/frontend":
+  version: 0.0.0-use.local
+  resolution: "maven@workspace:examples/maven/src/main/frontend"
+  dependencies:
+    "@swissquote/crafty": 1.19.1
+    "@swissquote/crafty-preset-babel": 1.19.1
+    "@swissquote/crafty-preset-images": 1.19.1
+    "@swissquote/crafty-preset-images-simple": 1.19.1
+    "@swissquote/crafty-preset-maven": 1.19.1
+    "@swissquote/crafty-preset-postcss": 1.19.1
+    "@swissquote/crafty-preset-typescript": 1.19.1
+    "@swissquote/crafty-runner-gulp": 1.19.1
+    "@swissquote/crafty-runner-rollup": 1.19.1
+    "@swissquote/crafty-runner-webpack": 1.19.1
+    "@types/react": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-loadable: 5.5.0
+    react-tabs: 5.1.0
+    serve: 14.0.1
+    webpack: 5.74.0
+  languageName: unknown
+  linkType: soft
+
 "md5-hex@npm:^3.0.1":
   version: 3.0.1
   resolution: "md5-hex@npm:3.0.1"
@@ -11973,6 +11981,30 @@ __metadata:
   checksum: a2f098f247adc367dffc27845853e9959b9e88b01cb301658cfe4194352d8d2bb32e18467c786a7fe15f1d44b233ea35633d076d5e737870b7139949d1ab6318
   languageName: node
   linkType: hard
+
+"simple@workspace:examples/simple":
+  version: 0.0.0-use.local
+  resolution: "simple@workspace:examples/simple"
+  dependencies:
+    "@swissquote/crafty": 1.19.1
+    "@swissquote/crafty-preset-babel": 1.19.1
+    "@swissquote/crafty-preset-images": 1.19.1
+    "@swissquote/crafty-preset-images-simple": 1.19.1
+    "@swissquote/crafty-preset-maven": 1.19.1
+    "@swissquote/crafty-preset-postcss": 1.19.1
+    "@swissquote/crafty-preset-typescript": 1.19.1
+    "@swissquote/crafty-runner-gulp": 1.19.1
+    "@swissquote/crafty-runner-rollup": 1.19.1
+    "@swissquote/crafty-runner-webpack": 1.19.1
+    "@types/react": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-loadable: 5.5.0
+    react-tabs: 5.1.0
+    serve: 14.0.1
+    webpack: 5.74.0
+  languageName: unknown
+  linkType: soft
 
 "sinon@npm:13.0.2":
   version: 13.0.2
