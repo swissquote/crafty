@@ -5,11 +5,10 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 const path = require("path");
 const fs = require("fs");
 const WebpackChain = require("webpack-chain");
-const ancestor = require('common-ancestor-path');
+const ancestor = require("common-ancestor-path");
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");
 const paths = require("./utils/paths");
-const { config } = require("process");
 
 const absolutePath = paths.absolutePath;
 const absolutePaths = paths.absolutePaths;
@@ -105,7 +104,7 @@ function configureWatcher(chain, bundle, config, webpackPort) {
     });
 }
 
-function finalizeWatcher(chain) {
+function finalizeWatcher(chain, config) {
   const devServerConfig = chain.devServer.toConfig();
 
   // Read theses values from webpack chain as they could have been overriden with a preset
@@ -279,7 +278,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process
   if (crafty.getEnvironment() !== "production" && isWatching) {
-    finalizeWatcher(chain);
+    finalizeWatcher(chain, config);
   }
 
   return chain.toConfig();

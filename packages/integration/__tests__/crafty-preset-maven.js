@@ -22,7 +22,9 @@ test.serial("Fails if no pom is found", async t => {
 });
 
 test.serial("Places files in target of a webapp", async t => {
-  const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webapp", ["target"]);
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webapp", [
+    "target"
+  ]);
 
   const result = await testUtils.run(["run", "default"], cwd);
 
@@ -39,7 +41,8 @@ test.serial("Places files in target of a webapp", async t => {
 
 test.serial("Reads env. var before pom.xml", async t => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-maven/env-override", ["target"]
+    "crafty-preset-maven/env-override",
+    ["target"]
   );
 
   const result = await testUtils.run(["run", "default"], cwd, {
@@ -57,7 +60,9 @@ test.serial("Reads env. var before pom.xml", async t => {
 test.serial(
   "Places files in target of a webapp from within a subfolder",
   async t => {
-    await testUtils.getCleanFixtures("crafty-preset-maven/subfolder", ["target"]);
+    await testUtils.getCleanFixtures("crafty-preset-maven/subfolder", [
+      "target"
+    ]);
 
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-maven/subfolder/src/main/frontend"
@@ -78,7 +83,9 @@ test.serial(
 );
 
 test.serial("Places files in target of a webjar", async t => {
-  const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webjar", ["target"]);
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webjar", [
+    "target"
+  ]);
 
   const result = await testUtils.run(["run", "default"], cwd);
 
