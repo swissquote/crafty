@@ -105,12 +105,53 @@ stylelintSource.push({
 });
 
 stylelintSource.push({
-  pkg: "stylelint/lib/reference/keywordSets.js",
-  name: "libReferenceKeywordSets",
-  entryFile: `dist/stylelint/reference-keywordSets.js`,
+  pkg: "stylelint/lib/reference/atKeywords.js",
+  name: "libReferenceAtKeywords",
+  entryFile: `dist/stylelint/reference-atKeywords.js`,
 });
+ruleExternals["../../reference/atKeywords"] = "./reference-atKeywords.js";
 
-ruleExternals["../../reference/keywordSets"] = "./reference-keywordSets.js";
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/functions.js",
+  name: "libReferenceFunctions",
+  entryFile: `dist/stylelint/reference-functions.js`,
+});
+ruleExternals["../../reference/functions"] = "./reference-functions.js";
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/keywords.js",
+  name: "libReferenceKeywords",
+  entryFile: `dist/stylelint/reference-keywords.js`,
+});
+ruleExternals["../../reference/keywords"] = "./reference-keywords.js";
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/mediaFeatures.js",
+  name: "libReferenceMediaFeatures",
+  entryFile: `dist/stylelint/reference-mediaFeatures.js`,
+});
+ruleExternals["../../reference/mediaFeatures"] = "./reference-mediaFeatures.js";
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/properties.js",
+  name: "libReferenceProperties",
+  entryFile: `dist/stylelint/reference-properties.js`,
+});
+ruleExternals["../../reference/properties"] = "./reference-properties.js";
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/selectors.js",
+  name: "libReferenceSelectors",
+  entryFile: `dist/stylelint/reference-selectors.js`,
+});
+ruleExternals["../../reference/selectors"] = "./reference-selectors.js";
+
+stylelintSource.push({
+  pkg: "stylelint/lib/reference/units.js",
+  name: "libReferenceUnits",
+  entryFile: `dist/stylelint/reference-units.js`,
+});
+ruleExternals["../../reference/units"] = "./reference-units.js";
 
 const stylelintRules = fs
   .readdirSync(path.dirname(require.resolve("stylelint/lib/rules/index.js")))
