@@ -13,6 +13,7 @@
 
 - [Babel](05_Packages/05_crafty-preset-babel.md)
 - [TypeScript](05_Packages/05_crafty-preset-typescript.md)
+- [SWC](05_Packages/05_crafty-preset-swc.md)
 - [Jest](05_Packages/05_crafty-preset-jest.md)
 
 </td></tr>
@@ -31,8 +32,9 @@ npm install @swissquote/crafty-preset-babel --save
 ```javascript
 module.exports = {
   presets: [
-    "@swissquote/crafty-preset-babel", // also works with crafty-preset-typescript
-    "@swissquote/crafty-runner-webpack", // optional
+    // also works with crafty-preset-typescript or crafty-preset-swc
+    "@swissquote/crafty-preset-babel", 
+    "@swissquote/crafty-runner-webpack",
     "@swissquote/crafty-preset-react"
   ],
   js: {
@@ -40,7 +42,7 @@ module.exports = {
       runner: "webpack",
       source: "js/app.js",
       hot: true, // Hot Module Replacement must be enabled for React Hot Loader to work
-      react: true // React Hot Loader must be explicitly enabled in your bundle
+      react: true // React features must be enabled per bundle
     }
   }
 };
@@ -56,12 +58,11 @@ When doing modern JavaScript development, the usual process is **Write code**,
   part.
 
 More precisely, when doing a build with Webpack, in development mode, a
-Websocket client is added to the build and a small HTTP server is started. When
-the page is loaded, each bundle will establish a Websocket connection to the
-server.
+Websocket client is added to the build and an HTTP server is started.
+When the page is loaded, each bundle will establish a Websocket connection to the server.
 
 When you change a line of code, the server will rebuild them and send a
-notification through Websockets to the browser, the browser will then download
+notification through Websocket to the browser, the browser will then download
 the patch and apply the code change.
 
 With React components, it will even re-render them without losing the current
@@ -71,7 +72,49 @@ Here's an example :
 
 ![React Hot Module Replacement example](../react-hot-loader.gif)
 
-To enable HMR on your react application, you must set `hot: true` and `react: true` on your bundle in `crafty.config.js`.
+## React Hot Module Replacement variants
+
+There are two ways to make this work
+
+### Fast Refresh
+
+> This variant will work when using the Babel, TypeScript and SWC presets with Webpack.
+
+Starting with React 16.13, [Fast Refresh](https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin) is the way to do Hot Module Replacement and doesn't require to add code to your application to get it to work.
+This is the recommended way and will be the default starting with Crafty 1.20.0
+
+To enable it, add these two parameters to your bundle in `crafty.config.js`:
+
+```js
+{
+  hot: true,
+  react: true,
+  // also works with
+  react: {
+    refreshMode: "fast"
+  }
+}
+```
+
+You're now ready to run `crafty watch` and use Fast Refresh on all your components.
+
+
+### React Hot Loader
+
+> This variant will work when using the Babel or TypeScript presets with Webpack.
+
+Most versions of React can work with [React Hot Loader](https://www.npmjs.com/package/react-hot-loader), but in some cases can't keep the component's state on refresh or don't support hooks, it's a deprecated way to do and will be removed from Crafty in the future.
+
+To enable it, add these two parameters to your bundle in `crafty.config.js`:
+
+```js
+{
+  hot: true,
+  react: {
+    refreshMode: "hot"
+  }
+}
+```
 
 Then you must mark your root component as hot-exported :
 

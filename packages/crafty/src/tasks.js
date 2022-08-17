@@ -64,6 +64,11 @@ function registerTasks(crafty) {
         bundle.destination = `${bundleName}.min.js`;
       }
 
+      crafty.getImplementations("normalizeBundle").forEach(preset => {
+        debug(`${preset.presetName}.normalizeBundle(crafty, bundle)`);
+        preset.normalizeBundle(crafty, bundle);
+      });
+
       if (
         !hasOwnProperty.call(bundleCreators, type) ||
         Object.keys(bundleCreators[type]).length === 0

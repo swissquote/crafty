@@ -12,7 +12,9 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'"
   },
   "dependencies": {
-    "react-hot-loader": "4.13.0"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7",
+    "react-hot-loader": "4.13.0",
+    "react-refresh": "0.14.0"
   },
   "engines": {
     "node": ">=12"
