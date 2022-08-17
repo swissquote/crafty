@@ -113,6 +113,9 @@
 <a href="crafty_preset_typescript/index.html">TypeScript</a>
 </li>
 <li>
+<a href="crafty_preset_swc.html">SWC</a>
+</li>
+<li>
 <a href="crafty_preset_jest/index.html">Jest</a>
 </li>
 </ul>
@@ -128,7 +131,16 @@
 </li>
 <li>
 <a href="#hot-module-replacement">Hot Module Replacement</a>
+</li>
+<li>
+<a href="#react-hot-module-replacement-variants">React Hot Module Replacement variants</a>
 <ul>
+<li>
+<a href="#fast-refresh">Fast Refresh</a>
+</li>
+<li>
+<a href="#react-hot-loader">React Hot Loader</a>
+</li>
 <li>
 <a href="#typescript">TypeScript</a>
 </li>
@@ -141,8 +153,9 @@
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
-    <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>, <span class="hljs-comment">// also works with crafty-preset-typescript</span>
-    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>, <span class="hljs-comment">// optional</span>
+    <span class="hljs-comment">// also works with crafty-preset-typescript or crafty-preset-swc</span>
+    <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>, 
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
     <span class="hljs-string">"@swissquote/crafty-preset-react"</span>
   ],
   <span class="hljs-attr">js</span>: {
@@ -150,7 +163,7 @@
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
       <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
       <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Hot Module Replacement must be enabled for React Hot Loader to work</span>
-      <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// React Hot Loader must be explicitly enabled in your bundle</span>
+      <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// React features must be enabled per bundle</span>
     }
   }
 };
@@ -165,17 +178,47 @@
 part.</li>
 </ul>
 <p>More precisely, when doing a build with Webpack, in development mode, a
-Websocket client is added to the build and a small HTTP server is started. When
-the page is loaded, each bundle will establish a Websocket connection to the
-server.</p>
+Websocket client is added to the build and an HTTP server is started.
+When the page is loaded, each bundle will establish a Websocket connection to the server.</p>
 <p>When you change a line of code, the server will rebuild them and send a
-notification through Websockets to the browser, the browser will then download
+notification through Websocket to the browser, the browser will then download
 the patch and apply the code change.</p>
 <p>With React components, it will even re-render them without losing the current
 state.</p>
 <p>Here’s an example :</p>
 <p><img src="../react-hot-loader.gif" alt="React Hot Module Replacement example" /></p>
-<p>To enable HMR on your react application, you must set <code>hot: true</code> and <code>react: true</code> on your bundle in <code>crafty.config.js</code>.</p>
+<h2><a id="react-hot-module-replacement-variants" href="#react-hot-module-replacement-variants" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Hot Module Replacement variants</h2>
+<p>There are two ways to make this work</p>
+<h3><a id="fast-refresh" href="#fast-refresh" class="Permalink" aria-hidden="true" title="Permalink">#</a>Fast Refresh</h3>
+<blockquote>
+<p>This variant will work when using the Babel, TypeScript and SWC presets with Webpack.</p>
+</blockquote>
+<p>Starting with React 16.13, <a href="https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin" class="Link--external" rel="noopener noreferrer">Fast Refresh</a> is the way to do Hot Module Replacement and doesn’t require to add code to your application to get it to work.
+This is the recommended way and will be the default starting with Crafty 1.20.0</p>
+<p>To enable it, add these two parameters to your bundle in <code>crafty.config.js</code>:</p>
+<pre><code class="hljs javascript">{
+  <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// also works with</span>
+  <span class="hljs-attr">react</span>: {
+    <span class="hljs-attr">refreshMode</span>: <span class="hljs-string">"fast"</span>
+  }
+}
+</code></pre>
+<p>You’re now ready to run <code>crafty watch</code> and use Fast Refresh on all your components.</p>
+<h3><a id="react-hot-loader" href="#react-hot-loader" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Hot Loader</h3>
+<blockquote>
+<p>This variant will work when using the Babel or TypeScript presets with Webpack.</p>
+</blockquote>
+<p>Most versions of React can work with <a href="https://www.npmjs.com/package/react-hot-loader" class="Link--external" rel="noopener noreferrer">React Hot Loader</a>, but in some cases can’t keep the component’s state on refresh or don’t support hooks, it’s a deprecated way to do and will be removed from Crafty in the future.</p>
+<p>To enable it, add these two parameters to your bundle in <code>crafty.config.js</code>:</p>
+<pre><code class="hljs javascript">{
+  <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">react</span>: {
+    <span class="hljs-attr">refreshMode</span>: <span class="hljs-string">"hot"</span>
+  }
+}
+</code></pre>
 <p>Then you must mark your root component as hot-exported :</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
 <span class="hljs-keyword">import</span> { hot } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-hot-loader"</span>;
