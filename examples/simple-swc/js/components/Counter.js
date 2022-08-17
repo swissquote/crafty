@@ -1,10 +1,6 @@
 import * as React from "react";
 
-interface CounterProps {
-  increment: number;
-}
-
-export default function Counter({ increment }: CounterProps) {
+export default function Counter({ increment }) {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
