@@ -37,6 +37,6 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src --include=packages --include='*.js' ava"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   }
 }
