@@ -8,12 +8,12 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [16.x]
-        # TODO : add Yarn PNP as failable build
         include:
         - os: macos-latest
           node-version: 16.x
-        - os: windows-latest
-          node-version: 16.x
+        # TODO : add Windows build
+        #- os: windows-latest
+        #  node-version: 16.x
           
     runs-on: ${{ matrix.os }}
 
