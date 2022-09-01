@@ -39,9 +39,9 @@ module.exports = {
     // Using a combination of big css files and many compound selectors can have a big performance impact.
     "selector-max-compound-selectors": 6
   },
-  "overrides": [
+  overrides: [
     {
-      "files": ["**/*.scss", "**/*.css", "!**/*.module.scss", "!**/*.module.css"],
+      files: ["**/*.scss", "**/*.css", "!**/*.module.scss", "!**/*.module.css"],
       rules: {
         // - The first letter of a component MUST be uppercase.
         // - All class names MUST be lowercase/uppercase characters or numbers
@@ -57,12 +57,12 @@ module.exports = {
           {
             resolveNestedSelectors: true
           }
-        ],
+        ]
       }
     },
     {
-      "files": ["**/*.module.scss", "**/*.module.css"],
-      "rules": {
+      files: ["**/*.module.scss", "**/*.module.css"],
+      rules: {
         // In css-modules, naming isn't as important,
         // but as it's going to be used in JS, camelCase is best
         "selector-class-pattern": [
@@ -70,7 +70,7 @@ module.exports = {
           {
             resolveNestedSelectors: true
           }
-        ],
+        ]
       }
     }
   ]
