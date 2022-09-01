@@ -6,6 +6,7 @@
     "_build": "crafty run",
     "test": "crafty test",
     "watch": "crafty watch",
+    "lint:css": "crafty cssLint css js/**/*.css",
     "start": "serve"
   },
   "dependencies": {

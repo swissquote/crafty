@@ -11,22 +11,6 @@ module.exports = {
     // [SPEC] Nested selectors SHOULD NOT be nested more than 2 levels
     "max-nesting-depth": [2, { ignore: ["blockless-at-rules"] }],
 
-    // - The first letter of a component MUST be uppercase.
-    // - All class names MUST be lowercase/uppercase characters or numbers
-    // - all class names MUST start with one of
-    // - u-, t-, s-, is- or has-
-    // - A capital letter to mark a component
-    // - An underscore (_) followed by any of the previous to mark a Hack
-    // - a component MUST follow the BEM notation for its childs and modifiers
-    // - javascript (js-) and QA related classes (qa-) MUST NOT be styled
-    // - SASS style variable substitutions are allowed
-    "selector-class-pattern": [
-      /^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$/,
-      {
-        resolveNestedSelectors: true
-      }
-    ],
-
     // - a state (is-*|has-*) MUST NOT be alone in the dom, it must be adjacent to the component it is related to.
     "swissquote/no-state-without-component": true,
 
@@ -54,5 +38,40 @@ module.exports = {
 
     // Using a combination of big css files and many compound selectors can have a big performance impact.
     "selector-max-compound-selectors": 6
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.scss", "**/*.css", "!**/*.module.scss", "!**/*.module.css"],
+      rules: {
+        // - The first letter of a component MUST be uppercase.
+        // - All class names MUST be lowercase/uppercase characters or numbers
+        // - all class names MUST start with one of
+        // - u-, t-, s-, is- or has-
+        // - A capital letter to mark a component
+        // - An underscore (_) followed by any of the previous to mark a Hack
+        // - a component MUST follow the BEM notation for its childs and modifiers
+        // - javascript (js-) and QA related classes (qa-) MUST NOT be styled
+        // - SASS style variable substitutions are allowed
+        "selector-class-pattern": [
+          /^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$/,
+          {
+            resolveNestedSelectors: true
+          }
+        ],
+      }
+    },
+    {
+      "files": ["**/*.module.scss", "**/*.module.css"],
+      "rules": {
+        // In css-modules, naming isn't as important,
+        // but as it's going to be used in JS, camelCase is best
+        "selector-class-pattern": [
+          /^[a-z][a-zA-Z0-9]+$/,
+          {
+            resolveNestedSelectors: true
+          }
+        ],
+      }
+    }
+  ]
 };

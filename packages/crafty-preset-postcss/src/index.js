@@ -1,34 +1,10 @@
 const path = require("path");
 
-const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
-
 const gulpTasks = require("./gulp");
+const { createGlobalRule, createModuleRule } = require("./webpack-utils");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 const hasOwnProperty = Object.prototype.hasOwnProperty;
-
-function getExtractConfig(bundle) {
-  let extractCSSConfig = bundle.extractCSS;
-  if (extractCSSConfig === true) {
-    extractCSSConfig = {
-      filename: "[bundle]-[name].min.css"
-    };
-  } else if (typeof extractCSSConfig === "string") {
-    extractCSSConfig = {
-      filename: extractCSSConfig
-    };
-  }
-
-  // Allow to template [bundle] with the bundle name
-  if (typeof extractCSSConfig.filename === "string") {
-    extractCSSConfig.filename = extractCSSConfig.filename.replace(
-      "[bundle]",
-      bundle.name
-    );
-  }
-
-  return extractCSSConfig;
-}
 
 function addUnsupportedBrowserSupportRule(rules, browsers) {
   const rule = "plugin/no-unsupported-browser-features";
@@ -204,46 +180,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    // "postcss" loader applies autoprefixer to our CSS.
-    // "css" loader resolves paths in CSS and adds assets as dependencies.
-    // "style" loader turns CSS into JS modules that inject <style> tags.
-    // The "style" loader enables hot editing of CSS.
-    const styleRule = chain.module.rule("styles").test(/\.s?css$/);
-
-    if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
-      // Initialize extraction plugin
-      const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-      // Create a list of loaders that also contains the extraction loader
-      styleRule.use("style-loader").loader(MiniCssExtractPlugin.loader);
-
-      chain
-        .plugin("extractCSS")
-        .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
-    } else {
-      styleRule
-        .use("style-loader")
-        .loader(require.resolve("../packages/style-loader.js"));
-    }
-
-    styleRule
-      .use("css-loader")
-      .loader(require.resolve("../packages/css-loader.js"))
-      .options({
-        importLoaders: 1,
-        sourceMap:
-          crafty.getEnvironment() === "production" && !!bundle.extractCSS
-      });
-
-    styleRule
-      .use("postcss-loader")
-      .loader(require.resolve("../packages/postcss-loader.js"))
-      .options({
-        implementation: require("postcss"),
-        postcssOptions: {
-          parser: require("postcss-scss"),
-          plugins: getProcessors(crafty.config, crafty, bundle)
-        }
-      });
+    createGlobalRule(crafty, bundle, chain);
+    createModuleRule(crafty, bundle, chain);
   }
 };

@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "./Component.module.css";
+
 export default class MyComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ export default class MyComponent extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick} className="foo">
+      <button onClick={this.handleClick} className={styles.button}>
         {this.state.clicked ? "Clicked" : "Please Click Me"}
       </button>
     );
