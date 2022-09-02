@@ -21,7 +21,8 @@ module.exports = {
       //libraryTarget: "umd",
       source: "js/app.js",
       hot: true,
-      react: true
+      react: true,
+      extractCSS: true
     }
   },
   css: {

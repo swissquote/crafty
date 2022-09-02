@@ -70,7 +70,7 @@ function getCssModuleLocalIdent(context, _, exportName, options) {
   );
 }
 
-function createRule(crafty, bundle, styleRule, options) {
+function createRule(crafty, bundle, chain, styleRule, options) {
   const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
 
   // "postcss" loader applies autoprefixer to our CSS.
@@ -120,20 +120,24 @@ function createGlobalRule(crafty, bundle, chain) {
   createRule(
     crafty,
     bundle,
+    chain,
     chain.module
       .rule("styles")
       .test(/(?<!\.module)\.s?css$/i)
-      .sideEffects(true), {
-    cssLoader: {
-      modules: false
+      .sideEffects(true),
+    {
+      cssLoader: {
+        modules: false
+      }
     }
-  });
+  );
 }
 
 function createModuleRule(crafty, bundle, chain) {
   createRule(
     crafty,
     bundle,
+    chain,
     chain.module
       .rule("styles-modules")
       .test(/\.module\.s?css$/i)
