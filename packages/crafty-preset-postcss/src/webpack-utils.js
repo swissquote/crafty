@@ -70,15 +70,14 @@ function getCssModuleLocalIdent(context, _, exportName, options) {
   );
 }
 
-function createRule(crafty, bundle, chain, styleRule, options) {
-  const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
+function extractCss(bundle, chain, styleRule) {
 
-  // "postcss" loader applies autoprefixer to our CSS.
-  // "css" loader resolves paths in CSS and adds assets as dependencies.
-  // "style" loader turns CSS into JS modules that inject <style> tags.
-  // The "style" loader enables hot editing of CSS.
+    // Add this only once per bundle
+    if (bundle.extractCSSConfigured) {
+      return;
+    }
+    bundle.extractCSSConfigured = true;
 
-  if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
     // Initialize extraction plugin
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -88,6 +87,18 @@ function createRule(crafty, bundle, chain, styleRule, options) {
     chain
       .plugin("extractCSS")
       .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
+}
+
+function createRule(crafty, bundle, chain, styleRule, options) {
+  const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
+
+  // "postcss" loader applies autoprefixer to our CSS.
+  // "css" loader resolves paths in CSS and adds assets as dependencies.
+  // "style" loader turns CSS into JS modules that inject <style> tags.
+  // The "style" loader enables hot editing of CSS.
+
+  if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
+    extractCss(bundle, chain, styleRule);
   } else {
     styleRule
       .use("style-loader")
