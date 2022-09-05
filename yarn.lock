@@ -1888,74 +1888,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/css-darwin-arm64@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-darwin-arm64@npm:1.13.0"
+"@parcel/css-darwin-arm64@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-darwin-arm64@npm:1.13.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@parcel/css-darwin-x64@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-darwin-x64@npm:1.13.0"
+"@parcel/css-darwin-x64@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-darwin-x64@npm:1.13.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm-gnueabihf@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.13.0"
+"@parcel/css-linux-arm-gnueabihf@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.13.1"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm64-gnu@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-linux-arm64-gnu@npm:1.13.0"
+"@parcel/css-linux-arm64-gnu@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-linux-arm64-gnu@npm:1.13.1"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-arm64-musl@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-linux-arm64-musl@npm:1.13.0"
+"@parcel/css-linux-arm64-musl@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-linux-arm64-musl@npm:1.13.1"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-x64-gnu@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-linux-x64-gnu@npm:1.13.0"
+"@parcel/css-linux-x64-gnu@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-linux-x64-gnu@npm:1.13.1"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@parcel/css-linux-x64-musl@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-linux-x64-musl@npm:1.13.0"
+"@parcel/css-linux-x64-musl@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-linux-x64-musl@npm:1.13.1"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@parcel/css-win32-x64-msvc@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@parcel/css-win32-x64-msvc@npm:1.13.0"
+"@parcel/css-win32-x64-msvc@npm:1.13.1":
+  version: 1.13.1
+  resolution: "@parcel/css-win32-x64-msvc@npm:1.13.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@parcel/css@npm:1.13.0, @parcel/css@npm:^1.0.1":
-  version: 1.13.0
-  resolution: "@parcel/css@npm:1.13.0"
+"@parcel/css@npm:1.13.1, @parcel/css@npm:^1.0.1":
+  version: 1.13.1
+  resolution: "@parcel/css@npm:1.13.1"
   dependencies:
-    "@parcel/css-darwin-arm64": 1.13.0
-    "@parcel/css-darwin-x64": 1.13.0
-    "@parcel/css-linux-arm-gnueabihf": 1.13.0
-    "@parcel/css-linux-arm64-gnu": 1.13.0
-    "@parcel/css-linux-arm64-musl": 1.13.0
-    "@parcel/css-linux-x64-gnu": 1.13.0
-    "@parcel/css-linux-x64-musl": 1.13.0
-    "@parcel/css-win32-x64-msvc": 1.13.0
+    "@parcel/css-darwin-arm64": 1.13.1
+    "@parcel/css-darwin-x64": 1.13.1
+    "@parcel/css-linux-arm-gnueabihf": 1.13.1
+    "@parcel/css-linux-arm64-gnu": 1.13.1
+    "@parcel/css-linux-arm64-musl": 1.13.1
+    "@parcel/css-linux-x64-gnu": 1.13.1
+    "@parcel/css-linux-x64-musl": 1.13.1
+    "@parcel/css-win32-x64-msvc": 1.13.1
     detect-libc: ^1.0.3
   dependenciesMeta:
     "@parcel/css-darwin-arm64":
@@ -1974,7 +1974,7 @@ __metadata:
       optional: true
     "@parcel/css-win32-x64-msvc":
       optional: true
-  checksum: 97f319baeec4d628bc84fd293cc048645d66f31c370fad9f1537cd775291e1ac56b3892daeee4d4a2cf9b39653cdfed2e19a63d8d051f6d7279683ae3becbf7f
+  checksum: c2f4183b71dc58cc03e374c715e77e5ffe96a75930bd7689598eb6fefc4b6f4dd1d9cfd8f4139d338c44b65a161b1d0c3c94fe4e6e94f473872d2ef7b3d328fd
   languageName: node
   linkType: hard
 
@@ -3104,7 +3104,7 @@ __metadata:
   resolution: "@swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset"
   dependencies:
     "@knagis/postcss-advanced-variables": 4.0.0
-    "@parcel/css": 1.13.0
+    "@parcel/css": 1.13.1
     "@swissquote/crafty-commons": 1.19.1
     "@swissquote/postcss-assets": 1.19.1
     "@swissquote/postcss-atroot": 1.19.1
