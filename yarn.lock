@@ -2083,9 +2083,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:13.3.0":
-  version: 13.3.0
-  resolution: "@rollup/plugin-node-resolve@npm:13.3.0"
+"@rollup/plugin-node-resolve@npm:14.1.0":
+  version: 14.1.0
+  resolution: "@rollup/plugin-node-resolve@npm:14.1.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     "@types/resolve": 1.17.1
@@ -2094,8 +2094,8 @@ __metadata:
     is-module: ^1.0.0
     resolve: ^1.19.0
   peerDependencies:
-    rollup: ^2.42.0
-  checksum: ec5418e6b3c23a9e30683056b3010e9d325316dcfae93fbc673ae64dad8e56a2ce761c15c48f5e2dcfe0c822fdc4a4905ee6346e3dcf90603ba2260afef5a5e6
+    rollup: ^2.78.0
+  checksum: 7c5bed3e5a511ee47172acd91da1a828383f7ef72d54d27d8050598ef9038df0f86a8559db455611e138e07b99d787fd7445b11f81129970d07104644576d80a
   languageName: node
   linkType: hard
 
@@ -2865,7 +2865,7 @@ __metadata:
   dependencies:
     "@rollup/plugin-commonjs": 22.0.2
     "@rollup/plugin-json": 4.1.0
-    "@rollup/plugin-node-resolve": 13.3.0
+    "@rollup/plugin-node-resolve": 14.1.0
     "@rollup/plugin-replace": 4.0.0
     "@rollup/pluginutils": 4.2.1
     "@swissquote/crafty": 1.19.1
@@ -3134,7 +3134,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/rollup-plugin-eslint@workspace:packages/rollup-plugin-eslint"
   dependencies:
-    "@rollup/plugin-node-resolve": 13.3.0
+    "@rollup/plugin-node-resolve": 14.1.0
     "@rollup/pluginutils": 4.2.1
     ansi-colors: ^4.0.0
     ava: 4.3.3
