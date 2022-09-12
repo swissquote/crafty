@@ -1888,93 +1888,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/css-darwin-arm64@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-darwin-arm64@npm:1.13.1"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@parcel/css-darwin-x64@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-darwin-x64@npm:1.13.1"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@parcel/css-linux-arm-gnueabihf@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.13.1"
-  conditions: os=linux & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@parcel/css-linux-arm64-gnu@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-linux-arm64-gnu@npm:1.13.1"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@parcel/css-linux-arm64-musl@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-linux-arm64-musl@npm:1.13.1"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@parcel/css-linux-x64-gnu@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-linux-x64-gnu@npm:1.13.1"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@parcel/css-linux-x64-musl@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-linux-x64-musl@npm:1.13.1"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@parcel/css-win32-x64-msvc@npm:1.13.1":
-  version: 1.13.1
-  resolution: "@parcel/css-win32-x64-msvc@npm:1.13.1"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@parcel/css@npm:1.13.1, @parcel/css@npm:^1.0.1":
-  version: 1.13.1
-  resolution: "@parcel/css@npm:1.13.1"
+"@parcel/css@npm:1.14.0, @parcel/css@npm:^1.0.1":
+  version: 1.14.0
+  resolution: "@parcel/css@npm:1.14.0"
   dependencies:
-    "@parcel/css-darwin-arm64": 1.13.1
-    "@parcel/css-darwin-x64": 1.13.1
-    "@parcel/css-linux-arm-gnueabihf": 1.13.1
-    "@parcel/css-linux-arm64-gnu": 1.13.1
-    "@parcel/css-linux-arm64-musl": 1.13.1
-    "@parcel/css-linux-x64-gnu": 1.13.1
-    "@parcel/css-linux-x64-musl": 1.13.1
-    "@parcel/css-win32-x64-msvc": 1.13.1
-    detect-libc: ^1.0.3
-  dependenciesMeta:
-    "@parcel/css-darwin-arm64":
-      optional: true
-    "@parcel/css-darwin-x64":
-      optional: true
-    "@parcel/css-linux-arm-gnueabihf":
-      optional: true
-    "@parcel/css-linux-arm64-gnu":
-      optional: true
-    "@parcel/css-linux-arm64-musl":
-      optional: true
-    "@parcel/css-linux-x64-gnu":
-      optional: true
-    "@parcel/css-linux-x64-musl":
-      optional: true
-    "@parcel/css-win32-x64-msvc":
-      optional: true
-  checksum: c2f4183b71dc58cc03e374c715e77e5ffe96a75930bd7689598eb6fefc4b6f4dd1d9cfd8f4139d338c44b65a161b1d0c3c94fe4e6e94f473872d2ef7b3d328fd
+    lightningcss: ^1.14.0
+  checksum: 3ed88310051ed96940a3653cce76819d44cc90cddabbdd0d0e2c8d9c76f137442207a30aea2fe04df0a7e3e75aef06fa7c593e50bb410bccb2ddd9a7ee267e07
   languageName: node
   linkType: hard
 
@@ -3104,7 +3023,7 @@ __metadata:
   resolution: "@swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset"
   dependencies:
     "@knagis/postcss-advanced-variables": 4.0.0
-    "@parcel/css": 1.13.1
+    "@parcel/css": 1.14.0
     "@swissquote/crafty-commons": 1.19.1
     "@swissquote/postcss-assets": 1.19.1
     "@swissquote/postcss-atroot": 1.19.1
@@ -9243,6 +9162,96 @@ __metadata:
     prelude-ls: ~1.1.2
     type-check: ~0.3.2
   checksum: 0d084a524231a8246bb10fec48cdbb35282099f6954838604f3c7fc66f2e16fa66fd9cc2f3f20a541a113c4dafdf181e822c887c8a319c9195444e6c64ac395e
+  languageName: node
+  linkType: hard
+
+"lightningcss-darwin-arm64@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-darwin-arm64@npm:1.14.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"lightningcss-darwin-x64@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-darwin-x64@npm:1.14.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"lightningcss-linux-arm-gnueabihf@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-linux-arm-gnueabihf@npm:1.14.0"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"lightningcss-linux-arm64-gnu@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-linux-arm64-gnu@npm:1.14.0"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"lightningcss-linux-arm64-musl@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-linux-arm64-musl@npm:1.14.0"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"lightningcss-linux-x64-gnu@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-linux-x64-gnu@npm:1.14.0"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"lightningcss-linux-x64-musl@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-linux-x64-musl@npm:1.14.0"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"lightningcss-win32-x64-msvc@npm:1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss-win32-x64-msvc@npm:1.14.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"lightningcss@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "lightningcss@npm:1.14.0"
+  dependencies:
+    detect-libc: ^1.0.3
+    lightningcss-darwin-arm64: 1.14.0
+    lightningcss-darwin-x64: 1.14.0
+    lightningcss-linux-arm-gnueabihf: 1.14.0
+    lightningcss-linux-arm64-gnu: 1.14.0
+    lightningcss-linux-arm64-musl: 1.14.0
+    lightningcss-linux-x64-gnu: 1.14.0
+    lightningcss-linux-x64-musl: 1.14.0
+    lightningcss-win32-x64-msvc: 1.14.0
+  dependenciesMeta:
+    lightningcss-darwin-arm64:
+      optional: true
+    lightningcss-darwin-x64:
+      optional: true
+    lightningcss-linux-arm-gnueabihf:
+      optional: true
+    lightningcss-linux-arm64-gnu:
+      optional: true
+    lightningcss-linux-arm64-musl:
+      optional: true
+    lightningcss-linux-x64-gnu:
+      optional: true
+    lightningcss-linux-x64-musl:
+      optional: true
+    lightningcss-win32-x64-msvc:
+      optional: true
+  checksum: fe0f196fe7d6ffd1f2848215d0b613b9a34edb6684d7612de3f0edf70d8633cf9585930229080f0e4b2bec3250aa0d7ad7d046feafc8c989ea43e03d1f06b680
   languageName: node
   linkType: hard
 
