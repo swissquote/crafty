@@ -2548,7 +2548,7 @@ __metadata:
     "@swissquote/crafty-commons": 1.19.1
     "@swissquote/gulp-newer": 1.19.1
     gulp-concat: 2.6.1
-    gulp-eslint-new: 1.5.1
+    gulp-eslint-new: 1.6.0
     plugin-error: 2.0.0
     through2: 4.0.2
   languageName: unknown
@@ -3299,17 +3299,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 18.7.14
-  resolution: "@types/node@npm:18.7.14"
-  checksum: 99cf28ff854100158de875cca23c7acc3cc01dfee526a52b90b7f36767c821bcbaf2be0a98a70f06f3b78f3c60639168ff949d725b61e2e124f9f71f1fb8043d
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^17.0.42":
-  version: 17.0.45
-  resolution: "@types/node@npm:17.0.45"
-  checksum: aa04366b9103b7d6cfd6b2ef64182e0eaa7d4462c3f817618486ea0422984c51fc69fd0d436eae6c9e696ddfdbec9ccaa27a917f7c2e8c75c5d57827fe3d95e8
+"@types/node@npm:*, @types/node@npm:>=12":
+  version: 18.7.16
+  resolution: "@types/node@npm:18.7.16"
+  checksum: 01a3d35c764a3f0e7370b56e1ad4203731131883c65784e020009014171b3f53c4649cde6c7aa4f1026b907ee87ef6ae6ece2bc518151dc7b81100fe8b1db3ad
   languageName: node
   linkType: hard
 
@@ -7192,19 +7185,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:1.5.1":
-  version: 1.5.1
-  resolution: "gulp-eslint-new@npm:1.5.1"
+"gulp-eslint-new@npm:1.6.0":
+  version: 1.6.0
+  resolution: "gulp-eslint-new@npm:1.6.0"
   dependencies:
-    "@types/eslint": ^8.4.3
-    "@types/node": ^17.0.42
+    "@types/eslint": ^8.4.6
+    "@types/node": ">=12"
     eslint: 8
     fancy-log: ^2.0.0
-    plugin-error: ^1.0.1
+    plugin-error: ^2.0.0
     semver: ^7.3.7
     ternary-stream: ^3.0.0
     vinyl-fs: ^3.0.3
-  checksum: f16b5c2b363ce29e88aab800b1f7faf554c456a1dc72ef11076f72118e788da9e4f4f326109d93237678929c13b1312d1dc510f20eb2f5c6c911df960867a599
+  checksum: 7995ff625375d2cefd9d44623e6a5196f5c4e2e1a3f49f47057e18f5a6a89860810c01ac466387cd3227be56e600e5f549355876f3fa8b365f5e3dabc544582b
   languageName: node
   linkType: hard
 
@@ -10653,7 +10646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plugin-error@npm:2.0.0":
+"plugin-error@npm:2.0.0, plugin-error@npm:^2.0.0":
   version: 2.0.0
   resolution: "plugin-error@npm:2.0.0"
   dependencies:
