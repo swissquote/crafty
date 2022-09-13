@@ -35,7 +35,7 @@ const plugins = {
         description:
           "A 4 & 8 character hex color notation for specifying the opacity level",
         link: "https://www.w3.org/TR/css-color-4/#hex-notation",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-hex-alpha",
       },
       {
@@ -43,11 +43,11 @@ const plugins = {
         description:
           "A function for specifying colors by hue, saturation and lightness to mix into it",
         link: null,
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-hsl",
       },
       {
-        // Level 4 colors could be handled by @parcel/css
+        // Level 4 colors could be handled by lightningcss
         name: "`hwb()` color function",
         description:
           "A function for specifying colors by hue and then a degree of whiteness and blackness to mix into it",
@@ -61,7 +61,7 @@ const plugins = {
         description:
           "A space and slash separated notation for specifying colors",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-rgb",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-rgb",
       },
       {
@@ -69,7 +69,7 @@ const plugins = {
         description:
           "A lovely shade of purple in memory of Rebecca Alison Meyer",
         link: "https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-rebeccapurple",
       },
       {
@@ -77,7 +77,7 @@ const plugins = {
         description:
           "A function for specifying colors expressed in the CIE Lab color space",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-lab",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-lab",
       },
       {
@@ -85,7 +85,7 @@ const plugins = {
         description:
           "Functions that allow colors to be expressed in OKLab and OKLCH.",
         link: "https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-oklab",
       },
       {
@@ -93,7 +93,7 @@ const plugins = {
         description:
           "This function allows you to specify a color in a color space.",
         link: "https://www.w3.org/TR/css-color-4/#funcdef-color",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/color-function",
       },
       {
@@ -101,7 +101,7 @@ const plugins = {
         description:
           "Syntactic sugar to use percentages instead of a float between 0 and 1.",
         link: "https://www.w3.org/TR/css-color-4/#transparency",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "colors-4/opacity-percentages",
       },
     ],
@@ -134,7 +134,7 @@ const plugins = {
         description:
           "Flow-relative (left-to-right or right-to-left) properties and values",
         link: "https://www.w3.org/TR/css-logical-1/",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "logical-1/properties-and-values",
       },
     ],
@@ -155,7 +155,7 @@ const plugins = {
         name: "`:not()` Negation List Pseudo-Class",
         description: "A pseudo-class for ignoring elements in a selector list",
         link: "https://www.w3.org/TR/selectors-4/#negation-pseudo",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "selectors-4/not-pseudo-class",
       },
       {
@@ -163,7 +163,7 @@ const plugins = {
         description:
           "A pseudo-class for matching elements based on their directionality",
         link: "https://www.w3.org/TR/selectors-4/#dir-pseudo",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "selectors-4/dir-pseudo-class",
       },
     ],
@@ -198,7 +198,7 @@ const plugins = {
         name: "Double Position Gradients",
         description: "A syntax for using two positions in a gradient. ",
         link: "https://www.w3.org/TR/css-images-4/#color-stop-syntax",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "images-4/double-position-gradients",
       },
     ],
@@ -223,7 +223,7 @@ const plugins = {
         name: "system-ui value for font-family",
         description: "A generic font used to match the user’s interface",
         link: "https://drafts.csswg.org/css-fonts-4/#system-ui-def",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "fonts-4/system-ui-value",
       },
     ],
@@ -236,7 +236,7 @@ const plugins = {
         description:
           "The clamp() CSS function clamps a value between an upper and lower bound.",
         link: "https://www.w3.org/TR/css-values-4/#funcdef-clamp",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "values-4/clamp-function",
       },
     ],
@@ -249,7 +249,7 @@ const plugins = {
         description:
           "Syntax that allows definition of outer and inner displays types for an element.",
         link: "https://www.w3.org/TR/css-display-3/#the-display-properties",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "display-3/two-values-display",
       },
     ],
@@ -261,7 +261,7 @@ const plugins = {
         name: "`overflow` Shorthand Property",
         description: "A property for defining `overflow-x` and `overflow-y`",
         link: "https://www.w3.org/TR/css-overflow-3/#propdef-overflow",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "overflow-3/overflow-shorthand",
       },
     ],
@@ -274,7 +274,7 @@ const plugins = {
         description:
           "A syntax for defining media query ranges using ordinary comparison operators",
         link: "https://www.w3.org/TR/mediaqueries-4/#range-context",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "media-queries-4/media-query-ranges",
       },
     ],
@@ -287,7 +287,7 @@ const plugins = {
         description:
           "An at-rule for defining aliases that represent media queries",
         link: "https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media",
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "media-queries-5/custom-media-queries",
       },
     ],
@@ -407,7 +407,7 @@ const plugins = {
         description:
           "Depending on the list of target browsers, automatically adds (and removes) vendor prefixes.",
         link: null,
-        implementation: "https://github.com/parcel-bundler/parcel-css",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
         files: "misc/prefixes",
       },
       {

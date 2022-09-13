@@ -128,11 +128,11 @@ module.exports = [
       .externals(externals)
       .package(),
   builder =>
-    builder("postcss-parcel-css")
+    builder("postcss-lightningcss")
       .externals({
         ...externals,
-        //Let's keep @parcel/css external to download the right binary as dependency
-        "@parcel/css": "@parcel/css"
+        //Let's keep lightningcss external to download the right binary as dependency
+        "lightningcss": "lightningcss"
       })
       .package(),
   builder =>

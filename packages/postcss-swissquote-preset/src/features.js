@@ -106,11 +106,11 @@ module.exports = function(config) {
 
   // CSSO :: Minify and Optimize CSS
   processors
-    .processor("postcss-parcel-css")
+    .processor("postcss-lightningcss")
     .embedded()
     .setOptions({
       browsers: config.browsers,
-      parcelCssOptions: {
+      lightningcssOptions: {
         minify: env === "production",
         drafts: {
           customMedia: true

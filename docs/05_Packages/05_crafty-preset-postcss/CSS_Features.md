@@ -154,7 +154,7 @@ a {
 
 A 4 & 8 character hex color notation for specifying the opacity level
 
-[Specification](https://www.w3.org/TR/css-color-4/#hex-notation) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#hex-notation) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -172,7 +172,7 @@ blockquote {
 
 A function for specifying colors by hue, saturation and lightness to mix into it
 
-[Implementation](https://github.com/parcel-bundler/parcel-css)
+[Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -214,7 +214,7 @@ p {
 
 A space and slash separated notation for specifying colors
 
-[Specification](https://www.w3.org/TR/css-color-4/#funcdef-rgb) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-rgb) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -232,7 +232,7 @@ A space and slash separated notation for specifying colors
 
 A lovely shade of purple in memory of Rebecca Alison Meyer
 
-[Specification](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -250,7 +250,7 @@ html {
 
 A function for specifying colors expressed in the CIE Lab color space
 
-[Specification](https://www.w3.org/TR/css-color-4/#funcdef-lab) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-lab) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -269,7 +269,7 @@ body {
 
 Functions that allow colors to be expressed in OKLab and OKLCH.
 
-[Specification](https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -291,7 +291,7 @@ p {
 
 This function allows you to specify a color in a color space.
 
-[Specification](https://www.w3.org/TR/css-color-4/#funcdef-color) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#funcdef-color) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -313,7 +313,7 @@ blockquote {
 
 Syntactic sugar to use percentages instead of a float between 0 and 1.
 
-[Specification](https://www.w3.org/TR/css-color-4/#transparency) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-color-4/#transparency) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -361,7 +361,7 @@ A syntax for defining custom values accepted by all CSS properties
 
 Syntax that allows definition of outer and inner displays types for an element.
 
-[Specification](https://www.w3.org/TR/css-display-3/#the-display-properties) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-display-3/#the-display-properties) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -467,7 +467,7 @@ table {
 
 A generic font used to match the user’s interface
 
-[Specification](https://drafts.csswg.org/css-fonts-4/#system-ui-def) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://drafts.csswg.org/css-fonts-4/#system-ui-def) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -523,7 +523,7 @@ A function for specifying image sources based on the user’s resolution
 
 A syntax for using two positions in a gradient. 
 
-[Specification](https://www.w3.org/TR/css-images-4/#color-stop-syntax) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-images-4/#color-stop-syntax) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -545,7 +545,7 @@ A syntax for using two positions in a gradient.
 
 Flow-relative (left-to-right or right-to-left) properties and values
 
-[Specification](https://www.w3.org/TR/css-logical-1/) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-logical-1/) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -583,7 +583,7 @@ Flow-relative (left-to-right or right-to-left) properties and values
 
 A property for defining `overflow-x` and `overflow-y`
 
-[Specification](https://www.w3.org/TR/css-overflow-3/#propdef-overflow) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-overflow-3/#propdef-overflow) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -606,7 +606,7 @@ html {
 
 The clamp() CSS function clamps a value between an upper and lower bound.
 
-[Specification](https://www.w3.org/TR/css-values-4/#funcdef-clamp) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/css-values-4/#funcdef-clamp) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -628,7 +628,7 @@ The clamp() CSS function clamps a value between an upper and lower bound.
 
 A syntax for defining media query ranges using ordinary comparison operators
 
-[Specification](https://www.w3.org/TR/mediaqueries-4/#range-context) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/mediaqueries-4/#range-context) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -654,7 +654,7 @@ A syntax for defining media query ranges using ordinary comparison operators
 
 An at-rule for defining aliases that represent media queries
 
-[Specification](https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -680,7 +680,7 @@ An at-rule for defining aliases that represent media queries
 
 Depending on the list of target browsers, automatically adds (and removes) vendor prefixes.
 
-[Implementation](https://github.com/parcel-bundler/parcel-css)
+[Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -1042,7 +1042,7 @@ nav :any-link {
 
 A pseudo-class for ignoring elements in a selector list
 
-[Specification](https://www.w3.org/TR/selectors-4/#negation-pseudo) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/selectors-4/#negation-pseudo) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */
@@ -1060,7 +1060,7 @@ p:not(:first-child):not(.special) {
 
 A pseudo-class for matching elements based on their directionality
 
-[Specification](https://www.w3.org/TR/selectors-4/#dir-pseudo) [Implementation](https://github.com/parcel-bundler/parcel-css)
+[Specification](https://www.w3.org/TR/selectors-4/#dir-pseudo) [Implementation](https://github.com/parcel-bundler/lightningcss)
 
 ```css
 /* Before */

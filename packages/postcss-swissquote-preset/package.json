@@ -15,9 +15,10 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "dependencies": {
-    "@parcel/css": "1.14.0",
+    "@parcel/css": "1.13.0",
     "@swissquote/crafty-commons": "1.19.1",
     "caniuse-lite": "^1.0.30001399",
+    "lightningcss": "1.14.0",
     "postcss": "8.4.16"
   },
   "devDependencies": {
@@ -36,8 +37,8 @@
     "postcss-font-variant": "5.0.0",
     "postcss-import": "15.0.0",
     "postcss-initial": "4.0.1",
+    "postcss-lightningcss": "0.6.0",
     "postcss-nested": "5.0.6",
-    "postcss-parcel-css": "0.5.0",
     "postcss-property-lookup": "3.0.0",
     "postcss-reporter": "7.0.5",
     "postcss-url": "10.1.3"

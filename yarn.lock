@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@ampproject/remapping@npm:^2.1.0, @ampproject/remapping@npm:^2.1.1":
+"@ampproject/remapping@npm:^2.1.0":
   version: 2.2.0
   resolution: "@ampproject/remapping@npm:2.2.0"
   dependencies:
@@ -1866,12 +1866,93 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/css@npm:1.14.0, @parcel/css@npm:^1.0.1":
-  version: 1.14.0
-  resolution: "@parcel/css@npm:1.14.0"
+"@parcel/css-darwin-arm64@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-darwin-arm64@npm:1.13.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@parcel/css-darwin-x64@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-darwin-x64@npm:1.13.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@parcel/css-linux-arm-gnueabihf@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-linux-arm-gnueabihf@npm:1.13.0"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@parcel/css-linux-arm64-gnu@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-linux-arm64-gnu@npm:1.13.0"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@parcel/css-linux-arm64-musl@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-linux-arm64-musl@npm:1.13.0"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@parcel/css-linux-x64-gnu@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-linux-x64-gnu@npm:1.13.0"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@parcel/css-linux-x64-musl@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-linux-x64-musl@npm:1.13.0"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@parcel/css-win32-x64-msvc@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css-win32-x64-msvc@npm:1.13.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@parcel/css@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@parcel/css@npm:1.13.0"
   dependencies:
-    lightningcss: ^1.14.0
-  checksum: 3ed88310051ed96940a3653cce76819d44cc90cddabbdd0d0e2c8d9c76f137442207a30aea2fe04df0a7e3e75aef06fa7c593e50bb410bccb2ddd9a7ee267e07
+    "@parcel/css-darwin-arm64": 1.13.0
+    "@parcel/css-darwin-x64": 1.13.0
+    "@parcel/css-linux-arm-gnueabihf": 1.13.0
+    "@parcel/css-linux-arm64-gnu": 1.13.0
+    "@parcel/css-linux-arm64-musl": 1.13.0
+    "@parcel/css-linux-x64-gnu": 1.13.0
+    "@parcel/css-linux-x64-musl": 1.13.0
+    "@parcel/css-win32-x64-msvc": 1.13.0
+    detect-libc: ^1.0.3
+  dependenciesMeta:
+    "@parcel/css-darwin-arm64":
+      optional: true
+    "@parcel/css-darwin-x64":
+      optional: true
+    "@parcel/css-linux-arm-gnueabihf":
+      optional: true
+    "@parcel/css-linux-arm64-gnu":
+      optional: true
+    "@parcel/css-linux-arm64-musl":
+      optional: true
+    "@parcel/css-linux-x64-gnu":
+      optional: true
+    "@parcel/css-linux-x64-musl":
+      optional: true
+    "@parcel/css-win32-x64-msvc":
+      optional: true
+  checksum: 97f319baeec4d628bc84fd293cc048645d66f31c370fad9f1537cd775291e1ac56b3892daeee4d4a2cf9b39653cdfed2e19a63d8d051f6d7279683ae3becbf7f
   languageName: node
   linkType: hard
 
@@ -3001,7 +3082,7 @@ __metadata:
   resolution: "@swissquote/postcss-swissquote-preset@workspace:packages/postcss-swissquote-preset"
   dependencies:
     "@knagis/postcss-advanced-variables": 4.0.0
-    "@parcel/css": 1.14.0
+    "@parcel/css": 1.13.0
     "@swissquote/crafty-commons": 1.19.1
     "@swissquote/postcss-assets": 1.19.1
     "@swissquote/postcss-atroot": 1.19.1
@@ -3014,13 +3095,14 @@ __metadata:
     ava: 4.3.3
     c8: 7.12.0
     caniuse-lite: ^1.0.30001399
+    lightningcss: 1.14.0
     postcss: 8.4.16
     postcss-custom-selectors: 6.0.3
     postcss-font-variant: 5.0.0
     postcss-import: 15.0.0
     postcss-initial: 4.0.1
+    postcss-lightningcss: 0.6.0
     postcss-nested: 5.0.6
-    postcss-parcel-css: 0.5.0
     postcss-property-lookup: 3.0.0
     postcss-reporter: 7.0.5
     postcss-url: 10.1.3
@@ -9184,7 +9266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss@npm:^1.14.0":
+"lightningcss@npm:1.14.0, lightningcss@npm:^1.14.0":
   version: 1.14.0
   resolution: "lightningcss@npm:1.14.0"
   dependencies:
@@ -10699,6 +10781,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-lightningcss@npm:0.6.0":
+  version: 0.6.0
+  resolution: "postcss-lightningcss@npm:0.6.0"
+  dependencies:
+    browserslist: ^4.19.1
+    lightningcss: ^1.14.0
+  peerDependencies:
+    postcss: ^8.0.0
+  checksum: 61ab5397257d0f540947674f6ffce8e9c81dc315331befefcc4dbc4fe1ca11b75832ea5c1adcc4d43c1b82b9e4e35a3f33415f8cde63ab32ac8518b27d64f7e3
+  languageName: node
+  linkType: hard
+
 "postcss-load-config@npm:^3.0.0":
   version: 3.1.4
   resolution: "postcss-load-config@npm:3.1.4"
@@ -10790,19 +10884,6 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.14
   checksum: dbcbfd11e514f485ac0d2b649b32bcbd855665a88a76f697f8be6c5017aa0260954ecccd2475bbd5865a5d248eae9a4e6e10d2d51927621d05430381aa37e43b
-  languageName: node
-  linkType: hard
-
-"postcss-parcel-css@npm:0.5.0":
-  version: 0.5.0
-  resolution: "postcss-parcel-css@npm:0.5.0"
-  dependencies:
-    "@ampproject/remapping": ^2.1.1
-    "@parcel/css": ^1.0.1
-    browserslist: ^4.19.1
-  peerDependencies:
-    postcss: ^8.0.0
-  checksum: 73d888c23f2ac95064a6a0be235a5610b2542547067028b960c3daaea738ce9a2441b0b085acab0cc35317a1c429eaad1a17cecfe1bca2c941987d0691de628b
   languageName: node
   linkType: hard
 

@@ -127,7 +127,7 @@ doesn't give it's full measure. Here's some other features it has:
 
 - Preprocess your CSS using **PostCSS** and plugins that will allow you to write in a syntax approaching the one of Scss.
 - Use future CSS Syntax and features today like nesting, advanced colors, and custom properties.
-- Compress the CSS output with `@parcel/css` to get the smallest possible file.
+- Compress the CSS output with `lightningcss` to get the smallest possible file.
 - Automatically add or remove vendor prefixes where they are needed.
 - Simple Debugging with Source Maps
 

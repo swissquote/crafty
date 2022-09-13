@@ -14,7 +14,7 @@ module.exports = {
    */
   postcss(crafty, config, bundle) {
     // Disable minification to see the result
-    const options = config.processor("postcss-parcel-css").options
-    options.parcelCssOptions.minify = false;
+    const options = config.processor("postcss-lightningcss").options
+    options.lightningcssOptions.minify = false;
   }
 };
