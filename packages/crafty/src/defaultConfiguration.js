@@ -4,12 +4,15 @@ const browserslist = require("@swissquote/crafty-commons/packages/browserslist")
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const defaultBrowsers = [
-  "Edge >= 18",
-  "Safari >= 13",
-  "iOS >= 13",
-  "Chrome >= 77",
-  "and_chr >= 77",
-  "Firefox >= 69"
+  "Edge >= 86",
+  "Safari >= 15",
+  "iOS >= 15",
+  "Chrome >= 86",
+  "and_chr >= 86",
+  "Firefox >= 81",
+  "> 1%",
+  "not dead",
+  "not op_mini all"
 ].join(", ");
 
 function getDefaultBrowsers() {

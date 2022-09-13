@@ -45,7 +45,5 @@ The options we have for this preset are `environment` and `browsers`.
 
 - `environment` is defined automatically from how you run it (`crafty run/watch/test`).
 - `browsers` is defined from `config.browsers`.
-  The default list is `"Edge >= 18, Safari >= 13, iOS >= 13, Chrome >= 77, and_chr >= 77, Firefox >= 69"`.
-  You can override those defaults using any valid [Browserslist query source](https://github.com/browserslist/browserslist#queries)
-
-You can override this browsers list in your crafty configuration file.
+  This is a [Browserslist query](https://github.com/browserslist/browserslist#queries) that you can override.
+  We set a default value through [`crafty.config.js`](04_User_Guides/crafty.config.js_Available_Options.md).
