@@ -132,7 +132,7 @@ module.exports = [
       .externals({
         ...externals,
         //Let's keep lightningcss external to download the right binary as dependency
-        "lightningcss": "lightningcss"
+        lightningcss: "lightningcss"
       })
       .package(),
   builder =>
