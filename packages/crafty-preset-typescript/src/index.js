@@ -81,12 +81,14 @@ module.exports = {
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.tsx?$"] = require.resolve("../packages/ts-jest");
-    options.globals["ts-jest"] = {
-      compiler: require.resolve("typescript"),
-      useESM: false,
-      diagnostics: true
-    };
+    options.transform["^.+\\.tsx?$"] = [
+      require.resolve("../packages/ts-jest"),
+      {
+        compiler: require.resolve("typescript"),
+        useESM: false,
+        diagnostics: true
+      }
+    ];
 
     options.moduleFileExtensions.push("ts");
     options.moduleFileExtensions.push("tsx");
