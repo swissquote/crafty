@@ -141,6 +141,8 @@ a {
   background: initial;
   white-space: normal;
   white-space: initial;
+  -webkit-animation: none;
+  animation: none;
   -webkit-animation: initial;
   animation: initial;
 }
@@ -667,7 +669,7 @@ An at-rule for defining aliases that represent media queries
 }
 
 /* After */
-@media (max-width: 499.999px) or (min-width: 1200px) {
+@media ((max-width: 499.999px) or (min-width: 1200px)) {
   .foo {
     opacity: 1;
   }
