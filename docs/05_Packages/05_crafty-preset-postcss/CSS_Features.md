@@ -329,6 +329,29 @@ img {
 }
 ```
 
+# CSS Color Module Level 5
+
+[Specification](http://w3c.github.io/csswg-drafts/css-color-5/)
+
+## relative colors
+
+The new relative color syntax allows existing colors to be modified using the color functions
+
+[Specification](http://w3c.github.io/csswg-drafts/css-color-5/#relative-colors) [Implementation](https://github.com/parcel-bundler/lightningcss)
+
+```css
+/* Before */
+.foo {
+  color: lch(from slateblue calc(l - 10%) c h);
+}
+
+/* After */
+.foo {
+  color: #4e42b1;
+  color: lch(34.5711% 65.7776 296.794);
+}
+```
+
 # CSS Custom Properties for Cascading Variables Module Level 1
 
 [Specification](https://www.w3.org/TR/css-variables-1/)

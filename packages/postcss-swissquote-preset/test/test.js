@@ -106,6 +106,18 @@ const plugins = {
       },
     ],
   },
+  "CSS Color Module Level 5": {
+    link: "http://w3c.github.io/csswg-drafts/css-color-5/",
+    examples: [
+      {
+        name: "relative colors",
+        description: "The new relative color syntax allows existing colors to be modified using the color functions",
+        link: "http://w3c.github.io/csswg-drafts/css-color-5/#relative-colors",
+        implementation: "https://github.com/parcel-bundler/lightningcss",
+        files: "colors-5/relative-colors",
+      }
+    ]
+  },
   "CSS Cascading and Inheritance Level 3": {
     link: "https://www.w3.org/TR/css-cascade-3/",
     examples: [
