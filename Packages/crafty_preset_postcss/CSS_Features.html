@@ -139,6 +139,14 @@ We made a selection of plugins useful for Swissquote, and here are some features
 </ul>
 </li>
 <li>
+<a href="#css-color-module-level-5">CSS Color Module Level 5</a>
+<ul>
+<li>
+<a href="#relative-colors">relative colors</a>
+</li>
+</ul>
+</li>
+<li>
 <a href="#css-custom-properties-for-cascading-variables-module-level-1">CSS Custom Properties for Cascading Variables Module Level 1</a>
 <ul>
 <li>
@@ -567,6 +575,22 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <span class="hljs-comment">/* After */</span>
 <span class="hljs-selector-tag">img</span> {
   <span class="hljs-attribute">opacity</span>: .<span class="hljs-number">9</span>;
+}
+</code></pre>
+<h1><a id="css-color-module-level-5" href="#css-color-module-level-5" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Color Module Level 5</h1>
+<p><a href="http://w3c.github.io/csswg-drafts/css-color-5/" class="Link--external" rel="noopener noreferrer">Specification</a></p>
+<h2><a id="relative-colors" href="#relative-colors" class="Permalink" aria-hidden="true" title="Permalink">#</a>relative colors</h2>
+<p>The new relative color syntax allows existing colors to be modified using the color functions</p>
+<p><a href="http://w3c.github.io/csswg-drafts/css-color-5/#relative-colors" class="Link--external" rel="noopener noreferrer">Specification</a> <a href="https://github.com/parcel-bundler/lightningcss" class="Link--external" rel="noopener noreferrer">Implementation</a></p>
+<pre><code class="hljs css"><span class="hljs-comment">/* Before */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lch</span>(from slateblue calc(l - <span class="hljs-number">10%</span>) c h);
+}
+
+<span class="hljs-comment">/* After */</span>
+<span class="hljs-selector-class">.foo</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#4e42b1</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lch</span>(<span class="hljs-number">34.5711%</span> <span class="hljs-number">65.7776</span> <span class="hljs-number">296.794</span>);
 }
 </code></pre>
 <h1><a id="css-custom-properties-for-cascading-variables-module-level-1" href="#css-custom-properties-for-cascading-variables-module-level-1" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Custom Properties for Cascading Variables Module Level 1</h1>
