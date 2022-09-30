@@ -12,10 +12,10 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@babel/core": "7.19.1",
+    "@babel/core": "7.19.3",
     "@babel/plugin-transform-modules-commonjs": "7.18.6",
-    "jest-cli": "29.0.3",
-    "jest-environment-jsdom": "29.0.3"
+    "jest-cli": "29.1.2",
+    "jest-environment-jsdom": "29.1.2"
   },
   "engines": {
     "node": ">=16"
