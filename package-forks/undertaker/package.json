@@ -24,7 +24,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "dependencies": {
-    "@swissquote/bach": "1.19.1",
+    "bach": "2.0.1",
     "fastest-levenshtein": "1.0.16",
     "last-run": "2.0.0",
     "undertaker-registry": "2.0.0"

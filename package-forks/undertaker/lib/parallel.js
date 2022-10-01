@@ -1,4 +1,4 @@
-var bach = require("@swissquote/bach");
+var bach = require("bach");
 
 var metadata = require("./helpers/metadata");
 var buildTree = require("./helpers/buildTree");

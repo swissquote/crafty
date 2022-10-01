@@ -2493,18 +2493,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/bach@1.19.1, @swissquote/bach@workspace:package-forks/bach":
-  version: 0.0.0-use.local
-  resolution: "@swissquote/bach@workspace:package-forks/bach"
-  dependencies:
-    async-done: 2.0.0
-    async-settle: 2.0.0
-    ava: 4.3.3
-    c8: 7.12.0
-    now-and-later: 3.0.0
-  languageName: unknown
-  linkType: soft
-
 "@swissquote/color-fns@1.19.1, @swissquote/color-fns@workspace:package-forks/color-fns":
   version: 0.0.0-use.local
   resolution: "@swissquote/color-fns@workspace:package-forks/color-fns"
@@ -3061,8 +3049,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/undertaker@workspace:package-forks/undertaker"
   dependencies:
-    "@swissquote/bach": 1.19.1
     ava: 4.3.3
+    bach: 2.0.1
     c8: 7.12.0
     del: 6.1.1
     fastest-levenshtein: 1.0.16
@@ -4200,7 +4188,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async-settle@npm:2.0.0":
+"async-settle@npm:^2.0.0":
   version: 2.0.0
   resolution: "async-settle@npm:2.0.0"
   dependencies:
@@ -4416,6 +4404,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: 485db525f4cd38c02c29edcd7240dd232e8d6dbcaef88bfa4765ad3057ed733512f1b7aad06f4bf9661afefeb0ada2c4e259d130113b0289d7db574f82bbd4f8
+  languageName: node
+  linkType: hard
+
+"bach@npm:2.0.1":
+  version: 2.0.1
+  resolution: "bach@npm:2.0.1"
+  dependencies:
+    async-done: ^2.0.0
+    async-settle: ^2.0.0
+    now-and-later: ^3.0.0
+  checksum: 785d8f27043f247a5eb250d83eb1d7617fe2729903a691c40098affb93bdcfb34dfe3444b3190fa1895153fb412e19b69add0f6c2f92d7c00af2a9672992afd3
   languageName: node
   linkType: hard
 
@@ -10076,21 +10075,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"now-and-later@npm:3.0.0":
-  version: 3.0.0
-  resolution: "now-and-later@npm:3.0.0"
-  dependencies:
-    once: ^1.4.0
-  checksum: 3e7dfdef7d6e0d7a82bf78c98a33b272593e6c8bb0bcfd2c82e0ae58677fe9e95674eb3137fd3835256935adf06f144834524722e24abefcb208d25d4256603c
-  languageName: node
-  linkType: hard
-
 "now-and-later@npm:^2.0.0":
   version: 2.0.1
   resolution: "now-and-later@npm:2.0.1"
   dependencies:
     once: ^1.3.2
   checksum: a6715b9504b96f2603020e048f5ef7adc0693a1be1fbb46589d359d95f16df77207339d7bccf76295675f0f152f4ef145914b8775fa179c294833abef05b475f
+  languageName: node
+  linkType: hard
+
+"now-and-later@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "now-and-later@npm:3.0.0"
+  dependencies:
+    once: ^1.4.0
+  checksum: 3e7dfdef7d6e0d7a82bf78c98a33b272593e6c8bb0bcfd2c82e0ae58677fe9e95674eb3137fd3835256935adf06f144834524722e24abefcb208d25d4256603c
   languageName: node
   linkType: hard
 
