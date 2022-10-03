@@ -3048,7 +3048,7 @@ __metadata:
     postcss-value-parser: 4.2.0
     prettier: 2.7.1
     stylelint: 14.13.0
-    stylelint-no-unsupported-browser-features: 5.0.4
+    stylelint-no-unsupported-browser-features: 6.0.1
     stylelint-prettier: 2.0.0
     stylelint-scss: 4.3.0
   peerDependencies:
@@ -12506,16 +12506,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-no-unsupported-browser-features@npm:5.0.4":
-  version: 5.0.4
-  resolution: "stylelint-no-unsupported-browser-features@npm:5.0.4"
+"stylelint-no-unsupported-browser-features@npm:6.0.1":
+  version: 6.0.1
+  resolution: "stylelint-no-unsupported-browser-features@npm:6.0.1"
   dependencies:
     doiuse: ^4.4.1
     lodash: ^4.17.15
     postcss: ^8.4.16
   peerDependencies:
-    stylelint: ">=13.0.0"
-  checksum: 9a34c4f401621176080cc5237deb1408f1c397eec92ee883ec69c6618f9db95814ac8cb32ee168ef42052cd7eeb0fb9886d2230de4a71e281b911cd657db8971
+    stylelint: ^14.0.0
+  checksum: 0213dc06b2cf408b4e41635763b8ebe20772f0ccf3568aa85eda8042262a447b4462ff07e8b4f8290d0b6cbf0188d08d8e959f07d4ce078ca21537a5ab662090
   languageName: node
   linkType: hard
 
