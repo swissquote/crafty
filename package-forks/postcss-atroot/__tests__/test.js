@@ -12,7 +12,7 @@ test("places nodes before parent rule", function(t) {
   runTest(
     t,
     ".test {@at-root {.root {color: black}}}",
-    ".root {color: black}\n.test {}"
+    ".root {color: black}.test {}"
   );
 });
 
@@ -20,7 +20,7 @@ test("places nodes before parent rule, recursively", function(t) {
   runTest(
     t,
     ".test { .innertest { @at-root {.root {color: black}}}}",
-    ".root {color: black} .test { .innertest {}}"
+    ".root {color: black}.test { .innertest {}}"
   );
 });
 
@@ -28,14 +28,16 @@ test("places nodes before parent rule, keeps nested media", function(t) {
   runTest(
     t,
     ".test { .innertest { @at-root { @media(print) {.root {color: black}}}}}",
-    " @media(print) {.root {color: black}}.test { .innertest {}}"
+    "@media(print) {.root {color: black}}.test { .innertest {}}"
   );
 });
 
 test("saves nodes order", function(t) {
   runTest(
     t,
-    ".test {@at-root {color: white;color: black;color: green}}",
-    "color: white;color: black;color: green;\n.test {}"
+    ".test { color:blue; @at-root { .innerTest { color: white;"
+    + "color: black;color: green }  } background: orange; }",
+    ".innerTest { color: white;color: black;color: green }"
+    + ".test { color:blue; background: orange; }"
   );
 });
