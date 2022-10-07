@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/gulp-newer",
-  "version": "1.19.1",
+  "version": "1.20.0",
   "description": "Only pass through newer source files",
   "homepage": "https://github.com/tschaub/gulp-newer",
   "author": {
@@ -28,7 +28,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "devDependencies": {
-    "@swissquote/crafty-runner-gulp": "1.19.1",
+    "@swissquote/crafty-runner-gulp": "1.20.0",
     "ava": "4.3.3",
     "c8": "7.12.0",
     "mock-fs": "5.1.4",
