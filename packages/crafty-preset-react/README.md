@@ -88,8 +88,6 @@ To enable it, add these two parameters to your bundle in `crafty.config.js`:
 ```js
 {
   hot: true,
-  react: true,
-  // also works with
   react: {
     refreshMode: "fast"
   }

@@ -35,7 +35,7 @@ module.exports = {
     // the configuration
     if (bundle.react && typeof bundle.react === "boolean") {
       bundle.react = {
-        refreshMode: "fast"
+        refreshMode: "hot" // fast-refresh is opt-in for now, default to hot
       };
     }
   },
