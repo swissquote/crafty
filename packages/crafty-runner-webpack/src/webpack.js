@@ -152,6 +152,9 @@ function finalizeWatcher(chain, config) {
         publicPath: "",
         static: staticPath,
 
+        // We want to start more than one server at a time
+        allowMany: true,
+
         middleware: (app, builtins) => {
           builtins.headers(devServerConfig.headers);
         }
