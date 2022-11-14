@@ -2027,9 +2027,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ronilaukkarinen/gulp-stylelint@npm:14.0.6":
-  version: 14.0.6
-  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.6"
+"@ronilaukkarinen/gulp-stylelint@npm:14.0.8":
+  version: 14.0.8
+  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.8"
   dependencies:
     chalk: ^4.1.2
     fancy-log: ^1.3.3
@@ -2037,8 +2037,8 @@ __metadata:
     source-map: ^0.7.3
     strip-ansi: ^6.0.0
   peerDependencies:
-    stylelint: ^14.0.1
-  checksum: 3076149f5fbcbc379aad984feba212de5bd4c38ac9d952724cbab922309ed80d2eb79553caebf074ac5d01d8506a9ddc76fc61b8063387fc8a8cbb9e61173431
+    stylelint: ^14.15.0
+  checksum: 9d83cbf2eac9d19ce9825626275cd5178f2e7b3e1c1f97e1447063153d2d2fc14e47563c1eecb971e63b38d439e2e26b73e9e43fe0a9f1c07ae02dad736019d7
   languageName: node
   linkType: hard
 
@@ -2597,7 +2597,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss"
   dependencies:
     "@babel/code-frame": 7.18.6
-    "@ronilaukkarinen/gulp-stylelint": 14.0.6
+    "@ronilaukkarinen/gulp-stylelint": 14.0.8
     "@swissquote/crafty": 1.20.0
     "@swissquote/crafty-commons": 1.20.0
     "@swissquote/crafty-commons-gulp": 1.20.0
