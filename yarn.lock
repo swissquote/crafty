@@ -1787,7 +1787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.12, @jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.15, @jridgewell/trace-mapping@npm:^0.3.9":
+"@jridgewell/trace-mapping@npm:^0.3.12, @jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.15, @jridgewell/trace-mapping@npm:^0.3.17, @jridgewell/trace-mapping@npm:^0.3.9":
   version: 0.3.17
   resolution: "@jridgewell/trace-mapping@npm:0.3.17"
   dependencies:
@@ -2027,18 +2027,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ronilaukkarinen/gulp-stylelint@npm:14.0.8":
-  version: 14.0.8
-  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.8"
+"@ronilaukkarinen/gulp-stylelint@npm:14.0.9":
+  version: 14.0.9
+  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.9"
   dependencies:
-    chalk: ^4.1.2
-    fancy-log: ^1.3.3
-    plugin-error: ^1.0.1
-    source-map: ^0.7.3
-    strip-ansi: ^6.0.0
+    "@jridgewell/trace-mapping": ^0.3.17
+    ansi-colors: ^4.1.3
+    fancy-log: ^2.0.0
+    plugin-error: ^2.0.0
   peerDependencies:
     stylelint: ^14.15.0
-  checksum: 9d83cbf2eac9d19ce9825626275cd5178f2e7b3e1c1f97e1447063153d2d2fc14e47563c1eecb971e63b38d439e2e26b73e9e43fe0a9f1c07ae02dad736019d7
+  checksum: 79d197cf429ba83be7418ba32b0ac52e162bf173f57f526a582f2b1d3dfab4d56e5606253a29fbd779317d90b587f35d1a990031974595612c2f68752d87a666
   languageName: node
   linkType: hard
 
@@ -2597,7 +2596,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss"
   dependencies:
     "@babel/code-frame": 7.18.6
-    "@ronilaukkarinen/gulp-stylelint": 14.0.8
+    "@ronilaukkarinen/gulp-stylelint": 14.0.9
     "@swissquote/crafty": 1.20.0
     "@swissquote/crafty-commons": 1.20.0
     "@swissquote/crafty-commons-gulp": 1.20.0
@@ -3836,7 +3835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-colors@npm:^4.0.0":
+"ansi-colors@npm:^4.0.0, ansi-colors@npm:^4.1.3":
   version: 4.1.3
   resolution: "ansi-colors@npm:4.1.3"
   checksum: a9c2ec842038a1fabc7db9ece7d3177e2fe1c5dc6f0c51ecfbf5f39911427b89c00b5dc6b8bd95f82a26e9b16aaae2e83d45f060e98070ce4d1333038edceb0e
