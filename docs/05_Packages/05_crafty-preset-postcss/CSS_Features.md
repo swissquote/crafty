@@ -692,7 +692,7 @@ An at-rule for defining aliases that represent media queries
 }
 
 /* After */
-@media ((max-width: 499.999px) or (min-width: 1200px)) {
+@media (max-width: 499.999px) or (min-width: 1200px) {
   .foo {
     opacity: 1;
   }
