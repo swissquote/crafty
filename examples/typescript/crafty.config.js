@@ -20,7 +20,9 @@ module.exports = {
       //libraryTarget: "umd",
       source: "js/app.tsx",
       hot: true,
-      react: true,
+      react: {
+        refreshMode: "fast"
+      },
       extractCSS: true
     }
   },
@@ -34,7 +36,6 @@ module.exports = {
     options.testEnvironment = "jsdom";
   },
   webpack(crafty, bundle, chain) {
-
     // Code Splitting needs this to work correctly
     if (crafty.getEnvironment() === "production") {
       chain.output.publicPath('dist/js/');
