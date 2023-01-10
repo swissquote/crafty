@@ -8,7 +8,6 @@ module.exports = {
   presets: [
     "@swissquote/crafty-runner-rollup",
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-preset-typescript",
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-preset-jest",
     "@swissquote/crafty-preset-react",

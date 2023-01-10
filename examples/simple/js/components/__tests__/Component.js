@@ -1,41 +1,47 @@
 import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
 
 import Component from "../Component";
 
 let container = null;
+let root = null;
 beforeEach(() => {
   // met en place un élément DOM comme cible de rendu
   container = document.createElement("div");
   document.body.appendChild(container);
+
+  root = createRoot(container)
 });
 
 afterEach(() => {
-  // nettoie en sortie de test
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it('should be selectable by class "foo"', function() {
   act(() => {
-    render(<Component />, container);
+    root.unmount();
   });
 
-  expect(container.querySelectorAll(".foo")).toHaveLength(1);
+  container.remove();
+  container = null;
+  root = null;
+});
+
+it('should be selectable by button type', function() {
+  act(() => {
+    root.render(<Component />);
+  });
+
+  expect(container.querySelectorAll("button")).toHaveLength(1);
 });
 
 it("should render to static HTML", function() {
   act(() => {
-    render(<Component />, container);
+    root.render(<Component />);
   });
   expect(container.textContent).toEqual("Please Click Me");
 });
 
 it("simulates click events", () => {
   act(() => {
-    render(<Component />, container);
+    root.render(<Component />);
   });
 
   expect(container.textContent).toEqual("Please Click Me");
