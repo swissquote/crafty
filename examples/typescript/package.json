@@ -1,0 +1,33 @@
+{
+  "name": "typescript",
+  "version": "1.20.0",
+  "private": true,
+  "scripts": {
+    "_build": "crafty run",
+    "test": "crafty test",
+    "watch": "crafty watch",
+    "lint:css": "crafty cssLint css js/**/*.css",
+    "start": "serve"
+  },
+  "dependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "react-loadable": "5.5.0",
+    "react-tabs": "6.0.0",
+    "serve": "14.1.2",
+    "webpack": "5.75.0"
+  },
+  "devDependencies": {
+    "@swissquote/crafty": "1.20.0",
+    "@swissquote/crafty-preset-images": "1.20.0",
+    "@swissquote/crafty-preset-images-simple": "1.20.0",
+    "@swissquote/crafty-preset-maven": "1.20.0",
+    "@swissquote/crafty-preset-postcss": "1.20.0",
+    "@swissquote/crafty-preset-typescript": "1.20.0",
+    "@swissquote/crafty-runner-gulp": "1.20.0",
+    "@swissquote/crafty-runner-rollup": "1.20.0",
+    "@swissquote/crafty-runner-webpack": "1.20.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
