@@ -41,7 +41,7 @@ module.exports = {
     app: {
       runner: "webpack",
       source: "js/app.js",
-      hot: true, // Hot Module Replacement must be enabled for React Hot Loader to work
+      hot: true, // Hot Module Replacement must be enabled for any kind of reload to work
       react: true // React features must be enabled per bundle
     }
   }
@@ -96,6 +96,7 @@ To enable it, add these two parameters to your bundle in `crafty.config.js`:
 
 You're now ready to run `crafty watch` and use Fast Refresh on all your components.
 
+> If you are importing React through Requirejs or other ways that aren't controlled by Webpack, make sure that you are using the development version while running in watch mode, otherwise no refresh will be applied.
 
 ### React Hot Loader
 
