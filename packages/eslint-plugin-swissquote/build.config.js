@@ -5,6 +5,7 @@ module.exports = [
     builder("packages-eslint").externals({
       // Provided by this package
       typescript: "typescript",
+      "typescript/package.json": "typescript/package.json",
       prettier: "prettier",
       eslint: "eslint",
       "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
