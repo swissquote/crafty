@@ -169,7 +169,7 @@
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
       <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
-      <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Hot Module Replacement must be enabled for React Hot Loader to work</span>
+      <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Hot Module Replacement must be enabled for any kind of reload to work</span>
       <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// React features must be enabled per bundle</span>
     }
   }
@@ -211,6 +211,9 @@ This is the recommended way and will be the default starting with Crafty 1.20.0<
 }
 </code></pre>
 <p>You’re now ready to run <code>crafty watch</code> and use Fast Refresh on all your components.</p>
+<blockquote>
+<p>If you are importing React through Requirejs or other ways that aren’t controlled by Webpack, make sure that you are using the development version while running in watch mode, otherwise no refresh will be applied.</p>
+</blockquote>
 <h3><a id="react-hot-loader" href="#react-hot-loader" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Hot Loader</h3>
 <blockquote>
 <p>This variant will work when using the Babel or TypeScript presets with Webpack.</p>
