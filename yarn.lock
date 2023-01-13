@@ -5253,6 +5253,95 @@ __metadata:
   languageName: node
   linkType: hard
 
+"crafty-example-maven@workspace:examples/maven/src/main/frontend":
+  version: 0.0.0-use.local
+  resolution: "crafty-example-maven@workspace:examples/maven/src/main/frontend"
+  dependencies:
+    "@swissquote/crafty": 1.21.0
+    "@swissquote/crafty-preset-babel": 1.21.0
+    "@swissquote/crafty-preset-images": 1.21.0
+    "@swissquote/crafty-preset-images-simple": 1.21.0
+    "@swissquote/crafty-preset-maven": 1.21.0
+    "@swissquote/crafty-preset-postcss": 1.21.0
+    "@swissquote/crafty-preset-typescript": 1.21.0
+    "@swissquote/crafty-runner-gulp": 1.21.0
+    "@swissquote/crafty-runner-rollup": 1.21.0
+    "@swissquote/crafty-runner-webpack": 1.21.0
+    "@types/react": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-loadable: 5.5.0
+    react-tabs: 6.0.0
+    serve: 14.1.2
+    webpack: 5.75.0
+  languageName: unknown
+  linkType: soft
+
+"crafty-example-simple-swc@workspace:examples/simple-swc":
+  version: 0.0.0-use.local
+  resolution: "crafty-example-simple-swc@workspace:examples/simple-swc"
+  dependencies:
+    "@swissquote/crafty": 1.21.0
+    "@swissquote/crafty-preset-jest": 1.21.0
+    "@swissquote/crafty-preset-postcss": 1.21.0
+    "@swissquote/crafty-preset-swc": 1.21.0
+    "@swissquote/crafty-runner-webpack": 1.21.0
+    "@types/react": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-loadable: 5.5.0
+    react-tabs: 6.0.0
+    serve: 14.1.2
+    webpack: 5.75.0
+  languageName: unknown
+  linkType: soft
+
+"crafty-example-simple@workspace:examples/simple":
+  version: 0.0.0-use.local
+  resolution: "crafty-example-simple@workspace:examples/simple"
+  dependencies:
+    "@swissquote/crafty": 1.21.0
+    "@swissquote/crafty-preset-babel": 1.21.0
+    "@swissquote/crafty-preset-images": 1.21.0
+    "@swissquote/crafty-preset-images-simple": 1.21.0
+    "@swissquote/crafty-preset-maven": 1.21.0
+    "@swissquote/crafty-preset-postcss": 1.21.0
+    "@swissquote/crafty-runner-gulp": 1.21.0
+    "@swissquote/crafty-runner-rollup": 1.21.0
+    "@swissquote/crafty-runner-webpack": 1.21.0
+    "@types/react": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-loadable: 5.5.0
+    react-tabs: 6.0.0
+    serve: 14.1.2
+    webpack: 5.75.0
+  languageName: unknown
+  linkType: soft
+
+"crafty-example-typescript@workspace:examples/typescript":
+  version: 0.0.0-use.local
+  resolution: "crafty-example-typescript@workspace:examples/typescript"
+  dependencies:
+    "@swissquote/crafty": 1.21.0
+    "@swissquote/crafty-preset-images": 1.21.0
+    "@swissquote/crafty-preset-images-simple": 1.21.0
+    "@swissquote/crafty-preset-maven": 1.21.0
+    "@swissquote/crafty-preset-postcss": 1.21.0
+    "@swissquote/crafty-preset-typescript": 1.21.0
+    "@swissquote/crafty-runner-gulp": 1.21.0
+    "@swissquote/crafty-runner-rollup": 1.21.0
+    "@swissquote/crafty-runner-webpack": 1.21.0
+    "@types/react": ^18.0.0
+    "@types/react-dom": ^18.0.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-tabs: 6.0.0
+    serve: 14.1.2
+    webpack: 5.75.0
+  languageName: unknown
+  linkType: soft
+
 "crafty-workspace@workspace:.":
   version: 0.0.0-use.local
   resolution: "crafty-workspace@workspace:."
@@ -9608,30 +9697,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maven@workspace:examples/maven/src/main/frontend":
-  version: 0.0.0-use.local
-  resolution: "maven@workspace:examples/maven/src/main/frontend"
-  dependencies:
-    "@swissquote/crafty": 1.21.0
-    "@swissquote/crafty-preset-babel": 1.21.0
-    "@swissquote/crafty-preset-images": 1.21.0
-    "@swissquote/crafty-preset-images-simple": 1.21.0
-    "@swissquote/crafty-preset-maven": 1.21.0
-    "@swissquote/crafty-preset-postcss": 1.21.0
-    "@swissquote/crafty-preset-typescript": 1.21.0
-    "@swissquote/crafty-runner-gulp": 1.21.0
-    "@swissquote/crafty-runner-rollup": 1.21.0
-    "@swissquote/crafty-runner-webpack": 1.21.0
-    "@types/react": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-loadable: 5.5.0
-    react-tabs: 6.0.0
-    serve: 14.1.2
-    webpack: 5.75.0
-  languageName: unknown
-  linkType: soft
-
 "md5-hex@npm:^3.0.1":
   version: 3.0.1
   resolution: "md5-hex@npm:3.0.1"
@@ -12112,48 +12177,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-swc@workspace:examples/simple-swc":
-  version: 0.0.0-use.local
-  resolution: "simple-swc@workspace:examples/simple-swc"
-  dependencies:
-    "@swissquote/crafty": 1.21.0
-    "@swissquote/crafty-preset-jest": 1.21.0
-    "@swissquote/crafty-preset-postcss": 1.21.0
-    "@swissquote/crafty-preset-swc": 1.21.0
-    "@swissquote/crafty-runner-webpack": 1.21.0
-    "@types/react": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-loadable: 5.5.0
-    react-tabs: 6.0.0
-    serve: 14.1.2
-    webpack: 5.75.0
-  languageName: unknown
-  linkType: soft
-
-"simple@workspace:examples/simple":
-  version: 0.0.0-use.local
-  resolution: "simple@workspace:examples/simple"
-  dependencies:
-    "@swissquote/crafty": 1.21.0
-    "@swissquote/crafty-preset-babel": 1.21.0
-    "@swissquote/crafty-preset-images": 1.21.0
-    "@swissquote/crafty-preset-images-simple": 1.21.0
-    "@swissquote/crafty-preset-maven": 1.21.0
-    "@swissquote/crafty-preset-postcss": 1.21.0
-    "@swissquote/crafty-runner-gulp": 1.21.0
-    "@swissquote/crafty-runner-rollup": 1.21.0
-    "@swissquote/crafty-runner-webpack": 1.21.0
-    "@types/react": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-loadable: 5.5.0
-    react-tabs: 6.0.0
-    serve: 14.1.2
-    webpack: 5.75.0
-  languageName: unknown
-  linkType: soft
-
 "sinon@npm:15.0.1":
   version: 15.0.1
   resolution: "sinon@npm:15.0.1"
@@ -13341,29 +13364,6 @@ __metadata:
   checksum: 1caaea6cb7f813e64345190fddc4e6c924d0b698ab81189b503763c4a18f7f5501c69362979d36e19c042d89d936443e768a78b0675690b35eb663d19e0eae71
   languageName: node
   linkType: hard
-
-"typescript@workspace:examples/typescript":
-  version: 0.0.0-use.local
-  resolution: "typescript@workspace:examples/typescript"
-  dependencies:
-    "@swissquote/crafty": 1.21.0
-    "@swissquote/crafty-preset-images": 1.21.0
-    "@swissquote/crafty-preset-images-simple": 1.21.0
-    "@swissquote/crafty-preset-maven": 1.21.0
-    "@swissquote/crafty-preset-postcss": 1.21.0
-    "@swissquote/crafty-preset-typescript": 1.21.0
-    "@swissquote/crafty-runner-gulp": 1.21.0
-    "@swissquote/crafty-runner-rollup": 1.21.0
-    "@swissquote/crafty-runner-webpack": 1.21.0
-    "@types/react": ^18.0.0
-    "@types/react-dom": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-tabs: 6.0.0
-    serve: 14.1.2
-    webpack: 5.75.0
-  languageName: unknown
-  linkType: soft
 
 "unbox-primitive@npm:^1.0.2":
   version: 1.0.2

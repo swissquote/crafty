@@ -230,10 +230,13 @@ async function publish(allSpecs, preRelease) {
   );
 
   if (!argv.preRelease) {
-    await commit(
-      Object.values(allSpecs).map((spec) => spec.specPath),
-      nextVersion
-    );
+    const files = Object.values(allSpecs).map((spec) => spec.specPath);
+
+    // Refresh lockfile after version changes
+    await exec("yarn", ["install"]);
+    files.push("yarn.lock");
+
+    await commit(files, nextVersion);
   }
 
   await publish(allSpecs, argv.preRelease);
