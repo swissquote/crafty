@@ -2680,10 +2680,10 @@ __metadata:
     gulp-typescript: 5.0.1
     rollup-plugin-typescript2: 0.34.1
     schema-utils: 4.0.0
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     ts-loader: 9.4.2
     tslib: 2.4.1
-    typescript: 1.21.0
+    typescript: 4.9.4
   peerDependencies:
     "@swissquote/crafty-runner-gulp": 1.21.0
     "@swissquote/crafty-runner-rollup": 1.21.0
@@ -2801,7 +2801,7 @@ __metadata:
     eslint-plugin-react: 7.32.0
     eslint-plugin-react-hooks: 4.6.0
     prettier: 1.19.1
-    typescript: 1.21.0
+    typescript: 4.9.4
   languageName: unknown
   linkType: soft
 
@@ -4691,9 +4691,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001179, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001418":
-  version: 1.0.30001443
-  resolution: "caniuse-lite@npm:1.0.30001443"
-  checksum: e39c17c54c7a2e263c05a7391b1126014be88826e5cacd6cf9e976b87c5a3a3ea3e53ff5d410093dbd56fac7b50fba4d55c2fa4d6b9c6bd28202886d7fedfd70
+  version: 1.0.30001444
+  resolution: "caniuse-lite@npm:1.0.30001444"
+  checksum: 3d6436e2eea8ee77fdca906f481fd5513eec836d3c5ef395da96872f8e67e0db4b898430a588745752e43fabf0503dc351ff1ab710717c33451bdc8f09a7b5cf
   languageName: node
   linkType: hard
 
@@ -10243,9 +10243,9 @@ __metadata:
   linkType: hard
 
 "object-inspect@npm:^1.12.2, object-inspect@npm:^1.9.0":
-  version: 1.12.2
-  resolution: "object-inspect@npm:1.12.2"
-  checksum: a534fc1b8534284ed71f25ce3a496013b7ea030f3d1b77118f6b7b1713829262be9e6243acbcb3ef8c626e2b64186112cb7f6db74e37b2789b9c789ca23048b2
+  version: 1.12.3
+  resolution: "object-inspect@npm:1.12.3"
+  checksum: dabfd824d97a5f407e6d5d24810d888859f6be394d8b733a77442b277e0808860555176719c5905e765e3743a7cada6b8b0a3b85e5331c530fd418cc8ae991db
   languageName: node
   linkType: hard
 
@@ -13128,9 +13128,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:29.0.4":
-  version: 29.0.4
-  resolution: "ts-jest@npm:29.0.4"
+"ts-jest@npm:29.0.5":
+  version: 29.0.5
+  resolution: "ts-jest@npm:29.0.5"
   dependencies:
     bs-logger: 0.x
     fast-json-stable-stringify: 2.x
@@ -13157,7 +13157,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: c3daa71835fabd0c98eefc8611edc083cd2c78cbe9a02c1edea707a907afffafc1e61051f4746c0634904d4c68cd70736d0875ae644f55c6ed8beb950bf78689
+  checksum: f60f129c2287f4c963d9ee2677132496c5c5a5d39c27ad234199a1140c26318a7d5bda34890ab0e30636ec42a8de28f84487c09e9dcec639c9c67812b3a38373
   languageName: node
   linkType: hard
 
@@ -13322,7 +13322,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@1.21.0, typescript@workspace:examples/typescript":
+"typescript@npm:4.9.4":
+  version: 4.9.4
+  resolution: "typescript@npm:4.9.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: e782fb9e0031cb258a80000f6c13530288c6d63f1177ed43f770533fdc15740d271554cdae86701c1dd2c83b082cea808b07e97fd68b38a172a83dbf9e0d0ef9
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@4.9.4#~builtin<compat/typescript>":
+  version: 4.9.4
+  resolution: "typescript@patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 1caaea6cb7f813e64345190fddc4e6c924d0b698ab81189b503763c4a18f7f5501c69362979d36e19c042d89d936443e768a78b0675690b35eb663d19e0eae71
+  languageName: node
+  linkType: hard
+
+"typescript@workspace:examples/typescript":
   version: 0.0.0-use.local
   resolution: "typescript@workspace:examples/typescript"
   dependencies:
@@ -13342,30 +13362,6 @@ __metadata:
     react-tabs: 6.0.0
     serve: 14.1.2
     webpack: 5.75.0
-  languageName: unknown
-  linkType: soft
-
-"typescript@patch:typescript@1.21.0#~builtin<compat/typescript>":
-  version: 0.0.0-use.local
-  resolution: "typescript@patch:typescript@workspace%3Aexamples/typescript#~builtin<compat/typescript>::version=1.21.0&hash=3bafbf"
-  dependencies:
-    "@swissquote/crafty": 1.21.0
-    "@swissquote/crafty-preset-images": 1.21.0
-    "@swissquote/crafty-preset-images-simple": 1.21.0
-    "@swissquote/crafty-preset-maven": 1.21.0
-    "@swissquote/crafty-preset-postcss": 1.21.0
-    "@swissquote/crafty-preset-typescript": 1.21.0
-    "@swissquote/crafty-runner-gulp": 1.21.0
-    "@swissquote/crafty-runner-rollup": 1.21.0
-    "@swissquote/crafty-runner-webpack": 1.21.0
-    "@types/react": ^18.0.0
-    "@types/react-dom": ^18.0.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-tabs: 6.0.0
-    serve: 14.1.2
-    webpack: 5.75.0
-  checksum: a67eaa5133ffb2503a29ed86defb6b5aaf286babfe8828661afe0a041e52f31ee3002d1d050e340d7b8abc2e5b50e83bcdeb99f255dbda966778c17ed75312e5
   languageName: unknown
   linkType: soft
 
