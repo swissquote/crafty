@@ -1938,9 +1938,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:24.0.0":
-  version: 24.0.0
-  resolution: "@rollup/plugin-commonjs@npm:24.0.0"
+"@rollup/plugin-commonjs@npm:24.0.1":
+  version: 24.0.1
+  resolution: "@rollup/plugin-commonjs@npm:24.0.1"
   dependencies:
     "@rollup/pluginutils": ^5.0.1
     commondir: ^1.0.1
@@ -1953,7 +1953,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: e2a1bf295bbb45ab56747f7ce636d4b94046bfecc758a64c7276823b80271e0ba1196642c232aa61d1b1a98abeaddad45486c7227ec19a97d19d16f7661d49a6
+  checksum: ff5b09f5c350640fe6836fcc97bf5c5612bf78b26eaaad01bf1aee955f0b136135d1a8950a02f680779aec1f16f2c6b6cf89d6080e84ed09be62737abb6b3a5f
   languageName: node
   linkType: hard
 
@@ -2708,7 +2708,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-rollup@workspace:packages/crafty-runner-rollup"
   dependencies:
-    "@rollup/plugin-commonjs": 24.0.0
+    "@rollup/plugin-commonjs": 24.0.1
     "@rollup/plugin-json": 6.0.0
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-replace": 5.0.2
@@ -2717,7 +2717,7 @@ __metadata:
     "@swissquote/crafty-commons": 1.21.1
     "@swissquote/crafty-preset-terser": 1.21.1
     fsevents: ~2.3.2
-    rollup: 3.10.0
+    rollup: 3.10.1
     rollup-plugin-pnp-resolve: 2.0.0
     rollup-plugin-terser: 7.0.2
   dependenciesMeta:
@@ -2985,7 +2985,7 @@ __metadata:
     ava: 5.1.1
     c8: 7.12.0
     eslint: 8.32.0
-    rollup: 3.10.0
+    rollup: 3.10.1
   languageName: unknown
   linkType: soft
 
@@ -11903,9 +11903,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:3.10.0":
-  version: 3.10.0
-  resolution: "rollup@npm:3.10.0"
+"rollup@npm:3.10.1":
+  version: 3.10.1
+  resolution: "rollup@npm:3.10.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -11913,7 +11913,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 31a882689c58d084ac36362aeaf2422dc4b80d671bd88c856693c37d63a26ddac9b9819dfba7f79c2d50d5207868b0e3d75f728fe551bbc347cf5dedf8ece18e
+  checksum: 69c2bba82833f2977db08a5c10da651e0668f1335652499543c297633eb44eaf1473575973025a07cffd78903be8d10626e5abac063e49fb47d3f7dd8c18bf00
   languageName: node
   linkType: hard
 
