@@ -20,7 +20,7 @@ Some integrations, like ESLint support command line options to tweak the generat
 Three presets use this feature:
 
 - [ESLint](./05_Packages/05_crafty-preset-eslint/ESLint_IDE_Integration.md)
-- [stylelint](./05_Packages/05_crafty-preset-postcss/Stylelint_IDE_Integration.md)
+- [stylelint](./05_Packages/05_crafty-preset-stylelint/Stylelint_IDE_Integration.md)
 - [Jest](./05_Packages/05_crafty-preset-jest/Jest_IDE_Integration.md)
 
 ## Works best with
