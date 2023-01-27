@@ -6,6 +6,9 @@ module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-terser")],
   defaultConfig() {
     return {
+      // Declare the Js bundle type here as well as we could use webpack without SWC or Babel
+      bundleTypes: { js: "js" },
+
       // List of provided libraries, these will not be embedded inside the content
       externals: []
     };
