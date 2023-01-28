@@ -1,0 +1,29 @@
+@import "imported.scss";
+
+/* Nested Styles (postcss-nested, postcss-atroot) */
+
+.Parent {
+    background: white;
+}
+
+.Parent--before {
+    color: #333;
+}
+
+.Parent .Child {
+    background: black;
+}
+
+.Parent--after {
+    color: #eee;
+}
+
+/* Variables (postcss-advanced-variables, postcss-custom-properties) */
+
+:root {
+    --color: #f00;
+}
+
+.MenuLink {
+    color: var(--color);
+}
