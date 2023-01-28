@@ -116,7 +116,7 @@ doesn't give it's full measure. Here's some other features it has:
   with Babel.
 - Write **TypeScript**, transpiled to EcmaScript 5 with the TypeScript compiler.
 - Bundle all JavaScript files together with the help of **Webpack**.
-- Compress the output with **Terser** to create the smallest possible bundles.
+- Compress the output with **SWC** and **Terser** to create the smallest possible bundles.
 - Lint your code with **ESLint**, points you to possible mistakes and formatting
   errors.
 - Simple debugging with Source Maps.

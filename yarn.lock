@@ -2728,6 +2728,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack"
   dependencies:
+    "@swc/core": 1.3.27
     "@swissquote/crafty": 1.21.1
     "@swissquote/crafty-commons": 1.21.1
     "@swissquote/crafty-preset-terser": 1.21.1
@@ -2742,7 +2743,6 @@ __metadata:
     is-glob: 4.0.3
     log-symbols: 5.1.0
     service-names-port-numbers: 2.0.0
-    terser-webpack-plugin: 5.3.6
     utf-8-validate: 6.0.1
     webpack: 5.75.0
     webpack-bundle-analyzer: 4.7.0
@@ -12921,7 +12921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser-webpack-plugin@npm:5.3.6, terser-webpack-plugin@npm:^5.1.3":
+"terser-webpack-plugin@npm:^5.1.3":
   version: 5.3.6
   resolution: "terser-webpack-plugin@npm:5.3.6"
   dependencies:

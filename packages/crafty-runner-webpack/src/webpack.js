@@ -245,13 +245,12 @@ module.exports = function(crafty, bundle, webpackPort) {
 
   // Minimization is enabled only in production but we still
   // define it here in case someone needs to minify in development.
-  // We are Cloning the Terser configuration Object as webpack
-  // mutates it which messes with other implementations
   chain.optimization
-    .minimizer("terser")
-    .use(require.resolve("terser-webpack-plugin"), [
+    .minimizer("swc")
+    .use(path.resolve(__dirname, "SwcOptimize.js"), [
       {
-        terserOptions: { ...config.terser }
+        compress: true,
+        mangle: true
       }
     ]);
 
