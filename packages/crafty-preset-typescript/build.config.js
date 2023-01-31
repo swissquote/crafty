@@ -41,10 +41,7 @@ module.exports = [
     builder("typescript-packages")
       .packages((pkgBuilder) =>
         pkgBuilder
-          .package("babel-loader", "babelLoader")
-          .package("gulp-babel", "gulpBabel")
           .package("gulp-typescript", "gulpTypescript")
-          .package("@rollup/plugin-babel", "rollupPluginBabel")
           .package("ts-jest", "tsJest")
           .package("ts-loader", "tsLoader")
       )
@@ -56,9 +53,6 @@ module.exports = [
         "fast-deep-equal": "../fast-deep-equal/index.js",
 
         // Dependencies of this package
-        "@babel/core": "@babel/core",
-        "@babel/code-frame": "@babel/code-frame",
-        "@babel/helper-module-imports": "@babel/helper-module-imports",
         "schema-utils": "schema-utils",
         typescript: "typescript",
       }),

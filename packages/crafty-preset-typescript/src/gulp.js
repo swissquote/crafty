@@ -19,8 +19,8 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     // Linting
     const {
       toTempFile
-    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
-    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new");
+    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
+    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
     stream
       .add(
         eslint({
@@ -49,23 +49,21 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // First convert TypeScript
     const tsOptions = {
-      // Transpile to esnext so that Babel can apply all its magic
+      // Transpile to esnext so that SWC can apply all its magic
       target: "ESNext",
-      // Preserve JSX so babel can optimize it, or add development/debug information
+      // Preserve JSX so SWC can optimize it, or add development/debug information
       jsx: "Preserve"
     };
     const typescript = require("../packages/gulp-typescript");
     const tsProject = typescript.createProject("tsconfig.json", tsOptions);
     stream.add(tsProject());
 
-    // Then finalize with Babel
-    const babel = require("../packages/gulp-babel");
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-gulp");
-    const babelOptions = babelConfigurator(crafty, bundle);
+    // Then finalize with SWC
+    const swc = require("@swissquote/crafty-commons-swc/packages/gulp-swc.js");
+    const { getConfigurationGulp } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+    const swcOptions = getConfigurationGulp(crafty, bundle);
 
-    babelOptions.ignore = ["**/*.d.ts"];
-
-    stream.add(babel(babelOptions));
+    stream.add(swc(swcOptions));
 
     if (bundle.concat) {
       const concat = require("@swissquote/crafty-commons-gulp/packages/gulp-concat");

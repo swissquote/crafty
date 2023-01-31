@@ -48,25 +48,21 @@ module.exports = {
       options: {
         tsconfigOverride: {
           compilerOptions: {
-            // Transpile to esnext so that Babel can apply all its magic
+            // Transpile to esnext so that SWC can apply all its magic
             target: "ESNext",
-            // Preserve JSX so babel can optimize it, or add development/debug information
+            // Preserve JSX so SWC can optimize it, or add development/debug information
             jsx: "Preserve"
           }
         }
       }
     };
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-rollup");
-    const { hasRuntime, options } = babelConfigurator(crafty, bundle);
+    const { getConfigurationRollup } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+    const options = getConfigurationRollup(crafty, bundle);
     options.extensions = [".ts", ".tsx"];
 
-    if (hasRuntime) {
-      rollupConfig.input.external.push(/@babel\/runtime/);
-    }
-
-    rollupConfig.input.plugins.babelTypeScript = {
-      plugin: require("../packages/rollup-plugin-babel"),
+    rollupConfig.input.plugins.swcTypeScript = {
+      plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
       weight: 30,
       options
     };
@@ -103,6 +99,23 @@ module.exports = {
       return;
     }
 
+    const {
+      hasSwcHelpersDependency,
+      getConfigurationWebpack
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    const hasHelperDependency = hasSwcHelpersDependency();
+
+    if (hasHelperDependency) {
+      chain.externals(chain.get("externals").concat(/@swc\/helpers/));
+    }
+
+    // Make sure this module is resolved from the right path
+    chain.resolve.alias.set(
+      "@swc/helpers",
+      path.dirname(require.resolve("@swc/helpers/package.json"))
+    );
+
     chain.resolve.extensions.add(".ts").add(".tsx");
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
@@ -112,22 +125,19 @@ module.exports = {
     tsRule.test(/\.tsx?$/);
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
-    const babelOptions = babelConfigurator(crafty, bundle);
-
     // EcmaScript 2015+
     tsRule
-      .use("babel")
-      .loader(require.resolve("../packages/babel-loader"))
-      .options(babelOptions);
+      .use("swc")
+      .loader(require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js"))
+      .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
 
     const tsOptions = {
       // https://webpack.js.org/guides/build-performance/#typescript-loader
       experimentalWatchApi: true,
       compilerOptions: {
-        // Transpile to esnext so that Babel can apply all its magic
+        // Transpile to esnext so that SWC can apply all its magic
         target: "ESNext",
-        // Preserve JSX so babel can optimize it, or add development/debug information
+        // Preserve JSX so SWC can optimize it, or add development/debug information
         jsx: "Preserve"
       }
     };

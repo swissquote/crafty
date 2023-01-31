@@ -15,7 +15,7 @@ module.exports = {
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
     options.transform["\\.(js|jsx)$"] = [
-      require.resolve("../packages/swc-jest.js"),
+      require.resolve("@swissquote/crafty-commons-swc/packages/swc-jest.js"),
       {
         jsc: { parser: { jsx: true } }
       }
@@ -40,10 +40,10 @@ module.exports = {
     return configurators;
   },
   rollup(crafty, bundle, rollupConfig) {
-    const { getConfigurationRollup } = require("./configuration.js");
+    const { getConfigurationRollup } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
     rollupConfig.input.plugins.swc = {
-      plugin: require("./rollup-plugin-swc.js"),
+      plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
       weight: 20,
       options: getConfigurationRollup(crafty, bundle)
     };
@@ -56,7 +56,7 @@ module.exports = {
     const {
       hasSwcHelpersDependency,
       getConfigurationWebpack
-    } = require("./configuration.js");
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
     const hasHelperDependency = hasSwcHelpersDependency();
 
@@ -77,7 +77,7 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("swc")
-      .loader(require.resolve("../packages/swc-loader.js"))
+      .loader(require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js"))
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
   }
 };

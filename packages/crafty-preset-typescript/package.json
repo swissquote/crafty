@@ -13,12 +13,11 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "@babel/core": "7.20.12",
-    "@babel/helper-module-imports": "7.18.6",
-    "@babel/runtime": "7.20.13",
-    "@swissquote/babel-preset-swissquote": "1.21.1",
+    "@swc/core": "1.3.30",
+    "@swc/helpers": "0.4.14",
     "@swissquote/crafty-commons": "1.21.1",
     "@swissquote/crafty-commons-gulp": "1.21.1",
+    "@swissquote/crafty-commons-swc": "1.21.1",
     "@swissquote/crafty-commons-webpack": "1.21.1",
     "@swissquote/crafty-preset-eslint": "1.21.1",
     "schema-utils": "4.0.0",
@@ -26,10 +25,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "6.0.3",
-    "babel-loader": "9.1.2",
     "fork-ts-checker-webpack-plugin": "7.3.0",
-    "gulp-babel": "8.0.0",
     "gulp-typescript": "5.0.1",
     "rollup-plugin-typescript2": "0.34.1",
     "ts-jest": "29.0.5",

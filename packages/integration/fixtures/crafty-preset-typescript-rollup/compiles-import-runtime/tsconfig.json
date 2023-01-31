@@ -6,6 +6,8 @@
       "etc"
     ],
     "compilerOptions": {
+      // Exclude types as we don't use any in this simple test
+      "types": [],
       "declaration": true,
       "moduleResolution": "node",
       "charset": "UTF-8",

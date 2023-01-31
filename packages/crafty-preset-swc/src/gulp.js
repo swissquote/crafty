@@ -1,42 +1,3 @@
-const { PassThrough } = require("stream");
-
-/**
- * I'm not sure I know what I'm doing ...
- * But the idea is :
- * - Create an outer stream that will be left untouched,
- * - An inner stream with SWC
- * - When an error is thrown by SWC, capture, transform and send it to the outer stream
- *
- * A lot of time has been lost here, if you know a better way please contribute :)
- */
-function swcWrapper(crafty, swcTransform) {
-  const outerStream = new PassThrough({
-    bubbleErrors: true,
-    objectMode: true
-  });
-
-  const innerStream = new PassThrough({
-    bubbleErrors: true,
-    objectMode: true
-  }).pipe(swcTransform);
-
-  innerStream.on("error", error => {
-    // Reporting this error seems to make it loop
-    // Here we're making sure it doesn't happen
-    if (!error.fileName) {
-      console.log("This is a loop");
-      return;
-    }
-
-    const message = `${error.fileName}: ${error.message
-      .replace(/\n+Caused by:\n(?: {4}([0-9]+):.*$\n?)+/gm, "")
-      .replace(/^(Error: )+/i, "")}`;
-
-    outerStream.emit("error", new crafty.Information(message));
-  });
-
-  return outerStream.pipe(innerStream);
-}
 
 module.exports = function createTask(crafty, bundle, StreamHandler) {
   return cb => {
@@ -52,15 +13,15 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
-      const newer = require("@swissquote/crafty-commons-gulp/packages/gulp-newer");
+      const newer = require("@swissquote/crafty-commons-gulp/packages/gulp-newer.js");
       stream.add(newer(crafty.config.destination_js + bundle.destination));
     }
 
     // Linting
     const {
       toTempFile
-    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator");
-    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new");
+    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
+    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
     stream
       .add(
         eslint({
@@ -85,11 +46,11 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       );
     }
 
-    const swc = require("../packages/gulp-swc");
-    const { getConfigurationGulp } = require("./configuration.js");
+    const swc = require("@swissquote/crafty-commons-swc/packages/gulp-swc.js");
+    const { getConfigurationGulp } = require("@swissquote/crafty-commons-swc/src/configuration.js");
     const swcOptions = getConfigurationGulp(crafty, bundle);
 
-    stream.add(swcWrapper(crafty, swc(swcOptions, bundle)));
+    stream.add(swc(swcOptions));
 
     // Process
     if (bundle.concat) {
