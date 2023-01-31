@@ -60,7 +60,9 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
 
     // Then finalize with SWC
     const swc = require("@swissquote/crafty-commons-swc/packages/gulp-swc.js");
-    const { getConfigurationGulp } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+    const {
+      getConfigurationGulp
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
     const swcOptions = getConfigurationGulp(crafty, bundle);
 
     stream.add(swc(swcOptions));

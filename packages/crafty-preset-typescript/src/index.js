@@ -57,7 +57,9 @@ module.exports = {
       }
     };
 
-    const { getConfigurationRollup } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+    const {
+      getConfigurationRollup
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
     const options = getConfigurationRollup(crafty, bundle);
     options.extensions = [".ts", ".tsx"];
 
@@ -128,7 +130,9 @@ module.exports = {
     // EcmaScript 2015+
     tsRule
       .use("swc")
-      .loader(require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js"))
+      .loader(
+        require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js")
+      )
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
 
     const tsOptions = {

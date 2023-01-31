@@ -40,7 +40,9 @@ module.exports = {
     return configurators;
   },
   rollup(crafty, bundle, rollupConfig) {
-    const { getConfigurationRollup } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+    const {
+      getConfigurationRollup
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
     rollupConfig.input.plugins.swc = {
       plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
@@ -77,7 +79,9 @@ module.exports = {
       .exclude.add(/(node_modules|bower_components)/)
       .end()
       .use("swc")
-      .loader(require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js"))
+      .loader(
+        require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js")
+      )
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
   }
 };
