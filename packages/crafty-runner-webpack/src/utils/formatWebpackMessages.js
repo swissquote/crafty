@@ -71,7 +71,7 @@ function formatMessage(originalMessage, isError) {
 
     // SWC adds a weird "Caused by" at the end that's very verbose and not very helpful
     message = `${filename}: ${message
-      .replace(/\n+Caused by:\n(?: {4}([0-9]+):.*$\n?)+/gm, "")
+      .replace(/\n+Caused by:\n(?: {4}Syntax Error$)+/gm, "")
       .replace(/^(Error: )+/i, "")}`;
   }
 
