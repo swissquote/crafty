@@ -2764,6 +2764,7 @@ __metadata:
     is-glob: 4.0.3
     log-symbols: 5.1.0
     service-names-port-numbers: 2.0.0
+    speed-measure-webpack-plugin: 1.5.0
     utf-8-validate: 6.0.2
     webpack: 5.75.0
     webpack-bundle-analyzer: 4.7.0
@@ -12358,6 +12359,17 @@ __metadata:
   version: 3.0.12
   resolution: "spdx-license-ids@npm:3.0.12"
   checksum: 92a4dddce62ce1db6fe54a7a839cf85e06abc308fc83b776a55b44e4f1906f02e7ebd506120847039e976bbbad359ea8bdfafb7925eae5cd7e73255f02e0b7d6
+  languageName: node
+  linkType: hard
+
+"speed-measure-webpack-plugin@npm:1.5.0":
+  version: 1.5.0
+  resolution: "speed-measure-webpack-plugin@npm:1.5.0"
+  dependencies:
+    chalk: ^4.1.0
+  peerDependencies:
+    webpack: ^1 || ^2 || ^3 || ^4 || ^5
+  checksum: 5562da1e022a0c0f91dfaef362239ae110107ce1da6b9ba8ceaf16b998067ec89c96374afd049205cfa3526f8ec4551543a5c3dca3abd774b7923225a81bd24a
   languageName: node
   linkType: hard
 

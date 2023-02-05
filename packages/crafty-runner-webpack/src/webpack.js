@@ -162,7 +162,7 @@ function finalizeWatcher(chain, config) {
     ]);
 }
 
-function configureProfiling(chain, bundle) {
+function configureAnalyze(chain, bundle) {
   chain.profile(true);
 
   chain
@@ -264,10 +264,10 @@ module.exports = function(crafty, bundle, webpackPort) {
     configureWatcher(chain, bundle, config, webpackPort);
   }
 
-  // If --profile is passed, we create a
+  // If --analyze is passed, we create a
   // profile that we'll later write to disk
-  if (process.argv.some(arg => arg === "--profile")) {
-    configureProfiling(chain, bundle);
+  if (process.argv.some(arg => arg === "--analyze")) {
+    configureAnalyze(chain, bundle);
   }
 
   // Apply preset configuration
@@ -283,5 +283,16 @@ module.exports = function(crafty, bundle, webpackPort) {
     finalizeWatcher(chain, config);
   }
 
-  return chain.toConfig();
+  const finalConfig = chain.toConfig();
+  if (process.argv.some(arg => arg === "--profile")) {
+    const verbose = process.argv.some(arg => arg === "--verbose");
+    const SpeedMeasurePlugin = require("../packages/speed-measure-webpack-plugin.js");
+    const smp = new SpeedMeasurePlugin({
+      outputFormat: verbose ? "humanVerbose" : "human"
+    });
+
+    return smp.wrap(finalConfig);
+  }
+
+  return finalConfig;
 };
