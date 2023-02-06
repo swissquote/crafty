@@ -121,7 +121,7 @@ test.serial("Creates profiles", async t => {
     "crafty-preset-swc-webpack/profiles"
   );
 
-  const result = await testUtils.run(["run", "default", "--profile"], cwd);
+  const result = await testUtils.run(["run", "default", "--analyze"], cwd);
 
   t.snapshot(result);
   t.is(result.status, 0);
