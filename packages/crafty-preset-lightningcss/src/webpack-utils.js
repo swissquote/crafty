@@ -151,7 +151,7 @@ function createModuleRule(crafty, bundle, chain) {
       cssLoader: {
         modules: {
           exportLocalsConvention: "asIs",
-          mode: "pure",
+          mode: "local",
           getLocalIdent: getCssModuleLocalIdent
         }
       }
