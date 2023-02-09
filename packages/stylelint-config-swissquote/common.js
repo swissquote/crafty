@@ -38,8 +38,6 @@ module.exports = {
 
     // "function-url-quotes": "double", // Does not work with variables
     "media-feature-name-no-vendor-prefix": warn(),
-    "media-feature-range-operator-space-after": warn("always"),
-    "media-feature-range-operator-space-before": warn("always"),
     "length-zero-no-unit": warn(),
 
     // Possible Errors
