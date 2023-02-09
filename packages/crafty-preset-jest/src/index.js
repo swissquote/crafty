@@ -1,5 +1,5 @@
 const { join } = require("path");
-const { writeFileSync, unlinkSync } = require("fs");
+const fs = require("fs");
 
 function normalizeJestOptions(crafty, cli, args) {
   const moduleDirectories = new Set(["node_modules"]);
@@ -65,9 +65,11 @@ function normalizeJestOptions(crafty, cli, args) {
 function deleteOnExit(file) {
   process.addListener("exit", () => {
     try {
-      unlinkSync(file);
+      if (fs.existsSync(file)) {
+        fs.unlinkSync(file);
+      }
     } catch (e) {
-      console.log("Failed", e);
+      console.error("Failed to delete ", file, e);
     }
   });
 }
@@ -99,7 +101,7 @@ module.exports = ${JSON.stringify(content, null, 4)};
       const options = normalizeJestOptions(crafty, cli, argv);
 
       // Write options to file and set config file option
-      writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
+      fs.writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);
       argv.push("--config");
       argv.push(configFile);
 
