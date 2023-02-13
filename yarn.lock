@@ -2489,7 +2489,7 @@ __metadata:
     "@swissquote/crafty-commons": 1.21.1
     "@swissquote/gulp-newer": 1.21.1
     gulp-concat: 2.6.1
-    gulp-eslint-new: 1.7.1
+    gulp-eslint-new: 1.7.2
     plugin-error: 2.0.1
     through2: 4.0.2
   languageName: unknown
@@ -7370,19 +7370,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:1.7.1":
-  version: 1.7.1
-  resolution: "gulp-eslint-new@npm:1.7.1"
+"gulp-eslint-new@npm:1.7.2":
+  version: 1.7.2
+  resolution: "gulp-eslint-new@npm:1.7.2"
   dependencies:
-    "@types/eslint": ^8.4.10
+    "@types/eslint": ^8.21.0
     "@types/node": ">=12"
     eslint: 8
     fancy-log: ^2.0.0
-    plugin-error: ^2.0.0
+    plugin-error: ^2.0.1
     semver: ^7.3.8
     ternary-stream: ^3.0.0
     vinyl-fs: ^3.0.3
-  checksum: f4ce24553b4ad80ef3b212dbb5bb2d455f0a4244a5a9c9fa4070d3e7b1f62e537e27882b34ff06da8cc7857d38f87f0af05191499059da462b669f14890ab41c
+  checksum: 63b23a00780b0bae34252f4efba4724659e6297d8f142b899851a12e115550effaabcd0b16b2b77aa0a22da51178268cd0bc0b71b3fc45721340c7cf6beeac6c
   languageName: node
   linkType: hard
 
@@ -10856,7 +10856,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plugin-error@npm:2.0.1, plugin-error@npm:^2.0.0":
+"plugin-error@npm:2.0.1, plugin-error@npm:^2.0.0, plugin-error@npm:^2.0.1":
   version: 2.0.1
   resolution: "plugin-error@npm:2.0.1"
   dependencies:
