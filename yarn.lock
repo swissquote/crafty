@@ -2064,17 +2064,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ronilaukkarinen/gulp-stylelint@npm:14.0.9":
-  version: 14.0.9
-  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.0.9"
+"@ronilaukkarinen/gulp-stylelint@npm:14.1.0":
+  version: 14.1.0
+  resolution: "@ronilaukkarinen/gulp-stylelint@npm:14.1.0"
   dependencies:
     "@jridgewell/trace-mapping": ^0.3.17
     ansi-colors: ^4.1.3
     fancy-log: ^2.0.0
-    plugin-error: ^2.0.0
+    plugin-error: ^2.0.1
   peerDependencies:
-    stylelint: ^14.15.0
-  checksum: 79d197cf429ba83be7418ba32b0ac52e162bf173f57f526a582f2b1d3dfab4d56e5606253a29fbd779317d90b587f35d1a990031974595612c2f68752d87a666
+    stylelint: ^15.1.0
+  checksum: ec91aec316f50545abe45e3480ce838ccffbfe1427d632cd4b0a6c22e5704fb14e44475559017e55cf6ed288ee429712fc7fb7b75a512f7e80f9426ea33d2539
   languageName: node
   linkType: hard
 
@@ -2680,7 +2680,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-stylelint@workspace:packages/crafty-preset-stylelint"
   dependencies:
     "@babel/code-frame": 7.18.6
-    "@ronilaukkarinen/gulp-stylelint": 14.0.9
+    "@ronilaukkarinen/gulp-stylelint": 14.1.0
     "@swissquote/crafty": 1.21.1
     "@swissquote/crafty-commons": 1.21.1
     "@swissquote/crafty-commons-gulp": 1.21.1
@@ -10856,7 +10856,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plugin-error@npm:2.0.1, plugin-error@npm:^2.0.0":
+"plugin-error@npm:2.0.1, plugin-error@npm:^2.0.0, plugin-error@npm:^2.0.1":
   version: 2.0.1
   resolution: "plugin-error@npm:2.0.1"
   dependencies:
