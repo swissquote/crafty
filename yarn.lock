@@ -2620,7 +2620,7 @@ __metadata:
     "@swissquote/crafty-commons": 1.21.1
     "@swissquote/crafty-preset-stylelint": 1.21.1
     css-loader: 6.7.3
-    lightningcss: 1.18.0
+    lightningcss: 1.19.0
     lightningcss-loader: 2.1.0
     mini-css-extract-plugin: 2.7.2
     style-loader: 3.3.1
@@ -3014,7 +3014,7 @@ __metadata:
     ava: 5.2.0
     c8: 7.12.0
     caniuse-lite: ^1.0.30001418
-    lightningcss: 1.18.0
+    lightningcss: 1.19.0
     postcss: 8.4.21
     postcss-custom-selectors: 6.0.3
     postcss-font-variant: 5.0.0
@@ -9370,51 +9370,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss-darwin-arm64@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-darwin-arm64@npm:1.18.0"
+"lightningcss-darwin-arm64@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-darwin-arm64@npm:1.19.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"lightningcss-darwin-x64@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-darwin-x64@npm:1.18.0"
+"lightningcss-darwin-x64@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-darwin-x64@npm:1.19.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm-gnueabihf@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-linux-arm-gnueabihf@npm:1.18.0"
+"lightningcss-linux-arm-gnueabihf@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-linux-arm-gnueabihf@npm:1.19.0"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm64-gnu@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-linux-arm64-gnu@npm:1.18.0"
+"lightningcss-linux-arm64-gnu@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-linux-arm64-gnu@npm:1.19.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"lightningcss-linux-arm64-musl@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-linux-arm64-musl@npm:1.18.0"
+"lightningcss-linux-arm64-musl@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-linux-arm64-musl@npm:1.19.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"lightningcss-linux-x64-gnu@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-linux-x64-gnu@npm:1.18.0"
+"lightningcss-linux-x64-gnu@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-linux-x64-gnu@npm:1.19.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"lightningcss-linux-x64-musl@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-linux-x64-musl@npm:1.18.0"
+"lightningcss-linux-x64-musl@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-linux-x64-musl@npm:1.19.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -9432,26 +9432,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss-win32-x64-msvc@npm:1.18.0":
-  version: 1.18.0
-  resolution: "lightningcss-win32-x64-msvc@npm:1.18.0"
+"lightningcss-win32-x64-msvc@npm:1.19.0":
+  version: 1.19.0
+  resolution: "lightningcss-win32-x64-msvc@npm:1.19.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"lightningcss@npm:1.18.0, lightningcss@npm:^1.14.0, lightningcss@npm:^1.16.0":
-  version: 1.18.0
-  resolution: "lightningcss@npm:1.18.0"
+"lightningcss@npm:1.19.0, lightningcss@npm:^1.14.0, lightningcss@npm:^1.16.0":
+  version: 1.19.0
+  resolution: "lightningcss@npm:1.19.0"
   dependencies:
     detect-libc: ^1.0.3
-    lightningcss-darwin-arm64: 1.18.0
-    lightningcss-darwin-x64: 1.18.0
-    lightningcss-linux-arm-gnueabihf: 1.18.0
-    lightningcss-linux-arm64-gnu: 1.18.0
-    lightningcss-linux-arm64-musl: 1.18.0
-    lightningcss-linux-x64-gnu: 1.18.0
-    lightningcss-linux-x64-musl: 1.18.0
-    lightningcss-win32-x64-msvc: 1.18.0
+    lightningcss-darwin-arm64: 1.19.0
+    lightningcss-darwin-x64: 1.19.0
+    lightningcss-linux-arm-gnueabihf: 1.19.0
+    lightningcss-linux-arm64-gnu: 1.19.0
+    lightningcss-linux-arm64-musl: 1.19.0
+    lightningcss-linux-x64-gnu: 1.19.0
+    lightningcss-linux-x64-musl: 1.19.0
+    lightningcss-win32-x64-msvc: 1.19.0
   dependenciesMeta:
     lightningcss-darwin-arm64:
       optional: true
@@ -9469,7 +9469,7 @@ __metadata:
       optional: true
     lightningcss-win32-x64-msvc:
       optional: true
-  checksum: e3673ca60ad74c492b53c22a7715c98a4ba30f44fea0af41c2a3bb547670486d8011b56c67917e5b7b150195bb33a02ac1ee5e9e1399b5d1b94f2aca8a64ece2
+  checksum: c51de34b7379f9da391d0c1157893bb1484357d1ce2212a8c7943690d7a4fed7f2fa0d2dd7a92004b4444662011564ec7bf31f458a1638c856c529fe07285177
   languageName: node
   linkType: hard
 
