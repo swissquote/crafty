@@ -9,7 +9,7 @@
     "test:ci": "c8 --clean --temp-directory=coverage_tmp --allowExternal --exclude=\"**/tmp-*\" --exclude=\"**/fixtures/**\" --exclude=\"**/dist/**\" --reporter=text --reporter=lcov --reporter=html ava"
   },
   "dependencies": {
-    "@babel/core": "7.20.12",
+    "@babel/core": "7.21.0",
     "@swissquote/crafty": "1.21.1",
     "@swissquote/crafty-preset-babel": "1.21.1",
     "@swissquote/crafty-preset-eslint": "1.21.1",
@@ -24,7 +24,7 @@
     "@swissquote/crafty-runner-rollup": "1.21.1",
     "@swissquote/crafty-runner-webpack": "1.21.1",
     "ava": "5.2.0",
-    "c8": "7.12.0",
+    "c8": "7.13.0",
     "execa": "5.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
