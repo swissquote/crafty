@@ -353,8 +353,8 @@ test("Flags errors when using unknown at rules, with 'scss/at-rule-no-unknown'",
     t.deepEqual(data.results[0].warnings, [
       {
         line: 7,
-        endColumn: 2,
-        endLine: 11,
+        endColumn: 9,
+        endLine: 7,
         column: 1,
         rule: "scss/at-rule-no-unknown",
         severity: "error",
