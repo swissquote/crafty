@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").eslintPluginReact();
+module.exports = require("../dist/eslint-plugin-react/index.js");

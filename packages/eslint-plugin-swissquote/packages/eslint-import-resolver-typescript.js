@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").eslintImportResolverTypescript();
+module.exports = require("../dist/eslint-import-resolver-typescript/index.js");

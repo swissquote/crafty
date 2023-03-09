@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").eslintImportResolverNode();
+module.exports = require("../dist/eslint-import-resolver-node/index.js");

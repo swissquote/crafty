@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@swissquote/crafty-commons": "1.21.1",
-    "prettier": "1.19.1",
     "typescript": "4.9.5"
   },
   "peerDependency": {
@@ -37,7 +36,9 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-react-hooks": "4.6.0"
+    "eslint-plugin-react-hooks": "4.6.0",
+    "prettier": "2.8.4",
+    "prettier1": "npm:prettier@1.19.1"
   },
   "engines": {
     "node": ">=16"

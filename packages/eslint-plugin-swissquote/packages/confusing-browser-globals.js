@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").confusingBrowserGlobals();
+module.exports = require("../dist/confusing-browser-globals/index.js");

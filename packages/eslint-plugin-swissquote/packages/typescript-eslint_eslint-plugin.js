@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").typescriptEslintPlugin();
+module.exports = require("../dist/typescript-eslint/bundled.js").typescriptEslintPlugin();

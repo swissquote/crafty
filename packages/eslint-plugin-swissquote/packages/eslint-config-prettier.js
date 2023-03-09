@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").eslintConfigPrettier();
+module.exports = require("../dist/eslint-config-prettier/index.js");

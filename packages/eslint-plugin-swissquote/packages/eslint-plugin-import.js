@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-eslint.js").eslintPluginImport();
+module.exports = require("../dist/eslint-plugin-import/index.js");
