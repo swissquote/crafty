@@ -191,3 +191,25 @@ export default function MyComponent() {
   t.is(result.warningCount, 0);
   t.is(result.errorCount, 3);
 });
+
+test("Properly parses JSDoc", async t => {
+  const result = await lint(
+    engine,
+    `
+/* global BaseComponent */
+/** @extends React.Component */
+class MyComponent extends BaseComponent {}
+MyComponent.PROPTYPES = {};
+`
+  );
+
+  t.snapshot(result.messages);
+  t.is(result.warningCount, 0);
+  t.is(result.errorCount, 2);
+  t.is(
+    result.messages.filter(
+      m => m.message == "Typo in static class property declaration"
+    ).length,
+    1
+  );
+});

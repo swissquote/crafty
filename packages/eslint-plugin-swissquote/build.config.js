@@ -35,6 +35,10 @@ module.exports = [
       }),
 
   builder => builder("eslint-config-prettier").package(),
+  builder =>
+    builder("comment-parser")
+      .package()
+      .sourceFile(`module.exports = require("comment-parser/parser/index");`),
 
   builder =>
     builder("eslint-plugin-import")
@@ -88,13 +92,8 @@ module.exports = [
         "object.hasown/polyfill": "../../src/shims/object-hasown-polyfill.js",
         "object.values": "../../src/shims/object-values.js",
         "string.prototype.matchall":
-          "../../src/shims/string-prototype-matchall.js"
-
-        // TODO :: consider replacing "doctrine" with "comment-parser" or "jsdoc-parse"
-        //   https://www.npmjs.com/package/comment-parser
-        //   https://www.npmjs.com/package/jsdoc-parse
-        //   only used here in eslint-plugin-react
-        //   https://github.com/jsx-eslint/eslint-plugin-react/blob/master/lib/util/componentUtil.js#L78
+          "../../src/shims/string-prototype-matchall.js",
+        doctrine: "../../src/shims/doctrine.js"
       }),
 
   builder =>
