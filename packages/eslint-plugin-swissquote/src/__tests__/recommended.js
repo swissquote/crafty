@@ -208,7 +208,7 @@ MyComponent.PROPTYPES = {};
   t.is(result.errorCount, 2);
   t.is(
     result.messages.filter(
-      m => m.message == "Typo in static class property declaration"
+      m => m.message === "Typo in static class property declaration"
     ).length,
     1
   );

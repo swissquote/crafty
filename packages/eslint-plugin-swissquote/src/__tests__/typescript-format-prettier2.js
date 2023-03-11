@@ -2,7 +2,11 @@ const test = require("ava");
 
 const { prepareESLint, lint } = require("../../test_utils");
 
-const engine = prepareESLint("format");
+const engine = prepareESLint("format", {
+  settings: {
+    "formatting/mode": "prettier:2"
+  }
+});
 
 test("Fails on badly formatted TypeScript code", async t => {
   const result = await lint(
@@ -103,13 +107,13 @@ export default class SplitButton extends React.Component<
     super(props);
 
     this.state = {
-      open: props.open || false
+      open: props.open || false,
     };
   }
 
   private target: Element;
 
-  handleRef = node => {
+  handleRef = (node) => {
     this.target = getElement(node);
     assignRef(this.target, this.props.innerRef);
   };
@@ -123,7 +127,7 @@ export default class SplitButton extends React.Component<
     return (trigger as triggerFunction)({
       props: { innerRef: this.handleRef },
       isOpen: this.state.open,
-      caret: <span className={this.props.classes("Caret")} />
+      caret: <span className={this.props.classes("Caret")} />,
     });
   }
 }
@@ -135,7 +139,7 @@ export default class SplitButton extends React.Component<
   t.is(result.errorCount, 0);
 });
 
-test("Prettier 1 can't parse modern TypeScript features", async t => {
+test("Works with recent TypeScript features", async t => {
   const result = await lint(
     engine,
     `
@@ -150,5 +154,5 @@ interface SuperComponent extends Component {
 
   t.snapshot(result.messages);
   t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  t.is(result.errorCount, 0);
 });

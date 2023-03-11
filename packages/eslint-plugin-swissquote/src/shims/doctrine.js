@@ -11,7 +11,7 @@ const instance = parser.default();
 module.exports = {
   parse(content, options) {
     const parsed = instance(`/**\n${content}\n*/`);
-    
+
     return parsed[0];
   }
 };

@@ -164,24 +164,5 @@ module.exports = [
         "./parser-postcss": FAKE_PRETTIER_PARSER,
         "./parser-yaml": FAKE_PRETTIER_PARSER
       }),
-  builder => builder("fast-diff").package(),
-  // For prettier 2
-  builder =>
-    builder("eslint-plugin-prettier")
-      .package()
-      .externals({
-        ...externals,
-        prettier: "../prettier/index.js",
-        "fast-diff": "../fast-diff/index.js"
-      }),
-  // For prettier 1
-  builder =>
-    builder("eslint-plugin-prettier")
-      .package()
-      .destination(`dist/eslint-plugin-prettier1/index.js`)
-      .externals({
-        ...externals,
-        prettier: "../prettier1/index.js",
-        "fast-diff": "../fast-diff/index.js"
-      })
+  builder => builder("prettier-linter-helpers").package()
 ];

@@ -18,7 +18,25 @@ This plugin comes with four presets
 
 ## Included plugins
 
-the `recommended` preset includes three plugins:
+### Plugins in the `format` preset
+
+- `eslint-plugin-prettier` Uses Prettier to format your code.
+
+Due to breaking changes in behavior from Prettier 1 to Prettier 2 without configuration options to revert to Prettier 1's behavior, this preset provides both Prettier 1 and Prettier 2.
+By default we ship with Prettier 1 for backwards compatibility.
+
+You can choose which version you want to use by using ESLint's `settings` key.
+Valid values are `prettier:1` and `prettier:2`.
+
+```javascript
+{
+  settings: {
+    "formatting/mode": "prettier:2"
+  }
+}
+```
+
+### Plugins in the `recommended` preset
 
 - `eslint-plugin-import` provides some rules to clean imports.
 - `eslint-plugin-react` ensures you follow some best practices with React.
