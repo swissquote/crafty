@@ -117,7 +117,22 @@ and <code>recommended</code>)</li>
 <code>recommended</code> For all your EcmaScript 2015+ code, also contains rules for React</li>
 </ul>
 <h2><a id="included-plugins" href="#included-plugins" class="Permalink" aria-hidden="true" title="Permalink">#</a>Included plugins</h2>
-<p>the <code>recommended</code> preset includes three plugins:</p>
+<h3><a id="plugins-in-the-format-preset" href="#plugins-in-the-format-preset" class="Permalink" aria-hidden="true" title="Permalink">#</a>Plugins in the <code>format</code> preset</h3>
+<ul>
+<li>
+<code>eslint-plugin-prettier</code> Uses Prettier to format your code.</li>
+</ul>
+<p>Due to breaking changes in behavior from Prettier 1 to Prettier 2 without configuration options to revert to Prettier 1’s behavior, this preset provides both Prettier 1 and Prettier 2.
+By default we ship with Prettier 1 for backwards compatibility.</p>
+<p>You can choose which version you want to use by using ESLint’s <code>settings</code> key.
+Valid values are <code>prettier:1</code> and <code>prettier:2</code>.</p>
+<pre><code class="hljs javascript">{
+  <span class="hljs-attr">settings</span>: {
+    <span class="hljs-string">"formatting/mode"</span>: <span class="hljs-string">"prettier:2"</span>
+  }
+}
+</code></pre>
+<h3><a id="plugins-in-the-recommended-preset" href="#plugins-in-the-recommended-preset" class="Permalink" aria-hidden="true" title="Permalink">#</a>Plugins in the <code>recommended</code> preset</h3>
 <ul>
 <li>
 <code>eslint-plugin-import</code> provides some rules to clean imports.</li>
