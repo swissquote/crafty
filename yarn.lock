@@ -2157,9 +2157,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/cli@npm:5.26.0":
-  version: 5.26.0
-  resolution: "@statoscope/cli@npm:5.26.0"
+"@statoscope/cli@npm:5.26.1":
+  version: 5.26.1
+  resolution: "@statoscope/cli@npm:5.26.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@statoscope/config": 5.22.0
@@ -2178,7 +2178,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     statoscope: bin/cli.js
-  checksum: 2b47c0bca9a2b2df0fd1c162ce3d20722e9db958aba8dbb8d9d1d0ac21af7523267c7e74e3a4c8324d8610e25de58c7bb2dcf7822689e9dae72827dfd1ccf4d4
+  checksum: eb1435f7620a8f1e828fdeda39a7c5d4ba4a589ba01c89d44b91e2cf1b64d9fba4d312be5659a140536f3d57331d693e38f56cfedc29cd97e5c0301cbae0d91b
   languageName: node
   linkType: hard
 
@@ -5457,7 +5457,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "crafty-workspace@workspace:."
   dependencies:
-    "@statoscope/cli": 5.26.0
+    "@statoscope/cli": 5.26.1
     "@types/eslint": ^8.0.0
     "@types/jest": ^29.0.0
     "@vercel/ncc": 0.36.1
