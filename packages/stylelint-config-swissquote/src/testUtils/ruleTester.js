@@ -10,8 +10,8 @@ function setupTestCases({ name, cases, schema, comparisons }) {
         const spec = testCase.only
           ? test.only
           : testCase.skip
-          ? test.skip
-          : test;
+            ? test.skip
+            : test;
 
         spec(
           `${name} ${util.inspect(schema.config)} ${util.inspect(

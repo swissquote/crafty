@@ -34,14 +34,14 @@ module.exports = {
     options.testEnvironment = "jsdom";
   },
   gulp(crafty, gulp, StreamHandler) {
-    gulp.watch(["js/*.js"]).on('change', function (path) {
+    gulp.watch(["js/*.js"]).on('change', function(path) {
       console.log("Change happened to", path);
     })
   },
   webpack(crafty, bundle, chain) {
 
     // Do the requires when they're actually needed
-    // Doing them at the top of the files will slow down all 
+    // Doing them at the top of the files will slow down all
     // commands that don't actually need this dependency
     const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
 

@@ -51,7 +51,7 @@ module.exports = {
   webpack(crafty, bundle, chain) {
 
     // Do the requires when they're actually needed
-    // Doing them at the top of the files will slow down all 
+    // Doing them at the top of the files will slow down all
     // commands that don't actually need this dependency
     const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
 

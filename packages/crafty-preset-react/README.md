@@ -33,7 +33,7 @@ npm install @swissquote/crafty-preset-babel --save
 module.exports = {
   presets: [
     // also works with crafty-preset-typescript or crafty-preset-swc
-    "@swissquote/crafty-preset-babel", 
+    "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-runner-webpack",
     "@swissquote/crafty-preset-react"
   ],

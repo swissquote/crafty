@@ -6,7 +6,6 @@ const { getExternals } = require("../../utils/externals");
 const singlePackages = [
   "gulp-postcss",
   "gulp-rename",
- 
   "resolve-from",
 ];
 

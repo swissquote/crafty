@@ -3,7 +3,7 @@
 // Otherwise we fallback in loading stylelint directly
 
 try {
-    module.exports = require("@swissquote/crafty-preset-postcss/packages/stylelint.js");
+  module.exports = require("@swissquote/crafty-preset-postcss/packages/stylelint.js");
 } catch (e) {
-    module.exports = require("stylelint");
+  module.exports = require("stylelint");
 }

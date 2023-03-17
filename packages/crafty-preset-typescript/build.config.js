@@ -17,7 +17,7 @@ function replace(buf, a, b) {
   const before = buf.slice(0, idx);
   const after = replace(buf.slice(idx + a.length), a, b);
   const len = idx + b.length + after.length;
-  return Buffer.concat([ before, b, after ], len);
+  return Buffer.concat([before, b, after], len);
 }
 
 module.exports = [

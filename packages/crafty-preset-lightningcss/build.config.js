@@ -38,14 +38,14 @@ var copyRecursiveSync = function(src, dest) {
 
 module.exports = [
   builder =>
-  builder("webpack-packages")
-    .packages(pkgBuilder =>
-      pkgBuilder
-        .package("css-loader", "cssLoader")
-        .package("style-loader", "styleLoader")
-        .package("lightningcss-loader", "lightningcssLoader")
-    )
-    .externals(externals),
+    builder("webpack-packages")
+      .packages(pkgBuilder =>
+        pkgBuilder
+          .package("css-loader", "cssLoader")
+          .package("style-loader", "styleLoader")
+          .package("lightningcss-loader", "lightningcssLoader")
+      )
+      .externals(externals),
   async function() {
 
     console.log("Patching dist/webpack-packages/bundled.js");

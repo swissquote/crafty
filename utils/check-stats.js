@@ -41,8 +41,7 @@ function checkStats(stats, statFile) {
     .filter((m) => m.name.indexOf("/ncc/@@notfound") > -1)
     .map(
       (m) =>
-        `Module "${m.name.split("?")[1]}" requested by "${
-          m.issuerName
+        `Module "${m.name.split("?")[1]}" requested by "${m.issuerName
         }" was not found.`
     )
     .map(recordError);
