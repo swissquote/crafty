@@ -68,6 +68,10 @@
         "groupName": "all webpack dependencies",
         "groupSlug": "webpack-minor-patch"
       }
+    },
+    {
+      "matchPackageNames": ["prettier1"],
+      "allowedVersions": "<2.0"
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"],
