@@ -71,7 +71,7 @@ module.exports = class Processor {
   embedded(folder) {
     return this.module(
       `@swissquote/postcss-swissquote-preset/dist/${folder ||
-      this.name}/index.js`
+        this.name}/index.js`
     );
   }
 

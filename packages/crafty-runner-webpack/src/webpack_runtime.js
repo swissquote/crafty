@@ -80,7 +80,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
 
       compilerReady
         .then(({ compiler, config }) => {
-          compiler.watch(config.watchOptions, () => { });
+          compiler.watch(config.watchOptions, () => {});
         })
         .catch(e => {
           crafty.log.error("Webpack watch: Could not start", e);
