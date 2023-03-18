@@ -9,7 +9,6 @@ To make the compilation work with TypeScript, you need to add a `tsconfig.json` 
   "exclude": ["node_modules", "node"],
   "compilerOptions": {
     "moduleResolution": "node",
-    "charset": "UTF-8",
     "jsx": "react",
     "module": "esnext", // Enables Tree shaking for Webpack and rollup.js
     "sourceMap": true,

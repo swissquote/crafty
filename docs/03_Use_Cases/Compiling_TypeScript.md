@@ -48,7 +48,6 @@ Then, you can create a `tsconfig.json` next to `crafty.config.js`.
   "compilerOptions": {
     "declaration": true,
     "moduleResolution": "node",
-    "charset": "UTF-8",
     "jsx": "react",
     "module": "esnext", // Using an ES6 module with an ES5 target allows to leverage tree shaking
     "sourceMap": true,
@@ -117,7 +116,6 @@ Then, you can create a `tsconfig.json` next to `crafty.config.js`.
   "compilerOptions": {
     "declaration": true,
     "moduleResolution": "node",
-    "charset": "UTF-8",
     "jsx": "react",
     "module": "esnext", // Using an ES6 module with an ES5 target allows to leverage tree shaking
     "sourceMap": true,
