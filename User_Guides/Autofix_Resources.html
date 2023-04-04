@@ -201,11 +201,11 @@ Before diving into fixing 100 lines of code try these commands they come in hand
 <p>This command will generate prettier configuration for your project.</p>
 <p>Prettier is used internally with Crafty, you can also use Prettier directly to fix the formatting of your files without the linting:</p>
 <pre><code class="hljs bash">npx prettier --write <span class="hljs-string">"**/*.js"</span>
-npx prettier --write <span class="hljs-string">"**/*.ts"</span> <span class="hljs-string">"**/*.tsx"</span>
+npx prettier --write <span class="hljs-string">"**/*.ts"</span> <span class="hljs-string">"**/*.tsx"</span> <span class="hljs-string">"**/*.mts"</span> <span class="hljs-string">"**/*.cts"</span>
 </code></pre>
 <p>Note the <code>--write</code> option will write the changes to disk. Omitting it will allow you to have a preview of the changes.</p>
 <p>Example for linting TypeScript files:</p>
-<pre><code class="hljs bash">npx prettier --write <span class="hljs-string">"**/*.ts"</span> <span class="hljs-string">"**/*.tsx"</span>
+<pre><code class="hljs bash">npx prettier --write <span class="hljs-string">"**/*.ts"</span> <span class="hljs-string">"**/*.tsx"</span> <span class="hljs-string">"**/*.mts"</span> <span class="hljs-string">"**/*.cts"</span>
 </code></pre>
 <p>More options here: <a href="https://prettier.io/docs/en/cli.html" class="Link--external" rel="noopener noreferrer">Prettier Configuration</a></p>
     </div>

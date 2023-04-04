@@ -232,9 +232,9 @@ they are testing so that relative imports appear shorter. For example, if
 <p>Using <a href="../crafty_preset_babel/index.html"><code>crafty-preset-babel</code></a> will add
 <code>jsx</code> as a supported test file extension and
 <a href="../crafty_preset_typescript/index.html"><code>crafty-preset-typescript</code></a> will
-add the support for <code>ts</code> and <code>tsx</code></p>
+add the support TypeScript extensions <code>ts</code>, <code>tsx</code>, <code>mts</code> and <code>cts</code></p>
 </blockquote>
-<p>To be able to use <code>.ts</code> or <code>.tsx</code> test files, you’ll have to add <code>@types/jest</code> as a dependency :</p>
+<p>To be able to use TypeScript test files, you’ll have to add <code>@types/jest</code> as a dependency :</p>
 <pre><code class="hljs bash">npm install --save @types/jest
 </code></pre>
 <h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty test</code></h2>
@@ -295,11 +295,13 @@ function to override Jest’s configuration.</p>
     options.moduleDirectories.push(MODULES);
 
     <span class="hljs-comment">// Add a transformer for TypeScript</span>
-    options.transform[<span class="hljs-string">"^.+\\.tsx?$"</span>] = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"ts-jest"</span>);
+    options.transform[<span class="hljs-string">"^.+\\.(ts|tsx|mts|cts)$"</span>] = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"ts-jest"</span>);
 
     <span class="hljs-comment">// Add file extensions to resolve imports</span>
     options.moduleFileExtensions.push(<span class="hljs-string">"ts"</span>);
     options.moduleFileExtensions.push(<span class="hljs-string">"tsx"</span>);
+    options.moduleFileExtensions.push(<span class="hljs-string">"mts"</span>);
+    options.moduleFileExtensions.push(<span class="hljs-string">"cts"</span>);
   }
 };
 </code></pre>
