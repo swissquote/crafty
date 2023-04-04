@@ -1,0 +1,21 @@
+diff --git a/dist/cjs/index.js b/dist/cjs/index.js
+index 4eea8ad569767bcef7ba057cb1c7ea8957307364..8db2ee06e446c28051ac57b4106f67e807a23146 100644
+--- a/dist/cjs/index.js
++++ b/dist/cjs/index.js
+@@ -1099,6 +1099,16 @@ function nodeResolve(opts = {}) {
+       }
+     }
+ 
++    // TypeScript files may import '.mjs' or '.cjs' to refer to either '.mts' or '.cts'
++    for (const [ext, tsExt] of [
++      ['.mjs', '.mts'],
++      ['.cjs', '.cts']
++    ]) {
++      if (importee.endsWith(ext) && extensions.includes(tsExt)) {
++        importSpecifierList.push(importee.replace(/\.([mc])js$/, '.$1ts'));
++      }
++    }
++
+     const warn = (...args) => context.warn(...args);
+     const isRequire = custom && custom['node-resolve'] && custom['node-resolve'].isRequire;
+     const exportConditions = isRequire ? conditionsCjs : conditionsEsm;

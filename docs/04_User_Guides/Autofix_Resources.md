@@ -49,7 +49,7 @@ Prettier is used internally with Crafty, you can also use Prettier directly to f
 
 ```bash
 npx prettier --write "**/*.js"
-npx prettier --write "**/*.ts" "**/*.tsx"
+npx prettier --write "**/*.ts" "**/*.tsx" "**/*.mts" "**/*.cts"
 ```
 
 Note the `--write` option will write the changes to disk. Omitting it will allow you to have a preview of the changes.
@@ -57,7 +57,7 @@ Note the `--write` option will write the changes to disk. Omitting it will allow
 Example for linting TypeScript files:
 
 ```bash
-npx prettier --write "**/*.ts" "**/*.tsx"
+npx prettier --write "**/*.ts" "**/*.tsx" "**/*.mts" "**/*.cts"
 ```
 
 More options here: [Prettier Configuration](https://prettier.io/docs/en/cli.html)

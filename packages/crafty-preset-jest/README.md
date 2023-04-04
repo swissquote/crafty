@@ -62,9 +62,9 @@ they are testing so that relative imports appear shorter. For example, if
 > Using [`crafty-preset-babel`](05_Packages/05_crafty-preset-babel.md) will add
 > `jsx` as a supported test file extension and
 > [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript.md) will
-> add the support for `ts` and `tsx`
+> add the support TypeScript extensions `ts`, `tsx`, `mts` and `cts`
 
-To be able to use `.ts` or `.tsx` test files, you'll have to add `@types/jest` as a dependency :
+To be able to use TypeScript test files, you'll have to add `@types/jest` as a dependency :
 
 ```sh
 npm install --save @types/jest
@@ -148,11 +148,13 @@ module.exports = {
     options.moduleDirectories.push(MODULES);
 
     // Add a transformer for TypeScript
-    options.transform["^.+\\.tsx?$"] = require.resolve("ts-jest");
+    options.transform["^.+\\.(ts|tsx|mts|cts)$"] = require.resolve("ts-jest");
 
     // Add file extensions to resolve imports
     options.moduleFileExtensions.push("ts");
     options.moduleFileExtensions.push("tsx");
+    options.moduleFileExtensions.push("mts");
+    options.moduleFileExtensions.push("cts");
   }
 };
 ```

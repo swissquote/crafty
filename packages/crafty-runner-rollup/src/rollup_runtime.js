@@ -54,7 +54,8 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           plugin: require("../packages/rollup-plugin-node-resolve"),
           weight: 40,
           options: {
-            browser: true
+            browser: true,
+            extensions: [ '.mjs', '.js', '.json', '.node' ]
           }
         },
         commonjs: {

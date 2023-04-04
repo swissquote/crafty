@@ -74,7 +74,7 @@ Moreover, the integration with your IDE is simplified if you have a complete `ts
 ## Usage with Jest
 
 If you include both `crafty-preset-typescript` and `crafty-preset-jest`.
-When running your tests with `crafty test` this preset will be use to convert all `.ts` and `.tsx` files (source and test files)
+When running your tests with `crafty test` this preset will be use to convert all `.ts`, `.tsx`, `.mts`, and `.cts` files (source and test files)
 
 ## Type definition files
 

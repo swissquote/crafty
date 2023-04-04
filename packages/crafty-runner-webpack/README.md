@@ -72,7 +72,7 @@ module.exports = {
     // Change any value of the chain object
 
     // For example, adding supported extensions to the resolution
-    chain.resolve.extensions.add(".ts").add(".tsx");
+    chain.resolve.extensions.add(".ts").add(".tsx").add(".mts").add(".cts");
   }
 };
 ```

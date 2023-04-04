@@ -4,7 +4,7 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 );
 const path = require("path");
 const fs = require("fs");
-const WebpackChain = require("webpack-chain");
+const WebpackChain = require("webpack-chain-5");
 const ancestor = require("common-ancestor-path");
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");

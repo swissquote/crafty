@@ -2049,6 +2049,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-node-resolve@patch:@rollup/plugin-node-resolve@npm%3A15.0.1#./.yarn/patches/@rollup-plugin-node-resolve-npm-15.0.1-3c00b5782e.patch::locator=crafty-workspace%40workspace%3A.":
+  version: 15.0.1
+  resolution: "@rollup/plugin-node-resolve@patch:@rollup/plugin-node-resolve@npm%3A15.0.1#./.yarn/patches/@rollup-plugin-node-resolve-npm-15.0.1-3c00b5782e.patch::version=15.0.1&hash=160ebd&locator=crafty-workspace%40workspace%3A."
+  dependencies:
+    "@rollup/pluginutils": ^5.0.1
+    "@types/resolve": 1.20.2
+    deepmerge: ^4.2.2
+    is-builtin-module: ^3.2.0
+    is-module: ^1.0.0
+    resolve: ^1.22.1
+  peerDependencies:
+    rollup: ^2.78.0||^3.0.0
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: 39259971ec81a7d91c27926fd068cb763f6028e2b02a5cbab5ce0fbdf2adca52df731bc52094e13537aa24566cf4578a2e712767b2121e1b5cc31cfb1a2ab14d
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-replace@npm:5.0.2":
   version: 5.0.2
   resolution: "@rollup/plugin-replace@npm:5.0.2"
@@ -2839,7 +2858,7 @@ __metadata:
     utf-8-validate: 6.0.3
     webpack: 5.76.2
     webpack-bundle-analyzer: 4.8.0
-    webpack-chain: 6.5.1
+    webpack-chain-5: 8.0.2
     webpack-merge: 5.8.0
     webpack-plugin-serve: 1.6.0
   languageName: unknown
@@ -12001,6 +12020,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rollup-plugin-typescript2@patch:rollup-plugin-typescript2@npm%3A0.34.1#./.yarn/patches/rollup-plugin-typescript2-npm-0.34.1-6b67180d5c.patch::locator=crafty-workspace%40workspace%3A.":
+  version: 0.34.1
+  resolution: "rollup-plugin-typescript2@patch:rollup-plugin-typescript2@npm%3A0.34.1#./.yarn/patches/rollup-plugin-typescript2-npm-0.34.1-6b67180d5c.patch::version=0.34.1&hash=e8506f&locator=crafty-workspace%40workspace%3A."
+  dependencies:
+    "@rollup/pluginutils": ^4.1.2
+    find-cache-dir: ^3.3.2
+    fs-extra: ^10.0.0
+    semver: ^7.3.7
+    tslib: ^2.4.0
+  peerDependencies:
+    rollup: ">=1.26.3"
+    typescript: ">=2.4.0"
+  checksum: 5d503569f6277f437e3a80c6301108d19819f8be48643ba21b27dd7efb536cc1a7408c7315b6d5a4cf04cd4c0609155025fca2f8f9c16c0e834a8fe1076504de
+  languageName: node
+  linkType: hard
+
 "rollup@npm:3.20.2":
   version: 3.20.2
   resolution: "rollup@npm:3.20.2"
@@ -13884,13 +13919,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-chain@npm:6.5.1":
-  version: 6.5.1
-  resolution: "webpack-chain@npm:6.5.1"
+"webpack-chain-5@npm:8.0.2":
+  version: 8.0.2
+  resolution: "webpack-chain-5@npm:8.0.2"
   dependencies:
     deepmerge: ^1.5.2
     javascript-stringify: ^2.0.1
-  checksum: 51ea287b13cd29fa61ef3942539e6f179a6e677b51bca42ecc9d5eba7ab318166fbb859be5701b0ac4e907d1db29a0b4d2b53b60eddac6f6c33783392c742e5f
+  checksum: 82806d901eb3f22f94bcbe7914439d42ee110a15fd3fa03c2522f77c989ffa67c4662b04d912936f065fff662fd68d23de5799796cc36ea60431ea571f48762a
   languageName: node
   linkType: hard
 

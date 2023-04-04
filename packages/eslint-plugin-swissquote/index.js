@@ -16,7 +16,7 @@ module.exports = {
       extends: resolveModules("formatting", "es6-format"),
       overrides: [
         {
-          files: ["*.ts", "*.tsx"],
+          files: ["*.ts", "*.tsx", "*.mts", "*.cts"],
           parser: require.resolve("./packages/typescript-eslint_parser.js"),
           // Extends doesn't work in overrides, so we add rules directly
           rules: require("./src/typescript.js").rules
@@ -28,7 +28,7 @@ module.exports = {
       extends: resolveModules("node"),
       overrides: [
         {
-          files: ["*.ts", "*.tsx"],
+          files: ["*.ts", "*.tsx", "*.mts", "*.cts"],
           parser: require.resolve("./packages/typescript-eslint_parser.js")
         }
       ]
@@ -58,7 +58,7 @@ module.exports = {
       ),
       overrides: [
         {
-          files: ["*.ts", "*.tsx"],
+          files: ["*.ts", "*.tsx", "*.mts", "*.cts"],
           parser: require.resolve("./packages/typescript-eslint_parser.js"),
 
           // Extends doesn't work in overrides, so we add rules directly

@@ -20,7 +20,7 @@ module.exports = {
   eslint: {
     overrides: [
       {
-        files: ["**/*.ts", "**/*.tsx"],
+        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
         rules: {
           "arrow-parens": ["error", "always"]
         }

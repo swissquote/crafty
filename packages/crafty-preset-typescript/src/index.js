@@ -46,6 +46,22 @@ module.exports = {
       plugin: require("../packages/rollup-plugin-typescript2"),
       weight: 20,
       options: {
+        include: [
+          "*.ts+(|x)",
+          "**/*.ts+(|x)",
+          "*.mts",
+          "**/*.mts",
+          "*.cts",
+          "**/*.cts"
+        ],
+        exclude: [
+          "*.d.ts",
+          "**/*.d.ts",
+          "*.d.cts",
+          "**/*.d.cts",
+          "*.d.mts",
+          "**/*.d.mts"
+      ],
         tsconfigOverride: {
           compilerOptions: {
             // Transpile to esnext so that SWC can apply all its magic
@@ -61,7 +77,9 @@ module.exports = {
       getConfigurationRollup
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
     const options = getConfigurationRollup(crafty, bundle);
-    options.extensions = [".ts", ".tsx"];
+    options.extensions = [".ts", ".tsx", ".mts", ".cts"];
+
+    rollupConfig.input.plugins.resolve.options.extensions.push(".mts", ".cts");
 
     rollupConfig.input.plugins.swcTypeScript = {
       plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
@@ -74,12 +92,14 @@ module.exports = {
     // The rest of the configuration is handled by `eslint-plugin-swissquote`
     eslint.extensions.push("ts");
     eslint.extensions.push("tsx");
+    eslint.extensions.push("mts");
+    eslint.extensions.push("cts");
 
     return eslint;
   },
   jest(crafty, options) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.tsx?$"] = [
+    options.transform["^.+\\.(ts|tsx|mts|cts)$"] = [
       require.resolve("../packages/ts-jest"),
       {
         compiler: require.resolve("typescript"),
@@ -90,6 +110,8 @@ module.exports = {
 
     options.moduleFileExtensions.push("ts");
     options.moduleFileExtensions.push("tsx");
+    options.moduleFileExtensions.push("mts");
+    options.moduleFileExtensions.push("cts");
   },
   webpack(crafty, bundle, chain) {
     const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
@@ -118,13 +140,19 @@ module.exports = {
       path.dirname(require.resolve("@swc/helpers/package.json"))
     );
 
-    chain.resolve.extensions.add(".ts").add(".tsx");
+    chain.resolve.extensions.add(".ts").add(".tsx").add(".mts").add(".cts");
+
+    chain.resolve.extensionAlias
+      .set(".js", [".js", ".ts"])
+      .set(".cjs", [".cjs", ".cts"])
+      .set(".mjs", [".mjs", ".mts"]);
+
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
     // TypeScript
     const tsRule = chain.module.rule("ts");
-    tsRule.test(/\.tsx?$/);
+    tsRule.test(/\.(ts|tsx|mts|cts)$/);
     tsRule.exclude.add(/(node_modules|bower_components)/);
 
     // EcmaScript 2015+

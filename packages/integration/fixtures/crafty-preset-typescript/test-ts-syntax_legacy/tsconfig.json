@@ -1,0 +1,17 @@
+{
+  "exclude": [
+    "node_modules",
+    "node",
+    "css",
+    "etc"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "module": "esnext",
+    "sourceMap": true,
+    "target": "esnext",
+    "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"]
+  }
+}

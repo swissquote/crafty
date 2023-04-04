@@ -34,7 +34,8 @@ function getConfigurationBase(crafty, bundle, hasHelperDependency) {
   const swcOptions = {
     jsc: {
       parser: {
-        jsx: true
+        jsx: true,
+        decorators: true
       },
       target: "es5"
     },

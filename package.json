@@ -40,7 +40,9 @@
     "node": ">=16"
   },
   "resolutions": {
-    "@types/eslint": "^8.0.0"
+    "@types/eslint": "^8.0.0",
+    "@rollup/plugin-node-resolve@15.0.1": "patch:@rollup/plugin-node-resolve@npm%3A15.0.1#./.yarn/patches/@rollup-plugin-node-resolve-npm-15.0.1-3c00b5782e.patch",
+    "rollup-plugin-typescript2@0.34.1": "patch:rollup-plugin-typescript2@npm%3A0.34.1#./.yarn/patches/rollup-plugin-typescript2-npm-0.34.1-6b67180d5c.patch"
   },
   "packageManager": "yarn@3.5.0"
 }
