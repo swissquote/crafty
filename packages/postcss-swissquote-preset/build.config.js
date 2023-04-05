@@ -149,14 +149,6 @@ module.exports = [
       .package(),
   builder =>
     builder("postcss-url")
-      .externals({
-        ...externals,
-
-        // postcss-url depends on make-dir
-        // Since make-dir depends on semver that makes a big dependency
-        // make-dir is also not that needed since we depend on Node 12 at least
-        // This smaller version does reduces dependencies and is just enough to run
-        "make-dir": "../../src/make-dir.js"
-      })
+      .externals(externals)
       .package()
 ];

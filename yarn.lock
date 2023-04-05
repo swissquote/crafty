@@ -9748,12 +9748,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-dir@npm:^3.0.0, make-dir@npm:^3.0.2, make-dir@npm:~3.1.0":
+"make-dir@npm:3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
   dependencies:
     semver: ^6.0.0
   checksum: 484200020ab5a1fdf12f393fe5f385fc8e4378824c940fba1729dcd198ae4ff24867bc7a5646331e50cead8abff5d9270c456314386e629acec6dff4b8016b78
+  languageName: node
+  linkType: hard
+
+"make-dir@patch:make-dir@npm%3A3.1.0#./.yarn/patches/make-dir-npm-3.1.0-d1d7505142.patch::locator=crafty-workspace%40workspace%3A.":
+  version: 3.1.0
+  resolution: "make-dir@patch:make-dir@npm%3A3.1.0#./.yarn/patches/make-dir-npm-3.1.0-d1d7505142.patch::version=3.1.0&hash=64ee01&locator=crafty-workspace%40workspace%3A."
+  dependencies:
+    semver: ^6.0.0
+  checksum: 2d03a06fe9e45d50d387ec26841ec915386777e0aef6eb2d26fc52a9aba97bcb94b0ca172ab797f380f4df35792932f356d401930d2104393ccf26a3611326f2
   languageName: node
   linkType: hard
 
