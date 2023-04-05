@@ -61,7 +61,7 @@ module.exports = {
           "**/*.d.cts",
           "*.d.mts",
           "**/*.d.mts"
-      ],
+        ],
         tsconfigOverride: {
           compilerOptions: {
             // Transpile to esnext so that SWC can apply all its magic
@@ -140,7 +140,11 @@ module.exports = {
       path.dirname(require.resolve("@swc/helpers/package.json"))
     );
 
-    chain.resolve.extensions.add(".ts").add(".tsx").add(".mts").add(".cts");
+    chain.resolve.extensions
+      .add(".ts")
+      .add(".tsx")
+      .add(".mts")
+      .add(".cts");
 
     chain.resolve.extensionAlias
       .set(".js", [".js", ".ts"])

@@ -55,7 +55,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
           weight: 40,
           options: {
             browser: true,
-            extensions: [ '.mjs', '.js', '.json', '.node' ]
+            extensions: [".mjs", ".js", ".json", ".node"]
           }
         },
         commonjs: {

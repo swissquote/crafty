@@ -1,0 +1,33 @@
+diff --git a/index.js b/index.js
+index 7bcbb32b49b787e32433385049508b7676aa74de..cd4d7b7e1008b1a2ba59f8e536f1763068a62d94 100644
+--- a/index.js
++++ b/index.js
+@@ -114,27 +114,7 @@ function withConfigLoader(cb) {
+         return Promise.resolve(plugins(file))
+       })
+     } else {
+-      var postcssLoadConfig = require('postcss-load-config')
+-      var contextOptions = plugins || {}
+-      return cb(function(file) {
+-        var configPath
+-        if (contextOptions.config) {
+-          if (path.isAbsolute(contextOptions.config)) {
+-            configPath = contextOptions.config
+-          } else {
+-            configPath = path.join(file.base, contextOptions.config)
+-          }
+-        } else {
+-          configPath = file.dirname
+-        }
+-        return postcssLoadConfig(
+-          {
+-            file: file,
+-            options: contextOptions
+-          },
+-          configPath
+-        )
+-      })
++      throw new Error("Could not resolve gulp-postcss configuration")
+     }
+   }
+ }

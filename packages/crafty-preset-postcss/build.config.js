@@ -21,11 +21,7 @@ const externals = {
   postcss: "postcss",
   "postcss/package.json": "postcss/package.json",
   "/postcss/lib(/.*)/": "postcss/lib$1",
-  "@babel/code-frame": "@babel/code-frame",
-
-  // Not used as we pass the configuration directly, can be excluded from the bundle
-  "postcss-load-config": "../../src/dummy.js",
-  cosmiconfig: "../../src/dummy.js",
+  "@babel/code-frame": "@babel/code-frame"
 };
 
 /**
