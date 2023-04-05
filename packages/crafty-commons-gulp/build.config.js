@@ -43,6 +43,7 @@ module.exports = [
         "vinyl-fs": "../vinyl/vinyl-fs.js",
 
         // Get ESLint from crafty-preset-eslint
-        eslint: "@swissquote/crafty-preset-eslint/packages/eslint"
+        eslint: "@swissquote/crafty-preset-eslint/packages/eslint",
+        "eslint/use-at-your-own-risk": "@swissquote/crafty-preset-eslint/packages/eslint-at-your-own-risk"
       })
 ];
