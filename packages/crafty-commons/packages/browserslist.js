@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").browserslist();
+module.exports = require("../dist/browserslist/index.js");

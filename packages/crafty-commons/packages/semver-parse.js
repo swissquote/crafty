@@ -1,2 +1,2 @@
 //package: semver/functions/parse
-module.exports = require("../dist/compiled/common-packages.js").semverParse();
+module.exports = require("../dist/semver/bundled.js").parse();

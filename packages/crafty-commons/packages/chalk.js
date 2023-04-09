@@ -1,5 +1,5 @@
-const colors = require("../dist/compiled/common-packages.js").ansiColors();
-const { createColorize } = require("../dist/compiled/common-packages.js").colorizeTemplate();
+const colors = require("../dist/ansi-colors");
+const { createColorize } = require("../dist/colorize-template/index.js");
 
 // Make it work with template functions
 module.exports = createColorize(colors);

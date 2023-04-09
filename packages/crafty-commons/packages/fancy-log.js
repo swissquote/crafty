@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").fancyLog();
+module.exports = require("../dist/fancy-log/index.js");

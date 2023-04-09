@@ -1,2 +1,2 @@
 //package: semver/functions/clean
-module.exports = require("../dist/compiled/common-packages.js").semverClean();
+module.exports = require("../dist/semver/bundled.js").clean();

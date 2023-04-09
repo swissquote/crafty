@@ -26,14 +26,35 @@ module.exports = [
   builder => builder("is-glob").package(),
   builder => builder("path-parse").package(),
   builder => builder("has").package(),
-  builder => builder("eslint-module-utils")
+  builder =>
+    builder("eslint-module-utils")
       .packages(pkgBuilder => {
         pkgBuilder
-          .package("eslint-module-utils/resolve", "resolve", "dist/eslint-module-utils/resolve.js")
-          .package("eslint-module-utils/hash", "hash", "dist/eslint-module-utils/hash.js")
-          .package("eslint-module-utils/pkgUp", "pkgUp", "dist/eslint-module-utils/pkgUp.js")
-          .package("eslint-module-utils/readPkgUp", "readPkgUp", "dist/eslint-module-utils/readPkgUp.js")
-          .package("eslint-module-utils/ModuleCache", "ModuleCache", "dist/eslint-module-utils/ModuleCache.js");
+          .package(
+            "eslint-module-utils/resolve",
+            "resolve",
+            "dist/eslint-module-utils/resolve.js"
+          )
+          .package(
+            "eslint-module-utils/hash",
+            "hash",
+            "dist/eslint-module-utils/hash.js"
+          )
+          .package(
+            "eslint-module-utils/pkgUp",
+            "pkgUp",
+            "dist/eslint-module-utils/pkgUp.js"
+          )
+          .package(
+            "eslint-module-utils/readPkgUp",
+            "readPkgUp",
+            "dist/eslint-module-utils/readPkgUp.js"
+          )
+          .package(
+            "eslint-module-utils/ModuleCache",
+            "ModuleCache",
+            "dist/eslint-module-utils/ModuleCache.js"
+          );
       })
       .options({
         sourceMap: false
@@ -91,7 +112,8 @@ module.exports = [
         "eslint-module-utils/pkgUp": "../eslint-module-utils/pkgUp.js",
         "eslint-module-utils/resolve": "../eslint-module-utils/resolve.js",
         "eslint-module-utils/hash": "../eslint-module-utils/hash.js",
-        "eslint-module-utils/ModuleCache": "../eslint-module-utils/ModuleCache.js",
+        "eslint-module-utils/ModuleCache":
+          "../eslint-module-utils/ModuleCache.js",
 
         // Replace polyfills that aren't needed
         "array-includes": "../../src/shims/array-includes.js",

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").debug();
+module.exports = require("../dist/debug/index.js");

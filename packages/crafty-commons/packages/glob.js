@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").glob();
+module.exports = require("../dist/glob/index.js");

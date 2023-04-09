@@ -8,7 +8,7 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
     "build": "node ../../utils/build.js"
   },
   "dependencies": {

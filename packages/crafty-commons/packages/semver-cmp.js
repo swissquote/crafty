@@ -1,2 +1,2 @@
 //package: semver/functions/cmp
-module.exports = require("../dist/compiled/common-packages.js").semverCmp();
+module.exports = require("../dist/semver/bundled.js").cmp();

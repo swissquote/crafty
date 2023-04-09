@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").ansiColors();
+module.exports = require("../dist/ansi-colors/index.js");

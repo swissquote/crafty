@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").picomatch();
+module.exports = require("../dist/picomatch/index.js");

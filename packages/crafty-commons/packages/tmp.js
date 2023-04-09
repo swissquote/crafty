@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").tmp();
+module.exports = require("../dist/tmp/index.js");

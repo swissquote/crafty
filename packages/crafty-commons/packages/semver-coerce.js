@@ -1,2 +1,2 @@
 //package: semver/functions/coerce
-module.exports = require("../dist/compiled/common-packages.js").semverCoerce();
+module.exports = require("../dist/semver/bundled.js").coerce();

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").minimatch();
+module.exports = require("../dist/minimatch/index.js");

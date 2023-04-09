@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").sourceMapJs();
+module.exports = require("../dist/source-map-js/index.js");

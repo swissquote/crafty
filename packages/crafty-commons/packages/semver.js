@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").semver();
+module.exports = require("../dist/semver/bundled.js").main();

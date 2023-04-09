@@ -1,4 +1,4 @@
-const findUp = require("../dist/compiled/common-packages.js").findUp();
+const findUp = require("../dist/find-up/index.js");
 
 // find-up 6.* changed its exports
 // This makes it compatible with both find-up 5.* and 6.*

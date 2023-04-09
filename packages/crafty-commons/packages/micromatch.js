@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/common-packages.js").micromatch();
+module.exports = require("../dist/micromatch/index.js");
