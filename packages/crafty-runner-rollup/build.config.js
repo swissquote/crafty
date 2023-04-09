@@ -9,6 +9,10 @@ const jestWorkerDir = path.dirname(require.resolve("jest-worker/package.json"));
 
 module.exports = [
   builder =>
+    builder("jest-util")
+      .package()
+      .externals(externals),
+  builder =>
     builder("jest-worker")
       .packages(pkgBuilder => {
         pkgBuilder
@@ -53,7 +57,11 @@ module.exports = [
         `dist/jest-worker/out/${worker}`,
         {
           name: `jest-worker-${worker}`,
-          externals: { ...externals, "../types": "./types.js" },
+          externals: {
+            ...externals,
+            "../types": "./types.js",
+            "jest-util": "../jest-util/index.js"
+          },
           sourceMap: false
         }
       );

@@ -11,6 +11,7 @@ const commonExternals = {
 const externals = {
   ...commonExternals,
 
+  "@swissquote/color-fns": "../swissquote-color-fns/index.js",
   "postcss-selector-parser": "../postcss-selector-parser/index.js",
   "postcss-values-parser": "../postcss-values-parser/index.js",
   "postcss-value-parser": "../postcss-value-parser/index.js",
@@ -37,6 +38,7 @@ module.exports = [
     builder("color-name")
       .externals(commonExternals)
       .package(),
+  builder => builder("@swissquote/color-fns").package(),
   builder =>
     builder("postcss-values-parser")
       .externals({

@@ -18,6 +18,13 @@ const singlePackages = [
   "supports-color",
   "supports-hyperlinks",
   "table",
+  "css-tree",
+  "@csstools/selector-specificity",
+  "mathml-tag-names",
+  "colord",
+  "known-css-properties",
+  "svg-tags",
+  "has-flag"
 ];
 
 const externals = {
@@ -66,29 +73,12 @@ var copyRecursiveSync = function(src, dest) {
   }
 };
 
-const formatters = fs
-  .readdirSync(
-    path.dirname(require.resolve("stylelint/lib/formatters/index.js"))
-  )
-  .filter((file) => file != "index.js")
-  .map((file) => (builder) =>
-    builder(`stylelint-formatters-${file.replace(".js", "")}`)
-      .source(
-        path.relative(
-          process.cwd(),
-          require.resolve(`stylelint/lib/formatters/${file}`)
-        )
-      )
-      .destination(`dist/stylelint/${file}`)
-      .options({
-        sourceMap: false,
-        externals,
-      })
-  );
-
 const ruleExternals = {
   ...externals,
-};
+  "@csstools/media-query-list-parser": "../csstools/media-query-list-parser.js",
+  "@csstools/css-tokenizer": "../csstools/css-tokenizer.js",
+  "@csstools/css-parser-algorithms": "../csstools/css-parser-algorithms.js",
+}
 
 const stylelintSource = [];
 
@@ -153,14 +143,44 @@ stylelintSource.push({
 });
 ruleExternals["../../reference/units"] = "./reference-units.js";
 
+// Extract all formatters
+// ----------------------
+const formatters = fs
+  .readdirSync(
+    path.dirname(require.resolve("stylelint/lib/formatters/index.js"))
+  )
+  .filter((file) => file != "index.js")
+  .map((file) => {
+    ruleExternals[`./${file.replace(".js", "")}`] = `./${file}`;
+    
+    return (builder) => builder(`stylelint-formatters-${file.replace(".js", "")}`)
+      .source(
+        path.relative(
+          process.cwd(),
+          require.resolve(`stylelint/lib/formatters/${file}`)
+        )
+      )
+      .destination(`dist/stylelint/${file}`)
+      .options({
+        sourceMap: false,
+        externals: ruleExternals,
+      });
+    }
+  );
+
+// Extract linting rules and utilities
+// -----------------------------------
+
 const stylelintRules = fs
   .readdirSync(path.dirname(require.resolve("stylelint/lib/rules/index.js")))
   .filter((file) => file != "index.js");
 
 const rules = stylelintRules
   .map((file) => {
+    // Utilities that are used by many rules
     if (file.includes(".js")) {
       ruleExternals[`../${file.replace(".js", "")}`] = `./rule-util-${file}`;
+      //ruleExternals[`./${file.replace(".js", "")}`] = `./rule-util-${file}`;
       //ruleExternals[`stylelint/lib/rules/${file}`] = `./${file}`;
 
       const functionName = file.replace(".js", "").replace(/-/g, "_");
@@ -173,8 +193,10 @@ const rules = stylelintRules
       return false;
     }
 
+    // Actual rules are inside folders
+    ruleExternals[`./${file}`] = `./${file}`;
     return (builder) =>
-      builder(`stylelint-rules-${file.replace(".js", "")}`)
+      builder(`stylelint-rules-${file}`)
         .source(
           path.relative(
             process.cwd(),
@@ -201,7 +223,9 @@ const stylelintUtils = fs
 
 stylelintUtils.forEach((file) => {
   // Create externals to refer to the util
+  ruleExternals[`../../../utils/${file.replace(".js", "")}`] = `./util-${file}`;
   ruleExternals[`../../utils/${file.replace(".js", "")}`] = `./util-${file}`;
+  ruleExternals[`../utils/${file.replace(".js", "")}`] = `./util-${file}`;
 
   const functionName = file.replace(".js", "").replace(/-/g, "_");
 
@@ -214,6 +238,17 @@ stylelintUtils.forEach((file) => {
 
 module.exports = [
   (builder) =>
+  builder("csstools")
+    .packages((pkgBuilder) => {
+      pkgBuilder
+        .package("@csstools/media-query-list-parser", "mediaQueryListParser", "dist/csstools/media-query-list-parser.js")
+        .package("@csstools/css-tokenizer", "cssTokenizer", "dist/csstools/css-tokenizer.js")
+        .package("@csstools/css-parser-algorithms", "cssParserAlgorithms", "dist/csstools/css-parser-algorithms.js")
+
+    })
+    .destination(`dist/stylelint/stylelint.js`)
+    .externals(externals),
+  (builder) =>
     builder("stylelint")
       .packages((pkgBuilder) => {
         stylelintSource.forEach((entry) => {
@@ -221,7 +256,8 @@ module.exports = [
         });
       })
       .destination(`dist/stylelint/stylelint.js`)
-      .externals(externals),
+      .externals(ruleExternals),
+
   (builder) => {
     const newExternals = { ...externals };
     delete newExternals["@ronilaukkarinen/gulp-stylelint"];
@@ -230,7 +266,6 @@ module.exports = [
       .package()
       .externals({ ...newExternals, stylelint: "../stylelint/index.js" });
   },
-
   ...singlePackages.map((pkg) => {
     const newExternals = { ...externals };
     delete newExternals[pkg];

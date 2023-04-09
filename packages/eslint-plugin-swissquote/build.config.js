@@ -16,17 +16,34 @@ module.exports = [
 
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
-
+  builder => builder("estraverse").package(),
+  builder =>
+    builder("is-core-module")
+      .externals({
+        has: "../has/index.js"
+      })
+      .package(),
+  builder => builder("is-glob").package(),
+  builder => builder("path-parse").package(),
+  builder => builder("has").package(),
   builder => builder("confusing-browser-globals").package(),
   builder =>
     builder("eslint-import-resolver-node")
       .package()
-      .externals(externals),
+      .externals({
+        ...externals,
+
+        "is-core-module": "../is-core-module/index.js",
+        "path-parse": "../path-parse/index.js"
+      }),
   builder =>
     builder("eslint-import-resolver-typescript")
       .package()
       .externals({
         ...externals,
+
+        "is-core-module": "../is-core-module/index.js",
+        "is-glob": "../is-glob/index.js",
 
         // TODO :: is enhanced-resolve already exported somewhere ?
 
@@ -44,6 +61,7 @@ module.exports = [
     builder("eslint-plugin-import")
       .package()
       .externals({
+        ...externals,
         // TODO :: should some big, unused, rules be excluded ?
 
         // Provided by this package
@@ -54,7 +72,9 @@ module.exports = [
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
-        ...externals,
+        "is-core-module": "../is-core-module/index.js",
+        "is-glob": "../is-glob/index.js",
+        has: "../has/index.js",
 
         // Replace polyfills that aren't needed
         "array-includes": "../../src/shims/array-includes.js",
@@ -67,13 +87,17 @@ module.exports = [
     builder("eslint-plugin-react")
       .package()
       .externals({
+        ...externals,
+
         // Provided by this package
         eslint: "eslint",
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
-        ...externals,
+        estraverse: "../estraverse/index.js",
+        "is-core-module": "../is-core-module/index.js",
+        "path-parse": "../path-parse/index.js",
 
         // Replace functions that can be optimized
         "./report": "../../src/shims/eslint-plugin-react_report.js",
@@ -107,6 +131,9 @@ module.exports = [
         sourceMap: false
       })
       .externals({
+        // Provided by other Crafty packages
+        ...externals,
+
         // Provided by this package
         typescript: "typescript",
         "typescript/package.json": "typescript/package.json",
@@ -115,8 +142,8 @@ module.exports = [
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
-        // Provided by other Crafty package
-        ...externals
+        estraverse: "../estraverse/index.js",
+        "is-glob": "../is-glob/index.js"
       }),
 
   // Prettier specific stuff

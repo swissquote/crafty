@@ -26,6 +26,7 @@ module.exports = [
       .externals(externals)
       .package(),
   (builder) => builder("fast-deep-equal").package(),
+  (builder) => builder("fast-json-stable-stringify").package(),
   (builder) =>
     builder("rollup-plugin-typescript2")
       .externals({
@@ -51,6 +52,7 @@ module.exports = [
 
         "fs-extra": "../fs-extra/index.js",
         "fast-deep-equal": "../fast-deep-equal/index.js",
+        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
 
         // Dependencies of this package
         "schema-utils": "schema-utils",
@@ -81,12 +83,15 @@ module.exports = [
 
         "fs-extra": "../fs-extra/index.js",
         "fast-deep-equal": "../fast-deep-equal/index.js",
+        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
 
         // Dependencies of this package
         "@babel/core": "@babel/core",
         "@babel/code-frame": "@babel/code-frame",
         "@babel/helper-module-imports": "@babel/helper-module-imports",
         typescript: "typescript",
+
+        cosmiconfig: "../../src/dummy.js",
       }),
   async function() {
     // Remove a compiled version of TypeScript

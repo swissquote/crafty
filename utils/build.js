@@ -3,6 +3,12 @@
 const fs = require("fs");
 const path = require("path");
 const rimraf = require("rimraf");
+
+const {
+  findFiles,
+  scanFiles,
+  printReport
+} = require("./duplicates.js");
 const compileUtils = require("./compile.js");
 const configuration = require(process.cwd() + "/build.config.js");
 
@@ -168,6 +174,18 @@ async function main() {
 
   for (const bundle of configuration) {
     await bundle(builder, compileUtils);
+  }
+
+  const statFiles = findFiles();
+  if (statFiles.length > 0) {
+    const report = scanFiles(statFiles);
+
+    if (report.duplicateModules.length > 0) {
+      console.error("Found duplicate packages");
+      printReport(report.duplicateModules, report.duplicateModulesByPackage);
+
+      process.exit(1);
+    }
   }
 }
 
