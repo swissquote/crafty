@@ -57,7 +57,10 @@ module.exports = [
           .package("picomatch", "main", `dist/picomatch/index.js`)
           .package("picomatch/lib/utils", "utils", `dist/picomatch/utils.js`)
       )
-      .externals(newExternals);
+      .externals(newExternals)
+      .options({
+        sourceMap: false
+      });
   },
 
   builder =>
@@ -72,4 +75,7 @@ module.exports = [
           .package("semver/functions/valid", "valid")
       )
       .externals(externals)
+      .options({
+        sourceMap: false
+      })
 ];
