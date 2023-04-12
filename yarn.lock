@@ -2584,7 +2584,7 @@ __metadata:
   dependencies:
     ansi-colors: ^4.0.0
     browserslist: 4.21.5
-    caniuse-lite: ^1.0.30001467
+    caniuse-lite: ^1.0.30001478
     colorize-template: 1.0.0
     debug: 4.3.4
     fancy-log: 2.0.0
@@ -2856,7 +2856,7 @@ __metadata:
     service-names-port-numbers: 2.0.0
     speed-measure-webpack-plugin: 1.5.0
     utf-8-validate: 6.0.3
-    webpack: 5.78.0
+    webpack: 5.79.0
     webpack-bundle-analyzer: 4.8.0
     webpack-chain-5: 8.0.2
     webpack-merge: 5.8.0
@@ -3072,7 +3072,7 @@ __metadata:
     "@swissquote/postcss-selector-matches": 1.21.1
     ava: 5.2.0
     c8: 7.13.0
-    caniuse-lite: ^1.0.30001467
+    caniuse-lite: ^1.0.30001478
     lightningcss: 1.19.0
     postcss: 8.4.21
     postcss-custom-selectors: 6.0.3
@@ -3108,7 +3108,7 @@ __metadata:
     "@swissquote/crafty": 1.21.1
     ava: 5.2.0
     c8: 7.13.0
-    caniuse-lite: ^1.0.30001467
+    caniuse-lite: ^1.0.30001478
     postcss: 8.4.21
     postcss-resolve-nested-selector: 0.1.1
     postcss-scss: 4.0.6
@@ -3228,13 +3228,6 @@ __metadata:
   version: 1.0.0
   resolution: "@types/estree@npm:1.0.0"
   checksum: 910d97fb7092c6738d30a7430ae4786a38542023c6302b95d46f49420b797f21619cdde11fa92b338366268795884111c2eb10356e4bd2c8ad5b92941e9e6443
-  languageName: node
-  linkType: hard
-
-"@types/estree@npm:^0.0.51":
-  version: 0.0.51
-  resolution: "@types/estree@npm:0.0.51"
-  checksum: e56a3bcf759fd9185e992e7fdb3c6a5f81e8ff120e871641607581fb3728d16c811702a7d40fa5f869b7f7b4437ab6a87eb8d98ffafeee51e85bbe955932a189
   languageName: node
   linkType: hard
 
@@ -3382,13 +3375,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.0.0":
-  version: 18.0.34
-  resolution: "@types/react@npm:18.0.34"
+  version: 18.0.35
+  resolution: "@types/react@npm:18.0.35"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 60d2766e7644ec480075bbb154bf8fb8476089466b643662ef59964e27cae2d8c71fd9c717a4dfa9627c3e050fa2ae866d10d16f66b4509058d1bfe2a564b18c
+  checksum: e65670397216e037b150a509ec08189140b4c20b82b612ac00b2a7133202be2d1def1e7ee69617b2df06ab4c00c43c4ee23e84788ad661aea9664da2f27c518a
   languageName: node
   linkType: hard
 
@@ -4820,10 +4813,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001179, caniuse-lite@npm:^1.0.30001449, caniuse-lite@npm:^1.0.30001467":
-  version: 1.0.30001477
-  resolution: "caniuse-lite@npm:1.0.30001477"
-  checksum: 22db0feccf43b0c16a46bb59b4e26ae05011f41c6947f1dd176d5056e0db58c3415a5ff7ee5a60903a6bda7311b71705d1d29fc4c43a8b8a1bdeef8c1d93f6a8
+"caniuse-lite@npm:^1.0.30001179, caniuse-lite@npm:^1.0.30001449, caniuse-lite@npm:^1.0.30001478":
+  version: 1.0.30001478
+  resolution: "caniuse-lite@npm:1.0.30001478"
+  checksum: 27a370dcb32a6a35e186307aabc570da1cd0fccc849913665e7df6822a87286de99509b163304e0586c23c539a991717fb68ed84b85bbd21b2cb86475ae5ffb2
   languageName: node
   linkType: hard
 
@@ -5434,7 +5427,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.0
     serve: 14.2.0
-    webpack: 5.78.0
+    webpack: 5.79.0
   languageName: unknown
   linkType: soft
 
@@ -5453,7 +5446,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.0
     serve: 14.2.0
-    webpack: 5.78.0
+    webpack: 5.79.0
   languageName: unknown
   linkType: soft
 
@@ -5476,7 +5469,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.0
     serve: 14.2.0
-    webpack: 5.78.0
+    webpack: 5.79.0
   languageName: unknown
   linkType: soft
 
@@ -5499,7 +5492,7 @@ __metadata:
     react-dom: 18.2.0
     react-tabs: 6.0.0
     serve: 14.2.0
-    webpack: 5.78.0
+    webpack: 5.79.0
   languageName: unknown
   linkType: soft
 
@@ -6087,9 +6080,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.284":
-  version: 1.4.358
-  resolution: "electron-to-chromium@npm:1.4.358"
-  checksum: 4f9bad528aa4c0df499079f8c89f3e48fe5c9304c2da7827dd1c19041ece51c76e3eb5b62c4a4af2bb9e52d6381f8b333edff82603c62be0c8f0f91e9b368f76
+  version: 1.4.360
+  resolution: "electron-to-chromium@npm:1.4.360"
+  checksum: 2a5bee4f70548ed22f7f013ce2a44b84e633e2be8c712481077ca56dd7f729d4a7454828562b3d46474d30b04da433b1f94f13621fe4dc09ae1e43b5bb7fc953
   languageName: node
   linkType: hard
 
@@ -6251,10 +6244,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-module-lexer@npm:^0.9.0":
-  version: 0.9.3
-  resolution: "es-module-lexer@npm:0.9.3"
-  checksum: 84bbab23c396281db2c906c766af58b1ae2a1a2599844a504df10b9e8dc77ec800b3211fdaa133ff700f5703d791198807bba25d9667392d27a5e9feda344da8
+"es-module-lexer@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "es-module-lexer@npm:1.2.1"
+  checksum: c4145b853e1491eaa5d591e4580926d242978c38071ad3d09165c3b6d50314cc0ae3bf6e1dec81a9e53768b9299df2063d2e4a67d7742a5029ddeae6c4fc26f0
   languageName: node
   linkType: hard
 
@@ -9358,8 +9351,8 @@ __metadata:
   linkType: hard
 
 "koa@npm:^2.5.3":
-  version: 2.14.1
-  resolution: "koa@npm:2.14.1"
+  version: 2.14.2
+  resolution: "koa@npm:2.14.2"
   dependencies:
     accepts: ^1.3.5
     cache-content-type: ^1.0.0
@@ -9384,7 +9377,7 @@ __metadata:
     statuses: ^1.5.0
     type-is: ^1.6.16
     vary: ^1.1.2
-  checksum: 84cfce48d72cf434831bd9f4f06beb3815da030325a7e89b13ee684f5afd158221e16c2d450ca637b221aa0c4a0ab235edd129e4efea656dc5d8384801d3e90f
+  checksum: 17fe3b8f5e0b4759004a942cc6ba2a9507299943a697dff9766b85f41f45caed4077ca2645ac9ad254d3359fffedfc4c9ebdd7a70493e5df8cdfac159a8ee835
   languageName: node
   linkType: hard
 
@@ -10453,9 +10446,9 @@ __metadata:
   linkType: hard
 
 "nwsapi@npm:^2.2.2":
-  version: 2.2.3
-  resolution: "nwsapi@npm:2.2.3"
-  checksum: d5fcbb36a3a87770285c1e7b8213e033b4bbbc1050391dc28eed94f86ccab10539afadf8ce85de80c790535737915fb0ab53e2944166caad5b6f5e3a51ad24ff
+  version: 2.2.4
+  resolution: "nwsapi@npm:2.2.4"
+  checksum: a5eb9467158bdf255d27e9c4555e9ca02e4ba84ddce9b683856ed49de23eb1bb28ae3b8e791b7a93d156ad62b324a56f4d44cad827c2ca288c107ed6bdaff8a8
   languageName: node
   linkType: hard
 
@@ -13134,7 +13127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser-webpack-plugin@npm:^5.1.3":
+"terser-webpack-plugin@npm:^5.3.7":
   version: 5.3.7
   resolution: "terser-webpack-plugin@npm:5.3.7"
   dependencies:
@@ -14057,12 +14050,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.78.0":
-  version: 5.78.0
-  resolution: "webpack@npm:5.78.0"
+"webpack@npm:5.79.0":
+  version: 5.79.0
+  resolution: "webpack@npm:5.79.0"
   dependencies:
     "@types/eslint-scope": ^3.7.3
-    "@types/estree": ^0.0.51
+    "@types/estree": ^1.0.0
     "@webassemblyjs/ast": 1.11.1
     "@webassemblyjs/wasm-edit": 1.11.1
     "@webassemblyjs/wasm-parser": 1.11.1
@@ -14071,7 +14064,7 @@ __metadata:
     browserslist: ^4.14.5
     chrome-trace-event: ^1.0.2
     enhanced-resolve: ^5.10.0
-    es-module-lexer: ^0.9.0
+    es-module-lexer: ^1.2.1
     eslint-scope: 5.1.1
     events: ^3.2.0
     glob-to-regexp: ^0.4.1
@@ -14082,7 +14075,7 @@ __metadata:
     neo-async: ^2.6.2
     schema-utils: ^3.1.0
     tapable: ^2.1.1
-    terser-webpack-plugin: ^5.1.3
+    terser-webpack-plugin: ^5.3.7
     watchpack: ^2.4.0
     webpack-sources: ^3.2.3
   peerDependenciesMeta:
@@ -14090,7 +14083,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 4213e5bcc23e54c2f2a589e8e96f1fb71a2c05d5033ffda6dd8bae32284abfa0eb6b6d0707806e8dcfa48a8fcda2448d3af6c4539061679251d94c0996bebf99
+  checksum: 3fbd82dadc75c8f823c900c5d50263830b77e6be6a8abb26eec12f93dec94c2f07fa44c1ef1f28319682404e532d9707ed04ed6cb89af87ca7d544e435d8ef95
   languageName: node
   linkType: hard
 
