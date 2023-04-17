@@ -1395,7 +1395,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-parser-algorithms@npm:^2.1.0":
+"@csstools/cascade-layer-name-parser@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@csstools/cascade-layer-name-parser@npm:1.0.2"
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^2.1.1
+    "@csstools/css-tokenizer": ^2.1.1
+  checksum: 3ff79d53414373748adf35b3e7c4119bafa328cbba6f2ca072f00d64cb0e8a4d7c2b46e6a35a2b9246fd8e92afca18c3c262269dc3ccb2cbaaecc2c963604413
+  languageName: node
+  linkType: hard
+
+"@csstools/css-parser-algorithms@npm:^2.1.0, @csstools/css-parser-algorithms@npm:^2.1.1":
   version: 2.1.1
   resolution: "@csstools/css-parser-algorithms@npm:2.1.1"
   peerDependencies:
@@ -1404,7 +1414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-tokenizer@npm:^2.1.0":
+"@csstools/css-tokenizer@npm:^2.1.0, @csstools/css-tokenizer@npm:^2.1.1":
   version: 2.1.1
   resolution: "@csstools/css-tokenizer@npm:2.1.1"
   checksum: d6ac4b08d7fdfc146755542f00b208af7248efd6cf2eb0f0f7d2ba3583a81f08ed9be6047d78b046925708b5bd0886f487edeeee2f90f0f34030dcbef4122d0e
@@ -3075,7 +3085,7 @@ __metadata:
     caniuse-lite: ^1.0.30001478
     lightningcss: 1.19.0
     postcss: 8.4.22
-    postcss-custom-selectors: 6.0.3
+    postcss-custom-selectors: 7.1.3
     postcss-font-variant: 5.0.0
     postcss-import: 15.1.0
     postcss-initial: 4.0.1
@@ -10975,14 +10985,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-custom-selectors@npm:6.0.3":
-  version: 6.0.3
-  resolution: "postcss-custom-selectors@npm:6.0.3"
+"postcss-custom-selectors@npm:7.1.3":
+  version: 7.1.3
+  resolution: "postcss-custom-selectors@npm:7.1.3"
   dependencies:
+    "@csstools/cascade-layer-name-parser": ^1.0.2
+    "@csstools/css-parser-algorithms": ^2.1.1
+    "@csstools/css-tokenizer": ^2.1.1
     postcss-selector-parser: ^6.0.4
   peerDependencies:
-    postcss: ^8.3
-  checksum: 18080d60a8a77a76d8ddff185104d65418fffd02bbf9824499f807ced7941509ba63828ab8fe3ec1d6b0d6c72a482bb90a79d79cdef58e5f4b30113cca16e69b
+    postcss: ^8.4
+  checksum: 9c9b665a29b613b4c2ee03d0cb774ff85543c3eb9bb809dc52aefe8e1cea21739e8cc4288a8fe251cca5044ebe0c1133eab97b332551f8b88c7b30b91c343205
   languageName: node
   linkType: hard
 
