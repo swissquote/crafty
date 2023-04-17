@@ -1,4 +1,7 @@
 const { getModulePath, isModule, isExternal } = require("./functions.js");
+const isCore = require("is-core-module");
+
+const packageFile = require(process.cwd() + "/package.json");
 
 function printStats({ modules }) {
   const packages = modules
@@ -25,6 +28,53 @@ function printStats({ modules }) {
     "non-package modules"
   );
   console.log("");
+}
+
+const depsAliases = {
+  "@babel/helper-module-transforms": "@babel/core",
+  "@babel/helper-compilation-targets": "@babel/core",
+  "@babel/types": "@babel/core",
+  "@babel/template": "@babel/core",
+  "@babel/traverse": "@babel/core",
+}
+
+const unnecessaryPackages = new Set();
+unnecessaryPackages.add("pnpapi");
+unnecessaryPackages.add("@microsoft/typescript-etw");
+unnecessaryPackages.add("sugarss");
+
+const depsAllowlist = new Set();
+depsAllowlist.add("@swissquote/crafty-preset-eslint");
+depsAllowlist.add("open");
+
+function inDeps(dependency) {
+
+  // Some packages don't need to be present at all
+  if (unnecessaryPackages.has(dependency)) {
+    return true;
+  }
+
+  let result = false;
+  const toCheck = depsAliases.hasOwnProperty(dependency) ? depsAliases[dependency] : dependency;
+
+  if (packageFile.dependencies && packageFile.dependencies.hasOwnProperty(toCheck)) {
+    result = true;
+  }
+
+  if (packageFile.peerDependencies && packageFile.peerDependencies.hasOwnProperty(toCheck)) {
+    result = true;
+  }
+
+  if (packageFile.optionalDependencies && packageFile.optionalDependencies.hasOwnProperty(toCheck)) {
+    result = true;
+  }
+
+  if (!result && depsAllowlist.has(dependency)) {
+    console.log(`WARNING: Allowing dependency ${dependency} even though it's not in dependencies.`)
+    return true;
+  }
+
+  return result;
 }
 
 function checkStats(stats, statFile) {
@@ -83,6 +133,30 @@ function checkStats(stats, statFile) {
         `Module "${m.name}" requested by "${m.issuerName}" should be external.`
     )
     .map(recordError);
+
+  // All external modules should be in dependencies or peerDependencies
+  // If not, module resolution and hoisting may have an unexpected behaviour
+  const externals = stats.modules
+    .filter((m) => isExternal(m.name))
+    .map((m) => m.name.replace("external ", "").replace(/"/g, ""))
+    .filter((m) => m[0] !== ".") // exclude relative paths
+    .map((m) => {
+      const p = m.split(/\//g);
+
+      if (m.startsWith("@")) {
+        return `${p[0]}/${p[1]}`;
+      }
+
+      return p[0];
+    })
+    .filter(item => !isCore(item))
+    .reduce((acc, item) => acc.add(item), new Set());
+
+  for (const external of externals) {
+    if (!inDeps(external)) {
+      recordError(`Module "${external}" is absent from the package's dependencies.`)
+    }
+  }
 
   if (errors.length > 0) {
     const message = `${errors.length} errors found`;

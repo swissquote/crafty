@@ -23,6 +23,10 @@
     "@swissquote/crafty-preset-terser": "1.22.0",
     "schema-utils": "4.0.0"
   },
+  "peerDependencies": {
+    "@swissquote/crafty-commons": "1.22.0",
+    "@swissquote/crafty-runner-rollup": "1.22.0"
+  },
   "devDependencies": {
     "@rollup/plugin-babel": "6.0.3",
     "babel-loader": "9.1.2",
