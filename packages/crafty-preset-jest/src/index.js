@@ -15,7 +15,7 @@ function normalizeJestOptions(crafty, cli, args) {
       .forEach(module => moduleDirectories.add(module));
   }
 
-  const moduleFileExtensions = new Set(["js", "json"]);
+  const moduleFileExtensions = new Set(["js", "json", "mjs", "cjs"]);
   if (cli.flags.moduleFileExtensions) {
     let idx;
     while ((idx = args.indexOf("--moduleFileExtensions")) > -1) {

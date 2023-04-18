@@ -72,6 +72,15 @@ test.serial("Succeeds with typescript", async t => {
   t.is(result.status, 0);
 });
 
+test.serial("Succeeds with typescript modules", async t => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/typescript-modules");
+
+  const result = await testUtils.run(["test"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+});
+
 test.serial("Succeeds with babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/babel");
 
