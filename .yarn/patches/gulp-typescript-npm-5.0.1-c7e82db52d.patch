@@ -1,0 +1,13 @@
+diff --git a/release/compiler.js b/release/compiler.js
+index 5b3f1c4ccabc32c316185db8c8359b85387167ac..3acb5e717c129ca6cd6902b293e84874c670e044 100644
+--- a/release/compiler.js
++++ b/release/compiler.js
+@@ -97,6 +97,8 @@ class ProjectCompiler {
+     attachContentToFile(file, fileName, content) {
+         const [, extension] = utils.splitExtension(fileName, ['d.ts', 'd.ts.map']);
+         switch (extension) {
++            case 'mjs':
++            case 'cjs':
+             case 'js':
+             case 'jsx':
+                 file.jsFileName = fileName;

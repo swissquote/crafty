@@ -37,7 +37,16 @@ function replaceExt(npath, ext) {
 }
 
 function replaceExtension(fp) {
-  return path.extname(fp) ? replaceExt(fp, ".js") : fp;
+  const extension = path.extname(fp);
+  if (extension === ".mjs" || extension === ".cjs") {
+    return fp;
+  }
+
+  if (extension) {
+    return replaceExt(fp, ".js");
+  }
+
+  return fp;
 }
 
 const DTS_EXTENSION = /\.d\.ts$/;

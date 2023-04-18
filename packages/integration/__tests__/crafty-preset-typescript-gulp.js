@@ -60,6 +60,33 @@ test.serial("Compiles TypeScript", async t => {
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.js"));
 });
 
+test.serial("Compiles TypeScript Modules", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/compiles-modules"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.mjs"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.mjs.map"));
+
+  t.truthy(testUtils.exists(cwd, "dist/js/script.mjs"));
+  t.truthy(testUtils.exists(cwd, "dist/js/script.mjs.map"));
+
+  t.truthy(testUtils.exists(cwd, "dist/js/Component.mjs"));
+  t.truthy(testUtils.exists(cwd, "dist/js/Component.mjs.map"));
+
+  const script = testUtils.readForSnapshot(cwd, "dist/js/script.mjs");
+  t.snapshot(script);
+
+  t.truthy(script.indexOf('import test from"./Component.mjs"') > -1, "script.mjs should contain 'import test from\"./Component.mjs\"'")
+
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.mjs"));
+});
+
 test.serial("Compiles TypeScript, keeps runtime external", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles-import-runtime"
