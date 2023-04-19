@@ -82,7 +82,10 @@ test.serial("Compiles TypeScript Modules", async t => {
   const script = testUtils.readForSnapshot(cwd, "dist/js/script.mjs");
   t.snapshot(script);
 
-  t.truthy(script.indexOf('import test from"./Component.mjs"') > -1, "script.mjs should contain 'import test from\"./Component.mjs\"'")
+  t.truthy(
+    script.indexOf('import test from"./Component.mjs"') > -1,
+    "script.mjs should contain 'import test from\"./Component.mjs\"'"
+  );
 
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.mjs"));
 });

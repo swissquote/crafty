@@ -114,8 +114,8 @@ module.exports = {
     options.moduleFileExtensions.push("cts");
 
     // Map .mjs to .mts and .cjs to .cts files for resolution
-    options.moduleNameMapper['^(\\.{1,2}/.*)\\.mjs$'] = '$1.mts';
-    options.moduleNameMapper['^(\\.{1,2}/.*)\\.cjs$'] = '$1.cts';
+    options.moduleNameMapper["^(\\.{1,2}/.*)\\.mjs$"] = "$1.mts";
+    options.moduleNameMapper["^(\\.{1,2}/.*)\\.cjs$"] = "$1.cts";
   },
   webpack(crafty, bundle, chain) {
     const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
