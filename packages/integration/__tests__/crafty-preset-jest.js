@@ -123,7 +123,18 @@ test.serial("Succeeds with esm module", async t => {
   t.is(result.status, 0);
 });
 
-test.serial("Succeeds with esm module and babel", async t => {
+test.serial("Succeeds with esm dependency", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/esm-dependency"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+});
+
+test.serial("Succeeds with esm dependency and babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/esm-babel");
 
   const result = await testUtils.run(["test"], cwd);
