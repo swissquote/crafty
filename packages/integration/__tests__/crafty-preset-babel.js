@@ -7,8 +7,8 @@ const getCrafty = configuration.getCrafty;
 
 const PRESET_BABEL = "@swissquote/crafty-preset-babel";
 
-test("Loads crafty-preset-babel and does not register webpack tasks", t => {
-  const crafty = getCrafty([PRESET_BABEL], {});
+test("Loads crafty-preset-babel and does not register webpack tasks", async t => {
+  const crafty = await getCrafty([PRESET_BABEL], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
     preset => preset.presetName
@@ -22,9 +22,9 @@ test("Loads crafty-preset-babel and does not register webpack tasks", t => {
   t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task", t => {
+test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task", async t => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [PRESET_BABEL, "@swissquote/crafty-runner-webpack"],
     config
   );
@@ -46,9 +46,9 @@ test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack tas
   ]);
 });
 
-test("Fails on double runner with incorrect bundle assignment", t => {
+test("Fails on double runner with incorrect bundle assignment", async t => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [
       PRESET_BABEL,
       "@swissquote/crafty-runner-gulp",
@@ -70,11 +70,11 @@ test("Fails on double runner with incorrect bundle assignment", t => {
   });
 });
 
-test("Fails on double runner with imprecise bundle assignment", t => {
+test("Fails on double runner with imprecise bundle assignment", async t => {
   const config = {
     js: { myBundle: { runner: "gulp", source: "css/style.scss" } }
   };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [
       PRESET_BABEL,
       "@swissquote/crafty-preset-typescript",
@@ -96,11 +96,11 @@ test("Fails on double runner with imprecise bundle assignment", t => {
   });
 });
 
-test("Fails on non-existing runners", t => {
+test("Fails on non-existing runners", async t => {
   const config = {
     js: { myBundle: { runner: "someRunner", source: "css/style.scss" } }
   };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [
       PRESET_BABEL,
       "@swissquote/crafty-preset-typescript",
@@ -122,11 +122,11 @@ test("Fails on non-existing runners", t => {
   });
 });
 
-test("Assigns bundle only once when runner is specified", t => {
+test("Assigns bundle only once when runner is specified", async t => {
   const config = {
     js: { myBundle: { runner: "webpack", source: "css/style.scss" } }
   };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [
       PRESET_BABEL,
       "@swissquote/crafty-runner-gulp",

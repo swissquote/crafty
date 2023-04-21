@@ -22,25 +22,29 @@ if (process.argv.indexOf("--ignore-crafty-config") > -1) {
 }
 
 // Initialize the configuration
-const crafty = configuration.getCrafty(
+configuration.getCrafty(
   configuration.extractPresets(process.argv),
   readConfig ? configuration.getOverrides() : {}
-);
+).then(async crafty => {
+  // Get all possible commands
+  const commands = getCommands(crafty);
 
-// Get all possible commands
-const commands = getCommands(crafty);
+  
+  try {
+    // Run the user selected command
+    const exitCode = await cli(crafty, commands)
 
-// Run the user selected command
-cli(crafty, commands).then(
-  exitCode => {
     // Wait for the stdout buffer to drain.
     process.on("exit", () => process.exit(exitCode));
-  },
-  error => {
-    // Using crafty.error will make sure that it won't
-    // show an error that was already shown
-    crafty.error(error);
+  } catch (error) {
+      // Using crafty.error will make sure that it won't
+      // show an error that was already shown
+      crafty.error(error);
 
-    process.on("exit", () => process.exit(1));
+      process.on("exit", () => process.exit(1));
   }
-);
+}, e => {
+  console.error("Could not initialize Crafty", e)
+});
+
+

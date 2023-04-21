@@ -21,11 +21,7 @@ function hasSwcHelpersDependency() {
 
 function extendConfiguration(crafty, bundle, swcOptions) {
   // Apply preset configuration
-  crafty.getImplementations("swc").forEach(preset => {
-    debug(`${preset.presetName}.swc(Crafty, bundle, swcOptions)`);
-    preset.swc(crafty, bundle, swcOptions);
-    debug("preset executed");
-  });
+  crafty.runAllSync("swc", crafty, bundle, swcOptions);
 
   debug("SWC configuration", swcOptions);
 }

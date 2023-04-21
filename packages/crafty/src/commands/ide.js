@@ -10,10 +10,14 @@ exports.command = async function run(crafty, input, cli) {
 
   let files = {};
 
-  crafty.getImplementations("ide").forEach(preset => {
-    debug(`${preset.presetName}.ide(crafty, input, cli)`);
-    files = Object.assign(files, preset.ide(crafty, input, cli));
-  });
+  // We sort implementations for predictable output in tests
+  crafty
+    .getImplementations("ide")
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(preset => {
+      debug(`${preset.presetName}.ide(crafty, input, cli)`);
+      files = Object.assign(files, preset.run("ide", crafty, input, cli));
+    });
 
   if (Object.keys(files).length === 0) {
     console.log("Nothing to generate");

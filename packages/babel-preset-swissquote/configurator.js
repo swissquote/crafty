@@ -22,11 +22,7 @@ module.exports = function(crafty, bundle, babelOptions) {
   };
 
   // Apply preset configuration
-  crafty.getImplementations("babel").forEach(preset => {
-    debug(`${preset.presetName}.babel(Crafty, bundle, babelConfig)`);
-    preset.babel(crafty, bundle, babelConfiguration);
-    debug("preset executed");
-  });
+  crafty.runAllSync("babel", crafty, bundle, babelConfiguration);
 
   debug("Babel configuration", babelConfiguration);
 

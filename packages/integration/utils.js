@@ -87,7 +87,7 @@ async function run(args, cwd, commandOptions) {
   options.env = { TESTING_CRAFTY: "true", ...options.env };
 
   const ret = await execa.node(
-    require.resolve("@swissquote/crafty/src/bin"),
+    require.resolve("@swissquote/crafty/src/bin.cjs"),
     args,
     options
   );

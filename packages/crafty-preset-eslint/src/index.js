@@ -36,14 +36,16 @@ module.exports = {
 
     // Apply overrides to clean up configuration
     config.loadedPresets
-      .filter(preset => preset.eslint)
+      .filter(preset => preset.implements("eslint"))
       .forEach(preset => {
         debug(`${preset.presetName}.eslint(config, eslint)`);
-        if (typeof preset.eslint === "function") {
-          extendedEslintConfig = preset.eslint(config, extendedEslintConfig);
+
+        const value = preset.get("eslint");
+        if (typeof value === "function") {
+          extendedEslintConfig = value(config, extendedEslintConfig);
         } else {
           extendedEslintConfig.config = copy(
-            merge(extendedEslintConfig.config, preset.eslint)
+            merge(extendedEslintConfig.config, value)
           );
         }
       });

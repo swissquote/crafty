@@ -6,8 +6,8 @@ const testUtils = require("../utils");
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-typescript and does not register webpack tasks", t => {
-  const crafty = getCrafty(["@swissquote/crafty-preset-typescript"], {});
+test("Loads crafty-preset-typescript and does not register webpack tasks", async t => {
+  const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
     preset => preset.presetName
@@ -18,9 +18,9 @@ test("Loads crafty-preset-typescript and does not register webpack tasks", t => 
   t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-test("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack task", t => {
+test("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack task", async t => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     [
       "@swissquote/crafty-preset-typescript",
       "@swissquote/crafty-runner-webpack"

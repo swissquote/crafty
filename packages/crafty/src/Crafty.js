@@ -77,7 +77,18 @@ class Crafty {
   }
 
   getImplementations(method) {
-    return this.config.loadedPresets.filter(preset => preset[method]);
+    return this.config.loadedPresets.filter(preset =>
+      preset.implements(method)
+    );
+  }
+
+  runAllSync(fn, ...args) {
+    for (const preset of this.config.loadedPresets) {
+      if (preset.implements(fn)) {
+        debug(`${preset.presetName}.${fn}()`);
+        preset.run(fn, ...args);
+      }
+    }
   }
 
   get isPNP() {

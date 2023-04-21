@@ -1,7 +1,3 @@
-const debug = require("@swissquote/crafty-commons/packages/debug")(
-  "postcss-swissquote-preset"
-);
-
 const features = require("./src/features");
 
 module.exports = function(config, crafty, bundle) {
@@ -10,11 +6,7 @@ module.exports = function(config, crafty, bundle) {
 
   // Extend with Crafty
   if (crafty) {
-    crafty.getImplementations("postcss").forEach(preset => {
-      debug(`${preset.presetName}.postcss(Crafty, postcssConfig, bundle)`);
-      preset.postcss(crafty, processors, bundle);
-      debug("preset executed");
-    });
+    crafty.runAllSync("postcss", crafty, processors, bundle);
   }
 
   // Make a valid format for postcss

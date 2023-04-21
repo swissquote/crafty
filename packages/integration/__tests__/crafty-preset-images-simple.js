@@ -6,8 +6,11 @@ const testUtils = require("../utils");
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-images-simple and does not register gulp tasks", t => {
-  const crafty = getCrafty(["@swissquote/crafty-preset-images-simple"], {});
+test("Loads crafty-preset-images-simple and does not register gulp tasks", async t => {
+  const crafty = await getCrafty(
+    ["@swissquote/crafty-preset-images-simple"],
+    {}
+  );
 
   const loadedPresets = crafty.config.loadedPresets.map(
     preset => preset.presetName
@@ -18,8 +21,8 @@ test("Loads crafty-preset-images-simple and does not register gulp tasks", t => 
   t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-test("Fails if both crafty-preset-images-simple and crafty-preset-images-simple are loaded", t => {
-  const crafty = getCrafty(
+test("Fails if both crafty-preset-images-simple and crafty-preset-images-simple are loaded", async t => {
+  const crafty = await getCrafty(
     [
       "@swissquote/crafty-preset-images",
       "@swissquote/crafty-preset-images-simple",
@@ -41,8 +44,8 @@ test("Fails if both crafty-preset-images-simple and crafty-preset-images-simple 
   });
 });
 
-test("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp task", t => {
-  const crafty = getCrafty(
+test("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp task", async t => {
+  const crafty = await getCrafty(
     [
       "@swissquote/crafty-preset-images-simple",
       "@swissquote/crafty-runner-gulp"

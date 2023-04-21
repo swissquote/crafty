@@ -1,7 +1,3 @@
-const debug = require("@swissquote/crafty-commons/packages/debug")(
-  "crafty:runner-gulp"
-);
-
 const StreamHandler = require("./StreamHandler");
 const Gulp = require("./Gulp.js");
 
@@ -20,10 +16,6 @@ module.exports = {
     };
   },
   tasks(crafty) {
-    crafty.getImplementations("gulp").forEach(preset => {
-      debug(`${preset.presetName}.gulp(Crafty, Gulp, StreamHandler)`);
-      preset.gulp(crafty, gulp, StreamHandler);
-      debug("tasks registered");
-    });
+    crafty.runAllSync("gulp", crafty, gulp, StreamHandler);
   }
 };

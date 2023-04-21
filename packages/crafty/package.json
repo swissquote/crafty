@@ -8,7 +8,7 @@
     "access": "public"
   },
   "main": "./src/index.js",
-  "bin": "./src/bin.js",
+  "bin": "./src/bin.cjs",
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
     "build": "node ../../utils/build.js",

@@ -49,9 +49,7 @@ function normalizeJestOptions(crafty, cli, args) {
     "./esm-transformer"
   );
 
-  crafty.getImplementations("jest").forEach(preset => {
-    preset.jest(crafty, options);
-  });
+  crafty.runAllSync("jest", crafty, options);
 
   // Support all extensions that can be transformed for test files extensions, except for json
   const extensions = options.moduleFileExtensions

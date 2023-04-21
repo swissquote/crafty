@@ -24,7 +24,9 @@ function registerTasks(crafty) {
   let bundleCreators = {};
   crafty.getImplementations("bundleCreator").forEach(preset => {
     debug(`${preset.presetName}.bundleCreator(crafty)`);
-    bundleCreators = copy(merge(bundleCreators, preset.bundleCreator(crafty)));
+    bundleCreators = copy(
+      merge(bundleCreators, preset.run("bundleCreator", crafty))
+    );
   });
 
   const bundleTypes = new Set(
@@ -64,10 +66,7 @@ function registerTasks(crafty) {
         bundle.destination = `${bundleName}.min.js`;
       }
 
-      crafty.getImplementations("normalizeBundle").forEach(preset => {
-        debug(`${preset.presetName}.normalizeBundle(crafty, bundle)`);
-        preset.normalizeBundle(crafty, bundle);
-      });
+      crafty.runAllSync("normalizeBundle", crafty, bundle);
 
       if (
         !hasOwnProperty.call(bundleCreators, type) ||
@@ -140,10 +139,7 @@ function registerTasks(crafty) {
   });
 
   // Arbitrary task creation, not related to bundles
-  crafty.getImplementations("tasks").forEach(preset => {
-    debug(`${preset.presetName}.tasks(crafty)`);
-    preset.tasks(crafty);
-  });
+  crafty.runAllSync("tasks", crafty);
 
   const defaultTasks = [].concat(crafty.defaultTasks);
   if (defaultTasks.length) {

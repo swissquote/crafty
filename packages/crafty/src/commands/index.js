@@ -9,7 +9,7 @@ function getCommands(crafty) {
   let commands = {};
   crafty.getImplementations("commands").forEach(preset => {
     debug(`${preset.presetName}.commands(crafty)`);
-    commands = copy(merge(commands, preset.commands(crafty)));
+    commands = copy(merge(commands, preset.run("commands", crafty)));
   });
   commands.help = require("./help.js");
   commands.run = require("./run.js");

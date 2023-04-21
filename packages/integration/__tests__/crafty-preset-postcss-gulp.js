@@ -9,9 +9,9 @@ const BUNDLED_CSS_MAPS = "dist/css/myBundle.min.css.map";
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", t => {
+test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", async t => {
   const config = { myBundle: { source: "css/style.scss" } };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     ["@swissquote/crafty-preset-postcss", "@swissquote/crafty-runner-gulp"],
     config
   );

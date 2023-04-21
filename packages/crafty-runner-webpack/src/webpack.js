@@ -1,7 +1,4 @@
 const crypto = require("crypto");
-const debug = require("@swissquote/crafty-commons/packages/debug")(
-  "crafty:runner-webpack"
-);
 const path = require("path");
 const fs = require("fs");
 const WebpackChain = require("webpack-chain-5");
@@ -271,11 +268,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   }
 
   // Apply preset configuration
-  crafty.getImplementations("webpack").forEach(preset => {
-    debug(`${preset.presetName}.webpack(Crafty, bundle, chain)`);
-    preset.webpack(crafty, bundle, chain);
-    debug("added webpack");
-  });
+  crafty.runAllSync("webpack", crafty, bundle, chain);
 
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process

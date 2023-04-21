@@ -5,8 +5,8 @@ const testUtils = require("../utils");
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-swc and does not register gulp tasks", t => {
-  const crafty = getCrafty(["@swissquote/crafty-preset-swc"], {});
+test("Loads crafty-preset-swc and does not register gulp tasks", async t => {
+  const crafty = await getCrafty(["@swissquote/crafty-preset-swc"], {});
 
   const loadedPresets = crafty.config.loadedPresets.map(
     preset => preset.presetName
@@ -21,9 +21,9 @@ test("Loads crafty-preset-swc and does not register gulp tasks", t => {
   t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-test("Loads crafty-preset-swc, crafty-runner-gulp and registers gulp task", t => {
+test("Loads crafty-preset-swc, crafty-runner-gulp and registers gulp task", async t => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
-  const crafty = getCrafty(
+  const crafty = await getCrafty(
     ["@swissquote/crafty-preset-swc", "@swissquote/crafty-runner-gulp"],
     config
   );

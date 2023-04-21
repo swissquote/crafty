@@ -79,11 +79,7 @@ function buildConfiguration(crafty, taskName, bundle, warnings) {
   };
 
   // Apply preset configuration
-  crafty.getImplementations("rollup").forEach(preset => {
-    debug(`${preset.presetName}.rollup(Crafty, bundle, rollupConfig)`);
-    preset.rollup(crafty, bundle, config);
-    debug("preset executed");
-  });
+  crafty.runAllSync("rollup", crafty, bundle, config);
 
   // Order and Initialize plugins
   config.input.plugins = Object.keys(config.input.plugins)
