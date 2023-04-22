@@ -19,8 +19,7 @@ jobs:
       with:
         node-version: v16.x
         cache: 'yarn'
-        
-    - run: which node
+    - run: echo "NODE_BIN=$(which node)" >> $GITHUB_ENV
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
@@ -28,4 +27,4 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with: 
         args: >
-          -Dsonar.nodejs.executable=/usr/bin/node
+          -Dsonar.nodejs.executable=${{ env.FOO }}
