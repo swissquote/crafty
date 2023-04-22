@@ -83,6 +83,17 @@ test.serial("Succeeds with typescript modules", async t => {
   t.is(result.status, 0);
 });
 
+test.serial("Succeeds with typescript modules in esm mode", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/typescript-modules-mjs"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+});
+
 test.serial("Succeeds with babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/babel");
 

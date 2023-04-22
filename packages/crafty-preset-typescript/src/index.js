@@ -97,9 +97,18 @@ module.exports = {
 
     return eslint;
   },
-  jest(crafty, options) {
+  jest(crafty, options, esmMode) {
     options.moduleDirectories.push(MODULES);
-    options.transform["^.+\\.(ts|tsx|mts|cts)$"] = [
+    options.transform["^.+\\.(ts|tsx|mts)$"] = [
+      require.resolve("../packages/ts-jest"),
+      {
+        compiler: require.resolve("typescript"),
+        useESM: esmMode,
+        diagnostics: true
+      }
+    ];
+
+    options.transform["^.+\\.cts$"] = [
       require.resolve("../packages/ts-jest"),
       {
         compiler: require.resolve("typescript"),
@@ -116,6 +125,14 @@ module.exports = {
     // Map .mjs to .mts and .cjs to .cts files for resolution
     options.moduleNameMapper["^(\\.{1,2}/.*)\\.mjs$"] = "$1.mts";
     options.moduleNameMapper["^(\\.{1,2}/.*)\\.cjs$"] = "$1.cts";
+
+    // Tell Jest to handle these extensions as ESM
+    options.extensionsToTreatAsEsm = options.extensionsToTreatAsEsm || [];
+    options.extensionsToTreatAsEsm.push(".mts");
+    if (esmMode) {
+      options.extensionsToTreatAsEsm.push(".ts");
+    }
+
   },
   webpack(crafty, bundle, chain) {
     const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
