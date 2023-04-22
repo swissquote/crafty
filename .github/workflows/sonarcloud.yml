@@ -26,5 +26,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      args: >
-        -Dsonar.nodejs.executable=
+      with: 
+        args: >
+          -Dsonar.nodejs.executable=/usr/bin/node
