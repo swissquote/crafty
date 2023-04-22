@@ -39,19 +39,3 @@ jobs:
       run: yarn test:ci
       env:
         CI: true
-        
-  sonarcloud:
-    runs-on: ubuntu-latest
-    if: github.repository == 'swissquote/crafty' && github.event_name != 'pull_request'
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v1.9.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #SONAR_HOST_URL: https://sonarcloud.io
-
