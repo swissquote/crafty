@@ -21,7 +21,6 @@ jobs:
         cache: 'yarn'
     - id: node_path
       run: echo "node=$(which node)" >> $GITHUB_OUTPUT
-    - run: echo "Found path=${{ steps.node_path.outputs.node }}"
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
