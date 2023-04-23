@@ -132,7 +132,6 @@ module.exports = {
     if (esmMode) {
       options.extensionsToTreatAsEsm.push(".ts");
     }
-
   },
   webpack(crafty, bundle, chain) {
     const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
