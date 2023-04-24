@@ -531,13 +531,13 @@ A function for specifying image sources based on the user’s resolution
   background-image: url("img/test.png");
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min--moz-device-pixel-ratio: 2) {
   .BigImage {
     background-image: url("img/test-2x.png");
   }
 }
 
-@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi) {
+@media (-webkit-min-device-pixel-ratio: 6.25), (min-resolution: 600dpi), (min--moz-device-pixel-ratio: 6.25) {
   .BigImage {
     background-image: url("my-img-print.png");
   }
