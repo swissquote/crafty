@@ -33,7 +33,7 @@ function snapshotizeOutput(ret) {
       ""
     ) // This error doesn't appear on all node version, better to remove it
     .replace(
-      /\n\(node:11111\) ExperimentalWarning: stream\/web is an experimental feature. This feature could change at any time/g, 
+      /\n\(node:11111\) ExperimentalWarning: stream\/web is an experimental feature. This feature could change at any time/g,
       ""
     ) // This error doesn't appear on all node version, better to remove it
     .replace(
