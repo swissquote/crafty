@@ -122,10 +122,6 @@ module.exports = {
     options.moduleFileExtensions.push("mts");
     options.moduleFileExtensions.push("cts");
 
-    // Map .mjs to .mts and .cjs to .cts files for resolution
-    options.moduleNameMapper["^(\\.{1,2}/.*)\\.mjs$"] = "$1.mts";
-    options.moduleNameMapper["^(\\.{1,2}/.*)\\.cjs$"] = "$1.cts";
-
     // Tell Jest to handle these extensions as ESM
     options.extensionsToTreatAsEsm = options.extensionsToTreatAsEsm || [];
     options.extensionsToTreatAsEsm.push(".mts");

@@ -41,6 +41,7 @@ function normalizeJestOptions(crafty, cli, esmMode, args) {
     bail: true,
     roots: [process.cwd()],
     transform: {},
+    resolver: require.resolve("./resolver.js"),
     globals: {}
   };
 
