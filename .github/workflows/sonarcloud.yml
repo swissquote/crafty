@@ -18,7 +18,6 @@ jobs:
       uses: actions/setup-node@v3.6.0
       with:
         node-version: v16.x
-        cache: 'yarn'
     - id: node_path
       run: echo "node=$(which node)" >> $GITHUB_OUTPUT
     - name: SonarCloud Scan
