@@ -19,10 +19,27 @@ function snapshotizeOutput(ret) {
     .replace(/\d+ bytes/g, "___ KiB") // Remove sizes from webpack
     .replace(/LOG .*\n(?:<[wie]>.*\n)+\+.*\n/gm, "") // Remove profiling logs from webpack
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
+    .replace(/\(node:[0-9]*\)/gm, "(node:11111)")
+    .replace(
+      /\n\(node:11111\).*?DeprecationWarning: Buffer\(\).*?instead.$/gm,
+      ""
+    ) // Remove Buffer warnings as they come from compiled dependencies
     .replace(
       /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
       ""
-    ) // Node 14 specific output
+    ) // This error doesn't appear on all node version, better to remove it
+    .replace(
+      /\n\(Use `node --trace-warnings ...` to show where the warning was created\)/g,
+      ""
+    ) // This error doesn't appear on all node version, better to remove it
+    .replace(
+      /\n\(node:11111\) ExperimentalWarning: stream\/web is an experimental feature. This feature could change at any time/g, 
+      ""
+    ) // This error doesn't appear on all node version, better to remove it
+    .replace(
+      /\n\(node:11111\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*/gm,
+      ""
+    ) // Remove Node exports warnings
     .replace(
       /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
       "Starting Crafty __version__"
@@ -49,20 +66,11 @@ function snapshotizeOutput(ret) {
       /"moduleDirectories": \[([\s\S]*?)\]/g,
       `"moduleDirectories": [ /* Ignored paths for diff */ ]`
     ) // Fix paths that tend to vary by environment
-    .replace(/\(node:[0-9]*\)/gm, "(node:11111)")
-    .replace(
-      /\n\(node:11111\).*?DeprecationWarning: Buffer\(\).*?instead.$/gm,
-      ""
-    ) // Remove Buffer warnings as they come from compiled dependencies
     .replace(/webpackJsonp_([a-z0-9]{8})/gm, "webpackJsonp_UNIQID") // make random webpackjsonp less random
     .replace(/\/.pnp\/externals\/pnp-[a-f0-9]{40}/, "") // Normalize Yarn PNP Paths
     .replace(/ {4}domain: \[object Object\]\n/gm, "") // domain was removed from node 11.0
     .replace(/Error \[GenericFailure\]:/, "Error:") // Node 10 specific errors
     .replace(new RegExp(escapedPath, "gm"), "__PATH__") // Remove paths
-    .replace(
-      /\(node:([0-9]+)\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*\n(\(Use `node --trace-deprecation ...` to show where the warning was created\)\n)?/gm,
-      ""
-    ) // Remove Node exports warnings
     .replace(
       /https:\/\/www\.npmjs\.com\/package\/gulp-eslint-new\/v\/(.*?)#autofix/gm,
       "https://www.npmjs.com/package/gulp-eslint-new/v/VERSION#autofix"
