@@ -28,10 +28,10 @@ module.exports = {
 
     // Limiting Language features
     // ---------------------------------------------------------------------
-    "at-rule-no-vendor-prefix": [true, {"disableFix": true}],
-    "property-no-vendor-prefix": [true, {"disableFix": true}],
-    "selector-no-vendor-prefix": [true, {"disableFix": true}],
-    "value-no-vendor-prefix": [true, {"disableFix": true}],
+    "at-rule-no-vendor-prefix": [true, { disableFix: true }],
+    "property-no-vendor-prefix": [true, { disableFix: true }],
+    "selector-no-vendor-prefix": [true, { disableFix: true }],
+    "value-no-vendor-prefix": [true, { disableFix: true }],
 
     // Misc
     // ---------------------------------------------------------------------
