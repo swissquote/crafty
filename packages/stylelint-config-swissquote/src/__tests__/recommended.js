@@ -314,6 +314,24 @@ test("flags no warnings nor errors with valid css", t => {
   });
 });
 
+test("Autofixes CSS", async t => {
+    const data = await stylelint.lint({ code: `.Foo { display: block; }`, config: {...config, fix: true } });
+
+    t.is(data.output, '.Foo {\n    display: block;\n}\n')
+
+    t.falsy(data.errored);
+    t.is(data.results[0].warnings.length, 0);
+});
+
+test("Does not autofix specific rules", async t => {
+    const data = await stylelint.lint({ code: ".Foo {    display: -webkit-box;}", config: {...config, fix: true } });
+
+    t.is(data.output, '.Foo {\n    display: -webkit-box;\n}\n')
+
+    t.truthy(data.errored);
+    t.is(data.results[0].warnings.length, 1);
+});
+
 test("Works with namespaces", t => {
   t.plan(1);
   const result = stylelint.lint({
