@@ -14,7 +14,7 @@ jobs:
     - uses: docker://daux/daux.io:0.22.0
       name: Generate documentation
       with:
-        args: generate --themes=docs_theme
+        args: daux generate --themes=docs_theme
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
