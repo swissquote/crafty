@@ -11,15 +11,10 @@ jobs:
     - uses: actions/checkout@v3
       with:
         persist-credentials: false
-    - name: Setup PHP
-      uses: shivammathur/setup-php@2.25.1
+    - uses: docker://daux/daux.io@0.22.0
+      name: Generate documentation
       with:
-        php-version: 8.1
-        extensions: mbstring, dom, intl  
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-    - name: Generate documentation
-      run: vendor/bin/daux generate --themes=docs_theme
+        args: generate --themes=docs_theme
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
