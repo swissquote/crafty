@@ -246,7 +246,7 @@ module.exports = [
         .package("@csstools/css-parser-algorithms", "cssParserAlgorithms", "dist/csstools/css-parser-algorithms.js")
 
     })
-    .destination(`dist/stylelint/stylelint.js`)
+    .destination(`dist/csstools/index.js`)
     .externals(externals),
   (builder) =>
     builder("stylelint")
