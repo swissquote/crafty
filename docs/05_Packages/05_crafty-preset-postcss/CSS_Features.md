@@ -47,14 +47,9 @@ a {
   empty-cells: show;
   float: none;
   font-variant: normal;
-  height: auto;
   -ms-hyphens: none;
   hyphens: none;
   letter-spacing: normal;
-  max-height: none;
-  max-width: none;
-  min-height: 0;
-  min-width: 0;
   opacity: 1;
   orphans: 2;
   outline: medium none invert;
@@ -81,7 +76,6 @@ a {
   visibility: visible;
   white-space: normal;
   widows: 2;
-  width: auto;
   word-spacing: normal;
   z-index: auto;
   all: initial;
@@ -93,6 +87,12 @@ a {
   -webkit-border-radius: 0;
   border-radius: 0;
   column-gap: normal;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  max-height: none;
   margin: 0;
   padding: 0;
   font-family: serif;
@@ -284,8 +284,7 @@ p {
 p {
   color: #62acef;
   color: lab(67.5333% -8.68207 -41.6473);
-  color: #62acef;
-  color: lab(67.533% -8.67313 -41.6457);
+  color: oklch(72.322% .12403 247.996);
 }
 ```
 
@@ -769,10 +768,10 @@ body {
 }
 
 .button {
-  width: 68px;
-  height: 34px;
   background-image: url(images/icons/comment.png?17f6b2eee3b);
   background-size: 68px 34px;
+  width: 68px;
+  height: 34px;
 }
 ```
 
@@ -945,8 +944,8 @@ $column: 200px;
 }
 
 .menu_link {
-  width: 200px;
   background: #056ef0;
+  width: 200px;
 }
 ```
 

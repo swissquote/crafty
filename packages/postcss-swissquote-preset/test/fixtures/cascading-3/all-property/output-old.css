@@ -25,14 +25,9 @@ a {
   empty-cells: show;
   float: none;
   font-variant: normal;
-  height: auto;
   -ms-hyphens: none;
   hyphens: none;
   letter-spacing: normal;
-  max-height: none;
-  max-width: none;
-  min-height: 0;
-  min-width: 0;
   opacity: 1;
   orphans: 2;
   outline: medium none invert;
@@ -59,7 +54,6 @@ a {
   visibility: visible;
   white-space: normal;
   widows: 2;
-  width: auto;
   word-spacing: normal;
   z-index: auto;
   all: initial;
@@ -71,6 +65,12 @@ a {
   -webkit-border-radius: 0;
   border-radius: 0;
   column-gap: normal;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  max-height: none;
   margin: 0;
   padding: 0;
   font-family: serif;

@@ -162,9 +162,9 @@ test.serial("Compiles CSS, configuration preserve", async t => {
   t.deepEqual(
     testUtils.readFile(cwd, BUNDLED_CSS),
     ":root{--color:blue}" +
-      ".Link{color:#fa5b35;color:var(--color)}" +
+      ".Link{color:var(--color)}" +
       ":root{--BodyComponent-color:var(--color)}" +
-      ".BodyComponent{color:#fa5b35;color:var(--BodyComponent-color);margin:0}\n" +
+      ".BodyComponent{color:var(--BodyComponent-color);margin:0}\n" +
       "/*# sourceMappingURL=myBundle.min.css.map */"
   );
 });
