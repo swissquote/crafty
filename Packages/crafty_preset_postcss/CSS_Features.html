@@ -409,14 +409,9 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">empty-cells</span>: show;
   <span class="hljs-attribute">float</span>: none;
   <span class="hljs-attribute">font-variant</span>: normal;
-  <span class="hljs-attribute">height</span>: auto;
   <span class="hljs-attribute">-ms-hyphens</span>: none;
   <span class="hljs-attribute">hyphens</span>: none;
   <span class="hljs-attribute">letter-spacing</span>: normal;
-  <span class="hljs-attribute">max-height</span>: none;
-  <span class="hljs-attribute">max-width</span>: none;
-  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">orphans</span>: <span class="hljs-number">2</span>;
   <span class="hljs-attribute">outline</span>: medium none invert;
@@ -443,7 +438,6 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">visibility</span>: visible;
   <span class="hljs-attribute">white-space</span>: normal;
   <span class="hljs-attribute">widows</span>: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">width</span>: auto;
   <span class="hljs-attribute">word-spacing</span>: normal;
   <span class="hljs-attribute">z-index</span>: auto;
   <span class="hljs-attribute">all</span>: initial;
@@ -455,6 +449,12 @@ We made a selection of plugins useful for Swissquote, and here are some features
   <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">column-gap</span>: normal;
+  <span class="hljs-attribute">width</span>: auto;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">max-width</span>: none;
+  <span class="hljs-attribute">height</span>: auto;
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">max-height</span>: none;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">font-family</span>: serif;
@@ -604,8 +604,7 @@ We made a selection of plugins useful for Swissquote, and here are some features
 <span class="hljs-selector-tag">p</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#62acef</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lab</span>(<span class="hljs-number">67.5333%</span> -<span class="hljs-number">8.68207</span> -<span class="hljs-number">41.6473</span>);
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#62acef</span>;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">lab</span>(<span class="hljs-number">67.533%</span> -<span class="hljs-number">8.67313</span> -<span class="hljs-number">41.6457</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">oklch</span>(<span class="hljs-number">72.322%</span> .<span class="hljs-number">12403</span> <span class="hljs-number">247.996</span>);
 }
 </code></pre>
 <h2><a id="color-function" href="#color-function" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>color()</code> Function</h2>
@@ -979,10 +978,10 @@ We made a selection of plugins useful for Swissquote, and here are some features
 }
 
 <span class="hljs-selector-class">.button</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">68px</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">34px</span>;
   <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(images/icons/comment.png?<span class="hljs-number">17</span>f6b2eee3b);
   <span class="hljs-attribute">background-size</span>: <span class="hljs-number">68px</span> <span class="hljs-number">34px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">68px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">34px</span>;
 }
 </code></pre>
 <h2><a id="imports" href="#imports" class="Permalink" aria-hidden="true" title="Permalink">#</a>Imports</h2>
@@ -1123,8 +1122,8 @@ $<span class="hljs-selector-tag">column</span>: 200<span class="hljs-selector-ta
 }
 
 <span class="hljs-selector-class">.menu_link</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
   <span class="hljs-attribute">background</span>: <span class="hljs-number">#056ef0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
 }
 </code></pre>
 <h2><a id="loops" href="#loops" class="Permalink" aria-hidden="true" title="Permalink">#</a>Loops</h2>
