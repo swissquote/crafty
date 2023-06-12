@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", ":automergeMinor"],
   "schedule": "before 11pm on Monday",
   "statusCheckVerify": true,
   "packageRules": [
