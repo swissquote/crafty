@@ -2793,7 +2793,7 @@ __metadata:
     postcss: 8.4.24
     postcss-scss: 4.0.6
     resolve-from: 5.0.0
-    stylelint: 15.7.0
+    stylelint: 15.8.0
   languageName: unknown
   linkType: soft
 
@@ -3164,7 +3164,7 @@ __metadata:
     postcss-selector-parser: 6.0.13
     postcss-value-parser: 4.2.0
     prettier: 2.8.8
-    stylelint: 15.7.0
+    stylelint: 15.8.0
     stylelint-no-unsupported-browser-features: 6.1.0
     stylelint-prettier: 3.0.0
     stylelint-scss: 5.0.1
@@ -13149,9 +13149,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:15.7.0":
-  version: 15.7.0
-  resolution: "stylelint@npm:15.7.0"
+"stylelint@npm:15.8.0":
+  version: 15.8.0
+  resolution: "stylelint@npm:15.8.0"
   dependencies:
     "@csstools/css-parser-algorithms": ^2.2.0
     "@csstools/css-tokenizer": ^2.1.1
@@ -13193,11 +13193,10 @@ __metadata:
     supports-hyperlinks: ^3.0.0
     svg-tags: ^1.0.0
     table: ^6.8.1
-    v8-compile-cache: ^2.3.0
     write-file-atomic: ^5.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: 041bcb4396f5a7fd706a305d2518f4671dc93108336d31a1a717c564ebebe6fd503af9151e3d1d0cf01198e7925266911d0561eaed9c38a03becff817bf18bf3
+  checksum: 3598f604393162c63f79f5696e24af871818f1422b4a0184deea054450a90434273d27bf8bf3f3e27d45c6850d29cbd0ed810f1092700b98c7fe4135fda6266c
   languageName: node
   linkType: hard
 
@@ -14018,13 +14017,6 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
-  languageName: node
-  linkType: hard
-
-"v8-compile-cache@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "v8-compile-cache@npm:2.3.0"
-  checksum: adb0a271eaa2297f2f4c536acbfee872d0dd26ec2d76f66921aa7fc437319132773483344207bdbeee169225f4739016d8d2dbf0553913a52bb34da6d0334f8e
   languageName: node
   linkType: hard
 
