@@ -2,6 +2,7 @@
   "extends": ["config:base", ":automergeMinor"],
   "schedule": "before 11pm on Monday",
   "statusCheckVerify": true,
+  "prConcurrentLimit": 4
   "packageRules": [
     {
       "matchManagers": ["npm"],
