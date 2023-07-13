@@ -60,6 +60,10 @@ module.exports = {
         {
           files: ["*.ts", "*.tsx", "*.mts", "*.cts"],
           parser: require.resolve("./packages/typescript-eslint_parser.js"),
+          // TODO: Figure out what's needed to get this to work properly
+          /*parserOptions: {
+            project: true
+          },*/
 
           // Extends doesn't work in overrides, so we add rules directly
           rules: {

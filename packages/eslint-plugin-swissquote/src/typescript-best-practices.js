@@ -1,9 +1,6 @@
 const { addMissingRules } = require("./utils");
 
 module.exports = {
-  parserOptions: {
-    sourceType: "module"
-  },
   rules: {
     // Override of JavaScript recommended
     "dot-notation": "off", // Produce false positives and breaks valid code
@@ -72,3 +69,12 @@ addMissingRules(
   module.exports.rules,
   Object.keys(require("./typescript").rules)
 );
+
+/*
+addMissingRules(
+  require("../packages/typescript-eslint_eslint-plugin.js").configs["recommended-type-checked"]
+    .rules,
+  module.exports.rules,
+  Object.keys(require("./typescript").rules)
+);
+*/

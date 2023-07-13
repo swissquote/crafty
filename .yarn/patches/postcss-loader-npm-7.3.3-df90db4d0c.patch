@@ -1,0 +1,142 @@
+diff --git a/dist/utils.js b/dist/utils.js
+index 13aa1392b53f1032a8744e56cdd6b15cc0b13b8c..e5e09de6f97816be9d6ea0d98fcbdd9cc6529178 100644
+--- a/dist/utils.js
++++ b/dist/utils.js
+@@ -7,25 +7,15 @@ exports.exec = exec;
+ exports.findPackageJSONDir = findPackageJSONDir;
+ exports.getPostcssImplementation = getPostcssImplementation;
+ exports.getPostcssOptions = getPostcssOptions;
+-exports.loadConfig = loadConfig;
++exports.loadConfig = function() { return {}; };
+ exports.normalizeSourceMap = normalizeSourceMap;
+ exports.normalizeSourceMapAfterPostcss = normalizeSourceMapAfterPostcss;
+ exports.reportError = reportError;
+ exports.warningFactory = warningFactory;
+ var _path = _interopRequireDefault(require("path"));
+-var _url = _interopRequireDefault(require("url"));
+ var _module = _interopRequireDefault(require("module"));
+-var _cosmiconfig = require("cosmiconfig");
+ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+ const parentModule = module;
+-const stat = (inputFileSystem, filePath) => new Promise((resolve, reject) => {
+-  inputFileSystem.stat(filePath, (err, stats) => {
+-    if (err) {
+-      reject(err);
+-    }
+-    resolve(stats);
+-  });
+-});
+ function exec(code, loaderContext) {
+   const {
+     resource,
+@@ -41,110 +31,6 @@ function exec(code, loaderContext) {
+   module._compile(code, resource);
+   return module.exports;
+ }
+-let tsLoader;
+-async function loadConfig(loaderContext, config, postcssOptions) {
+-  const searchPath = typeof config === "string" ? _path.default.resolve(config) : _path.default.dirname(loaderContext.resourcePath);
+-  let stats;
+-  try {
+-    stats = await stat(loaderContext.fs, searchPath);
+-  } catch (errorIgnore) {
+-    throw new Error(`No PostCSS config found in: ${searchPath}`);
+-  }
+-  const moduleName = "postcss";
+-  const searchPlaces = [
+-  // Prefer popular format
+-  "package.json", `${moduleName}.config.js`, `${moduleName}.config.mjs`, `${moduleName}.config.cjs`, `${moduleName}.config.ts`, `${moduleName}.config.mts`, `${moduleName}.config.cts`, `.${moduleName}rc`, `.${moduleName}rc.json`, `.${moduleName}rc.js`, `.${moduleName}rc.mjs`, `.${moduleName}rc.cjs`, `.${moduleName}rc.ts`, `.${moduleName}rc.mts`, `.${moduleName}rc.cts`, `.${moduleName}rc.yaml`, `.${moduleName}rc.yml`, `.config/${moduleName}rc`, `.config/${moduleName}rc.json`, `.config/${moduleName}rc.yaml`, `.config/${moduleName}rc.yml`, `.config/${moduleName}rc.js`, `.config/${moduleName}rc.mjs`, `.config/${moduleName}rc.cjs`, `.config/${moduleName}rc.ts`, `.config/${moduleName}rc.mts`, `.config/${moduleName}rc.cts`];
+-  const loaders = {
+-    ".js": async (...args) => {
+-      let result;
+-      try {
+-        result = _cosmiconfig.defaultLoadersSync[".js"](...args);
+-      } catch (error) {
+-        let importESM;
+-        try {
+-          // eslint-disable-next-line no-new-func
+-          importESM = new Function("id", "return import(id);");
+-        } catch (e) {
+-          importESM = null;
+-        }
+-        if (error.code === "ERR_REQUIRE_ESM" && _url.default.pathToFileURL && importESM) {
+-          const urlForConfig = _url.default.pathToFileURL(args[0]);
+-          result = await importESM(urlForConfig);
+-        } else {
+-          throw error;
+-        }
+-      }
+-      return result;
+-    },
+-    ".cjs": _cosmiconfig.defaultLoadersSync[".cjs"],
+-    ".mjs": async (...args) => {
+-      let result;
+-      let importESM;
+-      try {
+-        // eslint-disable-next-line no-new-func
+-        importESM = new Function("id", "return import(id);");
+-      } catch (e) {
+-        importESM = null;
+-      }
+-      if (_url.default.pathToFileURL && importESM) {
+-        const urlForConfig = _url.default.pathToFileURL(args[0]);
+-        result = await importESM(urlForConfig);
+-      } else {
+-        throw new Error("ESM is not supported");
+-      }
+-      return result;
+-    }
+-  };
+-  if (!tsLoader) {
+-    const opts = {
+-      interopDefault: true
+-    };
+-    // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+-    const jiti = require("jiti")(__filename, opts);
+-    tsLoader = filepath => jiti(filepath);
+-  }
+-  loaders[".cts"] = tsLoader;
+-  loaders[".mts"] = tsLoader;
+-  loaders[".ts"] = tsLoader;
+-  const explorer = (0, _cosmiconfig.cosmiconfig)(moduleName, {
+-    searchPlaces,
+-    loaders
+-  });
+-  let result;
+-  try {
+-    if (stats.isFile()) {
+-      result = await explorer.load(searchPath);
+-    } else {
+-      result = await explorer.search(searchPath);
+-    }
+-  } catch (error) {
+-    throw error;
+-  }
+-  if (!result) {
+-    return {};
+-  }
+-  loaderContext.addBuildDependency(result.filepath);
+-  loaderContext.addDependency(result.filepath);
+-  if (result.isEmpty) {
+-    return result;
+-  }
+-  if (typeof result.config === "function") {
+-    const api = {
+-      mode: loaderContext.mode,
+-      file: loaderContext.resourcePath,
+-      // For complex use
+-      webpackLoaderContext: loaderContext,
+-      // Partial compatibility with `postcss-cli`
+-      env: loaderContext.mode,
+-      options: postcssOptions || {}
+-    };
+-    return {
+-      ...result,
+-      config: result.config(api)
+-    };
+-  }
+-  return result;
+-}
+ function loadPlugin(plugin, options, file) {
+   try {
+     // eslint-disable-next-line global-require, import/no-dynamic-require

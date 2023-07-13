@@ -63,6 +63,10 @@ class Builder {
   destination(destination) {
     this.values.destination = destination;
 
+    if (destination.indexOf(".mjs") > -1) {
+      this.values.options.esm = true
+    }
+
     return this;
   }
 
@@ -82,9 +86,13 @@ class Builder {
     const pkg = this.values.name;
 
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
-    this.values.destination = `dist/${cleanPkg}/index.js`;
-
-    this.values.sourceFile = `module.exports = require("${pkg}");`;
+    if (this.values.options.esm) {
+      this.values.destination = `dist/${cleanPkg}/index.mjs`;
+      this.values.sourceFile = `export * from "${pkg}";`;
+    } else {
+      this.values.destination = `dist/${cleanPkg}/index.js`;
+      this.values.sourceFile = `module.exports = require("${pkg}");`;
+    }
 
     this.values.options.sourceMap = false;
     this.values.options.sourceMapRegister = false;
@@ -145,7 +153,9 @@ class Builder {
           console.log("Writing", entryFile.entryFile);
           await fs.promises.writeFile(
             entryFile.entryFile,
-            `module.exports = require('${relativePath}')['${entryFile.name}']();`
+            entryFile.entryFile.indexOf(".mjs") > -1 
+              ? `import { ${entryFile.name} } from "${relativePath}"; export default ${entryFile.name}();`
+              : `module.exports = require('${relativePath}')['${entryFile.name}']();`
           );
         }
 
