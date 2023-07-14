@@ -17,15 +17,10 @@ module.exports = [
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
   builder => builder("estraverse").package(),
-  builder =>
-    builder("is-core-module")
-      .externals({
-        has: "../has/index.js"
-      })
-      .package(),
+  builder => builder("is-core-module").package(),
   builder => builder("is-glob").package(),
   builder => builder("path-parse").package(),
-  builder => builder("has").package(),
+  builder => builder("get-tsconfig").package(),
   builder =>
     builder("eslint-module-utils")
       .packages(pkgBuilder => {
@@ -78,10 +73,11 @@ module.exports = [
         "is-core-module": "../is-core-module/index.js",
         "is-glob": "../is-glob/index.js",
         "eslint-module-utils/hash.js": "../eslint-module-utils/hash",
+        "get-tsconfig": "../get-tsconfig/index.js",
 
         // TODO :: is enhanced-resolve already exported somewhere ?
 
-        // no code path leverages this library
+        // no code path uses this library
         open: "open"
       }),
 
@@ -92,7 +88,7 @@ module.exports = [
       .sourceFile(`module.exports = require("comment-parser/parser/index");`),
 
   builder =>
-    builder("eslint-plugin-import")
+    builder("eslint-plugin-i")
       .package()
       .externals({
         ...externals,
@@ -105,21 +101,14 @@ module.exports = [
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
-        "is-core-module": "../is-core-module/index.js",
         "is-glob": "../is-glob/index.js",
-        has: "../has/index.js",
+        "get-tsconfig": "../get-tsconfig/index.js",
         "eslint-module-utils/readPkgUp": "../eslint-module-utils/readPkgUp.js",
         "eslint-module-utils/pkgUp": "../eslint-module-utils/pkgUp.js",
         "eslint-module-utils/resolve": "../eslint-module-utils/resolve.js",
         "eslint-module-utils/hash": "../eslint-module-utils/hash.js",
         "eslint-module-utils/ModuleCache":
           "../eslint-module-utils/ModuleCache.js",
-
-        // Replace polyfills that aren't needed
-        "array-includes": "../../src/shims/array-includes.js",
-        "array.prototype.flat": "../../src/shims/array-prototype-flat.js",
-        "array.prototype.flatmap": "../../src/shims/array-prototype-flatmap.js",
-        "object.values": "../../src/shims/object-values.js"
       }),
 
   builder =>
