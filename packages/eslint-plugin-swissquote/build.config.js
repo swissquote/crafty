@@ -108,7 +108,7 @@ module.exports = [
         "eslint-module-utils/resolve": "../eslint-module-utils/resolve.js",
         "eslint-module-utils/hash": "../eslint-module-utils/hash.js",
         "eslint-module-utils/ModuleCache":
-          "../eslint-module-utils/ModuleCache.js",
+          "../eslint-module-utils/ModuleCache.js"
       }),
 
   builder =>
