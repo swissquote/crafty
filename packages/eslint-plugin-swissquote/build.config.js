@@ -165,6 +165,7 @@ module.exports = [
         // Provided by this package
         typescript: "typescript",
         "typescript/package.json": "typescript/package.json",
+        "typescript/lib/tsserverlibrary": "typescript/lib/tsserverlibrary",
         eslint: "eslint",
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
