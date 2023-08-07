@@ -29,7 +29,6 @@ configuration.getCrafty(
   // Get all possible commands
   const commands = getCommands(crafty);
 
-  
   try {
     // Run the user selected command
     const exitCode = await cli(crafty, commands)

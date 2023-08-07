@@ -1,6 +1,6 @@
-const path = require("path");
+import path from "path";
 
-module.exports = {
+export default {
   defaultConfig() {
     return {
       bundleTypes: { img: "images" },

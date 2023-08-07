@@ -21,7 +21,7 @@ test("Loads crafty-preset-images-simple and does not register gulp tasks", async
   t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
 });
 
-test("Fails if both crafty-preset-images-simple and crafty-preset-images-simple are loaded", async t => {
+test("Fails if both crafty-preset-images and crafty-preset-images-simple are loaded", async t => {
   const crafty = await getCrafty(
     [
       "@swissquote/crafty-preset-images",
@@ -39,8 +39,7 @@ test("Fails if both crafty-preset-images-simple and crafty-preset-images-simple 
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
 
   t.throws(() => crafty.createTasks(), {
-    message:
-      "Failed registering 'crafty-preset-images-simple' a task with this name already exists"
+    message: /a task with this name already exists/
   });
 });
 
