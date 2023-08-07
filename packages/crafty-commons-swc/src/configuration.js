@@ -32,8 +32,7 @@ function getConfigurationBase(crafty, bundle, hasHelperDependency) {
       parser: {
         jsx: true,
         decorators: true
-      },
-      target: "es5"
+      }
     },
     env: {
       targets: crafty.config.browsers,
