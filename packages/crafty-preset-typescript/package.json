@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
-    "build": "node ../../utils/build.js"
+    "build": "node ../../utils/build.mjs"
   },
   "main": "src/index.js",
   "dependencies": {

@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const rimraf = require("rimraf");
+import fs from "fs";
+import path from "path";
+import rimraf from "rimraf";
 
-const {
+import {
   findFiles,
   scanFiles,
   printReport
-} = require("./duplicates.js");
-const compileUtils = require("./compile.js");
-const configuration = require(process.cwd() + "/build.config.js");
+} from "./duplicates.js";
+import compileUtils from "./compile.js";
 
 class PackagesBuilder {
   constructor() {
@@ -153,7 +152,7 @@ class Builder {
           console.log("Writing", entryFile.entryFile);
           await fs.promises.writeFile(
             entryFile.entryFile,
-            entryFile.entryFile.indexOf(".mjs") > -1 
+            this.values.options.esm 
               ? `import { ${entryFile.name} } from "${relativePath}"; export default ${entryFile.name}();`
               : `module.exports = require('${relativePath}')['${entryFile.name}']();`
           );
@@ -181,6 +180,8 @@ function builder(name) {
 async function main() {
   // Start with a cleanup
   rimraf.sync(process.cwd() + "/dist");
+
+  const configuration = (await import(process.cwd() + "/build.config.js")).default;
 
   for (const bundle of configuration) {
     await bundle(builder, compileUtils);

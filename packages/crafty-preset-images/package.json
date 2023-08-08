@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "main": "dist/compiled/index.js",
   "scripts": {
-    "build": "node ../../utils/build.js",
+    "build": "node ../../utils/build.mjs",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "publishConfig": {

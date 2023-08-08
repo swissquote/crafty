@@ -10,7 +10,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
-    "build": "node ../../utils/build.js"
+    "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
     "@swissquote/crafty": "1.22.3",

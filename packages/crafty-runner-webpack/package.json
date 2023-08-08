@@ -8,7 +8,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "node ../../utils/build.js",
+    "build": "node ../../utils/build.mjs",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src '*.js'",
     "test": "ava",
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ava"

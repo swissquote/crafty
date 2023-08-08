@@ -3,6 +3,7 @@
   "version": "1.22.3",
   "license": "Apache-2.0",
   "repository": "https://github.com/swissquote/crafty.git",
+  "type": "module",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -10,7 +11,7 @@
   "main": "dist/compiled/index.js",
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
-    "build": "node ../../utils/build.js"
+    "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
     "@swissquote/crafty-commons": "1.22.3"

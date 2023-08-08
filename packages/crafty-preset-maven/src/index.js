@@ -1,9 +1,9 @@
-const path = require("path");
-const fs = require("fs");
-const childProcess = require("child_process");
+import path from "path";
+import fs from "fs";
+import childProcess from "child_process";
 
-const tmp = require("tmp");
-const XMLParser = require("fast-xml-parser/src/xmlparser/XMLParser");
+import tmp from "tmp";
+import XMLParser from "fast-xml-parser/src/xmlparser/XMLParser.js";
 
 let loadedPom;
 
@@ -83,7 +83,7 @@ function getDestination(config) {
   return `${basedir}/${paths[config.mavenType]}${appName}`;
 }
 
-module.exports = {
+export default {
   config(config) {
     if (!config.mavenType) {
       return config;

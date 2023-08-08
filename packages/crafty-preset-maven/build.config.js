@@ -1,8 +1,8 @@
-const { getExternals } = require("../../utils/externals");
+import { getExternals } from "../../utils/externals.js";
 
-module.exports = [
+export default [
   (builder) =>
-    builder("index").externals({
+    builder("index").options({esm: true}).externals({
       ...getExternals(),
     }),
 ];

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
-    "build": "node ../../utils/build.js"
+    "build": "node ../../utils/build.mjs"
   },
   "devDependencies": {
     "terser": "5.19.2"
