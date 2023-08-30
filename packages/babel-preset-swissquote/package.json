@@ -12,17 +12,17 @@
     "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
-    "@babel/core": "7.22.9",
-    "@babel/runtime": "7.22.6",
+    "@babel/core": "7.22.11",
+    "@babel/runtime": "7.22.11",
     "@swissquote/crafty-commons": "1.22.3"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.22.9",
-    "@babel/preset-env": "7.22.9",
+    "@babel/plugin-transform-runtime": "7.22.10",
+    "@babel/preset-env": "7.22.14",
     "@babel/preset-react": "7.22.5",
     "babel-plugin-istanbul": "6.1.1",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "babel-preset-jest": "29.5.0"
+    "babel-preset-jest": "29.6.3"
   },
   "engines": {
     "node": ">=16"

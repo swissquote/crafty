@@ -17,8 +17,36 @@ module.exports = [
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
   builder => builder("estraverse").package(),
-  builder => builder("is-core-module").package(),
-  builder => builder("is-glob").package(),
+  builder => builder("function-bind").package(),
+  builder =>
+    builder("has")
+      .externals({
+        "function-bind": "../function-bind/index.js"
+      })
+      .package(),
+  builder => builder("merge2").package(),
+  builder =>
+    builder("is-core-module")
+      .externals({
+        "function-bind": "../function-bind/index.js",
+        has: "../has/index.js"
+      })
+      .package(),
+  builder => builder("is-extglob").package(),
+  builder =>
+    builder("is-glob")
+      .externals({
+        "is-extglob": "../is-glob/index.js"
+      })
+      .package(),
+  builder =>
+    builder("fast-glob")
+      .externals({
+        merge2: "../merge2/index.js",
+        "is-extglob": "../is-glob/index.js",
+        "is-glob": "../is-glob/index.js"
+      })
+      .package(),
   builder => builder("path-parse").package(),
   builder => builder("get-tsconfig").package(),
   builder =>
@@ -70,6 +98,7 @@ module.exports = [
       .externals({
         ...externals,
 
+        "fast-glob": "../fast-glob/index.js",
         "is-core-module": "../is-core-module/index.js",
         "is-glob": "../is-glob/index.js",
         "eslint-module-utils/hash.js": "../eslint-module-utils/hash",
@@ -123,6 +152,8 @@ module.exports = [
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
+        "function-bind": "../function-bind/index.js",
+        has: "../has/index.js",
         estraverse: "../estraverse/index.js",
         "is-core-module": "../is-core-module/index.js",
         "path-parse": "../path-parse/index.js",
@@ -171,6 +202,8 @@ module.exports = [
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
+        merge2: "../merge2/index.js",
+        "fast-glob": "../fast-glob/index.js",
         estraverse: "../estraverse/index.js",
         "is-glob": "../is-glob/index.js"
       }),

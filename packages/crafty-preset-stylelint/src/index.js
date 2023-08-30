@@ -15,13 +15,17 @@ function addUnsupportedBrowserSupportRule(rules, browsers) {
     rules[rule][1].browsers = browsers;
   }
 
+  // We are transpiling these features and can ignore the warnings
   if (!rules[rule][1].ignore) {
     rules[rule][1].ignore = [
       "rem",
       "calc",
       "css-initial-value",
       "css-image-set",
-      "css-gradients"
+      "css-gradients",
+      "css-nesting",
+      "css-variables",
+      "css-color-function"
     ];
   }
 }
