@@ -81,7 +81,6 @@
 <li class='Nav__item Nav__item--active'><a href="../../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -226,7 +225,6 @@
     <span class="hljs-comment">// babel</span>
     <span class="hljs-comment">// jest</span>
     <span class="hljs-comment">// gulp</span>
-    <span class="hljs-comment">// rollup</span>
     <span class="hljs-comment">// webpack</span>
 }
 </code></pre>
@@ -266,7 +264,7 @@
   <span class="hljs-comment">/*
    * The watch expression to use to rebuild this asset.
    * Any glob expression is valid, is needed for Gulp in watch mode.
-   * Webpack and rollup.js have their own mechanism to watch files and don't need this option.
+   * Webpack has its own mechanism to watch files and don't need this option.
    * If nothing is specified, it will use the value of `source` as a watch expression
    */</span>
   watch?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[];

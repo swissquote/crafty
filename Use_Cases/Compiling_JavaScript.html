@@ -81,7 +81,6 @@
 <li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -155,7 +154,7 @@
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li>
-<a href="#compiling-javascript-for-a-webapp-webpack-rollup-js">Compiling JavaScript for a webapp ( Webpack / rollup.js )</a>
+<a href="#compiling-javascript-for-a-webapp-webpack">Compiling JavaScript for a webapp ( Webpack )</a>
 <ul>
 <li>
 <a href="#installing-the-preset-with-webpack">Installing the preset with Webpack</a>
@@ -178,14 +177,13 @@
 <p>When compiling JavaScript, you have to know wether you are going to develop in
 an application or a library. The good news is that Crafty makes it a breeze to
 switch from one to the other.</p>
-<h2><a id="compiling-javascript-for-a-webapp-webpack-rollup-js" href="#compiling-javascript-for-a-webapp-webpack-rollup-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Compiling JavaScript for a webapp ( Webpack / rollup.js )</h2>
+<h2><a id="compiling-javascript-for-a-webapp-webpack" href="#compiling-javascript-for-a-webapp-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Compiling JavaScript for a webapp ( Webpack )</h2>
 <p>When developing for a webapp, you wish for all files to be packed into the
 smallest number of files, because the number of requests that a final
 application will make are directly related to the performance of that
 application.</p>
-<p>Webpack and rollup.js do a great job at optimizing your bundles into the
-smallest possible package. For this use case, we are going to use Webpack, but
-they are interchangeable in this example.</p>
+<p>Webpack does a great job at optimizing your bundles into the
+smallest possible package.</p>
 <h3><a id="installing-the-preset-with-webpack" href="#installing-the-preset-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Webpack</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-babel @swissquote/crafty-runner-webpack --save
@@ -217,8 +215,6 @@ separate compiled file and use them as-is.</p>
 <p>The advantage of the second approach is that the Tree-Shaking that can be done
 in the final application is much more efficient if the compiled files stay
 separate. (Like a component library).</p>
-<p>This approach is not recommended if you know that most of your library
-will always be used, as we would recommend to use rollup.js in that case.</p>
 <h3><a id="installing-the-preset-with-gulp" href="#installing-the-preset-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing the preset with Gulp</h3>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
 npm install @swissquote/crafty @swissquote/crafty-preset-babel @swissquote/crafty-runner-gulp --save
@@ -227,7 +223,7 @@ npm install @swissquote/crafty @swissquote/crafty-preset-babel @swissquote/craft
 bundle.</p>
 <p>You can see that the bundle we created contains a glob as the source, this means
 that all source files will be compiled separately, and the dependencies between
-the files won’t be resolved (like Webpack or rollup.js would do).</p>
+the files won’t be resolved (like Webpack would do).</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,

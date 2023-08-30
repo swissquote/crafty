@@ -81,7 +81,6 @@
 <li class='Nav__item '><a href="../../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -154,9 +153,6 @@
 <tr><th>Compatible Runners</th><td>
 <ul>
 <li>
-<a href="../crafty_runner_rollup.html">rollup.js</a>
-</li>
-<li>
 <a href="../crafty_runner_webpack.html">Webpack</a>
 </li>
 </ul>
@@ -189,7 +185,7 @@
 <a href="#installation">Installation</a>
 </li>
 <li>
-<a href="#usage-with-webpack-rollup-js">Usage with Webpack / rollup.js</a>
+<a href="#usage-with-webpack">Usage with Webpack</a>
 </li>
 <li>
 <a href="#usage-with-jest">Usage with Jest</a>
@@ -226,18 +222,16 @@ With the help of ESLint we check the code for common mistakes and formatting err
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-typescript"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>, <span class="hljs-comment">// optional</span>
-    <span class="hljs-string">"@swissquote/crafty-runner-rollup"</span> <span class="hljs-comment">// optional</span>
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
-      <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>, <span class="hljs-comment">// Webpack or rollup.js (optional if you have a single runner defined)</span>
+      <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>, <span class="hljs-comment">// webpack (optional if you have a single runner defined)</span>
       <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.ts"</span>
     }
   }
 };
 </code></pre>
-<h2><a id="usage-with-webpack-rollup-js" href="#usage-with-webpack-rollup-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack / rollup.js</h2>
-<p>Both offer the same level of integration.</p>
+<h2><a id="usage-with-webpack" href="#usage-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack</h2>
 <p>You have to configure TypeScript with the <code>tsconfig.json</code> file that you put at the root of the project.</p>
 <p>Some options can’t be auto-configured through the loaders / plugins so that’s why you have to do it yourself.
 Moreover, the integration with your IDE is simplified if you have a complete <code>tsconfig.json</code> in your project.</p>

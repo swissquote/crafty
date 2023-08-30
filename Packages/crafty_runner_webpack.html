@@ -81,7 +81,6 @@
 <li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item Nav__item--active'><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -242,8 +241,8 @@ that.</p>
 <td><code>externals</code></td>
 <td>Array&lt;String&gt;</td>
 <td>Yes</td>
-<td>Webpack / rollup.js</td>
-<td>Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn’t understand globs)</td>
+<td>Webpack</td>
+<td>Extends the list of provided libraries (Webpack understands both globs and strings)</td>
 </tr>
 </tbody>
 </table>
@@ -259,7 +258,7 @@ already configured inside <strong>Crafty</strong> we will merge your custom sett
 configuration but you can’t remove loaders and you can’t change the loader’s
 configuration.</p>
 <h4><a id="webpack-crafty-bundle-chain" href="#webpack-crafty-bundle-chain" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>webpack(crafty, bundle, chain)</code></h4>
-<p>Each preset and <code>crafty.config.js</code> can define the <code>webpack(crafty, bundle, chain)</code> function to override rollup.js’ configuration.</p>
+<p>Each preset and <code>crafty.config.js</code> can define the <code>webpack(crafty, bundle, chain)</code> function to override Webpack configuration.</p>
 <p>Webpack’s configuration is built using
 <a href="https://github.com/mozilla-neutrino/webpack-chain#getting-started" class="Link--external" rel="noopener noreferrer"><code>webpack-chain</code></a>
 which is a configuration builder.</p>
@@ -282,7 +281,7 @@ which is a configuration builder.</p>
 
         <nav>
         <ul class="Pager">
-            <li class=Pager--prev><a href="../Packages/crafty_runner_rollup.html">Previous</a></li>            <li class=Pager--next><a href="../Packages/crafty_preset_babel/index.html">Next</a></li>        </ul>
+            <li class=Pager--prev><a href="../Packages/crafty_runner_gulp.html">Previous</a></li>            <li class=Pager--next><a href="../Packages/crafty_preset_babel/index.html">Next</a></li>        </ul>
     </nav>
     </article>
 

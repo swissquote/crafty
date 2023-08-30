@@ -81,7 +81,6 @@
 <li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -234,7 +233,7 @@
 <td><code>externals</code></td>
 <td><code>[]</code></td>
 <td>What libraries are already provided in the final application, see below for more information</td>
-<td><code>crafty-runner-rollup</code> / <code>crafty-runner-webpack</code></td>
+<td><code>crafty-runner-webpack</code></td>
 </tr>
 <tr>
 <td><code>img_basedir</code></td>
@@ -332,10 +331,6 @@ you’ll end up with the same dependency more than one time.</p>
 </code></pre>
 <p>In this example, <code>react</code>, <code>react-dom</code>, and all modules starting with <code>moment/</code> will
 be treated as external</p>
-<blockquote>
-<p>This configuration example uses glob patterns.
-These patterns work fine for Webpack but are not supported by rollup.js.</p>
-</blockquote>
 <h2><a id="js-and-css-bundles" href="#js-and-css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>js</code> and <code>css</code> Bundles</h2>
 <p>The two configuration objects inside <code>css</code> and <code>js</code> are what Crafty uses to create the build tasks when running <code>crafty run</code>.</p>
 <p>A bundle is a set of one or more <strong>source files</strong> that a <strong>runner</strong> compiles to one or
@@ -417,11 +412,6 @@ more <strong>destination files</strong>.</p>
 <td><code>@swissquote/crafty-runner-webpack</code></td>
 </tr>
 <tr>
-<td><code>rollup</code></td>
-<td>JavaScript</td>
-<td><code>@swissquote/crafty-runner-rollup</code></td>
-</tr>
-<tr>
 <td><code>gulp/babel</code></td>
 <td>JavaScript</td>
 <td><code>@swissquote/crafty-runner-gulp</code> + <code>@swissquote/crafty-preset-babel</code></td>
@@ -484,18 +474,11 @@ bundles.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>format</code></td>
-<td><code>string</code></td>
-<td>rollup.js</td>
-<td><code>crafty-runner-rollup</code></td>
-<td>Define the output format can be any of <code>amd</code>, <code>iife</code>, <code>cjs</code>, <code>es</code> or <code>umd</code>. Defaults to <code>es</code>.</td>
-</tr>
-<tr>
 <td><code>externals</code></td>
 <td><code>string[]</code></td>
-<td>rollup.js / Webpack</td>
-<td><code>crafty-runner-webpack</code> / <code>crafty-runner-rollup</code></td>
-<td>Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn’t understand globs)</td>
+<td>Webpack</td>
+<td><code>crafty-runner-webpack</code></td>
+<td>Extends the list of provided libraries (Webpack understands both globs and strings)</td>
 </tr>
 <tr>
 <td><code>hot</code></td>
@@ -530,7 +513,7 @@ bundles.</p>
 <td><code>bool</code></td>
 <td>Gulp</td>
 <td><code>crafty-preset-babel</code></td>
-<td>This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack or rollup.js for this)</td>
+<td>This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack for this)</td>
 </tr>
 </tbody>
 </table>

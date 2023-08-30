@@ -81,7 +81,6 @@
 <li class='Nav__item '><a href="../Packages/crafty/Anatomy_of_a_preset.html">Anatomy of a preset</a></li>
 <li class='Nav__item '><a href="../Packages/crafty/The_Crafty_instance.html">The Crafty instance</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_gulp.html">crafty-runner-gulp</a></li>
-<li class='Nav__item '><a href="../Packages/crafty_runner_rollup.html">crafty-runner-rollup</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_runner_webpack.html">crafty-runner-webpack</a></li>
 <li class='Nav__item  has-children'><a href="../Packages/crafty_preset_babel/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-babel</a><ul class='Nav'>
 <li class='Nav__item '><a href="../Packages/crafty_preset_babel/JavaScript_Features.html">JavaScript Features</a></li></ul></li>
@@ -256,8 +255,10 @@ default to <code>src/main/frontend</code>.</p>
 JavaScript with Babel, we created <code>crafty-preset-babel</code>. If you wish to compile
 your CSS with PostCSS, we created <code>crafty-preset-postcss</code>.</p>
 <p>All these presets can create Tasks which are then taken by a Runner. We provide
-three runners: <code>crafty-runner-gulp</code>, <code>crafty-runner-webpack</code> and
-<code>crafty-runner-rollup</code>.</p>
+two runners: <code>crafty-runner-gulp</code> and <code>crafty-runner-webpack</code>.</p>
+<blockquote>
+<p>We used to provide <code>crafty-runner-rollup</code> as well, but dropped it due to the absence of users.</p>
+</blockquote>
 <h2><a id="bundles" href="#bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundles</h2>
 <p>A bundle is a set of one or more source files that will be compiled in a single
 destination file.</p>
