@@ -39,17 +39,6 @@ module.exports = {
 
     return configurators;
   },
-  rollup(crafty, bundle, rollupConfig) {
-    const {
-      getConfigurationRollup
-    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
-
-    rollupConfig.input.plugins.swc = {
-      plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
-      weight: 20,
-      options: getConfigurationRollup(crafty, bundle)
-    };
-  },
   webpack(crafty, bundle, chain) {
     chain.resolve.extensions.add(".jsx");
     chain.resolve.modules.add(MODULES);

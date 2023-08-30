@@ -31,14 +31,6 @@
       "rangeStrategy": "replace"
     },
     {
-      "groupName": "rollup",
-      "packagePatterns": ["@rollup/*", "^rollup"],
-      "minor": {
-        "groupName": "all rollup dependencies",
-        "groupSlug": "rollup-minor-patch"
-      }
-    },
-    {
       "groupName": "jest",
       "packagePatterns": ["jest"],
       "minor": {

@@ -77,25 +77,6 @@ function getConfigurationWebpack(crafty, bundle, hasHelperDependency) {
   return options;
 }
 
-function getConfigurationRollup(crafty, bundle) {
-  const hasHelperDependency = hasSwcHelpersDependency();
-
-  const options = getConfigurationBase(crafty, bundle, hasHelperDependency);
-
-  // Pass that information to the rollup plugin
-  options.hasHelperDependency = hasHelperDependency;
-
-  // Always enabled
-  options.jsc.externalHelpers = true;
-
-  // Force ES6 exports even if a module has a specific module syntax in a `.swcrc`
-  options.module = { type: "es6" };
-
-  extendConfiguration(crafty, bundle, options);
-
-  return options;
-}
-
 function getConfigurationGulp(crafty, bundle) {
   const options = getConfigurationBase(
     crafty,
@@ -116,6 +97,5 @@ module.exports = {
   hasSwcHelpersDependency,
   getConfiguration,
   getConfigurationWebpack,
-  getConfigurationRollup,
   getConfigurationGulp
 };

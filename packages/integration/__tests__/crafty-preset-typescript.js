@@ -87,7 +87,6 @@ test.serial("Tests Syntax using Prettier 1", async t => {
   t.is(result.status, 0);
 
   t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/rollup.min.js"));
   t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
 });
 
@@ -102,6 +101,5 @@ test.serial("Tests Syntax using Prettier 2", async t => {
   t.is(result.status, 0);
 
   t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/rollup.min.js"));
   t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
 });

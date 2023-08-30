@@ -10,7 +10,7 @@ This works with the following :
 - A change in a CSS file
 - A change in a JavaScript or TypeScript file
 - Adding or replacing images
-- in any runner (Gulp, Webpack and rollup.js)
+- in any runner (Gulp or Webpack)
 
 It's strongly recommended to let it run in the background in your IDE while
 you're developing, it streamlines the process a lot !

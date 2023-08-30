@@ -41,54 +41,8 @@ module.exports = {
 
     return configurators;
   },
-  rollup(crafty, bundle, rollupConfig) {
-    rollupConfig.input.plugins.typescript = {
-      plugin: require("../packages/rollup-plugin-typescript2"),
-      weight: 20,
-      options: {
-        include: [
-          "*.ts+(|x)",
-          "**/*.ts+(|x)",
-          "*.mts",
-          "**/*.mts",
-          "*.cts",
-          "**/*.cts"
-        ],
-        exclude: [
-          "*.d.ts",
-          "**/*.d.ts",
-          "*.d.cts",
-          "**/*.d.cts",
-          "*.d.mts",
-          "**/*.d.mts"
-        ],
-        tsconfigOverride: {
-          compilerOptions: {
-            // Transpile to esnext so that SWC can apply all its magic
-            target: "ESNext",
-            // Preserve JSX so SWC can optimize it, or add development/debug information
-            jsx: "Preserve"
-          }
-        }
-      }
-    };
-
-    const {
-      getConfigurationRollup
-    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
-    const options = getConfigurationRollup(crafty, bundle);
-    options.extensions = [".ts", ".tsx", ".mts", ".cts"];
-
-    rollupConfig.input.plugins.resolve.options.extensions.push(".mts", ".cts");
-
-    rollupConfig.input.plugins.swcTypeScript = {
-      plugin: require("@swissquote/crafty-commons-swc/src/rollup-plugin-swc.js"),
-      weight: 30,
-      options
-    };
-  },
   eslint(config, eslint) {
-    // This configuration is read by the webpack and rollup plugins
+    // This configuration is read by the webpack plugins
     // The rest of the configuration is handled by `eslint-plugin-swissquote`
     eslint.extensions.push("ts");
     eslint.extensions.push("tsx");

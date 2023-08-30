@@ -28,17 +28,6 @@ module.exports = [
   (builder) => builder("fast-deep-equal").package(),
   (builder) => builder("fast-json-stable-stringify").package(),
   (builder) =>
-    builder("rollup-plugin-typescript2")
-      .externals({
-        // Provided by other Crafty packages
-        ...externals,
-
-        "fs-extra": "../fs-extra/index.js",
-
-        typescript: "typescript",
-      })
-      .package(),
-  (builder) =>
     builder("typescript-packages")
       .packages((pkgBuilder) =>
         pkgBuilder

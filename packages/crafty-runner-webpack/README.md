@@ -33,7 +33,7 @@ that.
 | `hot`           | Boolean             | Yes        | Webpack             | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                          |
 | `libraryTarget` | String              | Yes        | Webpack             | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget) |
 | `library`       | String              | Yes        | Webpack             | Define the library name for the Webpack module or export.                                                                                        |
-| `externals`     | Array&lt;String&gt; | Yes        | Webpack / rollup.js | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs)                          |
+| `externals`     | Array&lt;String&gt; | Yes        | Webpack | Extends the list of provided libraries (Webpack understands both globs and strings)                          |
 
 ### Extending the configuration
 
@@ -54,7 +54,7 @@ configuration.
 
 #### `webpack(crafty, bundle, chain)`
 
-Each preset and `crafty.config.js` can define the `webpack(crafty, bundle, chain)` function to override rollup.js' configuration.
+Each preset and `crafty.config.js` can define the `webpack(crafty, bundle, chain)` function to override Webpack configuration.
 
 Webpack's configuration is built using
 [`webpack-chain`](https://github.com/mozilla-neutrino/webpack-chain#getting-started)

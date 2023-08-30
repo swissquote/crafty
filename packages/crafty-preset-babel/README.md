@@ -2,7 +2,6 @@
 <tr><th>Compatible Runners</th><td>
 
 - [Gulp](05_Packages/02_crafty-runner-gulp.md)
-- [rollup.js](05_Packages/02_crafty-runner-rollup.md)
 - [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
@@ -21,7 +20,7 @@
 
 ## Features
 
-`@swissquote/crafty-preset-babel` is able to configure **Babel** with **Webpack** and **rollup.js**. This preset also supports **Gulp** but in this case it concatenates and minifies the files, it doesn't resolve imports.
+`@swissquote/crafty-preset-babel` is able to configure **Babel** with **Webpack**. This preset also supports **Gulp** but in this case it concatenates and minifies the files, it doesn't resolve imports.
 
 [Our Babel preset](05_Packages/10_babel-preset-swissquote.md)
 
@@ -48,7 +47,7 @@ module.exports = {
   ],
   js: {
     app: {
-      runner: "webpack", // Webpack, Gulp or rollup.js (optional if you have a single runner defined)
+      runner: "webpack", // Webpack or Gulp (optional if you have a single runner defined)
       source: "js/app.js"
     }
   }
@@ -57,7 +56,7 @@ module.exports = {
 
 ## Usage
 
-### With Webpack / rollup.js
+### With Webpack
 
 Both runners have the same features in regards to Babel support.
 They will resolve your modules recursively and bundle them in one file or more if you do some code-splitting.
@@ -87,11 +86,9 @@ module.exports = {
 
 In this example `react`, `react-dom` and all modules starting with `squp/` will be treated as external
 
-> You can see that globs were used here, note that they work for Webpack but rollup.js needs complete strings.
-
 ### With Gulp
 
-Gulp will not bundle your files like Webpack and rollup.js do, instead it will generate one output file per input file.
+Gulp will not bundle your files like Webpack does, instead it will generate one output file per input file.
 This is useful if you are creating a library as it's the role of the final application to tree-shake what it doesn't need from your library.
 
 Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren't removed from your bundle even if they aren't used.
@@ -107,7 +104,7 @@ When running your tests with `crafty test` this preset will be use to convert al
 
 | Option   | Type    | Optional ? | Runner | Description                                                                                                                     |
 | -------- | ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| `concat` | Boolean | Yes        | Gulp   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this) |
+| `concat` | Boolean | Yes        | Gulp   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack for this) |
 
 ### Adding Babel plugins and presets
 

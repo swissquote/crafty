@@ -4,16 +4,15 @@ When compiling JavaScript, you have to know wether you are going to develop in
 an application or a library. The good news is that Crafty makes it a breeze to
 switch from one to the other.
 
-## Compiling JavaScript for a webapp ( Webpack / rollup.js )
+## Compiling JavaScript for a webapp ( Webpack )
 
 When developing for a webapp, you wish for all files to be packed into the
 smallest number of files, because the number of requests that a final
 application will make are directly related to the performance of that
 application.
 
-Webpack and rollup.js do a great job at optimizing your bundles into the
-smallest possible package. For this use case, we are going to use Webpack, but
-they are interchangeable in this example.
+Webpack does a great job at optimizing your bundles into the
+smallest possible package.
 
 ### Installing the preset with Webpack
 
@@ -58,9 +57,6 @@ The advantage of the second approach is that the Tree-Shaking that can be done
 in the final application is much more efficient if the compiled files stay
 separate. (Like a component library).
 
-This approach is not recommended if you know that most of your library
-will always be used, as we would recommend to use rollup.js in that case.
-
 ### Installing the preset with Gulp
 
 ```bash
@@ -73,7 +69,7 @@ bundle.
 
 You can see that the bundle we created contains a glob as the source, this means
 that all source files will be compiled separately, and the dependencies between
-the files won't be resolved (like Webpack or rollup.js would do).
+the files won't be resolved (like Webpack would do).
 
 ```javascript
 module.exports = {

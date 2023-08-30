@@ -1,7 +1,6 @@
 <table>
 <tr><th>Compatible Runners</th><td>
 
-- [rollup.js](05_Packages/02_crafty-runner-rollup.md)
 - [Webpack](05_Packages/02_crafty-runner-webpack.md)
 
 </td></tr>
@@ -51,20 +50,17 @@ module.exports = {
   presets: [
     "@swissquote/crafty-preset-typescript",
     "@swissquote/crafty-runner-webpack", // optional
-    "@swissquote/crafty-runner-rollup" // optional
   ],
   js: {
     app: {
-      runner: "webpack", // Webpack or rollup.js (optional if you have a single runner defined)
+      runner: "webpack", // webpack (optional if you have a single runner defined)
       source: "js/app.ts"
     }
   }
 };
 ```
 
-## Usage with Webpack / rollup.js
-
-Both offer the same level of integration.
+## Usage with Webpack
 
 You have to configure TypeScript with the `tsconfig.json` file that you put at the root of the project.
 

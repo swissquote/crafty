@@ -6,7 +6,6 @@ module.exports = {
     "prop-types"
   ],
   presets: [
-    "@swissquote/crafty-runner-rollup",
     "@swissquote/crafty-preset-typescript",
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-preset-jest",

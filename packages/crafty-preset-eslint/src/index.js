@@ -77,21 +77,6 @@ module.exports = {
       }
     };
   },
-  rollup(crafty, bundle, rollupConfig) {
-    // Add Eslint configuration
-    rollupConfig.input.plugins.eslint = {
-      plugin: require("../packages/rollup-plugin-eslint"),
-      weight: -20,
-      options: {
-        overrideConfigFile: toTempFile(crafty.config.eslint),
-        throwOnError: crafty.getEnvironment() === "production",
-        exclude: [/node_modules/],
-        include: crafty.config.eslintExtensions.map(
-          extension => new RegExp(`\\.${extension}$`)
-        )
-      }
-    };
-  },
   webpack(crafty, bundle, chain) {
     chain.resolve.extensions.add(".jsx");
     chain.resolve.modules.add(MODULES);

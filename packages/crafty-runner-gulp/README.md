@@ -18,7 +18,7 @@ This runner is based on Gulp 4.
 ```javascript
 module.exports = {
   /**
-   * Represents the extension point for rollup configuration
+   * Represents the extension point for Gulp configuration
    * @param {Crafty} crafty - The instance of Crafty.
    * @param {Gulp} gulp - The instance of Gulp.
    * @param {StreamHandler} StreamHandler - A wrapper to create your tasks.

@@ -1,4 +1,4 @@
-// mts / cts : https://github.com/rollup/plugins/pull/1454
+// mts / cts support
 import { helper } from "./TS_4_7_common.cjs";
 
 export { helper };

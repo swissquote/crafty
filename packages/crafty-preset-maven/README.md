@@ -64,7 +64,7 @@ module.exports = {
     presets: [
         "@swissquote/preset-maven",
         "@swissquote/crafty-preset-babel",
-        "@swissquote/crafty-runner-rollup"
+        "@swissquote/crafty-runner-webpack"
     ],
     mavenType: "webjar",
     js: {

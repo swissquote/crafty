@@ -46,20 +46,6 @@ module.exports = {
 
     return configurators;
   },
-  rollup(crafty, bundle, rollupConfig) {
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-rollup");
-    const { hasRuntime, options } = babelConfigurator(crafty, bundle);
-
-    if (hasRuntime) {
-      rollupConfig.input.external.push(/@babel\/runtime/);
-    }
-
-    rollupConfig.input.plugins.babel = {
-      plugin: require("../packages/rollup-plugin-babel.js"),
-      weight: 20,
-      options
-    };
-  },
   webpack(crafty, bundle, chain) {
     chain.resolve.extensions.add(".jsx");
     chain.resolve.modules.add(MODULES);

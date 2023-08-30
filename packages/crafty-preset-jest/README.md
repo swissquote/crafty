@@ -139,7 +139,7 @@ const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
   /**
-   * Represents the extension point for rollup configuration
+   * Represents the extension point for Jest configuration
    * @param {Crafty} crafty - The instance of Crafty.
    * @param {Object} options - The Jest configuration object
    */

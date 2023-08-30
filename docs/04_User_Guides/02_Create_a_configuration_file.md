@@ -67,8 +67,9 @@ JavaScript with Babel, we created `crafty-preset-babel`. If you wish to compile
 your CSS with PostCSS, we created `crafty-preset-postcss`.
 
 All these presets can create Tasks which are then taken by a Runner. We provide
-three runners: `crafty-runner-gulp`, `crafty-runner-webpack` and
-`crafty-runner-rollup`.
+two runners: `crafty-runner-gulp` and `crafty-runner-webpack`.
+
+> We used to provide `crafty-runner-rollup` as well, but dropped it due to the absence of users.
 
 ## Bundles
 

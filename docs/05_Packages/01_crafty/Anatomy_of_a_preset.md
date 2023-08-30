@@ -78,7 +78,6 @@ module.exports = {
     // babel
     // jest
     // gulp
-    // rollup
     // webpack
 }
 ```
@@ -122,7 +121,7 @@ interface Bundle {
   /*
    * The watch expression to use to rebuild this asset.
    * Any glob expression is valid, is needed for Gulp in watch mode.
-   * Webpack and rollup.js have their own mechanism to watch files and don't need this option.
+   * Webpack has its own mechanism to watch files and don't need this option.
    * If nothing is specified, it will use the value of `source` as a watch expression
    */
   watch?: string | string[];

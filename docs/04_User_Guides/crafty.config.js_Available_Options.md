@@ -11,7 +11,7 @@ All the options in `crafty.config.js` apart from your bundles in the `js` and
 | `destination`              | See below                        | The destination at which to put all files                                                                            | Core                                                   |
 | `destination_<bundleType>` | `destination + "/" + bundleType` | The destination for JavaScript/TypeScript files                                                                      | Core                                                   |
 | `eslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all JavaScript source files that go through the Gulp builder                              | `crafty-preset-babel`                                  |
-| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-rollup` / `crafty-runner-webpack`       |
+| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-webpack`       |
 | `img_basedir`              | `"images"`                       | Where to take images from (Relative to current working directory)                                                    | `crafty-preset-images` / `crafty-preset-images-simple` |
 | `img_extensions`           | `["png", "jpg", "jpeg", "gif"]`  | What extensions to compress (excludes svg)                                                                           | `crafty-preset-images`                                 |
 | `legacy_css`               | `false`                          | When enabling this feature, the CSS will be linted for errors and formatting instead of the Swissquote CSS Guideline | `crafty-preset-postcss`                                |
@@ -91,9 +91,6 @@ module.exports = {
 In this example, `react`, `react-dom`, and all modules starting with `moment/` will
 be treated as external
 
-> This configuration example uses glob patterns.
-> These patterns work fine for Webpack but are not supported by rollup.js.
-
 ## `js` and `css` Bundles
 
 The two configuration objects inside `css` and `js` are what Crafty uses to create the build tasks when running `crafty run`.
@@ -135,7 +132,7 @@ This configuration will:
 | `source`      | `string|string[]` | No         | One single file or an array of files you wish to compile. Glob expressions are valid.                                         |
 | `runner`      | `string`          | No         | The runner's name to use for this bundle. This option is mandatory if more than one runner is loaded                          |
 | `destination` | `string`          | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                                             |
-| `watch`       | `string|string[]` | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack and rollup.js don't use this option. |
+| `watch`       | `string|string[]` | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack doesn't use this option. |
 
 ### Runners
 
@@ -144,7 +141,6 @@ You can define which runner should run for which bundle. The different values ar
 | Runner Name       | Bundle Type | Required presets                                                          |
 | ----------------- | ----------- | ------------------------------------------------------------------------- |
 | `webpack`         | JavaScript  | `@swissquote/crafty-runner-webpack`                                       |
-| `rollup`          | JavaScript  | `@swissquote/crafty-runner-rollup`                                        |
 | `gulp/babel`      | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-babel`      |
 | `gulp/typescript` | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-typescript` |
 | `gulp/swc`        | JavaScript  | `@swissquote/crafty-runner-gulp` + `@swissquote/crafty-preset-babel`      |
@@ -191,10 +187,9 @@ bundles.
 
 | Option          | Type                 | Runner              | Preset                                           | Description                                                                                                                                                                                                                                                                                                        |
 | --------------- | -------------------- | ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `format`        | `string`             | rollup.js           | `crafty-runner-rollup`                           | Define the output format can be any of `amd`, `iife`, `cjs`, `es` or `umd`. Defaults to `es`.                                                                                                                                                                                                                      |
-| `externals`     | `string[]`           | rollup.js / Webpack | `crafty-runner-webpack` / `crafty-runner-rollup` | Extends the list of provided libraries (Webpack understands both globs and strings, rollup.js doesn't understand globs)                                                                                                                                                                                            |
+| `externals`     | `string[]`           | Webpack | `crafty-runner-webpack` | Extends the list of provided libraries (Webpack understands both globs and strings)                                                                                                                                                                                            |
 | `hot`           | `bool`               | Webpack             | `crafty-runner-webpack`                          | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                                                                                                                                                                                            |
 | `libraryTarget` | `string`             | Webpack             | `crafty-runner-webpack`                          | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget)                                                                                                                                                                   |
 | `library`       | `string`             | Webpack             | `crafty-runner-webpack`                          | Define the library name for the Webpack module or export.                                                                                                                                                                                                                                                          |
 | `extractCSS`    | `bool|string|object` | Webpack             | `crafty-preset-postcss`                          | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
-| `concat`        | `bool`               | Gulp                | `crafty-preset-babel`                            | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack or rollup.js for this)                                                                                                                                                                                    |
+| `concat`        | `bool`               | Gulp                | `crafty-preset-babel`                            | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack for this)                                                                                                                                                                                    |

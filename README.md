@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/dt/@swissquote/crafty.svg?style=flat-square)](https://npmjs.com/package/@swissquote/crafty)
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?style=flat-square)](https://renovatebot.com)
 
-Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, rollup.js, Babel, ESLint, TypeScript, PostCSS, Stylelint and other tools.
+Crafty is a build configuration manager, Opinionated but configurable, you can use its presets to build your applications with Webpack, Gulp, Babel, ESLint, TypeScript, PostCSS, Stylelint and other tools.
 
 Crafty has a default configuration and provides possibilities to extend that default configuration.
 

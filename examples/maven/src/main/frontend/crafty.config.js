@@ -7,7 +7,6 @@ module.exports = {
   ],
   mavenType: "webapp",
   presets: [
-    "@swissquote/crafty-runner-rollup",
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-typescript",
     "@swissquote/crafty-preset-postcss",

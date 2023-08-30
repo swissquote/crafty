@@ -32,7 +32,7 @@ In this case, this build will run through Webpack and execute the following task
 
 After this, we get a bundle named `app.min.js` in `dist/js`.
 
-Both Webpack and rollup.js us Babel to compile modern JavaScript to JavaScript that all browsers understand.
+Webpack uses Babel to compile modern JavaScript to JavaScript that all browsers understand.
 
 ### Babel
 

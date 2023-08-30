@@ -23,12 +23,6 @@ Use this runner to bundle your code with Webpack.
 
 [Features and options](02_crafty-runner-webpack.md)
 
-### `crafty-runner-rollup`
-
-Use this runner to bundle your code with rollup.js .
-
-[Features and options](02_crafty-runner-rollup.md)
-
 ### `crafty-runner-gulp`
 
 Use this runner to be able to create Gulp tasks in your projects.
@@ -50,7 +44,7 @@ EcmaScript 2015+ and TypeScript code effortlessly.
 
 ### `crafty-preset-babel`
 
-This preset provides EcmaScript 2015+ support with Babel for Gulp, Webpack, Jest and rollup.js .
+This preset provides EcmaScript 2015+ support with Babel for Gulp, Webpack, and Jest.
 
 This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
@@ -64,7 +58,7 @@ Compile your CSS using **PostCSS**, works with **Webpack** and Gulp.
 
 ### `crafty-preset-typescript`
 
-This preset provides TypeScript support for Gulp, Webpack, Jest and rollup.js .
+This preset provides TypeScript support for Gulp, Webpack, and Jest.
 
 This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
@@ -113,7 +107,7 @@ Provides Prettier defaults for other presets
 
 ### `crafty-preset-eslint`
 
-Check your code with ESLint, this preset will provide a standalone `jsLint` command and configure Webpack and rollup.js .
+Check your code with ESLint, this preset will provide a standalone `jsLint` command and configure Webpack.
 
 Utilities from this package are leveraged to configure Gulp builds.
 
@@ -121,7 +115,7 @@ Utilities from this package are leveraged to configure Gulp builds.
 
 ### `crafty-preset-swc`
 
-This preset provides EcmaScript 2015+ support with [SWC](https://swc.rs/) for Gulp, Webpack, Jest and rollup.js .
+This preset provides EcmaScript 2015+ support with [SWC](https://swc.rs/) for Gulp, Webpack, and Jest.
 
 While SWC is able to compile TypeScript, this preset does not offer this feature at the moment.
 
