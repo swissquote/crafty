@@ -5,12 +5,12 @@ const test = require("ava");
 const { Transform } = require("stream");
 
 var es = require("event-stream"),
-  through2 = require("through2"),
+  streamx = require("streamx"),
   EE = require("events").EventEmitter,
   Crafty = require("@swissquote/crafty/src/Crafty"),
   Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 
-  const gulp = new Gulp(new Crafty({}));
+const gulp = new Gulp(new Crafty({}));
 
 var plumber = require("../");
 
@@ -156,7 +156,7 @@ test("throw on piping to undefined", function(t) {
 
 test("throw after cleanup", function(t) {
   var mario = plumber({ errorHandler: false });
-  var stream = mario.pipe(through2.obj());
+  var stream = mario.pipe(new streamx.Transform({ transform(entry, cb) { cb(); } }));
 
   t.throws(() => {
     stream.emit("error", new Error(errorMessage));

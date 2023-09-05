@@ -9,7 +9,7 @@ var vinyl = require("vinyl-fs");
 var spawn = require("child_process").spawn;
 var once = require("once");
 var del = require("del");
-var through = require("through2");
+var { Transform } = require("streamx");
 
 var Undertaker = require("../");
 
@@ -71,9 +71,11 @@ test.serial("should lints all piped files", async function(t) {
   var count = 0;
   taker.task("test", function() {
     return vinyl.src("./fixtures/test.js", { cwd: __dirname }).pipe(
-      through.obj(function(file, enc, cb) {
-        count++;
-        cb();
+      new Transform({
+        transform (file, cb) {
+          count++;
+          cb();
+        }
       })
     );
   });
@@ -180,9 +182,11 @@ test.serial("can use lastRun with vinyl.src `since` option", async function(t) {
         since: taker.lastRun("build"),
       })
       .pipe(
-        through.obj(function(file, enc, cb) {
-          count++;
-          cb();
+        new Transform({
+          transform (file, cb) {
+            count++;
+            cb();
+          }
         })
       );
   }
