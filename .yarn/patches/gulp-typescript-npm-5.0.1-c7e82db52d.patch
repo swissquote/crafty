@@ -1,13 +1,29 @@
 diff --git a/release/compiler.js b/release/compiler.js
-index 5b3f1c4ccabc32c316185db8c8359b85387167ac..3acb5e717c129ca6cd6902b293e84874c670e044 100644
+index 5b3f1c4ccabc32c316185db8c8359b85387167ac..429cdb813e03413d18039b5d0a0be6dce6289f71 100644
 --- a/release/compiler.js
 +++ b/release/compiler.js
-@@ -97,6 +97,8 @@ class ProjectCompiler {
+@@ -95,17 +95,23 @@ class ProjectCompiler {
+         this.project.output.finish(result);
+     }
      attachContentToFile(file, fileName, content) {
-         const [, extension] = utils.splitExtension(fileName, ['d.ts', 'd.ts.map']);
+-        const [, extension] = utils.splitExtension(fileName, ['d.ts', 'd.ts.map']);
++        const [, extension] = utils.splitExtension(fileName, ["d.ts", "d.ts.map", "d.mts", "d.mts.map", "d.cts", "d.cts.map"]);
          switch (extension) {
 +            case 'mjs':
 +            case 'cjs':
              case 'js':
              case 'jsx':
                  file.jsFileName = fileName;
+                 file.jsContent = content;
+                 break;
++            case "d.cts.map":
++            case "d.mts.map":
+             case 'd.ts.map':
+                 file.dtsMapFileName = fileName;
+                 file.dtsMapContent = content;
+                 break;
++            case "d.cts":
++            case "d.mts":
+             case 'd.ts':
+                 file.dtsFileName = fileName;
+                 file.dtsContent = content;

@@ -1,19 +1,45 @@
-module.exports = function createTask(crafty, bundle, StreamHandler) {
+const { finished } = require("node:stream/promises");
+const { PassThrough } = require("node:stream");
+
+function mergeStreams(...streams) {
+  const combinedStream = new PassThrough({
+    objectMode: true
+  });
+
+  Promise.all(
+    streams.map(s => {
+      s.on("error", e => {
+        console.error("Bubbling error from stream", e);
+        combinedStream.destroy(e);
+      });
+
+      return finished(s);
+    })
+  ).then(
+    () => {
+      combinedStream.end();
+    },
+    e => {
+      combinedStream.destroy(e);
+    }
+  );
+
+  return combinedStream;
+}
+
+module.exports = function createTask(crafty, bundle, gulp) {
   return cb => {
-    // Init
-    const stream = new StreamHandler(
-      bundle.source,
+    const source = bundle.source;
+    const destination =
       crafty.config.destination_js +
-        (bundle.directory ? `/${bundle.directory}` : ""),
-      cb,
-      { sourcemaps: true },
-      { sourcemaps: "." }
-    );
+      (bundle.directory ? `/${bundle.directory}` : "");
+
+    let stream = gulp.src(source, { sourcemaps: true });
 
     // Avoid compressing if it's already at the latest version
     if (crafty.isWatching()) {
       const newer = require("@swissquote/crafty-commons-gulp/packages/gulp-newer");
-      stream.add(newer(crafty.config.destination_js + bundle.destination));
+      stream = stream.pipe(newer(destination));
     }
 
     // Linting
@@ -21,18 +47,17 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       toTempFile
     } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
     const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
-    stream
-      .add(
+    stream = stream
+      .pipe(
         eslint({
           overrideConfigFile: toTempFile(crafty.config.eslint)
         })
       )
-      .add(eslint.format());
+      .pipe(eslint.format());
 
-    // Fail the build if we have linting
-    // errors and we build directly
+    // Linting errors should not stop the watch mode
     if (!crafty.isWatching()) {
-      stream.add(
+      stream = stream.pipe(
         eslint.results(results => {
           const count = results.errorCount;
           if (count) {
@@ -45,7 +70,7 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       );
     }
 
-    // Process
+    // Transpilation
 
     // First convert TypeScript
     const tsOptions = {
@@ -56,7 +81,15 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
     };
     const typescript = require("../packages/gulp-typescript");
     const tsProject = typescript.createProject("tsconfig.json", tsOptions);
-    stream.add(tsProject());
+    stream = stream.pipe(tsProject()).on("error", err => {
+      crafty.error(err);
+      cb(err);
+    });
+
+    // gulp-typescript exposes two separate streams for js and dts
+    // this way we can compile only "ts" files and skip over ".d.ts"
+    let jsStream = stream.js;
+    const dtsStream = stream.dts;
 
     // Then finalize with SWC
     const swc = require("@swissquote/crafty-commons-swc/packages/gulp-swc.js");
@@ -64,15 +97,17 @@ module.exports = function createTask(crafty, bundle, StreamHandler) {
       getConfigurationGulp
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
     const swcOptions = getConfigurationGulp(crafty, bundle);
-
-    stream.add(swc(swcOptions));
+    jsStream = jsStream.pipe(swc(swcOptions));
 
     if (bundle.concat) {
       const concat = require("@swissquote/crafty-commons-gulp/packages/gulp-concat");
-      stream.add(concat(bundle.destination));
+      jsStream = jsStream.pipe(concat(bundle.destination));
     }
 
     // Save
-    return stream.generate();
+    return mergeStreams(
+      dtsStream.pipe(gulp.dest(destination)),
+      jsStream.pipe(gulp.dest(destination, { sourcemaps: "." }))
+    );
   };
 };

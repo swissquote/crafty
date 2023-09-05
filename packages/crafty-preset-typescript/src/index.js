@@ -31,10 +31,7 @@ module.exports = {
         gulp,
         StreamHandler
       ) => {
-        gulp.task(
-          bundle.taskName,
-          createTask(craftyAgain, bundle, StreamHandler)
-        );
+        gulp.task(bundle.taskName, createTask(craftyAgain, bundle, gulp));
         craftyAgain.watcher.add(bundle.watch || bundle.source, bundle.taskName);
       };
     }
