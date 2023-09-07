@@ -121,7 +121,7 @@ test.serial("Compiles CSS", async t => {
 
   t.deepEqual(
     testUtils.readFile(cwd, BUNDLED_CSS),
-    ".Link{color:#00f}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */"
+    ".Link{color:#00f}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
@@ -141,7 +141,7 @@ test.serial("Compiles CSS, configuration has overrides", async t => {
 
   t.deepEqual(
     testUtils.readFile(cwd, BUNDLED_CSS),
-    ".Link{color:#fa5b35}.BodyComponent{margin:0}\n/*# sourceMappingURL=myBundle.min.css.map */"
+    ".Link{color:#fa5b35}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
@@ -164,8 +164,8 @@ test.serial("Compiles CSS, configuration preserve", async t => {
     ":root{--color:blue}" +
       ".Link{color:var(--color)}" +
       ":root{--BodyComponent-color:var(--color)}" +
-      ".BodyComponent{color:var(--BodyComponent-color);margin:0}\n" +
-      "/*# sourceMappingURL=myBundle.min.css.map */"
+      ".BodyComponent{color:var(--BodyComponent-color);margin:0}" +
+      "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
@@ -185,7 +185,7 @@ test.serial("Compiles CSS, compiles color-function", async t => {
 
   t.deepEqual(
     testUtils.readFile(cwd, BUNDLED_CSS),
-    ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}\n" +
-      "/*# sourceMappingURL=myBundle.min.css.map */"
+    ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}" +
+      "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });

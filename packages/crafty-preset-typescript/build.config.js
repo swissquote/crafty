@@ -31,7 +31,7 @@ module.exports = [
     builder("typescript-packages")
       .packages((pkgBuilder) =>
         pkgBuilder
-          .package("gulp-typescript", "gulpTypescript")
+          .package("@onigoetz/gulp-typescript", "gulpTypescript")
           .package("ts-jest", "tsJest")
           .package("ts-loader", "tsLoader")
       )

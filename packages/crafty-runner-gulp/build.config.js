@@ -5,7 +5,6 @@ module.exports = [
     builder("gulp-packages")
       .packages((pkgBuilder) =>
         pkgBuilder
-          .package("end-of-stream", "endOfStream")
           .package("@swissquote/gulp-plumber", "gulpPlumber")
           .package("pump", "pump")
       )

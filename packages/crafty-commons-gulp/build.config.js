@@ -7,10 +7,6 @@ const externals = getExternals();
 externals["readable-stream"] = "stream";
 
 module.exports = [
-  builder =>
-    builder("through2")
-      .package()
-      .externals(externals),
   builder => builder("vinyl-sourcemaps-apply").package(),
   builder =>
     builder("vinyl")
@@ -20,6 +16,7 @@ module.exports = [
           .package("vinyl", "vinyl", `dist/vinyl/vinyl.js`)
           .package("vinyl-fs", "vinylFs", `dist/vinyl/vinyl-fs.js`)
           .package("graceful-fs", "gracefulFs", `dist/vinyl/graceful-fs.js`)
+          .package("inherits", "inherits", `dist/vinyl/inherits.js`)
       )
       .externals(externals),
   builder =>
@@ -35,11 +32,10 @@ module.exports = [
         // Provided by other Crafty packages
         ...externals,
 
-        through2: "../through2/index.js",
-
         duplexify: "../vinyl/duplexify.js",
         "graceful-fs": "../vinyl/graceful-fs.js",
         vinyl: "../vinyl/vinyl.js",
+        inherits: "../vinyl/inherits.js",
         "vinyl-fs": "../vinyl/vinyl-fs.js",
 
         // Get ESLint from crafty-preset-eslint
