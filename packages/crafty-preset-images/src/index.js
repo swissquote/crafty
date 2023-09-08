@@ -31,7 +31,8 @@ module.exports = {
       const stream = new StreamHandler(
         sourcesPath,
         crafty.config.destination_img,
-        cb
+        cb,
+        { encoding: false }
       );
 
       //Only work on images that were changed

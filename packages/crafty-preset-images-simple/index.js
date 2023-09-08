@@ -25,7 +25,7 @@ export default {
     // Register the tasks to copy images over
     gulp.task("images", () => {
       return gulp
-        .src(sourcesPath)
+        .src(sourcesPath, { encoding: false })
         .pipe(gulp.dest(crafty.config.destination_img));
     });
 
