@@ -1,9 +1,9 @@
 // This is a clone of https://www.npmjs.com/package/concurrent-streams that uses raw streams
 /* eslint-disable no-param-reassign */
 
-const { Transform } = require("stream");
+import { Transform } from "stream";
 
-module.exports = function concurrentStream(options, transform, flush) {
+export default function concurrentStream(options, transform, flush) {
   var concurrent = 0,
     lastCallback = null,
     pendingFinish = null;
@@ -78,4 +78,4 @@ module.exports = function concurrentStream(options, transform, flush) {
   }
 
   return t;
-};
+}

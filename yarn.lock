@@ -1968,6 +1968,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@onigoetz/resquoosh@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@onigoetz/resquoosh@npm:1.1.0"
+  dependencies:
+    get-orientation: ^1.1.2
+    image-size: ^1.0.2
+    tinypool: ^0.8.1
+  checksum: 7de16e1858c0778ee51390c5bea586b3d7e6181db3b8191ea60bd2e2819d6919cd04237366921d02005082cf130e96a77c2a423c1fdc45c638caa3699e631c57
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -2084,16 +2095,6 @@ __metadata:
   version: 0.7.2
   resolution: "@sinonjs/text-encoding@npm:0.7.2"
   checksum: fe690002a32ba06906cf87e2e8fe84d1590294586f2a7fd180a65355b53660c155c3273d8011a5f2b77209b819aa7306678ae6e4aea0df014bd7ffd4bbbcf1ab
-  languageName: node
-  linkType: hard
-
-"@squoosh/lib@npm:0.5.3":
-  version: 0.5.3
-  resolution: "@squoosh/lib@npm:0.5.3"
-  dependencies:
-    wasm-feature-detect: ^1.2.11
-    web-streams-polyfill: ^3.0.3
-  checksum: d21da5876e2845727a3ad802ef4cd5637a01294eb2b423beeff24acd0a8200801f827982964964f8185bee074e2a5257cc32752ba57adc7f242aa2045c686a7c
   languageName: node
   linkType: hard
 
@@ -2572,7 +2573,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-images@workspace:packages/crafty-preset-images"
   dependencies:
-    "@squoosh/lib": 0.5.3
+    "@onigoetz/resquoosh": 1.1.0
     "@swissquote/crafty": 1.22.3
     "@swissquote/crafty-commons": 1.22.3
     "@swissquote/crafty-commons-gulp": 1.22.3
@@ -5578,7 +5579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2.6.9":
+"debug@npm:2, debug@npm:2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -7041,6 +7042,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-orientation@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "get-orientation@npm:1.1.2"
+  dependencies:
+    stream-parser: ^0.3.1
+  checksum: 4b6b9ca03b74a3aeebc56a78898fe1598a188d5026ce77fae7c41b49bccc9993b0e15d694fbe9eda4735c0e1cf2fae119f819faacba64c1b68254f47b3d04612
+  languageName: node
+  linkType: hard
+
 "get-package-type@npm:^0.1.0":
   version: 0.1.0
   resolution: "get-package-type@npm:0.1.0"
@@ -7687,7 +7697,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-size@npm:1.0.2":
+"image-size@npm:1.0.2, image-size@npm:^1.0.2":
   version: 1.0.2
   resolution: "image-size@npm:1.0.2"
   dependencies:
@@ -12449,6 +12459,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"stream-parser@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "stream-parser@npm:0.3.1"
+  dependencies:
+    debug: 2
+  checksum: 4d86ff8cffe7c7587dc91433fff9dce38a93ea7e9f47560055addc81eae6b6befab22b75643ce539faf325fe2b17d371778242566bed086e75f6cffb1e76c06c
+  languageName: node
+  linkType: hard
+
 "stream-shift@npm:^1.0.0":
   version: 1.0.1
   resolution: "stream-shift@npm:1.0.1"
@@ -13030,6 +13049,13 @@ __metadata:
   version: 1.0.0
   resolution: "time-zone@npm:1.0.0"
   checksum: e46f5a69b8c236dcd8e91e29d40d4e7a3495ed4f59888c3f84ce1d9678e20461421a6ba41233509d47dd94bc18f1a4377764838b21b584663f942b3426dcbce8
+  languageName: node
+  linkType: hard
+
+"tinypool@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "tinypool@npm:0.8.1"
+  checksum: e1162629b32a694edd92323fe7cc57379723f36b03f37e3f9442cb8fd3a99785b2b9416ef586d2f4cec8624f356b38558c2cfd272eb265a30841371d3d67d37a
   languageName: node
   linkType: hard
 
@@ -13655,13 +13681,6 @@ __metadata:
   dependencies:
     makeerror: 1.0.12
   checksum: ad7a257ea1e662e57ef2e018f97b3c02a7240ad5093c392186ce0bcf1f1a60bbadd520d073b9beb921ed99f64f065efb63dfc8eec689a80e569f93c1c5d5e16c
-  languageName: node
-  linkType: hard
-
-"wasm-feature-detect@npm:^1.2.11":
-  version: 1.5.1
-  resolution: "wasm-feature-detect@npm:1.5.1"
-  checksum: a99be305a83530271e47212ef138644c75bc65bcf2b2c094b22fe4e13b9ca1a2c00fdd8a01d663b338e189459a5e1f27d9cbd71c8adca3c71957beea51606193
   languageName: node
   linkType: hard
 

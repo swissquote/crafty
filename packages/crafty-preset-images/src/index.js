@@ -1,10 +1,10 @@
-const path = require("path");
+import path from "path";
 
-const imagemin = require("./gulp-imagemin.js");
-const newer = require("gulp-newer");
-const svgmin = require("gulp-svgmin");
+import imagemin from "./gulp-imagemin.js";
+import newer from "gulp-newer";
+import svgmin from "gulp-svgmin";
 
-module.exports = {
+export default {
   defaultConfig() {
     return {
       bundleTypes: { img: "images" },

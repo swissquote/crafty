@@ -5,6 +5,7 @@
   "description": "Compress images with Crafty",
   "license": "Apache-2.0",
   "main": "dist/compiled/index.js",
+  "type": "module",
   "scripts": {
     "build": "node ../../utils/build.mjs",
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
@@ -22,7 +23,7 @@
     "fsevents": "~2.3.3"
   },
   "devDependencies": {
-    "@squoosh/lib": "0.5.3",
+    "@onigoetz/resquoosh": "1.1.0",
     "gulp-svgmin": "4.1.0"
   },
   "engines": {

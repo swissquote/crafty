@@ -1,10 +1,9 @@
-const path = require("path");
-const PluginError = require("plugin-error");
-const colors = require("ansi-colors");
-const { ImagePool } = require("@squoosh/lib/build/index.js");
-const { cpus } = require("os");
+import path from "path";
+import PluginError from "plugin-error";
+import colors from "ansi-colors";
+import { optimizeImage } from "@onigoetz/resquoosh";
 
-const concurrent = require("./concurrent");
+import concurrent from "./concurrent.js";
 
 function formatBytes(bytes) {
   if (bytes === 0) return "0 Bytes";
@@ -18,62 +17,6 @@ function formatBytes(bytes) {
 }
 
 const PLUGIN_NAME = "gulp-imagemin";
-
-async function compress(imagePool, file, extension) {
-  const image = imagePool.ingestImage(file.contents);
-
-  const quality = 75;
-
-  if (extension === ".avif") {
-    await image.encode({
-      avif: {}
-    });
-    const { binary } = await image.encodedWith.avif;
-    return Buffer.from(binary);
-  }
-
-  if (extension === ".webp") {
-    await image.encode({
-      webp: { quality }
-    });
-    const { binary } = await image.encodedWith.webp;
-    return Buffer.from(binary);
-  }
-
-  if (extension === ".wp2") {
-    await image.encode({
-      wp2: {}
-    });
-    const { binary } = await image.encodedWith.wp2;
-    return Buffer.from(binary);
-  }
-
-  if (extension === ".png") {
-    await image.encode({
-      oxipng: {}
-    });
-    const { binary } = await image.encodedWith.oxipng;
-    return Buffer.from(binary);
-  }
-
-  if (extension === ".jxl") {
-    await image.encode({
-      jxl: {}
-    });
-    const { binary } = await image.encodedWith.jxl;
-    return Buffer.from(binary);
-  }
-
-  if (extension === ".jpg" || extension === ".jpeg") {
-    await image.encode({
-      mozjpeg: { quality }
-    });
-    const { binary } = await image.encodedWith.mozjpeg;
-    return Buffer.from(binary);
-  }
-
-  return file.contents;
-}
 
 class Reporter {
   constructor(options, log) {
@@ -131,7 +74,7 @@ class Reporter {
   }
 }
 
-module.exports = log => {
+export default log => {
   const options = {
     // TODO: Remove this when Gulp gets a real logger with levels
     silent: process.argv.includes("--silent"),
@@ -141,15 +84,6 @@ module.exports = log => {
   const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
 
   const reporter = new Reporter(options, log);
-
-  let worker;
-
-  function endWorker() {
-    if (worker && worker.close) {
-      worker.close();
-      worker = null;
-    }
-  }
 
   return concurrent(
     {
@@ -183,11 +117,7 @@ module.exports = log => {
 
       (async () => {
         try {
-          if (!worker) {
-            worker = new ImagePool(cpus().length);
-          }
-
-          const optimizedBuffer = await compress(worker, file, extension);
+          const optimizedBuffer = await optimizeImage(file.contents);
 
           reporter.addFile(
             file.contents.length,
@@ -199,8 +129,6 @@ module.exports = log => {
 
           callback(null, file);
         } catch (error) {
-          // End the worker in case of error as the stream will be interrupted
-          endWorker();
           callback(
             new PluginError(PLUGIN_NAME, error, { fileName: file.path })
           );
@@ -209,9 +137,6 @@ module.exports = log => {
     },
     callback => {
       try {
-        // Once all images are compressed, we end the worker
-        endWorker();
-
         reporter.report();
         callback();
       } catch (e) {
