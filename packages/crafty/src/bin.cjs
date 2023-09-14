@@ -33,14 +33,15 @@ configuration.getCrafty(
     // Run the user selected command
     const exitCode = await cli(crafty, commands)
 
-    // Wait for the stdout buffer to drain.
-    process.on("exit", () => process.exit(exitCode));
+    if (exitCode) {
+      process.exitCode = exitCode;
+    }
   } catch (error) {
       // Using crafty.error will make sure that it won't
       // show an error that was already shown
       crafty.error(error);
 
-      process.on("exit", () => process.exit(1));
+      process.exitCode = 1;
   }
 }, e => {
   console.error("Could not initialize Crafty", e)
