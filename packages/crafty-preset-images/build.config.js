@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { getExternals } from "../../utils/externals.js";
+import { copyRecursiveSync, rmrf } from "../../utils/functions.js";
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
@@ -9,27 +10,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const externals = getExternals();
 
-/**
- * Look ma, it's cp -R.
- * @param {string} src  The path to the thing to copy.
- * @param {string} dest The path to the new copy.
- */
-var copyRecursiveSync = function(src, dest) {
-  var exists = fs.existsSync(src);
-  var stats = exists && fs.statSync(src);
-  var isDirectory = exists && stats.isDirectory();
-  if (isDirectory) {
-    fs.mkdirSync(dest);
-    fs.readdirSync(src).forEach(function(childItemName) {
-      copyRecursiveSync(
-        path.join(src, childItemName),
-        path.join(dest, childItemName)
-      );
-    });
-  } else {
-    fs.copyFileSync(src, dest);
+export function keepDuplicateModule(libPath) {
+  if (libPath.module === "tinypool" || libPath.module === "@onigoetz/resquoosh") {
+    return false;
   }
-};
+
+  return true;
+}
+
+export function keepDuplicateFile({ file }) {
+  // These files can't be deduplicated or are false positives
+  if (file.indexOf("tinypool/dist/esm/chunk-") > -1 || file.indexOf("@onigoetz/resquoosh/dist/mjs/impl.js") > -1) {
+    return false;
+  }
+
+  return true;
+}
 
 export default [
   (builder) =>
@@ -71,6 +67,9 @@ export default [
   },
     
   () => {
+    // Delete them before re-addind them
+    rmrf(path.join(process.cwd(), "codecs"))
+
     copyRecursiveSync(
       path.join(
         require.resolve("@onigoetz/resquoosh/impl.js"),

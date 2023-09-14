@@ -181,7 +181,8 @@ async function main() {
   // Start with a cleanup
   rimraf.sync(process.cwd() + "/dist");
 
-  const configuration = (await import(process.cwd() + "/build.config.js")).default;
+  const toBuild = await import(process.cwd() + "/build.config.js")
+  const configuration = toBuild.default;
 
   for (const bundle of configuration) {
     await bundle(builder, compileUtils);
@@ -191,9 +192,12 @@ async function main() {
   if (statFiles.length > 0) {
     const report = scanFiles(statFiles);
 
-    if (report.duplicateModules.length > 0) {
+    const duplicateModules = report.duplicateModules.filter(toBuild.keepDuplicateFile || Boolean);
+    const duplicateModulesByPackage = report.duplicateModulesByPackage.filter(toBuild.keepDuplicateModule || Boolean);
+
+    if (duplicateModules.length > 0) {
       console.error("Found duplicate packages");
-      printReport(report.duplicateModules, report.duplicateModulesByPackage);
+      printReport(duplicateModules, duplicateModulesByPackage);
 
       process.exit(1);
     }
