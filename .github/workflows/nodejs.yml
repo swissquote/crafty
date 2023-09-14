@@ -7,10 +7,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16.x]
+        node-version: [16.x, 18.x, 20.x]
         include:
         - os: macos-latest
-          node-version: 16.x
+          node-version: 18.x
         # TODO : add Windows build
         #- os: windows-latest
         #  node-version: 16.x

@@ -25,6 +25,10 @@ function snapshotizeOutput(ret) {
       ""
     ) // Remove Buffer warnings as they come from compiled dependencies
     .replace(
+      /\(node:11111\).*?ExperimentalWarning: VM Modules is an experimental feature.*/gm,
+      "(node:11111) ExperimentalWarning: VM Modules is an experimental feature."
+    ) // VM Modules warning changes between node versions
+    .replace(
       /\n\(Use `node --trace-deprecation ...` to show where the warning was created\)/g,
       ""
     ) // This error doesn't appear on all node version, better to remove it
