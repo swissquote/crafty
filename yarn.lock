@@ -3014,7 +3014,7 @@ __metadata:
     prettier: 2.8.8
     stylelint: 15.10.0
     stylelint-no-unsupported-browser-features: 7.0.0
-    stylelint-prettier: 3.0.0
+    stylelint-prettier: 4.0.2
     stylelint-scss: 5.2.1
   peerDependencies:
     "@swissquote/crafty-commons": 1.22.3
@@ -12735,15 +12735,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-prettier@npm:3.0.0":
-  version: 3.0.0
-  resolution: "stylelint-prettier@npm:3.0.0"
+"stylelint-prettier@npm:4.0.2":
+  version: 4.0.2
+  resolution: "stylelint-prettier@npm:4.0.2"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    prettier: ">=2.0.0"
-    stylelint: ">=14.0.0"
-  checksum: 094f53ef5dbe3806524db7f580b9312ceca444651803fc08c8baa48cd9a270985c709fa4f083681a685310dc347b8e55aa93d462554ba7d4ae6258a3bdf6a278
+    prettier: ">=3.0.0"
+    stylelint: ">=15.8.0"
+  checksum: b60112c10b8f31456211d65b4c17238fdaf46ee9f80ab035621f2eb86b47505a4b9582d99f4334dfe370cc8104de870f7fcc256737d0f2e68f4357239f739054
   languageName: node
   linkType: hard
 
