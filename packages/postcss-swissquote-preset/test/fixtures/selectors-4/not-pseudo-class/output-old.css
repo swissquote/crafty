@@ -1,3 +1,7 @@
-p:not(:first-child):not(.special) {
+p:not(:-moz-any(:first-child, .special)) {
+  color: red;
+}
+
+p:not(:is(:first-child, .special)) {
   color: red;
 }
