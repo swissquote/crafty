@@ -43,31 +43,29 @@ module.exports = function createTask(crafty, bundle, gulp) {
     }
 
     // Linting
-    const {
-      toTempFile
-    } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
-    const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
-    stream = stream
-      .pipe(
-        eslint({
-          overrideConfigFile: toTempFile(crafty.config.eslint)
-        })
-      )
-      .pipe(eslint.format());
-
-    // Linting errors should not stop the watch mode
     if (!crafty.isWatching()) {
-      stream = stream.pipe(
-        eslint.results(results => {
-          const count = results.errorCount;
-          if (count) {
-            const message = `ESLint failed with ${count}${
-              count === 1 ? " error" : " errors"
-            }`;
-            cb(new crafty.Information(message));
-          }
-        })
-      );
+      const {
+        toTempFile
+      } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
+      const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
+      stream = stream
+        .pipe(
+          eslint({
+            overrideConfigFile: toTempFile(crafty.config.eslint)
+          })
+        )
+        .pipe(eslint.format())
+        .pipe(
+          eslint.results(results => {
+            const count = results.errorCount;
+            if (count) {
+              const message = `ESLint failed with ${count}${
+                count === 1 ? " error" : " errors"
+              }`;
+              cb(new crafty.Information(message));
+            }
+          })
+        );
     }
 
     // Transpilation

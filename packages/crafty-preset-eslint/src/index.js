@@ -82,14 +82,16 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    // JavaScript linting
-    chain
-      .plugin("lint-js")
-      .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
-        {
-          extensions: crafty.config.eslintExtensions,
-          overrideConfigFile: toTempFile(crafty.config.eslint)
-        }
-      ]);
+    if (!crafty.isWatching()) {
+      // JavaScript linting
+      chain
+        .plugin("lint-js")
+        .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
+          {
+            extensions: crafty.config.eslintExtensions,
+            overrideConfigFile: toTempFile(crafty.config.eslint)
+          }
+        ]);
+    }
   }
 };
