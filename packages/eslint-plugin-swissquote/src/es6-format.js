@@ -25,9 +25,21 @@ module.exports = {
     // We only enable the rules that do a surface analysis,
     // all rules that require a deep analysis are very costly
     // and often fail with the module structure of crafty
-    "@swissquote/swissquote/import/first": "error", // Ensure all imports appear before other statements
-    "@swissquote/swissquote/import/newline-after-import": "error", // Enforce a newline after import statements
+   
+    /**
+     * Ensure all imports appear before other statements
+     * We disable this rule because it can happen, usually in Jest tests that some calls are made before imports (jest.mock) that would fail if done after imports.
+     * This works since the files are converted to commonjs before being run
+     */
+    //"@swissquote/swissquote/import/first": "warn",
+    /**
+     * Enforce a newline after import statements
+     */
+    "@swissquote/swissquote/import/newline-after-import": "error",
     "@swissquote/swissquote/import/no-absolute-path": "error",
-    "@swissquote/swissquote/import/no-webpack-loader-syntax": "error" // Forbid Webpack loader syntax in imports.
+    /**
+     * Forbid Webpack loader syntax in imports.
+     */
+    "@swissquote/swissquote/import/no-webpack-loader-syntax": "error"
   }
 };
