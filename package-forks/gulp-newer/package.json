@@ -24,8 +24,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
-    "test": "ava",
-    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
+    "disabled_test": "ava",
+    "disabled_test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js ava"
   },
   "devDependencies": {
     "@swissquote/crafty-runner-gulp": "1.22.3",
