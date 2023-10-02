@@ -25,7 +25,7 @@ module.exports = {
     // We only enable the rules that do a surface analysis,
     // all rules that require a deep analysis are very costly
     // and often fail with the module structure of crafty
-   
+
     /**
      * Ensure all imports appear before other statements
      * We disable this rule because it can happen, usually in Jest tests that some calls are made before imports (jest.mock) that would fail if done after imports.
