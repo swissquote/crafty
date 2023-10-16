@@ -233,8 +233,34 @@
 <p>This is used inside <code>crafty watch</code>, the build mode will not take it into account.</p>
 <h3><a id="extracting-css" href="#extracting-css" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extracting CSS</h3>
 <p>By default, the CSS will be embedded in your bundle, but you can provide the <code>extractCSS</code> option to extract your styles using the <code>MiniCssExtractPlugin</code>.</p>
+<p><code>extractCSS</code> controls if the CSS should be embedded within the JavaScript bundle or extracted in a separate file.
+By default, the default is that the CSS content remains within the main file.</p>
+<p><strong>Possible options</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>false</code></td>
+<td>Default Behaviour, CSS stays in the JavaScript bundle, added to the page via a <code>&lt;style&gt;</code> tag.</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td>Will enable extraction and name files with the <code>[bundle]-[name].min.css</code> pattern.</td>
+</tr>
+<tr>
+<td>String / Object</td>
+<td>Supports all <a href="https://github.com/webpack-contrib/mini-css-extract-plugin#configuration" class="Link--external" rel="noopener noreferrer">Official options</a>. with the addition of <code>[bundle]</code> which is replaced by the bundle name.</td>
+</tr>
+</tbody>
+</table>
 <h4><a id="side-effects" href="#side-effects" class="Permalink" aria-hidden="true" title="Permalink">#</a>Side effects</h4>
-<p>Be careful when using <code>extractCSS</code> option and <code>sideEffects: false</code> in <code>package.json</code> of your project. Crafty is using <code>css-loader</code> and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.</p>
+<p>Be careful when using <code>extractCSS</code> option and <code>sideEffects: false</code> in <code>package.json</code> of your project.
+Crafty is using <code>css-loader</code> and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.</p>
 <p><a href="https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free" class="Link--external" rel="noopener noreferrer">Webpack docs and examples</a></p>
 <h2><a id="usage-with-gulp" href="#usage-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Gulp</h2>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -311,7 +337,7 @@
 <td>Boolean / String / Object</td>
 <td>Yes</td>
 <td>Webpack</td>
-<td>This will extract the CSS out of the bundle, all <a href="https://github.com/webpack-contrib/mini-css-extract-plugin#configuration" class="Link--external" rel="noopener noreferrer">Official options</a> work, you can also pass <code>true</code> which will use <code>[bundle]-[name].min.css</code> as file name, you can use <code>[bundle]</code> in the file name which is replaced by your bundle name.</td>
+<td>This will extract the CSS out of the bundle. See details above.</td>
 </tr>
 </tbody>
 </table>
