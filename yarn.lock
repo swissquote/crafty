@@ -2773,10 +2773,10 @@ __metadata:
     service-names-port-numbers: 2.0.0
     speed-measure-webpack-plugin: 1.5.0
     utf-8-validate: 6.0.3
-    webpack: 5.88.2
+    webpack: 5.89.0
     webpack-bundle-analyzer: 4.9.1
     webpack-chain-5: 8.0.2
-    webpack-merge: 5.9.0
+    webpack-merge: 5.10.0
     webpack-plugin-serve: 1.6.0
   languageName: unknown
   linkType: soft
@@ -5317,7 +5317,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.2
     serve: 14.2.1
-    webpack: 5.88.2
+    webpack: 5.89.0
   languageName: unknown
   linkType: soft
 
@@ -5336,7 +5336,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.2
     serve: 14.2.1
-    webpack: 5.88.2
+    webpack: 5.89.0
   languageName: unknown
   linkType: soft
 
@@ -5358,7 +5358,7 @@ __metadata:
     react-loadable: 5.5.0
     react-tabs: 6.0.2
     serve: 14.2.1
-    webpack: 5.88.2
+    webpack: 5.89.0
   languageName: unknown
   linkType: soft
 
@@ -5380,7 +5380,7 @@ __metadata:
     react-dom: 18.2.0
     react-tabs: 6.0.2
     serve: 14.2.1
-    webpack: 5.88.2
+    webpack: 5.89.0
   languageName: unknown
   linkType: soft
 
@@ -6825,6 +6825,15 @@ __metadata:
     keyv: ^4.5.3
     rimraf: ^3.0.2
   checksum: 99312601d5b90f44aef403f17f056dc09be7e437703740b166cdc9386d99e681f74e6b6e8bd7d010bda66904ea643c9527276b1b80308a2119741d94108a4d8f
+  languageName: node
+  linkType: hard
+
+"flat@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "flat@npm:5.0.2"
+  bin:
+    flat: cli.js
+  checksum: 12a1536ac746db74881316a181499a78ef953632ddd28050b7a3a43c62ef5462e3357c8c29d76072bb635f147f7a9a1f0c02efef6b4be28f8db62ceb3d5c7f5d
   languageName: node
   linkType: hard
 
@@ -13833,13 +13842,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-merge@npm:5.9.0":
-  version: 5.9.0
-  resolution: "webpack-merge@npm:5.9.0"
+"webpack-merge@npm:5.10.0":
+  version: 5.10.0
+  resolution: "webpack-merge@npm:5.10.0"
   dependencies:
     clone-deep: ^4.0.1
+    flat: ^5.0.2
     wildcard: ^2.0.0
-  checksum: 64fe2c23aacc5f19684452a0e84ec02c46b990423aee6fcc5c18d7d471155bd14e9a6adb02bd3656eb3e0ac2532c8e97d69412ad14c97eeafe32fa6d10050872
+  checksum: 1fe8bf5309add7298e1ac72fb3f2090e1dfa80c48c7e79fa48aa60b5961332c7d0d61efa8851acb805e6b91a4584537a347bc106e05e9aec87fa4f7088c62f2f
   languageName: node
   linkType: hard
 
@@ -13896,9 +13906,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.88.2":
-  version: 5.88.2
-  resolution: "webpack@npm:5.88.2"
+"webpack@npm:5.89.0":
+  version: 5.89.0
+  resolution: "webpack@npm:5.89.0"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^1.0.0
@@ -13929,7 +13939,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 79476a782da31a21f6dd38fbbd06b68da93baf6a62f0d08ca99222367f3b8668f5a1f2086b7bb78e23172e31fa6df6fa7ab09b25e827866c4fc4dc2b30443ce2
+  checksum: 43fe0dbc30e168a685ef5a86759d5016a705f6563b39a240aa00826a80637d4a3deeb8062e709d6a4b05c63e796278244c84b04174704dc4a37bedb0f565c5ed
   languageName: node
   linkType: hard
 
