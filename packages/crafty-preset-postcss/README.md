@@ -61,9 +61,21 @@ This is used inside `crafty watch`, the build mode will not take it into account
 
 By default, the CSS will be embedded in your bundle, but you can provide the `extractCSS` option to extract your styles using the `MiniCssExtractPlugin`.
 
+`extractCSS` controls if the CSS should be embedded within the JavaScript bundle or extracted in a separate file.
+By default, the default is that the CSS content remains within the main file.
+
+__Possible options__
+
+| Value           | Note                                                                                                                                                                             |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `false`         | Default Behaviour, CSS stays in the JavaScript bundle, added to the page via a `<style>` tag.                                                                                    |
+| `true`          | Will enable extraction and name files with the `[bundle]-[name].min.css` pattern.                                                                                                |
+| String / Object | Supports all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration). with the addition of `[bundle]` which is replaced by the bundle name. |
+
 #### Side effects
 
-Be careful when using `extractCSS` option and `sideEffects: false` in `package.json` of your project. Crafty is using `css-loader` and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.
+Be careful when using `extractCSS` option and `sideEffects: false` in `package.json` of your project.
+Crafty is using `css-loader` and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.
 
 [Webpack docs and examples](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free)
 
@@ -136,6 +148,6 @@ module.exports = {
 
 ## Bundle Options
 
-| Option       | Type                      | Optional ? | Runner  | Description                                                                                                                                                                                                                                                                                                        |
-| ------------ | ------------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle, all [Official options](https://github.com/webpack-contrib/mini-css-extract-plugin#configuration) work, you can also pass `true` which will use `[bundle]-[name].min.css` as file name, you can use `[bundle]` in the file name which is replaced by your bundle name. |
+| Option       | Type                      | Optional ? | Runner  | Description                                                     |
+| ------------ | ------------------------- | ---------- | ------- | --------------------------------------------------------------- |
+| `extractCSS` | Boolean / String / Object | Yes        | Webpack | This will extract the CSS out of the bundle. See details above. |
