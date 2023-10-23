@@ -2098,192 +2098,200 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/cli@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/cli@npm:5.28.0"
+"@statoscope/cli@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/cli@npm:5.28.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
-    "@statoscope/config": 5.27.0
-    "@statoscope/helpers": 5.28.0
-    "@statoscope/report-writer": 5.27.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/stats-extension-custom-reports": 5.28.0
-    "@statoscope/stats-validator": 5.27.0
-    "@statoscope/stats-validator-reporter-console": 5.27.0
-    "@statoscope/stats-validator-reporter-stats-report": 5.28.0
-    "@statoscope/types": 5.27.0
-    "@statoscope/webpack-model": 5.28.0
-    "@statoscope/webpack-ui": 5.28.0
+    "@statoscope/config": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/report-writer": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/stats-extension-custom-reports": 5.28.1
+    "@statoscope/stats-validator": 5.28.1
+    "@statoscope/stats-validator-reporter-console": 5.28.1
+    "@statoscope/stats-validator-reporter-stats-report": 5.28.1
+    "@statoscope/types": 5.28.1
+    "@statoscope/webpack-model": 5.28.1
+    "@statoscope/webpack-ui": 5.28.1
     "@types/yargs": ^17.0.10
-    open: ^8.4.0
-    yargs: ^17.5.1
+    open: ~8.4.0
+    yargs: ^17.7.2
   bin:
     statoscope: bin/cli.js
-  checksum: 6afe25a64bede2e88269681f0529910fbb9c73a1cf62bc3033ee1013d30d91794835ae915a207e6db8118365cbf48928547bd5da4f5ac8e80bb96142987b1cdf
+  checksum: 413bc2f6824337a37a5059fc2c845caa468c9a0dfa1d1ff4fafbffb3f6164071614039e1488b9b6e09ab156ebf330a64d41212dd4d7827b6f45df2011095ade4
   languageName: node
   linkType: hard
 
-"@statoscope/config@npm:5.27.0":
-  version: 5.27.0
-  resolution: "@statoscope/config@npm:5.27.0"
+"@statoscope/config@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/config@npm:5.28.1"
   dependencies:
-    "@statoscope/types": 5.27.0
+    "@statoscope/types": 5.28.1
     chalk: ^4.1.2
-  checksum: 1106800fcd53afd8c08d2dda1cd0e5eb6bab5e255851a6452e26d55dbd21507ccb5d9baf6d54a33e05a553b354ed097907037c26ea64f7c292dc137de706fa15
+  checksum: bfeb5bcf8e05242e5911920f93f7c3697e525ef894ba7a6895981b7969dd7986f66d8c3f6ace227ff2628d6b608bbc5dd613b29a2ec3d9029e4af45f47b484c4
   languageName: node
   linkType: hard
 
-"@statoscope/extensions@npm:5.14.1":
-  version: 5.14.1
-  resolution: "@statoscope/extensions@npm:5.14.1"
-  checksum: 110999171ec54fd70d7154aa49500e1051a0ce838b6b00d4116f173c5a41de36c0e9c15254f0db29e68d214e4406332abdd846709dd2053d845b2a71346ed6cc
+"@statoscope/extensions@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/extensions@npm:5.28.1"
+  checksum: 995a5537457cd41441f0388d8c8c6ab99b85f8cd21ee9e23a372e4adeb327b541f59903cad542c95dd2c1fb9a4c61de344bc16998eea7f7fa17af7e6429204ec
   languageName: node
   linkType: hard
 
-"@statoscope/helpers@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/helpers@npm:5.28.0"
+"@statoscope/helpers@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/helpers@npm:5.28.1"
   dependencies:
     "@types/archy": ^0.0.32
-    "@types/semver": ^7.3.10
+    "@types/semver": ^7.5.1
     archy: ~1.0.0
     jora: 1.0.0-beta.8
-    semver: ^7.3.7
-  checksum: bba95547961b7459724e3e44de1193b44c3d9e402ad9b235031104197a348bb8c0bbe574fce7ce3c6ffc2573bd0dee4f4ef0b63a82f80f8cbbac66b365530684
+    semver: ^7.5.4
+  checksum: 8c3557990bf626b74884a71423e553ed9a0ed4387a8210586f1ff0f4abbc9c2c1ec0d155386b370a99e2d2d08d20c21e587a334318bc15bc92c7d0d8af5638be
   languageName: node
   linkType: hard
 
-"@statoscope/report-writer@npm:5.27.0":
-  version: 5.27.0
-  resolution: "@statoscope/report-writer@npm:5.27.0"
+"@statoscope/report-writer@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/report-writer@npm:5.28.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
+    "@types/node": ^18.0.0
     "@types/pako": ^2.0.0
-    pako: ^2.0.4
-  checksum: 2b93342e9c90f88d54c11cd9119ce699f192e05555ea7300447112d956e8e2d14a836b9e9671d3c65f719145cad8d7e759e3a3d4c91ebc6c1fa4c712dbfe89d2
+    pako: ^2.1.0
+  checksum: 423e110bc3108adb4eb7f5a2794ecdf54416ce4523eb98006fa71095349320985b809ac0fdd8f62194ab240be2855a78f5659c3d19cc8ff6a5316fb9393f7bf2
   languageName: node
   linkType: hard
 
-"@statoscope/stats-extension-compressed@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/stats-extension-compressed@npm:5.28.0"
+"@statoscope/stats-extension-compressed@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-extension-compressed@npm:5.28.1"
   dependencies:
-    "@statoscope/helpers": 5.28.0
+    "@statoscope/extensions": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/stats": 5.28.1
     gzip-size: ^6.0.0
-  checksum: c3b367b6ec8d16cf321e4f330d36db068a51d198e173cd662488efc901c148e3cee9dfd5c73c8472c9f806f3b297b8927e286ccc0bee8931fad0a6aa47945ea1
+  checksum: 513c40707736e9c617375c6e4046600337b0884349bd39ad1c32ed73407861ff478f3d4fb4fdca881f33e30e18b77551b916f3ebf20baaef0424d9136f6ea6b5
   languageName: node
   linkType: hard
 
-"@statoscope/stats-extension-custom-reports@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/stats-extension-custom-reports@npm:5.28.0"
+"@statoscope/stats-extension-custom-reports@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-extension-custom-reports@npm:5.28.1"
   dependencies:
-    "@statoscope/extensions": 5.14.1
-    "@statoscope/helpers": 5.28.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/types": 5.27.0
-  checksum: b98f0a30c0d2df1f8efb2f630183929cfab54c4de36536f620a7437273127a16286a84e8cf2831a0df52ba3618ce2ffe10461e11ed32bb521ec2a22a3e1221e2
+    "@statoscope/extensions": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/types": 5.28.1
+  checksum: 766ad4c1f392908726dd2c31390052a5e55306bc749cf02ae055e3493e5dce4f114f0249cc4440e04a3e98dded5c9e02acea2fcb9c78768a19d226b2381f8ce0
   languageName: node
   linkType: hard
 
-"@statoscope/stats-extension-package-info@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/stats-extension-package-info@npm:5.28.0"
+"@statoscope/stats-extension-package-info@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-extension-package-info@npm:5.28.1"
   dependencies:
-    "@statoscope/helpers": 5.28.0
-  checksum: 2916193363782fbaec50ec19c589a886de973daf8d6c2c06b1763e31315463b861a196e0ce7d83399577ee79da26e5e74ea2ffdeb892fb70e718ea625332ca0c
+    "@statoscope/extensions": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/stats": 5.28.1
+  checksum: 7cf1d92ad9c0080f76e88a4fc3ae9ce3f44d5f431aadfa95112e08eb170ff8f7edb23051a2bfa41b56d8aeabd9b1386635cd6a894d5ba6055c3ed723ffea22bf
   languageName: node
   linkType: hard
 
-"@statoscope/stats-extension-stats-validation-result@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/stats-extension-stats-validation-result@npm:5.28.0"
+"@statoscope/stats-extension-stats-validation-result@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-extension-stats-validation-result@npm:5.28.1"
   dependencies:
-    "@statoscope/extensions": 5.14.1
-    "@statoscope/helpers": 5.28.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/types": 5.27.0
-  checksum: 72fe0bf2788454aa4dba53fd6e7d4ff53ce88702fe16a1fdf1b9ab05f1f647b352b1246f69533189a76962cb146487140726240b075c38db5702abdf17df4836
+    "@statoscope/extensions": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/types": 5.28.1
+  checksum: 802ea33e1d02c4fbcbd4c295998f201430a2c23d8c329b9f7789ca91e565ffdd4380055df81b4a83eab57178d1ea093bd997ae8e4ace8bbed0a1e371f43df75b
   languageName: node
   linkType: hard
 
-"@statoscope/stats-validator-reporter-console@npm:5.27.0":
-  version: 5.27.0
-  resolution: "@statoscope/stats-validator-reporter-console@npm:5.27.0"
+"@statoscope/stats-validator-reporter-console@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-validator-reporter-console@npm:5.28.1"
   dependencies:
-    "@statoscope/types": 5.27.0
+    "@statoscope/types": 5.28.1
     chalk: ^4.1.2
-  checksum: 06e8e7b0bc3128f11d3b00eea868e705a37f493212a9c7f4b6c3a427eb9d317f6a8848f90faa59750d912ac27f971322673d186dec7799eb4772012d4ec543f1
+  checksum: 948d98f1c2757587fa23fdf3ffb9ca72ace22da8837bdd8026132147b59195a56fcaffc9cde4121dc5fcf7abdd55ce0ccfa0445c7580ac1a402ededcf4904c7d
   languageName: node
   linkType: hard
 
-"@statoscope/stats-validator-reporter-stats-report@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.0"
+"@statoscope/stats-validator-reporter-stats-report@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
-    "@statoscope/report-writer": 5.27.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/stats-extension-stats-validation-result": 5.28.0
-    "@statoscope/types": 5.27.0
-    "@statoscope/webpack-model": 5.28.0
-    "@statoscope/webpack-ui": 5.28.0
-    open: ^8.4.0
-  checksum: 90a8c453395e7e13edc1e8ecfc243f946772676a87be9f23a4ba25558154fa46028508e3e88bb07ba0e683cf00c7631ab47af13a0507d3328d656411cc9de9ef
+    "@statoscope/report-writer": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/stats-extension-stats-validation-result": 5.28.1
+    "@statoscope/types": 5.28.1
+    "@statoscope/webpack-model": 5.28.1
+    "@statoscope/webpack-ui": 5.28.1
+    open: ~8.4.0
+  checksum: 9c27628f57625fa464a83d9bafd6b5cca50ffe0108f9fd0473bcfdc46b2c06a849878cecc8ce2e165d85b5023f5f4b5a926c731985c4ab0501129ac99c7ff929
   languageName: node
   linkType: hard
 
-"@statoscope/stats-validator@npm:5.27.0":
-  version: 5.27.0
-  resolution: "@statoscope/stats-validator@npm:5.27.0"
+"@statoscope/stats-validator@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats-validator@npm:5.28.1"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
-    "@statoscope/config": 5.27.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/types": 5.27.0
-  checksum: d4440d63024654e8cc60776dd21e4397f22bee8a9ff5d508247403ddf93dc54b3a1bc1140c95d5f085b3d66659a8d77cc166ba4f68d1f2e0b47482b689f92040
+    "@statoscope/config": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/types": 5.28.1
+  checksum: 55a8ddc15e22585de61ae66c40d9fa933ca211b94ec554fa03d4151cafddca825ed9492da0dc9bba84c842125332feddd765fb3738f1157d8c5b83fb332f4e7d
   languageName: node
   linkType: hard
 
-"@statoscope/stats@npm:5.14.1":
-  version: 5.14.1
-  resolution: "@statoscope/stats@npm:5.14.1"
-  checksum: 49fba350d15a600c5f709c2b03beb20030def202b39e850d19b4862f380f77e7333735865ab2a5b697e59c76ce81306399c26b3b437c317a3b87f7d98ed5cff4
+"@statoscope/stats@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/stats@npm:5.28.1"
+  checksum: 1be9838120f1b14306dc508ce2a01022c93ce25994c883b9c1cf50060e122e61c2ea09d8fc47df68ef6f7aa93490cf2a8f1912cdc55de6b07a2622e5a0d184f4
   languageName: node
   linkType: hard
 
-"@statoscope/types@npm:5.27.0":
-  version: 5.27.0
-  resolution: "@statoscope/types@npm:5.27.0"
+"@statoscope/types@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/types@npm:5.28.1"
   dependencies:
-    "@statoscope/stats": 5.14.1
-  checksum: 31d68f34131d28bf49577054fb17c474d759d2455fc6be846a2a5bdcad2976d4886e0cad210bec64568b4958ffe12eda277a000de81b8e674e23e3c9a685edc1
+    "@statoscope/stats": 5.28.1
+  checksum: 15b8bac3e1a442c8d423bc316fe288000c13a41d6347b23eac7a7bb0de5ddd27753ded2568d23f45451cf13dae2d03ff3e89840c21120b1125dcabdc9d26471e
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-model@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/webpack-model@npm:5.28.0"
+"@statoscope/webpack-model@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/webpack-model@npm:5.28.1"
   dependencies:
-    "@statoscope/extensions": 5.14.1
-    "@statoscope/helpers": 5.28.0
-    "@statoscope/stats": 5.14.1
-    "@statoscope/stats-extension-compressed": 5.28.0
-    "@statoscope/stats-extension-custom-reports": 5.28.0
-    "@statoscope/stats-extension-package-info": 5.28.0
-    "@statoscope/stats-extension-stats-validation-result": 5.28.0
-    "@statoscope/types": 5.27.0
+    "@statoscope/extensions": 5.28.1
+    "@statoscope/helpers": 5.28.1
+    "@statoscope/stats": 5.28.1
+    "@statoscope/stats-extension-compressed": 5.28.1
+    "@statoscope/stats-extension-custom-reports": 5.28.1
+    "@statoscope/stats-extension-package-info": 5.28.1
+    "@statoscope/stats-extension-stats-validation-result": 5.28.1
+    "@statoscope/types": 5.28.1
+    "@types/md5": ^2.3.2
+    "@types/webpack": ^5.0.0
     md5: ^2.3.0
-  checksum: a80ec416e45fd5e276b467bd646784245dbd3e795b7329ff85b9084ed1df2d5a31e0f0788a93e1a1d489420a69fe5bb36fdba32e8c74620cc6f4cefa3dde6b8e
+  checksum: e387184fc67c769e192aaf191e0f8fb2b6f6a6bf5151b72a2d4c76f358c2b1ae820105784f38063add0323d8479adfb3d0279463323e20b2108dc308ba7ff41b
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-ui@npm:5.28.0":
-  version: 5.28.0
-  resolution: "@statoscope/webpack-ui@npm:5.28.0"
+"@statoscope/webpack-ui@npm:5.28.1":
+  version: 5.28.1
+  resolution: "@statoscope/webpack-ui@npm:5.28.1"
   dependencies:
-    "@statoscope/types": 5.27.0
-  checksum: b2a1ae746198fe01ddfd84c46168b275343b573004ef1a6893947b0d616102168a692147cc1aba842b76c11a948c36215093c9b19568cc84df1c99232e0e3ee2
+    "@statoscope/types": 5.28.1
+    "@types/md5": ^2.3.2
+  checksum: 9a05c82b94d53468fef07f91d7b24a38bde3b559acb1ae6cd81ad31545e3faa4d0a27e67f737c45289db3a5d829e303a6de8a82d18fa2c2b26f55b4a6a92d49d
   languageName: node
   linkType: hard
 
@@ -3208,6 +3216,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/md5@npm:^2.3.2":
+  version: 2.3.4
+  resolution: "@types/md5@npm:2.3.4"
+  checksum: 9a724277b2e4b5c6fce4d34d2e2baab821ef47904eccdcbd389fb9973f2e5198f71a4aa98ddcf092fe32457be307d2f3d3f1e099a53d1642c6e569ade5450548
+  languageName: node
+  linkType: hard
+
 "@types/minimatch@npm:^3.0.3":
   version: 3.0.5
   resolution: "@types/minimatch@npm:3.0.5"
@@ -3226,6 +3241,13 @@ __metadata:
   version: 20.8.2
   resolution: "@types/node@npm:20.8.2"
   checksum: 3da73e25d821bfcdb7de98589027e08bb4848e55408671c4a83ec0341e124b5313a0b20e1e4b4eff1168ea17a86f622ad73fcb04b761abd77496b9a27cbd5de5
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.0.0":
+  version: 18.18.6
+  resolution: "@types/node@npm:18.18.6"
+  checksum: a847639b8455fd3dfa6dbc2917274c82c9db789f1d41aaf69f94ac6c9e54c3c1dd29be6e1e1ccd7c17e54db3d78d7011bc4e70544c6447ceca253dccc0a187e1
   languageName: node
   linkType: hard
 
@@ -3284,10 +3306,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:^7.3.10, @types/semver@npm:^7.5.0":
-  version: 7.5.3
-  resolution: "@types/semver@npm:7.5.3"
-  checksum: 349fdd1ab6c213bac5c991bac766bd07b8b12e63762462bb058740dcd2eb09c8193d068bb226f134661275f2022976214c0e727a4e5eb83ec1b131127c980d3e
+"@types/semver@npm:^7.5.0, @types/semver@npm:^7.5.1":
+  version: 7.5.4
+  resolution: "@types/semver@npm:7.5.4"
+  checksum: 120c0189f6fec5f2d12d0d71ac8a4cfa952dc17fa3d842e8afddb82bba8828a4052f8799c1653e2b47ae1977435f38e8985658fde971905ce5afb8e23ee97ecf
   languageName: node
   linkType: hard
 
@@ -3302,6 +3324,17 @@ __metadata:
   version: 4.0.3
   resolution: "@types/tough-cookie@npm:4.0.3"
   checksum: f201be1bbca2f2d3572032513cdb9825845114d2604a7f4091af848eeee3228a573cdc5e8082b04468a2848bb1d058f1adbb97db822e22c975ebd6fcd851a453
+  languageName: node
+  linkType: hard
+
+"@types/webpack@npm:^5.0.0":
+  version: 5.28.4
+  resolution: "@types/webpack@npm:5.28.4"
+  dependencies:
+    "@types/node": "*"
+    tapable: ^2.2.0
+    webpack: ^5
+  checksum: 7a08e31096a05c77bb49b3830f85f2e340090fa2b19dbe4681c7eab92e49db85bdbbe7b374df7d7aa38549922ff3252f43a00d4c5c2f9fe0c2a198cdb5ddde7e
   languageName: node
   linkType: hard
 
@@ -5388,7 +5421,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "crafty-workspace@workspace:."
   dependencies:
-    "@statoscope/cli": 5.28.0
+    "@statoscope/cli": 5.28.1
     "@types/eslint": ^8.0.0
     "@types/jest": ^29.0.0
     "@vercel/ncc": 0.38.0
@@ -10546,7 +10579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"open@npm:^8.4.0":
+"open@npm:~8.4.0":
   version: 8.4.2
   resolution: "open@npm:8.4.2"
   dependencies:
@@ -10689,7 +10722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:^2.0.4":
+"pako@npm:^2.1.0":
   version: 2.1.0
   resolution: "pako@npm:2.1.0"
   checksum: 71666548644c9a4d056bcaba849ca6fd7242c6cf1af0646d3346f3079a1c7f4a66ffec6f7369ee0dc88f61926c10d6ab05da3e1fca44b83551839e89edd75a3e
@@ -12077,7 +12110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.5.4, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8, semver@npm:^7.5.3, semver@npm:^7.5.4":
+"semver@npm:7.5.4, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.8, semver@npm:^7.5.3, semver@npm:^7.5.4":
   version: 7.5.4
   resolution: "semver@npm:7.5.4"
   dependencies:
@@ -13906,7 +13939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.89.0":
+"webpack@npm:5.89.0, webpack@npm:^5":
   version: 5.89.0
   resolution: "webpack@npm:5.89.0"
   dependencies:
@@ -14276,7 +14309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.3.1, yargs@npm:^17.5.1, yargs@npm:^17.7.1, yargs@npm:^17.7.2":
+"yargs@npm:^17.3.1, yargs@npm:^17.7.1, yargs@npm:^17.7.2":
   version: 17.7.2
   resolution: "yargs@npm:17.7.2"
   dependencies:
