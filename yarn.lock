@@ -2098,9 +2098,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/cli@npm:5.28.1":
-  version: 5.28.1
-  resolution: "@statoscope/cli@npm:5.28.1"
+"@statoscope/cli@npm:5.28.2":
+  version: 5.28.2
+  resolution: "@statoscope/cli@npm:5.28.2"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@statoscope/config": 5.28.1
@@ -2110,16 +2110,16 @@ __metadata:
     "@statoscope/stats-extension-custom-reports": 5.28.1
     "@statoscope/stats-validator": 5.28.1
     "@statoscope/stats-validator-reporter-console": 5.28.1
-    "@statoscope/stats-validator-reporter-stats-report": 5.28.1
+    "@statoscope/stats-validator-reporter-stats-report": 5.28.2
     "@statoscope/types": 5.28.1
-    "@statoscope/webpack-model": 5.28.1
-    "@statoscope/webpack-ui": 5.28.1
+    "@statoscope/webpack-model": 5.28.2
+    "@statoscope/webpack-ui": 5.28.2
     "@types/yargs": ^17.0.10
     open: ~8.4.0
     yargs: ^17.7.2
   bin:
     statoscope: bin/cli.js
-  checksum: 413bc2f6824337a37a5059fc2c845caa468c9a0dfa1d1ff4fafbffb3f6164071614039e1488b9b6e09ab156ebf330a64d41212dd4d7827b6f45df2011095ade4
+  checksum: 6967912099c850e6031f515072c590db5fbe1f049e2582c017eb998258d0a5ca0c4fa9a202a63163431cd09cdece49acdb619e7c77cae2016b7487951c234b3a
   languageName: node
   linkType: hard
 
@@ -2222,19 +2222,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/stats-validator-reporter-stats-report@npm:5.28.1":
-  version: 5.28.1
-  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.1"
+"@statoscope/stats-validator-reporter-stats-report@npm:5.28.2":
+  version: 5.28.2
+  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.2"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@statoscope/report-writer": 5.28.1
     "@statoscope/stats": 5.28.1
     "@statoscope/stats-extension-stats-validation-result": 5.28.1
     "@statoscope/types": 5.28.1
-    "@statoscope/webpack-model": 5.28.1
-    "@statoscope/webpack-ui": 5.28.1
+    "@statoscope/webpack-model": 5.28.2
+    "@statoscope/webpack-ui": 5.28.2
     open: ~8.4.0
-  checksum: 9c27628f57625fa464a83d9bafd6b5cca50ffe0108f9fd0473bcfdc46b2c06a849878cecc8ce2e165d85b5023f5f4b5a926c731985c4ab0501129ac99c7ff929
+  checksum: 8f7fe74c1f776af4481cd047d6fe8e57f3a1553388db16492270aa138be7d55f30e804f536ba071f2baf8e6ef35586f8592ea327650d699c6fb075519715dd90
   languageName: node
   linkType: hard
 
@@ -2266,9 +2266,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-model@npm:5.28.1":
-  version: 5.28.1
-  resolution: "@statoscope/webpack-model@npm:5.28.1"
+"@statoscope/webpack-model@npm:5.28.2":
+  version: 5.28.2
+  resolution: "@statoscope/webpack-model@npm:5.28.2"
   dependencies:
     "@statoscope/extensions": 5.28.1
     "@statoscope/helpers": 5.28.1
@@ -2281,17 +2281,17 @@ __metadata:
     "@types/md5": ^2.3.2
     "@types/webpack": ^5.0.0
     md5: ^2.3.0
-  checksum: e387184fc67c769e192aaf191e0f8fb2b6f6a6bf5151b72a2d4c76f358c2b1ae820105784f38063add0323d8479adfb3d0279463323e20b2108dc308ba7ff41b
+  checksum: c04aa74d918603485bf37e5f065ac4b4199b81ee94d1cfbf1f4aa1062192bff268b95e50316cb17c6074e543a3ceb68f7039053e826f547f5a5ba3e6ddc9cd42
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-ui@npm:5.28.1":
-  version: 5.28.1
-  resolution: "@statoscope/webpack-ui@npm:5.28.1"
+"@statoscope/webpack-ui@npm:5.28.2":
+  version: 5.28.2
+  resolution: "@statoscope/webpack-ui@npm:5.28.2"
   dependencies:
     "@statoscope/types": 5.28.1
     "@types/md5": ^2.3.2
-  checksum: 9a05c82b94d53468fef07f91d7b24a38bde3b559acb1ae6cd81ad31545e3faa4d0a27e67f737c45289db3a5d829e303a6de8a82d18fa2c2b26f55b4a6a92d49d
+  checksum: d47c3d3c7085e63c33a47e58cc919163694ff805fb1a6e0950bfc22de7756c99c03f6fbcdce10e16483a8724f89e1a82bff94b3218ab4c0c977a64ef6ce4a232
   languageName: node
   linkType: hard
 
@@ -5421,7 +5421,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "crafty-workspace@workspace:."
   dependencies:
-    "@statoscope/cli": 5.28.1
+    "@statoscope/cli": 5.28.2
     "@types/eslint": ^8.0.0
     "@types/jest": ^29.0.0
     "@vercel/ncc": 0.38.1
