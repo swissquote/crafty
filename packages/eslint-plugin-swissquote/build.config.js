@@ -19,7 +19,7 @@ module.exports = [
   builder => builder("estraverse").package(),
   builder => builder("function-bind").package(),
   builder =>
-    builder("has")
+    builder("hasown")
       .externals({
         "function-bind": "../function-bind/index.js"
       })
@@ -28,8 +28,7 @@ module.exports = [
   builder =>
     builder("is-core-module")
       .externals({
-        "function-bind": "../function-bind/index.js",
-        has: "../has/index.js"
+        hasown: "../hasown/index.js"
       })
       .package(),
   builder => builder("is-extglob").package(),
@@ -153,7 +152,7 @@ module.exports = [
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
         "function-bind": "../function-bind/index.js",
-        has: "../has/index.js",
+        hasown: "../hasown/index.js",
         estraverse: "../estraverse/index.js",
         "is-core-module": "../is-core-module/index.js",
         "path-parse": "../path-parse/index.js",
