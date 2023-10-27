@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint:ci": "yarn lint:code:ci && yarn lint:docs",
-    "lint:code:ci": "yarn workspaces foreach -vp run lint",
+    "lint:code:ci": "yarn workspaces foreach --all -vp run lint",
     "lint:code": "./run_all.sh lint --fix",
     "lint:docs": "./lint_docs.sh",
     "clean": "lerna clean --yes && rm -rf experiment/node_modules",
@@ -37,12 +37,12 @@
     "write-good": "1.0.8"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "resolutions": {
     "@types/eslint": "^8.0.0",
     "postcss-loader@7.3.3": "patch:postcss-loader@npm%3A7.3.3#./.yarn/patches/postcss-loader-npm-7.3.3-df90db4d0c.patch",
     "gulp-postcss@9.0.1": "patch:gulp-postcss@npm%3A9.0.1#./.yarn/patches/gulp-postcss-npm-9.0.1-bb3337d1e9.patch"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.0.0"
 }
