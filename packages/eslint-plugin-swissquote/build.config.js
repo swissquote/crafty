@@ -17,18 +17,12 @@ module.exports = [
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
   builder => builder("estraverse").package(),
-  builder => builder("function-bind").package(),
-  builder =>
-    builder("hasown")
-      .externals({
-        "function-bind": "../function-bind/index.js"
-      })
-      .package(),
+  builder => builder("has").package(),
   builder => builder("merge2").package(),
   builder =>
     builder("is-core-module")
       .externals({
-        hasown: "../hasown/index.js"
+        has: "../has/index.js"
       })
       .package(),
   builder => builder("is-extglob").package(),
@@ -151,8 +145,7 @@ module.exports = [
         "eslint/package.json": "eslint/package.json",
         "/eslint/lib(/.*)/": "eslint/lib$1",
 
-        "function-bind": "../function-bind/index.js",
-        hasown: "../hasown/index.js",
+        has: "../has/index.js",
         estraverse: "../estraverse/index.js",
         "is-core-module": "../is-core-module/index.js",
         "path-parse": "../path-parse/index.js",
