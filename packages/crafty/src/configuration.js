@@ -78,7 +78,13 @@ class CraftyLoader {
     // presets, because of its recursive nature it might still come here with
     // Something that is loading or loaded
     if (!this.needsLoading(presetName)) {
-      debug("loadPreset: loading or loaded", presetName);
+
+      if (!this.loaded.has(resolvedModule)) {
+        console.error(`Loading '${presetName}' failed, as the preset resolved to '${resolvedModule}'. But was apparently also loaded from another path:`, Array.from(this.loaded).filter(path.isAbsolute));
+        throw new Error("Duplicate preset in your node_modules, check informations above.")
+      }
+
+      debug("loadPreset: loading in progress or already loaded", presetName);
       return config;
     }
 
