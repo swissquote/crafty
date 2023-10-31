@@ -2071,12 +2071,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/fake-timers@npm:^10.0.2, @sinonjs/fake-timers@npm:^10.3.0":
+"@sinonjs/fake-timers@npm:^10.0.2":
   version: 10.3.0
   resolution: "@sinonjs/fake-timers@npm:10.3.0"
   dependencies:
     "@sinonjs/commons": "npm:^3.0.0"
   checksum: 2e2fb6cc57f227912814085b7b01fede050cd4746ea8d49a1e44d5a0e56a804663b0340ae2f11af7559ea9bf4d087a11f2f646197a660ea3cb04e19efc04aa63
+  languageName: node
+  linkType: hard
+
+"@sinonjs/fake-timers@npm:^11.2.2":
+  version: 11.2.2
+  resolution: "@sinonjs/fake-timers@npm:11.2.2"
+  dependencies:
+    "@sinonjs/commons": "npm:^3.0.0"
+  checksum: a4218efa6fdafda622d02d4c0a6ab7df3641cb038bb0b14f0a3ee56f50c95aab4f1ab2d7798ce928b40c6fc1839465a558c9393a77e4dca879e1b2f8d60d8136
   languageName: node
   linkType: hard
 
@@ -2455,7 +2464,7 @@ __metadata:
     glob: "npm:8.1.0"
     image-size: "npm:1.0.2"
     mrmime: "npm:1.0.1"
-    sinon: "npm:16.1.3"
+    sinon: "npm:17.0.0"
   languageName: unknown
   linkType: soft
 
@@ -10264,16 +10273,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nise@npm:^5.1.4":
-  version: 5.1.4
-  resolution: "nise@npm:5.1.4"
+"nise@npm:^5.1.5":
+  version: 5.1.5
+  resolution: "nise@npm:5.1.5"
   dependencies:
     "@sinonjs/commons": "npm:^2.0.0"
     "@sinonjs/fake-timers": "npm:^10.0.2"
     "@sinonjs/text-encoding": "npm:^0.7.1"
     just-extend: "npm:^4.0.2"
     path-to-regexp: "npm:^1.7.0"
-  checksum: a8f4892ba336d66bab010f52acf1ec8fd598f77401689174a49fdb04c958349133f7703b308e4e4a3b93adf6125efe1824d899a3903c9a108c5723d57b235a26
+  checksum: 9fab856119fd5dfe96ef153f3def4199a90f5e6b1f80ce4090b6e58c450e3692f72ebc9610e19d79b1777db2161b3002bf5c8009312ce2fd15983c446784e195
   languageName: node
   linkType: hard
 
@@ -12291,17 +12300,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sinon@npm:16.1.3":
-  version: 16.1.3
-  resolution: "sinon@npm:16.1.3"
+"sinon@npm:17.0.0":
+  version: 17.0.0
+  resolution: "sinon@npm:17.0.0"
   dependencies:
     "@sinonjs/commons": "npm:^3.0.0"
-    "@sinonjs/fake-timers": "npm:^10.3.0"
+    "@sinonjs/fake-timers": "npm:^11.2.2"
     "@sinonjs/samsam": "npm:^8.0.0"
     diff: "npm:^5.1.0"
-    nise: "npm:^5.1.4"
+    nise: "npm:^5.1.5"
     supports-color: "npm:^7.2.0"
-  checksum: a30e80cb9293cc2954074a461349ac7df1fd0c1ed746c6828b65ea908711b8b4b6598182252c3971bf60bba134a492dc1c294b54919f073f3b29acced76de411
+  checksum: fee44ab48452415bf88e93d6109d6f052de21658cd2207a38634660226338e19f4325c9c595a1d1184a563534458c50b11cf7681f039756731f87840e53fa9e1
   languageName: node
   linkType: hard
 
