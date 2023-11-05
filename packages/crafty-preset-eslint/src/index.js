@@ -60,8 +60,9 @@ module.exports = {
 
     return {
       ".eslintrc.js": {
-        content: configurationBuilder(process.argv).configuration,
-        serializer: stringifyConfiguration
+        content: stringifyConfiguration(
+          configurationBuilder(process.argv).configuration
+        )
       }
     };
   },

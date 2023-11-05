@@ -15,8 +15,8 @@ exports.command = async function run(crafty, input, cli) {
     .getImplementations("ide")
     .sort((a, b) => a.name.localeCompare(b.name))
     .forEach(preset => {
-      debug(`${preset.presetName}.ide(crafty, input, cli)`);
-      files = Object.assign(files, preset.run("ide", crafty, input, cli));
+      debug(`${preset.presetName}.ide(crafty)`);
+      files = Object.assign(files, preset.run("ide", crafty));
     });
 
   if (Object.keys(files).length === 0) {
@@ -34,21 +34,34 @@ exports.command = async function run(crafty, input, cli) {
       .split(/\r?\n/);
   }
 
-  Object.keys(files).forEach(file => {
-    const { content, serializer = obj => JSON.stringify(obj, null, 4) } = files[
-      file
-    ];
-    const destination = path.join(process.cwd(), file);
+  const cwd = process.cwd();
 
-    fs.writeFileSync(destination, serializer(content));
+  for (const [file, options] of Object.entries(files)) {
+    const { content, shouldIgnore, alternativeFiles } = options;
+    const destination = path.join(cwd, file);
 
-    if (ignoreFile.indexOf(`/${file}`) === -1) {
+    if (alternativeFiles) {
+      for (const alternativeFile of alternativeFiles) {
+        const oldFile = path.join(cwd, alternativeFile);
+        if (fs.existsSync(oldFile)) {
+          console.log(`Removing old config ${file}`);
+          fs.rmSync(oldFile);
+        }
+      }
+    }
+
+    fs.writeFileSync(destination, content);
+
+    if (
+      (shouldIgnore === undefined || shouldIgnore) &&
+      ignoreFile.indexOf(`/${file}`) === -1
+    ) {
       gitignoreModified = true;
       ignoreFile.push(`/${file}`);
     }
 
     console.log(`Written ${file}`);
-  });
+  }
 
   if (gitignoreModified) {
     fs.writeFileSync(gitignore, `${ignoreFile.join("\n")}\n`);

@@ -169,7 +169,7 @@ test.serial("Lints JavaScript using command", async t => {
 test.serial("Generates IDE Helper", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/ide", [
     ".eslintrc.js",
-    "prettier.config.js",
+    "prettier.config.mjs",
     ".gitignore"
   ]);
 
@@ -180,7 +180,7 @@ test.serial("Generates IDE Helper", async t => {
 
   t.snapshot(testUtils.readForSnapshot(cwd, ".eslintrc.js"));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.mjs"));
 
   t.snapshot(testUtils.readForSnapshot(cwd, ".gitignore"));
 });

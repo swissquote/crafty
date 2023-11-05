@@ -68,8 +68,8 @@ test.serial("Lints with the command with custom config", async t => {
 
 test.serial("Creates IDE Integration files", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-postcss/ide", [
-    "stylelint.config.js",
-    "prettier.config.js",
+    "stylelint.config.mjs",
+    "prettier.config.mjs",
     ".gitignore"
   ]);
 
@@ -77,9 +77,9 @@ test.serial("Creates IDE Integration files", async t => {
 
   t.snapshot(result);
   t.is(result.status, 0);
-  t.snapshot(testUtils.readForSnapshot(cwd, "stylelint.config.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "stylelint.config.mjs"));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.mjs"));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, ".gitignore"));
+  t.falsy(testUtils.exists(cwd, ".gitignore"));
 });

@@ -17,6 +17,9 @@ target
 coverage
 packages/integration/fixtures/**/dist
 packages/integration/fixtures/**/.gitignore
+packages/integration/fixtures/**/stylelint.config.mjs
+packages/integration/fixtures/**/prettier.config.mjs
+packages/integration/fixtures/**/jest.config.mjs
 
 # Caches
 .rpt2_cache

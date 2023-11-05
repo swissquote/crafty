@@ -255,3 +255,23 @@ async function getOverrides() {
   return {};
 }
 exports.getOverrides = getOverrides;
+
+/**
+ * Initialize Crafty, its configuration and presets
+ *
+ * @param {string[]} argv
+ */
+async function initialize(argv) {
+  let readConfig = true;
+
+  if (argv.indexOf("--ignore-crafty-config") > -1) {
+    argv.splice(argv.indexOf("--ignore-crafty-config"), 1);
+    readConfig = false;
+  }
+
+  const presets = extractPresets(argv);
+  const config = readConfig ? getOverrides() : {};
+
+  return getCrafty(presets, config);
+}
+exports.initialize = initialize;

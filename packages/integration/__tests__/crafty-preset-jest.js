@@ -45,14 +45,14 @@ test.serial("Creates IDE Integration files", async t => {
 
   t.snapshot(result);
   t.is(result.status, 0);
-  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.mjs"));
 
-  t.snapshot(testUtils.readForSnapshot(cwd, ".gitignore"));
+  t.falsy(testUtils.exists(cwd, ".gitignore"));
 });
 
 test.serial("Creates IDE Integration files with Babel", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/ide-babel", [
-    "jest.config.js",
+    "jest.config.mjs",
     ".gitignore"
   ]);
 
@@ -60,7 +60,7 @@ test.serial("Creates IDE Integration files with Babel", async t => {
 
   t.snapshot(result);
   t.is(result.status, 0);
-  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "jest.config.mjs"));
 });
 
 test.serial("Succeeds with typescript", async t => {
