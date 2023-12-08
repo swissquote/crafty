@@ -18,9 +18,12 @@ module.exports = [
   },
   builder => builder("estraverse").package(),
   builder => builder("function-bind").package(),
-  builder => builder("hasown").externals({
-    "function-bind": "../function-bind/index.js"
-  }).package(),
+  builder =>
+    builder("hasown")
+      .externals({
+        "function-bind": "../function-bind/index.js"
+      })
+      .package(),
   builder => builder("merge2").package(),
   builder =>
     builder("is-core-module")
