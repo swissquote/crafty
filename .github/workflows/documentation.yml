@@ -16,7 +16,7 @@ jobs:
       with:
         args: daux generate --themes=docs_theme
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.4.3
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         folder: "static"
         branch: gh-pages
