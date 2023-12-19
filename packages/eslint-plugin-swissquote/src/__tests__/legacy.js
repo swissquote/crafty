@@ -1,12 +1,11 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("legacy");
+const lint = prepareESLint("legacy");
 
 test("Doesn't work with ES6", async t => {
   const result = await lint(
-    engine,
     `
 const something = [];
 
@@ -21,7 +20,6 @@ something.push("a value");
 
 test("Gives no warning on correct code", async t => {
   const result = await lint(
-    engine,
     `
 /* global jQuery */
 (function($) {
@@ -68,7 +66,6 @@ test("Gives no warning on correct code", async t => {
 
 test("Warns on wrong format", async t => {
   const result = await lint(
-    engine,
     `
 
 function test() { "use strict"; fetch("This is spartaaa"); }

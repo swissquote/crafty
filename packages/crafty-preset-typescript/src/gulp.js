@@ -45,13 +45,15 @@ module.exports = function createTask(crafty, bundle, gulp) {
     // Linting
     if (!crafty.isWatching()) {
       const {
-        toTempFile
+        toTempFile,
+        toolConfiguration
       } = require("@swissquote/crafty-preset-eslint/src/eslintConfigurator.js");
       const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
       stream = stream
         .pipe(
           eslint({
-            overrideConfigFile: toTempFile(crafty.config.eslint)
+            configType: "flat",
+            overrideConfigFile: toTempFile(toolConfiguration(crafty))
           })
         )
         .pipe(eslint.format())
