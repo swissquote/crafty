@@ -32,6 +32,8 @@ module.exports = {
     "property-no-vendor-prefix": [true, { disableFix: true }],
     "selector-no-vendor-prefix": [true, { disableFix: true }],
     "value-no-vendor-prefix": [true, { disableFix: true }],
+    // Union class names won't be possible when using standard CSS nesting
+    "scss/selector-no-union-class-name": [true, { severity: "warning" }],
 
     // Misc
     // ---------------------------------------------------------------------
