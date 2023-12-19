@@ -63,7 +63,7 @@ class Crafty {
   }
 
   getEnvironment() {
-    // Should not be used manually, only for tests
+    // Used for tests
     if (this.config.environment) {
       return this.config.environment;
     }

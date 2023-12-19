@@ -1,30 +1,33 @@
-const { ESLint } = require("eslint");
+const { Linter } = require("eslint");
 
 function prepareESLint(...args) {
   const configuration = {
-    useEslintrc: false,
-    overrideConfig: {
-      plugins: ["@swissquote/swissquote"],
-      extends: args
-        .filter(arg => typeof arg !== "object")
-        .map(preset => `plugin:@swissquote/swissquote/${preset}`),
-      rules: {},
-      settings: {},
-      ...(args.find(arg => typeof arg === "object") || {})
-    },
-    plugins: {
-      "@swissquote/swissquote": require("./index")
-    }
+    configType: "flat"
   };
 
-  return new ESLint(configuration);
+  const configs = args
+    .filter(arg => typeof arg !== "object")
+    .map(
+      preset => require(`@swissquote/eslint-plugin-swissquote`).configs[preset]
+    )
+    .flat();
+
+  const overrides = args.find(arg => typeof arg === "object") || null;
+  if (overrides) {
+    configs.push(overrides);
+  }
+
+  const linter = new Linter(configuration);
+
+  return function lint(text, filename = "foo.js") {
+    const messages = linter.verify(text.replace(/^\n/, ""), configs, filename);
+
+    return {
+      messages,
+      warningCount: messages.filter(m => m.severity === 1).length,
+      errorCount: messages.filter(m => m.severity === 2).length
+    };
+  };
 }
 
-async function lint(cli, text, filename = "foo.js") {
-  const results = await cli.lintText(text.replace(/^\n/, ""), {
-    filePath: filename
-  });
-  return results[0];
-}
-
-module.exports = { prepareESLint, lint };
+module.exports = { prepareESLint };
