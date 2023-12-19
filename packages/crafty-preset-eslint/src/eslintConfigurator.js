@@ -1,116 +1,122 @@
-const fs = require("fs");
 const path = require("path");
+const fs = require("fs/promises");
+const { copy } = require("@swissquote/crafty/packages/copy-anything");
+const debugFn = require("@swissquote/crafty-commons/packages/debug");
 const resolveFrom = require("../packages/resolve-from");
-const tmp = require("@swissquote/crafty-commons/packages/tmp");
 
-function mergeConfiguration(configuration, args, newConfiguration) {
-  if (
-    newConfiguration.useEslintrc === false &&
-    args.indexOf("--no-eslintrc") === -1
-  ) {
-    args.push("--no-eslintrc");
-  }
+const debug = debugFn("crafty:preset-eslint");
 
-  if (newConfiguration.extends) {
-    if (typeof newConfiguration.extends === "string") {
-      configuration.extends.push(newConfiguration.extends);
-    } else {
-      newConfiguration.extends.forEach(item =>
-        configuration.extends.push(item)
-      );
+/**
+ * Plugins can be present only once
+ * Since we want to load the plugins only when needed we still want to declare them the closest to where they're needed.
+ * This step makes sure that plugins appear only once in the final configuration
+ */
+function deduplicatePlugins(configs) {
+  const seenPlugin = new Set();
+
+  configs.forEach((config, index) => {
+    if (!config.plugins) {
+      return;
     }
-  }
 
-  Object.assign(configuration.rules, newConfiguration.rules || {});
+    const pluginNames = Object.keys(config.plugins);
 
-  if (newConfiguration.baseConfig && newConfiguration.baseConfig.settings) {
-    Object.assign(configuration.settings, newConfiguration.baseConfig.settings);
-  }
+    let hasDuplicates = false;
+    const newPluginMap = {};
+    for (const pluginName of pluginNames) {
+      if (seenPlugin.has(pluginName)) {
+        hasDuplicates = true;
+      } else {
+        seenPlugin.add(pluginName);
+        newPluginMap[pluginName] = config.plugins[pluginName];
+      }
+    }
 
-  if (newConfiguration.settings) {
-    Object.assign(configuration.settings, newConfiguration.settings);
-  }
-
-  if (newConfiguration.configFile) {
-    mergeConfiguration(
-      configuration,
-      args,
-      require(newConfiguration.configFile)
-    );
-  }
+    if (hasDuplicates) {
+      // Clone the original config in case it's used more than once
+      const cloned = { ...config };
+      cloned.plugins = newPluginMap;
+      configs[index] = cloned;
+    }
+  });
 }
 
-function configurationBuilder(args) {
-  const configuration = {
-    plugins: ["@swissquote/swissquote"],
-    extends: ["plugin:@swissquote/swissquote/format"],
-    rules: {},
-    settings: {}
-  };
+async function toESLintConfig(crafty, config = {}, source = "plugin") {
+  const configs = [];
+
+  const eslintPlugin = require(`@swissquote/eslint-plugin-swissquote`);
+
+  // Load configuration presets
+  let presets = [];
+  if (config.presets?.length > 0) {
+    presets = config.presets;
+  } else {
+    presets = ["recommended"];
+  }
+
+  for (const preset of presets) {
+    const subConfigs = eslintPlugin.configs[preset];
+    configs.push(...subConfigs);
+  }
 
   // Override from default config if it exists
-  if (global.craftyConfig) {
-    mergeConfiguration(configuration, args, global.craftyConfig.eslint);
+  if (crafty) {
+    // Apply overrides to clean up configuration
+    crafty.loadedPresets
+      .filter(preset => preset.implements("eslint"))
+      .forEach(preset => {
+        debug(`${preset.presetName}.eslint(configArray)`);
+
+        const value = preset.get("eslint");
+        if (typeof value === "function") {
+          value(configs);
+        } else {
+          configs.push(copy(value));
+        }
+      });
   }
 
-  // Merge configuration that can be passed in cli arguments
-  let idx;
-  if ((idx = args.indexOf("--config")) > -1) {
-    const configFile = args[idx + 1];
-    args.splice(idx, 2);
+  // Load other configuration files
+  if (config.configFile) {
+    const resolvedConfig = resolveFrom.silent(process.cwd(), config.configFile);
+    const configFile =
+      resolvedConfig ?? path.join(process.cwd(), config.configFile);
 
-    mergeConfiguration(
-      configuration,
-      args,
-      require(resolveFrom.silent(process.cwd(), configFile) ||
-        path.join(process.cwd(), configFile))
-    );
-  }
-
-  if (args.indexOf("--preset") > -1) {
-    configuration.extends = [];
-
-    while ((idx = args.indexOf("--preset")) > -1) {
-      configuration.extends.push(
-        `plugin:@swissquote/swissquote/${args[idx + 1]}`
-      );
-      args.splice(idx, 2);
+    let subConfigs;
+    if (configFile.endsWith(".json")) {
+      const content = await fs.readFile(configFile);
+      subConfigs = JSON.parse(content);
+    } else {
+      subConfigs = await import(configFile);
     }
+
+    if (!Array.isArray(subConfigs)) {
+      throw new Error(
+        `Expected ${
+          config.configFile
+        } to be an array of configuration but got ${typeof subConfigs}`
+      );
+    }
+
+    configs.push(...subConfigs);
   }
 
-  // Disable `no-var` as this linter can also be run
-  // on es5 code, if used with --fix, the result
-  // would be broken code or false positives.
-  configuration.rules["no-var"] = 0;
+  if (source === "jsLint") {
+    configs.push({
+      rules: {
+        // Disable `no-var` as this linter can also be run
+        // on es5 code, if used with --fix, the result
+        // would be broken code or false positives.
+        "no-var": 0
+      }
+    });
+  }
 
-  return {
-    configuration,
-    args
-  };
-}
+  deduplicatePlugins(configs);
 
-function stringifyConfiguration(configuration) {
-  return `// This configuration was generated by Crafty
-// This file is generated to improve IDE Integration
-// You don't need to commit this file, nor need it to run \`crafty build\`
-
-// Fix module resolution
-require(${JSON.stringify(require.resolve("./patchModuleResolver"))});
-
-module.exports = ${JSON.stringify(configuration, null, 4)};
-`;
-}
-
-function toTempFile(configuration) {
-  const tmpfile = tmp.fileSync({ postfix: ".js" }).name;
-
-  fs.writeFileSync(tmpfile, stringifyConfiguration(configuration));
-
-  return tmpfile;
+  return configs;
 }
 
 module.exports = {
-  configurationBuilder,
-  stringifyConfiguration,
-  toTempFile
+  toESLintConfig
 };

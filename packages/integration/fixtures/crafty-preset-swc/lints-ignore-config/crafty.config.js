@@ -1,3 +1,3 @@
 module.exports = {
-  presets: ["@swissquote/crafty-preset-swc"]
+  presets: ["@swissquote/crafty-preset-nonexistent"]
 };

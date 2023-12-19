@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 const sizeOf = require("image-size");
 var nodeify = require("./__utils__/nodeify");
 var resolvePath = require("./path");

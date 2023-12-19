@@ -1,8 +1,8 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("format", {
+const lint = prepareESLint("format", {
   settings: {
     "formatting/mode": "prettier:2"
   }
@@ -10,7 +10,6 @@ const engine = prepareESLint("format", {
 
 test("Fails on badly formatted TypeScript code", async t => {
   const result = await lint(
-    engine,
     `
 module.exports = function initJS  (gulp, config: {}, watchers): string[] {
   const js = config.js,
@@ -46,7 +45,6 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
 
 test("Works with complex types", async t => {
   const result = await lint(
-    engine,
     `
 import * as React from "react";
 
@@ -142,7 +140,6 @@ export default class SplitButton extends React.Component<
 
 test("Works with recent TypeScript features", async t => {
   const result = await lint(
-    engine,
     `
 import type { Component } from "react";
 

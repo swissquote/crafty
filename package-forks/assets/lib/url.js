@@ -44,8 +44,6 @@ module.exports = nodeify(async (to, options) => {
     options.cachebuster = defaultCachebuster;
   }
 
-  /* eslint-enable */
-
   toUrl = url.parse(to);
 
   const resolvedPath = await resolvePath(decodeURI(toUrl.pathname), options);

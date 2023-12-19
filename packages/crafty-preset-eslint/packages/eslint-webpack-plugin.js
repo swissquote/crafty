@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/eslint-packages.js").eslintWebpackPlugin();
+module.exports = require("../dist/eslint-packages/bundled.js").eslintWebpackPlugin();
