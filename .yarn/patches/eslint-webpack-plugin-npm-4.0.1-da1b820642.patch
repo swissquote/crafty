@@ -1,0 +1,348 @@
+diff --git a/dist/getESLint.js b/dist/getESLint.js
+index bbb6d2fdf9a01800569cb235794077b77b72c4e3..93bf7c10b5767e05789080551c8fac5c96ae4fd7 100644
+--- a/dist/getESLint.js
++++ b/dist/getESLint.js
+@@ -6,6 +6,12 @@ const {
+ const {
+   Worker: JestWorker
+ } = require('jest-worker');
++
++// @ts-ignore
++const {
++  setup,
++  lintFiles
++} = require('./worker');
+ const {
+   getESLintOptions
+ } = require('./options');
+@@ -19,9 +25,10 @@ const cache = {};
+ /** @typedef {import('eslint').ESLint} ESLint */
+ /** @typedef {import('eslint').ESLint.LintResult} LintResult */
+ /** @typedef {import('./options').Options} Options */
++/** @typedef {import('./linter').File} File */
+ /** @typedef {() => Promise<void>} AsyncTask */
+-/** @typedef {(files: string|string[]) => Promise<LintResult[]>} LintTask */
+-/** @typedef {{threads: number, ESLint: ESLint, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask}} Linter */
++/** @typedef {(files: File[]) => Promise<LintResult[]>} LintTask */
++/** @typedef {{threads: number, eslint: ESLint, lintFiles: LintTask, cleanup: AsyncTask}} Linter */
+ /** @typedef {JestWorker & {lintFiles: LintTask}} Worker */
+ 
+ /**
+@@ -32,24 +39,15 @@ function loadESLint(options) {
+   const {
+     eslintPath
+   } = options;
+-  const {
+-    ESLint
+-  } = require(eslintPath || 'eslint');
+-
+-  // Filter out loader options before passing the options to ESLint.
+-  const eslint = new ESLint(getESLintOptions(options));
++  const eslint = setup({
++    eslintPath,
++    configType: options.configType,
++    eslintOptions: getESLintOptions(options)
++  });
+   return {
+     threads: 1,
+-    ESLint,
++    lintFiles,
+     eslint,
+-    lintFiles: async files => {
+-      const results = await eslint.lintFiles(files);
+-      // istanbul ignore else
+-      if (options.fix) {
+-        await ESLint.outputFixes(results);
+-      }
+-      return results;
+-    },
+     // no-op for non-threaded
+     cleanup: async () => {}
+   };
+@@ -72,6 +70,7 @@ function loadESLintThreaded(key, poolSize, options) {
+     numWorkers: poolSize,
+     setupArgs: [{
+       eslintPath,
++      configType: options.configType,
+       eslintOptions: getESLintOptions(options)
+     }]
+   };
+diff --git a/dist/index.js b/dist/index.js
+index f988b9c41a1a0b23abea616b570fdaf9d955ed56..a8ede46d7631f44300153b823cba5b07f98c0d30 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -21,6 +21,7 @@ const {
+ /** @typedef {import('webpack').Module} Module */
+ /** @typedef {import('webpack').NormalModule} NormalModule */
+ /** @typedef {import('./options').Options} Options */
++/** @typedef {import('./linter').File} File */
+ 
+ const ESLINT_PLUGIN = 'ESLintWebpackPlugin';
+ const DEFAULT_FOLDER_TO_EXCLUDE = '**/node_modules/**';
+@@ -44,7 +45,7 @@ class ESLintWebpackPlugin {
+     // this differentiates one from the other when being cached.
+     this.key = compiler.name || `${this.key}_${compilerId += 1}`;
+     const excludedFiles = parseFiles(this.options.exclude || [], this.getContext(compiler));
+-    const resourceQueries = arrify(this.options.resourceQueryExclude || []);
++    const resourceQueries = arrify(this.options.resourceQueryExclude);
+     const excludedResourceQueries = resourceQueries.map(item => item instanceof RegExp ? item : new RegExp(item));
+     const options = {
+       ...this.options,
+@@ -100,7 +101,7 @@ class ESLintWebpackPlugin {
+         return;
+       }
+ 
+-      /** @type {string[]} */
++      /** @type {File[]} */
+       const files = [];
+ 
+       // Add the file to be linted
+@@ -115,17 +116,27 @@ class ESLintWebpackPlugin {
+           resource
+         } = /** @type {NormalModule} */module;
+         if (!resource) return;
+-        const [file, query] = resource.split('?');
+-        const isFileNotListed = file && !files.includes(file);
+-        const isFileWanted = isMatch(file, wanted, {
++        const [filePath, query] = resource.split('?');
++        const isFileNotListed = filePath && !files.map(file => file.path).includes(filePath);
++        const isFileWanted = isMatch(filePath, wanted, {
+           dot: true
+-        }) && !isMatch(file, exclude, {
++        }) && !isMatch(filePath, exclude, {
+           dot: true
+         });
+         const isQueryNotExclude = options.resourceQueryExclude.every(reg => !reg.test(query));
+         if (isFileNotListed && isFileWanted && isQueryNotExclude) {
++          // istanbul ignore next
++          const content = ""/*String((module.originalSource ? module.originalSource() :
++          // eslint-disable-next-line line-comment-position
++          // @ts-ignore
++          // eslint-disable-next-line no-underscore-dangle
++          module._source).source());*/
++          const file = {
++            path: filePath,
++            content
++          };
+           files.push(file);
+-          if (threads > 1) lint(file);
++          if (threads > 1) lint([file]);
+         }
+       }
+ 
+diff --git a/dist/linter.js b/dist/linter.js
+index 5b6dc7b5bea9b7834da26e68c7befa7f6075bf81..e46058b12fe72a90cf256554a81b7823279aba65 100644
+--- a/dist/linter.js
++++ b/dist/linter.js
+@@ -9,9 +9,6 @@ const ESLintError = require('./ESLintError');
+ const {
+   getESLint
+ } = require('./getESLint');
+-const {
+-  arrify
+-} = require('./utils');
+ 
+ /** @typedef {import('eslint').ESLint} ESLint */
+ /** @typedef {import('eslint').ESLint.Formatter} Formatter */
+@@ -23,8 +20,9 @@ const {
+ /** @typedef {(compilation: Compilation) => Promise<void>} GenerateReport */
+ /** @typedef {{errors?: ESLintError, warnings?: ESLintError, generateReportAsset?: GenerateReport}} Report */
+ /** @typedef {() => Promise<Report>} Reporter */
+-/** @typedef {(files: string|string[]) => void} Linter */
+-/** @typedef {{[files: string]: LintResult}} LintResultMap */
++/** @typedef {{path: string, content: string}} File */
++/** @typedef {(files: File[]) => void} Linter */
++/** @typedef {{[paths: string]: LintResult}} LintResultMap */
+ 
+ /** @type {WeakMap<Compiler, LintResultMap>} */
+ const resultStorage = new WeakMap();
+@@ -39,7 +37,7 @@ function linter(key, options, compilation) {
+   /** @type {ESLint} */
+   let eslint;
+ 
+-  /** @type {(files: string|string[]) => Promise<LintResult[]>} */
++  /** @type {(files: File[]) => Promise<LintResult[]>} */
+   let lintFiles;
+ 
+   /** @type {() => Promise<void>} */
+@@ -68,11 +66,11 @@ function linter(key, options, compilation) {
+   };
+ 
+   /**
+-   * @param {string | string[]} files
++   * @param {File[]} files
+    */
+   function lint(files) {
+-    for (const file of arrify(files)) {
+-      delete crossRunResultStorage[file];
++    for (const file of files) {
++      delete crossRunResultStorage[file.path];
+     }
+     rawResults.push(lintFiles(files).catch(e => {
+       // @ts-ignore
+@@ -118,9 +116,9 @@ function linter(key, options, compilation) {
+       } = options;
+       /**
+        * @param {string} name
+-       * @param {string | Buffer} content
++       * @param {string|Buffer} content
+        */
+-      const save = (name, content) => /** @type {Promise<void>} */
++      const save = (name, content) => ( /** @type {Promise<void>} */
+       new Promise((finish, bail) => {
+         const {
+           mkdir,
+@@ -137,7 +135,7 @@ function linter(key, options, compilation) {
+             if (err2) bail(err2);else finish();
+           });
+         });
+-      });
++      }));
+       if (!outputReport || !outputReport.filePath) {
+         return;
+       }
+@@ -266,6 +264,7 @@ async function removeIgnoredWarnings(eslint, results) {
+     } = result;
+     const [firstMessage] = messages;
+     const hasWarning = warningCount === 1 && errorCount === 0;
++    // istanbul ignore next
+     const ignored = messages.length === 0 || hasWarning && !firstMessage.fatal && !firstMessage.ruleId && !firstMessage.line && (await eslint.isPathIgnored(filePath));
+     return ignored ? false : result;
+   });
+diff --git a/dist/options.js b/dist/options.js
+index e63b963195661cff962625e4a1b90a0fac96dbeb..e01140815cc7fa69b0801291a18e400a0b966f8d 100644
+--- a/dist/options.js
++++ b/dist/options.js
+@@ -40,6 +40,7 @@ const schema = require('./options.json');
+  * @property {OutputReport=} outputReport
+  * @property {number|boolean=} threads
+  * @property {RegExp|RegExp[]=} resourceQueryExclude
++ * @property {string=} configType
+  */
+ 
+ /** @typedef {PluginOptions & ESLintOptions} Options */
+@@ -94,6 +95,11 @@ function getESLintOptions(loaderOptions) {
+     // @ts-ignore
+     delete eslintOptions[option];
+   }
++
++  // Some options aren't available in flat mode
++  if (loaderOptions.configType === 'flat') {
++    delete eslintOptions.extensions;
++  }
+   return eslintOptions;
+ }
+ module.exports = {
+diff --git a/dist/options.json b/dist/options.json
+index caa39ffea9be7dd50be558d5c3d8556d6832f7a6..963044cbe7ffd74be03f1bbfb604a2c05751ea14 100644
+--- a/dist/options.json
++++ b/dist/options.json
+@@ -58,6 +58,10 @@
+       "description": "Will process and report errors only and ignore warnings, if set to `true`.",
+       "type": "boolean"
+     },
++    "configType": {
++      "description": "Enable flat config by setting this value to `flat`.",
++      "type": "string"
++    },
+     "outputReport": {
+       "description": "Write the output of the errors to a file, for example a checkstyle xml file for use for reporting on Jenkins CI",
+       "anyOf": [
+diff --git a/dist/utils.js b/dist/utils.js
+index cd5de0331acd5e20ca0d941b2082917f35efc394..dca092e946c4b300dd2094c1f16104d724278619 100644
+--- a/dist/utils.js
++++ b/dist/utils.js
+@@ -12,7 +12,7 @@ const normalizePath = require('normalize-path');
+  * @template T
+  * @param {T} value
+  * @return {
+-   T extends (null | undefined)
++   T extends (null|undefined)
+      ? []
+      : T extends string
+        ? [string]
+@@ -89,7 +89,7 @@ function parseFoldersToGlobs(patterns, extensions = []) {
+ const jsonStringifyReplacerSortKeys = (_, value) => {
+   /**
+    * @param {{ [x: string]: any; }} sorted
+-   * @param {string | number} key
++   * @param {string|number} key
+    */
+   const insert = (sorted, key) => {
+     // eslint-disable-next-line no-param-reassign
+diff --git a/dist/worker.js b/dist/worker.js
+index b4499e73af872c112f6918d753761258de8a8143..aa4f39dc18c4a107d0904cebe586cfc7c6b70ae7 100644
+--- a/dist/worker.js
++++ b/dist/worker.js
+@@ -2,13 +2,15 @@
+ 
+ /** @typedef {import('eslint').ESLint} ESLint */
+ /** @typedef {import('eslint').ESLint.Options} ESLintOptions */
++/** @typedef {import('eslint').ESLint.LintResult} LintResult */
++/** @typedef {import('./linter').File} File */
+ 
+ Object.assign(module.exports, {
+   lintFiles,
+   setup
+ });
+ 
+-/** @type {{ new (arg0: import("eslint").ESLint.Options): import("eslint").ESLint; outputFixes: (arg0: import("eslint").ESLint.LintResult[]) => any; }} */
++/** @type {{ new (arg0: ESLintOptions): ESLint; outputFixes: (arg0: LintResult[]) => any; }} */
+ let ESLint;
+ 
+ /** @type {ESLint} */
+@@ -20,26 +22,46 @@ let fix;
+ /**
+  * @typedef {object} setupOptions
+  * @property {string=} eslintPath - import path of eslint
+- * @property {ESLintOptions=} eslintOptions - linter options
++ * @property {string=} configType
++ * @property {ESLintOptions} eslintOptions - linter options
+  *
+  * @param {setupOptions} arg0 - setup worker
+  */
+ function setup({
+   eslintPath,
+-  eslintOptions = {}
++  configType,
++  eslintOptions
+ }) {
+   fix = !!(eslintOptions && eslintOptions.fix);
+-  ({
+-    ESLint
+-  } = require(eslintPath || 'eslint'));
+-  eslint = new ESLint(eslintOptions);
++  const eslintModule = require(eslintPath || 'eslint');
++  let FlatESLint;
++  if (eslintModule.LegacyESLint) {
++    ESLint = eslintModule.LegacyESLint;
++    ({
++      FlatESLint
++    } = eslintModule);
++  } else {
++    ({
++      ESLint
++    } = eslintModule);
++    if (configType === 'flat') {
++      throw new Error("Couldn't find FlatESLint, you might need to set eslintPath to 'eslint/use-at-your-own-risk'");
++    }
++  }
++  if (configType === 'flat') {
++    eslint = new FlatESLint(eslintOptions);
++  } else {
++    eslint = new ESLint(eslintOptions);
++  }
++  return eslint;
+ }
+ 
+ /**
+- * @param {string | string[]} files
++ * @param {File[]} files
+  */
+ async function lintFiles(files) {
+-  const result = await eslint.lintFiles(files);
++  /** @type {LintResult[]} */
++  const result = await eslint.lintFiles(files.map(f => f.path));
+   // if enabled, use eslint autofixing where possible
+   if (fix) {
+     await ESLint.outputFixes(result);

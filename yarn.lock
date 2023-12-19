@@ -2631,7 +2631,7 @@ __metadata:
     "@swissquote/crafty-preset-prettier": "npm:1.23.0"
     "@swissquote/eslint-plugin-swissquote": "npm:1.23.0"
     eslint: "npm:8.55.0"
-    eslint-webpack-plugin: "npm:4.0.1"
+    eslint-webpack-plugin: "patch:eslint-webpack-plugin@npm%3A4.0.1#~/.yarn/patches/eslint-webpack-plugin-npm-4.0.1-da1b820642.patch"
     resolve-from: "npm:5.0.0"
     schema-utils: "npm:4.2.0"
   peerDependencies:
@@ -2895,6 +2895,7 @@ __metadata:
     eslint-plugin-i: "npm:2.29.0"
     eslint-plugin-react: "npm:7.33.2"
     eslint-plugin-react-hooks: "npm:4.6.0"
+    globals: "npm:13.24.0"
     prettier: "npm:2.8.8"
     prettier-linter-helpers: "npm:1.0.0"
     prettier1: "npm:prettier@1.19.1"
@@ -6509,6 +6510,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-webpack-plugin@patch:eslint-webpack-plugin@npm%3A4.0.1#~/.yarn/patches/eslint-webpack-plugin-npm-4.0.1-da1b820642.patch":
+  version: 4.0.1
+  resolution: "eslint-webpack-plugin@patch:eslint-webpack-plugin@npm%3A4.0.1#~/.yarn/patches/eslint-webpack-plugin-npm-4.0.1-da1b820642.patch::version=4.0.1&hash=603ab2"
+  dependencies:
+    "@types/eslint": "npm:^8.37.0"
+    jest-worker: "npm:^29.5.0"
+    micromatch: "npm:^4.0.5"
+    normalize-path: "npm:^3.0.0"
+    schema-utils: "npm:^4.0.0"
+  peerDependencies:
+    eslint: ^8.0.0
+    webpack: ^5.0.0
+  checksum: 522ed45ee900f7f08d2bac65bdc4e805130d1fe0573fc90628fbd6c087fcbe0fa966eca95a6c6f559197171c474a4d37f2d04a3366afa261e7b16b207ef27da8
+  languageName: node
+  linkType: hard
+
 "eslint@npm:8, eslint@npm:8.55.0":
   version: 8.55.0
   resolution: "eslint@npm:8.55.0"
@@ -7412,6 +7429,15 @@ __metadata:
     min-document: "npm:^2.19.0"
     process: "npm:^0.11.10"
   checksum: 4a467aec6602c00a7c5685f310574ab04e289ad7f894f0f01c9c5763562b82f4b92d1e381ce6c5bbb12173e2a9f759c1b63dda6370cfb199970267e14d90aa91
+  languageName: node
+  linkType: hard
+
+"globals@npm:13.24.0":
+  version: 13.24.0
+  resolution: "globals@npm:13.24.0"
+  dependencies:
+    type-fest: "npm:^0.20.2"
+  checksum: d3c11aeea898eb83d5ec7a99508600fbe8f83d2cf00cbb77f873dbf2bcb39428eff1b538e4915c993d8a3b3473fa71eeebfe22c9bb3a3003d1e26b1f2c8a42cd
   languageName: node
   linkType: hard
 

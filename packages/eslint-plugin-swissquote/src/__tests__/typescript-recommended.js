@@ -1,12 +1,11 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("recommended");
+const lint = prepareESLint("recommended");
 
 test("Warns on console.log", async t => {
   const result = await lint(
-    engine,
     `
 const foo = window;
 
@@ -25,7 +24,6 @@ if (foo?.bar?.baz) {
 
 test("Uses sonar plugin", async t => {
   const result = await lint(
-    engine,
     `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
 
@@ -50,7 +48,6 @@ function changeWindow(param: number) {
 
 test("Works with complex types", async t => {
   const result = await lint(
-    engine,
     `
 import * as React from "react";
 

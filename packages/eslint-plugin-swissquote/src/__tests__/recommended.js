@@ -1,11 +1,11 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("recommended");
+const lint = prepareESLint("recommended");
 
 test("Warns on console.log", async t => {
-  const result = await lint(engine, `console.log("Yeah");\n`);
+  const result = await lint(`console.log("Yeah");\n`);
 
   t.snapshot(result.messages);
   t.is(result.warningCount, 1);
@@ -14,7 +14,6 @@ test("Warns on console.log", async t => {
 
 test("Uses sonar plugin", async t => {
   const result = await lint(
-    engine,
     `
 /* global openWindow, closeWindow, moveWindowToTheBackground */
 
@@ -38,7 +37,6 @@ function changeWindow(param) {
 
 test("Works fine with ES6 code", async t => {
   const result = await lint(
-    engine,
     `
 class SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
@@ -93,7 +91,6 @@ const obj = {
 
 test("jsx-no-duplicate-props: works with different props", async t => {
   const result = await lint(
-    engine,
     `
 import * as React from "react";
 
@@ -110,7 +107,6 @@ export default function SomeComponent() {
 
 test("jsx-no-duplicate-props: works fails with the same prop", async t => {
   const result = await lint(
-    engine,
     `
 import * as React from "react";
 
@@ -126,11 +122,10 @@ export default function SomeComponent() {
 });
 
 test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
-  const alternateEngine = prepareESLint("recommended", {
+  const alternateLint = prepareESLint("recommended", {
     settings: { react: { version: "16.0.0" } }
   });
-  const result = await lint(
-    alternateEngine,
+  const result = await alternateLint(
     `
 import React from "react";
 import PropTypes from "prop-types";
@@ -159,7 +154,6 @@ MyComponent.propTypes = {
 
 test("Incorrect usage of hooks: fails with setState in componentDidMount", async t => {
   const result = await lint(
-    engine,
     `
 import React, { useState, useEffect } from "react";
 
@@ -194,7 +188,6 @@ export default function MyComponent() {
 
 test("Properly parses JSDoc", async t => {
   const result = await lint(
-    engine,
     `
 /* global BaseComponent */
 /** @extends React.Component */
