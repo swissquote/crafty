@@ -1,25 +1,29 @@
 // @ts-check
 
+const { runAsWorker } = require('synckit');
+
+// Lazily-loaded Prettier.
+/**
+ * @type {Map<string, typeof import('prettier')>}}
+ */
+const prettiers = new Map();
+
 /**
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
  * @typedef {import('prettier').Options & { onDiskFilepath: string, parserPath: string, usePrettierrc?: boolean }} Options
  */
 
-module.exports = function createWorker(mode) {
-  /**
-   * @type {typeof import('prettier')}
-   */
-  let prettier;
-
+runAsWorker(
   /**
    * @param {string} source - The source code to format.
    * @param {Options} options - The prettier options.
    * @param {FileInfoOptions} eslintFileInfoOptions - The file info options.
-   * @returns {string | undefined} The formatted source code.
+   * @returns {Promise<string | undefined>} The formatted source code.
    */
-  return (
+   async (
     source,
     {
+      mode,
       filepath,
       onDiskFilepath,
       parserPath,
@@ -28,26 +32,34 @@ module.exports = function createWorker(mode) {
     },
     eslintFileInfoOptions
   ) => {
-    if (!prettier) {
+    if (!prettiers.has(mode)) {
       switch (mode) {
         case "prettier:1":
-          prettier = require("../../dist/prettier1/index.js");
+          prettiers.set(mode, (await import("../../packages/prettier1.js")).default);
           break;
         case "prettier:2":
-          prettier = require("../../dist/prettier/index.js");
+          prettiers.set(mode, (await import("../../packages/prettier2.js")).default);
+          break;
+        case "prettier:3":
+          prettiers.set(mode, (await import("../../packages/prettier3.mjs")).default);
           break;
         case "default":
           throw new Error(`Uknown prettier mode: ${mode}`);
       }
     }
 
-    const prettierRcOptions = usePrettierrc
-      ? prettier.resolveConfig.sync(onDiskFilepath, {
+    /**
+     * @type {typeof import('prettier')}
+     */
+    const prettier = prettiers.get(mode)
+
+    const prettierRcOptions = await usePrettierrc
+      ? prettier.resolveConfig(onDiskFilepath, {
           editorconfig: true
         })
       : null;
 
-    const { ignored, inferredParser } = prettier.getFileInfo.sync(
+    const { ignored, inferredParser } = await prettier.getFileInfo(
       onDiskFilepath,
       {
         resolveConfig: false,
@@ -162,6 +174,6 @@ module.exports = function createWorker(mode) {
       filepath
     };
 
-    return prettier.format(source, prettierOptions);
-  };
-};
+    return await prettier.format(source, prettierOptions);
+  }
+);

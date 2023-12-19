@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const { getExternals } = require("../../utils/externals");
 
 const externals = getExternals();
@@ -208,9 +209,29 @@ module.exports = [
       }),
 
   // Prettier specific stuff
+  () => {
+    console.log("Copy prettier 3");
+    const src = path.dirname(require.resolve(
+      "prettier/package.json"
+    ));
 
+    fs.mkdirSync("dist/prettier/plugins", { recursive: true });
+
+    // We only copy the plugins we need
+    const files = [
+      "index.mjs",
+      "doc.mjs",
+      "plugins/typescript.mjs",
+      "plugins/babel.mjs",
+      "plugins/estree.mjs"
+    ];
+
+    for (const file of files) {
+      fs.copyFileSync(path.join(src, file), path.join("dist/prettier", file));
+    }
+  },
   builder =>
-    builder("prettier")
+    builder("prettier2")
       .package()
       .externals({
         // Provided by this package
