@@ -6,9 +6,9 @@ import { StaticClassBlock } from "./TS_4_4";
 import type { SomeType } from "./TS_4_5";
 import { obj } from "./TS_4_5";
 import { Derived } from "./TS_4_6";
-import { helper } from "./TS_4_7.mjs";
+import { helper, makeStringBox, makeNumberBox } from "./TS_4_7.mjs";
 import { f } from "./TS_4_8";
-import { redComponent } from "./TS_4_9";
+import { redComponent, PersonAccessor } from "./TS_4_9";
 import { Person, type Entity } from "./TS_5_0";
 
 export {
@@ -21,8 +21,11 @@ export {
   obj,
   Derived,
   helper,
+  makeStringBox,
+  makeNumberBox,
   f,
   redComponent,
+  PersonAccessor,
   Person,
   Entity,
 };
