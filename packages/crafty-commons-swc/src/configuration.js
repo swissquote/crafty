@@ -26,12 +26,17 @@ function extendConfiguration(crafty, bundle, swcOptions) {
   debug("SWC configuration", swcOptions);
 }
 
-function getConfigurationBase(crafty, bundle, hasHelperDependency) {
+function getConfigurationBase(crafty, bundle, hasHelperDependency, syntax = "ecmascript") {
   const swcOptions = {
     jsc: {
       parser: {
+        syntax,
         jsx: true,
-        decorators: true
+        decorators: true,
+        usingDecl: true
+      },
+      experimental: {
+        keepImportAssertions: true
       }
     },
     env: {
@@ -57,8 +62,8 @@ function getConfiguration(crafty, bundle, hasHelperDependency) {
   return options;
 }
 
-function getConfigurationWebpack(crafty, bundle, hasHelperDependency) {
-  const options = getConfigurationBase(crafty, bundle, hasHelperDependency);
+function getConfigurationWebpack(crafty, bundle, hasHelperDependency, syntax) {
+  const options = getConfigurationBase(crafty, bundle, hasHelperDependency, syntax);
 
   // Always enabled
   options.jsc.externalHelpers = true;
@@ -77,11 +82,12 @@ function getConfigurationWebpack(crafty, bundle, hasHelperDependency) {
   return options;
 }
 
-function getConfigurationGulp(crafty, bundle) {
+function getConfigurationGulp(crafty, bundle, syntax) {
   const options = getConfigurationBase(
     crafty,
     bundle,
-    hasSwcHelpersDependency()
+    hasSwcHelpersDependency(),
+    syntax
   );
 
   if (crafty.getEnvironment() === "production") {

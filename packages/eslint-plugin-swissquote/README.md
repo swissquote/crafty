@@ -22,11 +22,11 @@ This plugin comes with four presets
 
 - `eslint-plugin-prettier` Uses Prettier to format your code.
 
-Due to breaking changes in behavior from Prettier 1 to Prettier 2 without configuration options to revert to Prettier 1's behavior, this preset provides both Prettier 1 and Prettier 2.
-By default we ship with Prettier 1 for backwards compatibility.
+Due to breaking changes in behavior between Prettier major versions, this preset provides multiple Prettier versions.
+By default we use Prettier 1 for backwards compatibility.
 
 You can choose which version you want to use by using ESLint's `settings` key.
-Valid values are `prettier:1` and `prettier:2`.
+Valid values are `prettier:1`, `prettier:2`, and `prettier:3`.
 
 ```javascript
 {
@@ -35,6 +35,12 @@ Valid values are `prettier:1` and `prettier:2`.
   }
 }
 ```
+
+| Prettier Version | TypeScript Compatibility |
+| ---------------- | ------------------------ |
+| Prettier 1       | >= 1 && <=4.2            |
+| Prettier 2       | >= 1 && <=5.1            |
+| Prettier 3       | >= 1                     |
 
 ### Plugins in the `recommended` preset
 
