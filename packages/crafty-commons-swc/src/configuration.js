@@ -26,7 +26,12 @@ function extendConfiguration(crafty, bundle, swcOptions) {
   debug("SWC configuration", swcOptions);
 }
 
-function getConfigurationBase(crafty, bundle, hasHelperDependency, syntax = "ecmascript") {
+function getConfigurationBase(
+  crafty,
+  bundle,
+  hasHelperDependency,
+  syntax = "ecmascript"
+) {
   const swcOptions = {
     jsc: {
       parser: {
@@ -63,7 +68,12 @@ function getConfiguration(crafty, bundle, hasHelperDependency) {
 }
 
 function getConfigurationWebpack(crafty, bundle, hasHelperDependency, syntax) {
-  const options = getConfigurationBase(crafty, bundle, hasHelperDependency, syntax);
+  const options = getConfigurationBase(
+    crafty,
+    bundle,
+    hasHelperDependency,
+    syntax
+  );
 
   // Always enabled
   options.jsc.externalHelpers = true;

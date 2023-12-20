@@ -1,6 +1,6 @@
 // @ts-check
 
-const { runAsWorker } = require('synckit');
+const { runAsWorker } = require("synckit");
 
 // Lazily-loaded Prettier.
 /**
@@ -20,7 +20,7 @@ runAsWorker(
    * @param {FileInfoOptions} eslintFileInfoOptions - The file info options.
    * @returns {Promise<string | undefined>} The formatted source code.
    */
-   async (
+  async (
     source,
     {
       mode,
@@ -35,13 +35,22 @@ runAsWorker(
     if (!prettiers.has(mode)) {
       switch (mode) {
         case "prettier:1":
-          prettiers.set(mode, (await import("../../packages/prettier1.js")).default);
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier1.js")).default
+          );
           break;
         case "prettier:2":
-          prettiers.set(mode, (await import("../../packages/prettier2.js")).default);
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier2.js")).default
+          );
           break;
         case "prettier:3":
-          prettiers.set(mode, (await import("../../packages/prettier3.mjs")).default);
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier3.mjs")).default
+          );
           break;
         case "default":
           throw new Error(`Uknown prettier mode: ${mode}`);
@@ -51,9 +60,9 @@ runAsWorker(
     /**
      * @type {typeof import('prettier')}
      */
-    const prettier = prettiers.get(mode)
+    const prettier = prettiers.get(mode);
 
-    const prettierRcOptions = await usePrettierrc
+    const prettierRcOptions = (await usePrettierrc)
       ? prettier.resolveConfig(onDiskFilepath, {
           editorconfig: true
         })
@@ -174,6 +183,6 @@ runAsWorker(
       filepath
     };
 
-    return await prettier.format(source, prettierOptions);
+    return prettier.format(source, prettierOptions);
   }
 );

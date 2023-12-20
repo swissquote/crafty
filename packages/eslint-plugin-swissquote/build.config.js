@@ -211,9 +211,7 @@ module.exports = [
   // Prettier specific stuff
   () => {
     console.log("Copy prettier 3");
-    const src = path.dirname(require.resolve(
-      "prettier/package.json"
-    ));
+    const src = path.dirname(require.resolve("prettier/package.json"));
 
     fs.mkdirSync("dist/prettier/plugins", { recursive: true });
 
