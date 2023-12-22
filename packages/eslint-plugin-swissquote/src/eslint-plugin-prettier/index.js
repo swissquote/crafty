@@ -17,7 +17,11 @@
  * @typedef {import('eslint').AST.SourceLocation} SourceLocation
  * @typedef {import('eslint').ESLint.Plugin} Plugin
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { onDiskFilepath: string, parserPath: string, usePrettierrc?: boolean }} Options
+ * @typedef {import('prettier').Options & { 
+ *   onDiskFilepath: string,
+ *   parserPath: string,
+ *   mode: string,
+ * }} Options
  */
 
 // ------------------------------------------------------------------------------
@@ -59,8 +63,11 @@ let prettierFormat;
 function reportDifference(context, difference) {
   const { operation, offset, deleteText = "", insertText = "" } = difference;
   const range = /** @type {Range} */ ([offset, offset + deleteText.length]);
+  // `context.getSourceCode()` was deprecated in ESLint v8.40.0 and replaced
+  // with the `sourceCode` property.
+  // TODO: Only use property when our eslint peerDependency is >=8.40.0.
   const [start, end] = range.map(index =>
-    context.getSourceCode().getLocFromIndex(index)
+    (context.sourceCode ?? context.getSourceCode()).getLocFromIndex(index),
   );
 
   context.report({
@@ -107,18 +114,6 @@ const eslintPluginPrettier = {
             type: "object",
             properties: {},
             additionalProperties: true
-          },
-          {
-            type: "object",
-            properties: {
-              usePrettierrc: { type: "boolean" },
-              fileInfoOptions: {
-                type: "object",
-                properties: {},
-                additionalProperties: true
-              }
-            },
-            additionalProperties: true
           }
         ],
         messages: {
@@ -128,8 +123,6 @@ const eslintPluginPrettier = {
         }
       },
       create(context) {
-        const usePrettierrc =
-          !context.options[1] || context.options[1].usePrettierrc !== false;
         /**
          * @type {FileInfoOptions}
          */
@@ -192,8 +185,7 @@ const eslintPluginPrettier = {
                   mode,
                   filepath,
                   onDiskFilepath,
-                  parserPath: context.parserPath,
-                  usePrettierrc
+                  parserPath: context.parserPath
                 },
                 fileInfoOptions
               );

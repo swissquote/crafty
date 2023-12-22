@@ -1,16 +1,26 @@
 // @ts-check
 
-const { runAsWorker } = require("synckit");
+
+/**
+ * @typedef {{
+ *  getFileInfo(path: string, config: any): Promise<{ ignored: boolean, inferredParser: string }>
+ *  format(source: string, options: any): Promise<string>
+ * }} Prettier
+ */
 
 // Lazily-loaded Prettier.
 /**
- * @type {Map<string, typeof import('prettier')>}}
+ * @type {Map<string, Prettier>}}
  */
 const prettiers = new Map();
 
 /**
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { onDiskFilepath: string, parserPath: string, usePrettierrc?: boolean }} Options
+ * @typedef {import('prettier').Options & { 
+ *   onDiskFilepath: string,
+ *   parserPath: string,
+ *   mode: string,
+ * }} Options
  */
 
 runAsWorker(
@@ -27,7 +37,6 @@ runAsWorker(
       filepath,
       onDiskFilepath,
       parserPath,
-      usePrettierrc,
       ...eslintPrettierOptions
     },
     eslintFileInfoOptions
@@ -58,15 +67,9 @@ runAsWorker(
     }
 
     /**
-     * @type {typeof import('prettier')}
+     * @type {Prettier}
      */
     const prettier = prettiers.get(mode);
-
-    const prettierRcOptions = (await usePrettierrc)
-      ? prettier.resolveConfig(onDiskFilepath, {
-          editorconfig: true
-        })
-      : null;
 
     const { ignored, inferredParser } = await prettier.getFileInfo(
       onDiskFilepath,
@@ -74,9 +77,6 @@ runAsWorker(
         resolveConfig: false,
         withNodeModules: false,
         ignorePath: ".prettierignore",
-        plugins: /** @type {string[] | undefined} */ (prettierRcOptions
-          ? prettierRcOptions.plugins
-          : null),
         ...eslintFileInfoOptions
       }
     );
@@ -178,7 +178,6 @@ runAsWorker(
 
     const prettierOptions = {
       ...initialOptions,
-      ...prettierRcOptions,
       ...eslintPrettierOptions,
       filepath
     };
