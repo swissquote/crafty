@@ -1,5 +1,6 @@
 // @ts-check
 
+const { runAsWorker } = require("../../packages/sync-threads.js");
 
 /**
  * @typedef {{
@@ -16,7 +17,7 @@ const prettiers = new Map();
 
 /**
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { 
+ * @typedef {import('prettier').Options & {
  *   onDiskFilepath: string,
  *   parserPath: string,
  *   mode: string,
@@ -32,13 +33,7 @@ runAsWorker(
    */
   async (
     source,
-    {
-      mode,
-      filepath,
-      onDiskFilepath,
-      parserPath,
-      ...eslintPrettierOptions
-    },
+    { mode, filepath, onDiskFilepath, parserPath, ...eslintPrettierOptions },
     eslintFileInfoOptions
   ) => {
     if (!prettiers.has(mode)) {

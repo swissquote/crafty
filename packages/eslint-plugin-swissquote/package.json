@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@swissquote/crafty-commons": "1.24.0",
-    "synckit": "^0.8.6",
     "typescript": "5.3.3"
   },
   "peerDependencies": {
@@ -41,7 +40,8 @@
     "prettier": "3.1.1",
     "prettier-linter-helpers": "1.0.0",
     "prettier1": "npm:prettier@1.19.1",
-    "prettier2": "npm:prettier@2.8.8"
+    "prettier2": "npm:prettier@2.8.8",
+    "sync-threads": "patch:sync-threads@npm%3A1.0.1#~/.yarn/patches/sync-threads-npm-1.0.1-54233b9086.patch"
   },
   "engines": {
     "node": ">=18"

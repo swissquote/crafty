@@ -17,7 +17,7 @@
  * @typedef {import('eslint').AST.SourceLocation} SourceLocation
  * @typedef {import('eslint').ESLint.Plugin} Plugin
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { 
+ * @typedef {import('prettier').Options & {
  *   onDiskFilepath: string,
  *   parserPath: string,
  *   mode: string,
@@ -67,7 +67,7 @@ function reportDifference(context, difference) {
   // with the `sourceCode` property.
   // TODO: Only use property when our eslint peerDependency is >=8.40.0.
   const [start, end] = range.map(index =>
-    (context.sourceCode ?? context.getSourceCode()).getLocFromIndex(index),
+    (context.sourceCode ?? context.getSourceCode()).getLocFromIndex(index)
   );
 
   context.report({
@@ -160,7 +160,7 @@ const eslintPluginPrettier = {
 
             if (!prettierFormat) {
               // Prettier is expensive to load, so only load it if needed.
-              prettierFormat = require("synckit").createSyncFn(
+              prettierFormat = require("../../packages/sync-threads.js").createSyncFn(
                 require.resolve("./worker.js")
               );
             }
@@ -218,8 +218,12 @@ const eslintPluginPrettier = {
               return;
             }
 
+            console.log({source, prettierSource});
+
             if (source !== prettierSource) {
               const differences = generateDifferences(source, prettierSource);
+
+              console.log("Found differences", differences);
 
               for (const difference of differences) {
                 reportDifference(context, difference);
