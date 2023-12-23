@@ -175,16 +175,38 @@ and <code>recommended</code>)</li>
 <li>
 <code>eslint-plugin-prettier</code> Uses Prettier to format your code.</li>
 </ul>
-<p>Due to breaking changes in behavior from Prettier 1 to Prettier 2 without configuration options to revert to Prettier 1’s behavior, this preset provides both Prettier 1 and Prettier 2.
-By default we ship with Prettier 1 for backwards compatibility.</p>
+<p>Due to breaking changes in behavior between Prettier major versions, this preset provides multiple Prettier versions.
+By default we use Prettier 1 for backwards compatibility.</p>
 <p>You can choose which version you want to use by using ESLint’s <code>settings</code> key.
-Valid values are <code>prettier:1</code> and <code>prettier:2</code>.</p>
+Valid values are <code>prettier:1</code>, <code>prettier:2</code>, and <code>prettier:3</code>.</p>
 <pre><code class="hljs javascript">{
   <span class="hljs-attr">settings</span>: {
     <span class="hljs-string">"formatting/mode"</span>: <span class="hljs-string">"prettier:2"</span>
   }
 }
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>Prettier Version</th>
+<th>TypeScript Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prettier 1</td>
+<td>&gt;= 1 &amp;&amp; &lt;=4.2</td>
+</tr>
+<tr>
+<td>Prettier 2</td>
+<td>&gt;= 1 &amp;&amp; &lt;=5.1</td>
+</tr>
+<tr>
+<td>Prettier 3</td>
+<td>&gt;= 1</td>
+</tr>
+</tbody>
+</table>
 <h3><a id="plugins-in-the-recommended-preset" href="#plugins-in-the-recommended-preset" class="Permalink" aria-hidden="true" title="Permalink">#</a>Plugins in the <code>recommended</code> preset</h3>
 <ul>
 <li>
