@@ -2906,9 +2906,11 @@ __metadata:
     eslint-plugin-i: "npm:2.29.1"
     eslint-plugin-react: "npm:7.33.2"
     eslint-plugin-react-hooks: "npm:4.6.0"
-    prettier: "npm:2.8.8"
+    prettier: "npm:3.1.1"
     prettier-linter-helpers: "npm:1.0.0"
     prettier1: "npm:prettier@1.19.1"
+    prettier2: "npm:prettier@2.8.8"
+    sync-threads: "patch:sync-threads@npm%3A1.0.1#~/.yarn/patches/sync-threads-npm-1.0.1-54233b9086.patch"
     typescript: "npm:5.3.3"
   peerDependencies:
     eslint: "*"
@@ -11377,12 +11379,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.8.8":
+"prettier2@npm:prettier@2.8.8, prettier@npm:2.8.8":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
     prettier: bin-prettier.js
   checksum: 463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:3.1.1":
+  version: 3.1.1
+  resolution: "prettier@npm:3.1.1"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: facc944ba20e194ff4db765e830ffbcb642803381f0d2033ed397e79904fa4ccc877dc25ad68f42d36985c01d051c990ca1b905fb83d2d7d65fe69e4386fa1a3
   languageName: node
   linkType: hard
 
@@ -13096,6 +13107,20 @@ __metadata:
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
   checksum: dfbe201ae09ac6053d163578778c53aa860a784147ecf95705de0cd23f42c851e1be7889241495e95c37cabb058edb1052f141387bef68f705afc8f9dd358509
+  languageName: node
+  linkType: hard
+
+"sync-threads@npm:1.0.1":
+  version: 1.0.1
+  resolution: "sync-threads@npm:1.0.1"
+  checksum: 19844396881725e1eaf0a7dfec3daf9d9a3e51e8c52211c883dbadaefe4c983229f550766bd0531c525937562984622c4415f2beafc2c05ce5e88450caeee3d7
+  languageName: node
+  linkType: hard
+
+"sync-threads@patch:sync-threads@npm%3A1.0.1#~/.yarn/patches/sync-threads-npm-1.0.1-54233b9086.patch":
+  version: 1.0.1
+  resolution: "sync-threads@patch:sync-threads@npm%3A1.0.1#~/.yarn/patches/sync-threads-npm-1.0.1-54233b9086.patch::version=1.0.1&hash=48c5f8"
+  checksum: 65b90f66d3885b4c66c2d42d3533b63ca0c47bc2aa19b9143954aca1869bb7eadb358504e4e4c68bb9bdd4c967e7eb844ff9145c7ab28961a8f1f3ea6422bb71
   languageName: node
   linkType: hard
 

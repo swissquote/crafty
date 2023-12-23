@@ -17,7 +17,11 @@
  * @typedef {import('eslint').AST.SourceLocation} SourceLocation
  * @typedef {import('eslint').ESLint.Plugin} Plugin
  * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { onDiskFilepath: string, parserPath: string, usePrettierrc?: boolean }} Options
+ * @typedef {import('prettier').Options & {
+ *   onDiskFilepath: string,
+ *   parserPath: string,
+ *   mode: string,
+ * }} Options
  */
 
 // ------------------------------------------------------------------------------
@@ -41,9 +45,9 @@ const { INSERT, DELETE, REPLACE } = generateDifferences;
 
 // Lazily-loaded Prettier.
 /**
- * @type {Map<string, (source: string, options: Options, fileInfoOptions: FileInfoOptions) => string>}}
+ * @type {(source: string, options: Options, fileInfoOptions: FileInfoOptions) => string}
  */
-const prettierFormat = new Map();
+let prettierFormat;
 
 // ------------------------------------------------------------------------------
 //  Rule Definition
@@ -59,8 +63,11 @@ const prettierFormat = new Map();
 function reportDifference(context, difference) {
   const { operation, offset, deleteText = "", insertText = "" } = difference;
   const range = /** @type {Range} */ ([offset, offset + deleteText.length]);
+  // `context.getSourceCode()` was deprecated in ESLint v8.40.0 and replaced
+  // with the `sourceCode` property.
+  // TODO: Only use property when our eslint peerDependency is >=8.40.0.
   const [start, end] = range.map(index =>
-    context.getSourceCode().getLocFromIndex(index)
+    (context.sourceCode ?? context.getSourceCode()).getLocFromIndex(index)
   );
 
   context.report({
@@ -107,18 +114,6 @@ const eslintPluginPrettier = {
             type: "object",
             properties: {},
             additionalProperties: true
-          },
-          {
-            type: "object",
-            properties: {
-              usePrettierrc: { type: "boolean" },
-              fileInfoOptions: {
-                type: "object",
-                properties: {},
-                additionalProperties: true
-              }
-            },
-            additionalProperties: true
           }
         ],
         messages: {
@@ -128,15 +123,22 @@ const eslintPluginPrettier = {
         }
       },
       create(context) {
-        const usePrettierrc =
-          !context.options[1] || context.options[1].usePrettierrc !== false;
         /**
          * @type {FileInfoOptions}
          */
         const fileInfoOptions =
           (context.options[1] && context.options[1].fileInfoOptions) || {};
-        const sourceCode = context.getSourceCode();
-        const filepath = context.getFilename();
+
+        // `context.getSourceCode()` was deprecated in ESLint v8.40.0 and replaced
+        // with the `sourceCode` property.
+        // TODO: Only use property when our eslint peerDependency is >=8.40.0.
+        const sourceCode = context.sourceCode ?? context.getSourceCode();
+
+        // `context.getFilename()` was deprecated in ESLint v8.40.0 and replaced
+        // with the `filename` property.
+        // TODO: Only use property when our eslint peerDependency is >=8.40.0.
+        const filepath = context.filename ?? context.getFilename();
+
         // Processors that extract content from a file, such as the markdown
         // plugin extracting fenced code blocks may choose to specify virtual
         // file paths. If this is the case then we need to resolve prettier
@@ -156,9 +158,11 @@ const eslintPluginPrettier = {
               (context.settings && context.settings["formatting/mode"]) ||
               "prettier:1";
 
-            if (!prettierFormat.has(mode)) {
+            if (!prettierFormat) {
               // Prettier is expensive to load, so only load it if needed.
-              prettierFormat.set(mode, require("./worker")(mode));
+              prettierFormat = require("../../packages/sync-threads.js").createSyncFn(
+                require.resolve("./worker.js")
+              );
             }
 
             // prettier.format() may throw a SyntaxError if it cannot parse the
@@ -174,14 +178,14 @@ const eslintPluginPrettier = {
              */
             let prettierSource;
             try {
-              prettierSource = prettierFormat.get(mode)(
+              prettierSource = prettierFormat(
                 source,
                 {
                   ...eslintPrettierOptions,
+                  mode,
                   filepath,
                   onDiskFilepath,
-                  parserPath: context.parserPath,
-                  usePrettierrc
+                  parserPath: context.parserPath
                 },
                 fileInfoOptions
               );

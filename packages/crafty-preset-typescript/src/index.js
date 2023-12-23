@@ -132,7 +132,14 @@ module.exports = {
       .loader(
         require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js")
       )
-      .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
+      .options(
+        getConfigurationWebpack(
+          crafty,
+          bundle,
+          hasHelperDependency,
+          "typescript"
+        )
+      );
 
     const tsOptions = {
       // https://webpack.js.org/guides/build-performance/#typescript-loader

@@ -1,61 +1,77 @@
 // @ts-check
 
+const { runAsWorker } = require("../../packages/sync-threads.js");
+
 /**
- * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
- * @typedef {import('prettier').Options & { onDiskFilepath: string, parserPath: string, usePrettierrc?: boolean }} Options
+ * @typedef {{
+ *  getFileInfo(path: string, config: any): Promise<{ ignored: boolean, inferredParser: string }>
+ *  format(source: string, options: any): Promise<string>
+ * }} Prettier
  */
 
-module.exports = function createWorker(mode) {
-  /**
-   * @type {typeof import('prettier')}
-   */
-  let prettier;
+// Lazily-loaded Prettier.
+/**
+ * @type {Map<string, Prettier>}}
+ */
+const prettiers = new Map();
 
+/**
+ * @typedef {import('prettier').FileInfoOptions} FileInfoOptions
+ * @typedef {import('prettier').Options & {
+ *   onDiskFilepath: string,
+ *   parserPath: string,
+ *   mode: string,
+ * }} Options
+ */
+
+runAsWorker(
   /**
    * @param {string} source - The source code to format.
    * @param {Options} options - The prettier options.
    * @param {FileInfoOptions} eslintFileInfoOptions - The file info options.
-   * @returns {string | undefined} The formatted source code.
+   * @returns {Promise<string | undefined>} The formatted source code.
    */
-  return (
+  async (
     source,
-    {
-      filepath,
-      onDiskFilepath,
-      parserPath,
-      usePrettierrc,
-      ...eslintPrettierOptions
-    },
+    { mode, filepath, onDiskFilepath, parserPath, ...eslintPrettierOptions },
     eslintFileInfoOptions
   ) => {
-    if (!prettier) {
+    if (!prettiers.has(mode)) {
       switch (mode) {
         case "prettier:1":
-          prettier = require("../../dist/prettier1/index.js");
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier1.js")).default
+          );
           break;
         case "prettier:2":
-          prettier = require("../../dist/prettier/index.js");
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier2.js")).default
+          );
+          break;
+        case "prettier:3":
+          prettiers.set(
+            mode,
+            (await import("../../packages/prettier3.mjs")).default
+          );
           break;
         case "default":
           throw new Error(`Uknown prettier mode: ${mode}`);
       }
     }
 
-    const prettierRcOptions = usePrettierrc
-      ? prettier.resolveConfig.sync(onDiskFilepath, {
-          editorconfig: true
-        })
-      : null;
+    /**
+     * @type {Prettier}
+     */
+    const prettier = prettiers.get(mode);
 
-    const { ignored, inferredParser } = prettier.getFileInfo.sync(
+    const { ignored, inferredParser } = await prettier.getFileInfo(
       onDiskFilepath,
       {
         resolveConfig: false,
         withNodeModules: false,
         ignorePath: ".prettierignore",
-        plugins: /** @type {string[] | undefined} */ (prettierRcOptions
-          ? prettierRcOptions.plugins
-          : null),
         ...eslintFileInfoOptions
       }
     );
@@ -157,11 +173,10 @@ module.exports = function createWorker(mode) {
 
     const prettierOptions = {
       ...initialOptions,
-      ...prettierRcOptions,
       ...eslintPrettierOptions,
       filepath
     };
 
     return prettier.format(source, prettierOptions);
-  };
-};
+  }
+);

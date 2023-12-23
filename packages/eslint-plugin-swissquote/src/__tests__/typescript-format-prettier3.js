@@ -4,7 +4,7 @@ const { prepareESLint, lint } = require("../../test_utils");
 
 const engine = prepareESLint("format", {
   settings: {
-    "formatting/mode": "prettier:2"
+    "formatting/mode": "prettier:3"
   }
 });
 
@@ -70,7 +70,7 @@ function assignRef<T>(ref: T, setter: React.Ref<T>) {
   }
 
   throw new Error(
-    "Your ref must be a function or an object created with React.createRef"
+    "Your ref must be a function or an object created with React.createRef",
   );
 }
 

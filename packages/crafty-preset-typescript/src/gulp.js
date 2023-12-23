@@ -94,7 +94,7 @@ module.exports = function createTask(crafty, bundle, gulp) {
     const {
       getConfigurationGulp
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
-    const swcOptions = getConfigurationGulp(crafty, bundle);
+    const swcOptions = getConfigurationGulp(crafty, bundle, "typescript");
     jsStream = jsStream.pipe(swc(swcOptions));
 
     if (bundle.concat) {

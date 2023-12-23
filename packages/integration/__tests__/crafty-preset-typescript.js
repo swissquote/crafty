@@ -78,7 +78,7 @@ test.serial("Lints TypeScript using the command, --preset format", async t => {
 
 test.serial("Tests Syntax using Prettier 1", async t => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/test-ts-syntax_legacy"
+    "crafty-preset-typescript/test-ts-syntax_prettier1"
   );
 
   const result = await testUtils.run(["run"], cwd);
@@ -92,7 +92,21 @@ test.serial("Tests Syntax using Prettier 1", async t => {
 
 test.serial("Tests Syntax using Prettier 2", async t => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/test-ts-syntax"
+    "crafty-preset-typescript/test-ts-syntax_prettier2"
+  );
+
+  const result = await testUtils.run(["run"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+
+  t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
+});
+
+test.serial("Tests Syntax using Prettier 3", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript/test-ts-syntax_prettier3"
   );
 
   const result = await testUtils.run(["run"], cwd);
