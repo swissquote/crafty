@@ -218,12 +218,8 @@ const eslintPluginPrettier = {
               return;
             }
 
-            console.log({source, prettierSource});
-
             if (source !== prettierSource) {
               const differences = generateDifferences(source, prettierSource);
-
-              console.log("Found differences", differences);
 
               for (const difference of differences) {
                 reportDifference(context, difference);
