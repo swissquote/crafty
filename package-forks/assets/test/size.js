@@ -46,7 +46,7 @@ test("invalid file", async t => {
   } catch (err) {
     const absolutePath = path.resolve("test/fixtures/invalid.jpg");
     t.truthy(err instanceof Error);
-    t.is(err.message, `Corrupt JPG, exceeded buffer limits: ${absolutePath}`);
+    t.is(err.message, `Invalid JPG, no size found: ${absolutePath}`);
   }
 });
 

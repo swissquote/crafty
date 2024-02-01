@@ -1,7 +1,7 @@
 import path from "path";
 
 import imagemin from "./gulp-imagemin.js";
-import newer from "gulp-newer";
+import newer from "@swissquote/crafty-commons-gulp/packages/gulp-newer.js";
 import svgmin from "gulp-svgmin";
 
 export default {

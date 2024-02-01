@@ -194,7 +194,7 @@ test("throws when trying to measure an invalid file", (t) =>
     (err) => {
       const absolutePath = path.resolve("test/fixtures/images/invalid.jpg");
       t.truthy(err instanceof Error);
-      t.is(err.message, `Corrupt JPG, exceeded buffer limits: ${absolutePath}`);
+      t.is(err.message, `Invalid JPG, no size found: ${absolutePath}`);
     }
   ));
 
