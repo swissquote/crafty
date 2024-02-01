@@ -14,17 +14,8 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    - name: Use Node.js
-      uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
-      with:
-        node-version: v18.x
-    - id: node_path
-      run: echo "node=$(which node)" >> $GITHUB_OUTPUT
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      with: 
-        args: >
-          -Dsonar.nodejs.executable=${{ steps.node_path.outputs.node }}
