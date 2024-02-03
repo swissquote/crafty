@@ -1,11 +1,9 @@
-const stylelint = require("../../shims/stylelint");
-
-const isKeyframeSelector = require("../../dist/stylelint-utils/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
-
-const resolveNestedSelector = require("../utils/resolveNestedSelector");
-const parseSelector = require("../utils/parseSelector");
+import stylelint from "stylelint";
+import isKeyframeSelector from "stylelint/lib/utils/isKeyframeSelector.mjs";
+import isStandardSyntaxRule from "stylelint/lib/utils/isStandardSyntaxRule.mjs";
+import isStandardSyntaxSelector from "stylelint/lib/utils/isStandardSyntaxSelector.mjs";
+import resolveNestedSelector from "../utils/resolveNestedSelector.js";
+import parseSelector from "../utils/parseSelector.js";
 
 const ruleName = "swissquote/no-type-outside-scope";
 
@@ -71,7 +69,7 @@ function checkSelector(selectorNode, ruleNode, result) {
   }
 }
 
-module.exports = function() {
+const rule = function() {
   return (root, result) => {
     root.walkRules(rule => {
       if (
@@ -111,5 +109,6 @@ module.exports = function() {
   };
 };
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+rule.ruleName = ruleName;
+rule.messages = messages;
+export default rule;

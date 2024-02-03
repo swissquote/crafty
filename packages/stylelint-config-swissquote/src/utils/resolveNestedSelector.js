@@ -71,7 +71,7 @@ function insertParent(initialParentSelector, initialSelector) {
   throw new Error("How did you get here ?");
 }
 
-function resolveNestedSelector(initialSelector, node) {
+export default function resolveNestedSelector(initialSelector, node) {
   const parent = node.parent;
 
   const selector = Array.isArray(initialSelector)
@@ -110,4 +110,3 @@ function resolveNestedSelector(initialSelector, node) {
   }, []);
 }
 
-module.exports = resolveNestedSelector;

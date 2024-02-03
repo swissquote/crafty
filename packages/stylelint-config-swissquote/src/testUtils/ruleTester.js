@@ -1,6 +1,8 @@
-const test = require("ava");
-const util = require("util");
-const { lint } = require("stylelint");
+import test from "ava";
+import util from "util";
+import stylelint from "stylelint";
+
+const { lint } = stylelint;
 
 function setupTestCases({ name, cases, schema, comparisons }) {
   if (cases && cases.length) {
@@ -24,7 +26,7 @@ function setupTestCases({ name, cases, schema, comparisons }) {
   }
 }
 
-module.exports = function testRule(schema) {
+export default function testRule(schema) {
   const stylelintConfig = {
     plugins: schema.plugins,
     rules: {

@@ -8,6 +8,7 @@
     "access": "public"
   },
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "@swissquote/crafty": "1.24.0",
     "caniuse-lite": "^1.0.30001584",
@@ -28,12 +29,10 @@
   },
   "peerDependencies": {
     "@swissquote/crafty-commons": "1.24.0",
-    "postcss": "^8.0.0",
-    "stylelint": "^15.0.0"
+    "postcss": "^8.0.0"
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
-    "build": "node ../../utils/build.mjs",
     "test": "ava",
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src --include=packages --include='*.js' ava"
   },

@@ -1,9 +1,9 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "stylelint";
 
-const selectorParser = require("../../packages/postcss-selector-parser");
-const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
+import selectorParser from "postcss-selector-parser";
+import resolveNestedSelector from "postcss-resolve-nested-selector";
 
-const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
+import cssRuleHasSelectorEndingWithColon from "../utils/cssRuleHasSelectorEndingWithColon.js";
 
 const ruleName = "swissquote/no-block-inside-block";
 const messages = {
@@ -46,7 +46,7 @@ function isInsideBlock(selectorNode) {
   );
 }
 
-module.exports = function() {
+const rule = function() {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -79,5 +79,6 @@ module.exports = function() {
   };
 };
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+rule.ruleName = ruleName;
+rule.messages = messages;
+export default rule;

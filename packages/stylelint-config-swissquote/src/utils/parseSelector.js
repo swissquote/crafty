@@ -1,6 +1,6 @@
-const selectorParser = require("../../packages/postcss-selector-parser");
+import selectorParser from "postcss-selector-parser";
 
-function parseSelector(resolvedSelector) {
+export default function parseSelector(resolvedSelector) {
   const container = selectorParser.selector();
   for (const part of resolvedSelector) {
     const parsed = selectorParser().astSync(part.selector);
@@ -15,5 +15,3 @@ function parseSelector(resolvedSelector) {
 
   return root;
 }
-
-module.exports = parseSelector;

@@ -1,5 +1,6 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName, messages } = require("../no-utility-reassignment");
+import testRule from "../../testUtils/ruleTester.js";
+import rule from "../no-utility-reassignment.js";
+const { ruleName, messages } = rule;
 
 testRule({
   plugins: ["./index.js"],

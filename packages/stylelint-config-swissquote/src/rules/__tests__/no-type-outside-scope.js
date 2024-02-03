@@ -1,5 +1,6 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName, messages } = require("../no-type-outside-scope");
+import testRule from "../../testUtils/ruleTester.js";
+import rule from "../no-type-outside-scope.js";
+const { ruleName, messages } = rule;
 
 testRule({
   plugins: ["./index.js"],

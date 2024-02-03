@@ -1,8 +1,8 @@
-const test = require("ava");
+import test from "ava";
 
-const stylelint = require("stylelint");
+import stylelint from "stylelint";
 
-const config = require("../../recommended");
+import config from "../../recommended.js";
 
 const validCss = `/** @define Form */
 

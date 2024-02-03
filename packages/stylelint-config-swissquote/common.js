@@ -1,3 +1,10 @@
+import { createRequire } from "node:module"
+import { fileURLToPath} from 'url';
+import path from 'path';
+
+const require = createRequire(import.meta.url)
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
 // Taken from https://github.com/stylelint/stylelint-config-suitcss/
 // Changes since last import: https://github.com/suitcss/stylelint-config-suitcss/compare/4e09f16f7340d610348059ab73f24fb11488152d...master
 
@@ -13,12 +20,12 @@ function warn(value, options) {
   return [value || true, opt];
 }
 
-module.exports = {
+export default {
   plugins: [
-    require.resolve("./index"),
-    require.resolve("./packages/stylelint-prettier"),
-    require.resolve("./packages/stylelint-scss"),
-    require.resolve("./packages/stylelint-no-unsupported-browser-features")
+    path.join(__dirname, "index.js"),
+    require.resolve("stylelint-prettier"),
+    require.resolve("stylelint-scss"),
+    require.resolve("stylelint-no-unsupported-browser-features")
   ],
   rules: {
     // Formatting

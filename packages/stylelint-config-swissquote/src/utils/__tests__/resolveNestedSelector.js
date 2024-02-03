@@ -1,12 +1,13 @@
-const test = require("ava");
+import test from "ava";
 
-const isKeyframeSelector = require("../../../dist/stylelint-utils/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
-const postcss = require("postcss");
-const scssSyntax = require("postcss-scss");
+import isKeyframeSelector from "stylelint/lib/utils/isKeyframeSelector.mjs";
+import isStandardSyntaxRule from "stylelint/lib/utils/isStandardSyntaxRule.mjs";
+import isStandardSyntaxSelector from "stylelint/lib/utils/isStandardSyntaxSelector.mjs";
 
-const resolveNestedSelector = require("../resolveNestedSelector");
+import postcss from "postcss";
+import scssSyntax from "postcss-scss";
+
+import resolveNestedSelector from "../resolveNestedSelector.js";
 
 function getResolvedSelectors(results) {
   return root => {

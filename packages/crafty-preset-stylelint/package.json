@@ -8,6 +8,7 @@
     "access": "public"
   },
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
     "build": "node ../../utils/build.mjs"
@@ -20,13 +21,13 @@
     "@swissquote/crafty-preset-prettier": "1.24.0",
     "@swissquote/stylelint-config-swissquote": "1.24.0",
     "postcss": "8.4.34",
-    "postcss-scss": "4.0.9"
+    "postcss-scss": "4.0.9",
+    "stylelint": "16.2.1"
   },
   "devDependencies": {
     "@ronilaukkarinen/gulp-stylelint": "14.1.2",
     "is-plain-object": "5.0.0",
-    "resolve-from": "5.0.0",
-    "stylelint": "15.10.0"
+    "resolve-from": "5.0.0"
   },
   "engines": {
     "node": ">=18"

@@ -1,5 +1,6 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName } = require("../no-block-inside-block");
+import testRule from "../../testUtils/ruleTester.js";
+import rule from "../no-block-inside-block.js";
+const { ruleName } = rule;
 
 testRule({
   plugins: ["./index.js"],

@@ -1,6 +1,11 @@
-module.exports = {
-  extends: [require.resolve("./common")],
-  plugins: [require.resolve("./index")],
+import { fileURLToPath} from 'url';
+import path from 'path';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+export default {
+  extends: [path.join(__dirname, "common.js")],
+  plugins: [path.join(__dirname, "index.js")],
   rules: {
     // Swissquote Guidelines
     // ---------------------------------------------------------------------
