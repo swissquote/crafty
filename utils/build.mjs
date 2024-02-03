@@ -10,6 +10,7 @@ import {
   printReport
 } from "./duplicates.js";
 import compileUtils from "./compile.js";
+import compileRspack from "./compileRspack.js";
 
 class PackagesBuilder {
   constructor() {
@@ -69,6 +70,20 @@ class Builder {
     return this;
   }
 
+  rspack() {
+    this.values.rspack = true;
+
+    return this;
+  }
+
+  esm() {
+    this.values.options.esm = true;
+
+    // NCC is bad at handling ESM
+    // so we always enable it for esm
+    return this.rspack();
+  }
+
   options(options) {
     this.values.options = { ...this.values.options, ...options };
 
@@ -87,7 +102,7 @@ class Builder {
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
     if (this.values.options.esm) {
       this.values.destination = `dist/${cleanPkg}/index.mjs`;
-      this.values.sourceFile = `export * from "${pkg}";`;
+      this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
     } else {
       this.values.destination = `dist/${cleanPkg}/index.js`;
       this.values.sourceFile = `module.exports = require("${pkg}");`;
@@ -119,7 +134,7 @@ class Builder {
   async build() {
     console.log(`${this.values.name}\n${"=".repeat(this.values.name.length)}`);
 
-    const tmpSourceFile = `_temp_vcc.js`;
+    const tmpSourceFile = `_temp_ncc.js`;
 
     try {
       if (this.values.sourceFile) {
@@ -129,10 +144,18 @@ class Builder {
         this.values.source = tmpSourceFile;
       }
 
-      await compileUtils.compile(this.values.source, this.values.destination, {
-        name: this.values.name,
-        ...this.values.options,
-      });
+      if (this.values.rspack) {
+        await compileRspack(this.values.source, this.values.destination, {
+          name: this.values.name,
+          ...this.values.options,
+        });
+      } else {
+        await compileUtils.compile(this.values.source, this.values.destination, {
+          name: this.values.name,
+          ...this.values.options,
+        });
+      }
+
 
       if (this.values.entryFiles) {
         for (const entryFile of this.values.entryFiles) {

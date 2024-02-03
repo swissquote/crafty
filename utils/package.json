@@ -1,0 +1,17 @@
+{
+    "name": "@swissquote/utils",
+    "version": "1.24.0",
+    "main": "./build.mjs",
+    "scripts": {
+        "lint": "node ../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node *.js"
+    },
+    "dependencies": {
+        "@rsdoctor/rspack-plugin": "0.1.1",
+        "@rspack/core": "0.5.3",
+        "@vercel/ncc": "0.38.1"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "private": true
+}

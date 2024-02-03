@@ -141,9 +141,11 @@ function checkStats(stats, statFile) {
     .map((m) => m.name.replace("external ", "").replace(/"/g, ""))
     .filter((m) => m[0] !== ".") // exclude relative paths
     .map((m) => {
-      const p = m.split(/\//g);
+      // Rspack wraps externals in [], we remove that here
+      const cleanModule = m.replace(/^\[|\]$/g, "");
+      const p = cleanModule.split(/\//g);
 
-      if (m.startsWith("@")) {
+      if (cleanModule.startsWith("@")) {
         return `${p[0]}/${p[1]}`;
       }
 
