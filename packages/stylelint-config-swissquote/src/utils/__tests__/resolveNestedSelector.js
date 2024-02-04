@@ -1,8 +1,8 @@
 import test from "ava";
 
-import isKeyframeSelector from "stylelint/lib/utils/isKeyframeSelector.mjs";
-import isStandardSyntaxRule from "stylelint/lib/utils/isStandardSyntaxRule.mjs";
-import isStandardSyntaxSelector from "stylelint/lib/utils/isStandardSyntaxSelector.mjs";
+import isKeyframeSelector from "../../../dist/stylelint-utils/stylelint-isKeyframeSelector.js";
+import isStandardSyntaxRule from "../../../dist/stylelint-utils/stylelint-isStandardSyntaxRule.js";
+import isStandardSyntaxSelector from "../../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector.js";
 
 import postcss from "postcss";
 import scssSyntax from "postcss-scss";

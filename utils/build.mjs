@@ -13,14 +13,17 @@ import compileUtils from "./compile.js";
 import compileRspack from "./compileRspack.js";
 
 class PackagesBuilder {
-  constructor() {
+  constructor(esm) {
+    this.esm = esm;
     this.sourceFile = [];
     this.entryFiles = [];
   }
 
   package(pkg, name, entryFile) {
     this.sourceFile.push(
-      `module.exports["${name}"] = function() { return require("${pkg}"); };`
+      this.esm
+        ? `export { default as ${name} } from "${pkg}";`
+        : `module.exports["${name}"] = function() { return require("${pkg}"); };`
     );
 
     if (entryFile) {
@@ -81,7 +84,9 @@ class Builder {
 
     // NCC is bad at handling ESM
     // so we always enable it for esm
-    return this.rspack();
+    this.rspack();
+
+    return this;
   }
 
   options(options) {
@@ -117,9 +122,12 @@ class Builder {
   packages(callback) {
     const pkg = this.values.name;
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
-    this.values.destination = `dist/${cleanPkg}/bundled.js`;
 
-    const builder = new PackagesBuilder();
+    const esm = this.values.options.esm;
+
+    this.values.destination = `dist/${cleanPkg}/bundled.${esm ? 'mjs' :'js'}`;
+
+    const builder = new PackagesBuilder(esm);
 
     callback(builder);
 
@@ -139,16 +147,13 @@ class Builder {
     try {
       if (this.values.sourceFile) {
         await fs.promises.writeFile(tmpSourceFile, this.values.sourceFile);
-        this.values.options.filename =
-          this.values.name.replace("@", "").replace("/", "-") + ".js";
+        //this.values.options.filename =
+        //  this.values.name.replace("@", "").replace("/", "-") + ".js";
         this.values.source = tmpSourceFile;
       }
 
       if (this.values.rspack) {
-        await compileRspack(this.values.source, this.values.destination, {
-          name: this.values.name,
-          ...this.values.options,
-        });
+        await compileRspack(this.values);
       } else {
         await compileUtils.compile(this.values.source, this.values.destination, {
           name: this.values.name,
@@ -170,13 +175,11 @@ class Builder {
 
           fs.mkdirSync(path.dirname(entryFile.entryFile), { recursive: true });
 
-          //console.log({relativePath, source: this.values.destination, destination: entryFile.entryFile});
-
           console.log("Writing", entryFile.entryFile);
           await fs.promises.writeFile(
             entryFile.entryFile,
             this.values.options.esm 
-              ? `import { ${entryFile.name} } from "${relativePath}"; export default ${entryFile.name}();`
+              ? `export { ${entryFile.name} as default } from "${relativePath}";`
               : `module.exports = require('${relativePath}')['${entryFile.name}']();`
           );
         }

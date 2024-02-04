@@ -1,4 +1,4 @@
-import stylelint from "stylelint";
+import stylelint from "./shims/stylelint.js";
 
 import noBlockInsideBlock from "./src/rules/no-block-inside-block.js";
 import noUtilityReassignment from "./src/rules/no-utility-reassignment.js";

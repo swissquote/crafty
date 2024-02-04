@@ -150,15 +150,13 @@ function checkStats(stats, statFile) {
   // All external modules should be in dependencies or peerDependencies
   // If not, module resolution and hoisting may have an unexpected behaviour
   const externals = stats.modules
-    .filter(m => isExternal(m.name))
-    .map(m => m.name.replace("external ", "").replace(/"/g, ""))
-    .filter(m => m[0] !== ".") // exclude relative paths
-    .map(m => {
-      // Rspack wraps externals in [], we remove that here
-      const cleanModule = m.replace(/^\[|\]$/g, "");
-      const p = cleanModule.split(/\//g);
+    .filter((m) => isExternal(m.name))
+    .map((m) => m.name.replace("external ", "").replace(/"/g, "").replace(/^\[|\]$/g, ""))
+    .filter((m) => m[0] !== ".") // exclude relative paths
+    .map((m) => {
+      const p = m.split(/\//g);
 
-      if (cleanModule.startsWith("@")) {
+      if (m.startsWith("@")) {
         return `${p[0]}/${p[1]}`;
       }
 

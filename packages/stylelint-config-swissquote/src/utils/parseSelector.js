@@ -1,4 +1,4 @@
-import selectorParser from "postcss-selector-parser";
+import selectorParser from "../../packages/postcss-selector-parser.js";
 
 export default function parseSelector(resolvedSelector) {
   const container = selectorParser.selector();

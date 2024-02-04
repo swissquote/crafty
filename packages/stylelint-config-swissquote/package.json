@@ -12,27 +12,30 @@
   "dependencies": {
     "@swissquote/crafty": "1.24.0",
     "caniuse-lite": "^1.0.30001584",
+    "postcss-resolve-nested-selector": "0.1.1",
     "postcss-scss": "4.0.9"
   },
   "devDependencies": {
     "ava": "6.1.1",
     "c8": "9.1.0",
-    "postcss": "8.4.34",
+    "postcss": "8.4.33",
     "postcss-resolve-nested-selector": "0.1.1",
     "postcss-selector-parser": "6.0.15",
     "postcss-value-parser": "4.2.0",
-    "prettier": "2.8.8",
-    "stylelint": "15.10.0",
-    "stylelint-no-unsupported-browser-features": "7.0.0",
-    "stylelint-prettier": "3.0.0",
-    "stylelint-scss": "5.3.2"
+    "prettier": "3.2.4",
+    "stylelint": "16.2.1",
+    "stylelint-no-unsupported-browser-features": "8.0.1",
+    "stylelint-prettier": "5.0.0",
+    "stylelint-scss": "6.1.0"
   },
   "peerDependencies": {
     "@swissquote/crafty-commons": "1.24.0",
-    "postcss": "^8.0.0"
+    "postcss": "^8.0.0",
+    "stylelint": "^16.0.0"
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
+    "build": "node ../../utils/build.mjs",
     "test": "ava",
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src --include=packages --include='*.js' ava"
   },

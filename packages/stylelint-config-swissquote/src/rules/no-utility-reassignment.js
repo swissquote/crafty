@@ -1,7 +1,7 @@
-import stylelint from "stylelint";
+import stylelint from "../../shims/stylelint.js";
 
-import selectorParser from "postcss-selector-parser";
-import resolveNestedSelector from "postcss-resolve-nested-selector";
+import selectorParser from "../../packages/postcss-selector-parser.js";
+import resolveNestedSelector from "../../packages/postcss-resolve-nested-selector.js";
 
 import cssRuleHasSelectorEndingWithColon from "../utils/cssRuleHasSelectorEndingWithColon.js";
 

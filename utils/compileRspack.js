@@ -71,8 +71,12 @@ async function compile(options) {
   return allStats;
 }
 
-module.exports = async function compileRSPack(input, output, bundle) {
-  const { name, externals, esm, ...moreConfig } = bundle;
+module.exports = async function compileRSPack(values) {
+  const input = values.source;
+  const output = values.destination;
+  const name = values.name;
+
+  const { externals, esm, sourceMap, sourceMapRegister, ...moreConfig } = values.options;
   if (Object.keys(moreConfig).length > 0) {
     console.log("Configuration ignored by rspack", moreConfig);
   }
@@ -81,18 +85,28 @@ module.exports = async function compileRSPack(input, output, bundle) {
   const filename = path.basename(output);
 
   const config = {
+    mode: "production",
     entry: path.isAbsolute(input) ? input : `./${input}`,
     target: "node",
     experiments: {
       outputModule: true
     },
-    externals,
+    // We first get all available stats
+    // and will sort through them later
+    stats: { preset: "verbose" },
+    // Helps tremendously when debugging
+    // And sourcemaps are not so reliable in Node.js
     optimization: {
       minimize: false
     },
     plugins: [
-      // Only register the plugin when RSDOCTOR is true, as the plugin will increase the build time.
-      process.env.RSDOCTOR && new RsdoctorRspackPlugin()
+      new rspack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+      }),
+      // Only register the plugin when RSDOCTOR is true
+      // as the plugin will increase the build time.
+      process.env.RSDOCTOR &&
+        new RsdoctorRspackPlugin(),
     ].filter(Boolean),
     output: {
       path: dirname,
@@ -104,6 +118,14 @@ module.exports = async function compileRSPack(input, output, bundle) {
       }
     }
   };
+
+  if (externals) {
+    config.externals = externals;
+  }
+
+  if (sourceMap || typeof sourceMap === "undefined") {
+    config.devtool = "source-map";
+  }
 
   const stats = await compile(config);
   const bundleStats = stats.toJson();

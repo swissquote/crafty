@@ -23,9 +23,9 @@ function warn(value, options) {
 export default {
   plugins: [
     path.join(__dirname, "index.js"),
-    require.resolve("stylelint-prettier"),
-    require.resolve("stylelint-scss"),
-    require.resolve("stylelint-no-unsupported-browser-features")
+    require.resolve("./packages/stylelint-prettier.js"),
+    require.resolve("./packages/stylelint-scss.js"),
+    require.resolve("./packages/stylelint-no-unsupported-browser-features.js")
   ],
   rules: {
     // Formatting

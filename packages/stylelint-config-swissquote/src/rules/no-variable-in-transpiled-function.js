@@ -1,10 +1,10 @@
 import { createRequire } from "node:module";
-import stylelint from "stylelint";
+import stylelint from "../../shims/stylelint.js";
 import browserslist from "@swissquote/crafty-commons/packages/browserslist.js";
 
-import valueParser from "postcss-value-parser";
-import declarationValueIndex from "stylelint/lib/utils/declarationValueIndex.mjs";
-import isStandardSyntaxFunction from "stylelint/lib/utils/isStandardSyntaxFunction.mjs";
+import valueParser from "../../packages/postcss-value-parser.js";
+import declarationValueIndex from "../../dist/stylelint-utils/stylelint-declarationValueIndex.js";
+import isStandardSyntaxFunction from "../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction.js";
 
 const require = createRequire(import.meta.url);
 
