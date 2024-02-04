@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-negative-var.js";
+
 const { ruleName } = rule;
 
 testRule({

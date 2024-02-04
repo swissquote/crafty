@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-variable-in-transpiled-function.js";
+
 const { ruleName } = rule;
 
 // no warnings for browers that transpile variables

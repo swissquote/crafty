@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-type-outside-scope.js";
+
 const { ruleName, messages } = rule;
 
 testRule({

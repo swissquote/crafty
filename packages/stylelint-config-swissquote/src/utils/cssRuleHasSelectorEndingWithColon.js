@@ -15,4 +15,4 @@ export default function(rule) {
     rule.selector;
 
   return selector[selector.length - 1] === ":";
-};
+}

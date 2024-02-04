@@ -103,4 +103,4 @@ export default function testRule(schema) {
       });
     }
   });
-};
+}

@@ -69,7 +69,7 @@ function checkSelector(selectorNode, ruleNode, result) {
   }
 }
 
-const rule = function() {
+const stylelintRule = function() {
   return (root, result) => {
     root.walkRules(rule => {
       if (
@@ -109,6 +109,6 @@ const rule = function() {
   };
 };
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-export default rule;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

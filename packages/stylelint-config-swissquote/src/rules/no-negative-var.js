@@ -12,7 +12,7 @@ const messages = {
 
 const negativeVar = "-var";
 
-const rule = function() {
+const stylelintRule = function() {
   return (root, result) => {
     root.walkDecls(decl => {
       const value = decl.value;
@@ -43,6 +43,6 @@ const rule = function() {
   };
 };
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-export default rule;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

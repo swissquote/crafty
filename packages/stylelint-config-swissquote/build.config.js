@@ -6,13 +6,13 @@ const commonExternals = {
 
   stylelint: "../../shims/stylelint.js",
   "stylelint/lib/utils/optionsMatches":
-    "../stylelint-utils/stylelint-optionsMatches.js",
+    "../stylelint-utils/stylelint-optionsMatches.js"
 };
 
 const FAKE_PRETTIER_PARSER = "../../shims/prettier-parser.js";
 
 export default [
-  (builder) =>
+  builder =>
     builder("stylelint-prettier")
       .esm()
       .package()
@@ -31,12 +31,21 @@ export default [
         "./plugins/markdown.mjs": FAKE_PRETTIER_PARSER,
         "./plugins/meriyah.mjs": FAKE_PRETTIER_PARSER,
         "./plugins/typescript.mjs": FAKE_PRETTIER_PARSER,
-        "./plugins/yaml.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/yaml.mjs": FAKE_PRETTIER_PARSER
       }),
-  (builder) => builder("postcss-selector-parser").esm().package(),
-  (builder) => builder("postcss-resolve-nested-selector").esm().package(),
-  (builder) => builder("postcss-value-parser").esm().package(),
-  (builder) =>
+  builder =>
+    builder("postcss-selector-parser")
+      .esm()
+      .package(),
+  builder =>
+    builder("postcss-resolve-nested-selector")
+      .esm()
+      .package(),
+  builder =>
+    builder("postcss-value-parser")
+      .esm()
+      .package(),
+  builder =>
     builder("stylelint-scss")
       .esm()
       .package()
@@ -50,9 +59,9 @@ export default [
           "../postcss-resolve-nested-selector/index.mjs",
 
         // We mock the few lodash functions really used
-        lodash: "../../shims/lodash.js",
+        lodash: "../../shims/lodash.js"
       }),
-  (builder) =>
+  builder =>
     builder("stylelint-no-unsupported-browser-features")
       .esm()
       .externals({
@@ -65,13 +74,13 @@ export default [
 
         // Used by stylelint-no-unsupported-browser-features
         "caniuse-lite": "caniuse-lite",
-        "/caniuse-lite(/.*)/": "caniuse-lite$1",
+        "/caniuse-lite(/.*)/": "caniuse-lite$1"
       })
       .package(),
-  (builder) =>
+  builder =>
     builder("stylelint-utils")
       .esm()
-      .packages((pkg) =>
+      .packages(pkg =>
         pkg
           .package(
             "stylelint/lib/utils/declarationValueIndex.mjs",
@@ -105,9 +114,9 @@ export default [
           )
       )
       .externals({
-        "../reference/keywordSets": "../../shims/stylelint-keywordSets.js",
+        "../reference/keywordSets": "../../shims/stylelint-keywordSets.js"
       })
       .options({
-        sourceMap: false,
-      }),
+        sourceMap: false
+      })
 ];

@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-hack-reassignment.js";
+
 const { ruleName, messages } = rule;
 
 testRule({

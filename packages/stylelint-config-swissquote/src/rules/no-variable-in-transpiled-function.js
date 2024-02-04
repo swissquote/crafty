@@ -143,7 +143,7 @@ function isUnsupportedFunction(node, browsers) {
   return false;
 }
 
-const rule = (on, options) => {
+const stylelintRule = (on, options) => {
   return (root, result) => {
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: options,
@@ -195,6 +195,6 @@ const rule = (on, options) => {
   };
 };
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-export default rule;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

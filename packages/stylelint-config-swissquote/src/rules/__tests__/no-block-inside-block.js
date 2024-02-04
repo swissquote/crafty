@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-block-inside-block.js";
+
 const { ruleName } = rule;
 
 testRule({

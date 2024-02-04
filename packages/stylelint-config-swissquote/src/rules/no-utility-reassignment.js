@@ -12,7 +12,7 @@ const messages = {
 
 const isUtility = /^u-/;
 
-const rule = function(/*mainOption, moreOptions*/) {
+const stylelintRule = function(/*mainOption, moreOptions*/) {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -45,6 +45,6 @@ const rule = function(/*mainOption, moreOptions*/) {
   };
 };
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-export default rule;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

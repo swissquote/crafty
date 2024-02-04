@@ -1,5 +1,6 @@
 import testRule from "../../testUtils/ruleTester.js";
 import rule from "../no-state-without-component.js";
+
 const { ruleName, messages } = rule;
 
 testRule({

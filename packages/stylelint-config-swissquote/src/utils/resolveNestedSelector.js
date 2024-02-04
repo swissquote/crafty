@@ -109,4 +109,3 @@ export default function resolveNestedSelector(initialSelector, node) {
     return result.concat(resolveNestedSelector(combinedSelector, parent));
   }, []);
 }
-

@@ -46,7 +46,7 @@ function isInsideBlock(selectorNode) {
   );
 }
 
-const rule = function() {
+const stylelintRule = function() {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -79,6 +79,6 @@ const rule = function() {
   };
 };
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-export default rule;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

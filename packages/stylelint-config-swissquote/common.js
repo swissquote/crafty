@@ -1,9 +1,9 @@
-import { createRequire } from "node:module"
-import { fileURLToPath} from 'url';
-import path from 'path';
+import { createRequire } from "node:module";
+import { fileURLToPath } from "url";
+import path from "path";
 
-const require = createRequire(import.meta.url)
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const require = createRequire(import.meta.url);
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 // Taken from https://github.com/stylelint/stylelint-config-suitcss/
 // Changes since last import: https://github.com/suitcss/stylelint-config-suitcss/compare/4e09f16f7340d610348059ab73f24fb11488152d...master
