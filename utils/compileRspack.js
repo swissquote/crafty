@@ -5,46 +5,21 @@ const { RsdoctorRspackPlugin } = require("@rsdoctor/rspack-plugin");
 const filesize = require("filesize");
 const checkStats = require("./check-stats.js");
 
-function buildConfig(item) {
-  // to set output.path
-  item.output = item.output || {};
-
-  // auto set default mode if user config don't set it
-  if (!item.mode) {
-    item.mode = "production";
-  }
-
-  // false is also a valid value for sourcemap, so don't override it
-  if (typeof item.devtool === "undefined") {
-    item.devtool = "source-map";
-  }
-  item.builtins = item.builtins || {};
-
-  // Tells webpack to set process.env.NODE_ENV to a given string value.
-  // optimization.nodeEnv uses DefinePlugin unless set to false.
-  // optimization.nodeEnv defaults to mode if set, else falls back to 'production'.
-  // See doc: https://webpack.js.org/configuration/optimization/#optimizationnodeenv
-  // See source: https://github.com/webpack/webpack/blob/8241da7f1e75c5581ba535d127fa66aeb9eb2ac8/lib/WebpackOptionsApply.js#L563
-  // When mode is set to 'none', optimization.nodeEnv defaults to false.
-  if (item.mode !== "none") {
-    (item.plugins || (item.plugins = [])).push(
-      new rspack.DefinePlugin({
-        // User defined `process.env.NODE_ENV` always has highest priority than default define
-        "process.env.NODE_ENV": JSON.stringify(item.mode)
-      })
-    );
-  }
-
-  item.stats = { preset: "verbose" };
-
-  return item;
-}
-
 function createCompiler(options) {
   const nodeEnv = "production";
   process.env.NODE_ENV = nodeEnv;
-  const config = buildConfig(options);
-  return rspack(config);
+  return rspack(options);
+}
+
+function printStats(stats) {
+  if (stats) {
+    const printedStats = stats
+      .toString({ preset: "errors-warnings" })
+      .replace(/Rspack compiled successfully\n?/gm, "");
+    if (printedStats) {
+      console.log(printedStats);
+    }
+  }
 }
 
 async function compile(options) {
@@ -56,6 +31,8 @@ async function compile(options) {
       if (err || stats?.hasErrors()) {
         const buildError = err || new Error("Rspack build failed!");
         reject(buildError);
+
+        printStats(stats);
         return;
       }
 
@@ -63,10 +40,7 @@ async function compile(options) {
     });
   });
 
-  const printedStats = allStats.toString({ preset: "errors-warnings" });
-  if (printedStats) {
-    console.log(printedStats);
-  }
+  printStats(allStats);
 
   return allStats;
 }
@@ -94,10 +68,22 @@ module.exports = async function compileRSPack(values) {
     // We first get all available stats
     // and will sort through them later
     stats: { preset: "verbose" },
-    // Helps tremendously when debugging
-    // And sourcemaps are not so reliable in Node.js
     optimization: {
-      minimize: false
+      minimizer: [
+        // Ideally we should either not compress or pass through prettier
+        // because a lot of unused code is removed by this pass
+        new rspack.SwcJsMinimizerRspackPlugin({
+          compress: {
+            defaults: false,
+            dead_code: true,
+            unused: true
+          },
+          mangle: false,
+          format: {
+            comments: 'all'
+          }
+        }),
+      ],
     },
     plugins: [
       new rspack.DefinePlugin({
@@ -105,7 +91,7 @@ module.exports = async function compileRSPack(values) {
       }),
       // Only register the plugin when RSDOCTOR is true
       // as the plugin will increase the build time.
-      process.env.RSDOCTOR &&
+      process.env.RSDOCTOR === name &&
         new RsdoctorRspackPlugin(),
     ].filter(Boolean),
     output: {

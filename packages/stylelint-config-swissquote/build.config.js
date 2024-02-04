@@ -20,17 +20,18 @@ export default [
         ...commonExternals,
 
         // We don't need most prettier parsers
-        "./parser-angular.js": FAKE_PRETTIER_PARSER,
-        "./parser-babel.js": FAKE_PRETTIER_PARSER,
-        "./parser-espree.js": FAKE_PRETTIER_PARSER,
-        "./parser-flow.js": FAKE_PRETTIER_PARSER,
-        "./parser-glimmer.js": FAKE_PRETTIER_PARSER,
-        "./parser-graphql.js": FAKE_PRETTIER_PARSER,
-        "./parser-html.js": FAKE_PRETTIER_PARSER,
-        "./parser-markdown.js": FAKE_PRETTIER_PARSER,
-        "./parser-meriyah.js": FAKE_PRETTIER_PARSER,
-        "./parser-typescript.js": FAKE_PRETTIER_PARSER,
-        "./parser-yaml.js": FAKE_PRETTIER_PARSER,
+        "./plugins/acorn.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/angular.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/babel.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/estree.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/flow.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/glimmer.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/graphql.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/html.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/markdown.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/meriyah.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/typescript.mjs": FAKE_PRETTIER_PARSER,
+        "./plugins/yaml.mjs": FAKE_PRETTIER_PARSER,
       }),
   (builder) => builder("postcss-selector-parser").esm().package(),
   (builder) => builder("postcss-resolve-nested-selector").esm().package(),
@@ -58,8 +59,6 @@ export default [
         ...commonExternals,
 
         postcss: "postcss",
-        "postcss/lib/result": "postcss/lib/result",
-        "postcss/lib/list": "postcss/lib/list",
 
         // We keep postcss-scss external so we can have it in common with preset-postcss
         "postcss-scss": "postcss-scss",
@@ -67,9 +66,6 @@ export default [
         // Used by stylelint-no-unsupported-browser-features
         "caniuse-lite": "caniuse-lite",
         "/caniuse-lite(/.*)/": "caniuse-lite$1",
-
-        // We mock the few lodash functions really used
-        lodash: "../../shims/lodash.js",
       })
       .package(),
   (builder) =>
