@@ -58,6 +58,8 @@ module.exports = async function compileRSPack(values) {
   const dirname = path.dirname(output);
   const filename = path.basename(output);
 
+  // Inspired by https://github.com/vercel/ncc/blob/main/src/index.js#L255
+
   const config = {
     mode: "production",
     entry: path.isAbsolute(input) ? input : `./${input}`,
@@ -85,6 +87,9 @@ module.exports = async function compileRSPack(values) {
         }),
       ],
     },
+    resolve: {
+      exportsFields: ["exports"],
+    },
     plugins: [
       new rspack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("production"),
@@ -111,6 +116,10 @@ module.exports = async function compileRSPack(values) {
 
   if (sourceMap || typeof sourceMap === "undefined") {
     config.devtool = "source-map";
+  }
+
+  if (values.extendConfig) {
+    values.extendConfig(config);
   }
 
   const stats = await compile(config);

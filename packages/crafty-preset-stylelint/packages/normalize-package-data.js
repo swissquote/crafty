@@ -1,6 +1,6 @@
 // Use a very simplified package normalization.
 // As stylelint doesn't use most of it.
-module.exports = function(pkg) {
+export default function(pkg) {
     pkg.name = pkg.name ? pkg.name.trim() : "";
     
     if (!pkg.version) {

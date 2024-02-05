@@ -119,6 +119,12 @@ class Builder {
     return this;
   }
 
+  extendConfig(callback) {
+    this.values.extendConfig = callback;
+
+    return this;
+  }
+
   packages(callback) {
     const pkg = this.values.name;
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
