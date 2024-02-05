@@ -167,14 +167,11 @@ stylelintUtils.forEach((file) => {
 
   const functionName = file.replace(".mjs", "").replace(/-/g, "_");
 
-  const element = {
+  stylelintSource.push({
     pkg: `stylelint/lib/utils/${file}`,
     name: functionName,
     entryFile: `dist/stylelint/util-${destFile}`,
-  }
-  console.log(element)
-
-  stylelintSource.push(element);
+  });
 });
 
 export default [
