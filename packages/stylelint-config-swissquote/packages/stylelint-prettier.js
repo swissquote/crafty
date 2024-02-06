@@ -1,1 +1,1 @@
-module.exports = require("../dist/stylelint-prettier/index.js");
+export { default } from "../dist/stylelint-prettier/index.mjs";

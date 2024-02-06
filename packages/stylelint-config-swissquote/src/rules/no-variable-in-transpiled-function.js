@@ -1,9 +1,12 @@
-const stylelint = require("../../shims/stylelint");
-const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
+import { createRequire } from "node:module";
+import stylelint from "../../shims/stylelint.js";
+import browserslist from "@swissquote/crafty-commons/packages/browserslist.js";
 
-const valueParser = require("../../packages/postcss-value-parser");
-const declarationValueIndex = require("../../dist/stylelint-utils/stylelint-declarationValueIndex");
-const isStandardSyntaxFunction = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction");
+import valueParser from "../../packages/postcss-value-parser.js";
+import declarationValueIndex from "../../dist/stylelint-utils/stylelint-declarationValueIndex.js";
+import isStandardSyntaxFunction from "../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction.js";
+
+const require = createRequire(import.meta.url);
 
 const w3cColorFunction = /^(srgb|srgb-linear|display-p3|a98-rgb|prophoto-rgb|rec2020|xyz|xyz-d50|xyz-d65)$/;
 
@@ -140,7 +143,7 @@ function isUnsupportedFunction(node, browsers) {
   return false;
 }
 
-module.exports = (on, options) => {
+const stylelintRule = (on, options) => {
   return (root, result) => {
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: options,
@@ -192,5 +195,6 @@ module.exports = (on, options) => {
   };
 };
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

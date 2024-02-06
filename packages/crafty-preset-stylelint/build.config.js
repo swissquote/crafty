@@ -1,7 +1,13 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { createRequire } from "node:module";
+import { getExternals } from "../../utils/externals.js";
 
-const { getExternals } = require("../../utils/externals");
+const require = createRequire(import.meta.url);
+const stylelintLib = path.join(
+  path.dirname(require.resolve("stylelint/package.json")),
+  "lib"
+);
 
 const singlePackages = [
   "balanced-match",
@@ -14,17 +20,16 @@ const singlePackages = [
   "resolve-from",
   "slice-ansi",
   "string-width",
-  "style-search",
   "supports-color",
   "supports-hyperlinks",
   "table",
   "css-tree",
   "@csstools/selector-specificity",
   "mathml-tag-names",
-  "colord",
   "known-css-properties",
   "svg-tags",
-  "has-flag"
+  "has-flag",
+  "css-functions-list",
 ];
 
 const externals = {
@@ -32,10 +37,14 @@ const externals = {
   ...getExternals(),
 
   ...Object.fromEntries(
-    singlePackages.map((pkg) => [pkg, `../${pkg}/index.js`])
+    singlePackages.map((pkg) => [
+      pkg,
+      `../${pkg.replace("@", "").replace("/", "-")}/index.mjs`,
+    ])
   ),
 
-  "@ronilaukkarinen/gulp-stylelint": "../ronilaukkarinen-gulp-stylelint/index.js",
+  "@ronilaukkarinen/gulp-stylelint":
+    "../ronilaukkarinen-gulp-stylelint/index.js",
 
   "schema-utils": "schema-utils",
   postcss: "postcss",
@@ -43,204 +52,193 @@ const externals = {
   "/postcss/lib(/.*)/": "postcss/lib$1",
   "@babel/code-frame": "@babel/code-frame",
 
-  // Provide a simplified package data normalizer
-  "normalize-package-data": "../../packages/normalize-package-data.js",
-
   // Not used as we pass the configuration directly, can be excluded from the bundle
   "postcss-load-config": "../../src/dummy.js",
   cosmiconfig: "../../src/dummy.js",
 };
 
-const ruleExternals = {
+const stylelintExternals = {
   ...externals,
   "@csstools/media-query-list-parser": "../csstools/media-query-list-parser.js",
   "@csstools/css-tokenizer": "../csstools/css-tokenizer.js",
   "@csstools/css-parser-algorithms": "../csstools/css-parser-algorithms.js",
-}
+  colord: "../colord/index.js",
+  "colord/plugins/names": "../colord/plugin-names.js",
+  "colord/plugins/hwb": "../colord/plugin-hwb.js",
+  "colord/plugins/lab": "../colord/plugin-lab.js",
+  "colord/plugins/lch": "../colord/plugin-lch.js",
+};
 
 const stylelintSource = [];
 
 stylelintSource.push({
-  pkg: "stylelint",
+  pkg: "stylelint/lib/index.mjs",
   name: "stylelint",
   entryFile: `dist/stylelint/index.js`,
 });
 
 stylelintSource.push({
-  pkg: "stylelint/bin/stylelint",
+  pkg: "stylelint/bin/stylelint.mjs",
   name: "stylelintBin",
   entryFile: `dist/stylelint/bin.js`,
 });
 
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/atKeywords.js",
-  name: "libReferenceAtKeywords",
-  entryFile: `dist/stylelint/reference-atKeywords.js`,
-});
-ruleExternals["../../reference/atKeywords"] = "./reference-atKeywords.js";
+// This is currently set to false
+// The reason is that ESM will eager load all external dependencies
+// This defeats the purpose of not loading all rules
+// And also leads to errors as we have circular dependencies
+const splitStylelint = false;
 
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/functions.js",
-  name: "libReferenceFunctions",
-  entryFile: `dist/stylelint/reference-functions.js`,
-});
-ruleExternals["../../reference/functions"] = "./reference-functions.js";
+const moreBuilders = [];
+if (splitStylelint) {
+  // Extract references used by rules
+  fs.readdirSync(path.join(stylelintLib, "reference"))
+    .filter((file) => !file.startsWith("index."))
+    .filter((file) => file.includes(".mjs"))
+    .forEach((file) => {
+      const destFile = file.replace(".mjs", ".js");
+      stylelintExternals[`../../reference/${file}`] = `./reference-${destFile}`;
 
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/keywords.js",
-  name: "libReferenceKeywords",
-  entryFile: `dist/stylelint/reference-keywords.js`,
-});
-ruleExternals["../../reference/keywords"] = "./reference-keywords.js";
+      const functionName = file.replace(".mjs", "").replace(/-/g, "_");
 
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/mediaFeatures.js",
-  name: "libReferenceMediaFeatures",
-  entryFile: `dist/stylelint/reference-mediaFeatures.js`,
-});
-ruleExternals["../../reference/mediaFeatures"] = "./reference-mediaFeatures.js";
-
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/properties.js",
-  name: "libReferenceProperties",
-  entryFile: `dist/stylelint/reference-properties.js`,
-});
-ruleExternals["../../reference/properties"] = "./reference-properties.js";
-
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/selectors.js",
-  name: "libReferenceSelectors",
-  entryFile: `dist/stylelint/reference-selectors.js`,
-});
-ruleExternals["../../reference/selectors"] = "./reference-selectors.js";
-
-stylelintSource.push({
-  pkg: "stylelint/lib/reference/units.js",
-  name: "libReferenceUnits",
-  entryFile: `dist/stylelint/reference-units.js`,
-});
-ruleExternals["../../reference/units"] = "./reference-units.js";
-
-// Extract all formatters
-// ----------------------
-const formatters = fs
-  .readdirSync(
-    path.dirname(require.resolve("stylelint/lib/formatters/index.js"))
-  )
-  .filter((file) => file != "index.js")
-  .map((file) => {
-    ruleExternals[`./${file.replace(".js", "")}`] = `./${file}`;
-    
-    return (builder) => builder(`stylelint-formatters-${file.replace(".js", "")}`)
-      .source(
-        path.relative(
-          process.cwd(),
-          require.resolve(`stylelint/lib/formatters/${file}`)
-        )
-      )
-      .destination(`dist/stylelint/${file}`)
-      .options({
-        sourceMap: false,
-        externals: ruleExternals,
-      });
-    }
-  );
-
-// Extract linting rules and utilities
-// -----------------------------------
-
-const stylelintRules = fs
-  .readdirSync(path.dirname(require.resolve("stylelint/lib/rules/index.js")))
-  .filter((file) => file != "index.js");
-
-const rules = stylelintRules
-  .map((file) => {
-    // Utilities that are used by many rules
-    if (file.includes(".js")) {
-      ruleExternals[`../${file.replace(".js", "")}`] = `./rule-util-${file}`;
-      //ruleExternals[`./${file.replace(".js", "")}`] = `./rule-util-${file}`;
-      //ruleExternals[`stylelint/lib/rules/${file}`] = `./${file}`;
-
-      const functionName = file.replace(".js", "").replace(/-/g, "_");
       stylelintSource.push({
-        pkg: `stylelint/lib/rules/${file}`,
+        pkg: `stylelint/lib/reference/${file}`,
         name: functionName,
-        entryFile: `dist/stylelint/rule-util-${file}`,
+        entryFile: `dist/stylelint/reference-${destFile}`,
       });
+    });
 
-      return false;
-    }
+  // Extract utilities used by rules
+  fs.readdirSync(path.join(stylelintLib, "utils"))
+    .filter((file) => file.includes(".mjs"))
+    .forEach((file) => {
+      const destFile = file.replace(".mjs", ".js");
+      // Create externals to refer to the util
+      stylelintExternals[`../../../utils/${file}`] = `./util-${destFile}`;
+      stylelintExternals[`../../utils/${file}`] = `./util-${destFile}`;
+      stylelintExternals[`../utils/${file}`] = `./util-${destFile}`;
 
-    // Actual rules are inside folders
-    ruleExternals[`./${file}`] = `./${file}`;
-    return (builder) =>
-      builder(`stylelint-rules-${file}`)
-        .source(
-          path.relative(
-            process.cwd(),
-            require.resolve(`stylelint/lib/rules/${file}`)
+      const functionName = file.replace(".mjs", "").replace(/-/g, "_");
+
+      stylelintSource.push({
+        pkg: `stylelint/lib/utils/${file}`,
+        name: functionName,
+        entryFile: `dist/stylelint/util-${destFile}`,
+      });
+    });
+
+  // Extract all formatters
+  fs.readdirSync(path.join(stylelintLib, "formatters"))
+    .filter((file) => !file.startsWith("index."))
+    .filter((file) => file.includes(".mjs"))
+    .foreach((file) => {
+      stylelintExternals[`./${file}`] = `./${file}.js`;
+
+      moreBuilders.push((builder) =>
+        builder(`stylelint-formatters-${file.replace(".mjs", "")}`)
+          .esm()
+          .source(
+            path.relative(
+              process.cwd(),
+              path.join(stylelintLib, "formatters", file)
+            )
           )
-        )
-        .destination(
-          file.includes(".js")
-            ? `dist/stylelint/${file}`
-            : `dist/stylelint/${file}.js`
-        )
-        .options({
-          sourceMap: false,
-          externals: ruleExternals,
-        });
-  })
-  .filter(Boolean);
+          .destination(`dist/stylelint/${file}.js`)
+          .options({
+            sourceMap: false,
+            externals: stylelintExternals,
+          })
+      );
+    });
 
-const stylelintUtils = fs
-  .readdirSync(
-    path.dirname(require.resolve("stylelint/lib/utils/arrayEqual.js"))
-  )
-  .filter((file) => file.includes(".js"));
+  // Extract rules
+  fs.readdirSync(path.join(stylelintLib, "rules"))
+    .filter((file) => !file.startsWith("index."))
+    .forEach((file) => {
+      // Actual rules are inside folders
+      stylelintExternals[`./${file}/index.mjs`] = `./${file}.js`;
+      moreBuilders.push((builder) =>
+        builder(`stylelint-rules-${file}`)
+          .esm()
+          .source(
+            path.relative(
+              process.cwd(),
+              path.join(stylelintLib, "rules", file, "index.mjs")
+            )
+          )
+          .destination(`dist/stylelint/${file}.js`)
+          .options({
+            sourceMap: false,
+            externals: stylelintExternals,
+          })
+      );
+    });
+}
 
-stylelintUtils.forEach((file) => {
-  // Create externals to refer to the util
-  ruleExternals[`../../../utils/${file.replace(".js", "")}`] = `./util-${file}`;
-  ruleExternals[`../../utils/${file.replace(".js", "")}`] = `./util-${file}`;
-  ruleExternals[`../utils/${file.replace(".js", "")}`] = `./util-${file}`;
-
-  const functionName = file.replace(".js", "").replace(/-/g, "_");
-
-  stylelintSource.push({
-    pkg: `stylelint/lib/utils/${file}`,
-    name: functionName,
-    entryFile: `dist/stylelint/util-${file}`,
-  });
-});
-
-module.exports = [
+export default [
   (builder) =>
-  builder("csstools")
-    .packages((pkgBuilder) => {
-      pkgBuilder
-        .package("@csstools/media-query-list-parser", "mediaQueryListParser", "dist/csstools/media-query-list-parser.js")
-        .package("@csstools/css-tokenizer", "cssTokenizer", "dist/csstools/css-tokenizer.js")
-        .package("@csstools/css-parser-algorithms", "cssParserAlgorithms", "dist/csstools/css-parser-algorithms.js")
-
-    })
-    .destination(`dist/csstools/index.js`)
-    .externals(externals),
-  (builder) =>
-    builder("stylelint")
+    builder("csstools")
+      .esm()
       .packages((pkgBuilder) => {
-        stylelintSource.forEach((entry) => {
-          pkgBuilder.package(entry.pkg, entry.name, entry.entryFile);
-        });
+        pkgBuilder
+          .package(
+            "@csstools/media-query-list-parser",
+            "mediaQueryListParser",
+            "dist/csstools/media-query-list-parser.js"
+          )
+          .package(
+            "@csstools/css-tokenizer",
+            "cssTokenizer",
+            "dist/csstools/css-tokenizer.js"
+          )
+          .package(
+            "@csstools/css-parser-algorithms",
+            "cssParserAlgorithms",
+            "dist/csstools/css-parser-algorithms.js"
+          );
       })
-      .destination(`dist/stylelint/stylelint.js`)
-      .externals(ruleExternals),
+      .destination(`dist/csstools/index.js`)
+      .externals(externals),
+  (builder) =>
+    builder("colord")
+      .esm()
+      .packages((pkgBuilder) => {
+        const colordPath = path.dirname(require.resolve("colord/package.json"));
 
+        pkgBuilder
+          .package(
+            path.join(colordPath, "index.mjs"),
+            "colord",
+            "dist/colord/index.js"
+          )
+          .package(
+            path.join(colordPath, "plugins", "names.mjs"),
+            "pluginNames",
+            "dist/colord/plugin-names.js"
+          )
+          .package(
+            path.join(colordPath, "plugins", "hwb.mjs"),
+            "pluginHwb",
+            "dist/colord/plugin-hwb.js"
+          )
+          .package(
+            path.join(colordPath, "plugins", "lab.mjs"),
+            "pluginLab",
+            "dist/colord/plugin-lab.js"
+          )
+          .package(
+            path.join(colordPath, "plugins", "lch.mjs"),
+            "pluginLch",
+            "dist/colord/plugin-lch.js"
+          );
+      })
+      .destination(`dist/colord/bundle.js`),
   (builder) => {
     const newExternals = { ...externals };
     delete newExternals["@ronilaukkarinen/gulp-stylelint"];
 
     return builder("@ronilaukkarinen/gulp-stylelint")
+      .esm()
       .package()
       .externals({ ...newExternals, stylelint: "../stylelint/index.js" });
   },
@@ -248,11 +246,38 @@ module.exports = [
     const newExternals = { ...externals };
     delete newExternals[pkg];
 
-    return (builder) =>
-      builder(pkg)
-        .package()
-        .externals(newExternals);
+    return (builder) => builder(pkg).esm().package().externals(newExternals);
   }),
-  ...formatters,
-  ...rules
+  (builder) =>
+    builder("stylelint")
+      .esm()
+      .packages((pkgBuilder) => {
+        stylelintSource.forEach((entry) => {
+          pkgBuilder.package(entry.pkg, entry.name, entry.entryFile);
+        });
+      })
+      .destination(`dist/stylelint/bundle.js`)
+      .extendConfig((config) => {
+        // Ignoring exports fields
+        config.resolve.byDependency.esm.exportsFields = [];
+
+        // manually resolve the few paths impacted by this
+        const postcssPath = path.dirname(
+          require.resolve("postcss/package.json")
+        );
+        config.resolve.alias = {
+          postcss: path.join(postcssPath, "lib", "postcss.mjs"),
+          "postcss/lib/lazy-result": path.join(
+            postcssPath,
+            "lib",
+            "lazy-result.js"
+          ),
+          "postcss/lib/result": path.join(postcssPath, "lib", "result.js"),
+          meow: require.resolve("meow"),
+        };
+      })
+      .externals(stylelintExternals),
+  // contains builders for references and rules if
+  // stylelint is configured to be split in many modules
+  ...moreBuilders,
 ];

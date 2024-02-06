@@ -5,46 +5,21 @@ const { RsdoctorRspackPlugin } = require("@rsdoctor/rspack-plugin");
 const filesize = require("filesize");
 const checkStats = require("./check-stats.js");
 
-function buildConfig(item) {
-  // to set output.path
-  item.output = item.output || {};
-
-  // auto set default mode if user config don't set it
-  if (!item.mode) {
-    item.mode = "production";
-  }
-
-  // false is also a valid value for sourcemap, so don't override it
-  if (typeof item.devtool === "undefined") {
-    item.devtool = "source-map";
-  }
-  item.builtins = item.builtins || {};
-
-  // Tells webpack to set process.env.NODE_ENV to a given string value.
-  // optimization.nodeEnv uses DefinePlugin unless set to false.
-  // optimization.nodeEnv defaults to mode if set, else falls back to 'production'.
-  // See doc: https://webpack.js.org/configuration/optimization/#optimizationnodeenv
-  // See source: https://github.com/webpack/webpack/blob/8241da7f1e75c5581ba535d127fa66aeb9eb2ac8/lib/WebpackOptionsApply.js#L563
-  // When mode is set to 'none', optimization.nodeEnv defaults to false.
-  if (item.mode !== "none") {
-    (item.plugins || (item.plugins = [])).push(
-      new rspack.DefinePlugin({
-        // User defined `process.env.NODE_ENV` always has highest priority than default define
-        "process.env.NODE_ENV": JSON.stringify(item.mode)
-      })
-    );
-  }
-
-  item.stats = { preset: "verbose" };
-
-  return item;
-}
-
 function createCompiler(options) {
   const nodeEnv = "production";
   process.env.NODE_ENV = nodeEnv;
-  const config = buildConfig(options);
-  return rspack(config);
+  return rspack(options);
+}
+
+function printStats(stats) {
+  if (stats) {
+    const printedStats = stats
+      .toString({ preset: "errors-warnings" })
+      .replace(/Rspack compiled successfully\n?/gm, "");
+    if (printedStats) {
+      console.log(printedStats);
+    }
+  }
 }
 
 async function compile(options) {
@@ -56,6 +31,8 @@ async function compile(options) {
       if (err || stats?.hasErrors()) {
         const buildError = err || new Error("Rspack build failed!");
         reject(buildError);
+
+        printStats(stats);
         return;
       }
 
@@ -63,16 +40,28 @@ async function compile(options) {
     });
   });
 
-  const printedStats = allStats.toString({ preset: "errors-warnings" });
-  if (printedStats) {
-    console.log(printedStats);
-  }
+  printStats(allStats);
 
   return allStats;
 }
 
-module.exports = async function compileRSPack(input, output, bundle) {
-  const { name, externals, esm, ...moreConfig } = bundle;
+const SUPPORTED_EXTENSIONS = [".js", ".json", ".node", ".mjs", ".ts", ".tsx"];
+// webpack defaults to `module` and `main`, but that's
+// not really what node.js supports, so we reset it
+const MAIN_FIELDS = ["main"];
+
+module.exports = async function compileRSPack(values) {
+  const input = values.source;
+  const output = values.destination;
+  const name = values.name;
+
+  const {
+    externals,
+    esm,
+    sourceMap,
+    sourceMapRegister,
+    ...moreConfig
+  } = values.options;
   if (Object.keys(moreConfig).length > 0) {
     console.log("Configuration ignored by rspack", moreConfig);
   }
@@ -80,19 +69,81 @@ module.exports = async function compileRSPack(input, output, bundle) {
   const dirname = path.dirname(output);
   const filename = path.basename(output);
 
+  // Inspired by https://github.com/vercel/ncc/blob/main/src/index.js#L255
+
+  const mainFields = MAIN_FIELDS;
+
+  const cjsDeps = () => ({
+    mainFields,
+    extensions: SUPPORTED_EXTENSIONS,
+    exportsFields: ["exports"],
+    //importsFields: ["imports"],
+    conditionNames: ["require", "node", "production"]
+  });
+  const esmDeps = () => ({
+    mainFields,
+    extensions: SUPPORTED_EXTENSIONS,
+    exportsFields: ["exports"],
+    //importsFields: ["imports"],
+    conditionNames: ["import", "node", "production"]
+  });
+
   const config = {
+    mode: "production",
     entry: path.isAbsolute(input) ? input : `./${input}`,
     target: "node",
     experiments: {
-      outputModule: true
+      outputModule: true,
+      rspackFuture: {
+        newTreeshaking: true
+      }
     },
-    externals,
+    // We first get all available stats
+    // and will sort through them later
+    stats: { preset: "verbose" },
     optimization: {
-      minimize: false
+      minimizer: [
+        // Ideally we should either not compress or pass through prettier
+        // because a lot of unused code is removed by this pass
+        new rspack.SwcJsMinimizerRspackPlugin({
+          compress: {
+            defaults: false,
+            dead_code: true,
+            unused: true
+          },
+          mangle: false,
+          format: {
+            comments: "all"
+          }
+        })
+      ]
+    },
+    resolve: {
+      extensions: SUPPORTED_EXTENSIONS,
+      exportsFields: ["exports"],
+      mainFields,
+      byDependency: {
+        wasm: esmDeps(),
+        esm: esmDeps(),
+        url: { preferRelative: true },
+        worker: { ...esmDeps(), preferRelative: true },
+        commonjs: cjsDeps(),
+        amd: cjsDeps(),
+        // for backward-compat: loadModule
+        loader: cjsDeps(),
+        // for backward-compat: Custom Dependency
+        unknown: cjsDeps(),
+        // for backward-compat: getResolve without dependencyType
+        undefined: cjsDeps()
+      }
     },
     plugins: [
-      // Only register the plugin when RSDOCTOR is true, as the plugin will increase the build time.
-      process.env.RSDOCTOR && new RsdoctorRspackPlugin()
+      new rspack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify("production")
+      }),
+      // Only register the plugin when RSDOCTOR is true
+      // as the plugin will increase the build time.
+      process.env.RSDOCTOR === name && new RsdoctorRspackPlugin()
     ].filter(Boolean),
     output: {
       path: dirname,
@@ -101,9 +152,22 @@ module.exports = async function compileRSPack(input, output, bundle) {
       chunkFilename: `[name].[contenthash].${esm ? "mjs" : "js"}`,
       library: {
         type: esm ? "module" : "commonjs2"
-      }
+      },
+      strictModuleErrorHandling: true
     }
   };
+
+  if (externals) {
+    config.externals = externals;
+  }
+
+  if (sourceMap || typeof sourceMap === "undefined") {
+    config.devtool = "source-map";
+  }
+
+  if (values.extendConfig) {
+    values.extendConfig(config);
+  }
 
   const stats = await compile(config);
   const bundleStats = stats.toJson();

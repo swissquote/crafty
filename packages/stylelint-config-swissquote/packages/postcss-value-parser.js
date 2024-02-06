@@ -1,1 +1,1 @@
-module.exports = require("../dist/postcss-value-parser/index.js");
+export { default } from "../dist/postcss-value-parser/index.mjs";

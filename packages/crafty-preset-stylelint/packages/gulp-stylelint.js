@@ -1,1 +1,1 @@
-module.exports = require("../dist/ronilaukkarinen-gulp-stylelint/index.js");
+export { default } from "../dist/ronilaukkarinen-gulp-stylelint/index.mjs";

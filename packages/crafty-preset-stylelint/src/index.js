@@ -1,4 +1,4 @@
-const gulpTasks = require("./gulp");
+import { createLinter } from "./gulp.js";
 
 function addUnsupportedBrowserSupportRule(rules, browsers) {
   const rule = "plugin/no-unsupported-browser-features";
@@ -46,7 +46,7 @@ function addNoVariableInTranspiledFunction(rules, browsers) {
   }
 }
 
-module.exports = {
+export default {
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig() {
     return {
@@ -116,7 +116,7 @@ module.exports = {
     // CSS Linter
     const lintTaskName = "css__lint";
     crafty.watcher.add(crafty.config.stylelint_pattern, lintTaskName);
-    gulpTasks.createLinter(gulp, crafty, lintTaskName);
+    createLinter(gulp, crafty, lintTaskName);
     crafty.addDefaultTask(lintTaskName);
   },
   ide() {

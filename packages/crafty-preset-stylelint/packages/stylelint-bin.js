@@ -1,1 +1,1 @@
-module.exports = require("../dist/stylelint/bin.js");
+export { default } from "../dist/stylelint/bin.js";

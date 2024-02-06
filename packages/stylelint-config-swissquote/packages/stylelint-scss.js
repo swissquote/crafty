@@ -1,1 +1,1 @@
-module.exports = require("../dist/stylelint-scss/index.js")
+export { default } from "../dist/stylelint-scss/index.mjs";

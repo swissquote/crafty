@@ -1,8 +1,8 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "../../shims/stylelint.js";
 
-const declarationValueIndex = require("../../dist/stylelint-utils/stylelint-declarationValueIndex");
-const isStandardSyntaxFunction = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction");
-const valueParser = require("../../packages/postcss-value-parser");
+import declarationValueIndex from "../../dist/stylelint-utils/stylelint-declarationValueIndex.js";
+import isStandardSyntaxFunction from "../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction.js";
+import valueParser from "../../packages/postcss-value-parser.js";
 
 const ruleName = "swissquote/no-negative-var";
 
@@ -12,7 +12,7 @@ const messages = {
 
 const negativeVar = "-var";
 
-module.exports = function() {
+const stylelintRule = function() {
   return (root, result) => {
     root.walkDecls(decl => {
       const value = decl.value;
@@ -43,5 +43,6 @@ module.exports = function() {
   };
 };
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

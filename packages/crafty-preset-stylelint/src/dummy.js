@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   cosmiconfig(name, options) {
     return {
-      load(searchPath) {
-        const config = require(searchPath);
+      async load(searchPath) {
+        const config = await import(searchPath);
 
         return options.transform({ config });
       },

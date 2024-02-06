@@ -1,1 +1,1 @@
-module.exports = require("../dist/postcss-resolve-nested-selector/index.js");
+export { default } from "../dist/postcss-resolve-nested-selector/index.mjs";

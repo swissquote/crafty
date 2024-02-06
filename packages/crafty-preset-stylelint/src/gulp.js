@@ -1,14 +1,15 @@
-function createLinter(gulp, crafty, name) {
-  gulp.task(name, () => {
-    const gulpStylelint = require("../packages/gulp-stylelint.js");
+import gulpStylelint from "../packages/gulp-stylelint.js";
+import scss from "postcss-scss";
 
+export function createLinter(gulp, crafty, name) {
+  gulp.task(name, () => {
     const config = {
       ...(crafty.config.legacy_css
         ? crafty.config.stylelint_legacy
         : crafty.config.stylelint)
     };
 
-    config.customSyntax = require("postcss-scss");
+    config.customSyntax = scss;
 
     return gulp.src(crafty.config.stylelint_pattern).pipe(
       gulpStylelint({
@@ -19,5 +20,3 @@ function createLinter(gulp, crafty, name) {
     );
   });
 }
-
-module.exports.createLinter = createLinter;

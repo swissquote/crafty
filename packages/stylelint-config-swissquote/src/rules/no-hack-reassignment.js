@@ -1,9 +1,9 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "stylelint";
 
-const selectorParser = require("../../packages/postcss-selector-parser");
-const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
+import selectorParser from "../../packages/postcss-selector-parser.js";
+import resolveNestedSelector from "../../packages/postcss-resolve-nested-selector.js";
 
-const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
+import cssRuleHasSelectorEndingWithColon from "../utils/cssRuleHasSelectorEndingWithColon.js";
 
 const ruleName = "swissquote/no-hack-reassignment";
 const messages = {
@@ -12,7 +12,7 @@ const messages = {
 
 const isHack = /^_/;
 
-module.exports = function(/*mainOption, moreOptions*/) {
+const stylelintRule = function(/*mainOption, moreOptions*/) {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -45,6 +45,6 @@ module.exports = function(/*mainOption, moreOptions*/) {
   };
 };
 
-module.exports.ruleName = ruleName;
-
-module.exports.messages = messages;
+stylelintRule.ruleName = ruleName;
+stylelintRule.messages = messages;
+export default stylelintRule;

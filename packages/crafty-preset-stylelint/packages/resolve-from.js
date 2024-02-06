@@ -1,1 +1,1 @@
-module.exports = require("../dist/resolve-from/index.js");
+export { default } from "../dist/resolve-from/index.js";

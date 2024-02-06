@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   parsers: new Proxy(
     {},
     {
@@ -6,5 +6,5 @@ module.exports = {
         return {};
       },
     }
-  )
+  ),
 };
