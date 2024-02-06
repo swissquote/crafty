@@ -1,4 +1,9 @@
-const { getModulePath, isModule, isExternal } = require("./functions.js");
+const {
+  getModulePath,
+  isModule,
+  isExternal,
+  isValid
+} = require("./functions.js");
 const isCore = require("is-core-module");
 
 const packageFile = require(`${process.cwd()}/package.json`);
@@ -11,11 +16,12 @@ function printStats({ modules }) {
 
   const notPackage = modules.filter(
     m =>
+      isValid(m) &&
       !isModule(m.name) &&
       !isExternal(m.name) &&
       m.name.indexOf("webpack/") !== 0
   );
-  const externals = modules.filter(m => isExternal(m.name));
+  const externals = modules.filter(m => isValid(m) && isExternal(m.name));
 
   console.log(
     modules.length,
@@ -100,7 +106,7 @@ function checkStats(stats, statFile) {
 
   // All packages must be found
   stats.modules
-    .filter(m => m.name.indexOf("/ncc/@@notfound") > -1)
+    .filter(m => isValid(m) && m.name.indexOf("/ncc/@@notfound") > -1)
     .map(
       m =>
         `Module "${m.name.split("?")[1]}" requested by "${
@@ -111,7 +117,7 @@ function checkStats(stats, statFile) {
 
   // Packages provided by another module should stay external
   stats.modules
-    .filter(m => m.name.indexOf("/packages/") > -1)
+    .filter(m => isValid(m) && m.name.indexOf("/packages/") > -1)
     .filter(m => !isExternal(m.name))
     .map(
       m =>
@@ -121,7 +127,7 @@ function checkStats(stats, statFile) {
 
   // All readable-stream packages must be external
   stats.modules
-    .filter(m => !isExternal(m.name))
+    .filter(m => isValid(m) && !isExternal(m.name))
     .filter(m => {
       // Never accept those packages
       if (
@@ -150,10 +156,15 @@ function checkStats(stats, statFile) {
   // All external modules should be in dependencies or peerDependencies
   // If not, module resolution and hoisting may have an unexpected behaviour
   const externals = stats.modules
-    .filter((m) => isExternal(m.name))
-    .map((m) => m.name.replace("external ", "").replace(/"/g, "").replace(/^\[|\]$/g, ""))
-    .filter((m) => m[0] !== ".") // exclude relative paths
-    .map((m) => {
+    .filter(m => isValid(m) && isExternal(m.name))
+    .map(m =>
+      m.name
+        .replace("external ", "")
+        .replace(/"/g, "")
+        .replace(/^\[|\]$/g, "")
+    )
+    .filter(m => m[0] !== ".") // exclude relative paths
+    .map(m => {
       const p = m.split(/\//g);
 
       if (m.startsWith("@")) {

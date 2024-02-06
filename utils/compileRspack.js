@@ -45,12 +45,23 @@ async function compile(options) {
   return allStats;
 }
 
+const SUPPORTED_EXTENSIONS = [".js", ".json", ".node", ".mjs", ".ts", ".tsx"];
+// webpack defaults to `module` and `main`, but that's
+// not really what node.js supports, so we reset it
+const MAIN_FIELDS = ["main"];
+
 module.exports = async function compileRSPack(values) {
   const input = values.source;
   const output = values.destination;
   const name = values.name;
 
-  const { externals, esm, sourceMap, sourceMapRegister, ...moreConfig } = values.options;
+  const {
+    externals,
+    esm,
+    sourceMap,
+    sourceMapRegister,
+    ...moreConfig
+  } = values.options;
   if (Object.keys(moreConfig).length > 0) {
     console.log("Configuration ignored by rspack", moreConfig);
   }
@@ -60,12 +71,32 @@ module.exports = async function compileRSPack(values) {
 
   // Inspired by https://github.com/vercel/ncc/blob/main/src/index.js#L255
 
+  const mainFields = MAIN_FIELDS;
+
+  const cjsDeps = () => ({
+    mainFields,
+    extensions: SUPPORTED_EXTENSIONS,
+    exportsFields: ["exports"],
+    //importsFields: ["imports"],
+    conditionNames: ["require", "node", "production"]
+  });
+  const esmDeps = () => ({
+    mainFields,
+    extensions: SUPPORTED_EXTENSIONS,
+    exportsFields: ["exports"],
+    //importsFields: ["imports"],
+    conditionNames: ["import", "node", "production"]
+  });
+
   const config = {
     mode: "production",
     entry: path.isAbsolute(input) ? input : `./${input}`,
     target: "node",
     experiments: {
-      outputModule: true
+      outputModule: true,
+      rspackFuture: {
+        newTreeshaking: true
+      }
     },
     // We first get all available stats
     // and will sort through them later
@@ -82,22 +113,37 @@ module.exports = async function compileRSPack(values) {
           },
           mangle: false,
           format: {
-            comments: 'all'
+            comments: "all"
           }
-        }),
-      ],
+        })
+      ]
     },
     resolve: {
+      extensions: SUPPORTED_EXTENSIONS,
       exportsFields: ["exports"],
+      mainFields,
+      byDependency: {
+        wasm: esmDeps(),
+        esm: esmDeps(),
+        url: { preferRelative: true },
+        worker: { ...esmDeps(), preferRelative: true },
+        commonjs: cjsDeps(),
+        amd: cjsDeps(),
+        // for backward-compat: loadModule
+        loader: cjsDeps(),
+        // for backward-compat: Custom Dependency
+        unknown: cjsDeps(),
+        // for backward-compat: getResolve without dependencyType
+        undefined: cjsDeps()
+      }
     },
     plugins: [
       new rspack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify("production"),
+        "process.env.NODE_ENV": JSON.stringify("production")
       }),
       // Only register the plugin when RSDOCTOR is true
       // as the plugin will increase the build time.
-      process.env.RSDOCTOR === name &&
-        new RsdoctorRspackPlugin(),
+      process.env.RSDOCTOR === name && new RsdoctorRspackPlugin()
     ].filter(Boolean),
     output: {
       path: dirname,
@@ -106,7 +152,8 @@ module.exports = async function compileRSPack(values) {
       chunkFilename: `[name].[contenthash].${esm ? "mjs" : "js"}`,
       library: {
         type: esm ? "module" : "commonjs2"
-      }
+      },
+      strictModuleErrorHandling: true
     }
   };
 

@@ -1,0 +1,1 @@
+export { default } from "../dist/resolve-from/index.js";

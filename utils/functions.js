@@ -21,6 +21,10 @@ function isExternal(name) {
   return name.indexOf("external ") === 0;
 }
 
+function isValid(m) {
+  return !m.orphan;
+}
+
 function getModulePath(name) {
   const moduleNames = [];
 
@@ -83,6 +87,7 @@ function rmrf(toDelete) {
 module.exports = {
   formatBytes,
   getModulePath,
+  isValid,
   isModule,
   isExternal,
   copyRecursiveSync,
