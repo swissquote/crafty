@@ -17,8 +17,6 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
   await fs.promises.writeFile(output, code);
 
   if (assets) {
-    const dirname = path.dirname(output);
-
     for (const [file, data] of Object.entries(assets)) {
       const dir = path.dirname(`${dirname}/${file}`);
       if (!fs.existsSync(dir)) {
@@ -30,6 +28,7 @@ async function handleNCCResult(name, output, { code, assets, stats }) {
         `${dirname}/${file}`,
         filesize(data.source.length)
       );
+      // eslint-disable-next-line no-await-in-loop
       await fs.promises.writeFile(`${dirname}/${file}`, data.source);
     }
   }
@@ -54,8 +53,8 @@ async function compile(input, output, bundle) {
     filename: path.basename(input),
     sourceMap: true,
     sourceMapRegister: true,
-    ...options,
-  }).then((out) => handleNCCResult(name, output, out));
+    ...options
+  }).then(out => handleNCCResult(name, output, out));
 }
 
 module.exports = {

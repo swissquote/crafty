@@ -28,18 +28,18 @@ function getModulePath(name) {
 
   let isNodeModule = false;
   let i = 0;
-  let arrayLength = moduleParts.length;
+  const arrayLength = moduleParts.length;
   while (i < arrayLength) {
     const part = moduleParts[i];
 
-    if (part == "node_modules" || part == "package-forks") {
+    if (part === "node_modules" || part === "package-forks") {
       isNodeModule = true;
       i++;
       continue;
     }
 
     if (isNodeModule) {
-      if (part[0] == "@") {
+      if (part[0] === "@") {
         moduleNames.push(`${part}/${moduleParts[i + 1]}`);
         i++;
       } else {
@@ -65,7 +65,7 @@ var copyRecursiveSync = function(src, dest) {
   var isDirectory = exists && stats.isDirectory();
   if (isDirectory) {
     fs.mkdirSync(dest);
-    fs.readdirSync(src).forEach(function(childItemName) {
+    fs.readdirSync(src).forEach(childItemName => {
       copyRecursiveSync(
         path.join(src, childItemName),
         path.join(dest, childItemName)
@@ -77,10 +77,8 @@ var copyRecursiveSync = function(src, dest) {
 };
 
 function rmrf(toDelete) {
- rimraf.sync(toDelete);
+  rimraf.sync(toDelete);
 }
-
-
 
 module.exports = {
   formatBytes,

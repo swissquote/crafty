@@ -1,16 +1,9 @@
 const path = require("path");
 const fs = require("fs");
 const rspack = require("@rspack/core");
-const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
+const { RsdoctorRspackPlugin } = require("@rsdoctor/rspack-plugin");
 const filesize = require("filesize");
 const checkStats = require("./check-stats.js");
-
-function createCompiler(options) {
-  const nodeEnv = "production";
-  process.env.NODE_ENV = nodeEnv;
-  const config = buildConfig(options);
-  return rspack(config);
-}
 
 function buildConfig(item) {
   // to set output.path
@@ -37,7 +30,7 @@ function buildConfig(item) {
     (item.plugins || (item.plugins = [])).push(
       new rspack.DefinePlugin({
         // User defined `process.env.NODE_ENV` always has highest priority than default define
-        "process.env.NODE_ENV": JSON.stringify(item.mode),
+        "process.env.NODE_ENV": JSON.stringify(item.mode)
       })
     );
   }
@@ -47,32 +40,35 @@ function buildConfig(item) {
   return item;
 }
 
+function createCompiler(options) {
+  const nodeEnv = "production";
+  process.env.NODE_ENV = nodeEnv;
+  const config = buildConfig(options);
+  return rspack(config);
+}
+
 async function compile(options) {
   const compiler = createCompiler(options);
   if (!compiler) throw new Error("Could not initialize rspack");
 
-  const { stats } = await new Promise(
-    (resolve, reject) => {
-      compiler.run((err, stats) => {
-        if (err || stats?.hasErrors()) {
-          const buildError = err || new Error('Rspack build failed!');
-          reject(buildError);
-          return
-        }
+  const allStats = await new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err || stats?.hasErrors()) {
+        const buildError = err || new Error("Rspack build failed!");
+        reject(buildError);
+        return;
+      }
 
-        compiler.close(() => resolve({ stats }));
-        
-      });
-    },
-  );
+      compiler.close(() => resolve(stats));
+    });
+  });
 
-  const printedStats = stats.toString({ preset: "errors-warnings" });
+  const printedStats = allStats.toString({ preset: "errors-warnings" });
   if (printedStats) {
     console.log(printedStats);
   }
 
-  return stats;
-
+  return allStats;
 }
 
 module.exports = async function compileRSPack(input, output, bundle) {
@@ -96,29 +92,24 @@ module.exports = async function compileRSPack(input, output, bundle) {
     },
     plugins: [
       // Only register the plugin when RSDOCTOR is true, as the plugin will increase the build time.
-      process.env.RSDOCTOR &&
-        new RsdoctorRspackPlugin(),
+      process.env.RSDOCTOR && new RsdoctorRspackPlugin()
     ].filter(Boolean),
     output: {
       path: dirname,
-      filename: filename,
-      chunkFormat: esm ? 'module' : 'commonjs',
-      chunkFilename: `[name].[contenthash].${esm ? 'mjs' : 'js'}`,
+      filename,
+      chunkFormat: esm ? "module" : "commonjs",
+      chunkFilename: `[name].[contenthash].${esm ? "mjs" : "js"}`,
       library: {
-        type: esm ? 'module' : 'commonjs2'
+        type: esm ? "module" : "commonjs2"
       }
-    },
+    }
   };
 
   const stats = await compile(config);
   const bundleStats = stats.toJson();
 
   for (const asset of bundleStats.assets) {
-    console.log(
-      "Writing",
-      `${dirname}/${asset.name}`,
-      filesize(asset.size)
-    );
+    console.log("Writing", `${dirname}/${asset.name}`, filesize(asset.size));
   }
 
   const bundleStatsString = JSON.stringify(bundleStats);
@@ -131,4 +122,4 @@ module.exports = async function compileRSPack(input, output, bundle) {
   await fs.promises.writeFile(fileName, bundleStatsString);
 
   checkStats(bundleStats, fileName);
-}
+};

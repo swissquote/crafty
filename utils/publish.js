@@ -35,10 +35,10 @@ async function promptNextVersion(prevVersion) {
         { name: `Patch (${chalk.cyan.bold(patch)})`, value: patch },
         { name: `Release candidate (${chalk.cyan.bold(rc)})`, value: rc },
         { name: `Beta (${chalk.cyan.bold(beta)})`, value: beta },
-        { name: `Alpha (${chalk.cyan.bold(alpha)})`, value: alpha },
+        { name: `Alpha (${chalk.cyan.bold(alpha)})`, value: alpha }
       ],
-      defaultValue: 2,
-    },
+      defaultValue: 2
+    }
   ]);
   return nextVersion;
 }
@@ -53,23 +53,23 @@ async function confirmPublish({ pkgList, numPublic, nextVersion }) {
       )} package/s, ${chalk.yellow.bold(numPublic)} public, v${chalk.cyan.bold(
         nextVersion
       )})?`,
-      default: false,
-    },
+      default: false
+    }
   ]);
   return out;
 }
 
 function bumpDeps(allSpecs, specs, version) {
-  const dep_types = [
+  const depTypes = [
     "dependencies",
     "devDependencies",
     "peerDependencies",
-    "optionalDependencies",
+    "optionalDependencies"
   ];
 
   const pkgList = Object.keys(allSpecs);
 
-  for (const type of dep_types) {
+  for (const type of depTypes) {
     if (!specs.hasOwnProperty(type)) {
       continue;
     }
@@ -88,7 +88,7 @@ async function setVersion(allSpecs, rootPackage, newVersion, skipConfirm) {
   // be version-bumped
   const pkgList = [];
   let numPublic = 0;
-  Object.keys(allSpecs).forEach((pkgName) => {
+  Object.keys(allSpecs).forEach(pkgName => {
     if (allSpecs[pkgName].specs.workspaces) return;
     pkgList.push(pkgName);
     if (!allSpecs[pkgName].specs.private) numPublic += 1;
@@ -177,7 +177,7 @@ function readPackageSpecs(paths) {
 
 function readNewVersion(newVersion) {
   if (!newVersion) {
-    return;
+    return null;
   }
 
   if (Array.isArray(newVersion)) {
@@ -194,6 +194,7 @@ async function publish(allSpecs, preRelease) {
     }
 
     console.log(chalk.bold(`Publishing ${chalk.blue(pkg.name)}`));
+    // eslint-disable-next-line no-await-in-loop
     await exec(
       "npm",
       preRelease ? ["publish", "--tag", "canary"] : ["publish"],
@@ -206,7 +207,7 @@ async function publish(allSpecs, preRelease) {
   // Read command line arguments
   const options = {
     boolean: ["pre-release"],
-    string: ["new-version"],
+    string: ["new-version"]
   };
   const argv = require("yargs-parser")(process.argv.slice(2), options);
 
@@ -216,7 +217,7 @@ async function publish(allSpecs, preRelease) {
   const originalVersion = rootPackage.version;
 
   const paths = await globby(
-    rootPackage.workspaces.packages.map((p) => `${p}/package.json`)
+    rootPackage.workspaces.packages.map(p => `${p}/package.json`)
   );
 
   paths.push(rootPackagePath);
@@ -230,7 +231,7 @@ async function publish(allSpecs, preRelease) {
   );
 
   if (!argv.preRelease) {
-    const files = Object.values(allSpecs).map((spec) => spec.specPath);
+    const files = Object.values(allSpecs).map(spec => spec.specPath);
 
     // Refresh lockfile after version changes
     await exec("yarn", ["install"]);
@@ -245,7 +246,7 @@ async function publish(allSpecs, preRelease) {
     // Restore previous version
     await setVersion(allSpecs, rootPackage, originalVersion, true);
   }
-})().catch((e) => {
+})().catch(e => {
   console.error(e);
   process.exit(1);
 });
