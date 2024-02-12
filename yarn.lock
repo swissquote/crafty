@@ -3351,7 +3351,7 @@ __metadata:
     event-stream: "npm:4.0.1"
     fancy-log: "npm:2.0.0"
     plugin-error: "npm:2.0.1"
-    streamx: "npm:2.15.7"
+    streamx: "npm:2.15.8"
     through: "npm:2.3.8"
   languageName: unknown
   linkType: soft
@@ -3532,7 +3532,7 @@ __metadata:
     fastest-levenshtein: "npm:1.0.16"
     last-run: "npm:2.0.0"
     once: "npm:1.4.0"
-    streamx: "npm:2.15.7"
+    streamx: "npm:2.15.8"
     undertaker-registry: "npm:2.0.0"
     vinyl-fs: "npm:4.0.0"
   languageName: unknown
@@ -5051,6 +5051,13 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 9308baf0a7e4838a82bbfd11e01b1cb0f0cf2893bc1676c27c2a8c0e70cbae1c59120c3268517a8ae7fb6376b4639ef81ca22582611dbee4ed28df945134aaee
+  languageName: node
+  linkType: hard
+
+"bare-events@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "bare-events@npm:2.2.0"
+  checksum: 0b899d444b9c86759a44b8a2fbce0dcb8060884a89193ae3222ddc92ab5273cdaf76dc3ca0bb911d93f815fb43f9392f79e5b8105c7c8300c298d254b1e734c4
   languageName: node
   linkType: hard
 
@@ -13578,13 +13585,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"streamx@npm:2.15.7, streamx@npm:^2.12.0, streamx@npm:^2.12.5, streamx@npm:^2.13.2, streamx@npm:^2.14.0, streamx@npm:^2.15.1":
-  version: 2.15.7
-  resolution: "streamx@npm:2.15.7"
+"streamx@npm:2.15.8, streamx@npm:^2.12.0, streamx@npm:^2.12.5, streamx@npm:^2.13.2, streamx@npm:^2.14.0, streamx@npm:^2.15.1":
+  version: 2.15.8
+  resolution: "streamx@npm:2.15.8"
   dependencies:
+    bare-events: "npm:^2.2.0"
     fast-fifo: "npm:^1.1.0"
     queue-tick: "npm:^1.0.1"
-  checksum: d92ecb01929ed17a5820845c4f0721b88546c93ec6d3b128abbebc6388dfc998d5e9adbbdf736ca9d06ff80610f493ae9653fa216691c85cdfd46ca8fc8d20bf
+  dependenciesMeta:
+    bare-events:
+      optional: true
+  checksum: 710177654303c4553339ccd8d7590eeb20ffc6e537bcddccee57c8aa3a81d4e684bf93d51f057a179920ce90c21c910931da87f1d704d3bd7e2eb74aba193c4c
   languageName: node
   linkType: hard
 
