@@ -3511,7 +3511,7 @@ __metadata:
     postcss-value-parser: "npm:4.2.0"
     prettier: "npm:2.8.8"
     stylelint: "npm:15.10.0"
-    stylelint-no-unsupported-browser-features: "npm:7.0.0"
+    stylelint-no-unsupported-browser-features: "npm:8.0.1"
     stylelint-prettier: "npm:3.0.0"
     stylelint-scss: "npm:5.3.2"
   peerDependencies:
@@ -6540,7 +6540,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"doiuse@npm:^6.0.1":
+"doiuse@npm:^6.0.2":
   version: 6.0.2
   resolution: "doiuse@npm:6.0.2"
   dependencies:
@@ -12058,7 +12058,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.34, postcss@npm:^8.4.16, postcss@npm:^8.4.21, postcss@npm:^8.4.24, postcss@npm:^8.4.33":
+"postcss@npm:8.4.34":
   version: 8.4.34
   resolution: "postcss@npm:8.4.34"
   dependencies:
@@ -12066,6 +12066,17 @@ __metadata:
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.0.2"
   checksum: 10c0/4d6f072cdfdc1ced16b4336263d830f8b4397fc47b9b382e02f6448fda9386d881aa9d27fbe0dd124f59c76f3a5da4f360919d25dfc818eca50b48f042af35a8
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.21, postcss@npm:^8.4.24, postcss@npm:^8.4.32, postcss@npm:^8.4.33":
+  version: 8.4.35
+  resolution: "postcss@npm:8.4.35"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 10c0/e8dd04e48001eb5857abc9475365bf08f4e508ddf9bc0b8525449a95d190f10d025acebc5b56ac2e94b3c7146790e4ae78989bb9633cb7ee20d1cc9b7dc909b2
   languageName: node
   linkType: hard
 
@@ -13753,16 +13764,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-no-unsupported-browser-features@npm:7.0.0":
-  version: 7.0.0
-  resolution: "stylelint-no-unsupported-browser-features@npm:7.0.0"
+"stylelint-no-unsupported-browser-features@npm:8.0.1":
+  version: 8.0.1
+  resolution: "stylelint-no-unsupported-browser-features@npm:8.0.1"
   dependencies:
-    doiuse: "npm:^6.0.1"
-    lodash: "npm:^4.17.15"
-    postcss: "npm:^8.4.16"
+    doiuse: "npm:^6.0.2"
+    postcss: "npm:^8.4.32"
   peerDependencies:
-    stylelint: ^14.0.0||^15.0.0
-  checksum: 10c0/9cb90d06b54473571481256c595e0c3e229310560881df906b67fe986b2e0bf11213a60d4702331d548b2486e576c9c2abc10ca5035a476be848bc0f5b536810
+    stylelint: ^16.0.2
+  checksum: 10c0/8b7cb1e28855c28dd64f1cc35e636ac6ddd8fcc80c5957c52cf6cac5d18298039054f5b041fa455419a1bb6967ff544c336a636e5f90d95f3d52502a73ca05b8
   languageName: node
   linkType: hard
 
