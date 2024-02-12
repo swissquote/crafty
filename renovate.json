@@ -65,6 +65,10 @@
     {
       "matchPackageNames": ["prettier1"],
       "allowedVersions": "<2.0"
+    },
+    {
+      "matchPackageNames": ["prettier2"],
+      "allowedVersions": "<3.0"
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"],
