@@ -37,9 +37,7 @@ module.exports = {
 
 // Disable all the rules from ESLint that are handled by @typescript-eslint
 addMissingRules(
-  require("../packages/typescript-eslint").configs[
-    "eslintRecommended"
-  ].rules,
+  require("../packages/typescript-eslint").configs.eslintRecommended.rules,
   module.exports.rules
 );
 

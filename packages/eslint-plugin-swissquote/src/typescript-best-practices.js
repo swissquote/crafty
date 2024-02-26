@@ -64,8 +64,7 @@ module.exports = {
 };
 
 addMissingRules(
-  require("../packages/typescript-eslint.js").configs.recommended[2]
-    .rules,
+  require("../packages/typescript-eslint.js").configs.recommended[2].rules,
   module.exports.rules,
   Object.keys(require("./typescript").rules)
 );
