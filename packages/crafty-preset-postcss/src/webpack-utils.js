@@ -70,22 +70,20 @@ function getCssModuleLocalIdent(context, _, exportName, options) {
   );
 }
 
-function extractCss(bundle, chain, styleRule) {
-  // Add this only once per bundle
-  if (bundle.extractCSSConfigured) {
-    return;
-  }
-  bundle.extractCSSConfigured = true;
-
+function configureMiniCssExtractPlugin(bundle, chain) {
   // Initialize extraction plugin
   const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-  // Create a list of loaders that also contains the extraction loader
-  styleRule.use("style-loader").loader(MiniCssExtractPlugin.loader);
+  // Add plugin only once per bundle
+  if (!bundle.extractCSSConfigured) {
+    chain
+      .plugin("extractCSS")
+      .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
 
-  chain
-    .plugin("extractCSS")
-    .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
+    bundle.extractCSSConfigured = true;
+  }
+
+  return MiniCssExtractPlugin.loader;
 }
 
 function createRule(crafty, bundle, chain, styleRule, options) {
@@ -96,13 +94,14 @@ function createRule(crafty, bundle, chain, styleRule, options) {
   // "style" loader turns CSS into JS modules that inject <style> tags.
   // The "style" loader enables hot editing of CSS.
 
+  let styleLoader;
   if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
-    extractCss(bundle, chain, styleRule);
+    styleLoader = configureMiniCssExtractPlugin(bundle, chain);
   } else {
-    styleRule
-      .use("style-loader")
-      .loader(require.resolve("../packages/style-loader.js"));
+    styleLoader = require.resolve("../packages/style-loader.js");
   }
+
+  styleRule.use("style-loader").loader(styleLoader);
 
   styleRule
     .use("css-loader")
