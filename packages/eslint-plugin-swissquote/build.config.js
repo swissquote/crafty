@@ -182,14 +182,7 @@ module.exports = [
 
   builder =>
     builder("typescript-eslint")
-      .packages(pkgBuilder => {
-        pkgBuilder
-          .package("@typescript-eslint/eslint-plugin", "typescriptEslintPlugin")
-          .package("@typescript-eslint/parser", "typescriptEslintParser");
-      })
-      .options({
-        sourceMap: false
-      })
+      .package()
       .externals({
         // Provided by other Crafty packages
         ...externals,
@@ -201,7 +194,6 @@ module.exports = [
         eslint: "eslint",
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
-        "/eslint/lib(/.*)/": "eslint/lib$1",
 
         merge2: "../merge2/index.js",
         "fast-glob": "../fast-glob/index.js",

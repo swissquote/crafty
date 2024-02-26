@@ -64,7 +64,7 @@ module.exports = {
 };
 
 addMissingRules(
-  require("../packages/typescript-eslint_eslint-plugin.js").configs.recommended
+  require("../packages/typescript-eslint.js").configs.recommended[2]
     .rules,
   module.exports.rules,
   Object.keys(require("./typescript").rules)
@@ -72,7 +72,7 @@ addMissingRules(
 
 /*
 addMissingRules(
-  require("../packages/typescript-eslint_eslint-plugin.js").configs["recommended-type-checked"]
+  require("../packages/typescript-eslint.js").configs["recommended-type-checked"]
     .rules,
   module.exports.rules,
   Object.keys(require("./typescript").rules)

@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-webpack.js").styleLoader();
+module.exports = require("../dist/loaders/bundled.js").styleLoader();

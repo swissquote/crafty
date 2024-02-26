@@ -1,5 +1,5 @@
 diff --git a/dist/utils.js b/dist/utils.js
-index 13aa1392b53f1032a8744e56cdd6b15cc0b13b8c..e5e09de6f97816be9d6ea0d98fcbdd9cc6529178 100644
+index aa198cbf3addf33b0a9f1aa835e37077a1d1a49f..e5e09de6f97816be9d6ea0d98fcbdd9cc6529178 100644
 --- a/dist/utils.js
 +++ b/dist/utils.js
 @@ -7,25 +7,15 @@ exports.exec = exec;
@@ -29,7 +29,7 @@ index 13aa1392b53f1032a8744e56cdd6b15cc0b13b8c..e5e09de6f97816be9d6ea0d98fcbdd9c
  function exec(code, loaderContext) {
    const {
      resource,
-@@ -41,110 +31,6 @@ function exec(code, loaderContext) {
+@@ -41,111 +31,6 @@ function exec(code, loaderContext) {
    module._compile(code, resource);
    return module.exports;
  }
@@ -99,6 +99,7 @@ index 13aa1392b53f1032a8744e56cdd6b15cc0b13b8c..e5e09de6f97816be9d6ea0d98fcbdd9c
 -  loaders[".mts"] = tsLoader;
 -  loaders[".ts"] = tsLoader;
 -  const explorer = (0, _cosmiconfig.cosmiconfig)(moduleName, {
+-    searchStrategy: "global",
 -    searchPlaces,
 -    loaders
 -  });

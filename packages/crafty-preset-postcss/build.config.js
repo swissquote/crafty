@@ -1,4 +1,3 @@
-const fs = require("fs");
 const path = require("path");
 
 const { getExternals } = require("../../utils/externals");
@@ -35,16 +34,23 @@ module.exports = [
         .package()
         .externals(newExternals);
   }),
-  (builder) => builder("packages-webpack").externals(externals),
+  (builder) => builder("loaders")
+    .packages(pkgBuilder => {
+      pkgBuilder
+        .package("css-loader", "cssLoader")
+        .package("postcss-loader", "postcssLoader")
+        .package("style-loader", "styleLoader")
+    })
+    .externals(externals),
   async function() {
-    console.log("Copying style-loader/dist/runtime to dist/compiled/runtime");
+    console.log("Copying style-loader/dist/runtime to dist/loaders/runtime");
     const styleLoaderFolder = path.dirname(
       require.resolve("style-loader/package.json")
     );
 
     copyRecursiveSync(
       path.join(styleLoaderFolder, "dist", "runtime"),
-      path.join(__dirname, "dist", "compiled", "runtime")
+      path.join(__dirname, "dist", "loaders", "runtime")
     );
   },
 ];

@@ -7,7 +7,7 @@ const plugins = {
   "react-hooks": require("./packages/eslint-plugin-react-hooks"),
   import: require("./packages/eslint-plugin-i"),
   prettier: require("./src/eslint-plugin-prettier/index.js"),
-  "@typescript-eslint": require("./packages/typescript-eslint_eslint-plugin")
+  "@typescript-eslint": require("./packages/typescript-eslint").plugin
 };
 
 // Eslint can't load plugins transitively (from a shared config)

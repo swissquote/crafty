@@ -1,1 +1,1 @@
-module.exports = require("../dist/typescript-eslint/bundled.js").typescriptEslintParser();
+module.exports = require("../dist/typescript-eslint/index.js").parser;

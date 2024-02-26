@@ -1,1 +1,1 @@
-module.exports = require("../dist/compiled/packages-webpack.js").postcssLoader();
+module.exports = require("../dist/loaders/bundled.js").postcssLoader();

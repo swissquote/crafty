@@ -40,7 +40,7 @@
     },
     {
       "groupName": "eslint",
-      "packagePatterns": ["^eslint", "@typescript-eslint/*"],
+      "packagePatterns": ["^eslint", "@typescript-eslint/*", "typescript-eslint"],
       "minor": {
         "groupName": "all eslint dependencies",
         "groupSlug": "eslint-minor-patch"
