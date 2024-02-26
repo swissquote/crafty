@@ -67,8 +67,9 @@ module.exports = {
       rules: {
         // In css-modules, naming isn't as important,
         // but as it's going to be used in JS, camelCase is best
+        // But in some cases, you might want to wrap a part in ":global" and this needs to support non-module patterns as well
         "selector-class-pattern": [
-          /^[a-z][a-zA-Z0-9]+$/,
+          /^(_)?(?:(?:u|t|(?:i|ha)?s)+-[a-z$]+[a-zA-Z0-9$()]*|(?:[a-z$][a-zA-Z0-9$()]+-)?[A-Z$][a-zA-Z0-9$()]*(__[a-z0-9$][a-zA-Z0-9$()]*)*(--[a-z0-9$][a-zA-Z0-9$()]*)*)$|^[a-z][a-zA-Z0-9]+$/,
           {
             resolveNestedSelectors: true
           }

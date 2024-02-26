@@ -1,7 +1,9 @@
-
 :global .t-global {
     :local .app {
         color:red;
     }
 }
 
+:global(.t-global) .app2 {
+    color: green;
+}

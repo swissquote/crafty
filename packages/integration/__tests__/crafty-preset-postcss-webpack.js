@@ -123,7 +123,8 @@ test.serial("Compiles CSS within webpack, CSS Modules, inline", async t => {
   t.snapshot(content);
 
   t.truthy(content.indexOf(".Button{color") > -1);
-  t.truthy(content.indexOf(".t-global .app_") > -1);
+  t.truthy(content.indexOf(".t-global .app_app__") > -1);
+  t.truthy(content.indexOf(".t-global .app_app2__") > -1);
 
   const subappContent = testUtils.readForSnapshot(
     cwd,
@@ -158,7 +159,8 @@ test.serial(
     );
     t.snapshot(content);
     t.truthy(content.indexOf(".Button{color") > -1);
-    t.truthy(content.indexOf(".t-global .app_") > -1);
+    t.truthy(content.indexOf(".t-global .app_app__") > -1);
+    t.truthy(content.indexOf(".t-global .app_app2__") > -1);
 
     const subappContent = testUtils.readForSnapshot(
       cwd,
