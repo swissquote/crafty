@@ -33,6 +33,10 @@ import { normalizeJestOptions } from "@swissquote/crafty-preset-jest";
 
 const crafty = await initialize(process.argv);
 
+// Crafty configures its own environment for builds
+// tests have different needs
+process.env.NODE_ENV = "test";
+
 const config = normalizeJestOptions(crafty, process.argv);
 export default config;
 `
