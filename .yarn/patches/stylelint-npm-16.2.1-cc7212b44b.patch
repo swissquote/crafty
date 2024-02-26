@@ -1,0 +1,14 @@
+diff --git a/package.json b/package.json
+index d8f8b99c09f4d0a361359bda1edffd48bea16148..33bae3651100d5f0d15d5d42fd21c83d224fa40e 100644
+--- a/package.json
++++ b/package.json
+@@ -34,7 +34,8 @@
+       }
+     },
+     "./package.json": "./package.json",
+-    "./lib/utils/*": "./lib/utils/*"
++    "./lib/*": "./lib/*",
++    "./bin/*": "./bin/*"
+   },
+   "main": "lib/index.cjs",
+   "types": "types/stylelint/index.d.ts",

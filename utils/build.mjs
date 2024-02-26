@@ -22,7 +22,7 @@ class PackagesBuilder {
   package(pkg, name, entryFile) {
     this.sourceFile.push(
       this.esm
-        ? `export { default as ${name} } from "${pkg}";`
+        ? `export * as ${name} from "${pkg}";`
         : `module.exports["${name}"] = function() { return require("${pkg}"); };`
     );
 
@@ -84,7 +84,7 @@ class Builder {
 
     // NCC is bad at handling ESM
     // so we always enable it for esm
-    this.rspack();
+    //this.rspack();
 
     return this;
   }
