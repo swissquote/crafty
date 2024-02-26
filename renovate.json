@@ -71,6 +71,9 @@
       "allowedVersions": "<3.0"
     }
   ],
+  "major": {
+    "dependencyDashboardApproval": true
+  },
   "postUpdateOptions": ["yarnDedupeHighest"],
   "ignoreDeps": ["postcss-custom-properties"],
   "ignorePaths": ["packages/integration/fixtures"]
