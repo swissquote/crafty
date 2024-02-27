@@ -17,7 +17,6 @@ module.exports = [
 
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
-  builder => builder("sync-threads").package(),
   builder => builder("estraverse").package(),
   builder => builder("function-bind").package(),
   builder =>

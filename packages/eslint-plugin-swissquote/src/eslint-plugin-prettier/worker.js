@@ -1,6 +1,6 @@
 // @ts-check
 
-const { runAsWorker } = require("../../packages/sync-threads.js");
+const { runAsWorker } = require("../../packages/synckit.js");
 
 /**
  * @typedef {{
