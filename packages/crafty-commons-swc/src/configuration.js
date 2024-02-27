@@ -36,7 +36,7 @@ function getConfigurationBase(
     jsc: {
       parser: {
         syntax,
-        jsx: true,
+        [syntax === "ecmascript" ? "jsx" : "tsx"]: true,
         decorators: true,
         usingDecl: true
       },

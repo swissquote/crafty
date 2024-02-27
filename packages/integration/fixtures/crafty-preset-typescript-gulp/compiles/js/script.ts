@@ -1,4 +1,4 @@
-import test from "./Component";
+import Loading from "./Loading";
 
 export default class NewStuff {
   constructor() {
@@ -8,7 +8,7 @@ export default class NewStuff {
 
   method() {
     // eslint-disable-next-line no-console
-    console.log(test(2, 4));
+    console.log(Loading);
 
     import("./SomeLibrary").then(SomeLibrary => {
       const som = new SomeLibrary.default();

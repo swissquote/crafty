@@ -3150,7 +3150,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-react@workspace:packages/crafty-preset-react":
+"@swissquote/crafty-preset-react@npm:1.24.0, @swissquote/crafty-preset-react@workspace:packages/crafty-preset-react":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-react@workspace:packages/crafty-preset-react"
   dependencies:
@@ -6049,15 +6049,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"crafty-example-typescript-lib@workspace:examples/typescript-lib":
+  version: 0.0.0-use.local
+  resolution: "crafty-example-typescript-lib@workspace:examples/typescript-lib"
+  dependencies:
+    "@swissquote/crafty": "npm:1.24.0"
+    "@swissquote/crafty-preset-jest": "npm:1.24.0"
+    "@swissquote/crafty-preset-react": "npm:1.24.0"
+    "@swissquote/crafty-preset-typescript": "npm:1.24.0"
+    "@swissquote/crafty-runner-gulp": "npm:1.24.0"
+    "@types/react": "npm:^18.0.0"
+    "@types/react-dom": "npm:^18.0.0"
+    react: "npm:18.2.0"
+    react-dom: "npm:18.2.0"
+    react-tabs: "npm:6.0.2"
+  languageName: unknown
+  linkType: soft
+
 "crafty-example-typescript@workspace:examples/typescript":
   version: 0.0.0-use.local
   resolution: "crafty-example-typescript@workspace:examples/typescript"
   dependencies:
     "@swissquote/crafty": "npm:1.24.0"
-    "@swissquote/crafty-preset-images": "npm:1.24.0"
-    "@swissquote/crafty-preset-images-simple": "npm:1.24.0"
-    "@swissquote/crafty-preset-maven": "npm:1.24.0"
+    "@swissquote/crafty-preset-jest": "npm:1.24.0"
     "@swissquote/crafty-preset-postcss": "npm:1.24.0"
+    "@swissquote/crafty-preset-react": "npm:1.24.0"
     "@swissquote/crafty-preset-typescript": "npm:1.24.0"
     "@swissquote/crafty-runner-gulp": "npm:1.24.0"
     "@swissquote/crafty-runner-webpack": "npm:1.24.0"

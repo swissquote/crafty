@@ -197,6 +197,7 @@ const retry = (max, backoff, getPromise) => {
             return reject(err);
           }
           setTimeout(() => attempt(i + 1), i * backoff);
+          return null;
         });
     };
     attempt(1);

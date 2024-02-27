@@ -53,11 +53,11 @@ test.serial("Compiles TypeScript", async t => {
   t.truthy(testUtils.exists(cwd, "dist/js/script.js"));
   t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
 
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js.map"));
 
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/script.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Loading.js"));
 });
 
 test.serial("Compiles TypeScript Modules", async t => {
