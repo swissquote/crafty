@@ -86,6 +86,31 @@ test.serial("Compiles TypeScript - fork checker", async t => {
   );
 });
 
+test.serial("Compiles TypeScript - custom paths", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/compiles-paths"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/components/Calculator.d.ts"));
+
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.snapshot(
+    testUtils.readForSnapshot(cwd, "dist/js/js/components/Calculator.d.ts")
+  );
+});
+
 test.serial("Lints TypeScript with webpack", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-webpack/lints"
