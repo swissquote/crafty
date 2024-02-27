@@ -411,3 +411,27 @@ test("flags warnings when using ids raised one 'selector-max-id' error", t => {
     ]);
   });
 });
+
+test("Works with CSS Modules", t => {
+  const result = stylelint.lint({
+    code: `/** @define App */
+
+:global .t-global {
+    :local .app {
+        color: red;
+    }
+}
+
+:global(.t-global) .app2 {
+    color: green;
+}
+`,
+    codeFilename: "app.module.css",
+    config
+  });
+
+  return result.then(data => {
+    t.falsy(data.errored);
+    t.is(data.results[0].warnings.length, 0);
+  });
+});

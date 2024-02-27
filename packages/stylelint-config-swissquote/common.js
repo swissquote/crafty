@@ -56,7 +56,7 @@ module.exports = {
     "property-no-unknown": true,
     "selector-pseudo-class-no-unknown": [
       true,
-      { ignorePseudoClasses: ["global"] }
+      { ignorePseudoClasses: ["global", "local"] }
     ],
     "selector-pseudo-element-no-unknown": true,
     "selector-pseudo-element-colon-notation": "single",
