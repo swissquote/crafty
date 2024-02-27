@@ -10,7 +10,6 @@ import {
   printReport
 } from "./duplicates.js";
 import compileUtils from "./compile.js";
-import compileRspack from "./compileRspack.js";
 
 class PackagesBuilder {
   constructor() {
@@ -70,18 +69,10 @@ class Builder {
     return this;
   }
 
-  rspack() {
-    this.values.rspack = true;
-
-    return this;
-  }
-
   esm() {
     this.values.options.esm = true;
 
-    // NCC is bad at handling ESM
-    // so we always enable it for esm
-    return this.rspack();
+    return this;
   }
 
   options(options) {
@@ -144,17 +135,10 @@ class Builder {
         this.values.source = tmpSourceFile;
       }
 
-      if (this.values.rspack) {
-        await compileRspack(this.values.source, this.values.destination, {
-          name: this.values.name,
-          ...this.values.options,
-        });
-      } else {
-        await compileUtils.compile(this.values.source, this.values.destination, {
-          name: this.values.name,
-          ...this.values.options,
-        });
-      }
+      await compileUtils.compile(this.values.source, this.values.destination, {
+        name: this.values.name,
+        ...this.values.options,
+      });
 
 
       if (this.values.entryFiles) {
