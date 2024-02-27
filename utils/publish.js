@@ -189,10 +189,10 @@ function readNewVersion(newVersion) {
 
 const retry = (max, backoff, getPromise) => {
   return new Promise((resolve, reject) => {
-    const attempt = (i) => {
+    const attempt = i => {
       getPromise(i)
         .then(resolve)
-        .catch((err) => {
+        .catch(err => {
           if (i >= max) {
             return reject(err);
           }
@@ -211,9 +211,9 @@ async function publish(allSpecs, preRelease) {
 
     console.log(chalk.bold(`Publishing ${chalk.blue(pkg.name)}`));
     // eslint-disable-next-line no-await-in-loop
-    await retry(3, 1000, async (i) => {
-      console.log("Publishing package, attempt", i)
-      await exec(
+    await retry(3, 1000, async i => {
+      console.log("Publishing package, attempt", i);
+      return exec(
         "npm",
         preRelease ? ["publish", "--tag", "canary"] : ["publish"],
         { cwd: pkg.pkgPath }
