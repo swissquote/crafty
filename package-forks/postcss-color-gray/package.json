@@ -4,7 +4,10 @@
   "description": "Use the gray() color function in CSS",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "license": "ISC",
-  "repository": "postcss/postcss-color-gray",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postcss/postcss-color-gray.git"
+  },
   "homepage": "https://github.com/postcss/postcss-color-gray#readme",
   "bugs": "https://github.com/postcss/postcss-color-gray/issues",
   "main": "index.js",

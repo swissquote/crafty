@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OEvgeny/postcss-atroot.git"
+    "url": "git+https://github.com/OEvgeny/postcss-atroot.git"
   },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",

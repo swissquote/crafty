@@ -14,7 +14,10 @@
   "license": "MIT",
   "author": "Vadym Borodin <borodean@gmail.com> (http://borodean.com)",
   "main": "./lib",
-  "repository": "assetsjs/assets",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assetsjs/assets.git"
+  },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node lib",
     "test": "ava",

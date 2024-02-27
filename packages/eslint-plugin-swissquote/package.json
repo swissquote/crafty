@@ -2,7 +2,10 @@
   "name": "@swissquote/eslint-plugin-swissquote",
   "version": "1.24.0",
   "license": "Apache-2.0",
-  "repository": "https://github.com/swissquote/crafty.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swissquote/crafty.git"
+  },
   "keywords": [
     "eslint",
     "eslintplugin"

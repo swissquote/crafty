@@ -25,7 +25,10 @@
     "Pascal Duez (https://github.com/pascalduez)"
   ],
   "main": "./lib",
-  "repository": "assetsjs/postcss-assets",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assetsjs/postcss-assets.git"
+  },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node lib",
     "test": "ava",
