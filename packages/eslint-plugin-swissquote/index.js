@@ -68,7 +68,10 @@ module.exports = {
           // Extends doesn't work in overrides, so we add rules directly
           rules: {
             ...require("./src/typescript.js").rules,
-            ...require("./src/typescript-best-practices.js").rules
+            ...require("./src/typescript-best-practices.js").rules,
+            // This rule is handled by TypeScript and has false positives
+            // https://github.com/jsx-eslint/eslint-plugin-react/issues/3325
+            "@swissquote/swissquote/react/prop-types": "off"
           }
         }
       ]
