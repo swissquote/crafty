@@ -93,7 +93,6 @@ function configureWatcher(chain, bundle, config, webpackPort) {
   });
 
   chain.devServer
-    .hot(bundle.hot ? "only" : false)
     .host("localhost")
     .port(webpackPort)
     .headers({
@@ -102,12 +101,16 @@ function configureWatcher(chain, bundle, config, webpackPort) {
 }
 
 function finalizeWatcher(chain, config) {
-  const devServerConfig = chain.devServer.toConfig();
+  const {
+    host,
+    port,
+    middleware,
+    headers,
+    ...devServerConfig
+  } = chain.devServer.toConfig();
 
   // Read theses values from webpack chain as they could have been overriden with a preset
   const protocol = chain.devServer.get("https") ? "https" : "http";
-  const host = devServerConfig.host;
-  const port = devServerConfig.port;
   const urlPrefix = `${protocol}://${host}:${port}`;
 
   let staticPath = config.destination;
@@ -140,6 +143,7 @@ function finalizeWatcher(chain, config) {
     .init((Plugin, args) => new Plugin.WebpackPluginServe(...args))
     .use(require.resolve("webpack-plugin-serve"), [
       {
+        ...devServerConfig,
         host,
         port,
 
@@ -153,7 +157,13 @@ function finalizeWatcher(chain, config) {
         allowMany: true,
 
         middleware: (app, builtins) => {
-          builtins.headers(devServerConfig.headers);
+          if (headers) {
+            builtins.headers(headers);
+          }
+
+          if (middleware) {
+            middleware(app, builtins);
+          }
         }
       }
     ]);
