@@ -187,6 +187,22 @@ function readNewVersion(newVersion) {
   return newVersion;
 }
 
+const retry = (max, backoff, getPromise) => {
+  return new Promise((resolve, reject) => {
+    const attempt = (i) => {
+      getPromise(i)
+        .then(resolve)
+        .catch((err) => {
+          if (i >= max) {
+            return reject(err);
+          }
+          setTimeout(() => attempt(i + 1), i * backoff);
+        });
+    };
+    attempt(1);
+  });
+};
+
 async function publish(allSpecs, preRelease) {
   for (const pkg of Object.values(allSpecs)) {
     if (pkg.specs.private) {
@@ -195,11 +211,14 @@ async function publish(allSpecs, preRelease) {
 
     console.log(chalk.bold(`Publishing ${chalk.blue(pkg.name)}`));
     // eslint-disable-next-line no-await-in-loop
-    await exec(
-      "npm",
-      preRelease ? ["publish", "--tag", "canary"] : ["publish"],
-      { cwd: pkg.pkgPath }
-    );
+    await retry(3, 1000, async (i) => {
+      console.log("Publishing package, attempt", i)
+      await exec(
+        "npm",
+        preRelease ? ["publish", "--tag", "canary"] : ["publish"],
+        { cwd: pkg.pkgPath }
+      );
+    });
   }
 }
 
