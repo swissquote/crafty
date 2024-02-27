@@ -78,7 +78,10 @@ module.exports = function createTask(crafty, bundle, gulp) {
       jsx: "Preserve"
     };
     const typescript = require("../packages/gulp-typescript");
-    const tsProject = typescript.createProject("tsconfig.json", tsOptions);
+    const tsProject = typescript.createProject(
+      bundle.tsconfigFile || "tsconfig.json",
+      tsOptions
+    );
     stream = stream.pipe(tsProject()).on("error", err => {
       crafty.error(err);
       cb(err);

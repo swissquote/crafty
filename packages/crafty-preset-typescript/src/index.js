@@ -81,11 +81,12 @@ module.exports = {
     }
   },
   webpack(crafty, bundle, chain) {
-    const configFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
+    const tsconfigFile = bundle.tsconfigFile || "tsconfig.json";
+    const configFile = findUpSync(tsconfigFile, { cwd: process.cwd() });
 
     if (!configFile) {
       crafty.log.error(
-        `No tsconfig.json found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`
+        `No '${tsconfigFile}' found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`
       );
       return;
     }
@@ -144,6 +145,7 @@ module.exports = {
     const tsOptions = {
       // https://webpack.js.org/guides/build-performance/#typescript-loader
       experimentalWatchApi: true,
+      configFile: tsconfigFile,
       compilerOptions: {
         // Transpile to esnext so that SWC can apply all its magic
         target: "ESNext",
@@ -185,6 +187,7 @@ module.exports = {
       const forkCheckerOptions = {
         typescript: {
           typescriptPath: require.resolve("typescript"),
+          configFile: tsconfigFile,
           configOverwrite: {
             compilerOptions: tsOptions.compilerOptions
           }

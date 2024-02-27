@@ -65,6 +65,29 @@ test.serial("Compiles TypeScript", async t => {
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts"));
 });
 
+test.serial("Compiles TypeScript, alternate conf", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-webpack/compiles-alternate-conf"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.truthy(testUtils.exists(cwd, "dist/js/js/Component.d.ts"));
+
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts"));
+});
+
 test.serial("Compiles TypeScript - fork checker", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-webpack/compiles-forked"

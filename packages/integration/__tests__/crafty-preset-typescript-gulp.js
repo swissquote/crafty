@@ -60,6 +60,29 @@ test.serial("Compiles TypeScript", async t => {
   t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Loading.js"));
 });
 
+test.serial("Compiles TypeScript, alternate conf", async t => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-typescript-gulp/compiles-alternate-conf"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 0);
+
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+
+  t.truthy(testUtils.exists(cwd, "dist/js/script.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+
+  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js"));
+  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js.map"));
+
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/script.js"));
+  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Loading.js"));
+});
+
 test.serial("Compiles TypeScript Modules", async t => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles-modules"

@@ -134,6 +134,12 @@ This configuration will:
 | `destination` | `string`          | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                                             |
 | `watch`       | `string|string[]` | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack doesn't use this option. |
 
+### JavaScript Bundle options
+
+| Option        | Type      | Description                                                             |
+| -------------- | -------- | ----------------------------------------------------------------------- |
+| `tsconfigFile` | `string` | Specify a custom `tsconfig.json`, relative to the root of your project. |
+
 ### Runners
 
 You can define which runner should run for which bundle. The different values are
