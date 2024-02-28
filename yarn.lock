@@ -2595,7 +2595,7 @@ __metadata:
     minimatch: "npm:5.1.6"
     semver: "npm:7.6.0"
     source-map-js: "npm:1.0.2"
-    tmp: "npm:0.2.1"
+    tmp: "npm:0.2.2"
   languageName: unknown
   linkType: soft
 
@@ -3100,10 +3100,10 @@ __metadata:
     ava: "npm:6.1.1"
     bach: "npm:2.0.1"
     c8: "npm:9.1.0"
-    del: "npm:6.1.1"
     fastest-levenshtein: "npm:1.0.16"
     last-run: "npm:2.0.0"
     once: "npm:1.4.0"
+    rimraf: "npm:5.0.5"
     streamx: "npm:2.16.1"
     undertaker-registry: "npm:2.0.0"
     vinyl-fs: "npm:4.0.0"
@@ -4043,13 +4043,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"append-type@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "append-type@npm:1.0.2"
-  checksum: 10c0/0f5f1b7157fe0a2c85d5e799f0615e64d8cd95d164c6ed99feb2a6d0abc3d9b9ff8dee2d2f8896cc4ca8fce6fc771f771e85957b500e2c541f11b16e68c6aab2
-  languageName: node
-  linkType: hard
-
 "aproba@npm:^1.0.3 || ^2.0.0":
   version: 2.0.0
   resolution: "aproba@npm:2.0.0"
@@ -4155,13 +4148,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-to-sentence@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "array-to-sentence@npm:1.1.0"
-  checksum: 10c0/815cf8cb077d091ff7258922e87ed6140de605431958436e762016bf84e631ff65fe0b7c923fbd013d958db4bd921822c183b2d627a53218b8b3e8b9f7daac6c
-  languageName: node
-  linkType: hard
-
 "array-union@npm:^2.1.0":
   version: 2.1.0
   resolution: "array-union@npm:2.1.0"
@@ -4247,16 +4233,6 @@ __metadata:
   version: 3.0.0
   resolution: "arrify@npm:3.0.0"
   checksum: 10c0/2e26601b8486f29780f1f70f7ac05a226755814c2a3ab42e196748f650af1dc310cd575a11dd4b9841c70fd7460b2dd2b8fe6fb7a3375878e2660706efafa58e
-  languageName: node
-  linkType: hard
-
-"assert-valid-glob-opts@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "assert-valid-glob-opts@npm:1.0.0"
-  dependencies:
-    glob-option-error: "npm:^1.0.0"
-    validate-glob-opts: "npm:^1.0.0"
-  checksum: 10c0/652e63ff52a73568d99aa93142f08af1a1469aa82540d4f7b74196b8388f750bc4dc3ad0f038351124dab91048aa8319f257aa4a8ad21be97aca3658af388bb1
   languageName: node
   linkType: hard
 
@@ -5879,22 +5855,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"del@npm:6.1.1":
-  version: 6.1.1
-  resolution: "del@npm:6.1.1"
-  dependencies:
-    globby: "npm:^11.0.1"
-    graceful-fs: "npm:^4.2.4"
-    is-glob: "npm:^4.0.1"
-    is-path-cwd: "npm:^2.2.0"
-    is-path-inside: "npm:^3.0.2"
-    p-map: "npm:^4.0.0"
-    rimraf: "npm:^3.0.2"
-    slash: "npm:^3.0.0"
-  checksum: 10c0/8a095c5ccade42c867a60252914ae485ec90da243d735d1f63ec1e64c1cfbc2b8810ad69a29ab6326d159d4fddaa2f5bad067808c42072351ec458efff86708f
-  languageName: node
-  linkType: hard
-
 "delayed-stream@npm:~1.0.0":
   version: 1.0.0
   resolution: "delayed-stream@npm:1.0.0"
@@ -7348,13 +7308,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob-option-error@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "glob-option-error@npm:1.0.0"
-  checksum: 10c0/c260cdc6ef1ffef00886cdc9178570f6a0e0c64244cbbdcdcb7ce4c64e1301ba8f5be4d3daed9346321c2dda2c15cf56767c92c0243414618ad7029a9231eeb7
-  languageName: node
-  linkType: hard
-
 "glob-parent@npm:^5.1.2, glob-parent@npm:~5.1.2":
   version: 5.1.2
   resolution: "glob-parent@npm:5.1.2"
@@ -7409,7 +7362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.10":
+"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7":
   version: 10.3.10
   resolution: "glob@npm:10.3.10"
   dependencies:
@@ -7424,7 +7377,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4":
+"glob@npm:^7.1.3, glob@npm:^7.1.4":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -7493,7 +7446,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^11.0.0, globby@npm:^11.0.1, globby@npm:^11.1.0":
+"globby@npm:^11.0.0, globby@npm:^11.1.0":
   version: 11.1.0
   resolution: "globby@npm:11.1.0"
   dependencies:
@@ -7537,7 +7490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.10, graceful-fs@npm:^4.2.11, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.8, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.10, graceful-fs@npm:^4.2.11, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.8, graceful-fs@npm:^4.2.9":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: 10c0/386d011a553e02bc594ac2ca0bd6d9e4c22d7fa8cfbfc448a6d148c59ea881b092db9dbe3547ae4b88e55f1b01f7c4a2ecc53b310c042793e63aa44cf6c257f2
@@ -8011,15 +7964,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"indexed-filter@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "indexed-filter@npm:1.0.3"
-  dependencies:
-    append-type: "npm:^1.0.1"
-  checksum: 10c0/f1678cc9716e2fe52db671dfbb907530f4da8b093e64b8f9619ac3e48981eaa79c5e11e9b73e7935ccbd1d8afd8b204f55ba4b2ec6dd3b9c60ea8b0def9013d8
-  languageName: node
-  linkType: hard
-
 "inflight@npm:^1.0.4":
   version: 1.0.6
   resolution: "inflight@npm:1.0.6"
@@ -8048,15 +7992,6 @@ __metadata:
   version: 1.3.8
   resolution: "ini@npm:1.3.8"
   checksum: 10c0/ec93838d2328b619532e4f1ff05df7909760b6f66d9c9e2ded11e5c1897d6f2f9980c54dd638f88654b00919ce31e827040631eab0a3969e4d1abefa0719516a
-  languageName: node
-  linkType: hard
-
-"inspect-with-kind@npm:^1.0.4":
-  version: 1.0.5
-  resolution: "inspect-with-kind@npm:1.0.5"
-  dependencies:
-    kind-of: "npm:^6.0.2"
-  checksum: 10c0/4a7ca641927d24b5f0fabbad48ed940cffa840d6cfa07b6bc475593f6e0679b4d30ec1714de289cb17b10214a36e6bdccc257262a1163e33741425e5d311e8d1
   languageName: node
   linkType: hard
 
@@ -8104,7 +8039,7 @@ __metadata:
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-test-renderer: "npm:18.2.0"
-    rmfr: "npm:2.0.0"
+    rimraf: "npm:5.0.5"
   languageName: unknown
   linkType: soft
 
@@ -8365,7 +8300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-path-inside@npm:^3.0.2, is-path-inside@npm:^3.0.3":
+"is-path-inside@npm:^3.0.3":
   version: 3.0.3
   resolution: "is-path-inside@npm:3.0.3"
   checksum: 10c0/cf7d4ac35fb96bab6a1d2c3598fe5ebb29aafb52c0aaa482b5a3ed9d8ba3edc11631e3ec2637660c44b3ce0e61a08d54946e8af30dec0b60a7c27296c68ffd05
@@ -12146,18 +12081,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rimraf@npm:^2.6.2":
-  version: 2.7.1
-  resolution: "rimraf@npm:2.7.1"
+"rimraf@npm:5.0.5, rimraf@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "rimraf@npm:5.0.5"
   dependencies:
-    glob: "npm:^7.1.3"
+    glob: "npm:^10.3.7"
   bin:
-    rimraf: ./bin.js
-  checksum: 10c0/4eef73d406c6940927479a3a9dee551e14a54faf54b31ef861250ac815172bade86cc6f7d64a4dc5e98b65e4b18a2e1c9ff3b68d296be0c748413f092bb0dd40
+    rimraf: dist/esm/bin.mjs
+  checksum: 10c0/d50dbe724f33835decd88395b25ed35995077c60a50ae78ded06e0185418914e555817aad1b4243edbff2254548c2f6ad6f70cc850040bebb4da9e8cc016f586
   languageName: node
   linkType: hard
 
-"rimraf@npm:^3.0.0, rimraf@npm:^3.0.2":
+"rimraf@npm:^3.0.2":
   version: 3.0.2
   resolution: "rimraf@npm:3.0.2"
   dependencies:
@@ -12165,19 +12100,6 @@ __metadata:
   bin:
     rimraf: bin.js
   checksum: 10c0/9cb7757acb489bd83757ba1a274ab545eafd75598a9d817e0c3f8b164238dd90eba50d6b848bd4dcc5f3040912e882dc7ba71653e35af660d77b25c381d402e8
-  languageName: node
-  linkType: hard
-
-"rmfr@npm:2.0.0":
-  version: 2.0.0
-  resolution: "rmfr@npm:2.0.0"
-  dependencies:
-    assert-valid-glob-opts: "npm:^1.0.0"
-    glob: "npm:^7.1.2"
-    graceful-fs: "npm:^4.1.11"
-    inspect-with-kind: "npm:^1.0.4"
-    rimraf: "npm:^2.6.2"
-  checksum: 10c0/9b10e9eafb864a45cbcb7ee42e0b49e68ef8e8d229a8ca0e910ec5c85ebc83f88633e41d6db0a04b8410721c7511f3efb9ddddaf7a0b25397a6eb380aa188153
   languageName: node
   linkType: hard
 
@@ -13375,12 +13297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tmp@npm:0.2.1":
-  version: 0.2.1
-  resolution: "tmp@npm:0.2.1"
+"tmp@npm:0.2.2":
+  version: 0.2.2
+  resolution: "tmp@npm:0.2.2"
   dependencies:
-    rimraf: "npm:^3.0.0"
-  checksum: 10c0/67607aa012059c9ce697bee820ee51bc0f39b29a8766def4f92d3f764d67c7cf9205d537d24e0cb1ce9685c40d4c628ead010910118ea18348666b5c46ed9123
+    rimraf: "npm:^5.0.5"
+  checksum: 10c0/0754cffe42f45ad4991dcf9deb0c4c90ca75887c79fb668d7c66cf54f92b355563b8923b9467f4914be0a145d78667681b96f5f68cd83e2ca7c99d8675262a02
   languageName: node
   linkType: hard
 
@@ -13896,18 +13818,6 @@ __metadata:
     "@types/istanbul-lib-coverage": "npm:^2.0.1"
     convert-source-map: "npm:^2.0.0"
   checksum: 10c0/e691ba4dd0dea4a884e52c37dbda30cce6f9eeafe9b26721e449429c6bb0f4b6d1e33fabe7711d0f67f7a34c3bfd56c873f7375bba0b1534e6a2843ce99550e5
-  languageName: node
-  linkType: hard
-
-"validate-glob-opts@npm:^1.0.0":
-  version: 1.0.2
-  resolution: "validate-glob-opts@npm:1.0.2"
-  dependencies:
-    array-to-sentence: "npm:^1.1.0"
-    indexed-filter: "npm:^1.0.0"
-    inspect-with-kind: "npm:^1.0.4"
-    is-plain-obj: "npm:^1.1.0"
-  checksum: 10c0/472854e0ff9978750155d25876c96e4b78a1e02c81796103c4fae86d91a6dda630daa233ed63c1fe74de93cab384a45b18b8d84c4788b0b6024d2669bd027e91
   languageName: node
   linkType: hard
 

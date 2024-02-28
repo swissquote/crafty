@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-var del = require("del");
+const { rimraf } = require("rimraf");
 var DefaultRegistry = require("undertaker-registry");
 
 module.exports = class CommonRegistry extends DefaultRegistry {
@@ -27,7 +27,7 @@ module.exports = class CommonRegistry extends DefaultRegistry {
     }
 
     taker.task("clean", function() {
-      return del([buildDir]);
+      return rimraf(buildDir);
     });
 
     taker.task("serve", function() {

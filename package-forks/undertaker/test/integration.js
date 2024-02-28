@@ -8,7 +8,7 @@ var path = require("path");
 var vinyl = require("vinyl-fs");
 var spawn = require("child_process").spawn;
 var once = require("once");
-var del = require("del");
+const { rimraf } = require("rimraf");
 var { Transform } = require("streamx");
 
 var Undertaker = require("../");
@@ -16,10 +16,8 @@ var Undertaker = require("../");
 var isWindows = os.platform() === "win32";
 
 async function cleanup() {
-  await del([
-    path.join(__dirname, "./fixtures/out/"),
-    path.join(__dirname, "./fixtures/tmp/"),
-  ]);
+  await rimraf(path.join(__dirname, "./fixtures/out/"));
+  await rimraf(path.join(__dirname, "./fixtures/tmp/"));
 }
 
 function noop() {}
@@ -116,7 +114,7 @@ test.serial("should run dependencies once", async function(t) {
     "clean",
     once(function() {
       count++;
-      return del(["./fixtures/some-build.txt"], { cwd: __dirname });
+      return rimraf(path.join(__dirname, "./fixtures/some-build.txt"));
     })
   );
 
