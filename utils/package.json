@@ -6,7 +6,8 @@
     "lint": "node ../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node *.js"
   },
   "dependencies": {
-    "@vercel/ncc": "0.38.1"
+    "@vercel/ncc": "0.38.1",
+    "rimraf": "5.0.5"
   },
   "engines": {
     "node": ">=18"

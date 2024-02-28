@@ -2,7 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import rimraf from "rimraf";
+import { rimrafSync } from "rimraf";
 
 import {
   findFiles,
@@ -186,7 +186,7 @@ function builder(name) {
 
 async function main() {
   // Start with a cleanup
-  rimraf.sync(process.cwd() + "/dist");
+  rimrafSync(process.cwd() + "/dist");
 
   const toBuild = await import(process.cwd() + "/build.config.js")
   const configuration = toBuild.default;

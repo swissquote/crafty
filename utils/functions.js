@@ -1,4 +1,4 @@
-const rimraf = require("rimraf");
+const { rimrafSync } = require("rimraf");
 const path = require("path");
 const fs = require("fs");
 
@@ -77,7 +77,7 @@ var copyRecursiveSync = function(src, dest) {
 };
 
 function rmrf(toDelete) {
-  rimraf.sync(toDelete);
+  rimrafSync(toDelete);
 }
 
 module.exports = {
