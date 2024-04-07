@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Component.module.css";
+import * as styles from "./Component.module.css";
 
 interface MyComponentState {
   clicked: boolean;
