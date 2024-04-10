@@ -73,6 +73,12 @@ module.exports = {
 
     // For example, adding supported extensions to the resolution
     chain.resolve.extensions.add(".ts").add(".tsx").add(".mts").add(".cts");
+
+    // For example to add a reverse proxy
+    chain.devServer.set("middleware", (app, builtins) => {
+    app.use(builtins.proxy('/hey', { target: 'https://google.com' }));
+});
+
   }
 };
 ```
