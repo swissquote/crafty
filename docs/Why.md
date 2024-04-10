@@ -16,7 +16,7 @@ best out of each one.
 
 ### Features
 
-We support the full EcmaScript 2015 and EcmaScript 2016 Specifications, Advanced CSS with the help
+We support the latest EcmaScript Specifications, Advanced CSS with the help
 of PostCSS and also TypeScript.
 
 The features are best explained in each specific section :
@@ -52,13 +52,12 @@ come often, always improved documentation and reliability.
 ## Why we developed our solution instead of an existing one
 
 Some solutions outside Swissquote do a similar job, like
-[neutrino](https://neutrino.js.org/). But they tend to be too
+[neutrino](https://neutrinojs.org/). But they tend to be too
 opinionated and not offering options to tailor the solution to our needs.
 Or they are made for one specific tool.
 
 For example:
 
-- [create-react-app](https://github.com/facebookincubator/create-react-app) is
-  meant to create React applications with Babel and Webpack. You can't use
-  TypeScript and you are limited to one bundle.
-- [neutrino](https://neutrino.js.org/) is more configurable but still allows to is limited to one bundle and Webpack.
+- [create-react-app](https://create-react-app.dev/) is
+  meant to create React applications with Babel and Webpack. You are limited to one bundle.
+- [neutrino](https://neutrinojs.org/) is more configurable but still allows to is limited to one bundle and Webpack.

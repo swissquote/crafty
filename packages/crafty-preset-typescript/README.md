@@ -24,7 +24,7 @@ Microsoft presents TypeScript as "JavaScript that scales".
 TypeScript is a superset of JavaScript that allows you to type your code.
 Not everything needs to have a type as the tool is powerful enough to infer most of the types.
 
-TypeScript has types but it also supports the full EcmaScript 2015 Specification.
+TypeScript has types but it also supports the ESNext Specification.
 
 ## Features
 
