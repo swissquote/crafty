@@ -16,7 +16,7 @@
 
 ## Description
 
-**SWC** is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with **ESLint** to lint your code, you get the best preset to get started.
+[**SWC**](https://swc.rs/) is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with **ESLint** to lint your code, you get the best preset to get started.
 
 ## Features
 

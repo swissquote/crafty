@@ -3,7 +3,7 @@
 ## Language features
 
 TypeScript is a superset of EcmaScript 2015, in this section we will cover what is added on top of it.
-For EcmaScript 2015 features, you can check out our [Babel preset's features](../05_crafty-preset-babel/JavaScript_Features.md).
+For ESNext features, you can check out our [Babel preset's features](../05_crafty-preset-babel/JavaScript_Features.md).
 
 ### Interfaces
 

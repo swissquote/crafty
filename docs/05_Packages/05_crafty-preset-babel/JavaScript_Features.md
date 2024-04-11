@@ -2,7 +2,7 @@
 
 ## Introduction
 
-All bundles made with Babel have the same features, regardless of the bundler that was used.
+All bundles made with [Babel](https://babeljs.io/) have the same features, regardless of the bundler that was used.
 
 Except Gulp that will not use Babel to create your final bundle.
 
