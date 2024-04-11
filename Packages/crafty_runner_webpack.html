@@ -274,6 +274,12 @@ which is a configuration builder.</p>
 
     <span class="hljs-comment">// For example, adding supported extensions to the resolution</span>
     chain.resolve.extensions.add(<span class="hljs-string">".ts"</span>).add(<span class="hljs-string">".tsx"</span>).add(<span class="hljs-string">".mts"</span>).add(<span class="hljs-string">".cts"</span>);
+
+    <span class="hljs-comment">// For example to add a reverse proxy</span>
+    chain.devServer.set(<span class="hljs-string">"middleware"</span>, (app, builtins) =&gt; {
+    app.use(builtins.proxy(<span class="hljs-string">'/hey'</span>, { <span class="hljs-attr">target</span>: <span class="hljs-string">'https://google.com'</span> }));
+});
+
   }
 };
 </code></pre>
@@ -290,13 +296,7 @@ which is a configuration builder.</p>
     </div>
 </div>
 
-    <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-113355094-2', '');
-    ga('send', 'pageview');
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+    
     <!-- JS -->
             <script src="../themes/swissquote/js/daux.min.js"></script>
     
