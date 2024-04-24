@@ -5,15 +5,61 @@
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
+function fixKey(key) {
+  // might be called more than once
+  if (key.indexOf("@swissquote") === 0) {
+    return key;
+  }
+
+  return key.indexOf("/") > -1 ? `@swissquote/swissquote/${key}` : key;
+}
+
+function fixPluginKey(key) {
+  // might be called more than once
+  if (key.indexOf("@swissquote") === 0) {
+    return key;
+  }
+
+  return `@swissquote/swissquote/${key}`;
+}
+
+/**
+ * This ensures that all configurations get the `@swissquote/swissquote` prefix as it was since Crafty 1.0
+ * This can technically be disabled now but would break a whole lot of apps
+ *
+ * @param {*} configs
+ * @returns
+ */
+function prefixPlugins(configs) {
+  for (const config of configs) {
+    if (config.plugins) {
+      config.plugins = Object.fromEntries(
+        Object.entries(config.plugins).map(([key, value]) => {
+          return [fixPluginKey(key), value];
+        })
+      );
+    }
+
+    if (config.rules) {
+      config.rules = Object.fromEntries(
+        Object.entries(config.rules).map(([key, value]) => {
+          return [fixKey(key), value];
+        })
+      );
+    }
+  }
+
+  return configs;
+}
+
 function addMissingRules(source, destination, except = []) {
   Object.keys(source).forEach(ruleName => {
     // Only define the rules we don't have configured yet
-    const key =
-      ruleName.indexOf("/") > -1
-        ? `@swissquote/swissquote/${ruleName}`
-        : ruleName;
-    if (!hasOwnProperty.call(destination, key) && except.indexOf(key) === -1) {
-      destination[key] = source[ruleName];
+    if (
+      !hasOwnProperty.call(destination, ruleName) &&
+      except.indexOf(ruleName) === -1
+    ) {
+      destination[ruleName] = source[ruleName];
     }
   });
 }
@@ -26,5 +72,6 @@ function warn() {
 
 module.exports = {
   addMissingRules,
-  warn
+  warn,
+  prefixPlugins
 };

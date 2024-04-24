@@ -1,16 +1,20 @@
 const { addMissingRules } = require("./utils");
 
 module.exports = {
+  files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+  languageOptions: {
+    parser: require("../packages/typescript-eslint_parser.js")
+  },
   rules: {
     // Override of JavaScript recommended
     "dot-notation": "off", // Produce false positives and breaks valid code
     "no-undef": "off", // This check is done by the TypeScript compiler
-    "@swissquote/swissquote/@typescript-eslint/no-explicit-any": "off", // We won't force this on our users. Let them be the judge
+    "@typescript-eslint/no-explicit-any": "off", // We won't force this on our users. Let them be the judge
     "no-shadow": "off", // This is not as useful as we have types for our variables
 
     // Replace base rules with TypeScript specific rules
     camelcase: "off",
-    "@swissquote/swissquote/@typescript-eslint/naming-convention": [
+    "@typescript-eslint/naming-convention": [
       "error",
       {
         selector: "default",
@@ -38,28 +42,28 @@ module.exports = {
 
     // Disable this rule for the time being, enforcing it suddenly would be too harsh
     // TODO :: enable in 2.0
-    "@swissquote/swissquote/@typescript-eslint/explicit-module-boundary-types":
-      "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
 
     "no-use-before-define": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-use-before-define": "error",
 
     "no-useless-constructor": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-useless-constructor": "error",
+    "@typescript-eslint/no-useless-constructor": "error",
 
     "no-unused-vars": "off",
-    "@swissquote/swissquote/@typescript-eslint/no-unused-vars": [
+    "@typescript-eslint/no-unused-vars": [
       "error",
       { args: "none", vars: "local", ignoreRestSiblings: true }
     ],
 
     // Overrides of TypeScript recommended
-    "@swissquote/swissquote/@typescript-eslint/explicit-function-return-type":
-      "off",
-    "@swissquote/swissquote/@typescript-eslint/explicit-member-accessibility":
-      "off",
-    "@swissquote/swissquote/@typescript-eslint/no-empty-function": "warn",
-    "@swissquote/swissquote/@typescript-eslint/ban-types": "warn"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/ban-types": "warn"
+  },
+  plugins: {
+    "@typescript-eslint": require("../packages/typescript-eslint.js").plugin
   }
 };
 

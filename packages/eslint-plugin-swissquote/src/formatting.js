@@ -1,16 +1,19 @@
 const { warn } = require("./utils");
+const globals = require("../packages/globals");
 
 // Command line formatting checker
 // Mainly the formatting rules and
 // basic mistakes catching
 module.exports = {
-  env: {
-    browser: true,
-    node: false,
-    amd: true
+  languageOptions: {
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+      ...globals.amd
+    }
   },
   rules: {
-    "@swissquote/swissquote/prettier/prettier": [warn(), { parser: "babel" }],
+    "prettier/prettier": [warn(), { parser: "babel" }],
 
     // Code Style
     "new-cap": [warn(), { newIsCapExceptions: ["default"] }],
@@ -29,5 +32,8 @@ module.exports = {
     "no-useless-concat": warn(),
     "no-void": warn(),
     "no-with": warn()
+  },
+  plugins: {
+    prettier: require("./eslint-plugin-prettier/index.js")
   }
 };

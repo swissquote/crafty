@@ -209,6 +209,8 @@ async function getCrafty(presets, craftyConfigPromise) {
   });
   const crafty = new Crafty(config);
 
+  crafty.presetsFromCli = presets;
+
   crafty.runAllSync("init", crafty);
 
   // Make sure everything sees the current environment
@@ -218,6 +220,12 @@ async function getCrafty(presets, craftyConfigPromise) {
 }
 exports.getCrafty = getCrafty;
 
+/**
+ * Extract from argv
+ *
+ * @param {string[]} argv
+ * @returns {string[]}
+ */
 function extractPresets(argv) {
   debug("extracting presets");
   const presets = global.presets || [];
@@ -260,8 +268,9 @@ exports.getOverrides = getOverrides;
  * Initialize Crafty, its configuration and presets
  *
  * @param {string[]} argv
+ * @param {string[]} additionalPresets
  */
-async function initialize(argv) {
+async function initialize(argv, additionalPresets = []) {
   let readConfig = true;
 
   if (argv.indexOf("--ignore-crafty-config") > -1) {
@@ -270,6 +279,7 @@ async function initialize(argv) {
   }
 
   const presets = extractPresets(argv);
+  presets.push(...additionalPresets);
   const config = readConfig ? getOverrides() : {};
 
   return getCrafty(presets, config);

@@ -47,6 +47,7 @@ module.exports = [
         "is-glob": "../is-glob/index.js"
       })
       .package(),
+  builder => builder("globals").package(),
   builder => builder("path-parse").package(),
   builder => builder("get-tsconfig").package(),
   builder =>

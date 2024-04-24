@@ -1,12 +1,12 @@
 const path = require("path");
 const { copy } = require("@swissquote/crafty/packages/copy-anything");
-const { merge } = require("@swissquote/crafty/packages/merge-anything");
 
 const {
-  configurationBuilder,
-  stringifyConfiguration,
+  toESLintConfig,
+  ideConfiguration,
+  toolConfiguration,
   toTempFile
-} = require("./eslintConfigurator");
+} = require("./eslintConfigurator.js");
 
 const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:preset-eslint"
@@ -15,22 +15,20 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
+  toESLintConfig,
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig(/* config */) {
+    // TODO :: default config disappears once a custom config is defined, this is probably not what we want
     return {
       // ESLint Override Rules
-      eslint: {
-        extends: ["plugin:@swissquote/swissquote/recommended"],
-        plugins: ["@swissquote/swissquote"]
-      }
+      eslint: [
+        ...require("@swissquote/eslint-plugin-swissquote").configs.recommended
+      ]
     };
   },
   config(config) {
-    // Add eslint react version
-    const eslintConfig = { ...config.eslint };
-
     let extendedEslintConfig = {
-      config: eslintConfig,
+      config: [],
       extensions: ["js", "jsx"]
     };
 
@@ -38,15 +36,13 @@ module.exports = {
     config.loadedPresets
       .filter(preset => preset.implements("eslint"))
       .forEach(preset => {
-        debug(`${preset.presetName}.eslint(config, eslint)`);
+        debug(`${preset.presetName}.eslint(config, eslintConfig)`);
 
         const value = preset.get("eslint");
         if (typeof value === "function") {
           extendedEslintConfig = value(config, extendedEslintConfig);
         } else {
-          extendedEslintConfig.config = copy(
-            merge(extendedEslintConfig.config, value)
-          );
+          extendedEslintConfig.config.push(copy(value));
         }
       });
 
@@ -56,13 +52,11 @@ module.exports = {
     return config;
   },
   ide(crafty) {
-    global.craftyConfig = crafty.config;
-
     return {
-      ".eslintrc.js": {
-        content: stringifyConfiguration(
-          configurationBuilder(process.argv).configuration
-        )
+      "eslint.config.js": {
+        shouldIgnore: false,
+        alternativeFiles: [".eslintrc.js"],
+        content: ideConfiguration(crafty)
       }
     };
   },
@@ -71,7 +65,6 @@ module.exports = {
       jsLint: {
         //eslint-disable-next-line no-unused-vars
         command(crafty, input, cli) {
-          global.craftyConfig = crafty.config;
           require("./commands/jsLint");
         },
         description: "Lint JavaScript for errors"
@@ -87,10 +80,14 @@ module.exports = {
       // JavaScript linting
       chain
         .plugin("lint-js")
-        .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
+        // TODO :: return to a compiled version
+        //.use(require.resolve("../packages/eslint-webpack-plugin.js"), [
+        .use(require.resolve("eslint-webpack-plugin"), [
           {
+            configType: "flat",
+            eslintPath: require.resolve("eslint/use-at-your-own-risk"),
             extensions: crafty.config.eslintExtensions,
-            overrideConfigFile: toTempFile(crafty.config.eslint)
+            overrideConfigFile: toTempFile(toolConfiguration(crafty))
           }
         ]);
     }

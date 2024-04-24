@@ -1,9 +1,16 @@
+const globals = require("../packages/globals");
+
 module.exports = {
-  env: {
-    es6: true
-  },
-  parserOptions: {
-    sourceType: "module"
+  languageOptions: {
+    globals: {
+      ...globals.es6
+    },
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true
+      }
+    },
+    ecmaVersion: "latest"
   },
   settings: {
     "import/extensions": [".js", ".jsx"],
@@ -19,7 +26,7 @@ module.exports = {
   },
   rules: {
     // -> Helpful warnings
-    "@swissquote/swissquote/import/export": "error", // Report any invalid exports, i.e. re-export of the same name
+    "import/export": "error", // Report any invalid exports, i.e. re-export of the same name
 
     // -> Style guide
     // We only enable the rules that do a surface analysis,
@@ -31,15 +38,18 @@ module.exports = {
      * We disable this rule because it can happen, usually in Jest tests that some calls are made before imports (jest.mock) that would fail if done after imports.
      * This works since the files are converted to commonjs before being run
      */
-    //"@swissquote/swissquote/import/first": "warn",
+    //"import/first": "warn",
     /**
      * Enforce a newline after import statements
      */
-    "@swissquote/swissquote/import/newline-after-import": "error",
-    "@swissquote/swissquote/import/no-absolute-path": "error",
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
     /**
      * Forbid Webpack loader syntax in imports.
      */
-    "@swissquote/swissquote/import/no-webpack-loader-syntax": "error"
+    "import/no-webpack-loader-syntax": "error"
+  },
+  plugins: {
+    import: require("../packages/eslint-plugin-i")
   }
 };
