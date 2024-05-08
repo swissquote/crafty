@@ -21,7 +21,8 @@ const externals = {
   postcss: "postcss",
   "postcss/package.json": "postcss/package.json",
   "/postcss/lib(/.*)/": "postcss/lib$1",
-  "@babel/code-frame": "@babel/code-frame"
+  "@babel/code-frame": "@babel/code-frame",
+  "postcss-load-config": "../../src/dummy.js",
 };
 
 module.exports = [
