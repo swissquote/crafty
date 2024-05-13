@@ -8,8 +8,10 @@ const DPI_RATIO = {
   dpi: 1
 };
 
+const IMAGE_SET_FN = /image-set\s*\(/;
+
 // convert all sizes to dpi for sorting
-const convertSize = (size, decl) => {
+function convertSize(size, decl) {
   if (!size) {
     return DPI_RATIO.x;
   }
@@ -26,11 +28,13 @@ const convertSize = (size, decl) => {
   }
 
   throw decl.error("Incorrect size value", { word: m && m[2] });
-};
+}
 
-const stringify = chunk => valueParser.stringify(chunk);
+function stringify(chunk) {
+  return valueParser.stringify(chunk);
+}
 
-const parseValue = (value, decl) => {
+function parseValue(value, decl) {
   const valueChunks = valueParser(value).nodes;
 
   const imageSetChunks = valueChunks.shift().nodes;
@@ -55,7 +59,7 @@ const parseValue = (value, decl) => {
     },
     suffix
   };
-};
+}
 
 function getValues(decl, list) {
   const commaSeparatedValues = list.comma(decl.value);
@@ -64,7 +68,7 @@ function getValues(decl, list) {
   const parsedValues = commaSeparatedValues.map(value => {
     const result = {};
 
-    if (value.indexOf("image-set") === -1) {
+    if (!IMAGE_SET_FN.test(value)) {
       result.default = value;
       return result;
     }

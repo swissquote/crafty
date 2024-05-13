@@ -17,6 +17,14 @@ test("don't break simple background-image property", async (t) => {
   return runTest(t, input, input);
 });
 
+test("ignore variables with image-set in name", async (t) => {
+    const input = `a {
+                background-image: var(--ag-icon-image-settings, var(--ag-icon-image));
+              }`;
+  
+    return runTest(t, input, input);
+  });
+
 test("don't break simple background property", async (t) => {
   const input = `a {
                 background: url(my-img-print.png) top left no-repeat red;
