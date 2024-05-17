@@ -51,26 +51,6 @@ module.exports = [
         lodash: "../../shims/lodash.js"
       }),
   builder =>
-    builder("stylelint-no-unsupported-browser-features")
-      .externals({
-        ...commonExternals,
-
-        postcss: "postcss",
-        "postcss/lib/result": "postcss/lib/result",
-        "postcss/lib/list": "postcss/lib/list",
-
-        // We keep postcss-scss external so we can have it in common with preset-postcss
-        "postcss-scss": "postcss-scss",
-
-        // Used by stylelint-no-unsupported-browser-features
-        "caniuse-lite": "caniuse-lite",
-        "/caniuse-lite(/.*)/": "caniuse-lite$1",
-
-        // We mock the few lodash functions really used
-        lodash: "../../shims/lodash.js"
-      })
-      .package(),
-  builder =>
     builder("stylelint-utils")
       .packages(pkg =>
         pkg

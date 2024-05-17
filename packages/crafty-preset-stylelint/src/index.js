@@ -1,35 +1,5 @@
 const gulpTasks = require("./gulp");
 
-function addUnsupportedBrowserSupportRule(rules, browsers) {
-  const rule = "plugin/no-unsupported-browser-features";
-
-  if (!rules[rule]) {
-    rules[rule] = [true, {}];
-  }
-
-  if (!rules[rule][1].severity) {
-    rules[rule][1].severity = "warning";
-  }
-
-  if (!rules[rule][1].browsers) {
-    rules[rule][1].browsers = browsers;
-  }
-
-  // We are transpiling these features and can ignore the warnings
-  if (!rules[rule][1].ignore) {
-    rules[rule][1].ignore = [
-      "rem",
-      "calc",
-      "css-initial-value",
-      "css-image-set",
-      "css-gradients",
-      "css-nesting",
-      "css-variables",
-      "css-color-function"
-    ];
-  }
-}
-
 function addNoVariableInTranspiledFunction(rules, browsers) {
   const rule = "swissquote/no-variable-in-transpiled-function";
 
@@ -92,11 +62,6 @@ module.exports = {
 
     // Add rules that need the current browsers configurations
     addNoVariableInTranspiledFunction(config.stylelint.rules, config.browsers);
-    addUnsupportedBrowserSupportRule(config.stylelint.rules, config.browsers);
-    addUnsupportedBrowserSupportRule(
-      config.stylelint_legacy.rules,
-      config.browsers
-    );
 
     return config;
   },

@@ -17,8 +17,7 @@ module.exports = {
   plugins: [
     require.resolve("./index"),
     require.resolve("./packages/stylelint-prettier"),
-    require.resolve("./packages/stylelint-scss"),
-    require.resolve("./packages/stylelint-no-unsupported-browser-features")
+    require.resolve("./packages/stylelint-scss")
   ],
   rules: {
     // Formatting
