@@ -7,7 +7,14 @@ const externals = getExternals();
 delete externals["source-map"];
 
 module.exports = [
-  (builder) => builder("babel-packages").externals({
+  (builder) => builder("babel-packages")
+  .packages(pkgBuilder =>
+    pkgBuilder
+      .package("babel-loader", "babelLoader")
+      .package("@swissquote/gulp-babel", "gulpBabel")
+      .package("gulp-terser", "gulpTerser")
+  )
+  .externals({
     // Provided by other Crafty packages
     ...externals,
 

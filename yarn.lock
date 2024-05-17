@@ -626,7 +626,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-arrow-functions@npm:^7.24.1":
+"@babel/plugin-transform-arrow-functions@npm:7.24.1, @babel/plugin-transform-arrow-functions@npm:^7.24.1":
   version: 7.24.1
   resolution: "@babel/plugin-transform-arrow-functions@npm:7.24.1"
   dependencies:
@@ -675,7 +675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-block-scoping@npm:^7.24.5":
+"@babel/plugin-transform-block-scoping@npm:7.24.5, @babel/plugin-transform-block-scoping@npm:^7.24.5":
   version: 7.24.5
   resolution: "@babel/plugin-transform-block-scoping@npm:7.24.5"
   dependencies:
@@ -711,7 +711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-classes@npm:^7.24.5":
+"@babel/plugin-transform-classes@npm:7.24.5, @babel/plugin-transform-classes@npm:^7.24.5":
   version: 7.24.5
   resolution: "@babel/plugin-transform-classes@npm:7.24.5"
   dependencies:
@@ -2617,8 +2617,8 @@ __metadata:
     "@swissquote/crafty-commons-webpack": "npm:1.26.0"
     "@swissquote/crafty-preset-eslint": "npm:1.26.0"
     "@swissquote/crafty-preset-terser": "npm:1.26.0"
+    "@swissquote/gulp-babel": "npm:1.26.0"
     babel-loader: "npm:9.1.3"
-    gulp-babel: "npm:8.0.0"
     gulp-terser: "npm:2.1.0"
     schema-utils: "npm:4.2.0"
   peerDependencies:
@@ -2901,6 +2901,27 @@ __metadata:
     typescript-eslint: "npm:7.9.0"
   peerDependencies:
     eslint: "*"
+  languageName: unknown
+  linkType: soft
+
+"@swissquote/gulp-babel@npm:1.26.0, @swissquote/gulp-babel@workspace:package-forks/gulp-babel":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/gulp-babel@workspace:package-forks/gulp-babel"
+  dependencies:
+    "@babel/core": "npm:7.24.5"
+    "@babel/plugin-transform-arrow-functions": "npm:7.24.1"
+    "@babel/plugin-transform-block-scoping": "npm:7.24.5"
+    "@babel/plugin-transform-classes": "npm:7.24.5"
+    ava: "npm:6.1.3"
+    c8: "npm:9.1.0"
+    plugin-error: "npm:2.0.1"
+    replace-ext: "npm:2.0.0"
+    vinyl: "npm:3.0.0"
+    vinyl-fs: "npm:4.0.0"
+    vinyl-sourcemap: "npm:^2.0.0"
+    vinyl-sourcemaps-apply: "npm:^0.2.0"
+  peerDependencies:
+    "@babel/core": ^7.0.0
   languageName: unknown
   linkType: soft
 
@@ -7557,20 +7578,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-babel@npm:8.0.0":
-  version: 8.0.0
-  resolution: "gulp-babel@npm:8.0.0"
-  dependencies:
-    plugin-error: "npm:^1.0.1"
-    replace-ext: "npm:^1.0.0"
-    through2: "npm:^2.0.0"
-    vinyl-sourcemaps-apply: "npm:^0.2.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10c0/979a2065da3d860c709c13691c6d0169e5ad407deeabdeea007afab3ddb19c5ae705922e2a0e422ffb4913a149208da6f6d23b477ca6bcbd54eb6028302fc78f
-  languageName: node
-  linkType: hard
-
 "gulp-concat@npm:2.6.1":
   version: 2.6.1
   resolution: "gulp-concat@npm:2.6.1"
@@ -11999,17 +12006,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"replace-ext@npm:2.0.0, replace-ext@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "replace-ext@npm:2.0.0"
+  checksum: 10c0/52cb1006f83c5f07ef2c76b070c58bdeca1b67beded57d60593d1af8cd8ee731501d0433645cea8e9a4bf57a7018f47c9a3928c0463496cad1946fa85907aa47
+  languageName: node
+  linkType: hard
+
 "replace-ext@npm:^1.0.0":
   version: 1.0.1
   resolution: "replace-ext@npm:1.0.1"
   checksum: 10c0/9a9c3d68d0d31f20533ed23e9f6990cff8320cf357eebfa56c0d7b63746ae9f2d6267f3321e80e0bffcad854f710fc9a48dbcf7615579d767db69e9cd4a43168
-  languageName: node
-  linkType: hard
-
-"replace-ext@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "replace-ext@npm:2.0.0"
-  checksum: 10c0/52cb1006f83c5f07ef2c76b070c58bdeca1b67beded57d60593d1af8cd8ee731501d0433645cea8e9a4bf57a7018f47c9a3928c0463496cad1946fa85907aa47
   languageName: node
   linkType: hard
 

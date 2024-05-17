@@ -1,1 +1,1 @@
-module.exports = require('../dist/compiled/babel-packages.js').gulpTerser();
+module.exports = require('../dist/babel-packages/bundled.js').gulpTerser();
