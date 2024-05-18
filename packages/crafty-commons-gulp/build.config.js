@@ -23,7 +23,7 @@ module.exports = [
     builder("common-packages")
       .packages(pkgBuilder =>
         pkgBuilder
-          .package("gulp-concat", "gulpConcat")
+          .package("@swissquote/gulp-concat", "gulpConcat")
           .package("gulp-eslint-new", "gulpEslintNew")
           .package("@swissquote/gulp-newer", "gulpNewer")
           .package("plugin-error", "pluginError")
