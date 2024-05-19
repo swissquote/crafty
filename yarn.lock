@@ -2016,6 +2016,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@onigoetz/stream-plumber@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@onigoetz/stream-plumber@npm:1.0.0"
+  checksum: 10c0/238c48a7cc98175a42d90126f7e636e3e54a1096051272f06d473aae68bdf4465dc5113212b4dfe235782b21f25a3398f19ce25f8a3b6976bd40c0a800ab32d4
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -2811,10 +2818,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp"
   dependencies:
+    "@onigoetz/stream-plumber": "npm:1.0.0"
     "@swissquote/crafty": "npm:1.26.0"
     "@swissquote/crafty-commons": "npm:1.26.0"
     "@swissquote/crafty-commons-gulp": "npm:1.26.0"
-    "@swissquote/gulp-plumber": "npm:1.26.0"
     pump: "npm:3.0.0"
     vinyl-fs: "npm:4.0.0"
   languageName: unknown
@@ -2949,21 +2956,6 @@ __metadata:
     mock-fs: "npm:5.2.0"
     plugin-error: "npm:2.0.1"
     vinyl: "npm:3.0.0"
-  languageName: unknown
-  linkType: soft
-
-"@swissquote/gulp-plumber@npm:1.26.0, @swissquote/gulp-plumber@workspace:package-forks/gulp-plumber":
-  version: 0.0.0-use.local
-  resolution: "@swissquote/gulp-plumber@workspace:package-forks/gulp-plumber"
-  dependencies:
-    "@swissquote/crafty-runner-gulp": "npm:1.26.0"
-    ansi-colors: "npm:^4.0.0"
-    ava: "npm:6.1.3"
-    c8: "npm:9.1.0"
-    fancy-log: "npm:2.0.0"
-    plugin-error: "npm:2.0.1"
-    streamx: "npm:2.16.1"
-    through2: "npm:4.0.2"
   languageName: unknown
   linkType: soft
 
@@ -12557,7 +12549,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"streamx@npm:2.16.1, streamx@npm:^2.12.0, streamx@npm:^2.12.5, streamx@npm:^2.13.2, streamx@npm:^2.14.0, streamx@npm:^2.15.1":
+"streamx@npm:^2.12.0, streamx@npm:^2.12.5, streamx@npm:^2.13.2, streamx@npm:^2.14.0, streamx@npm:^2.15.1":
   version: 2.16.1
   resolution: "streamx@npm:2.16.1"
   dependencies:
@@ -13068,15 +13060,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"through2@npm:4.0.2, through2@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "through2@npm:4.0.2"
-  dependencies:
-    readable-stream: "npm:3"
-  checksum: 10c0/3741564ae99990a4a79097fe7a4152c22348adc4faf2df9199a07a66c81ed2011da39f631e479fdc56483996a9d34a037ad64e76d79f18c782ab178ea9b6778c
-  languageName: node
-  linkType: hard
-
 "through2@npm:^3.0.1":
   version: 3.0.2
   resolution: "through2@npm:3.0.2"
@@ -13084,6 +13067,15 @@ __metadata:
     inherits: "npm:^2.0.4"
     readable-stream: "npm:2 || 3"
   checksum: 10c0/8ea17efa2ce5b78ef5c52d08e29d0dbdad9c321c2add5192bba3434cae25b2319bf9cdac1c54c3bfbd721438a30565ca6f3f19eb79f62341dafc5a12429d2ccc
+  languageName: node
+  linkType: hard
+
+"through2@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "through2@npm:4.0.2"
+  dependencies:
+    readable-stream: "npm:3"
+  checksum: 10c0/3741564ae99990a4a79097fe7a4152c22348adc4faf2df9199a07a66c81ed2011da39f631e479fdc56483996a9d34a037ad64e76d79f18c782ab178ea9b6778c
   languageName: node
   linkType: hard
 
