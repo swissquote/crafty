@@ -4,7 +4,7 @@ const { Readable } = require("node:stream");
 const { finished } = require("node:stream/promises");
 const test = require("ava");
 
-const es = require("event-stream");
+const through2 = require("through2")
 const { peek, noop } = require("./util");
 const Crafty = require("@swissquote/crafty/src/Crafty");
 const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
@@ -17,11 +17,11 @@ const fixturesGlob = ["./test/fixtures/*"];
 test("should keep piping after error", async (t) => {
     const expected = [1, 3, 5];
 
-    const badBoy = es.through(function(data) {
+    const badBoy = through2.obj((data, enc, cb) => {
       if (data % 2 === 0) {
-        return this.emit("error", new Error(data));
+        return cb(new Error(data));
       }
-      this.emit("data", data);
+      cb(null, data)
     });
 
     const actual = [];

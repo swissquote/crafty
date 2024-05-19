@@ -2,7 +2,7 @@
 const { Readable } = require("node:stream");
 const test = require("ava");
 
-const es = require("event-stream");
+const through2 = require("through2");
 const { peek } = require("./util");
 
 const plumber = require("../");
@@ -11,18 +11,18 @@ test("should not keep piping after error", t => {
   return new Promise((done, fail) => {
     const expected = [1, 3, 5];
 
-    const badBoy = es.through(function(data) {
+    const badBoy = through2.obj((data, enc, cb) => {
       if (data % 2 === 0) {
-        return this.emit("error", new Error(data));
+        return cb(new Error(data));
       }
-      this.emit("data", data);
+      cb(null, data)
     });
 
-    const badass = es.through(function(data) {
+    const badass = through2.obj((data, enc, cb) => {
       if (data === 5) {
-        return this.emit("error", new Error("Badass"));
+        return cb(new Error("Badass"));
       }
-      this.emit("data", data);
+      cb(null, data)
     });
 
     const actual = [];
