@@ -1,66 +1,105 @@
 "use strict";
-
 const test = require("ava");
 
-const { Transform } = require("stream");
+const { Readable, PassThrough, Transform } = require("node:stream");
+const { finished } = require("node:stream/promises");
 
-var es = require("event-stream"),
-  Crafty = require("@swissquote/crafty/src/Crafty"),
-  Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
+const Crafty = require("@swissquote/crafty/src/Crafty");
+const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
+const { peek } = require("./util");
 
-  const gulp = new Gulp(new Crafty({}));
+const gulp = new Gulp(new Crafty({}));
 
-var plumber = require("../");
-var fixturesGlob = ["./test/fixtures/*"];
+const plumber = require("../");
+const fixturesGlob = ["./test/fixtures/*"];
 
-let expected = null;
+let expected = [];
 
-test("piping into second plumber should keep piping", function(t) {
+test.before(function () {
   return new Promise((done) => {
-    gulp
+    const stream = gulp
       .src(fixturesGlob)
-      .pipe(plumber())
-      .pipe(new Transform({objectMode: true, transform(file, enc, cb) { cb(null, file); }}))
-      .pipe(plumber())
-      .pipe(
-        es.writeArray(
-          function(err, array) {
-            t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
-            done();
-          }
-        )
-      )
-      .on("end", function() {
-        done();
-      });
+      .pipe(peek((item) => expected.push(item)));
+    stream.on("finish", done);
   });
 });
 
-test("should work with es.readarray", function(t) {
-  return new Promise((done) => {
-    var expected = ["1\n", "2\n", "3\n", "4\n", "5\n"];
+test("should go through all files", async function (t) {
+  t.plan(1);
+  const actual = [];
 
-    es.readArray([1, 2, 3, 4, 5])
-      .pipe(plumber())
-      .pipe(es.stringify())
-      .pipe(
-        es.writeArray(function(error, array) {
-          t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
+  const stream = gulp
+    .src(fixturesGlob)
+    .pipe(plumber())
+    .pipe(peek((file) => actual.push(file)));
 
-          done();
-        })
-      );
-  });
+  // Get the stream flowing
+  stream.on("data", (data) => {});
+
+  await finished(stream);
+
+  t.deepEqual(
+    actual.map((f) => f.path),
+    expected.map((f) => f.path)
+  );
 });
 
-test("should emit `end` after source emit `finish`", function(t) {
+test("piping into second plumber should keep piping", async function (t) {
+  t.plan(1);
+  const actual = [];
+
+  const stream = gulp
+    .src(fixturesGlob)
+    .pipe(plumber())
+    .pipe(new PassThrough({ objectMode: true }))
+    .pipe(plumber())
+    .pipe(peek((file) => actual.push(file)));
+
+  // Get the stream flowing
+  stream.on("data", (data) => {});
+
+  await finished(stream);
+
+  t.deepEqual(
+    actual.map((f) => f.path),
+    expected.map((f) => f.path)
+  );
+});
+
+test("should work with readable array", async function (t) {
+  const expected = ["1\n", "2\n", "3\n", "4\n", "5\n"];
+  const actual = [];
+
+  const stream = Readable.from([1, 2, 3, 4, 5])
+    .pipe(plumber())
+    .pipe(new Transform({
+      objectMode: true,
+      transform(e, enc, cb) {
+        const string = JSON.stringify(Buffer.isBuffer(e) ? e.toString() : e) + '\n';
+        cb(null, string);
+      }
+    }))
+    .pipe(peek((file) => actual.push(file)));
+
+  // Get the stream flowing
+  stream.on("data", (data) => {});
+
+  await finished(stream);
+
+  t.deepEqual(
+    actual.map((f) => f.path),
+    expected.map((f) => f.path)
+  );
+});
+
+test("should emit `end` after source emit `finish`", function (t) {
   t.plan(1);
   return new Promise((done, fail) => {
     gulp
       .src(fixturesGlob)
       .pipe(plumber())
       // Fetchout data
-      .on("data", function() {})
+      .on("data", function () {})
       .on("end", () => {
         t.truthy(true);
         done();
@@ -68,45 +107,3 @@ test("should emit `end` after source emit `finish`", function(t) {
       .on("error", fail);
   });
 });
-
-test.before(function() {
-  return new Promise((done) => {
-    gulp.src(fixturesGlob).pipe(
-      es.writeArray(
-        function(err, array) {
-          expected = array;
-          done();
-        }
-      )
-    );
-  });
-});
-
-test("should passThrough all incoming files in non-flowing mode", function(t) {
-  return new Promise((done, fail) => {
-    gulp
-      .src(fixturesGlob)
-      .pipe(plumber({ errorHandler: fail }))
-      .pipe(
-        es.writeArray(
-          function(err, array) {
-            t.deepEqual(array.map(f => f.path), expected.map(f => f.path));
-            done();
-          }
-        )
-      )
-      .on("error", fail);
-  });
-});
-
-// test('in flowing mode', function (done) {
-//     gulp.src(fixturesGlob)
-//         .pipe(plumber({ errorHandler: done }))
-// // You cant do on('data') and pipe simultaniously.
-//         .on('data', function (file) { should.exist(file); })
-//         .pipe(es.writeArray(function (err, array) {
-//             array.should.eql(this.expected);
-//             done();
-//         }.bind(this)))
-//         .on('error', done);
-// });

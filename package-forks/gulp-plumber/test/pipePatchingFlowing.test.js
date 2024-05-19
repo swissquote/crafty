@@ -1,12 +1,13 @@
 "use strict";
 
 const test = require("ava");
+const { finished } = require("node:stream/promises");
 
-var noop = require("./util").noop,
-  Crafty = require("@swissquote/crafty/src/Crafty"),
-  Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
+const noop = require("./util").noop;
+const Crafty = require("@swissquote/crafty/src/Crafty");
+const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 
-  const gulp = new Gulp(new Crafty({}));
+const gulp = new Gulp(new Crafty({}));
 
 var plumber = require("../");
 var fixturesGlob = ["./test/fixtures/*"];
@@ -14,37 +15,35 @@ var fixturesGlob = ["./test/fixtures/*"];
 
 test("in non-flowing mode", (t) => {
   return new Promise((done) => {
-    var lastNoop = noop();
-    var mario = plumber();
-    gulp
+    const lastNoop = noop();
+    const stream = gulp
       .src(fixturesGlob)
-      .pipe(mario)
+      .pipe(plumber())
       .pipe(noop())
       .pipe(noop())
       .pipe(lastNoop)
-      .on("end", function() {
-        t.truthy(lastNoop._plumbed);
+
+    stream.on("finish", function() {
+        t.truthy(plumber.isPlumbed(lastNoop));
         done();
       });
   });
 });
 
-test("in flowing mode", (t) => {
-  return new Promise((done) => {
-    var lastNoop = noop();
-    var mario = plumber();
-    gulp
-      .src(fixturesGlob)
-      .pipe(mario)
-      .on("data", function(file) {
-        t.truthy(file);
-      })
-      .pipe(noop())
-      .pipe(noop())
-      .pipe(lastNoop)
-      .on("end", function() {
-        t.truthy(lastNoop._plumbed);
-        done();
-      });
-  });
+test("in flowing mode", async (t) => {
+  const lastNoop = noop();
+  const stream = gulp
+    .src(fixturesGlob)
+    .pipe(plumber())
+    .pipe(noop())
+    .pipe(noop())
+    .pipe(lastNoop);
+
+  stream.on("data", (file) => {
+    t.truthy(file);
+  })
+
+  await finished(stream);
+
+  t.truthy(plumber.isPlumbed(lastNoop));
 });

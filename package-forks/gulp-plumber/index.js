@@ -1,11 +1,10 @@
-const { Transform } = require("stream");
-var EE = require("events").EventEmitter;
-var fancyLog = require("fancy-log");
+const { PassThrough } = require("stream");
+const fancyLog = require("fancy-log");
 const colors = require("ansi-colors");
-var PluginError = require("plugin-error");
+const PluginError = require("plugin-error");
 
 function removeDefaultHandler(stream, event) {
-  var found = false;
+  let found = false;
   stream.listeners(event).forEach(function(item) {
     if (item.name === `on${event}`) {
       found = item;
@@ -16,10 +15,10 @@ function removeDefaultHandler(stream, event) {
 }
 
 function wrapPanicOnErrorHandler(stream) {
-  var oldHandler = removeDefaultHandler(stream, "error");
+  const oldHandler = removeDefaultHandler(stream, "error");
   if (oldHandler) {
     stream.on("error", function onerror2(er) {
-      if (EE.listenerCount(stream, "error") === 1) {
+      if (stream.listenerCount("error") === 1) {
         this.removeListener("error", onerror2);
         oldHandler.call(stream, er);
       }
@@ -29,7 +28,7 @@ function wrapPanicOnErrorHandler(stream) {
 
 function defaultErrorHandler(error) {
   // onerror2 and this handler
-  if (EE.listenerCount(this, "error") < 3) {
+  if (this.listenerCount("error") < 3) {
     fancyLog(
       colors.cyan("Plumber") + colors.red(" found unhandled error:\n"),
       error.toString()
@@ -37,22 +36,31 @@ function defaultErrorHandler(error) {
   }
 }
 
-function plumber(opts) {
-  /* eslint-disable-next-line no-param-reassign */
-  opts = opts || {};
+const PLUMBER_IS_PLUMBER = "plumber:isPlumber";
+const PLUMBER_IS_PATCHED = "plumber:isPatched";
+const PLUMBER_SKIP = "plumber:stop";
 
+const PIPE_FN_PATCHED = Symbol.for("plumber:patched");
+const PIPE_FN_ORIGINAL = Symbol.for("plumber:original");
+
+function patchPipe(stream, alternatePipe) {
+  wrapPanicOnErrorHandler(stream);
+
+  //stream._pipe = stream._pipe || stream.pipe;
+  stream[PIPE_FN_PATCHED] = alternatePipe;
+  stream[PIPE_FN_ORIGINAL] = stream.pipe;
+  stream.pipe = stream[PIPE_FN_PATCHED];
+  stream[PLUMBER_IS_PATCHED] = true;
+}
+
+function plumber(opts = {}) {
   if (typeof opts === "function") {
     /* eslint-disable-next-line no-param-reassign */
     opts = { errorHandler: opts };
   }
 
-  var through = new Transform({
-    objectMode: true,
-    transform(file, enc, cb) {
-      cb(null, file);
-    }
-  });
-  through._plumber = true;
+  const through = new PassThrough({ objectMode: true });
+  through[PLUMBER_IS_PLUMBER] = true;
 
   if (opts.errorHandler !== false) {
     through.errorHandler =
@@ -61,37 +69,29 @@ function plumber(opts) {
         : defaultErrorHandler;
   }
 
-  function patchPipe(stream) {
-    if (stream.pipe2) {
-      wrapPanicOnErrorHandler(stream);
-      stream._pipe = stream._pipe || stream.pipe;
-      stream.pipe = stream.pipe2;
-      stream._plumbed = true;
-    }
-  }
-
-  through.pipe2 = function pipe2(dest, ...rest) {
+  function alternatePipe(dest, ...rest) {
     if (!dest) {
       throw new PluginError("plumber", "Can't pipe to undefined");
     }
 
-    this._pipe(dest, ...rest);
+    // send to the real pipe()
+    this[PIPE_FN_ORIGINAL](dest, ...rest);
 
-    if (dest._unplumbed) {
+    // If we called plumber.stop, dont go further
+    if (dest[PLUMBER_SKIP]) {
       return dest;
     }
 
     removeDefaultHandler(this, "error");
 
-    if (dest._plumber) {
+    // if it is a new plumber, don't patch it
+    if (dest[PLUMBER_IS_PLUMBER]) {
       return dest;
     }
 
-    dest.pipe2 = pipe2;
-
     // Patching pipe method
     if (opts.inherit !== false) {
-      patchPipe(dest);
+      patchPipe(dest, alternatePipe);
     }
 
     // Placing custom on error handler
@@ -100,12 +100,12 @@ function plumber(opts) {
       dest.on("error", this.errorHandler.bind(dest));
     }
 
-    dest._plumbed = true;
+    dest[PLUMBER_IS_PATCHED] = true;
 
     return dest;
-  };
+  }
 
-  patchPipe(through);
+  patchPipe(through, alternatePipe);
 
   return through;
 }
@@ -113,12 +113,11 @@ function plumber(opts) {
 module.exports = plumber;
 
 module.exports.stop = function() {
-  var through = new Transform({
-    objectMode: true,
-    transform(file, enc, cb) {
-      cb(null, file);
-    }
-  });
-  through._unplumbed = true;
+  const through = new PassThrough({ objectMode: true });
+  through[PLUMBER_SKIP] = true;
   return through;
+};
+
+module.exports.isPlumbed = function(stream) {
+  return !!stream[PLUMBER_IS_PATCHED];
 };

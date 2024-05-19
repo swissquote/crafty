@@ -1,9 +1,17 @@
-'use strict';
+"use strict";
 
-var through = require('through');
+const { Transform, PassThrough } = require("node:stream");
 
 module.exports.noop = function () {
-	return through(function (data) {
-		this.queue(data);
-	});
+  return new PassThrough({ objectMode: true });
+};
+
+module.exports.peek = function (peekCallback) {
+  return new Transform({
+    objectMode: true,
+    transform(data, enc, cb) {
+      peekCallback(data);
+      cb(null, data);
+    },
+  });
 };

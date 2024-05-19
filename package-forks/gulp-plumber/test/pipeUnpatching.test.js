@@ -1,48 +1,49 @@
 "use strict";
-
+const { Readable } = require("node:stream");
 const test = require("ava");
 
-var es = require("event-stream"),
-Crafty = require("@swissquote/crafty/src/Crafty"),
-Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
+const es = require("event-stream");
+const { peek } = require("./util");
 
-const gulp = new Gulp(new Crafty({}));
-
-var plumber = require("../");
-var fixturesGlob = ["./test/fixtures/*"];
+const plumber = require("../");
 
 test("should not keep piping after error", t => {
   return new Promise((done, fail) => {
-    var expected = [1, 3, 5];
+    const expected = [1, 3, 5];
 
-    var badBoy = es.through(function(data) {
+    const badBoy = es.through(function(data) {
       if (data % 2 === 0) {
         return this.emit("error", new Error(data));
       }
       this.emit("data", data);
     });
 
-    var badass = es.through(function(data) {
+    const badass = es.through(function(data) {
       if (data === 5) {
         return this.emit("error", new Error("Badass"));
       }
       this.emit("data", data);
     });
 
-    var actual = [];
+    const actual = [];
+    const errors = []
 
-    es.readArray([1, 2, 3, 4, 5, 6])
-      .pipe(plumber())
+    Readable.from([1, 2, 3, 4, 5, 6])
+      .pipe(plumber({
+        errorHandler(err) {
+          errors.push(err);
+        },
+      }))
       .pipe(badBoy)
       .pipe(
-        es.through(function(data) {
-          actual.push(data);
-          this.emit("data", data);
-        })
+        peek((data) => { actual.push(data); })
       )
       .pipe(plumber.stop())
       .pipe(badass)
       .on("error", function(err) {
+        // we should have seen two errors by the time the stream fails
+        t.is(errors.length, 2);
+
         t.truthy(err instanceof Error);
         t.deepEqual(actual, expected);
         done();
@@ -50,17 +51,5 @@ test("should not keep piping after error", t => {
       .on("end", function() {
         fail("Error was not fired");
       });
-  });
-});
-
-test.before(function() {
-  return new Promise((done) => {
-    gulp.src(fixturesGlob).pipe(
-      es.writeArray(
-        function() {
-          done();
-        }
-      )
-    );
   });
 });

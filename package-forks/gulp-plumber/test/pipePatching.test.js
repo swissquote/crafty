@@ -1,77 +1,82 @@
 "use strict";
 
+const { Readable } = require("node:stream");
+const { finished } = require("node:stream/promises");
 const test = require("ava");
 
-var es = require("event-stream"),
-  noop = require("./util").noop,
-  Crafty = require("@swissquote/crafty/src/Crafty"),
-  Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
+const es = require("event-stream");
+const { peek, noop } = require("./util");
+const Crafty = require("@swissquote/crafty/src/Crafty");
+const Gulp = require("@swissquote/crafty-runner-gulp/src/Gulp.js");
 
-  const gulp = new Gulp(new Crafty({}));
+const gulp = new Gulp(new Crafty({}));
 
-var plumber = require("../");
-var fixturesGlob = ["./test/fixtures/*"];
+const plumber = require("../");
+const fixturesGlob = ["./test/fixtures/*"];
 
-test.before(async function() {
-  return new Promise((done) => {
-    gulp.src(fixturesGlob).pipe(
-      es.writeArray(() => done())
-    );
-  });
-});
+test("should keep piping after error", async (t) => {
+    const expected = [1, 3, 5];
 
-test("should keep piping after error", (t) => {
-  return new Promise((done, fail) => {
-    var expected = [1, 3, 5];
-
-    var badBoy = es.through(function(data) {
+    const badBoy = es.through(function(data) {
       if (data % 2 === 0) {
         return this.emit("error", new Error(data));
       }
       this.emit("data", data);
     });
 
-    var actual = [];
+    const actual = [];
+    const errors = [];
+    let triggeredOnError = false;
 
-    es.readArray([1, 2, 3, 4, 5, 6])
-      .pipe(plumber())
-      .pipe(badBoy)
+    const stream = Readable.from([1, 2, 3, 4, 5, 6])
       .pipe(
-        es.through(function(data) {
-          actual.push(data);
-          this.emit("data", data);
+        plumber({
+          errorHandler(err) {
+            errors.push(err);
+          },
         })
       )
-      .on("error", function(err) {
-        fail(err);
-      })
-      .on("end", function() {
-        t.deepEqual(actual, expected);
-        done();
+      .pipe(badBoy)
+      .pipe(
+        peek((data) => {
+          actual.push(data);
+        })
+      )
+      .on("error", () => {
+        triggeredOnError = true;
       });
-  });
+
+    // Get the stream flowing
+    stream.on("data", () => {});
+
+    await finished(stream);
+
+    t.falsy(triggeredOnError);
+    t.is(errors.length, 3);
+    t.deepEqual(actual, expected);
+
 });
 
 test("should skip patching with `inherit` === false", (t) => {
   return new Promise((done) => {
-    var lastNoop = noop();
-    var mario = plumber({ inherit: false });
+    const lastNoop = noop();
+    const mario = plumber({ inherit: false });
     gulp
       .src(fixturesGlob)
       .pipe(mario)
       .pipe(noop())
       .pipe(noop())
       .pipe(lastNoop)
-      .on("end", function() {
-        t.falsy(lastNoop._plumbed);
+      .on("finish", () => {
+        t.falsy(plumber.isPlumbed(lastNoop));
         done();
       });
   });
 });
 
-test("piping into second plumber should does nothing", (t) => {
+test("piping into second plumber should do nothing", (t) => {
   return new Promise((done) => {
-    var lastNoop = noop();
+    const lastNoop = noop();
     gulp
       .src(fixturesGlob)
       .pipe(plumber())
@@ -79,8 +84,8 @@ test("piping into second plumber should does nothing", (t) => {
       .pipe(noop())
       .pipe(plumber())
       .pipe(lastNoop)
-      .on("end", function() {
-        t.truthy(lastNoop._plumbed);
+      .on("finish", () => {
+        t.truthy(plumber.isPlumbed(lastNoop));
         done();
       });
   });
