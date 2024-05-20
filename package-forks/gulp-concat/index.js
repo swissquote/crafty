@@ -98,7 +98,7 @@ module.exports = function(file, opt = {}) {
     objectMode: true,
     transform: bufferContents,
     flush: endStream
-  })
+  });
 
   return transform;
 };

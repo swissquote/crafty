@@ -40,13 +40,14 @@ function initSourceMap() {
     transform(file, enc, callback) {
       sourcemap.add(file, (sourcemapErr, updatedFile) => {
         if (sourcemapErr) {
-          return callback(sourcemapErr);
+          callback(sourcemapErr);
+          return;
         }
 
         callback(null, updatedFile);
       });
     }
-  })
+  });
 }
 
 function writeSourceMap() {
@@ -57,7 +58,8 @@ function writeSourceMap() {
 
       sourcemap.write(file, (sourcemapErr, updatedFile, sourcemapFile) => {
         if (sourcemapErr) {
-          return callback(sourcemapErr);
+          callback(sourcemapErr);
+          return;
         }
 
         self.push(updatedFile);
@@ -68,7 +70,7 @@ function writeSourceMap() {
         callback();
       });
     }
-  })
+  });
 }
 
 test("should generate source maps", t => {
