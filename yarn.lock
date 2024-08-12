@@ -2738,7 +2738,7 @@ __metadata:
     gulp-postcss: "npm:10.0.0"
     gulp-rename: "npm:2.0.0"
     mini-css-extract-plugin: "npm:2.9.0"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-loader: "patch:postcss-loader@npm%3A8.1.1#~/.yarn/patches/postcss-loader-npm-8.1.1-20cf547c92.patch"
     postcss-scss: "npm:4.0.9"
     resolve-from: "npm:5.0.0"
@@ -2777,7 +2777,7 @@ __metadata:
     "@swissquote/crafty-preset-prettier": "npm:1.26.0"
     "@swissquote/stylelint-config-swissquote": "npm:1.26.0"
     is-plain-object: "npm:5.0.0"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-scss: "npm:4.0.9"
     resolve-from: "npm:5.0.0"
     stylelint: "npm:15.10.0"
@@ -2984,7 +2984,7 @@ __metadata:
     "@swissquote/assets": "npm:1.26.0"
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-functions: "npm:4.0.2"
   peerDependencies:
     postcss: ^8.0.0
@@ -2997,7 +2997,7 @@ __metadata:
   dependencies:
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
   peerDependencies:
     postcss: ^8.0.0
   languageName: unknown
@@ -3009,7 +3009,7 @@ __metadata:
   dependencies:
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
     postcss: ^8.0.0
@@ -3023,7 +3023,7 @@ __metadata:
     "@swissquote/color-fns": "npm:1.26.0"
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-functions: "npm:4.0.2"
     postcss-value-parser: "npm:4.2.0"
     units-css: "npm:0.4.0"
@@ -3039,7 +3039,7 @@ __metadata:
     "@swissquote/color-fns": "npm:1.26.0"
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
     postcss: ^8.0.0
@@ -3052,7 +3052,7 @@ __metadata:
   dependencies:
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
     postcss: ^8.0.0
@@ -3065,7 +3065,7 @@ __metadata:
   dependencies:
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-media-query-parser: "npm:0.2.3"
     postcss-value-parser: "npm:4.2.0"
   peerDependencies:
@@ -3080,7 +3080,7 @@ __metadata:
     ava: "npm:6.1.3"
     balanced-match: "npm:2.0.0"
     c8: "npm:10.1.2"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
   peerDependencies:
     postcss: ^8.0.0
   languageName: unknown
@@ -3104,12 +3104,12 @@ __metadata:
     c8: "npm:10.1.2"
     caniuse-lite: "npm:^1.0.30001642"
     lightningcss: "npm:1.25.1"
-    postcss: "npm:8.4.40"
+    postcss: "npm:8.4.41"
     postcss-custom-selectors: "npm:6.0.3"
     postcss-font-variant: "npm:5.0.0"
     postcss-import: "npm:15.1.0"
     postcss-initial: "npm:4.0.1"
-    postcss-lightningcss: "npm:1.0.0"
+    postcss-lightningcss: "npm:1.0.1"
     postcss-nested: "npm:6.2.0"
     postcss-property-lookup: "npm:3.0.0"
     postcss-reporter: "npm:7.1.0"
@@ -3125,10 +3125,10 @@ __metadata:
     ava: "npm:6.1.3"
     c8: "npm:10.1.2"
     caniuse-lite: "npm:^1.0.30001642"
-    postcss: "npm:8.4.40"
-    postcss-resolve-nested-selector: "npm:0.1.4"
+    postcss: "npm:8.4.41"
+    postcss-resolve-nested-selector: "npm:0.1.6"
     postcss-scss: "npm:4.0.9"
-    postcss-selector-parser: "npm:6.1.1"
+    postcss-selector-parser: "npm:6.1.2"
     postcss-value-parser: "npm:4.2.0"
     prettier: "npm:2.8.8"
     stylelint: "npm:15.10.0"
@@ -11107,15 +11107,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-lightningcss@npm:1.0.0":
-  version: 1.0.0
-  resolution: "postcss-lightningcss@npm:1.0.0"
+"postcss-lightningcss@npm:1.0.1":
+  version: 1.0.1
+  resolution: "postcss-lightningcss@npm:1.0.1"
   dependencies:
     browserslist: "npm:^4.19.1"
     lightningcss: "npm:^1.22.0"
   peerDependencies:
     postcss: ^8.0.0
-  checksum: 10c0/132b80059503ea1e7c900f15a04e2fd624b202080fc5378007c8599d2e9683063a180a892e93d49ddc8dad95aa761a57593023765d92fa5117f081788d1d34de
+  checksum: 10c0/f6cc68856155c474a8d0f6ac3b49574d335a32a7c2ebaae2a6658d111b7c2d15957b6d5f2dc0edd69b8260d1384ad122cc8bfa3829fbb73f5376bdc5f76a32c8
   languageName: node
   linkType: hard
 
@@ -11265,10 +11265,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-resolve-nested-selector@npm:0.1.4, postcss-resolve-nested-selector@npm:^0.1.1":
-  version: 0.1.4
-  resolution: "postcss-resolve-nested-selector@npm:0.1.4"
-  checksum: 10c0/c265c35ddd474968bc4efbe4027e33f28910ef3931ffae9c448878d7c02735aeeea6d33aa6f89902e4c111e6fe87f2cc2aa72dcb3ac242d58809f1f932baa2b6
+"postcss-resolve-nested-selector@npm:0.1.6, postcss-resolve-nested-selector@npm:^0.1.1":
+  version: 0.1.6
+  resolution: "postcss-resolve-nested-selector@npm:0.1.6"
+  checksum: 10c0/84213a2bccce481b1569c595a3c547b25c6ef1cca839fbd6c82c12ab407559966e968613c7454b573aa54f38cfd7e900c1fd603f0efc9f51939ab9f93f115455
   languageName: node
   linkType: hard
 
@@ -11290,13 +11290,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:6.1.1, postcss-selector-parser@npm:^6.0.13, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.1.1":
-  version: 6.1.1
-  resolution: "postcss-selector-parser@npm:6.1.1"
+"postcss-selector-parser@npm:6.1.2, postcss-selector-parser@npm:^6.0.13, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.1.1":
+  version: 6.1.2
+  resolution: "postcss-selector-parser@npm:6.1.2"
   dependencies:
     cssesc: "npm:^3.0.0"
     util-deprecate: "npm:^1.0.2"
-  checksum: 10c0/5608765e033fee35d448e1f607ffbaa750eb86901824a8bc4a911ea8bc137cb82f29239330787427c5d3695afd90d8721e190f211dbbf733e25033d8b3100763
+  checksum: 10c0/523196a6bd8cf660bdf537ad95abd79e546d54180f9afb165a4ab3e651ac705d0f8b8ce6b3164fb9e3279ce482c5f751a69eb2d3a1e8eb0fd5e82294fb3ef13e
   languageName: node
   linkType: hard
 
@@ -11334,14 +11334,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.40, postcss@npm:^8.4.24, postcss@npm:^8.4.33":
-  version: 8.4.40
-  resolution: "postcss@npm:8.4.40"
+"postcss@npm:8.4.41, postcss@npm:^8.4.24, postcss@npm:^8.4.33":
+  version: 8.4.41
+  resolution: "postcss@npm:8.4.41"
   dependencies:
     nanoid: "npm:^3.3.7"
     picocolors: "npm:^1.0.1"
     source-map-js: "npm:^1.2.0"
-  checksum: 10c0/65ed67573e5443beaeb582282ff27a6be7c7fe3b4d9fa15761157616f2b97510cb1c335023c26220b005909f007337026d6e3ff092f25010b484ad484e80ea7f
+  checksum: 10c0/c1828fc59e7ec1a3bf52b3a42f615dba53c67960ed82a81df6441b485fe43c20aba7f4e7c55425762fd99c594ecabbaaba8cf5b30fd79dfec5b52a9f63a2d690
   languageName: node
   linkType: hard
 
