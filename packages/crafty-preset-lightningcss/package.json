@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-lightningcss",
-  "version": "1.26.0",
+  "version": "1.27.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -16,14 +16,14 @@
     "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.26.0",
-    "@swissquote/crafty-commons": "1.26.0",
-    "@swissquote/crafty-preset-stylelint": "1.26.0",
+    "@swissquote/crafty": "1.27.0",
+    "@swissquote/crafty-commons": "1.27.0",
+    "@swissquote/crafty-preset-stylelint": "1.27.0",
     "lightningcss": "1.26.0",
     "mini-css-extract-plugin": "2.9.1"
   },
   "peerDependencies": {
-    "@swissquote/stylelint-config-swissquote": "1.26.0"
+    "@swissquote/stylelint-config-swissquote": "1.27.0"
   },
   "devDependencies": {
     "css-loader": "7.1.2",
