@@ -2789,7 +2789,7 @@ __metadata:
     service-names-port-numbers: "npm:2.0.0"
     speed-measure-webpack-plugin: "npm:1.5.0"
     utf-8-validate: "npm:6.0.4"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.96.1"
     webpack-bundle-analyzer: "npm:4.10.2"
     webpack-chain-5: "npm:8.0.2"
     webpack-merge: "npm:6.0.1"
@@ -3135,6 +3135,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/eslint-scope@npm:^3.7.7":
+  version: 3.7.7
+  resolution: "@types/eslint-scope@npm:3.7.7"
+  dependencies:
+    "@types/eslint": "npm:*"
+    "@types/estree": "npm:*"
+  checksum: 10c0/a0ecbdf2f03912679440550817ff77ef39a30fa8bfdacaf6372b88b1f931828aec392f52283240f0d648cf3055c5ddc564544a626bcf245f3d09fcb099ebe3cc
+  languageName: node
+  linkType: hard
+
 "@types/eslint@npm:^8.0.0":
   version: 8.56.12
   resolution: "@types/eslint@npm:8.56.12"
@@ -3145,10 +3155,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@types/estree@npm:1.0.5"
-  checksum: 10c0/b3b0e334288ddb407c7b3357ca67dbee75ee22db242ca7c56fe27db4e1a31989cb8af48a84dd401deb787fe10cc6b2ab1ee82dc4783be87ededbe3d53c79c70d
+"@types/estree@npm:*, @types/estree@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@types/estree@npm:1.0.6"
+  checksum: 10c0/cdfd751f6f9065442cd40957c07fd80361c962869aa853c1c2fd03e101af8b9389d8ff4955a43a6fcfa223dd387a089937f95be0f3eec21ca527039fd2d9859a
   languageName: node
   linkType: hard
 
@@ -3714,7 +3724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-import-attributes@npm:^1.9.2, acorn-import-attributes@npm:^1.9.5":
+"acorn-import-attributes@npm:^1.9.2":
   version: 1.9.5
   resolution: "acorn-import-attributes@npm:1.9.5"
   peerDependencies:
@@ -3741,12 +3751,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.4, acorn@npm:^8.1.0, acorn@npm:^8.11.0, acorn@npm:^8.11.3, acorn@npm:^8.6.0, acorn@npm:^8.7.1, acorn@npm:^8.8.1, acorn@npm:^8.8.2, acorn@npm:^8.9.0":
-  version: 8.12.1
-  resolution: "acorn@npm:8.12.1"
+"acorn@npm:^8.0.4, acorn@npm:^8.1.0, acorn@npm:^8.11.0, acorn@npm:^8.11.3, acorn@npm:^8.14.0, acorn@npm:^8.6.0, acorn@npm:^8.8.1, acorn@npm:^8.8.2, acorn@npm:^8.9.0":
+  version: 8.14.0
+  resolution: "acorn@npm:8.14.0"
   bin:
     acorn: bin/acorn
-  checksum: 10c0/51fb26cd678f914e13287e886da2d7021f8c2bc0ccc95e03d3e0447ee278dd3b40b9c57dc222acd5881adcf26f3edc40901a4953403232129e3876793cd17386
+  checksum: 10c0/6d4ee461a7734b2f48836ee0fbb752903606e576cc100eb49340295129ca0b452f3ba91ddd4424a1d4406a98adfb2ebb6bd0ff4c49d7a0930c10e462719bbfd7
   languageName: node
   linkType: hard
 
@@ -4567,7 +4577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.24.0, browserslist@npm:^4.19.1, browserslist@npm:^4.21.10, browserslist@npm:^4.21.4, browserslist@npm:^4.23.3, browserslist@npm:^4.24.0":
+"browserslist@npm:4.24.0, browserslist@npm:^4.19.1, browserslist@npm:^4.21.4, browserslist@npm:^4.23.3, browserslist@npm:^4.24.0":
   version: 4.24.0
   resolution: "browserslist@npm:4.24.0"
   dependencies:
@@ -5336,7 +5346,7 @@ __metadata:
     react-loadable: "npm:5.5.0"
     react-tabs: "npm:6.0.2"
     serve: "npm:14.2.4"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.96.1"
   languageName: unknown
   linkType: soft
 
@@ -5355,7 +5365,7 @@ __metadata:
     react-loadable: "npm:5.5.0"
     react-tabs: "npm:6.0.2"
     serve: "npm:14.2.4"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.96.1"
   languageName: unknown
   linkType: soft
 
@@ -5377,7 +5387,7 @@ __metadata:
     react-loadable: "npm:5.5.0"
     react-tabs: "npm:6.0.2"
     serve: "npm:14.2.4"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.96.1"
   languageName: unknown
   linkType: soft
 
@@ -5415,7 +5425,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-tabs: "npm:6.0.2"
     serve: "npm:14.2.4"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.96.1"
   languageName: unknown
   linkType: soft
 
@@ -13917,17 +13927,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.94.0, webpack@npm:^5":
-  version: 5.94.0
-  resolution: "webpack@npm:5.94.0"
+"webpack@npm:5.96.1, webpack@npm:^5":
+  version: 5.96.1
+  resolution: "webpack@npm:5.96.1"
   dependencies:
-    "@types/estree": "npm:^1.0.5"
+    "@types/eslint-scope": "npm:^3.7.7"
+    "@types/estree": "npm:^1.0.6"
     "@webassemblyjs/ast": "npm:^1.12.1"
     "@webassemblyjs/wasm-edit": "npm:^1.12.1"
     "@webassemblyjs/wasm-parser": "npm:^1.12.1"
-    acorn: "npm:^8.7.1"
-    acorn-import-attributes: "npm:^1.9.5"
-    browserslist: "npm:^4.21.10"
+    acorn: "npm:^8.14.0"
+    browserslist: "npm:^4.24.0"
     chrome-trace-event: "npm:^1.0.2"
     enhanced-resolve: "npm:^5.17.1"
     es-module-lexer: "npm:^1.2.1"
@@ -13949,7 +13959,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10c0/b4d1b751f634079bd177a89eef84d80fa5bb8d6fc15d72ab40fc2b9ca5167a79b56585e1a849e9e27e259803ee5c4365cb719e54af70a43c06358ec268ff4ebf
+  checksum: 10c0/ae6052fde9a546f79f14987b65823ba4024c6642a8489339ecfee7a351dff93325842aad453295bbdc6b65fb1690e4ef07529db63aa84ece55c7869e991a0039
   languageName: node
   linkType: hard
 
