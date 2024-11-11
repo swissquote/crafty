@@ -2124,9 +2124,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/cli@npm:5.28.2":
-  version: 5.28.2
-  resolution: "@statoscope/cli@npm:5.28.2"
+"@statoscope/cli@npm:5.28.3":
+  version: 5.28.3
+  resolution: "@statoscope/cli@npm:5.28.3"
   dependencies:
     "@discoveryjs/json-ext": "npm:^0.5.7"
     "@statoscope/config": "npm:5.28.1"
@@ -2136,16 +2136,16 @@ __metadata:
     "@statoscope/stats-extension-custom-reports": "npm:5.28.1"
     "@statoscope/stats-validator": "npm:5.28.1"
     "@statoscope/stats-validator-reporter-console": "npm:5.28.1"
-    "@statoscope/stats-validator-reporter-stats-report": "npm:5.28.2"
+    "@statoscope/stats-validator-reporter-stats-report": "npm:5.28.3"
     "@statoscope/types": "npm:5.28.1"
-    "@statoscope/webpack-model": "npm:5.28.2"
-    "@statoscope/webpack-ui": "npm:5.28.2"
+    "@statoscope/webpack-model": "npm:5.28.3"
+    "@statoscope/webpack-ui": "npm:5.28.3"
     "@types/yargs": "npm:^17.0.10"
     open: "npm:~8.4.0"
     yargs: "npm:^17.7.2"
   bin:
     statoscope: bin/cli.js
-  checksum: 10c0/64cf11ed74b8a937cfb4af13cab1be67379bdb4330fa2f6bd1f8be242537e9e2a909263731e79bd87142fbe0c58eed0be0ab20055d397b811aa08a52f78d193c
+  checksum: 10c0/b77f850458afae0e4e066b2fb486ad2046daa4d4b7bf4f9ed98cf29a946ae28fdda8d8adbe2175fe97fb19904c9c9acb6a0586a9ddf0b86140607b6b473e36cd
   languageName: node
   linkType: hard
 
@@ -2248,19 +2248,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/stats-validator-reporter-stats-report@npm:5.28.2":
-  version: 5.28.2
-  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.2"
+"@statoscope/stats-validator-reporter-stats-report@npm:5.28.3":
+  version: 5.28.3
+  resolution: "@statoscope/stats-validator-reporter-stats-report@npm:5.28.3"
   dependencies:
     "@discoveryjs/json-ext": "npm:^0.5.7"
     "@statoscope/report-writer": "npm:5.28.1"
     "@statoscope/stats": "npm:5.28.1"
     "@statoscope/stats-extension-stats-validation-result": "npm:5.28.1"
     "@statoscope/types": "npm:5.28.1"
-    "@statoscope/webpack-model": "npm:5.28.2"
-    "@statoscope/webpack-ui": "npm:5.28.2"
+    "@statoscope/webpack-model": "npm:5.28.3"
+    "@statoscope/webpack-ui": "npm:5.28.3"
     open: "npm:~8.4.0"
-  checksum: 10c0/052de62ed7fd93d347c0c3832eab16a21d4b8faa081f169d96ff8f050bc31c8a40c15d09522f6880752415b4ad4365bb09d6901c538a3920384afcd6cf8a209d
+  checksum: 10c0/3c9971257168471eb7ba030a76ab510a89bc61d2e678a6d6e5f9a0bffb1896e2b6713d9be8f53957ffd629a4d6a0a650a12b05c57a40f67ef824e0ef08ba2c8c
   languageName: node
   linkType: hard
 
@@ -2292,9 +2292,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-model@npm:5.28.2":
-  version: 5.28.2
-  resolution: "@statoscope/webpack-model@npm:5.28.2"
+"@statoscope/webpack-model@npm:5.28.3":
+  version: 5.28.3
+  resolution: "@statoscope/webpack-model@npm:5.28.3"
   dependencies:
     "@statoscope/extensions": "npm:5.28.1"
     "@statoscope/helpers": "npm:5.28.1"
@@ -2307,17 +2307,17 @@ __metadata:
     "@types/md5": "npm:^2.3.2"
     "@types/webpack": "npm:^5.0.0"
     md5: "npm:^2.3.0"
-  checksum: 10c0/f8e8b102fff6125ee807f14f0a7d4d7234b98a0ae518719f5a2e54c5a160a47dae30c67c1b2587e8765a7522de267e97d2c53320c34a3586e3958e71710a6904
+  checksum: 10c0/32e77074a537dda8b8ecead01207059149d655e0ce34e5cf815a189f31ba4ef4a0942764eeba6ba02f520f1f4b16ae728e5e929688a3a37c6f126802ce07cca5
   languageName: node
   linkType: hard
 
-"@statoscope/webpack-ui@npm:5.28.2":
-  version: 5.28.2
-  resolution: "@statoscope/webpack-ui@npm:5.28.2"
+"@statoscope/webpack-ui@npm:5.28.3":
+  version: 5.28.3
+  resolution: "@statoscope/webpack-ui@npm:5.28.3"
   dependencies:
     "@statoscope/types": "npm:5.28.1"
     "@types/md5": "npm:^2.3.2"
-  checksum: 10c0/28074383bcec47b702f1cc540b0bc54f97be63f0096a288f5504bcd213572bbe7be3166232a5b262d109102fcd886ec719ce167a462529c02ef5ff9a5d5ea636
+  checksum: 10c0/247819caac95d11ef5fe6e61026656f8f6d76642399ca94b20aafc3bd96d17ffa9437c6e29efc1ec7cf1e27619c52c11d125cd307e83dedafb6c10c27bc527ef
   languageName: node
   linkType: hard
 
@@ -4778,14 +4778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001669":
-  version: 1.0.30001679
-  resolution: "caniuse-lite@npm:1.0.30001679"
-  checksum: 10c0/87fb89c5cb5130e40fa97b110fe175ea1104c359e4882aa5e277f824fbd33aa024f26d41a25f7d214db985f43d5b148c44e363965d17b36660b126a03e75e6e0
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001680":
+"caniuse-lite@npm:^1.0.30001669, caniuse-lite@npm:^1.0.30001680":
   version: 1.0.30001680
   resolution: "caniuse-lite@npm:1.0.30001680"
   checksum: 10c0/11a4e7f6f5d5f965cfd4b7dc4aef34e12a26e99647f02b5ac9fd7f7670845473b95ada416a785473237e4b1b67281f7b043c8736c85b77097f6b697e8950b15f
@@ -5414,7 +5407,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "crafty-workspace@workspace:."
   dependencies:
-    "@statoscope/cli": "npm:5.28.2"
+    "@statoscope/cli": "npm:5.28.3"
     "@types/eslint": "npm:^8.0.0"
     "@types/jest": "npm:^29.0.0"
     webpack-bundle-size-analyzer: "npm:3.1.0"
@@ -11284,7 +11277,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.48":
+"postcss@npm:8.4.48, postcss@npm:^8.4.24, postcss@npm:^8.4.33":
   version: 8.4.48
   resolution: "postcss@npm:8.4.48"
   dependencies:
@@ -11292,17 +11285,6 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/d586361fda12fc7ab5650ce9b5763fc61d6ea2cecac9da98fceea6a3f27e42ed34db830582411bc06743492d9bb414c52b0c81da65440682d244d692da2f928a
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.4.24, postcss@npm:^8.4.33":
-  version: 8.4.47
-  resolution: "postcss@npm:8.4.47"
-  dependencies:
-    nanoid: "npm:^3.3.7"
-    picocolors: "npm:^1.1.0"
-    source-map-js: "npm:^1.2.1"
-  checksum: 10c0/929f68b5081b7202709456532cee2a145c1843d391508c5a09de2517e8c4791638f71dd63b1898dba6712f8839d7a6da046c72a5e44c162e908f5911f57b5f44
   languageName: node
   linkType: hard
 
