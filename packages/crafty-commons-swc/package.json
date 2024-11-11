@@ -15,14 +15,14 @@
     "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
-    "@swc/core": "1.7.36",
-    "@swc/helpers": "0.5.13",
+    "@swc/core": "1.9.2",
+    "@swc/helpers": "0.5.15",
     "@swissquote/crafty-commons": "1.27.0",
     "@swissquote/crafty-commons-gulp": "1.27.0",
     "@swissquote/crafty-commons-webpack": "1.27.0"
   },
   "devDependencies": {
-    "@swc/jest": "0.2.36",
+    "@swc/jest": "0.2.37",
     "swc-loader": "0.2.6"
   },
   "engines": {

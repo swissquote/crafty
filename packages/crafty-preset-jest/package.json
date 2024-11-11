@@ -15,8 +15,8 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@babel/core": "7.25.8",
-    "@babel/plugin-transform-modules-commonjs": "7.25.7",
+    "@babel/core": "7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "7.25.9",
     "@swissquote/crafty": "1.27.0",
     "jest-cli": "29.7.0",
     "jest-environment-jsdom": "29.7.0"
