@@ -137,7 +137,8 @@ module.exports = [
         "/eslint/lib(/.*)/": "eslint/lib$1",
         "is-glob": "../is-glob/index.js",
         "get-tsconfig": "../get-tsconfig/index.js",
-        "eslint-module-utils/declaredScope": "../eslint-module-utils/declaredScope.js",
+        "eslint-module-utils/declaredScope":
+          "../eslint-module-utils/declaredScope.js",
         "eslint-module-utils/readPkgUp": "../eslint-module-utils/readPkgUp.js",
         "eslint-module-utils/pkgUp": "../eslint-module-utils/pkgUp.js",
         "eslint-module-utils/resolve": "../eslint-module-utils/resolve.js",
