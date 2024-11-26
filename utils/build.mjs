@@ -2,7 +2,6 @@
 
 import fs from "fs";
 import path from "path";
-import { rimrafSync } from "rimraf";
 
 import {
   findFiles,
@@ -186,7 +185,7 @@ function builder(name) {
 
 async function main() {
   // Start with a cleanup
-  rimrafSync(process.cwd() + "/dist");
+  fs.rmSync(process.cwd() + "/dist", { force: true, recursive: true });
 
   const toBuild = await import(process.cwd() + "/build.config.js")
   const configuration = toBuild.default;

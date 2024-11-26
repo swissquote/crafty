@@ -1,7 +1,6 @@
 const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
-const { rimraf } = require("rimraf");
 
 function snapshotizeOutput(ret) {
   const escapedPath = path
@@ -126,7 +125,7 @@ async function getCleanFixtures(fixtures, clean = ["dist"]) {
   const dir = path.join(__dirname, "fixtures", fixtures);
   for (const dirToClean of clean) {
     // eslint-disable-next-line no-await-in-loop
-    await rimraf(path.join(dir, dirToClean));
+    await fs.promises.rm(path.join(dir, dirToClean), { force: true, recursive: true });
   }
 
   return dir;
