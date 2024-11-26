@@ -4,12 +4,12 @@ const browserslist = require("@swissquote/crafty-commons/packages/browserslist")
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const defaultBrowsers = [
-  "Edge >= 96",
-  "Safari >= 15",
-  "iOS >= 15",
-  "Chrome >= 96",
-  "and_chr >= 96",
-  "Firefox >= 94",
+  "Edge >= 107",
+  "Safari >= 16",
+  "iOS >= 16",
+  "Chrome >= 107",
+  "and_chr >= 107",
+  "Firefox >= 107",
   "> 1%",
   "not dead",
   "not op_mini all"
