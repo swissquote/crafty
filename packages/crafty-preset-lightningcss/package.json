@@ -15,6 +15,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
     "build": "node ../../utils/build.mjs"
   },
+  "type": "module",
   "dependencies": {
     "@swissquote/crafty": "1.27.0",
     "@swissquote/crafty-commons": "1.27.0",

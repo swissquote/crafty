@@ -1,11 +1,14 @@
-const path = require("path");
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+import { createGlobalRule, createModuleRule } from "./webpack-utils.js";
 
-const { createGlobalRule, createModuleRule } = require("./webpack-utils");
-
+const require = createRequire(import.meta.url);
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const MODULES = path.join(__dirname, "..", "node_modules");
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-module.exports = {
+export default {
   presets: [require.resolve("@swissquote/crafty-preset-stylelint")],
   defaultConfig() {
     return {
@@ -44,7 +47,7 @@ module.exports = {
     createModuleRule(crafty, bundle, chain);
 
     // ADD Minify plugin
-    chain.optimization
+    /*chain.optimization
       .minimizer("css")
       .use(path.resolve(__dirname, "minify.js"), [
         {
@@ -54,6 +57,6 @@ module.exports = {
           },
           implementation: require("lightningcss")
         }
-      ]);
+      ]);*/
   }
 };

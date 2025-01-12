@@ -1,23 +1,30 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from 'node:url';
+import { createRequire } from "node:module"
 
-const { copyRecursiveSync } = require("../../utils/functions.js");
-const { getExternals } = require("../../utils/externals");
+import { copyRecursiveSync } from "../../utils/functions.js";
+import { getExternals } from "../../utils/externals.js";
+
+const require = createRequire(import.meta.url)
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+//const __filename = fileURLToPath(import.meta.url);
 
 const externals = {
   // Provided by other Crafty packages
   ...getExternals(),
 
   //"webpack": "webpack",
-  "webpack-sources": "../../src/webpack-sources",
+  "webpack-sources": "../../src/webpack-sources.js",
   "webpack/lib/ModuleFilenameHelpers": "../../src/ModuleFilenameHelpers.js",
 
   lightningcss: "lightningcss"
 };
 
-module.exports = [
+export default [
   builder =>
     builder("webpack-packages")
+      .esm()
       .packages(pkgBuilder =>
         pkgBuilder
           .package("css-loader", "cssLoader")

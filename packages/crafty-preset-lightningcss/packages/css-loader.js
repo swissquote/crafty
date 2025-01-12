@@ -1,2 +1,3 @@
 //module.exports = require("css-loader");
-module.exports = require("../dist/webpack-packages/bundled.js").cssLoader();
+import { cssLoader } from "../dist/webpack-packages/bundled.js";
+export default cssLoader;

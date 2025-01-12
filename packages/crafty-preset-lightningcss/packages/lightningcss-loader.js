@@ -1,2 +1,4 @@
 //module.exports = require("lightningcss-loader");
-module.exports = require("../dist/webpack-packages/bundled.js").lightningcssLoader();
+import { lightningcssLoader } from "../dist/webpack-packages/bundled.js";
+export default lightningcssLoader;
+

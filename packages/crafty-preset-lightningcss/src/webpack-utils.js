@@ -1,4 +1,9 @@
-const path = require("path");
+import path from "node:path";
+import loaderUtils from "loader-utils";
+
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 
 const regexLikeIndexModule = /index\.module\.s?css$/;
 
@@ -25,9 +30,7 @@ function getExtractConfig(bundle) {
   return extractCSSConfig;
 }
 
-function getCssModuleLocalIdent(context, _, exportName, options) {
-  const loaderUtils = require("loader-utils");
-
+export function getCssModuleLocalIdent(context, _, exportName, options) {
   const relativePath = path
     .relative(context.rootContext, context.resourcePath)
     .replace(/\\+/g, "/");
@@ -121,7 +124,7 @@ function createRule(crafty, bundle, chain, styleRule, options) {
     });
 }
 
-function createGlobalRule(crafty, bundle, chain) {
+export function createGlobalRule(crafty, bundle, chain) {
   createRule(
     crafty,
     bundle,
@@ -138,7 +141,7 @@ function createGlobalRule(crafty, bundle, chain) {
   );
 }
 
-function createModuleRule(crafty, bundle, chain) {
+export function createModuleRule(crafty, bundle, chain) {
   createRule(
     crafty,
     bundle,
@@ -158,9 +161,3 @@ function createModuleRule(crafty, bundle, chain) {
     }
   );
 }
-
-module.exports = {
-  getCssModuleLocalIdent,
-  createGlobalRule,
-  createModuleRule
-};

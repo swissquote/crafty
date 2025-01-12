@@ -15,7 +15,7 @@ function matchPart(str, testStr) {
   }
 }
 
-function matchObject(obj, str) {
+export function matchObject(obj, str) {
   if (obj.test) {
     if (!matchPart(str, obj.test)) {
       return false;
@@ -33,7 +33,3 @@ function matchObject(obj, str) {
   }
   return true;
 }
-
-module.exports = {
-  matchObject
-};

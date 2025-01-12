@@ -191,7 +191,7 @@ function configureAnalyze(chain, bundle) {
     .use(require.resolve("../packages/inspectpack.js"), [{}]);
 }
 
-module.exports = function(crafty, bundle, webpackPort) {
+module.exports = async function(crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
   const chain = new WebpackChain();
@@ -286,7 +286,7 @@ module.exports = function(crafty, bundle, webpackPort) {
     finalizeWatcher(chain, config);
   }
 
-  const finalConfig = chain.toConfig();
+  const finalConfig = await chain.toConfig();
   if (process.argv.some(arg => arg === "--profile")) {
     const verbose = process.argv.some(arg => arg === "--verbose");
     const SpeedMeasurePlugin = require("../packages/speed-measure-webpack-plugin.js");

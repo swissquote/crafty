@@ -10,9 +10,9 @@ const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");
 const webpackOutput = require("./webpack_output");
 
-function prepareConfiguration(crafty, bundle, webpackPort) {
+async function prepareConfiguration(crafty, bundle, webpackPort) {
   // Base configuration
-  let webpackConfig = webpackConfigurator(crafty, bundle, webpackPort);
+  let webpackConfig = await webpackConfigurator(crafty, bundle, webpackPort);
 
   const configPath = path.join(process.cwd(), "webpack.config.js");
 
@@ -44,8 +44,8 @@ function printError(summary, error) {
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
   const getCompiler = () => {
-    return portFinder.getFree(taskName).then(freePort => {
-      const config = prepareConfiguration(crafty, bundle, freePort);
+    return portFinder.getFree(taskName).then(async freePort => {
+      const config = await prepareConfiguration(crafty, bundle, freePort);
       const webpack = require("webpack");
       const compiler = webpack(config);
 

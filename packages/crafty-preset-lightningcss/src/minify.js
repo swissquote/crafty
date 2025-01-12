@@ -1,1 +1,3 @@
-module.exports = require("../packages/lightningcss-loader.js").LightningCssMinifyPlugin;
+import LightningCssMinifyPlugin from "../packages/lightningcss-loader.js";
+
+export default LightningCssMinifyPlugin;
