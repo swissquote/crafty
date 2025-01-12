@@ -8,18 +8,21 @@ import {
   scanFiles,
   printReport
 } from "./duplicates.js";
-import compileUtils from "./compile.js";
+import * as compileUtils from "./compile.mjs";
 
 class PackagesBuilder {
-  constructor() {
+  constructor(esm) {
+    this.esm = esm;
     this.sourceFile = [];
     this.entryFiles = [];
   }
 
   package(pkg, name, entryFile) {
-    this.sourceFile.push(
-      `module.exports["${name}"] = function() { return require("${pkg}"); };`
-    );
+    const importStr = this.esm
+      ?  `import ${name} from "${pkg}"; export { ${name} };`
+      :  `module.exports["${name}"] = function() { return require("${pkg}"); };`;
+
+    this.sourceFile.push(importStr);
 
     if (entryFile) {
       this.entryFiles.push({ entryFile, name });
@@ -109,7 +112,7 @@ class Builder {
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
     this.values.destination = `dist/${cleanPkg}/bundled.js`;
 
-    const builder = new PackagesBuilder();
+    const builder = new PackagesBuilder(this.values.options.esm);
 
     callback(builder);
 
