@@ -1,5 +1,5 @@
 const { minify } = require("@swc/core");
-const webpack = require("../packages/webpack");
+const webpack = require("../packages/webpack.js");
 
 const { name, version } = require("../package.json");
 

@@ -125,7 +125,10 @@ async function getCleanFixtures(fixtures, clean = ["dist"]) {
   const dir = path.join(__dirname, "fixtures", fixtures);
   for (const dirToClean of clean) {
     // eslint-disable-next-line no-await-in-loop
-    await fs.promises.rm(path.join(dir, dirToClean), { force: true, recursive: true });
+    await fs.promises.rm(path.join(dir, dirToClean), {
+      force: true,
+      recursive: true
+    });
   }
 
   return dir;
