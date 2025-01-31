@@ -1,80 +1,111 @@
 {
-  "extends": ["config:base", ":automergeMinor"],
+  "extends": [
+    "config:recommended",
+    ":automergeMinor"
+  ],
   "schedule": "before 11pm on Monday",
-  "statusCheckVerify": true,
   "prConcurrentLimit": 4,
   "packageRules": [
     {
-      "matchManagers": ["npm"],
+      "matchManagers": [
+        "npm"
+      ],
       "rangeStrategy": "pin"
     },
     {
-      "matchDepTypes": ["engines", "peerDependencies"],
-      "rangeStrategy": "update-lockfile"
-    },
-    {
-      "groupName": "@types",
-      "packagePatterns": ["@types/*"]
-    },
-    {
-      "packagePatterns": [
-        "@types/*",
-        "ansi-colors",
-        "prettier",
-        "caniuse-lite",
-        "fsevents"
+      "matchDepTypes": [
+        "engines",
+        "peerDependencies"
       ],
       "rangeStrategy": "update-lockfile"
     },
     {
-      "matchPackageNames": ["node"],
+      "groupName": "@types",
+      "matchPackageNames": [
+        "/@types/*/"
+      ]
+    },
+    {
+      "rangeStrategy": "update-lockfile",
+      "matchPackageNames": [
+        "/@types/*/",
+        "/ansi-colors/",
+        "/prettier/",
+        "/caniuse-lite/",
+        "/fsevents/"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "node"
+      ],
       "rangeStrategy": "replace"
     },
     {
       "groupName": "jest",
-      "packagePatterns": ["jest"],
       "minor": {
         "groupName": "all jest dependencies",
         "groupSlug": "jest-minor-patch"
-      }
+      },
+      "matchPackageNames": [
+        "/jest/"
+      ]
     },
     {
       "groupName": "eslint",
-      "packagePatterns": ["^eslint", "@typescript-eslint/*", "typescript-eslint"],
       "minor": {
         "groupName": "all eslint dependencies",
         "groupSlug": "eslint-minor-patch"
-      }
+      },
+      "matchPackageNames": [
+        "/^eslint/",
+        "/@typescript-eslint/*/",
+        "/typescript-eslint/"
+      ]
     },
     {
       "groupName": "postcss",
-      "packagePatterns": ["^postcss"],
       "minor": {
         "groupName": "all postcss dependencies",
         "groupSlug": "postcss-minor-patch"
-      }
+      },
+      "matchPackageNames": [
+        "/^postcss/"
+      ]
     },
     {
       "groupName": "webpack",
-      "packagePatterns": ["^webpack"],
       "minor": {
         "groupName": "all webpack dependencies",
         "groupSlug": "webpack-minor-patch"
-      }
+      },
+      "matchPackageNames": [
+        "/^webpack/"
+      ]
     },
     {
-      "matchPackageNames": ["prettier1"],
+      "matchPackageNames": [
+        "prettier1"
+      ],
       "allowedVersions": "<2.0"
     },
     {
-      "matchPackageNames": ["prettier2"],
+      "matchPackageNames": [
+        "prettier2"
+      ],
       "allowedVersions": "<3.0"
     }
   ],
   "major": {
     "dependencyDashboardApproval": true
   },
-  "postUpdateOptions": ["yarnDedupeHighest"],
-  "ignoreDeps": ["postcss-custom-properties"],
-  "ignorePaths": ["packages/integration/fixtures"]
+  "postUpdateOptions": [
+    "yarnDedupeHighest"
+  ],
+  "ignoreDeps": [
+    "postcss-custom-properties"
+  ],
+  "ignorePaths": [
+    "packages/integration/fixtures"
+  ]
 }
