@@ -20,7 +20,7 @@ export default class App extends React.Component {
     render() {
       return (
         <div>
-          <p>You clicked {this.state.count} times</p>
+          <p role="alert">You clicked {this.state.count} times</p>
           <button onClick={this.handleClick}>
             Click me
           </button>

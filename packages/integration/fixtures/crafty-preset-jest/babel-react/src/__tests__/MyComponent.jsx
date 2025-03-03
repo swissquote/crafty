@@ -1,61 +1,44 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import { create, act } from "react-test-renderer";
+import { render, screen, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom';
 
 import Counter from "../Counter";
 import MyComponent from "../MyComponent";
-import Foo from "../Foo";
 
 describe('<MyComponent />', () => {
-  it('renders three <Foo /> components', () => {
-    const wrapper = create(<MyComponent />);
-    expect(wrapper.root.findAllByType(Foo)).toHaveLength(3)
+  it('renders three <Foo /> components', async () => {
+    render(<MyComponent />);
+    expect(await screen.findAllByText("Foo")).toHaveLength(3)
   });
 
-  it('renders an `.icon-star`', () => {
-    const wrapper = create(<MyComponent />);
-    expect(wrapper.root.findByProps({className: 'icon-star'}).type).toEqual("i");
+  it('renders an `.icon-star`', async () => {
+    render(<MyComponent />);
+    expect(await screen.findByTitle("star")).toHaveAttribute('class', 'icon-star');
   });
 
-  it('renders children when passed in', () => {
-    const wrapper = create((
+  it('renders children when passed in', async () => {
+    render((
       <MyComponent>
-        <div className="unique" />
+        <div className="unique">Child</div>
       </MyComponent>
     ));
-    expect(wrapper.root.findByType(MyComponent).children[4].props).toEqual({className: "unique"});
+    expect(await screen.findByText("Child")).toHaveAttribute("class", "unique");
   });
 });
 
 describe('<Counter />', () => {
-  let container;
-  
-  beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
-  });
-  
-  afterEach(() => {
-    document.body.removeChild(container);
-    container = null;
-  });
-  
-  it('can render and update a counter', () => {
+  it('can render and update a counter', async () => {
     // Test first render and componentDidMount
-    act(() => {
-      const root = createRoot(container);
-      root.render(<Counter />);
-    });
-    const button = container.querySelector('button');
-    const label = container.querySelector('p');
-    expect(label.textContent).toBe('You clicked 0 times');
+    render(<Counter />);
+
+    const label = await screen.findByRole('alert');
+    expect(label).toHaveTextContent('You clicked 0 times');
     expect(document.title).toBe('You clicked 0 times');
-  
+
     // Test second render and componentDidUpdate
-    act(() => {
-      button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
-    });
-    expect(label.textContent).toBe('You clicked 1 times');
+    fireEvent.click(screen.getByText('Click me'));
+
+    expect(label).toHaveTextContent('You clicked 1 times');
     expect(document.title).toBe('You clicked 1 times');
   });
 })
