@@ -3024,6 +3024,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swissquote/random-cjs@npm:1.27.0, @swissquote/random-cjs@workspace:package-forks/random-cjs":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/random-cjs@workspace:package-forks/random-cjs"
+  languageName: unknown
+  linkType: soft
+
 "@swissquote/stylelint-config-swissquote@npm:1.27.0, @swissquote/stylelint-config-swissquote@workspace:packages/stylelint-config-swissquote":
   version: 0.0.0-use.local
   resolution: "@swissquote/stylelint-config-swissquote@workspace:packages/stylelint-config-swissquote"
@@ -3142,13 +3148,6 @@ __metadata:
   version: 1.0.6
   resolution: "@types/estree@npm:1.0.6"
   checksum: 10c0/cdfd751f6f9065442cd40957c07fd80361c962869aa853c1c2fd03e101af8b9389d8ff4955a43a6fcfa223dd387a089937f95be0f3eec21ca527039fd2d9859a
-  languageName: node
-  linkType: hard
-
-"@types/glob-to-regexp@npm:^0.4.4":
-  version: 0.4.4
-  resolution: "@types/glob-to-regexp@npm:0.4.4"
-  checksum: 10c0/7288ff853850d8302a8770a3698b187fc3970ad12ee6427f0b3758a3e7a0ebb0bd993abc6ebaaa979d09695b4194157d2bfaa7601b0fb9ed72c688b4c1298b88
   languageName: node
   linkType: hard
 
@@ -5806,13 +5805,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dequal@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "dequal@npm:2.0.3"
-  checksum: 10c0/f98860cdf58b64991ae10205137c0e97d384c3a4edc7f807603887b7c4b850af1224a33d88012009f150861cbee4fa2d322c4cc04b9313bee312e47f6ecaa888
-  languageName: node
-  linkType: hard
-
 "destroy@npm:^1.0.4":
   version: 1.2.0
   resolution: "destroy@npm:1.2.0"
@@ -6812,18 +6804,6 @@ __metadata:
     node-domexception: "npm:^1.0.0"
     web-streams-polyfill: "npm:^3.0.3"
   checksum: 10c0/60054bf47bfa10fb0ba6cb7742acec2f37c1f56344f79a70bb8b1c48d77675927c720ff3191fa546410a0442c998d27ab05e9144c32d530d8a52fbe68f843b69
-  languageName: node
-  linkType: hard
-
-"fetch-mock@npm:12.5.1":
-  version: 12.5.1
-  resolution: "fetch-mock@npm:12.5.1"
-  dependencies:
-    "@types/glob-to-regexp": "npm:^0.4.4"
-    dequal: "npm:^2.0.3"
-    glob-to-regexp: "npm:^0.4.1"
-    regexparam: "npm:^3.0.0"
-  checksum: 10c0/40e98e38de7102090c475f40d4a77f402596d813255ed948ca74000c8163c73a1a433e4040428677abca207c1262e5ac39142fe0687b9eb285609429b8bbb6e3
   languageName: node
   linkType: hard
 
@@ -7965,10 +7945,10 @@ __metadata:
     "@swissquote/crafty-preset-typescript": "npm:1.27.0"
     "@swissquote/crafty-runner-gulp": "npm:1.27.0"
     "@swissquote/crafty-runner-webpack": "npm:1.27.0"
+    "@swissquote/random-cjs": "npm:1.27.0"
     ava: "npm:6.2.0"
     c8: "npm:10.1.3"
     execa: "npm:5.1.1"
-    fetch-mock: "npm:12.5.1"
     lodash-es: "npm:4.17.21"
     node-fetch: "npm:3.3.2"
     react: "npm:18.3.1"
@@ -11750,13 +11730,6 @@ __metadata:
     es-errors: "npm:^1.3.0"
     set-function-name: "npm:^2.0.2"
   checksum: 10c0/e1a7c7dc42cc91abf73e47a269c4b3a8f225321b7f617baa25821f6a123a91d23a73b5152f21872c566e699207e1135d075d2251cd3e84cc96d82a910adf6020
-  languageName: node
-  linkType: hard
-
-"regexparam@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "regexparam@npm:3.0.0"
-  checksum: 10c0/a6430d7b97d5a7d5518f37a850b6b73aab479029d02f46af4fa0e8e4a1d7aad05b7a0d2d10c86ded21a14d5f0fa4c68525f873a5fca2efeefcccd93c36627459
   languageName: node
   linkType: hard
 
