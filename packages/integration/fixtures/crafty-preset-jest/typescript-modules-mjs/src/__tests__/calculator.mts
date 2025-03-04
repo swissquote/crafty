@@ -28,5 +28,5 @@ it("works with imported mjs libs", () => {
 });
 
 it("works with imports that contain cjs dependencies", async () => {
-    expect(cjs.random()).toEqual(2);
+    expect(cjs.default.random()).toEqual(2);
 })

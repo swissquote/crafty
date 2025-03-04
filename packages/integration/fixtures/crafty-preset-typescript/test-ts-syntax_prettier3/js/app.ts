@@ -12,6 +12,7 @@ import { redComponent, PersonAccessor } from "./TS_4_9";
 import { Person, type Entity } from "./TS_5_0";
 import { usingDeclaration } from "./TS_5_2";
 import { getJson } from "./TS_5_3";
+import { "🍌" as banana } from "./TS_5_6";
 
 export {
   catchUnkown,
@@ -32,4 +33,5 @@ export {
   Entity,
   usingDeclaration,
   getJson,
+  banana,
 };
