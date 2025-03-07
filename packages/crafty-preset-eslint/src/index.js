@@ -90,7 +90,8 @@ module.exports = {
         .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
           {
             extensions: crafty.config.eslintExtensions,
-            overrideConfigFile: toTempFile(crafty.config.eslint)
+            overrideConfigFile: toTempFile(crafty.config.eslint),
+            configType: "eslintrc"
           }
         ]);
     }
