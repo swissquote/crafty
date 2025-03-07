@@ -21,7 +21,10 @@ module.exports = {
     options.globals.BABEL_OPTIONS = babelConfigurator(
       crafty,
       {},
-      { environment: "test" }
+      {
+        environment: "test",
+        presetReact: { runtime: "automatic" }
+      }
     );
   },
   bundleCreator(crafty) {
