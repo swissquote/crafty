@@ -10,28 +10,15 @@ module.exports = [
   () => {
     console.log("copy eslint-plugin-react-hooks");
     const src = require.resolve(
-      "eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.production.min.js"
+      "eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.production.js"
     );
 
     fs.mkdirSync("dist/eslint-plugin-react-hooks", { recursive: true });
 
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
-  builder => builder("estraverse").package(),
-  builder => builder("function-bind").package(),
-  builder =>
-    builder("hasown")
-      .externals({
-        "function-bind": "../function-bind/index.js"
-      })
-      .package(),
   builder => builder("merge2").package(),
-  builder =>
-    builder("is-core-module")
-      .externals({
-        hasown: "../hasown/index.js"
-      })
-      .package(),
+  builder => builder("is-core-module").package(),
   builder => builder("is-extglob").package(),
   builder =>
     builder("is-glob")
@@ -117,11 +104,6 @@ module.exports = [
 
   builder => builder("eslint-config-prettier").package(),
   builder =>
-    builder("comment-parser")
-      .package()
-      .sourceFile(`module.exports = require("comment-parser/parser/index");`),
-
-  builder =>
     builder("eslint-plugin-i")
       .package()
       .externals({
@@ -146,49 +128,75 @@ module.exports = [
         "eslint-module-utils/ModuleCache":
           "../eslint-module-utils/ModuleCache.js"
       }),
-
   builder =>
-    builder("eslint-plugin-react")
+    builder("ts-api-utils")
+      .package()
+      .externals({
+        ...externals,
+        typescript: "typescript"
+      }),
+  builder =>
+    builder("@eslint-react/eslint-plugin")
       .package()
       .externals({
         ...externals,
 
-        // Provided by this package
-        eslint: "eslint",
-        "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
-        "eslint/package.json": "eslint/package.json",
-        "/eslint/lib(/.*)/": "eslint/lib$1",
+        typescript: "typescript",
+        "typescript/lib/tsserverlibrary": "typescript/lib/tsserverlibrary",
 
-        "function-bind": "../function-bind/index.js",
-        hasown: "../hasown/index.js",
-        estraverse: "../estraverse/index.js",
-        "is-core-module": "../is-core-module/index.js",
-        "path-parse": "../path-parse/index.js",
+        "@typescript-eslint/typescript-estree":
+          "../typescript-eslint/typescript-estree.js",
+        "@typescript-eslint/scope-manager":
+          "../typescript-eslint/scope-manager.js",
+        "@typescript-eslint/types": "../typescript-eslint/types.js",
+        "@typescript-eslint/utils/ast-utils":
+          "../typescript-eslint/ast-utils.js",
+        "@typescript-eslint/utils": "../typescript-eslint/utils.js",
+        "@typescript-eslint/type-utils": "../typescript-eslint/type-utils.js",
 
-        // Replace functions that can be optimized
-        "./report": "../../src/shims/eslint-plugin-react_report.js",
-        "../util/report": "../../src/shims/eslint-plugin-react_report.js",
-
-        // Replace polyfills that aren't needed
-        "array-includes": "../../src/shims/array-includes.js",
-        "array.prototype.flat": "../../src/shims/array-prototype-flat.js",
-        "array.prototype.flatmap": "../../src/shims/array-prototype-flatmap.js",
-        "array.prototype.tosorted":
-          "../../src/shims/array-prototype-tosorted.js",
-        "object.entries": "../../src/shims/object-entries.js",
-        "object.fromentries": "../../src/shims/object-fromentries.js",
-        "object.fromentries/polyfill":
-          "../../src/shims/object-fromentries-polyfill.js",
-        "object.hasown/polyfill": "../../src/shims/object-hasown-polyfill.js",
-        "object.values": "../../src/shims/object-values.js",
-        "string.prototype.matchall":
-          "../../src/shims/string-prototype-matchall.js",
-        doctrine: "../../src/shims/doctrine.js"
+        "ts-api-utils": "../ts-api-utils/index.js"
       }),
 
   builder =>
     builder("typescript-eslint")
-      .package()
+      .packages(pkgBuilder => {
+        pkgBuilder
+          .package(
+            "typescript-eslint",
+            "main",
+            "dist/typescript-eslint/index.js"
+          )
+          .package(
+            "@typescript-eslint/typescript-estree",
+            "typescriptEstree",
+            "dist/typescript-eslint/typescript-estree.js"
+          )
+          .package(
+            "@typescript-eslint/scope-manager",
+            "scopeManager",
+            "dist/typescript-eslint/scope-manager.js"
+          )
+          .package(
+            "@typescript-eslint/types",
+            "types",
+            "dist/typescript-eslint/types.js"
+          )
+          .package(
+            "@typescript-eslint/utils",
+            "utils",
+            "dist/typescript-eslint/utils.js"
+          )
+          .package(
+            "@typescript-eslint/utils/ast-utils",
+            "astUtils",
+            "dist/typescript-eslint/ast-utils.js"
+          )
+          .package(
+            "@typescript-eslint/type-utils",
+            "typeUtils",
+            "dist/typescript-eslint/type-utils.js"
+          );
+      })
       .externals({
         // Provided by other Crafty packages
         ...externals,
@@ -201,9 +209,10 @@ module.exports = [
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
 
+        "ts-api-utils": "../ts-api-utils/index.js",
+
         merge2: "../merge2/index.js",
         "fast-glob": "../fast-glob/index.js",
-        estraverse: "../estraverse/index.js",
         "is-glob": "../is-glob/index.js"
       }),
 

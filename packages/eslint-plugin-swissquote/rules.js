@@ -3,9 +3,9 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 module.exports = {};
 
 const plugins = {
-  react: require("./packages/eslint-plugin-react"),
-  "react-hooks": require("./packages/eslint-plugin-react-hooks"),
-  import: require("./packages/eslint-plugin-i"),
+  "@eslint-react": require("./packages/eslint-react-eslint-plugin.js"),
+  "react-hooks": require("./packages/eslint-plugin-react-hooks.js"),
+  import: require("./packages/eslint-plugin-i.js"),
   prettier: require("./src/eslint-plugin-prettier/index.js"),
   "@typescript-eslint": require("./packages/typescript-eslint").plugin
 };

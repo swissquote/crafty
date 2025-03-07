@@ -44,6 +44,10 @@ function snapshotizeOutput(ret) {
       ""
     ) // Remove Node exports warnings
     .replace(
+      /\n\(node:11111\) \[DEP0040\] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead./g,
+      ""
+    )
+    .replace(
       /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
       "Starting Crafty __version__"
     ) // Remove version information in crafty output
