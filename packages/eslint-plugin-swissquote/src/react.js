@@ -19,12 +19,16 @@ module.exports = {
   },
   rules: {
     // Swissquote Rules
-    "@swissquote/swissquote/@eslint-react/naming-convention/component-name": "error",
-    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-mount": "error",
-    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-update": "error",
+    "@swissquote/swissquote/@eslint-react/naming-convention/component-name":
+      "error",
+    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-mount":
+      "error",
+    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-update":
+      "error",
     "@swissquote/swissquote/@eslint-react/no-redundant-should-component-update":
       "error",
-    "@swissquote/swissquote/@eslint-react/dom/no-void-elements-with-children": "error"
+    "@swissquote/swissquote/@eslint-react/dom/no-void-elements-with-children":
+      "error"
   }
 };
 

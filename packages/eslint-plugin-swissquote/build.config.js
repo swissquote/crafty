@@ -128,27 +128,33 @@ module.exports = [
         "eslint-module-utils/ModuleCache":
           "../eslint-module-utils/ModuleCache.js"
       }),
-  builder => builder("ts-api-utils").package().externals({
-    ...externals,
-    "typescript": "typescript",
-  }),
+  builder =>
+    builder("ts-api-utils")
+      .package()
+      .externals({
+        ...externals,
+        typescript: "typescript"
+      }),
   builder =>
     builder("@eslint-react/eslint-plugin")
       .package()
       .externals({
         ...externals,
 
-        "typescript": "typescript",
+        typescript: "typescript",
         "typescript/lib/tsserverlibrary": "typescript/lib/tsserverlibrary",
 
-        "@typescript-eslint/typescript-estree": "../typescript-eslint/typescript-estree.js",
-        "@typescript-eslint/scope-manager": "../typescript-eslint/scope-manager.js",
+        "@typescript-eslint/typescript-estree":
+          "../typescript-eslint/typescript-estree.js",
+        "@typescript-eslint/scope-manager":
+          "../typescript-eslint/scope-manager.js",
         "@typescript-eslint/types": "../typescript-eslint/types.js",
-        "@typescript-eslint/utils/ast-utils": "../typescript-eslint/ast-utils.js", 
+        "@typescript-eslint/utils/ast-utils":
+          "../typescript-eslint/ast-utils.js",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js",
         "@typescript-eslint/type-utils": "../typescript-eslint/type-utils.js",
 
-        "ts-api-utils": "../ts-api-utils/index.js",
+        "ts-api-utils": "../ts-api-utils/index.js"
       }),
 
   builder =>
@@ -190,7 +196,6 @@ module.exports = [
             "typeUtils",
             "dist/typescript-eslint/type-utils.js"
           );
-
       })
       .externals({
         // Provided by other Crafty packages
