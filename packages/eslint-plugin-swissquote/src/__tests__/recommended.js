@@ -95,8 +95,6 @@ test("jsx-no-duplicate-props: works with different props", async t => {
   const result = await lint(
     engine,
     `
-import * as React from "react";
-
 export default function SomeComponent() {
   return <div id="" className="" />;
 }
@@ -112,8 +110,6 @@ test("jsx-no-duplicate-props: works fails with the same prop", async t => {
   const result = await lint(
     engine,
     `
-import * as React from "react";
-
 export default function SomeComponent() {
   return <div id="" id="" />;
 }
@@ -121,8 +117,8 @@ export default function SomeComponent() {
   );
 
   t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  t.is(result.warningCount, 1);
+  t.is(result.errorCount, 0);
 });
 
 test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
@@ -154,14 +150,14 @@ MyComponent.propTypes = {
 
   t.snapshot(result.messages);
   t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  t.is(result.errorCount, 2);
 });
 
 test("Incorrect usage of hooks: fails with setState in componentDidMount", async t => {
   const result = await lint(
     engine,
     `
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function MyComponent() {
   // 1. Use the name state variable
@@ -190,26 +186,4 @@ export default function MyComponent() {
   t.snapshot(result.messages);
   t.is(result.warningCount, 0);
   t.is(result.errorCount, 3);
-});
-
-test("Properly parses JSDoc", async t => {
-  const result = await lint(
-    engine,
-    `
-/* global BaseComponent */
-/** @extends React.Component */
-class MyComponent extends BaseComponent {}
-MyComponent.PROPTYPES = {};
-`
-  );
-
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 2);
-  t.is(
-    result.messages.filter(
-      m => m.message === "Typo in static class property declaration"
-    ).length,
-    1
-  );
 });

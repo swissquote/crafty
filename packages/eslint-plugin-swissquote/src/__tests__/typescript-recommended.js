@@ -125,8 +125,11 @@ export default class SplitButton extends React.Component<
   render(trigger) {
     const { trigger } = this.props;
     if (typeof trigger !== "function") {
-      // eslint-disable-next-line @swissquote/swissquote/react/jsx-handler-names
-      return <button ref={this.ref}>{trigger}</button>;
+      return (
+        <button type="button" ref={this.ref}>
+          {trigger}
+        </button>
+      );
     }
 
     return (trigger as triggerFunction)({

@@ -45,7 +45,7 @@ Valid values are `prettier:1`, `prettier:2`, and `prettier:3`.
 ### Plugins in the `recommended` preset
 
 - `eslint-plugin-import` provides some rules to clean imports.
-- `eslint-plugin-react` ensures you follow some best practices with React.
+- `@eslint-react/eslint-plugin` ensures you follow some best practices with React.
 - `eslint-plugin-react-hooks` ensures you follow some best practices with React Hooks.
 
 To make it easy to install this plugin, those rules are added to ESLint automatically, but prefixed with `swissquote/`.

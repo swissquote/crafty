@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import App from "./containers/App";
-
 import "../css/overrides.scss";
 
-// TODO :: switch to createRoot : https://reactjs.org/link/switch-to-createroot
-ReactDOM.render(<App />, document.getElementById("root"));
+const domNode = document.getElementById("root");
+const root = createRoot(domNode);
+root.render(<App />);
