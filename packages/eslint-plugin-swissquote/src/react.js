@@ -1,6 +1,4 @@
-const { addMissingRules } = require("./utils");
-
-// EcmaScript 6 specific configuration
+// React specific configuration
 module.exports = {
   settings: {
     "import/resolver": {
@@ -12,40 +10,33 @@ module.exports = {
       version: "detect"
     }
   },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
+  languageOptions: {
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   },
   rules: {
+    // Add all recommended configurations from eslint-plugin-react-hooks
+    ...require("../packages/eslint-plugin-react-hooks").configs.recommended
+      .rules,
+
+    // Add all recommended configurations from eslint-plugin-react
+    ...require("../packages/eslint-plugin-react").configs.recommended.rules,
+
+    // Disable all the rules from eslint-plugin-react that are handled by Prettier
+    ...require("../packages/eslint-config-prettier").rules,
+
     // Swissquote Rules
-    "@swissquote/swissquote/@eslint-react/naming-convention/component-name":
-      "error",
-    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-mount":
-      "error",
-    "@swissquote/swissquote/@eslint-react/no-set-state-in-component-did-update":
-      "error",
-    "@swissquote/swissquote/@eslint-react/no-redundant-should-component-update":
-      "error",
-    "@swissquote/swissquote/@eslint-react/dom/no-void-elements-with-children":
-      "error"
+    "@eslint-react/naming-convention/component-name": "error",
+    "@eslint-react/no-set-state-in-component-did-mount": "error",
+    "@eslint-react/no-set-state-in-component-did-update": "error",
+    "@eslint-react/no-redundant-should-component-update": "error",
+    "@eslint-react/dom/no-void-elements-with-children": "error"
+  },
+  plugins: {
+    react: require("../packages/eslint-plugin-react"),
+    "react-hooks": require("../packages/eslint-plugin-react-hooks")
   }
 };
-
-// Add all recommended configurations from eslint-plugin-react
-addMissingRules(
-  require("../packages/eslint-react-eslint-plugin").configs.recommended.rules,
-  module.exports.rules
-);
-
-// Add all recommended configurations from eslint-plugin-react-hooks
-addMissingRules(
-  require("../packages/eslint-plugin-react-hooks").configs.recommended.rules,
-  module.exports.rules
-);
-
-// Disable all the rules from eslint-plugin-react that are handled by Prettier
-addMissingRules(
-  require("../packages/eslint-config-prettier").rules,
-  module.exports.rules
-);

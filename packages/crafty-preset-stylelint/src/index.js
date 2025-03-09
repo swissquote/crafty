@@ -70,7 +70,6 @@ module.exports = {
       cssLint: {
         //eslint-disable-next-line no-unused-vars
         command(crafty, input, cli) {
-          global.craftyConfig = crafty.config;
           require("./commands/lint_css");
         },
         description: "Lint CSS for errors"
