@@ -164,7 +164,7 @@
      *
      * @return A partial configuration, that will be recursively merged in the existing configuration
      */</span>
-    defaultConfig(): {[key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>} { <span class="hljs-keyword">return</span> {} }
+    defaultConfig(): Config { <span class="hljs-keyword">return</span> {} }
 
     <span class="hljs-comment">/**
      * Change the configuration once the user overrides have been applied.
@@ -174,7 +174,9 @@
      * @param config The original configuration
      * @return The full configuration
      */</span>
-    config(config: {[key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>}): {[key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>} { <span class="hljs-keyword">return</span> config; }
+    config(config: Config, loadedPresets: CraftyPreset[]): Config {
+      <span class="hljs-keyword">return</span> config;
+    }
 
     <span class="hljs-comment">/**
      * Prepares the commands that can be invoked in this preset.
