@@ -9,7 +9,7 @@ const getCrafty = configuration.getCrafty;
 test("Loads crafty-preset-typescript and does not register webpack tasks", async t => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
@@ -28,7 +28,7 @@ test("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpac
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));

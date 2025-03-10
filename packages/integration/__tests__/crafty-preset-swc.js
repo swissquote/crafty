@@ -10,7 +10,7 @@ const PRESET_SWC = "@swissquote/crafty-preset-swc";
 test("Loads crafty-preset-swc and does not register webpack tasks", async t => {
   const crafty = await getCrafty([PRESET_SWC], {});
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));
@@ -29,7 +29,7 @@ test("Loads crafty-preset-swc, crafty-runner-webpack and registers webpack task"
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));
@@ -57,7 +57,7 @@ test("Fails on double runner with incorrect bundle assignment", async t => {
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));
@@ -83,7 +83,7 @@ test("Fails on double runner with imprecise bundle assignment", async t => {
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));
@@ -109,7 +109,7 @@ test("Fails on non-existing runners", async t => {
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));
@@ -135,7 +135,7 @@ test("Assigns bundle only once when runner is specified", async t => {
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes(PRESET_SWC));

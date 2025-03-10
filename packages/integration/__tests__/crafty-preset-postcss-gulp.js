@@ -16,7 +16,7 @@ test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", 
     config
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-postcss"));

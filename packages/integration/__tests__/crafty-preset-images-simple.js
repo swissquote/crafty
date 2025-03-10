@@ -12,7 +12,7 @@ test("Loads crafty-preset-images-simple and does not register gulp tasks", async
     {}
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-images-simple"));
@@ -31,7 +31,7 @@ test("Fails if both crafty-preset-images and crafty-preset-images-simple are loa
     {}
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-images"));
@@ -52,7 +52,7 @@ test("Loads crafty-preset-images-simple, crafty-runner-gulp and registers gulp t
     {}
   );
 
-  const loadedPresets = crafty.config.loadedPresets.map(
+  const loadedPresets = crafty.loadedPresets.map(
     preset => preset.presetName
   );
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-images-simple"));

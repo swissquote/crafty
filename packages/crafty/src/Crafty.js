@@ -14,8 +14,9 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 );
 
 class Crafty {
-  constructor(config) {
+  constructor(config, loadedPresets) {
     this.config = config;
+    this.loadedPresets = loadedPresets;
     this.log = log;
     this.undertaker = new Undertaker();
 
@@ -77,13 +78,11 @@ class Crafty {
   }
 
   getImplementations(method) {
-    return this.config.loadedPresets.filter(preset =>
-      preset.implements(method)
-    );
+    return this.loadedPresets.filter(preset => preset.implements(method));
   }
 
   runAllSync(fn, ...args) {
-    for (const preset of this.config.loadedPresets) {
+    for (const preset of this.loadedPresets) {
       if (preset.implements(fn)) {
         debug(`${preset.presetName}.${fn}()`);
         preset.run(fn, ...args);

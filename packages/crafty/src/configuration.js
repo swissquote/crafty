@@ -54,6 +54,7 @@ class CraftyLoader {
   constructor() {
     this.loading = new Set();
     this.loaded = new Set();
+    this.loadedPresets = [];
   }
 
   needsLoading(preset) {
@@ -99,7 +100,7 @@ class CraftyLoader {
 
     const loadedModule = await import(resolvedModule);
     const craftyPreset = new CraftyPreset(loadedModule, presetName);
-    config.loadedPresets.push(craftyPreset);
+    this.loadedPresets.push(craftyPreset);
 
     this.loaded.add(preset);
     this.loaded.add(presetName);
@@ -158,8 +159,7 @@ class CraftyLoader {
     let config = copy(
       merge(copy(defaultConfiguration), {
         destination: path.join(process.cwd(), "dist"),
-        presets: presets.concat(craftyConfig.presets || []),
-        loadedPresets: []
+        presets: presets.concat(craftyConfig.presets || [])
       })
     );
     config = await this.loadMissingPresets(config, config.presets);
@@ -168,11 +168,9 @@ class CraftyLoader {
     // Use `crafty.config.js` like a preset
     // Add the preset as last item in order to be
     // able to override any behaviour from other presets
-    config.loadedPresets.push(
-      new CraftyPreset(craftyConfig, "crafty.config.js")
-    );
+    this.loadedPresets.push(new CraftyPreset(craftyConfig, "crafty.config.js"));
 
-    const loadedPresets = config.loadedPresets
+    const loadedPresets = this.loadedPresets
       .map(preset => ` - ${preset.presetName}`)
       .join("\n");
 
@@ -191,11 +189,11 @@ async function getCrafty(presets, craftyConfigPromise) {
   let config = await craftyLoader.loadPresets(presets, craftyConfig);
 
   // Apply overrides to clean up configuration
-  config.loadedPresets
+  craftyLoader.loadedPresets
     .filter(preset => preset.implements("config"))
     .forEach(preset => {
-      debug(`${preset.presetName}.config(config)`);
-      config = preset.run("config", config);
+      debug(`${preset.presetName}.config(config, loadedPresets)`);
+      config = preset.run("config", config, craftyLoader.loadedPresets);
     });
 
   // Set default bundleType destinations if not found.
@@ -207,7 +205,7 @@ async function getCrafty(presets, craftyConfigPromise) {
       );
     }
   });
-  const crafty = new Crafty(config);
+  const crafty = new Crafty(config, craftyLoader.loadedPresets);
 
   crafty.runAllSync("init", crafty);
 

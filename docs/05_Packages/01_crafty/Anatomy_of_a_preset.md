@@ -17,7 +17,7 @@ module.exports = {
      *
      * @return A partial configuration, that will be recursively merged in the existing configuration
      */
-    defaultConfig(): {[key: string]: string} { return {} }
+    defaultConfig(): Config { return {} }
 
     /**
      * Change the configuration once the user overrides have been applied.
@@ -27,7 +27,9 @@ module.exports = {
      * @param config The original configuration
      * @return The full configuration
      */
-    config(config: {[key: string]: string}): {[key: string]: string} { return config; }
+    config(config: Config, loadedPresets: CraftyPreset[]): Config {
+      return config;
+    }
 
     /**
      * Prepares the commands that can be invoked in this preset.

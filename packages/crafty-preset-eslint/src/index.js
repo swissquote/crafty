@@ -25,7 +25,7 @@ module.exports = {
       }
     };
   },
-  config(config) {
+  config(config, loadedPresets) {
     // Add eslint react version
     const eslintConfig = { ...config.eslint };
 
@@ -35,7 +35,7 @@ module.exports = {
     };
 
     // Apply overrides to clean up configuration
-    config.loadedPresets
+    loadedPresets
       .filter(preset => preset.implements("eslint"))
       .forEach(preset => {
         debug(`${preset.presetName}.eslint(config, eslint)`);

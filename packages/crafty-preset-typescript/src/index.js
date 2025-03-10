@@ -21,7 +21,7 @@ module.exports = {
     const configurators = { js: {} };
 
     if (
-      crafty.config.loadedPresets.some(
+      crafty.loadedPresets.some(
         preset => preset.presetName === "@swissquote/crafty-runner-gulp"
       )
     ) {
