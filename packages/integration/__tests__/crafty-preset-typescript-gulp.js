@@ -7,9 +7,7 @@ const getCrafty = configuration.getCrafty;
 test("Loads crafty-preset-typescript and does not register gulp tasks", async t => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
 
   crafty.createTasks();
@@ -23,9 +21,7 @@ test("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
 

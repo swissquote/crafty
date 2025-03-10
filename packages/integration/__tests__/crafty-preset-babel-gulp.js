@@ -11,9 +11,7 @@ const mainBundleMap = "dist/js/myBundle.min.js.map";
 test("Loads crafty-preset-babel and does not register gulp tasks", async t => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-babel"], {});
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
 
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-babel"));
 
@@ -31,9 +29,7 @@ test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", as
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-babel"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
 

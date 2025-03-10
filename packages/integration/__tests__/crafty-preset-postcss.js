@@ -9,9 +9,7 @@ const getCrafty = configuration.getCrafty;
 test("Loads crafty-preset-postcss and does not register gulp tasks", async t => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-postcss"));
 
   const commands = getCommands(crafty);

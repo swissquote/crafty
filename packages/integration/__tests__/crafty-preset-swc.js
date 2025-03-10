@@ -10,9 +10,7 @@ const PRESET_SWC = "@swissquote/crafty-preset-swc";
 test("Loads crafty-preset-swc and does not register webpack tasks", async t => {
   const crafty = await getCrafty([PRESET_SWC], {});
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
 
   const commands = getCommands(crafty);
@@ -29,9 +27,7 @@ test("Loads crafty-preset-swc, crafty-runner-webpack and registers webpack task"
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
 
@@ -57,9 +53,7 @@ test("Fails on double runner with incorrect bundle assignment", async t => {
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
@@ -83,9 +77,7 @@ test("Fails on double runner with imprecise bundle assignment", async t => {
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
@@ -109,9 +101,7 @@ test("Fails on non-existing runners", async t => {
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
   t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
@@ -135,9 +125,7 @@ test("Assigns bundle only once when runner is specified", async t => {
     config
   );
 
-  const loadedPresets = crafty.loadedPresets.map(
-    preset => preset.presetName
-  );
+  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   t.truthy(loadedPresets.includes(PRESET_SWC));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
   t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
