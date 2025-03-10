@@ -1,11 +1,11 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("recommended", "node");
+const lint = prepareESLint("recommended", "node");
 
 test("Doesn't warn on console.log", async t => {
-  const result = await lint(engine, `console.log("Yeah");\n`);
+  const result = await lint(`console.log("Yeah");\n`);
 
   t.is(result.messages.length, 0);
   t.is(result.warningCount, 0);
@@ -14,7 +14,6 @@ test("Doesn't warn on console.log", async t => {
 
 test("Works with ES6", async t => {
   const result = await lint(
-    engine,
     `
 const something = [];
 
@@ -31,7 +30,6 @@ console.log(something);
 
 test("Works with TypeScript", async t => {
   const result = await lint(
-    engine,
     `
 import useSWROrig from "swr";
 

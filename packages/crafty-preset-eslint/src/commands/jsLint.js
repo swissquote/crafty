@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const { configurationBuilder, toTempFile } = require("../eslintConfigurator");
+// Force flat config mode
+process.env.ESLINT_USE_FLAT_CONFIG = "true";
 
-const configuration = configurationBuilder(process.argv);
+const { toTempFile, jsLintConfiguration } = require("../eslintConfigurator.js");
 
-process.argv = configuration.args;
-
-const tmpfile = toTempFile(configuration.configuration);
+// Write config to a file
+const tmpfile = toTempFile(jsLintConfiguration());
 
 // Remove "jsLint" from  command
 // Doesn't apply when we use the command as if we used eslint
