@@ -1,12 +1,11 @@
 const test = require("ava");
 
-const { prepareESLint, lint } = require("../../test_utils");
+const { prepareESLint } = require("../../test_utils");
 
-const engine = prepareESLint("format");
+const lint = prepareESLint("format");
 
 test("Gives no warning on correct code", async t => {
   const result = await lint(
-    engine,
     `
 module.exports = function initJS(gulp, config, watchers) {
   const js = config.js,
@@ -41,7 +40,6 @@ module.exports = function initJS(gulp, config, watchers) {
 
 test("Fails on badly formatted code", async t => {
   const result = await lint(
-    engine,
     `
 module.exports = function initJS(gulp, config, watchers) {
   const js = config.js,

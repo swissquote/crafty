@@ -34,7 +34,7 @@ function isSupported(feature, browsers) {
   let data;
   try {
     data = caniuseFeature(caniuseFeatures[feature]);
-  } catch (e) {
+  } catch {
     throw new ReferenceError(
       `Please provide a proper feature name. Cannot find ${feature}`
     );

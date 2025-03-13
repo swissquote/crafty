@@ -47,7 +47,7 @@ function patch(eslintPath) {
     try {
       // First check for the module relative to the current location
       return originalResolve(moduleName, __filename);
-    } catch (e) {
+    } catch {
       // OR fallback to the default behaviour of ESLint
       return originalResolve(moduleName, relativeToPath);
     }

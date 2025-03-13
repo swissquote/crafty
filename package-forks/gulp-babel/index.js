@@ -24,7 +24,7 @@ function supportsCallerOption() {
         configFile: false
       });
       supportsCallerOptionFlag = true;
-    } catch (_) {
+    } catch {
       supportsCallerOptionFlag = false;
     }
   }

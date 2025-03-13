@@ -44,7 +44,7 @@ function resolveModule(module) {
   try {
     // Try the naive way
     return [presetName, require.resolve(module)];
-  } catch (e) {
+  } catch {
     // Try a more advanced way
     return [presetName, resolve.sync(`${process.cwd()}/node_modules`, module)];
   }
@@ -110,7 +110,7 @@ class CraftyLoader {
     // They need to be loaded now, so that they're added before the current one in the list of dependencies
     if (craftyPreset.implements("presets")) {
       debug("loadPreset: Load nested", craftyPreset.get("presets"));
-      // eslint-disable-next-line no-await-in-loop
+
       config = await this.loadMissingPresets(
         config,
         craftyPreset.get("presets")
@@ -207,6 +207,8 @@ async function getCrafty(presets, craftyConfigPromise) {
   });
   const crafty = new Crafty(config, craftyLoader.loadedPresets);
 
+  crafty.presetsFromCli = presets;
+
   crafty.runAllSync("init", crafty);
 
   // Make sure everything sees the current environment
@@ -216,6 +218,12 @@ async function getCrafty(presets, craftyConfigPromise) {
 }
 exports.getCrafty = getCrafty;
 
+/**
+ * Extract from argv
+ *
+ * @param {string[]} argv
+ * @returns {string[]}
+ */
 function extractPresets(argv) {
   debug("extracting presets");
   const presets = global.presets || [];
@@ -258,8 +266,9 @@ exports.getOverrides = getOverrides;
  * Initialize Crafty, its configuration and presets
  *
  * @param {string[]} argv
+ * @param {string[]} additionalPresets
  */
-async function initialize(argv) {
+async function initialize(argv, additionalPresets = []) {
   let readConfig = true;
 
   if (argv.indexOf("--ignore-crafty-config") > -1) {
@@ -268,6 +277,7 @@ async function initialize(argv) {
   }
 
   const presets = extractPresets(argv);
+  presets.push(...additionalPresets);
   const config = readConfig ? getOverrides() : {};
 
   return getCrafty(presets, config);

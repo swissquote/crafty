@@ -38,15 +38,10 @@ module.exports = {
 
     return configurators;
   },
-  eslint(config, eslint) {
+  eslintExtensions() {
     // This configuration is read by the webpack plugins
     // The rest of the configuration is handled by `eslint-plugin-swissquote`
-    eslint.extensions.push("ts");
-    eslint.extensions.push("tsx");
-    eslint.extensions.push("mts");
-    eslint.extensions.push("cts");
-
-    return eslint;
+    return ["ts", "tsx", "mts", "cts"];
   },
   jest(crafty, options, esmMode) {
     options.moduleDirectories.push(MODULES);

@@ -62,7 +62,7 @@ function measure(params, resolver, path, density) {
 
 module.exports = (params = {}) => {
   if (params.relative === undefined) {
-    params.relative = false; // eslint-disable-line no-param-reassign
+    params.relative = false;
   }
 
   const resolver = new Assets(params);

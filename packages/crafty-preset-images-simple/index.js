@@ -8,7 +8,6 @@ export default {
     };
   },
   gulp(crafty, gulp /*, StreamHandler*/) {
-    //eslint-disable-line no-unused-vars
     // Only register this task if there is not any other images task
     if (
       Object.keys(crafty.undertaker._registry.tasks()).some(

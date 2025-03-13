@@ -9,7 +9,7 @@ let loadedPom;
 
 function forEachAncestorDirectory(directory, callback) {
   let currentDirectory = directory;
-  //eslint-disable-next-line no-constant-condition
+
   while (true) {
     const result = callback(currentDirectory);
     if (result !== undefined) {

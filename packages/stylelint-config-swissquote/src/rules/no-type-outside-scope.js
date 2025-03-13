@@ -102,7 +102,7 @@ module.exports = function() {
           try {
             const container = parseSelector(resolvedSelector);
             checkSelector(container, rule, result);
-          } catch (e) {
+          } catch {
             result.warn("Cannot parse selector", { node: rule });
           }
         });
