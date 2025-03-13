@@ -36,44 +36,6 @@ module.exports = [
       .package(),
   builder => builder("path-parse").package(),
   builder => builder("get-tsconfig").package(),
-  builder =>
-    builder("eslint-module-utils")
-      .packages(pkgBuilder => {
-        pkgBuilder
-          .package(
-            "eslint-module-utils/resolve",
-            "resolve",
-            "dist/eslint-module-utils/resolve.js"
-          )
-          .package(
-            "eslint-module-utils/hash",
-            "hash",
-            "dist/eslint-module-utils/hash.js"
-          )
-          .package(
-            "eslint-module-utils/pkgUp",
-            "pkgUp",
-            "dist/eslint-module-utils/pkgUp.js"
-          )
-          .package(
-            "eslint-module-utils/readPkgUp",
-            "readPkgUp",
-            "dist/eslint-module-utils/readPkgUp.js"
-          )
-          .package(
-            "eslint-module-utils/declaredScope",
-            "declaredScope",
-            "dist/eslint-module-utils/declaredScope.js"
-          )
-          .package(
-            "eslint-module-utils/ModuleCache",
-            "ModuleCache",
-            "dist/eslint-module-utils/ModuleCache.js"
-          );
-      })
-      .options({
-        sourceMap: false
-      }),
   builder => builder("confusing-browser-globals").package(),
   builder =>
     builder("eslint-import-resolver-node")
@@ -85,6 +47,11 @@ module.exports = [
         "path-parse": "../path-parse/index.js"
       }),
   builder =>
+    builder("enhanced-resolve")
+      .package()
+      .externals(externals),
+  builder => builder("stable-hash").package(),
+  builder =>
     builder("eslint-import-resolver-typescript")
       .package()
       .externals({
@@ -93,18 +60,17 @@ module.exports = [
         "fast-glob": "../fast-glob/index.js",
         "is-core-module": "../is-core-module/index.js",
         "is-glob": "../is-glob/index.js",
-        "eslint-module-utils/hash.js": "../eslint-module-utils/hash",
         "get-tsconfig": "../get-tsconfig/index.js",
 
-        // TODO :: is enhanced-resolve already exported somewhere ?
+        "enhanced-resolve": "../enhanced-resolve/index.js",
+        "stable-hash": "../stable-hash/index.js",
 
         // no code path uses this library
         open: "open"
       }),
-
   builder => builder("eslint-config-prettier").package(),
   builder =>
-    builder("eslint-plugin-i")
+    builder("eslint-plugin-import-x")
       .package()
       .externals({
         ...externals,
@@ -119,14 +85,10 @@ module.exports = [
         "/eslint/lib(/.*)/": "eslint/lib$1",
         "is-glob": "../is-glob/index.js",
         "get-tsconfig": "../get-tsconfig/index.js",
-        "eslint-module-utils/declaredScope":
-          "../eslint-module-utils/declaredScope.js",
-        "eslint-module-utils/readPkgUp": "../eslint-module-utils/readPkgUp.js",
-        "eslint-module-utils/pkgUp": "../eslint-module-utils/pkgUp.js",
-        "eslint-module-utils/resolve": "../eslint-module-utils/resolve.js",
-        "eslint-module-utils/hash": "../eslint-module-utils/hash.js",
-        "eslint-module-utils/ModuleCache":
-          "../eslint-module-utils/ModuleCache.js"
+
+        "stable-hash": "../stable-hash/index.js",
+        "enhanced-resolve": "../enhanced-resolve/index.js",
+        "@typescript-eslint/utils": "../typescript-eslint/utils.js"
       }),
   builder =>
     builder("ts-api-utils")
@@ -156,7 +118,6 @@ module.exports = [
 
         "ts-api-utils": "../ts-api-utils/index.js"
       }),
-
   builder =>
     builder("typescript-eslint")
       .packages(pkgBuilder => {
