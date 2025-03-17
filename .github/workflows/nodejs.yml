@@ -37,6 +37,8 @@ jobs:
       run: yarn build
     - name: Linting
       run: yarn lint:ci
+    - name: Test one
+      run: cd packages/eslint-plugin-swissquote && yarn test:ci
     - name: Testing
       run: yarn test:ci
       env:
