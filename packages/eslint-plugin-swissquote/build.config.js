@@ -88,7 +88,7 @@ module.exports = [
         "get-tsconfig": "../get-tsconfig/index.js",
 
         "stable-hash": "../stable-hash/index.js",
-        "enhanced-resolve": "../enhanced-resolve/index.js",
+        "oxc-resolver": "oxc-resolver",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js"
       }),
   builder =>
