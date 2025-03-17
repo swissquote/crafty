@@ -38,7 +38,7 @@ jobs:
     - name: Linting
       run: yarn lint:ci
     - name: Test one
-      run: cd packages/eslint-plugin-swissquote && yarn test:ci
+      run: cd packages/eslint-plugin-swissquote && DEBUG=* ../../node_modules/.bin/c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src ../../node_modules/.bin/ava
     - name: Testing
       run: yarn test:ci
       env:
