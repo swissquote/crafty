@@ -3047,6 +3047,7 @@ __metadata:
     prettier1: "npm:prettier@1.19.1"
     prettier2: "npm:prettier@2.8.8"
     rspack-resolver: "npm:1.1.2"
+    segfault-handler: "npm:^1.3.0"
     typescript: "npm:5.8.2"
     typescript-eslint: "npm:8.26.1"
   peerDependencies:
@@ -4708,7 +4709,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bindings@npm:^1.4.0":
+"bindings@npm:^1.2.1, bindings@npm:^1.4.0":
   version: 1.5.0
   resolution: "bindings@npm:1.5.0"
   dependencies:
@@ -10241,6 +10242,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nan@npm:^2.14.0":
+  version: 2.22.2
+  resolution: "nan@npm:2.22.2"
+  dependencies:
+    node-gyp: "npm:latest"
+  checksum: 10c0/971f963b8120631880fa47a389c71b00cadc1c1b00ef8f147782a3f4387d4fc8195d0695911272d57438c11562fb27b24c4ae5f8c05d5e4eeb4478ba51bb73c5
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^3.1.3, nanoid@npm:^3.3.8":
   version: 3.3.10
   resolution: "nanoid@npm:3.3.10"
@@ -11946,6 +11956,17 @@ __metadata:
     ajv: "npm:^6.12.5"
     ajv-keywords: "npm:^3.5.2"
   checksum: 10c0/fafdbde91ad8aa1316bc543d4b61e65ea86970aebbfb750bfb6d8a6c287a23e415e0e926c2498696b242f63af1aab8e585252637fabe811fd37b604351da6500
+  languageName: node
+  linkType: hard
+
+"segfault-handler@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "segfault-handler@npm:1.3.0"
+  dependencies:
+    bindings: "npm:^1.2.1"
+    nan: "npm:^2.14.0"
+    node-gyp: "npm:latest"
+  checksum: 10c0/d783e5ac6c1273fe0d72453ce661b2eb94a650759ad0398bf77dd25bba4cdcd2afb3c4613c74f4223ef84475a678d1db624863f57f31b0ae2f8a0031d57371fb
   languageName: node
   linkType: hard
 
