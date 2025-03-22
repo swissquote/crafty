@@ -1,16 +1,19 @@
 // @ts-check
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import test from "node:test";
+import { fileURLToPath } from "node:url";
 
-const test = require("ava");
-const postcss = require("postcss");
-const postcssScss = require("postcss-scss");
-const postcssPreset = require("../index.js");
+import postcss from "postcss";
+import postcssScss from "postcss-scss";
+import postcssPreset from "../index.js";
+import assert from "node:assert";
 
 function snapshotizeCSS(ret) {
   return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
 }
 
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const FIXTURES = path.join(__dirname, "fixtures");
 
 /** @type {{
@@ -493,7 +496,7 @@ for (const variant of variants) {
             parser: postcssScss,
           });
 
-        t.is(snapshotizeCSS(result.css), snapshotizeCSS(after));
+        assert.equal(snapshotizeCSS(result.css), snapshotizeCSS(after));
       });
     }
   }
