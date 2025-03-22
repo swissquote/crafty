@@ -1,59 +1,60 @@
 const path = require("path");
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 const resolvePath = require("../lib/path");
 
-test("w/o options", async t => {
+test("w/o options", async () => {
   const resolvedPath = await resolvePath("test/fixtures/duplicate-1.jpg");
 
-  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("basePath", async t => {
+test("basePath", async () => {
   const resolvedPath = await resolvePath("duplicate-1.jpg", {
     basePath: "test/fixtures",
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("loadPaths", async t => {
+test("loadPaths", async () => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: ["test/fixtures/fonts", "test/fixtures/images"],
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("loadPaths string", async t => {
+test("loadPaths string", async () => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: "test/fixtures/images",
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("loadPaths glob", async t => {
+test("loadPaths glob", async () => {
   const resolvedPath = await resolvePath("picture.png", {
     loadPaths: "test/fixtures/*",
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("basePath + loadPaths", async t => {
+test("basePath + loadPaths", async () => {
   const resolvedPath = await resolvePath("picture.png", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("absolute needle + basePath", async t => {
+test("absolute needle + basePath", async () => {
   const absoluteTo = path.resolve("test/fixtures/duplicate-1.jpg");
   const resolvedPath = await resolvePath(absoluteTo, {
     basePath: "test/fixtures",
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("absolute basePath + loadPaths", async t => {
+test("absolute basePath + loadPaths", async () => {
   const resolvedPath = await resolvePath("picture.png", {
     basePath: path.resolve("test/fixtures"),
     loadPaths: [
@@ -61,68 +62,62 @@ test("absolute basePath + loadPaths", async t => {
       path.resolve("test/fixtures/images"),
     ],
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/images/picture.png"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/images/picture.png"));
 });
 
-test("non-existing file", async t => {
+test("non-existing file", async () => {
   try {
     await resolvePath("non-existing.gif");
-    t.unreachable();
+    throw new Error("Test should have thrown an error");
   } catch (err) {
-    t.truthy(err instanceof Error);
-    t.is(err.message, "Asset not found or unreadable: non-existing.gif");
+    expect(err).toBeInstanceOf(Error);
+    expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
   }
 });
 
-test("prioritize basePath over the loadPaths", async t => {
+test("prioritize basePath over the loadPaths", async () => {
   const resolvedPath = await resolvePath("duplicate-1.jpg", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
 });
 
-test("prioritize firsts loadPaths over the lasts", async t => {
+test("prioritize firsts loadPaths over the lasts", async () => {
   const resolvedPath = await resolvePath("duplicate-2.txt", {
     basePath: "test/fixtures",
     loadPaths: ["fonts", "images"],
   });
-  t.is(resolvedPath, path.resolve("test/fixtures/fonts/duplicate-2.txt"));
+  expect(resolvedPath).toBe(path.resolve("test/fixtures/fonts/duplicate-2.txt"));
 });
 
-test("node-style callback w/ options", (t) => {
-  return new Promise((resolve) => {
-    resolvePath("test/fixtures/duplicate-1.jpg", (err, resolvedPath) => {
-      t.is(err, null);
-      t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
-      resolve();
-    });
+test("node-style callback w/ options", (done) => {
+  resolvePath("test/fixtures/duplicate-1.jpg", (err, resolvedPath) => {
+    expect(err).toBeNull();
+    expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
+    done();
   });
 });
 
-test("node-style callback w/o options", (t) => {
-  return new Promise((resolve) => {
-    resolvePath(
-      "duplicate-1.jpg",
-      {
-        basePath: "test/fixtures",
-      },
-      (err, resolvedPath) => {
-        t.is(err, null);
-        t.is(resolvedPath, path.resolve("test/fixtures/duplicate-1.jpg"));
-        resolve();
-      }
-    );
-  });
+test("node-style callback w/o options", (done) => {
+  resolvePath(
+    "duplicate-1.jpg",
+    {
+      basePath: "test/fixtures",
+    },
+    (err, resolvedPath) => {
+      expect(err).toBeNull();
+      expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
+      done();
+    }
+  );
 });
 
-test("node-style callback + non-existing file", (t) => {
-  return new Promise((resolve) => {
-    resolvePath("non-existing.gif", (err, resolvedPath) => {
-      t.truthy(err instanceof Error);
-      t.is(err.message, "Asset not found or unreadable: non-existing.gif");
-      t.is(resolvedPath, undefined);
-      resolve();
-    });
+test("node-style callback + non-existing file", (done) => {
+  resolvePath("non-existing.gif", (err, resolvedPath) => {
+    expect(err).toBeInstanceOf(Error);
+    expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
+    expect(resolvedPath).toBeUndefined();
+    done();
   });
 });

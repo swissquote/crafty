@@ -3,7 +3,8 @@ const fs = require("fs/promises");
 const path = require("path");
 const { Transform } = require("node:stream");
 const startStream = require("./test-stream");
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 const File = require("vinyl");
 const vfs = require("vinyl-fs");
 const sourcemap = require("vinyl-sourcemap");
@@ -77,12 +78,12 @@ test.after(async () => {
   await fs.unlink(thirdPath);
 });
 
-test("should throw, when arguments is missing", function (t) {
-  const error = t.throws(concat);
-  t.is(error.message, "gulp-concat: Missing file option");
+test("should throw, when arguments is missing", function () {
+  const error = expect(() => concat()).toThrow();
+  expect(error.message).toBe("gulp-concat: Missing file option");
 });
 
-test("should ignore null files", function (t) {
+test("should ignore null files", function () {
   return new Promise((done) => {
     let count = 0;
     const stream = concat("test.js");
@@ -95,28 +96,27 @@ test("should ignore null files", function (t) {
     stream.end();
 
     stream.on("finish", () => {
-      t.is(count, 0);
+      expect(count).toBe(0);
       done();
     });
   });
 });
 
 // Somehow the error isn't propagated through the stream, unclear why
-test.skip("should emit error on streamed file", (t) => {
+test.skip("should emit error on streamed file", () => {
   return new Promise((done) => {
     vfs
       .src(fixtures("*"), { buffer: false })
       .pipe(concat("test.js"))
       .on("error", function (err) {
-        t.is(err.message, "gulp-concat: Streaming not supported");
+        expect(err.message).toBe("gulp-concat: Streaming not supported");
         done();
       });
   });
 
 });
 
-test("should concat one file", (t) => {
-  t.plan(2);
+test("should concat one file", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap")
@@ -128,19 +128,18 @@ test("should concat one file", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          console.log("running assertion")
-          t.is(d.contents.toString(), "wadap");
+          expect(d.contents.toString()).toBe("wadap");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should concat multiple files", (t) => {
+test("should concat multiple files", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap", "doe")
@@ -152,18 +151,18 @@ test("should concat multiple files", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.contents.toString(), "wadap\ndoe");
+          expect(d.contents.toString()).toBe("wadap\ndoe");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should concat buffers", (t) => {
+test("should concat buffers", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream([65, 66], [67, 68], [69, 70])
@@ -175,18 +174,18 @@ test("should concat buffers", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.contents.toString(), "AB\nCD\nEF");
+          expect(d.contents.toString()).toBe("AB\nCD\nEF");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should preserve mode from files", (t) => {
+test("should preserve mode from files", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadaup")
@@ -198,18 +197,18 @@ test("should preserve mode from files", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.stat.mode, 0o666);
+          expect(d.stat.mode).toBe(0o666);
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should take path from latest file", (t) => {
+test("should take path from latest file", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = vfs
@@ -224,18 +223,18 @@ test("should take path from latest file", (t) => {
         assertFirst((newFile) => {
           var newFilePath = path.resolve(newFile.path);
           var expectedFilePath = path.resolve(path.join(thirdBase, "test.js"));
-          t.is(newFilePath, expectedFilePath);
+          expect(newFilePath).toBe(expectedFilePath);
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should preserve relative path from files", (t) => {
+test("should preserve relative path from files", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap", "doe")
@@ -247,19 +246,18 @@ test("should preserve relative path from files", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.relative, "test.js");
+          expect(d.relative).toBe("test.js");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should support source maps", (t) => {
-  t.plan(3);
+test("should support source maps", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = vfs
@@ -273,34 +271,33 @@ test("should support source maps", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.sourceMap.sources.length, 2);
-          t.is(d.sourceMap.file, "all.js");
+          expect(d.sourceMap.sources.length).toBe(2);
+          expect(d.sourceMap.file).toBe("all.js");
         })
       );
 
     stream.on("finish", () => {
-      console.log("Got to the end")
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("should not fail if no files were input > when argument is a string", (t) => {
-  t.notThrows(() => {
+test("should not fail if no files were input > when argument is a string", () => {
+  expect(() => {
     var stream = concat("test.js");
     stream.end();
-  })
+  }).not.toThrow();
 });
 
-test("should not fail if no files were input > when argument is an object", (t) => {
-  t.notThrows(() => {
+test("should not fail if no files were input > when argument is an object", () => {
+  expect(() => {
     var stream = concat({ path: "new.txt" });
     stream.end();
-  })
+  }).not.toThrow();
 });
 
-test("options > should support newLine", (t) => {
+test("options > should support newLine", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap", "doe")
@@ -312,18 +309,18 @@ test("options > should support newLine", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.contents.toString(), "wadap\r\ndoe");
+          expect(d.contents.toString()).toBe("wadap\r\ndoe");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("options should support empty newLine", (t) => {
+test("options should support empty newLine", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap", "doe")
@@ -335,26 +332,26 @@ test("options should support empty newLine", (t) => {
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.contents.toString(), "wadapdoe");
+          expect(d.contents.toString()).toBe("wadapdoe");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("with object as argument > should throw without path", (t) => {
-  const error = t.throws(() => {
+test("with object as argument > should throw without path", () => {
+  const error = expect(() => {
     concat({ path: undefined });
-  }) 
+  }).toThrow();
 
-  t.is(error.message, "gulp-concat: Missing path in file options");
+  expect(error.message).toBe("gulp-concat: Missing path in file options");
 });
 
-test("with object as argument > should create file based on path property", (t) => {
+test("with object as argument > should create file based on path property", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap")
@@ -366,18 +363,18 @@ test("with object as argument > should create file based on path property", (t) 
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.path, "new.txt");
+          expect(d.path).toBe("new.txt");
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
 });
 
-test("with object as argument > should calculate relative path from cwd and path in arguments", (t) => {
+test("with object as argument > should calculate relative path from cwd and path in arguments", () => {
   return new Promise((done) => {
     let count = 0;
     const stream = startStream("wadap")
@@ -394,12 +391,12 @@ test("with object as argument > should calculate relative path from cwd and path
       )
       .pipe(
         assertFirst((d) => {
-          t.is(d.relative, path.normalize("test/new.txt"));
+          expect(d.relative).toBe(path.normalize("test/new.txt"));
         })
       );
 
     stream.on("finish", () => {
-      t.is(count, 1);
+      expect(count).toBe(1);
       done();
     });
   });
