@@ -79,8 +79,7 @@ test.after(async () => {
 });
 
 test("should throw, when arguments is missing", function () {
-  const error = expect(() => concat()).toThrow();
-  expect(error.message).toBe("gulp-concat: Missing file option");
+  expect(() => concat()).toThrow("gulp-concat: Missing file option");
 });
 
 test("should ignore null files", function () {
@@ -344,11 +343,9 @@ test("options should support empty newLine", () => {
 });
 
 test("with object as argument > should throw without path", () => {
-  const error = expect(() => {
+  expect(() => {
     concat({ path: undefined });
-  }).toThrow();
-
-  expect(error.message).toBe("gulp-concat: Missing path in file options");
+  }).toThrow("gulp-concat: Missing path in file options");
 });
 
 test("with object as argument > should create file based on path property", () => {

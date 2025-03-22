@@ -4,7 +4,7 @@ const { expect } = require("expect");
 const postcss = require("postcss");
 const imageSet = require("../");
 
-const runTest = async function(t, input, output) {
+const runTest = async function(input, output) {
   const result = await postcss([imageSet]).process(input, { from: undefined });
 
   expect(result.css.replace(/[ \n]/g, "")).toBe(output.replace(/[ \n]/g, ""));
@@ -15,7 +15,7 @@ test("don't break simple background-image property", async () => {
                 background-image: url("img/test.png");
             }`;
 
-  return runTest(null, input, input);
+  return runTest(input, input);
 });
 
 test("ignore variables with image-set in name", async () => {
@@ -23,7 +23,7 @@ test("ignore variables with image-set in name", async () => {
                 background-image: var(--ag-icon-image-settings, var(--ag-icon-image));
               }`;
   
-    return runTest(null, input, input);
+    return runTest(input, input);
   });
 
 test("don't break simple background property", async () => {
@@ -31,7 +31,7 @@ test("don't break simple background property", async () => {
                 background: url(my-img-print.png) top left no-repeat red;
             }`;
 
-  return runTest(null, input, input);
+  return runTest(input, input);
 });
 
 test("parses the image-set", async () => {
@@ -56,7 +56,7 @@ test("parses the image-set", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the image-set with only 1x", async () => {
@@ -69,7 +69,7 @@ test("parses the image-set with only 1x", async () => {
                 background-image: url(img/test.png);
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the image-set with only 2x", async () => {
@@ -82,7 +82,7 @@ test("parses the image-set with only 2x", async () => {
                 background-image: url(img/test.png);
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses dppx unit", async () => {
@@ -101,7 +101,7 @@ test("parses dppx unit", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses dpcm unit", async () => {
@@ -120,7 +120,7 @@ test("parses dpcm unit", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("throws exeption with unknown units", () => {
@@ -156,7 +156,7 @@ test("generate styles in correct order", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the image-set without url", async () => {
@@ -182,7 +182,7 @@ test("parses the image-set without url", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the -webkit-image-set", async () => {
@@ -207,7 +207,7 @@ test("parses the -webkit-image-set", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the image-set in media query", async () => {
@@ -239,7 +239,7 @@ test("parses the image-set in media query", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test('parses the image-set in media query with "AND"', async () => {
@@ -271,7 +271,7 @@ test('parses the image-set in media query with "AND"', async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test('parses the image-set in media query with "OR"', async () => {
@@ -307,7 +307,7 @@ test('parses the image-set in media query with "OR"', async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses the image-set in background property", async () => {
@@ -332,7 +332,7 @@ test("parses the image-set in background property", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses multiple values in background property", async () => {
@@ -373,7 +373,7 @@ test("parses multiple values in background property", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses densities between 1x and 2x", async () => {
@@ -398,7 +398,7 @@ test("parses densities between 1x and 2x", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });
 
 test("parses multiple brackets constructions", async () => {
@@ -423,5 +423,5 @@ test("parses multiple brackets constructions", async () => {
                 }
             }`;
 
-  return runTest(null, input, output);
+  return runTest(input, output);
 });

@@ -1,5 +1,5 @@
 const { test } = require("node:test");
-const { deepEqual } = require("expect");
+const { expect } = require("expect");
 const tests = require("./fixtures/color.json");
 
 const Color = require("../lib/color");
@@ -23,7 +23,7 @@ for (const [seed, ...calls] of tests) {
 
       const strigified = typeof result === "object" ? result.toString() : result;
 
-      deepEqual(strigified, retVal);
+      expect(strigified).toEqual(retVal);
     }
   });
 }

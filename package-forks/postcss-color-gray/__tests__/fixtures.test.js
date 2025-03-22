@@ -2,7 +2,7 @@ const { test } = require("node:test");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
-const expect = require("expect");
+const { expect } = require("expect");
 
 const plugin = require("../");
 

@@ -1,17 +1,17 @@
 const sinon = require("sinon");
 const { expect } = require("expect");
-const { test, beforeAll, afterAll } = require("node:test");
+const { test, before, after } = require("node:test");
 
 const Assets = require("..");
 
-beforeAll(() => {
+before(() => {
   sinon.stub(Assets, "data");
   sinon.stub(Assets, "path");
   sinon.stub(Assets, "size");
   sinon.stub(Assets, "url");
 });
 
-afterAll(() => {
+after(() => {
   Assets.data.restore();
   Assets.path.restore();
   Assets.size.restore();

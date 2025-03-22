@@ -91,7 +91,7 @@ test("prioritize firsts loadPaths over the lasts", async () => {
   expect(resolvedPath).toBe(path.resolve("test/fixtures/fonts/duplicate-2.txt"));
 });
 
-test("node-style callback w/ options", (done) => {
+test("node-style callback w/ options", (t, done) => {
   resolvePath("test/fixtures/duplicate-1.jpg", (err, resolvedPath) => {
     expect(err).toBeNull();
     expect(resolvedPath).toBe(path.resolve("test/fixtures/duplicate-1.jpg"));
@@ -99,7 +99,7 @@ test("node-style callback w/ options", (done) => {
   });
 });
 
-test("node-style callback w/o options", (done) => {
+test("node-style callback w/o options", (t, done) => {
   resolvePath(
     "duplicate-1.jpg",
     {
@@ -113,7 +113,7 @@ test("node-style callback w/o options", (done) => {
   );
 });
 
-test("node-style callback + non-existing file", (done) => {
+test("node-style callback + non-existing file", (t, done) => {
   resolvePath("non-existing.gif", (err, resolvedPath) => {
     expect(err).toBeInstanceOf(Error);
     expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");

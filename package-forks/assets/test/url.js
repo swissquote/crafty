@@ -354,7 +354,7 @@ test("URI-encoded needle", async () => {
   expect(resolvedUrl).toBe("/test/fixtures/white%20space.txt");
 });
 
-test("node-style callback w/o options", (done) => {
+test("node-style callback w/o options", (t, done) => {
   resolveUrl("test/fixtures/duplicate-1.jpg", (err, resolvedUrl) => {
     expect(err).toBeNull();
     expect(resolvedUrl).toBe("/test/fixtures/duplicate-1.jpg");
@@ -362,7 +362,7 @@ test("node-style callback w/o options", (done) => {
   });
 });
 
-test("node-style callback w/ options", (done) => {
+test("node-style callback w/ options", (t, done) => {
   resolveUrl(
     "duplicate-1.jpg",
     {
@@ -376,7 +376,7 @@ test("node-style callback w/ options", (done) => {
   );
 });
 
-test("node-style callback + non-existing file", (done) => {
+test("node-style callback + non-existing file", (t, done) => {
   resolveUrl("non-existing.gif", (err, resolvedUrl) => {
     expect(err).toBeInstanceOf(Error);
     expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
