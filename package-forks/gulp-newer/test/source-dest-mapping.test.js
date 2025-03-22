@@ -1,6 +1,5 @@
-// custom mapping between source and dest
-
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var fs = require("fs");
 var path = require("path");
@@ -66,14 +65,14 @@ test.beforeEach(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.deepEqual(file.path, path.resolve("file2.ext1"));
+        expect(file.path).toEqual(path.resolve("file2.ext1"));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, 1);
+        expect(calls).toEqual(1);
         done();
       });
   
@@ -93,14 +92,14 @@ test.beforeEach(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.deepEqual(file.path, path.resolve("file2.ext1"));
+        expect(file.path).toEqual(path.resolve("file2.ext1"));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, 1);
+        expect(calls).toEqual(1);
         done();
       });
   

@@ -1,11 +1,12 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 var postcss = require("postcss");
 var atroot = require("../");
 
 function runTest(t, input, output, opts) {
   var result = postcss(atroot(opts)).process(input);
-  t.deepEqual(result.css, output);
-  t.is(result.warnings().length, 0);
+  expect(result.css).toEqual(output);
+  expect(result.warnings().length).toBe(0);
 }
 
 test("places nodes before parent rule", function(t) {

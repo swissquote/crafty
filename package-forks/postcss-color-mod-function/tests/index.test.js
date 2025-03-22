@@ -1,16 +1,17 @@
-const test = require("ava");
-const fs = require("fs");
-const path = require("path");
+const { test } = require("node:test");
+const { readFileSync } = require("fs");
+const { join } = require("path");
+const { expect } = require("expect");
 const postcss = require("postcss");
 
 const plugin = require("../");
 
 function fixturePath(name) {
-  return path.join(__dirname, "fixtures", `${name}.css`);
+  return join(__dirname, "fixtures", `${name}.css`);
 }
 
 function readFixture(name) {
-  return fs.readFileSync(fixturePath(name), "utf8");
+  return readFileSync(fixturePath(name), "utf8");
 }
 
 function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
@@ -32,8 +33,8 @@ function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
   return postcss([plugin(pluginOpts)])
     .process(readFixture(fixtureName), postcssOpts)
     .then((result) => {
-      t.deepEqual(result.css, expected);
-      t.is(result.warnings().length, expectedWarnings);
+      expect(result.css).toBe(expected);
+      expect(result.warnings().length).toBe(expectedWarnings);
     });
 }
 
@@ -64,11 +65,12 @@ test("supports { stringifier } usage", (t) => {
 });
 
 test("supports { transformVars: false } usage", async (t) => {
-  await t.throwsAsync(() =>
-    testFixture(t, "basic", {
-      transformVars: false,
-    }), {message:/Expected a color/ }
-  );
+  await expect(
+    () =>
+      testFixture(t, "basic", {
+        transformVars: false,
+      })
+  ).rejects.toThrow(/Expected a color/);
 });
 
 test("supports { unresolved } usage", (t) => {

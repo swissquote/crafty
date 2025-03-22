@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var Transform = require("stream").Transform;
 var fs = require("fs");
@@ -30,45 +31,45 @@ function write(stream, paths) {
 
 test("creates a transform stream", (t) => {
   var stream = newer("foo");
-  t.truthy(stream instanceof Transform);
+  expect(stream instanceof Transform).toBeTruthy();
 });
 
 test("requires a string dest or an object with the dest property", (t) => {
-  t.throws(() => {
+  expect(() => {
     newer();
-  });
+  }).toThrow();
 
-  t.throws(() => {
+  expect(() => {
     newer(123);
-  });
+  }).toThrow();
 
-  t.throws(() => {
+  expect(() => {
     newer({});
-  });
+  }).toThrow();
 });
 
 test("config.ext must be a string", (t) => {
-  t.throws(() => {
+  expect(() => {
     newer({ dest: "foo", ext: 1 });
-  });
+  }).toThrow();
 
-  t.throws(() => {
+  expect(() => {
     newer({ dest: "foo", ext: {} });
-  });
+  }).toThrow();
 });
 
 test("config.map must be a function", (t) => {
-  t.throws(() => {
+  expect(() => {
     newer({ dest: "foo", map: 1 });
-  });
+  }).toThrow();
 
-  t.throws(() => {
+  expect(() => {
     newer({ dest: "foo", map: "bar" });
-  });
+  }).toThrow();
 });
 
 test("config.map makes the dest config optional", (t) => {
-  t.notThrows(() => {
+  expect(() => {
     newer({ map() {} });
-  });
+  }).not.toThrow();
 });

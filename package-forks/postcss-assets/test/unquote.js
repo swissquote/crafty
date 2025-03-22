@@ -1,13 +1,14 @@
 /* eslint quotes: 0 */
 
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 const unquote = require("../lib/unquote");
 
-test("removes quotes", t => {
-  t.is(unquote('"foo"'), "foo");
-  t.is(unquote("'bar'"), "bar");
+test("removes quotes", () => {
+  expect(unquote('"foo"')).toBe("foo");
+  expect(unquote("'bar'")).toBe("bar");
 });
 
-test("preserves unquoted strings", t => {
-  t.is(unquote("foo"), "foo");
+test("preserves unquoted strings", () => {
+  expect(unquote("foo")).toBe("foo");
 });

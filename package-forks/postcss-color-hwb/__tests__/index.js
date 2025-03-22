@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 var fs = require("fs");
 
 var postcss = require("postcss");
@@ -22,7 +23,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
     .then((result) => {
       var expected = read(filename("fixtures/" + name + ".expected"));
       const actual = result.css;
-      t.deepEqual(actual, expected);
+      expect(actual).toEqual(expected);
     });
 }
 

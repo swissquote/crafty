@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var Transform = require("stream").Transform;
 var fs = require("fs");
@@ -60,14 +61,14 @@ test.beforeEach(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.deepEqual(file.path, path.resolve("file2.ext1"));
+        expect(file.path).toEqual(path.resolve("file2.ext1"));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, 1);
+        expect(calls).toEqual(1);
         done();
       });
   
