@@ -53,7 +53,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test("passes through all source files", (t) => {
+  test("passes through all source files", () => {
     return new Promise((done, fail) => {
       var stream = newer("dest/output");
   

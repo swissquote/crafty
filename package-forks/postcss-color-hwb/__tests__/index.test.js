@@ -13,7 +13,7 @@ function read(name) {
   return fs.readFileSync(name, "utf8");
 }
 
-function compareFixtures(t, name, msg, opts, postcssOpts) {
+function compareFixtures(name, msg, opts, postcssOpts) {
   postcssOpts = postcssOpts || {};
   postcssOpts.from = filename("fixtures/" + name);
   opts = opts || {};
@@ -27,10 +27,10 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
     });
 }
 
-test("hwb", (t) => {
-  return compareFixtures(t, "hwb", "should transform hwb");
+test("hwb", () => {
+  return compareFixtures("hwb", "should transform hwb");
 });
 
-test("hwb Colors Level 4", (t) => {
-  return compareFixtures(t, "hwb-4", "should transform hwb");
+test("hwb Colors Level 4", () => {
+  return compareFixtures("hwb-4", "should transform hwb");
 });

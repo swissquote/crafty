@@ -161,13 +161,9 @@ test("absolute basePath + relativeTo", async () => {
 });
 
 test("non-existing file", async () => {
-  try {
-    await resolveUrl("non-existing.gif");
-    throw new Error("Test should have thrown an error");
-  } catch (err) {
-    expect(err).toBeInstanceOf(Error);
-    expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
-  }
+  await expect(() => resolveUrl("non-existing.gif")).rejects.toThrow(
+    "Asset not found or unreadable: non-existing.gif"
+  );
 });
 
 test("baseUrl w/ trailing slash", async () => {

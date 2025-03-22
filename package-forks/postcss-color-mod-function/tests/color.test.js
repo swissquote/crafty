@@ -15,7 +15,7 @@ function stringifyTest(seed, calls) {
 }
 
 for (const [seed, ...calls] of tests) {
-  test(stringifyTest(seed, calls), (t) => {
+  test(stringifyTest(seed, calls), () => {
     const color = new Color(seed);
 
     for (const [name, args, retVal] of calls) {

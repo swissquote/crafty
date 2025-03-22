@@ -52,7 +52,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test("passes through one newer file", (t) => {
+  test("passes through one newer file", () => {
     return new Promise((done, fail) => {
       var stream = newer({
         dest: "dest",
@@ -80,7 +80,7 @@ test.beforeEach(() => {
     });
   });
   
-  test("allows people to join to dest themselves", (t) => {
+  test("allows people to join to dest themselves", () => {
     return new Promise((done, fail) => {
       var stream = newer({
         map(destPath) {

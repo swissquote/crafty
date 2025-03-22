@@ -39,7 +39,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test('in "data" handlers', (t) => {
+  test('in "data" handlers', () => {
     return new Promise(done => {
       var stream = newer("dest");
   

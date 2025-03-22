@@ -29,12 +29,12 @@ function write(stream, paths) {
   stream.end();
 }
 
-test("creates a transform stream", (t) => {
-  var stream = newer("foo");
-  expect(stream instanceof Transform).toBeTruthy();
+test("creates a transform stream", () => {
+  const stream = newer("foo");
+  expect(stream).toBeInstanceOf(Transform);
 });
 
-test("requires a string dest or an object with the dest property", (t) => {
+test("requires a string dest or an object with the dest property", () => {
   expect(() => {
     newer();
   }).toThrow();
@@ -48,7 +48,7 @@ test("requires a string dest or an object with the dest property", (t) => {
   }).toThrow();
 });
 
-test("config.ext must be a string", (t) => {
+test("config.ext must be a string", () => {
   expect(() => {
     newer({ dest: "foo", ext: 1 });
   }).toThrow();
@@ -58,7 +58,7 @@ test("config.ext must be a string", (t) => {
   }).toThrow();
 });
 
-test("config.map must be a function", (t) => {
+test("config.map must be a function", () => {
   expect(() => {
     newer({ dest: "foo", map: 1 });
   }).toThrow();
@@ -68,7 +68,7 @@ test("config.map must be a function", (t) => {
   }).toThrow();
 });
 
-test("config.map makes the dest config optional", (t) => {
+test("config.map makes the dest config optional", () => {
   expect(() => {
     newer({ map() {} });
   }).not.toThrow();

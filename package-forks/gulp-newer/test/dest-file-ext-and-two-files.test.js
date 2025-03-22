@@ -53,7 +53,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test("passes through one newer file", (t) => {
+  test("passes through one newer file", () => {
     return new Promise((done, fail) => {
       var stream = newer({ dest: "dest", ext: ".ext2" });
   

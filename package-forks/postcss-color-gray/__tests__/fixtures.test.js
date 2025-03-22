@@ -14,7 +14,7 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
   postcssOpts.from = fixturePath(name);
   let expected = readFixture(`${name}.expect`);
   return postcss([plugin(pluginOpts)])
@@ -25,10 +25,10 @@ function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
     });
 }
 
-test("Transforms gray()", (t) => {
-  return testFixture(t, "basic");
+test("Transforms gray()", () => {
+  return testFixture("basic");
 });
 
-test("Transforms gray(), preserve original", (t) => {
-  return testFixture(t, "basic-preserve", { preserve: true });
+test("Transforms gray(), preserve original", () => {
+  return testFixture("basic-preserve", { preserve: true });
 });

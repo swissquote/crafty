@@ -76,16 +76,10 @@ test("busts cache when resolving urls", () =>
     );
   }));
 
-test("throws when trying to resolve a non-existing file", () =>
-  process("a { b: resolve('non-existing.gif') }").then(
-    () => {
-      throw new Error("unreachable");
-    },
-    (err) => {
-      expect(err instanceof Error).toBeTruthy();
-      expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
-    }
-  ));
+test("throws when trying to resolve a non-existing file", async () => {
+  await expect(() => process("a { b: resolve('non-existing.gif') }"))
+    .rejects.toThrow("Asset not found or unreadable: non-existing.gif");
+});
 
 test("inlines data", () =>
   process("a { b: inline('picture.png') }", {
@@ -105,16 +99,10 @@ test("inlines svg unencoded", () =>
     expect(result.css.slice(-32)).toBe("h80z%22%2F%3E%0A%3C%2Fsvg%3E') }");
   }));
 
-test("throws when trying to inline a non-existing file", () =>
-  process("a { b: inline('non-existing.gif') }").then(
-    () => {
-      throw new Error("unreachable");
-    },
-    (err) => {
-      expect(err instanceof Error).toBeTruthy();
-      expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
-    }
-  ));
+test("throws when trying to inline a non-existing file", async () => {
+  await expect(() => process("a { b: inline('non-existing.gif') }"))
+    .rejects.toThrow("Asset not found or unreadable: non-existing.gif");
+});
 
 test("measures images", () =>
   process(
@@ -171,40 +159,20 @@ test("measures images with density provided", () =>
     expect(result.css).toBe("a { b: 80px 60px; c: 100px; d: 28.5px; }");
   }));
 
-test("throws when trying to measure a non-existing image", () =>
-  process("a { b: size('non-existing.gif') }").then(
-    () => {
-      throw new Error("unreachable");
-    },
-    (err) => {
-      expect(err instanceof Error).toBeTruthy();
-      expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
-    }
-  ));
+test("throws when trying to measure a non-existing image", async () => {
+  await expect(() => process("a { b: size('non-existing.gif') }"))
+    .rejects.toThrow("Asset not found or unreadable: non-existing.gif");
+});
 
-test("throws when trying to measure an unsupported file", () =>
-  process("a { b: size('test/fixtures/fonts/empty-sans.woff') }").then(
-    () => {
-      throw new Error("unreachable");
-    },
-    (err) => {
-      const absolutePath = path.resolve("test/fixtures/fonts/empty-sans.woff");
-      expect(err instanceof Error).toBeTruthy();
-      expect(err.message).toBe(`Empty file: ${absolutePath}`);
-    }
-  ));
+test("throws when trying to measure a non-existing image", async () => {
+  await expect(() => process("a { b: size('test/fixtures/fonts/empty-sans.woff') }"))
+    .rejects.toThrow(/Empty file: .+empty-sans\.woff/);
+});
 
-test("throws when trying to measure an invalid file", () =>
-  process("a { b: size('test/fixtures/images/invalid.jpg') }").then(
-    () => {
-      throw new Error("unreachable");
-    },
-    (err) => {
-      const absolutePath = path.resolve("test/fixtures/images/invalid.jpg");
-      expect(err instanceof Error).toBeTruthy();
-      expect(err.message).toBe(`Invalid JPG, no size found: ${absolutePath}`);
-    }
-  ));
+test("throws when trying to measure an invalid file", async () => {
+  await expect(() => process("a { b: size('test/fixtures/images/invalid.jpg') }"))
+    .rejects.toThrow(/Invalid JPG, no size found: .+invalid\.jpg/);
+});
 
 test("handles quotes and escaped characters", () =>
   process(
