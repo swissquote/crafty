@@ -1,6 +1,10 @@
-const test = require("ava");
+import test from "node:test";
+import { expect } from "expect";
+import initSnapshot from "@onigoetz/ntr-expect-snapshot";
 
-const { prepareESLint } = require("../../test_utils");
+import { prepareESLint } from "../../test_utils.js";
+
+initSnapshot(import.meta.url);
 
 const lint = prepareESLint("format");
 
@@ -33,9 +37,9 @@ module.exports = function initJS(gulp, config, watchers) {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Fails on badly formatted code", async t => {
@@ -67,7 +71,7 @@ module.exports = function initJS(gulp, config, watchers) {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 4);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(4);
 });

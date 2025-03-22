@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doesn't work with ES6//0`] = `Array [
+  Object {
+    "column": 1,
+    "fatal": true,
+    "line": 1,
+    "message": "Parsing error: The keyword 'const' is reserved",
+    "nodeType": null,
+    "ruleId": null,
+    "severity": 2,
+  },
+]`;
+
+exports[`Gives no warning on correct code//0`] = `Array []`;
+
+exports[`Warns on wrong format//0`] = `Array [
+  Object {
+    "column": 1,
+    "endColumn": 60,
+    "endLine": 2,
+    "fix": Object {
+      "range": Array [
+        0,
+        60,
+      ],
+      "text": "function test() {
+  \\"use strict\\";
+  fetch(\\"This is spartaaa\\");
+",
+    },
+    "line": 1,
+    "message": "Replace \`⏎function·test()·{·\\"use·strict\\";·fetch(\\"This·is·spartaaa\\");·\` with \`function·test()·{⏎··\\"use·strict\\";⏎··fetch(\\"This·is·spartaaa\\");⏎\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 7,
+    "endColumn": 1,
+    "endLine": 5,
+    "fix": Object {
+      "range": Array [
+        69,
+        70,
+      ],
+      "text": ";",
+    },
+    "line": 4,
+    "message": "Replace \`⏎\` with \`;\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+]`;

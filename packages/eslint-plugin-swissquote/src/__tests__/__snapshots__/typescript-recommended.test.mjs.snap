@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Uses sonar plugin//0`] = `Array [
+  Object {
+    "column": 10,
+    "endColumn": 22,
+    "endLine": 3,
+    "line": 3,
+    "message": "'changeWindow' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
+]`;
+
+exports[`Warns on console.log//0`] = `Array [
+  Object {
+    "column": 3,
+    "endColumn": 14,
+    "endLine": 5,
+    "line": 5,
+    "message": "Unexpected console statement.",
+    "messageId": "unexpected",
+    "nodeType": "MemberExpression",
+    "ruleId": "no-console",
+    "severity": 1,
+    "suggestions": Array [
+      Object {
+        "data": Object {
+          "propertyName": "log",
+        },
+        "desc": "Remove the console.log().",
+        "fix": Object {
+          "range": Array [
+            98,
+            123,
+          ],
+          "text": "",
+        },
+        "messageId": "removeConsole",
+      },
+    ],
+  },
+]`;
+
+exports[`Works with complex types//0`] = `Array []`;

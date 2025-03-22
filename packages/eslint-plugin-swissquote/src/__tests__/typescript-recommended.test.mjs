@@ -1,6 +1,10 @@
-const test = require("ava");
+import test from "node:test";
+import { expect } from "expect";
+import initSnapshot from "@onigoetz/ntr-expect-snapshot";
 
-const { prepareESLint } = require("../../test_utils");
+import { prepareESLint } from "../../test_utils.js";
+
+initSnapshot(import.meta.url);
 
 const lint = prepareESLint("recommended");
 
@@ -17,9 +21,9 @@ if (foo?.bar?.baz) {
     "file.ts"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 1);
-  t.is(result.errorCount, 0);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(1);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Uses sonar plugin", async t => {
@@ -41,9 +45,9 @@ function changeWindow(param: number) {
     "file.ts"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(1);
 });
 
 test("Works with complex types", async t => {
@@ -140,7 +144,7 @@ export default class SplitButton extends React.Component<
     "Component.tsx"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
