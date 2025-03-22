@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var fs = require("fs");
 var path = require("path");
@@ -45,32 +46,32 @@ test.before(() => {
   });
   test.after(mock.restore);
   
-  test("must be a string or an array", (t) => {
-    t.throws(() => {
+  test("must be a string or an array", () => {
+    expect(() => {
       newer({ dest: "foo", extra: 1 });
-    });
+    }).toThrow();
   
-    t.throws(() => {
+    expect(() => {
       newer({ dest: "foo", extra() {} });
-    });
+    }).toThrow();
   
-    /**t.notThrows(function() {
+    /**expect(function() {
       newer({ dest: "foo", extra: "extra1" });
-    });*/
+    }).not.toThrow();*/
   
-    /*t.notThrows(function() {
+    /*expect(function() {
       newer({ dest: "foo", extra: ["extra1", "extra2"] });
-    });*/
+    }).not.toThrow();*/
   });
   
-  test("must not throw on strings", (t) => {
+  test("must not throw on strings", () => {
     return new Promise((done, fail) => {
       var stream = newer({ dest: "foo", extra: "extra1" });
   
       var paths = ["main"];
   
       stream.on("data", file => {
-        t.notDeepEqual(file.path, path.resolve("imported"));
+        expect(file.path).not.toBe(path.resolve("imported"));
       });
       stream.on("error", fail);
       stream.on("end", done);
@@ -79,14 +80,14 @@ test.before(() => {
     });
   });
   
-  test("must not throw on arrays", (t) => {
+  test("must not throw on arrays", () => {
     return new Promise((done, fail) => {
       var stream = newer({ dest: "foo", extra: ["extra1", "extra2"] });
   
       var paths = ["main"];
   
       stream.on("data", file => {
-        t.notDeepEqual(file.path, path.resolve("imported"));
+        expect(file.path).not.toBe(path.resolve("imported"));
       });
       stream.on("error", fail);
       stream.on("end", done);
@@ -95,14 +96,14 @@ test.before(() => {
     });
   });
   
-  test("must not be passed into stream", (t) => {
+  test("must not be passed into stream", () => {
     return new Promise((done, fail) => {
       var stream = newer({ dest: "collected", extra: "imported" });
   
       var paths = ["main"];
   
       stream.on("data", file => {
-        t.notDeepEqual(file.path, path.resolve("imported"));
+        expect(file.path).not.toBe(path.resolve("imported"));
       });
       stream.on("error", fail);
       stream.on("end", () => {
@@ -114,7 +115,7 @@ test.before(() => {
     });
   });
   
-  test('must let other files through stream if an "extra" is newer', (t) => {
+  test('must let other files through stream if an "extra" is newer', () => {
     return new Promise((done, fail) => {
       var stream = newer({ dest: "collected", extra: "imported" });
   
@@ -122,14 +123,14 @@ test.before(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.deepEqual(file.path, path.resolve(paths[calls]));
+        expect(file.path).toBe(path.resolve(paths[calls]));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, paths.length);
+        expect(calls).toBe(paths.length);
         done();
       });
   

@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 var fs = require("fs");
 
 var postcss = require("postcss");
@@ -12,7 +13,7 @@ function read(name) {
   return fs.readFileSync(name, "utf8");
 }
 
-function compareFixtures(t, name, msg, opts, postcssOpts) {
+function compareFixtures(name, msg, opts, postcssOpts) {
   postcssOpts = postcssOpts || {};
   postcssOpts.from = filename("fixtures/" + name);
   opts = opts || {};
@@ -22,14 +23,14 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
     .then((result) => {
       var expected = read(filename("fixtures/" + name + ".expected"));
       const actual = result.css;
-      t.deepEqual(actual, expected);
+      expect(actual).toEqual(expected);
     });
 }
 
-test("hwb", (t) => {
-  return compareFixtures(t, "hwb", "should transform hwb");
+test("hwb", () => {
+  return compareFixtures("hwb", "should transform hwb");
 });
 
-test("hwb Colors Level 4", (t) => {
-  return compareFixtures(t, "hwb-4", "should transform hwb");
+test("hwb Colors Level 4", () => {
+  return compareFixtures("hwb-4", "should transform hwb");
 });

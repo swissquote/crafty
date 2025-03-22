@@ -1,39 +1,40 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 const postcss = require("postcss");
 const imageSet = require("../");
 
-const runTest = async function(t, input, output) {
+const runTest = async function(input, output) {
   const result = await postcss([imageSet]).process(input, { from: undefined });
 
-  t.deepEqual(result.css.replace(/[ \n]/g, ""), output.replace(/[ \n]/g, ""));
+  expect(result.css.replace(/[ \n]/g, "")).toBe(output.replace(/[ \n]/g, ""));
 };
 
-test("don't break simple background-image property", async (t) => {
+test("don't break simple background-image property", async () => {
   const input = `a {
                 background-image: url("img/test.png");
             }`;
 
-  return runTest(t, input, input);
+  return runTest(input, input);
 });
 
-test("ignore variables with image-set in name", async (t) => {
+test("ignore variables with image-set in name", async () => {
     const input = `a {
                 background-image: var(--ag-icon-image-settings, var(--ag-icon-image));
               }`;
   
-    return runTest(t, input, input);
+    return runTest(input, input);
   });
 
-test("don't break simple background property", async (t) => {
+test("don't break simple background property", async () => {
   const input = `a {
                 background: url(my-img-print.png) top left no-repeat red;
             }`;
 
-  return runTest(t, input, input);
+  return runTest(input, input);
 });
 
-test("parses the image-set", async (t) => {
+test("parses the image-set", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x,
@@ -55,10 +56,10 @@ test("parses the image-set", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the image-set with only 1x", async (t) => {
+test("parses the image-set with only 1x", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x
@@ -68,10 +69,10 @@ test("parses the image-set with only 1x", async (t) => {
                 background-image: url(img/test.png);
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the image-set with only 2x", async (t) => {
+test("parses the image-set with only 2x", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 2x
@@ -81,10 +82,10 @@ test("parses the image-set with only 2x", async (t) => {
                 background-image: url(img/test.png);
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses dppx unit", async (t) => {
+test("parses dppx unit", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x, 
@@ -100,10 +101,10 @@ test("parses dppx unit", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses dpcm unit", async (t) => {
+test("parses dpcm unit", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x,
@@ -119,10 +120,10 @@ test("parses dpcm unit", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("throws exeption with unknown units", (t) => {
+test("throws exeption with unknown units", () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x,
@@ -130,12 +131,10 @@ test("throws exeption with unknown units", (t) => {
                 );
             }`;
 
-  t.throws(() => postcss(imageSet).process(input).css, {
-    message: /Incorrect size value/,
-  });
+  expect(() => postcss(imageSet).process(input).css).toThrow(/Incorrect size value/);
 });
 
-test("generate styles in correct order", async (t) => {
+test("generate styles in correct order", async () => {
   const input = `a {
                 background: image-set(
                     url(../images/bck@3x.png) 3x,
@@ -157,10 +156,10 @@ test("generate styles in correct order", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the image-set without url", async (t) => {
+test("parses the image-set without url", async () => {
   const input = `a {
                 background-image: image-set(
                     "img/test.png" 1x,
@@ -183,10 +182,10 @@ test("parses the image-set without url", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the -webkit-image-set", async (t) => {
+test("parses the -webkit-image-set", async () => {
   const input = `a {
                 background-image: -webkit-image-set(
                     url(img/test.png) 1x,
@@ -208,10 +207,10 @@ test("parses the -webkit-image-set", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the image-set in media query", async (t) => {
+test("parses the image-set in media query", async () => {
   const input = `@media (min-width: 1000px) {
                 a {
                     background-image: image-set(
@@ -240,10 +239,10 @@ test("parses the image-set in media query", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test('parses the image-set in media query with "AND"', async (t) => {
+test('parses the image-set in media query with "AND"', async () => {
   const input = `@media (min-width: 768px) and (max-width: 1024px) {
                 a {
                     background-image: image-set(
@@ -272,10 +271,10 @@ test('parses the image-set in media query with "AND"', async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test('parses the image-set in media query with "OR"', async (t) => {
+test('parses the image-set in media query with "OR"', async () => {
   const input = `@media (min-width: 768px), (max-width: 1024px) {
                 a {
                     background-image: image-set(
@@ -308,10 +307,10 @@ test('parses the image-set in media query with "OR"', async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses the image-set in background property", async (t) => {
+test("parses the image-set in background property", async () => {
   const input = `a{
                 background: image-set(
                     url(img/test.png) 1x,
@@ -333,10 +332,10 @@ test("parses the image-set in background property", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses multiple values in background property", async (t) => {
+test("parses multiple values in background property", async () => {
   const input = `a {
                 background:
                     image-set(
@@ -374,10 +373,10 @@ test("parses multiple values in background property", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses densities between 1x and 2x", async (t) => {
+test("parses densities between 1x and 2x", async () => {
   const input = `a{
                 background-image: image-set(
                     url(img/test.png) 1x, 
@@ -399,10 +398,10 @@ test("parses densities between 1x and 2x", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });
 
-test("parses multiple brackets constructions", async (t) => {
+test("parses multiple brackets constructions", async () => {
   const input = `.foo {
                 background: image-set(url('../img/cancel@x1.png') 1x,
                                       url('../img/cancel@x2.png') 2x,
@@ -424,5 +423,5 @@ test("parses multiple brackets constructions", async (t) => {
                 }
             }`;
 
-  return runTest(t, input, output);
+  return runTest(input, output);
 });

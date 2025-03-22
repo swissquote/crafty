@@ -1,56 +1,57 @@
 const sinon = require("sinon");
-const test = require("ava");
+const { expect } = require("expect");
+const { test, before, after } = require("node:test");
 
 const Assets = require("..");
 
-test.before(() => {
+before(() => {
   sinon.stub(Assets, "data");
   sinon.stub(Assets, "path");
   sinon.stub(Assets, "size");
   sinon.stub(Assets, "url");
 });
 
-test.after(() => {
+after(() => {
   Assets.data.restore();
   Assets.path.restore();
   Assets.size.restore();
   Assets.url.restore();
 });
 
-test("constructor", (t) => {
-  t.deepEqual(typeof Assets, "function", "is a function");
+test("constructor", () => {
+  expect(typeof Assets).toBe("function");
   // eslint-disable-next-line new-cap
-  t.truthy(Assets() instanceof Assets);
-  t.is(Object.isFrozen(new Assets()), true, "is frozen");
+  expect(new Assets()).toBeInstanceOf(Assets);
+  expect(Object.isFrozen(new Assets())).toBe(true);
 });
 
-test(".options", (t) => {
+test(".options", () => {
   const options = { basePath: "source" };
-  t.deepEqual(new Assets().options, {}, "defaults to an empty object");
-  t.deepEqual(new Assets(options).options.basePath, "source", "is initiable");
-  t.not(new Assets(options).options, options, "breaks the reference");
+  expect(new Assets().options).toEqual({});
+  expect(new Assets(options).options.basePath).toBe("source");
+  expect(new Assets(options).options).not.toBe(options);
 });
 
-test(".data()", (t) => {
+test(".data()", () => {
   const instance = new Assets();
   instance.data();
-  t.is(Assets.data.called, true);
+  expect(Assets.data.called).toBe(true);
 });
 
-test(".path()", (t) => {
+test(".path()", () => {
   const instance = new Assets();
   instance.path();
-  t.is(Assets.path.called, true);
+  expect(Assets.path.called).toBe(true);
 });
 
-test(".size()", (t) => {
+test(".size()", () => {
   const instance = new Assets();
   instance.size();
-  t.is(Assets.size.called, true);
+  expect(Assets.size.called).toBe(true);
 });
 
-test(".url()", (t) => {
+test(".url()", () => {
   const instance = new Assets();
   instance.url();
-  t.is(Assets.url.called, true);
+  expect(Assets.url.called).toBe(true);
 });

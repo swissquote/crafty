@@ -1,22 +1,20 @@
 const { Transform } = require("node:stream");
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 const path = require("path");
 const Vinyl = require("vinyl");
 const sourcemap = require("vinyl-sourcemap");
 const babel = require(".");
 
-test("should transpile with Babel", t => {
+test("should transpile with Babel", () => {
   return new Promise(done => {
     const stream = babel({
       plugins: ["@babel/transform-block-scoping"]
     });
 
     stream.on("data", file => {
-      t.true(
-        /var foo/.test(file.contents.toString()),
-        file.contents.toString()
-      );
-      t.is(file.relative, "fixture.js");
+      expect(/var foo/.test(file.contents.toString())).toBe(true);
+      expect(file.relative).toBe("fixture.js");
     });
 
     stream.on("end", done);
@@ -73,7 +71,7 @@ function writeSourceMap() {
   });
 }
 
-test("should generate source maps", t => {
+test("should generate source maps", () => {
   return new Promise(done => {
     const init = initSourceMap();
     const write = writeSourceMap();
@@ -87,11 +85,11 @@ test("should generate source maps", t => {
       .pipe(write);
 
     write.on("data", file => {
-      t.deepEqual(file.sourceMap.sources, ["fixture.es2015"]);
-      t.is(file.sourceMap.file, "fixture.js");
+      expect(file.sourceMap.sources).toEqual(["fixture.es2015"]);
+      expect(file.sourceMap.file).toBe("fixture.js");
       const contents = file.contents.toString();
-      t.true(/function/.test(contents));
-      t.true(/sourceMappingURL/.test(contents));
+      expect(/function/.test(contents)).toBe(true);
+      expect(/sourceMappingURL/.test(contents)).toBe(true);
       done();
     });
 
@@ -109,7 +107,7 @@ test("should generate source maps", t => {
   });
 });
 
-test("should generate source maps for file in nested folder", t => {
+test("should generate source maps for file in nested folder", () => {
   return new Promise(done => {
     const init = initSourceMap();
     const write = writeSourceMap();
@@ -122,11 +120,11 @@ test("should generate source maps for file in nested folder", t => {
       .pipe(write);
 
     write.on("data", file => {
-      t.deepEqual(file.sourceMap.sources, ["nested/fixture.es2015"]);
-      t.is(file.sourceMap.file, "nested/fixture.js");
+      expect(file.sourceMap.sources).toEqual(["nested/fixture.es2015"]);
+      expect(file.sourceMap.file).toBe("nested/fixture.js");
       const contents = file.contents.toString();
-      t.true(/function/.test(contents));
-      t.true(/sourceMappingURL/.test(contents));
+      expect(/function/.test(contents)).toBe(true);
+      expect(/sourceMappingURL/.test(contents)).toBe(true);
       done();
     });
 
@@ -144,7 +142,7 @@ test("should generate source maps for file in nested folder", t => {
   });
 });
 
-test("should pass the result of transform().metadata in file.babel", t => {
+test("should pass the result of transform().metadata in file.babel", () => {
   return new Promise(done => {
     const stream = babel({
       plugins: [
@@ -157,7 +155,7 @@ test("should pass the result of transform().metadata in file.babel", t => {
     });
 
     stream.on("data", file => {
-      t.deepEqual(file.babel, { test: "metadata" });
+      expect(file.babel).toEqual({ test: "metadata" });
     });
 
     stream.on("end", done);
@@ -175,7 +173,7 @@ test("should pass the result of transform().metadata in file.babel", t => {
   });
 });
 
-test("should not rename ignored files", t => {
+test("should not rename ignored files", () => {
   return new Promise(done => {
     const stream = babel({
       ignore: [/fixture/]
@@ -192,14 +190,14 @@ test("should not rename ignored files", t => {
 
     stream
       .on("data", file => {
-        t.is(file.relative, inputFile.basename);
+        expect(file.relative).toBe(inputFile.basename);
       })
       .on("end", done)
       .end(new Vinyl(inputFile));
   });
 });
 
-test("should not rename files without an extension", t => {
+test("should not rename files without an extension", () => {
   return new Promise(done => {
     const stream = babel();
 
@@ -214,7 +212,7 @@ test("should not rename files without an extension", t => {
 
     stream
       .on("data", file => {
-        t.is(file.relative, inputFile.basename);
+        expect(file.relative).toBe(inputFile.basename);
       })
       .on("end", done)
       .end(new Vinyl(inputFile));

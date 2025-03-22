@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var Transform = require("stream").Transform;
 var fs = require("fs");
@@ -52,7 +53,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test("passes through two newer files", (t) => {
+  test("passes through two newer files", () => {
     return new Promise((done, fail) => {
       var stream = newer("dest");
   
@@ -60,14 +61,14 @@ test.beforeEach(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.notDeepEqual(file.path, path.resolve("file2"));
+        expect(file.path).not.toBe(path.resolve("file2"));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, paths.length - 1);
+        expect(calls).toBe(paths.length - 1);
         done();
       });
   

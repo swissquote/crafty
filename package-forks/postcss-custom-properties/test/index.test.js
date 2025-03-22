@@ -1,7 +1,8 @@
-const test = require("ava");
 const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 const plugin = require("../");
 
@@ -13,7 +14,7 @@ function readFixture(name) {
   return fs.readFileSync(fixturePath(name), "utf8");
 }
 
-function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
+function testFixture(name, pluginOpts = {}, postcssOpts = {}) {
   let expectedWarnings = 0;
   let fixtureName = name;
   let fixtureExpect = `${name}.expect`;
@@ -47,29 +48,47 @@ function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
     .then((result) => {
       after();
 
-      t.deepEqual(result.css, expected);
-      t.is(result.warnings().length, expectedWarnings);
+      expect(result.css).toBe(expected);
+      expect(result.warnings().length).toBe(expectedWarnings);
     });
 }
 
-  test("supports basic usage", (t) => {
-    return testFixture(t, "basic");
-  });
+test("supports basic usage", () => {
+  return testFixture("basic");
+});
 
-  test("supports { preserve: false } usage", (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.preserve.expect" },
-      {
-        preserve: false,
-      }
-    );
-  });
+test("supports { preserve: false } usage", () => {
+  return testFixture(
+    { input: "basic", output: "basic.preserve.expect" },
+    {
+      preserve: false,
+    }
+  );
+});
 
-  test("supports { importFrom: { customProperties: { ... } } } usage", (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: {
+test("supports { importFrom: { customProperties: { ... } } } usage", () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: {
+        customProperties: {
+          "--color": "rgb(255, 0, 0)",
+          "--color-2": "yellow",
+          "--ref-color": "var(--color)",
+          "--margin": "0 10px 20px 30px",
+          "--z-index": 10,
+        },
+      },
+    }
+  );
+});
+
+test("supports { importFrom() } usage", () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom() {
+        return {
           customProperties: {
             "--color": "rgb(255, 0, 0)",
             "--color-2": "yellow",
@@ -77,438 +96,417 @@ function testFixture(t, name, pluginOpts = {}, postcssOpts = {}) {
             "--margin": "0 10px 20px 30px",
             "--z-index": 10,
           },
-        },
-      }
-    );
-  });
-  test("supports { importFrom() } usage", (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom() {
-          return {
+        };
+      },
+    }
+  );
+});
+
+test("supports { async importFrom() } usage", () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom() {
+        return new Promise((resolve) => {
+          resolve({
             customProperties: {
               "--color": "rgb(255, 0, 0)",
               "--color-2": "yellow",
               "--ref-color": "var(--color)",
-              "--margin": "0 10px 20px 30px",
               "--z-index": 10,
             },
-          };
-        },
-      }
-    );
-  });
-
-  test("supports { async importFrom() } usage", (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom() {
-          return new Promise((resolve) => {
-            resolve({
-              customProperties: {
-                "--color": "rgb(255, 0, 0)",
-                "--color-2": "yellow",
-                "--ref-color": "var(--color)",
-                "--z-index": 10,
-              },
-            });
           });
-        },
-      }
-    );
-  });
+        });
+      },
+    }
+  );
+});
 
-  test('supports { importFrom: "test/import-properties.json" } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: "test/fixtures/import-properties.json",
-      }
-    );
-  });
+test('supports { importFrom: "test/import-properties.json" } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: "test/fixtures/import-properties.json",
+    }
+  );
+});
 
-  test('supports { importFrom: "test/import-properties{-2}?.js" } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          "test/fixtures/import-properties.js",
-          "test/fixtures/import-properties-2.js",
-        ],
-      }
-    );
-  });
+test('supports { importFrom: "test/import-properties{-2}?.js" } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        "test/fixtures/import-properties.js",
+        "test/fixtures/import-properties-2.js",
+      ],
+    }
+  );
+});
 
-  test('supports { importFrom: "test/import-properties{-2}?.css" } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          "test/fixtures/import-properties.css",
-          "test/fixtures/import-properties-2.css",
-        ],
-      }
-    );
-  });
+test('supports { importFrom: "test/import-properties{-2}?.css" } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        "test/fixtures/import-properties.css",
+        "test/fixtures/import-properties-2.css",
+      ],
+    }
+  );
+});
 
-  test('supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          "test/fixtures/import-properties.js",
-          "test/fixtures/import-properties-2.css",
-        ],
-      }
-    );
-  });
+test('supports { importFrom: "test/import-properties{-2}?.{css|js}" } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        "test/fixtures/import-properties.js",
+        "test/fixtures/import-properties-2.css",
+      ],
+    }
+  );
+});
 
-  test('supports { importFrom: "test/import-properties.{p}?css" } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          "test/fixtures/import-properties.pcss",
-          "test/fixtures/import-properties-2.css",
-        ],
-      }
-    );
-  });
+test('supports { importFrom: "test/import-properties.{p}?css" } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        "test/fixtures/import-properties.pcss",
+        "test/fixtures/import-properties-2.css",
+      ],
+    }
+  );
+});
 
-  test('supports { importFrom: { from: "test/import-properties.css" } } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          { from: "test/fixtures/import-properties.css" },
-          { from: "test/fixtures/import-properties-2.css" },
-        ],
-      }
-    );
-  });
+test('supports { importFrom: { from: "test/import-properties.css" } } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        { from: "test/fixtures/import-properties.css" },
+        { from: "test/fixtures/import-properties-2.css" },
+      ],
+    }
+  );
+});
 
-  test('supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage', (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import.expect" },
-      {
-        importFrom: [
-          { from: "test/fixtures/import-properties.css", type: "css" },
-          { from: "test/fixtures/import-properties-2.css", type: "css" },
-        ],
-      }
-    );
-  });
+test('supports { importFrom: [ { from: "test/import-properties.css", type: "css" } ] } usage', () => {
+  return testFixture(
+    { input: "basic", output: "basic.import.expect" },
+    {
+      importFrom: [
+        { from: "test/fixtures/import-properties.css", type: "css" },
+        { from: "test/fixtures/import-properties-2.css", type: "css" },
+      ],
+    }
+  );
+});
 
-  test("importFrom with { preserve: false } should override root properties", (t) => {
-    return testFixture(t, 
-      { input: "basic", output: "basic.import-override.expect" },
-      {
-        preserve: false,
-        importFrom: {
-          customProperties: {
-            "--color": "rgb(0, 0, 0)",
-            "--color-2": "yellow",
-            "--ref-color": "var(--color)",
-            "--margin": "0 10px 20px 30px",
-            "--shadow-color": "rgb(0,0,0)",
-            "--z-index": 10,
-          },
-        },
-      }
-    );
-  });
-
-  test("supports { exportTo: { customProperties: { ... } } } usage", (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        after() {
-          t.deepEqual(global.__exportPropertiesObject.customProperties["--color"], 
-            "rgb(255, 0, 0)"
-          );
+test("importFrom with { preserve: false } should override root properties", () => {
+  return testFixture(
+    { input: "basic", output: "basic.import-override.expect" },
+    {
+      preserve: false,
+      importFrom: {
+        customProperties: {
+          "--color": "rgb(0, 0, 0)",
+          "--color-2": "yellow",
+          "--ref-color": "var(--color)",
+          "--margin": "0 10px 20px 30px",
+          "--shadow-color": "rgb(0,0,0)",
+          "--z-index": 10,
         },
       },
-      {
-        exportTo: (global.__exportPropertiesObject = global.__exportPropertiesObject || {
-          customProperties: null,
-        }),
-      }
-    );
-  });
+    }
+  );
+});
 
-  test("supports { exportTo() } usage", (t) => {
-    let called = false;
-
-    t.plan(4);
-
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
+test("supports { exportTo: { customProperties: { ... } } } usage", () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      after() {
+        expect(global.__exportPropertiesObject.customProperties["--color"]).toBe(
+          "rgb(255, 0, 0)"
+        );
       },
-      {
-        exportTo(customProperties) {
-          called = true;
-          t.deepEqual(customProperties["--color"], "rgb(255, 0, 0)");
-        },
-      }
-    ).then(() => {
-      t.truthy(called);
-    });
-  });
+    },
+    {
+      exportTo: (global.__exportPropertiesObject = global.__exportPropertiesObject || {
+        customProperties: null,
+      }),
+    }
+  );
+});
 
-  test("supports { async exportTo() } usage", (t) => {
-    let called = false;
+test("supports { exportTo() } usage", () => {
+  let called = false;
 
-    t.plan(4);
-
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+    },
+    {
+      exportTo(customProperties) {
+        called = true;
+        expect(customProperties["--color"]).toBe("rgb(255, 0, 0)");
       },
-      {
-        async exportTo(customProperties) {
-          called = true;
-          t.deepEqual(customProperties["--color"], "rgb(255, 0, 0)");
-        },
-      }
-    ).then(() => {
-      t.truthy(called);
-    });
+    }
+  ).then(() => {
+    expect(called).toBe(true);
   });
+});
 
-  test('supports { exportTo: "test/export-properties.scss" } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test("supports { async exportTo() } usage", () => {
+  let called = false;
+
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+    },
+    {
+      async exportTo(customProperties) {
+        called = true;
+        expect(customProperties["--color"]).toBe("rgb(255, 0, 0)");
+      },
+    }
+  ).then(() => {
+    expect(called).toBe(true);
+  });
+});
+
+test('supports { exportTo: "test/export-properties.scss" } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.scss",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.scss",
             "utf8"
-          );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy, content was: " + require("fs").readFileSync(
               "test/fixtures/export-properties.scss",
               "utf8"
             )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy, content was: " + require("fs").readFileSync(
-                "test/fixtures/export-properties.scss",
-                "utf8"
-              )
-            );
-          }
-        },
+          );
+        }
       },
-      {
-        exportTo: "test/fixtures/export-properties.scss",
-      }
-    );
-  });
+    },
+    {
+      exportTo: "test/fixtures/export-properties.scss",
+    }
+  );
+});
 
-  test('supports { exportTo: "test/export-properties.json" } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: "test/export-properties.json" } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.json",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.json",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.json",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: "test/fixtures/export-properties.json",
-      }
-    );
-  });
+    },
+    {
+      exportTo: "test/fixtures/export-properties.json",
+    }
+  );
+});
 
-  test('supports { exportTo: "test/export-properties.js" } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: "test/export-properties.js" } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.js",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.js",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.js",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: "test/fixtures/export-properties.js",
-      }
-    );
-  });
+    },
+    {
+      exportTo: "test/fixtures/export-properties.js",
+    }
+  );
+});
 
-  test('supports { exportTo: "test/export-properties.mjs" } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: "test/export-properties.mjs" } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.mjs",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.mjs",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.mjs",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: "test/fixtures/export-properties.mjs",
-      }
-    );
-  });
+    },
+    {
+      exportTo: "test/fixtures/export-properties.mjs",
+    }
+  );
+});
 
-  test('supports { exportTo: "test/export-properties.css" } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: "test/export-properties.css" } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.css",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.css",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: "test/fixtures/export-properties.css",
-      }
-    );
-  });
+    },
+    {
+      exportTo: "test/fixtures/export-properties.css",
+    }
+  );
+});
 
-  test('supports { exportTo: { to: "test/export-properties.css" } } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: { to: "test/export-properties.css" } } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.css",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.css",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: { to: "test/fixtures/export-properties.css" },
-      }
-    );
-  });
+    },
+    {
+      exportTo: { to: "test/fixtures/export-properties.css" },
+    }
+  );
+});
 
-  test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-        before() {
-          global[`export_${t.title}`] = require("fs").readFileSync(
+test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+      before() {
+        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] = require("fs").readFileSync(
+          "test/fixtures/export-properties.css",
+          "utf8"
+        );
+      },
+      after() {
+        if (
+          global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] !==
+          require("fs").readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
+          )
+        ) {
+          throw new Error(
+            "The original file did not match the freshly exported copy"
           );
-        },
-        after() {
-          if (
-            global[`export_${t.title}`] !==
-            require("fs").readFileSync(
-              "test/fixtures/export-properties.css",
-              "utf8"
-            )
-          ) {
-            throw new Error(
-              "The original file did not match the freshly exported copy"
-            );
-          }
-        },
+        }
       },
-      {
-        exportTo: { to: "test/fixtures/export-properties.css", type: "css" },
-      }
-    );
-  });
+    },
+    {
+      exportTo: { to: "test/fixtures/export-properties.css", type: "css" },
+    }
+  );
+});
 
-  test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage 2', (t) => {
-    return testFixture(t, 
-      {
-        input: "basic",
-        output: "basic.expect",
-      },
-      {
-        importFrom: {},
-      }
-    );
-  });
+test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage 2', () => {
+  return testFixture(
+    {
+      input: "basic",
+      output: "basic.expect",
+    },
+    {
+      importFrom: {},
+    }
+  );
+});

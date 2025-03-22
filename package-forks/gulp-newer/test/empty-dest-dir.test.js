@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 var Transform = require("stream").Transform;
 var fs = require("fs");
@@ -38,7 +39,7 @@ test.beforeEach(() => {
   });
   test.afterEach(mock.restore);
   
-  test("passes through all files", (t) => {
+  test("passes through all files", () => {
     return new Promise((done, fail) => {
       var stream = newer("dest");
   
@@ -46,14 +47,14 @@ test.beforeEach(() => {
   
       var calls = 0;
       stream.on("data", file => {
-        t.deepEqual(file.path, path.resolve(paths[calls]));
+        expect(file.path).toEqual(path.resolve(paths[calls]));
         ++calls;
       });
   
       stream.on("error", fail);
   
       stream.on("end", () => {
-        t.deepEqual(calls, paths.length);
+        expect(calls).toEqual(paths.length);
         done();
       });
   
