@@ -13,9 +13,7 @@ test("should transpile with Babel", () => {
     });
 
     stream.on("data", file => {
-      expect(
-        /var foo/.test(file.contents.toString())
-      ).toBe(true);
+      expect(/var foo/.test(file.contents.toString())).toBe(true);
       expect(file.relative).toBe("fixture.js");
     });
 
