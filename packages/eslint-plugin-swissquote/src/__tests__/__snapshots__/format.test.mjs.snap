@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fails on badly formatted code//0`] = `Array [
+  Object {
+    "column": 5,
+    "endColumn": 6,
+    "endLine": 3,
+    "fix": Object {
+      "range": Array [
+        87,
+        88,
+      ],
+      "text": "",
+    },
+    "line": 3,
+    "message": "Delete \`·\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 3,
+    "endLine": 8,
+    "fix": Object {
+      "range": Array [
+        182,
+        184,
+      ],
+      "text": "",
+    },
+    "line": 8,
+    "message": "Delete \`··\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 9,
+    "endLine": 14,
+    "fix": Object {
+      "range": Array [
+        340,
+        348,
+      ],
+      "text": "      ",
+    },
+    "line": 14,
+    "message": "Replace \`········\` with \`······\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 18,
+    "endColumn": 28,
+    "endLine": 17,
+    "fix": Object {
+      "range": Array [
+        431,
+        441,
+      ],
+      "text": "taskName",
+    },
+    "line": 17,
+    "message": "Replace \`·taskName·\` with \`taskName\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "@swissquote/swissquote/prettier/prettier",
+    "severity": 2,
+  },
+]`;
+
+exports[`Gives no warning on correct code//0`] = `Array []`;

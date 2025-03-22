@@ -1,6 +1,10 @@
-const test = require("ava");
+import test from "node:test";
+import { expect } from "expect";
+import initSnapshot from "@onigoetz/ntr-expect-snapshot";
 
-const { prepareESLint } = require("../../test_utils");
+import { prepareESLint } from "../../test_utils.js";
+
+initSnapshot(import.meta.url);
 
 const lint = prepareESLint("format");
 
@@ -34,9 +38,9 @@ module.exports = function initJS  (gulp, config: {}, watchers): string[] {
     "file.ts"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 5);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(5);
 });
 
 test("Works with complex types", async t => {
@@ -129,8 +133,8 @@ export default class SplitButton extends React.Component<
     "Component.tsx"
   );
 
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Prettier 1 can't parse modern TypeScript features", async t => {
@@ -145,7 +149,7 @@ interface SuperComponent extends Component {
     "file.ts"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(1);
 });

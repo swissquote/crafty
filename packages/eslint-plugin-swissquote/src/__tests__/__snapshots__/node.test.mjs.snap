@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Works with TypeScript//0`] = `Array [
+  Object {
+    "column": 7,
+    "endColumn": 20,
+    "endLine": 20,
+    "line": 20,
+    "message": "Unexpected constant binary expression. Compares constantly with the right-hand side of the \`===\`.",
+    "messageId": "constantBinaryOperand",
+    "nodeType": "UnaryExpression",
+    "ruleId": "no-constant-binary-expression",
+    "severity": 2,
+  },
+  Object {
+    "column": 25,
+    "endColumn": 34,
+    "endLine": 20,
+    "line": 20,
+    "message": "Invalid typeof comparison value.",
+    "messageId": "invalidValue",
+    "nodeType": "Identifier",
+    "ruleId": "valid-typeof",
+    "severity": 2,
+    "suggestions": Array [
+      Object {
+        "data": Object {
+          "type": "undefined",
+        },
+        "desc": "Use \`\\"undefined\\"\` instead of \`undefined\`.",
+        "fix": Object {
+          "range": Array [
+            429,
+            438,
+          ],
+          "text": "\\"undefined\\"",
+        },
+        "messageId": "suggestString",
+      },
+    ],
+  },
+  Object {
+    "column": 10,
+    "endColumn": 20,
+    "endLine": 29,
+    "line": 29,
+    "message": "React Hook \\"useSWROrig\\" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?",
+    "nodeType": "Identifier",
+    "ruleId": "@swissquote/swissquote/react-hooks/rules-of-hooks",
+    "severity": 2,
+  },
+  Object {
+    "column": 25,
+    "endColumn": 27,
+    "endLine": 34,
+    "line": 34,
+    "message": "Expected '===' and instead saw '=='.",
+    "messageId": "unexpected",
+    "nodeType": "BinaryExpression",
+    "ruleId": "eqeqeq",
+    "severity": 2,
+  },
+  Object {
+    "column": 16,
+    "endColumn": 35,
+    "endLine": 35,
+    "line": 35,
+    "message": "Redundant use of \`await\` on a return value.",
+    "messageId": "redundantUseOfAwait",
+    "nodeType": "Identifier",
+    "ruleId": "no-return-await",
+    "severity": 2,
+    "suggestions": Array [
+      Object {
+        "desc": "Remove redundant \`await\`.",
+        "fix": Object {
+          "range": Array [
+            707,
+            713,
+          ],
+          "text": "",
+        },
+        "messageId": "removeAwait",
+      },
+    ],
+  },
+]`;

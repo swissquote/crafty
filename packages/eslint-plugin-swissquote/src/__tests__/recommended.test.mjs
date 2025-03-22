@@ -1,15 +1,19 @@
-const test = require("ava");
+import test from "node:test";
+import { expect } from "expect";
+import initSnapshot from "@onigoetz/ntr-expect-snapshot";
 
-const { prepareESLint } = require("../../test_utils");
+import { prepareESLint } from "../../test_utils.js";
+
+initSnapshot(import.meta.url);
 
 const lint = prepareESLint("recommended");
 
 test("Warns on console.log", async t => {
   const result = await lint(`console.log("Yeah");\n`);
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 1);
-  t.is(result.errorCount, 0);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(1);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Uses sonar plugin", async t => {
@@ -30,9 +34,9 @@ function changeWindow(param) {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 1);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(1);
 });
 
 test("Works fine with ES6 code", async t => {
@@ -84,9 +88,9 @@ const obj = {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 22);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(22);
 });
 
 test("jsx-no-duplicate-props: works with different props", async t => {
@@ -98,9 +102,9 @@ export default function SomeComponent() {
 `
   );
 
-  t.is(result.messages.length, 0);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.messages.length).toEqual(0);
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("jsx-no-duplicate-props: works fails with the same prop", async t => {
@@ -112,9 +116,9 @@ export default function SomeComponent() {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 1);
-  t.is(result.errorCount, 0);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(1);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
@@ -143,9 +147,9 @@ MyComponent.propTypes = {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 2);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(2);
 });
 
 test("Incorrect usage of hooks: fails with setState in componentDidMount", async t => {
@@ -177,7 +181,7 @@ export default function MyComponent() {
 `
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 3);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(3);
 });

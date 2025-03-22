@@ -47,10 +47,6 @@ module.exports = [
         "is-core-module": "../is-core-module/index.js",
         "path-parse": "../path-parse/index.js"
       }),
-  builder =>
-    builder("enhanced-resolve")
-      .package()
-      .externals(externals),
   builder => builder("stable-hash").package(),
   builder =>
     builder("eslint-import-resolver-typescript")
@@ -63,7 +59,7 @@ module.exports = [
         "is-glob": "../is-glob/index.js",
         "get-tsconfig": "../get-tsconfig/index.js",
 
-        "enhanced-resolve": "../enhanced-resolve/index.js",
+        "rspack-resolver": "rspack-resolver",
         "stable-hash": "../stable-hash/index.js",
 
         // no code path uses this library
@@ -88,7 +84,7 @@ module.exports = [
         "get-tsconfig": "../get-tsconfig/index.js",
 
         "stable-hash": "../stable-hash/index.js",
-        "oxc-resolver": "oxc-resolver",
+        "rspack-resolver": "rspack-resolver",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js"
       }),
   builder =>

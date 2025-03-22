@@ -1,15 +1,19 @@
-const test = require("ava");
+import test from "node:test";
+import { expect } from "expect";
+import initSnapshot from "@onigoetz/ntr-expect-snapshot";
 
-const { prepareESLint } = require("../../test_utils");
+import { prepareESLint } from "../../test_utils.js";
+
+initSnapshot(import.meta.url);
 
 const lint = prepareESLint("recommended", "node");
 
 test("Doesn't warn on console.log", async t => {
   const result = await lint(`console.log("Yeah");\n`);
 
-  t.is(result.messages.length, 0);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.messages.length).toEqual(0);
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Works with ES6", async t => {
@@ -23,9 +27,9 @@ console.log(something);
 `
   );
 
-  t.is(result.messages.length, 0);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 0);
+  expect(result.messages.length).toEqual(0);
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(0);
 });
 
 test("Works with TypeScript", async t => {
@@ -77,7 +81,7 @@ export function useSWR<T, Error = any>(
     "utils.ts"
   );
 
-  t.snapshot(result.messages);
-  t.is(result.warningCount, 0);
-  t.is(result.errorCount, 5);
+  expect(result.messages).toMatchSnapshot();
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(5);
 });
