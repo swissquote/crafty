@@ -1,7 +1,8 @@
-const test = require("ava");
+const { test } = require('node:test');
+const { expect } = require('expect');
 const configuration = require("../configuration");
 
-test("gets one preset", t => {
+test("gets one preset", () => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -10,18 +11,18 @@ test("gets one preset", t => {
     "run"
   ];
 
-  t.deepEqual(configuration.extractPresets(entry), [
+  expect(configuration.extractPresets(entry)).toEqual([
     "@swissquote/crafty-preset-babel"
   ]);
 
-  t.deepEqual(entry, [
+  expect(entry).toEqual([
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "run"
   ]);
 });
 
-test("gets multiple presets", t => {
+test("gets multiple presets", () => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -32,19 +33,19 @@ test("gets multiple presets", t => {
     "run"
   ];
 
-  t.deepEqual(configuration.extractPresets(entry), [
+  expect(configuration.extractPresets(entry)).toEqual([
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-postcss"
   ]);
 
-  t.deepEqual(entry, [
+  expect(entry).toEqual([
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "run"
   ]);
 });
 
-test("gets multiple presets, but only before command", t => {
+test("gets multiple presets, but only before command", () => {
   const entry = [
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
@@ -57,12 +58,12 @@ test("gets multiple presets, but only before command", t => {
     "recommended"
   ];
 
-  t.deepEqual(configuration.extractPresets(entry), [
+  expect(configuration.extractPresets(entry)).toEqual([
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-postcss"
   ]);
 
-  t.deepEqual(entry, [
+  expect(entry).toEqual([
     "/usr/local/Cellar/node/8.1.0_1/bin/node",
     "__PATH__/packages/integration/node_modules/crafty/src/bin.js",
     "jsLint",
