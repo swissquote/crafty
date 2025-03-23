@@ -1,5 +1,6 @@
-const test = require("ava");
+const { test } = require('node:test');
 const util = require("util");
+const { expect } = require('expect');
 const { lint } = require("stylelint");
 
 function setupTestCases({ name, cases, schema, comparisons }) {
@@ -7,13 +8,13 @@ function setupTestCases({ name, cases, schema, comparisons }) {
     cases.forEach(testCase => {
       if (testCase) {
         // eslint-disable-next-line no-nested-ternary
-        const spec = testCase.only
+        const testFn = testCase.only
           ? test.only
           : testCase.skip
           ? test.skip
           : test;
 
-        spec(
+        testFn(
           `${name} ${util.inspect(schema.config)} ${util.inspect(
             testCase.code
           )} ${testCase.description || ""}`,
@@ -36,7 +37,7 @@ module.exports = function testRule(schema) {
     name: "accept",
     cases: schema.accept,
     schema,
-    comparisons: testCase => async t => {
+    comparisons: testCase => async () => {
       const stylelintOptions = {
         code: testCase.code,
         config: stylelintConfig,
@@ -45,8 +46,8 @@ module.exports = function testRule(schema) {
       };
 
       const output = await lint(stylelintOptions);
-      t.deepEqual(output.results[0].warnings, []);
-      t.deepEqual(output.results[0].parseErrors, []);
+      expect(output.results[0].warnings).toEqual([]);
+      expect(output.results[0].parseErrors).toEqual([]);
     }
   });
 
@@ -54,7 +55,7 @@ module.exports = function testRule(schema) {
     name: "reject",
     cases: schema.reject,
     schema,
-    comparisons: testCase => async t => {
+    comparisons: testCase => async () => {
       const stylelintOptions = {
         code: testCase.code,
         config: stylelintConfig,
@@ -66,9 +67,8 @@ module.exports = function testRule(schema) {
 
       const actualWarnings = outputAfterLint.results[0].warnings;
 
-      t.deepEqual(outputAfterLint.results[0].parseErrors, []);
-      t.is(
-        actualWarnings.length,
+      expect(outputAfterLint.results[0].parseErrors).toEqual([]);
+      expect(actualWarnings.length).toBe(
         testCase.warnings ? testCase.warnings.length : 1,
         "incorrect number of warnings found"
       );
@@ -76,27 +76,27 @@ module.exports = function testRule(schema) {
       (testCase.warnings || [testCase]).forEach((expected, i) => {
         const warning = actualWarnings[i];
 
-        t.true(
-          "message" in testCase,
+        expect("message" in testCase).toBe(
+          true,
           'Expected "reject" test case to have a "message" property'
         );
 
-        t.is(warning.text, expected.message);
+        expect(warning.text).toBe(expected.message);
 
         if (expected.line !== undefined) {
-          t.is(warning.line, expected.line);
+          expect(warning.line).toBe(expected.line);
         }
 
         if (expected.column !== undefined) {
-          t.is(warning.column, expected.column);
+          expect(warning.column).toBe(expected.column);
         }
 
         if (expected.endLine !== undefined) {
-          t.is(warning.endLine, expected.endLine);
+          expect(warning.endLine).toBe(expected.endLine);
         }
 
         if (expected.endColumn !== undefined) {
-          t.is(warning.endColumn, expected.endColumn);
+          expect(warning.endColumn).toBe(expected.endColumn);
         }
       });
     }

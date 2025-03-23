@@ -1,4 +1,5 @@
-const test = require("ava");
+const { test } = require('node:test');
+const { expect } = require('expect');
 
 const stylelint = require("stylelint");
 
@@ -54,14 +55,14 @@ const validCss = `
 }
 `;
 
-test("flags no warnings with valid css", async t => {
+test("flags no warnings with valid css", async () => {
   const result = await stylelint.lint({
     code: validCss.replace(/^\n/, ""),
     config
   });
 
-  t.falsy(result.errored);
-  t.is(result.results[0].warnings.length, 0);
+  expect(result.errored).toBeFalsy();
+  expect(result.results[0].warnings.length).toBe(0);
 });
 
 const errors = [
@@ -101,15 +102,14 @@ const errors = [
 ];
 
 errors.forEach(error => {
-  test(`Error: ${error.message}`, async t => {
+  test(`Error: ${error.message}`, async () => {
     const result = await stylelint.lint({ code: `${error.code}\n`, config });
 
-    t.truthy(result.errored);
-    //console.log(result.results[0].warnings);
-    t.is(result.results[0].warnings.length, 1);
-    t.is(result.results[0].warnings[0].text, error.message);
-    t.is(result.results[0].warnings[0].severity, "error");
-    t.is(result.results[0].warnings[0].line, error.line);
-    t.is(result.results[0].warnings[0].column, error.column);
+    expect(result.errored).toBeTruthy();
+    expect(result.results[0].warnings.length).toBe(1);
+    expect(result.results[0].warnings[0].text).toBe(error.message);
+    expect(result.results[0].warnings[0].severity).toBe("error");
+    expect(result.results[0].warnings[0].line).toBe(error.line);
+    expect(result.results[0].warnings[0].column).toBe(error.column);
   });
 });
