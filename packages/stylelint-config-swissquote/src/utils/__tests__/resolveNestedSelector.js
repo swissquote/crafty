@@ -1,5 +1,5 @@
-import { test } from 'node:test';
-import { expect } from 'expect';
+import { test } from "node:test";
+import { expect } from "expect";
 
 const isKeyframeSelector = require("../../../dist/stylelint-utils/stylelint-isKeyframeSelector");
 const isStandardSyntaxRule = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");

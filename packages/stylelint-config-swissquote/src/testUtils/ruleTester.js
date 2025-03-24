@@ -1,6 +1,6 @@
-const { test } = require('node:test');
+const { test } = require("node:test");
 const util = require("util");
-const { expect } = require('expect');
+const { expect } = require("expect");
 const { lint } = require("stylelint");
 
 function setupTestCases({ name, cases, schema, comparisons }) {

@@ -1,5 +1,5 @@
-const { test } = require('node:test');
-const { expect } = require('expect');
+const { test } = require("node:test");
+const { expect } = require("expect");
 
 const stylelint = require("stylelint");
 
