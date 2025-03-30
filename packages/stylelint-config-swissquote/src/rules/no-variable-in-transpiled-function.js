@@ -1,9 +1,11 @@
-const stylelint = require("../../shims/stylelint");
-const browserslist = require("@swissquote/crafty-commons/packages/browserslist");
+import stylelint from "../../packages/stylelint.js";
+import browserslist from "@swissquote/crafty-commons/packages/browserslist.js";
 
-const valueParser = require("../../packages/postcss-value-parser");
-const declarationValueIndex = require("../../dist/stylelint-utils/stylelint-declarationValueIndex");
-const isStandardSyntaxFunction = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction");
+import valueParser from "../../packages/postcss-value-parser.js";
+import { declarationValueIndex } from "../../dist/stylelint/utils-nodeFieldIndices.js";
+import isStandardSyntaxFunction from "../../dist/stylelint/utils-isStandardSyntaxFunction.js";
+
+import { features, feature as featureUnpack } from "caniuse-lite"; // TODO lazy import
 
 const w3cColorFunction = /^(srgb|srgb-linear|display-p3|a98-rgb|prophoto-rgb|rec2020|xyz|xyz-d50|xyz-d65)$/;
 
@@ -11,9 +13,9 @@ const optionsSchema = {
   browsers: value => typeof value === "string"
 };
 
-const ruleName = "swissquote/no-variable-in-transpiled-function";
+export const ruleName = "swissquote/no-variable-in-transpiled-function";
 
-const messages = stylelint.utils.ruleMessages(ruleName, {
+export const messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: name => `Unexpected var() in transpiled function "${name}"`
 });
 
@@ -26,7 +28,6 @@ let caniuseFeatures;
 function isSupported(feature, browsers) {
   // Load only when it's needed for the first time
   if (!caniuseFeatures) {
-    const { features, feature: featureUnpack } = require("caniuse-lite");
     caniuseFeatures = features;
     caniuseFeature = featureUnpack;
   }
@@ -140,7 +141,7 @@ function isUnsupportedFunction(node, browsers) {
   return false;
 }
 
-module.exports = (on, options) => {
+export default function noVariableInTranspiledFunction(on, options) {
   return (root, result) => {
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: options,
@@ -180,17 +181,20 @@ module.exports = (on, options) => {
           return;
         }
 
+        const baseIndex = declarationValueIndex(decl);
+
         stylelint.utils.report({
           message: messages.rejected(node.value),
           node: decl,
-          index: declarationValueIndex(decl) + node.sourceIndex,
+          index: baseIndex + node.sourceIndex,
+          endIndex: baseIndex + node.sourceIndex + node.value.length,
           result,
           ruleName
         });
       });
     });
   };
-};
+}
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+noVariableInTranspiledFunction.ruleName = ruleName;
+noVariableInTranspiledFunction.messages = messages;

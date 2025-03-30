@@ -1,5 +1,5 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName } = require("../no-negative-var");
+import testRule from "../../testUtils/ruleTester.js";
+import { ruleName } from "../no-negative-var.js";
 
 testRule({
   plugins: ["./index.js"],

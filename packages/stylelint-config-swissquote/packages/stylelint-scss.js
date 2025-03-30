@@ -1,1 +1,2 @@
-module.exports = require("../dist/stylelint-scss/index.js")
+import mod from "../dist/stylelint-scss/index.js";
+export default mod;

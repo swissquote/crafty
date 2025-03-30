@@ -6,7 +6,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * @param {Rule} rule postcss rule node
  * @return {boolean} If `true`, the rule has a selector ending in a colon
  */
-module.exports = function(rule) {
+export default function(rule) {
   const selector =
     (hasOwnProperty.call(rule, "raws") &&
       hasOwnProperty.call(rule.raws, "selector") &&
@@ -15,4 +15,4 @@ module.exports = function(rule) {
     rule.selector;
 
   return selector[selector.length - 1] === ":";
-};
+}

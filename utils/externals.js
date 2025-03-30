@@ -8,12 +8,16 @@ const isJS = /\.js$/;
 const packageRegex = /^\/\/package:(.*)$/gm;
 const packageRegexSingle = /^\/\/package:(.*)$/;
 
-function getProvidedPackages(parents) {
+function getProvidedPackages(parents, isRslib) {
   const pkgs = {};
 
   parents.forEach(pkg => {
-    const pkgPath = path.dirname(require.resolve(`${pkg}/package.json`));
+    const pkgFile = require.resolve(`${pkg}/package.json`);
+    const pkgPath = path.dirname(pkgFile);
     const pkgsPath = path.join(pkgPath, "packages");
+
+    const packageConfig = JSON.parse(fs.readFileSync(pkgFile));
+    const isModule = packageConfig.type === "module";
 
     if (!fs.existsSync(pkgsPath)) {
       return;
@@ -26,15 +30,33 @@ function getProvidedPackages(parents) {
         const content = fs.readFileSync(path.join(pkgsPath, file), {
           encoding: "utf-8"
         });
-        const matched = content.match(packageRegex);
 
+        const pathToModule = `${pkg}/packages/${file}`;
+        let pathWithPrefix = pathToModule;
+        if (isRslib) {
+          if (isModule) {
+            pathWithPrefix = `module ${pathToModule}`;
+          } else {
+            pathWithPrefix = `commonjs ${pathToModule}`;
+          }
+        }
+
+        const matched = content.match(packageRegex);
         if (matched) {
           matched.forEach(match => {
             const m = match.match(packageRegexSingle);
-            pkgs[m[1].trim()] = `${pkg}/packages/${file}`;
+            if (!isRslib && isModule) {
+              console.log("Ignoring ESM external", m[1].trim());
+              return;
+            }
+            pkgs[m[1].trim()] = pathWithPrefix;
           });
         } else {
-          pkgs[moduleName] = `${pkg}/packages/${file}`;
+          if (!isRslib && isModule) {
+            console.log("Ignoring ESM external", moduleName);
+            return;
+          }
+          pkgs[moduleName] = pathWithPrefix;
         }
       });
   });
@@ -71,10 +93,10 @@ function getParents(root, pkg, set) {
 }
 
 module.exports = {
-  getExternals() {
+  getExternals(isRslib) {
     const pkg = require(currentPackage);
     const parents = getParents(pkg, pkg, new Set());
-    const externals = getProvidedPackages(parents);
+    const externals = getProvidedPackages(parents, isRslib);
 
     return externals;
   }

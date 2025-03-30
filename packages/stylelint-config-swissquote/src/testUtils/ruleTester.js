@@ -1,7 +1,7 @@
-const { test } = require("node:test");
-const util = require("util");
-const { expect } = require("expect");
-const { lint } = require("stylelint");
+import { test } from "node:test";
+import util from "util";
+import { expect } from "expect";
+import stylelint from "stylelint";
 
 function setupTestCases({ name, cases, schema, comparisons }) {
   if (cases && cases.length) {
@@ -25,7 +25,7 @@ function setupTestCases({ name, cases, schema, comparisons }) {
   }
 }
 
-module.exports = function testRule(schema) {
+export default function testRule(schema) {
   const stylelintConfig = {
     plugins: schema.plugins,
     rules: {
@@ -45,7 +45,7 @@ module.exports = function testRule(schema) {
         codeFilename: schema.codeFilename
       };
 
-      const output = await lint(stylelintOptions);
+      const output = await stylelint.lint(stylelintOptions);
       expect(output.results[0].warnings).toEqual([]);
       expect(output.results[0].parseErrors).toEqual([]);
     }
@@ -63,7 +63,7 @@ module.exports = function testRule(schema) {
         codeFilename: schema.codeFilename
       };
 
-      const outputAfterLint = await lint(stylelintOptions);
+      const outputAfterLint = await stylelint.lint(stylelintOptions);
 
       const actualWarnings = outputAfterLint.results[0].warnings;
 
@@ -101,4 +101,4 @@ module.exports = function testRule(schema) {
       });
     }
   });
-};
+}

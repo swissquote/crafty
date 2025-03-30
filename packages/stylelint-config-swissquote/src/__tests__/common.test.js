@@ -1,9 +1,9 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
 
-const stylelint = require("stylelint");
+import stylelint from "stylelint";
 
-const config = require("../../common");
+import config from "../../common.js";
 
 const validCss = `
 .Form {

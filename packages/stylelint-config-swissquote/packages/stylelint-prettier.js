@@ -1,1 +1,2 @@
-module.exports = require("../dist/stylelint-prettier/index.js");
+import mod from "../dist/stylelint-prettier/index.js";
+export default mod;

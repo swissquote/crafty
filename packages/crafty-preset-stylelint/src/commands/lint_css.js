@@ -1,10 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import { createRequire } from "node:module";
 
-const resolveFrom = require("resolve-from");
-const tmp = require("@swissquote/crafty-commons/packages/tmp");
+import resolveFrom from "resolve-from";
+import tmp from "@swissquote/crafty-commons/packages/tmp.js";
+
+import cli from "@swissquote/stylelint-config-swissquote/packages/stylelint-cli.js";
+
+const require = createRequire(import.meta.url);
 
 let configuration = {};
 let idx;
@@ -59,4 +64,4 @@ if (process.argv.indexOf("--custom-syntax") === -1) {
   process.argv.push(require.resolve("postcss-scss"));
 }
 
-require("../../packages/stylelint-bin");
+cli(process.argv.slice(2));

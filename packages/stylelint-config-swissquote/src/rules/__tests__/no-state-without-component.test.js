@@ -1,5 +1,5 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName, messages } = require("../no-state-without-component");
+import testRule from "../../testUtils/ruleTester.js";
+import { ruleName, messages } from "../no-state-without-component.js";
 
 testRule({
   plugins: ["./index.js"],

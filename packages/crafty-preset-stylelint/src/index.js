@@ -1,4 +1,7 @@
-const gulpTasks = require("./gulp");
+import { createLinter } from "./gulp.js";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 
 function addNoVariableInTranspiledFunction(rules, browsers) {
   const rule = "swissquote/no-variable-in-transpiled-function";
@@ -16,7 +19,7 @@ function addNoVariableInTranspiledFunction(rules, browsers) {
   }
 }
 
-module.exports = {
+export default {
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   defaultConfig() {
     return {
@@ -68,8 +71,8 @@ module.exports = {
   commands() {
     return {
       cssLint: {
-        command(crafty, input, cli) {
-          require("./commands/lint_css");
+        async command(crafty, input, cli) {
+          await import("./commands/lint_css.js");
         },
         description: "Lint CSS for errors"
       }
@@ -79,7 +82,7 @@ module.exports = {
     // CSS Linter
     const lintTaskName = "css__lint";
     crafty.watcher.add(crafty.config.stylelint_pattern, lintTaskName);
-    gulpTasks.createLinter(gulp, crafty, lintTaskName);
+    createLinter(gulp, crafty, lintTaskName);
     crafty.addDefaultTask(lintTaskName);
   },
   ide() {

@@ -1,7 +1,11 @@
-function createLinter(gulp, crafty, name) {
-  gulp.task(name, () => {
-    const gulpStylelint = require("../packages/gulp-stylelint.js");
+import gulpStylelint from "../packages/gulp-stylelint.js";
 
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+
+export function createLinter(gulp, crafty, name) {
+  gulp.task(name, () => {
     const config = {
       ...(crafty.config.legacy_css
         ? crafty.config.stylelint_legacy
@@ -19,5 +23,3 @@ function createLinter(gulp, crafty, name) {
     );
   });
 }
-
-module.exports.createLinter = createLinter;
