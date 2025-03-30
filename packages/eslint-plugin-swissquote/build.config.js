@@ -59,7 +59,7 @@ module.exports = [
         "is-glob": "../is-glob/index.js",
         "get-tsconfig": "../get-tsconfig/index.js",
 
-        "rspack-resolver": "rspack-resolver",
+        "unrs-resolver": "unrs-resolver",
         "stable-hash": "../stable-hash/index.js",
 
         // no code path uses this library
@@ -84,7 +84,7 @@ module.exports = [
         "get-tsconfig": "../get-tsconfig/index.js",
 
         "stable-hash": "../stable-hash/index.js",
-        "rspack-resolver": "rspack-resolver",
+        "unrs-resolver": "unrs-resolver",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js"
       }),
   builder =>
