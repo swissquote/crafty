@@ -15,14 +15,14 @@ In its simplest form a configuration can look like this.
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   js: {
     app: {
       // Will create js/app.min.js containing both source files
-      source: ["js/panel.js", "js/nothing.js"]
-    }
-  }
+      source: ["js/panel.js", "js/nothing.js"],
+    },
+  },
 };
 ```
 
@@ -35,7 +35,7 @@ module.exports = {
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-runner-gulp",
-    "@swissquote/crafty-runner-webpack"
+    "@swissquote/crafty-runner-webpack",
   ],
   name: "test-plugin",
   mavenType: "webjar", // This artifact is a webjar
@@ -43,20 +43,20 @@ module.exports = {
     testIndex: {
       source: "css/test.scss", // You can specify one or more entry files
       destination: "index.min.css", // You can make the destination explicit
-      watch: "css/**/*.scss" // When a change occurs on files corresponding to this patterns this task will be rerun
+      watch: "css/**/*.scss", // When a change occurs on files corresponding to this patterns this task will be rerun
     },
     testIndex2: {
       source: ["css/test2.scss", "css/more.scss"],
       destination: "index2.min.css",
-      watch: "css/**/*.scss"
-    }
+      watch: "css/**/*.scss",
+    },
   },
   js: {
     app: {
       runner: "webpack", // Use Webpack and Babel to compile this bundle
-      source: "js/app.js"
-    }
-  }
+      source: "js/app.js",
+    },
+  },
 };
 ```
 

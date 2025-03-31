@@ -28,14 +28,14 @@ bundle.
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-runner-webpack"
+    "@swissquote/crafty-runner-webpack",
   ],
   js: {
     app: {
       runner: "webpack",
-      source: "js/index.js"
-    }
-  }
+      source: "js/index.js",
+    },
+  },
 };
 ```
 
@@ -75,14 +75,14 @@ the files won't be resolved (like Webpack would do).
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-babel",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   js: {
     lib: {
       runner: "gulp",
-      source: "js/**/*.js"
-    }
-  }
+      source: "js/**/*.js",
+    },
+  },
 };
 ```
 

@@ -25,20 +25,20 @@ module.exports = {
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-preset-jest",
     "@swissquote/crafty-runner-webpack",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   js: {
     app: {
       runner: "webpack",
-      source: "js/app.js"
-    }
+      source: "js/app.js",
+    },
   },
   css: {
     app: {
       source: "css/app.scss",
-      watch: ["css/**"]
-    }
-  }
+      watch: ["css/**"],
+    },
+  },
 };
 ```
 

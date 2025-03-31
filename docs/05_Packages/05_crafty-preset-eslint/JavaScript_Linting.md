@@ -82,8 +82,8 @@ We created a default set of rules following the Swissquote JavaScript Guideline,
 module.exports = {
   eslint: {
     rules: {
-      "arrow-parens": ["error", "always"]
-    }
-  }
+      "arrow-parens": ["error", "always"],
+    },
+  },
 };
 ```

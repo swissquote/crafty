@@ -13,7 +13,7 @@ npm install @swissquote/crafty-preset-images-simple --save-dev
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-images-simple",
-    "@swissquote/crafty-runner-gulp"
-  ]
+    "@swissquote/crafty-runner-gulp",
+  ],
 };
 ```

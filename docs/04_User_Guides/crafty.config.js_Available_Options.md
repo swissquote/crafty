@@ -11,7 +11,7 @@ All the options in `crafty.config.js` apart from your bundles in the `js` and
 | `destination`              | See below                        | The destination at which to put all files                                                                            | Core                                                   |
 | `destination_<bundleType>` | `destination + "/" + bundleType` | The destination for JavaScript/TypeScript files                                                                      | Core                                                   |
 | `eslint`                   | Swissquote JavaScript Guideline  | This defines the rules for all JavaScript source files that go through the Gulp builder                              | `crafty-preset-babel`                                  |
-| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-webpack`       |
+| `externals`                | `[]`                             | What libraries are already provided in the final application, see below for more information                         | `crafty-runner-webpack`                                |
 | `img_basedir`              | `"images"`                       | Where to take images from (Relative to current working directory)                                                    | `crafty-preset-images` / `crafty-preset-images-simple` |
 | `img_extensions`           | `["png", "jpg", "jpeg", "gif"]`  | What extensions to compress (excludes svg)                                                                           | `crafty-preset-images`                                 |
 | `legacy_css`               | `false`                          | When enabling this feature, the CSS will be linted for errors and formatting instead of the Swissquote CSS Guideline | `crafty-preset-postcss`                                |
@@ -127,16 +127,16 @@ This configuration will:
 
 ### Common Bundle options
 
-| Option        | Type              | Optional ? | Description                                                                                                                   |
-| ------------- | ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `source`      | `string|string[]` | No         | One single file or an array of files you wish to compile. Glob expressions are valid.                                         |
-| `runner`      | `string`          | No         | The runner's name to use for this bundle. This option is mandatory if more than one runner is loaded                          |
-| `destination` | `string`          | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                                             |
-| `watch`       | `string|string[]` | Yes        | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack doesn't use this option. |
+| Option        | Type     | Optional ? | Description                                                                                          |
+| ------------- | -------- | ---------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `source`      | `string  | string[]`  | No                                                                                                   | One single file or an array of files you wish to compile. Glob expressions are valid.                             |
+| `runner`      | `string` | No         | The runner's name to use for this bundle. This option is mandatory if more than one runner is loaded |
+| `destination` | `string` | Yes        | The name to give to the final file. Defaults to `<bundle_name>.min.<bundle_type>`                    |
+| `watch`       | `string  | string[]`  | Yes                                                                                                  | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack doesn't use this option. |
 
 ### JavaScript Bundle options
 
-| Option        | Type      | Description                                                             |
+| Option         | Type     | Description                                                             |
 | -------------- | -------- | ----------------------------------------------------------------------- |
 | `tsconfigFile` | `string` | Specify a custom `tsconfig.json`, relative to the root of your project. |
 
@@ -191,11 +191,11 @@ app: {
 Apart from the common options, here are the options you can use for JavaScript
 bundles.
 
-| Option          | Type                 | Runner              | Preset                                                 | Description                                                                                                                                       |
-| --------------- | -------------------- | ------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `externals`     | `string[]`           | Webpack             | `crafty-runner-webpack`                                | Extends the list of provided libraries (Webpack understands both globs and strings)                                                               |
-| `hot`           | `bool`               | Webpack             | `crafty-runner-webpack`                                | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                           |
-| `libraryTarget` | `string`             | Webpack             | `crafty-runner-webpack`                                | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget). |
-| `library`       | `string`             | Webpack             | `crafty-runner-webpack`                                | Define the library name for the Webpack module or export.                                                                                         |
-| `extractCSS`    | `bool|string|object` | Webpack             | `crafty-preset-postcss` / `crafty-preset-lightningcss` | This will extract the CSS out of the bundle, check details in [`crafty-preset-postcss`](../05_Packages/05_crafty-preset-postcss/index.md).        |
-| `concat`        | `bool`               | Gulp                | `crafty-preset-babel`                                  | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack for this)                                |
+| Option          | Type       | Runner  | Preset                  | Description                                                                                                                                       |
+| --------------- | ---------- | ------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `externals`     | `string[]` | Webpack | `crafty-runner-webpack` | Extends the list of provided libraries (Webpack understands both globs and strings)                                                               |
+| `hot`           | `bool`     | Webpack | `crafty-runner-webpack` | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                           |
+| `libraryTarget` | `string`   | Webpack | `crafty-runner-webpack` | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget). |
+| `library`       | `string`   | Webpack | `crafty-runner-webpack` | Define the library name for the Webpack module or export.                                                                                         |
+| `extractCSS`    | `bool      | string  | object`                 | Webpack                                                                                                                                           | `crafty-preset-postcss` / `crafty-preset-lightningcss` | This will extract the CSS out of the bundle, check details in [`crafty-preset-postcss`](../05_Packages/05_crafty-preset-postcss/index.md). |
+| `concat`        | `bool`     | Gulp    | `crafty-preset-babel`   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack for this)                                |

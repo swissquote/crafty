@@ -14,8 +14,8 @@ In your `crafty.config.js` file, you must add the following presets
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-images",
-    "@swissquote/crafty-runner-gulp"
-  ]
+    "@swissquote/crafty-runner-gulp",
+  ],
 };
 ```
 

@@ -7,7 +7,7 @@ set -e
 
 echo -e "${GREEN}Autoformatting Docs${NC}"
 echo -e "${GREEN}===================${NC}"
-node_modules/.bin/prettier --write docs/*.md docs/**/*.md docs/**/**/*.md *.md
+node_modules/.bin/prettier --write "docs/*.md" "docs/**/*.md" "docs/**/**/*.md" "*.md" "packages/*/*.md"
 
 echo
 echo -e "${GREEN}Write Good${NC}"

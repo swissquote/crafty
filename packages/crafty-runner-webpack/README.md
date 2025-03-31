@@ -28,12 +28,12 @@ that.
 
 ### Bundle Options
 
-| Option          | Type                | Optional ? | Runner              | Description                                                                                                                                      |
-| --------------- | ------------------- | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `hot`           | Boolean             | Yes        | Webpack             | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                          |
-| `libraryTarget` | String              | Yes        | Webpack             | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget) |
-| `library`       | String              | Yes        | Webpack             | Define the library name for the Webpack module or export.                                                                                        |
-| `externals`     | Array&lt;String&gt; | Yes        | Webpack | Extends the list of provided libraries (Webpack understands both globs and strings)                          |
+| Option          | Type                | Optional ? | Runner  | Description                                                                                                                                      |
+| --------------- | ------------------- | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `hot`           | Boolean             | Yes        | Webpack | Allows to use Hot Module Replacement in watch mode (`false` by default)                                                                          |
+| `libraryTarget` | String              | Yes        | Webpack | Define the library type to export. By default we use `amd`. [Possible values](https://webpack.js.org/configuration/output/#output-librarytarget) |
+| `library`       | String              | Yes        | Webpack | Define the library name for the Webpack module or export.                                                                                        |
+| `externals`     | Array&lt;String&gt; | Yes        | Webpack | Extends the list of provided libraries (Webpack understands both globs and strings)                                                              |
 
 ### Extending the configuration
 
@@ -76,9 +76,8 @@ module.exports = {
 
     // For example to add a reverse proxy
     chain.devServer.set("middleware", (app, builtins) => {
-    app.use(builtins.proxy('/hey', { target: 'https://google.com' }));
-});
-
-  }
+      app.use(builtins.proxy("/hey", { target: "https://google.com" }));
+    });
+  },
 };
 ```

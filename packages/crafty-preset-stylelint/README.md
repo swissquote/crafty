@@ -30,9 +30,7 @@ npm install @swissquote/crafty-preset-stylelint --save
 
 ```javascript
 module.exports = {
-  presets: [
-    "@swissquote/crafty-preset-stylelint"
-  ]
+  presets: ["@swissquote/crafty-preset-stylelint"],
 };
 ```
 

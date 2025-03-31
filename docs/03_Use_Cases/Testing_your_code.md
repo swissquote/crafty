@@ -16,7 +16,7 @@ In your `crafty.config.js` file, you must add the following presets
 
 ```javascript
 module.exports = {
-  presets: ["@swissquote/crafty-preset-jest"]
+  presets: ["@swissquote/crafty-preset-jest"],
 };
 ```
 

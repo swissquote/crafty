@@ -28,14 +28,14 @@ bundle.
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-typescript",
-    "@swissquote/crafty-runner-webpack"
+    "@swissquote/crafty-runner-webpack",
   ],
   js: {
     app: {
       runner: "webpack",
-      source: "js/index.ts"
-    }
-  }
+      source: "js/index.ts",
+    },
+  },
 };
 ```
 
@@ -93,14 +93,14 @@ the files won't be resolved (like Webpack would do).
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-typescript",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   js: {
     lib: {
       runner: "gulp/typescript",
-      source: "js/**/*.ts"
-    }
-  }
+      source: "js/**/*.ts",
+    },
+  },
 };
 ```
 

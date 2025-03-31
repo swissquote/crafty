@@ -25,7 +25,7 @@ module.exports = {
    */
   gulp(crafty, gulp, StreamHandler) {
     // Create tasks
-    gulp.task("images_svg", function() {
+    gulp.task("images_svg", function () {
       const stream = new StreamHandler("images/**/*.svg", "dist/images");
 
       stream.add(svgmin());
@@ -40,10 +40,10 @@ module.exports = {
     crafty.addDefaultTask("images");
 
     // Create custom watchers
-    gulp.watch(["js/*.js"]).on("change", function(path) {
+    gulp.watch(["js/*.js"]).on("change", function (path) {
       console.log("Change happened to", path);
     });
-  }
+  },
 };
 ```
 
@@ -69,7 +69,7 @@ syntactic sugar:
 - Includes `gulp-plumber` to catch errors
 
 ```javascript
-gulp.task("images_svg", function() {
+gulp.task("images_svg", function () {
   const stream = new StreamHandler("images/**/*.svg", "dist/images");
 
   stream.add(svgmin());
