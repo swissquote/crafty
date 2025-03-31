@@ -193,14 +193,14 @@ bundle.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-typescript"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/index.ts"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/index.ts"</span>,
+    },
+  },
 };
 </code></pre>
 <p>Then, you can create a <code>tsconfig.json</code> next to <code>crafty.config.js</code>.</p>
@@ -242,14 +242,14 @@ the files won’t be resolved (like Webpack would do).</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-typescript"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">lib</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"gulp/typescript"</span>,
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/**/*.ts"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/**/*.ts"</span>,
+    },
+  },
 };
 </code></pre>
 <p>Then, you can create a <code>tsconfig.json</code> next to <code>crafty.config.js</code>.</p>

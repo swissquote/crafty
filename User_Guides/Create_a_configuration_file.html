@@ -209,14 +209,14 @@ default to <code>src/main/frontend</code>.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-comment">// Will create js/app.min.js containing both source files</span>
-      <span class="hljs-attr">source</span>: [<span class="hljs-string">"js/panel.js"</span>, <span class="hljs-string">"js/nothing.js"</span>]
-    }
-  }
+      <span class="hljs-attr">source</span>: [<span class="hljs-string">"js/panel.js"</span>, <span class="hljs-string">"js/nothing.js"</span>],
+    },
+  },
 };
 </code></pre>
 <p>More advanced configuration can look like this:</p>
@@ -226,7 +226,7 @@ default to <code>src/main/frontend</code>.</p>
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
   ],
   <span class="hljs-attr">name</span>: <span class="hljs-string">"test-plugin"</span>,
   <span class="hljs-attr">mavenType</span>: <span class="hljs-string">"webjar"</span>, <span class="hljs-comment">// This artifact is a webjar</span>
@@ -234,20 +234,20 @@ default to <code>src/main/frontend</code>.</p>
     <span class="hljs-attr">testIndex</span>: {
       <span class="hljs-attr">source</span>: <span class="hljs-string">"css/test.scss"</span>, <span class="hljs-comment">// You can specify one or more entry files</span>
       <span class="hljs-attr">destination</span>: <span class="hljs-string">"index.min.css"</span>, <span class="hljs-comment">// You can make the destination explicit</span>
-      <span class="hljs-attr">watch</span>: <span class="hljs-string">"css/**/*.scss"</span> <span class="hljs-comment">// When a change occurs on files corresponding to this patterns this task will be rerun</span>
+      <span class="hljs-attr">watch</span>: <span class="hljs-string">"css/**/*.scss"</span>, <span class="hljs-comment">// When a change occurs on files corresponding to this patterns this task will be rerun</span>
     },
     <span class="hljs-attr">testIndex2</span>: {
       <span class="hljs-attr">source</span>: [<span class="hljs-string">"css/test2.scss"</span>, <span class="hljs-string">"css/more.scss"</span>],
       <span class="hljs-attr">destination</span>: <span class="hljs-string">"index2.min.css"</span>,
-      <span class="hljs-attr">watch</span>: <span class="hljs-string">"css/**/*.scss"</span>
-    }
+      <span class="hljs-attr">watch</span>: <span class="hljs-string">"css/**/*.scss"</span>,
+    },
   },
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>, <span class="hljs-comment">// Use Webpack and Babel to compile this bundle</span>
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
+    },
+  },
 };
 </code></pre>
 <h2><a id="presets" href="#presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Presets</h2>

@@ -203,7 +203,7 @@ task runner, combined with an API of file streams.</p>
    */</span>
   gulp(crafty, gulp, StreamHandler) {
     <span class="hljs-comment">// Create tasks</span>
-    gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">new</span> StreamHandler(<span class="hljs-string">"images/**/*.svg"</span>, <span class="hljs-string">"dist/images"</span>);
 
       stream.add(svgmin());
@@ -218,10 +218,10 @@ task runner, combined with an API of file streams.</p>
     crafty.addDefaultTask(<span class="hljs-string">"images"</span>);
 
     <span class="hljs-comment">// Create custom watchers</span>
-    gulp.watch([<span class="hljs-string">"js/*.js"</span>]).on(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">path</span>) </span>{
+    gulp.watch([<span class="hljs-string">"js/*.js"</span>]).on(<span class="hljs-string">"change"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path</span>) </span>{
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Change happened to"</span>, path);
     });
-  }
+  },
 };
 </code></pre>
 <p>The <a href="https://github.com/gulpjs/gulp/blob/4.0/docs/API.md" class="Link--external" rel="noopener noreferrer">full API of Gulp</a> is
@@ -239,7 +239,7 @@ syntactic sugar:</p>
 complex streams without re-assigning the variable every time</li>
 <li>Includes <code>gulp-plumber</code> to catch errors</li>
 </ul>
-<pre><code class="hljs javascript">gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre><code class="hljs javascript">gulp.task(<span class="hljs-string">"images_svg"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">new</span> StreamHandler(<span class="hljs-string">"images/**/*.svg"</span>, <span class="hljs-string">"dist/images"</span>);
 
   stream.add(svgmin());

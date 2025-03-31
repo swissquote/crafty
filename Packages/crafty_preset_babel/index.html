@@ -232,14 +232,14 @@
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>, <span class="hljs-comment">// optional</span>
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span> <span class="hljs-comment">// optional</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>, <span class="hljs-comment">// optional</span>
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>, <span class="hljs-comment">// Webpack or Gulp (optional if you have a single runner defined)</span>
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
+    },
+  },
 };
 </code></pre>
 <h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage</h2>
@@ -306,9 +306,9 @@ To see which plugins are already included, you can go to the <a href="../babel_p
    */</span>
   babel(crafty, bundle, babelConfig) {
     babelConfig.plugins.push(
-      <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"@babel/plugin-transform-property-literals"</span>)
+      <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"@babel/plugin-transform-property-literals"</span>),
     );
-  }
+  },
 };
 </code></pre>
 <p>After you did <code>npm install --save-dev babel-plugin-transform-es5-property-mutators</code> before, Babel will now use this plugin as well in each run.</p>

@@ -220,8 +220,8 @@
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>, <span class="hljs-comment">// optional</span>
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span> <span class="hljs-comment">// optional</span>
-  ]
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>, <span class="hljs-comment">// optional</span>
+  ],
 };
 </code></pre>
 <h2><a id="usage-with-webpack" href="#usage-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack</h2>
@@ -266,15 +266,15 @@ Crafty is using <code>css-loader</code> and when you import a CSS file in your p
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
   ],
   <span class="hljs-attr">css</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"gulp"</span>, <span class="hljs-comment">// optional if you have a single runner defined</span>
       <span class="hljs-attr">source</span>: <span class="hljs-string">"css/app.scss"</span>,
-      <span class="hljs-attr">watch</span>: [<span class="hljs-string">"css/**"</span>]
-    }
-  }
+      <span class="hljs-attr">watch</span>: [<span class="hljs-string">"css/**"</span>],
+    },
+  },
 };
 </code></pre>
 <h2><a id="extending-from-your-crafty-config-js" href="#extending-from-your-crafty-config-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending from your <code>crafty.config.js</code></h2>
@@ -300,10 +300,10 @@ Crafty is using <code>css-loader</code> and when you import a CSS file in your p
     config.delete(<span class="hljs-string">"postcss-csso"</span>);
     config
       .processor(<span class="hljs-string">"cssnano"</span>)
-      .enableIf(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span> crafty.getEnvironment() === <span class="hljs-string">"production"</span>)
+      .enableIf(<span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> crafty.getEnvironment() === <span class="hljs-string">"production"</span>)
       .before(<span class="hljs-string">"postcss-reporter"</span>)
       .setOptions({
-        <span class="hljs-attr">preset</span>: <span class="hljs-string">"default"</span>
+        <span class="hljs-attr">preset</span>: <span class="hljs-string">"default"</span>,
       });
 
     <span class="hljs-comment">// Change autoprefixer's options to disable autoprefixing for flexbox</span>
@@ -311,12 +311,13 @@ Crafty is using <code>css-loader</code> and when you import a CSS file in your p
     autoprefixerOptions.flexbox = <span class="hljs-literal">false</span>;
 
     <span class="hljs-comment">// Override CSS custom properties in code</span>
-    <span class="hljs-keyword">const</span> customProperties = config.processor(<span class="hljs-string">"postcss-custom-properties"</span>)
-      .options;
+    <span class="hljs-keyword">const</span> customProperties = config.processor(
+      <span class="hljs-string">"postcss-custom-properties"</span>,
+    ).options;
     customProperties.variables = {
-      <span class="hljs-attr">color</span>: <span class="hljs-string">"#fa5b35"</span>
+      <span class="hljs-attr">color</span>: <span class="hljs-string">"#fa5b35"</span>,
     };
-  }
+  },
 };
 </code></pre>
 <p><a href="Postcss_Extension_API.html">Read about the full API</a></p>

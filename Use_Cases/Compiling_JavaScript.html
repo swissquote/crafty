@@ -193,14 +193,14 @@ bundle.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/index.js"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/index.js"</span>,
+    },
+  },
 };
 </code></pre>
 <p>You are now ready to run <code>crafty run</code> and compile your JavaScript source files
@@ -227,14 +227,14 @@ the files won’t be resolved (like Webpack would do).</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">lib</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"gulp"</span>,
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/**/*.js"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/**/*.js"</span>,
+    },
+  },
 };
 </code></pre>
 <p>You are now ready to run <code>crafty run</code> and compile your JavaScript source files

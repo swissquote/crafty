@@ -277,10 +277,9 @@ which is a configuration builder.</p>
 
     <span class="hljs-comment">// For example to add a reverse proxy</span>
     chain.devServer.set(<span class="hljs-string">"middleware"</span>, (app, builtins) =&gt; {
-    app.use(builtins.proxy(<span class="hljs-string">'/hey'</span>, { <span class="hljs-attr">target</span>: <span class="hljs-string">'https://google.com'</span> }));
-});
-
-  }
+      app.use(builtins.proxy(<span class="hljs-string">"/hey"</span>, { <span class="hljs-attr">target</span>: <span class="hljs-string">"https://google.com"</span> }));
+    });
+  },
 };
 </code></pre>
     </div>

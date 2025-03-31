@@ -232,14 +232,14 @@ This preset also supports <strong>Gulp</strong> but in this case it concatenates
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-swc"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>, <span class="hljs-comment">// optional</span>
-    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span> <span class="hljs-comment">// optional</span>
+    <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>, <span class="hljs-comment">// optional</span>
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>, <span class="hljs-comment">// Webpack or Gulp (optional if you have a single runner defined)</span>
-      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>
-    }
-  }
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
+    },
+  },
 };
 </code></pre>
 <h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage</h2>
@@ -306,7 +306,7 @@ When running your tests with <code>crafty test</code> this preset will be use to
   swc(crafty, bundle, swcConfig) {
     <span class="hljs-comment">// Core configuration</span>
     <span class="hljs-comment">// Check the website for its documentation : https://swc.rs/docs/configuring-swc</span>
-  }
+  },
 };
 </code></pre>
 <p>This method is called once per bundle, so you can customize each bundle’s configuration differently.</p>

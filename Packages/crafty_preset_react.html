@@ -216,16 +216,16 @@
     <span class="hljs-comment">// also works with crafty-preset-typescript or crafty-preset-swc</span>
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
-    <span class="hljs-string">"@swissquote/crafty-preset-react"</span>
+    <span class="hljs-string">"@swissquote/crafty-preset-react"</span>,
   ],
   <span class="hljs-attr">js</span>: {
     <span class="hljs-attr">app</span>: {
       <span class="hljs-attr">runner</span>: <span class="hljs-string">"webpack"</span>,
       <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
       <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Hot Module Replacement must be enabled for any kind of reload to work</span>
-      <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">// React features must be enabled per bundle</span>
-    }
-  }
+      <span class="hljs-attr">react</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// React features must be enabled per bundle</span>
+    },
+  },
 };
 </code></pre>
 <h2><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h2>
