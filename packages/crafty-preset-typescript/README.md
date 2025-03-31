@@ -54,9 +54,9 @@ module.exports = {
   js: {
     app: {
       runner: "webpack", // webpack (optional if you have a single runner defined)
-      source: "js/app.ts"
-    }
-  }
+      source: "js/app.ts",
+    },
+  },
 };
 ```
 

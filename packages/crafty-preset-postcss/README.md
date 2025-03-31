@@ -38,8 +38,8 @@ module.exports = {
   presets: [
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-runner-webpack", // optional
-    "@swissquote/crafty-runner-gulp" // optional
-  ]
+    "@swissquote/crafty-runner-gulp", // optional
+  ],
 };
 ```
 
@@ -64,7 +64,7 @@ By default, the CSS will be embedded in your bundle, but you can provide the `ex
 `extractCSS` controls if the CSS should be embedded within the JavaScript bundle or extracted in a separate file.
 By default, the default is that the CSS content remains within the main file.
 
-__Possible options__
+**Possible options**
 
 | Value           | Note                                                                                                                                                                             |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -85,15 +85,15 @@ Crafty is using `css-loader` and when you import a CSS file in your project, it 
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-postcss",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   css: {
     app: {
       runner: "gulp", // optional if you have a single runner defined
       source: "css/app.scss",
-      watch: ["css/**"]
-    }
-  }
+      watch: ["css/**"],
+    },
+  },
 };
 ```
 
@@ -123,10 +123,10 @@ module.exports = {
     config.delete("postcss-csso");
     config
       .processor("cssnano")
-      .enableIf(options => crafty.getEnvironment() === "production")
+      .enableIf((options) => crafty.getEnvironment() === "production")
       .before("postcss-reporter")
       .setOptions({
-        preset: "default"
+        preset: "default",
       });
 
     // Change autoprefixer's options to disable autoprefixing for flexbox
@@ -134,17 +134,17 @@ module.exports = {
     autoprefixerOptions.flexbox = false;
 
     // Override CSS custom properties in code
-    const customProperties = config.processor("postcss-custom-properties")
-      .options;
+    const customProperties = config.processor(
+      "postcss-custom-properties",
+    ).options;
     customProperties.variables = {
-      color: "#fa5b35"
+      color: "#fa5b35",
     };
-  }
+  },
 };
 ```
 
 [Read about the full API](./Postcss_Extension_API.md)
-
 
 ## Bundle Options
 

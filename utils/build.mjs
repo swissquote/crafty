@@ -8,18 +8,25 @@ import {
   scanFiles,
   printReport
 } from "./duplicates.js";
-import compileUtils from "./compile.js";
+import * as compileUtils from "./compile.mjs";
 
 class PackagesBuilder {
-  constructor() {
+  constructor(esm) {
+    this.esm = esm;
     this.sourceFile = [];
     this.entryFiles = [];
   }
 
   package(pkg, name, entryFile) {
-    this.sourceFile.push(
-      `module.exports["${name}"] = function() { return require("${pkg}"); };`
-    );
+    if (this.esm) {
+      if (Array.isArray(name)) {
+        this.sourceFile.push(`export { ${name.join(", ")} } from "${pkg}";`);
+      } else {
+        this.sourceFile.push(`export  { default as ${name} } from "${pkg}";`);
+      }
+    } else {
+      this.sourceFile.push(`module.exports["${name}"] = function() { return require("${pkg}"); };`);
+    }
 
     if (entryFile) {
       this.entryFiles.push({ entryFile, name });
@@ -86,13 +93,17 @@ class Builder {
     return this;
   }
 
-  package() {
+  package({ isEsmModule }  = {}) {
     const pkg = this.values.name;
 
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
     if (this.values.options.esm) {
       this.values.destination = `dist/${cleanPkg}/index.mjs`;
-      this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
+      if (isEsmModule) {
+        this.values.sourceFile = `export * from "${pkg}";`;
+      } else {
+        this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
+      }      
     } else {
       this.values.destination = `dist/${cleanPkg}/index.js`;
       this.values.sourceFile = `module.exports = require("${pkg}");`;
@@ -109,7 +120,7 @@ class Builder {
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
     this.values.destination = `dist/${cleanPkg}/bundled.js`;
 
-    const builder = new PackagesBuilder();
+    const builder = new PackagesBuilder(this.values.options.esm);
 
     callback(builder);
 
@@ -139,7 +150,6 @@ class Builder {
         ...this.values.options,
       });
 
-
       if (this.values.entryFiles) {
         for (const entryFile of this.values.entryFiles) {
           let relativePath = path.relative(
@@ -153,15 +163,19 @@ class Builder {
 
           fs.mkdirSync(path.dirname(entryFile.entryFile), { recursive: true });
 
-          //console.log({relativePath, source: this.values.destination, destination: entryFile.entryFile});
+          let fileContent;
+          if (this.values.options.esm) {
+            if (Array.isArray(entryFile.name)) {
+              fileContent = `export { ${entryFile.name.join(", ")} } from "${relativePath}";`;
+            } else {
+              fileContent = `export { ${entryFile.name} as default } from "${relativePath}";`;
+            }
+          } else {
+            fileContent = `module.exports = require('${relativePath}')['${entryFile.name}']();`;
+          }
 
           console.log("Writing", entryFile.entryFile);
-          await fs.promises.writeFile(
-            entryFile.entryFile,
-            this.values.options.esm 
-              ? `import { ${entryFile.name} } from "${relativePath}"; export default ${entryFile.name}();`
-              : `module.exports = require('${relativePath}')['${entryFile.name}']();`
-          );
+          await fs.promises.writeFile(entryFile.entryFile, fileContent);
         }
 
         console.log("");

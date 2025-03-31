@@ -1,18 +1,18 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "../../packages/stylelint.js";
 
-const selectorParser = require("../../packages/postcss-selector-parser");
-const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
+import selectorParser from "../../packages/postcss-selector-parser.js";
+import resolveNestedSelector from "../../packages/postcss-resolve-nested-selector.js";
 
-const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
+import cssRuleHasSelectorEndingWithColon from "../utils/cssRuleHasSelectorEndingWithColon.js";
 
-const ruleName = "swissquote/no-utility-reassignment";
-const messages = {
+export const ruleName = "swissquote/no-utility-reassignment";
+export const messages = {
   rejected: "You cannot reassign a utility"
 };
 
 const isUtility = /^u-/;
 
-module.exports = function(/*mainOption, moreOptions*/) {
+export default function noUtilityReassignment(/*mainOption, moreOptions*/) {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -34,6 +34,7 @@ module.exports = function(/*mainOption, moreOptions*/) {
                 message: messages.rejected,
                 node: rule,
                 index: selectorNode.sourceIndex,
+                endIndex: selectorNode.sourceIndex + selectorNode.value.length,
                 ruleName,
                 result
               });
@@ -43,7 +44,7 @@ module.exports = function(/*mainOption, moreOptions*/) {
       });
     });
   };
-};
+}
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+noUtilityReassignment.ruleName = ruleName;
+noUtilityReassignment.messages = messages;

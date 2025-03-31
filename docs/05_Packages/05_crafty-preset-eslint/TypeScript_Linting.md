@@ -22,10 +22,10 @@ module.exports = {
       {
         files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
         rules: {
-          "arrow-parens": ["error", "always"]
-        }
-      }
-    ]
-  }
+          "arrow-parens": ["error", "always"],
+        },
+      },
+    ],
+  },
 };
 ```

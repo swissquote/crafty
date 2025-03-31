@@ -1,12 +1,12 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "../../packages/stylelint.js";
 
-const selectorParser = require("../../packages/postcss-selector-parser");
-const resolveNestedSelector = require("../../packages/postcss-resolve-nested-selector");
+import selectorParser from "../../packages/postcss-selector-parser.js";
+import resolveNestedSelector from "../../packages/postcss-resolve-nested-selector.js";
 
-const cssRuleHasSelectorEndingWithColon = require("../utils/cssRuleHasSelectorEndingWithColon");
+import cssRuleHasSelectorEndingWithColon from "../utils/cssRuleHasSelectorEndingWithColon.js";
 
-const ruleName = "swissquote/no-state-without-component";
-const messages = {
+export const ruleName = "swissquote/no-state-without-component";
+export const messages = {
   rejected: "A state must be linked to a component"
 };
 
@@ -68,7 +68,7 @@ function isOrphanState(selectorNode) {
   );
 }
 
-module.exports = function() {
+export default function noStateWithoutComponent() {
   return (root, result) => {
     root.walkRules(rule => {
       if (cssRuleHasSelectorEndingWithColon(rule)) {
@@ -91,6 +91,7 @@ module.exports = function() {
                 message: messages.rejected,
                 node: rule,
                 index: selectorNode.sourceIndex,
+                endIndex: selectorNode.sourceIndex + selectorNode.value.length,
                 ruleName,
                 result
               });
@@ -100,7 +101,7 @@ module.exports = function() {
       });
     });
   };
-};
+}
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+noStateWithoutComponent.ruleName = ruleName;
+noStateWithoutComponent.messages = messages;

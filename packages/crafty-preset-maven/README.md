@@ -35,7 +35,7 @@ npm install @swissquote/crafty-preset-maven --save
 ```javascript
 module.exports = {
   presets: ["@swissquote/crafty-preset-maven"],
-  mavenType: "webapp" // or "webjar"
+  mavenType: "webapp", // or "webjar"
 };
 ```
 

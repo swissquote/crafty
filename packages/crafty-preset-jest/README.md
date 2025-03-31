@@ -155,7 +155,7 @@ module.exports = {
     options.moduleFileExtensions.push("tsx");
     options.moduleFileExtensions.push("mts");
     options.moduleFileExtensions.push("cts");
-  }
+  },
 };
 ```
 

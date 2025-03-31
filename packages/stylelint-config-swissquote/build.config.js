@@ -1,93 +1,190 @@
-const { getExternals } = require("../../utils/externals");
+import { getExternals } from "../../utils/externals.js";
+import { createRequire } from "node:module";
+import fs from "node:fs/promises";
+import path from "node:path";
 
-const commonExternals = {
+const require = createRequire(import.meta.url);
+const stylelintPkg = require.resolve("stylelint/package.json");
+
+const externals = {
   // Provided by other Crafty packages
-  ...getExternals(),
+  ...getExternals(true),
 
-  stylelint: "../../shims/stylelint.js",
-  "stylelint/lib/utils/optionsMatches":
-    "../stylelint-utils/stylelint-optionsMatches.js"
+  // Better to use the external version
+  postcss: "commonjs postcss",
+  "postcss/package.json": "postcss/package.json",
+  "/postcss/lib(/.*)/": "postcss/lib$1",
+
+  "@babel/code-frame": "commonjs @babel/code-frame",
+
+  // not happy when compiled
+  "fastest-levenshtein": "fastest-levenshtein",
+
+  // Not used as we pass the configuration directly, can be excluded from the bundle
+  "postcss-load-config": "../../shims/cosmiconfig.js",
+  cosmiconfig: "../../shims/cosmiconfig.js",
+
+  "postcss-selector-parser": "../postcss-selector-parser/index.js",
+  "postcss-value-parser": "../postcss-value-parser/index.js",
+  "postcss-resolve-nested-selector":
+    "../postcss-resolve-nested-selector/index.js",
+  "css-tree": "../css-tree/index.js",
+  "known-css-properties": "known-css-properties",
+
+  // The exports of this package act weird, so we use our own export
+  stylelint: "../../packages/stylelint.js"
 };
 
-const FAKE_PRETTIER_PARSER = "../../shims/prettier-parser.js";
+function externalsFor(pkg) {
+  return Object.fromEntries(
+    Object.entries(externals).filter(([key]) => {
+      return !(key.startsWith(`${pkg}/`) || key === pkg);
+    })
+  );
+}
 
-module.exports = [
+const stylelintSource = [
+  {
+    pkg: "stylelint/lib/utils/nodeFieldIndices.mjs",
+    name: ["declarationValueIndex"],
+    entryFile: "dist/stylelint/utils-nodeFieldIndices.js"
+  },
+  {
+    pkg: "stylelint/lib/utils/isStandardSyntaxFunction.mjs",
+    name: "isStandardSyntaxFunction",
+    entryFile: "dist/stylelint/utils-isStandardSyntaxFunction.js"
+  },
+  {
+    pkg: "stylelint/lib/utils/isStandardSyntaxRule.mjs",
+    name: "isStandardSyntaxRule",
+    entryFile: "dist/stylelint/utils-isStandardSyntaxRule.js"
+  },
+  {
+    pkg: "stylelint/lib/utils/isStandardSyntaxSelector.mjs",
+    name: "isStandardSyntaxSelector",
+    entryFile: "dist/stylelint/utils-isStandardSyntaxSelector.js"
+  },
+  {
+    pkg: "stylelint/lib/utils/isKeyframeSelector.mjs",
+    name: "isKeyframeSelector",
+    entryFile: "dist/stylelint/utils-isKeyframeSelector.js"
+  },
+  {
+    pkg: "stylelint/lib/utils/optionsMatches.mjs",
+    name: "optionMatches",
+    entryFile: "dist/stylelint/utils-optionsMatches.js"
+  },
+  {
+    pkg: "stylelint/lib/index.mjs",
+    name: "stylelint",
+    entryFile: `dist/stylelint/index.js`
+  },
+  {
+    pkg: "stylelint/lib/cli.mjs",
+    name: "stylelintCli",
+    entryFile: `dist/stylelint/cli.js`
+  }
+];
+
+const FAKE_PRETTIER_PLUGIN = "../../shims/prettier-parser.js";
+
+export default [
   builder =>
     builder("stylelint-prettier")
+      .esm()
       .package()
       .externals({
-        ...commonExternals,
+        ...externalsFor("stylelint-prettier"),
 
         // We don't need most prettier parsers
-        "./parser-angular.js": FAKE_PRETTIER_PARSER,
-        "./parser-babel.js": FAKE_PRETTIER_PARSER,
-        "./parser-espree.js": FAKE_PRETTIER_PARSER,
-        "./parser-flow.js": FAKE_PRETTIER_PARSER,
-        "./parser-glimmer.js": FAKE_PRETTIER_PARSER,
-        "./parser-graphql.js": FAKE_PRETTIER_PARSER,
-        "./parser-html.js": FAKE_PRETTIER_PARSER,
-        "./parser-markdown.js": FAKE_PRETTIER_PARSER,
-        "./parser-meriyah.js": FAKE_PRETTIER_PARSER,
-        "./parser-typescript.js": FAKE_PRETTIER_PARSER,
-        "./parser-yaml.js": FAKE_PRETTIER_PARSER
+        "./plugins/acorn.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/angular.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/babel.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/estree.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/flow.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/glimmer.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/graphql.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/html.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/markdown.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/meriyah.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/typescript.mjs": FAKE_PRETTIER_PLUGIN,
+        "./plugins/yaml.mjs": FAKE_PRETTIER_PLUGIN
       }),
-  builder => builder("postcss-selector-parser").package(),
-  builder => builder("postcss-resolve-nested-selector").package(),
+  builder =>
+    builder("postcss-selector-parser")
+      .esm()
+      .package(),
+  builder =>
+    builder("postcss-resolve-nested-selector")
+      .esm()
+      .package(),
+  builder =>
+    builder("postcss-value-parser")
+      .esm()
+      .package(),
+  builder =>
+    builder("css-tree")
+      .esm()
+      .package({ isEsmModule: true }),
+  async () => {
+    const cssTreePkg = path.dirname(require.resolve("css-tree/package.json"));
 
-  builder => builder("postcss-value-parser").package(),
+    console.log("Copy css-tree's data/patch.json");
+    await fs.copyFile(
+      path.join(cssTreePkg, "data/patch.json"),
+      "dist/css-tree/patch.json"
+    );
+
+    const version = require("css-tree/package.json").version;
+
+    console.log("Patch css-tree's index.js");
+    const bundled = path.join("dist", "css-tree", "index.js");
+    const content = await fs.readFile(bundled, { encoding: "utf-8" });
+    await fs.writeFile(
+      bundled,
+      content
+        .replace("('../data/patch.json')", "('./patch.json')")
+        .replace(
+          "const { version } = version_require('../package.json');",
+          `const version = "${version}";`
+        )
+    );
+  },
   builder =>
     builder("stylelint-scss")
+      .esm()
       .package()
       .externals({
-        ...commonExternals,
-
-        // We use other packages created here
-        "postcss-selector-parser": "../postcss-selector-parser/index.js",
-        "postcss-value-parser": "../postcss-value-parser/index.js",
-        "postcss-resolve-nested-selector":
-          "../postcss-resolve-nested-selector/index.js",
-
-        // We mock the few lodash functions really used
-        lodash: "../../shims/lodash.js"
+        ...externalsFor("stylelint-scss")
       }),
-  builder =>
-    builder("stylelint-utils")
-      .packages(pkg =>
-        pkg
-          .package(
-            "stylelint/lib/utils/declarationValueIndex",
-            "declarationValueIndex",
-            "dist/stylelint-utils/stylelint-declarationValueIndex.js"
-          )
-          .package(
-            "stylelint/lib/utils/isStandardSyntaxFunction",
-            "isStandardSyntaxFunction",
-            "dist/stylelint-utils/stylelint-isStandardSyntaxFunction.js"
-          )
-          .package(
-            "stylelint/lib/utils/isStandardSyntaxRule",
-            "isStandardSyntaxRule",
-            "dist/stylelint-utils/stylelint-isStandardSyntaxRule.js"
-          )
-          .package(
-            "stylelint/lib/utils/isStandardSyntaxSelector",
-            "isStandardSyntaxSelector",
-            "dist/stylelint-utils/stylelint-isStandardSyntaxSelector.js"
-          )
-          .package(
-            "stylelint/lib/utils/isKeyframeSelector",
-            "isKeyframeSelector",
-            "dist/stylelint-utils/stylelint-isKeyframeSelector.js"
-          )
-          .package(
-            "stylelint/lib/utils/optionsMatches",
-            "optionMatches",
-            "dist/stylelint-utils/stylelint-optionsMatches.js"
-          )
+  async () => {
+    console.log("patch postcss-selector-parser in stylelint-scss");
+    const bundled = path.join("dist", "stylelint-scss", "index.js");
+    const content = await fs.readFile(bundled, { encoding: "utf-8" });
+    await fs.writeFile(
+      bundled,
+      content.replace(
+        /module\.exports = (__WEBPACK_EXTERNAL_MODULE__postcss_selector_parser_index_.*__);/gm,
+        `module.exports = $1.default;`
       )
-      .externals({
-        "../reference/keywordSets": "../../shims/stylelint-keywordSets.js"
+    );
+  },
+  async () => {
+    // Patch stylelint exports
+    const pkg = JSON.parse(await fs.readFile(stylelintPkg, "utf8"));
+    pkg.exports["./lib/*"] = "./lib/*";
+
+    fs.writeFile(stylelintPkg, JSON.stringify(pkg, null, 2));
+  },
+  builder =>
+    builder("stylelint")
+      .esm()
+      .packages(pkgBuilder => {
+        stylelintSource.forEach(entry => {
+          pkgBuilder.package(entry.pkg, entry.name, entry.entryFile);
+        });
       })
+      .externals(externalsFor("stylelint"))
       .options({
         sourceMap: false
       })

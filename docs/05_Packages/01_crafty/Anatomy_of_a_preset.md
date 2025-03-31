@@ -166,7 +166,7 @@ Commands receive three parameters: a Crafty instance, the command input and the 
 function command(
   crafty: Crafty,
   input: string,
-  cli: CLIInputs
+  cli: CLIInputs,
 ): Promise<number> {
   return Promise.resolve(0);
 }

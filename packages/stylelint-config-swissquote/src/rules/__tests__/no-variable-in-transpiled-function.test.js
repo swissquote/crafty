@@ -1,5 +1,5 @@
-const testRule = require("../../testUtils/ruleTester");
-const { ruleName } = require("../no-variable-in-transpiled-function");
+import testRule from "../../testUtils/ruleTester.js";
+import { ruleName } from "../no-variable-in-transpiled-function.js";
 
 // no warnings for browers that transpile variables
 testRule({

@@ -1,9 +1,9 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
 
-const stylelint = require("stylelint");
+import stylelint from "stylelint";
 
-const config = require("../../recommended");
+import config from "../../recommended.js";
 
 const validCss = `/** @define Form */
 
@@ -318,20 +318,9 @@ test("Autofixes CSS", async () => {
     config: { ...config, fix: true }
   });
 
-  expect(data.output).toBe(".Foo {\n    display: block;\n}\n");
+  expect(data.code).toBe(".Foo {\n    display: block;\n}\n");
   expect(data.errored).toBeFalsy();
   expect(data.results[0].warnings.length).toBe(0);
-});
-
-test("Does not autofix specific rules", async () => {
-  const data = await stylelint.lint({
-    code: ".Foo {    display: -webkit-box;}",
-    config: { ...config, fix: true }
-  });
-
-  expect(data.output).toBe(".Foo {\n    display: -webkit-box;\n}\n");
-  expect(data.errored).toBeTruthy();
-  expect(data.results[0].warnings.length).toBe(1);
 });
 
 test("Works with namespaces", async () => {

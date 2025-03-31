@@ -1,13 +1,13 @@
 import { test } from "node:test";
 import { expect } from "expect";
 
-const isKeyframeSelector = require("../../../dist/stylelint-utils/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
-const postcss = require("postcss");
-const scssSyntax = require("postcss-scss");
+import isKeyframeSelector from "stylelint/lib/utils/isKeyframeSelector.js";
+import isStandardSyntaxRule from "stylelint/lib/utils/isStandardSyntaxRule.js";
+import isStandardSyntaxSelector from "stylelint/lib/utils/isStandardSyntaxSelector.js";
+import postcss from "postcss";
+import scssSyntax from "postcss-scss";
 
-const resolveNestedSelector = require("../resolveNestedSelector");
+import resolveNestedSelector from "../resolveNestedSelector";
 
 function getResolvedSelectors(results) {
   return root => {

@@ -28,7 +28,7 @@ npm install @swissquote/crafty-preset-eslint --save
 
 ```javascript
 module.exports = {
-  presets: ["@swissquote/crafty-preset-eslint"]
+  presets: ["@swissquote/crafty-preset-eslint"],
 };
 ```
 

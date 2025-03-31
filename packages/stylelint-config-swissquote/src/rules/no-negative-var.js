@@ -1,18 +1,18 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "../../packages/stylelint.js";
 
-const declarationValueIndex = require("../../dist/stylelint-utils/stylelint-declarationValueIndex");
-const isStandardSyntaxFunction = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxFunction");
-const valueParser = require("../../packages/postcss-value-parser");
+import { declarationValueIndex } from "../../dist/stylelint/utils-nodeFieldIndices.js";
+import isStandardSyntaxFunction from "../../dist/stylelint/utils-isStandardSyntaxFunction.js";
+import valueParser from "../../packages/postcss-value-parser.js";
 
-const ruleName = "swissquote/no-negative-var";
+export const ruleName = "swissquote/no-negative-var";
 
-const messages = {
+export const messages = {
   rejected: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
 };
 
 const negativeVar = "-var";
 
-module.exports = function() {
+export default function noNegativeVar() {
   return (root, result) => {
     root.walkDecls(decl => {
       const value = decl.value;
@@ -31,17 +31,20 @@ module.exports = function() {
           return;
         }
 
+        const baseIndex = declarationValueIndex(decl);
+
         stylelint.utils.report({
           message: messages.rejected,
           node: decl,
-          index: declarationValueIndex(decl) + node.sourceIndex,
+          index: baseIndex + node.sourceIndex,
+          endIndex: baseIndex + node.sourceIndex + node.value.length,
           result,
           ruleName
         });
       });
     });
   };
-};
+}
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+noNegativeVar.ruleName = ruleName;
+noNegativeVar.messages = messages;

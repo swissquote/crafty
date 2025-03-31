@@ -43,14 +43,14 @@ module.exports = {
   presets: [
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-runner-webpack", // optional
-    "@swissquote/crafty-runner-gulp" // optional
+    "@swissquote/crafty-runner-gulp", // optional
   ],
   js: {
     app: {
       runner: "webpack", // Webpack or Gulp (optional if you have a single runner defined)
-      source: "js/app.js"
-    }
-  }
+      source: "js/app.js",
+    },
+  },
 };
 ```
 
@@ -102,8 +102,8 @@ When running your tests with `crafty test` this preset will be use to convert al
 
 ### Bundle options
 
-| Option   | Type    | Optional ? | Runner | Description                                                                                                                     |
-| -------- | ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| Option   | Type    | Optional ? | Runner | Description                                                                                                        |
+| -------- | ------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
 | `concat` | Boolean | Yes        | Gulp   | This will merge all files together, outputting a single file. (This doesn't resolve imports, use Webpack for this) |
 
 ### Adding Babel plugins and presets
@@ -121,9 +121,9 @@ module.exports = {
    */
   babel(crafty, bundle, babelConfig) {
     babelConfig.plugins.push(
-      require.resolve("@babel/plugin-transform-property-literals")
+      require.resolve("@babel/plugin-transform-property-literals"),
     );
-  }
+  },
 };
 ```
 

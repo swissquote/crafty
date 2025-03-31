@@ -1,15 +1,15 @@
-const stylelint = require("../../shims/stylelint");
+import stylelint from "../../packages/stylelint.js";
 
-const isKeyframeSelector = require("../../dist/stylelint-utils/stylelint-isKeyframeSelector");
-const isStandardSyntaxRule = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("../../dist/stylelint-utils/stylelint-isStandardSyntaxSelector");
+import isKeyframeSelector from "../../dist/stylelint/utils-isKeyframeSelector.js";
+import isStandardSyntaxRule from "../../dist/stylelint/utils-isStandardSyntaxRule.js";
+import isStandardSyntaxSelector from "../../dist/stylelint/utils-isStandardSyntaxSelector.js";
 
-const resolveNestedSelector = require("../utils/resolveNestedSelector");
-const parseSelector = require("../utils/parseSelector");
+import resolveNestedSelector from "../utils/resolveNestedSelector.js";
+import parseSelector from "../utils/parseSelector.js";
 
-const ruleName = "swissquote/no-type-outside-scope";
+export const ruleName = "swissquote/no-type-outside-scope";
 
-const messages = {
+export const messages = {
   rejected: "Types are allowed only inside a scope"
 };
 
@@ -65,13 +65,14 @@ function checkSelector(selectorNode, ruleNode, result) {
       result,
       node: originalNode,
       index: typeWithoutScope.sourceIndex,
+      endIndex: typeWithoutScope.sourceIndex + typeWithoutScope.value.length,
       message: messages.rejected,
       word: selectorNode
     });
   }
 }
 
-module.exports = function() {
+export default function noTypeOutsideScope() {
   return (root, result) => {
     root.walkRules(rule => {
       if (
@@ -109,7 +110,7 @@ module.exports = function() {
       });
     });
   };
-};
+}
 
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+noTypeOutsideScope.ruleName = ruleName;
+noTypeOutsideScope.messages = messages;

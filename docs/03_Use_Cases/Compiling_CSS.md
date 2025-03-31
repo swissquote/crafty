@@ -22,14 +22,14 @@ bundle.
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-postcss",
-    "@swissquote/crafty-runner-gulp"
+    "@swissquote/crafty-runner-gulp",
   ],
   css: {
     app: {
       runner: "gulp",
-      source: "css/style.scss"
-    }
-  }
+      source: "css/style.scss",
+    },
+  },
 };
 ```
 
@@ -56,14 +56,14 @@ In your `crafty.config.js` file, you must add the following presets.
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-postcss",
-    "@swissquote/crafty-runner-webpack"
+    "@swissquote/crafty-runner-webpack",
   ],
   js: {
     app: {
       source: "js/index.js",
-      extractCSS: true
-    }
-  }
+      extractCSS: true,
+    },
+  },
 };
 ```
 

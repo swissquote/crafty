@@ -30,8 +30,8 @@ postcss([
   require("@swissquote/postcss-swissquote-preset")({
     config: {
       browsers: "ie 9, last 3 versions", // A Browserslist compatible browsers list
-      environment: "production" // (optional) The current environment to compile to, will also use the `NODE_ENV` variable, or will fallback to "production"
-    }
-  })
+      environment: "production", // (optional) The current environment to compile to, will also use the `NODE_ENV` variable, or will fallback to "production"
+    },
+  }),
 ]);
 ```

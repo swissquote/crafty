@@ -10,10 +10,15 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
+  "type": "module",
   "main": "index.js",
   "dependencies": {
+    "@babel/code-frame": "7.26.2",
     "@swissquote/crafty": "1.27.0",
     "caniuse-lite": "^1.0.30001702",
+    "css-tree": "3.1.0",
+    "fastest-levenshtein": "^1.0.16",
+    "known-css-properties": "^0.35.0",
     "postcss-scss": "4.0.9"
   },
   "devDependencies": {
@@ -23,10 +28,10 @@
     "postcss-resolve-nested-selector": "0.1.6",
     "postcss-selector-parser": "6.1.2",
     "postcss-value-parser": "4.2.0",
-    "prettier": "2.8.8",
-    "stylelint": "15.10.0",
-    "stylelint-prettier": "3.0.0",
-    "stylelint-scss": "5.3.2"
+    "prettier": "3.5.3",
+    "stylelint": "16.17.0",
+    "stylelint-prettier": "5.0.3",
+    "stylelint-scss": "6.11.1"
   },
   "peerDependencies": {
     "@swissquote/crafty-commons": "1.27.0",

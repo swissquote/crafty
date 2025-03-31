@@ -25,18 +25,18 @@ function scanFiles(files) {
           file: m.nameForCondition,
           size: m.size,
           totalSize: 0,
-          occurences: []
+          occurences: new Set()
         };
       }
 
       allModules[m.nameForCondition].totalSize += m.size;
-      allModules[m.nameForCondition].occurences.push(file);
+      allModules[m.nameForCondition].occurences.add(file);
     }
   }
 
   // Creates a list of all modules that have files duplicated across more than one module
   const duplicateModules = Object.values(allModules)
-    .filter(m => m.occurences.length > 1)
+    .filter(m => m.occurences.size > 1)
     .sort((a, b) => b.totalSize - a.totalSize);
 
   const allModulesByModule = {};

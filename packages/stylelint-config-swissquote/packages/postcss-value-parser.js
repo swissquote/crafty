@@ -1,1 +1,2 @@
-module.exports = require("../dist/postcss-value-parser/index.js");
+import mod from "../dist/postcss-value-parser/index.js";
+export default mod;

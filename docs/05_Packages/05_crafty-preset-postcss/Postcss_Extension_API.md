@@ -30,10 +30,10 @@ module.exports = {
     config.delete("postcss-csso");
     config
       .processor("cssnano")
-      .enableIf(options => crafty.getEnvironment() === "production")
+      .enableIf((options) => crafty.getEnvironment() === "production")
       .before("postcss-reporter")
       .setOptions({
-        preset: "default"
+        preset: "default",
       });
 
     // Change autoprefixer's options to disable autoprefixing for flexbox
@@ -41,12 +41,13 @@ module.exports = {
     autoprefixerOptions.flexbox = false;
 
     // Override CSS custom properties in code
-    const customProperties = config.processor("postcss-custom-properties")
-      .options;
+    const customProperties = config.processor(
+      "postcss-custom-properties",
+    ).options;
     customProperties.variables = {
-      color: "#fa5b35"
+      color: "#fa5b35",
     };
-  }
+  },
 };
 ```
 

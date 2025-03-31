@@ -1,6 +1,10 @@
-module.exports = {
-  extends: [require.resolve("./common")],
-  plugins: [require.resolve("./index")],
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+
+export default {
+  extends: [require.resolve("./common.js")],
+  plugins: [require.resolve("./index.js")],
   rules: {
     // Swissquote Guidelines
     // ---------------------------------------------------------------------

@@ -1,6 +1,10 @@
 // Taken from https://github.com/stylelint/stylelint-config-suitcss/
 // Changes since last import: https://github.com/suitcss/stylelint-config-suitcss/compare/4e09f16f7340d610348059ab73f24fb11488152d...master
 
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+
 function warn(value, options) {
   const opt = options || {};
 
@@ -13,11 +17,11 @@ function warn(value, options) {
   return [value || true, opt];
 }
 
-module.exports = {
+export default {
   plugins: [
-    require.resolve("./index"),
-    require.resolve("./packages/stylelint-prettier"),
-    require.resolve("./packages/stylelint-scss")
+    require.resolve("./index.js"),
+    require.resolve("./packages/stylelint-prettier.js"),
+    require.resolve("./packages/stylelint-scss.js")
   ],
   rules: {
     // Formatting

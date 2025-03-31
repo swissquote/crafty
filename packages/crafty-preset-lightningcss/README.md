@@ -34,8 +34,8 @@ npm install @swissquote/crafty-preset-lightningcss --save
 module.exports = {
   presets: [
     "@swissquote/crafty-preset-lightningcss",
-    "@swissquote/crafty-runner-webpack"
-  ]
+    "@swissquote/crafty-runner-webpack",
+  ],
 };
 ```
 
@@ -60,7 +60,7 @@ By default, the CSS will be embedded in your bundle, but you can provide the `ex
 `extractCSS` controls if the CSS should be embedded within the JavaScript bundle or extracted in a separate file.
 By default, the default is that the CSS content remains within the main file.
 
-__Possible options__
+**Possible options**
 
 | Value           | Note                                                                                                                                                                             |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

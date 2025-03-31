@@ -82,16 +82,16 @@ Be aware that these rules will not be applied to the mercurial hooks.
 module.exports = {
   stylelint: {
     rules: {
-      "selector-no-type": true
-    }
+      "selector-no-type": true,
+    },
   },
   stylelint_legacy: {
     rules: {
       "max-nesting-depth": [
         2,
-        { ignore: ["at-rules-without-declaration-blocks"] }
-      ]
-    }
-  }
+        { ignore: ["at-rules-without-declaration-blocks"] },
+      ],
+    },
+  },
 };
 ```

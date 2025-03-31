@@ -35,16 +35,16 @@ module.exports = {
     // also works with crafty-preset-typescript or crafty-preset-swc
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-runner-webpack",
-    "@swissquote/crafty-preset-react"
+    "@swissquote/crafty-preset-react",
   ],
   js: {
     app: {
       runner: "webpack",
       source: "js/app.js",
       hot: true, // Hot Module Replacement must be enabled for any kind of reload to work
-      react: true // React features must be enabled per bundle
-    }
-  }
+      react: true, // React features must be enabled per bundle
+    },
+  },
 };
 ```
 
