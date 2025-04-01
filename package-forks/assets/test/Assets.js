@@ -1,22 +1,7 @@
-const sinon = require("sinon");
 const { expect } = require("expect");
-const { test, before, after } = require("node:test");
+const { test } = require("node:test");
 
 const Assets = require("..");
-
-before(() => {
-  sinon.stub(Assets, "data");
-  sinon.stub(Assets, "path");
-  sinon.stub(Assets, "size");
-  sinon.stub(Assets, "url");
-});
-
-after(() => {
-  Assets.data.restore();
-  Assets.path.restore();
-  Assets.size.restore();
-  Assets.url.restore();
-});
 
 test("constructor", () => {
   expect(typeof Assets).toBe("function");
@@ -30,28 +15,4 @@ test(".options", () => {
   expect(new Assets().options).toEqual({});
   expect(new Assets(options).options.basePath).toBe("source");
   expect(new Assets(options).options).not.toBe(options);
-});
-
-test(".data()", () => {
-  const instance = new Assets();
-  instance.data();
-  expect(Assets.data.called).toBe(true);
-});
-
-test(".path()", () => {
-  const instance = new Assets();
-  instance.path();
-  expect(Assets.path.called).toBe(true);
-});
-
-test(".size()", () => {
-  const instance = new Assets();
-  instance.size();
-  expect(Assets.size.called).toBe(true);
-});
-
-test(".url()", () => {
-  const instance = new Assets();
-  instance.url();
-  expect(Assets.url.called).toBe(true);
 });

@@ -1,19 +1,22 @@
 const fs = require("fs");
 const path = require("path");
-const sinon = require("sinon");
-const { test } = require("node:test");
+const { test, mock } = require("node:test");
 const { expect } = require("expect");
 
 const resolveUrl = require("../lib/url");
 
+let mockedStatSync = null;
+
 test.before(() => {
-  sinon.stub(fs, "statSync").returns({
-    mtime: new Date(Date.UTC(1991, 7, 24)),
+  mockedStatSync = mock.method(fs, "statSync", () => {
+    return {
+      mtime: new Date(Date.UTC(1991, 7, 24)),
+    }
   });
 });
 
 test.after(() => {
-  fs.statSync.restore();
+  mockedStatSync.mock.restore();
 });
 
 test("w/o options", async () => {
@@ -235,18 +238,17 @@ test("custom cachebuster w/ pathname + query", async () => {
 });
 
 test("custom cachebuster arguments", async () => {
-  const cachebuster = sinon.spy();
+  const cachebuster = mock.fn();
   await resolveUrl("duplicate-1.jpg", {
     basePath: "test/fixtures",
     cachebuster,
   });
 
-  expect(cachebuster.calledOnce).toBe(true);
-  expect(cachebuster.lastCall.args.length).toBe(2);
-  expect(cachebuster.lastCall.args[0]).toBe(
-    path.resolve("test/fixtures/duplicate-1.jpg")
-  );
-  expect(cachebuster.lastCall.args[1]).toBe("/duplicate-1.jpg");
+  expect(cachebuster.mock.callCount()).toBe(1);
+  expect(cachebuster.mock.calls[0].arguments).toEqual([
+    path.resolve("test/fixtures/duplicate-1.jpg"),
+    "/duplicate-1.jpg"
+  ]);
 });
 
 test("query + hash", async () => {
