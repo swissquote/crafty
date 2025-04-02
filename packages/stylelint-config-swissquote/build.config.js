@@ -188,10 +188,10 @@ export default [
       .options({
         sourceMap: false
       }),
-    async (builder, compilerUtils) => {
-      await compilerUtils.patchESMForCJS(
-        path.join("dist", "stylelint", "bundled.js"),
-        ["known_css_properties_index"]
-      );
-    },
+  async (builder, compilerUtils) => {
+    await compilerUtils.patchESMForCJS(
+      path.join("dist", "stylelint", "bundled.js"),
+      ["known_css_properties_index"]
+    );
+  }
 ];
