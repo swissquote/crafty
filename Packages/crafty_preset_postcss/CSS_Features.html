@@ -629,11 +629,19 @@ We made a selection of plugins useful for Swissquote, and here are some features
 }
 
 <span class="hljs-comment">/* After */</span>
-<span class="hljs-selector-tag">button</span>, <span class="hljs-selector-class">.button</span> {
+<span class="hljs-selector-pseudo">:-moz-any(button</span>, <span class="hljs-selector-class">.button</span>) {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#00f</span>;
 }
 
-<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span> {
+<span class="hljs-selector-pseudo">:is(button</span>, <span class="hljs-selector-class">.button</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#00f</span>;
+}
+
+<span class="hljs-selector-pseudo">:-moz-any(button</span>, <span class="hljs-selector-class">.button</span>)<span class="hljs-selector-pseudo">:-moz-any(</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-pseudo">:focus)</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-selector-pseudo">:is(button</span>, <span class="hljs-selector-class">.button</span>)<span class="hljs-selector-pseudo">:is(</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-pseudo">:focus)</span> {
   <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
