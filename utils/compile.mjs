@@ -75,6 +75,8 @@ async function compileRSLib(input, output, bundle) {
 
   const dirname = path.dirname(output);
 
+  await fs.mkdir(dirname, { recursive: true });
+
   await build(
     defineConfig({
       lib: [
