@@ -17,9 +17,6 @@ const externals = {
 
   "@babel/code-frame": "commonjs @babel/code-frame",
 
-  // not happy when compiled
-  "fastest-levenshtein": "fastest-levenshtein",
-
   // Not used as we pass the configuration directly, can be excluded from the bundle
   "postcss-load-config": "../../shims/cosmiconfig.js",
   cosmiconfig: "../../shims/cosmiconfig.js",
@@ -29,7 +26,8 @@ const externals = {
   "postcss-resolve-nested-selector":
     "../postcss-resolve-nested-selector/index.js",
   "css-tree": "../css-tree/index.js",
-  "known-css-properties": "known-css-properties",
+  "fastest-levenshtein": "../fastest-levenshtein/index.js",
+  "known-css-properties": "../known-css-properties/index.js",
 
   // The exports of this package act weird, so we use our own export
   stylelint: "../../packages/stylelint.js"
@@ -123,6 +121,14 @@ export default [
       .esm()
       .package(),
   builder =>
+    builder("fastest-levenshtein")
+      .esm()
+      .package({ isEsmModule: true }),
+  builder =>
+    builder("known-css-properties")
+      .esm()
+      .package(),
+  builder =>
     builder("css-tree")
       .esm()
       .package({ isEsmModule: true }),
@@ -157,16 +163,10 @@ export default [
       .externals({
         ...externalsFor("stylelint-scss")
       }),
-  async () => {
-    console.log("patch postcss-selector-parser in stylelint-scss");
-    const bundled = path.join("dist", "stylelint-scss", "index.js");
-    const content = await fs.readFile(bundled, { encoding: "utf-8" });
-    await fs.writeFile(
-      bundled,
-      content.replace(
-        /module\.exports = (__WEBPACK_EXTERNAL_MODULE__postcss_selector_parser_index_.*__);/gm,
-        `module.exports = $1.default;`
-      )
+  async (builder, compilerUtils) => {
+    await compilerUtils.patchESMForCJS(
+      path.join("dist", "stylelint-scss", "index.js"),
+      ["postcss_selector_parser_index", "known_css_properties_index"]
     );
   },
   async () => {
@@ -187,5 +187,11 @@ export default [
       .externals(externalsFor("stylelint"))
       .options({
         sourceMap: false
-      })
+      }),
+    async (builder, compilerUtils) => {
+      await compilerUtils.patchESMForCJS(
+        path.join("dist", "stylelint", "bundled.js"),
+        ["known_css_properties_index"]
+      );
+    },
 ];

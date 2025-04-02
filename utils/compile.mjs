@@ -136,3 +136,19 @@ export async function compile(input, output, bundle) {
     await compileNcc(input, output, bundle);
   }
 }
+
+export async function patchESMForCJS(file, patterns) {
+  console.log("Patching", file.replace(`${process.cwd()}/`, ""));
+  const content = await fs.promises.readFile(file, { encoding: "utf-8" });
+
+  const pkgs = patterns.join("|");
+  const regex = new RegExp(
+    `module\\.exports = (__WEBPACK_EXTERNAL_MODULE__(?:${pkgs})_[\\w]{5,20}__);`,
+    "gm"
+  );
+
+  await fs.promises.writeFile(
+    file,
+    content.replace(regex, `module.exports = $1.default;`)
+  );
+}
