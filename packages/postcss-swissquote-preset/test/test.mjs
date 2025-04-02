@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import postcss from "postcss";
 import postcssScss from "postcss-scss";
 import postcssPreset from "../index.js";
-import assert from "node:assert";
+import { expect } from "expect";
 
 function snapshotizeCSS(ret) {
   return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
@@ -496,7 +496,7 @@ for (const variant of variants) {
             parser: postcssScss,
           });
 
-        assert.equal(snapshotizeCSS(result.css), snapshotizeCSS(after));
+        expect(snapshotizeCSS(result.css)).toEqual(snapshotizeCSS(after));
       });
     }
   }

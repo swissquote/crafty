@@ -348,11 +348,19 @@ An at-rule for defining aliases that represent selectors
 }
 
 /* After */
-button, .button {
+:-moz-any(button, .button) {
   color: #00f;
 }
 
-button:hover, button:focus, .button:hover, .button:focus {
+:is(button, .button) {
+  color: #00f;
+}
+
+:-moz-any(button, .button):-moz-any(:hover, :focus) {
+  color: red;
+}
+
+:is(button, .button):is(:hover, :focus) {
   color: red;
 }
 ```

@@ -1,7 +1,7 @@
-button, .button {
+:is(button, .button) {
   color: #00f;
 }
 
-button:hover, button:focus, .button:hover, .button:focus {
+:is(button, .button):is(:hover, :focus) {
   color: red;
 }
