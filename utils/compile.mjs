@@ -137,9 +137,13 @@ export async function compile(input, output, bundle) {
   }
 }
 
+export async function replaceContent(src, cb) {
+  const content = await fs.promises.readFile(src, { encoding: "utf-8" });
+  await fs.promises.writeFile(src, cb(content));
+}
+
 export async function patchESMForCJS(file, patterns) {
   console.log("Patching", file.replace(`${process.cwd()}/`, ""));
-  const content = await fs.promises.readFile(file, { encoding: "utf-8" });
 
   const pkgs = patterns.join("|");
   const regex = new RegExp(
@@ -147,8 +151,19 @@ export async function patchESMForCJS(file, patterns) {
     "gm"
   );
 
-  await fs.promises.writeFile(
+  await replaceContent(
     file,
-    content.replace(regex, `module.exports = $1.default;`)
+    content => content.replace(regex, `module.exports = $1.default;`)
   );
+}
+
+export async function copyFile(src, dest) {
+  const dirname = path.dirname(dest);
+
+  if (!existsSync(dirname)) {
+    await fs.promises.mkdir(dirname, { recursive: true });
+  }
+
+  console.log("Copying", src, "to", dest);
+  await fs.promises.copyFile(src, dest);
 }

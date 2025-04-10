@@ -1,6 +1,5 @@
 import { getExternals } from "../../utils/externals.js";
 import { createRequire } from "node:module";
-import fs from "node:fs/promises";
 import path from "node:path";
 
 const require = createRequire(import.meta.url);
@@ -28,6 +27,8 @@ const externals = {
   "css-tree": "../css-tree/index.js",
   "fastest-levenshtein": "../fastest-levenshtein/index.js",
   "known-css-properties": "../known-css-properties/index.js",
+
+  "mdn-data/css/syntaxes": "commonjs ../mdn-data/syntaxes.json",
 
   // The exports of this package act weird, so we use our own export
   stylelint: "../../packages/stylelint.js"
@@ -131,12 +132,13 @@ export default [
   builder =>
     builder("css-tree")
       .esm()
+      .externals(externalsFor("css-tree"))
       .package({ isEsmModule: true }),
-  async () => {
+  async (_, compilerUtils) => {
     const cssTreePkg = path.dirname(require.resolve("css-tree/package.json"));
 
     console.log("Copy css-tree's data/patch.json");
-    await fs.copyFile(
+    compilerUtils.copyFile(
       path.join(cssTreePkg, "data/patch.json"),
       "dist/css-tree/patch.json"
     );
@@ -144,16 +146,19 @@ export default [
     const version = require("css-tree/package.json").version;
 
     console.log("Patch css-tree's index.js");
-    const bundled = path.join("dist", "css-tree", "index.js");
-    const content = await fs.readFile(bundled, { encoding: "utf-8" });
-    await fs.writeFile(
-      bundled,
-      content
-        .replace("('../data/patch.json')", "('./patch.json')")
-        .replace(
-          "const { version } = version_require('../package.json');",
-          `const version = "${version}";`
-        )
+    await compilerUtils.replaceContent(
+      path.join("dist", "css-tree", "index.js"),
+      content =>
+        content
+          .replace("('../data/patch.json')", "('./patch.json')")
+          .replace(
+            "const { version } = version_require('../package.json');",
+            `const version = "${version}";`
+          )
+          .replace(
+            /data_require\('mdn-data\/css\//g,
+            "data_require('../mdn-data/"
+          )
     );
   },
   builder =>
@@ -163,18 +168,36 @@ export default [
       .externals({
         ...externalsFor("stylelint-scss")
       }),
-  async (builder, compilerUtils) => {
+  async (_, compilerUtils) => {
     await compilerUtils.patchESMForCJS(
       path.join("dist", "stylelint-scss", "index.js"),
       ["postcss_selector_parser_index", "known_css_properties_index"]
     );
   },
-  async () => {
-    // Patch stylelint exports
-    const pkg = JSON.parse(await fs.readFile(stylelintPkg, "utf8"));
-    pkg.exports["./lib/*"] = "./lib/*";
+  async (_, compilerUtils) => {
+    console.log("Patch stylelint exports");
+    await compilerUtils.replaceContent(stylelintPkg, content => {
+      const pkg = JSON.parse(content);
+      pkg.exports["./lib/*"] = "./lib/*";
 
-    fs.writeFile(stylelintPkg, JSON.stringify(pkg, null, 2));
+      return JSON.stringify(pkg, null, 2);
+    });
+
+    console.log("Copy mdn-data files");
+    await compilerUtils.copyFile(
+      require.resolve("mdn-data/css/at-rules.json"),
+      path.join("dist", "mdn-data", "at-rules.json")
+    );
+
+    await compilerUtils.copyFile(
+      require.resolve("mdn-data/css/syntaxes.json"),
+      path.join("dist", "mdn-data", "syntaxes.json")
+    );
+
+    await compilerUtils.copyFile(
+      require.resolve("mdn-data/css/properties.json"),
+      path.join("dist", "mdn-data", "properties.json")
+    );
   },
   builder =>
     builder("stylelint")
@@ -188,7 +211,7 @@ export default [
       .options({
         sourceMap: false
       }),
-  async (builder, compilerUtils) => {
+  async (_, compilerUtils) => {
     await compilerUtils.patchESMForCJS(
       path.join("dist", "stylelint", "bundled.js"),
       ["known_css_properties_index"]
