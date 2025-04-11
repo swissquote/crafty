@@ -5,7 +5,7 @@ module.exports = [
     builder("gulp-packages")
       .packages((pkgBuilder) =>
         pkgBuilder
-          .package("@onigoetz/stream-plumber", "gulpPlumber")
+          .package("gulp-plumber", "gulpPlumber")
           .package("pump", "pump")
       )
       .externals(getExternals()),
