@@ -60,7 +60,8 @@
       "matchPackageNames": [
         "/^eslint/",
         "/@typescript-eslint/*/",
-        "/typescript-eslint/"
+        "/typescript-eslint/",
+        "/@eslint-react/*/"
       ]
     },
     {
@@ -81,6 +82,16 @@
       },
       "matchPackageNames": [
         "/^webpack/"
+      ]
+    },
+    {
+      "groupName": "swc",
+      "minor": {
+        "groupName": "all swc dependencies",
+        "groupSlug": "swc-minor-patch"
+      },
+      "matchPackageNames": [
+        "/^@swc/*/"
       ]
     },
     {
