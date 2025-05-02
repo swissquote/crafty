@@ -29,14 +29,14 @@
     "postcss-selector-parser": "7.1.0",
     "postcss-value-parser": "4.2.0",
     "prettier": "3.5.3",
-    "stylelint": "16.18.0",
+    "stylelint": "16.19.1",
     "stylelint-prettier": "5.0.3",
     "stylelint-scss": "6.11.1"
   },
   "peerDependencies": {
     "@swissquote/crafty-commons": "1.28.0",
     "postcss": "^8.0.0",
-    "stylelint": "^15.0.0"
+    "stylelint": "^16.0.0"
   },
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' src",
