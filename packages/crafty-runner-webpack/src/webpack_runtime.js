@@ -8,7 +8,7 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
 
 const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");
-const webpackOutput = require("./webpack_output");
+const { printStats, printError } = require("./webpack_output");
 
 function prepareConfiguration(crafty, bundle, webpackPort) {
   // Base configuration
@@ -27,11 +27,20 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
   return webpackConfig;
 }
 
-// Print out errors
-function printError(summary, error) {
-  console.log(summary);
-  console.log();
-  console.log(error);
+function extractError(error) {
+  if (error instanceof Error) {
+
+    if (error.error.constructor.name === "ESLintError") {
+      return {
+        type: "information",
+        message: error.error.message.replace(/^\[eslint\]/, "")
+      };
+    }
+
+    return { type: "error", error };
+  }
+
+  return { type: "information", message: error.message };
 }
 
 /**
@@ -62,7 +71,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
       });
 
       compiler.hooks.done.tap("CraftyRuntime", stats => {
-        webpackOutput(stats, compiler);
+        printStats(stats, compiler);
       });
 
       return { compiler, config };
@@ -100,11 +109,14 @@ module.exports = function jsTaskES6(crafty, bundle) {
       .then(({ compiler }) => {
         compiler.run((err, stats) => {
           if (err) {
-            if (err instanceof Error) {
-              return cb(err);
-            } else {
-              printError("Failed to compile.", err);
-              return cb(new crafty.Information("Webpack compilation failed"));
+
+            const extractedError = extractError(err, crafty.Information);
+
+            if (extractedError.type === "information") {
+              printError();
+              return cb(new crafty.Information(extractedError.message));
+            } else if (extractedError.type === "error") {
+              return cb(extractedError.error);
             }
           }
 
@@ -117,7 +129,7 @@ module.exports = function jsTaskES6(crafty, bundle) {
         });
       })
       .catch(e => {
-        printError("Failed to compile.", e);
+        printError(e);
         cb(e);
       });
   });

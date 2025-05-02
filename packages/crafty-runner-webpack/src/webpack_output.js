@@ -64,7 +64,7 @@ function footer(counts) {
   return result.join("\n");
 }
 
-module.exports = function(stats) {
+function printStats(stats) {
   // Write stats
   console.log(
     stats.toString({
@@ -124,4 +124,16 @@ module.exports = function(stats) {
   }
 
   console.log();
+};
+
+function printError(error) {
+  console.log(`\n  ${colors.red("Failed to compile.")}\n`);
+  if (error) {
+    console.log(error);
+  }
+}
+
+module.exports = {
+  printStats,
+  printError
 };
