@@ -29,7 +29,6 @@ function prepareConfiguration(crafty, bundle, webpackPort) {
 
 function extractError(error) {
   if (error instanceof Error) {
-
     if (error.error.constructor.name === "ESLintError") {
       return {
         type: "information",
@@ -109,7 +108,6 @@ module.exports = function jsTaskES6(crafty, bundle) {
       .then(({ compiler }) => {
         compiler.run((err, stats) => {
           if (err) {
-
             const extractedError = extractError(err, crafty.Information);
 
             if (extractedError.type === "information") {

@@ -124,7 +124,7 @@ function printStats(stats) {
   }
 
   console.log();
-};
+}
 
 function printError(error) {
   console.log(`\n  ${colors.red("Failed to compile.")}\n`);
