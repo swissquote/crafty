@@ -1,7 +1,8 @@
+import { setTimeout } from "node:timers/promises";
+import fs, { existsSync } from "node:fs";
+import path from "node:path";
 import ncc from "@vercel/ncc";
 import { defineConfig, build } from "@rslib/core";
-import fs, { existsSync } from "fs";
-import path from "path";
 import filesize from "filesize";
 
 import checkStats from "./check-stats.js";
@@ -124,7 +125,15 @@ async function compileRSLib(input, output, bundle) {
 
   const statsFile = `${dirname}/${getStatsName(name)}`;
 
-  const stats = JSON.parse(fs.readFileSync(statsFile));
+  let stats = null;
+  try {
+    stats = JSON.parse(fs.readFileSync(statsFile));
+  } catch (e) {
+    // The file might not be parseable yet,
+    // so we try to wait a bit
+    await setTimeout(1000);
+    stats = JSON.parse(fs.readFileSync(statsFile));
+  }
 
   checkStats(stats, statsFile);
 }
