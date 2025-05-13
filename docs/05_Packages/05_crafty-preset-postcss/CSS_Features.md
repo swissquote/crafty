@@ -252,8 +252,7 @@ The new relative color syntax allows existing colors to be modified using the co
 
 /* After */
 .foo {
-  color: #4e42b1;
-  color: lch(34.5711% 65.7776 296.794);
+  color: lch(from slateblue calc(l - 10%) c h);
 }
 ```
 
