@@ -1,0 +1,30 @@
+diff --git a/lib/hooks/tap-error-to-log-message.js b/lib/hooks/tap-error-to-log-message.js
+index c17ff82b1cf65d51eaeae3dfe773ab4fbf399c54..e67f4347906d8128798e9ae748f049d24bdacc2d 100644
+--- a/lib/hooks/tap-error-to-log-message.js
++++ b/lib/hooks/tap-error-to-log-message.js
+@@ -9,11 +9,25 @@ const plugin_hooks_1 = require("../plugin-hooks");
+ const rpc_1 = require("../rpc");
+ const abort_error_1 = require("../utils/async/abort-error");
+ function tapErrorToLogMessage(compiler, config) {
++
++    // If the webpack build fails independently from fork-ts-checker-webpack-plugin,
++    // it will stop the RPC server with a SIGTERM. Here we catch this case.
++    let webpackFailed = false;
++    compiler.hooks.compile.tap('ForkTsCheckerWebpackPlugin', (error) => {
++        webpackFailed = false;
++    });
++    compiler.hooks.failed.tap('ForkTsCheckerWebpackPlugin', (error) => {
++        webpackFailed = true;
++    });
++
+     const hooks = (0, plugin_hooks_1.getPluginHooks)(compiler);
+     hooks.error.tap('ForkTsCheckerWebpackPlugin', (error) => {
+         if (error instanceof abort_error_1.AbortError) {
+             return;
+         }
++        if (webpackFailed) {
++            return;
++        }
+         config.logger.error(String(error));
+         if (error instanceof rpc_1.RpcExitError) {
+             if (error.signal === 'SIGINT') {

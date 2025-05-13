@@ -3302,7 +3302,7 @@ __metadata:
     "@swissquote/crafty-commons-swc": "npm:1.28.0"
     "@swissquote/crafty-commons-webpack": "npm:1.28.0"
     "@swissquote/crafty-preset-eslint": "npm:1.28.0"
-    fork-ts-checker-webpack-plugin: "npm:9.1.0"
+    fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
     schema-utils: "npm:4.3.2"
     ts-jest: "npm:29.3.2"
     ts-loader: "npm:9.5.2"
@@ -7598,6 +7598,29 @@ __metadata:
     typescript: ">3.6.0"
     webpack: ^5.11.0
   checksum: 10c0/b4acdf400862af5f57d3e159b3a444e7f9f73e9f4609d54604c3810f75f8adcea0165a8b17ee856ed3c65591d058ffd73cd08d273e289d4952844e75f6efa85d
+  languageName: node
+  linkType: hard
+
+"fork-ts-checker-webpack-plugin@patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch":
+  version: 9.1.0
+  resolution: "fork-ts-checker-webpack-plugin@patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch::version=9.1.0&hash=cd2f30"
+  dependencies:
+    "@babel/code-frame": "npm:^7.16.7"
+    chalk: "npm:^4.1.2"
+    chokidar: "npm:^4.0.1"
+    cosmiconfig: "npm:^8.2.0"
+    deepmerge: "npm:^4.2.2"
+    fs-extra: "npm:^10.0.0"
+    memfs: "npm:^3.4.1"
+    minimatch: "npm:^3.0.4"
+    node-abort-controller: "npm:^3.0.1"
+    schema-utils: "npm:^3.1.1"
+    semver: "npm:^7.3.5"
+    tapable: "npm:^2.2.1"
+  peerDependencies:
+    typescript: ">3.6.0"
+    webpack: ^5.11.0
+  checksum: 10c0/8053a83facd707013354c46a206b760efa5cf65f10b97f7426728c1ff95d95ca66787c8ed75c2d73c69177999b96bbe3ec3f2f7c86e28bb5679736b6a14f7fc8
   languageName: node
   linkType: hard
 
