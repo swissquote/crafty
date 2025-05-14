@@ -59,6 +59,23 @@ exports[`Works with TypeScript//0`] = `Array [
     "nodeType": "BinaryExpression",
     "ruleId": "eqeqeq",
     "severity": 2,
+    "suggestions": Array [
+      Object {
+        "data": Object {
+          "actualOperator": "==",
+          "expectedOperator": "===",
+        },
+        "desc": "Use '===' instead of '=='.",
+        "fix": Object {
+          "range": Array [
+            682,
+            684,
+          ],
+          "text": "===",
+        },
+        "messageId": "replaceOperator",
+      },
+    ],
   },
   Object {
     "column": 16,
