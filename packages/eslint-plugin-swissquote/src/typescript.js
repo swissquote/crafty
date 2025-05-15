@@ -22,10 +22,10 @@ module.exports = {
     //warnOnUnsupportedTypeScriptVersion: true
   },*/
   settings: {
-    "import/parsers": {
+    "import-x/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".cts"]
     },
-    "import/resolver": {
+    "import-x/resolver": {
       // use <root>/tsconfig.json
       [require.resolve("../packages/eslint-import-resolver-typescript.js")]: {
         alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`

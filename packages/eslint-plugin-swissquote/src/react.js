@@ -10,7 +10,7 @@ module.exports = {
     ]
   ],
   settings: {
-    "import/resolver": {
+    "import-x/resolver": {
       [require.resolve("../packages/eslint-import-resolver-node.js")]: {
         extensions: [".js", ".jsx", ".json"]
       }

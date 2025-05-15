@@ -8,6 +8,17 @@ initSnapshot(import.meta.url);
 
 const lint = prepareESLint("recommended", "node");
 
+const orderedLint = prepareESLint("recommended", "node", {
+  rules: {
+    "@swissquote/swissquote/import/order": [
+      "error",
+      {
+        alphabetize: { order: "asc", caseInsensitive: true }
+      }
+    ]
+  }
+});
+
 test("Doesn't warn on console.log", async t => {
   const result = await lint(`console.log("Yeah");\n`);
 
@@ -17,9 +28,38 @@ test("Doesn't warn on console.log", async t => {
 });
 
 test("Works with ES6", async t => {
+  const result = await orderedLint(
+    `
+import fs from "node:fs";
+
+import timer from "node:timer";
+
+import http from "node:http";
+
+const something = [fs, timer, http];
+
+something.push("a value");
+
+console.log(something);
+`
+  );
+
+  expect(result.messages.length).toEqual(1);
+  expect(result.messages[0].message).toEqual(
+    "`node:http` import should occur before import of `node:timer`"
+  );
+  expect(result.warningCount).toEqual(0);
+  expect(result.errorCount).toEqual(1);
+});
+
+test("Works with commonjs", async t => {
   const result = await lint(
     `
-const something = [];
+const fs = require("node:fs");
+const timer = require("node:timer");
+const http = require("node:http");
+
+const something = [fs, timer, http];
 
 something.push("a value");
 

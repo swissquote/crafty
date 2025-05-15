@@ -13,12 +13,12 @@ module.exports = {
     ecmaVersion: "latest"
   },
   settings: {
-    "import/extensions": [".js", ".jsx"],
-    "import/ignore": [
+    "import-x/extensions": [".js", ".jsx"],
+    "import-x/ignore": [
       "node_modules",
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
-    "import/resolver": {
+    "import-x/resolver": {
       [require.resolve("../packages/eslint-import-resolver-node.js")]: {
         extensions: [".js", ".json"]
       }
