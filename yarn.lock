@@ -31,82 +31,82 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-darwin-arm64@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-darwin-arm64@npm:0.38.1"
+"@ast-grep/napi-darwin-arm64@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-darwin-arm64@npm:0.37.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-darwin-x64@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-darwin-x64@npm:0.38.1"
+"@ast-grep/napi-darwin-x64@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-darwin-x64@npm:0.37.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-linux-arm64-gnu@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-linux-arm64-gnu@npm:0.38.1"
+"@ast-grep/napi-linux-arm64-gnu@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-linux-arm64-gnu@npm:0.37.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-linux-arm64-musl@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-linux-arm64-musl@npm:0.38.1"
+"@ast-grep/napi-linux-arm64-musl@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-linux-arm64-musl@npm:0.37.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-linux-x64-gnu@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-linux-x64-gnu@npm:0.38.1"
+"@ast-grep/napi-linux-x64-gnu@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-linux-x64-gnu@npm:0.37.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-linux-x64-musl@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-linux-x64-musl@npm:0.38.1"
+"@ast-grep/napi-linux-x64-musl@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-linux-x64-musl@npm:0.37.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-win32-arm64-msvc@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-win32-arm64-msvc@npm:0.38.1"
+"@ast-grep/napi-win32-arm64-msvc@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-win32-arm64-msvc@npm:0.37.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-win32-ia32-msvc@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-win32-ia32-msvc@npm:0.38.1"
+"@ast-grep/napi-win32-ia32-msvc@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-win32-ia32-msvc@npm:0.37.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@ast-grep/napi-win32-x64-msvc@npm:0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi-win32-x64-msvc@npm:0.38.1"
+"@ast-grep/napi-win32-x64-msvc@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi-win32-x64-msvc@npm:0.37.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@ast-grep/napi@npm:^0.38.1":
-  version: 0.38.1
-  resolution: "@ast-grep/napi@npm:0.38.1"
+"@ast-grep/napi@npm:0.37.0":
+  version: 0.37.0
+  resolution: "@ast-grep/napi@npm:0.37.0"
   dependencies:
-    "@ast-grep/napi-darwin-arm64": "npm:0.38.1"
-    "@ast-grep/napi-darwin-x64": "npm:0.38.1"
-    "@ast-grep/napi-linux-arm64-gnu": "npm:0.38.1"
-    "@ast-grep/napi-linux-arm64-musl": "npm:0.38.1"
-    "@ast-grep/napi-linux-x64-gnu": "npm:0.38.1"
-    "@ast-grep/napi-linux-x64-musl": "npm:0.38.1"
-    "@ast-grep/napi-win32-arm64-msvc": "npm:0.38.1"
-    "@ast-grep/napi-win32-ia32-msvc": "npm:0.38.1"
-    "@ast-grep/napi-win32-x64-msvc": "npm:0.38.1"
+    "@ast-grep/napi-darwin-arm64": "npm:0.37.0"
+    "@ast-grep/napi-darwin-x64": "npm:0.37.0"
+    "@ast-grep/napi-linux-arm64-gnu": "npm:0.37.0"
+    "@ast-grep/napi-linux-arm64-musl": "npm:0.37.0"
+    "@ast-grep/napi-linux-x64-gnu": "npm:0.37.0"
+    "@ast-grep/napi-linux-x64-musl": "npm:0.37.0"
+    "@ast-grep/napi-win32-arm64-msvc": "npm:0.37.0"
+    "@ast-grep/napi-win32-ia32-msvc": "npm:0.37.0"
+    "@ast-grep/napi-win32-x64-msvc": "npm:0.37.0"
   dependenciesMeta:
     "@ast-grep/napi-darwin-arm64":
       optional: true
@@ -126,7 +126,7 @@ __metadata:
       optional: true
     "@ast-grep/napi-win32-x64-msvc":
       optional: true
-  checksum: 10c0/13f52518e5d95ba5d43aba280c46a2f891c95da4bc3cae0ff068ffcbde64347bb694af9f3ead562d8d8b444edfc2d9d86cc89663ced6369e335f40e33f052008
+  checksum: 10c0/9038ca27e64a83268ed6b23a6e860ee51c4cf5e1d72a6bd0b9130a33730240ecc5bf1035260d29443b488e53fb9c941eabea7e7953e11919e357454a9c8ce6c7
   languageName: node
   linkType: hard
 
@@ -2505,12 +2505,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rslib/core@npm:0.7.0":
-  version: 0.7.0
-  resolution: "@rslib/core@npm:0.7.0"
+"@rslib/core@npm:0.7.1":
+  version: 0.7.1
+  resolution: "@rslib/core@npm:0.7.1"
   dependencies:
     "@rsbuild/core": "npm:1.3.19"
-    rsbuild-plugin-dts: "npm:0.7.0"
+    rsbuild-plugin-dts: "npm:0.7.1"
     tinyglobby: "npm:^0.2.13"
   peerDependencies:
     "@microsoft/api-extractor": ^7
@@ -2522,7 +2522,7 @@ __metadata:
       optional: true
   bin:
     rslib: bin/rslib.js
-  checksum: 10c0/01f5349f5706e71d898ef3c971a53abfbececc42c89838aa08f8d0ce364e22b33bd4186b10d6bef0643a749843ddcc3ffc2d2f38cfd755ee504f84ad8b2ceb8f
+  checksum: 10c0/0036372bb3151b6a8b56a9e21757e04876786437837469d7ab7208e4e83b6140bb36dcc894d5c3593272b031700af38efd91c5ff71725eb9e1e8f981bc7c9af1
   languageName: node
   linkType: hard
 
@@ -3659,7 +3659,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/utils@workspace:utils"
   dependencies:
-    "@rslib/core": "npm:0.7.0"
+    "@rslib/core": "npm:0.7.1"
     "@vercel/ncc": "npm:0.38.3"
   languageName: unknown
   linkType: soft
@@ -12328,11 +12328,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rsbuild-plugin-dts@npm:0.7.0":
-  version: 0.7.0
-  resolution: "rsbuild-plugin-dts@npm:0.7.0"
+"rsbuild-plugin-dts@npm:0.7.1":
+  version: 0.7.1
+  resolution: "rsbuild-plugin-dts@npm:0.7.1"
   dependencies:
-    "@ast-grep/napi": "npm:^0.38.1"
+    "@ast-grep/napi": "npm:0.37.0"
     magic-string: "npm:^0.30.17"
     picocolors: "npm:1.1.1"
     tinyglobby: "npm:^0.2.13"
@@ -12346,7 +12346,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/a4a7a51bfc085ddc1940981d88ecd6c50f5f30b03fb9cf15c5d98b5c61e3717d6ef89bccff46c82aa66c2426f98328d9c36b8f3961fb6a8b7125b35bad171195
+  checksum: 10c0/3a8e6a82d00c53eb1a017079c53e02f6f0e08873ffda66fb458fae97111187906e05d4e669d1bea685d511d3d5a6dab57d3f0cf3d68a9cb99a6d4ae6b85a8be8
   languageName: node
   linkType: hard
 
