@@ -154,6 +154,45 @@ test.serial("Lints JavaScript using command", async t => {
   t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
 
+test.serial("Lints with additional plugin - command", async t => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+
+  const result = await testUtils.run(["eslint", "js/**/*.js"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 1);
+
+  // Files aren't generated on failed lint
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+});
+
+test.serial("Lints with additional plugin - webpack", async t => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+
+  const result = await testUtils.run(["run", "js_webpack"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 1);
+
+  // Files aren't generated on failed lint
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+});
+
+test.serial("Lints with additional plugin - run", async t => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+
+  const result = await testUtils.run(["run", "js_gulp"], cwd);
+
+  t.snapshot(result);
+  t.is(result.status, 1);
+
+  // Files aren't generated on failed lint
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+});
+
 test.serial("Generates IDE Helper", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/ide", [
     "eslint.config.mjs",

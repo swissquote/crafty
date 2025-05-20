@@ -16,19 +16,9 @@ process.title = "crafty";
 
 log(`Starting Crafty ${version}...`);
 
-let readConfig = true;
-
-if (process.argv.indexOf("--ignore-crafty-config") > -1) {
-  process.argv.splice(process.argv.indexOf("--ignore-crafty-config"), 1);
-  readConfig = false;
-}
-
 // Initialize the configuration
 configuration
-  .getCrafty(
-    configuration.extractPresets(process.argv),
-    readConfig ? configuration.getOverrides() : {}
-  )
+  .initialize(process.argv)
   .then(
     async crafty => {
       // Get all possible commands

@@ -27,9 +27,15 @@ module.exports = {
   },
   commands() {
     return {
+      eslint: {
+        command(crafty, input, cli) {
+          require("./commands/jsLint.js")(crafty);
+        },
+        description: "Lint JavaScript for errors"
+      },
       jsLint: {
         command(crafty, input, cli) {
-          require("./commands/jsLint");
+          require("./commands/jsLint.js")(crafty);
         },
         description: "Lint JavaScript for errors"
       }

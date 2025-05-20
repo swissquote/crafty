@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
-// Force flat config mode
-process.env.ESLINT_USE_FLAT_CONFIG = "true";
-
-const { toTempFile, jsLintConfiguration } = require("../templates.js");
+const { toTempFile, commandConfiguration } = require("../templates.js");
 
 /**
  * Extract all configuration from "crafty jsLint" that won't be understood by `eslint`
@@ -35,16 +32,22 @@ function extractConfig(args) {
   };
 }
 
-// Write config to a file
-const tmpfile = toTempFile(jsLintConfiguration(extractConfig(process.argv)));
+module.exports = function runESLint(crafty) {
 
-// Remove "jsLint" from  command
-// Doesn't apply when we use the command as if we used eslint
-if (process.argv[2] === "jsLint") {
-  process.argv.splice(2, 1);
+  // Force flat config mode
+  process.env.ESLINT_USE_FLAT_CONFIG = "true";
+
+  // Write config to a file
+  const tmpfile = toTempFile(commandConfiguration(crafty, extractConfig(process.argv)));
+
+  // Remove "jsLint" from  command
+  // Doesn't apply when we use the command as if we used eslint
+  if (process.argv[2] === "jsLint" || process.argv[2] === "eslint") {
+    process.argv.splice(2, 1);
+  }
+
+  process.argv.push("--config");
+  process.argv.push(tmpfile);
+
+  require(".bin/eslint");
 }
-
-process.argv.push("--config");
-process.argv.push(tmpfile);
-
-require(".bin/eslint");

@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs/promises");
-const { copy } = require("@swissquote/crafty/packages/copy-anything");
 const debugFn = require("@swissquote/crafty-commons/packages/debug");
 const resolveFrom = require("../packages/resolve-from");
 
@@ -71,7 +70,7 @@ async function toESLintConfig(crafty, config = {}, source = "plugin") {
         if (typeof value === "function") {
           value(configs);
         } else {
-          configs.push(copy(value));
+          configs.push(value);
         }
       });
   }

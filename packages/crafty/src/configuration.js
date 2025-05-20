@@ -163,7 +163,7 @@ class CraftyLoader {
       })
     );
     config = await this.loadMissingPresets(config, config.presets);
-    config = copy(merge(config, craftyConfig));
+    config = merge(config, craftyConfig);
 
     // Use `crafty.config.js` like a preset
     // Add the preset as last item in order to be
@@ -207,8 +207,6 @@ async function getCrafty(presets, craftyConfigPromise) {
   });
   const crafty = new Crafty(config, craftyLoader.loadedPresets);
 
-  crafty.presetsFromCli = presets;
-
   crafty.runAllSync("init", crafty);
 
   // Make sure everything sees the current environment
@@ -224,9 +222,15 @@ exports.getCrafty = getCrafty;
  * @param {string[]} argv
  * @returns {string[]}
  */
-function extractPresets(argv) {
+function extractConfigurationFromCli(argv) {
   debug("extracting presets");
   const presets = global.presets || [];
+
+  let readConfig = true;
+  if (argv.indexOf("--ignore-crafty-config") > -1) {
+    argv.splice(argv.indexOf("--ignore-crafty-config"), 1);
+    readConfig = false;
+  }
 
   if (argv.indexOf("--preset") > -1) {
     let idx,
@@ -240,9 +244,13 @@ function extractPresets(argv) {
       prevIdx = idx;
     }
   }
-  return presets;
+
+  return {
+    presets,
+    readConfig
+  };
 }
-exports.extractPresets = extractPresets;
+exports.extractConfigurationFromCli = extractConfigurationFromCli;
 
 /**
  * Get the user's configuration
@@ -250,11 +258,15 @@ exports.extractPresets = extractPresets;
  */
 async function getOverrides() {
   const configPath = path.join(process.cwd(), "crafty.config.js");
-
   if (fs.existsSync(configPath)) {
-    const config = await import(configPath);
+    try {
+      const config = await import(configPath);
 
-    return config.default ? config.default : config;
+      return config.default ? config.default : config;
+    } catch (e) {
+      console.error(`Error loading crafty.config.js`);
+      throw e;
+    }
   }
 
   console.log(`No crafty.config.js found in '${process.cwd()}', proceeding...`);
@@ -268,18 +280,34 @@ exports.getOverrides = getOverrides;
  * @param {string[]} argv
  * @param {string[]} additionalPresets
  */
-async function initialize(argv, additionalPresets = []) {
-  let readConfig = true;
-
-  if (argv.indexOf("--ignore-crafty-config") > -1) {
-    argv.splice(argv.indexOf("--ignore-crafty-config"), 1);
-    readConfig = false;
+async function initialize(argv, injectConfig) {
+  let cliReadConfig = true;
+  let cliPresets = [];
+  if (injectConfig) {
+    if (Array.isArray(injectConfig)) {
+      // Backward compatibility
+      cliPresets = injectConfig;
+    } else {
+      cliReadConfig = injectConfig.readConfig;
+      cliPresets = injectConfig.presets;
+    }
+  } else {
+    const extractedConfig = extractConfigurationFromCli(argv);
+    cliPresets = extractedConfig.presets;
+    cliReadConfig = extractedConfig.readConfig;
   }
 
-  const presets = extractPresets(argv);
-  presets.push(...additionalPresets);
-  const config = readConfig ? getOverrides() : {};
+  const presets = [];
+  presets.push(...cliPresets);
+  const config = cliReadConfig ? getOverrides() : {};
 
-  return getCrafty(presets, config);
+  const crafty = await getCrafty(presets, config);
+
+  crafty.cliConfig = {
+    presets: cliPresets,
+    readConfig: cliReadConfig
+  };
+
+  return crafty;
 }
 exports.initialize = initialize;

@@ -87,3 +87,27 @@ module.exports = {
   },
 };
 ```
+
+### Adding an ESLint plugin
+
+You can add ESLint plugins to use within your project.
+Add that to your `crafty.config.js`.
+
+```javascript
+// Import the plugin you wish to use
+import depend from 'eslint-plugin-depend';
+
+export default {
+  presets: ["@swissquote/crafty-preset-swc"],
+  eslint: {
+    plugins: {
+      // Declare the plugin in your configuration
+      depend,
+    },
+    rules: {
+      // Declare the rules you want to use
+      'depend/ban-dependencies': 'error'
+    }
+  }
+};
+```
