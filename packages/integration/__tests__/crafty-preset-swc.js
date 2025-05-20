@@ -180,7 +180,7 @@ test.serial("Lints with additional plugin - webpack", async t => {
   t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
 });
 
-test.serial("Lints with additional plugin - run", async t => {
+test.serial("Lints with additional plugin - gulp", async t => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
 
   const result = await testUtils.run(["run", "js_gulp"], cwd);
@@ -280,7 +280,7 @@ test.serial("Lints JavaScript using command, recommended preset", async t => {
 });
 
 test.serial(
-  "Lints JavaScript using command, explicit configuration",
+  "Lints JavaScript using command, explicit configuration - json",
   async t => {
     const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
 
@@ -290,6 +290,47 @@ test.serial(
     );
 
     t.snapshot(result);
+    t.true(result.stdall.includes("Unexpected use of continue statement"));
+    t.is(result.status, 1);
+
+    // Files aren't generated on failed lint
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  }
+);
+
+test.serial(
+  "Lints JavaScript using command, explicit configuration - cjs",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
+
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.js", "--config", "eslintOverride.cjs"],
+      cwd
+    );
+
+    t.snapshot(result);
+    t.true(result.stdall.includes("Unexpected use of continue statement"));
+    t.is(result.status, 1);
+
+    // Files aren't generated on failed lint
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  }
+);
+
+test.serial(
+  "Lints JavaScript using command, explicit configuration - mjs",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
+
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.js", "--config", "eslintOverride.mjs"],
+      cwd
+    );
+
+    t.snapshot(result);
+    t.true(result.stdall.includes("Unexpected use of continue statement"));
     t.is(result.status, 1);
 
     // Files aren't generated on failed lint

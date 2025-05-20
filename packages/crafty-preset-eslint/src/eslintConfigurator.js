@@ -87,6 +87,9 @@ async function toESLintConfig(crafty, config = {}, source = "plugin") {
       subConfigs = JSON.parse(content);
     } else {
       subConfigs = await import(configFile);
+      if (subConfigs?.default) {
+        subConfigs = subConfigs.default;
+      }
     }
 
     if (!Array.isArray(subConfigs)) {
