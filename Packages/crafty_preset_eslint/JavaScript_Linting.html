@@ -177,6 +177,11 @@
 </li>
 <li>
 <a href="#customizing-the-rules">Customizing the rules</a>
+<ul>
+<li>
+<a href="#adding-an-eslint-plugin">Adding an ESLint plugin</a>
+</li>
+</ul>
 </li>
 </ul>    </div>
 </div>
@@ -232,6 +237,26 @@ alert(<span class="hljs-string">"foo"</span>);
       <span class="hljs-string">"arrow-parens"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"always"</span>],
     },
   },
+};
+</code></pre>
+<h3><a id="adding-an-eslint-plugin" href="#adding-an-eslint-plugin" class="Permalink" aria-hidden="true" title="Permalink">#</a>Adding an ESLint plugin</h3>
+<p>You can add ESLint plugins to use within your project.
+Add that to your <code>crafty.config.js</code>.</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// Import the plugin you wish to use</span>
+<span class="hljs-keyword">import</span> depend <span class="hljs-keyword">from</span> <span class="hljs-string">'eslint-plugin-depend'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">presets</span>: [<span class="hljs-string">"@swissquote/crafty-preset-swc"</span>],
+  <span class="hljs-attr">eslint</span>: {
+    <span class="hljs-attr">plugins</span>: {
+      <span class="hljs-comment">// Declare the plugin in your configuration</span>
+      depend,
+    },
+    <span class="hljs-attr">rules</span>: {
+      <span class="hljs-comment">// Declare the rules you want to use</span>
+      <span class="hljs-string">'depend/ban-dependencies'</span>: <span class="hljs-string">'error'</span>
+    }
+  }
 };
 </code></pre>
     </div>
