@@ -280,6 +280,27 @@ test.serial("Lints JavaScript using command, recommended preset", async t => {
 });
 
 test.serial(
+  "Lints JavaScript using command, respects .eslintignore",
+  async t => {
+    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-eslintignore");
+
+    const result = await testUtils.run(
+      ["eslint", "js"],
+      cwd
+    );
+
+    t.snapshot(result);
+    t.true(result.stdall.includes("js/script.js"));
+    t.falsy(result.stdall.includes("js/Component.js"));
+    t.is(result.status, 1);
+
+    // Files aren't generated on failed lint
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  }
+);
+
+test.serial(
   "Lints JavaScript using command, explicit configuration - json",
   async t => {
     const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");

@@ -1,4 +1,5 @@
 const path = require("path");
+const { existsSync } = require("fs")
 const fs = require("fs/promises");
 const debugFn = require("@swissquote/crafty-commons/packages/debug");
 const resolveFrom = require("../packages/resolve-from");
@@ -40,6 +41,14 @@ function deduplicatePlugins(configs) {
   });
 }
 
+async function readEslintIgnore(filePath) {
+  const content = await fs.readFile(filePath, "utf8");
+  const lines = content.split(/\r?\n/gu).filter(line => line.trim() !== "" && !line.startsWith("#"));
+
+  // We might need to have some conversion logic from the ignore file to the glob config
+  return lines
+}
+
 async function toESLintConfig(crafty, config = {}, source = "plugin") {
   const configs = [];
 
@@ -56,6 +65,13 @@ async function toESLintConfig(crafty, config = {}, source = "plugin") {
   for (const preset of presets) {
     const subConfigs = eslintPlugin.configs[preset];
     configs.push(...subConfigs);
+  }
+
+  // Restore the .eslintignore behavior that was removed in eslint 9.0.0
+  const filePath = path.join(process.cwd(), ".eslintignore");
+  if (existsSync(filePath)) {
+    const ignores = await readEslintIgnore(filePath);
+    configs.push({ ignores });
   }
 
   // Override from default config if it exists
