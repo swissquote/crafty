@@ -1,119 +1,121 @@
-const test = require("ava");
-const testUtils = require("../utils");
+import { describe, test, expect } from "vitest";
+import * as testUtils from "../utils.js";
 
-test.serial("Lints TypeScript using the command", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/lints"
+describe("crafty-preset-typescript", () => {
+  test("Lints TypeScript using the command", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints"
+    );
+
+    const result = await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
+
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
+
+    // Files aren't generated on failed lint
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  });
+
+  test(
+    "Lints TypeScript using the command, --preset recommended, --preset node",
+    async () => {
+      const cwd = await testUtils.getCleanFixtures(
+        "crafty-preset-typescript/lints"
+      );
+
+      const result = await testUtils.run(
+        ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
+        cwd
+      );
+
+      expect(result).toMatchSnapshot();
+      expect(result.status).toBe(1);
+
+      // Files aren't generated on failed lint
+      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+    }
   );
 
-  const result = await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
+  test(
+    "Lints TypeScript using the command, --preset recommended",
+    async () => {
+      const cwd = await testUtils.getCleanFixtures(
+        "crafty-preset-typescript/lints"
+      );
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+      const result = await testUtils.run(
+        ["jsLint", "js/**/*.ts", "--preset", "recommended"],
+        cwd
+      );
 
-  // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-});
+      expect(result).toMatchSnapshot();
+      expect(result.status).toBe(1);
 
-test.serial(
-  "Lints TypeScript using the command, --preset recommended, --preset node",
-  async t => {
+      // Files aren't generated on failed lint
+      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+    }
+  );
+
+  test("Lints TypeScript using the command, --preset format", async () => {
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-typescript/lints"
     );
 
     const result = await testUtils.run(
-      ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
+      ["jsLint", "js/**/*.ts", "--preset", "format"],
       cwd
     );
 
-    t.snapshot(result);
-    t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
     // Files aren't generated on failed lint
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  }
-);
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  });
 
-test.serial(
-  "Lints TypeScript using the command, --preset recommended",
-  async t => {
+  test("Tests Syntax using Prettier 1", async () => {
     const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-typescript/lints"
+      "crafty-preset-typescript/test-ts-syntax_prettier1"
     );
 
-    const result = await testUtils.run(
-      ["jsLint", "js/**/*.ts", "--preset", "recommended"],
-      cwd
+    const result = await testUtils.run(["run"], cwd);
+
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
+
+    expect(testUtils.exists(cwd, "dist/js/TS_4_0.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/webpack.min.js")).toBeTruthy();
+  });
+
+  test("Tests Syntax using Prettier 2", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/test-ts-syntax_prettier2"
     );
 
-    t.snapshot(result);
-    t.is(result.status, 1);
+    const result = await testUtils.run(["run"], cwd);
 
-    // Files aren't generated on failed lint
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  }
-);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-test.serial("Lints TypeScript using the command, --preset format", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/lints"
-  );
+    expect(testUtils.exists(cwd, "dist/js/TS_4_0.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/webpack.min.js")).toBeTruthy();
+  });
 
-  const result = await testUtils.run(
-    ["jsLint", "js/**/*.ts", "--preset", "format"],
-    cwd
-  );
+  test("Tests Syntax using Prettier 3", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/test-ts-syntax_prettier3"
+    );
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+    const result = await testUtils.run(["run"], cwd);
 
-  // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-});
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-test.serial("Tests Syntax using Prettier 1", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/test-ts-syntax_prettier1"
-  );
-
-  const result = await testUtils.run(["run"], cwd);
-
-  t.snapshot(result);
-  t.is(result.status, 0);
-
-  t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
-});
-
-test.serial("Tests Syntax using Prettier 2", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/test-ts-syntax_prettier2"
-  );
-
-  const result = await testUtils.run(["run"], cwd);
-
-  t.snapshot(result);
-  t.is(result.status, 0);
-
-  t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
-});
-
-test.serial("Tests Syntax using Prettier 3", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript/test-ts-syntax_prettier3"
-  );
-
-  const result = await testUtils.run(["run"], cwd);
-
-  t.snapshot(result);
-  t.is(result.status, 0);
-
-  t.truthy(testUtils.exists(cwd, "dist/js/TS_4_0.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/webpack.min.js"));
+    expect(testUtils.exists(cwd, "dist/js/TS_4_0.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/webpack.min.js")).toBeTruthy();
+  });
 });

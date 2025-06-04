@@ -1,8 +1,11 @@
-const execa = require("execa");
-const path = require("path");
-const fs = require("fs");
+import execa from "execa";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from 'url';
 
-function snapshotizeOutput(ret) {
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+export function snapshotizeOutput(ret) {
   const escapedPath = path
     .join(__dirname, "..", "..")
     .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -87,11 +90,11 @@ function snapshotizeOutput(ret) {
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
 }
 
-function snapshotizeCSS(ret) {
+export function snapshotizeCSS(ret) {
   return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
 }
 
-async function run(args, cwd, commandOptions) {
+export async function run(args, cwd, commandOptions) {
   const options = {
     cwd,
     reject: false,
@@ -113,20 +116,20 @@ async function run(args, cwd, commandOptions) {
   };
 }
 
-function readFile(cwd, file) {
+export function readFile(cwd, file) {
   return fs.readFileSync(path.join(cwd, file)).toString("utf8");
 }
 
-function exists(cwd, file) {
+export function exists(cwd, file) {
   return fs.existsSync(path.join(cwd, file));
 }
 
-function readForSnapshot(cwd, file) {
+export function readForSnapshot(cwd, file) {
   return snapshotizeOutput(readFile(cwd, file));
 }
 
-async function getCleanFixtures(fixtures, clean = ["dist"]) {
-  const dir = path.join(__dirname, "fixtures", fixtures);
+export async function getCleanFixtures(fixtures, clean = ["dist"]) {
+  const dir = path.join(__dirname, "..", "integration-fixtures-cjs", "fixtures", fixtures);
   for (const dirToClean of clean) {
     // eslint-disable-next-line no-await-in-loop
     await fs.promises.rm(path.join(dir, dirToClean), {
@@ -137,13 +140,3 @@ async function getCleanFixtures(fixtures, clean = ["dist"]) {
 
   return dir;
 }
-
-module.exports = {
-  run,
-  readFile,
-  exists,
-  readForSnapshot,
-  snapshotizeCSS,
-  snapshotizeOutput,
-  getCleanFixtures
-};

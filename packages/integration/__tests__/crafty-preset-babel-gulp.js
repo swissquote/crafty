@@ -1,28 +1,28 @@
-const test = require("ava");
-const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
-const testUtils = require("../utils");
+import { test, expect } from "vitest";
+import configuration from "@swissquote/crafty/src/configuration";
+import getCommands from "@swissquote/crafty/src/commands/index";
+import * as testUtils from "../utils";
 
 const getCrafty = configuration.getCrafty;
 
 const mainBundle = "dist/js/myBundle.min.js";
 const mainBundleMap = "dist/js/myBundle.min.js.map";
 
-test("Loads crafty-preset-babel and does not register gulp tasks", async t => {
+test("Loads crafty-preset-babel and does not register gulp tasks", async () => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-babel"], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
 
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-babel"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-babel")).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("jsLint"));
+  expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
 });
 
-test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", async t => {
+test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", async () => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
   const crafty = await getCrafty(
     ["@swissquote/crafty-preset-babel", "@swissquote/crafty-runner-gulp"],
@@ -30,14 +30,14 @@ test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", as
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-babel"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-babel")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("jsLint"));
+  expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "js_myBundle",
     "js",
     "default"
@@ -46,198 +46,198 @@ test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", as
 
 const mainScript = "dist/js/script.js";
 
-test.serial("Compiles JavaScript", async t => {
+test("Compiles JavaScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
+  expect(result).toMatchSnapshot();
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js"));
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles JavaScript, keeps runtime external", async t => {
+test("Compiles JavaScript, keeps runtime external", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
+  expect(result).toMatchSnapshot();
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js"));
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles JavaScript, new features transpiled", async t => {
+test("Compiles JavaScript, new features transpiled", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles-new-features"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
+  expect(result).toMatchSnapshot();
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js"));
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles JavaScript, target node > 12", async t => {
+test("Compiles JavaScript, target node > 12", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles-target-node"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js"));
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
 });
 
-test.serial("Fails gracefully on broken markup", async t => {
+test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });
 
-test.serial("Compiles JavaScript with custom babel plugin", async t => {
+test("Compiles JavaScript with custom babel plugin", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/compiles-babel-plugin"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, mainScript));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
 });
 
-test.serial(
+test(
   "Compiles JavaScript with custom babel preset override",
-  async t => {
+  async () => {
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-babel-gulp/compiles-babel-preset-override"
     );
 
     const result = await testUtils.run(["run", "default"], cwd);
 
-    t.snapshot(result);
-    t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-    t.falsy(testUtils.exists(cwd, mainBundle));
-    t.falsy(testUtils.exists(cwd, mainBundleMap));
+    expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+    expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-    t.truthy(testUtils.exists(cwd, mainScript));
-    t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+    expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-    t.snapshot(testUtils.readForSnapshot(cwd, mainScript));
+    expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
   }
 );
 
-test.serial("Compiles JavaScript and concatenates", async t => {
+test("Compiles JavaScript and concatenates", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/concatenates"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, mainBundle));
-  t.truthy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeTruthy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeTruthy();
 
-  t.falsy(testUtils.exists(cwd, mainScript));
-  t.falsy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, mainScript)).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeFalsy();
 
-  t.falsy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, mainBundle));
+  expect(testUtils.readForSnapshot(cwd, mainBundle)).toMatchSnapshot();
 });
 
-test.serial("Lints JavaScript", async t => {
+test("Lints JavaScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/lints-es5"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });
 
-test.serial("Lints JavaScript, doesn't fail in development", async t => {
+test("Lints JavaScript, doesn't fail in development", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-babel-gulp/lints-es5-dev"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, mainBundle));
-  t.falsy(testUtils.exists(cwd, mainBundleMap));
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 });

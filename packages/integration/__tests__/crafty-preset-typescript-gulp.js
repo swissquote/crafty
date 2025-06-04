@@ -1,20 +1,20 @@
-const test = require("ava");
-const configuration = require("@swissquote/crafty/src/configuration");
-const testUtils = require("../utils");
+import { test, expect } from "vitest";
+import configuration from "@swissquote/crafty/src/configuration";
+import * as testUtils from "../utils";
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-typescript and does not register gulp tasks", async t => {
+test("Loads crafty-preset-typescript and does not register gulp tasks", async () => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
 });
 
-test("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task", async t => {
+test("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task", async () => {
   const config = { js: { myBundle: { source: "js/**/*.ts" } } };
   const crafty = await getCrafty(
     ["@swissquote/crafty-preset-typescript", "@swissquote/crafty-runner-gulp"],
@@ -22,164 +22,163 @@ test("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "js_myBundle",
     "js",
     "default"
   ]);
 });
 
-test.serial("Compiles TypeScript", async t => {
+test("Compiles TypeScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/Loading.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Loading.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/script.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Loading.js"));
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/Loading.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles TypeScript, alternate conf", async t => {
+test("Compiles TypeScript, alternate conf", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles-alternate-conf"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/Loading.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/Loading.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Loading.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/script.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Loading.js"));
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/Loading.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles TypeScript Modules", async t => {
+test("Compiles TypeScript Modules", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles-modules"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.mjs"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.mjs.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.mjs")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.mjs.map")).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/script.mjs"));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.mjs.map"));
+  expect(testUtils.exists(cwd, "dist/js/script.mjs")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.mjs.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.mjs"));
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.mjs.map"));
+  expect(testUtils.exists(cwd, "dist/js/Component.mjs")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Component.mjs.map")).toBeTruthy();
 
   const script = testUtils.readForSnapshot(cwd, "dist/js/script.mjs");
-  t.snapshot(script);
+  expect(script).toMatchSnapshot();
 
-  t.truthy(
-    script.indexOf('import test from"./Component.mjs"') > -1,
-    "script.mjs should contain 'import test from\"./Component.mjs\"'"
-  );
+  expect(
+    script.indexOf('import test from"./Component.mjs"') > -1
+  ).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.mjs"));
+  expect(testUtils.readForSnapshot(cwd, "dist/js/Component.mjs")).toMatchSnapshot();
 });
 
-test.serial("Compiles TypeScript, keeps runtime external", async t => {
+test("Compiles TypeScript, keeps runtime external", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/Component.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/Component.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/Component.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/script.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/Component.js"));
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "dist/js/Component.js")).toMatchSnapshot();
 });
 
-test.serial("Compiles TypeScript and concatenates", async t => {
+test("Compiles TypeScript and concatenates", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/concatenates"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
 
-  t.falsy(testUtils.exists(cwd, "dist/js/script.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/script.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeFalsy();
 
-  t.falsy(testUtils.exists(cwd, "dist/js/otherfile.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/otherfile.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
+  expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
 });
 
-test.serial("Fails gracefully on broken markup", async t => {
+test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test.serial("Lints TypeScript", async t => {
+test("Lints TypeScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-typescript-gulp/lints"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });

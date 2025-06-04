@@ -1,211 +1,213 @@
-const test = require("ava");
-const fs = require("fs");
-const path = require("path");
-const configuration = require("@swissquote/crafty/src/configuration");
-const testUtils = require("../utils");
+import { describe, test, expect } from "vitest";
+import fs from "fs";
+import path from "path";
+import configuration from "@swissquote/crafty/src/configuration";
+import * as testUtils from "../utils";
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-typescript and does not register webpack tasks", async t => {
-  const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
+describe("crafty-preset-typescript-webpack", () => {
+  test("Loads crafty-preset-typescript and does not register webpack tasks", async () => {
+    const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
-  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
+    const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
+    expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
 
-  crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
-});
+    crafty.createTasks();
+    expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
+  });
 
-test("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack task", async t => {
-  const config = { js: { myBundle: { source: "css/style.scss" } } };
-  const crafty = await getCrafty(
-    [
-      "@swissquote/crafty-preset-typescript",
-      "@swissquote/crafty-runner-webpack"
-    ],
-    config
-  );
+  test("Loads crafty-preset-typescript, crafty-runner-webpack and registers webpack task", async () => {
+    const config = { js: { myBundle: { source: "css/style.scss" } } };
+    const crafty = await getCrafty(
+      [
+        "@swissquote/crafty-preset-typescript",
+        "@swissquote/crafty-runner-webpack"
+      ],
+      config
+    );
 
-  const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
+    const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
+    expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+    expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
 
-  crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
-    "js_myBundle",
-    "js",
-    "default"
-  ]);
-});
+    crafty.createTasks();
+    expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
+      "js_myBundle",
+      "js",
+      "default"
+    ]);
+  });
 
-test.serial("Compiles TypeScript", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/compiles"
-  );
+  test("Compiles TypeScript", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/compiles"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/Component.d.ts"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts"));
-});
+    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")).toMatchSnapshot();
+  });
 
-test.serial("Compiles TypeScript, alternate conf", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/compiles-alternate-conf"
-  );
+  test("Compiles TypeScript, alternate conf", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/compiles-alternate-conf"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/Component.d.ts"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts"));
-});
+    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")).toMatchSnapshot();
+  });
 
-test.serial("Compiles TypeScript - fork checker", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/compiles-forked"
-  );
+  test("Compiles TypeScript - fork checker", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/compiles-forked"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js.map"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js.map")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-  t.snapshot(
-    testUtils.readForSnapshot(cwd, "dist/js/someLibrary.myBundle.min.js")
-  );
-});
+    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/someLibrary.myBundle.min.js")
+    ).toMatchSnapshot();
+  });
 
-test.serial("Compiles TypeScript - custom paths", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/compiles-paths"
-  );
+  test("Compiles TypeScript - custom paths", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/compiles-paths"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.truthy(testUtils.exists(cwd, "dist/js/js/components/Calculator.d.ts"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/js/components/Calculator.d.ts")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js"));
-  t.snapshot(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts"));
-  t.snapshot(
-    testUtils.readForSnapshot(cwd, "dist/js/js/components/Calculator.d.ts")
-  );
-});
+    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
+    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/components/Calculator.d.ts")
+    ).toMatchSnapshot();
+  });
 
-test.serial("Lints TypeScript with webpack", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/lints"
-  );
+  test("Lints TypeScript with webpack", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/lints"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
+    expect(result).toMatchSnapshot();
 
-  // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
-});
+    // Files aren't generated on failed lint
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  });
 
-test.serial("Fails gracefully on broken markup", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/fails"
-  );
+  test("Fails gracefully on broken markup", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/fails"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
-  // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
-});
+    // Files aren't generated on failed lint
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeFalsy();
+  });
 
-test.serial("Fails gracefully on invalid TS", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/invalid"
-  );
+  test("Fails gracefully on invalid TS", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/invalid"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
-  // Files aren't generated on failed types
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
-});
+    // Files aren't generated on failed types
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeFalsy();
+  });
 
-test.serial("Fails gracefully on invalid TS - fork checker", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/invalid-forked"
-  );
+  test("Fails gracefully on invalid TS - fork checker", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/invalid-forked"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
-  // Files aren't generated on failed types
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map"));
-});
+    // Files aren't generated on failed types
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myTSBundle.min.js.map")).toBeFalsy();
+  });
 
-test.serial("Removes unused classes", async t => {
-  const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-typescript-webpack/tree-shaking"
-  );
+  test("Removes unused classes", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript-webpack/tree-shaking"
+    );
 
-  const result = await testUtils.run(["run", "default"], cwd);
+    const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
 
-  const content = fs
-    .readFileSync(path.join(cwd, "dist/js/myBundle.min.js"))
-    .toString("utf8");
+    const content = fs
+      .readFileSync(path.join(cwd, "dist/js/myBundle.min.js"))
+      .toString("utf8");
 
-  t.truthy(content.indexOf("From class A") > -1);
-  t.falsy(content.indexOf("From class B") > -1);
+    expect(content.indexOf("From class A") > -1).toBeTruthy();
+    expect(content.indexOf("From class B") > -1).toBeFalsy();
+  });
 });

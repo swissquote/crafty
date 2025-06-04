@@ -1,33 +1,33 @@
-const test = require("ava");
-const fs = require("fs");
-const path = require("path");
-const configuration = require("@swissquote/crafty/src/configuration");
-const testUtils = require("../utils");
+import { test, expect } from "vitest";
+import fs from "fs";
+import path from "path";
+import configuration from "@swissquote/crafty/src/configuration";
+import * as testUtils from "../utils.js";
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-images and does not register gulp tasks", async t => {
+test("Loads crafty-preset-images and does not register gulp tasks", async () => {
   const crafty = await getCrafty(["@swissquote/crafty-preset-images"], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-images"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-images")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
 });
 
-test("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", async t => {
+test("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", async () => {
   const crafty = await getCrafty(
     ["@swissquote/crafty-preset-images", "@swissquote/crafty-runner-gulp"],
     {}
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-images"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-images")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "images_all",
     "images_svg",
     "images",
@@ -35,24 +35,22 @@ test("Loads crafty-preset-images, crafty-runner-gulp and registers gulp task", a
   ]);
 });
 
-test.serial("Copies and compresses images", async t => {
+test("Copies and compresses images", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-images");
 
   const result = await testUtils.run(["run", "images"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, "dist/images/batman.svg"));
-  t.truthy(testUtils.exists(cwd, "dist/images/somedir/cute-cats-2.jpg"));
-  t.falsy(testUtils.exists(cwd, "dist/images/notcopied.txt"));
+  expect(testUtils.exists(cwd, "dist/images/batman.svg")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/images/somedir/cute-cats-2.jpg")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/images/notcopied.txt")).toBeFalsy();
 
-  t.truthy(
-    fs.statSync(path.join(cwd, "dist/images/batman.svg")).size <
-      fs.statSync(path.join(cwd, "images/batman.svg")).size
-  );
-  t.truthy(
-    fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size <
-      fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size
-  );
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/batman.svg")).size
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/batman.svg")).size);
+  expect(
+    fs.statSync(path.join(cwd, "dist/images/somedir/cute-cats-2.jpg")).size
+  ).toBeLessThan(fs.statSync(path.join(cwd, "images/somedir/cute-cats-2.jpg")).size);
 });

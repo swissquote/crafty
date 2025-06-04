@@ -1,26 +1,26 @@
-const test = require("ava");
-const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
-const testUtils = require("../utils");
+import { test, expect, describe } from "vitest";
+import configuration from "@swissquote/crafty/src/configuration";
+import getCommands from "@swissquote/crafty/src/commands/index";
+import * as testUtils from "../utils";
 
 const getCrafty = configuration.getCrafty;
 
 const PRESET_BABEL = "@swissquote/crafty-preset-babel";
 
-test("Loads crafty-preset-babel and does not register webpack tasks", async t => {
+test("Loads crafty-preset-babel and does not register webpack tasks", async () => {
   const crafty = await getCrafty([PRESET_BABEL], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("jsLint"));
+  expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), []);
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
 });
 
-test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task", async t => {
+test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack task", async () => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
   const crafty = await getCrafty(
     [PRESET_BABEL, "@swissquote/crafty-runner-webpack"],
@@ -28,21 +28,21 @@ test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack tas
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("jsLint"));
+  expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "js_myBundle",
     "js",
     "default"
   ]);
 });
 
-test("Fails on double runner with incorrect bundle assignment", async t => {
+test("Fails on double runner with incorrect bundle assignment", async () => {
   const config = { js: { myBundle: { source: "css/style.scss" } } };
   const crafty = await getCrafty(
     [
@@ -54,17 +54,16 @@ test("Fails on double runner with incorrect bundle assignment", async t => {
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
 
-  t.throws(() => crafty.createTasks(), {
-    message:
-      "You have multiple runners, please specify a runner for 'myBundle'. Available runners are ['gulp/babel', 'webpack']."
-  });
+  expect(() => crafty.createTasks()).toThrowError(
+    "You have multiple runners, please specify a runner for 'myBundle'. Available runners are ['gulp/babel', 'webpack']."
+  );
 });
 
-test("Fails on double runner with imprecise bundle assignment", async t => {
+test("Fails on double runner with imprecise bundle assignment", async () => {
   const config = {
     js: { myBundle: { runner: "gulp", source: "css/style.scss" } }
   };
@@ -78,17 +77,16 @@ test("Fails on double runner with imprecise bundle assignment", async t => {
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
-  t.throws(() => crafty.createTasks(), {
-    message:
-      "More than one valid runner exists for 'myBundle'. Has to be one of ['gulp/babel', 'gulp/typescript']."
-  });
+  expect(() => crafty.createTasks()).toThrowError(
+    "More than one valid runner exists for 'myBundle'. Has to be one of ['gulp/babel', 'gulp/typescript']."
+  );
 });
 
-test("Fails on non-existing runners", async t => {
+test("Fails on non-existing runners", async () => {
   const config = {
     js: { myBundle: { runner: "someRunner", source: "css/style.scss" } }
   };
@@ -102,17 +100,16 @@ test("Fails on non-existing runners", async t => {
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-typescript"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
-  t.throws(() => crafty.createTasks(), {
-    message:
-      "Invalid runner 'someRunner' for 'myBundle'. Has to be one of ['gulp/babel', 'gulp/typescript']."
-  });
+  expect(() => crafty.createTasks()).toThrowError(
+    "Invalid runner 'someRunner' for 'myBundle'. Has to be one of ['gulp/babel', 'gulp/typescript']."
+  );
 });
 
-test("Assigns bundle only once when runner is specified", async t => {
+test("Assigns bundle only once when runner is specified", async () => {
   const config = {
     js: { myBundle: { runner: "webpack", source: "css/style.scss" } }
   };
@@ -126,35 +123,35 @@ test("Assigns bundle only once when runner is specified", async t => {
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes(PRESET_BABEL));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-webpack"));
+  expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("jsLint"));
+  expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "js_myBundle",
     "js",
     "default"
   ]);
 });
 
-test.serial("Lints JavaScript using command", async t => {
+test("Lints JavaScript using command", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(["jsLint", "js/**/*.js"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test.serial("Generates IDE Helper", async t => {
+test("Generates IDE Helper", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/ide", [
     "eslint.config.mjs",
     "prettier.config.mjs",
@@ -163,17 +160,17 @@ test.serial("Generates IDE Helper", async t => {
 
   const result = await testUtils.run(["ide"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "eslint.config.mjs"));
+  expect(testUtils.readForSnapshot(cwd, "eslint.config.mjs")).toMatchSnapshot();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, "prettier.config.mjs"));
+  expect(testUtils.readForSnapshot(cwd, "prettier.config.mjs")).toMatchSnapshot();
 });
 
-test.serial(
+test(
   "Lints JavaScript using command, ignore crafty.config.js",
-  async t => {
+  async () => {
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-babel/lints-ignore-config"
     );
@@ -183,16 +180,16 @@ test.serial(
       cwd
     );
 
-    t.snapshot(result);
-    t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
     // Files aren't generated on failed lint
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
   }
 );
 
-test.serial("Lints JavaScript using command, legacy", async t => {
+test("Lints JavaScript using command, legacy", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints-es5");
 
   const result = await testUtils.run(
@@ -200,15 +197,15 @@ test.serial("Lints JavaScript using command, legacy", async t => {
     cwd
   );
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test.serial("Lints JavaScript using command, format preset", async t => {
+test("Lints JavaScript using command, format preset", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(
@@ -216,15 +213,15 @@ test.serial("Lints JavaScript using command, format preset", async t => {
     cwd
   );
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test.serial("Lints JavaScript using command, recommended preset", async t => {
+test("Lints JavaScript using command, recommended preset", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
   const result = await testUtils.run(
@@ -232,17 +229,17 @@ test.serial("Lints JavaScript using command, recommended preset", async t => {
     cwd
   );
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-  t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test.serial(
+test(
   "Lints JavaScript using command, explicit configuration",
-  async t => {
+  async () => {
     const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
     const result = await testUtils.run(
@@ -250,11 +247,11 @@ test.serial(
       cwd
     );
 
-    t.snapshot(result);
-    t.is(result.status, 1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
     // Files aren't generated on failed lint
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
-    t.falsy(testUtils.exists(cwd, "dist/js/myBundle.min.js.map"));
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
   }
 );

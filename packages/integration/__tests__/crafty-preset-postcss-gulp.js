@@ -1,15 +1,15 @@
-const test = require("ava");
-const configuration = require("@swissquote/crafty/src/configuration");
-const getCommands = require("@swissquote/crafty/src/commands/index");
+import { test, expect } from "vitest";
+import configuration from "@swissquote/crafty/src/configuration";
+import getCommands from "@swissquote/crafty/src/commands/index.js";
 
-const testUtils = require("../utils");
+import * as testUtils from "../utils.js";
 
 const BUNDLED_CSS = "dist/css/myBundle.min.css";
 const BUNDLED_CSS_MAPS = "dist/css/myBundle.min.css.map";
 
 const getCrafty = configuration.getCrafty;
 
-test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", async t => {
+test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", async () => {
   const config = { myBundle: { source: "css/style.scss" } };
   const crafty = await getCrafty(
     ["@swissquote/crafty-preset-postcss", "@swissquote/crafty-runner-gulp"],
@@ -17,148 +17,151 @@ test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", 
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  t.truthy(loadedPresets.includes("@swissquote/crafty-preset-postcss"));
-  t.truthy(loadedPresets.includes("@swissquote/crafty-runner-gulp"));
+  expect(loadedPresets.includes("@swissquote/crafty-preset-postcss")).toBeTruthy();
+  expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   const commands = getCommands(crafty);
-  t.truthy(Object.keys(commands).includes("cssLint"));
+  expect(Object.keys(commands).includes("cssLint")).toBeTruthy();
 
   crafty.createTasks();
-  t.deepEqual(Object.keys(crafty.undertaker._registry.tasks()), [
+  expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
     "css__lint",
     "default"
   ]);
 });
 
-test.serial("Doesn't compile without a task, but lints", async t => {
+test("Doesn't compile without a task, but lints", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/no-bundle"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
+  expect(result).toMatchSnapshot();
 
-  t.falsy(testUtils.exists(cwd, "dist"));
+  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
 
-test.serial(
+test(
   "Doesn't compile without a task, but lints (doesn't throw in development)",
-  async t => {
+  async () => {
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-postcss-gulp/no-bundle-dev"
     );
 
     const result = await testUtils.run(["run", "default"], cwd);
 
-    t.snapshot(result);
-    t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-    t.falsy(testUtils.exists(cwd, "dist"));
+    expect(testUtils.exists(cwd, "dist")).toBeFalsy();
   }
 );
 
-test.serial("Fails gracefully on broken markup", async t => {
+test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
-  t.falsy(testUtils.exists(cwd, "dist"));
+  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
 
-test.serial("Experiment with all CSS", async t => {
+test("Experiment with all CSS", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/experiment"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
-  t.snapshot(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS)));
+  expect(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))).toMatchSnapshot();
 });
 
-test.serial("Experiment with all CSS, old browsers", async t => {
+test("Experiment with all CSS, old browsers", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/experiment_old_browsers"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
-  t.snapshot(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS)));
+  expect(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))).toMatchSnapshot();
 });
 
-test.serial("Compiles CSS", async t => {
+test("Compiles CSS", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
-  t.falsy(testUtils.exists(cwd, "dist/css/imported.scss"));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  t.deepEqual(
-    testUtils.readFile(cwd, BUNDLED_CSS),
+  expect(
+    testUtils.readFile(cwd, BUNDLED_CSS)
+  ).toBe(
     ".Link{color:#00f}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
-test.serial("Compiles CSS, configuration has overrides", async t => {
+test("Compiles CSS, configuration has overrides", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles-with-overrides"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
-  t.falsy(testUtils.exists(cwd, "dist/css/imported.scss"));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  t.deepEqual(
-    testUtils.readFile(cwd, BUNDLED_CSS),
+  expect(
+    testUtils.readFile(cwd, BUNDLED_CSS)
+  ).toBe(
     ".Link{color:#fa5b35}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
-test.serial("Compiles CSS, configuration preserve", async t => {
+test("Compiles CSS, configuration preserve", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles-preserve"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
-  t.falsy(testUtils.exists(cwd, "dist/css/imported.scss"));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  t.deepEqual(
-    testUtils.readFile(cwd, BUNDLED_CSS),
+  expect(
+    testUtils.readFile(cwd, BUNDLED_CSS)
+  ).toBe(
     ":root{--color:blue}" +
       ".Link{color:var(--color)}" +
       ":root{--BodyComponent-color:var(--color)}" +
@@ -167,22 +170,23 @@ test.serial("Compiles CSS, configuration preserve", async t => {
   );
 });
 
-test.serial("Compiles CSS, compiles color-function", async t => {
+test("Compiles CSS, compiles color-function", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles-color-function"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS));
-  t.truthy(testUtils.exists(cwd, BUNDLED_CSS_MAPS));
-  t.falsy(testUtils.exists(cwd, "dist/css/imported.scss"));
+  expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  t.deepEqual(
-    testUtils.readFile(cwd, BUNDLED_CSS),
+  expect(
+    testUtils.readFile(cwd, BUNDLED_CSS)
+  ).toBe(
     ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}" +
       "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );

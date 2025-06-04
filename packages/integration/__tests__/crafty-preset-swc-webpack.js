@@ -1,185 +1,185 @@
-const test = require("ava");
-const testUtils = require("../utils");
+import { test, expect } from "vitest";
+import * as testUtils from "../utils.js";
 
 const BUNDLE = "dist/js/myBundle.min.js";
 const BUNDLE_MAP = `${BUNDLE}.map`;
 
-test.serial("Compiles JavaScript", async t => {
+test("Compiles JavaScript", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/compiles"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Keeps imports unresolved for SWC Runtime", async t => {
+test("Keeps imports unresolved for SWC Runtime", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Compiles JavaScript with webpack overrides", async t => {
+test("Compiles JavaScript with webpack overrides", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/compiles-merge-webpack-config"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Compiles Generators", async t => {
+test("Compiles Generators", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/compiles-generators"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Deduplicates helpers", async t => {
+test("Deduplicates helpers", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/compiles-deduplicates"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Does not transpile on modern browsers", async t => {
+test("Does not transpile on modern browsers", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/no-old-browser"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Compiles JavaScript with externals", async t => {
+test("Compiles JavaScript with externals", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/externals"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Creates profiles", async t => {
+test("Creates profiles", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/profiles"
   );
 
   const result = await testUtils.run(["run", "default", "--analyze"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle_report.html"));
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle_stats.json"));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle_report.html")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle_stats.json")).toBeTruthy();
 
-  t.snapshot(testUtils.readForSnapshot(cwd, BUNDLE));
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
-test.serial("Lints JavaScript with webpack", async t => {
+test("Lints JavaScript with webpack", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/lints"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, BUNDLE));
-  t.falsy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });
 
-test.serial("Fails gracefully on broken markup", async t => {
+test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
   // Files aren't generated on failed lint
-  t.falsy(testUtils.exists(cwd, BUNDLE));
-  t.falsy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeFalsy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeFalsy();
 });
 
 // Doesn't seem to work yet
-test.serial("Removes unused classes", async t => {
+test("Removes unused classes", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-webpack/tree-shaking"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(testUtils.exists(cwd, BUNDLE));
-  t.truthy(testUtils.exists(cwd, BUNDLE_MAP));
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
 
   const content = testUtils.readFile(cwd, BUNDLE);
 
-  t.truthy(content.indexOf("From class A") > -1);
-  t.falsy(content.indexOf("From class B") > -1);
+  expect(content.indexOf("From class A") > -1).toBeTruthy();
+  expect(content.indexOf("From class B") > -1).toBeFalsy();
 });

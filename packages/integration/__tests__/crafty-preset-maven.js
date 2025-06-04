@@ -1,45 +1,45 @@
-const test = require("ava");
-const path = require("path");
-const testUtils = require("../utils");
+import { test, expect } from "vitest";
+import path from "path";
+import * as testUtils from "../utils.js";
 
-test.serial("Fails if no pom is found", async t => {
+test("Fails if no pom is found", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-maven/missing-pom"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.is(result.status, 0);
-  t.truthy(
+  expect(result.status).toBe(0);
+  expect(
     result.stdall.includes(
       "Could not define destination using maven, falling back to default."
     )
-  );
-  t.truthy(result.stdall.includes("No pom.xml found"));
-  t.snapshot(result);
+  ).toBeTruthy();
+  expect(result.stdall.includes("No pom.xml found")).toBeTruthy();
+  expect(result).toMatchSnapshot();
 
-  t.truthy(testUtils.exists(cwd, "dist/js/myBundle.min.js"));
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
 });
 
-test.serial("Places files in target of a webapp", async t => {
+test("Places files in target of a webapp", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webapp", [
     "target"
   ]);
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(
+  expect(
     testUtils.exists(
       cwd,
       "target/my-app-1.0.0-SNAPSHOT/resources/js/myBundle.min.js"
     )
-  );
+  ).toBeTruthy();
 });
 
-test.serial("Reads env. var before pom.xml", async t => {
+test("Reads env. var before pom.xml", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-maven/env-override",
     ["target"]
@@ -49,17 +49,17 @@ test.serial("Reads env. var before pom.xml", async t => {
     env: { TARGET_BASEDIR: path.join(cwd, "target/some_basedir") }
   });
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(
+  expect(
     testUtils.exists(cwd, "target/some_basedir/resources/js/myBundle.min.js")
-  );
+  ).toBeTruthy();
 });
 
-test.serial(
+test(
   "Places files in target of a webapp from within a subfolder",
-  async t => {
+  async () => {
     await testUtils.getCleanFixtures("crafty-preset-maven/subfolder", [
       "target"
     ]);
@@ -70,32 +70,32 @@ test.serial(
 
     const result = await testUtils.run(["run", "default"], cwd);
 
-    t.snapshot(result);
-    t.is(result.status, 0);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(0);
 
-    t.truthy(
+    expect(
       testUtils.exists(
         cwd,
         "../../../target/my-app-1.0.0-SNAPSHOT/resources/js/myBundle.min.js"
       )
-    );
+    ).toBeTruthy();
   }
 );
 
-test.serial("Places files in target of a webjar", async t => {
+test("Places files in target of a webjar", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webjar", [
     "target"
   ]);
 
   const result = await testUtils.run(["run", "default"], cwd);
 
-  t.snapshot(result);
-  t.is(result.status, 0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-  t.truthy(
+  expect(
     testUtils.exists(
       cwd,
       "target/classes/META-INF/resources/webjars/js/myBundle.min.js"
     )
-  );
+  ).toBeTruthy();
 });
