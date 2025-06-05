@@ -85,8 +85,21 @@ module.exports = [
 
         "stable-hash": "../stable-hash/index.js",
         "unrs-resolver": "unrs-resolver",
-        "@typescript-eslint/utils": "../typescript-eslint/utils.js"
+        "@typescript-eslint/utils": "../typescript-eslint/utils.js",
+        "@typescript-eslint/types": "../typescript-eslint/types.js",
       }),
+      async (_, compilerUtils) => {
+        console.log("patch eslint-plugin-import-x");
+        await compilerUtils.replaceContent("./dist/eslint-plugin-import-x/index.js", content => {
+          const version = require("eslint-plugin-import-x/package.json").version;
+
+          return content.replace(
+            "const { name, version } = cjsRequire(\"../package.json\");",
+            `const name = \"eslint-plugin-import-x\"; const version = \"${version}\";`
+          );
+        });
+      },
+
   builder =>
     builder("ts-api-utils")
       .package()
