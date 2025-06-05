@@ -48,6 +48,7 @@ module.exports = [
         "path-parse": "../path-parse/index.js"
       }),
   builder => builder("stable-hash").package(),
+  builder => builder("stable-hash-x").package(),
   builder =>
     builder("eslint-import-resolver-typescript")
       .package()
@@ -61,11 +62,20 @@ module.exports = [
 
         "unrs-resolver": "unrs-resolver",
         "stable-hash": "../stable-hash/index.js",
+        "eslint-import-context": "../eslint-import-context/index.js",
 
         // no code path uses this library
         open: "open"
       }),
   builder => builder("eslint-config-prettier").package(),
+  builder => builder("eslint-import-context")
+      .package()
+      .externals({
+        ...externals,
+
+        "stable-hash-x": "../stable-hash-x/index.js",
+        "get-tsconfig": "../get-tsconfig/index.js",
+      }),
   builder =>
     builder("eslint-plugin-import-x")
       .package()
@@ -87,6 +97,8 @@ module.exports = [
         "unrs-resolver": "unrs-resolver",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js",
         "@typescript-eslint/types": "../typescript-eslint/types.js",
+        "eslint-import-context": "../eslint-import-context/index.js",
+        "stable-hash-x": "../stable-hash-x/index.js",
       }),
       async (_, compilerUtils) => {
         console.log("patch eslint-plugin-import-x");
