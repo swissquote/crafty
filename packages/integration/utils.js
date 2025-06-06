@@ -1,4 +1,4 @@
-import execa from "execa";
+import { execaNode } from "execa";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from 'url';
@@ -104,7 +104,7 @@ export async function run(args, cwd, commandOptions) {
 
   options.env = { TESTING_CRAFTY: "true", ...options.env };
 
-  const ret = await execa.node(
+  const ret = await execaNode(
     require.resolve("@swissquote/crafty/src/bin.cjs"),
     args,
     options
