@@ -52,6 +52,10 @@ module.exports = [
   builder =>
     builder("eslint-import-resolver-typescript")
       .package()
+      // This library generates an "index.js" file that overrides the default
+      // "index.js" file in the package. We need to ensure that both files are
+      // available in the final package.
+      .destination("dist/eslint-import-resolver-typescript/index_lib.js")
       .externals({
         ...externals,
 

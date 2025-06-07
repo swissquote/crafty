@@ -1,1 +1,1 @@
-module.exports = require("../dist/eslint-import-resolver-typescript/index.js");
+module.exports = require("../dist/eslint-import-resolver-typescript/index_lib.js");
