@@ -47,7 +47,6 @@ module.exports = [
         "is-core-module": "../is-core-module/index.js",
         "path-parse": "../path-parse/index.js"
       }),
-  builder => builder("stable-hash").package(),
   builder => builder("stable-hash-x").package(),
   builder =>
     builder("eslint-import-resolver-typescript")
@@ -65,7 +64,7 @@ module.exports = [
         "get-tsconfig": "../get-tsconfig/index.js",
 
         "unrs-resolver": "unrs-resolver",
-        "stable-hash": "../stable-hash/index.js",
+        "stable-hash-x": "../stable-hash-x/index.js",
         "eslint-import-context": "../eslint-import-context/index.js",
 
         // no code path uses this library
