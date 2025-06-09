@@ -7,13 +7,14 @@
 // This package borrows from https://www.npmjs.com/package/oao
 // all credit goes to its maintainer for the logic and how it works
 
-const prompts = require("prompts");
-const semver = require("semver");
-const chalk = require("chalk");
-const path = require("path");
-const globby = require("globby");
-const fs = require("fs");
-const execa = require("execa");
+import prompts from "prompts";
+import semver from "semver";
+import chalk from "chalk";
+import path from "path";
+import globby from "globby";
+import fs from "fs";
+import { execa } from "execa";
+import yargsParser from "yargs-parser";
 
 async function promptNextVersion(prevVersion) {
   const major = semver.inc(prevVersion, "major");
@@ -229,11 +230,12 @@ async function publish(allSpecs, preRelease) {
     boolean: ["pre-release"],
     string: ["new-version"]
   };
-  const argv = require("yargs-parser")(process.argv.slice(2), options);
+  
+  const argv = yargsParser(process.argv.slice(2), options);
 
   // List workspace packages
   const rootPackagePath = "package.json";
-  const rootPackage = require(path.join(process.cwd(), rootPackagePath));
+  const rootPackage = JSON.parse(fs.readFileSync(path.join(process.cwd(), rootPackagePath), "utf8"));
   const originalVersion = rootPackage.version;
 
   const paths = await globby(

@@ -25,8 +25,8 @@
     "stats": "find . -name '*-stats.json' -print0 | xargs -0 utils/duplicates.js",
     "test": "./run_all.sh test",
     "test:ci": "./run_all.sh test:ci",
-    "publish:canary": "./utils/publish.js --pre-release",
-    "publish:all": "./utils/publish.js",
+    "publish:canary": "./utils/publish.mjs --pre-release",
+    "publish:all": "./utils/publish.mjs",
     "upgrade": "yarn up -R '**'"
   },
   "dependencies": {
