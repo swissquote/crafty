@@ -1,10 +1,14 @@
 const { warn } = require("./utils");
 
+const typescriptParserPath = require.resolve(
+  "../packages/typescript-eslint_parser.js"
+);
+
 // EcmaScript 6 specific configuration
 module.exports = {
   files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
   languageOptions: {
-    parser: require("../packages/typescript-eslint_parser.js")
+    parser: require(typescriptParserPath)
   },
 
   /*parserOptions: {
@@ -23,7 +27,7 @@ module.exports = {
   },*/
   settings: {
     "import-x/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".cts"]
+      [typescriptParserPath]: [".ts", ".tsx", ".mts", ".cts"]
     },
     "import-x/resolver": {
       // use <root>/tsconfig.json
