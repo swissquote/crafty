@@ -23,7 +23,7 @@ exports[`Compiles JavaScript 2`] = `
 `;
 
 exports[`Compiles JavaScript 3`] = `
-"setTimeout((()=>{console.log("Welcome to this website")}),1e3);//# sourceMappingURL=otherfile.js.map
+"setTimeout(()=>{console.log("Welcome to this website")},1e3);//# sourceMappingURL=otherfile.js.map
 "
 `;
 
@@ -45,7 +45,7 @@ exports[`Compiles JavaScript and concatenates 1`] = `
 `;
 
 exports[`Compiles JavaScript and concatenates 2`] = `
-"setTimeout((()=>{console.log("Welcome to this website")}),1e3);class Test{constructor(e){this.name=e}sayHi(){console.log(\`Hello \${this.name} !\`)}}const test=new Test("Stéphane");test.sayHi();//# sourceMappingURL=myBundle.min.js.map
+"setTimeout(()=>{console.log("Welcome to this website")},1e3);class Test{constructor(e){this.name=e}sayHi(){console.log(\`Hello \${this.name} !\`)}}const test=new Test("Stéphane");test.sayHi();//# sourceMappingURL=myBundle.min.js.map
 "
 `;
 
