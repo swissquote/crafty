@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/eslint-plugin-swissquote",
-  "version": "1.28.0",
+  "version": "1.28.1",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test src/__tests__/*.test.mjs"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.28.0",
+    "@swissquote/crafty-commons": "1.28.1",
     "typescript": "5.8.3",
     "unrs-resolver": "1.9.2"
   },

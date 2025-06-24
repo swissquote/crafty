@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-eslint",
-  "version": "1.28.0",
+  "version": "1.28.1",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -16,10 +16,10 @@
     "lint": "node src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.28.0",
-    "@swissquote/crafty-commons": "1.28.0",
-    "@swissquote/crafty-preset-prettier": "1.28.0",
-    "@swissquote/eslint-plugin-swissquote": "1.28.0",
+    "@swissquote/crafty": "1.28.1",
+    "@swissquote/crafty-commons": "1.28.1",
+    "@swissquote/crafty-preset-prettier": "1.28.1",
+    "@swissquote/eslint-plugin-swissquote": "1.28.1",
     "eslint": "9.29.0",
     "schema-utils": "4.3.2"
   },
@@ -28,7 +28,7 @@
     "resolve-from": "5.0.0"
   },
   "peerDependencies": {
-    "@swissquote/crafty-preset-eslint": "1.28.0"
+    "@swissquote/crafty-preset-eslint": "1.28.1"
   },
   "engines": {
     "node": ">=18"
