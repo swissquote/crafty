@@ -2726,14 +2726,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@onigoetz/resquoosh@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@onigoetz/resquoosh@npm:1.1.1"
+"@onigoetz/resquoosh@npm:1.1.2":
+  version: 1.1.2
+  resolution: "@onigoetz/resquoosh@npm:1.1.2"
   dependencies:
     get-orientation: "npm:^1.1.2"
-    image-size: "npm:^1.1.1"
+    image-size: "npm:^2.0.0"
     tinypool: "npm:^1.0.0"
-  checksum: 10c0/aa72c1d42ccb665f2bcb07b51e07d2975a72b9340ae4a84f1a1b0d26cd2c2bda25be9528c87e78a03d1ebb32a62e491e1864e3417f99f1e028d1b97ed227e702
+  checksum: 10c0/798957dc93c53434896f0b5f40b3286b6949b30b6f394cf1e2a3ca217c775ae01425f40c6674cc610afc8951ff99fc183afd635c4ab1ab6c9116ac68224e9e09
   languageName: node
   linkType: hard
 
@@ -3650,7 +3650,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-images@workspace:packages/crafty-preset-images"
   dependencies:
-    "@onigoetz/resquoosh": "npm:1.1.1"
+    "@onigoetz/resquoosh": "npm:1.1.2"
     "@swissquote/crafty": "npm:1.28.1"
     "@swissquote/crafty-commons": "npm:1.28.1"
     "@swissquote/crafty-commons-gulp": "npm:1.28.1"
@@ -8750,7 +8750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-size@npm:1.2.1, image-size@npm:^1.1.1":
+"image-size@npm:1.2.1":
   version: 1.2.1
   resolution: "image-size@npm:1.2.1"
   dependencies:
@@ -8758,6 +8758,15 @@ __metadata:
   bin:
     image-size: bin/image-size.js
   checksum: 10c0/f8b3c19d4476513f1d7e55c3e6db80997b315444743e2040d545cbcaee59be03d2eb40c46be949a8372697b7003fdb0c04925d704390a7f606bc8181e25c0ed4
+  languageName: node
+  linkType: hard
+
+"image-size@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "image-size@npm:2.0.2"
+  bin:
+    image-size: bin/image-size.js
+  checksum: 10c0/f09dd0f7cf8511cd20e4f756bdb5a7cb6d2240de3323f41bde266bed8373392a293892bf12e907e2995f52833fd88dd27cf6b1a52ab93968afc716cb78cd7b79
   languageName: node
   linkType: hard
 
