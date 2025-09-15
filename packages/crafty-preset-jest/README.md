@@ -161,3 +161,31 @@ module.exports = {
 
 The full list of available configuration option is available
 [on the official website](https://facebook.github.io/jest/docs/en/configuration.html).
+
+## SonarQube Integration
+
+Most of the time, at Swissquote we use SonarQube to check our code quality.
+More often than not, we add a custom reporter to create a SonarQube test report.
+
+`crafty-preset-jest` comes out of the box with a sonar report that is written to `reports/sonar-report.xml`.
+
+This report is automatically added to the configuration if no reporter is specified through the command line.
+
+You can decide to change this configuration by overriding `options.reporters`
+
+```javascript
+const path = require("path");
+const MODULES = path.join(__dirname, "..", "node_modules");
+
+module.exports = {
+  /**
+   * Represents the extension point for Jest configuration
+   * @param {Crafty} crafty - The instance of Crafty.
+   * @param {Object} options - The Jest configuration object
+   */
+  jest(crafty, options) {
+    // The Sonar reporter is automatically added
+    console.log(options.reporters); // ['default', ["sonar", { outputFile: "./reports/sonar-report.xml" }]]
+  },
+};
+```

@@ -11,6 +11,23 @@ function isModuleMode() {
   return false;
 }
 
+const SONAR_REPORTER_MODULE = require.resolve("jest-to-sonar");
+
+function finalizeReporters(reporters) {
+  return reporters.map(reporter => {
+    if (typeof reporter === "string" && reporter === "sonar") {
+      return [SONAR_REPORTER_MODULE, { outputFile: "./reports/sonar-report.xml" }];
+    }
+    if (Array.isArray(reporter) && reporter.length > 0) {
+      const [name, config] = reporter;
+      if (typeof name === "string" && name === "sonar") {
+        return [SONAR_REPORTER_MODULE, config];
+      }
+    }
+    return reporter;
+  });
+}
+
 function normalizeJestOptions(crafty, args) {
   const moduleDirectories = new Set(["node_modules"]);
 
@@ -28,6 +45,17 @@ function normalizeJestOptions(crafty, args) {
       .forEach(extension => moduleFileExtensions.add(extension));
   }
 
+  const reporters = [];
+  while ((idx = args.indexOf("--reporters")) > -1) {
+    const [, reporter] = args.splice(idx, 2);
+    reporter.split(",").forEach(r => reporters.push(r));
+  }
+
+  if (reporters.length === 0) {
+    reporters.push("default");
+    reporters.push(["sonar", { outputFile: "./reports/sonar-report.xml" }]);
+  }
+
   const options = {
     moduleDirectories: [...moduleDirectories],
     moduleFileExtensions: [...moduleFileExtensions],
@@ -38,6 +66,7 @@ function normalizeJestOptions(crafty, args) {
       ),
       "\\.(css|less|sass|scss)$": require.resolve("./style-mock")
     },
+    reporters,
     bail: true,
     roots: [process.cwd()],
     transform: {},
@@ -61,6 +90,8 @@ function normalizeJestOptions(crafty, args) {
     .filter(extension => extension !== "json")
     .join("|");
   options.testRegex = `(/__tests__/.*|(\\.|/)(test|spec))\\.(${extensions})$`;
+
+  options.reporters = finalizeReporters(options.reporters);
 
   return options;
 }
