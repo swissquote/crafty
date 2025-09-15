@@ -212,6 +212,9 @@ need them.</p>
 <li>
 <a href="#extending-the-configuration">Extending the configuration</a>
 </li>
+<li>
+<a href="#sonarqube-integration">SonarQube Integration</a>
+</li>
 </ul>    </div>
 </div>
 <h2><a id="file-name-conventions" href="#file-name-conventions" class="Permalink" aria-hidden="true" title="Permalink">#</a>File name Conventions</h2>
@@ -306,6 +309,27 @@ function to override Jest’s configuration.</p>
 </code></pre>
 <p>The full list of available configuration option is available
 <a href="https://facebook.github.io/jest/docs/en/configuration.html" class="Link--external" rel="noopener noreferrer">on the official website</a>.</p>
+<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>SonarQube Integration</h2>
+<p>Most of the time, at Swissquote we use SonarQube to check our code quality.
+More often than not, we add a custom reporter to create a SonarQube test report.</p>
+<p><code>crafty-preset-jest</code> comes out of the box with a sonar report that is written to <code>reports/sonar-report.xml</code>.</p>
+<p>This report is automatically added to the configuration if no reporter is specified through the command line.</p>
+<p>You can decide to change this configuration by overriding <code>options.reporters</code></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> MODULES = path.join(__dirname, <span class="hljs-string">".."</span>, <span class="hljs-string">"node_modules"</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">/**
+   * Represents the extension point for Jest configuration
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Crafty}</span> <span class="hljs-variable">crafty</span></span> - The instance of Crafty.
+   * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> <span class="hljs-variable">options</span></span> - The Jest configuration object
+   */</span>
+  jest(crafty, options) {
+    <span class="hljs-comment">// The Sonar reporter is automatically added</span>
+    <span class="hljs-built_in">console</span>.log(options.reporters); <span class="hljs-comment">// ['default', ["sonar", { outputFile: "./reports/sonar-report.xml" }]]</span>
+  },
+};
+</code></pre>
     </div>
 
         <nav>
