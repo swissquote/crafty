@@ -3525,7 +3525,7 @@ __metadata:
     "@swissquote/crafty-commons": "npm:1.28.1"
     "@swissquote/gulp-concat": "npm:1.28.1"
     "@swissquote/gulp-newer": "npm:1.28.1"
-    gulp-eslint-new: "npm:2.4.0"
+    gulp-eslint-new: "npm:2.5.0"
     plugin-error: "npm:2.0.1"
   peerDependencies:
     "@swissquote/crafty": 1.28.1
@@ -8382,24 +8382,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-eslint-new@npm:2.4.0":
-  version: 2.4.0
-  resolution: "gulp-eslint-new@npm:2.4.0"
+"gulp-eslint-new@npm:2.5.0":
+  version: 2.5.0
+  resolution: "gulp-eslint-new@npm:2.5.0"
   dependencies:
-    "@types/eslint": "npm:^9.6.1"
     "@types/node": "npm:>=12"
     eslint: "npm:8 || 9"
     fancy-log: "npm:^2.0.0"
     plugin-error: "npm:^2.0.1"
-    semver: "npm:^7.6.3"
+    semver: "npm:^7.7.2"
     ternary-stream: "npm:^3.0.0"
-    vinyl-fs: "npm:^4.0.0"
+    vinyl-fs: "npm:^4.0.2"
   dependenciesMeta:
-    "@types/eslint":
-      optional: true
     "@types/node":
       optional: true
-  checksum: 10c0/7e63180991c3520192bb5098082e5e09d7d9f04043a4b08a260b929ac864a116ffaf6ca9cedd2c849d91683038266747d26226bc75ddf3d5c03d4dcc98f62989
+  checksum: 10c0/44821222210c83fb00c642d4517fbd78228df8dbd6276db4a9769fde327b23f76f3d20f9629a4a86407d8767d26f4ce1aea474b88eb7d3f3fe3168113c61664a
   languageName: node
   linkType: hard
 
@@ -13977,7 +13974,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vinyl-fs@npm:4.0.2, vinyl-fs@npm:^4.0.0":
+"vinyl-fs@npm:4.0.2, vinyl-fs@npm:^4.0.0, vinyl-fs@npm:^4.0.2":
   version: 4.0.2
   resolution: "vinyl-fs@npm:4.0.2"
   dependencies:
