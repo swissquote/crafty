@@ -6,22 +6,14 @@ const {
   toolConfiguration,
   toTempFile
 } = require("./templates.js");
+require("./patch-for-eslintignore.js");
+const { createFormatter } = require("./formatter.js");
 
 const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:preset-eslint"
 );
 
 const MODULES = path.join(__dirname, "..", "node_modules");
-
-// ESLint prints a warning when it encounters a .eslintignore file
-// However we want to support that file, so we need to ignore the warning
-const originalEmitWarning = process.emitWarning;
-process.emitWarning = (...args) => {
-  if (args[1] === "ESLintIgnoreWarning") {
-    return;
-  }
-  originalEmitWarning.apply(process, args);
-};
 
 module.exports = {
   toESLintConfig,
@@ -76,7 +68,8 @@ module.exports = {
             configType: "flat",
             eslintPath: require.resolve("eslint/use-at-your-own-risk"),
             extensions,
-            overrideConfigFile: toTempFile(toolConfiguration(crafty))
+            overrideConfigFile: toTempFile(toolConfiguration(crafty)),
+            formatter: createFormatter(bundle.taskName)
           }
         ]);
     }

@@ -26,6 +26,12 @@ function extractConfig(args) {
     args.splice(idx, 2);
   }
 
+  // Add our own formatter if none is specified
+  if (args.indexOf("-f") === -1 && args.indexOf("--format") === -1) {
+    args.push("--format");
+    args.push(require.resolve("../formatter.js"));
+  }
+
   return {
     presets,
     configFile
