@@ -8,10 +8,15 @@ const getCrafty = configuration.getCrafty;
 
 describe("crafty-preset-typescript-webpack", () => {
   test("Loads crafty-preset-typescript and does not register webpack tasks", async () => {
-    const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
+    const crafty = await getCrafty(
+      ["@swissquote/crafty-preset-typescript"],
+      {}
+    );
 
     const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-    expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+    expect(
+      loadedPresets.includes("@swissquote/crafty-preset-typescript")
+    ).toBeTruthy();
 
     crafty.createTasks();
     expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -28,8 +33,12 @@ describe("crafty-preset-typescript-webpack", () => {
     );
 
     const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-    expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
-    expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+    expect(
+      loadedPresets.includes("@swissquote/crafty-preset-typescript")
+    ).toBeTruthy();
+    expect(
+      loadedPresets.includes("@swissquote/crafty-runner-webpack")
+    ).toBeTruthy();
 
     crafty.createTasks();
     expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([
@@ -52,14 +61,24 @@ describe("crafty-preset-typescript-webpack", () => {
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")
+    ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
 
-    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")
+    ).toMatchSnapshot();
   });
 
   test("Compiles TypeScript, alternate conf", async () => {
@@ -75,14 +94,24 @@ describe("crafty-preset-typescript-webpack", () => {
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")
+    ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
 
-    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/Component.d.ts")
+    ).toMatchSnapshot();
   });
 
   test("Compiles TypeScript - fork checker", async () => {
@@ -97,10 +126,16 @@ describe("crafty-preset-typescript-webpack", () => {
 
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js.map")).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js")
+    ).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/someLibrary.myBundle.min.js.map")
+    ).toBeTruthy();
 
-    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+    ).toMatchSnapshot();
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/someLibrary.myBundle.min.js")
     ).toMatchSnapshot();
@@ -119,13 +154,23 @@ describe("crafty-preset-typescript-webpack", () => {
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/784.myBundle.min.js.map")
+    ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/js/components/Calculator.d.ts")).toBeTruthy();
+    expect(
+      testUtils.exists(cwd, "dist/js/js/components/Calculator.d.ts")
+    ).toBeTruthy();
 
-    expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")).toMatchSnapshot();
-    expect(testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/784.myBundle.min.js")
+    ).toMatchSnapshot();
+    expect(
+      testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")
+    ).toMatchSnapshot();
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/js/components/Calculator.d.ts")
     ).toMatchSnapshot();

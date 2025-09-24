@@ -9,7 +9,9 @@ test("Loads crafty-preset-postcss and does not register gulp tasks", async () =>
   const crafty = await getCrafty(["@swissquote/crafty-preset-postcss"], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  expect(loadedPresets.includes("@swissquote/crafty-preset-postcss")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-postcss")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("cssLint")).toBeTruthy();
@@ -74,9 +76,13 @@ test("Creates IDE Integration files", async () => {
 
   expect(result).toMatchSnapshot();
   expect(result.status).toBe(0);
-  expect(testUtils.readForSnapshot(cwd, "stylelint.config.mjs")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "stylelint.config.mjs")
+  ).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot(cwd, "prettier.config.mjs")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "prettier.config.mjs")
+  ).toMatchSnapshot();
 
   expect(testUtils.exists(cwd, ".gitignore")).toBeFalsy();
 });

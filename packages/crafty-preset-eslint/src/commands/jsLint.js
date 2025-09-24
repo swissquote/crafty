@@ -32,13 +32,14 @@ function extractConfig(args) {
   };
 }
 
-module.exports = function runESLint(crafty) {
-
+function runESLint(crafty) {
   // Force flat config mode
   process.env.ESLINT_USE_FLAT_CONFIG = "true";
 
   // Write config to a file
-  const tmpfile = toTempFile(commandConfiguration(crafty, extractConfig(process.argv)));
+  const tmpfile = toTempFile(
+    commandConfiguration(crafty, extractConfig(process.argv))
+  );
 
   // Remove "jsLint" from  command
   // Doesn't apply when we use the command as if we used eslint
@@ -50,4 +51,18 @@ module.exports = function runESLint(crafty) {
   process.argv.push(tmpfile);
 
   require(".bin/eslint");
+}
+
+module.exports = runESLint;
+
+// Call ESLint immediately, allows to use this file as a CLI tool
+if (require.main === module) {
+  import("@swissquote/crafty").then(async ({ initialize }) => {
+    const crafty = await initialize([], {
+      readConfig: false,
+      presets: ["@swissquote/crafty-preset-eslint"]
+    });
+
+    runESLint(crafty);
+  });
 }

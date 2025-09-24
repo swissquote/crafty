@@ -61,7 +61,9 @@ test("Compiles JavaScript", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles JavaScript, keeps runtime external", async () => {
@@ -84,7 +86,9 @@ test("Compiles JavaScript, keeps runtime external", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles JavaScript, new features transpiled", async () => {
@@ -107,7 +111,9 @@ test("Compiles JavaScript, new features transpiled", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Fails gracefully on broken markup", async () => {
@@ -141,7 +147,9 @@ test("Compiles JavaScript and concatenates", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+  ).toMatchSnapshot();
 });
 
 test("Lints JavaScript", async () => {

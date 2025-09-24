@@ -1,4 +1,4 @@
-import { test, expect, describe } from "vitest";
+import { test, expect } from "vitest";
 import configuration from "@swissquote/crafty/src/configuration";
 import getCommands from "@swissquote/crafty/src/commands/index";
 import * as testUtils from "../utils";
@@ -29,7 +29,9 @@ test("Loads crafty-preset-babel, crafty-runner-webpack and registers webpack tas
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
@@ -56,7 +58,9 @@ test("Fails on double runner with incorrect bundle assignment", async () => {
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrowError(
     "You have multiple runners, please specify a runner for 'myBundle'. Available runners are ['gulp/babel', 'webpack']."
@@ -78,7 +82,9 @@ test("Fails on double runner with imprecise bundle assignment", async () => {
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrowError(
@@ -101,7 +107,9 @@ test("Fails on non-existing runners", async () => {
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrowError(
@@ -125,7 +133,9 @@ test("Assigns bundle only once when runner is specified", async () => {
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_BABEL)).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
@@ -165,29 +175,28 @@ test("Generates IDE Helper", async () => {
 
   expect(testUtils.readForSnapshot(cwd, "eslint.config.mjs")).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot(cwd, "prettier.config.mjs")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "prettier.config.mjs")
+  ).toMatchSnapshot();
 });
 
-test(
-  "Lints JavaScript using command, ignore crafty.config.js",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-babel/lints-ignore-config"
-    );
+test("Lints JavaScript using command, ignore crafty.config.js", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel/lints-ignore-config"
+  );
 
-    const result = await testUtils.run(
-      ["--preset", PRESET_BABEL, "--ignore-crafty-config", "jsLint", "*.js"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["--preset", PRESET_BABEL, "--ignore-crafty-config", "jsLint", "*.js"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
 
 test("Lints JavaScript using command, legacy", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints-es5");
@@ -237,21 +246,18 @@ test("Lints JavaScript using command, recommended preset", async () => {
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test(
-  "Lints JavaScript using command, explicit configuration",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
+test("Lints JavaScript using command, explicit configuration", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-babel/lints");
 
-    const result = await testUtils.run(
-      ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});

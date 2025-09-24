@@ -29,7 +29,9 @@ test("Loads crafty-preset-swc, crafty-runner-webpack and registers webpack task"
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_SWC)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
@@ -56,7 +58,9 @@ test("Fails on double runner with incorrect bundle assignment", async () => {
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_SWC)).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrow(
     "You have multiple runners, please specify a runner for 'myBundle'. Available runners are ['gulp/swc', 'webpack']."
@@ -78,7 +82,9 @@ test("Fails on double runner with imprecise bundle assignment", async () => {
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_SWC)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrow(
@@ -101,7 +107,9 @@ test("Fails on non-existing runners", async () => {
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_SWC)).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   expect(() => crafty.createTasks()).toThrow(
@@ -125,7 +133,9 @@ test("Assigns bundle only once when runner is specified", async () => {
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
   expect(loadedPresets.includes(PRESET_SWC)).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
-  expect(loadedPresets.includes("@swissquote/crafty-runner-webpack")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-runner-webpack")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
@@ -152,7 +162,9 @@ test("Lints JavaScript using command", async () => {
 });
 
 test("Lints with additional plugin - command", async () => {
-  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc/lints-additional-plugin"
+  );
 
   const result = await testUtils.run(["eslint", "js/**/*.js"], cwd);
 
@@ -165,7 +177,9 @@ test("Lints with additional plugin - command", async () => {
 });
 
 test("Lints with additional plugin - webpack", async () => {
-  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc/lints-additional-plugin"
+  );
 
   const result = await testUtils.run(["run", "js_webpack"], cwd);
 
@@ -178,7 +192,9 @@ test("Lints with additional plugin - webpack", async () => {
 });
 
 test("Lints with additional plugin - gulp", async () => {
-  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-additional-plugin");
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc/lints-additional-plugin"
+  );
 
   const result = await testUtils.run(["run", "js_gulp"], cwd);
 
@@ -204,29 +220,28 @@ test("Generates IDE Helper", async () => {
 
   expect(testUtils.readForSnapshot(cwd, "eslint.config.mjs")).toMatchSnapshot();
 
-  expect(testUtils.readForSnapshot(cwd, "prettier.config.mjs")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "prettier.config.mjs")
+  ).toMatchSnapshot();
 });
 
-test(
-  "Lints JavaScript using command, ignore crafty.config.js",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-swc/lints-ignore-config"
-    );
+test("Lints JavaScript using command, ignore crafty.config.js", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc/lints-ignore-config"
+  );
 
-    const result = await testUtils.run(
-      ["--preset", PRESET_SWC, "--ignore-crafty-config", "jsLint", "*.js"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["--preset", PRESET_SWC, "--ignore-crafty-config", "jsLint", "*.js"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
 
 test("Lints JavaScript using command, legacy", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-es5");
@@ -276,83 +291,76 @@ test("Lints JavaScript using command, recommended preset", async () => {
   expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
 });
 
-test(
-  "Lints JavaScript using command, respects .eslintignore",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints-eslintignore");
+test("Lints JavaScript using command, respects .eslintignore", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc/lints-eslintignore"
+  );
 
-    const result = await testUtils.run(
-      ["eslint", "js"],
-      cwd
-    );
+  const result = await testUtils.run(["eslint", "js"], cwd);
 
-    expect(result).toMatchSnapshot();
-    expect(result.stdall.includes("js/script.js")).toBeTruthy();
-    expect(result.stdall.includes("js/Component.js")).toBeFalsy();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(result.stdall.includes("js/script.js")).toBeTruthy();
+  expect(result.stdall.includes("js/Component.js")).toBeFalsy();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
 
-test(
-  "Lints JavaScript using command, explicit configuration - json",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
+test("Lints JavaScript using command, explicit configuration - json", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
 
-    const result = await testUtils.run(
-      ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--config", "eslintOverride.json"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.stdall.includes("Unexpected use of continue statement")).toBeTruthy();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(
+    result.stdall.includes("Unexpected use of continue statement")
+  ).toBeTruthy();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
 
-test(
-  "Lints JavaScript using command, explicit configuration - cjs",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
+test("Lints JavaScript using command, explicit configuration - cjs", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
 
-    const result = await testUtils.run(
-      ["jsLint", "js/**/*.js", "--config", "eslintOverride.cjs"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--config", "eslintOverride.cjs"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.stdall.includes("Unexpected use of continue statement")).toBeTruthy();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(
+    result.stdall.includes("Unexpected use of continue statement")
+  ).toBeTruthy();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});
 
-test(
-  "Lints JavaScript using command, explicit configuration - mjs",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
+test("Lints JavaScript using command, explicit configuration - mjs", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-swc/lints");
 
-    const result = await testUtils.run(
-      ["jsLint", "js/**/*.js", "--config", "eslintOverride.mjs"],
-      cwd
-    );
+  const result = await testUtils.run(
+    ["jsLint", "js/**/*.js", "--config", "eslintOverride.mjs"],
+    cwd
+  );
 
-    expect(result).toMatchSnapshot();
-    expect(result.stdall.includes("Unexpected use of continue statement")).toBeTruthy();
-    expect(result.status).toBe(1);
+  expect(result).toMatchSnapshot();
+  expect(
+    result.stdall.includes("Unexpected use of continue statement")
+  ).toBeTruthy();
+  expect(result.status).toBe(1);
 
-    // Files aren't generated on failed lint
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-  }
-);
+  // Files aren't generated on failed lint
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+});

@@ -1,9 +1,9 @@
 import { execaNode } from "execa";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 export function snapshotizeOutput(ret) {
   const escapedPath = path
@@ -129,7 +129,13 @@ export function readForSnapshot(cwd, file) {
 }
 
 export async function getCleanFixtures(fixtures, clean = ["dist"]) {
-  const dir = path.join(__dirname, "..", "integration-fixtures-cjs", "fixtures", fixtures);
+  const dir = path.join(
+    __dirname,
+    "..",
+    "integration-fixtures-cjs",
+    "fixtures",
+    fixtures
+  );
   for (const dirToClean of clean) {
     // eslint-disable-next-line no-await-in-loop
     await fs.promises.rm(path.join(dir, dirToClean), {

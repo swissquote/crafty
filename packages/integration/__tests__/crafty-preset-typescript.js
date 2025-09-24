@@ -17,47 +17,41 @@ describe("crafty-preset-typescript", () => {
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
   });
 
-  test(
-    "Lints TypeScript using the command, --preset recommended, --preset node",
-    async () => {
-      const cwd = await testUtils.getCleanFixtures(
-        "crafty-preset-typescript/lints"
-      );
+  test("Lints TypeScript using the command, --preset recommended, --preset node", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints"
+    );
 
-      const result = await testUtils.run(
-        ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
-        cwd
-      );
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.ts", "--preset", "recommended", "--preset", "node"],
+      cwd
+    );
 
-      expect(result).toMatchSnapshot();
-      expect(result.status).toBe(1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
-      // Files aren't generated on failed lint
-      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-    }
-  );
+    // Files aren't generated on failed lint
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  });
 
-  test(
-    "Lints TypeScript using the command, --preset recommended",
-    async () => {
-      const cwd = await testUtils.getCleanFixtures(
-        "crafty-preset-typescript/lints"
-      );
+  test("Lints TypeScript using the command, --preset recommended", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints"
+    );
 
-      const result = await testUtils.run(
-        ["jsLint", "js/**/*.ts", "--preset", "recommended"],
-        cwd
-      );
+    const result = await testUtils.run(
+      ["jsLint", "js/**/*.ts", "--preset", "recommended"],
+      cwd
+    );
 
-      expect(result).toMatchSnapshot();
-      expect(result.status).toBe(1);
+    expect(result).toMatchSnapshot();
+    expect(result.status).toBe(1);
 
-      // Files aren't generated on failed lint
-      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
-      expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
-    }
-  );
+    // Files aren't generated on failed lint
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeFalsy();
+    expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
+  });
 
   test("Lints TypeScript using the command, --preset format", async () => {
     const cwd = await testUtils.getCleanFixtures(

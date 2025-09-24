@@ -57,30 +57,25 @@ test("Reads env. var before pom.xml", async () => {
   ).toBeTruthy();
 });
 
-test(
-  "Places files in target of a webapp from within a subfolder",
-  async () => {
-    await testUtils.getCleanFixtures("crafty-preset-maven/subfolder", [
-      "target"
-    ]);
+test("Places files in target of a webapp from within a subfolder", async () => {
+  await testUtils.getCleanFixtures("crafty-preset-maven/subfolder", ["target"]);
 
-    const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-maven/subfolder/src/main/frontend"
-    );
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-maven/subfolder/src/main/frontend"
+  );
 
-    const result = await testUtils.run(["run", "default"], cwd);
+  const result = await testUtils.run(["run", "default"], cwd);
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-    expect(
-      testUtils.exists(
-        cwd,
-        "../../../target/my-app-1.0.0-SNAPSHOT/resources/js/myBundle.min.js"
-      )
-    ).toBeTruthy();
-  }
-);
+  expect(
+    testUtils.exists(
+      cwd,
+      "../../../target/my-app-1.0.0-SNAPSHOT/resources/js/myBundle.min.js"
+    )
+  ).toBeTruthy();
+});
 
 test("Places files in target of a webjar", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-maven/webjar", [

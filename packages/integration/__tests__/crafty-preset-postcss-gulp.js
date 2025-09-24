@@ -17,7 +17,9 @@ test("Loads crafty-preset-postcss, crafty-runner-gulp and registers gulp task", 
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  expect(loadedPresets.includes("@swissquote/crafty-preset-postcss")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-postcss")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   const commands = getCommands(crafty);
@@ -42,21 +44,18 @@ test("Doesn't compile without a task, but lints", async () => {
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
 
-test(
-  "Doesn't compile without a task, but lints (doesn't throw in development)",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-postcss-gulp/no-bundle-dev"
-    );
+test("Doesn't compile without a task, but lints (doesn't throw in development)", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/no-bundle-dev"
+  );
 
-    const result = await testUtils.run(["run", "default"], cwd);
+  const result = await testUtils.run(["run", "default"], cwd);
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-    expect(testUtils.exists(cwd, "dist")).toBeFalsy();
-  }
-);
+  expect(testUtils.exists(cwd, "dist")).toBeFalsy();
+});
 
 test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
@@ -84,7 +83,9 @@ test("Experiment with all CSS", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
-  expect(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))
+  ).toMatchSnapshot();
 });
 
 test("Experiment with all CSS, old browsers", async () => {
@@ -100,7 +101,9 @@ test("Experiment with all CSS, old browsers", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
 
-  expect(testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))).toMatchSnapshot();
+  expect(
+    testUtils.snapshotizeCSS(testUtils.readFile(cwd, BUNDLED_CSS))
+  ).toMatchSnapshot();
 });
 
 test("Compiles CSS", async () => {
@@ -117,9 +120,7 @@ test("Compiles CSS", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(
-    testUtils.readFile(cwd, BUNDLED_CSS)
-  ).toBe(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toBe(
     ".Link{color:#00f}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
@@ -138,9 +139,7 @@ test("Compiles CSS, configuration has overrides", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(
-    testUtils.readFile(cwd, BUNDLED_CSS)
-  ).toBe(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toBe(
     ".Link{color:#fa5b35}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
@@ -159,9 +158,7 @@ test("Compiles CSS, configuration preserve", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(
-    testUtils.readFile(cwd, BUNDLED_CSS)
-  ).toBe(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toBe(
     ":root{--color:blue}" +
       ".Link{color:var(--color)}" +
       ":root{--BodyComponent-color:var(--color)}" +
@@ -184,9 +181,7 @@ test("Compiles CSS, compiles color-function", async () => {
   expect(testUtils.exists(cwd, BUNDLED_CSS_MAPS)).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
-  expect(
-    testUtils.readFile(cwd, BUNDLED_CSS)
-  ).toBe(
+  expect(testUtils.readFile(cwd, BUNDLED_CSS)).toBe(
     ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}" +
       "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );

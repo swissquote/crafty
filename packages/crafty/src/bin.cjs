@@ -17,29 +17,27 @@ process.title = "crafty";
 log(`Starting Crafty ${version}...`);
 
 // Initialize the configuration
-configuration
-  .initialize(process.argv)
-  .then(
-    async crafty => {
-      // Get all possible commands
-      const commands = getCommands(crafty);
+configuration.initialize(process.argv).then(
+  async crafty => {
+    // Get all possible commands
+    const commands = getCommands(crafty);
 
-      try {
-        // Run the user selected command
-        const exitCode = await cli(crafty, commands);
+    try {
+      // Run the user selected command
+      const exitCode = await cli(crafty, commands);
 
-        if (exitCode) {
-          process.exitCode = exitCode;
-        }
-      } catch (error) {
-        // Using crafty.error will make sure that it won't
-        // show an error that was already shown
-        crafty.error(error);
-
-        process.exitCode = 1;
+      if (exitCode) {
+        process.exitCode = exitCode;
       }
-    },
-    e => {
-      console.error("Could not initialize Crafty", e);
+    } catch (error) {
+      // Using crafty.error will make sure that it won't
+      // show an error that was already shown
+      crafty.error(error);
+
+      process.exitCode = 1;
     }
-  );
+  },
+  e => {
+    console.error("Could not initialize Crafty", e);
+  }
+);

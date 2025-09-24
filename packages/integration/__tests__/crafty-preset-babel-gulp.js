@@ -13,7 +13,9 @@ test("Loads crafty-preset-babel and does not register gulp tasks", async () => {
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
 
-  expect(loadedPresets.includes("@swissquote/crafty-preset-babel")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-babel")
+  ).toBeTruthy();
 
   const commands = getCommands(crafty);
   expect(Object.keys(commands).includes("jsLint")).toBeTruthy();
@@ -30,7 +32,9 @@ test("Loads crafty-preset-babel, crafty-runner-gulp and registers gulp task", as
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  expect(loadedPresets.includes("@swissquote/crafty-preset-babel")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-babel")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   const commands = getCommands(crafty);
@@ -65,7 +69,9 @@ test("Compiles JavaScript", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles JavaScript, keeps runtime external", async () => {
@@ -87,7 +93,9 @@ test("Compiles JavaScript, keeps runtime external", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles JavaScript, new features transpiled", async () => {
@@ -109,7 +117,9 @@ test("Compiles JavaScript, new features transpiled", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles JavaScript, target node > 12", async () => {
@@ -132,7 +142,9 @@ test("Compiles JavaScript, target node > 12", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/otherfile.js")
+  ).toMatchSnapshot();
 });
 
 test("Fails gracefully on broken markup", async () => {
@@ -168,27 +180,24 @@ test("Compiles JavaScript with custom babel plugin", async () => {
   expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
 });
 
-test(
-  "Compiles JavaScript with custom babel preset override",
-  async () => {
-    const cwd = await testUtils.getCleanFixtures(
-      "crafty-preset-babel-gulp/compiles-babel-preset-override"
-    );
+test("Compiles JavaScript with custom babel preset override", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-babel-gulp/compiles-babel-preset-override"
+  );
 
-    const result = await testUtils.run(["run", "default"], cwd);
+  const result = await testUtils.run(["run", "default"], cwd);
 
-    expect(result).toMatchSnapshot();
-    expect(result.status).toBe(0);
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
 
-    expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
-    expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundle)).toBeFalsy();
+  expect(testUtils.exists(cwd, mainBundleMap)).toBeFalsy();
 
-    expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
+  expect(testUtils.exists(cwd, mainScript)).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
 
-    expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
-  }
-);
+  expect(testUtils.readForSnapshot(cwd, mainScript)).toMatchSnapshot();
+});
 
 test("Compiles JavaScript and concatenates", async () => {
   const cwd = await testUtils.getCleanFixtures(

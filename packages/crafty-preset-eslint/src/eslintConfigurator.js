@@ -1,5 +1,5 @@
 const path = require("path");
-const { existsSync } = require("fs")
+const { existsSync } = require("fs");
 const fs = require("fs/promises");
 const debugFn = require("@swissquote/crafty-commons/packages/debug");
 const resolveFrom = require("../packages/resolve-from");
@@ -43,10 +43,12 @@ function deduplicatePlugins(configs) {
 
 async function readEslintIgnore(filePath) {
   const content = await fs.readFile(filePath, "utf8");
-  const lines = content.split(/\r?\n/gu).filter(line => line.trim() !== "" && !line.startsWith("#"));
+  const lines = content
+    .split(/\r?\n/gu)
+    .filter(line => line.trim() !== "" && !line.startsWith("#"));
 
   // We might need to have some conversion logic from the ignore file to the glob config
-  return lines
+  return lines;
 }
 
 async function toESLintConfig(crafty, config = {}, source = "plugin") {

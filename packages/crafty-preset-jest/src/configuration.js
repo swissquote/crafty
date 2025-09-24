@@ -16,7 +16,10 @@ const SONAR_REPORTER_MODULE = require.resolve("jest-to-sonar");
 function finalizeReporters(reporters) {
   return reporters.map(reporter => {
     if (typeof reporter === "string" && reporter === "sonar") {
-      return [SONAR_REPORTER_MODULE, { outputFile: "./reports/sonar-report.xml" }];
+      return [
+        SONAR_REPORTER_MODULE,
+        { outputFile: "./reports/sonar-report.xml" }
+      ];
     }
     if (Array.isArray(reporter) && reporter.length > 0) {
       const [name, config] = reporter;

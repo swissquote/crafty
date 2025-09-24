@@ -8,7 +8,9 @@ test("Loads crafty-preset-typescript and does not register gulp tasks", async ()
   const crafty = await getCrafty(["@swissquote/crafty-preset-typescript"], {});
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
 
   crafty.createTasks();
   expect(Object.keys(crafty.undertaker._registry.tasks())).toEqual([]);
@@ -22,7 +24,9 @@ test("Loads crafty-preset-typescript, crafty-runner-gulp and registers gulp task
   );
 
   const loadedPresets = crafty.loadedPresets.map(preset => preset.presetName);
-  expect(loadedPresets.includes("@swissquote/crafty-preset-typescript")).toBeTruthy();
+  expect(
+    loadedPresets.includes("@swissquote/crafty-preset-typescript")
+  ).toBeTruthy();
   expect(loadedPresets.includes("@swissquote/crafty-runner-gulp")).toBeTruthy();
 
   crafty.createTasks();
@@ -53,7 +57,9 @@ test("Compiles TypeScript", async () => {
   expect(testUtils.exists(cwd, "dist/js/Loading.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/Loading.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/Loading.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles TypeScript, alternate conf", async () => {
@@ -76,7 +82,9 @@ test("Compiles TypeScript, alternate conf", async () => {
   expect(testUtils.exists(cwd, "dist/js/Loading.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/Loading.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/Loading.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles TypeScript Modules", async () => {
@@ -101,11 +109,11 @@ test("Compiles TypeScript Modules", async () => {
   const script = testUtils.readForSnapshot(cwd, "dist/js/script.mjs");
   expect(script).toMatchSnapshot();
 
-  expect(
-    script.indexOf('import test from"./Component.mjs"') > -1
-  ).toBeTruthy();
+  expect(script.indexOf('import test from"./Component.mjs"') > -1).toBeTruthy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/Component.mjs")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/Component.mjs")
+  ).toMatchSnapshot();
 });
 
 test("Compiles TypeScript, keeps runtime external", async () => {
@@ -128,7 +136,9 @@ test("Compiles TypeScript, keeps runtime external", async () => {
   expect(testUtils.exists(cwd, "dist/js/Component.js.map")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
-  expect(testUtils.readForSnapshot(cwd, "dist/js/Component.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/Component.js")
+  ).toMatchSnapshot();
 });
 
 test("Compiles TypeScript and concatenates", async () => {
@@ -150,7 +160,9 @@ test("Compiles TypeScript and concatenates", async () => {
   expect(testUtils.exists(cwd, "dist/js/otherfile.js")).toBeFalsy();
   expect(testUtils.exists(cwd, "dist/js/otherfile.js.map")).toBeFalsy();
 
-  expect(testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")).toMatchSnapshot();
+  expect(
+    testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
+  ).toMatchSnapshot();
 });
 
 test("Fails gracefully on broken markup", async () => {
