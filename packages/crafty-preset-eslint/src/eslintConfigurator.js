@@ -66,7 +66,11 @@ async function toESLintConfig(crafty, config = {}, source = "plugin") {
 
   for (const preset of presets) {
     if (!eslintPlugin.configs[preset]) {
-      throw new Error(`Unknown Crafty ESLint preset "${preset}". Known presets are: ${Object.keys(eslintPlugin.configs).join(", ")}`);
+      throw new Error(
+        `Unknown Crafty ESLint preset "${preset}". Known presets are: ${Object.keys(
+          eslintPlugin.configs
+        ).join(", ")}`
+      );
     }
 
     const subConfigs = eslintPlugin.configs[preset];

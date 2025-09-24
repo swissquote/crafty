@@ -19,7 +19,8 @@ function getReportFilePath(fileName) {
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName, { recursive: true });
   }
-  const file = `${dirName}/${fileName || "eslint"}_${getProcessHash()}.sarif.json`; 
+  const file = `${dirName}/${fileName ||
+    "eslint"}_${getProcessHash()}.sarif.json`;
 
   return file;
 }
@@ -30,11 +31,12 @@ let formatter = {
     // This race condition should not happen
     // could happen if ESLint fails to load the formatter
     throw new Error("Formatter not ready yet");
-  },
+  }
 };
 const eslint = require("eslint");
+
 const esl = new eslint.ESLint();
-esl.loadFormatter("stylish").then((f) => {
+esl.loadFormatter("stylish").then(f => {
   formatter = f;
 });
 
@@ -46,7 +48,7 @@ function runFormat(results, context, file) {
 }
 
 function createFormatter(fileName) {
-    const file = getReportFilePath(fileName);
+  const file = getReportFilePath(fileName);
 
   return (results, context) => {
     return runFormat(results, context, file);
@@ -55,9 +57,9 @@ function createFormatter(fileName) {
 
 // This export is used by the ESLint CLI
 module.exports = function(results, context) {
-    const file = getReportFilePath('cli');
-    return runFormat(results, context, file);
-}
+  const file = getReportFilePath("cli");
+  return runFormat(results, context, file);
+};
 
 // This export is used when called programmatically
 module.exports.createFormatter = createFormatter;

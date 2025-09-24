@@ -78,7 +78,7 @@ module.exports = {
             eslintPath: require.resolve("eslint/use-at-your-own-risk"),
             extensions,
             overrideConfigFile: toTempFile(toolConfiguration(crafty)),
-            formatter: createFormatter(bundle.taskName),
+            formatter: createFormatter(bundle.taskName)
           }
         ]);
     }
