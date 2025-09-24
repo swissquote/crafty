@@ -48,6 +48,9 @@ module.exports = function createTask(crafty, bundle, gulp) {
         toTempFile,
         toolConfiguration
       } = require("@swissquote/crafty-preset-eslint/src/templates.js");
+      const {
+        createFormatter
+      } = require("@swissquote/crafty-preset-eslint/src/formatter.js");
       const eslint = require("@swissquote/crafty-commons-gulp/packages/gulp-eslint-new.js");
       stream = stream
         .pipe(
@@ -56,7 +59,7 @@ module.exports = function createTask(crafty, bundle, gulp) {
             overrideConfigFile: toTempFile(toolConfiguration(crafty))
           })
         )
-        .pipe(eslint.format())
+        .pipe(eslint.format(createFormatter(bundle.taskName)))
         .pipe(
           eslint.results(results => {
             const count = results.errorCount;

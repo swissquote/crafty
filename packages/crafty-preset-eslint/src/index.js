@@ -6,6 +6,7 @@ const {
   toolConfiguration,
   toTempFile
 } = require("./templates.js");
+const { createFormatter } = require("./formatter.js");
 
 const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:preset-eslint"
@@ -76,7 +77,8 @@ module.exports = {
             configType: "flat",
             eslintPath: require.resolve("eslint/use-at-your-own-risk"),
             extensions,
-            overrideConfigFile: toTempFile(toolConfiguration(crafty))
+            overrideConfigFile: toTempFile(toolConfiguration(crafty)),
+            formatter: createFormatter(bundle.taskName),
           }
         ]);
     }
