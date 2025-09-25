@@ -7,7 +7,9 @@ function getProcessHash() {
   if (!processHash) {
     // Exclude --config argument from hash to avoid different hashes as the config is automatically generated
     const configIndex = process.argv.findIndex(arg => arg === "--config");
-    const argsWithoutConfig = process.argv.filter((arg, index) => index !== configIndex && index !== configIndex + 1);
+    const argsWithoutConfig = process.argv.filter(
+      (arg, index) => index !== configIndex && index !== configIndex + 1
+    );
 
     processHash = crypto
       .createHash("md5")

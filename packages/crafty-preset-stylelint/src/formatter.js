@@ -8,7 +8,9 @@ function getProcessHash() {
   if (!processHash) {
     // Exclude --config argument from hash to avoid different hashes as the config is automatically generated
     const configIndex = process.argv.findIndex(arg => arg === "--config");
-    const argsWithoutConfig = process.argv.filter((arg, index) => index !== configIndex && index !== configIndex + 1);
+    const argsWithoutConfig = process.argv.filter(
+      (arg, index) => index !== configIndex && index !== configIndex + 1
+    );
 
     processHash = crypto
       .createHash("md5")
@@ -22,8 +24,8 @@ function getProcessHash() {
 let stringFormatter = () => {
   throw new Error("Formatter not ready yet");
 };
-stylelint.formatters.string.then(formatter => {
-  stringFormatter = formatter;
+stylelint.formatters.string.then(fn => {
+  stringFormatter = fn;
 });
 
 function getReportFilePath(fileName) {
@@ -31,9 +33,8 @@ function getReportFilePath(fileName) {
   if (!fs.existsSync(dirName)) {
     fs.mkdirSync(dirName, { recursive: true });
   }
-  const file = `${dirName}/${
-    fileName || "stylelint"
-  }_${getProcessHash()}.sarif.json`;
+  const file = `${dirName}/${fileName ||
+    "stylelint"}_${getProcessHash()}.sarif.json`;
 
   return file;
 }
