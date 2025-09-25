@@ -1,6 +1,7 @@
 import gulpStylelint from "../packages/gulp-stylelint.js";
 
 import { createRequire } from "node:module";
+import { createFormatter } from "./formatter.js";
 
 const require = createRequire(import.meta.url);
 
@@ -18,7 +19,7 @@ export function createLinter(gulp, crafty, name) {
       gulpStylelint({
         config,
         failAfterError: crafty.getEnvironment() === "production",
-        reporters: [{ formatter: "string", console: true }]
+        reporters: [{ formatter: createFormatter("stylelint"), console: true }]
       })
     );
   });

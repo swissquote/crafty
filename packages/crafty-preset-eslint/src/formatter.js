@@ -5,9 +5,15 @@ const sarif = require("../dist/microsoft-eslint-formatter-sarif/index.js");
 let processHash = null;
 function getProcessHash() {
   if (!processHash) {
+    // Exclude --config argument from hash to avoid different hashes as the config is automatically generated
+    const configIndex = process.argv.findIndex(arg => arg === "--config");
+    const argsWithoutConfig = process.argv.filter(
+      (arg, index) => index !== configIndex && index !== configIndex + 1
+    );
+
     processHash = crypto
       .createHash("md5")
-      .update(process.argv.join("|"))
+      .update(argsWithoutConfig.join("|"))
       .digest("hex")
       .substring(0, 8);
   }

@@ -64,4 +64,10 @@ if (process.argv.indexOf("--custom-syntax") === -1) {
   process.argv.push(require.resolve("postcss-scss"));
 }
 
+// Define formatter if it isn't already defined
+if (process.argv.indexOf("--custom-formatter") === -1) {
+  process.argv.push("--custom-formatter");
+  process.argv.push(require.resolve("../formatter.js"));
+}
+
 cli(process.argv.slice(2));
