@@ -10,4 +10,8 @@ export default [
       .esm()
       .package()
       .externals(externals),
+  (builder) => builder("stylelint-sarif-formatter")
+      .esm()
+      .package()
+      .externals(externals)
 ];
