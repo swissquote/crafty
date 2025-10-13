@@ -18,35 +18,35 @@ testRule({
       code: "#something.u-test {}",
       column: 11,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-utility-reassignment)`
     },
     {
       description: "Fails on scoped utility",
       code: ".s-something .u-someUtility {}",
       column: 14,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-utility-reassignment)`
     },
     {
       description: "Fails on utility with type",
       code: "body .u-other {}",
       column: 6,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-utility-reassignment)`
     },
     {
       description: "Fails on nested utility",
       code: "body { .u-other {} }",
       column: 13,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-utility-reassignment)`
     },
     {
       description: "Fails on sub-assignment",
       code: ".u-other a {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-utility-reassignment)`
     }
   ]
 });

@@ -53,42 +53,42 @@ testRule({
       code: "#Something.is-state {}",
       line: 1,
       column: 11,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     },
     {
       description: "Fails on state on ID 2",
       code: "#something.is-state {}",
       line: 1,
       column: 11,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     },
     {
       description: "Fails on state on scope",
       code: ".s-something.is-state {}",
       line: 1,
       column: 13,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     },
     {
       description: "Fails on state within scope",
       code: ".s-something .is-state {}",
       line: 1,
       column: 14,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     },
     {
       description: "Fails on orphan state",
       code: ".is-state {}",
       line: 1,
       column: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     },
     {
       description: "Fails on orphan state 2",
       code: ".has-state {}",
       line: 1,
       column: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-state-without-component)`
     }
   ]
 });

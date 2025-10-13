@@ -33,56 +33,56 @@ testRule({
       code: "header {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on type with compound class",
       code: "header.class {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on type with compund class, nested",
       code: "header { &.class {} }",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on type with class",
       code: "header.class {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on class with type",
       code: ".class header {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on nested with parent selector",
       code: "section { .not-a-scope & {} }",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails once multiple selectors",
       code: "header.class, .s-hey header {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       description: "Fails on multiple selectors 2",
       code: "header.class {} .s-hey { header {} }",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
     {
       // This is a tricky case, here the `a:focus` is the case
@@ -98,7 +98,7 @@ testRule({
       length: 1,
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     }
   ]
 });
