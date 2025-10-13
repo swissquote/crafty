@@ -18,35 +18,35 @@ testRule({
       code: "#something._test {}",
       column: 11,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-hack-reassignment)`
     },
     {
       description: "Fails on scoped hack",
       code: ".s-something ._someUtility {}",
       column: 14,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-hack-reassignment)`
     },
     {
       description: "Fails on hack with type",
       code: "body ._other {}",
       column: 6,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-hack-reassignment)`
     },
     {
       description: "Fails on nested hack",
       code: "body { ._other {} }",
       column: 13,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-hack-reassignment)`
     },
     {
       description: "Fails on sub-assignment",
       code: "._other a {}",
       column: 1,
       line: 1,
-      message: messages.rejected
+      message: `${messages.rejected} (swissquote/no-hack-reassignment)`
     }
   ]
 });

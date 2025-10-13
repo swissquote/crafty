@@ -26,7 +26,7 @@ testRule({
     {
       description: "Any nested Block shouldn't be OK",
       code: ".Component1 { .Component2 {} }",
-      message: "A block should not depend on another block directly",
+      message: "A block should not depend on another block directly (swissquote/no-block-inside-block)",
       line: 1,
       column: 15
     },
@@ -36,7 +36,7 @@ testRule({
       code: ".Component1 { .Component1__element { .Component2 {}}}",
       column: 38,
       line: 1,
-      message: "A block should not depend on another block directly"
+      message: "A block should not depend on another block directly (swissquote/no-block-inside-block)"
     },
     {
       description:
@@ -44,21 +44,21 @@ testRule({
       code: ".Component1 { & .Component1__element { .Component2 {} } }",
       column: 40,
       line: 1,
-      message: "A block should not depend on another block directly"
+      message: "A block should not depend on another block directly (swissquote/no-block-inside-block)"
     },
     {
       description: "Block selector in subling Element should not be allowed",
       code: ".Component1 { .Component1__element .Component2 {}}",
       column: 15,
       line: 1,
-      message: "A block should not depend on another block directly"
+      message: "A block should not depend on another block directly (swissquote/no-block-inside-block)"
     },
     {
       description: "Block selector in child Element should not be allowed",
       code: ".Component1 { .Component1__element > .Component2 {}}",
       column: 15,
       line: 1,
-      message: "A block should not depend on another block directly"
+      message: "A block should not depend on another block directly (swissquote/no-block-inside-block)"
     }
   ]
 });

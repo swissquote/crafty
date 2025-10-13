@@ -19,7 +19,7 @@ testRule({
       code: ".Component1 { margin: -var(--test); }",
       column: 23,
       line: 1,
-      message: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
+      message: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)". (swissquote/no-negative-var)`
     },
     {
       description: "negative var fails on multi vars",
@@ -27,7 +27,7 @@ testRule({
         ".Component1 { margin: var(--Component-margin) -var(--Component-margin); }",
       column: 47,
       line: 1,
-      message: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)".`
+      message: `Using "-" in front of "var()" doesn't work, use "calc(var(...) * -1)". (swissquote/no-negative-var)`
     }
   ]
 });
