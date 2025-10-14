@@ -93,7 +93,7 @@ class Builder {
     return this;
   }
 
-  package({ isEsmModule }  = {}) {
+  package({ isEsmModule, names }  = {}) {
     const pkg = this.values.name;
 
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
@@ -102,7 +102,16 @@ class Builder {
       if (isEsmModule) {
         this.values.sourceFile = `export * from "${pkg}";`;
       } else {
-        this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
+        if (names && names.length > 0) {
+          // In the case of a named import, we import and re-export the names
+          // both as named and as default since some consumers might use a commonjs compat layer
+          this.values.sourceFile = `
+          import { ${names.join(", ")} } from "${pkg}";
+          export default { ${names.join(", ")} };
+          export { ${names.join(", ")} };`;
+        } else {
+          this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
+        }
       }      
     } else {
       this.values.destination = `dist/${cleanPkg}/index.js`;

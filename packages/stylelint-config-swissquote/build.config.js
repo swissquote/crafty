@@ -128,7 +128,7 @@ export default [
   builder =>
     builder("known-css-properties")
       .esm()
-      .package(),
+      .package({ names: ["all"] }),
   builder =>
     builder("css-tree")
       .esm()
