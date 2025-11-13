@@ -6,11 +6,13 @@ const { getExternals } = require("../../utils/externals");
 const externals = getExternals();
 
 module.exports = [
-  (builder) =>
-    builder("speed-measure-webpack-plugin").package().externals(externals),
-  (builder) =>
+  builder =>
+    builder("speed-measure-webpack-plugin")
+      .package()
+      .externals(externals),
+  builder =>
     builder("packages-webpack")
-      .packages((pkgBuilder) => {
+      .packages(pkgBuilder => {
         pkgBuilder
           .package(
             "case-sensitive-paths-webpack-plugin",
@@ -40,5 +42,5 @@ module.exports = [
         "plugin = require(pluginPath);"
       )
     );
-  },
+  }
 ];
