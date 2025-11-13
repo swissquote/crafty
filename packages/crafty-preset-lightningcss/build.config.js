@@ -8,7 +8,7 @@ const externals = {
   // Provided by other Crafty packages
   ...getExternals(),
 
-  //"webpack": "webpack",
+  // Used by lightningcss-loader
   "webpack-sources": "../../src/webpack-sources",
   "webpack/lib/ModuleFilenameHelpers": "../../src/ModuleFilenameHelpers.js",
 

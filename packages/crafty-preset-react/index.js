@@ -110,5 +110,45 @@ module.exports = {
         }
       ]);
     }
+  },
+  rspack(crafty, bundle, chain) {
+    // Resolve this module for Yarn PNP
+    chain.resolve.alias.set(
+      "react-hot-loader",
+      path.dirname(require.resolve("react-hot-loader"))
+    );
+
+    if (enableHotLoader(crafty, bundle)) {
+      // Patch react-dom
+      chain.module
+        .rule("react-hot-loader")
+        .test(/\.jsx?$/)
+        .include.add(/react-dom/)
+        .end()
+        .use("react-hot-loader")
+        .loader(require.resolve("react-hot-loader/webpack"));
+    }
+
+    if (enableFastRefresh(crafty, bundle)) {
+      // If somebody still includes react-hot-loader,
+      // make sure they know they should remove it
+      // but doesn't impact production
+      chain.resolve.alias.set(
+        "react-hot-loader",
+        path.dirname(require.resolve("./react-hot-loader"))
+      );
+
+      const ReactRefreshPlugin = require("@rspack/plugin-react-refresh");
+
+      chain.plugin("react-refresh").use(ReactRefreshPlugin, [
+        {
+          overlay: false,
+          //overlay: {
+            // TODO
+            //sockIntegration: "wps" // webpack-plugin-serve
+          //}
+        }
+      ]);
+    }
   }
 };
