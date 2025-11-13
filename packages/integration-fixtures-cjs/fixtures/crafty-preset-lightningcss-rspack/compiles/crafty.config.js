@@ -1,0 +1,11 @@
+module.exports = {
+  presets: [
+  "@swissquote/crafty-preset-lightningcss",
+  "@swissquote/crafty-runner-rspack"
+  ],
+  js: {
+    myBundle: {
+      source: "js/app.js"
+    }
+  }
+}

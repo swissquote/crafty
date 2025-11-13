@@ -72,5 +72,37 @@ module.exports = {
         require.resolve("@swissquote/crafty-commons-swc/packages/swc-loader.js")
       )
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
+  },
+  rspack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
+    const {
+      hasSwcHelpersDependency,
+      getConfigurationRspack
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    const hasHelperDependency = hasSwcHelpersDependency();
+
+    if (hasHelperDependency) {
+      chain.externals(chain.get("externals").concat(/@swc\/helpers/));
+    }
+
+    // Make sure this module is resolved from the right path
+    chain.resolve.alias.set(
+      "@swc/helpers",
+      path.dirname(require.resolve("@swc/helpers/package.json"))
+    );
+
+    // EcmaScript 2015+
+    chain.module
+      .rule("swc")
+      .test(/\.jsx?$/)
+      .exclude.add(/(node_modules|bower_components)/)
+      .end()
+      .use("swc")
+      .loader("builtin:swc-loader")
+      .options(getConfigurationRspack(crafty, bundle, hasHelperDependency));
   }
 };
