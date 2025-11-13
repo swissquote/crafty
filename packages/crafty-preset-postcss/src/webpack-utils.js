@@ -70,9 +70,11 @@ function getCssModuleLocalIdent(context, _, exportName, options) {
   );
 }
 
-function configureMiniCssExtractPlugin(bundle, chain) {
+function configureMiniCssExtractPlugin(bundle, chain, isRspack) {
   // Initialize extraction plugin
-  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+  const MiniCssExtractPlugin = isRspack
+    ? require("@rspack/core").rspack.CssExtractRspackPlugin
+    : require("mini-css-extract-plugin");
 
   // Add plugin only once per bundle
   if (!bundle.extractCSSConfigured) {
@@ -86,7 +88,7 @@ function configureMiniCssExtractPlugin(bundle, chain) {
   return MiniCssExtractPlugin.loader;
 }
 
-function createRule(crafty, bundle, chain, styleRule, options) {
+function createRule(crafty, bundle, chain, styleRule, isRspack, options) {
   const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
 
   // "postcss" loader applies autoprefixer to our CSS.
@@ -96,9 +98,13 @@ function createRule(crafty, bundle, chain, styleRule, options) {
 
   let styleLoader;
   if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
-    styleLoader = configureMiniCssExtractPlugin(bundle, chain);
+    styleLoader = configureMiniCssExtractPlugin(bundle, chain, isRspack);
   } else {
     styleLoader = require.resolve("../packages/style-loader.js");
+  }
+
+  if (isRspack) {
+    styleRule.type("javascript/auto");
   }
 
   styleRule.use("style-loader").loader(styleLoader);
@@ -125,7 +131,7 @@ function createRule(crafty, bundle, chain, styleRule, options) {
     });
 }
 
-function createGlobalRule(crafty, bundle, chain) {
+function createGlobalRule(crafty, bundle, chain, isRspack = false) {
   createRule(
     crafty,
     bundle,
@@ -134,6 +140,7 @@ function createGlobalRule(crafty, bundle, chain) {
       .rule("styles")
       .test(/(?<!\.module)\.s?css$/i)
       .sideEffects(true),
+    isRspack,
     {
       cssLoader: {
         modules: false
@@ -142,7 +149,7 @@ function createGlobalRule(crafty, bundle, chain) {
   );
 }
 
-function createModuleRule(crafty, bundle, chain) {
+function createModuleRule(crafty, bundle, chain, isRspack = false) {
   createRule(
     crafty,
     bundle,
@@ -151,6 +158,7 @@ function createModuleRule(crafty, bundle, chain) {
       .rule("styles-modules")
       .test(/\.module\.s?css$/i)
       .sideEffects(false),
+    isRspack,
     {
       cssLoader: {
         modules: {
