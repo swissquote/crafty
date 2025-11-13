@@ -200,5 +200,130 @@ module.exports = {
       .use("ts-loader")
       .loader(require.resolve("../packages/ts-loader"))
       .options(tsOptions);
+  },
+  rspack(crafty, bundle, chain) {
+    const tsconfigFile = bundle.tsconfigFile || "tsconfig.json";
+    const configFile = findUpSync(tsconfigFile, { cwd: process.cwd() });
+
+    if (!configFile) {
+      crafty.log.error(
+        `No '${tsconfigFile}' found in "${process.cwd()}". Skipping initialization of TypeScript loaders.`
+      );
+      return;
+    }
+
+    const {
+      hasSwcHelpersDependency,
+      getConfigurationRspack
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    const hasHelperDependency = hasSwcHelpersDependency();
+
+    if (hasHelperDependency) {
+      chain.externals(chain.get("externals").concat(/@swc\/helpers/));
+    }
+
+    // Make sure this module is resolved from the right path
+    chain.resolve.alias.set(
+      "@swc/helpers",
+      path.dirname(require.resolve("@swc/helpers/package.json"))
+    );
+
+    chain.resolve.extensions
+      .add(".ts")
+      .add(".tsx")
+      .add(".mts")
+      .add(".cts");
+
+    chain.resolve.extensionAlias
+      .set(".js", [".js", ".ts"])
+      .set(".cjs", [".cjs", ".cts"])
+      .set(".mjs", [".mjs", ".mts"]);
+
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
+    // TypeScript
+    const tsRule = chain.module.rule("ts");
+    tsRule.test(/\.(ts|tsx|mts|cts)$/);
+    tsRule.exclude.add(/(node_modules|bower_components)/);
+
+    // EcmaScript 2015+
+    tsRule
+      .use("swc")
+      .loader("builtin:swc-loader")
+      .options(
+        getConfigurationRspack(
+          crafty,
+          bundle,
+          hasHelperDependency,
+          "typescript"
+        )
+      );
+
+    const tsOptions = {
+      // https://webpack.js.org/guides/build-performance/#typescript-loader
+      experimentalWatchApi: true,
+      configFile: tsconfigFile,
+      compilerOptions: {
+        // Transpile to esnext so that SWC can apply all its magic
+        target: "ESNext",
+        // Preserve JSX so SWC can optimize it, or add development/debug information
+        jsx: "Preserve"
+      }
+    };
+
+    // Get the current configuration to know what configuration options we have to set
+    const compiler = require("typescript");
+    const currentConfig = compiler.readConfigFile(
+      configFile,
+      compiler.sys.readFile
+    );
+
+    const hasDeclarations =
+      currentConfig.config &&
+      currentConfig.config.compilerOptions &&
+      currentConfig.config.compilerOptions.declaration;
+
+    if (
+      hasDeclarations &&
+      !currentConfig.config.compilerOptions.declarationDir
+    ) {
+      // Write declaration files in the destination folder
+      // We set the value this way to respect backwards compatibility,
+      // Ideally, the value should be without the `/js` at the end
+      const subdirectory = bundle.directory ? `/${bundle.directory}` : "";
+      tsOptions.compilerOptions.declarationDir = absolutePath(
+        `${crafty.config.destination_js}${subdirectory}/js`
+      );
+    }
+
+    // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
+    // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
+    if (!hasDeclarations) {
+      tsOptions.transpileOnly = true;
+
+      const forkCheckerOptions = {
+        typescript: {
+          typescriptPath: require.resolve("typescript"),
+          configFile: tsconfigFile,
+          configOverwrite: {
+            compilerOptions: tsOptions.compilerOptions
+          }
+        }
+      };
+
+      chain
+        .plugin("ts-checker-rspack-plugin")
+        .init((Plugin, args) => new Plugin.TsCheckerRspackPlugin(...args))
+        .use(require.resolve("../packages/ts-checker-rspack-plugin"), [
+          forkCheckerOptions
+        ]);
+    }
+
+    tsRule
+      .use("ts-loader")
+      .loader(require.resolve("../packages/ts-loader"))
+      .options(tsOptions);
   }
 };
