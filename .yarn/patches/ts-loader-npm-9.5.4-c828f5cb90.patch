@@ -1,0 +1,13 @@
+diff --git a/dist/after-compile.js b/dist/after-compile.js
+index 54ad4ddfe3e918a58d09764939f9cce2c250c21f..cec0c31572dc16723b6ce0e94266cf7087e895b4 100644
+--- a/dist/after-compile.js
++++ b/dist/after-compile.js
+@@ -26,7 +26,7 @@ function makeAfterCompile(instance, configFilePath) {
+             callback();
+             return;
+         }
+-        removeCompilationTSLoaderErrors(compilation, instance.loaderOptions);
++        //removeCompilationTSLoaderErrors(compilation, instance.loaderOptions);
+         provideCompilerOptionDiagnosticErrorsToWebpack(getCompilerOptionDiagnostics, compilation, instance, configFilePath);
+         getCompilerOptionDiagnostics = false;
+         const modules = determineModules(compilation, instance);
