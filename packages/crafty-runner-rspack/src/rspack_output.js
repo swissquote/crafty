@@ -1,7 +1,9 @@
 const colors = require("@swissquote/crafty-commons/packages/ansi-colors.js");
 const symbols = require("@swissquote/crafty-commons/packages/log-symbols.js");
 
-const formatWebpackMessages = require("./utils/formatWebpackMessages");
+function isLikelyASyntaxError(message) {
+  return message.indexOf("Syntax error:") !== -1;
+}
 
 function styleTime(ms) {
   const out = `${ms.toString()}ms`;
@@ -81,21 +83,25 @@ function printStats(stats) {
     })
   );
 
-  // Nicer Error/Warning Messages
-  const messages = formatWebpackMessages({
-    warnings: stats.compilation.warnings,
-    errors: stats.compilation.errors
-  });
+  const warnings = stats.compilation.warnings.map(message => message.message || message);
+  let errors = stats.compilation.errors.map(message => message.message || message);
+  if (errors.some(isLikelyASyntaxError)) {
+    // If there are any syntax errors, show just them.
+    // This prevents a confusing ESLint parsing error
+    // preceding a much more useful Babel syntax error.
+    errors = result.errors.filter(isLikelyASyntaxError);
+  }
+
   // If errors exist, only show errors.
-  if (messages.errors.length) {
+  if (errors.length) {
     console.log(`\n  ${colors.red("Failed to compile.")}\n`);
-    messages.errors.forEach(message => {
+    errors.forEach(message => {
       console.log(`${message}\n`);
     });
-  } else if (messages.warnings.length) {
+  } else if (warnings.length) {
     console.log(`\n  ${colors.yellow("Compiled with warnings.")}\n`);
     // Show warnings if no errors were found.
-    messages.warnings.forEach(message => {
+    warnings.forEach(message => {
       console.log(`${message}\n`);
     });
   } else {
@@ -105,12 +111,12 @@ function printStats(stats) {
   const timeTitle = colors.gray(`  Δ${colors.italic("t")}`);
   const time = `${timeTitle} ${styleTime(stats.endTime - stats.startTime)}`;
 
-  if (messages.warnings.length || messages.errors.length) {
+  if (warnings.length || errors.length) {
     console.log(
       time,
       footer({
-        errors: messages.errors.length,
-        warnings: messages.warnings.length
+        errors: errors.length,
+        warnings: warnings.length
       })
     );
   } else {
