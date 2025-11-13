@@ -10,6 +10,7 @@ module.exports = [
       .packages((pkgBuilder) =>
         pkgBuilder
           .package("eslint-webpack-plugin", "eslintWebpackPlugin")
+          .package("eslint-rspack-plugin", "eslintRspackPlugin")
           .package("resolve-from", "resolveFrom")
       )
       .externals({
