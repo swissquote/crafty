@@ -11,10 +11,10 @@ module.exports = [
         pkgBuilder
           .package("glob-to-regexp", "globToRegexp")
           .package("hash-index", "hashIndex")
-          .package("inspectpack/plugin", "inspectpack")
           .package("is-glob", "isGlob")
           .package("rspack-chain", "rspackChain")
-          .package("webpack-merge", "webpackMerge");
+          .package("webpack-merge", "webpackMerge")
+          .package("common-ancestor-path", "commonAncestorPath");
       })
       .externals(externals),
   async () => {

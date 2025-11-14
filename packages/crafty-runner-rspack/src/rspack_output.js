@@ -83,13 +83,17 @@ function printStats(stats) {
     })
   );
 
-  const warnings = stats.compilation.warnings.map(message => message.message || message);
-  let errors = stats.compilation.errors.map(message => message.message || message);
+  const warnings = stats.compilation.warnings.map(
+    message => message.message || message
+  );
+  let errors = stats.compilation.errors.map(
+    message => message.message || message
+  );
   if (errors.some(isLikelyASyntaxError)) {
     // If there are any syntax errors, show just them.
     // This prevents a confusing ESLint parsing error
     // preceding a much more useful Babel syntax error.
-    errors = result.errors.filter(isLikelyASyntaxError);
+    errors = errors.filter(isLikelyASyntaxError);
   }
 
   // If errors exist, only show errors.

@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const RspackChain = require("../packages/rspack-chain.js").default;
-const ancestor = require("common-ancestor-path");
+const ancestor = require("../packages/common-ancestor-path.js");
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");
 const paths = require("./utils/paths.js");
@@ -173,28 +173,6 @@ function finalizeWatcher(chain, config) {
     ]);
 }
 
-function configureAnalyze(chain, bundle) {
-  chain.profile(true);
-
-  chain
-    .plugin("bundle-analyzer")
-    .init((Plugin, args) => new Plugin.BundleAnalyzerPlugin(...args))
-    .use(require.resolve("webpack-bundle-analyzer"), [
-      {
-        analyzerMode: "static",
-        openAnalyzer: false,
-        reportFilename: `${bundle.name}_report.html`,
-        generateStatsFile: true,
-        statsFilename: `${bundle.name}_stats.json`
-      }
-    ]);
-
-  chain
-    .plugin("inspectpack")
-    .init((Plugin, args) => new Plugin.DuplicatesPlugin(...args))
-    .use(require.resolve("../packages/inspectpack.js"), [{}]);
-}
-
 module.exports = function(crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
@@ -278,12 +256,6 @@ module.exports = function(crafty, bundle, webpackPort) {
     configureWatcher(chain, bundle, config, webpackPort);
   }
 
-  // If --analyze is passed, we create a
-  // profile that we'll later write to disk
-  if (process.argv.some(arg => arg === "--analyze")) {
-    configureAnalyze(chain, bundle);
-  }
-
   // Apply preset configuration
   crafty.runAllSync("rspack", crafty, bundle, chain);
 
@@ -293,20 +265,33 @@ module.exports = function(crafty, bundle, webpackPort) {
     finalizeWatcher(chain, config);
   }
 
-  if (process.argv.some(arg => arg === "--profile")) {
+  // RsDoctor doest the job of both --profile and --analyze
+  if (process.argv.some(arg => arg === "--profile" || arg === "--analyze")) {
     const verbose = process.argv.some(arg => arg === "--verbose");
+
+    chain.profile(true);
 
     chain
       .plugin("RsdoctorRspackPlugin")
       .init((Plugin, args) => new Plugin.RsdoctorRspackPlugin(...args))
       .use(require.resolve("@rsdoctor/rspack-plugin"), [
         {
-          output: {
-            mode: verbose ? "normal" : "brief"
-          }
           // https://rsdoctor.rs/config/options/options
-          // TODO : fix paths
-          // TODO :: rsdoctor prevents end of compilation even in brief mode
+          disableClientServer: true,
+          output: {
+            mode: verbose ? "normal" : "brief",
+
+            options: {
+              type: ["html", "json"],
+              htmlOptions: {
+                reportHtmlName: `${bundle.name}_rsdoctor.html`,
+                writeDataJson: true
+              },
+              jsonOptions: {
+                fileName: `${bundle.name}_stats.json`
+              }
+            }
+          }
         }
       ]);
   }
