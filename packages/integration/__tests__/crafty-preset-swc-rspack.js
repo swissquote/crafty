@@ -128,7 +128,7 @@ test("Creates profiles", async () => {
 
   expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
   expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
-  expect(testUtils.exists(cwd, "dist/js/myBundle_report.html")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/myBundle_rsdoctor.html")).toBeTruthy();
   expect(testUtils.exists(cwd, "dist/js/myBundle_stats.json")).toBeTruthy();
 
   expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();

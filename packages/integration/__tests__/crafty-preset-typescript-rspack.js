@@ -60,9 +60,9 @@ describe("crafty-preset-typescript-rspack", () => {
 
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/264.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/222.myBundle.min.js")).toBeTruthy();
     expect(
-      testUtils.exists(cwd, "dist/js/264.myBundle.min.js.map")
+      testUtils.exists(cwd, "dist/js/222.myBundle.min.js.map")
     ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
@@ -71,7 +71,7 @@ describe("crafty-preset-typescript-rspack", () => {
       testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
     ).toMatchSnapshot();
     expect(
-      testUtils.readForSnapshot(cwd, "dist/js/264.myBundle.min.js")
+      testUtils.readForSnapshot(cwd, "dist/js/222.myBundle.min.js")
     ).toMatchSnapshot();
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")
@@ -93,9 +93,9 @@ describe("crafty-preset-typescript-rspack", () => {
 
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/264.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/222.myBundle.min.js")).toBeTruthy();
     expect(
-      testUtils.exists(cwd, "dist/js/264.myBundle.min.js.map")
+      testUtils.exists(cwd, "dist/js/222.myBundle.min.js.map")
     ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/Component.d.ts")).toBeTruthy();
@@ -104,7 +104,7 @@ describe("crafty-preset-typescript-rspack", () => {
       testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
     ).toMatchSnapshot();
     expect(
-      testUtils.readForSnapshot(cwd, "dist/js/264.myBundle.min.js")
+      testUtils.readForSnapshot(cwd, "dist/js/222.myBundle.min.js")
     ).toMatchSnapshot();
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")
@@ -153,9 +153,9 @@ describe("crafty-preset-typescript-rspack", () => {
 
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js")).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeTruthy();
-    expect(testUtils.exists(cwd, "dist/js/264.myBundle.min.js")).toBeTruthy();
+    expect(testUtils.exists(cwd, "dist/js/222.myBundle.min.js")).toBeTruthy();
     expect(
-      testUtils.exists(cwd, "dist/js/264.myBundle.min.js.map")
+      testUtils.exists(cwd, "dist/js/222.myBundle.min.js.map")
     ).toBeTruthy();
     expect(testUtils.exists(cwd, "dist/js/js/SomeLibrary.d.ts")).toBeTruthy();
     expect(
@@ -166,7 +166,7 @@ describe("crafty-preset-typescript-rspack", () => {
       testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
     ).toMatchSnapshot();
     expect(
-      testUtils.readForSnapshot(cwd, "dist/js/264.myBundle.min.js")
+      testUtils.readForSnapshot(cwd, "dist/js/222.myBundle.min.js")
     ).toMatchSnapshot();
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/js/SomeLibrary.d.ts")

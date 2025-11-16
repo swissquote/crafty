@@ -134,12 +134,11 @@ exports[`Compiles JavaScript with rspack overrides 2`] = `
       }
 
       })(self, function() {
-          return (function() { // webpackBootstrap
+          return (function() {
 "use strict";
 // The require scope
 var __webpack_require__ = {};
 
-/************************************************************************/
 // webpack/runtime/define_property_getters
 !function() {
 __webpack_require__.d = function(exports, definition) {
@@ -164,7 +163,6 @@ __webpack_require__.r = function(exports) {
 	Object.defineProperty(exports, '__esModule', { value: true });
 };
 }();
-/************************************************************************/
 var __webpack_exports__ = {};
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
@@ -218,9 +216,6 @@ exports[`Creates profiles 1`] = `
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-Duplicate Sources / Packages - No duplicates found. 🚀
-Webpack Bundle Analyzer saved report to __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/profiles/dist/js/myBundle_report.html
-Webpack Bundle Analyzer saved stats file to __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/profiles/dist/js/myBundle_stats.json
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
