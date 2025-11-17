@@ -70,37 +70,42 @@ function getCssModuleLocalIdent(context, _, exportName, options) {
   );
 }
 
-function extractCss(bundle, chain, styleRule) {
-  // Add this only once per bundle
-  if (bundle.extractCSSConfigured) {
-    return;
-  }
-  bundle.extractCSSConfigured = true;
-
+function configureMiniCssExtractPlugin(bundle, chain, isRspack) {
   // Initialize extraction plugin
-  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+  const MiniCssExtractPlugin = isRspack
+    ? require("@rspack/core").rspack.CssExtractRspackPlugin
+    : require("mini-css-extract-plugin");
 
-  // Create a list of loaders that also contains the extraction loader
-  styleRule.use("style-loader").loader(MiniCssExtractPlugin.loader);
+  // Add plugin only once per bundle
+  if (!bundle.extractCSSConfigured) {
+    chain
+      .plugin("extractCSS")
+      .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
 
-  chain
-    .plugin("extractCSS")
-    .use(MiniCssExtractPlugin, [getExtractConfig(bundle)]);
+    bundle.extractCSSConfigured = true;
+  }
+
+  return MiniCssExtractPlugin.loader;
 }
 
-function createRule(crafty, bundle, chain, styleRule, options) {
+function createRule(crafty, bundle, chain, styleRule, isRspack, options) {
   // "lightningcss" loader applies autoprefixer to our CSS.
   // "css" loader resolves paths in CSS and adds assets as dependencies.
   // "style" loader turns CSS into JS modules that inject <style> tags.
   // The "style" loader enables hot editing of CSS.
 
+  let styleLoader;
   if (crafty.getEnvironment() === "production" && bundle.extractCSS) {
-    extractCss(bundle, chain, styleRule);
+    styleLoader = configureMiniCssExtractPlugin(bundle, chain, isRspack);
   } else {
-    styleRule
-      .use("style-loader")
-      .loader(require.resolve("../packages/style-loader.js"));
+    styleLoader = require.resolve("../packages/style-loader.js");
   }
+
+  if (isRspack) {
+    styleRule.type("javascript/auto");
+  }
+
+  styleRule.use("style-loader").loader(styleLoader);
 
   styleRule
     .use("css-loader")
@@ -112,16 +117,25 @@ function createRule(crafty, bundle, chain, styleRule, options) {
       ...(options.cssLoader || {})
     });
 
-  styleRule
-    .use("lightningcss-loader")
-    .loader(require.resolve("../packages/lightningcss-loader.js"))
-    .options({
-      implementation: require("lightningcss"),
-      targets: crafty.config.browsers
-    });
+  if (isRspack) {
+    styleRule
+      .use("lightningcss-loader")
+      .loader("builtin:lightningcss-loader")
+      .options({
+        targets: crafty.config.browsers
+      });
+  } else {
+    styleRule
+      .use("lightningcss-loader")
+      .loader(require.resolve("../packages/lightningcss-loader.js"))
+      .options({
+        implementation: require("lightningcss"),
+        targets: crafty.config.browsers
+      });
+  }
 }
 
-function createGlobalRule(crafty, bundle, chain) {
+function createGlobalRule(crafty, bundle, chain, isRspack = false) {
   createRule(
     crafty,
     bundle,
@@ -130,6 +144,7 @@ function createGlobalRule(crafty, bundle, chain) {
       .rule("styles")
       .test(/(?<!\.module)\.s?css$/i)
       .sideEffects(true),
+    isRspack,
     {
       cssLoader: {
         modules: false
@@ -138,7 +153,7 @@ function createGlobalRule(crafty, bundle, chain) {
   );
 }
 
-function createModuleRule(crafty, bundle, chain) {
+function createModuleRule(crafty, bundle, chain, isRspack = false) {
   createRule(
     crafty,
     bundle,
@@ -147,6 +162,7 @@ function createModuleRule(crafty, bundle, chain) {
       .rule("styles-modules")
       .test(/\.module\.s?css$/i)
       .sideEffects(false),
+    isRspack,
     {
       cssLoader: {
         modules: {

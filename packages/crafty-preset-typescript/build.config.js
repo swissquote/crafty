@@ -84,7 +84,7 @@ module.exports = [
       }),
   async function() {
     // Remove a compiled version of TypeScript
-    // Would be needed as fallback by fork-ts-checker-webpabk-plugin if no `typescriptPath` is provided
+    // Would be needed as fallback by fork-ts-checker-webpack-plugin if no `typescriptPath` is provided
     await fs.promises.unlink(
       "dist/fork-ts-checker-webpack-plugin/typescript.js"
     );
@@ -100,6 +100,52 @@ module.exports = [
     const hashSum = crypto.createHash("sha256");
     hashSum.update(fileBufferEdited);
     await fs.promises.writeFile(".ts-jest-digest", hashSum.digest("hex"));
+
+    await fs.promises.writeFile(tsBundle, fileBufferEdited);
+  },
+  (builder) =>
+    builder("ts-checker-rspack-plugin")
+      .packages((pkgBuilder) =>
+        pkgBuilder
+          .package(
+            "ts-checker-rspack-plugin",
+            "tsCheckerRspackPlugin"
+          )
+      )
+      .externals({
+        // Provided by other Crafty packages
+        ...externals,
+
+        "fs-extra": "../fs-extra/index.js",
+        "fast-deep-equal": "../fast-deep-equal/index.js",
+        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
+
+        // Dependencies of this package
+        "@babel/core": "@babel/core",
+        "@babel/code-frame": "@babel/code-frame",
+        "@babel/helper-module-imports": "@babel/helper-module-imports",
+        typescript: "typescript",
+
+        cosmiconfig: "../../src/dummy.js",
+      }),
+  async function() {
+    // Remove a compiled version of TypeScript
+    // Would be needed as fallback by ts-checker-rspack-plugin if no `typescriptPath` is provided
+    await fs.promises.unlink(
+      "dist/ts-checker-rspack-plugin/typescript.js"
+    );
+
+    const tsBundle = "dist/ts-checker-rspack-plugin/bundled.js";
+
+    // Create a new digest for ts-jest
+    const fileBuffer = await fs.promises.readFile(tsBundle);
+
+    // Add path to files
+    const fileBufferEdited = replace(
+      fileBuffer,
+      "var __nested_webpack_require_18__ = {};",
+      "var __nested_webpack_require_18__ = {ab: `${__dirname}/`};"
+    );
 
     await fs.promises.writeFile(tsBundle, fileBufferEdited);
   },
