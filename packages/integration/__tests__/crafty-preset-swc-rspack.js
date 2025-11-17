@@ -22,7 +22,7 @@ test("Compiles JavaScript", async () => {
 
 test("Keeps imports unresolved for SWC Runtime", async () => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-swc-webpack/compiles-import-runtime"
+    "crafty-preset-swc-rspack/compiles-import-runtime"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
@@ -70,7 +70,7 @@ test("Compiles Generators", async () => {
 
 test("Deduplicates helpers", async () => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-swc-webpack/compiles-deduplicates"
+    "crafty-preset-swc-rspack/compiles-deduplicates"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
@@ -151,7 +151,7 @@ test("Lints JavaScript with rspack", async () => {
 
 test("Fails gracefully on broken markup", async () => {
   const cwd = await testUtils.getCleanFixtures(
-    "crafty-preset-swc-webpack/fails"
+    "crafty-preset-swc-rspack/fails"
   );
 
   const result = await testUtils.run(["run", "default"], cwd);
