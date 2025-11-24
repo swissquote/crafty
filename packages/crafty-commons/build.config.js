@@ -10,6 +10,7 @@ const singlePackages = [
   "fancy-log",
   "fill-range",
   "find-up",
+  "tinyglobby",
   "glob",
   "micromatch",
   "minimatch", // TODO :: is it possible to replicate the class-style Minimatch with micromatch ?
