@@ -1,9 +1,9 @@
 var convertPathToUrl = require("./convertPathToUrl");
+var urlParser = require("./urlParser");
 var path = require("path");
-var url = require("url");
 
 module.exports = function(urlStr) {
-  var urlObj = url.parse(urlStr);
+  var urlObj = urlParser(urlStr);
   urlObj.pathname = convertPathToUrl(path.join(urlObj.pathname, path.sep));
-  return url.format(urlObj);
+  return urlObj.toString();
 };

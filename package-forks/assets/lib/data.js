@@ -1,13 +1,10 @@
 var encodeBuffer = require("./__utils__/encodeBuffer");
-var fs = require("fs");
+var urlParser = require("./__utils__/urlParser");
+var fs = require("node:fs");
 var { lookup } = require("mrmime");
 var resolvePath = require("./path");
-var url = require("url");
-var nodeify = require("./__utils__/nodeify");
 
-module.exports = nodeify(async (to, options) => {
-  var toUrl;
-
+module.exports = async function data(to, options) {
   /* eslint-disable-next-line no-param-reassign */
   options = {
     basePath: ".",
@@ -15,7 +12,7 @@ module.exports = nodeify(async (to, options) => {
     ...options
   };
 
-  toUrl = url.parse(to);
+  const toUrl = urlParser(to);
 
   const resolvedPath = await resolvePath(toUrl.pathname, options);
 
@@ -24,4 +21,4 @@ module.exports = nodeify(async (to, options) => {
 
   var content = encodeBuffer(buffer, mediaType);
   return `data:${mediaType};${content}${toUrl.hash || ""}`;
-});
+};
