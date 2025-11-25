@@ -21,7 +21,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js node --test"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12"
   },
   "dependencies": {
     "postcss-values-parser": "6.0.2"
