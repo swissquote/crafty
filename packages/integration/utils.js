@@ -45,6 +45,10 @@ export function snapshotizeOutput(ret) {
     .replace(
       /\n\(node:11111\) \[DEP0148\] DeprecationWarning: Use of deprecated folder mapping "(?:.*)" in the "exports" field module resolution of the package at .*\nUpdate this package\.json to use a subpath pattern like .*/gm,
       ""
+    ) // This error started in Node 24
+    .replace(
+      /\n\(node:11111\) \[DEP0169\] DeprecationWarning: `url\.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url\.parse()` vulnerabilities\./gm,
+      ""
     ) // Remove Node exports warnings
     .replace(
       /\n\(node:11111\) \[DEP0040\] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead./g,
