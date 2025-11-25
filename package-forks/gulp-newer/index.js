@@ -1,12 +1,9 @@
 var Transform = require("stream").Transform;
-var fs = require("fs");
 var path = require("path");
 var util = require("util");
-var glob = require("glob");
+var fs = require("node:fs/promises");
 
 var PluginError = require("plugin-error");
-
-const promiseGlob = util.promisify(glob);
 
 var PLUGIN_NAME = "gulp-newer";
 
@@ -107,7 +104,7 @@ function Newer(options) {
 util.inherits(Newer, Transform);
 
 Newer.prototype.lazyStats = async function() {
-  return this._dest ? fs.promises.stat(this._dest) : Promise.resolve(null);
+  return this._dest ? fs.stat(this._dest) : Promise.resolve(null);
 };
 
 Newer.prototype.lazyExtraStats = async function() {
@@ -115,20 +112,11 @@ Newer.prototype.lazyExtraStats = async function() {
     return Promise.resolve();
   }
 
-  var extraFiles = [];
-  for (let i = 0; i < this._extra.length; ++i) {
-    extraFiles.push(promiseGlob(this._extra[i]));
-  }
-  return Promise.all(extraFiles)
-    .then(fileArrays => {
-      // First collect all the files in all the glob result arrays
-      var allFiles = [];
-      for (let i = 0; i < fileArrays.length; ++i) {
-        allFiles = allFiles.concat(fileArrays[i]);
-      }
+  return Array.fromAsync(fs.glob(this._extra))
+    .then(allFiles => {
       var extraStats = [];
       for (let i = 0; i < allFiles.length; ++i) {
-        extraStats.push(fs.promises.stat(allFiles[i]));
+        extraStats.push(fs.stat(allFiles[i]));
       }
       return Promise.all(extraStats);
     })
@@ -188,7 +176,7 @@ Newer.prototype._transform = async function(srcFile, encoding, done) {
         var destFileJoined = self._dest
           ? path.join(self._dest, destFileRelative)
           : destFileRelative;
-        return Promise.all([fs.promises.stat(destFileJoined), extraStats]);
+        return Promise.all([fs.stat(destFileJoined), extraStats]);
       } else {
         // wait to see if any are newer, then pass through all
         if (!self._bufferedFiles) {

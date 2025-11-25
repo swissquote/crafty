@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const path = require("path");
-const glob = require("glob");
+const path = require("node:path");
+const fs = require("node:fs");
 
 const { formatBytes, getModulePath, isModule } = require("./functions.js");
 
 function findFiles() {
-  return glob.sync("**/*-stats.json", { ignore: "node_modules/**" });
+  return fs.globSync("**/*-stats.json", { ignore: "node_modules/**" });
 }
 
 function scanFiles(files) {
