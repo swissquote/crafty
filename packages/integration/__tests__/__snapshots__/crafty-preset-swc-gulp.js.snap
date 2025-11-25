@@ -68,11 +68,11 @@ exports[`Compiles JavaScript, keeps runtime external 1`] = `
 `;
 
 exports[`Compiles JavaScript, keeps runtime external 2`] = `
-"/* global test */ import { _ as _async_to_generator } from "@swc/helpers/_/_async_to_generator";
+"import { _ as _async_to_generator } from "@swc/helpers/_/_async_to_generator";
 import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";
 import { _ as _create_class } from "@swc/helpers/_/_create_class";
 import { _ as _ts_generator } from "@swc/helpers/_/_ts_generator";
-import "./otherfile";
+/* global test */ import "./otherfile";
 var Test = /*#__PURE__*/ function() {
     "use strict";
     function Test(name) {
@@ -139,7 +139,7 @@ exports[`Compiles JavaScript, new features transpiled 1`] = `
 `;
 
 exports[`Compiles JavaScript, new features transpiled 2`] = `
-"/* global test */ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+"function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
         var value = info.value;
@@ -278,7 +278,7 @@ function _ts_generator(thisArg, body) {
         };
     }
 }
-import "./otherfile";
+/* global test */ import "./otherfile";
 var Test = /*#__PURE__*/ function() {
     "use strict";
     function Test(name) {
