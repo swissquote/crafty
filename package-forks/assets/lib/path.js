@@ -1,14 +1,8 @@
 var exists = require("./__utils__/exists");
-var nodeify = require("./__utils__/nodeify");
-var glob = require("glob");
 var path = require("path");
-const util = require("util");
+const fs = require("node:fs/promises");
 
-var pglob = util.promisify(glob);
-
-module.exports = nodeify(async (to, options) => {
-  var loadPaths;
-
+module.exports = async function pathResolver(to, options) {
   /* eslint-disable-next-line no-param-reassign */
   options = {
     basePath: ".",
@@ -16,21 +10,13 @@ module.exports = nodeify(async (to, options) => {
     ...options
   };
 
-  loadPaths = [].concat(options.loadPaths);
+  const loadPaths = [].concat(options.loadPaths);
 
-  const filePaths = (
-    await Promise.all(
-      loadPaths.map(async loadPath => {
-        const matchedPaths = await pglob(loadPath, {
-          cwd: options.basePath
-        });
-
-        return matchedPaths.map(matchedPath => {
-          return path.resolve(options.basePath, matchedPath, to);
-        });
-      })
-    )
-  ).flat();
+  const filePaths = [];
+  const globOptions = { cwd: options.basePath };
+  for await (const matchedPath of fs.glob(loadPaths, globOptions)) {
+    filePaths.push(path.resolve(options.basePath, matchedPath, to));
+  }
 
   filePaths.unshift(path.resolve(options.basePath, to));
 
@@ -42,4 +28,4 @@ module.exports = nodeify(async (to, options) => {
   }
 
   throw new Error(`Asset not found or unreadable: ${to}`);
-});
+};

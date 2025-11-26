@@ -36,39 +36,3 @@ test("non-existing file", async () => {
   await expect(() => resolveData("non-existing.gif"))
     .rejects.toThrow("Asset not found or unreadable: non-existing.gif");
 });
-
-test("node-style callback w/o options", (t, done) => {
-  resolveData("test/fixtures/duplicate-1.jpg", (err, resolvedDataUrl) => {
-    expect(err).toBe(null);
-    expect(resolvedDataUrl.slice(0, 32)).toBe(
-      "data:image/jpeg;base64,/9j/4AAQS"
-    );
-    done();
-  });
-});
-
-test("node-style callback w/ options", (t, done) => {
-  resolveData(
-    "picture.png",
-    {
-      basePath: "test/fixtures",
-      loadPaths: ["fonts", "images"],
-    },
-    (err, resolvedDataUrl) => {
-      expect(err).toBe(null);
-      expect(resolvedDataUrl.slice(0, 32)).toBe(
-        "data:image/png;base64,iVBORw0KGg"
-      );
-      done();
-    }
-  );
-});
-
-test("node-style callback + non-existing file", (t, done) => {
-  resolveData("non-existing.gif", (err, resolvedDataUrl) => {
-    expect(err).toBeInstanceOf(Error);
-    expect(err.message).toBe("Asset not found or unreadable: non-existing.gif");
-    expect(resolvedDataUrl).toBe(undefined);
-    done();
-  });
-});

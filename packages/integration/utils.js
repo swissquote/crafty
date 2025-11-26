@@ -49,6 +49,10 @@ export function snapshotizeOutput(ret) {
     .replace(
       /\n\(node:11111\) \[DEP0040\] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead./g,
       ""
+    ) // Warning in Node 24
+    .replace(
+      /\n\(node:11111\) \[DEP0169\] DeprecationWarning: `url.parse\(\)` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse\(\)` vulnerabilities./g,
+      ""
     )
     .replace(
       /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,

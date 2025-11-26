@@ -6,5 +6,14 @@ var url = require("url");
 module.exports = function(baseUrl, basePath, resolvedPath) {
   var from = ensureTrailingSlash(baseUrl);
   var to = path.relative(basePath, resolvedPath);
-  return url.resolve(from, convertPathToUrl(to));
+  const withTrailingSlash = url.resolve(from, convertPathToUrl(to));
+
+  if (
+    !withTrailingSlash.startsWith("/") &&
+    !withTrailingSlash.startsWith("http")
+  ) {
+    return `/${withTrailingSlash}`;
+  }
+
+  return withTrailingSlash;
 };

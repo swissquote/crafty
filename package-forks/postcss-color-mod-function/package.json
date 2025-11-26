@@ -21,7 +21,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12"
   },
   "dependencies": {
     "@swissquote/color-fns": "1.28.1",

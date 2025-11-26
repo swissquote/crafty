@@ -10,7 +10,7 @@
     "Charles Samborski <demurgos@demurgos.net> (demurgos.net)"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=22.12"
   },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",

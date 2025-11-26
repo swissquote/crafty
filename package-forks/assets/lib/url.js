@@ -2,35 +2,27 @@ var composeAbsolutePathname = require("./__utils__/composeAbsolutePathname");
 var composeQueryString = require("./__utils__/composeQueryString");
 var composeRelativePathname = require("./__utils__/composeRelativePathname");
 var defaultCachebuster = require("./__utils__/defaultCachebuster");
-var nodeify = require("./__utils__/nodeify");
+var urlFormatter = require("./__utils__/urlFormatter");
+var urlParser = require("./__utils__/urlParser");
 var resolvePath = require("./path");
-var url = require("url");
 
 function applyCacheBuster(toUrl, resolvedPath, options) {
   const cachebusterOutput = options.cachebuster(resolvedPath, toUrl.pathname);
   if (cachebusterOutput) {
     if (typeof cachebusterOutput !== "object") {
-      toUrl.search = composeQueryString(
-        toUrl.search,
-        String(cachebusterOutput)
-      );
+      composeQueryString(toUrl.searchParams, String(cachebusterOutput));
     } else {
       if (cachebusterOutput.pathname) {
         toUrl.pathname = cachebusterOutput.pathname;
       }
       if (cachebusterOutput.query) {
-        toUrl.search = composeQueryString(
-          toUrl.search,
-          cachebusterOutput.query
-        );
+        composeQueryString(toUrl.searchParams, cachebusterOutput.query);
       }
     }
   }
 }
 
-module.exports = nodeify(async (to, options) => {
-  var toUrl;
-
+module.exports = async (to, options) => {
   /* eslint-disable-next-line no-param-reassign */
   options = {
     basePath: ".",
@@ -44,7 +36,7 @@ module.exports = nodeify(async (to, options) => {
     options.cachebuster = defaultCachebuster;
   }
 
-  toUrl = url.parse(to);
+  const toUrl = urlParser(to);
 
   const resolvedPath = await resolvePath(decodeURI(toUrl.pathname), options);
 
@@ -65,5 +57,5 @@ module.exports = nodeify(async (to, options) => {
     applyCacheBuster(toUrl, resolvedPath, options);
   }
 
-  return url.format(toUrl);
-});
+  return urlFormatter(toUrl);
+};
