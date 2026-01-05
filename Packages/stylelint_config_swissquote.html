@@ -159,33 +159,23 @@ function).</li>
 </ul>
 <h2><a id="presets" href="#presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Presets</h2>
 <ul>
-<li>
-<code>recommended</code>: Contains all BEM specific rules.</li>
-<li>
-<code>legacy</code>: Contains rules specific to legacy code.</li>
-<li>
-<code>common</code>: Enforces the styleguide of the CSS. (included in both <code>recommended</code>
+<li><code>recommended</code>: Contains all BEM specific rules.</li>
+<li><code>legacy</code>: Contains rules specific to legacy code.</li>
+<li><code>common</code>: Enforces the styleguide of the CSS. (included in both <code>recommended</code>
 and <code>legacy</code>)</li>
 </ul>
 <h2><a id="rules" href="#rules" class="Permalink" aria-hidden="true" title="Permalink">#</a>Rules</h2>
 <ul>
-<li>
-<code>no-hack-reassignment</code>: Hacks (<code>._*</code>) must be applied directly on the
+<li><code>no-hack-reassignment</code>: Hacks (<code>._*</code>) must be applied directly on the
 concerned element.</li>
-<li>
-<code>no-state-without-component</code>: States (<code>.is-*|.has-*</code>) must appear next to a
+<li><code>no-state-without-component</code>: States (<code>.is-*|.has-*</code>) must appear next to a
 component.</li>
-<li>
-<code>no-type-outside-scope</code>: Types (<code>a</code>, <code>div</code> …) must appear inside a scope
+<li><code>no-type-outside-scope</code>: Types (<code>a</code>, <code>div</code> …) must appear inside a scope
 (<code>.s-*</code>).</li>
-<li>
-<code>no-utility-reassignment</code>: Utilities (<code>.u-*</code>) must be applied directly on the
+<li><code>no-utility-reassignment</code>: Utilities (<code>.u-*</code>) must be applied directly on the
 concerned element.</li>
-<li>
-<code>no-negative-var</code>: Using <code>-var(...)</code> does not work, it should be <code>calc(var(...) * -1)</code>
-</li>
-<li>
-<code>no-variable-in-transpiled-function</code>: Using <code>var()</code> inside a transpiled function will make the value static. This means that some parts of your CSS will be dynamic, and some will not.</li>
+<li><code>no-negative-var</code>: Using <code>-var(...)</code> does not work, it should be <code>calc(var(...) * -1)</code></li>
+<li><code>no-variable-in-transpiled-function</code>: Using <code>var()</code> inside a transpiled function will make the value static. This means that some parts of your CSS will be dynamic, and some will not.</li>
 </ul>
 <h2><a id="usage-within-crafty" href="#usage-within-crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage within Crafty</h2>
 <p>Crafty includes those rules and presets by default, you don’t need to do any
