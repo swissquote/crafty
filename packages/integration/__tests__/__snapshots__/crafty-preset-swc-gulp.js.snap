@@ -196,9 +196,17 @@ function _ts_generator(thisArg, body) {
         },
         trys: [],
         ops: []
-    }, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
-    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
+    }, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype), d = Object.defineProperty;
+    return d(g, "next", {
+        value: verb(0)
+    }), d(g, "throw", {
+        value: verb(1)
+    }), d(g, "return", {
+        value: verb(2)
+    }), typeof Symbol === "function" && d(g, Symbol.iterator, {
+        value: function() {
+            return this;
+        }
     }), g;
     function verb(n) {
         return function(v) {
@@ -347,7 +355,7 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-gulp/fails
 [__:__:__] ESLint failed with 1 error
 [__:__:__] 'js' errored after ____ ms
 [__:__:__] 'default' errored after ____ ms
-[__:__:__]   x Unexpected token \`test\`. Expected * for generator, private key, identifier or async
+[__:__:__]   x Unexpected token \`ident\`. Expected * for generator, private key, identifier or async
     ,-[__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-gulp/fails/js/script.js:14:1]
  11 |
  12 | }
