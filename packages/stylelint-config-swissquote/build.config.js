@@ -20,7 +20,7 @@ const externals = {
   "postcss-load-config": "../../shims/cosmiconfig.js",
   cosmiconfig: "../../shims/cosmiconfig.js",
 
-  "postcss-selector-parser": "../postcss-selector-parser/index.js",
+  "postcss-selector-parser": "commonjs ../postcss-selector-parser/index.cjs",
   "postcss-value-parser": "../postcss-value-parser/index.js",
   "postcss-resolve-nested-selector":
     "../postcss-resolve-nested-selector/index.js",
@@ -111,7 +111,7 @@ export default [
       }),
   builder =>
     builder("postcss-selector-parser")
-      .esm()
+      .cjs()
       .package(),
   builder =>
     builder("postcss-resolve-nested-selector")
@@ -152,7 +152,11 @@ export default [
         content
           .replace("('../data/patch.json')", "('./patch.json')")
           .replace(
-            "const { version } = version_require('../package.json');",
+            "const version_require = createRequire(import.meta.url);",
+            ""
+          )
+          .replace(
+            "const { version: version } = version_require('../package.json');",
             `const version = "${version}";`
           )
           .replace(

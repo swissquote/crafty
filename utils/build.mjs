@@ -3,11 +3,7 @@
 import fs from "fs";
 import path from "path";
 
-import {
-  findFiles,
-  scanFiles,
-  printReport
-} from "./duplicates.js";
+import { findFiles, scanFiles, printReport } from "./duplicates.js";
 import * as compileUtils from "./compile.mjs";
 
 class PackagesBuilder {
@@ -25,7 +21,9 @@ class PackagesBuilder {
         this.sourceFile.push(`export  { default as ${name} } from "${pkg}";`);
       }
     } else {
-      this.sourceFile.push(`module.exports["${name}"] = function() { return require("${pkg}"); };`);
+      this.sourceFile.push(
+        `module.exports["${name}"] = function() { return require("${pkg}"); };`
+      );
     }
 
     if (entryFile) {
@@ -38,7 +36,7 @@ class PackagesBuilder {
   build() {
     return {
       sourceFile: this.sourceFile.join("\n"),
-      entryFiles: this.entryFiles,
+      entryFiles: this.entryFiles
     };
   }
 }
@@ -49,7 +47,7 @@ class Builder {
       name,
       source: `./src/${name}.js`,
       destination: `dist/compiled/${name}.js`,
-      options: {},
+      options: {}
     };
   }
 
@@ -69,8 +67,14 @@ class Builder {
     this.values.destination = destination;
 
     if (destination.indexOf(".mjs") > -1) {
-      this.values.options.esm = true
+      this.values.options.esm = true;
     }
+
+    return this;
+  }
+
+  cjs() {
+    this.values.options.cjs = true;
 
     return this;
   }
@@ -93,7 +97,7 @@ class Builder {
     return this;
   }
 
-  package({ isEsmModule, names }  = {}) {
+  package({ isEsmModule, names } = {}) {
     const pkg = this.values.name;
 
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
@@ -112,7 +116,10 @@ class Builder {
         } else {
           this.values.sourceFile = `import lib from "${pkg}"; export default lib;`;
         }
-      }      
+      }
+    } else if (this.values.options.cjs) {
+      this.values.destination = `dist/${cleanPkg}/index.cjs`;
+      this.values.sourceFile = `module.exports = require("${pkg}");`;
     } else {
       this.values.destination = `dist/${cleanPkg}/index.js`;
       this.values.sourceFile = `module.exports = require("${pkg}");`;
@@ -129,11 +136,11 @@ class Builder {
     const cleanPkg = pkg.replace("@", "").replace("/", "-");
     this.values.destination = `dist/${cleanPkg}/bundled.js`;
 
-    const builder = new PackagesBuilder(this.values.options.esm);
+    const pkgBuilder = new PackagesBuilder(this.values.options.esm);
 
-    callback(builder);
+    callback(pkgBuilder);
 
-    const { sourceFile, entryFiles } = builder.build();
+    const { sourceFile, entryFiles } = pkgBuilder.build();
 
     this.values.sourceFile = sourceFile;
     this.values.entryFiles = entryFiles;
@@ -144,19 +151,22 @@ class Builder {
   async build() {
     console.log(`${this.values.name}\n${"=".repeat(this.values.name.length)}`);
 
-    const tmpSourceFile = `_temp_ncc.js`;
+    const esm = this.values.options.esm;
+
+    const tmpSourceFile = esm ? `_temp_ncc.mjs` : `_temp_ncc.cjs`;
 
     try {
       if (this.values.sourceFile) {
         await fs.promises.writeFile(tmpSourceFile, this.values.sourceFile);
-        this.values.options.filename =
-          this.values.name.replace("@", "").replace("/", "-") + ".js";
+        this.values.options.filename = `${this.values.name
+          .replace("@", "")
+          .replace("/", "-")}.js`;
         this.values.source = tmpSourceFile;
       }
 
       await compileUtils.compile(this.values.source, this.values.destination, {
         name: this.values.name,
-        ...this.values.options,
+        ...this.values.options
       });
 
       if (this.values.entryFiles) {
@@ -173,9 +183,11 @@ class Builder {
           fs.mkdirSync(path.dirname(entryFile.entryFile), { recursive: true });
 
           let fileContent;
-          if (this.values.options.esm) {
+          if (esm) {
             if (Array.isArray(entryFile.name)) {
-              fileContent = `export { ${entryFile.name.join(", ")} } from "${relativePath}";`;
+              fileContent = `export { ${entryFile.name.join(
+                ", "
+              )} } from "${relativePath}";`;
             } else {
               fileContent = `export { ${entryFile.name} as default } from "${relativePath}";`;
             }
@@ -184,6 +196,7 @@ class Builder {
           }
 
           console.log("Writing", entryFile.entryFile);
+          // eslint-disable-next-line no-await-in-loop
           await fs.promises.writeFile(entryFile.entryFile, fileContent);
         }
 
@@ -208,12 +221,13 @@ function builder(name) {
 
 async function main() {
   // Start with a cleanup
-  fs.rmSync(process.cwd() + "/dist", { force: true, recursive: true });
+  fs.rmSync(`${process.cwd()}/dist`, { force: true, recursive: true });
 
-  const toBuild = await import(process.cwd() + "/build.config.js")
+  const toBuild = await import(`${process.cwd()}/build.config.js`);
   const configuration = toBuild.default;
 
   for (const bundle of configuration) {
+    // eslint-disable-next-line no-await-in-loop
     await bundle(builder, compileUtils);
   }
 
@@ -221,8 +235,12 @@ async function main() {
   if (statFiles.length > 0) {
     const report = scanFiles(statFiles);
 
-    const duplicateModules = report.duplicateModules.filter(toBuild.keepDuplicateFile || Boolean);
-    const duplicateModulesByPackage = report.duplicateModulesByPackage.filter(toBuild.keepDuplicateModule || Boolean);
+    const duplicateModules = report.duplicateModules.filter(
+      toBuild.keepDuplicateFile || Boolean
+    );
+    const duplicateModulesByPackage = report.duplicateModulesByPackage.filter(
+      toBuild.keepDuplicateModule || Boolean
+    );
 
     if (duplicateModules.length > 0) {
       console.error("Found duplicate packages");
@@ -237,7 +255,7 @@ main().then(
   () => {
     console.log("Success");
   },
-  (e) => {
+  e => {
     console.error("Failed", e);
     process.exit(1);
   }
