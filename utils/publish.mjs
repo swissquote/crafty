@@ -230,12 +230,14 @@ async function publish(allSpecs, preRelease) {
     boolean: ["pre-release"],
     string: ["new-version"]
   };
-  
+
   const argv = yargsParser(process.argv.slice(2), options);
 
   // List workspace packages
   const rootPackagePath = "package.json";
-  const rootPackage = JSON.parse(fs.readFileSync(path.join(process.cwd(), rootPackagePath), "utf8"));
+  const rootPackage = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), rootPackagePath), "utf8")
+  );
   const originalVersion = rootPackage.version;
 
   const paths = await globby(

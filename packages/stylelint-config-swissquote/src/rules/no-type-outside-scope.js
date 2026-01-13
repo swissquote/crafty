@@ -103,8 +103,8 @@ export default function noTypeOutsideScope() {
           try {
             const container = parseSelector(resolvedSelector);
             checkSelector(container, rule, result);
-          } catch {
-            result.warn("Cannot parse selector", { node: rule });
+          } catch (e) {
+            result.warn(`Cannot parse selector (${e.message})`, { node: rule });
           }
         });
       });
