@@ -1,8 +1,8 @@
 import { setTimeout } from "node:timers/promises";
-import fs, { existsSync } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import ncc from "@vercel/ncc";
-import { defineConfig, build } from "@rslib/core";
+import { createRslib } from "@rslib/core";
 import filesize from "filesize";
 
 import checkStats from "./check-stats.js";
@@ -16,7 +16,7 @@ function getStatsName(name) {
 export async function handleNCCResult(name, output, { code, assets, stats }) {
   const dirname = path.dirname(output);
 
-  if (!existsSync(dirname)) {
+  if (!fs.existsSync(dirname)) {
     await fs.promises.mkdir(dirname, { recursive: true });
   }
 
@@ -58,15 +58,21 @@ async function compileNcc(input, output, bundle) {
     filename: path.basename(input),
     sourceMap: true,
     sourceMapRegister: true,
-    ...options,
+    ...options
   });
 
   await handleNCCResult(name, output, out);
 }
 
 async function compileRSLib(input, output, bundle) {
-  const { name, esm, externals, filename, sourceMap, ...unhandledOptions } =
-    bundle;
+  const {
+    name,
+    esm,
+    externals,
+    filename,
+    sourceMap,
+    ...unhandledOptions
+  } = bundle;
 
   if (Object.keys(unhandledOptions).length > 0) {
     console.error("Unhandled options", unhandledOptions);
@@ -78,57 +84,62 @@ async function compileRSLib(input, output, bundle) {
 
   await fs.promises.mkdir(dirname, { recursive: true });
 
-  await build(
-    defineConfig({
+  const rslib = await createRslib({
+    config: {
       lib: [
         {
-          format: "esm",
+          format: esm ? "esm" : "cjs",
           target: "node",
-          syntax: ["node >= 18"],
+          syntax: ["node >= 20"],
           shims: {
             esm: {
               __filename: true,
               __dirname: true,
-              require: true,
-            },
+              require: true
+            }
           },
           source: {
             entry: {
-              [entry]: input === "_temp_ncc.js" ? `./${input}` : input,
-            },
+              [entry]:
+                input === "_temp_ncc.cjs" || input === "_temp_ncc.mjs"
+                  ? `./${input}`
+                  : input
+            }
           },
           autoExternal: false,
           output: {
             externals: externals || [],
             distPath: {
-              root: dirname,
+              root: dirname
             },
             ...(sourceMap
               ? {
                   sourceMap: {
-                    js: "source-map",
-                  },
+                    js: "source-map"
+                  }
                 }
-              : {}),
-          },
-        },
+              : {})
+          }
+        }
       ],
       performance: {
         bundleAnalyze: {
           analyzerMode: "disabled",
           generateStatsFile: true,
-          statsFilename: getStatsName(name),
-        },
-      },
-    })
-  );
+          statsFilename: getStatsName(name)
+        }
+      }
+    }
+  });
+
+  await rslib.build();
 
   const statsFile = `${dirname}/${getStatsName(name)}`;
 
   let stats = null;
   try {
     stats = JSON.parse(fs.readFileSync(statsFile));
-  } catch (e) {
+  } catch {
     // The file might not be parseable yet,
     // so we try to wait a bit
     await setTimeout(1000);
@@ -140,6 +151,8 @@ async function compileRSLib(input, output, bundle) {
 
 export async function compile(input, output, bundle) {
   if (bundle.esm) {
+    // it should be possible to compile "bundle.cjs" with rslib
+    // but cjs default exports seem to not be supported
     await compileRSLib(input, output, bundle);
   } else {
     await compileNcc(input, output, bundle);
@@ -160,16 +173,15 @@ export async function patchESMForCJS(file, patterns) {
     "gm"
   );
 
-  await replaceContent(
-    file,
-    content => content.replace(regex, `module.exports = $1.default;`)
+  await replaceContent(file, content =>
+    content.replace(regex, `module.exports = $1.default;`)
   );
 }
 
 export async function copyFile(src, dest) {
   const dirname = path.dirname(dest);
 
-  if (!existsSync(dirname)) {
+  if (!fs.existsSync(dirname)) {
     await fs.promises.mkdir(dirname, { recursive: true });
   }
 

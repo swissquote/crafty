@@ -3,10 +3,10 @@
   "version": "1.28.1",
   "main": "./build.mjs",
   "scripts": {
-    "lint": "node ../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node *.js"
+    "lint": "node ../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node *.js *.mjs"
   },
   "dependencies": {
-    "@rslib/core": "0.18.1",
+    "@rslib/core": "0.19.2",
     "@vercel/ncc": "0.38.4"
   },
   "engines": {
