@@ -34,10 +34,7 @@ function ideConfiguration(crafty) {
 import { initialize } from "${CRAFTY_PATH}";
 import { toESLintConfig } from "${ESLINT_PRESET_PATH}";
 
-const crafty = await initialize(process.argv, {
-  presets: [],
-  readConfig: true,
-});
+const crafty = await initialize(process.argv, ${cliConfig});
 
 const config = await toESLintConfig(crafty, {}, "ide");
 
