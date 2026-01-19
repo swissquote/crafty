@@ -10,12 +10,12 @@ module.exports = {
     "@swissquote/crafty-preset-postcss",
     "@swissquote/crafty-preset-jest",
     "@swissquote/crafty-preset-react",
-    "@swissquote/crafty-runner-webpack",
+    "@swissquote/crafty-runner-rspack",
     "@swissquote/crafty-runner-gulp"
   ],
   js: {
     app: {
-      runner: "webpack",
+      runner: "rspack",
       //libraryTarget: "umd",
       source: "js/app.tsx",
       hot: true,
