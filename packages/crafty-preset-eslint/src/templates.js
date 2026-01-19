@@ -31,18 +31,14 @@ function ideConfiguration(crafty) {
 // This file helps IDEs autoconfigure themselves
 // any change here will only be used by your IDE, not by Crafty
 
-/* global process */
+import { initialize } from "${CRAFTY_PATH}";
+import { toESLintConfig } from "${ESLINT_PRESET_PATH}";
 
-module.exports = (async () => {
-  const { initialize } = await import("@swissquote/crafty");
-  const { toESLintConfig } = await import("@swissquote/crafty-preset-eslint");
-  
-  const crafty = await initialize(process.argv, ${cliConfig});
-  
-  const config = await toESLintConfig(crafty, {}, "ide");
-  
-  return config;
-})();
+const crafty = await initialize(process.argv, ${cliConfig});
+
+const config = await toESLintConfig(crafty, {}, "ide");
+
+export default config;
 `;
 }
 
