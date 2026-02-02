@@ -3048,12 +3048,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rslib/core@npm:0.19.3":
-  version: 0.19.3
-  resolution: "@rslib/core@npm:0.19.3"
+"@rslib/core@npm:0.19.4":
+  version: 0.19.4
+  resolution: "@rslib/core@npm:0.19.4"
   dependencies:
     "@rsbuild/core": "npm:~1.7.2"
-    rsbuild-plugin-dts: "npm:0.19.3"
+    rsbuild-plugin-dts: "npm:0.19.4"
   peerDependencies:
     "@microsoft/api-extractor": ^7
     typescript: ^5
@@ -3064,7 +3064,7 @@ __metadata:
       optional: true
   bin:
     rslib: bin/rslib.js
-  checksum: 10c0/f809fd6d2f72a865cd260ec37006050d315783ea728538ad0c8675b1d0bdb6bc0e8335a2aa4da828ec0ffc202a093f3afe148818c9eb5f6d20ca1cc4f8f7d292
+  checksum: 10c0/14e1a6781e3999d65f818f2e821576554d2117f3476c600dc6bfa608839090f841c79425fd4c5a7e9671d1f81fa433230c367561b075fc9528c5a93740b7dedf
   languageName: node
   linkType: hard
 
@@ -4227,7 +4227,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/utils@workspace:utils"
   dependencies:
-    "@rslib/core": "npm:0.19.3"
+    "@rslib/core": "npm:0.19.4"
     "@vercel/ncc": "npm:0.38.4"
   languageName: unknown
   linkType: soft
@@ -12594,9 +12594,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rsbuild-plugin-dts@npm:0.19.3":
-  version: 0.19.3
-  resolution: "rsbuild-plugin-dts@npm:0.19.3"
+"rsbuild-plugin-dts@npm:0.19.4":
+  version: 0.19.4
+  resolution: "rsbuild-plugin-dts@npm:0.19.4"
   dependencies:
     "@ast-grep/napi": "npm:0.37.0"
   peerDependencies:
@@ -12611,7 +12611,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/171e1e090954e29ac07ed97a0c8823bc8cecb945e4c71b765bd192e2bae41a21a01176e71006887cad40e05d9673514d36d86bbeebf34f506ae070af4f2a00a4
+  checksum: 10c0/36a4abb0824e22382307482178a7056787e1bf24e98eced796438e96c2b7c99305c17a82bfee561331cb6501388bef7968566482c8383dff3bc9eaf169e1e38e
   languageName: node
   linkType: hard
 
