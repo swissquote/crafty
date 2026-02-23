@@ -127,12 +127,6 @@ module.exports = [
         cosmiconfig: "../../src/dummy.js",
       }),
   async function() {
-    // Remove a compiled version of TypeScript
-    // Would be needed as fallback by ts-checker-rspack-plugin if no `typescriptPath` is provided
-    await fs.promises.unlink(
-      "dist/ts-checker-rspack-plugin/typescript.js"
-    );
-
     fs.copyFileSync(
       require.resolve("ts-checker-rspack-plugin/lib/getIssuesWorker.js"),
       "dist/ts-checker-rspack-plugin/getIssuesWorker.js"
@@ -151,8 +145,8 @@ module.exports = [
     // Add path to files
     const fileBufferEdited = replace(
       fileBuffer,
-      "var __nested_webpack_require_18__ = {};",
-      "var __nested_webpack_require_18__ = {ab: `${__dirname}/`};"
+      "__nccwpck_require__(223)(config.typescriptPath)",
+      "require(config.typescriptPath)"
     );
 
     const { version } = require("ts-checker-rspack-plugin/package.json");
