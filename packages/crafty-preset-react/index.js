@@ -104,9 +104,7 @@ module.exports = {
 
       chain.plugin("react-refresh").use(ReactRefreshWebpackPlugin, [
         {
-          overlay: {
-            sockIntegration: "wps" // webpack-plugin-serve
-          }
+          overlay: false
         }
       ]);
     }
@@ -142,11 +140,7 @@ module.exports = {
 
       chain.plugin("react-refresh").use(ReactRefreshPlugin, [
         {
-          overlay: false,
-          //overlay: {
-            // TODO
-            //sockIntegration: "wps" // webpack-plugin-serve
-          //}
+          overlay: false
         }
       ]);
     }

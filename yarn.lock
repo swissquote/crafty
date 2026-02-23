@@ -4383,7 +4383,7 @@ __metadata:
     "@swissquote/crafty": "npm:1.28.1"
     "@swissquote/crafty-commons": "npm:1.28.1"
     "@swissquote/crafty-preset-terser": "npm:1.28.1"
-    anypack-plugin-serve: "npm:0.1.0-beta.1"
+    anypack-plugin-serve: "npm:0.1.0-beta.2"
     bufferutil: "npm:4.0.9"
     c8: "npm:10.1.3"
     common-ancestor-path: "npm:1.0.1"
@@ -4406,7 +4406,7 @@ __metadata:
     "@swissquote/crafty": "npm:1.28.1"
     "@swissquote/crafty-commons": "npm:1.28.1"
     "@swissquote/crafty-preset-terser": "npm:1.28.1"
-    anypack-plugin-serve: "npm:0.1.0-beta.1"
+    anypack-plugin-serve: "npm:0.1.0-beta.2"
     bufferutil: "npm:4.1.0"
     c8: "npm:10.1.3"
     case-sensitive-paths-webpack-plugin: "npm:2.4.0"
@@ -5893,12 +5893,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"anypack-plugin-serve@npm:0.1.0-beta.1":
+"anypack-overlay@npm:0.1.0-beta.1":
   version: 0.1.0-beta.1
-  resolution: "anypack-plugin-serve@npm:0.1.0-beta.1"
+  resolution: "anypack-overlay@npm:0.1.0-beta.1"
+  checksum: 10c0/d19add5dd44ef2ff165f297b65b9ac304451db833ac1be59e73f82778192994a0d2c7a6150a88e2c1f55ae59cd83d53a36204c13286ec5e45146f670749913ed
+  languageName: node
+  linkType: hard
+
+"anypack-plugin-serve@npm:0.1.0-beta.2":
+  version: 0.1.0-beta.2
+  resolution: "anypack-plugin-serve@npm:0.1.0-beta.2"
   dependencies:
     "@polka/compression": "npm:^1.0.0-next.25"
     ansi-colors: "npm:^4.1.3"
+    anypack-overlay: "npm:0.1.0-beta.1"
     connect-history-api-fallback: "npm:^2.0.0"
     empathic: "npm:^2.0.0"
     http-proxy-middleware: "npm:^3.0.5"
@@ -5913,7 +5921,7 @@ __metadata:
     ws: "npm:^8.18.3"
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 10c0/9bd059fcd2223a118933ee96e4c29ee11033e9f8982a4afe1d2381fa90f124b02c412f0b5738bcc71afd4d93df289994a63fcbcfb2c20cb2d7028d1447953079
+  checksum: 10c0/86f63c96f5b96aa0a39a3126bebecfa266850997f858399ed03f6b8a35956a4cedb8659ea4069ec78f7df9ddf38779d2599c2f50a4b54da5270f199b65a9b1f6
   languageName: node
   linkType: hard
 
