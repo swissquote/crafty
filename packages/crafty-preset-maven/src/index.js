@@ -3,7 +3,7 @@ import fs from "fs";
 import childProcess from "child_process";
 
 import tmp from "tmp";
-import XMLParser from "fast-xml-parser/src/xmlparser/XMLParser.js";
+import { XMLParser } from "fast-xml-parser";
 
 let loadedPom;
 
