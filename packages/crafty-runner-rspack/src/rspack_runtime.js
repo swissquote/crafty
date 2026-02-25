@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 
 const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 const debug = require("@swissquote/crafty-commons/packages/debug")(
@@ -29,7 +29,7 @@ function prepareConfiguration(crafty, bundle, rspackPort) {
 
 function extractError(error) {
   if (error instanceof Error) {
-    if (error.error.constructor.name === "ESLintError") {
+    if (error.error?.constructor?.name === "ESLintError") {
       return {
         type: "information",
         message: error.error.message.replace(/^\[eslint\]/, "")
@@ -58,7 +58,7 @@ module.exports = function rspackTask(crafty, bundle) {
       const compiler = rspack(config);
 
       if (!compiler) {
-        return Promise.reject("Could not create compiler");
+        throw new Error("Could not create compiler");
       }
 
       // "invalid" event fires when you have changed a file, and Rspack is

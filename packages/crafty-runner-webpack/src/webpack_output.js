@@ -72,7 +72,7 @@ function printStats(stats) {
       errors: false, // Errors are printed separately
       errorsCount: false,
       warnings: false, // Warnings are printed separately
-      warnignsCount: false,
+      warningsCount: false,
       timings: false, // Displayed separately
       relatedAssets: true,
       entrypoints: true,

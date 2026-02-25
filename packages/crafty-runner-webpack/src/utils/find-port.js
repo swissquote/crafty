@@ -47,6 +47,7 @@ function isPortTaken(port, fn) {
 function parse(arr, status, cb) {
   if (arr.length === 0) {
     cb(null, false);
+    return;
   }
 
   const port = arr.shift();
@@ -87,6 +88,11 @@ module.exports = {
           reject(err);
           return;
         }
+
+        if (!port || typeof port !== 'number') {                                                                                                                                                                       
+          reject(new Error('Could not find available port'));                                                                                                                                                          
+          return;                                                                                                                                                                                                      
+        }  
 
         assigned[buildname] = port;
 
