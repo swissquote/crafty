@@ -27,7 +27,7 @@ function prepareExternals(externals) {
 /**
  * The jsonp function is used to load async chunks
  * We generate a name that is as unique as possible
- * Because if multiple webpack/rspack bundles are loaded at the same time
+ * Because if multiple webpack/Rspack bundles are loaded at the same time
  * they might conflict
  *
  * @param {Boolean} isWatching
@@ -83,17 +83,9 @@ function configureWatcher(chain, bundle, config, rspackPort) {
   const outputPath = `${chain.output.get("path").replace(/\/$/g, "")}/**`;
 
   // Ignore the default dist folder as otherwise
-  // rspack can enter a rebuild loop
-  chain
-    .plugin("WatchIgnorePlugin")
-    .use(require.resolve("webpack/lib/WatchIgnorePlugin"), [
-      { paths: [/\.d\.ts$/, outputPath] }
-    ]);
-
-  // Ignore the default dist folder as otherwise
-  // rspack can enter a rebuild loop
+  // Rspack can enter a rebuild loop
   chain.watchOptions({
-    ignored: ["node_modules", outputPath]
+    ignored: ["node_modules", /\.d\.ts$/, outputPath]
   });
 
   chain.devServer
@@ -113,7 +105,7 @@ function finalizeWatcher(chain, config) {
     ...devServerConfig
   } = chain.devServer.toConfig();
 
-  // Read theses values from rspack chain as they could have been overriden with a preset
+  // Read theses values from Rspack chain as they could have been overriden with a preset
   const protocol = chain.devServer.get("https") ? "https" : "http";
   const urlPrefix = `${protocol}://${host}:${port}`;
 
@@ -178,7 +170,7 @@ module.exports = function configureRspack(crafty, bundle, serverPort) {
   const isWatching = crafty.isWatching();
   const chain = new RspackChain();
 
-  // Define rspack's mode, will enable some default configurations
+  // Define Rspack's mode, will enable some default configurations
   chain.mode(
     crafty.getEnvironment() === "production" ? "production" : "development"
   );
