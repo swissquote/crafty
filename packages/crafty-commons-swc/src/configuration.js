@@ -92,6 +92,31 @@ function getConfigurationWebpack(crafty, bundle, hasHelperDependency, syntax) {
   return options;
 }
 
+function getConfigurationRspack(crafty, bundle, hasHelperDependency, syntax) {
+  const options = getConfigurationBase(
+    crafty,
+    bundle,
+    hasHelperDependency,
+    syntax
+  );
+
+  // Always enabled
+  options.jsc.externalHelpers = true;
+
+  // This option do not work with Rspack's version of SWC
+  delete options.env.coreJs;
+  delete options.jsc.parser.usingDecl;
+
+  // Force ES6 exports even if a module has a specific module syntax in a `.swcrc`
+  options.module = { type: "es6" };
+
+  extendConfiguration(crafty, bundle, options);
+
+  //console.log("Rspack SWC configuration", options);
+
+  return options;
+}
+
 function getConfigurationGulp(crafty, bundle, syntax) {
   const options = getConfigurationBase(
     crafty,
@@ -113,5 +138,6 @@ module.exports = {
   hasSwcHelpersDependency,
   getConfiguration,
   getConfigurationWebpack,
+  getConfigurationRspack,
   getConfigurationGulp
 };

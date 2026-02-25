@@ -1,0 +1,438 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/compiles-paths/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by path js/ ___ KiB
+  assets by path js/*.ts ___ KiB
+    asset js/SomeLibrary.d.ts ___ KiB [emitted]
+    asset js/script.d.ts ___ KiB [emitted]
+  asset js/components/Calculator.d.ts ___ KiB [emitted]
+  asset js/views/View.d.ts ___ KiB [emitted]
+assets by path *.js ___ KiB
+  asset myBundle.min.js ___ KiB [emitted] (name: default)
+  asset 222.myBundle.min.js ___ KiB [emitted]
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.ts + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var f=a[l];if(f.getAttribute("src")==e||f.getAttribute("data-rspack")=="UNIQID:"+r){o=f;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var s=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(s.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=s.bind(null,o.onerror),o.onload=s.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var f=l.length-1;f>-1&&(!c||!/^http(s?):/.test(c));)c=l[f--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r));var s={};i.r(s),i.d(s,{default:function(){return p}});class p{constructor(){console.log("init class")}method(){console.log(6),i.e("222").then(i.bind(i,221)).then(e=>{console.log(new e.default().add(2,4))})}}return s}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 3`] = `
+""use strict";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([["222"],{221:function(u,e,t){t.d(e,{default:function(){return n}});class n{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+//# sourceMappingURL=222.myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 4`] = `
+"export default class SomeLibrary {
+    add(a: any, b: any): any;
+    substract(a: any, b: any): number;
+    divide(a: any, b: any): number;
+}
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 5`] = `
+"export default function Calculator(a: number, b: number): number;
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/compiles-forked/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+asset someLibrary.myBundle.min.js ___ KiB [emitted] (name: someLibrary)
+Entrypoint default ___ KiB = myBundle.min.js
+Chunk Group someLibrary ___ KiB = someLibrary.myBundle.min.js
+chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.ts + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return"someLibrary.myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r));var f={};i.r(f),i.d(f,{default:function(){return p}});class p{constructor(){console.log("init class")}method(){console.log(6),i.e("469").then(i.bind(i,602)).then(e=>{console.log(new e.default().add(2,4))})}}return f}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 3`] = `
+""use strict";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([["469"],{602:function(u,e,t){t.d(e,{default:function(){return n}});class n{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+//# sourceMappingURL=someLibrary.myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by path js/*.ts ___ KiB
+  asset js/SomeLibrary.d.ts ___ KiB [emitted]
+  asset js/script.d.ts ___ KiB [emitted]
+  asset js/Component.d.ts ___ KiB [emitted]
+assets by path *.js ___ KiB
+  asset myBundle.min.js ___ KiB [emitted] (name: default)
+  asset 222.myBundle.min.js ___ KiB [emitted]
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.ts + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var f=a[l];if(f.getAttribute("src")==e||f.getAttribute("data-rspack")=="UNIQID:"+r){o=f;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var s=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(s.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=s.bind(null,o.onerror),o.onload=s.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var f=l.length-1;f>-1&&(!c||!/^http(s?):/.test(c));)c=l[f--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r));var s={};i.r(s),i.d(s,{default:function(){return p}});class p{constructor(){console.log("init class")}method(){console.log(6),i.e("222").then(i.bind(i,602)).then(e=>{console.log(new e.default().add(2,4))})}}return s}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript 3`] = `
+""use strict";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([["222"],{602:function(u,e,t){t.d(e,{default:function(){return n}});class n{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+//# sourceMappingURL=222.myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript 4`] = `
+"export default class SomeLibrary {
+    add(a: any, b: any): any;
+    substract(a: any, b: any): number;
+    divide(a: any, b: any): number;
+}
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript 5`] = `
+"export default function test(a: number, b: number): number;
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/compiles-alternate-conf/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by path js/*.ts ___ KiB
+  asset js/SomeLibrary.d.ts ___ KiB [emitted]
+  asset js/script.d.ts ___ KiB [emitted]
+  asset js/Component.d.ts ___ KiB [emitted]
+assets by path *.js ___ KiB
+  asset myBundle.min.js ___ KiB [emitted] (name: default)
+  asset 222.myBundle.min.js ___ KiB [emitted]
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.ts + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var f=a[l];if(f.getAttribute("src")==e||f.getAttribute("data-rspack")=="UNIQID:"+r){o=f;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var s=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(s.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=s.bind(null,o.onerror),o.onload=s.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var f=l.length-1;f>-1&&(!c||!/^http(s?):/.test(c));)c=l[f--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r));var s={};i.r(s),i.d(s,{default:function(){return p}});class p{constructor(){console.log("init class")}method(){console.log(6),i.e("222").then(i.bind(i,602)).then(e=>{console.log(new e.default().add(2,4))})}}return s}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 3`] = `
+""use strict";(self.webpackChunkUNIQID=self.webpackChunkUNIQID||[]).push([["222"],{602:function(u,e,t){t.d(e,{default:function(){return n}});class n{add(u,e){return u+e}substract(u,e){return u-e}divide(u,e){return u/e}}}}]);
+//# sourceMappingURL=222.myBundle.min.js.map"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 4`] = `
+"export default class SomeLibrary {
+    add(a: any, b: any): any;
+    substract(a: any, b: any): number;
+    divide(a: any, b: any): number;
+}
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 5`] = `
+"export default function test(a: number, b: number): number;
+"
+`;
+
+exports[`crafty-preset-typescript-rspack > Fails gracefully on broken markup 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default ___ KiB = myTSBundle.min.js
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/typescript.ts ___ KiB [built] [code generated]
+
+  Failed to compile.
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts
+  │   14:0  error  Parsing error: Unexpected token. A constructor, method, accessor, or property was expected
+  │
+  │ ✖ 1 problem (1 error, 0 warnings)
+  │
+
+  × [tsl] ERROR in __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts(14,1)
+  │       TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
+
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Fails gracefully on invalid TS - fork checker 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid-forked/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default ___ KiB = myTSBundle.min.js
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/typescript.ts ___ KiB [built] [code generated]
+
+  Failed to compile.
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid-forked/js/typescript.ts
+  │    2:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    3:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │    5:1   error  Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  │    5:13  error  'D' was used before it was defined  @swissquote/swissquote/@typescript-eslint/no-use-before-define
+  │    6:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    8:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    9:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │    9:9   error  Unexpected alert                    no-alert
+  │   10:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   14:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   15:1   error  Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  │   16:1   error  Replace \`····\` with \`··\`            @swissquote/swissquote/prettier/prettier
+  │   18:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   19:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │   19:9   error  Unexpected alert                    no-alert
+  │   20:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │
+  │ ✖ 18 problems (16 errors, 2 warnings)
+  │   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
+  │
+
+  × TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+  │     3 |         console.log("Something happens here");
+  │     4 |
+  │   > 5 |         new D().someNonExistingMethod();
+  │       |                 ^^^^^^^^^^^^^^^^^^^^^
+  │     6 |     }
+  │     7 |
+  │     8 |     someMethod() {
+
+  Δt ____ms ✖ 3 problems (2 errors, 1 warning)
+
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Fails gracefully on invalid TS 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myTSBundle' ...
+assets by status ___ KiB [cached] 2 assets
+Entrypoint default ___ KiB = myTSBundle.min.js
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/typescript.ts ___ KiB [built] [code generated]
+
+  Failed to compile.
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid/js/typescript.ts
+  │    2:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    3:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │    5:1   error  Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  │    5:13  error  'D' was used before it was defined  @swissquote/swissquote/@typescript-eslint/no-use-before-define
+  │    6:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    8:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │    9:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │    9:9   error  Unexpected alert                    no-alert
+  │   10:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   14:3   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   15:1   error  Replace \`········\` with \`····\`      @swissquote/swissquote/prettier/prettier
+  │   16:1   error  Replace \`····\` with \`··\`            @swissquote/swissquote/prettier/prettier
+  │   18:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │   19:1   error  Delete \`····\`                       @swissquote/swissquote/prettier/prettier
+  │   19:9   error  Unexpected alert                    no-alert
+  │   20:1   error  Delete \`··\`                         @swissquote/swissquote/prettier/prettier
+  │
+  │ ✖ 18 problems (16 errors, 2 warnings)
+  │   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
+  │
+
+  × [tsl] ERROR in __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid/js/typescript.ts(5,17)
+  │       TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+
+  Δt ____ms ✖ 3 problems (2 errors, 1 warning)
+
+[__:__:__] 'js_myTSBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Lints TypeScript with rspack 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/lints/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by status ___ KiB [cached] 5 assets
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.ts + 1 modules ___ KiB [code generated]
+
+  Failed to compile.
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/lints/js/Component.ts
+  │   1:1  error  Replace \`⏎export·function·test(a:\` with \`export·function·test(a:·\`  @swissquote/swissquote/prettier/prettier
+  │   3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
+  │
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/lints/js/SomeLibrary.ts
+  │   10:15  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
+  │
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/lints/js/script.ts
+  │    1:1   error  Replace \`⏎import·{\` with \`import·{·\`                   @swissquote/swissquote/prettier/prettier
+  │    5:1   error  Replace \`····constructor·\` with \`··constructor\`        @swissquote/swissquote/prettier/prettier
+  │    7:1   error  Insert \`·\`                                             @swissquote/swissquote/prettier/prettier
+  │   10:17  error  Replace \`·test(·\` with \`test(\`                         @swissquote/swissquote/prettier/prettier
+  │   12:34  error  Replace \`·(SomeLibrary)·=>⏎···\` with \`SomeLibrary·=>\`  @swissquote/swissquote/prettier/prettier
+  │   17:7   error  Insert \`;\`                                             @swissquote/swissquote/prettier/prettier
+  │
+  │ ✖ 12 problems (9 errors, 3 warnings)
+  │   9 errors and 0 warnings potentially fixable with the \`--fix\` option.
+  │
+
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`crafty-preset-typescript-rspack > Removes unused classes 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/tree-shaking/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+asset js/imported-typescript.d.ts ___ KiB [emitted]
+asset js/index.d.ts ___ KiB [emitted]
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
+  ./js/index.ts + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

@@ -35,7 +35,7 @@ function formatMessage(originalMessage, isError) {
   // Strip Webpack-added headers off errors/warnings
   // https://github.com/webpack/webpack/blob/master/lib/ModuleError.js
   lines = lines.filter(line => {
-    const isModuleLine = /Module [A-z ]+\(from/.test(line);
+    const isModuleLine = /Module [A-Za-z ]+\(from/.test(line);
 
     // This line may contain the name of the loader, we want to know if the loader is SWC
     // Module build failed (from ../../../../../node_modules/swc-loader/src/index.js)

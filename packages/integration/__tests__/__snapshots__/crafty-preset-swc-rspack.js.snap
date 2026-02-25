@@ -1,0 +1,450 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Compiles Generators 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-generators/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles Generators 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e={};e.d=function(t,r){for(var n in r)e.o(r,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:r[n]})},e.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},e.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var t={};function r(){return function(e,t){var r,n,o,u={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]},a=Object.create(("function"==typeof Iterator?Iterator:Object).prototype),l=Object.defineProperty;return l(a,"next",{value:i(0)}),l(a,"throw",{value:i(1)}),l(a,"return",{value:i(2)}),"function"==typeof Symbol&&l(a,Symbol.iterator,{value:function(){return this}}),a;function i(l){return function(i){var c=[l,i];if(r)throw TypeError("Generator is already executing.");for(;a&&(a=0,c[0]&&(u=0)),u;)try{if(r=1,n&&(o=2&c[0]?n.return:c[0]?n.throw||((o=n.return)&&o.call(n),0):n.next)&&!(o=o.call(n,c[1])).done)return o;switch(n=0,o&&(c=[2&c[0],o.value]),c[0]){case 0:case 1:o=c;break;case 4:return u.label++,{value:c[1],done:!1};case 5:u.label++,n=c[1],c=[0];continue;case 7:c=u.ops.pop(),u.trys.pop();continue;default:if(!(o=(o=u.trys).length>0&&o[o.length-1])&&(6===c[0]||2===c[0])){u=0;continue}if(3===c[0]&&(!o||c[1]>o[0]&&c[1]<o[3])){u.label=c[1];break}if(6===c[0]&&u.label<o[1]){u.label=o[1],o=c;break}if(o&&u.label<o[2]){u.label=o[2],u.ops.push(c);break}o[2]&&u.ops.pop(),u.trys.pop();continue}c=t.call(e,u)}catch(e){c=[6,e],n=0}finally{r=o=0}if(5&c[0])throw c[1];return{value:c[0]?c[1]:void 0,done:!0}}}}(this,function(e){switch(e.label){case 0:return[4,1];case 1:return e.sent(),[2]}})}return e.r(t),e.d(t,{default:function(){return r}}),t}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)("object"==typeof exports?exports:e)[n]=o[n]}}(self,function(){return function(){"use strict";var e={};e.d=function(t,o){for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},e.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},e.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var t={};e.r(t),e.d(t,{default:function(){return n}});class o extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class n{constructor(){console.log("init class")}method(){console.log(o)}}return t}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript with externals 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/externals/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript with externals 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t(require("somelibrary/thing/stuff"));else if("function"==typeof define&&define.amd)define(["somelibrary/thing/stuff"],t);else{var r="object"==typeof exports?t(require("somelibrary/thing/stuff")):t(e["somelibrary/thing/stuff"]);for(var o in r)("object"==typeof exports?exports:e)[o]=r[o]}}(self,function(e){return function(){"use strict";var t={173:function(t){t.exports=e}},r={};function o(e){var n=r[e];if(void 0!==n)return n.exports;var i=r[e]={exports:{}};return t[e](i,i.exports,o),i.exports}o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,{a:t}),t},o.d=function(e,t){for(var r in t)o.o(t,r)&&!o.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var n={};return!function(){o.r(n),o.d(n,{default:function(){return i}});var e=o(173),t=o.n(e);class r extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class i{constructor(){console.log("init class")}method(){console.log(r,t())}}}(),n}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Compiles JavaScript with rspack overrides 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-merge-rspack-config/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Merging SQ rspack config with __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-merge-rspack-config/rspack.config.js
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Compiles JavaScript with rspack overrides 2`] = `
+"(function webpackUniversalModuleDefinition(root, factory) {
+
+      if(typeof exports === 'object' && typeof module === 'object') {
+          module.exports = factory();
+      }else if(typeof define === 'function' && define.amd) {
+
+          define([], factory);
+
+          } else {
+          var a = factory();
+
+          for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+
+      }
+
+      })(self, function() {
+          return (function() {
+"use strict";
+// The require scope
+var __webpack_require__ = {};
+
+// webpack/runtime/define_property_getters
+!function() {
+__webpack_require__.d = function(exports, definition) {
+	for(var key in definition) {
+        if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+            Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+        }
+    }
+};
+}();
+// webpack/runtime/has_own_property
+!function() {
+__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+}();
+// webpack/runtime/make_namespace_object
+!function() {
+// define __esModule on exports
+__webpack_require__.r = function(exports) {
+	if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+	}
+	Object.defineProperty(exports, '__esModule', { value: true });
+};
+}();
+var __webpack_exports__ = {};
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": function() { return /* binding */ newStuff; }
+});
+
+;// CONCATENATED MODULE: ./js/Component.js
+/* global React */ class MyComponent extends React.Component {
+    handleClick = ()=>{
+        this.setState({
+            hey: true
+        });
+    };
+    render() {
+        return /*#__PURE__*/ React.createElement("div", {
+            onClick: this.handleClick
+        }, "Hey ", this.state.hey);
+    }
+}
+
+;// CONCATENATED MODULE: ./js/script.js
+
+class newStuff {
+    constructor(){
+        //eslint-disable-next-line no-console
+        console.log("init class");
+    }
+    method() {
+        //eslint-disable-next-line no-console
+        console.log(MyComponent);
+    }
+}
+
+return __webpack_exports__;
+})()
+
+});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Creates profiles 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/profiles/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+
+Rsdoctor v1.5.2
+
+[RSDOCTOR WARN] output.devtoolModuleFilenameTemplate has been changed to [absolute-resource-path], this is for bundle analysis.
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Creates profiles 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)("object"==typeof exports?exports:e)[n]=o[n]}}(self,function(){return function(){"use strict";var e={};e.d=function(t,o){for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},e.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},e.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var t={};e.r(t),e.d(t,{default:function(){return n}});class o extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class n{constructor(){console.log("init class")}method(){console.log(o)}}return t}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Deduplicates helpers 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-deduplicates/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 2 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Deduplicates helpers 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)("object"==typeof exports?exports:e)[n]=o[n]}}(self,function(){return function(){"use strict";var e={};e.d=function(t,o){for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},e.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},e.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var t={};e.r(t),e.d(t,{default:function(){return r}});class o extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class n extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class r{constructor(){console.log("init class")}method(){console.log(o,n)}}return t}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Does not transpile on modern browsers 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/no-old-browser/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Does not transpile on modern browsers 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var o=t();for(var n in o)("object"==typeof exports?exports:e)[n]=o[n]}}(self,function(){return function(){"use strict";var e={};e.d=function(t,o){for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},e.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},e.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var t={};e.r(t),e.d(t,{default:function(){return n}});class o extends React.Component{handleClick=()=>{this.setState({hey:!0})};render(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}class n{constructor(){console.log("init class")}method(){console.log(o)}}return t}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Fails gracefully on broken markup 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/fails/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
+  ./js/script.js ___ KiB [built] [code generated] [1 error]
+
+  Failed to compile.
+
+  × Module build failed (from builtin:swc-loader):
+  ├─▶   ×   x Unexpected token \`<eof>\`. Expected identifier, string literal, numeric literal or [ for the computed key
+  │     │     ,-[__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/fails/js/script.js:14:3]
+  │     │  12 |     console.log(Component);
+  │     │  13 |
+  │     │  14 | }
+  │     │     \`----
+  │     │
+  │
+  ╰─▶   × Syntax Error
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/fails/js/script.js
+  │   15:1  error  Parsing error: Unexpected token
+  │
+  │ ✖ 1 problem (1 error, 0 warnings)
+  │
+
+  Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for SWC Runtime 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-import-runtime/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  dependent modules ___ KiB [dependent] 5 modules
+  ./js/script.js + 2 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Keeps imports unresolved for SWC Runtime 2`] = `
+"!function(e,r){if("object"==typeof exports&&"object"==typeof module)module.exports=r(require("@swc/helpers/_/_call_super"),require("@swc/helpers/_/_define_property"),require("@swc/helpers/_/_create_class"),require("@swc/helpers/_/_inherits"),require("@swc/helpers/_/_class_call_check"));else if("function"==typeof define&&define.amd)define(["@swc/helpers/_/_call_super","@swc/helpers/_/_define_property","@swc/helpers/_/_create_class","@swc/helpers/_/_inherits","@swc/helpers/_/_class_call_check"],r);else{var t="object"==typeof exports?r(require("@swc/helpers/_/_call_super"),require("@swc/helpers/_/_define_property"),require("@swc/helpers/_/_create_class"),require("@swc/helpers/_/_inherits"),require("@swc/helpers/_/_class_call_check")):r(e["@swc/helpers/_/_call_super"],e["@swc/helpers/_/_define_property"],e["@swc/helpers/_/_create_class"],e["@swc/helpers/_/_inherits"],e["@swc/helpers/_/_class_call_check"]);for(var s in t)("object"==typeof exports?exports:e)[s]=t[s]}}(self,function(e,r,t,s,n){return function(){"use strict";var c,o,i,l,_,u,p,a,f={625:function(r){r.exports=e},719:function(e){e.exports=n},514:function(e){e.exports=t},6:function(e){e.exports=r},653:function(e){e.exports=s}},h={};function d(e){var r=h[e];if(void 0!==r)return r.exports;var t=h[e]={exports:{}};return f[e](t,t.exports,d),t.exports}d.d=function(e,r){for(var t in r)d.o(r,t)&&!d.o(e,t)&&Object.defineProperty(e,t,{enumerable:!0,get:r[t]})},d.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},d.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var y={};return d.r(y),d.d(y,{default:function(){return a}}),c=d(719),o=d(514),i=d(625),l=d(6),_=d(653),u=function(e){function r(){var e;return(0,c._)(this,r),e=(0,i._)(this,r,arguments),(0,l._)(e,"handleClick",function(){e.setState({hey:!0})}),e}return(0,_._)(r,e),(0,o._)(r,[{key:"render",value:function(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}]),r}(React.Component),p=function(e){function r(){var e;return(0,c._)(this,r),e=(0,i._)(this,r,arguments),(0,l._)(e,"handleClick",function(){e.setState({hey:!0})}),e}return(0,_._)(r,e),(0,o._)(r,[{key:"render",value:function(){return React.createElement("div",{onClick:this.handleClick},"Hey ",this.state.hey)}}]),r}(React.Component),a=function(){function e(){(0,c._)(this,e),console.log("init class")}return(0,o._)(e,[{key:"method",value:function(){console.log(u,p)}}]),e}(),y}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
+exports[`Lints JavaScript with rspack 1`] = `
+{
+  "status": 1,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/lints/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+assets by status ___ KiB [cached] 1 asset
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  ./js/script.js + 1 modules ___ KiB [code generated]
+
+  Failed to compile.
+
+  × [eslint]
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/lints/js/Component.js
+  │    4:1   error  Delete \`⏎\`                                 @swissquote/swissquote/prettier/prettier
+  │    6:20  error  Replace \`hey:·true⏎···\` with \`·hey:·true\`  @swissquote/swissquote/prettier/prettier
+  │   10:11  error  Delete \`⏎·\`                                @swissquote/swissquote/prettier/prettier
+  │   12:11  error  Delete \`·\`                                 @swissquote/swissquote/prettier/prettier
+  │
+  │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/lints/js/script.js
+  │    3:23  error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  │    5:10  error  'test' is defined but never used                 no-unused-vars
+  │    5:14  error  Replace \`·(one,\` with \`(one,·\`                   @swissquote/swissquote/prettier/prettier
+  │    6:1   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  │   14:9   error  Delete \`·\`                                       @swissquote/swissquote/prettier/prettier
+  │   15:17  error  Replace \`··"some·method"·\` with \`"some·method"\`  @swissquote/swissquote/prettier/prettier
+  │   18:11  error  Replace \`·a,·b)⏎·\` with \`a,·b)\`                  @swissquote/swissquote/prettier/prettier
+  │   20:14  error  Expected '===' and instead saw '=='              eqeqeq
+  │
+  │ ✖ 14 problems (12 errors, 2 warnings)
+  │   10 errors and 0 warnings potentially fixable with the \`--fix\` option.
+  │
+
+  Δt ____ms ✖ 2 problems (1 error, 1 warning)
+
+[__:__:__] 'js_myBundle' errored after ____ ms
+[__:__:__] Rspack compilation failed
+[__:__:__] 'js' errored after ____ ms
+[__:__:__] 'default' errored after ____ ms
+",
+}
+`;
+
+exports[`Removes unused classes 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/tree-shaking/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+Entrypoint default ___ KiB = myBundle.min.js
+chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
+  ./js/index.js + 1 modules ___ KiB [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;

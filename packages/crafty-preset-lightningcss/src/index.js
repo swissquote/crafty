@@ -40,8 +40,8 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    createGlobalRule(crafty, bundle, chain);
-    createModuleRule(crafty, bundle, chain);
+    createGlobalRule(crafty, bundle, chain, false);
+    createModuleRule(crafty, bundle, chain, false);
 
     // ADD Minify plugin
     chain.optimization
@@ -53,6 +53,32 @@ module.exports = {
             customMedia: true
           },
           implementation: require("lightningcss")
+        }
+      ]);
+  },
+  rspack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".css").add(".scss");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
+    createGlobalRule(crafty, bundle, chain, true);
+    createModuleRule(crafty, bundle, chain, true);
+
+    // ADD Minify plugin
+    chain.optimization
+      .minimizer("css")
+      .init(
+        (Plugin, args) =>
+          new Plugin.rspack.LightningCssMinimizerRspackPlugin(...args)
+      )
+      .use(require.resolve("@rspack/core"), [
+        {
+          minimizerOptions: {
+            targets: crafty.config.browsers,
+            drafts: {
+              customMedia: true
+            }
+          }
         }
       ]);
   }

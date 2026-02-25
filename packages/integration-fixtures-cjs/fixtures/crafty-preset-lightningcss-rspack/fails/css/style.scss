@@ -1,0 +1,18 @@
+.Parent {
+    background: white;
+
+    &--before {
+        color: #333;
+    }
+
+    @at-root {
+        .Child
+            background: black;
+        }
+    }
+
+    &--after {
+        color: #eee;
+    }
+}
+

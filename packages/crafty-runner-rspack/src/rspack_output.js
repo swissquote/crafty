@@ -1,0 +1,143 @@
+const colors = require("@swissquote/crafty-commons/packages/ansi-colors.js");
+const symbols = require("@swissquote/crafty-commons/packages/log-symbols.js");
+
+function isLikelyASyntaxError(message) {
+  return message.indexOf("Syntax error:") !== -1;
+}
+
+function styleTime(ms) {
+  const out = `${ms.toString()}ms`;
+  const ubound = 1600;
+  const lbound = 200;
+
+  if (ms > ubound) {
+    return colors.bgRed(out);
+  } else if (ms <= lbound) {
+    return colors.green.bold(out);
+  }
+
+  const styles = [colors.red.bold, colors.red, colors.yellow, colors.green];
+  const values = [ubound, ubound / 2, lbound * 2, lbound];
+  const closest = Math.max.apply(
+    null,
+    values.filter(v => v <= ms)
+  );
+  const style = styles[values.indexOf(closest)];
+
+  return style(out);
+}
+
+function plur(word, count) {
+  return `${word}${count === 1 ? "" : "s"}`;
+}
+
+function footer(counts) {
+  const problems = counts.errors + counts.warnings;
+  const result = [];
+
+  if (problems > 0) {
+    const symbol = counts.errors > 0 ? symbols.error : symbols.warning;
+    const style = {
+      errors: counts.errors > 0 ? "red" : "dim",
+      problems: problems > 0 ? "bold" : "dim",
+      warnings: counts.warnings > 0 ? "yellow" : "dim"
+    };
+    const labels = {
+      errors: plur("error", counts.errors),
+      problems: colors[style.problems](
+        `${problems} ${plur("problem", problems)}`
+      ),
+      warnings: plur("warning", counts.warnings)
+    };
+    const errors = colors[style.errors](`${counts.errors} ${labels.errors}`);
+    const warnings = colors[style.warnings](
+      `${counts.warnings} ${labels.warnings}`
+    );
+
+    if (counts.errors > 0) {
+      labels.problems = colors[style.errors](labels.problems);
+    } else if (counts.warnings) {
+      labels.problems = ` ${colors[style.warnings](labels.problems)}`;
+    }
+
+    result.push(`${symbol} ${labels.problems} (${errors}, ${warnings})`);
+  }
+
+  return result.join("\n");
+}
+
+function printStats(stats) {
+  // Write stats
+  console.log(
+    stats.toString({
+      version: false, // This is just noise
+      errors: false, // Errors are printed separately
+      errorsCount: false,
+      warnings: false, // Warnings are printed separately
+      warningsCount: false,
+      timings: false, // Displayed separately
+      relatedAssets: true,
+      entrypoints: true,
+      chunkGroups: true,
+      chunks: true
+    })
+  );
+
+  const warnings = stats.compilation.warnings.map(
+    message => message.message || message
+  );
+  let errors = stats.compilation.errors.map(
+    message => message.message || message
+  );
+  if (errors.some(isLikelyASyntaxError)) {
+    // If there are any syntax errors, show just them.
+    // This prevents a confusing ESLint parsing error
+    // preceding a much more useful Babel syntax error.
+    errors = errors.filter(isLikelyASyntaxError);
+  }
+
+  // If errors exist, only show errors.
+  if (errors.length) {
+    console.log(`\n  ${colors.red("Failed to compile.")}\n`);
+    errors.forEach(message => {
+      console.log(`${message}\n`);
+    });
+  } else if (warnings.length) {
+    console.log(`\n  ${colors.yellow("Compiled with warnings.")}\n`);
+    // Show warnings if no errors were found.
+    warnings.forEach(message => {
+      console.log(`${message}\n`);
+    });
+  } else {
+    console.log(`\n  ${colors.green("Compiled successfully!")}`);
+  }
+
+  const timeTitle = colors.gray(`  Δ${colors.italic("t")}`);
+  const time = `${timeTitle} ${styleTime(stats.endTime - stats.startTime)}`;
+
+  if (warnings.length || errors.length) {
+    console.log(
+      time,
+      footer({
+        errors: errors.length,
+        warnings: warnings.length
+      })
+    );
+  } else {
+    console.log(time);
+  }
+
+  console.log();
+}
+
+function printError(error) {
+  console.log(`\n  ${colors.red("Failed to compile.")}\n`);
+  if (error) {
+    console.log(error);
+  }
+}
+
+module.exports = {
+  printStats,
+  printError
+};
