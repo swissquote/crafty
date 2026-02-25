@@ -89,10 +89,10 @@ module.exports = {
           return;
         }
 
-        if (!port || typeof port !== 'number') {                                                                                                                                                                       
-          reject(new Error('Could not find available port'));                                                                                                                                                          
-          return;                                                                                                                                                                                                      
-        }  
+        if (!port || typeof port !== "number") {
+          reject(new Error("Could not find available port"));
+          return;
+        }
 
         assigned[buildname] = port;
 

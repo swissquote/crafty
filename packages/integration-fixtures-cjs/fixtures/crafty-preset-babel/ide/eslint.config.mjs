@@ -2,8 +2,8 @@
 // This file helps IDEs autoconfigure themselves
 // any change here will only be used by your IDE, not by Crafty
 
-import { initialize } from "/Users/onigoetz/Sites/swissquote/crafty/packages/crafty/src/index.js";
-import { toESLintConfig } from "/Users/onigoetz/Sites/swissquote/crafty/packages/crafty-preset-eslint/src/index.js";
+import { initialize } from "@swissquote/crafty";
+import { toESLintConfig } from "@swissquote/crafty-preset-eslint";
 
 const crafty = await initialize(process.argv, {
   "presets": [],
