@@ -80,16 +80,8 @@ function configureWatcher(chain, bundle, config, webpackPort) {
 
   // Ignore the default dist folder as otherwise
   // webpack can enter a rebuild loop
-  chain
-    .plugin("WatchIgnorePlugin")
-    .use(require.resolve("webpack/lib/WatchIgnorePlugin"), [
-      { paths: [/\.d\.ts$/, outputPath] }
-    ]);
-
-  // Ignore the default dist folder as otherwise
-  // webpack can enter a rebuild loop
   chain.watchOptions({
-    ignored: ["node_modules", outputPath]
+    ignored: ["node_modules", /\.d\.ts$/, outputPath]
   });
 
   chain.devServer
