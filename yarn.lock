@@ -3837,7 +3837,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-maven@workspace:packages/crafty-preset-maven"
   dependencies:
     "@swissquote/crafty-commons": "npm:1.28.1"
-    fast-xml-parser: "npm:5.3.8"
+    fast-xml-parser: "npm:5.4.1"
   languageName: unknown
   linkType: soft
 
@@ -8114,14 +8114,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:5.3.8":
-  version: 5.3.8
-  resolution: "fast-xml-parser@npm:5.3.8"
+"fast-xml-builder@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-xml-builder@npm:1.0.0"
+  checksum: 10c0/2631fda265c81e8008884d08944eeed4e284430116faa5b8b7a43a3602af367223b7bf01c933215c9ad2358b8666e45041bc038d64877156a2f88821841b3014
+  languageName: node
+  linkType: hard
+
+"fast-xml-parser@npm:5.4.1":
+  version: 5.4.1
+  resolution: "fast-xml-parser@npm:5.4.1"
   dependencies:
+    fast-xml-builder: "npm:^1.0.0"
     strnum: "npm:^2.1.2"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10c0/7b85f1858f1a88e2c9b859ff8bae89ea47d2c6f749372db0ed8e9ed4b97d40fb5e2a2721012dbe6498295f755f3edc84942cd1c417caa96bf16a4e292394a9db
+  checksum: 10c0/8c696438a0c64135faf93ea6a93879208d649b7c9a3293d30d6eb750dc7f766fd083c0df5a82786b60809c3ead64fad155f28dbed25efea91017aaf9f64c91e5
   languageName: node
   linkType: hard
 
