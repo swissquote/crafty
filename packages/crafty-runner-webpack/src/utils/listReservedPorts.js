@@ -40,12 +40,12 @@ ports.forEach(entry => {
   }
 
   const pair = port.split("-");
-  const min = parseInt(pair[0], 10);
+  const min = Number.parseInt(pair[0], 10);
 
   if (pair.length === 1) {
     put(min);
   } else {
-    const max = parseInt(pair[1], 10);
+    const max = Number.parseInt(pair[1], 10);
     for (let i = min; i <= max; i++) {
       put(i);
     }

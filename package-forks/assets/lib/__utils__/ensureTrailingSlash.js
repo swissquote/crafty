@@ -1,9 +1,9 @@
-var convertPathToUrl = require("./convertPathToUrl");
-var urlParser = require("./urlParser");
-var path = require("path");
+const convertPathToUrl = require("./convertPathToUrl");
+const urlParser = require("./urlParser");
+const path = require("node:path");
 
-module.exports = function(urlStr) {
-  var urlObj = urlParser(urlStr);
+module.exports = function ensureTrailingSlash(urlStr) {
+  const urlObj = urlParser(urlStr);
   urlObj.pathname = convertPathToUrl(path.join(urlObj.pathname, path.sep));
   return urlObj.toString();
 };

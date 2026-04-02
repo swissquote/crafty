@@ -1,11 +1,15 @@
-var convertPathToUrl = require("./convertPathToUrl");
-var ensureTrailingSlash = require("./ensureTrailingSlash");
-var path = require("path");
-var url = require("url");
+const convertPathToUrl = require("./convertPathToUrl");
+const ensureTrailingSlash = require("./ensureTrailingSlash");
+const path = require("node:path");
+const url = require("node:url");
 
-module.exports = function(baseUrl, basePath, resolvedPath) {
-  var from = ensureTrailingSlash(baseUrl);
-  var to = path.relative(basePath, resolvedPath);
+module.exports = function composeAbsolutePathname(
+  baseUrl,
+  basePath,
+  resolvedPath
+) {
+  const from = ensureTrailingSlash(baseUrl);
+  const to = path.relative(basePath, resolvedPath);
   const withTrailingSlash = url.resolve(from, convertPathToUrl(to));
 
   if (

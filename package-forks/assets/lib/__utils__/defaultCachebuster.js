@@ -1,6 +1,6 @@
-var fs = require("fs");
+const fs = require("node:fs");
 
-module.exports = function(resolvedPath) {
-  var mtime = fs.statSync(resolvedPath).mtime;
+module.exports = function defaultCachebuster(resolvedPath) {
+  const mtime = fs.statSync(resolvedPath).mtime;
   return mtime.getTime().toString(16);
 };

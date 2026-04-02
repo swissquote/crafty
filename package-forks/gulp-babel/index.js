@@ -32,7 +32,7 @@ function supportsCallerOption() {
   return supportsCallerOptionFlag;
 }
 
-module.exports = function(opts = {}) {
+module.exports = function gulpBabel(opts = {}) {
   return new Transform({
     objectMode: true,
     transform(file, enc, cb) {

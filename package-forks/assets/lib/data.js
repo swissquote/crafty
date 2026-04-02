@@ -1,8 +1,8 @@
-var encodeBuffer = require("./__utils__/encodeBuffer");
-var urlParser = require("./__utils__/urlParser");
-var fs = require("node:fs");
-var { lookup } = require("mrmime");
-var resolvePath = require("./path");
+const encodeBuffer = require("./__utils__/encodeBuffer");
+const urlParser = require("./__utils__/urlParser");
+const fs = require("node:fs");
+const { lookup } = require("mrmime");
+const resolvePath = require("./path");
 
 module.exports = async function data(to, options) {
   /* eslint-disable-next-line no-param-reassign */
@@ -16,9 +16,9 @@ module.exports = async function data(to, options) {
 
   const resolvedPath = await resolvePath(toUrl.pathname, options);
 
-  var mediaType = lookup(resolvedPath);
+  const mediaType = lookup(resolvedPath);
   const buffer = await fs.promises.readFile(resolvedPath);
 
-  var content = encodeBuffer(buffer, mediaType);
+  const content = encodeBuffer(buffer, mediaType);
   return `data:${mediaType};${content}${toUrl.hash || ""}`;
 };

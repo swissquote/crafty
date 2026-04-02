@@ -1,7 +1,7 @@
 const { Transform } = require("node:stream");
 const { test } = require("node:test");
 const { expect } = require("expect");
-const path = require("path");
+const path = require("node:path");
 const Vinyl = require("vinyl");
 const sourcemap = require("vinyl-sourcemap");
 const babel = require(".");

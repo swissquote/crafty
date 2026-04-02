@@ -1,6 +1,6 @@
 const concat = require("../");
-const fs = require("fs/promises");
-const path = require("path");
+const fs = require("node:fs/promises");
+const path = require("node:path");
 const { Transform } = require("node:stream");
 const startStream = require("./test-stream");
 const { test } = require("node:test");
@@ -13,7 +13,7 @@ function fixtures(glob) {
   return path.join(__dirname, "fixtures", glob);
 };
 
-var thirdBase = __dirname,
+const thirdBase = __dirname,
   thirdFile = "third.js",
   thirdPath = path.join(thirdBase, thirdFile);
 
@@ -220,8 +220,8 @@ test("should take path from latest file", () => {
       )
       .pipe(
         assertFirst((newFile) => {
-          var newFilePath = path.resolve(newFile.path);
-          var expectedFilePath = path.resolve(path.join(thirdBase, "test.js"));
+          const newFilePath = path.resolve(newFile.path);
+          const expectedFilePath = path.resolve(path.join(thirdBase, "test.js"));
           expect(newFilePath).toBe(expectedFilePath);
         })
       );
@@ -284,14 +284,14 @@ test("should support source maps", () => {
 
 test("should not fail if no files were input > when argument is a string", () => {
   expect(() => {
-    var stream = concat("test.js");
+    const stream = concat("test.js");
     stream.end();
   }).not.toThrow();
 });
 
 test("should not fail if no files were input > when argument is an object", () => {
   expect(() => {
-    var stream = concat({ path: "new.txt" });
+    const stream = concat({ path: "new.txt" });
     stream.end();
   }).not.toThrow();
 });

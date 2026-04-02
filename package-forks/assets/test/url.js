@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const { test, mock } = require("node:test");
 const { expect } = require("expect");
 

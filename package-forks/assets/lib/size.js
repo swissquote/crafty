@@ -1,5 +1,5 @@
 const sizeOf = require("image-size");
-var resolvePath = require("./path");
+const resolvePath = require("./path");
 
 module.exports = async function size(to, options) {
   const resolvedPath = await resolvePath(to, options);

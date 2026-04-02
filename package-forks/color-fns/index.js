@@ -63,7 +63,7 @@ function hwb2hsl(h, w, b) {
 function rgb2hsl(r, g, b, fallbackhue) {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let [h, s, l] = [NaN, 0, (min + max) / 2];
+  let [h, s, l] = [Number.NaN, 0, (min + max) / 2];
   const d = max - min;
 
   if (d !== 0) {
@@ -87,7 +87,7 @@ function rgb2hsl(r, g, b, fallbackhue) {
 }
 
 function rgb2hwb(r, g, b, fallbackhue) {
-  var hsl = rgb2hsl(r, g, b, fallbackhue);
+  const hsl = rgb2hsl(r, g, b, fallbackhue);
   const h = hsl[0];
   // calculate white and black
   const whiteness = Math.min(r, g, b);

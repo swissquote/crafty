@@ -1,7 +1,7 @@
 const { Readable } = require('node:stream');
 const File = require('vinyl');
 
-module.exports = function (...args) {
+module.exports = function testStream(...args) {
   let i = 0;
 
   function create(contents) {

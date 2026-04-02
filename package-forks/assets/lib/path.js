@@ -1,5 +1,5 @@
-var exists = require("./__utils__/exists");
-var path = require("path");
+const exists = require("./__utils__/exists");
+const path = require("node:path");
 const fs = require("node:fs/promises");
 
 module.exports = async function pathResolver(to, options) {

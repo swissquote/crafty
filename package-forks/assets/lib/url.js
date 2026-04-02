@@ -1,10 +1,10 @@
-var composeAbsolutePathname = require("./__utils__/composeAbsolutePathname");
-var composeQueryString = require("./__utils__/composeQueryString");
-var composeRelativePathname = require("./__utils__/composeRelativePathname");
-var defaultCachebuster = require("./__utils__/defaultCachebuster");
-var urlFormatter = require("./__utils__/urlFormatter");
-var urlParser = require("./__utils__/urlParser");
-var resolvePath = require("./path");
+const composeAbsolutePathname = require("./__utils__/composeAbsolutePathname");
+const composeQueryString = require("./__utils__/composeQueryString");
+const composeRelativePathname = require("./__utils__/composeRelativePathname");
+const defaultCachebuster = require("./__utils__/defaultCachebuster");
+const urlFormatter = require("./__utils__/urlFormatter");
+const urlParser = require("./__utils__/urlParser");
+const resolvePath = require("./path");
 
 function applyCacheBuster(toUrl, resolvedPath, options) {
   const cachebusterOutput = options.cachebuster(resolvedPath, toUrl.pathname);

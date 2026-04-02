@@ -1,23 +1,21 @@
-test {
-	color: color-mod(#000000 b(50%));
-	color: color-mod(#000000 red(50%));
-	color: color-mod(#000000 green(50%));
-	color: color-mod(#000000 blue(50%));
-	color: color-mod(#000000 a(50%));
-	color: color-mod(#000000 alpha(50%));
-	color: color-mod(#000000 h(50deg));
-	color: color-mod(#000000 hue(50deg));
-	color: color-mod(#000000 s(50%));
-	color: color-mod(#000000 saturation(50%));
-	color: color-mod(#000000 l(50%));
-	color: color-mod(#000000 lightness(50%));
-        color: color-mod(#ff0000 w(50%));
-        color: color-mod(#ff0000 whiteness(50%));
-        color: color-mod(#0000ff b(50%));
-        color: color-mod(#0000ff blackness(50%));
-	color: color-mod(#000000 tint(50%));
-	color: color-mod(#000000 shade(50%));
-	color: color-mod(#000000 blend(#ffffff 50%));
-	color: color-mod(#000000 blenda(#ffffff 50%));
-	color: color-mod(#000000 contrast(50%));
-}
+ .test-1 { color: color-mod(#000000 b(50%)); }
+ .test-2 { color: color-mod(#000000 red(50%)); }
+ .test-3 { color: color-mod(#000000 green(50%)); }
+ .test-4 { color: color-mod(#000000 blue(50%)); }
+ .test-5 { color: color-mod(#000000 a(50%)); }
+ .test-6 { color: color-mod(#000000 alpha(50%)); }
+ .test-7 { color: color-mod(#000000 h(50deg)); }
+ .test-8 { color: color-mod(#000000 hue(50deg)); }
+ .test-9 { color: color-mod(#000000 s(50%)); }
+ .test-10 { color: color-mod(#000000 saturation(50%)); }
+ .test-11 { color: color-mod(#000000 l(50%)); }
+ .test-12 { color: color-mod(#000000 lightness(50%)); }
+ .test-13 { color: color-mod(#ff0000 w(50%)); }
+ .test-14 { color: color-mod(#ff0000 whiteness(50%)); }
+ .test-15 { color: color-mod(#0000ff b(50%)); }
+ .test-16 { color: color-mod(#0000ff blackness(50%)); }
+ .test-17 { color: color-mod(#000000 tint(50%)); }
+ .test-18 { color: color-mod(#000000 shade(50%)); }
+ .test-19 { color: color-mod(#000000 blend(#ffffff 50%)); }
+ .test-20 { color: color-mod(#000000 blenda(#ffffff 50%)); }
+ .test-21 { color: color-mod(#000000 contrast(50%)); }

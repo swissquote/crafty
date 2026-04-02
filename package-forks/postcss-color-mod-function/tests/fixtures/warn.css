@@ -1,48 +1,44 @@
-test-color-mod {
-	color: color-mod();
-}
+test-color-mod { color: color-mod(); }
 
-test-color-adjusters {
-	color: color-mod(red red(20deg));
-	color: color-mod(red blue(* 20));
-	color: color-mod(red green(* blue));
-	color: color-mod(red alpha(* 1));
-	color: color-mod(red alpha(0 1));
-	color: color-mod(red rgb(+ 0 255 0 0));
-	color: color-mod(red rgb(* 0 255 0));
-	color: color-mod(red rgb(100%));
-	color: color-mod(red hue(blue));
-	color: color-mod(red hue(20%));
-	color: color-mod(red hue(+ 20em));
-	color: color-mod(red hue(- 20em));
-	color: color-mod(red hue(* 20%));
-	color: color-mod(red lightness(20));
-	color: color-mod(red lightness(+ 20));
-	color: color-mod(red lightness(- 20));
-	color: color-mod(red lightness(* 20));
-	color: color-mod(red lightness(* 20 20));
-	color: color-mod(red saturation(20));
-	color: color-mod(red saturation(+ 20));
-	color: color-mod(red saturation(- 20));
-	color: color-mod(red saturation(* 20));
-	color: color-mod(red saturation(* 20 20));
-	color: color-mod(red blackness(20));
-	color: color-mod(red blackness(+ 20));
-	color: color-mod(red blackness(- 20));
-	color: color-mod(red blackness(* 20));
-	color: color-mod(red blackness(* 20 20));
-	color: color-mod(red whiteness(20));
-	color: color-mod(red whiteness(+ 20));
-	color: color-mod(red whiteness(- 20));
-	color: color-mod(red whiteness(* 20));
-	color: color-mod(red whiteness(* 20 20));
-	color: color-mod(red tint(20));
-	color: color-mod(red tint(+ 20%));
-	color: color-mod(red shade(20));
-	color: color-mod(red shade(+ 20%));
-	color: color-mod(yellow blend(20% 50%));
-	color: color-mod(yellow blend(red 50));
-	color: color-mod(yellow blend(red 50% blue));
-	color: color-mod(yellow contrast(50));
-	color: color-mod(yellow contrast(+ 50%));
-}
+test-color-adjusters-1 { color: color-mod(red red(20deg)); }
+test-color-adjusters-2 { color: color-mod(red blue(* 20)); }
+test-color-adjusters-3 { color: color-mod(red green(* blue)); }
+test-color-adjusters-4 { color: color-mod(red alpha(* 1)); }
+test-color-adjusters-5 { color: color-mod(red alpha(0 1)); }
+test-color-adjusters-6 { color: color-mod(red rgb(+ 0 255 0 0)); }
+test-color-adjusters-7 { color: color-mod(red rgb(* 0 255 0)); }
+test-color-adjusters-8 { color: color-mod(red rgb(100%)); }
+test-color-adjusters-9 { color: color-mod(red hue(blue)); }
+test-color-adjusters-10 { color: color-mod(red hue(20%)); }
+test-color-adjusters-11 { color: color-mod(red hue(+ 20em)); }
+test-color-adjusters-12 { color: color-mod(red hue(- 20em)); }
+test-color-adjusters-13 { color: color-mod(red hue(* 20%)); }
+test-color-adjusters-14 { color: color-mod(red lightness(20)); }
+test-color-adjusters-15 { color: color-mod(red lightness(+ 20)); }
+test-color-adjusters-16 { color: color-mod(red lightness(- 20)); }
+test-color-adjusters-17 { color: color-mod(red lightness(* 20)); }
+test-color-adjusters-18 { color: color-mod(red lightness(* 20 20)); }
+test-color-adjusters-19 { color: color-mod(red saturation(20)); }
+test-color-adjusters-20 { color: color-mod(red saturation(+ 20)); }
+test-color-adjusters-21 { color: color-mod(red saturation(- 20)); }
+test-color-adjusters-22 { color: color-mod(red saturation(* 20)); }
+test-color-adjusters-23 { color: color-mod(red saturation(* 20 20)); }
+test-color-adjusters-24 { color: color-mod(red blackness(20)); }
+test-color-adjusters-25 { color: color-mod(red blackness(+ 20)); }
+test-color-adjusters-26 { color: color-mod(red blackness(- 20)); }
+test-color-adjusters-27 { color: color-mod(red blackness(* 20)); }
+test-color-adjusters-28 { color: color-mod(red blackness(* 20 20)); }
+test-color-adjusters-29 { color: color-mod(red whiteness(20)); }
+test-color-adjusters-30 { color: color-mod(red whiteness(+ 20)); }
+test-color-adjusters-31 { color: color-mod(red whiteness(- 20)); }
+test-color-adjusters-32 { color: color-mod(red whiteness(* 20)); }
+test-color-adjusters-33 { color: color-mod(red whiteness(* 20 20)); }
+test-color-adjusters-34 { color: color-mod(red tint(20)); }
+test-color-adjusters-35 { color: color-mod(red tint(+ 20%)); }
+test-color-adjusters-36 { color: color-mod(red shade(20)); }
+test-color-adjusters-37 { color: color-mod(red shade(+ 20%)); }
+test-color-adjusters-38 { color: color-mod(yellow blend(20% 50%)); }
+test-color-adjusters-39 { color: color-mod(yellow blend(red 50)); }
+test-color-adjusters-40 { color: color-mod(yellow blend(red 50% blue)); }
+test-color-adjusters-41 { color: color-mod(yellow contrast(50)); }
+test-color-adjusters-42 { color: color-mod(yellow contrast(+ 50%)); }

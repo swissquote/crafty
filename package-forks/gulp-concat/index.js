@@ -5,7 +5,7 @@ const Concat = require("concat-with-sourcemaps");
 
 // file can be a vinyl file object or a string
 // when a string it will construct a new one
-module.exports = function(file, opt = {}) {
+module.exports = function gulpConcat(file, opt = {}) {
   if (!file) {
     throw new Error("gulp-concat: Missing file option");
   }

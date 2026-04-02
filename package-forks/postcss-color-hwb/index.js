@@ -58,12 +58,12 @@ function getColorData(colorFn) {
 function legacy(args) {
   const { hue, whiteness, blackness, alpha } = getColorData(args);
 
-  const h = ((parseFloat(hue) % 360) + 360) % 360;
-  const w = clamp(parseFloat(whiteness), 0, 100);
-  const b = clamp(parseFloat(blackness), 0, 100);
+  const h = ((Number.parseFloat(hue) % 360) + 360) % 360;
+  const w = clamp(Number.parseFloat(whiteness), 0, 100);
+  const b = clamp(Number.parseFloat(blackness), 0, 100);
 
-  const parsedAlpha = parseFloat(alpha);
-  const a = clamp(isNaN(parsedAlpha) ? 1 : parsedAlpha, 0, 1);
+  const parsedAlpha = Number.parseFloat(alpha);
+  const a = clamp(Number.isNaN(parsedAlpha) ? 1 : parsedAlpha, 0, 1);
 
   return color2rgbLegacyString(hwb2rgb(h, w, b), a);
 }

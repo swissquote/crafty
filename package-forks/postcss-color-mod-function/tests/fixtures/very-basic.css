@@ -1,6 +1,4 @@
-test-red-green-blue-alpha-adjuster {
-        color: color-mod(beige hue(+ 0deg));
-        color: color-mod(beige saturation(+ 0%));
-        color: color-mod(beige lightness(+ 0%));
-        color: color-mod(beige blend(beige 0% hsl));
-}
+test-red-green-blue-alpha-adjuster-1 { color: color-mod(beige hue(+ 0deg)); }
+test-red-green-blue-alpha-adjuster-2 { color: color-mod(beige saturation(+ 0%)); }
+test-red-green-blue-alpha-adjuster-3 { color: color-mod(beige lightness(+ 0%)); }
+test-red-green-blue-alpha-adjuster-4 { color: color-mod(beige blend(beige 0% hsl)); }

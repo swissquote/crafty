@@ -193,9 +193,9 @@ const hexColorMatch = /^#(?:([a-f0-9])([a-f0-9])([a-f0-9])([a-f0-9])?|([a-f0-9]{
 function parseSingleOrDouble(single, double, defaultValue = 0) {
   /* eslint-disable-next-line no-nested-ternary */
   return double !== undefined
-    ? parseInt(double, 16)
+    ? Number.parseInt(double, 16)
     : single !== undefined
-    ? parseInt(single + single, 16)
+    ? Number.parseInt(single + single, 16)
     : defaultValue;
 }
 
