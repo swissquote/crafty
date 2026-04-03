@@ -262,7 +262,7 @@ component output.
 <h2><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending the configuration</h2>
 <p>Each preset and <code>crafty.config.js</code> can define the <code>jest(crafty, options)</code>
 function to override Jest’s configuration.</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node:path"</span>);
 <span class="hljs-keyword">const</span> MODULES = path.join(__dirname, <span class="hljs-string">".."</span>, <span class="hljs-string">"node_modules"</span>);
 
 <span class="hljs-built_in">module</span>.exports = {
@@ -294,7 +294,7 @@ More often than not, we add a custom reporter to create a SonarQube test report.
 <p><code>crafty-preset-jest</code> comes out of the box with a sonar report that is written to <code>reports/sonar-report.xml</code>.</p>
 <p>This report is automatically added to the configuration if no reporter is specified through the command line.</p>
 <p>You can decide to change this configuration by overriding <code>options.reporters</code></p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node:path"</span>);
 <span class="hljs-keyword">const</span> MODULES = path.join(__dirname, <span class="hljs-string">".."</span>, <span class="hljs-string">"node_modules"</span>);
 
 <span class="hljs-built_in">module</span>.exports = {
