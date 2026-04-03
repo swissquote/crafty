@@ -1,7 +1,7 @@
 const Assets = require("@swissquote/assets");
-const { dirname } = require("path");
+const { dirname } = require("node:path");
 const functions = require("postcss-functions");
-const util = require("util");
+const util = require("node:util");
 const quote = require("./quote");
 const unescapeCss = require("./unescape-css");
 const unquote = require("./unquote");

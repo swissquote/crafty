@@ -12,15 +12,15 @@ $ npm install postcss-color-hwb
 
 ```js
 // dependencies
-var fs = require("fs")
-var postcss = require("postcss")
-var colorHwb = require("postcss-color-hwb")
+const fs = require("node:fs")
+const postcss = require("postcss")
+const colorHwb = require("postcss-color-hwb")
 
 // css to be processed
-var css = fs.readFileSync("input.css", "utf8")
+const css = fs.readFileSync("input.css", "utf8")
 
 // process css
-var output = postcss()
+const output = postcss()
   .use(colorHwb())
   .process(css)
   .css

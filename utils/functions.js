@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 
 function formatBytes(bytes) {
   if (bytes === 0) return "0 Bytes";
@@ -60,10 +60,10 @@ function getModulePath(name) {
  * @param {string} src  The path to the thing to copy.
  * @param {string} dest The path to the new copy.
  */
-var copyRecursiveSync = function(src, dest) {
-  var exists = fs.existsSync(src);
-  var stats = exists && fs.statSync(src);
-  var isDirectory = exists && stats.isDirectory();
+function copyRecursiveSync(src, dest) {
+  const exists = fs.existsSync(src);
+  const stats = exists && fs.statSync(src);
+  const isDirectory = exists && stats.isDirectory();
   if (isDirectory) {
     fs.mkdirSync(dest);
     fs.readdirSync(src).forEach(childItemName => {

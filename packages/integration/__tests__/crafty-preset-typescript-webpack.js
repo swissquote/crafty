@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import configuration from "@swissquote/crafty/src/configuration";
 import * as testUtils from "../utils";
 

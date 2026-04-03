@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 /* Write Custom Properties to CSS File
 /* ========================================================================== */

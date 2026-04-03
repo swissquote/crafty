@@ -1,5 +1,5 @@
-const crypto = require("crypto");
-const fs = require("fs");
+const crypto = require("node:crypto");
+const fs = require("node:fs");
 const jestPreset = require("@swissquote/babel-preset-swissquote/packages/preset-jest");
 const babel = require("@babel/core");
 const babelIstanbulPlugin = require("@swissquote/babel-preset-swissquote/packages/plugin-istanbul");

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const ports = require("service-names-port-numbers")();
 
@@ -11,12 +11,12 @@ function put(n) {
   if (n < 1024) {
     return;
   }
-  var last = reservedPorts[reservedPorts.length - 1];
+  const last = reservedPorts[reservedPorts.length - 1];
 
   if (n > last || !reservedPorts.length) {
     reservedPorts.push(n);
   } else if (n < last) {
-    var i = reservedPorts.length - 1;
+    let i = reservedPorts.length - 1;
     while (i >= 0 && n < reservedPorts[i]) {
       i = i - 1;
     }

@@ -1,5 +1,5 @@
 function isBlockIgnored(ruleOrDeclaration) {
-  var rule = ruleOrDeclaration.selector
+  const rule = ruleOrDeclaration.selector
     ? ruleOrDeclaration
     : ruleOrDeclaration.parent;
 
@@ -7,7 +7,7 @@ function isBlockIgnored(ruleOrDeclaration) {
 }
 
 function isRuleIgnored(rule) {
-  var previous = rule.prev();
+  const previous = rule.prev();
 
   return Boolean(
     isBlockIgnored(rule) ||

@@ -1,10 +1,10 @@
 // This is a clone of https://www.npmjs.com/package/concurrent-streams that uses raw streams
 /* eslint-disable no-param-reassign */
 
-import { Transform } from "stream";
+import { Transform } from "node:stream";
 
 export default function concurrentStream(options, transform, flush) {
-  var concurrent = 0,
+  let concurrent = 0,
     lastCallback = null,
     pendingFinish = null;
 
@@ -14,11 +14,11 @@ export default function concurrentStream(options, transform, flush) {
     options = {};
   }
 
-  var maxConcurrency = options.maxConcurrency || 16;
+  const maxConcurrency = options.maxConcurrency || 16;
 
   function _transform(message, enc, callback) {
-    var self = this;
-    var callbackCalled = false;
+    const self = this;
+    let callbackCalled = false;
     concurrent++;
     if (concurrent < maxConcurrency) {
       // Ask for more right away
@@ -44,7 +44,7 @@ export default function concurrentStream(options, transform, flush) {
 
       concurrent--;
       if (lastCallback) {
-        var cb = lastCallback;
+        const cb = lastCallback;
         lastCallback = null;
         cb();
       }

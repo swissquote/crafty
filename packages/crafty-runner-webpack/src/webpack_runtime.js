@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 
 const colors = require("@swissquote/crafty-commons/packages/ansi-colors");
 const debug = require("@swissquote/crafty-commons/packages/debug")(

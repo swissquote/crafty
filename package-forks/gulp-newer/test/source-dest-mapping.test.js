@@ -1,13 +1,13 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
 
-var fs = require("fs");
-var path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
-var Vinyl = require("vinyl");
-var mock = require("mock-fs");
+const Vinyl = require("vinyl");
+const mock = require("mock-fs");
 
-var newer = require("../index.js");
+const newer = require("../index.js");
 
 /**
  * Test utility function.  Create File instances for each of the provided paths
@@ -54,16 +54,16 @@ test.beforeEach(() => {
   
   test("passes through one newer file", () => {
     return new Promise((done, fail) => {
-      var stream = newer({
+      const stream = newer({
         dest: "dest",
         map(destPath) {
           return destPath.replace(".ext1", ".ext2");
         }
       });
   
-      var paths = ["file1.ext1", "file2.ext1"];
+      const paths = ["file1.ext1", "file2.ext1"];
   
-      var calls = 0;
+      let calls = 0;
       stream.on("data", file => {
         expect(file.path).toEqual(path.resolve("file2.ext1"));
         ++calls;
@@ -82,15 +82,15 @@ test.beforeEach(() => {
   
   test("allows people to join to dest themselves", () => {
     return new Promise((done, fail) => {
-      var stream = newer({
+      const stream = newer({
         map(destPath) {
           return path.join("dest", destPath.replace(".ext1", ".ext2"));
         }
       });
   
-      var paths = ["file1.ext1", "file2.ext1"];
+      const paths = ["file1.ext1", "file2.ext1"];
   
-      var calls = 0;
+      let calls = 0;
       stream.on("data", file => {
         expect(file.path).toEqual(path.resolve("file2.ext1"));
         ++calls;

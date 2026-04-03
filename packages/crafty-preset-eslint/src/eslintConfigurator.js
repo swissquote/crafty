@@ -1,6 +1,6 @@
-const path = require("path");
-const { existsSync } = require("fs");
-const fs = require("fs/promises");
+const path = require("node:path");
+const { existsSync } = require("node:fs");
+const fs = require("node:fs/promises");
 const debugFn = require("@swissquote/crafty-commons/packages/debug");
 const resolveFrom = require("../packages/resolve-from");
 

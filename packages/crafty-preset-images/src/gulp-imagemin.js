@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import PluginError from "plugin-error";
 import colors from "ansi-colors";
 import { optimizeImage } from "@onigoetz/resquoosh";

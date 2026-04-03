@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import util from "util";
+import util from "node:util";
 import { expect } from "expect";
 import stylelint from "stylelint";
 

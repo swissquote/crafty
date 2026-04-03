@@ -5,7 +5,7 @@ const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
 // https://github.com/antimatter15/rgb-lab/blob/master/color.js#L4
 // based on the pseudocode found on www.easyrgb.com
 function lab2rgb(lab) {
-  var y = (lab[0] + 16) / 116,
+  let y = (lab[0] + 16) / 116,
     x = lab[1] / 500 + y,
     z = y - lab[2] / 200;
 

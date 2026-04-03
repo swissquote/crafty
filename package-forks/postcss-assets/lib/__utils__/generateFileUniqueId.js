@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("node:fs");
 
 module.exports = function generateFileUniqueId(resolvedPath) {
   const { mtime } = fs.statSync(resolvedPath);

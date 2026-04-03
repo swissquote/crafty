@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 
 module.exports = function buildPreset(context, opts) {
   const presets = [];

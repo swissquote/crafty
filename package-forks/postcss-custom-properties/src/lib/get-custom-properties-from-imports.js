@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const { parse: postcssParse } = require("postcss");
 const { parse } = require("postcss-values-parser");
 const getCustomPropertiesFromRoot = require("./get-custom-properties-from-root");

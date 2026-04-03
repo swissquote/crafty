@@ -1,14 +1,13 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
 
-var Transform = require("stream").Transform;
-var fs = require("fs");
-var path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
-var Vinyl = require("vinyl");
-var mock = require("mock-fs");
+const Vinyl = require("vinyl");
+const mock = require("mock-fs");
 
-var newer = require("../index.js");
+const newer = require("../index.js");
 
 /**
  * Test utility function.  Create File instances for each of the provided paths
@@ -41,11 +40,11 @@ test.beforeEach(() => {
   
   test("passes through all files", () => {
     return new Promise((done, fail) => {
-      var stream = newer("dest/concat");
+      const stream = newer("dest/concat");
   
-      var paths = ["file1", "file2", "file3"];
+      const paths = ["file1", "file2", "file3"];
   
-      var calls = 0;
+      let calls = 0;
       stream.on("data", file => {
         expect(file.path).toEqual(path.resolve(paths[calls]));
         ++calls;

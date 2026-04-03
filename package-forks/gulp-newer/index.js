@@ -1,11 +1,11 @@
-var Transform = require("stream").Transform;
-var path = require("path");
-var util = require("util");
-var fs = require("node:fs/promises");
+const Transform = require("node:stream").Transform;
+const path = require("node:path");
+const util = require("node:util");
+const fs = require("node:fs/promises");
 
-var PluginError = require("plugin-error");
+const PluginError = require("plugin-error");
 
-var PLUGIN_NAME = "gulp-newer";
+const PLUGIN_NAME = "gulp-newer";
 
 function Newer(options) {
   Transform.call(this, { objectMode: true });
@@ -114,7 +114,7 @@ Newer.prototype.lazyExtraStats = async function() {
 
   return Array.fromAsync(fs.glob(this._extra))
     .then(allFiles => {
-      var extraStats = [];
+      const extraStats = [];
       for (let i = 0; i < allFiles.length; ++i) {
         extraStats.push(fs.stat(allFiles[i]));
       }
@@ -122,8 +122,8 @@ Newer.prototype.lazyExtraStats = async function() {
     })
     .then(resolvedStats => {
       // We get all the file stats here; find the *latest* modification.
-      var latestStat = resolvedStats[0];
-      for (var j = 1; j < resolvedStats.length; ++j) {
+      let latestStat = resolvedStats[0];
+      for (const j = 1; j < resolvedStats.length; ++j) {
         if (resolvedStats[j].mtime > latestStat.mtime) {
           latestStat = resolvedStats[j];
         }
@@ -160,20 +160,20 @@ Newer.prototype._transform = async function(srcFile, encoding, done) {
     this._extraStats = this.lazyExtraStats();
   }
 
-  var self = this;
+  const self = this;
   await Promise.all([this._destStats, this._extraStats])
     .then(([destStats, extraStats]) => {
       if ((destStats && destStats.isDirectory()) || self._ext || self._map) {
         // stat dest/relative file
-        var relative = srcFile.relative;
-        var ext = path.extname(relative);
-        var destFileRelative = self._ext
+        const relative = srcFile.relative;
+        const ext = path.extname(relative);
+        let destFileRelative = self._ext
           ? relative.substr(0, relative.length - ext.length) + self._ext
           : relative;
         if (self._map) {
           destFileRelative = self._map(destFileRelative);
         }
-        var destFileJoined = self._dest
+        const destFileJoined = self._dest
           ? path.join(self._dest, destFileRelative)
           : destFileRelative;
         return Promise.all([fs.stat(destFileJoined), extraStats]);
@@ -195,7 +195,7 @@ Newer.prototype._transform = async function(srcFile, encoding, done) {
       }
     })
     .then(([destFileStats, extraFileStats]) => {
-      var newer = !destFileStats || srcFile.stat.mtime > destFileStats.mtime;
+      let newer = !destFileStats || srcFile.stat.mtime > destFileStats.mtime;
       // If *any* extra file is newer than a destination file, then ALL
       // are newer.
       if (extraFileStats && extraFileStats.mtime > destFileStats.mtime) {

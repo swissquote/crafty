@@ -1,14 +1,13 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
 
-var Transform = require("stream").Transform;
-var fs = require("fs");
-var path = require("path");
+const Transform = require("node:stream").Transform;
+const fs = require("node:fs");
+const path = require("node:path");
 
-var Vinyl = require("vinyl");
-var mock = require("mock-fs");
+const Vinyl = require("vinyl");
 
-var newer = require("../index.js");
+const newer = require("../index.js");
 
 /**
  * Test utility function.  Create File instances for each of the provided paths

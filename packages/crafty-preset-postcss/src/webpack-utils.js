@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 
 const regexLikeIndexModule = /index\.module\.s?css$/;
 

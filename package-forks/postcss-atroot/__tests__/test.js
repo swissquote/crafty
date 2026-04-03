@@ -1,10 +1,10 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
-var postcss = require("postcss");
-var atroot = require("../");
+const postcss = require("postcss");
+const atroot = require("../");
 
 function runTest(input, output, opts) {
-  var result = postcss(atroot(opts)).process(input);
+  const result = postcss(atroot(opts)).process(input);
   expect(result.css).toEqual(output);
   expect(result.warnings().length).toBe(0);
 }

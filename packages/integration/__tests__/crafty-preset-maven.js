@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import path from "path";
+import path from "node:path";
 import * as testUtils from "../utils.js";
 
 test("Fails if no pom is found", async () => {

@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 const { copy } = require("../packages/copy-anything");
 const { merge } = require("../packages/merge-anything");

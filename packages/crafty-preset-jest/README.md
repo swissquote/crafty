@@ -134,7 +134,7 @@ Each preset and `crafty.config.js` can define the `jest(crafty, options)`
 function to override Jest's configuration.
 
 ```javascript
-const path = require("path");
+const path = require("node:path");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
@@ -174,7 +174,7 @@ This report is automatically added to the configuration if no reporter is specif
 You can decide to change this configuration by overriding `options.reporters`
 
 ```javascript
-const path = require("path");
+const path = require("node:path");
 const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {

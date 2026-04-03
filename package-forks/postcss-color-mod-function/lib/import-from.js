@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const postcss = require("postcss");
 const getCustomProperties = require("./get-custom-properties");
 const { parse } = require("postcss-values-parser");

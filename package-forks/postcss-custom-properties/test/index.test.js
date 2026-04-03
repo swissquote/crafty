@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const postcss = require("postcss");
 const { test } = require("node:test");
 const { expect } = require("expect");
@@ -285,7 +285,7 @@ test('supports { exportTo: "test/export-properties.scss" } usage', () => {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] = require("node:fs").readFileSync(
           "test/fixtures/export-properties.scss",
           "utf8"
         );
@@ -293,13 +293,13 @@ test('supports { exportTo: "test/export-properties.scss" } usage', () => {
       after() {
         if (
           global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] !==
-          require("fs").readFileSync(
+          require("node:fs").readFileSync(
             "test/fixtures/export-properties.scss",
             "utf8"
           )
         ) {
           throw new Error(
-            "The original file did not match the freshly exported copy, content was: " + require("fs").readFileSync(
+            "The original file did not match the freshly exported copy, content was: " + require("node:fs").readFileSync(
               "test/fixtures/export-properties.scss",
               "utf8"
             )
@@ -319,7 +319,7 @@ test('supports { exportTo: "test/export-properties.json" } usage', () => {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.json",
           "utf8"
         );
@@ -327,7 +327,7 @@ test('supports { exportTo: "test/export-properties.json" } usage', () => {
       after() {
         if (
           global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.json",
             "utf8"
           )
@@ -350,7 +350,7 @@ test('supports { exportTo: "test/export-properties.js" } usage', () => {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.js",
           "utf8"
         );
@@ -358,7 +358,7 @@ test('supports { exportTo: "test/export-properties.js" } usage', () => {
       after() {
         if (
           global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.js",
             "utf8"
           )
@@ -381,7 +381,7 @@ test('supports { exportTo: "test/export-properties.mjs" } usage', () => {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.mjs",
           "utf8"
         );
@@ -389,7 +389,7 @@ test('supports { exportTo: "test/export-properties.mjs" } usage', () => {
       after() {
         if (
           global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.mjs",
             "utf8"
           )
@@ -412,7 +412,7 @@ test('supports { exportTo: "test/export-properties.css" } usage', () => {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
@@ -420,7 +420,7 @@ test('supports { exportTo: "test/export-properties.css" } usage', () => {
       after() {
         if (
           global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           )
@@ -443,7 +443,7 @@ test('supports { exportTo: { to: "test/export-properties.css" } } usage', () => 
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
@@ -451,7 +451,7 @@ test('supports { exportTo: { to: "test/export-properties.css" } } usage', () => 
       after() {
         if (
           global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           )
@@ -474,7 +474,7 @@ test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } u
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] = require("fs").readFileSync(
+        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
@@ -482,7 +482,7 @@ test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } u
       after() {
         if (
           global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] !==
-          require("fs").readFileSync(
+          fs.readFileSync(
             "test/fixtures/export-properties.css",
             "utf8"
           )

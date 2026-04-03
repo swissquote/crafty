@@ -45,7 +45,7 @@
 ## Usage
 
 ```js
-var postcssImageSet = require('postcss-image-set-polyfill');
+const postcssImageSet = require('postcss-image-set-polyfill');
 
 postcss([postcssImageSet]).process(YOUR_CSS, /* options */);
 ```

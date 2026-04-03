@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 
 const gulpTasks = require("./gulp");
 const { createGlobalRule, createModuleRule } = require("./webpack-utils");

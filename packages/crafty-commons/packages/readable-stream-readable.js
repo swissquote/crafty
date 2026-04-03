@@ -1,2 +1,2 @@
 //package: readable-stream/readable
-module.exports = require("stream").Readable;
+module.exports = require("node:stream").Readable;

@@ -4,13 +4,13 @@
 // - ignore .d.ts files
 
 const swc = require("@swc/core");
-const path = require("path");
-const { Transform } = require("stream");
+const path = require("node:path");
+const { Transform } = require("node:stream");
 const PluginError = require("@swissquote/crafty-commons-gulp/packages/plugin-error.js");
 const applySourceMap = require("@swissquote/crafty-commons-gulp/packages/vinyl-sourcemaps-apply.js");
 
 function startsWithSingleDot(fpath) {
-  var first2chars = fpath.slice(0, 2);
+  const first2chars = fpath.slice(0, 2);
   return first2chars === `.${path.sep}` || first2chars === "./";
 }
 
@@ -23,8 +23,8 @@ function replaceExt(npath, ext) {
     return npath;
   }
 
-  var nFileName = path.basename(npath, path.extname(npath)) + ext;
-  var nFilepath = path.join(path.dirname(npath), nFileName);
+  const nFileName = path.basename(npath, path.extname(npath)) + ext;
+  const nFilepath = path.join(path.dirname(npath), nFileName);
 
   // Because `path.join` removes the head './' from the given path.
   // This removal can cause a problem when passing the result to `require` or

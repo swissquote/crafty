@@ -1,5 +1,5 @@
 const net = require("net");
-const path = require("path");
+const path = require("node:path");
 
 const hash = require("../../packages/hash-index.js");
 

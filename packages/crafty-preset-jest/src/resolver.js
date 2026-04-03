@@ -2,7 +2,7 @@
 // All credits go to the original creators of this resolver
 // This fork allows to use the latest version of enhanced-resolve
 
-const fs = require("fs");
+const fs = require("node:fs");
 const {
   ResolverFactory,
   CachedInputFileSystem

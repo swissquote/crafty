@@ -1,13 +1,13 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
 
-var fs = require("fs");
-var path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
-var Vinyl = require("vinyl");
-var mock = require("mock-fs");
+const Vinyl = require("vinyl");
+const mock = require("mock-fs");
 
-var newer = require("../index.js");
+const newer = require("../index.js");
 
 /**
  * Test utility function.  Create File instances for each of the provided paths
@@ -66,9 +66,9 @@ test.before(() => {
   
   test("must not throw on strings", () => {
     return new Promise((done, fail) => {
-      var stream = newer({ dest: "foo", extra: "extra1" });
+      const stream = newer({ dest: "foo", extra: "extra1" });
   
-      var paths = ["main"];
+      const paths = ["main"];
   
       stream.on("data", file => {
         expect(file.path).not.toBe(path.resolve("imported"));
@@ -82,9 +82,9 @@ test.before(() => {
   
   test("must not throw on arrays", () => {
     return new Promise((done, fail) => {
-      var stream = newer({ dest: "foo", extra: ["extra1", "extra2"] });
+      const stream = newer({ dest: "foo", extra: ["extra1", "extra2"] });
   
-      var paths = ["main"];
+      const paths = ["main"];
   
       stream.on("data", file => {
         expect(file.path).not.toBe(path.resolve("imported"));
@@ -98,9 +98,9 @@ test.before(() => {
   
   test("must not be passed into stream", () => {
     return new Promise((done, fail) => {
-      var stream = newer({ dest: "collected", extra: "imported" });
+      const stream = newer({ dest: "collected", extra: "imported" });
   
-      var paths = ["main"];
+      const paths = ["main"];
   
       stream.on("data", file => {
         expect(file.path).not.toBe(path.resolve("imported"));
@@ -117,11 +117,11 @@ test.before(() => {
   
   test('must let other files through stream if an "extra" is newer', () => {
     return new Promise((done, fail) => {
-      var stream = newer({ dest: "collected", extra: "imported" });
+      const stream = newer({ dest: "collected", extra: "imported" });
   
-      var paths = ["main"];
+      const paths = ["main"];
   
-      var calls = 0;
+      let calls = 0;
       stream.on("data", file => {
         expect(file.path).toBe(path.resolve(paths[calls]));
         ++calls;

@@ -1,2 +1,2 @@
 //package: readable-stream/passthrough
-module.exports = require("stream").PassThrough;
+module.exports = require("node:stream").PassThrough;

@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 
 import imagemin from "./gulp-imagemin.js";
 import newer from "@swissquote/crafty-commons-gulp/packages/gulp-newer.js";

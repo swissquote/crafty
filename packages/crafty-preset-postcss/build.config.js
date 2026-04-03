@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 
 const { getExternals } = require("../../utils/externals");
 const { copyRecursiveSync } = require( "../../utils/functions.js");

@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 
 const { findUpSync } = require("@swissquote/crafty-commons/packages/find-up");
 

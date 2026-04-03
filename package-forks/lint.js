@@ -1,6 +1,6 @@
-const { existsSync } = require("fs");
-const { readdir, writeFile } = require("fs/promises");
-const path = require("path");
+const { existsSync } = require("node:fs");
+const { readdir, writeFile } = require("node:fs/promises");
+const path = require("node:path");
 
 const rootVersion = require("../package.json").version;
 

@@ -1,6 +1,6 @@
 /* eslint quotes: 0 */
 
-const util = require("util");
+const util = require("node:util");
 
 const R_QUOTES = /'/g;
 

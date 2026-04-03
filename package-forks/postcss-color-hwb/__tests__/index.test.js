@@ -1,9 +1,9 @@
 const { test } = require("node:test");
 const { expect } = require("expect");
-var fs = require("fs");
+const fs = require("node:fs");
 
-var postcss = require("postcss");
-var plugin = require("..");
+const postcss = require("postcss");
+const plugin = require("..");
 
 function filename(name) {
   return __dirname + "/" + name + ".css";
@@ -21,7 +21,7 @@ function compareFixtures(name, msg, opts, postcssOpts) {
   return postcss([plugin(opts)])
     .process(read(postcssOpts.from), postcssOpts)
     .then((result) => {
-      var expected = read(filename("fixtures/" + name + ".expected"));
+      const expected = read(filename("fixtures/" + name + ".expected"));
       const actual = result.css;
       expect(actual).toEqual(expected);
     });

@@ -1,5 +1,5 @@
-const crypto = require("crypto");
-const fs = require("fs");
+const crypto = require("node:crypto");
+const fs = require("node:fs");
 const babel = require("@babel/core");
 
 const THIS_FILE = fs.readFileSync(__filename);
