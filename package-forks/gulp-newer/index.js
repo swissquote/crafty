@@ -123,7 +123,7 @@ Newer.prototype.lazyExtraStats = async function() {
     .then(resolvedStats => {
       // We get all the file stats here; find the *latest* modification.
       let latestStat = resolvedStats[0];
-      for (const j = 1; j < resolvedStats.length; ++j) {
+      for (let j = 1; j < resolvedStats.length; ++j) {
         if (resolvedStats[j].mtime > latestStat.mtime) {
           latestStat = resolvedStats[j];
         }

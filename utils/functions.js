@@ -75,7 +75,7 @@ function copyRecursiveSync(src, dest) {
   } else {
     fs.copyFileSync(src, dest);
   }
-};
+}
 
 function rmrf(toDelete) {
   fs.rmSync(toDelete, { recursive: true, force: true });
