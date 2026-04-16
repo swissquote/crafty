@@ -18,7 +18,20 @@ module.exports = [
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
   builder => builder("merge2").package(),
-  builder => builder("is-core-module").package(),
+  builder => builder("function-bind").package(),
+  builder =>
+    builder("hasown")
+      .externals({
+        "function-bind": "../function-bind/index.js"
+      })
+      .package(),
+  builder =>
+    builder("is-core-module")
+      .externals({
+        "function-bind": "../function-bind/index.js",
+        hasown: "../hasown/index.js"
+      })
+      .package(),
   builder => builder("is-extglob").package(),
   builder =>
     builder("is-glob")
@@ -43,8 +56,9 @@ module.exports = [
       .package()
       .externals({
         ...externals,
-
         "is-core-module": "../is-core-module/index.js",
+        "function-bind": "../function-bind/index.js",
+        hasown: "../hasown/index.js",
         "path-parse": "../path-parse/index.js"
       }),
   builder => builder("stable-hash-x").package(),
