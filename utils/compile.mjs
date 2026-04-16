@@ -64,6 +64,24 @@ async function compileNcc(input, output, bundle) {
   await handleNCCResult(name, output, out);
 }
 
+function statsJsonPlugin(statsFile) {
+  return {
+    name: "stats-json-plugin",
+    setup(api) {
+      api.onAfterBuild(({ stats }) => {
+        console.log(
+          "Writing stats",
+          path.join(api.context.distPath, statsFile)
+        );
+        fs.writeFileSync(
+          path.join(api.context.distPath, statsFile),
+          JSON.stringify(stats?.toJson("detailed"), null, 2)
+        );
+      });
+    }
+  };
+}
+
 async function compileRSLib(input, output, bundle) {
   const {
     name,
@@ -119,14 +137,20 @@ async function compileRSLib(input, output, bundle) {
                   }
                 }
               : {})
-          }
+          },
+          plugins: [statsJsonPlugin(getStatsName(name))]
         }
       ],
-      performance: {
-        bundleAnalyze: {
-          analyzerMode: "disabled",
-          generateStatsFile: true,
-          statsFilename: getStatsName(name)
+      tools: {
+        rspack: {
+          optimization: {
+            // Issue introduced in https://github.com/web-infra-dev/rslib/pull/1551
+            // If the assets are generated into more than one file, the runtime chunk is imported from the main chunk, but not exported
+            // Forcing a runtime chunk ensures it is generated properly
+            runtimeChunk: {
+              name: "rsbuild-runtime"
+            }
+          }
         }
       }
     }
