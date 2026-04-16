@@ -1,3 +1,4 @@
+const { createNodeResolver } = require("../dist/eslint-plugin-import-x/index.js");
 // React specific configuration
 
 module.exports = {
@@ -10,11 +11,11 @@ module.exports = {
     ]
   ],
   settings: {
-    "import-x/resolver": {
-      [require.resolve("../packages/eslint-import-resolver-node.js")]: {
+    "import-x/resolver-next": [
+      createNodeResolver({
         extensions: [".js", ".jsx", ".json"]
-      }
-    },
+      })
+    ],
     react: {
       version: "detect"
     }

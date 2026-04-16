@@ -18,20 +18,6 @@ module.exports = [
     fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
   },
   builder => builder("merge2").package(),
-  builder => builder("function-bind").package(),
-  builder =>
-    builder("hasown")
-      .externals({
-        "function-bind": "../function-bind/index.js"
-      })
-      .package(),
-  builder =>
-    builder("is-core-module")
-      .externals({
-        "function-bind": "../function-bind/index.js",
-        hasown: "../hasown/index.js"
-      })
-      .package(),
   builder => builder("is-extglob").package(),
   builder =>
     builder("is-glob")
@@ -48,19 +34,8 @@ module.exports = [
       })
       .package(),
   builder => builder("globals").package(),
-  builder => builder("path-parse").package(),
   builder => builder("get-tsconfig").package(),
   builder => builder("confusing-browser-globals").package(),
-  builder =>
-    builder("eslint-import-resolver-node")
-      .package()
-      .externals({
-        ...externals,
-        "is-core-module": "../is-core-module/index.js",
-        "function-bind": "../function-bind/index.js",
-        hasown: "../hasown/index.js",
-        "path-parse": "../path-parse/index.js"
-      }),
   builder => builder("stable-hash-x").package(),
   builder =>
     builder("eslint-import-resolver-typescript")
@@ -73,7 +48,6 @@ module.exports = [
         ...externals,
 
         "fast-glob": "../fast-glob/index.js",
-        "is-core-module": "../is-core-module/index.js",
         "is-glob": "../is-glob/index.js",
         "get-tsconfig": "../get-tsconfig/index.js",
 
