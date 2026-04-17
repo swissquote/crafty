@@ -55,7 +55,7 @@ jobs:
           --output-summary .pkg-sizes-summary.txt
 
     - name: ⬆️ Upload size report
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: size-report
         include-hidden-files: true
@@ -120,7 +120,7 @@ jobs:
       env:
         CI: true
     - name: ⬆️ Upload coverage reports
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: matrix.node-version == '24.x'
       with:
         name: reports-${{ matrix.os }}-${{ matrix.node-version }}
