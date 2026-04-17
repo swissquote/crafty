@@ -4348,7 +4348,7 @@ __metadata:
     "@swissquote/crafty-preset-stylelint": "npm:1.28.1"
     css-loader: "npm:7.1.4"
     lightningcss: "npm:1.32.0"
-    lightningcss-loader: "npm:2.1.0"
+    lightningcss-loader: "npm:3.0.1"
     mini-css-extract-plugin: "npm:2.10.2"
     style-loader: "npm:4.0.0"
   peerDependencies:
@@ -6538,7 +6538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.28.2, browserslist@npm:^4.19.1, browserslist@npm:^4.21.4, browserslist@npm:^4.24.0, browserslist@npm:^4.28.1":
+"browserslist@npm:4.28.2, browserslist@npm:^4.19.1, browserslist@npm:^4.24.0, browserslist@npm:^4.28.1, browserslist@npm:^4.28.2":
   version: 4.28.2
   resolution: "browserslist@npm:4.28.2"
   dependencies:
@@ -11087,16 +11087,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss-loader@npm:2.1.0":
-  version: 2.1.0
-  resolution: "lightningcss-loader@npm:2.1.0"
+"lightningcss-loader@npm:3.0.1":
+  version: 3.0.1
+  resolution: "lightningcss-loader@npm:3.0.1"
   dependencies:
-    browserslist: "npm:^4.21.4"
-    lightningcss: "npm:^1.16.0"
-    webpack-sources: "npm:^3.2.3"
+    browserslist: "npm:^4.28.2"
+    lightningcss: "npm:^1.32.0"
+    webpack-sources: "npm:^3.3.4"
   peerDependencies:
     webpack: ">=5"
-  checksum: 10c0/2736f35c9c641e2fc1139b334092953e471c26e8b7a2f11ba583f385bf649bd535c82eaf93b8e74333abe56c2a0e608647a241d9795e8052f0151c87688e914c
+  checksum: 10c0/a225689e44d59843ee6911f501a34642a420996c2c738d61f45c603c82954f7d8a2c12efb42d0610c96b72419db5bf09595f5484a49ce035ec31b9a75212622f
   languageName: node
   linkType: hard
 
@@ -11114,7 +11114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lightningcss@npm:1.32.0, lightningcss@npm:^1.16.0, lightningcss@npm:^1.32.0":
+"lightningcss@npm:1.32.0, lightningcss@npm:^1.32.0":
   version: 1.32.0
   resolution: "lightningcss@npm:1.32.0"
   dependencies:
@@ -15193,7 +15193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.2.3, webpack-sources@npm:^3.3.4":
+"webpack-sources@npm:^3.3.4":
   version: 3.3.4
   resolution: "webpack-sources@npm:3.3.4"
   checksum: 10c0/94a42508531338eb41939cf1d48a4a8a6db97f3a47e5453cff2133a68d3169ca779d4bcbe9dfed072ce16611959eba1e16f085bc2dc56714e1a1c1783fd661a3
