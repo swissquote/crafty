@@ -4,8 +4,41 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
+// --- Types ---
+
+/**
+ * @typedef {Object} Measure
+ * @property {number} tarballSize
+ * @property {number} unpackedSize
+ * @property {number} fileCount
+ * @property {boolean=} error
+ */
+
+/**
+ * @typedef {Object} Result
+ * @property {string} generated
+ * @property {string} commit
+ * @property {Record<string, Measure>} packages
+ */
+
+/**
+ * @typedef {"error" | "no-baseline" | "added" | "removed" | "unchanged" | "changed"} Status
+ */
+
+/**
+ * @typedef {Object} Row
+ * @property {string} name
+ * @property {Measure} current
+ * @property {Measure} baseline
+ * @property {Status} status
+ */
+
 // --- Helpers ---
 
+/**
+ * @param {number} bytes
+ * @returns
+ */
 function formatBytes(bytes) {
   if (bytes === 0) return "0 Bytes";
 
@@ -19,6 +52,11 @@ function formatBytes(bytes) {
   }`;
 }
 
+/**
+ * @param {number} delta
+ * @param {number} baseline
+ * @returns {number}
+ */
 function computePct(delta, baseline) {
   if (baseline === 0) {
     return delta === 0 ? 0 : 100;
@@ -26,6 +64,11 @@ function computePct(delta, baseline) {
   return (delta / baseline) * 100;
 }
 
+/**
+ * @param {number} current
+ * @param {number} baseline
+ * @returns {string}
+ */
 function formatDelta(current, baseline) {
   if (baseline == null || current == null) return "N/A";
 
@@ -36,6 +79,11 @@ function formatDelta(current, baseline) {
   return `${sign}${formatBytes(delta)} (${sign}${pct.toFixed(1)}%)`;
 }
 
+/**
+ * @param {number} current
+ * @param {number} baseline
+ * @returns {{ emoji: string, label: string }}
+ */
 function classifyDelta(current, baseline) {
   if (baseline == null || current == null) {
     return { emoji: "", label: "no-baseline" };
@@ -106,6 +154,7 @@ function measure(args) {
   });
   const packages = parseNDJSON(workspacesRaw).filter(ws => ws.location !== ".");
 
+  /** @type {Result} */
   const result = {
     generated: new Date().toISOString(),
     commit: getCommitSha(),
@@ -167,9 +216,13 @@ function measure(args) {
 
 // --- report helpers ---
 
-function classifyEntry(entry, hasBaseline) {
-  const { current: cur, baseline: base } = entry;
-
+/**
+ * @param {Measure} cur
+ * @param {Measure} base
+ * @param {boolean} hasBaseline
+ * @returns {Status}
+ */
+function classifyEntry(cur, base, hasBaseline) {
   if (cur?.error) return "error";
   if (!hasBaseline) return "no-baseline";
   if (!base && cur) return "added";
@@ -183,6 +236,10 @@ function classifyEntry(entry, hasBaseline) {
   return "changed";
 }
 
+/**
+ * @param {Entry} entry
+ * @returns
+ */
 function formatChangedRow(entry) {
   const { name, current: cur, baseline: base, status } = entry;
 
@@ -243,6 +300,10 @@ function buildSummarySection(baseline, totals) {
   return lines;
 }
 
+/**
+ * @param {Entry[]} changed
+ * @returns
+ */
 function buildChangedTable(changed) {
   if (changed.length === 0) return [];
 
@@ -254,6 +315,11 @@ function buildChangedTable(changed) {
   ];
 }
 
+/**
+ * @param {Entry[]} unchanged
+ * @param {boolean} hasBaseline
+ * @returns {string[]}
+ */
 function buildUnchangedSection(unchanged, hasBaseline) {
   if (unchanged.length === 0) return [];
 
@@ -283,6 +349,11 @@ function buildUnchangedSection(unchanged, hasBaseline) {
   ];
 }
 
+/**
+ * @param {boolean} baseline
+ * @param {*} totals
+ * @returns {string}
+ */
 function buildStatusSummary(baseline, totals) {
   if (!baseline) {
     return `Total: ${formatBytes(totals.currentTarball)} (no baseline)`;
@@ -348,8 +419,13 @@ function report(args) {
       totals.baselineUnpacked += base.unpackedSize;
     }
 
-    const entry = { name, current: cur, baseline: base };
-    entry.status = classifyEntry(entry, Boolean(baseline));
+    /** @type {Row} */
+    const entry = {
+      name,
+      current: cur,
+      baseline: base,
+      status: classifyEntry(cur, base, Boolean(baseline))
+    };
 
     if (entry.status === "unchanged" || entry.status === "no-baseline") {
       unchanged.push(entry);
@@ -357,6 +433,15 @@ function report(args) {
       changed.push(entry);
     }
   }
+
+  changed.sort((a, b) => {
+    const aDelta =
+      (a.baseline?.tarballSize ?? 0) - (a.current?.tarballSize ?? 0);
+    const bDelta =
+      (b.baseline?.tarballSize ?? 0) - (b.current?.tarballSize ?? 0);
+
+    return aDelta - bDelta;
+  });
 
   // Assemble markdown
   const lines = [
