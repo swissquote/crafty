@@ -184,7 +184,7 @@ jobs:
         path: .
 
     - name: 💬 Post PR comment
-      uses: actions/github-script@v7
+      uses: actions/github-script@v9
       if: github.event_name == 'pull_request_target'
       with:
         script: |
@@ -215,7 +215,7 @@ jobs:
           }
 
     - name: ✅ Create check run with size report
-      uses: actions/github-script@v7
+      uses: actions/github-script@v9
       with:
         script: |
           const fs = require('fs');
