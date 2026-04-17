@@ -10,7 +10,6 @@ jobs:
   # ─── Job: Lint and checks that are needed only once ─────────
   lint:
     name: "✅ Base Checks"
-    needs: build
     runs-on: ubuntu-latest
     if: success()
     permissions:
