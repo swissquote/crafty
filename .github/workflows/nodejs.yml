@@ -7,7 +7,78 @@ on:
     branches: [ master ]
 
 jobs:
+  # ─── Job: Lint and checks that are needed only once ─────────
+  lint:
+    name: "✅ Base Checks"
+    runs-on: ubuntu-latest
+    if: success()
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    # Commit is needed to check coverage files against content
+    - name: 📥 Checkout
+      uses: actions/checkout@v6
+      with:
+        ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
+    - name: ⬢ Setup Node.js
+      uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+      with:
+        node-version: 22.x
+        cache: 'yarn'
+    - name: 📦 Install dependencies
+      run: yarn install
+    - name: 🔨 Build
+      run: yarn build
+    # Lint only once
+    - name: 🔍 Lint
+      run: yarn lint:ci
+
+    # ─── Package size tracking ──────────────────────────────────
+    - name: 📊 Restore baseline package sizes
+      uses: actions/cache/restore@v4
+      with:
+        path: .pkg-sizes-baseline.json
+        key: pkg-sizes-${{ github.event.pull_request.base.ref || github.ref_name }}-never-match
+        restore-keys: |
+          pkg-sizes-${{ github.event.pull_request.base.ref || github.ref_name }}-
+
+    - name: 📏 Measure package sizes
+      run: node utils/package-sizes.mjs measure --output .pkg-sizes-current.json
+
+    - name: 📝 Generate size report
+      run: |
+        node utils/package-sizes.mjs report \
+          --current .pkg-sizes-current.json \
+          --baseline .pkg-sizes-baseline.json \
+          --output-md .pkg-sizes-report.md \
+          --output-summary .pkg-sizes-summary.txt
+
+    - name: ⬆️ Upload size report
+      uses: actions/upload-artifact@v6
+      with:
+        name: size-report
+        include-hidden-files: true
+        retention-days: 1
+        path: |
+          .pkg-sizes-current.json
+          .pkg-sizes-report.md
+          .pkg-sizes-summary.txt
+
+    - name: 🔄 Prepare baseline for cache
+      if: github.event_name == 'push'
+      run: cp .pkg-sizes-current.json .pkg-sizes-baseline.json
+
+    - name: 💾 Save package sizes to cache
+      if: github.event_name == 'push'
+      uses: actions/cache/save@v4
+      with:
+        path: .pkg-sizes-baseline.json
+        key: pkg-sizes-${{ github.ref_name }}-${{ github.run_id }}
+
+ # ─── Job: Build and test ─────────
   build:
+    name: "🏗️ Build & Test"
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -26,30 +97,30 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v6
+    - name: 📥 Checkout
+      uses: actions/checkout@v6
       with:
         ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: ⬢ Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - name: Install Java
+    - name: ☕ Setup Java
       uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
       with:
         distribution: 'zulu'
         java-version: '11'
-    - name: yarn install
+    - name: 📦 Install dependencies
       run: yarn install
-    - name: yarn build
+    - name: 🔨 Build
       run: yarn build
-    - name: Linting
-      run: yarn lint:ci
-    - name: Testing
+    - name: 🧪 Test
       run: yarn test:ci
       env:
         CI: true
-    - uses: actions/upload-artifact@v6
+    - name: ⬆️ Upload coverage reports
+      uses: actions/upload-artifact@v6
       if: matrix.node-version == '24.x'
       with:
         name: reports-${{ matrix.os }}-${{ matrix.node-version }}
@@ -59,7 +130,7 @@ jobs:
           **/coverage/sonar-report.xml
           !node_modules/**
 
-  # ─── Job 2: uploads coverage using secrets, does NOT run PR code ─────────
+  # ─── Job: uploads coverage using secrets, does NOT run PR code ─────────
   static_analysis:
     name: "🔬 Static Analysis"
     needs: build
@@ -70,22 +141,25 @@ jobs:
       contents: read
     steps:
     # Commit is needed to check coverage files against content
-    - uses: actions/checkout@v6
+    - name: 📥 Checkout
+      uses: actions/checkout@v6
       with:
         ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
         # Disabling shallow clone is needed by SonarQube
         fetch-depth: 0
-    - uses: actions/download-artifact@v8
+    - name: ⬇️ Download reports
+      uses: actions/download-artifact@v8
       with:
         pattern: reports-*
         path: __reports
-    - run: find __reports -type f
-    - name: Collect Sonar report paths
+    - name: 📋 List report files
+      run: find __reports -type f
+    - name: 🔎 Collect Sonar report paths
       id: sonar_reports
       run: |
         echo "test_reports=$(find __reports -name "sonar-report.xml" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
         echo "project_version=$(git tag -l --sort=-creatordate --format='%(refname:short)' | head -n1)" >> $GITHUB_OUTPUT
-    - name: SonarCloud Scan
+    - name: 🔬 SonarCloud Scan
       uses: SonarSource/sonarqube-scan-action@v7
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -93,3 +167,69 @@ jobs:
         args: >
           -Dsonar.testExecutionReportPaths=${{ steps.sonar_reports.outputs.test_reports }}
           -Dsonar.projectVersion=`${{ steps.sonar_reports.outputs.project_version  }}`
+
+  # ─── Job: posts package size report on PRs, does NOT run PR code ───
+  size_report:
+    name: "📦 Package Size Report"
+    needs: lint
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      checks: write
+    steps:
+    - name: ⬇️ Download size report
+      uses: actions/download-artifact@v8
+      with:
+        name: size-report
+        path: .
+
+    - name: 💬 Post PR comment
+      uses: actions/github-script@v7
+      if: github.event_name == 'pull_request_target'
+      with:
+        script: |
+          const fs = require('fs');
+          const body = fs.readFileSync('.pkg-sizes-report.md', 'utf8');
+          const marker = '<!-- pkg-size-report -->';
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.pull_request.number,
+          });
+          const existing = comments.find(c => c.body.includes(marker));
+          const fullBody = marker + '\n' + body;
+          if (existing) {
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: existing.id,
+              body: fullBody,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: fullBody,
+            });
+          }
+
+    - name: ✅ Create check run with size report
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const summary = fs.readFileSync('.pkg-sizes-summary.txt', 'utf8').trim();
+          const report = fs.readFileSync('.pkg-sizes-report.md', 'utf8');
+          await github.rest.checks.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            head_sha: context.payload.pull_request?.head?.sha || context.sha,
+            name: 'Package Size Report',
+            status: 'completed',
+            conclusion: 'success',
+            output: {
+              title: summary,
+              summary: report,
+            },
+          });
