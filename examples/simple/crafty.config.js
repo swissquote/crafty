@@ -54,7 +54,7 @@ module.exports = {
 
     // Add proxies
     chain.devServer.set("middleware", (app, builtins) => {
-      app.use(builtins.proxy('/google', { target: 'https://google.com' }));
+      app.use('/google', builtins.proxy({ target: 'https://google.com' }));
     });
 
     // as we are using anypack-plugin-serve, you need to check its documentation on what to set in `devServer` :

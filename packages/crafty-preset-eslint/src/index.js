@@ -73,5 +73,33 @@ module.exports = {
           }
         ]);
     }
+  },
+  rspack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
+    const extensions = [];
+    crafty.loadedPresets
+      .filter(preset => preset.implements("eslintExtensions"))
+      .forEach(preset => {
+        debug(`${preset.presetName}.eslintExtensions()`);
+        extensions.push(...preset.get("eslintExtensions")());
+      });
+
+    if (!crafty.isWatching()) {
+      // JavaScript linting
+      chain
+        .plugin("lint-js")
+        .use(require.resolve("../packages/eslint-rspack-plugin.js"), [
+          {
+            configType: "flat",
+            eslintPath: require.resolve("eslint/use-at-your-own-risk"),
+            extensions,
+            overrideConfigFile: toTempFile(toolConfiguration(crafty)),
+            formatter: createFormatter(bundle.taskName)
+          }
+        ]);
+    }
   }
 };

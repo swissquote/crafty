@@ -58,7 +58,15 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    createGlobalRule(crafty, bundle, chain);
-    createModuleRule(crafty, bundle, chain);
+    createGlobalRule(crafty, bundle, chain, false);
+    createModuleRule(crafty, bundle, chain, false);
+  },
+  rspack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".css").add(".scss");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
+    createGlobalRule(crafty, bundle, chain, true);
+    createModuleRule(crafty, bundle, chain, true);
   }
 };
