@@ -104,9 +104,7 @@ module.exports = {
 
       chain.plugin("react-refresh").use(ReactRefreshWebpackPlugin, [
         {
-          overlay: {
-            sockIntegration: "wps" // webpack-plugin-serve
-          }
+          overlay: false
         }
       ]);
     }
