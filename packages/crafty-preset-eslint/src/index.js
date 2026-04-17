@@ -66,7 +66,7 @@ module.exports = {
         .use(require.resolve("../packages/eslint-webpack-plugin.js"), [
           {
             configType: "flat",
-            eslintPath: require.resolve("eslint/use-at-your-own-risk"),
+            eslintPath: require.resolve("eslint"),
             extensions,
             overrideConfigFile: toTempFile(toolConfiguration(crafty)),
             formatter: createFormatter(bundle.taskName)
@@ -94,7 +94,7 @@ module.exports = {
         .use(require.resolve("../packages/eslint-rspack-plugin.js"), [
           {
             configType: "flat",
-            eslintPath: require.resolve("eslint/use-at-your-own-risk"),
+            eslintPath: require.resolve("eslint"),
             extensions,
             overrideConfigFile: toTempFile(toolConfiguration(crafty)),
             formatter: createFormatter(bundle.taskName)
