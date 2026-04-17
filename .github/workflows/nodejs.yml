@@ -68,6 +68,7 @@ jobs:
           --output-summary .pkg-sizes-summary.txt
 
     - name: Generated files
+      if: matrix.os == 'ubuntu-latest' && matrix.node-version == '22.x'
       run: ls -la .pkg*
 
     - name: Upload size report
@@ -75,6 +76,7 @@ jobs:
       uses: actions/upload-artifact@v6
       with:
         name: size-report
+        include-hidden-files: true
         retention-days: 1
         path: |
           .pkg-sizes-current.json
