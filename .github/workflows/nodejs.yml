@@ -36,7 +36,7 @@ jobs:
 
     # ─── Package size tracking ──────────────────────────────────
     - name: 📊 Restore baseline package sizes
-      uses: actions/cache/restore@v4
+      uses: actions/cache/restore@v5
       with:
         path: .pkg-sizes-baseline.json
         key: pkg-sizes-${{ github.event.pull_request.base.ref || github.ref_name }}-never-match
@@ -71,7 +71,7 @@ jobs:
 
     - name: 💾 Save package sizes to cache
       if: github.event_name == 'push'
-      uses: actions/cache/save@v4
+      uses: actions/cache/save@v5
       with:
         path: .pkg-sizes-baseline.json
         key: pkg-sizes-${{ github.ref_name }}-${{ github.run_id }}
