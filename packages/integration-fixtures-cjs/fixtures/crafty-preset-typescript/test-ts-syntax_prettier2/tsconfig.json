@@ -8,12 +8,12 @@
   ],
   "compilerOptions": {
     "declaration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "module": "esnext",
     "sourceMap": true,
     "target": "esnext",
-    "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"],
+    "lib": ["DOM", "ES2022", "DOM.Iterable", "ScriptHost"],
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   }
