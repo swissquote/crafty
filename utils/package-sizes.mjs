@@ -14,7 +14,9 @@ function formatBytes(bytes) {
   const i = Math.floor(Math.log(Math.abs(bytes)) / Math.log(k));
   const decimals = i === 0 ? 0 : 1;
 
-  return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(decimals))} ${sizes[i]}`;
+  return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(decimals))} ${
+    sizes[i]
+  }`;
 }
 
 function computePct(delta, baseline) {
@@ -45,7 +47,8 @@ function classifyDelta(current, baseline) {
   const pct = computePct(delta, baseline);
 
   if (pct < 0) return { emoji: ":arrow_down_small:", label: "decrease" };
-  if (pct <= 5) return { emoji: ":small_orange_diamond:", label: "small-increase" };
+  if (pct <= 5)
+    return { emoji: ":small_orange_diamond:", label: "small-increase" };
   return { emoji: ":red_circle:", label: "large-increase" };
 }
 
@@ -99,14 +102,14 @@ function measure(args) {
 
   const workspacesRaw = execSync("yarn workspaces list --no-private --json", {
     encoding: "utf-8",
-    cwd: rootDir,
+    cwd: rootDir
   });
   const packages = parseNDJSON(workspacesRaw).filter(ws => ws.location !== ".");
 
   const result = {
     generated: new Date().toISOString(),
     commit: getCommitSha(),
-    packages: {},
+    packages: {}
   };
 
   let totalTarball = 0;
@@ -120,7 +123,7 @@ function measure(args) {
       const packOutput = execSync("npm pack --dry-run --json", {
         cwd: pkgDir,
         encoding: "utf-8",
-        stdio: ["pipe", "pipe", "pipe"],
+        stdio: ["pipe", "pipe", "pipe"]
       });
 
       const parsed = JSON.parse(packOutput);
@@ -129,7 +132,7 @@ function measure(args) {
       result.packages[ws.name] = {
         tarballSize: entry.size,
         unpackedSize: entry.unpackedSize,
-        fileCount: entry.files ? entry.files.length : 0,
+        fileCount: entry.files ? entry.files.length : 0
       };
 
       totalTarball += entry.size;
@@ -140,7 +143,7 @@ function measure(args) {
         tarballSize: null,
         unpackedSize: null,
         fileCount: null,
-        error: true,
+        error: true
       };
       errorCount++;
     }
@@ -150,7 +153,11 @@ function measure(args) {
 
   const measured = packages.length - errorCount;
   console.log(
-    `Measured ${measured}/${packages.length} packages (total tarball: ${formatBytes(totalTarball)}, unpacked: ${formatBytes(totalUnpacked)})`
+    `Measured ${measured}/${
+      packages.length
+    } packages (total tarball: ${formatBytes(
+      totalTarball
+    )}, unpacked: ${formatBytes(totalUnpacked)})`
   );
 
   if (errorCount > 0) {
@@ -167,7 +174,10 @@ function classifyEntry(entry, hasBaseline) {
   if (!hasBaseline) return "no-baseline";
   if (!base && cur) return "added";
   if (base && !cur) return "removed";
-  if (cur.tarballSize === base.tarballSize && cur.unpackedSize === base.unpackedSize) {
+  if (
+    cur.tarballSize === base.tarballSize &&
+    cur.unpackedSize === base.unpackedSize
+  ) {
     return "unchanged";
   }
   return "changed";
@@ -178,21 +188,32 @@ function formatChangedRow(entry) {
 
   switch (status) {
     case "added":
-      return `| ${name} | ${formatBytes(cur.tarballSize)} | ${formatBytes(cur.unpackedSize)} | *new* | *new* | :sparkles: |`;
+      return `| ${name} | ${formatBytes(cur.tarballSize)} | ${formatBytes(
+        cur.unpackedSize
+      )} | *new* | *new* | :sparkles: |`;
     case "removed":
-      return `| ${name} | - | - | -${formatBytes(base.tarballSize)} | -${formatBytes(base.unpackedSize)} | :x: |`;
+      return `| ${name} | - | - | -${formatBytes(
+        base.tarballSize
+      )} | -${formatBytes(base.unpackedSize)} | :x: |`;
     case "error":
       return `| ${name} | :warning: error | :warning: error | N/A | N/A | :warning: |`;
     default: {
       const classification = classifyDelta(cur.tarballSize, base.tarballSize);
-      return `| ${name} | ${formatBytes(cur.tarballSize)} | ${formatBytes(cur.unpackedSize)} | ${formatDelta(cur.tarballSize, base.tarballSize)} | ${formatDelta(cur.unpackedSize, base.unpackedSize)} | ${classification.emoji} |`;
+      return `| ${name} | ${formatBytes(cur.tarballSize)} | ${formatBytes(
+        cur.unpackedSize
+      )} | ${formatDelta(cur.tarballSize, base.tarballSize)} | ${formatDelta(
+        cur.unpackedSize,
+        base.unpackedSize
+      )} | ${classification.emoji} |`;
     }
   }
 }
 
 function buildSummarySection(baseline, totals) {
   const lines = [];
-  const totalLine = `**Total**: ${formatBytes(totals.currentTarball)} tarball, ${formatBytes(totals.currentUnpacked)} unpacked`;
+  const totalLine = `**Total**: ${formatBytes(
+    totals.currentTarball
+  )} tarball, ${formatBytes(totals.currentUnpacked)} unpacked`;
 
   if (!baseline) {
     lines.push(
@@ -213,7 +234,9 @@ function buildSummarySection(baseline, totals) {
     const tarballSign = tarballDelta > 0 ? "+" : "";
     const unpackedSign = unpackedDelta > 0 ? "+" : "";
     lines.push(
-      `**Delta**: ${tarballSign}${formatBytes(tarballDelta)} tarball, ${unpackedSign}${formatBytes(unpackedDelta)} unpacked`
+      `**Delta**: ${tarballSign}${formatBytes(
+        tarballDelta
+      )} tarball, ${unpackedSign}${formatBytes(unpackedDelta)} unpacked`
     );
   }
 
@@ -227,7 +250,7 @@ function buildChangedTable(changed) {
     "| Package | Tarball | Unpacked | Tarball \u0394 | Unpacked \u0394 | |",
     "|---------|--------:|---------:|----------:|-----------:|:-:|",
     ...changed.map(formatChangedRow),
-    "",
+    ""
   ];
 }
 
@@ -240,7 +263,12 @@ function buildUnchangedSection(unchanged, hasBaseline) {
 
   const rows = unchanged
     .filter(entry => entry.current && !entry.current.error)
-    .map(entry => `| ${entry.name} | ${formatBytes(entry.current.tarballSize)} | ${formatBytes(entry.current.unpackedSize)} |`);
+    .map(
+      entry =>
+        `| ${entry.name} | ${formatBytes(
+          entry.current.tarballSize
+        )} | ${formatBytes(entry.current.unpackedSize)} |`
+    );
 
   return [
     "<details>",
@@ -251,7 +279,7 @@ function buildUnchangedSection(unchanged, hasBaseline) {
     ...rows,
     "",
     "</details>",
-    "",
+    ""
   ];
 }
 
@@ -266,8 +294,13 @@ function buildStatusSummary(baseline, totals) {
   }
 
   const sign = tarballDelta > 0 ? "+" : "";
-  const pct = totals.baselineTarball === 0 ? 0 : (tarballDelta / totals.baselineTarball) * 100;
-  return `Total: ${formatBytes(totals.currentTarball)} (${sign}${formatBytes(tarballDelta)}, ${sign}${pct.toFixed(1)}%)`;
+  const pct =
+    totals.baselineTarball === 0
+      ? 0
+      : (tarballDelta / totals.baselineTarball) * 100;
+  return `Total: ${formatBytes(totals.currentTarball)} (${sign}${formatBytes(
+    tarballDelta
+  )}, ${sign}${pct.toFixed(1)}%)`;
 }
 
 // --- report command ---
@@ -289,13 +322,18 @@ function report(args) {
   // Build unified package list
   const allNames = new Set([
     ...Object.keys(current.packages),
-    ...(baseline ? Object.keys(baseline.packages) : []),
+    ...(baseline ? Object.keys(baseline.packages) : [])
   ]);
   const sortedNames = [...allNames].sort((a, b) => a.localeCompare(b));
 
   const changed = [];
   const unchanged = [];
-  const totals = { currentTarball: 0, currentUnpacked: 0, baselineTarball: 0, baselineUnpacked: 0 };
+  const totals = {
+    currentTarball: 0,
+    currentUnpacked: 0,
+    baselineTarball: 0,
+    baselineUnpacked: 0
+  };
 
   for (const name of sortedNames) {
     const cur = current.packages[name] || null;
@@ -327,9 +365,11 @@ function report(args) {
     ...buildSummarySection(baseline, totals),
     "",
     ...buildChangedTable(changed),
-    ...(changed.length === 0 && baseline ? ["No size changes detected.", ""] : []),
+    ...(changed.length === 0 && baseline
+      ? ["No size changes detected.", ""]
+      : []),
     ...buildUnchangedSection(unchanged, Boolean(baseline)),
-    ...(baseline ? [`*Compared against \`${baseline.commit}\`*`] : []),
+    ...(baseline ? [`*Compared against \`${baseline.commit}\`*`] : [])
   ];
 
   const markdown = lines.join("\n");
@@ -356,6 +396,8 @@ switch (command) {
   default:
     console.error("Usage: package-sizes.mjs <measure|report> [options]");
     console.error("  measure --output <path>      Measure package sizes");
-    console.error("  report --current <path> --baseline <path> --output-md <path> --output-summary <path>");
+    console.error(
+      "  report --current <path> --baseline <path> --output-md <path> --output-summary <path>"
+    );
     process.exit(1);
 }
