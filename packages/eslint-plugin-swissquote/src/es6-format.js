@@ -1,3 +1,6 @@
+const {
+  createNodeResolver
+} = require("../dist/eslint-plugin-import-x/index.js");
 const globals = require("../packages/globals");
 
 module.exports = {
@@ -18,11 +21,11 @@ module.exports = {
       "node_modules",
       "\\.(coffee|scss|css|less|hbs|svg|json)$"
     ],
-    "import-x/resolver": {
-      [require.resolve("../packages/eslint-import-resolver-node.js")]: {
+    "import-x/resolver-next": [
+      createNodeResolver({
         extensions: [".js", ".json"]
-      }
-    }
+      })
+    ]
   },
   rules: {
     // -> Helpful warnings

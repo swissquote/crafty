@@ -1,3 +1,6 @@
+const {
+  createTypeScriptImportResolver
+} = require("../dist/eslint-import-resolver-typescript/index_lib.js");
 const { warn } = require("./utils");
 
 const typescriptParserPath = require.resolve(
@@ -29,12 +32,12 @@ module.exports = {
     "import-x/parsers": {
       [typescriptParserPath]: [".ts", ".tsx", ".mts", ".cts"]
     },
-    "import-x/resolver": {
+    "import-x/resolver-next": [
       // use <root>/tsconfig.json
-      [require.resolve("../packages/eslint-import-resolver-typescript.js")]: {
+      createTypeScriptImportResolver({
         alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
-      }
-    }
+      })
+    ]
   },
   rules: {
     // Disable all the rules from @typescript-eslint that are handled by Prettier
