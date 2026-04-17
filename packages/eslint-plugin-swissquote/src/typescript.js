@@ -1,4 +1,6 @@
-const { createTypeScriptImportResolver } = require("../dist/eslint-import-resolver-typescript/index_lib.js");
+const {
+  createTypeScriptImportResolver
+} = require("../dist/eslint-import-resolver-typescript/index_lib.js");
 const { warn } = require("./utils");
 
 const typescriptParserPath = require.resolve(

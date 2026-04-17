@@ -1,4 +1,6 @@
-const { createNodeResolver } = require("../dist/eslint-plugin-import-x/index.js");
+const {
+  createNodeResolver
+} = require("../dist/eslint-plugin-import-x/index.js");
 // React specific configuration
 
 module.exports = {
