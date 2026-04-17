@@ -67,6 +67,9 @@ jobs:
           --output-md .pkg-sizes-report.md \
           --output-summary .pkg-sizes-summary.txt
 
+    - name: Generated files
+      run: ls -la .pkg*
+
     - name: Upload size report
       if: matrix.os == 'ubuntu-latest' && matrix.node-version == '22.x'
       uses: actions/upload-artifact@v6
