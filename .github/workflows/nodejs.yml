@@ -2,7 +2,7 @@ name: Node CI
 
 on:
   push:
-    branches: [ master, pkg-sizes ]
+    branches: [ master ]
   pull_request_target:
     branches: [ master ]
 
@@ -53,9 +53,6 @@ jobs:
           --baseline .pkg-sizes-baseline.json \
           --output-md .pkg-sizes-report.md \
           --output-summary .pkg-sizes-summary.txt
-
-    - name: 📋 List generated files
-      run: ls -la .pkg*
 
     - name: ⬆️ Upload size report
       uses: actions/upload-artifact@v6
