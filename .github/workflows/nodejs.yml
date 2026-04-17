@@ -150,7 +150,6 @@ jobs:
     name: "📦 Package Size Report"
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target'
     permissions:
       pull-requests: write
       statuses: write
@@ -162,6 +161,7 @@ jobs:
 
     - name: Post PR comment
       uses: actions/github-script@v7
+      if: github.event_name == 'pull_request_target'
       with:
         script: |
           const fs = require('fs');
