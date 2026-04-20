@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 
 import { findFiles, scanFiles, printReport } from "./duplicates.js";
 import * as compileUtils from "./compile.mjs";
@@ -13,21 +14,28 @@ class PackagesBuilder {
     this.entryFiles = [];
   }
 
-  package(pkg, name, entryFile) {
+  package(pkg, exp, entryFile) {
+    const exportName = Array.isArray(exp)
+      ? `export${crypto
+          .createHash("md5")
+          .update(pkg)
+          .digest("hex")}`
+      : exp;
+
     if (this.esm) {
-      if (Array.isArray(name)) {
-        this.sourceFile.push(`export { ${name.join(", ")} } from "${pkg}";`);
+      if (Array.isArray(exp)) {
+        this.sourceFile.push(`export { ${exp.join(", ")} } from "${pkg}";`);
       } else {
-        this.sourceFile.push(`export  { default as ${name} } from "${pkg}";`);
+        this.sourceFile.push(`export  { default as ${exp} } from "${pkg}";`);
       }
     } else {
       this.sourceFile.push(
-        `module.exports["${name}"] = function() { return require("${pkg}"); };`
+        `module.exports["${exportName}"] = function() { return require("${pkg}"); };`
       );
     }
 
     if (entryFile) {
-      this.entryFiles.push({ entryFile, name });
+      this.entryFiles.push({ entryFile, export: exp, exportName });
     }
 
     return this;
@@ -184,15 +192,20 @@ class Builder {
 
           let fileContent;
           if (esm) {
-            if (Array.isArray(entryFile.name)) {
-              fileContent = `export { ${entryFile.name.join(
-                ", "
-              )} } from "${relativePath}";`;
+            if (Array.isArray(entryFile.export)) {
+              const exports = entryFile.export.join(", ");
+              fileContent = `export { ${exports} } from "${relativePath}";`;
             } else {
-              fileContent = `export { ${entryFile.name} as default } from "${relativePath}";`;
+              fileContent = `export { ${entryFile.export} as default } from "${relativePath}";`;
             }
           } else {
-            fileContent = `module.exports = require('${relativePath}')['${entryFile.name}']();`;
+            fileContent = `const mod = require('${relativePath}')['${entryFile.exportName}']();\n`;
+            fileContent += `module.exports = mod;\n`;
+            if (Array.isArray(entryFile.export)) {
+              for (const exp of entryFile.export) {
+                fileContent += `module.exports['${exp}'] = mod['${exp}'];\n`;
+              }
+            }
           }
 
           console.log("Writing", entryFile.entryFile);

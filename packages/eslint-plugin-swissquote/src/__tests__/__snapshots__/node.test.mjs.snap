@@ -8,7 +8,6 @@ exports[`Works with TypeScript//0`] = `Array [
     "line": 20,
     "message": "Unexpected constant binary expression. Compares constantly with the right-hand side of the \`===\`.",
     "messageId": "constantBinaryOperand",
-    "nodeType": "UnaryExpression",
     "ruleId": "no-constant-binary-expression",
     "severity": 2,
   },
@@ -19,7 +18,6 @@ exports[`Works with TypeScript//0`] = `Array [
     "line": 20,
     "message": "Invalid typeof comparison value.",
     "messageId": "invalidValue",
-    "nodeType": "Identifier",
     "ruleId": "valid-typeof",
     "severity": 2,
     "suggestions": Array [
@@ -45,8 +43,7 @@ exports[`Works with TypeScript//0`] = `Array [
     "endLine": 29,
     "line": 29,
     "message": "React Hook \\"useSWROrig\\" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?",
-    "nodeType": "Identifier",
-    "ruleId": "@swissquote/swissquote/react-hooks/rules-of-hooks",
+    "ruleId": "@swissquote/swissquote/@eslint-react/rules-of-hooks",
     "severity": 2,
   },
   Object {
@@ -56,7 +53,6 @@ exports[`Works with TypeScript//0`] = `Array [
     "line": 34,
     "message": "Expected '===' and instead saw '=='.",
     "messageId": "unexpected",
-    "nodeType": "BinaryExpression",
     "ruleId": "eqeqeq",
     "severity": 2,
     "suggestions": Array [
@@ -84,7 +80,6 @@ exports[`Works with TypeScript//0`] = `Array [
     "line": 35,
     "message": "Redundant use of \`await\` on a return value.",
     "messageId": "redundantUseOfAwait",
-    "nodeType": "Identifier",
     "ruleId": "no-return-await",
     "severity": 2,
     "suggestions": Array [

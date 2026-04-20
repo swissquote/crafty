@@ -6,11 +6,8 @@ const {
 module.exports = {
   extends: [
     // @eslint-react/eslint-plugin
-    require("../packages/eslint-react-eslint-plugin.js").configs.recommended,
-    // Add all recommended configurations from eslint-plugin-react-hooks
-    require("../packages/eslint-plugin-react-hooks.js").configs[
-      "recommended-latest"
-    ]
+    require("../packages/eslint-react-eslint-plugin.mjs").default.configs
+      .recommended
   ],
   settings: {
     "import-x/resolver-next": [
@@ -34,11 +31,10 @@ module.exports = {
     ...require("../packages/eslint-config-prettier.js").rules,
 
     // Swissquote Rules
-    "@eslint-react/naming-convention/component-name": "error",
     "@eslint-react/no-set-state-in-component-did-mount": "error",
     "@eslint-react/no-set-state-in-component-did-update": "error",
     "@eslint-react/no-redundant-should-component-update": "error",
-    "@eslint-react/dom/no-void-elements-with-children": "error",
+    "@eslint-react/dom-no-void-elements-with-children": "error",
 
     // Disable the rule as it would attempt to autofix
     "@eslint-react/dom/no-render": "off"
