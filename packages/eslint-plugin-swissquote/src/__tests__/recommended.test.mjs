@@ -93,34 +93,6 @@ const obj = {
   expect(result.errorCount).toEqual(22);
 });
 
-test("jsx-no-duplicate-props: works with different props", async t => {
-  const result = await lint(
-    `
-export default function SomeComponent() {
-  return <div id="" className="" />;
-}
-`
-  );
-
-  expect(result.messages.length).toEqual(0);
-  expect(result.warningCount).toEqual(0);
-  expect(result.errorCount).toEqual(0);
-});
-
-test("jsx-no-duplicate-props: works fails with the same prop", async t => {
-  const result = await lint(
-    `
-export default function SomeComponent() {
-  return <div id="" id="" />;
-}
-`
-  );
-
-  expect(result.messages).toMatchSnapshot();
-  expect(result.warningCount).toEqual(1);
-  expect(result.errorCount).toEqual(0);
-});
-
 test("no-did-mount-set-state: fails with setState in componentDidMount", async t => {
   const alternateLint = prepareESLint("recommended", {
     settings: { react: { version: "16.0.0" } }
@@ -149,7 +121,7 @@ MyComponent.propTypes = {
 
   expect(result.messages).toMatchSnapshot();
   expect(result.warningCount).toEqual(0);
-  expect(result.errorCount).toEqual(2);
+  expect(result.errorCount).toEqual(1);
 });
 
 test("Incorrect usage of hooks: fails with setState in componentDidMount", async t => {
@@ -185,3 +157,23 @@ export default function MyComponent() {
   expect(result.warningCount).toEqual(0);
   expect(result.errorCount).toEqual(3);
 });
+
+test("exhaustive-deps by eslint-react", async t => {
+  const result = await lint(
+  `
+import { useEffect } from "react";
+import { fetchUser } from "./fetchers.js";
+
+export default function MyComponent({ userId }) {
+  useEffect(() => {
+    fetchUser(userId);
+  }, []); // Missing 'userId'
+}
+`
+  );
+
+  expect(result.messages).toMatchSnapshot();
+  expect(result.messages[0].ruleId).toEqual("@swissquote/swissquote/@eslint-react/exhaustive-deps");
+  expect(result.warningCount).toEqual(1);
+  expect(result.errorCount).toEqual(0);
+})

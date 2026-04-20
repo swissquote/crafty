@@ -7,16 +7,6 @@ const externals = getExternals();
 const FAKE_PRETTIER_PARSER = "../../src/shims/prettier-parser.js";
 
 module.exports = [
-  () => {
-    console.log("copy eslint-plugin-react-hooks");
-    const src = require.resolve(
-      "eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.production.js"
-    );
-
-    fs.mkdirSync("dist/eslint-plugin-react-hooks", { recursive: true });
-
-    fs.copyFileSync(src, "dist/eslint-plugin-react-hooks/index.js");
-  },
   builder => builder("merge2").package(),
   builder => builder("is-extglob").package(),
   builder =>
@@ -116,6 +106,7 @@ module.exports = [
       }),
   builder =>
     builder("@eslint-react/eslint-plugin")
+      .esm()
       .package()
       .externals({
         ...externals,
@@ -146,32 +137,32 @@ module.exports = [
           )
           .package(
             "@typescript-eslint/typescript-estree",
-            "typescriptEstree",
+            ["simpleTraverse"],
             "dist/typescript-eslint/typescript-estree.js"
           )
           .package(
             "@typescript-eslint/scope-manager",
-            "scopeManager",
+            ["DefinitionType"],
             "dist/typescript-eslint/scope-manager.js"
           )
           .package(
             "@typescript-eslint/types",
-            "types",
+            ["AST_NODE_TYPES"],
             "dist/typescript-eslint/types.js"
           )
           .package(
             "@typescript-eslint/utils",
-            "utils",
+            ["ASTUtils", "AST_NODE_TYPES", "ESLintUtils"],
             "dist/typescript-eslint/utils.js"
           )
           .package(
             "@typescript-eslint/utils/ast-utils",
-            "astUtils",
+            ["findVariable", "getStaticValue", "isIdentifier", "isVariableDeclarator"],
             "dist/typescript-eslint/ast-utils.js"
           )
           .package(
             "@typescript-eslint/type-utils",
-            "typeUtils",
+            ["getConstrainedTypeAtLocation"],
             "dist/typescript-eslint/type-utils.js"
           );
       })
