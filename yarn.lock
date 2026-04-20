@@ -2877,6 +2877,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nodable/entities@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@nodable/entities@npm:2.1.0"
+  checksum: 10c0/5a4cba2b61a5b6c726328b18b1de6d033cae4a658a118644bf31e0bcbda126ea7b69385043dc556cf1ed859b9ca220e82b81b5e5c48ef1b519fb8ec104575dee
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -4360,7 +4367,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-maven@workspace:packages/crafty-preset-maven"
   dependencies:
     "@swissquote/crafty-commons": "npm:1.28.1"
-    fast-xml-parser: "npm:5.5.12"
+    fast-xml-parser: "npm:5.7.1"
   languageName: unknown
   linkType: soft
 
@@ -8714,7 +8721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-builder@npm:^1.1.4":
+"fast-xml-builder@npm:^1.1.5":
   version: 1.1.5
   resolution: "fast-xml-builder@npm:1.1.5"
   dependencies:
@@ -8723,16 +8730,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:5.5.12":
-  version: 5.5.12
-  resolution: "fast-xml-parser@npm:5.5.12"
+"fast-xml-parser@npm:5.7.1":
+  version: 5.7.1
+  resolution: "fast-xml-parser@npm:5.7.1"
   dependencies:
-    fast-xml-builder: "npm:^1.1.4"
+    "@nodable/entities": "npm:^2.1.0"
+    fast-xml-builder: "npm:^1.1.5"
     path-expression-matcher: "npm:^1.5.0"
     strnum: "npm:^2.2.3"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10c0/fe2985517b7fe160b1f0529f2b285063184f21b0590c4cc65d34d464eea98f22ecad2a64575f2376d196d9e7a2e9e1a05f6603f02df4a1d6ac845aec0cda9f5b
+  checksum: 10c0/b8b54e33060da5fc5ce26fdc73c4728f18415f9be9a774f1406b03265a5b411b742c39dba0127c3f0f31fad5b3ee11f51be79aa16df160f69fd5e4b902bfbb85
   languageName: node
   linkType: hard
 
