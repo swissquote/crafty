@@ -4195,7 +4195,7 @@ __metadata:
     "@babel/preset-react": "npm:7.28.5"
     "@babel/runtime": "npm:7.29.2"
     "@swissquote/crafty-commons": "npm:1.28.1"
-    babel-plugin-istanbul: "npm:7.0.1"
+    babel-plugin-istanbul: "npm:8.0.0"
     babel-plugin-transform-react-remove-prop-types: "npm:0.4.24"
     babel-preset-jest: "npm:30.3.0"
   languageName: unknown
@@ -6207,7 +6207,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-istanbul@npm:7.0.1, babel-plugin-istanbul@npm:^7.0.1":
+"babel-plugin-istanbul@npm:8.0.0":
+  version: 8.0.0
+  resolution: "babel-plugin-istanbul@npm:8.0.0"
+  dependencies:
+    "@babel/helper-plugin-utils": "npm:^7.0.0"
+    "@istanbuljs/load-nyc-config": "npm:^1.0.0"
+    "@istanbuljs/schema": "npm:^0.1.3"
+    istanbul-lib-instrument: "npm:^6.0.2"
+    test-exclude: "npm:^7.0.1"
+  checksum: 10c0/c8afa37f2e9d4fc8ab174636a2ca7fcbf0cc0531ebab80003044b923fe93388b1052c693259af45cf7edf304e448422aee700417ee62d8ddf085e00ff24cbca0
+  languageName: node
+  linkType: hard
+
+"babel-plugin-istanbul@npm:^7.0.1":
   version: 7.0.1
   resolution: "babel-plugin-istanbul@npm:7.0.1"
   dependencies:
