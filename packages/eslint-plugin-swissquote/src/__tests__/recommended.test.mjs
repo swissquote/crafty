@@ -160,7 +160,7 @@ export default function MyComponent() {
 
 test("exhaustive-deps by eslint-react", async t => {
   const result = await lint(
-  `
+    `
 import { useEffect } from "react";
 import { fetchUser } from "./fetchers.js";
 
@@ -173,7 +173,9 @@ export default function MyComponent({ userId }) {
   );
 
   expect(result.messages).toMatchSnapshot();
-  expect(result.messages[0].ruleId).toEqual("@swissquote/swissquote/@eslint-react/exhaustive-deps");
+  expect(result.messages[0].ruleId).toEqual(
+    "@swissquote/swissquote/@eslint-react/exhaustive-deps"
+  );
   expect(result.warningCount).toEqual(1);
   expect(result.errorCount).toEqual(0);
-})
+});

@@ -6,7 +6,8 @@ const {
 module.exports = {
   extends: [
     // @eslint-react/eslint-plugin
-    require("../packages/eslint-react-eslint-plugin.mjs").default.configs.recommended,
+    require("../packages/eslint-react-eslint-plugin.mjs").default.configs
+      .recommended
   ],
   settings: {
     "import-x/resolver-next": [
