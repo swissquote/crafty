@@ -144,7 +144,11 @@ const eslintPluginPrettier = {
         // file paths. If this is the case then we need to resolve prettier
         // config and file info using the on-disk path instead of the virtual
         // path.
-        const onDiskFilepath = context.getPhysicalFilename();
+        // `context.getPhysicalFilename()` was deprecated in ESLint v8.40.0 and replaced
+        // with the `physicalFilename` property.
+        // TODO: Only use property when our eslint peerDependency is >=8.40.0.
+        const onDiskFilepath =
+          context.physicalFilename ?? context.getPhysicalFilename();
         const source = sourceCode.text;
 
         return {

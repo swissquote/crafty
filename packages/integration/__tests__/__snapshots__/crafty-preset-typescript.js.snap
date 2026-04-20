@@ -38,7 +38,7 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/lin
    7:3   warning  Unexpected console statement                                                                                                                                                                  no-console
   20:7   error    Unexpected constant binary expression. Compares constantly with the right-hand side of the \`===\`                                                                                              no-constant-binary-expression
   20:25  error    Invalid typeof comparison value                                                                                                                                                               valid-typeof
-  29:10  error    React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  29:10  error    React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/@eslint-react/rules-of-hooks
   34:25  error    Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
   35:16  error    Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
@@ -125,7 +125,7 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/lin
    7:3   warning  Unexpected console statement                                                                                                                                                                  no-console
   20:7   error    Unexpected constant binary expression. Compares constantly with the right-hand side of the \`===\`                                                                                              no-constant-binary-expression
   20:25  error    Invalid typeof comparison value                                                                                                                                                               valid-typeof
-  29:10  error    React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  29:10  error    React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/@eslint-react/rules-of-hooks
   34:25  error    Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
   35:16  error    Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
@@ -170,7 +170,7 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/lin
 __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/lints/js/utils.ts
   20:7   error  Unexpected constant binary expression. Compares constantly with the right-hand side of the \`===\`                                                                                              no-constant-binary-expression
   20:25  error  Invalid typeof comparison value                                                                                                                                                               valid-typeof
-  29:10  error  React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/react-hooks/rules-of-hooks
+  29:10  error  React Hook "useSWROrig" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  @swissquote/swissquote/@eslint-react/rules-of-hooks
   34:25  error  Expected '===' and instead saw '=='                                                                                                                                                           eqeqeq
   35:16  error  Redundant use of \`await\` on a return value                                                                                                                                                    no-return-await
 
