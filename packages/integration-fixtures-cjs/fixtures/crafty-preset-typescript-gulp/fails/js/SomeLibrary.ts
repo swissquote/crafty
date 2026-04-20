@@ -1,9 +1,9 @@
 
 export default class SomeLibrary {
-    add(a, b) {
+    add(a: number, b: number) {
         return a + b;
     }
 
-    substract(a, b) {
+    substract(a: number, b: number) {
         return a - b;
 }

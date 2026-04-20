@@ -6,11 +6,11 @@
     "etc"
   ],
   "compilerOptions": {
-    // Exclude types as we don't use any in this simple test
-    "types": [],
-    "moduleResolution": "node",
-    "jsx": "react",
+    "rootDir": "./js",
+    "declaration": true,
     "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react",
     "sourceMap": true,
     "target": "es5",
     "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"]

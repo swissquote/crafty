@@ -6,10 +6,11 @@
     "etc"
   ],
   "compilerOptions": {
+    "rootDir": "./js",
     "declaration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "jsx": "react",
-    "module": "esnext",
+    "module": "nodenext",
     "sourceMap": true,
     "target": "esnext",
     "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"]

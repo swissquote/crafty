@@ -7,13 +7,14 @@
     "dist"
   ],
   "compilerOptions": {
+    "rootDir": "./js",
     "declaration": true,
     "moduleResolution": "bundler",
     "jsx": "react",
     "module": "esnext",
     "sourceMap": true,
     "target": "esnext",
-    "lib": ["DOM", "ES2022", "DOM.Iterable", "ScriptHost"],
+    "lib": ["DOM", "ESNext", "DOM.Iterable", "ScriptHost"],
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   }

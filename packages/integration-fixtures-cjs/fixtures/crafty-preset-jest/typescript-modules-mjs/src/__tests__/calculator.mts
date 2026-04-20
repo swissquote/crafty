@@ -3,12 +3,15 @@ import { doSomeMath } from "../calculator.mjs";
 import { add } from "../math.mjs";
 
 // imports that contain cjs files should resolve fine
+// @ts-ignore
 import * as cjs from "@swissquote/random-cjs";
 
 // Actual .mjs files should still resolve to mjs
+// @ts-ignore
 import json5 from "json5/dist/index.mjs";
 
 // Actual .cjs files should still resolve to cjs
+// @ts-ignore
 import { _ as _interop_require_default } from "@swc/helpers/cjs/_interop_require_default.cjs";
 
 it("adds two numbers", () => {
