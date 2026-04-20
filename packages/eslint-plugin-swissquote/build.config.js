@@ -157,7 +157,12 @@ module.exports = [
           )
           .package(
             "@typescript-eslint/utils/ast-utils",
-            ["findVariable", "getStaticValue", "isIdentifier", "isVariableDeclarator"],
+            [
+              "findVariable",
+              "getStaticValue",
+              "isIdentifier",
+              "isVariableDeclarator"
+            ],
             "dist/typescript-eslint/ast-utils.js"
           )
           .package(

@@ -15,7 +15,12 @@ class PackagesBuilder {
   }
 
   package(pkg, exp, entryFile) {
-    const exportName = Array.isArray(exp) ? `export${crypto.createHash('md5').update(pkg).digest('hex')}`  : exp;
+    const exportName = Array.isArray(exp)
+      ? `export${crypto
+          .createHash("md5")
+          .update(pkg)
+          .digest("hex")}`
+      : exp;
 
     if (this.esm) {
       if (Array.isArray(exp)) {
@@ -194,7 +199,7 @@ class Builder {
               fileContent = `export { ${entryFile.export} as default } from "${relativePath}";`;
             }
           } else {
-            fileContent = `const mod = require('${relativePath}')['${entryFile.exportName}']();\n`
+            fileContent = `const mod = require('${relativePath}')['${entryFile.exportName}']();\n`;
             fileContent += `module.exports = mod;\n`;
             if (Array.isArray(entryFile.export)) {
               for (const exp of entryFile.export) {
