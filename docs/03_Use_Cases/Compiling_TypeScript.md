@@ -46,7 +46,7 @@ Then, you can create a `tsconfig.json` next to `crafty.config.js`.
   "exclude": ["node_modules", "node", "css", "etc"],
   "compilerOptions": {
     "declaration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "module": "esnext", // Using an ES6 module with an ES5 target allows to leverage tree shaking
     "sourceMap": true,
@@ -111,9 +111,9 @@ Then, you can create a `tsconfig.json` next to `crafty.config.js`.
   "exclude": ["node_modules", "node", "css", "etc"],
   "compilerOptions": {
     "declaration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "jsx": "react",
-    "module": "esnext", // Using an ES6 module with an ES5 target allows to leverage tree shaking
+    "module": "nodenext", // Using an ES6 module with an ES5 target allows to leverage tree shaking
     "sourceMap": true,
     "target": "es5",
     "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"]

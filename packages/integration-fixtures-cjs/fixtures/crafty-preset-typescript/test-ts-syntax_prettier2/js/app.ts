@@ -4,7 +4,6 @@ import Shape from "./TS_4_2";
 import { ExplicitOverride } from "./TS_4_3";
 import { StaticClassBlock } from "./TS_4_4";
 import type { SomeType } from "./TS_4_5";
-import { obj } from "./TS_4_5";
 import { Derived } from "./TS_4_6";
 import { helper, makeStringBox, makeNumberBox } from "./TS_4_7.mjs";
 import { f } from "./TS_4_8";
@@ -18,7 +17,6 @@ export {
   ExplicitOverride,
   StaticClassBlock,
   SomeType,
-  obj,
   Derived,
   helper,
   makeStringBox,

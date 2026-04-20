@@ -50,9 +50,9 @@ exports[`crafty-preset-typescript-webpack > Compiles TypeScript - custom paths 3
 
 exports[`crafty-preset-typescript-webpack > Compiles TypeScript - custom paths 4`] = `
 "export default class SomeLibrary {
-    add(a: any, b: any): any;
-    substract(a: any, b: any): number;
-    divide(a: any, b: any): number;
+    add(a: number, b: number): number;
+    substract(a: number, b: number): number;
+    divide(a: number, b: number): number;
 }
 "
 `;
@@ -152,9 +152,9 @@ exports[`crafty-preset-typescript-webpack > Compiles TypeScript 3`] = `
 
 exports[`crafty-preset-typescript-webpack > Compiles TypeScript 4`] = `
 "export default class SomeLibrary {
-    add(a: any, b: any): any;
-    substract(a: any, b: any): number;
-    divide(a: any, b: any): number;
+    add(a: number, b: number): number;
+    substract(a: number, b: number): number;
+    divide(a: number, b: number): number;
 }
 "
 `;
@@ -212,9 +212,9 @@ exports[`crafty-preset-typescript-webpack > Compiles TypeScript, alternate conf 
 
 exports[`crafty-preset-typescript-webpack > Compiles TypeScript, alternate conf 4`] = `
 "export default class SomeLibrary {
-    add(a: any, b: any): any;
-    substract(a: any, b: any): number;
-    divide(a: any, b: any): number;
+    add(a: number, b: number): number;
+    substract(a: number, b: number): number;
+    divide(a: number, b: number): number;
 }
 "
 `;
@@ -354,7 +354,7 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-web
   3:1  error  Replace \`···return·a·+···\` with \`··return·a·+\`                      @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-webpack/lints/js/SomeLibrary.ts
-  10:15  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
+  10:31  error  Delete \`⏎·\`  @swissquote/swissquote/prettier/prettier
 
 __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-webpack/lints/js/script.ts
    1:1   error  Replace \`⏎import·{\` with \`import·{·\`                   @swissquote/swissquote/prettier/prettier

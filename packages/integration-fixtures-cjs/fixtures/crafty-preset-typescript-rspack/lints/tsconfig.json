@@ -1,17 +1,11 @@
 {
-  "exclude": [
-    "node_modules",
-    "node",
-    "css",
-    "etc"
-  ],
+  "exclude": ["node_modules", "node", "css", "etc"],
   "compilerOptions": {
-    // Exclude types as we don't use any in this simple test
-    "types": [],
+    "rootDir": "./js",
     "declaration": true,
-    "moduleResolution": "node",
-    "jsx": "react",
     "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react",
     "sourceMap": true,
     "target": "es5",
     "lib": ["DOM", "ES2017", "DOM.Iterable", "ScriptHost"]

@@ -6,9 +6,7 @@
     "etc"
   ],
   "compilerOptions": {
-    // Exclude types as we don't use any in this simple test
-    "types": [],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "module": "esnext",
     "sourceMap": true,

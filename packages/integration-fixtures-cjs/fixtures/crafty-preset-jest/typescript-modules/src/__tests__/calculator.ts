@@ -3,9 +3,11 @@ import { doSomeMath } from "../calculator";
 import { add } from "../math";
 
 // Actual .mjs files should still resolve to mjs
+// @ts-ignore
 import json5 from "json5/dist/index.mjs";
 
 // Actual .cjs files should still resolve to cjs
+// @ts-ignore
 import { _ as _interop_require_default } from "@swc/helpers/cjs/_interop_require_default.cjs"
 
 it("adds two numbers", () => {

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' '__tests__/*.js'",
-    "test": "vitest",
+    "test": "vitest --run",
     "test:ci": "vitest --run --coverage"
   },
   "dependencies": {
