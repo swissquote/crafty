@@ -59,7 +59,7 @@ testRule({
     {
       description: "Fails on class with type",
       code: ".class header {}",
-      column: 1,
+      column: 8,
       line: 1,
       message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     },
@@ -96,7 +96,7 @@ testRule({
         }
       }`,
       length: 1,
-      column: 1,
+      column: 16,
       line: 1,
       message: `${messages.rejected} (swissquote/no-type-outside-scope)`
     }

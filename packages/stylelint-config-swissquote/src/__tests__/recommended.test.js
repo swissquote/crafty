@@ -380,10 +380,12 @@ test("flags warnings when using ids raised one 'selector-max-id' error", async (
       column: 1,
       endColumn: 17,
       endLine: 1,
+      fix: undefined,
       rule: "selector-max-id",
       severity: "error",
       text:
-        'Expected "#ids-not-allowed" to have no more than 0 ID selectors (selector-max-id)'
+        'Too many ID selectors in "#ids-not-allowed", maximum 0 (selector-max-id)',
+      url: undefined
     }
   ]);
 });

@@ -1,8 +1,8 @@
 import stylelint from "../../packages/stylelint.js";
 
-import isKeyframeSelector from "../../dist/stylelint/utils-isKeyframeSelector.js";
-import isStandardSyntaxRule from "../../dist/stylelint/utils-isStandardSyntaxRule.js";
-import isStandardSyntaxSelector from "../../dist/stylelint/utils-isStandardSyntaxSelector.js";
+import isKeyframeSelector from "../../dist/stylelint/utils/isKeyframeSelector/index.js";
+import isStandardSyntaxRule from "../../dist/stylelint/utils/isStandardSyntaxRule/index.js";
+import isStandardSyntaxSelector from "../../dist/stylelint/utils/isStandardSyntaxSelector/index.js";
 
 import resolveNestedSelector from "../utils/resolveNestedSelector.js";
 import parseSelector from "../utils/parseSelector.js";

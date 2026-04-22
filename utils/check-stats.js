@@ -152,10 +152,10 @@ function checkStats(stats, statFile) {
   const externals = stats.modules
     .filter(m => isExternal(m.name))
     .map(m => m.name.replace("external ", "").replace(/"/g, ""))
-    .filter(m => m[0] !== ".") // exclude relative paths
+    .filter(m => !m.startsWith(".") && !m.startsWith("commonjs .")) // exclude relative paths
     .map(m => {
       // Rspack wraps externals in [], we remove that here
-      const cleanModule = m.replace(/^\[|\]$/g, "");
+      const cleanModule = m.replace(/^\[|\]$/g, "").replace(/^commonjs /, "");
       const p = cleanModule.split(/\//g);
 
       if (cleanModule.startsWith("@")) {

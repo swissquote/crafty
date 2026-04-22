@@ -70,7 +70,7 @@ const errors = [
     code: "#some-id {\n}",
     line: 1,
     column: 10,
-    message: "Unexpected empty block (block-no-empty)"
+    message: "Empty block (block-no-empty)"
   },
   {
     code: "#some-id { color: blue;}",
