@@ -3,12 +3,9 @@ import path from "node:path";
 import fs from "node:fs";
 
 import { getExternals } from "../../utils/externals.js";
-import stylelint from "stylelint";
 
 const require = createRequire(import.meta.url);
-const stylelintPkg = require.resolve("stylelint/package.json");
 
-const ruleNames = Object.keys(stylelint.rules);
 const excludedUtils = new Set([
   "getFormatterOptionsText",
   "getFormatter",
@@ -43,15 +40,26 @@ const excludedUtils = new Set([
   "resolveSilent",
   "toPath"
 ]);
+const stylelintDir = path.join(
+  import.meta.dirname,
+  "..",
+  "..",
+  "node_modules",
+  "stylelint"
+);
 const utilNames = fs
-  .readdirSync(`${path.dirname(stylelintPkg)}/lib/utils`)
+  .readdirSync(`${stylelintDir}/lib/utils`)
   .filter(util => util.endsWith(".mjs"))
   .map(util => util.replace(".mjs", ""))
   .filter(util => !excludedUtils.has(util));
 const referenceNames = fs
-  .readdirSync(`${path.dirname(stylelintPkg)}/lib/reference`)
+  .readdirSync(`${stylelintDir}/lib/reference`)
   .filter(util => util.endsWith(".mjs"))
   .map(util => util.replace(".mjs", ""));
+const ruleNames = fs
+  .readdirSync(`${stylelintDir}/lib/rules`)
+  .filter(util => !util.endsWith(".mjs"));
+console.log({ ruleNames });
 
 const utilsRegex = new RegExp(
   String.raw`\/utils\/(${utilNames.join("|")}).mjs$`
@@ -442,12 +450,15 @@ export default [
   },
   async (_, compilerUtils) => {
     console.log("Patch stylelint exports");
-    await compilerUtils.replaceContent(stylelintPkg, content => {
-      const pkg = JSON.parse(content);
-      pkg.exports["./lib/*"] = "./lib/*";
+    await compilerUtils.replaceContent(
+      path.join(stylelintDir, "package.json"),
+      content => {
+        const pkg = JSON.parse(content);
+        pkg.exports["./lib/*"] = "./lib/*";
 
-      return JSON.stringify(pkg, null, 2);
-    });
+        return JSON.stringify(pkg, null, 2);
+      }
+    );
 
     console.log("Copy mdn-data files");
     await compilerUtils.copyFile(
