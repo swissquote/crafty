@@ -1,9 +1,9 @@
-import { getExternals } from "../../utils/externals.js";
 import { createRequire } from "node:module";
 import path from "node:path";
 import fs from "node:fs";
 
-import rules from "stylelint/lib/rules/index.mjs";
+import { getExternals } from "../../utils/externals.js";
+import { rules } from "stylelint";
 
 const require = createRequire(import.meta.url);
 const stylelintPkg = require.resolve("stylelint/package.json");
