@@ -3,12 +3,12 @@ import path from "node:path";
 import fs from "node:fs";
 
 import { getExternals } from "../../utils/externals.js";
-import { rules } from "stylelint";
+import stylelint from "stylelint";
 
 const require = createRequire(import.meta.url);
 const stylelintPkg = require.resolve("stylelint/package.json");
 
-const ruleNames = Object.keys(rules);
+const ruleNames = Object.keys(stylelint.rules);
 const excludedUtils = new Set([
   "getFormatterOptionsText",
   "getFormatter",
