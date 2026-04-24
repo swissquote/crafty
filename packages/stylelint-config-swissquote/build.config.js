@@ -101,6 +101,8 @@ const externals = {
     "../csstools-media-query-list-parser/index.js",
   "@csstools/css-parser-algorithms":
     "../csstools-css-parser-algorithms/index.js",
+
+  "mdn-data": "commonjs ../mdn-data/index.cjs",
   "mdn-data/css/syntaxes": "commonjs ../mdn-data/syntaxes.json",
 
   "is-plain-object": "../is-plain-object/index.cjs",
@@ -439,9 +441,7 @@ export default [
     builder("stylelint-scss")
       .esm()
       .package()
-      .externals({
-        ...externalsFor("stylelint-scss")
-      }),
+      .externals(externalsFor("stylelint-scss")),
   async (_, compilerUtils) => {
     await compilerUtils.patchESMForCJS(
       path.join("dist", "stylelint-scss", "index.js"),
@@ -461,19 +461,17 @@ export default [
     );
 
     console.log("Copy mdn-data files");
-    await compilerUtils.copyFile(
-      require.resolve("mdn-data/css/at-rules.json"),
-      path.join("dist", "mdn-data", "at-rules.json")
-    );
+    for (const file of ["at-rules", "syntaxes", "properties"]) {
+      // eslint-disable-next-line no-await-in-loop
+      await compilerUtils.copyFile(
+        require.resolve(`mdn-data/css/${file}.json`),
+        path.join("dist", "mdn-data", `${file}.json`)
+      );
+    }
 
-    await compilerUtils.copyFile(
-      require.resolve("mdn-data/css/syntaxes.json"),
-      path.join("dist", "mdn-data", "syntaxes.json")
-    );
-
-    await compilerUtils.copyFile(
-      require.resolve("mdn-data/css/properties.json"),
-      path.join("dist", "mdn-data", "properties.json")
+    fs.writeFileSync(
+      path.join("dist", "mdn-data", `index.cjs`),
+      `module.exports = { css: { syntaxes: require("./syntaxes.json") } }`
     );
   },
   builder =>
