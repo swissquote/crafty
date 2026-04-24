@@ -1,7 +1,7 @@
 import stylelint from "../../packages/stylelint.js";
 
-import { declarationValueIndex } from "../../dist/stylelint/utils-nodeFieldIndices.js";
-import isStandardSyntaxFunction from "../../dist/stylelint/utils-isStandardSyntaxFunction.js";
+import { declarationValueIndex } from "../../dist/stylelint/utils/nodeFieldIndices/index.js";
+import isStandardSyntaxFunction from "../../dist/stylelint/utils/isStandardSyntaxFunction/index.js";
 import valueParser from "../../packages/postcss-value-parser.js";
 
 export const ruleName = "swissquote/no-negative-var";

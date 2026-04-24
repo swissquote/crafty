@@ -22,7 +22,7 @@ export function cosmiconfig(name, options) {
     async load(searchPath) {
       const config = await loadFile(searchPath);
 
-      return options.transform({ config });
+      return options.transform ? options.transform({ config }) : { config };
     },
     search() {
       return null;
