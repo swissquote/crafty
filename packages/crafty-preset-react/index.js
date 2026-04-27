@@ -136,9 +136,11 @@ module.exports = {
         path.dirname(require.resolve("./react-hot-loader"))
       );
 
-      const ReactRefreshPlugin = require("@rspack/plugin-react-refresh");
+      const {
+        ReactRefreshRspackPlugin
+      } = require("@rspack/plugin-react-refresh");
 
-      chain.plugin("react-refresh").use(ReactRefreshPlugin, [
+      chain.plugin("react-refresh").use(ReactRefreshRspackPlugin, [
         {
           overlay: false
         }

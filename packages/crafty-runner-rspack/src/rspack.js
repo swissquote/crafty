@@ -1,7 +1,7 @@
 const crypto = require("node:crypto");
 const path = require("node:path");
 const fs = require("node:fs");
-const RspackChain = require("../packages/rspack-chain.js").default;
+const RspackChain = require("../packages/rspack-chain.js").RspackChain;
 const ancestor = require("../packages/common-ancestor-path.js");
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");
@@ -74,10 +74,7 @@ function configureWatcher(chain, bundle, config, rspackPort) {
   // See https://github.com/facebookincubator/create-react-app/issues/240
   chain
     .plugin("case-sensitive")
-    .init(
-      (Plugin, args) =>
-        new Plugin.rspack.WarnCaseSensitiveModulesPlugin(...args)
-    )
+    .init((Plugin, args) => new Plugin.rspack.CaseSensitivePlugin(...args))
     .use(require.resolve("@rspack/core"));
 
   const outputPath = `${chain.output.get("path").replace(/\/$/g, "")}/**`;
@@ -85,7 +82,7 @@ function configureWatcher(chain, bundle, config, rspackPort) {
   // Ignore the default dist folder as otherwise
   // Rspack can enter a rebuild loop
   chain.watchOptions({
-    ignored: ["node_modules", /\.d\.ts$/, outputPath]
+    ignored: ["node_modules", "**/*.d.ts", outputPath]
   });
 
   chain.devServer
@@ -215,12 +212,17 @@ module.exports = function configureRspack(crafty, bundle, serverPort) {
     .path(absolutePath(destination)) // The build folder.
     .filename(bundle.destination) // Generated JS file names (with nested folders).
     .chunkFilename(`[name].${bundle.destination}`)
-    .libraryTarget(bundle.libraryTarget || "umd") // The destination type
-    .set("uniqueName", uniqueName(isWatching, bundle));
+    .uniqueName(uniqueName(isWatching, bundle));
+
+  const library = {
+    type: bundle.libraryTarget || "umd" // The destination type
+  };
 
   if (bundle.library) {
-    chain.output.library(bundle.library); // The library name
+    library.name = bundle.library; // The library name
   }
+
+  chain.output.library(library);
 
   chain.externals(prepareExternals(bundle.externals));
 
@@ -260,8 +262,6 @@ module.exports = function configureRspack(crafty, bundle, serverPort) {
   // RsDoctor doest the job of both --profile and --analyze
   if (process.argv.some(arg => arg === "--profile" || arg === "--analyze")) {
     const verbose = process.argv.some(arg => arg === "--verbose");
-
-    chain.profile(true);
 
     chain
       .plugin("RsdoctorRspackPlugin")
