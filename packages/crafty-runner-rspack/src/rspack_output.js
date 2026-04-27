@@ -76,12 +76,10 @@ function printStats(stats) {
       warnings: false, // Warnings are printed separately
       warningsCount: false,
       timings: false, // Displayed separately
-      relatedAssets: true,
       entryPoints: true,
       chunkGroups: true,
       chunks: true,
-      assets: true,
-      modules: true
+      assets: true
     })
   );
 
