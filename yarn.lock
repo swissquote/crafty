@@ -1685,6 +1685,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emnapi/core@npm:1.10.0, @emnapi/core@npm:^1.4.3, @emnapi/core@npm:^1.5.0":
+  version: 1.10.0
+  resolution: "@emnapi/core@npm:1.10.0"
+  dependencies:
+    "@emnapi/wasi-threads": "npm:1.2.1"
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/f51d08227857b60632de7714d708124f0e100a1462dde6df8221760939aa3204a73193830371830fac0716f3ccd2129f2cac1b17cd7d7958bc4da9018a296edb
+  languageName: node
+  linkType: hard
+
 "@emnapi/core@npm:1.9.2":
   version: 1.9.2
   resolution: "@emnapi/core@npm:1.9.2"
@@ -1695,13 +1705,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/core@npm:^1.4.3, @emnapi/core@npm:^1.5.0":
+"@emnapi/runtime@npm:1.10.0, @emnapi/runtime@npm:^1.4.3, @emnapi/runtime@npm:^1.5.0":
   version: 1.10.0
-  resolution: "@emnapi/core@npm:1.10.0"
+  resolution: "@emnapi/runtime@npm:1.10.0"
   dependencies:
-    "@emnapi/wasi-threads": "npm:1.2.1"
     tslib: "npm:^2.4.0"
-  checksum: 10c0/f51d08227857b60632de7714d708124f0e100a1462dde6df8221760939aa3204a73193830371830fac0716f3ccd2129f2cac1b17cd7d7958bc4da9018a296edb
+  checksum: 10c0/953f14991d1aefb92ee6f8eb27dea725e484791a53a0cb5f47d9e0087b9a2c929ff2e92adf95af15d6ad456db6300c6b761ebf72b50a875b874a83520b3ba093
   languageName: node
   linkType: hard
 
@@ -1711,15 +1720,6 @@ __metadata:
   dependencies:
     tslib: "npm:^2.4.0"
   checksum: 10c0/61c3a59e0c36784558b8d58eb02bd04815aa5fb0dbfbaf84d1b3050a78aa0cc63ea129ae806bd1e48062bfeb7fc36eb0e5431740d62f64ea51bdf426404b8caa
-  languageName: node
-  linkType: hard
-
-"@emnapi/runtime@npm:^1.4.3, @emnapi/runtime@npm:^1.5.0":
-  version: 1.10.0
-  resolution: "@emnapi/runtime@npm:1.10.0"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/953f14991d1aefb92ee6f8eb27dea725e484791a53a0cb5f47d9e0087b9a2c929ff2e92adf95af15d6ad456db6300c6b761ebf72b50a875b874a83520b3ba093
   languageName: node
   linkType: hard
 
@@ -2863,15 +2863,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/wasm-runtime@npm:1.1.3":
-  version: 1.1.3
-  resolution: "@napi-rs/wasm-runtime@npm:1.1.3"
+"@napi-rs/wasm-runtime@npm:1.1.4, @napi-rs/wasm-runtime@npm:^1.1.1, @napi-rs/wasm-runtime@npm:^1.1.3":
+  version: 1.1.4
+  resolution: "@napi-rs/wasm-runtime@npm:1.1.4"
   dependencies:
     "@tybys/wasm-util": "npm:^0.10.1"
   peerDependencies:
     "@emnapi/core": ^1.7.1
     "@emnapi/runtime": ^1.7.1
-  checksum: 10c0/745bb32a023b95095a18d93658bf4564403c2283ca0500a043afcf566ac6082bd0611792f14636276bab07dc2ce6d862591c8aabddae02ec697245b05bc6f144
+  checksum: 10c0/2e88e1955258949ccf2d18c79975821ad38071b465ef126a5e14110977b97868867b016c1ad046e963cccc42c0bd9db6c8ff5fd1ebb61b87bb3487f339041658
   languageName: node
   linkType: hard
 
@@ -2883,18 +2883,6 @@ __metadata:
     "@emnapi/runtime": "npm:^1.4.3"
     "@tybys/wasm-util": "npm:^0.10.0"
   checksum: 10c0/6d07922c0613aab30c6a497f4df297ca7c54e5b480e00035e0209b872d5c6aab7162fc49477267556109c2c7ed1eb9c65a174e27e9b87568106a87b0a6e3ca7d
-  languageName: node
-  linkType: hard
-
-"@napi-rs/wasm-runtime@npm:^1.1.1, @napi-rs/wasm-runtime@npm:^1.1.3":
-  version: 1.1.4
-  resolution: "@napi-rs/wasm-runtime@npm:1.1.4"
-  dependencies:
-    "@tybys/wasm-util": "npm:^0.10.1"
-  peerDependencies:
-    "@emnapi/core": ^1.7.1
-    "@emnapi/runtime": ^1.7.1
-  checksum: 10c0/2e88e1955258949ccf2d18c79975821ad38071b465ef126a5e14110977b97868867b016c1ad046e963cccc42c0bd9db6c8ff5fd1ebb61b87bb3487f339041658
   languageName: node
   linkType: hard
 
@@ -3209,11 +3197,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/core@npm:2.0.0-rc.3":
-  version: 2.0.0-rc.3
-  resolution: "@rsbuild/core@npm:2.0.0-rc.3"
+"@rsbuild/core@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "@rsbuild/core@npm:2.0.1"
   dependencies:
-    "@rspack/core": "npm:2.0.0-rc.2"
+    "@rspack/core": "npm:^2.0.0"
     "@swc/helpers": "npm:^0.5.21"
   peerDependencies:
     core-js: ">= 3.0.0"
@@ -3222,7 +3210,7 @@ __metadata:
       optional: true
   bin:
     rsbuild: bin/rsbuild.js
-  checksum: 10c0/da42400508b7772090b08b8a8a2575461104a9b9d73668e08e2a14db110f4e11451fe8fa13f984ebf8606f066369f436f3adc47a6f60686d425f61b9d5a2230e
+  checksum: 10c0/3a320af4eb35f59adb5248af08831575d5e4bbc3d63224ae6c978f34c748e97def1ab14107ca7128ea287fa1d474bbc9a6cc48703f65f15e4357f398b012dc2d
   languageName: node
   linkType: hard
 
@@ -3361,12 +3349,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rslib/core@npm:0.21.2":
-  version: 0.21.2
-  resolution: "@rslib/core@npm:0.21.2"
+"@rslib/core@npm:0.21.3":
+  version: 0.21.3
+  resolution: "@rslib/core@npm:0.21.3"
   dependencies:
-    "@rsbuild/core": "npm:2.0.0-rc.3"
-    rsbuild-plugin-dts: "npm:0.21.2"
+    "@rsbuild/core": "npm:^2.0.0"
+    rsbuild-plugin-dts: "npm:0.21.3"
   peerDependencies:
     "@microsoft/api-extractor": ^7
     typescript: ^5 || ^6
@@ -3377,7 +3365,7 @@ __metadata:
       optional: true
   bin:
     rslib: bin/rslib.js
-  checksum: 10c0/aa158cf9eabef09a6b651526d066073f837ffabc5dce2e23d7ea163e83012424d014b376736afcc85e1ef53674b215a414b678d6f2aced25b28faf98bd471b6a
+  checksum: 10c0/33405173e3cc8518f38db7600e7fb8e0286e551f6301b80ec6fab3ab4e0f7fe325b4c4959c290f324d79d171f5fa0b6ec6dcfcff4dff461388ea99f554e80396
   languageName: node
   linkType: hard
 
@@ -3388,9 +3376,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-darwin-arm64@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-darwin-arm64@npm:2.0.0-rc.2"
+"@rspack/binding-darwin-arm64@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-darwin-arm64@npm:2.0.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -3402,9 +3390,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-darwin-x64@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-darwin-x64@npm:2.0.0-rc.2"
+"@rspack/binding-darwin-x64@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-darwin-x64@npm:2.0.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -3416,9 +3404,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-arm64-gnu@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-linux-arm64-gnu@npm:2.0.0-rc.2"
+"@rspack/binding-linux-arm64-gnu@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-linux-arm64-gnu@npm:2.0.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
@@ -3430,9 +3418,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-arm64-musl@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-linux-arm64-musl@npm:2.0.0-rc.2"
+"@rspack/binding-linux-arm64-musl@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-linux-arm64-musl@npm:2.0.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -3444,9 +3432,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-x64-gnu@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-linux-x64-gnu@npm:2.0.0-rc.2"
+"@rspack/binding-linux-x64-gnu@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-linux-x64-gnu@npm:2.0.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -3458,9 +3446,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-linux-x64-musl@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-linux-x64-musl@npm:2.0.0-rc.2"
+"@rspack/binding-linux-x64-musl@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-linux-x64-musl@npm:2.0.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -3474,13 +3462,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-wasm32-wasi@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-wasm32-wasi@npm:2.0.0-rc.2"
+"@rspack/binding-wasm32-wasi@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-wasm32-wasi@npm:2.0.0"
   dependencies:
-    "@emnapi/core": "npm:1.9.2"
-    "@emnapi/runtime": "npm:1.9.2"
-    "@napi-rs/wasm-runtime": "npm:1.1.3"
+    "@emnapi/core": "npm:1.10.0"
+    "@emnapi/runtime": "npm:1.10.0"
+    "@napi-rs/wasm-runtime": "npm:1.1.4"
   conditions: cpu=wasm32
   languageName: node
   linkType: hard
@@ -3492,9 +3480,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-arm64-msvc@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-win32-arm64-msvc@npm:2.0.0-rc.2"
+"@rspack/binding-win32-arm64-msvc@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-win32-arm64-msvc@npm:2.0.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
@@ -3506,9 +3494,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-ia32-msvc@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-win32-ia32-msvc@npm:2.0.0-rc.2"
+"@rspack/binding-win32-ia32-msvc@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-win32-ia32-msvc@npm:2.0.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
@@ -3520,9 +3508,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding-win32-x64-msvc@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding-win32-x64-msvc@npm:2.0.0-rc.2"
+"@rspack/binding-win32-x64-msvc@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding-win32-x64-msvc@npm:2.0.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -3566,20 +3554,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/binding@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/binding@npm:2.0.0-rc.2"
+"@rspack/binding@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/binding@npm:2.0.0"
   dependencies:
-    "@rspack/binding-darwin-arm64": "npm:2.0.0-rc.2"
-    "@rspack/binding-darwin-x64": "npm:2.0.0-rc.2"
-    "@rspack/binding-linux-arm64-gnu": "npm:2.0.0-rc.2"
-    "@rspack/binding-linux-arm64-musl": "npm:2.0.0-rc.2"
-    "@rspack/binding-linux-x64-gnu": "npm:2.0.0-rc.2"
-    "@rspack/binding-linux-x64-musl": "npm:2.0.0-rc.2"
-    "@rspack/binding-wasm32-wasi": "npm:2.0.0-rc.2"
-    "@rspack/binding-win32-arm64-msvc": "npm:2.0.0-rc.2"
-    "@rspack/binding-win32-ia32-msvc": "npm:2.0.0-rc.2"
-    "@rspack/binding-win32-x64-msvc": "npm:2.0.0-rc.2"
+    "@rspack/binding-darwin-arm64": "npm:2.0.0"
+    "@rspack/binding-darwin-x64": "npm:2.0.0"
+    "@rspack/binding-linux-arm64-gnu": "npm:2.0.0"
+    "@rspack/binding-linux-arm64-musl": "npm:2.0.0"
+    "@rspack/binding-linux-x64-gnu": "npm:2.0.0"
+    "@rspack/binding-linux-x64-musl": "npm:2.0.0"
+    "@rspack/binding-wasm32-wasi": "npm:2.0.0"
+    "@rspack/binding-win32-arm64-msvc": "npm:2.0.0"
+    "@rspack/binding-win32-ia32-msvc": "npm:2.0.0"
+    "@rspack/binding-win32-x64-msvc": "npm:2.0.0"
   dependenciesMeta:
     "@rspack/binding-darwin-arm64":
       optional: true
@@ -3601,7 +3589,7 @@ __metadata:
       optional: true
     "@rspack/binding-win32-x64-msvc":
       optional: true
-  checksum: 10c0/ac9605db1cdb7873bfdb3de38ec0252460b2788e49ae742f91675fe0f19dddb63b6836aaab060bd48a18ac7c18fa0b180cd0e01dd30cab2c8a55b89fd2b8d897
+  checksum: 10c0/3d84900bc73d61143915572af8c46ad0577a5548bfdbf2f9874928aa86a11323eeef7b942b4f6aaa8044718a5f58a37252975023d3e559bf9a519d50edc937f1
   languageName: node
   linkType: hard
 
@@ -3621,11 +3609,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/core@npm:2.0.0-rc.2":
-  version: 2.0.0-rc.2
-  resolution: "@rspack/core@npm:2.0.0-rc.2"
+"@rspack/core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@rspack/core@npm:2.0.0"
   dependencies:
-    "@rspack/binding": "npm:2.0.0-rc.2"
+    "@rspack/binding": "npm:2.0.0"
   peerDependencies:
     "@module-federation/runtime-tools": ^0.24.1 || ^2.0.0
     "@swc/helpers": ">=0.5.1"
@@ -3634,7 +3622,7 @@ __metadata:
       optional: true
     "@swc/helpers":
       optional: true
-  checksum: 10c0/00253121b8fa603d11fe450d15f1281e3d01429d89c726ce48048744d538ba05a87ffb692a3a6bbd669b2b49a5e2d366f87870511aad19d0039857f38d7078aa
+  checksum: 10c0/eb0e3ae4cacddd982aebe8d6bb1c2042384ed8f3dd30d07993de6e193674a2607dbbb981969bf250a225a78e02ef7b17134ef8cdf51e2dd703ec112e348e8940
   languageName: node
   linkType: hard
 
@@ -4653,7 +4641,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/utils@workspace:utils"
   dependencies:
-    "@rslib/core": "npm:0.21.2"
+    "@rslib/core": "npm:0.21.3"
     "@vercel/ncc": "npm:0.38.4"
     prompts: "npm:2.4.2"
   languageName: unknown
@@ -12972,9 +12960,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rsbuild-plugin-dts@npm:0.21.2":
-  version: 0.21.2
-  resolution: "rsbuild-plugin-dts@npm:0.21.2"
+"rsbuild-plugin-dts@npm:0.21.3":
+  version: 0.21.3
+  resolution: "rsbuild-plugin-dts@npm:0.21.3"
   dependencies:
     "@ast-grep/napi": "npm:0.37.0"
   peerDependencies:
@@ -12989,7 +12977,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/230038b99f391e3de8737a1ba3d1d7dac68911b997fe36527a570bafe8a5b50353e6b07148fc24c5a199c0fdd0c0beb5e0100100068fafe6f0e173b2f5f202d2
+  checksum: 10c0/23fc8716eef77756335909ff0115d51cb5e2a4324695c3e4e3d3924b37041c2a43f4c271729402dbd2f1f5eae20a5fa2614cefe29683c70792fd1c7f2bf5167c
   languageName: node
   linkType: hard
 
