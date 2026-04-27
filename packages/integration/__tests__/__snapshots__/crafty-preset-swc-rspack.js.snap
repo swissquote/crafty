@@ -11,7 +11,7 @@ exports[`Compiles Generators 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -41,7 +41,7 @@ exports[`Compiles JavaScript 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -71,7 +71,7 @@ exports[`Compiles JavaScript with externals 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 1 module
   ./js/script.js + 1 modules ___ KiB [code generated]
@@ -103,7 +103,7 @@ exports[`Compiles JavaScript with rspack overrides 1`] = `
 [__:__:__] Starting 'js_myBundle' ...
 [__:__:__] Merging SQ rspack config with __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/compiles-merge-rspack-config/rspack.config.js
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -221,7 +221,7 @@ Rsdoctor v1.5.9
 
 [RSDOCTOR WARN] output.devtoolModuleFilenameTemplate has been changed to [absolute-resource-path], this is for bundle analysis.
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -251,7 +251,7 @@ exports[`Deduplicates helpers 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 2 modules ___ KiB [code generated]
 
@@ -281,7 +281,7 @@ exports[`Does not transpile on modern browsers 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -311,7 +311,7 @@ exports[`Fails gracefully on broken markup 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 1 asset
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
   ./js/script.js ___ KiB [built] [code generated] [1 error]
 
@@ -356,7 +356,7 @@ exports[`Keeps imports unresolved for SWC Runtime 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 5 modules
   ./js/script.js + 2 modules ___ KiB [code generated]
@@ -387,7 +387,7 @@ exports[`Lints JavaScript with rspack 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 1 asset
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.js + 1 modules ___ KiB [code generated]
 
@@ -435,7 +435,7 @@ exports[`Removes unused classes 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
   ./js/index.js + 1 modules ___ KiB [code generated]
 

@@ -12,7 +12,7 @@ exports[`Compiles CSS within rspack 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 9 modules
   ./js/app.js + 1 modules ___ KiB [code generated]
@@ -49,7 +49,7 @@ assets by path *.js ___ KiB
 assets by path *.css ___ KiB
   asset default.myBundle.min.css ___ KiB [emitted] (name: default)
   asset subapp.myBundle.min.css ___ KiB [emitted] (name: subapp)
-Chunk Group default ___ KiB = myBundle.min.js ___ KiB default.myBundle.min.css ___ KiB
+Entrypoint default ___ KiB = myBundle.min.js ___ KiB default.myBundle.min.css ___ KiB
 Chunk Group subapp ___ KiB = subapp.myBundle.min.css ___ KiB subapp.myBundle.min.js ___ KiB
 chunk (runtime: default) subapp.myBundle.min.css, subapp.myBundle.min.js (subapp) ___ KiB (css/mini-extract) ___ KiB (javascript) [rendered]
   dependent modules ___ KiB [dependent] 1 module
@@ -94,7 +94,7 @@ exports[`Compiles CSS within rspack, CSS Modules, inline 1`] = `
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset subapp.myBundle.min.js ___ KiB [emitted] (name: subapp)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 Chunk Group subapp ___ KiB = subapp.myBundle.min.js
 chunk (runtime: default) subapp.myBundle.min.js (subapp) ___ KiB [rendered]
   dependent modules ___ KiB [dependent] 1 module
@@ -136,7 +136,7 @@ exports[`Compiles CSS within rspack, extracts CSS ('extractCSS' boolean option) 
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset myBundle-default.min.css ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js ___ KiB myBundle-default.min.css ___ KiB
+Entrypoint default ___ KiB = myBundle.min.js ___ KiB myBundle-default.min.css ___ KiB
 chunk (runtime: default) myBundle-default.min.css, myBundle.min.js (default) ___ KiB (css/mini-extract) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 1 module
   ./js/app.js + 1 modules ___ KiB [code generated]
@@ -175,7 +175,7 @@ exports[`Compiles CSS within rspack, extracts CSS ('extractCSS' object option) 1
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset myBundle-object.min.css ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle.min.js ___ KiB myBundle-object.min.css ___ KiB
+Entrypoint default ___ KiB = myBundle.min.js ___ KiB myBundle-object.min.css ___ KiB
 chunk (runtime: default) myBundle-object.min.css, myBundle.min.js (default) ___ KiB (css/mini-extract) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 1 module
   ./js/app.js + 1 modules ___ KiB [code generated]
@@ -214,7 +214,7 @@ exports[`Compiles CSS within rspack, extracts CSS ('extractCSS' string option) 1
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset myBundle-string.min.css ___ KiB [emitted] (name: default)
-Chunk Group default ___ KiB = myBundle-string.min.css ___ KiB myBundle.min.js ___ KiB
+Entrypoint default ___ KiB = myBundle-string.min.css ___ KiB myBundle.min.js ___ KiB
 chunk (runtime: default) myBundle-string.min.css, myBundle.min.js (default) ___ KiB (css/mini-extract) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 1 module
   ./js/app.js + 1 modules ___ KiB [code generated]
@@ -252,7 +252,7 @@ exports[`Fails gracefully on broken markup 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 1 asset
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   dependent modules ___ KiB [dependent] 7 modules
   ./js/app.js + 1 modules ___ KiB [code generated]

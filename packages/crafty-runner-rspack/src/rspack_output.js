@@ -76,7 +76,7 @@ function printStats(stats) {
       warnings: false, // Warnings are printed separately
       warningsCount: false,
       timings: false, // Displayed separately
-      entryPoints: true,
+      entrypoints: true,
       chunkGroups: true,
       chunks: true,
       assets: true

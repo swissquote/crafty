@@ -19,7 +19,7 @@ assets by path js/ ___ KiB
 assets by path *.js ___ KiB
   asset myBundle.min.js ___ KiB [emitted] (name: default)
   asset 222.myBundle.min.js ___ KiB [emitted]
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
@@ -71,7 +71,7 @@ exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 1`
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset someLibrary.myBundle.min.js ___ KiB [emitted] (name: someLibrary)
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 Chunk Group someLibrary ___ KiB = someLibrary.myBundle.min.js
 chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
@@ -115,7 +115,7 @@ assets by path js/*.ts ___ KiB
 assets by path *.js ___ KiB
   asset myBundle.min.js ___ KiB [emitted] (name: default)
   asset 222.myBundle.min.js ___ KiB [emitted]
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
@@ -172,7 +172,7 @@ assets by path js/*.ts ___ KiB
 assets by path *.js ___ KiB
   asset myBundle.min.js ___ KiB [emitted] (name: default)
   asset 222.myBundle.min.js ___ KiB [emitted]
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
@@ -223,7 +223,7 @@ exports[`crafty-preset-typescript-rspack > Fails gracefully on broken markup 1`]
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
-Chunk Group default ___ KiB = myTSBundle.min.js
+Entrypoint default ___ KiB = myTSBundle.min.js
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/typescript.ts ___ KiB [built] [code generated]
 
@@ -260,7 +260,7 @@ exports[`crafty-preset-typescript-rspack > Fails gracefully on invalid TS - fork
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 1 asset
-Chunk Group default ___ KiB = myTSBundle.min.js
+Entrypoint default ___ KiB = myTSBundle.min.js
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/typescript.ts ___ KiB [built] [code generated]
 
@@ -319,7 +319,7 @@ exports[`crafty-preset-typescript-rspack > Fails gracefully on invalid TS 1`] = 
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
 assets by status ___ KiB [cached] 2 assets
-Chunk Group default ___ KiB = myTSBundle.min.js
+Entrypoint default ___ KiB = myTSBundle.min.js
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/typescript.ts ___ KiB [built] [code generated]
 
@@ -372,7 +372,7 @@ exports[`crafty-preset-typescript-rspack > Lints TypeScript with rspack 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 assets by status ___ KiB [cached] 5 assets
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
@@ -423,7 +423,7 @@ exports[`crafty-preset-typescript-rspack > Removes unused classes 1`] = `
 asset myBundle.min.js ___ KiB [emitted] (name: default)
 asset js/imported-typescript.d.ts ___ KiB [emitted]
 asset js/index.d.ts ___ KiB [emitted]
-Chunk Group default ___ KiB = myBundle.min.js
+Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
   ./js/index.ts + 1 modules ___ KiB [code generated]
 
