@@ -4085,6 +4085,7 @@ __metadata:
     "@swissquote/crafty-commons-webpack": "npm:1.28.1"
     "@swissquote/crafty-preset-eslint": "npm:1.28.1"
     fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
+    memfs: "npm:^4.57.2"
     schema-utils: "npm:4.3.3"
     ts-checker-rspack-plugin: "npm:1.3.0"
     ts-jest: "npm:29.4.9"
@@ -10968,7 +10969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memfs@npm:^4.56.10":
+"memfs@npm:^4.56.10, memfs@npm:^4.57.2":
   version: 4.57.2
   resolution: "memfs@npm:4.57.2"
   dependencies:
