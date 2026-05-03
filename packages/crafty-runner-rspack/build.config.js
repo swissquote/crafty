@@ -5,6 +5,7 @@ const { getExternals } = require("../../utils/externals");
 const externals = getExternals();
 
 module.exports = [
+  builder => builder("common-ancestor-path").esm().package(),
   builder =>
     builder("packages-rspack")
       .packages(pkgBuilder => {
@@ -13,8 +14,7 @@ module.exports = [
           .package("hash-index", "hashIndex")
           .package("is-glob", "isGlob")
           .package("rspack-chain", "rspackChain")
-          .package("webpack-merge", "webpackMerge")
-          .package("common-ancestor-path", "commonAncestorPath");
+          .package("webpack-merge", "webpackMerge");
       })
       .externals(externals),
   async () => {
