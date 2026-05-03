@@ -2,7 +2,32 @@ const { getExternals } = require("../../utils/externals");
 const fs = require("node:fs");
 const crypto = require("node:crypto");
 
-const externals = getExternals();
+const externals = {
+  ...getExternals(),
+
+  "memfs": "../memfs/index.js",
+  "fs-extra": "../fs-extra/index.js",
+  "fast-deep-equal": "../fast-deep-equal/index.js",
+  "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
+
+  // Dependencies of this package
+  "@babel/core": "@babel/core",
+  "@babel/code-frame": "@babel/code-frame",
+  "@babel/helper-module-imports": "@babel/helper-module-imports",
+  "schema-utils": "schema-utils",
+  typescript: "typescript",
+
+  // Replace with a dummy
+  cosmiconfig: "../../src/dummy.js",
+};
+
+function externalsFor(pkg) {
+  return Object.fromEntries(
+    Object.entries(externals).filter(([key]) => {
+      return !(key.startsWith(`${pkg}/`) || key === pkg);
+    })
+  );
+}
 
 // source-map-js seems to not work with babel:
 // Error: original.line and original.column are not numbers -- you probably meant to omit the original mapping entirely and only map the generated position. If so, pass null for the original mapping instead of an object with empty or null values.
@@ -23,10 +48,11 @@ function replace(buf, a, b) {
 module.exports = [
   (builder) =>
     builder("fs-extra")
-      .externals(externals)
+      .externals(externalsFor("fs-extra"))
       .package(),
   (builder) => builder("fast-deep-equal").package(),
   (builder) => builder("fast-json-stable-stringify").package(),
+  (builder) => builder("memfs").package(),
   (builder) =>
     builder("typescript-packages")
       .packages((pkgBuilder) =>
@@ -35,18 +61,7 @@ module.exports = [
           .package("ts-jest", "tsJest")
           .package("ts-loader", "tsLoader")
       )
-      .externals({
-        // Provided by other Crafty packages
-        ...externals,
-
-        "fs-extra": "../fs-extra/index.js",
-        "fast-deep-equal": "../fast-deep-equal/index.js",
-        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
-
-        // Dependencies of this package
-        "schema-utils": "schema-utils",
-        typescript: "typescript",
-      }),
+      .externals(externals),
   (builder) =>
     builder("fork-ts-checker-webpack-plugin")
       .packages((pkgBuilder) =>
@@ -66,22 +81,7 @@ module.exports = [
             "dist/fork-ts-checker-webpack-plugin/typescript/worker/get-issues-worker.js"
           )
       )
-      .externals({
-        // Provided by other Crafty packages
-        ...externals,
-
-        "fs-extra": "../fs-extra/index.js",
-        "fast-deep-equal": "../fast-deep-equal/index.js",
-        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
-
-        // Dependencies of this package
-        "@babel/core": "@babel/core",
-        "@babel/code-frame": "@babel/code-frame",
-        "@babel/helper-module-imports": "@babel/helper-module-imports",
-        typescript: "typescript",
-
-        cosmiconfig: "../../src/dummy.js",
-      }),
+      .externals(externals),
   async function() {
     // Remove a compiled version of TypeScript
     // Would be needed as fallback by fork-ts-checker-webpack-plugin if no `typescriptPath` is provided
@@ -110,32 +110,15 @@ module.exports = [
             "tsCheckerRspackPlugin"
           )
       )
-      .externals({
-        // Provided by other Crafty packages
-        ...externals,
-
-        "fs-extra": "../fs-extra/index.js",
-        "fast-deep-equal": "../fast-deep-equal/index.js",
-        "fast-json-stable-stringify": "../fast-json-stable-stringify/index.js",
-
-        // Dependencies of this package
-        "@babel/core": "@babel/core",
-        "@babel/code-frame": "@babel/code-frame",
-        "@babel/helper-module-imports": "@babel/helper-module-imports",
-        typescript: "typescript",
-
-        cosmiconfig: "../../src/dummy.js",
-      }),
+      .externals(externals),
   async function() {
-    fs.copyFileSync(
-      require.resolve("ts-checker-rspack-plugin/lib/getIssuesWorker.js"),
-      "dist/ts-checker-rspack-plugin/getIssuesWorker.js"
-    );
+    const getIssuesWorker = await fs.promises.readFile(require.resolve("ts-checker-rspack-plugin/lib/getIssuesWorker.js"));
+    const getIssuesWorkerPatched = replace(getIssuesWorker, `require("memfs")`, `require("../memfs/index.js")`);
+    await fs.promises.writeFile("dist/ts-checker-rspack-plugin/getIssuesWorker.js", getIssuesWorkerPatched);
 
-    fs.copyFileSync(
-      require.resolve("ts-checker-rspack-plugin/lib/getDependenciesWorker.js"),
-      "dist/ts-checker-rspack-plugin/getDependenciesWorker.js"
-    );
+    const getDependenciesWorker = await fs.promises.readFile(require.resolve("ts-checker-rspack-plugin/lib/getDependenciesWorker.js"));
+    const getDependenciesWorkerPatched = replace(getDependenciesWorker, `require("memfs")`, `require("../memfs/index.js")`);
+    await fs.promises.writeFile("dist/ts-checker-rspack-plugin/getDependenciesWorker.js", getDependenciesWorkerPatched);
 
     const tsBundle = "dist/ts-checker-rspack-plugin/bundled.js";
 

@@ -534,15 +534,25 @@ export default [
       ["known_css_properties_index"]
     );
 
+    const pkg = JSON.parse(
+      fs.readFileSync(path.join(stylelintDir, "package.json"))
+    );
+    const version = pkg.version;
+
     await compilerUtils.replaceContent(
       path.join("dist", "stylelint", "918.js"),
       content =>
-        content.replace(
-          // eslint-disable-next-line no-template-curly-in-string
-          "import(`./${ruleName}/index.mjs`)",
-          // eslint-disable-next-line no-template-curly-in-string
-          "import(`./rules/${ruleName}/index.js`)"
-        )
+        content
+          .replace(
+            // eslint-disable-next-line no-template-curly-in-string
+            "import(`./${ruleName}/index.mjs`)",
+            // eslint-disable-next-line no-template-curly-in-string
+            "import(`./rules/${ruleName}/index.js`)"
+          )
+          .replace(
+            /const FileCache_pkg = .*\n/m,
+            `const FileCache_pkg = ${JSON.stringify({ version })};\n`
+          )
     );
   }
 ];
