@@ -5,7 +5,10 @@ const { getExternals } = require("../../utils/externals");
 const externals = getExternals();
 
 module.exports = [
-  builder => builder("common-ancestor-path").esm().package(),
+  builder =>
+    builder("common-ancestor-path")
+      .esm()
+      .package(),
   builder =>
     builder("packages-rspack")
       .packages(pkgBuilder => {

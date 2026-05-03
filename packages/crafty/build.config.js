@@ -1,7 +1,10 @@
 const { getExternals } = require("../../utils/externals");
 
 module.exports = [
-  builder => builder("camelcase-keys").esm().package(),
+  builder =>
+    builder("camelcase-keys")
+      .esm()
+      .package(),
   builder =>
     builder("crafty-packages")
       .packages(pkgBuilder =>
