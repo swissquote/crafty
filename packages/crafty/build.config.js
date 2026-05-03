@@ -2,12 +2,15 @@ const { getExternals } = require("../../utils/externals");
 
 module.exports = [
   builder =>
+    builder("camelcase-keys")
+      .esm()
+      .package(),
+  builder =>
     builder("crafty-packages")
       .packages(pkgBuilder =>
         pkgBuilder
           .package("anymatch", "anymatch")
           .package("async-done", "asyncDone")
-          .package("camelcase-keys", "camelcaseKeys")
           .package("chokidar", "chokidar")
           .package("copy-anything", "copyAnything")
           .package("enhanced-resolve", "enhancedResolve")
