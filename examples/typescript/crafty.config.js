@@ -34,7 +34,7 @@ module.exports = {
   jest(crafty, options) {
     options.testEnvironment = "jsdom";
   },
-  webpack(crafty, bundle, chain) {
+  rspack(crafty, bundle, chain) {
     // Code Splitting needs this to work correctly
     if (crafty.getEnvironment() === "production") {
       chain.output.publicPath('dist/js/');

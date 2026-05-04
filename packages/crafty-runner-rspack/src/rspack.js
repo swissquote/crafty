@@ -2,7 +2,7 @@ const crypto = require("node:crypto");
 const path = require("node:path");
 const fs = require("node:fs");
 const RspackChain = require("../packages/rspack-chain.js").RspackChain;
-const ancestor = require("../packages/common-ancestor-path.mjs");
+const { commonAncestorPath } = require("../packages/common-ancestor-path.mjs");
 const isGlob = require("../packages/is-glob.js");
 const globToRegex = require("../packages/glob-to-regexp.js");
 const paths = require("./utils/paths.js");
@@ -117,7 +117,7 @@ function finalizeWatcher(chain, config) {
 
     // Since the target can be outside of current working directory (where the source is)
     // the easiest to have access to the files is to expose the common ancestor
-    const commonAncestor = ancestor(outputPath, cwd);
+    const commonAncestor = commonAncestorPath(outputPath, cwd);
     staticPath = commonAncestor;
 
     const publicPath = outputPath

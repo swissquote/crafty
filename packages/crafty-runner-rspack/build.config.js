@@ -8,7 +8,7 @@ module.exports = [
   builder =>
     builder("common-ancestor-path")
       .esm()
-      .package(),
+      .package({ names: ["commonAncestorPath"] }),
   builder =>
     builder("packages-rspack")
       .packages(pkgBuilder => {

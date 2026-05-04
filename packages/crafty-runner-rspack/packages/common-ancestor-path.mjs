@@ -1,2 +1,1 @@
-import mod from "../dist/common-ancestor-path/index.mjs";
-export default mod;
+export { commonAncestorPath } from "../dist/common-ancestor-path/index.mjs";
