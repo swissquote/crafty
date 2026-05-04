@@ -1,5 +1,5 @@
 const yargs = require("../packages/yargs-parser");
-const camelcaseKeys = require("../packages/camelcase-keys");
+const camelcaseKeys = require("../packages/camelcase-keys.mjs").default;
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
