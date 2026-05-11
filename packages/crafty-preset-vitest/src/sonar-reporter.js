@@ -21,9 +21,12 @@ function formatError(errors) {
 }
 
 function getFilePath(testModule) {
-  return (testModule.relativeModuleId || path.relative(process.cwd(), testModule.moduleId)).split(
-    path.sep
-  ).join("/");
+  return (
+    testModule.relativeModuleId ||
+    path.relative(process.cwd(), testModule.moduleId)
+  )
+    .split(path.sep)
+    .join("/");
 }
 
 class SonarReporter {
@@ -62,7 +65,9 @@ class SonarReporter {
 
         if (result.state === "failed") {
           lines.push(
-            `      <failure message="Error">${escapeXml(formatError(result.errors))}</failure>`
+            `      <failure message="Error">${escapeXml(
+              formatError(result.errors)
+            )}</failure>`
           );
         } else {
           lines.push(

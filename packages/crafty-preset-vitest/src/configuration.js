@@ -70,7 +70,9 @@ function extractVitestCliState(args) {
   while ((idx = runnerArgs.indexOf("--moduleDirectories")) > -1) {
     const [, moduleDir] = runnerArgs.splice(idx, 2);
     if (moduleDir) {
-      moduleDir.split(",").forEach(module => cliState.moduleDirectories.push(module));
+      moduleDir
+        .split(",")
+        .forEach(module => cliState.moduleDirectories.push(module));
     }
   }
 
@@ -150,10 +152,7 @@ function normalizeVitestOptions(crafty, argsOrState = []) {
     },
     test: {
       globals: true,
-      exclude: [
-        "**/node_modules/**",
-        `${crafty.config.destination}/**`
-      ],
+      exclude: ["**/node_modules/**", `${crafty.config.destination}/**`],
       reporters
     }
   };
@@ -169,7 +168,11 @@ function normalizeVitestOptions(crafty, argsOrState = []) {
 
   options.test.reporters = finalizeReporters(options.test.reporters || []);
 
-  if (context.moduleDirectories.some(moduleDirectory => moduleDirectory !== "node_modules")) {
+  if (
+    context.moduleDirectories.some(
+      moduleDirectory => moduleDirectory !== "node_modules"
+    )
+  ) {
     const moduleResolution = {
       moduleDirectories: [...new Set(context.moduleDirectories)],
       moduleFileExtensions: [...new Set(context.moduleFileExtensions)]
@@ -245,7 +248,9 @@ function serializeVitestValue(value, pathLabel) {
   }
 
   if (Array.isArray(value)) {
-    return value.map((item, index) => serializeVitestValue(item, `${pathLabel}[${index}]`));
+    return value.map((item, index) =>
+      serializeVitestValue(item, `${pathLabel}[${index}]`)
+    );
   }
 
   if (!isPlainObject(value)) {
@@ -334,7 +339,7 @@ function materializeVitestOptions(options) {
 
   materializedOptions.craftyRuntimePlugins.forEach(
     ({ pluginPath, options: pluginOptions }) => {
-    materializedOptions.plugins.push(require(pluginPath)(pluginOptions));
+      materializedOptions.plugins.push(require(pluginPath)(pluginOptions));
     }
   );
 
