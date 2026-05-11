@@ -1,4 +1,8 @@
 const path = require("node:path");
+const {
+  getTestConfiguration,
+  hasSwcHelpersDependency
+} = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
@@ -21,6 +25,14 @@ module.exports = {
       }
     ];
     options.moduleFileExtensions.push("jsx");
+  },
+  vitest(crafty, options, context) {
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("jsx");
+    context.runtimePlugins.push({
+      pluginPath: require.resolve("./vitest-plugin"),
+      options: getTestConfiguration(crafty, hasSwcHelpersDependency())
+    });
   },
   bundleCreator(crafty) {
     const configurators = { js: {} };
