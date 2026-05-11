@@ -1,7 +1,11 @@
 const { parseCLI, startVitest } = require("vitest/node");
 
 async function main() {
-  const { filter, options } = parseCLI(["vitest", "run", ...process.argv.slice(2)]);
+  const { filter, options } = parseCLI([
+    "vitest",
+    "run",
+    ...process.argv.slice(2)
+  ]);
   const vitest = await startVitest("test", filter, options);
 
   if (vitest && !vitest.shouldKeepServer()) {

@@ -69,8 +69,8 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
-    const options = babelConfigurator(crafty, bundle);
+    const babelWebpackConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
+    const options = babelWebpackConfigurator(crafty, bundle);
 
     // EcmaScript 2015+
     chain.module

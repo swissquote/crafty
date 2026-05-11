@@ -80,7 +80,11 @@ function getConfiguration(crafty, bundle, hasHelperDependency) {
   return options;
 }
 
-function getTestConfiguration(crafty, hasHelperDependency, syntax = "ecmascript") {
+function getTestConfiguration(
+  crafty,
+  hasHelperDependency,
+  syntax = "ecmascript"
+) {
   const options = {
     jsc: {
       parser: {

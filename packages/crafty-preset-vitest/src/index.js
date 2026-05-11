@@ -51,7 +51,11 @@ export default mergeConfig(nativeConfig, craftedConfig);
 }
 
 function createIdeSettingsContent() {
-  return `${JSON.stringify({ "vitest.rootConfig": IDE_CONFIG_FILE }, null, 2)}\n`;
+  return `${JSON.stringify(
+    { "vitest.rootConfig": IDE_CONFIG_FILE },
+    null,
+    2
+  )}\n`;
 }
 
 function createTestRuntimeConfigContent(craftedConfigLiteral) {
@@ -114,7 +118,11 @@ module.exports = {
       child.on("error", reject);
       child.on("close", (code, signal) => {
         if (signal) {
-          reject(new crafty.Information(`crafty test: Vitest terminated by signal ${signal}`));
+          reject(
+            new crafty.Information(
+              `crafty test: Vitest terminated by signal ${signal}`
+            )
+          );
           return;
         }
 

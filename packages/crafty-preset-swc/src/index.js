@@ -57,7 +57,6 @@ module.exports = {
     chain.resolveLoader.modules.add(MODULES);
 
     const {
-      hasSwcHelpersDependency,
       getConfigurationWebpack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
@@ -91,7 +90,6 @@ module.exports = {
     chain.resolveLoader.modules.add(MODULES);
 
     const {
-      hasSwcHelpersDependency,
       getConfigurationRspack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 

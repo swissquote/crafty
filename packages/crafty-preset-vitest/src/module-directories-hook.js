@@ -29,7 +29,10 @@ function getParentDirectory(parent) {
   return process.cwd();
 }
 
-function installModuleDirectoriesHook({ moduleDirectories, moduleFileExtensions }) {
+function installModuleDirectoriesHook({
+  moduleDirectories,
+  moduleFileExtensions
+}) {
   resolveSync = enhancedResolve.create.sync(
     getCraftyTestResolveOptions({
       conditions: ["node", "require", "default"],
