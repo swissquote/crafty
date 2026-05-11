@@ -1,4 +1,5 @@
 const path = require("node:path");
+const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
@@ -17,7 +18,6 @@ module.exports = {
     options.transform["\\.(js|jsx)$"] = require.resolve("./jest-transformer");
     options.moduleFileExtensions.push("jsx");
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     options.globals.BABEL_OPTIONS = babelConfigurator(
       crafty,
       {},
@@ -26,6 +26,21 @@ module.exports = {
         presetReact: { runtime: "automatic" }
       }
     );
+  },
+  vitest(crafty, options, context) {
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("jsx");
+    context.runtimePlugins.push({
+      pluginPath: require.resolve("./vitest-plugin"),
+      options: babelConfigurator(
+        crafty,
+        {},
+        {
+          environment: "test",
+          presetReact: { runtime: "automatic" }
+        }
+      )
+    });
   },
   bundleCreator(crafty) {
     const configurators = { js: {} };

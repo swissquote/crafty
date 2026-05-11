@@ -4072,6 +4072,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swissquote/crafty-preset-vitest@npm:1.29.0, @swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest"
+  dependencies:
+    "@swissquote/crafty": "npm:1.29.0"
+    vite: "npm:8.0.8"
+    vitest: "npm:4.1.5"
+  languageName: unknown
+  linkType: soft
+
 "@swissquote/crafty-runner-gulp@npm:1.29.0, @swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp"
@@ -4152,6 +4162,7 @@ __metadata:
     expect: "npm:30.4.1"
     fsevents: "npm:~2.3.3"
     is-negated-glob: "npm:1.0.0"
+    jsonc-parser: "npm:3.3.1"
     just-debounce: "npm:1.1.0"
     loud-rejection: "npm:2.2.0"
     merge-anything: "npm:6.0.6"
@@ -9235,8 +9246,10 @@ __metadata:
     "@swissquote/crafty-preset-maven": "npm:1.29.0"
     "@swissquote/crafty-preset-postcss": "npm:1.29.0"
     "@swissquote/crafty-preset-prettier": "npm:1.29.0"
+    "@swissquote/crafty-preset-react": "npm:1.29.0"
     "@swissquote/crafty-preset-swc": "npm:1.29.0"
     "@swissquote/crafty-preset-typescript": "npm:1.29.0"
+    "@swissquote/crafty-preset-vitest": "npm:1.29.0"
     "@swissquote/crafty-runner-gulp": "npm:1.29.0"
     "@swissquote/crafty-runner-webpack": "npm:1.29.0"
     "@swissquote/random-cjs": "npm:1.29.0"
@@ -10279,7 +10292,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.2.0":
+"jsonc-parser@npm:3.3.1, jsonc-parser@npm:^3.2.0":
   version: 3.3.1
   resolution: "jsonc-parser@npm:3.3.1"
   checksum: 10c0/269c3ae0a0e4f907a914bf334306c384aabb9929bd8c99f909275ebd5c2d3bc70b9bcd119ad794f339dec9f24b6a4ee9cd5a8ab2e6435e730ad4075388fc2ab6
@@ -14323,7 +14336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0":
+"vite@npm:8.0.8, vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0":
   version: 8.0.8
   resolution: "vite@npm:8.0.8"
   dependencies:

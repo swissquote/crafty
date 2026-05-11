@@ -26,6 +26,19 @@ function extendConfiguration(crafty, bundle, swcOptions) {
   debug("SWC configuration", swcOptions);
 }
 
+function extendTestConfiguration(crafty, swcOptions, syntax = "ecmascript") {
+  const bundle = {
+    type: "test",
+    name: "vitest",
+    runner: "vitest",
+    syntax
+  };
+
+  crafty.runAllSync("swc", crafty, bundle, swcOptions);
+
+  debug("SWC test configuration", swcOptions);
+}
+
 function getConfigurationBase(
   crafty,
   bundle,
@@ -63,6 +76,31 @@ function getConfiguration(crafty, bundle, hasHelperDependency) {
   const options = getConfigurationBase(crafty, bundle, hasHelperDependency);
 
   extendConfiguration(crafty, bundle, options);
+
+  return options;
+}
+
+function getTestConfiguration(crafty, hasHelperDependency, syntax = "ecmascript") {
+  const options = {
+    jsc: {
+      parser: {
+        syntax,
+        [syntax === "ecmascript" ? "jsx" : "tsx"]: true,
+        decorators: true,
+        usingDecl: true
+      },
+      experimental: {
+        keepImportAssertions: true
+      }
+    },
+    sourceMaps: true
+  };
+
+  if (hasHelperDependency) {
+    options.jsc.externalHelpers = true;
+  }
+
+  extendTestConfiguration(crafty, options, syntax);
 
   return options;
 }
@@ -137,6 +175,7 @@ function getConfigurationGulp(crafty, bundle, syntax) {
 module.exports = {
   hasSwcHelpersDependency,
   getConfiguration,
+  getTestConfiguration,
   getConfigurationWebpack,
   getConfigurationRspack,
   getConfigurationGulp

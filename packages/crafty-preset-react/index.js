@@ -45,6 +45,10 @@ module.exports = {
     options.setupFilesAfterEnv = options.setupFilesAfterEnv || [];
     options.setupFilesAfterEnv.push(require.resolve("./testSetup.js"));
   },
+  vitest(crafty, options) {
+    options.test.setupFiles = options.test.setupFiles || [];
+    options.test.setupFiles.push(require.resolve("./testSetup.js"));
+  },
   babel(crafty, bundle, babelConfig) {
     // Add hot module replacement for bundles with React
     if (enableHotLoader(crafty, bundle)) {
