@@ -7,6 +7,7 @@
 <tr><th>Test Runners</th><td>
 
 - [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Vitest](05_Packages/05_crafty-preset-vitest)
 
 </td></tr>
 <tr><th>Linters</th><td>
@@ -67,10 +68,11 @@ You have to configure TypeScript with the `tsconfig.json` file that you put at t
 Some options can't be auto-configured through the loaders / plugins so that's why you have to do it yourself.
 Moreover, the integration with your IDE is simplified if you have a complete `tsconfig.json` in your project.
 
-## Usage with Jest
+## Usage with Jest and Vitest
 
-If you include both `crafty-preset-typescript` and `crafty-preset-jest`.
-When running your tests with `crafty test` this preset will be use to convert all `.ts`, `.tsx`, `.mts`, and `.cts` files (source and test files)
+If you include `crafty-preset-typescript` with either `crafty-preset-jest` or
+`crafty-preset-vitest`, running `crafty test` will add support for `.ts`,
+`.tsx`, `.mts`, and `.cts` source and test files.
 
 ## Type definition files
 

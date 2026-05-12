@@ -7,6 +7,7 @@
 <tr><th>Test Runners</th><td>
 
 - [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Vitest](05_Packages/05_crafty-preset-vitest)
 
 </td></tr>
 <tr><th>Related presets</th><td>
@@ -15,13 +16,18 @@
 - [TypeScript](05_Packages/05_crafty-preset-typescript.md)
 - [SWC](05_Packages/05_crafty-preset-swc.md)
 - [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Vitest](05_Packages/05_crafty-preset-vitest)
 
 </td></tr>
 </table>
 
-This preset provides Hot Module Replacement in React projects.
+This preset provides utilities for React testing and Hot Module Replacement in
+React projects.
 
 [TOC]
+
+When combined with `crafty-preset-jest` or `crafty-preset-vitest`, this preset
+adds the React test setup file automatically.
 
 ## Installation
 

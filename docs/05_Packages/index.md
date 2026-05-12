@@ -40,11 +40,21 @@ EcmaScript 2015+ and TypeScript code effortlessly.
 
 [Features and options](05_crafty-preset-jest.md)
 
+### `crafty-preset-vitest`
+
+This preset will add Vitest to the `crafty test` command.
+
+Its usage with the Babel, TypeScript, React, and SWC presets allows you to
+test modern JavaScript and TypeScript code effortlessly.
+
+[Features and options](05_crafty-preset-vitest)
+
 ## Presets
 
 ### `crafty-preset-babel`
 
-This preset provides EcmaScript 2015+ support with Babel for Gulp, Webpack, and Jest.
+This preset provides EcmaScript 2015+ support with Babel for Gulp, Webpack,
+Jest, and Vitest.
 
 This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
@@ -58,7 +68,7 @@ Compile your CSS using **PostCSS**, works with **Webpack** and Gulp.
 
 ### `crafty-preset-typescript`
 
-This preset provides TypeScript support for Gulp, Webpack, and Jest.
+This preset provides TypeScript support for Gulp, Webpack, Jest, and Vitest.
 
 This preset will include `crafty-preset-eslint` and provide ESLint with our linting rules.
 
@@ -92,8 +102,8 @@ move your compiled assets to the right directory in `target`
 
 ### `crafty-preset-react`
 
-A preset that provides utilities for Jest and Hot Module Replacement in React
-projects.
+A preset that provides utilities for Jest, Vitest, and Hot Module Replacement
+in React projects.
 
 JSX Compilation is handled by the `crafty-preset-babel` already.
 
@@ -115,7 +125,8 @@ Utilities from this package are leveraged to configure Gulp builds.
 
 ### `crafty-preset-swc`
 
-This preset provides EcmaScript 2015+ support with [SWC](https://swc.rs/) for Gulp, Webpack, and Jest.
+This preset provides EcmaScript 2015+ support with [SWC](https://swc.rs/) for
+Gulp, Webpack, Jest, and Vitest.
 
 While SWC is able to compile TypeScript, this preset does not offer this feature at the moment.
 

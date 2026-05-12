@@ -6,4 +6,4 @@ To make it easy, we prepared some use cases for you to start.
 - [Compiling JavaScript with Babel](./Compiling_CSS.md)
 - [Compiling TypeScript](./Compiling_CSS.md)
 - [Compressing Images](./Compressing_Images.md)
-- [Testing your code with Jest](./Testing_your_code.md)
+- [Testing your code](./Testing_your_code.md)
