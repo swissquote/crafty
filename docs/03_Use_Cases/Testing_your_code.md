@@ -3,20 +3,24 @@
 Crafty comes with a `crafty test` command by default, but no test runner comes
 built-in.
 
-For that we made an integration with Jest.
+For that we made integrations with Jest and Vitest.
 
 ## Installing
 
 ```bash
 cd src/main/frontend
-npm install @swissquote/crafty @swissquote/crafty-preset-jest --save
+npm install @swissquote/crafty @swissquote/crafty-preset-vitest --save
 ```
+
+If you prefer Jest, replace `@swissquote/crafty-preset-vitest` with
+`@swissquote/crafty-preset-jest`. Crafty supports one active test runner per
+project.
 
 In your `crafty.config.js` file, you must add the following presets
 
 ```javascript
 module.exports = {
-  presets: ["@swissquote/crafty-preset-jest"],
+  presets: ["@swissquote/crafty-preset-vitest"],
 };
 ```
 
@@ -51,7 +55,8 @@ test("multiply something", () => {
 You can now run `crafty test` and see that the test is discovered and executed
 automatically.
 
-Read more about [`crafty-preset-jest`](05_Packages/05_crafty-preset-jest).
+Read more about [`crafty-preset-vitest`](05_Packages/05_crafty-preset-vitest)
+or [`crafty-preset-jest`](05_Packages/05_crafty-preset-jest).
 
 ## With Babel or Typescript
 

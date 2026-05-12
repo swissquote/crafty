@@ -20,7 +20,7 @@ Crafty has a default configuration and provides possibilities to extend that def
 npm install @swissquote/crafty \
   @swissquote/crafty-preset-babel \
   @swissquote/crafty-preset-postcss \
-  @swissquote/crafty-preset-jest \
+  @swissquote/crafty-preset-vitest \
   @swissquote/crafty-runner-webpack \
   @swissquote/crafty-runner-gulp
 ```
@@ -34,7 +34,7 @@ module.exports = {
   presets: [
     "@swissquote/crafty-preset-babel",
     "@swissquote/crafty-preset-postcss",
-    "@swissquote/crafty-preset-jest",
+    "@swissquote/crafty-preset-vitest",
     "@swissquote/crafty-runner-webpack",
     "@swissquote/crafty-runner-gulp",
   ],
@@ -53,6 +53,9 @@ module.exports = {
 };
 ```
 
+> If you prefer Jest, replace `@swissquote/crafty-preset-vitest` with `@swissquote/crafty-preset-jest`.
+> Crafty supports one active test runner per project.
+
 ### Run
 
 You can run the commands using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) or by adding them to the `scripts` section of your `package.json`
@@ -68,7 +71,7 @@ With this configuration you get:
 - Linted your JavaScript with [ESLint](https://eslint.org/).
 - Create a CSS bundle compiled with [PostCSS](http://postcss.org/).
 - Lint your CSS with [Stylelint](https://stylelint.io/).
-- Run your tests with [Jest](https://facebook.github.io/jest/) and compile them with [Babel](https://babeljs.io/).
+- Run your tests with [Vitest](https://vitest.dev/) and compile them with [Babel](https://babeljs.io/).
 
 ## Why
 

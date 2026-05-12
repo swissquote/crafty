@@ -79,6 +79,7 @@ module.exports = {
 
     // babel
     // jest
+    // vitest
     // gulp
     // webpack
 }
