@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/postcss-swissquote-preset",
-  "version": "1.28.1",
+  "version": "1.29.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -18,21 +18,21 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js node --test test/*.mjs"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.28.1",
+    "@swissquote/crafty-commons": "1.29.0",
     "caniuse-lite": "^1.0.30001702",
     "lightningcss": "1.32.0",
     "postcss": "8.5.14"
   },
   "devDependencies": {
     "@knagis/postcss-advanced-variables": "4.0.0",
-    "@swissquote/postcss-assets": "1.28.1",
-    "@swissquote/postcss-atroot": "1.28.1",
-    "@swissquote/postcss-color-gray": "1.28.1",
-    "@swissquote/postcss-color-hwb": "1.28.1",
-    "@swissquote/postcss-color-mod-function": "1.28.1",
-    "@swissquote/postcss-custom-properties": "1.28.1",
-    "@swissquote/postcss-image-set-polyfill": "1.28.1",
-    "@swissquote/postcss-selector-matches": "1.28.1",
+    "@swissquote/postcss-assets": "1.29.0",
+    "@swissquote/postcss-atroot": "1.29.0",
+    "@swissquote/postcss-color-gray": "1.29.0",
+    "@swissquote/postcss-color-hwb": "1.29.0",
+    "@swissquote/postcss-color-mod-function": "1.29.0",
+    "@swissquote/postcss-custom-properties": "1.29.0",
+    "@swissquote/postcss-image-set-polyfill": "1.29.0",
+    "@swissquote/postcss-selector-matches": "1.29.0",
     "c8": "11.0.0",
     "expect": "30.3.0",
     "postcss-custom-selectors": "8.0.5",
