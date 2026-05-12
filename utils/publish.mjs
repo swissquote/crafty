@@ -11,7 +11,7 @@ import prompts from "prompts";
 import semver from "semver";
 import chalk from "chalk";
 import path from "node:path";
-import globby from "globby";
+import { globby } from "globby";
 import fs from "node:fs";
 import { execa } from "execa";
 import yargsParser from "yargs-parser";

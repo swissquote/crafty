@@ -4,7 +4,7 @@ const fs = require("node:fs");
 
 const currentPackage = path.join(process.cwd(), "package.json");
 
-const isJS = /\.js$/;
+const isJS = /\.m?js$/;
 const packageRegex = /^\/\/package:(.*)$/gm;
 const packageRegexSingle = /^\/\/package:(.*)$/;
 
@@ -17,7 +17,7 @@ function getProvidedPackages(parents, isRslib) {
     const pkgsPath = path.join(pkgPath, "packages");
 
     const packageConfig = JSON.parse(fs.readFileSync(pkgFile));
-    const isModule = packageConfig.type === "module";
+    const isInsideModule = packageConfig.type === "module";
 
     if (!fs.existsSync(pkgsPath)) {
       return;
@@ -26,7 +26,8 @@ function getProvidedPackages(parents, isRslib) {
     fs.readdirSync(pkgsPath)
       .filter(file => isJS.test(file))
       .forEach(file => {
-        const moduleName = file.substring(0, file.length - 3);
+        const moduleName = file.replace(isJS, "");
+        const isModule = file.endsWith(".mjs");
         const content = fs.readFileSync(path.join(pkgsPath, file), {
           encoding: "utf-8"
         });
@@ -34,7 +35,7 @@ function getProvidedPackages(parents, isRslib) {
         const pathToModule = `${pkg}/packages/${file}`;
         let pathWithPrefix = pathToModule;
         if (isRslib) {
-          if (isModule) {
+          if (isInsideModule || isModule) {
             pathWithPrefix = `module ${pathToModule}`;
           } else {
             pathWithPrefix = `commonjs ${pathToModule}`;
@@ -45,14 +46,14 @@ function getProvidedPackages(parents, isRslib) {
         if (matched) {
           matched.forEach(match => {
             const m = match.match(packageRegexSingle);
-            if (!isRslib && isModule) {
+            if (!isRslib && isInsideModule) {
               console.log("Ignoring ESM external", m[1].trim());
               return;
             }
             pkgs[m[1].trim()] = pathWithPrefix;
           });
         } else {
-          if (!isRslib && isModule) {
+          if (!isRslib && isInsideModule) {
             console.log("Ignoring ESM external", moduleName);
             return;
           }
