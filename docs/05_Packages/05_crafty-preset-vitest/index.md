@@ -150,8 +150,7 @@ Crafty owns the Vitest configuration it runs.
   official `vitest.config.*` files.
 - `crafty ide` writes the IDE-facing `vitest.config.mjs` file and removes
   alternative filenames such as `vitest.config.js`, `vitest.config.cjs`,
-  `vitest.config.mts`, `vitest.config.ts`, `vitest.config.cts`, and the legacy
-  `vitest.config.crafty.mjs`.
+  `vitest.config.mts`, `vitest.config.ts`, and `vitest.config.cts`.
 
 If you need to change Vitest behavior, use the `vitest(crafty, options,
 context)` hook rather than maintaining a separate `vitest.config.*` file.
