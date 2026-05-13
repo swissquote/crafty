@@ -1,5 +1,5 @@
-const sep = require("node:path").sep;
+import { sep } from "node:path";
 
-module.exports = function convertPathToUrl(path) {
+export default function convertPathToUrl(path) {
   return path.split(sep).join("/");
-};
+}

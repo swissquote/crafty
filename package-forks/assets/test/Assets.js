@@ -1,7 +1,7 @@
-const { expect } = require("expect");
-const { test } = require("node:test");
+import { expect } from "expect";
+import { test } from "node:test";
 
-const Assets = require("..");
+import Assets from "../lib/index.js";
 
 test("constructor", () => {
   expect(typeof Assets).toBe("function");

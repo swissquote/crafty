@@ -1,10 +1,10 @@
-const composeAbsolutePathname = require("./__utils__/composeAbsolutePathname");
-const composeQueryString = require("./__utils__/composeQueryString");
-const composeRelativePathname = require("./__utils__/composeRelativePathname");
-const defaultCachebuster = require("./__utils__/defaultCachebuster");
-const urlFormatter = require("./__utils__/urlFormatter");
-const urlParser = require("./__utils__/urlParser");
-const resolvePath = require("./path");
+import composeAbsolutePathname from "./__utils__/composeAbsolutePathname.js";
+import composeQueryString from "./__utils__/composeQueryString.js";
+import composeRelativePathname from "./__utils__/composeRelativePathname.js";
+import defaultCachebuster from "./__utils__/defaultCachebuster.js";
+import urlFormatter from "./__utils__/urlFormatter.js";
+import urlParser from "./__utils__/urlParser.js";
+import resolvePath from "./path.js";
 
 function applyCacheBuster(toUrl, resolvedPath, options) {
   const cachebusterOutput = options.cachebuster(resolvedPath, toUrl.pathname);
@@ -22,7 +22,7 @@ function applyCacheBuster(toUrl, resolvedPath, options) {
   }
 }
 
-module.exports = async (to, options) => {
+export default async (to, options) => {
   /* eslint-disable-next-line no-param-reassign */
   options = {
     basePath: ".",

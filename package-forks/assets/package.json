@@ -13,7 +13,11 @@
   "bugs": "https://github.com/assetsjs/postcss-assets/issues",
   "license": "MIT",
   "author": "Vadym Borodin <borodean@gmail.com> (http://borodean.com)",
-  "main": "./lib",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/assetsjs/assets.git"

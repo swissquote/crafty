@@ -1,6 +1,6 @@
-const { URL, URLSearchParams } = require("node:url");
+import { URL, URLSearchParams } from "node:url";
 
-module.exports = function parse(rawUrl) {
+export default function parse(rawUrl) {
   if (rawUrl.startsWith("http")) {
     return new URL(rawUrl);
   }
@@ -22,4 +22,4 @@ module.exports = function parse(rawUrl) {
     pathname: rawUrl,
     searchParams: new URLSearchParams()
   };
-};
+}

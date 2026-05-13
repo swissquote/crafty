@@ -1,18 +1,16 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { test, mock } = require("node:test");
-const { expect } = require("expect");
+import fs from "node:fs";
+import path from "node:path";
+import { test, mock } from "node:test";
+import { expect } from "expect";
 
-const resolveUrl = require("../lib/url");
+import resolveUrl from "../lib/url.js";
 
 let mockedStatSync = null;
 
 test.before(() => {
-  mockedStatSync = mock.method(fs, "statSync", () => {
-    return {
-      mtime: new Date(Date.UTC(1991, 7, 24)),
-    }
-  });
+  mockedStatSync = mock.method(fs, "statSync", () => ({
+    mtime: new Date(Date.UTC(1991, 7, 24)),
+  }));
 });
 
 test.after(() => {

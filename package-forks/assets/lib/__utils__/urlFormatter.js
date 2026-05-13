@@ -1,7 +1,6 @@
-const url = require("node:url");
-const { URL } = require("node:url");
+import { format, URL } from "node:url";
 
-module.exports = function urlFormatter(obj) {
+export default function urlFormatter(obj) {
   if (obj instanceof URL) {
     return obj.toString();
   }
@@ -14,5 +13,5 @@ module.exports = function urlFormatter(obj) {
     obj.search = params.join("&");
   }
 
-  return url.format(obj);
-};
+  return format(obj);
+}
