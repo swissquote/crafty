@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-const balancedMatch = require("balanced-match");
+import balancedMatch from "balanced-match";
 
 const pseudoClass = ":matches";
 const selectorElementRE = /^[a-zA-Z]/;
@@ -72,10 +72,10 @@ function explodeSelector(selector, options, list) {
   return [selector];
 }
 
-module.exports = function replaceRuleSelector(rule, options, list) {
+export default function replaceRuleSelector(rule, options, list) {
   const indentation =
     rule.raws && rule.raws.before ? rule.raws.before.split("\n").pop() : "";
   const separator = options.lineBreak ? `\n${indentation}` : " ";
 
   return explodeSelector(rule.selector, options, list).join(`,${separator}`);
-};
+}

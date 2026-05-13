@@ -1,4 +1,4 @@
-const replaceRuleSelector = require("./replaceRuleSelector");
+import replaceRuleSelector from "./replaceRuleSelector.js";
 
 function postcssSelectorMatches(options = {}) {
   return {
@@ -12,4 +12,5 @@ function postcssSelectorMatches(options = {}) {
 }
 postcssSelectorMatches.postcss = true;
 
-module.exports = postcssSelectorMatches;
+export default postcssSelectorMatches;
+export { replaceRuleSelector };

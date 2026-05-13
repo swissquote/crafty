@@ -1,8 +1,11 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 const tests = require("./fixtures/color.json");
 
-const Color = require("../lib/color");
+import Color from "../lib/color.js";
 
 function stringifyTest(seed, calls) {
   let output = `${JSON.stringify(seed)}`;

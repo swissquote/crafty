@@ -1,8 +1,8 @@
 /* eslint quotes: 0 */
 
-const { test } = require("node:test");
-const { expect } = require("expect");
-const quote = require("../lib/quote");
+import { test } from "node:test";
+import { expect } from "expect";
+import quote from "../lib/quote.js";
 
 test("adds quotes", () => {
   expect(quote("foo")).toBe("'foo'");

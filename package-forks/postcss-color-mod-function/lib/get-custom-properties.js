@@ -1,4 +1,4 @@
-const { parse } = require("postcss-values-parser");
+import { parse } from "postcss-values-parser";
 
 // match html and :root rules
 const htmlSelectorRegExp = /^html$/i;
@@ -23,7 +23,7 @@ const isCustomDecl = node =>
 const isEmptyParent = node => Object(node.nodes).length === 0;
 
 // return custom selectors from the css root, conditionally removing them
-module.exports = function getCustomProperties(root, opts) {
+export default function getCustomProperties(root, opts) {
   // initialize custom selectors
   const customPropertiesFromHtmlElement = {};
   const customPropertiesFromRootPsuedo = {};
@@ -65,4 +65,4 @@ module.exports = function getCustomProperties(root, opts) {
     ...customPropertiesFromHtmlElement,
     ...customPropertiesFromRootPsuedo
   };
-};
+}

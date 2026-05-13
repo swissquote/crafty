@@ -1,8 +1,8 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const postcss = require("postcss");
-const getCustomProperties = require("./get-custom-properties");
-const { parse } = require("postcss-values-parser");
+import { readFile as fsReadFile } from "node:fs";
+import { resolve, extname } from "node:path";
+import postcss from "postcss";
+import getCustomProperties from "./get-custom-properties.js";
+import { parse } from "postcss-values-parser";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -11,7 +11,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const readFile = from =>
   new Promise((resolve, reject) => {
-    fs.readFile(from, "utf8", (error, result) => {
+    fsReadFile(from, "utf8", (error, result) => {
       if (error) {
         reject(error);
       } else {
@@ -70,15 +70,15 @@ async function importCustomPropertiesFromJSONFile(from) {
 /* ========================================================================== */
 
 async function importCustomPropertiesFromJSFile(from) {
-  const object = require(from);
+  const object = await import(from);
 
-  return importCustomPropertiesFromObject(object);
+  return importCustomPropertiesFromObject(object.default || object);
 }
 
 /* Import Custom Properties from Sources
 /* ========================================================================== */
 
-module.exports = function importCustomPropertiesFromSources(sources) {
+export default function importCustomPropertiesFromSources(sources) {
   return sources
     .map(source => {
       if (source instanceof Promise) {
@@ -97,10 +97,10 @@ module.exports = function importCustomPropertiesFromSources(sources) {
       }
 
       // source pathname
-      const from = path.resolve(String(opts.from || ""));
+      const from = resolve(String(opts.from || ""));
 
       // type of file being read from
-      const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
+      const type = (opts.type || extname(from).slice(1)).toLowerCase();
 
       return { type, from };
     })
@@ -140,4 +140,4 @@ module.exports = function importCustomPropertiesFromSources(sources) {
         await importCustomPropertiesFromObject(await source)
       );
     }, {});
-};
+}

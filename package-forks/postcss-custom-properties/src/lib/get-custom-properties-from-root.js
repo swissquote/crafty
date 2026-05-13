@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-const { parse } = require("postcss-values-parser");
-const { isBlockIgnored } = require("./is-ignored");
+import { parse } from "postcss-values-parser";
+import { isBlockIgnored } from "./is-ignored.js";
 
 // return custom selectors from the css root, conditionally removing them
-module.exports = function getCustomPropertiesFromRoot(root, opts) {
+export default function getCustomPropertiesFromRoot(root, opts) {
   // initialize custom selectors
   const customPropertiesFromHtmlElement = {};
   const customPropertiesFromRootPseudo = {};
@@ -45,7 +45,7 @@ module.exports = function getCustomPropertiesFromRoot(root, opts) {
     ...customPropertiesFromHtmlElement,
     ...customPropertiesFromRootPseudo
   };
-};
+}
 
 // match html and :root rules
 const htmlSelectorRegExp = /^html$/i;

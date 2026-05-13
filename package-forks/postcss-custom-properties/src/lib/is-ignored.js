@@ -1,4 +1,4 @@
-function isBlockIgnored(ruleOrDeclaration) {
+export function isBlockIgnored(ruleOrDeclaration) {
   const rule = ruleOrDeclaration.selector
     ? ruleOrDeclaration
     : ruleOrDeclaration.parent;
@@ -6,7 +6,7 @@ function isBlockIgnored(ruleOrDeclaration) {
   return /(!\s*)?postcss-custom-properties:\s*off\b/i.test(rule.toString());
 }
 
-function isRuleIgnored(rule) {
+export function isRuleIgnored(rule) {
   const previous = rule.prev();
 
   return Boolean(
@@ -18,8 +18,3 @@ function isRuleIgnored(rule) {
         ))
   );
 }
-
-module.exports = {
-  isBlockIgnored,
-  isRuleIgnored
-};

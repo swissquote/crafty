@@ -15,7 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/postcss/postcss-selector-matches.git"
   },
+  "type": "module",
   "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
   "files": [
     "src"
   ],

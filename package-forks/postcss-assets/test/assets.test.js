@@ -1,11 +1,11 @@
 /* eslint quotes: 0 */
 
-const fs = require("node:fs");
-const path = require("node:path");
-const postcss = require("postcss");
-const { test } = require("node:test");
-const { expect } = require("expect");
-const plugin = require("..");
+import { statSync } from "node:fs";
+import { resolve } from "node:path";
+import postcss from "postcss";
+import { test } from "node:test";
+import { expect } from "expect";
+import plugin from "../lib/index.js";
 
 function process(css, options, postcssOptions) {
   return postcss()
@@ -32,7 +32,7 @@ test("resolves urls from the current path", () =>
       baseUrl: "http://example.com/wp-content/themes",
     },
     {
-      from: path.resolve("test/fixtures/images/style.css"),
+      from: resolve("test/fixtures/images/style.css"),
     }
   ).then((result) => {
     expect(result.css).toBe(
@@ -48,7 +48,7 @@ test("resolves relative urls from the current path", () =>
       relative: true,
     },
     {
-      from: path.resolve("test/fixtures/images/style.css"),
+      from: resolve("test/fixtures/images/style.css"),
     }
   ).then((result) => {
     expect(result.css).toBe("a { b: url('../fonts/empty-sans.woff') }");
@@ -67,7 +67,7 @@ test("busts cache when resolving urls", () =>
     basePath: "test/fixtures",
     baseUrl: "http://example.com/wp-content/themes",
     cachebuster(resolvedPath) {
-      return fs.statSync(resolvedPath).size;
+      return statSync(resolvedPath).size;
     },
     loadPaths: ["fonts", "images"],
   }).then((result) => {

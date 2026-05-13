@@ -10,7 +10,11 @@
   },
   "homepage": "https://github.com/postcss/postcss-color-gray#readme",
   "bugs": "https://github.com/postcss/postcss-color-gray/issues",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "files": [
     "index.js"
   ],
