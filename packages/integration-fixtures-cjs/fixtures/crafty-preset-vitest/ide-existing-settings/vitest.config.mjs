@@ -3,8 +3,7 @@
 
 /* global process */
 import { initialize } from "@swissquote/crafty";
-import { mergeConfig } from "vitest/config";
-import { extractVitestCliState, loadNativeVitestConfig, materializeVitestOptions, normalizeVitestOptions } from "@swissquote/crafty-preset-vitest";
+import { extractVitestCliState, materializeVitestOptions, normalizeVitestOptions } from "@swissquote/crafty-preset-vitest";
 
 const crafty = await initialize(process.argv);
 
@@ -12,9 +11,6 @@ const crafty = await initialize(process.argv);
 // tests have different needs
 process.env.NODE_ENV = "test";
 
-const nativeConfig = await loadNativeVitestConfig();
-const craftedConfig = materializeVitestOptions(
+export default materializeVitestOptions(
   normalizeVitestOptions(crafty, extractVitestCliState(process.argv.slice(2)))
 );
-
-export default mergeConfig(nativeConfig, craftedConfig);
