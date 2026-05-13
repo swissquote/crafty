@@ -101,8 +101,9 @@ To create tests, add `it()` (or `test()`) blocks with the name of the test and
 its code. You may optionally wrap them in `describe()` blocks for logical
 grouping but this is neither required nor recommended.
 
-Vitest provides built-in `test()` and `expect()` globals. A basic test could
-look like this:
+Vitest's own defaults require importing `test()` and `expect()` explicitly.
+Crafty enables Vitest's `globals` option for you, so these APIs are available
+globally in tests created with this preset. A basic test could look like this:
 
 ```js
 import sum from "./sum";
