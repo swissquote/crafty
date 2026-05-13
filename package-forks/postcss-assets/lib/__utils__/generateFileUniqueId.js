@@ -1,6 +1,6 @@
-const fs = require("node:fs");
+import { statSync } from "node:fs";
 
-module.exports = function generateFileUniqueId(resolvedPath) {
-  const { mtime } = fs.statSync(resolvedPath);
+export default function generateFileUniqueId(resolvedPath) {
+  const { mtime } = statSync(resolvedPath);
   return mtime.getTime().toString(16);
-};
+}

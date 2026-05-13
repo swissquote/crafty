@@ -1,4 +1,4 @@
-module.exports = () => {
+const plugin = () => {
   return {
     postcssPlugin: "postcss-atroot",
     Rule(rule) {
@@ -23,5 +23,6 @@ module.exports = () => {
     }
   };
 };
+plugin.postcss = true;
 
-module.exports.postcss = true;
+export default plugin;

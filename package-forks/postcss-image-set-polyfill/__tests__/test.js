@@ -1,8 +1,8 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
 
-const postcss = require("postcss");
-const imageSet = require("../");
+import postcss from "postcss";
+import imageSet from "../index.js";
 
 const runTest = async function(input, output) {
   const result = await postcss([imageSet]).process(input, { from: undefined });
@@ -22,7 +22,7 @@ test("ignore variables with image-set in name", async () => {
     const input = `a {
                 background-image: var(--ag-icon-image-settings, var(--ag-icon-image));
               }`;
-  
+
     return runTest(input, input);
   });
 
@@ -88,7 +88,7 @@ test("parses the image-set with only 2x", async () => {
 test("parses dppx unit", async () => {
   const input = `a{
                 background-image: image-set(
-                    url(img/test.png) 1x, 
+                    url(img/test.png) 1x,
                     url(img/test-2x.png) 2dppx
                 );
             }`;
@@ -226,7 +226,7 @@ test("parses the image-set in media query", async () => {
                     background-image: url(img/test.png);
                 }
             }
-            @media (min-width: 1000px) and (-webkit-min-device-pixel-ratio: 2), 
+            @media (min-width: 1000px) and (-webkit-min-device-pixel-ratio: 2),
                 (min-width: 1000px) and (min-resolution: 192dpi) {
                 a {
                     background-image: url(img/test-2x.png);
@@ -379,9 +379,9 @@ test("parses multiple values in background property", async () => {
 test("parses densities between 1x and 2x", async () => {
   const input = `a{
                 background-image: image-set(
-                    url(img/test.png) 1x, 
-                    url(img/test-1.3x.png) 1.3x, 
-                    url(img/test-1.5x.png) 1.5x 
+                    url(img/test.png) 1x,
+                    url(img/test-1.3x.png) 1.3x,
+                    url(img/test-1.5x.png) 1.5x
                 );
             }`;
   const output = `a {

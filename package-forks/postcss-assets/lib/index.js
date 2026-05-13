@@ -1,28 +1,28 @@
-const Assets = require("@swissquote/assets");
-const { dirname } = require("node:path");
-const functions = require("postcss-functions");
-const util = require("node:util");
-const quote = require("./quote");
-const unescapeCss = require("./unescape-css");
-const unquote = require("./unquote");
-const generateFileUniqueId = require("./__utils__/generateFileUniqueId");
+import Assets from "@swissquote/assets";
+import { dirname } from "node:path";
+import functions from "postcss-functions";
+import { format } from "node:util";
+import quote from "./quote.js";
+import unescapeCss from "./unescape-css.js";
+import unquote from "./unquote.js";
+import generateFileUniqueId from "./__utils__/generateFileUniqueId.js";
 
 const cachedDimensions = {};
 
 function formatUrl(url) {
-  return util.format("url(%s)", quote(url));
+  return format("url(%s)", quote(url));
 }
 
 function formatSize(measurements) {
-  return util.format("%dpx %dpx", measurements.width, measurements.height);
+  return format("%dpx %dpx", measurements.width, measurements.height);
 }
 
 function formatWidth(measurements) {
-  return util.format("%dpx", measurements.width);
+  return format("%dpx", measurements.width);
 }
 
 function formatHeight(measurements) {
-  return util.format("%dpx", measurements.height);
+  return format("%dpx", measurements.height);
 }
 
 function measure(params, resolver, path, density) {
@@ -60,7 +60,7 @@ function measure(params, resolver, path, density) {
   });
 }
 
-module.exports = (params = {}) => {
+const plugin = (params = {}) => {
   if (params.relative === undefined) {
     params.relative = false;
   }
@@ -120,5 +120,6 @@ module.exports = (params = {}) => {
     }
   };
 };
+plugin.postcss = true;
 
-module.exports.postcss = true;
+export default plugin;

@@ -24,7 +24,11 @@
     "Liucw (https://github.com/booxood)",
     "Pascal Duez (https://github.com/pascalduez)"
   ],
-  "main": "./lib",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/assetsjs/postcss-assets.git"

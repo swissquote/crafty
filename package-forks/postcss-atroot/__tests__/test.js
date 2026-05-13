@@ -1,7 +1,7 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
-const postcss = require("postcss");
-const atroot = require("../");
+import { test } from "node:test";
+import { expect } from "expect";
+import postcss from "postcss";
+import atroot from "../index.js";
 
 function runTest(input, output, opts) {
   const result = postcss(atroot(opts)).process(input);

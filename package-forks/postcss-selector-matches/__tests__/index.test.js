@@ -1,8 +1,8 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
-const postcss = require("postcss");
-const plugin = require("../src");
-const replaceRuleSelector = require("../src/replaceRuleSelector");
+import { test } from "node:test";
+import { expect } from "expect";
+import postcss from "postcss";
+import plugin from "../src/index.js";
+import replaceRuleSelector from "../src/replaceRuleSelector.js";
 
 function transform(css, options = {}) {
   return postcss(plugin(options)).process(css).css;

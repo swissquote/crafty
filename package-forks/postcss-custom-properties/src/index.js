@@ -1,7 +1,7 @@
-const getCustomPropertiesFromRoot = require("./lib/get-custom-properties-from-root");
-const getCustomPropertiesFromImports = require("./lib/get-custom-properties-from-imports");
-const transformProperties = require("./lib/transform-properties");
-const writeCustomPropertiesToExports = require("./lib/write-custom-properties-to-exports");
+import getCustomPropertiesFromRoot from "./lib/get-custom-properties-from-root.js";
+import getCustomPropertiesFromImports from "./lib/get-custom-properties-from-imports.js";
+import transformProperties from "./lib/transform-properties.js";
+import writeCustomPropertiesToExports from "./lib/write-custom-properties-to-exports.js";
 
 const creator = opts => {
   // whether to preserve custom selectors and rules using them
@@ -48,4 +48,4 @@ const creator = opts => {
 
 creator.postcss = true;
 
-module.exports = creator;
+export default creator;

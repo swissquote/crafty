@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
-const { parse } = require("postcss-values-parser");
-const transformValueAST = require("./transform-value-ast");
-const { isRuleIgnored } = require("./is-ignored");
+import { parse } from "postcss-values-parser";
+import transformValueAST from "./transform-value-ast.js";
+import { isRuleIgnored } from "./is-ignored.js";
 
 // transform custom pseudo selectors with custom selectors
-module.exports = (root, customProperties, opts) => {
+export default (root, customProperties, opts) => {
   // walk decls that can be transformed
   root.walkDecls(decl => {
     if (isTransformableDecl(decl) && !isRuleIgnored(decl)) {

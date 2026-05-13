@@ -10,7 +10,11 @@
   },
   "homepage": "https://github.com/jonathantneal/postcss-color-mod-function#readme",
   "bugs": "https://github.com/jonathantneal/postcss-color-mod-function/issues",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "files": [
     "index.js",
     "lib"
@@ -18,7 +22,7 @@
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js' lib",
     "test": "node --test",
-    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test"
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=index.js --include=lib node --test"
   },
   "engines": {
     "node": ">=22.12"

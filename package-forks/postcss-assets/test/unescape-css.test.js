@@ -1,6 +1,6 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
-const unescapeCss = require("../lib/unescape-css");
+import { test } from "node:test";
+import { expect } from "expect";
+import unescapeCss from "../lib/unescape-css.js";
 
 test("unescapes plain chars", () => {
   expect(unescapeCss("Romeo \\+ Juliette")).toBe("Romeo + Juliette");
