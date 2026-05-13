@@ -120,9 +120,7 @@ export default function writeCustomPropertiesToExports(
           const to = String(opts.to || "");
 
           // type of file being written to
-          const type = (
-            opts.type || extname(opts.to).slice(1)
-          ).toLowerCase();
+          const type = (opts.type || extname(opts.to).slice(1)).toLowerCase();
 
           // transformed Custom Properties
           const customPropertiesJSON = toJSON(customProperties);

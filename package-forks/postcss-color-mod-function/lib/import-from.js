@@ -1,5 +1,5 @@
-import { readFile as fsReadFile } from "node:fs";
-import { resolve, extname } from "node:path";
+import fs from "node:fs";
+import path from "node:path";
 import postcss from "postcss";
 import getCustomProperties from "./get-custom-properties.js";
 import { parse } from "postcss-values-parser";
@@ -11,7 +11,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 const readFile = from =>
   new Promise((resolve, reject) => {
-    fsReadFile(from, "utf8", (error, result) => {
+    fs.readFile(from, "utf8", (error, result) => {
       if (error) {
         reject(error);
       } else {
@@ -97,10 +97,10 @@ export default function importCustomPropertiesFromSources(sources) {
       }
 
       // source pathname
-      const from = resolve(String(opts.from || ""));
+      const from = path.resolve(String(opts.from || ""));
 
       // type of file being read from
-      const type = (opts.type || extname(from).slice(1)).toLowerCase();
+      const type = (opts.type || path.extname(from).slice(1)).toLowerCase();
 
       return { type, from };
     })

@@ -147,7 +147,7 @@ export default class Color {
   toString() {
     return color2string(this.color);
   }
-};
+}
 
 /* Blending
 /* ========================================================================== */
