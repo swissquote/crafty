@@ -1,3 +1,3 @@
-test("loads the native TypeScript Vitest config", () => {
-  expect(globalThis.__nativeConfigLoaded).toBe("ts");
+test("ignores the native TypeScript Vitest config", () => {
+  expect(globalThis.__nativeConfigLoaded).toBeUndefined();
 });

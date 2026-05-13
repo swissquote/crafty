@@ -4117,8 +4117,8 @@ __metadata:
   resolution: "@swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest"
   dependencies:
     "@swissquote/crafty": "npm:1.28.1"
-    vite: "npm:8.0.8"
     vitest: "npm:4.1.5"
+    vitest-sonar-reporter: "npm:3.0.0"
   languageName: unknown
   linkType: soft
 
@@ -14511,7 +14511,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:8.0.8, vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0":
+"vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0":
   version: 8.0.8
   resolution: "vite@npm:8.0.8"
   dependencies:
@@ -14565,6 +14565,15 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/63474b399612ccf087d0aa025d7eb5c0d675012b6257b7f64332ff39579d4af4d5d7f0ac330906fc99b101abbf592c756adf143bb5748a02aec08f7d3639054d
+  languageName: node
+  linkType: hard
+
+"vitest-sonar-reporter@npm:3.0.0":
+  version: 3.0.0
+  resolution: "vitest-sonar-reporter@npm:3.0.0"
+  peerDependencies:
+    vitest: ">=3"
+  checksum: 10c0/1640314207c89b1154e5ffdb7cb23382bc13c849f734bdf3dbbcf741c5d779d09e50a05a50315cbe66c3c71af16bf90c86cbb0e98cb6b1002a281d5b6caa9d31
   languageName: node
   linkType: hard
 

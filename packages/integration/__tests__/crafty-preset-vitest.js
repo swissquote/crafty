@@ -33,6 +33,35 @@ test("Succeeds without transpiling, selects test", async () => {
   expect(result.stdall.includes("src/__tests__/math-advanced.js")).toBeTruthy();
 });
 
+test("Shows help without running tests", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "reports"]
+  );
+
+  const result = await testUtils.run(["test", "--help"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(result.stdall.includes("Usage:")).toBeTruthy();
+  expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeFalsy();
+});
+
+test("Shows configuration without running tests", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "reports"]
+  );
+
+  const result = await testUtils.run(["test", "--showConfig"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(result.stdall.includes("include:")).toBeTruthy();
+  expect(result.stdall.includes("reporters:")).toBeTruthy();
+  expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeFalsy();
+});
+
 test("Fails when a Vitest suite fails", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-vitest/fails");
 
@@ -104,12 +133,24 @@ test("Resolves modules from nested custom module directories through the preset 
   ).toBeTruthy();
 });
 
+test("Installs custom module directory resolution before user setup files", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/hook-module-directories-setup-file"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(result.stdall.includes("src/__tests__/setup-file.js")).toBeTruthy();
+});
+
 test("Does not install custom module directory resolution while materializing config", () => {
   const root = fs.mkdtempSync(
     path.join(os.tmpdir(), "crafty-vitest-materialize-")
   );
   const project = path.join(root, "project");
   const importer = path.join(project, "src", "__tests__", "sample.js");
+  const setupFile = path.join(project, "src", "setup.js");
   const customModule = path.join(
     project,
     "src",
@@ -123,24 +164,29 @@ test("Does not install custom module directory resolution while materializing co
   fs.mkdirSync(path.dirname(importer), { recursive: true });
   fs.mkdirSync(path.dirname(customModule), { recursive: true });
   fs.writeFileSync(importer, "// test file\n");
+  fs.writeFileSync(setupFile, 'module.exports = require("shared-value");\n');
   fs.writeFileSync(customModule, 'module.exports = "ok";\n');
 
   try {
     expect(() => requireFromImporter.resolve("shared-value")).toThrow();
 
     const options = materializeVitestOptions({
-      test: {},
+      test: {
+        setupFiles: [setupFile]
+      },
       craftyModuleResolution: {
         moduleDirectories: ["node_modules", "test_modules"],
         moduleFileExtensions: ["js"]
       }
     });
 
-    expect(options.test.setupFiles).toContain(
-      requireModule.resolve(
-        "@swissquote/crafty-preset-vitest/src/module-directories-setup.js"
-      )
+    const moduleDirectoriesSetupFile = requireModule.resolve(
+      "@swissquote/crafty-preset-vitest/src/module-directories-setup.js"
     );
+
+    expect(options.test.setupFiles).toContain(moduleDirectoriesSetupFile);
+    expect(options.test.setupFiles[0]).toBe(moduleDirectoriesSetupFile);
+    expect(options.test.setupFiles[1]).toBe(setupFile);
     expect(() => requireFromImporter.resolve("shared-value")).toThrow();
   } finally {
     if (originalModuleResolution === undefined) {
@@ -153,7 +199,7 @@ test("Does not install custom module directory resolution while materializing co
   }
 });
 
-test("Loads native JavaScript Vitest config", async () => {
+test("Ignores native JavaScript Vitest config", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/native-config-js"
   );
@@ -164,28 +210,37 @@ test("Loads native JavaScript Vitest config", async () => {
   expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
 });
 
-test("Creates IDE Integration files next to native JavaScript Vitest config", async () => {
+test("Replaces JavaScript Vitest config with IDE Integration files", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/native-config-js",
     ["vitest.config.crafty.mjs", ".vscode", ".gitignore"]
   );
 
+  fs.writeFileSync(
+    path.join(cwd, "vitest.config.js"),
+    `module.exports = {
+  test: {
+    setupFiles: ["./src/native-setup.js"]
+  }
+};
+`
+  );
+
+  expect(testUtils.exists(cwd, "vitest.config.js")).toBeTruthy();
+
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(
-    result.stdall.includes("Written vitest.config.crafty.mjs")
-  ).toBeTruthy();
+  expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
   expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "vitest.config.crafty.mjs")
-  ).toMatchSnapshot();
+  expect(testUtils.exists(cwd, "vitest.config.js")).toBeFalsy();
+  expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, ".vscode/settings.json")
   ).toMatchSnapshot();
 });
 
-test("Loads native TypeScript Vitest config", async () => {
+test("Ignores native TypeScript Vitest config", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/native-config-ts"
   );
@@ -196,7 +251,7 @@ test("Loads native TypeScript Vitest config", async () => {
   expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
 });
 
-test("Loads function-based Vitest config", async () => {
+test("Ignores function-based Vitest config", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/native-config-function"
   );
@@ -207,23 +262,41 @@ test("Loads function-based Vitest config", async () => {
   expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
 });
 
-test("Creates IDE Integration files next to native mjs Vitest config", async () => {
+test("Replaces legacy Vitest IDE config files", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/native-config-function",
-    ["vitest.config.crafty.mjs", ".vscode", ".gitignore"]
+    [".vscode", ".gitignore"]
   );
+
+  fs.writeFileSync(
+    path.join(cwd, "vitest.config.js"),
+    `module.exports = () => ({
+  test: {
+    setupFiles: ["./src/native-setup.js"]
+  }
+});
+`
+  );
+  fs.writeFileSync(
+    path.join(cwd, "vitest.config.crafty.mjs"),
+    `// AUTOGENERATED BY CRAFTY - DO NOT EDIT
+// Legacy Vitest IDE config fixture
+
+export default {};
+`
+  );
+
+  expect(testUtils.exists(cwd, "vitest.config.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "vitest.config.crafty.mjs")).toBeTruthy();
 
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(testUtils.readFile(cwd, "vitest.config.mjs")).toContain("setupFiles");
-  expect(
-    result.stdall.includes("Written vitest.config.crafty.mjs")
-  ).toBeTruthy();
+  expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
   expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "vitest.config.crafty.mjs")
-  ).toMatchSnapshot();
+  expect(testUtils.exists(cwd, "vitest.config.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, "vitest.config.crafty.mjs")).toBeFalsy();
+  expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, ".vscode/settings.json")
   ).toMatchSnapshot();
@@ -295,13 +368,9 @@ test("Creates IDE Integration files", async () => {
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(
-    result.stdall.includes("Written vitest.config.crafty.mjs")
-  ).toBeTruthy();
+  expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
   expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
-  expect(
-    testUtils.readForSnapshot(cwd, "vitest.config.crafty.mjs")
-  ).toMatchSnapshot();
+  expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
   expect(
     testUtils.readForSnapshot(cwd, ".vscode/settings.json")
   ).toMatchSnapshot();
@@ -324,6 +393,6 @@ test("Merges IDE settings into existing commented VS Code settings", async () =>
     '"editor.tabSize": 2'
   );
   expect(testUtils.readFile(cwd, ".vscode/settings.json")).toContain(
-    '"vitest.rootConfig": "vitest.config.crafty.mjs"'
+    '"vitest.rootConfig": "vitest.config.mjs"'
   );
 });

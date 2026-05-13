@@ -29,14 +29,14 @@ Crafty provides a preset that will run [Vitest](https://vitest.dev/) once
 `crafty test` is executed.
 
 It adds safe defaults to be able to run your tests with your configuration,
-supports native `vitest.config.*` files, and provides an extension hook that
-allows you and other presets to extend its configuration.
+owns the generated Vitest config used by Crafty and your IDE, and provides an
+extension hook that allows you and other presets to extend its configuration.
 
 Vitest is a Node-based runner. Unless you set another environment, the tests
 run in a Node environment and not in a real browser.
 
-If you need another environment, you can override it in your native
-`vitest.config.*` file or in the `vitest(...)` hook.
+If you need another environment, you can override it in the `vitest(...)`
+hook.
 
 We recommend that you use a separate tool for browser end-to-end tests if you
 need them.
@@ -90,7 +90,8 @@ The Vitest preset also provides extra options:
 - `--moduleFileExtensions <ext[,ext...]>`: adds file extensions to module
   resolution and test discovery.
 - `--reporters <name[,name...]>`: configures Vitest reporters. The special
-  value `sonar` maps to Crafty's SonarQube reporter.
+  value `sonar` maps to `vitest-sonar-reporter` with Crafty's default output
+  path.
 
 You can pass a comma-separated list or repeat the option.
 
@@ -141,24 +142,19 @@ report.
 Vitest supports snapshot testing for values, rendered components, and more.
 [Read more about snapshot testing.](https://vitest.dev/guide/snapshot.html)
 
-## Native Vitest configuration
+## Vitest configuration ownership
 
-Crafty can load a native Vitest configuration file from the project root. The
-following filenames are supported:
+Crafty owns the Vitest configuration it runs.
 
-- `vitest.config.mjs`
-- `vitest.config.js`
-- `vitest.config.cjs`
-- `vitest.config.mts`
-- `vitest.config.ts`
-- `vitest.config.cts`
+- `crafty test` computes the Vitest config from Crafty state and ignores
+  official `vitest.config.*` files.
+- `crafty ide` writes the IDE-facing `vitest.config.mjs` file and removes
+  alternative filenames such as `vitest.config.js`, `vitest.config.cjs`,
+  `vitest.config.mts`, `vitest.config.ts`, `vitest.config.cts`, and the legacy
+  `vitest.config.crafty.mjs`.
 
-When one of these files exists, Crafty loads it through Vite and merges it with
-the configuration generated from Crafty and all loaded presets.
-
-The merge order is native config first, Crafty-generated config second. This
-means that Crafty's defaults and preset hook contributions still apply on the
-`crafty test` path.
+If you need to change Vitest behavior, use the `vitest(crafty, options,
+context)` hook rather than maintaining a separate `vitest.config.*` file.
 
 ## Extending the configuration
 
@@ -221,7 +217,7 @@ returns a Vite plugin. If you attach non-serializable values directly to
 
 ## `crafty ide`
 
-Running `crafty ide` generates a `vitest.config.crafty.mjs` file and updates
+Running `crafty ide` generates a `vitest.config.mjs` file and updates
 `.vscode/settings.json` so your IDE can point to the Crafty-generated Vitest
 configuration.
 
@@ -230,14 +226,14 @@ configuration.
 ## SonarQube Integration
 
 Most of the time, at Swissquote, we use SonarQube to check our code quality.
-More often than not, we add a custom reporter to create a SonarQube test
-report.
+More often than not, we add a reporter to create a SonarQube test report.
 
 `crafty-preset-vitest` comes out of the box with a sonar report that is written
 to `reports/sonar-report.xml`.
 
 This report is automatically added to the configuration if no reporter is
-specified through the command line.
+specified through the command line. The `sonar` alias is normalized to
+`vitest-sonar-reporter` with that default output path.
 
 You can decide to change this configuration by overriding
 `options.test.reporters`

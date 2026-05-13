@@ -1,0 +1,1 @@
+globalThis.__setupSharedValue = require("shared-value");

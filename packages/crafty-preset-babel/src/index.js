@@ -1,5 +1,4 @@
 const path = require("node:path");
-const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
 
 const MODULES = path.join(__dirname, "..", "node_modules");
 
@@ -14,6 +13,8 @@ module.exports = {
     };
   },
   jest(crafty, options) {
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
     options.moduleDirectories.push(MODULES);
     options.transform["\\.(js|jsx)$"] = require.resolve("./jest-transformer");
     options.moduleFileExtensions.push("jsx");
@@ -28,6 +29,8 @@ module.exports = {
     );
   },
   vitest(crafty, options, context) {
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
     context.moduleDirectories.push(MODULES);
     context.moduleFileExtensions.push("jsx");
     context.runtimePlugins.push({
