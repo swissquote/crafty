@@ -16,8 +16,7 @@ that your editor should use.
 `crafty ide`, Crafty takes ownership of the IDE-facing config by writing
 `vitest.config.mjs` and removing alternative filenames such as
 `vitest.config.js`, `vitest.config.cjs`, `vitest.config.mts`,
-`vitest.config.ts`, `vitest.config.cts`, and the legacy
-`vitest.config.crafty.mjs`.
+`vitest.config.ts`, and `vitest.config.cts`.
 
 If `.vscode/settings.json` already exists, Crafty merges the
 `vitest.rootConfig` setting into it instead of replacing it.

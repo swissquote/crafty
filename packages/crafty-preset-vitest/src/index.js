@@ -12,7 +12,6 @@ const {
 const RUNNER_BIN = path.join(__dirname, "run.js");
 const IDE_CONFIG_FILE = "vitest.config.mjs";
 const IDE_CONFIG_ALTERNATIVE_FILES = [
-  "vitest.config.crafty.mjs",
   "vitest.config.js",
   "vitest.config.cjs",
   "vitest.config.mts",
