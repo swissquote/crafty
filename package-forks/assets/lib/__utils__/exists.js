@@ -1,8 +1,8 @@
-const fs = require("node:fs");
+import fs from "node:fs";
 
-module.exports = async function exists(filePath) {
+export default async function exists(filePath) {
   return fs.promises.stat(filePath).then(
     () => true,
     () => false
   );
-};
+}

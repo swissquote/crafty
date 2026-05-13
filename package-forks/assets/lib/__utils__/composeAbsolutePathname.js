@@ -1,9 +1,9 @@
-const convertPathToUrl = require("./convertPathToUrl");
-const ensureTrailingSlash = require("./ensureTrailingSlash");
-const path = require("node:path");
-const url = require("node:url");
+import convertPathToUrl from "./convertPathToUrl.js";
+import ensureTrailingSlash from "./ensureTrailingSlash.js";
+import path from "node:path";
+import url from "node:url";
 
-module.exports = function composeAbsolutePathname(
+export default function composeAbsolutePathname(
   baseUrl,
   basePath,
   resolvedPath
@@ -20,4 +20,4 @@ module.exports = function composeAbsolutePathname(
   }
 
   return withTrailingSlash;
-};
+}

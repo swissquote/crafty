@@ -1,7 +1,7 @@
-const convertPathToUrl = require("./convertPathToUrl");
-const path = require("node:path");
+import convertPathToUrl from "./convertPathToUrl.js";
+import path from "node:path";
 
-module.exports = function composeRelativePathname(
+export default function composeRelativePathname(
   basePath,
   relativeTo,
   resolvedPath
@@ -9,4 +9,4 @@ module.exports = function composeRelativePathname(
   const from = path.resolve(basePath, relativeTo);
   const relativePath = path.relative(from, resolvedPath);
   return convertPathToUrl(relativePath);
-};
+}
