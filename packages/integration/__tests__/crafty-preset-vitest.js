@@ -133,7 +133,7 @@ test("Resolves modules from nested custom module directories through the preset 
   ).toBeTruthy();
 });
 
-test("Installs custom module directory resolution before user setup files", async () => {
+test("Resolves CommonJS setup-file requires through the preset hook", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/hook-module-directories-setup-file"
   );
