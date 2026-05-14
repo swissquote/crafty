@@ -31,7 +31,8 @@ function normalizeSonarPath(filePath) {
 
 function createSonarReportedFilePathMapper(reportedFilePath) {
   if (reportedFilePath === "absolute") {
-    return filePath => normalizeSonarPath(path.resolve(process.cwd(), filePath));
+    return filePath =>
+      normalizeSonarPath(path.resolve(process.cwd(), filePath));
   }
 
   return filePath => normalizeSonarPath(filePath);
@@ -89,6 +90,15 @@ function finalizeReporters(reporters) {
   });
 }
 
+function isPlainObject(value) {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+
 function materializeSonarReporterConfig(config) {
   if (!Array.isArray(config.test?.reporters)) {
     return config;
@@ -111,10 +121,13 @@ function materializeSonarReporterConfig(config) {
       return reporter;
     }
 
-    return [name, {
-      ...remainingOptions,
-      onWritePath: createSonarReportedFilePathMapper(reportedFilePath)
-    }];
+    return [
+      name,
+      {
+        ...remainingOptions,
+        onWritePath: createSonarReportedFilePathMapper(reportedFilePath)
+      }
+    ];
   });
 
   return config;
@@ -295,15 +308,6 @@ function createRegExpDescriptor(value) {
     source: value.source,
     flags: value.flags
   };
-}
-
-function isPlainObject(value) {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-
-  const prototype = Object.getPrototypeOf(value);
-  return prototype === Object.prototype || prototype === null;
 }
 
 function serializeVitestValue(value, pathLabel) {

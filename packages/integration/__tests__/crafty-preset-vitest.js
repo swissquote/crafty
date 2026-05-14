@@ -237,11 +237,16 @@ test("Rejects raw Sonar reporter callbacks with a clear error", () => {
   const crafty = {
     config: { destination: "dist" },
     runAllSync(name, self, options) {
-      options.test.reporters = [["sonar", {
-        onWritePath(filePath) {
-          return filePath;
-        }
-      }]];
+      options.test.reporters = [
+        [
+          "sonar",
+          {
+            onWritePath(filePath) {
+              return filePath;
+            }
+          }
+        ]
+      ];
     }
   };
 
@@ -252,9 +257,7 @@ test("Rejects raw Sonar reporter callbacks with a clear error", () => {
       moduleFileExtensions: ["js", "json", "mjs", "cjs"],
       reporters: []
     })
-  ).toThrow(
-    /does not support vitest-sonar-reporter's onWritePath option/
-  );
+  ).toThrow(/does not support vitest-sonar-reporter's onWritePath option/);
 });
 
 test("Resolves modules from custom module directories through the preset hook", async () => {
