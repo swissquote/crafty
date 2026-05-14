@@ -6,9 +6,13 @@ import { test, expect } from "vitest";
 import * as testUtils from "../utils.js";
 
 const requireModule = createRequire(import.meta.url);
-const { materializeVitestOptions } = requireModule(
+const { materializeVitestOptions, normalizeVitestOptions } = requireModule(
   "@swissquote/crafty-preset-vitest"
 );
+
+function toSonarPath(cwd, file) {
+  return path.join(cwd, file).replace(/\\/g, "/");
+}
 
 test("Succeeds without transpiling", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-vitest/succeeds");
@@ -36,7 +40,7 @@ test("Succeeds without transpiling, selects test", async () => {
 test("Shows help without running tests", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/succeeds",
-    ["dist", "reports"]
+    ["dist", "coverage", "reports"]
   );
 
   const result = await testUtils.run(["test", "--help"], cwd);
@@ -44,13 +48,13 @@ test("Shows help without running tests", async () => {
   expect(result.status).toBe(0);
   expect(result.stdall.includes("Usage:")).toBeTruthy();
   expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeFalsy();
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
 });
 
 test("Shows configuration without running tests", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/succeeds",
-    ["dist", "reports"]
+    ["dist", "coverage", "reports"]
   );
 
   const result = await testUtils.run(["test", "--showConfig"], cwd);
@@ -59,7 +63,55 @@ test("Shows configuration without running tests", async () => {
   expect(result.stdall.includes("include:")).toBeTruthy();
   expect(result.stdall.includes("reporters:")).toBeTruthy();
   expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeFalsy();
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
+});
+
+test("Shows coverage configuration with the built-in V8 provider", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "coverage", "reports"]
+  );
+
+  const result = await testUtils.run(
+    ["test", "--coverage", "--showConfig"],
+    cwd
+  );
+
+  expect(result.status).toBe(0);
+  expect(result.stdall.includes("provider: 'v8'")).toBeTruthy();
+  expect(result.stdall.includes("'lcov'")).toBeTruthy();
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
+});
+
+test("Preserves coverage customization from the Vitest hook", () => {
+  const crafty = {
+    config: { destination: "dist" },
+    runAllSync(name, self, options) {
+      options.test.coverage = {
+        reportsDirectory: "./reports/coverage",
+        reporter: ["lcov"],
+        thresholds: {
+          lines: 90
+        }
+      };
+    }
+  };
+
+  const options = normalizeVitestOptions(crafty, {
+    runnerArgs: [],
+    moduleDirectories: ["node_modules"],
+    moduleFileExtensions: ["js", "json", "mjs", "cjs"],
+    reporters: []
+  });
+
+  expect(options.test.coverage).toMatchObject({
+    provider: "v8",
+    reportsDirectory: "./reports/coverage",
+    reporter: ["lcov"],
+    thresholds: {
+      lines: 90
+    }
+  });
 });
 
 test("Fails when a Vitest suite fails", async () => {
@@ -92,18 +144,116 @@ test("Succeeds with Crafty-only CLI flags stripped from the Vitest argv", async 
 test("Supports the Crafty sonar reporter alias with Vitest", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/succeeds",
-    ["dist", "reports"]
+    ["dist", "coverage", "reports"]
   );
 
   const result = await testUtils.run(["test", "--reporters", "sonar"], cwd);
 
   expect(result.status).toBe(0);
-  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeTruthy();
-  expect(testUtils.readFile(cwd, "reports/sonar-report.xml")).toContain(
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
     '<testExecutions version="1">'
   );
-  expect(testUtils.readFile(cwd, "reports/sonar-report.xml")).toContain(
+  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
     '<file path="src/__tests__/math.js">'
+  );
+});
+
+test("Supports the raw Vitest Sonar reporter name with Crafty defaults", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "coverage", "reports"]
+  );
+
+  const result = await testUtils.run(
+    ["test", "--reporters", "vitest-sonar-reporter"],
+    cwd
+  );
+
+  expect(result.status).toBe(0);
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+    '<file path="src/__tests__/math.js">'
+  );
+});
+
+test("Produces Sonar test execution and LCOV coverage artifacts with --coverage", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "coverage", "reports"]
+  );
+
+  const result = await testUtils.run(["test", "--coverage"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+    '<testExecutions version="1">'
+  );
+  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+    '<file path="src/__tests__/math.js">'
+  );
+  expect(testUtils.exists(cwd, "coverage/lcov.info")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/lcov.info")).toContain("SF:");
+});
+
+test("Supports absolute Sonar file paths through the Crafty option", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "coverage", "reports"]
+  );
+  const configFile = path.join(cwd, "crafty.config.js");
+  const originalConfig = fs.readFileSync(configFile, "utf8");
+  const expectedPath = toSonarPath(cwd, "src/__tests__/math.js");
+
+  try {
+    fs.writeFileSync(
+      configFile,
+      `module.exports = {
+  presets: ["@swissquote/crafty-preset-vitest"],
+  vitest(crafty, options) {
+    options.test.reporters = [
+      "default",
+      ["sonar", { reportedFilePath: "absolute" }]
+    ];
+  }
+};
+`
+    );
+
+    const result = await testUtils.run(["test"], cwd);
+
+    expect(result.status).toBe(0);
+    expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
+    expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+      `<file path="${expectedPath}">`
+    );
+  } finally {
+    fs.writeFileSync(configFile, originalConfig);
+  }
+});
+
+test("Rejects raw Sonar reporter callbacks with a clear error", () => {
+  const crafty = {
+    config: { destination: "dist" },
+    runAllSync(name, self, options) {
+      options.test.reporters = [["sonar", {
+        onWritePath(filePath) {
+          return filePath;
+        }
+      }]];
+    }
+  };
+
+  expect(() =>
+    normalizeVitestOptions(crafty, {
+      runnerArgs: [],
+      moduleDirectories: ["node_modules"],
+      moduleFileExtensions: ["js", "json", "mjs", "cjs"],
+      reporters: []
+    })
+  ).toThrow(
+    /does not support vitest-sonar-reporter's onWritePath option/
   );
 });
 
@@ -133,7 +283,7 @@ test("Resolves modules from nested custom module directories through the preset 
   ).toBeTruthy();
 });
 
-test("Resolves CommonJS setup-file requires through the preset hook", async () => {
+test("Installs custom module directory resolution before user setup files", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/hook-module-directories-setup-file"
   );

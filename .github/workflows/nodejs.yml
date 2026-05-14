@@ -128,6 +128,8 @@ jobs:
         path: |
           **/coverage/lcov.info
           **/coverage/sonar-report.xml
+          **/coverage/test-report.xml
+          **/reports/sonar-report.xml
           !node_modules/**
 
   # ─── Job: uploads coverage using secrets, does NOT run PR code ─────────
@@ -157,7 +159,7 @@ jobs:
     - name: 🔎 Collect Sonar report paths
       id: sonar_reports
       run: |
-        echo "test_reports=$(find __reports -name "sonar-report.xml" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+        echo "test_reports=$(find __reports \( -path "*/coverage/sonar-report.xml" -o -path "*/coverage/test-report.xml" -o -path "*/reports/sonar-report.xml" \) | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
         echo "project_version=$(git tag -l --sort=-creatordate --format='%(refname:short)' | head -n1)" >> $GITHUB_OUTPUT
     - name: 🔬 SonarCloud Scan
       uses: SonarSource/sonarqube-scan-action@v8
