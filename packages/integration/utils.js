@@ -22,6 +22,7 @@ export function snapshotizeOutput(ret) {
     .replace(/LOG .*\n(?:<[wie]>.*\n)+\+.*\n/gm, "") // Remove profiling logs from webpack
     .replace(/(?: {4}at .*\n)* {4}at .*/gm, "    ...stacktrace...") // Remove stacktraces
     .replace(/\(node:[0-9]*\)/gm, "(node:11111)")
+    .replace(/Rsdoctor v[0-9.]+/gm, "Rsdoctor vx.x.x")
     .replace(
       /\n\(node:11111\).*?DeprecationWarning: Buffer\(\).*?instead.$/gm,
       ""

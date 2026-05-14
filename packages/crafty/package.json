@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty",
-  "version": "1.28.1",
+  "version": "1.29.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.28.1",
+    "@swissquote/crafty-commons": "1.29.0",
     "jsonc-parser": "3.3.1"
   },
   "optionalDependencies": {

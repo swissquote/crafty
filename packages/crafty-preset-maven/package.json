@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-maven",
-  "version": "1.28.1",
+  "version": "1.29.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -17,10 +17,10 @@
     "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.28.1"
+    "@swissquote/crafty-commons": "1.29.0"
   },
   "devDependencies": {
-    "fast-xml-parser": "5.7.2"
+    "fast-xml-parser": "5.8.0"
   },
   "engines": {
     "node": ">=22.12"

@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-vitest",
-  "version": "1.28.1",
+  "version": "1.29.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.28.1",
+    "@swissquote/crafty": "1.29.0",
     "vitest": "4.1.5",
     "vitest-sonar-reporter": "3.0.0"
   },
