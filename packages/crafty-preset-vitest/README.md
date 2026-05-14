@@ -91,7 +91,7 @@ The Vitest preset also provides extra options:
   resolution and test discovery.
 - `--reporters <name[,name...]>`: configures Vitest reporters. The special
   value `sonar` maps to `vitest-sonar-reporter` with Crafty's default output
-  path.
+  path and relative Sonar file paths by default.
 
 You can pass a comma-separated list or repeat the option.
 
@@ -101,9 +101,8 @@ To create tests, add `it()` (or `test()`) blocks with the name of the test and
 its code. You may optionally wrap them in `describe()` blocks for logical
 grouping but this is neither required nor recommended.
 
-Vitest's own defaults require importing `test()` and `expect()` explicitly.
-Crafty enables Vitest's `globals` option for you, so these APIs are available
-globally in tests created with this preset. A basic test could look like this:
+Crafty enables Vitest's `test()` and `expect()` globals for you. A basic test
+could look like this:
 
 ```js
 import sum from "./sum";
@@ -125,18 +124,28 @@ want to run a single test in isolation.
 
 ## Coverage Reporting
 
-Vitest can generate a coverage report. To do so, first add a coverage provider
-such as `@vitest/coverage-v8`.
-
-```sh
-npm install --save-dev @vitest/coverage-v8
-```
+`crafty-preset-vitest` ships with V8 coverage support out of the box.
 
 Tests run slower with coverage enabled, so we recommend running it separately
 from your normal watch workflow.
 
-Once installed, run `crafty test --coverage` to include a coverage
-report.
+Run `crafty test --coverage` to include a coverage
+report. Crafty keeps Vitest coverage output under `coverage/` and includes
+`coverage/lcov.info` by default so SonarQube and similar tools can ingest it.
+
+If you need to customize Crafty's coverage settings, assign
+`options.test.coverage` through the `vitest(crafty, options, context)` hook.
+
+```javascript
+module.exports = {
+  vitest(crafty, options) {
+    options.test.coverage = {
+      reportsDirectory: "./reports/coverage",
+      reporter: ["lcov"],
+    };
+  },
+};
+```
 
 ## Snapshot Testing
 
@@ -186,6 +195,11 @@ module.exports = {
 Because Crafty computes the configuration before starting Vitest, `options`
 must stay serializable.
 
+Reporter callbacks such as `vitest-sonar-reporter`'s `onWritePath` option are
+not supported through this hook. For Sonar path control, use
+`reportedFilePath: "absolute"` or `reportedFilePath: "relative"` on the Sonar
+reporter config.
+
 Use `context.moduleDirectories` and `context.moduleFileExtensions` to extend
 module resolution and test discovery.
 
@@ -229,11 +243,20 @@ Most of the time, at Swissquote, we use SonarQube to check our code quality.
 More often than not, we add a reporter to create a SonarQube test report.
 
 `crafty-preset-vitest` comes out of the box with a sonar report that is written
-to `reports/sonar-report.xml`.
+to `coverage/test-report.xml`.
 
 This report is automatically added to the configuration if no reporter is
-specified through the command line. The `sonar` alias is normalized to
-`vitest-sonar-reporter` with that default output path.
+specified through the command line. The `sonar` alias, and the raw
+`vitest-sonar-reporter` name, are normalized to that default output path with
+relative file paths by default. This keeps the XML portable across local runs
+and multi-platform CI.
+
+When coverage is enabled through `crafty test --coverage`, Crafty also keeps
+Vitest coverage artifacts under `coverage/` and includes `coverage/lcov.info`
+by default.
+
+If your Sonar setup requires absolute file paths, set
+`reportedFilePath: "absolute"` on the Sonar reporter config.
 
 You can decide to change this configuration by overriding
 `options.test.reporters`
@@ -247,7 +270,7 @@ module.exports = {
    */
   vitest(crafty, options) {
     // The Sonar reporter is automatically added
-    console.log(options.test.reporters); // ['default', ["sonar", { outputFile: "./reports/sonar-report.xml" }]]
+    console.log(options.test.reporters); // ['default', ["sonar", { outputFile: "./coverage/test-report.xml", reportedFilePath: "relative" }]]
   },
 };
 ```
