@@ -1,7 +1,7 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
 
-const resolveSize = require("../lib/size");
+import resolveSize from "../lib/size.js";
 
 test("w/o options", async () => {
   const size = await resolveSize("test/fixtures/duplicate-1.jpg");

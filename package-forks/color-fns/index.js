@@ -20,7 +20,7 @@ function hsl2hsv(h, s, l) {
   ];
 }
 
-function hsl2hwb(h, saturation, l) {
+export function hsl2hwb(h, saturation, l) {
   const [, s, v] = hsl2hsv(h, saturation, l);
 
   return [h, (v * (100 - s)) / 100, 100 - v];
@@ -56,11 +56,11 @@ function hsv2hsl(h, s, v) {
   ];
 }
 
-function hwb2hsl(h, w, b) {
+export function hwb2hsl(h, w, b) {
   return hsv2hsl(...hwb2hsv(h, w, b));
 }
 
-function rgb2hsl(r, g, b, fallbackhue) {
+export function rgb2hsl(r, g, b, fallbackhue) {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   let [h, s, l] = [Number.NaN, 0, (min + max) / 2];
@@ -86,7 +86,7 @@ function rgb2hsl(r, g, b, fallbackhue) {
   return [h || fallbackhue, s * 100, l * 100];
 }
 
-function rgb2hwb(r, g, b, fallbackhue) {
+export function rgb2hwb(r, g, b, fallbackhue) {
   const hsl = rgb2hsl(r, g, b, fallbackhue);
   const h = hsl[0];
   // calculate white and black
@@ -95,7 +95,7 @@ function rgb2hwb(r, g, b, fallbackhue) {
   return [h, whiteness * 100, blackness * 100];
 }
 
-function hsl2rgb(h, s, l) {
+export function hsl2rgb(h, s, l) {
   h = h % 360;
 
   if (h < 0) {
@@ -114,7 +114,7 @@ function hsl2rgb(h, s, l) {
   return [f(0), f(8), f(4)].map(v => v * 100);
 }
 
-function hwb2rgb(h, w, b) {
+export function hwb2rgb(h, w, b) {
   // Now convert percentages to [0..1]
   w /= 100;
   b /= 100;
@@ -133,12 +133,3 @@ function hwb2rgb(h, w, b) {
       return (v * (1 - w - b) + w) * 100;
     });
 }
-
-module.exports = {
-  rgb2hsl,
-  rgb2hwb,
-  hsl2rgb,
-  hsl2hwb,
-  hwb2rgb,
-  hwb2hsl
-};

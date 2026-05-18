@@ -1,16 +1,20 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
-const fs = require("node:fs");
+import { test } from "node:test";
+import { expect } from "expect";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 
-const postcss = require("postcss");
-const plugin = require("..");
+import postcss from "postcss";
+import plugin from "../index.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function filename(name) {
   return __dirname + "/" + name + ".css";
 }
 
 function read(name) {
-  return fs.readFileSync(name, "utf8");
+  return readFileSync(name, "utf8");
 }
 
 function compareFixtures(name, msg, opts, postcssOpts) {

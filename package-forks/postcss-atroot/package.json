@@ -2,7 +2,11 @@
   "name": "@swissquote/postcss-atroot",
   "version": "1.29.0",
   "description": "PostCSS plugin to place rules directly at the root",
+  "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OEvgeny/postcss-atroot.git"

@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-const fs = require("node:fs");
-const path = require("node:path");
-const { parse: postcssParse } = require("postcss");
-const { parse } = require("postcss-values-parser");
-const getCustomPropertiesFromRoot = require("./get-custom-properties-from-root");
+import fs from "node:fs";
+import path from "node:path";
+import { parse as postcssParse } from "postcss";
+import { parse } from "postcss-values-parser";
+import getCustomPropertiesFromRoot from "./get-custom-properties-from-root.js";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -49,15 +49,15 @@ async function getCustomPropertiesFromJSONFile(from) {
 /* ========================================================================== */
 
 async function getCustomPropertiesFromJSFile(from) {
-  const object = require(from);
+  const object = await import(from);
 
-  return getCustomPropertiesFromObject(object);
+  return getCustomPropertiesFromObject(object.default || object);
 }
 
 /* Get Custom Properties from Imports
 /* ========================================================================== */
 
-module.exports = function getCustomPropertiesFromImports(sources) {
+export default function getCustomPropertiesFromImports(sources) {
   return sources
     .map(source => {
       if (source instanceof Promise) {
@@ -112,7 +112,7 @@ module.exports = function getCustomPropertiesFromImports(sources) {
         await getCustomPropertiesFromObject(await source)
       );
     }, {});
-};
+}
 
 /* Helper utilities
 /* ========================================================================== */

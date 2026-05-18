@@ -217,7 +217,7 @@ function convertHtoRGB(hex) {
   return undefined;
 }
 
-module.exports = {
+export {
   convertHtoRGB,
   convertNtoRGB,
   convertTtoD,

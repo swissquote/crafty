@@ -1,8 +1,8 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const postcss = require("postcss");
-const getCustomProperties = require("./get-custom-properties");
-const { parse } = require("postcss-values-parser");
+import fs from "node:fs";
+import path from "node:path";
+import postcss from "postcss";
+import getCustomProperties from "./get-custom-properties.js";
+import { parse } from "postcss-values-parser";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -70,15 +70,15 @@ async function importCustomPropertiesFromJSONFile(from) {
 /* ========================================================================== */
 
 async function importCustomPropertiesFromJSFile(from) {
-  const object = require(from);
+  const object = await import(from);
 
-  return importCustomPropertiesFromObject(object);
+  return importCustomPropertiesFromObject(object.default || object);
 }
 
 /* Import Custom Properties from Sources
 /* ========================================================================== */
 
-module.exports = function importCustomPropertiesFromSources(sources) {
+export default function importCustomPropertiesFromSources(sources) {
   return sources
     .map(source => {
       if (source instanceof Promise) {
@@ -140,4 +140,4 @@ module.exports = function importCustomPropertiesFromSources(sources) {
         await importCustomPropertiesFromObject(await source)
       );
     }, {});
-};
+}

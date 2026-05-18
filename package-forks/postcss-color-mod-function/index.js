@@ -1,11 +1,11 @@
-const getCustomProperties = require("./lib/get-custom-properties");
-const importCustomPropertiesFromSources = require("./lib/import-from");
-const { parse } = require("postcss-values-parser");
-const transformAST = require("./lib/transform");
+import getCustomProperties from "./lib/get-custom-properties.js";
+import importCustomPropertiesFromSources from "./lib/import-from.js";
+import { parse } from "postcss-values-parser";
+import transformAST from "./lib/transform.js";
 
 const colorModFunctionMatch = /(^|[^\w-])color(?:-mod)?\(/i;
 
-module.exports = (opts = {}) => {
+const creator = (opts = {}) => {
   // how unresolved functions and arguments should be handled (default: "throw")
   const unresolvedOpt = String(
     Object(opts).unresolved || "throw"
@@ -59,4 +59,6 @@ module.exports = (opts = {}) => {
   };
 };
 
-module.exports.postcss = true;
+creator.postcss = true;
+
+export default creator;

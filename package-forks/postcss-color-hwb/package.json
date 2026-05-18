@@ -17,6 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/postcss/postcss-color-hwb.git"
   },
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
   "files": [
     "index.js"
   ],

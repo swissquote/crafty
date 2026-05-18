@@ -1,8 +1,8 @@
-const path = require("node:path");
-const { test } = require("node:test");
-const { expect } = require("expect");
+import path from "node:path";
+import { test } from "node:test";
+import { expect } from "expect";
 
-const resolvePath = require("../lib/path");
+import resolvePath from "../lib/path.js";
 
 test("w/o options", async () => {
   const resolvedPath = await resolvePath("test/fixtures/duplicate-1.jpg");

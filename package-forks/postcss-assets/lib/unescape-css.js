@@ -7,6 +7,6 @@ function unescapeSequence(match, hex, char) {
   return char;
 }
 
-module.exports = function unescapeCss(string) {
+export default function unescapeCss(string) {
   return string.replace(R_ESCAPE, unescapeSequence);
-};
+}

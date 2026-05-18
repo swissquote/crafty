@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	customProperties: {
 		'--color-blue': 'blue',
 		'--color-red': 'red',

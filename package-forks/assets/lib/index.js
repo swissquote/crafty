@@ -1,7 +1,7 @@
-const data = require("./data");
-const path = require("./path");
-const size = require("./size");
-const url = require("./url");
+import data from "./data.js";
+import path from "./path.js";
+import size from "./size.js";
+import url from "./url.js";
 
 function Assets(options) {
   if (!(this instanceof Assets)) {
@@ -23,4 +23,4 @@ Assets.url = url;
   };
 });
 
-module.exports = Assets;
+export default Assets;

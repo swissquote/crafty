@@ -103,4 +103,4 @@ const asClonedNode = (node, parent) => {
   return cloneNode;
 };
 
-module.exports = transformValueAST;
+export default transformValueAST;

@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
-const fs = require("node:fs");
-const path = require("node:path");
+import fs from "node:fs";
+import { extname } from "node:path";
 
 /* Write Custom Properties to CSS File
 /* ========================================================================== */
@@ -91,7 +91,7 @@ async function writeCustomPropertiesToMjsFile(to, customProperties) {
 /* Write Custom Properties to Exports
 /* ========================================================================== */
 
-module.exports = function writeCustomPropertiesToExports(
+export default function writeCustomPropertiesToExports(
   customProperties,
   destinations
 ) {
@@ -120,9 +120,7 @@ module.exports = function writeCustomPropertiesToExports(
           const to = String(opts.to || "");
 
           // type of file being written to
-          const type = (
-            opts.type || path.extname(opts.to).slice(1)
-          ).toLowerCase();
+          const type = (opts.type || extname(opts.to).slice(1)).toLowerCase();
 
           // transformed Custom Properties
           const customPropertiesJSON = toJSON(customProperties);
@@ -150,7 +148,7 @@ module.exports = function writeCustomPropertiesToExports(
       }
     })
   );
-};
+}
 
 /* Helper utilities
 /* ========================================================================== */

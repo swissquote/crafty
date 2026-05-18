@@ -1,9 +1,9 @@
 /**
  * Module dependencies.
  */
-const parser = require("postcss-value-parser");
-const units = require("units-css");
-const { hwb2rgb } = require("@swissquote/color-fns");
+import parser from "postcss-value-parser";
+import units from "units-css";
+import { hwb2rgb } from "@swissquote/color-fns";
 
 function clamp(num, min, max) {
   return Math.min(Math.max(min, num), max);
@@ -84,7 +84,7 @@ function transformHwb(value) {
 /**
  * PostCSS plugin to transform hwb() to rgb()
  */
-module.exports = () => ({
+const plugin = () => ({
   postcssPlugin: "postcss-color-hwb",
   Declaration(decl) {
     /* istanbul ignore if */
@@ -94,5 +94,6 @@ module.exports = () => ({
     decl.value = transformHwb(decl.value);
   }
 });
+plugin.postcss = true;
 
-module.exports.postcss = true;
+export default plugin;

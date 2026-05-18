@@ -15,13 +15,13 @@ const externals = {
   "postcss-selector-parser": "../postcss-selector-parser/index.js",
   "postcss-values-parser": "../postcss-values-parser/index.js",
   "postcss-value-parser": "../postcss-value-parser/index.js",
-  "postcss-values-parser/lib/nodes/Punctuation":
+  "postcss-values-parser/lib/nodes/Punctuation.js":
     "../postcss-values-parser/nodesPunctuation.js",
-  "postcss-values-parser/lib/nodes/Numeric":
+  "postcss-values-parser/lib/nodes/Numeric.js":
     "../postcss-values-parser/nodesNumeric.js",
-  "postcss-values-parser/lib/nodes/Word":
+  "postcss-values-parser/lib/nodes/Word.js":
     "../postcss-values-parser/nodesWord.js",
-  "postcss-values-parser/lib/nodes/Operator":
+  "postcss-values-parser/lib/nodes/Operator.js":
     "../postcss-values-parser/nodesOperator.js"
 };
 

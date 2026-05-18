@@ -1,6 +1,6 @@
-const { parse } = require("postcss-values-parser");
-const Numeric = require("postcss-values-parser/lib/nodes/Numeric");
-const Punctuation = require("postcss-values-parser/lib/nodes/Punctuation");
+import { parse } from "postcss-values-parser";
+import Numeric from "postcss-values-parser/lib/nodes/Numeric.js";
+import Punctuation from "postcss-values-parser/lib/nodes/Punctuation.js";
 
 // https://github.com/antimatter15/rgb-lab/blob/master/color.js#L4
 // based on the pseudocode found on www.easyrgb.com
@@ -93,7 +93,7 @@ const getFunctionGrayArgs = node => {
  * @param {{preserve?: boolean}} opts
  * @returns {import('postcss').Plugin}
  */
-module.exports = function creator(opts) {
+function creator(opts) {
   const preserve = Boolean(Object(opts).preserve);
 
   return {
@@ -157,6 +157,7 @@ module.exports = function creator(opts) {
       }
     }
   };
-};
+}
+creator.postcss = true;
 
-module.exports.postcss = true;
+export default creator;
