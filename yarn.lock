@@ -4242,6 +4242,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swissquote/crafty-preset-vitest@npm:1.29.0, @swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest"
+  dependencies:
+    "@swissquote/crafty": "npm:1.29.0"
+    "@vitest/coverage-v8": "npm:4.1.5"
+    vitest: "npm:4.1.5"
+    vitest-sonar-reporter: "npm:3.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@swissquote/crafty-runner-gulp@npm:1.29.0, @swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-gulp@workspace:packages/crafty-runner-gulp"
@@ -4322,6 +4333,7 @@ __metadata:
     expect: "npm:30.3.0"
     fsevents: "npm:~2.3.3"
     is-negated-glob: "npm:1.0.0"
+    jsonc-parser: "npm:3.3.1"
     just-debounce: "npm:1.1.0"
     loud-rejection: "npm:2.2.0"
     merge-anything: "npm:6.0.6"
@@ -9540,8 +9552,10 @@ __metadata:
     "@swissquote/crafty-preset-maven": "npm:1.29.0"
     "@swissquote/crafty-preset-postcss": "npm:1.29.0"
     "@swissquote/crafty-preset-prettier": "npm:1.29.0"
+    "@swissquote/crafty-preset-react": "npm:1.29.0"
     "@swissquote/crafty-preset-swc": "npm:1.29.0"
     "@swissquote/crafty-preset-typescript": "npm:1.29.0"
+    "@swissquote/crafty-preset-vitest": "npm:1.29.0"
     "@swissquote/crafty-runner-gulp": "npm:1.29.0"
     "@swissquote/crafty-runner-webpack": "npm:1.29.0"
     "@swissquote/random-cjs": "npm:1.29.0"
@@ -10590,7 +10604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.2.0":
+"jsonc-parser@npm:3.3.1, jsonc-parser@npm:^3.2.0":
   version: 3.3.1
   resolution: "jsonc-parser@npm:3.3.1"
   checksum: 10c0/269c3ae0a0e4f907a914bf334306c384aabb9929bd8c99f909275ebd5c2d3bc70b9bcd119ad794f339dec9f24b6a4ee9cd5a8ab2e6435e730ad4075388fc2ab6
@@ -14677,6 +14691,15 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/63474b399612ccf087d0aa025d7eb5c0d675012b6257b7f64332ff39579d4af4d5d7f0ac330906fc99b101abbf592c756adf143bb5748a02aec08f7d3639054d
+  languageName: node
+  linkType: hard
+
+"vitest-sonar-reporter@npm:3.0.0":
+  version: 3.0.0
+  resolution: "vitest-sonar-reporter@npm:3.0.0"
+  peerDependencies:
+    vitest: ">=3"
+  checksum: 10c0/1640314207c89b1154e5ffdb7cb23382bc13c849f734bdf3dbbcf741c5d779d09e50a05a50315cbe66c3c71af16bf90c86cbb0e98cb6b1002a281d5b6caa9d31
   languageName: node
   linkType: hard
 

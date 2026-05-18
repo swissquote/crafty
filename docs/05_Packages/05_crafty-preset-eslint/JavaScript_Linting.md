@@ -95,7 +95,7 @@ Add that to your `crafty.config.js`.
 
 ```javascript
 // Import the plugin you wish to use
-import depend from 'eslint-plugin-depend';
+import depend from "eslint-plugin-depend";
 
 export default {
   presets: ["@swissquote/crafty-preset-swc"],
@@ -106,8 +106,8 @@ export default {
     },
     rules: {
       // Declare the rules you want to use
-      'depend/ban-dependencies': 'error'
-    }
-  }
+      "depend/ban-dependencies": "error",
+    },
+  },
 };
 ```

@@ -8,6 +8,7 @@
 <tr><th>Test Runners</th><td>
 
 - [Jest](05_Packages/05_crafty-preset-jest.md)
+- [Vitest](05_Packages/05_crafty-preset-vitest)
 
 </td></tr>
 </table>
@@ -92,10 +93,11 @@ This is useful if you are creating a library as it's the role of the final appli
 
 Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren't removed from your bundle even if they aren't used.
 
-## Usage with Jest
+## Usage with Jest and Vitest
 
-If you include both `crafty-preset-swc` and `crafty-preset-jest`.
-When running your tests with `crafty test` this preset will be use to convert all `.js` and `.jsx` files (source and test files)
+If you include `crafty-preset-swc` with either `crafty-preset-jest` or
+`crafty-preset-vitest`, running `crafty test` will add support for `.js` and
+`.jsx` source and test files.
 
 ## Configuration
 

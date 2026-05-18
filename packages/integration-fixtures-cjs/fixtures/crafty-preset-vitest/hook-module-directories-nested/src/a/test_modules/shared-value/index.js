@@ -1,0 +1,1 @@
+module.exports = "from nested test_modules";

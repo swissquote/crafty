@@ -22,6 +22,19 @@ module.exports = {
     ];
     options.moduleFileExtensions.push("jsx");
   },
+  vitest(crafty, options, context) {
+    const {
+      getTestConfiguration,
+      hasSwcHelpersDependency
+    } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("jsx");
+    context.runtimePlugins.push({
+      pluginPath: require.resolve("./vitest-plugin"),
+      options: getTestConfiguration(crafty, hasSwcHelpersDependency())
+    });
+  },
   bundleCreator(crafty) {
     const configurators = { js: {} };
 
@@ -40,14 +53,14 @@ module.exports = {
     return configurators;
   },
   webpack(crafty, bundle, chain) {
-    chain.resolve.extensions.add(".jsx");
-    chain.resolve.modules.add(MODULES);
-    chain.resolveLoader.modules.add(MODULES);
-
     const {
       hasSwcHelpersDependency,
       getConfigurationWebpack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
 
     const hasHelperDependency = hasSwcHelpersDependency();
 
@@ -74,14 +87,14 @@ module.exports = {
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
   },
   rspack(crafty, bundle, chain) {
-    chain.resolve.extensions.add(".jsx");
-    chain.resolve.modules.add(MODULES);
-    chain.resolveLoader.modules.add(MODULES);
-
     const {
       hasSwcHelpersDependency,
       getConfigurationRspack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
+
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
 
     const hasHelperDependency = hasSwcHelpersDependency();
 

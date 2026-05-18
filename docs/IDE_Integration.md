@@ -17,11 +17,12 @@ Some integrations, like ESLint support command line options to tweak the generat
 
 ## Existing integrations
 
-Three presets use this feature:
+Four presets use this feature:
 
 - [ESLint](./05_Packages/05_crafty-preset-eslint/ESLint_IDE_Integration.md)
 - [stylelint](./05_Packages/05_crafty-preset-stylelint/Stylelint_IDE_Integration.md)
 - [Jest](./05_Packages/05_crafty-preset-jest/Jest_IDE_Integration.md)
+- [Vitest](./05_Packages/05_crafty-preset-vitest/Vitest_IDE_Integration.md)
 
 ## Works best with
 

@@ -121,13 +121,14 @@ jobs:
         CI: true
     - name: ⬆️ Upload coverage reports
       uses: actions/upload-artifact@v7
-      if: matrix.node-version == '24.x'
+      if: matrix.os == 'ubuntu-latest' && matrix.node-version == '24.x'
       with:
-        name: reports-${{ matrix.os }}-${{ matrix.node-version }}
+        name: reports-sonar
         retention-days: 1
         path: |
           **/coverage/lcov.info
-          **/coverage/sonar-report.xml
+          **/coverage/test-report.xml
+          **/reports/sonar-report.xml
           !node_modules/**
 
   # ─── Job: uploads coverage using secrets, does NOT run PR code ─────────
@@ -150,14 +151,14 @@ jobs:
     - name: ⬇️ Download reports
       uses: actions/download-artifact@v8
       with:
-        pattern: reports-*
+        name: reports-sonar
         path: __reports
     - name: 📋 List report files
       run: find __reports -type f
     - name: 🔎 Collect Sonar report paths
       id: sonar_reports
       run: |
-        echo "test_reports=$(find __reports -name "sonar-report.xml" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+        echo "test_reports=$(find __reports \( -path "*/coverage/test-report.xml" -o -path "*/reports/sonar-report.xml" \) | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
         echo "project_version=$(git tag -l --sort=-creatordate --format='%(refname:short)' | head -n1)" >> $GITHUB_OUTPUT
     - name: 🔬 SonarCloud Scan
       uses: SonarSource/sonarqube-scan-action@v8
@@ -166,7 +167,7 @@ jobs:
       with:
         args: >
           -Dsonar.testExecutionReportPaths=${{ steps.sonar_reports.outputs.test_reports }}
-          -Dsonar.projectVersion=`${{ steps.sonar_reports.outputs.project_version  }}`
+          -Dsonar.projectVersion=${{ steps.sonar_reports.outputs.project_version }}
 
   # ─── Job: posts package size report on PRs, does NOT run PR code ───
   size_report:

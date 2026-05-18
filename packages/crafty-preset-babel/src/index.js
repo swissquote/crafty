@@ -13,11 +13,12 @@ module.exports = {
     };
   },
   jest(crafty, options) {
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
     options.moduleDirectories.push(MODULES);
     options.transform["\\.(js|jsx)$"] = require.resolve("./jest-transformer");
     options.moduleFileExtensions.push("jsx");
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
     options.globals.BABEL_OPTIONS = babelConfigurator(
       crafty,
       {},
@@ -26,6 +27,23 @@ module.exports = {
         presetReact: { runtime: "automatic" }
       }
     );
+  },
+  vitest(crafty, options, context) {
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("jsx");
+    context.runtimePlugins.push({
+      pluginPath: require.resolve("./vitest-plugin"),
+      options: babelConfigurator(
+        crafty,
+        {},
+        {
+          environment: "test",
+          presetReact: { runtime: "automatic" }
+        }
+      )
+    });
   },
   bundleCreator(crafty) {
     const configurators = { js: {} };
@@ -54,8 +72,8 @@ module.exports = {
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
-    const options = babelConfigurator(crafty, bundle);
+    const babelWebpackConfigurator = require("@swissquote/babel-preset-swissquote/configurator-webpack");
+    const options = babelWebpackConfigurator(crafty, bundle);
 
     // EcmaScript 2015+
     chain.module

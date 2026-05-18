@@ -25,6 +25,19 @@ test("Succeeds without transpiling, selects test", async () => {
   expect(result).toMatchSnapshot();
 });
 
+test("Fails when multiple test runners are configured", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/multiple-runners"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(1);
+  expect(result.stdall.includes("multiple test runners")).toBeTruthy();
+  expect(result.stdall.includes("@swissquote/crafty-preset-jest")).toBeTruthy();
+  expect(result.stdall.includes("fixture-multiple-test-runners")).toBeTruthy();
+});
+
 test("Shows configuration", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/succeeds");
 

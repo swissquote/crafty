@@ -75,6 +75,10 @@ module.exports = {
       options.extensionsToTreatAsEsm.push(".ts");
     }
   },
+  vitest(crafty, options, context) {
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("ts", "tsx", "mts", "cts");
+  },
   webpack(crafty, bundle, chain) {
     const tsconfigFile = bundle.tsconfigFile || "tsconfig.json";
     const configFile = findUpSync(tsconfigFile, { cwd: process.cwd() });
