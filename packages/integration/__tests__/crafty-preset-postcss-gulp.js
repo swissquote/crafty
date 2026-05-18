@@ -121,7 +121,7 @@ test("Compiles CSS", async () => {
   expect(testUtils.exists(cwd, "dist/css/imported.scss")).toBeFalsy();
 
   expect(testUtils.readFile(cwd, BUNDLED_CSS)).toBe(
-    ".Link{color:#00f}.BodyComponent{margin:0}/*# sourceMappingURL=myBundle.min.css.map */\n"
+    ".Link{color:#00f}.BodyComponent{margin:0;container-name:test}/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
 });
 
