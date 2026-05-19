@@ -101,6 +101,8 @@ const externals = {
     "../csstools-media-query-list-parser/index.js",
   "@csstools/css-parser-algorithms":
     "../csstools-css-parser-algorithms/index.js",
+  "@csstools/css-syntax-patches-for-csstree":
+    "../csstools-css-syntax-patches-for-csstree/index.json",
 
   "mdn-data": "commonjs ../mdn-data/index.cjs",
   "mdn-data/css/syntaxes": "commonjs ../mdn-data/syntaxes.json",
@@ -214,6 +216,13 @@ export default [
     builder("html-tags")
       .esm()
       .package(),
+  async (_, compilerUtils) => {
+    console.log("@csstools/css-syntax-patches-for-csstree data.json");
+    compilerUtils.copyFile(
+      require.resolve("@csstools/css-syntax-patches-for-csstree"),
+      "dist/csstools-css-syntax-patches-for-csstree/index.json"
+    );
+  },
   builder =>
     builder("@csstools/selector-specificity")
       .esm()
