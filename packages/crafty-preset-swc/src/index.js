@@ -53,14 +53,15 @@ module.exports = {
     return configurators;
   },
   webpack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
     const {
       hasSwcHelpersDependency,
       getConfigurationWebpack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
-    chain.resolve.extensions.add(".jsx");
-    chain.resolve.modules.add(MODULES);
-    chain.resolveLoader.modules.add(MODULES);
 
     const hasHelperDependency = hasSwcHelpersDependency();
 
@@ -87,14 +88,14 @@ module.exports = {
       .options(getConfigurationWebpack(crafty, bundle, hasHelperDependency));
   },
   rspack(crafty, bundle, chain) {
+    chain.resolve.extensions.add(".jsx");
+    chain.resolve.modules.add(MODULES);
+    chain.resolveLoader.modules.add(MODULES);
+
     const {
       hasSwcHelpersDependency,
       getConfigurationRspack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
-
-    chain.resolve.extensions.add(".jsx");
-    chain.resolve.modules.add(MODULES);
-    chain.resolveLoader.modules.add(MODULES);
 
     const hasHelperDependency = hasSwcHelpersDependency();
 
