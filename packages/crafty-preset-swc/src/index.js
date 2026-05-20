@@ -62,7 +62,6 @@ module.exports = {
       getConfigurationWebpack
     } = require("@swissquote/crafty-commons-swc/src/configuration.js");
 
-
     const hasHelperDependency = hasSwcHelpersDependency();
 
     if (hasHelperDependency) {
