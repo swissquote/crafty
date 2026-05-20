@@ -15,6 +15,7 @@ module.exports = [
           .package("copy-anything", "copyAnything")
           .package("enhanced-resolve", "enhancedResolve")
           .package("is-negated-glob", "isNegatedGlob")
+          .package("jsonc-parser", "jsoncParser")
           .package("just-debounce", "justDebounce")
           .package("loud-rejection", "loudRejection")
           .package("merge-anything", "mergeAnything")

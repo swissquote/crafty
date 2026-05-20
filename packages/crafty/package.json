@@ -19,8 +19,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test"
   },
   "dependencies": {
-    "@swissquote/crafty-commons": "1.29.0",
-    "jsonc-parser": "3.3.1"
+    "@swissquote/crafty-commons": "1.29.0"
   },
   "optionalDependencies": {
     "fsevents": "~2.3.3"
@@ -35,6 +34,7 @@
     "enhanced-resolve": "5.22.0",
     "expect": "30.4.1",
     "is-negated-glob": "1.0.0",
+    "jsonc-parser": "3.3.1",
     "just-debounce": "1.1.0",
     "loud-rejection": "2.2.0",
     "merge-anything": "6.0.6",

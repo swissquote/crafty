@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { applyEdits, modify, parse } = require("jsonc-parser");
+const { applyEdits, modify, parse } = require("../../packages/jsonc-parser");
 const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:ide"
 );
