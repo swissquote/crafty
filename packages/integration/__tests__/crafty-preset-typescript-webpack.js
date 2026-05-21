@@ -170,17 +170,14 @@ describe("crafty-preset-typescript-webpack", () => {
     let result;
 
     try {
-      const initialChunk = await testUtils.waitFor(
-        async () => {
-          if (!testUtils.exists(cwd, outputFile)) {
-            return false;
-          }
+      const initialChunk = await testUtils.waitFor(async () => {
+        if (!testUtils.exists(cwd, outputFile)) {
+          return false;
+        }
 
-          const chunk = testUtils.readForSnapshot(cwd, outputFile);
-          return chunk.includes("return a + b;") ? chunk : false;
-        },
-        "the initial watch build"
-      );
+        const chunk = testUtils.readForSnapshot(cwd, outputFile);
+        return chunk.includes("return a + b;") ? chunk : false;
+      }, "the initial watch build");
 
       expect(initialChunk).toContain("return a + b;");
 
@@ -189,13 +186,10 @@ describe("crafty-preset-typescript-webpack", () => {
         originalSource.replace("return a + b;", "return a + b + 1;")
       );
 
-      const rebuiltChunk = await testUtils.waitFor(
-        async () => {
-          const chunk = testUtils.readForSnapshot(cwd, outputFile);
-          return chunk.includes("return a + b + 1;") ? chunk : false;
-        },
-        "the rebuilt watch bundle"
-      );
+      const rebuiltChunk = await testUtils.waitFor(async () => {
+        const chunk = testUtils.readForSnapshot(cwd, outputFile);
+        return chunk.includes("return a + b + 1;") ? chunk : false;
+      }, "the rebuilt watch bundle");
 
       expect(rebuiltChunk).toContain("return a + b + 1;");
       expect(rebuiltChunk).not.toEqual(initialChunk);

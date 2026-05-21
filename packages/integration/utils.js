@@ -23,10 +23,6 @@ function getWatchOutput(chunks) {
   return chunks.length === 0 ? "" : Buffer.concat(chunks).toString("utf8");
 }
 
-function normalizeOutput(output) {
-  return output ? `\n${snapshotizeOutput(output)}\n` : "";
-}
-
 function appendStreamChunks(chunks, stream) {
   if (!stream) {
     return;
@@ -35,31 +31,6 @@ function appendStreamChunks(chunks, stream) {
   stream.on("data", chunk => {
     chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
   });
-}
-
-function createWatchHandle(child, chunks, exitPromise) {
-  return {
-    child,
-    getStdall() {
-      return normalizeOutput(getWatchOutput(chunks));
-    },
-    async stop(signal = "SIGTERM") {
-      if (child.exitCode === null && !child.killed) {
-        child.kill(signal);
-      }
-
-      const result = await exitPromise;
-
-      return {
-        status: result.exitCode ?? null,
-        // Prefer execa's final aggregated output once the process exits; the
-        // live chunks are only a fallback for interrupted watch sessions.
-        stdall: result.all ? normalizeOutput(result.all.toString("utf8")) : this.getStdall(),
-        timedOut: Boolean(result.timedOut),
-        isCanceled: Boolean(result.isCanceled)
-      };
-    }
-  };
 }
 
 export function snapshotizeOutput(ret) {
@@ -151,6 +122,37 @@ export function snapshotizeOutput(ret) {
     .replace(/[\t\f\v ]+$/gm, "") // Remove spaces at EOL
     .replace(/\.\/([A-Za-z\/\.]*)\n\n__PATH__/gm, `./$1\n__PATH__`) // Sometimes lint output has more line breaks for no known reason ...
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
+}
+
+function normalizeOutput(output) {
+  return output ? `\n${snapshotizeOutput(output)}\n` : "";
+}
+
+function createWatchHandle(child, chunks, exitPromise) {
+  return {
+    child,
+    getStdall() {
+      return normalizeOutput(getWatchOutput(chunks));
+    },
+    async stop(signal = "SIGTERM") {
+      if (child.exitCode === null && !child.killed) {
+        child.kill(signal);
+      }
+
+      const result = await exitPromise;
+
+      return {
+        status: result.exitCode ?? null,
+        // Prefer execa's final aggregated output once the process exits; the
+        // live chunks are only a fallback for interrupted watch sessions.
+        stdall: result.all
+          ? normalizeOutput(result.all.toString("utf8"))
+          : this.getStdall(),
+        timedOut: Boolean(result.timedOut),
+        isCanceled: Boolean(result.isCanceled)
+      };
+    }
+  };
 }
 
 export function snapshotizeCSS(ret) {
