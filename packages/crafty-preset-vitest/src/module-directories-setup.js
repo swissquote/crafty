@@ -1,4 +1,7 @@
-const { installModuleDirectoriesHook } = require("./module-directories-hook");
+const {
+  clearModuleDirectoriesHook,
+  installModuleDirectoriesHook
+} = require("./module-directories-hook");
 
 // Crafty serializes custom module resolution into the environment because the
 // generated Vitest config must stay serializable.
@@ -26,4 +29,8 @@ const moduleResolution = process.env.CRAFTY_VITEST_MODULE_RESOLUTION;
 
 if (moduleResolution) {
   installModuleDirectoriesHook(JSON.parse(moduleResolution));
+} else {
+  // Vitest can reuse the same worker process across runs, so keep the fallback
+  // resolver state in sync even when the current config does not need it.
+  clearModuleDirectoriesHook();
 }

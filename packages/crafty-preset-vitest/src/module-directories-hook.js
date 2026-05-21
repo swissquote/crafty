@@ -5,7 +5,7 @@ const {
   getCraftyTestResolveOptions
 } = require("@swissquote/crafty/packages/test-resolve.js");
 
-let resolveSync;
+let resolveSync = null;
 let installed = false;
 
 function isBareImport(specifier) {
@@ -27,6 +27,10 @@ function getParentDirectory(parent) {
   }
 
   return process.cwd();
+}
+
+function clearModuleDirectoriesHook() {
+  resolveSync = null;
 }
 
 function installModuleDirectoriesHook({
@@ -78,5 +82,6 @@ function installModuleDirectoriesHook({
 }
 
 module.exports = {
+  clearModuleDirectoriesHook,
   installModuleDirectoriesHook
 };

@@ -9,9 +9,54 @@ const requireModule = createRequire(import.meta.url);
 const { materializeVitestOptions, normalizeVitestOptions } = requireModule(
   "@swissquote/crafty-preset-vitest"
 );
+const {
+  clearModuleDirectoriesHook,
+  installModuleDirectoriesHook
+} = requireModule(
+  "@swissquote/crafty-preset-vitest/src/module-directories-hook"
+);
+const moduleDirectoriesSetupFile = requireModule.resolve(
+  "@swissquote/crafty-preset-vitest/src/module-directories-setup.js"
+);
 
 function toSonarPath(cwd, file) {
   return path.join(cwd, file).replace(/\\/g, "/");
+}
+
+function createModuleResolutionFixture(moduleDirectories = ["test_modules"]) {
+  const root = fs.mkdtempSync(
+    path.join(os.tmpdir(), "crafty-vitest-module-directories-")
+  );
+  const project = path.join(root, "project");
+  const importer = path.join(project, "src", "__tests__", "sample.js");
+  const requireFromImporter = createRequire(importer);
+  const moduleFiles = {};
+
+  fs.mkdirSync(path.dirname(importer), { recursive: true });
+  fs.writeFileSync(importer, "// test file\n");
+
+  moduleDirectories.forEach(moduleDirectory => {
+    const moduleFile = path.join(
+      project,
+      "src",
+      moduleDirectory,
+      "shared-value",
+      "index.js"
+    );
+
+    fs.mkdirSync(path.dirname(moduleFile), { recursive: true });
+    fs.writeFileSync(
+      moduleFile,
+      `module.exports = ${JSON.stringify(moduleDirectory)};\n`
+    );
+    moduleFiles[moduleDirectory] = moduleFile;
+  });
+
+  return {
+    moduleFiles,
+    requireFromImporter,
+    root
+  };
 }
 
 test("Succeeds without transpiling", async () => {
@@ -48,7 +93,7 @@ test("Shows help without running tests", async () => {
   expect(result.status).toBe(0);
   expect(result.stdall.includes("Usage:")).toBeTruthy();
   expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
 test("Shows configuration without running tests", async () => {
@@ -63,7 +108,7 @@ test("Shows configuration without running tests", async () => {
   expect(result.stdall.includes("include:")).toBeTruthy();
   expect(result.stdall.includes("reporters:")).toBeTruthy();
   expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
 test("Shows coverage configuration with the built-in V8 provider", async () => {
@@ -80,7 +125,7 @@ test("Shows coverage configuration with the built-in V8 provider", async () => {
   expect(result.status).toBe(0);
   expect(result.stdall.includes("provider: 'v8'")).toBeTruthy();
   expect(result.stdall.includes("'lcov'")).toBeTruthy();
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeFalsy();
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
 test("Preserves coverage customization from the Vitest hook", () => {
@@ -150,11 +195,11 @@ test("Supports the Crafty sonar reporter alias with Vitest", async () => {
   const result = await testUtils.run(["test", "--reporters", "sonar"], cwd);
 
   expect(result.status).toBe(0);
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
-  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
     '<testExecutions version="1">'
   );
-  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+  expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
     '<file path="src/__tests__/math.js">'
   );
 });
@@ -171,8 +216,8 @@ test("Supports the raw Vitest Sonar reporter name with Crafty defaults", async (
   );
 
   expect(result.status).toBe(0);
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
-  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
     '<file path="src/__tests__/math.js">'
   );
 });
@@ -186,11 +231,11 @@ test("Produces Sonar test execution and LCOV coverage artifacts with --coverage"
   const result = await testUtils.run(["test", "--coverage"], cwd);
 
   expect(result.status).toBe(0);
-  expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
-  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeTruthy();
+  expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
     '<testExecutions version="1">'
   );
-  expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+  expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
     '<file path="src/__tests__/math.js">'
   );
   expect(testUtils.exists(cwd, "coverage/lcov.info")).toBeTruthy();
@@ -224,8 +269,8 @@ test("Supports absolute Sonar file paths through the Crafty option", async () =>
     const result = await testUtils.run(["test"], cwd);
 
     expect(result.status).toBe(0);
-    expect(testUtils.exists(cwd, "coverage/test-report.xml")).toBeTruthy();
-    expect(testUtils.readFile(cwd, "coverage/test-report.xml")).toContain(
+    expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeTruthy();
+    expect(testUtils.readFile(cwd, "coverage/sonar-report.xml")).toContain(
       `<file path="${expectedPath}">`
     );
   } finally {
@@ -333,21 +378,101 @@ test("Does not install custom module directory resolution while materializing co
       }
     });
 
-    const moduleDirectoriesSetupFile = requireModule.resolve(
-      "@swissquote/crafty-preset-vitest/src/module-directories-setup.js"
-    );
-
     expect(options.test.setupFiles).toContain(moduleDirectoriesSetupFile);
     expect(options.test.setupFiles[0]).toBe(moduleDirectoriesSetupFile);
     expect(options.test.setupFiles[1]).toBe(setupFile);
     expect(() => requireFromImporter.resolve("shared-value")).toThrow();
   } finally {
+    clearModuleDirectoriesHook();
     if (originalModuleResolution === undefined) {
       delete process.env.CRAFTY_VITEST_MODULE_RESOLUTION;
     } else {
       process.env.CRAFTY_VITEST_MODULE_RESOLUTION = originalModuleResolution;
     }
 
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("Keeps the internal module directory setup file in materialized configs without custom module directories", () => {
+  const originalModuleResolution = process.env.CRAFTY_VITEST_MODULE_RESOLUTION;
+  const setupFile = path.join(os.tmpdir(), "crafty-vitest-user-setup.js");
+
+  try {
+    const options = materializeVitestOptions({
+      test: {
+        setupFiles: [setupFile]
+      }
+    });
+
+    expect(options.test.setupFiles[0]).toBe(moduleDirectoriesSetupFile);
+    expect(options.test.setupFiles[1]).toBe(setupFile);
+    expect(process.env.CRAFTY_VITEST_MODULE_RESOLUTION).toBeUndefined();
+  } finally {
+    clearModuleDirectoriesHook();
+    if (originalModuleResolution === undefined) {
+      delete process.env.CRAFTY_VITEST_MODULE_RESOLUTION;
+    } else {
+      process.env.CRAFTY_VITEST_MODULE_RESOLUTION = originalModuleResolution;
+    }
+  }
+});
+
+test("Clears custom module directory resolution when a later run disables it", () => {
+  const {
+    moduleFiles,
+    requireFromImporter,
+    root
+  } = createModuleResolutionFixture();
+
+  try {
+    expect(() => requireFromImporter.resolve("shared-value")).toThrow();
+
+    installModuleDirectoriesHook({
+      moduleDirectories: ["node_modules", "test_modules"],
+      moduleFileExtensions: ["js"]
+    });
+
+    expect(requireFromImporter.resolve("shared-value")).toBe(
+      moduleFiles.test_modules
+    );
+
+    clearModuleDirectoriesHook();
+
+    expect(() => requireFromImporter.resolve("shared-value")).toThrow();
+  } finally {
+    clearModuleDirectoriesHook();
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("Replaces custom module directory resolution when a later run changes it", () => {
+  const {
+    moduleFiles,
+    requireFromImporter,
+    root
+  } = createModuleResolutionFixture(["modules-a", "modules-b"]);
+
+  try {
+    installModuleDirectoriesHook({
+      moduleDirectories: ["node_modules", "modules-a"],
+      moduleFileExtensions: ["js"]
+    });
+
+    expect(requireFromImporter.resolve("shared-value")).toBe(
+      moduleFiles["modules-a"]
+    );
+
+    installModuleDirectoriesHook({
+      moduleDirectories: ["node_modules", "modules-b"],
+      moduleFileExtensions: ["js"]
+    });
+
+    expect(requireFromImporter.resolve("shared-value")).toBe(
+      moduleFiles["modules-b"]
+    );
+  } finally {
+    clearModuleDirectoriesHook();
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
@@ -544,7 +669,9 @@ test("Leaves existing VS Code settings untouched", async () => {
 
   expect(result.status).toBe(0);
   expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
-  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toBe(originalSettings);
+  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toBe(
+    originalSettings
+  );
   expect(testUtils.readFile(cwd, ".vscode/settings.json")).not.toContain(
     '"vitest.rootConfig": "vitest.config.mjs"'
   );

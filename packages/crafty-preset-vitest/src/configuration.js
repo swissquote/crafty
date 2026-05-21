@@ -2,7 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const SONAR_REPORTER_MODULE = "vitest-sonar-reporter";
-const SONAR_REPORTER_OUTPUT_FILE = "./coverage/test-report.xml";
+const SONAR_REPORTER_OUTPUT_FILE = "./coverage/sonar-report.xml";
 const SONAR_REPORTED_FILE_PATH_DEFAULT = "relative";
 const SONAR_REPORTED_FILE_PATH_VALUES = new Set(["absolute", "relative"]);
 const COVERAGE_REPORTERS = ["text", "html", "clover", "json", "lcov"];
@@ -31,7 +31,8 @@ function normalizeSonarPath(filePath) {
 
 function createSonarReportedFilePathMapper(reportedFilePath) {
   if (reportedFilePath === "absolute") {
-    return filePath => normalizeSonarPath(path.resolve(process.cwd(), filePath));
+    return filePath =>
+      normalizeSonarPath(path.resolve(process.cwd(), filePath));
   }
 
   return filePath => normalizeSonarPath(filePath);
@@ -394,16 +395,18 @@ function materializeVitestOptions(options) {
 
   materializeSonarReporterConfig(materializedOptions);
 
+  materializedOptions.test = materializedOptions.test || {};
+  materializedOptions.test.setupFiles = [
+    ...new Set([
+      MODULE_DIRECTORIES_SETUP_FILE,
+      ...(materializedOptions.test.setupFiles || [])
+    ])
+  ];
+
   if (materializedOptions.craftyModuleResolution) {
     process.env[MODULE_DIRECTORIES_ENV] = JSON.stringify(
       materializedOptions.craftyModuleResolution
     );
-    materializedOptions.test.setupFiles = [
-      ...new Set([
-        MODULE_DIRECTORIES_SETUP_FILE,
-        ...(materializedOptions.test.setupFiles || [])
-      ])
-    ];
     delete materializedOptions.craftyModuleResolution;
   } else {
     delete process.env[MODULE_DIRECTORIES_ENV];

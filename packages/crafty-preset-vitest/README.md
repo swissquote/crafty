@@ -249,7 +249,7 @@ Most of the time, at Swissquote, we use SonarQube to check our code quality.
 More often than not, we add a reporter to create a SonarQube test report.
 
 `crafty-preset-vitest` comes out of the box with a sonar report that is written
-to `coverage/test-report.xml`.
+to `coverage/sonar-report.xml`.
 
 This report is automatically added to the configuration if no reporter is
 specified through the command line. The `sonar` alias, and the raw
@@ -276,7 +276,7 @@ module.exports = {
    */
   vitest(crafty, options) {
     // The Sonar reporter is automatically added
-    console.log(options.test.reporters); // ['default', ["sonar", { outputFile: "./coverage/test-report.xml", reportedFilePath: "relative" }]]
+    console.log(options.test.reporters); // ['default', ["sonar", { outputFile: "./coverage/sonar-report.xml", reportedFilePath: "relative" }]]
   },
 };
 ```
