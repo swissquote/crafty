@@ -385,12 +385,10 @@ test("Replaces JavaScript Vitest config with IDE Integration files", async () =>
 
   expect(result.status).toBe(0);
   expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
+  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
   expect(testUtils.exists(cwd, "vitest.config.js")).toBeFalsy();
+  expect(testUtils.exists(cwd, ".vscode/settings.json")).toBeFalsy();
   expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
-  expect(
-    testUtils.readForSnapshot(cwd, ".vscode/settings.json")
-  ).toMatchSnapshot();
 });
 
 test("Ignores native TypeScript Vitest config", async () => {
@@ -481,30 +479,73 @@ test("Creates IDE Integration files", async () => {
 
   expect(result.status).toBe(0);
   expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
+  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
+  expect(testUtils.exists(cwd, ".vscode/settings.json")).toBeFalsy();
   expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
-  expect(
-    testUtils.readForSnapshot(cwd, ".vscode/settings.json")
-  ).toMatchSnapshot();
 });
 
-test("Merges IDE settings into existing commented VS Code settings", async () => {
+const MONOREPO_IDE_GENERATED_FILES = [
+  "packages/package-a/.gitignore",
+  "packages/package-a/.vscode",
+  "packages/package-a/vitest.config.mjs",
+  "packages/package-b/.gitignore",
+  "packages/package-b/.vscode",
+  "packages/package-b/vitest.config.mjs"
+];
+
+test("Creates package-local Vitest IDE configs in a monorepo", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/ide-monorepo",
+    MONOREPO_IDE_GENERATED_FILES
+  );
+  const packageADirectory = path.join(cwd, "packages", "package-a");
+  const packageBDirectory = path.join(cwd, "packages", "package-b");
+
+  const packageAResult = await testUtils.run(["ide"], packageADirectory);
+  const packageBResult = await testUtils.run(["ide"], packageBDirectory);
+
+  expect(packageAResult.status).toBe(0);
+  expect(packageBResult.status).toBe(0);
+  expect(testUtils.exists(cwd, "prettier.config.mjs")).toBeFalsy();
+  expect(testUtils.exists(cwd, "vitest.config.mjs")).toBeFalsy();
+  expect(testUtils.exists(cwd, ".vscode/settings.json")).toBeFalsy();
+  expect(testUtils.exists(packageADirectory, "vitest.config.mjs")).toBeTruthy();
+  expect(testUtils.exists(packageBDirectory, "vitest.config.mjs")).toBeTruthy();
+  expect(
+    testUtils.exists(packageADirectory, ".vscode/settings.json")
+  ).toBeFalsy();
+  expect(
+    testUtils.exists(packageBDirectory, ".vscode/settings.json")
+  ).toBeFalsy();
+
+  const packageAVitestResult = await testUtils.runVitest(
+    ["--run", "--config", "vitest.config.mjs"],
+    packageADirectory
+  );
+  const packageBVitestResult = await testUtils.runVitest(
+    ["--run", "--config", "vitest.config.mjs"],
+    packageBDirectory
+  );
+
+  expect(packageAVitestResult.status).toBe(0);
+  expect(packageAVitestResult.stdall).toMatch(/src\/__tests__\/package-a\.js/);
+  expect(packageBVitestResult.status).toBe(0);
+  expect(packageBVitestResult.stdall).toMatch(/src\/__tests__\/package-b\.ts/);
+});
+
+test("Leaves existing VS Code settings untouched", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/ide-existing-settings",
     [".gitignore"]
   );
+  const originalSettings = testUtils.readFile(cwd, ".vscode/settings.json");
 
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeTruthy();
-  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toContain(
-    "// preserve me"
-  );
-  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toContain(
-    '"editor.tabSize": 2'
-  );
-  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toContain(
+  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
+  expect(testUtils.readFile(cwd, ".vscode/settings.json")).toBe(originalSettings);
+  expect(testUtils.readFile(cwd, ".vscode/settings.json")).not.toContain(
     '"vitest.rootConfig": "vitest.config.mjs"'
   );
 });

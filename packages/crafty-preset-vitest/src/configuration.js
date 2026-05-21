@@ -31,8 +31,7 @@ function normalizeSonarPath(filePath) {
 
 function createSonarReportedFilePathMapper(reportedFilePath) {
   if (reportedFilePath === "absolute") {
-    return filePath =>
-      normalizeSonarPath(path.resolve(process.cwd(), filePath));
+    return filePath => normalizeSonarPath(path.resolve(process.cwd(), filePath));
   }
 
   return filePath => normalizeSonarPath(filePath);

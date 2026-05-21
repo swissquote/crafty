@@ -231,9 +231,15 @@ returns a Vite plugin. If you attach non-serializable values directly to
 
 ## `crafty ide`
 
-Running `crafty ide` generates a `vitest.config.mjs` file and updates
-`.vscode/settings.json` so your IDE can point to the Crafty-generated Vitest
-configuration.
+Running `crafty ide` generates a package-local `vitest.config.mjs` file for
+IDE discovery.
+
+In a monorepo, run `crafty ide` from each package directory that has its own
+`crafty.config.js` and uses `@swissquote/crafty-preset-vitest`.
+
+Crafty does not modify `.vscode/settings.json` for Vitest. The generated
+`vitest.config.mjs` is intended to be discovered by the official Vitest IDE
+integration.
 
 [Read more about Vitest IDE integration.](Vitest_IDE_Integration.md)
 
