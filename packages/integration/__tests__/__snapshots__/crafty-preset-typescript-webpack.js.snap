@@ -400,3 +400,34 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
 ",
 }
 `;
+
+exports[`crafty-preset-typescript-webpack > Starts watch mode with fork checker 1`] = `
+{
+  "status": null,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+⬡ aps: Server Listening on: http://localhost:__PORT__
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset someLibrary.myBundle.min.js ___ KiB [emitted] (name: someLibrary)
+  sourceMap someLibrary.myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: someLibrary)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+Chunk Group someLibrary ___ KiB (___ KiB) = someLibrary.myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (runtime) ___ KiB (javascript) [entry] [rendered]
+  runtime modules ___ KiB 12 modules
+  dependent modules ___ KiB [dependent] 6 modules
+  cacheable modules ___ KiB
+    ../../../../../node_modules/anypack-plugin-serve/client.js ___ KiB [built] [code generated]
+    ./js/script.ts ___ KiB [built] [code generated]
+chunk (runtime: default) someLibrary.myBundle.min.js (someLibrary) ___ KiB [rendered]
+  ./js/SomeLibrary.ts ___ KiB [built] [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+Type-checking in progress...
+No typescript errors found.
+",
+  "timedOut": true,
+}
+`;
