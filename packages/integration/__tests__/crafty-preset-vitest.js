@@ -49,7 +49,7 @@ function createModuleResolutionFixture(moduleDirectories = ["test_modules"]) {
       moduleFile,
       `module.exports = ${JSON.stringify(moduleDirectory)};\n`
     );
-    moduleFiles[moduleDirectory] = moduleFile;
+    moduleFiles[moduleDirectory] = fs.realpathSync(moduleFile);
   });
 
   return {
