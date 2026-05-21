@@ -65,8 +65,8 @@ test("Succeeds without transpiling", async () => {
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/math.js")).toBeTruthy();
-  expect(result.stdall.includes("src/__tests__/math-advanced.js")).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/math.js");
+  expect(result.stdall).toContain("src/__tests__/math-advanced.js");
 });
 
 test("Succeeds without transpiling, selects test", async () => {
@@ -78,8 +78,8 @@ test("Succeeds without transpiling, selects test", async () => {
   );
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
-  expect(result.stdall.includes("src/__tests__/math-advanced.js")).toBeTruthy();
+  expect(result.stdall).not.toContain("src/__tests__/math.js");
+  expect(result.stdall).toContain("src/__tests__/math-advanced.js");
 });
 
 test("Shows help without running tests", async () => {
@@ -91,8 +91,8 @@ test("Shows help without running tests", async () => {
   const result = await testUtils.run(["test", "--help"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("Usage:")).toBeTruthy();
-  expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
+  expect(result.stdall).toContain("Usage:");
+  expect(result.stdall).not.toContain("src/__tests__/math.js");
   expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
@@ -105,9 +105,9 @@ test("Shows configuration without running tests", async () => {
   const result = await testUtils.run(["test", "--showConfig"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("include:")).toBeTruthy();
-  expect(result.stdall.includes("reporters:")).toBeTruthy();
-  expect(result.stdall.includes("src/__tests__/math.js")).toBeFalsy();
+  expect(result.stdall).toContain("include:");
+  expect(result.stdall).toContain("reporters:");
+  expect(result.stdall).not.toContain("src/__tests__/math.js");
   expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
@@ -123,8 +123,8 @@ test("Shows coverage configuration with the built-in V8 provider", async () => {
   );
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("provider: 'v8'")).toBeTruthy();
-  expect(result.stdall.includes("'lcov'")).toBeTruthy();
+  expect(result.stdall).toContain("provider: 'v8'");
+  expect(result.stdall).toContain("'lcov'");
   expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
 });
 
@@ -165,11 +165,11 @@ test("Fails when a Vitest suite fails", async () => {
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(1);
-  expect(result.stdall.includes("src/__tests__/failing.js")).toBeTruthy();
-  expect(result.stdall.includes("crafty test: Vitest failed")).toBeFalsy();
-  expect(
-    result.stdall.includes("crafty test: One or more test runners failed")
-  ).toBeFalsy();
+  expect(result.stdall).toContain("src/__tests__/failing.js");
+  expect(result.stdall).not.toContain("crafty test: Vitest failed");
+  expect(result.stdall).not.toContain(
+    "crafty test: One or more test runners failed"
+  );
 });
 
 test("Succeeds with Crafty-only CLI flags stripped from the Vitest argv", async () => {
@@ -181,9 +181,7 @@ test("Succeeds with Crafty-only CLI flags stripped from the Vitest argv", async 
   );
 
   expect(result.status).toBe(0);
-  expect(
-    result.stdall.includes("src/__tests__/math-typescript.ts")
-  ).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/math-typescript.ts");
 });
 
 test("Supports the Crafty sonar reporter alias with Vitest", async () => {
@@ -313,9 +311,7 @@ test("Resolves modules from custom module directories through the preset hook", 
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(
-    result.stdall.includes("src/__tests__/module-directories.js")
-  ).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/module-directories.js");
 });
 
 test("Resolves modules from nested custom module directories through the preset hook", async () => {
@@ -326,9 +322,7 @@ test("Resolves modules from nested custom module directories through the preset 
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(
-    result.stdall.includes("src/a/b/__tests__/module-directories.js")
-  ).toBeTruthy();
+  expect(result.stdall).toContain("src/a/b/__tests__/module-directories.js");
 });
 
 test("Installs custom module directory resolution before user setup files", async () => {
@@ -339,7 +333,7 @@ test("Installs custom module directory resolution before user setup files", asyn
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/setup-file.js")).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/setup-file.js");
 });
 
 test("Does not install custom module directory resolution while materializing config", () => {
@@ -485,7 +479,7 @@ test("Ignores native JavaScript Vitest config", async () => {
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/native-config.js");
 });
 
 test("Replaces JavaScript Vitest config with IDE Integration files", async () => {
@@ -509,8 +503,8 @@ test("Replaces JavaScript Vitest config with IDE Integration files", async () =>
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
+  expect(result.stdall).toContain("Written vitest.config.mjs");
+  expect(result.stdall).not.toContain("Written .vscode/settings.json");
   expect(testUtils.exists(cwd, "vitest.config.js")).toBeFalsy();
   expect(testUtils.exists(cwd, ".vscode/settings.json")).toBeFalsy();
   expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
@@ -524,7 +518,7 @@ test("Ignores native TypeScript Vitest config", async () => {
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/native-config.js");
 });
 
 test("Ignores function-based Vitest config", async () => {
@@ -535,7 +529,7 @@ test("Ignores function-based Vitest config", async () => {
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("src/__tests__/native-config.js")).toBeTruthy();
+  expect(result.stdall).toContain("src/__tests__/native-config.js");
 });
 
 test("Loads TypeScript tests through the preset hook", async () => {
@@ -584,14 +578,10 @@ test("Fails clearly when a Vitest hook adds a non-serializable runtime plugin", 
   const result = await testUtils.run(["test"], cwd);
 
   expect(result.status).toBe(1);
-  expect(
-    result.stdall.includes("contains a non-serializable Vitest value")
-  ).toBeTruthy();
-  expect(
-    result.stdall.includes(
-      "Use context.runtimePlugins for runtime Vite plugins"
-    )
-  ).toBeTruthy();
+  expect(result.stdall).toContain("contains a non-serializable Vitest value");
+  expect(result.stdall).toContain(
+    "Use context.runtimePlugins for runtime Vite plugins"
+  );
 });
 
 test("Creates IDE Integration files", async () => {
@@ -603,8 +593,8 @@ test("Creates IDE Integration files", async () => {
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("Written vitest.config.mjs")).toBeTruthy();
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
+  expect(result.stdall).toContain("Written vitest.config.mjs");
+  expect(result.stdall).not.toContain("Written .vscode/settings.json");
   expect(testUtils.exists(cwd, ".vscode/settings.json")).toBeFalsy();
   expect(testUtils.readForSnapshot(cwd, "vitest.config.mjs")).toMatchSnapshot();
 });
@@ -668,7 +658,7 @@ test("Leaves existing VS Code settings untouched", async () => {
   const result = await testUtils.run(["ide"], cwd);
 
   expect(result.status).toBe(0);
-  expect(result.stdall.includes("Written .vscode/settings.json")).toBeFalsy();
+  expect(result.stdall).not.toContain("Written .vscode/settings.json");
   expect(testUtils.readFile(cwd, ".vscode/settings.json")).toBe(
     originalSettings
   );
