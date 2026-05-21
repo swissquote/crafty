@@ -226,33 +226,6 @@ export function startWatch(args, cwd, commandOptions) {
   return createWatchHandle(child, chunks, exitPromise);
 }
 
-export async function runWatch(args, cwd, commandOptions) {
-  const options = getCraftyOptions(cwd, {
-    timeout: 20000,
-    ...commandOptions
-  });
-
-  try {
-    const ret = await execaNode(craftyBin, args, options);
-
-    return {
-      status: ret.exitCode ?? null,
-      stdall: ret.all ? normalizeOutput(ret.all.toString("utf8")) : "",
-      timedOut: Boolean(ret.timedOut)
-    };
-  } catch (error) {
-    if (!error.timedOut) {
-      throw error;
-    }
-
-    return {
-      status: error.exitCode ?? null,
-      stdall: error.all ? normalizeOutput(error.all.toString("utf8")) : "",
-      timedOut: true
-    };
-  }
-}
-
 export function readFile(cwd, file) {
   return fs.readFileSync(path.join(cwd, file)).toString("utf8");
 }
