@@ -4,9 +4,13 @@ const debug = require("@swissquote/crafty-commons/packages/debug")(
   "crafty:ide"
 );
 
-function collectIdeFiles(crafty) {
+exports.description = "Create configuration files for IDE Integration";
+exports.command = async function run(crafty, input, cli) {
+  debug("Registering Runners");
+
   let files = {};
 
+  // We sort implementations for predictable output in tests
   crafty
     .getImplementations("ide")
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -14,15 +18,6 @@ function collectIdeFiles(crafty) {
       debug(`${preset.presetName}.ide(crafty)`);
       files = Object.assign(files, preset.run("ide", crafty));
     });
-
-  return files;
-}
-
-exports.description = "Create configuration files for IDE Integration";
-exports.command = async function run(crafty, input, cli) {
-  debug("Registering Runners");
-
-  const files = collectIdeFiles(crafty);
 
   if (Object.keys(files).length === 0) {
     console.log("Nothing to generate");
