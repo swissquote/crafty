@@ -4,6 +4,34 @@ import fs from "node:fs";
 import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const craftyBin = require.resolve("@swissquote/crafty/src/bin.cjs");
+
+function getCraftyOptions(cwd, commandOptions) {
+  const options = {
+    cwd,
+    reject: false,
+    all: true,
+    ...commandOptions
+  };
+
+  options.env = { TESTING_CRAFTY: "true", ...options.env };
+
+  return options;
+}
+
+function getWatchOutput(chunks) {
+  return chunks.length === 0 ? "" : Buffer.concat(chunks).toString("utf8");
+}
+
+function appendStreamChunks(chunks, stream) {
+  if (!stream) {
+    return;
+  }
+
+  stream.on("data", chunk => {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  });
+}
 
 export function snapshotizeOutput(ret) {
   const escapedPath = path
@@ -59,6 +87,7 @@ export function snapshotizeOutput(ret) {
       /Starting Crafty ([0-9]+\.[0-9]+\.[0-9]+)/g,
       "Starting Crafty __version__"
     ) // Remove version information in crafty output
+    .replace(/(https?:\/\/localhost:)\d+/gm, "$1__PORT__") // Watch mode picks the first free port in a range
     .replace(/^(\s*)PASS(\s*)/gm, "PASS ") // Fix weird space in some case with nested jest runs (Jest)
     .replace(/^(\s*)FAIL(\s*)/gm, "FAIL ") // Fix weird space in some case with nested jest runs (Jest)
     .replace(
@@ -95,30 +124,106 @@ export function snapshotizeOutput(ret) {
     .replace(/\n\n\n+/g, "\n\n"); // Replace multi line breaks by single one
 }
 
+function normalizeOutput(output) {
+  return output ? `\n${snapshotizeOutput(output)}\n` : "";
+}
+
+function createWatchHandle(child, chunks, exitPromise) {
+  return {
+    child,
+    getStdall() {
+      return normalizeOutput(getWatchOutput(chunks));
+    },
+    async stop(signal = "SIGTERM") {
+      if (child.exitCode === null && !child.killed) {
+        child.kill(signal);
+      }
+
+      const result = await exitPromise;
+
+      return {
+        status: result.exitCode ?? null,
+        // Prefer execa's final aggregated output once the process exits; the
+        // live chunks are only a fallback for interrupted watch sessions.
+        stdall: result.all
+          ? normalizeOutput(result.all.toString("utf8"))
+          : this.getStdall(),
+        timedOut: Boolean(result.timedOut),
+        isCanceled: Boolean(result.isCanceled)
+      };
+    }
+  };
+}
+
 export function snapshotizeCSS(ret) {
   return ret.replace(/url\((?:'|")?(.*)\?(.*)\)/g, "url($1?CACHEBUST)"); // Cache busting
 }
 
 export async function run(args, cwd, commandOptions) {
-  const options = {
-    cwd,
-    reject: false,
-    all: true,
-    ...commandOptions
-  };
+  const options = getCraftyOptions(cwd, commandOptions);
 
-  options.env = { TESTING_CRAFTY: "true", ...options.env };
-
-  const ret = await execaNode(
-    require.resolve("@swissquote/crafty/src/bin.cjs"),
-    args,
-    options
-  );
+  const ret = await execaNode(craftyBin, args, options);
 
   return {
     status: ret.exitCode,
-    stdall: ret.all ? `\n${snapshotizeOutput(ret.all.toString("utf8"))}\n` : ""
+    stdall: ret.all ? normalizeOutput(ret.all.toString("utf8")) : ""
   };
+}
+
+export async function getIsolatedFixtures(fixtures, clean = ["dist"]) {
+  const sourceDir = path.join(
+    __dirname,
+    "..",
+    "integration-fixtures-cjs",
+    "fixtures",
+    fixtures
+  );
+  // Keep the temp copy next to the original fixture so relative layout
+  // assumptions made by watch-mode builds still match the tracked fixture.
+  const tmpDir = await fs.promises.mkdtemp(
+    path.join(path.dirname(sourceDir), "tmp-")
+  );
+
+  await fs.promises.cp(sourceDir, tmpDir, { recursive: true });
+
+  for (const dirToClean of clean) {
+    // eslint-disable-next-line no-await-in-loop
+    await fs.promises.rm(path.join(tmpDir, dirToClean), {
+      force: true,
+      recursive: true
+    });
+  }
+
+  return {
+    cwd: tmpDir,
+    async cleanup() {
+      await fs.promises.rm(tmpDir, {
+        force: true,
+        recursive: true
+      });
+    }
+  };
+}
+
+export function startWatch(args, cwd, commandOptions) {
+  const options = getCraftyOptions(cwd, commandOptions);
+  const child = execaNode(craftyBin, args, options);
+  const chunks = [];
+
+  // Execa's final `all` output is easiest to consume after exit, so keep a
+  // live fallback while the long-running watch process is still active.
+  appendStreamChunks(chunks, child.stdout);
+  appendStreamChunks(chunks, child.stderr);
+
+  const exitPromise = child.catch(error => {
+    if (error.isCanceled || error.timedOut) {
+      return error;
+    }
+
+    throw error;
+  });
+
+  return createWatchHandle(child, chunks, exitPromise);
 }
 
 export function readFile(cwd, file) {
@@ -131,6 +236,28 @@ export function exists(cwd, file) {
 
 export function readForSnapshot(cwd, file) {
   return snapshotizeOutput(readFile(cwd, file));
+}
+
+export async function waitFor(check, description, timeout = 30000) {
+  const endTime = Date.now() + timeout;
+
+  // Watch-mode assertions are driven by emitted files changing over time, not
+  // by the process exiting, so a small polling helper keeps those tests simple.
+  while (Date.now() < endTime) {
+    // eslint-disable-next-line no-await-in-loop
+    const result = await check();
+
+    if (result) {
+      return result;
+    }
+
+    // eslint-disable-next-line no-await-in-loop
+    await new Promise(resolve => {
+      setTimeout(resolve, 100);
+    });
+  }
+
+  throw new Error(`Timed out waiting for ${description}`);
 }
 
 export async function getCleanFixtures(fixtures, clean = ["dist"]) {

@@ -5,6 +5,7 @@ import configuration from "@swissquote/crafty/src/configuration";
 import * as testUtils from "../utils";
 
 const getCrafty = configuration.getCrafty;
+const unexpectedErrorPattern = /\b[A-Z][A-Za-z]*Error\b|Error:/;
 
 describe("crafty-preset-typescript-webpack", () => {
   test("Loads crafty-preset-typescript and does not register webpack tasks", async () => {
@@ -139,6 +140,88 @@ describe("crafty-preset-typescript-webpack", () => {
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/someLibrary.myBundle.min.js")
     ).toMatchSnapshot();
+  });
+
+  test("Starts and rebuilds in watch mode with fork checker", async () => {
+    const fixture = await testUtils.getIsolatedFixtures(
+      "crafty-preset-typescript-webpack/compiles-forked"
+    );
+    const cwd = fixture.cwd;
+    const watch = testUtils.startWatch(["watch"], cwd);
+    const outputFile = "dist/js/someLibrary.myBundle.min.js";
+    const someLibraryPath = path.join(cwd, "js", "SomeLibrary.ts");
+    const originalSource = await fs.promises.readFile(someLibraryPath, "utf8");
+    let result;
+
+    try {
+      const initialOutput = await testUtils.waitFor(async () => {
+        const output = watch.getStdall();
+
+        if (watch.child.exitCode !== null) {
+          throw new Error(
+            `crafty watch exited before the initial watch compilation completed:\n${output}`
+          );
+        }
+
+        if (unexpectedErrorPattern.test(output)) {
+          throw new Error(
+            `crafty watch printed an unexpected error during startup:\n${output}`
+          );
+        }
+
+        return output.includes("Compiled successfully!") &&
+          output.includes("No typescript errors found.")
+          ? output
+          : false;
+      }, "the initial watch output");
+
+      expect(initialOutput).toContain("Compiled successfully!");
+      expect(initialOutput).toContain("No typescript errors found.");
+
+      const initialChunk = await testUtils.waitFor(async () => {
+        if (!testUtils.exists(cwd, outputFile)) {
+          return false;
+        }
+
+        const chunk = testUtils.readForSnapshot(cwd, outputFile);
+        return chunk.includes("return a + b;") ? chunk : false;
+      }, "the initial watch build");
+
+      expect(initialChunk).toContain("return a + b;");
+
+      await fs.promises.writeFile(
+        someLibraryPath,
+        originalSource.replace("return a + b;", "return a + b + 1;")
+      );
+
+      const rebuiltChunk = await testUtils.waitFor(async () => {
+        if (watch.child.exitCode !== null) {
+          throw new Error(
+            `crafty watch exited before rebuilding after a source change:\n${watch.getStdall()}`
+          );
+        }
+
+        const chunk = testUtils.readForSnapshot(cwd, outputFile);
+        return chunk.includes("return a + b + 1;") ? chunk : false;
+      }, "the rebuilt watch bundle");
+
+      expect(rebuiltChunk).toContain("return a + b + 1;");
+      expect(rebuiltChunk).not.toEqual(initialChunk);
+      result = await watch.stop();
+    } finally {
+      await fs.promises.writeFile(someLibraryPath, originalSource);
+
+      if (!result) {
+        result = await watch.stop();
+      }
+
+      await fixture.cleanup();
+    }
+
+    expect(result.status).toBeNull();
+    expect(result.stdall).toContain("Compiled successfully!");
+    expect(result.stdall).toContain("No typescript errors found.");
+    expect(result.stdall).not.toMatch(unexpectedErrorPattern);
   });
 
   test("Compiles TypeScript - custom paths", async () => {
