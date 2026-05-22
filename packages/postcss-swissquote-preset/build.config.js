@@ -79,26 +79,32 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-assets")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-atroot")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-mod-function")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-gray")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-hwb")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-custom-properties")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
@@ -111,6 +117,7 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-image-set-polyfill")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
@@ -147,6 +154,7 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-selector-matches")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
