@@ -76,7 +76,7 @@ module.exports = class Processor {
   embedded(folder) {
     const preset = folder || this.name;
 
-    let filename = "index.js"
+    let filename = "index.js";
     if (fs.existsSync(path.join(distPath, preset, "index.mjs"))) {
       filename = "index.mjs";
     }
