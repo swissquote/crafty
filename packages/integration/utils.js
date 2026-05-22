@@ -242,6 +242,7 @@ export function startWatch(args, cwd, commandOptions) {
 
   return createWatchHandle(child, chunks, exitPromise);
 }
+
 export function readFile(cwd, file) {
   return fs.readFileSync(path.join(cwd, file)).toString("utf8");
 }
