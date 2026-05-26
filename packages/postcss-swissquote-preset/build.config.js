@@ -11,17 +11,17 @@ const commonExternals = {
 const externals = {
   ...commonExternals,
 
-  "@swissquote/color-fns": "../swissquote-color-fns/index.js",
+  "@swissquote/color-fns": "../swissquote-color-fns/index.mjs",
   "postcss-selector-parser": "../postcss-selector-parser/index.js",
   "postcss-values-parser": "../postcss-values-parser/index.js",
   "postcss-value-parser": "../postcss-value-parser/index.js",
-  "postcss-values-parser/lib/nodes/Punctuation":
+  "postcss-values-parser/lib/nodes/Punctuation.js":
     "../postcss-values-parser/nodesPunctuation.js",
-  "postcss-values-parser/lib/nodes/Numeric":
+  "postcss-values-parser/lib/nodes/Numeric.js":
     "../postcss-values-parser/nodesNumeric.js",
-  "postcss-values-parser/lib/nodes/Word":
+  "postcss-values-parser/lib/nodes/Word.js":
     "../postcss-values-parser/nodesWord.js",
-  "postcss-values-parser/lib/nodes/Operator":
+  "postcss-values-parser/lib/nodes/Operator.js":
     "../postcss-values-parser/nodesOperator.js"
 };
 
@@ -38,7 +38,19 @@ module.exports = [
     builder("color-name")
       .externals(commonExternals)
       .package(),
-  builder => builder("@swissquote/color-fns").package(),
+  builder =>
+    builder("@swissquote/color-fns")
+      .esm()
+      .package({
+        names: [
+          "hsl2hwb",
+          "hsl2rgb",
+          "hwb2hsl",
+          "hwb2rgb",
+          "rgb2hsl",
+          "rgb2hwb"
+        ]
+      }),
   builder =>
     builder("postcss-values-parser")
       .externals({
@@ -79,26 +91,44 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-assets")
+      .esm()
       .externals(externals)
       .package(),
+  async (_, compilerUtils) => {
+    console.log("patch @swissquote/postcss-assets");
+    await compilerUtils.replaceContent(
+      "./dist/swissquote-postcss-assets/index.mjs",
+      content => {
+        return content.replace(
+          'var _postcssValueParser = _interopRequireDefault(__webpack_require__("postcss-value-parser"));',
+          'var _postcssValueParser = __webpack_require__("postcss-value-parser");'
+        );
+      }
+    );
+  },
   builder =>
     builder("@swissquote/postcss-atroot")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-mod-function")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-gray")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-color-hwb")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
     builder("@swissquote/postcss-custom-properties")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
@@ -111,6 +141,7 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-image-set-polyfill")
+      .esm()
       .externals(externals)
       .package(),
   builder =>
@@ -147,6 +178,7 @@ module.exports = [
       .package(),
   builder =>
     builder("@swissquote/postcss-selector-matches")
+      .esm()
       .externals(externals)
       .package(),
   builder =>

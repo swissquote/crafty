@@ -1,17 +1,20 @@
-const { test } = require("node:test");
-const fs = require("node:fs");
-const path = require("node:path");
-const { expect } = require("expect");
-const postcss = require("postcss");
+import { test } from "node:test";
+import { readFileSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { expect } from "expect";
+import postcss from "postcss";
 
-const plugin = require("../");
+import plugin from "../index.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function fixturePath(name) {
-  return path.join(__dirname, "fixtures", `${name}.css`);
+  return join(__dirname, "fixtures", `${name}.css`);
 }
 
 function readFixture(name) {
-  return fs.readFileSync(fixturePath(name), "utf8");
+  return readFileSync(fixturePath(name), "utf8");
 }
 
 function testFixture(name, pluginOpts = {}, postcssOpts = {}) {

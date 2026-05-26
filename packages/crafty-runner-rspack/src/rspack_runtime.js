@@ -10,9 +10,9 @@ const portFinder = require("./utils/find-port.js");
 const rspackConfigurator = require("./rspack.js");
 const { printStats, printError } = require("./rspack_output.js");
 
-function prepareConfiguration(crafty, bundle, rspackPort) {
+async function prepareConfiguration(crafty, bundle, rspackPort) {
   // Base configuration
-  let rspackConfig = rspackConfigurator(crafty, bundle, rspackPort);
+  let rspackConfig = await rspackConfigurator(crafty, bundle, rspackPort);
 
   const configPath = path.join(process.cwd(), "rspack.config.js");
 
@@ -51,31 +51,30 @@ function extractError(error) {
  */
 module.exports = function rspackTask(crafty, bundle) {
   const taskName = bundle.taskName;
-  const getCompiler = () => {
-    return portFinder.getFree(taskName).then(freePort => {
-      const config = prepareConfiguration(crafty, bundle, freePort);
-      const { rspack } = require("@rspack/core");
-      const compiler = rspack(config);
+  const getCompiler = async () => {
+    const freePort = await portFinder.getFree(taskName);
+    const config = await prepareConfiguration(crafty, bundle, freePort);
+    const { rspack } = require("@rspack/core");
+    const compiler = rspack(config);
 
-      if (!compiler) {
-        throw new Error("Could not create compiler");
-      }
+    if (!compiler) {
+      throw new Error("Could not create compiler");
+    }
 
-      // "invalid" event fires when you have changed a file, and Rspack is
-      // recompiling a bundle. WebpackDevServer takes care to pause serving the
-      // bundle, so if you refresh, it'll wait instead of serving the old one.
-      // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-      compiler.hooks.invalid.tap("CraftyRuntime", () => {
-        console.log("Compiling...");
-      });
-
-      // TODO : move to done hook in watch and single run
-      //compiler.hooks.done.tap("CraftyRuntime", stats => {
-      //  printStats(stats, compiler);
-      //});
-
-      return { compiler, config };
+    // "invalid" event fires when you have changed a file, and Rspack is
+    // recompiling a bundle. WebpackDevServer takes care to pause serving the
+    // bundle, so if you refresh, it'll wait instead of serving the old one.
+    // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+    compiler.hooks.invalid.tap("CraftyRuntime", () => {
+      console.log("Compiling...");
     });
+
+    // TODO : move to done hook in watch and single run
+    //compiler.hooks.done.tap("CraftyRuntime", stats => {
+    //  printStats(stats, compiler);
+    //});
+
+    return { compiler, config };
   };
 
   // This is executed in watch mode only

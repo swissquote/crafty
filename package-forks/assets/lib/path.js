@@ -1,8 +1,8 @@
-const exists = require("./__utils__/exists");
-const path = require("node:path");
-const fs = require("node:fs/promises");
+import exists from "./__utils__/exists.js";
+import path from "node:path";
+import fs from "node:fs/promises";
 
-module.exports = async function pathResolver(to, options) {
+export default async function pathResolver(to, options) {
   /* eslint-disable-next-line no-param-reassign */
   options = {
     basePath: ".",
@@ -28,4 +28,4 @@ module.exports = async function pathResolver(to, options) {
   }
 
   throw new Error(`Asset not found or unreadable: ${to}`);
-};
+}

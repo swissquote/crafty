@@ -1,7 +1,7 @@
-const { test } = require("node:test");
-const { expect } = require("expect");
+import { test } from "node:test";
+import { expect } from "expect";
 
-const resolveData = require("../lib/data");
+import resolveData from "../lib/data.js";
 
 test("w/o options", async () => {
   const resolvedDataUrl = await resolveData("test/fixtures/duplicate-1.jpg");

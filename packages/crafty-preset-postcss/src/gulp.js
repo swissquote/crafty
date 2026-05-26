@@ -11,21 +11,21 @@ function cssTask(crafty, StreamHandler, bundle) {
     const scssParser = require("postcss-scss");
     const touch = require("./touch.js");
 
-    return new StreamHandler(
-      bundle.source,
-      destination,
-      cb,
-      { sourcemaps: true },
-      { sourcemaps: "." }
-    )
-      .add(
-        postcss(getProcessors(crafty.config, crafty, bundle), {
-          parser: scssParser
-        })
-      )
-      .add(rename(bundle.destination))
-      .add(touch())
-      .generate();
+    getProcessors(crafty.config, crafty, bundle)
+      .then(processors => {
+        new StreamHandler(
+          bundle.source,
+          destination,
+          cb,
+          { sourcemaps: true },
+          { sourcemaps: "." }
+        )
+          .add(postcss(processors, { parser: scssParser }))
+          .add(rename(bundle.destination))
+          .add(touch())
+          .generate();
+      })
+      .catch(cb);
   };
 }
 

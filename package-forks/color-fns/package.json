@@ -1,6 +1,11 @@
 {
   "name": "@swissquote/color-fns",
   "version": "1.29.0",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "engines": {
     "node": ">=22.12"
   },

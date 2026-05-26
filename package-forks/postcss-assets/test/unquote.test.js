@@ -1,8 +1,8 @@
 /* eslint quotes: 0 */
 
-const { test } = require("node:test");
-const { expect } = require("expect");
-const unquote = require("../lib/unquote");
+import { test } from "node:test";
+import { expect } from "expect";
+import unquote from "../lib/unquote.js";
 
 test("removes quotes", () => {
   expect(unquote('"foo"')).toBe("foo");

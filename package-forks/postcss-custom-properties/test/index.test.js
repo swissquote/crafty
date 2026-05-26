@@ -1,10 +1,13 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const postcss = require("postcss");
-const { test } = require("node:test");
-const { expect } = require("expect");
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import postcss from "postcss";
+import { test } from "node:test";
+import { expect } from "expect";
 
-const plugin = require("../");
+import plugin from "../src/index.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function fixturePath(name) {
   return path.join(__dirname, "fixtures", `${name}.css`);
@@ -280,29 +283,25 @@ test("supports { async exportTo() } usage", () => {
 });
 
 test('supports { exportTo: "test/export-properties.scss" } usage', () => {
+  const exportKey = 'supports { exportTo: "test/export-properties.scss" } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] = require("node:fs").readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.scss",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: \"test/export-properties.scss\" } usage"}`] !==
-          require("node:fs").readFileSync(
-            "test/fixtures/export-properties.scss",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.scss", "utf8")
         ) {
           throw new Error(
-            "The original file did not match the freshly exported copy, content was: " + require("node:fs").readFileSync(
-              "test/fixtures/export-properties.scss",
-              "utf8"
-            )
+            "The original file did not match the freshly exported copy, content was: " +
+              fs.readFileSync("test/fixtures/export-properties.scss", "utf8")
           );
         }
       },
@@ -314,23 +313,21 @@ test('supports { exportTo: "test/export-properties.scss" } usage', () => {
 });
 
 test('supports { exportTo: "test/export-properties.json" } usage', () => {
+  const exportKey = 'supports { exportTo: "test/export-properties.json" } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] = fs.readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.json",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: \"test/export-properties.json\" } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.json",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.json", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"
@@ -344,24 +341,22 @@ test('supports { exportTo: "test/export-properties.json" } usage', () => {
   );
 });
 
-test('supports { exportTo: "test/export-properties.js" } usage', () => {
+test('supports { exportTo: "test/export-properties.cjs" } usage', () => {
+  const exportKey = 'supports { exportTo: "test/export-properties.cjs" } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] = fs.readFileSync(
-          "test/fixtures/export-properties.js",
+        global[`export_${exportKey}`] = fs.readFileSync(
+          "test/fixtures/export-properties.cjs",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: \"test/export-properties.js\" } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.js",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.cjs", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"
@@ -370,29 +365,27 @@ test('supports { exportTo: "test/export-properties.js" } usage', () => {
       },
     },
     {
-      exportTo: "test/fixtures/export-properties.js",
+      exportTo: "test/fixtures/export-properties.cjs",
     }
   );
 });
 
 test('supports { exportTo: "test/export-properties.mjs" } usage', () => {
+  const exportKey = 'supports { exportTo: "test/export-properties.mjs" } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] = fs.readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.mjs",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: \"test/export-properties.mjs\" } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.mjs",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.mjs", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"
@@ -407,23 +400,21 @@ test('supports { exportTo: "test/export-properties.mjs" } usage', () => {
 });
 
 test('supports { exportTo: "test/export-properties.css" } usage', () => {
+  const exportKey = 'supports { exportTo: "test/export-properties.css" } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] = fs.readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: \"test/export-properties.css\" } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.css",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.css", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"
@@ -438,23 +429,21 @@ test('supports { exportTo: "test/export-properties.css" } usage', () => {
 });
 
 test('supports { exportTo: { to: "test/export-properties.css" } } usage', () => {
+  const exportKey = 'supports { exportTo: { to: "test/export-properties.css" } } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] = fs.readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: { to: \"test/export-properties.css\" } } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.css",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.css", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"
@@ -469,23 +458,21 @@ test('supports { exportTo: { to: "test/export-properties.css" } } usage', () => 
 });
 
 test('supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage', () => {
+  const exportKey = 'supports { exportTo: { to: "test/export-properties.css", type: "css" } } usage';
   return testFixture(
     {
       input: "basic",
       output: "basic.expect",
       before() {
-        global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] = fs.readFileSync(
+        global[`export_${exportKey}`] = fs.readFileSync(
           "test/fixtures/export-properties.css",
           "utf8"
         );
       },
       after() {
         if (
-          global[`export_${"supports { exportTo: { to: \"test/export-properties.css\", type: \"css\" } } usage"}`] !==
-          fs.readFileSync(
-            "test/fixtures/export-properties.css",
-            "utf8"
-          )
+          global[`export_${exportKey}`] !==
+          fs.readFileSync("test/fixtures/export-properties.css", "utf8")
         ) {
           throw new Error(
             "The original file did not match the freshly exported copy"

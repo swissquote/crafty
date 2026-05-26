@@ -1,6 +1,11 @@
+const fs = require("node:fs");
+const path = require("node:path");
+
 // Lazy load caniuse's data
 let caniuseFeature;
 let caniuseFeatures;
+
+const distPath = path.join(path.dirname(__dirname), "dist");
 
 // To better bundle the dependencies, we don't need the full caniuse-api
 // we inline this function instead : https://github.com/Nyalab/caniuse-api/blob/master/src/index.js#L34-L50
@@ -55,8 +60,8 @@ module.exports = class Processor {
    */
   module(moduleName) {
     const modulePath = require.resolve(moduleName);
-    this.moduleInit = options => {
-      let mod = require(modulePath);
+    this.moduleInit = async options => {
+      let mod = await import(modulePath);
 
       if (mod.default) {
         mod = mod.default;
@@ -69,26 +74,15 @@ module.exports = class Processor {
   }
 
   embedded(folder) {
-    return this.module(
-      `@swissquote/postcss-swissquote-preset/dist/${folder ||
-        this.name}/index.js`
-    );
-  }
+    const preset = folder || this.name;
 
-  /**
-   * Provide a custom init callback, needed if your plugin
-   * is just a function or needs more than one parameter.
-   * This is an alternative to `.module(name)`.
-   *
-   * .init(options => require("my-postcss-plugin")(options))
-   *
-   * @param {Function} fun The function that will return the instance of the plugin
-   * @returns {this}
-   */
-  init(fun) {
-    this.moduleInit = fun;
+    let filename = "index.js";
+    if (fs.existsSync(path.join(distPath, preset, "index.mjs"))) {
+      filename = "index.mjs";
+    }
 
-    return this;
+    const pkg = "@swissquote/postcss-swissquote-preset";
+    return this.module(`${pkg}/dist/${preset}/${filename}`);
   }
 
   /**
@@ -153,13 +147,13 @@ module.exports = class Processor {
    *
    * @returns {PostcssPlugin} An instance of the plugin with the defined options.
    */
-  instantiate() {
+  async instantiate() {
     if (!this.moduleInit) {
       this.module(this.name);
     }
 
     try {
-      return this.moduleInit(this.options);
+      return await this.moduleInit(this.options);
     } catch (e) {
       console.error(`Failed to load PostCSS plugin`, this.name);
       throw e;

@@ -31,6 +31,10 @@
   "peerDependencies": {
     "postcss": "^8.0.0"
   },
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node '*.js'",
     "test": "node --test",

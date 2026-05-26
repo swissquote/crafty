@@ -1,5 +1,7 @@
-const mediaParser = require("postcss-media-query-parser").default;
-const valueParser = require("postcss-value-parser");
+import _mediaQueryParser from "postcss-media-query-parser";
+import valueParser from "postcss-value-parser";
+
+const mediaParser = _mediaQueryParser.default;
 
 const DPI_RATIO = {
   x: 96,
@@ -152,7 +154,7 @@ function transform(decl, { list, atRule }) {
     });
 }
 
-module.exports = () => {
+const plugin = () => {
   return {
     postcssPlugin: "postcss-image-set-polyfill",
     Declaration: {
@@ -161,5 +163,6 @@ module.exports = () => {
     }
   };
 };
+plugin.postcss = true;
 
-module.exports.postcss = true;
+export default plugin;

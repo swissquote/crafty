@@ -162,7 +162,7 @@ function finalizeWatcher(chain, config) {
     ]);
 }
 
-module.exports = function configureRspack(crafty, bundle, serverPort) {
+module.exports = async function configureRspack(crafty, bundle, serverPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
   const chain = new RspackChain();
@@ -251,7 +251,7 @@ module.exports = function configureRspack(crafty, bundle, serverPort) {
   }
 
   // Apply preset configuration
-  crafty.runAllSync("rspack", crafty, bundle, chain);
+  await crafty.runAllAsync("rspack", crafty, bundle, chain);
 
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process

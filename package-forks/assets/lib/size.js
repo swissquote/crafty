@@ -1,7 +1,7 @@
-const sizeOf = require("image-size");
-const resolvePath = require("./path");
+import sizeOf from "image-size";
+import resolvePath from "./path.js";
 
-module.exports = async function size(to, options) {
+export default async function size(to, options) {
   const resolvedPath = await resolvePath(to, options);
 
   try {
@@ -10,4 +10,4 @@ module.exports = async function size(to, options) {
   } catch (errInternal) {
     throw new Error(`${errInternal.message}: ${resolvedPath}`);
   }
-};
+}

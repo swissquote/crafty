@@ -104,7 +104,7 @@ module.exports = function(config) {
       relative: true
     });
 
-  // CSSO :: Minify and Optimize CSS
+  // Minify and Optimize CSS
   processors
     .processor("postcss-lightningcss")
     .embedded()

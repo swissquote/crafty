@@ -1,14 +1,14 @@
 /* eslint-disable no-use-before-define,no-nested-ternary */
-const {
+import {
   rgb2hsl,
   rgb2hwb,
   hsl2rgb,
   hsl2hwb,
   hwb2rgb,
   hwb2hsl
-} = require("@swissquote/color-fns");
+} from "@swissquote/color-fns";
 
-module.exports = class Color {
+export default class Color {
   constructor(color) {
     this.color = Object(Object(color).color || color);
 
@@ -147,7 +147,7 @@ module.exports = class Color {
   toString() {
     return color2string(this.color);
   }
-};
+}
 
 /* Blending
 /* ========================================================================== */

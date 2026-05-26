@@ -13,7 +13,11 @@
   },
   "homepage": "https://github.com/postcss/postcss-custom-properties#readme",
   "bugs": "https://github.com/postcss/postcss-custom-properties/issues",
+  "type": "module",
   "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
   "scripts": {
     "lint": "node ../../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src",
     "test": "node --test",

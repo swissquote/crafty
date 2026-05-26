@@ -1,22 +1,22 @@
 /* eslint-disable no-use-before-define,no-nested-ternary,eqeqeq */
 // tooling
-const {
+import {
   convertDtoD,
   convertGtoD,
   convertRtoD,
   convertTtoD,
   convertNtoRGB,
   convertHtoRGB
-} = require("./conversions");
-const Color = require("./color");
-const manageUnresolved = require("./manage-unresolved");
-const Word = require("postcss-values-parser/lib/nodes/Word");
-const Operator = require("postcss-values-parser/lib/nodes/Operator");
+} from "./conversions.js";
+import Color from "./color.js";
+import manageUnresolved from "./manage-unresolved.js";
+import Word from "postcss-values-parser/lib/nodes/Word.js";
+import Operator from "postcss-values-parser/lib/nodes/Operator.js";
 
 /* Transform AST
 /* ========================================================================== */
 
-module.exports = function transformAST(node, opts) {
+export default function transformAST(node, opts) {
   node.walkFuncs(child => {
     if (isColorModFunction(child)) {
       // transform any variables within the color-mod() function
@@ -40,7 +40,7 @@ module.exports = function transformAST(node, opts) {
       transformAST(child, opts);
     }
   });
-};
+}
 
 /* Transform <var> functions
 /* ========================================================================== */

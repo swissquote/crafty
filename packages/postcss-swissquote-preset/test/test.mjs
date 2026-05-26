@@ -488,7 +488,9 @@ for (const variant of variants) {
       );
 
       test(`${spec}: ${example.name}: ${variant.name}`, async (t) => {
-        const plugin = postcssPreset(variant.options);
+        const pluginCreator = await postcssPreset(variant.options);
+        const plugin = pluginCreator();
+
         const result = await postcss()
           .use(plugin)
           .process(before, {
