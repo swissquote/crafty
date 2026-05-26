@@ -183,7 +183,7 @@ function configureAnalyze(chain, bundle) {
     .use(require.resolve("../packages/inspectpack.js"), [{}]);
 }
 
-module.exports = function(crafty, bundle, webpackPort) {
+module.exports = async function(crafty, bundle, webpackPort) {
   const config = crafty.config;
   const isWatching = crafty.isWatching();
   const chain = new WebpackChain();
@@ -270,7 +270,7 @@ module.exports = function(crafty, bundle, webpackPort) {
   }
 
   // Apply preset configuration
-  crafty.runAllSync("webpack", crafty, bundle, chain);
+  await crafty.runAllAsync("webpack", crafty, bundle, chain);
 
   // If we're in watch mode, there are some settings we have to
   // cleanly apply at the end of the configuration process

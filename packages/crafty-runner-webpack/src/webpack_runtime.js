@@ -10,9 +10,9 @@ const portFinder = require("./utils/find-port");
 const webpackConfigurator = require("./webpack");
 const { printStats, printError } = require("./webpack_output");
 
-function prepareConfiguration(crafty, bundle, webpackPort) {
+async function prepareConfiguration(crafty, bundle, webpackPort) {
   // Base configuration
-  let webpackConfig = webpackConfigurator(crafty, bundle, webpackPort);
+  let webpackConfig = await webpackConfigurator(crafty, bundle, webpackPort);
 
   const configPath = path.join(process.cwd(), "webpack.config.js");
 
@@ -51,30 +51,29 @@ function extractError(error) {
  */
 module.exports = function jsTaskES6(crafty, bundle) {
   const taskName = bundle.taskName;
-  const getCompiler = () => {
-    return portFinder.getFree(taskName).then(freePort => {
-      const config = prepareConfiguration(crafty, bundle, freePort);
-      const webpack = require("webpack");
-      const compiler = webpack(config);
+  const getCompiler = async () => {
+    const freePort = await portFinder.getFree(taskName);
+    const config = await prepareConfiguration(crafty, bundle, freePort);
+    const webpack = require("webpack");
+    const compiler = webpack(config);
 
-      if (!compiler) {
-        return Promise.reject("Could not create compiler");
-      }
+    if (!compiler) {
+      return Promise.reject("Could not create compiler");
+    }
 
-      // "invalid" event fires when you have changed a file, and Webpack is
-      // recompiling a bundle. WebpackDevServer takes care to pause serving the
-      // bundle, so if you refresh, it'll wait instead of serving the old one.
-      // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-      compiler.hooks.invalid.tap("CraftyRuntime", () => {
-        console.log("Compiling...");
-      });
-
-      compiler.hooks.done.tap("CraftyRuntime", stats => {
-        printStats(stats, compiler);
-      });
-
-      return { compiler, config };
+    // "invalid" event fires when you have changed a file, and Webpack is
+    // recompiling a bundle. WebpackDevServer takes care to pause serving the
+    // bundle, so if you refresh, it'll wait instead of serving the old one.
+    // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
+    compiler.hooks.invalid.tap("CraftyRuntime", () => {
+      console.log("Compiling...");
     });
+
+    compiler.hooks.done.tap("CraftyRuntime", stats => {
+      printStats(stats, compiler);
+    });
+
+    return { compiler, config };
   };
 
   // This is executed in watch mode only

@@ -88,7 +88,7 @@ function configureMiniCssExtractPlugin(bundle, chain, isRspack) {
   return MiniCssExtractPlugin.loader;
 }
 
-function createRule(crafty, bundle, chain, styleRule, isRspack, options) {
+async function createRule(crafty, bundle, chain, styleRule, isRspack, options) {
   const getProcessors = require("@swissquote/postcss-swissquote-preset/processors");
 
   // "postcss" loader applies autoprefixer to our CSS.
@@ -126,13 +126,13 @@ function createRule(crafty, bundle, chain, styleRule, isRspack, options) {
       implementation: require("postcss"),
       postcssOptions: {
         parser: require("postcss-scss"),
-        plugins: getProcessors(crafty.config, crafty, bundle)
+        plugins: await getProcessors(crafty.config, crafty, bundle)
       }
     });
 }
 
-function createGlobalRule(crafty, bundle, chain, isRspack = false) {
-  createRule(
+async function createGlobalRule(crafty, bundle, chain, isRspack = false) {
+  await createRule(
     crafty,
     bundle,
     chain,
@@ -149,8 +149,8 @@ function createGlobalRule(crafty, bundle, chain, isRspack = false) {
   );
 }
 
-function createModuleRule(crafty, bundle, chain, isRspack = false) {
-  createRule(
+async function createModuleRule(crafty, bundle, chain, isRspack = false) {
+  await createRule(
     crafty,
     bundle,
     chain,

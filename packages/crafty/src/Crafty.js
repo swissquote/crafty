@@ -90,6 +90,16 @@ class Crafty {
     }
   }
 
+  async runAllAsync(fn, ...args) {
+    for (const preset of this.loadedPresets) {
+      if (preset.implements(fn)) {
+        debug(`${preset.presetName}.${fn}()`);
+        // eslint-disable-next-line no-await-in-loop
+        await preset.run(fn, ...args);
+      }
+    }
+  }
+
   get isPNP() {
     try {
       require(`pnpapi`);

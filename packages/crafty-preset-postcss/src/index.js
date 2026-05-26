@@ -53,20 +53,20 @@ module.exports = {
       }
     };
   },
-  webpack(crafty, bundle, chain) {
+  async webpack(crafty, bundle, chain) {
     chain.resolve.extensions.add(".css").add(".scss");
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    createGlobalRule(crafty, bundle, chain, false);
-    createModuleRule(crafty, bundle, chain, false);
+    await createGlobalRule(crafty, bundle, chain, false);
+    await createModuleRule(crafty, bundle, chain, false);
   },
-  rspack(crafty, bundle, chain) {
+  async rspack(crafty, bundle, chain) {
     chain.resolve.extensions.add(".css").add(".scss");
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
 
-    createGlobalRule(crafty, bundle, chain, true);
-    createModuleRule(crafty, bundle, chain, true);
+    await createGlobalRule(crafty, bundle, chain, true);
+    await createModuleRule(crafty, bundle, chain, true);
   }
 };

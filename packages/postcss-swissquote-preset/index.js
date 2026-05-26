@@ -1,14 +1,21 @@
 const prepareProcessors = require("./processors");
 
-const plugin = options => {
-  const processors = prepareProcessors(options.config);
+const initializer = async options => {
+  const processors = await prepareProcessors(
+    options.config,
+    options.crafty || null,
+    options.bundle || null
+  );
 
-  return {
-    postcssPlugin: "swissquote-preset",
-    plugins: Object.values(processors)
+  const plugin = () => {
+    return {
+      postcssPlugin: "swissquote-preset",
+      plugins: Object.values(processors)
+    };
   };
+
+  plugin.postcss = true;
+  return plugin;
 };
 
-plugin.postcss = true;
-
-module.exports = plugin;
+module.exports = initializer;

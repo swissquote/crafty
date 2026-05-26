@@ -1,6 +1,6 @@
 const features = require("./src/features");
 
-module.exports = function(config, crafty, bundle) {
+module.exports = async function(config, crafty, bundle) {
   // All processors used to make the CSS readable by a browser
   const processors = features(config);
 
@@ -10,8 +10,10 @@ module.exports = function(config, crafty, bundle) {
   }
 
   // Make a valid format for postcss
-  return processors
-    .values()
-    .filter(item => item.isEnabled())
-    .map(item => item.instantiate());
+  return Promise.all(
+    processors
+      .values()
+      .filter(item => item.isEnabled())
+      .map(item => item.instantiate())
+  );
 };

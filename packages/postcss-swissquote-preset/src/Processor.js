@@ -60,8 +60,8 @@ module.exports = class Processor {
    */
   module(moduleName) {
     const modulePath = require.resolve(moduleName);
-    this.moduleInit = options => {
-      let mod = require(modulePath);
+    this.moduleInit = async options => {
+      let mod = await import(modulePath);
 
       if (mod.default) {
         mod = mod.default;
@@ -147,13 +147,13 @@ module.exports = class Processor {
    *
    * @returns {PostcssPlugin} An instance of the plugin with the defined options.
    */
-  instantiate() {
+  async instantiate() {
     if (!this.moduleInit) {
       this.module(this.name);
     }
 
     try {
-      return this.moduleInit(this.options);
+      return await this.moduleInit(this.options);
     } catch (e) {
       console.error(`Failed to load PostCSS plugin`, this.name);
       throw e;
