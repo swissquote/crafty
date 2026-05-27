@@ -261,18 +261,6 @@ module.exports = {
         )
       );
 
-    const tsOptions = {
-      // https://webpack.js.org/guides/build-performance/#typescript-loader
-      experimentalWatchApi: true,
-      configFile: tsconfigFile,
-      compilerOptions: {
-        // Transpile to esnext so that SWC can apply all its magic
-        target: "ESNext",
-        // Preserve JSX so SWC can optimize it, or add development/debug information
-        jsx: "Preserve"
-      }
-    };
-
     // Get the current configuration to know what configuration options we have to set
     const compiler = require("typescript");
     const currentConfig = compiler.readConfigFile(
@@ -285,6 +273,15 @@ module.exports = {
       currentConfig.config.compilerOptions &&
       currentConfig.config.compilerOptions.declaration;
 
+    // Compiler options to pass to ts-checker-rspack-plugin
+    // (mirrors what was previously passed to ts-loader)
+    const compilerOptionsOverwrite = {
+      // Transpile to esnext so that SWC can apply all its magic
+      target: "ESNext",
+      // Preserve JSX so SWC can optimize it, or add development/debug information
+      jsx: "Preserve"
+    };
+
     if (
       hasDeclarations &&
       !currentConfig.config.compilerOptions.declarationDir
@@ -293,37 +290,29 @@ module.exports = {
       // We set the value this way to respect backwards compatibility,
       // Ideally, the value should be without the `/js` at the end
       const subdirectory = bundle.directory ? `/${bundle.directory}` : "";
-      tsOptions.compilerOptions.declarationDir = absolutePath(
+      compilerOptionsOverwrite.declarationDir = absolutePath(
         `${crafty.config.destination_js}${subdirectory}/js`
       );
     }
 
-    // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
-    // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
-    if (!hasDeclarations) {
-      tsOptions.transpileOnly = true;
+    const checkerOptions = {
+      typescript: {
+        typescriptPath: require.resolve("typescript"),
+        configFile: tsconfigFile,
+        configOverwrite: {
+          compilerOptions: compilerOptionsOverwrite
+        },
+        // 'write-dts': type-check AND emit .d.ts files (when declaration: true in tsconfig)
+        // 'readonly': type-check only, no file emission
+        mode: hasDeclarations ? "write-dts" : "readonly"
+      }
+    };
 
-      const forkCheckerOptions = {
-        typescript: {
-          typescriptPath: require.resolve("typescript"),
-          configFile: tsconfigFile,
-          configOverwrite: {
-            compilerOptions: tsOptions.compilerOptions
-          }
-        }
-      };
-
-      chain
-        .plugin("ts-checker-rspack-plugin")
-        .init((Plugin, args) => new Plugin.TsCheckerRspackPlugin(...args))
-        .use(require.resolve("../packages/ts-checker-rspack-plugin"), [
-          forkCheckerOptions
-        ]);
-    }
-
-    tsRule
-      .use("ts-loader")
-      .loader(require.resolve("../packages/ts-loader"))
-      .options(tsOptions);
+    chain
+      .plugin("ts-checker-rspack-plugin")
+      .init((Plugin, args) => new Plugin.TsCheckerRspackPlugin(...args))
+      .use(require.resolve("../packages/ts-checker-rspack-plugin"), [
+        checkerOptions
+      ]);
   }
 };
