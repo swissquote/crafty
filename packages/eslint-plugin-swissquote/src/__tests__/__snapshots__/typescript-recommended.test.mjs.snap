@@ -8,7 +8,6 @@ exports[`Uses sonar plugin//0`] = `Array [
     "line": 3,
     "message": "'changeWindow' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
     "ruleId": "@swissquote/swissquote/@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
@@ -22,7 +21,6 @@ exports[`Warns on console.log//0`] = `Array [
     "line": 5,
     "message": "Unexpected console statement.",
     "messageId": "unexpected",
-    "nodeType": "MemberExpression",
     "ruleId": "no-console",
     "severity": 1,
     "suggestions": Array [

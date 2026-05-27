@@ -61,7 +61,7 @@ module.exports = [
         pkg
           .package(
             "postcss-values-parser",
-            "postcssValuesParser",
+            ["parse"],
             "dist/postcss-values-parser/index.js"
           )
           .package(
