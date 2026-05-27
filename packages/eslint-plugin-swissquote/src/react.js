@@ -33,7 +33,6 @@ module.exports = {
     // Swissquote Rules
     "@eslint-react/no-set-state-in-component-did-mount": "error",
     "@eslint-react/no-set-state-in-component-did-update": "error",
-    "@eslint-react/no-redundant-should-component-update": "error",
     "@eslint-react/dom-no-void-elements-with-children": "error",
 
     // Disable the rule as it would attempt to autofix

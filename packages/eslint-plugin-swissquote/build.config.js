@@ -142,7 +142,7 @@ module.exports = [
           )
           .package(
             "@typescript-eslint/scope-manager",
-            ["DefinitionType"],
+            ["DefinitionType", "ScopeType"],
             "dist/typescript-eslint/scope-manager.js"
           )
           .package(
