@@ -10,17 +10,10 @@ exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 1`
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by path js/ ___ KiB
-  assets by path js/*.ts ___ KiB
-    asset js/SomeLibrary.d.ts ___ KiB [emitted]
-    asset js/script.d.ts ___ KiB [emitted]
-  asset js/components/Calculator.d.ts ___ KiB [emitted]
-  asset js/views/View.d.ts ___ KiB [emitted]
-assets by path *.js ___ KiB
-  asset myBundle.min.js ___ KiB [emitted] (name: default)
-  asset 222.myBundle.min.js ___ KiB [emitted]
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+asset 357.myBundle.min.js ___ KiB [emitted]
 Entrypoint default ___ KiB = myBundle.min.js
-chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+chunk (runtime: default) 357.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.ts + 1 modules ___ KiB [code generated]
@@ -36,13 +29,13 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 2`] = `
-"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={884:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(222).then(r.bind(r,221)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(884)}()});
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={833:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(357).then(r.bind(r,764)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(833)}()});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 3`] = `
-""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[222],{221:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
-//# sourceMappingURL=222.myBundle.min.js.map"
+""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[357],{764:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
+//# sourceMappingURL=357.myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript - custom paths 4`] = `
@@ -89,12 +82,12 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 2`] = `
-"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={399:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(469).then(r.bind(r,221)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return"someLibrary.myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(399)}()});
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={534:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(469).then(r.bind(r,764)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return"someLibrary.myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(534)}()});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript - fork checker 3`] = `
-""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[469],{221:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
+""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[469],{764:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
 //# sourceMappingURL=someLibrary.myBundle.min.js.map"
 `;
 
@@ -108,15 +101,10 @@ exports[`crafty-preset-typescript-rspack > Compiles TypeScript 1`] = `
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by path js/*.ts ___ KiB
-  asset js/SomeLibrary.d.ts ___ KiB [emitted]
-  asset js/script.d.ts ___ KiB [emitted]
-  asset js/Component.d.ts ___ KiB [emitted]
-assets by path *.js ___ KiB
-  asset myBundle.min.js ___ KiB [emitted] (name: default)
-  asset 222.myBundle.min.js ___ KiB [emitted]
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+asset 357.myBundle.min.js ___ KiB [emitted]
 Entrypoint default ___ KiB = myBundle.min.js
-chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+chunk (runtime: default) 357.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.ts + 1 modules ___ KiB [code generated]
@@ -132,13 +120,13 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript 2`] = `
-"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={399:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(222).then(r.bind(r,221)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(399)}()});
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={534:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(357).then(r.bind(r,764)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(534)}()});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript 3`] = `
-""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[222],{221:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
-//# sourceMappingURL=222.myBundle.min.js.map"
+""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[357],{764:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
+//# sourceMappingURL=357.myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript 4`] = `
@@ -165,15 +153,10 @@ exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 1
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by path js/*.ts ___ KiB
-  asset js/SomeLibrary.d.ts ___ KiB [emitted]
-  asset js/script.d.ts ___ KiB [emitted]
-  asset js/Component.d.ts ___ KiB [emitted]
-assets by path *.js ___ KiB
-  asset myBundle.min.js ___ KiB [emitted] (name: default)
-  asset 222.myBundle.min.js ___ KiB [emitted]
+asset myBundle.min.js ___ KiB [emitted] (name: default)
+asset 357.myBundle.min.js ___ KiB [emitted]
 Entrypoint default ___ KiB = myBundle.min.js
-chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+chunk (runtime: default) 357.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.ts + 1 modules ___ KiB [code generated]
@@ -189,13 +172,13 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 2`] = `
-"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={399:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(222).then(r.bind(r,221)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(399)}()});
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(){return function(){"use strict";var e,t,r,n={534:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});class n{constructor(){console.log("init class")}method(){console.log(6),r.e(357).then(r.bind(r,764)).then(e=>{console.log(new e.default().add(2,4))})}}}},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return n[e](r,r.exports,i),r.exports}i.m=n,i.d=function(e,t){for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=function(e){return Promise.all(Object.keys(i.f).reduce(function(t,r){return i.f[r](e,t),t},[]))},i.u=function(e){return""+e+".myBundle.min.js"},i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},u={},i.l=function(e,t,r,n){if(u[e])return void u[e].push(t);if(void 0!==r)for(var o,c,a=document.getElementsByTagName("script"),l=0;l<a.length;l++){var s=a[l];if(s.getAttribute("src")==e||s.getAttribute("data-rspack")=="UNIQID:"+r){o=s;break}}o||(c=!0,(o=document.createElement("script")).timeout=120,i.nc&&o.setAttribute("nonce",i.nc),o.setAttribute("data-rspack","UNIQID:"+r),o.src=e),u[e]=[t];var f=function(t,r){o.onerror=o.onload=null,clearTimeout(p);var n=u[e];if(delete u[e],o.parentNode&&o.parentNode.removeChild(o),n&&n.forEach(function(e){return e(r)}),t)return t(r)},p=setTimeout(f.bind(null,void 0,{type:"timeout",target:o}),12e4);o.onerror=f.bind(null,o.onerror),o.onload=f.bind(null,o.onload),c&&document.head.appendChild(o)},i.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.g.importScripts&&(c=i.g.location+"");var u,c,a=i.g.document;if(!c&&a&&(a.currentScript&&"SCRIPT"===a.currentScript.tagName.toUpperCase()&&(c=a.currentScript.src),!c)){var l=a.getElementsByTagName("script");if(l.length)for(var s=l.length-1;s>-1&&(!c||!/^http(s?):/.test(c));)c=l[s--].src}if(!c)throw Error("Automatic publicPath is not supported in this browser");return i.p=c.replace(/^blob:/,"").replace(/#.*$/,"").replace(/\\?.*$/,"").replace(/\\/[^\\/]+$/,"/"),e={711:0},i.f.j=function(t,r){var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(function(r,o){n=e[t]=[r,o]});r.push(n[2]=o);var u=i.p+i.u(t),c=Error();i.l(u,function(r){if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\\n("+o+": "+u+")",c.name="ChunkLoadError",c.type=o,c.request=u,n[1](c)}},"chunk-"+t,t)}},t=function(t,r){var n,o,u=r[0],c=r[1],a=r[2],l=0;if(u.some(function(t){return 0!==e[t]})){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);a&&a(i)}for(t&&t(r);l<u.length;l++)o=u[l],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},(r=self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r)),i(534)}()});
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 3`] = `
-""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[222],{221:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
-//# sourceMappingURL=222.myBundle.min.js.map"
+""use strict";(self.rspackChunkUNIQID=self.rspackChunkUNIQID||[]).push([[357],{764:function(r,u,s){s.d(u,{default:function(){return t}});class t{add(r,u){return r+u}substract(r,u){return r-u}divide(r,u){return r/u}}}}]);
+//# sourceMappingURL=357.myBundle.min.js.map"
 `;
 
 exports[`crafty-preset-typescript-rspack > Compiles TypeScript, alternate conf 4`] = `
@@ -222,12 +205,28 @@ exports[`crafty-preset-typescript-rspack > Fails gracefully on broken markup 1`]
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-assets by status ___ KiB [cached] 2 assets
+assets by status ___ KiB [cached] 1 asset
 Entrypoint default ___ KiB = myTSBundle.min.js
-chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
-  ./js/typescript.ts ___ KiB [built] [code generated]
+chunk (runtime: default) myTSBundle.min.js (default) ___ KiB [entry] [rendered]
+  ./js/typescript.ts ___ KiB [built] [code generated] [1 error]
 
   Failed to compile.
+
+  × Module build failed (from builtin:swc-loader):
+  ├─▶   ×   x Unexpected token \`class\`. Expected * for generator, private key, identifier or async
+  │     │     ,-[__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts:14:1]
+  │     │  11 |
+  │     │  12 | }
+  │     │  13 |
+  │     │  14 | export class D {
+  │     │     :        ^^^^^
+  │     │  15 |     constructor() {
+  │     │  16 |         console.log("Something else happens here");
+  │     │  17 |     }
+  │     │     \`----
+  │     │
+  │
+  ╰─▶   × Syntax Error
 
   × [eslint]
   │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts
@@ -235,9 +234,6 @@ chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ Ki
   │
   │ ✖ 1 problem (1 error, 0 warnings)
   │
-
-  × [tsl] ERROR in __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts(14,1)
-  │       TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 
   Δt ____ms ✖ 2 problems (2 errors, 0 warnings)
 
@@ -318,7 +314,7 @@ exports[`crafty-preset-typescript-rspack > Fails gracefully on invalid TS 1`] = 
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myTSBundle' ...
-assets by status ___ KiB [cached] 2 assets
+assets by status ___ KiB [cached] 1 asset
 Entrypoint default ___ KiB = myTSBundle.min.js
 chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/typescript.ts ___ KiB [built] [code generated]
@@ -348,8 +344,14 @@ chunk (runtime: default) myTSBundle.min.js (default) ___ KiB (javascript) ___ Ki
   │   13 errors and 0 warnings potentially fixable with the \`--fix\` option.
   │
 
-  × [tsl] ERROR in __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/invalid/js/typescript.ts(5,17)
-  │       TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+  × TS2339: Property 'someNonExistingMethod' does not exist on type 'D'.
+  │     3 |         console.log("Something happens here");
+  │     4 |
+  │   > 5 |         new D().someNonExistingMethod();
+  │       |                 ^^^^^^^^^^^^^^^^^^^^^
+  │     6 |     }
+  │     7 |
+  │     8 |     someMethod() {
 
   Δt ____ms ✖ 3 problems (2 errors, 1 warning)
 
@@ -371,9 +373,9 @@ exports[`crafty-preset-typescript-rspack > Lints TypeScript with rspack 1`] = `
 [__:__:__] Starting 'default' ...
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
-assets by status ___ KiB [cached] 5 assets
+assets by status ___ KiB [cached] 2 assets
 Entrypoint default ___ KiB = myBundle.min.js
-chunk (runtime: default) 222.myBundle.min.js ___ KiB [rendered]
+chunk (runtime: default) 357.myBundle.min.js ___ KiB [rendered]
   ./js/SomeLibrary.ts ___ KiB [built] [code generated]
 chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   ./js/script.ts + 1 modules ___ KiB [code generated]
@@ -421,8 +423,6 @@ exports[`crafty-preset-typescript-rspack > Removes unused classes 1`] = `
 [__:__:__] Starting 'js' ...
 [__:__:__] Starting 'js_myBundle' ...
 asset myBundle.min.js ___ KiB [emitted] (name: default)
-asset js/imported-typescript.d.ts ___ KiB [emitted]
-asset js/index.d.ts ___ KiB [emitted]
 Entrypoint default ___ KiB = myBundle.min.js
 chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
   ./js/index.ts + 1 modules ___ KiB [code generated]
