@@ -2,7 +2,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    setupFiles: ['./setup.js'],
+    setupFiles: ["./setup.js"],
     testTimeout: 60000,
     include: ["**/__tests__/**/*.js"],
     coverage: {

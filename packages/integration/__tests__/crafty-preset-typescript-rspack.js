@@ -94,9 +94,7 @@ describe("crafty-preset-typescript-rspack", () => {
     expect(path.join(cwd, "dist/js/myBundle.min.js")).toExist();
     expect(path.join(cwd, "dist/js/myBundle.min.js.map")).toExist();
     expect(path.join(cwd, "dist/js/357.myBundle.min.js")).toExist();
-    expect(
-      path.join(cwd, "dist/js/357.myBundle.min.js.map")
-    ).toExist();
+    expect(path.join(cwd, "dist/js/357.myBundle.min.js.map")).toExist();
     expect(path.join(cwd, "dist/js/js/SomeLibrary.d.ts")).toExist();
     expect(path.join(cwd, "dist/js/js/Component.d.ts")).toExist();
 
@@ -126,12 +124,8 @@ describe("crafty-preset-typescript-rspack", () => {
 
     expect(path.join(cwd, "dist/js/myBundle.min.js")).toExist();
     expect(path.join(cwd, "dist/js/myBundle.min.js.map")).toExist();
-    expect(
-      path.join(cwd, "dist/js/someLibrary.myBundle.min.js")
-    ).toExist();
-    expect(
-      path.join(cwd, "dist/js/someLibrary.myBundle.min.js.map")
-    ).toExist();
+    expect(path.join(cwd, "dist/js/someLibrary.myBundle.min.js")).toExist();
+    expect(path.join(cwd, "dist/js/someLibrary.myBundle.min.js.map")).toExist();
 
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
@@ -154,13 +148,9 @@ describe("crafty-preset-typescript-rspack", () => {
     expect(path.join(cwd, "dist/js/myBundle.min.js")).toExist();
     expect(path.join(cwd, "dist/js/myBundle.min.js.map")).toExist();
     expect(path.join(cwd, "dist/js/357.myBundle.min.js")).toExist();
-    expect(
-      path.join(cwd, "dist/js/357.myBundle.min.js.map")
-    ).toExist();
+    expect(path.join(cwd, "dist/js/357.myBundle.min.js.map")).toExist();
     expect(path.join(cwd, "dist/js/js/SomeLibrary.d.ts")).toExist();
-    expect(
-      path.join(cwd, "dist/js/js/components/Calculator.d.ts")
-    ).toExist();
+    expect(path.join(cwd, "dist/js/js/components/Calculator.d.ts")).toExist();
 
     expect(
       testUtils.readForSnapshot(cwd, "dist/js/myBundle.min.js")
