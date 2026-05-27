@@ -90,8 +90,10 @@ The Vitest preset also provides extra options:
 - `--moduleFileExtensions <ext[,ext...]>`: adds file extensions to module
   resolution and test discovery.
 - `--reporters <name[,name...]>`: configures Vitest reporters. The special
-  value `sonar` maps to `vitest-sonar-reporter` with Crafty's default output
-  path and relative Sonar file paths by default.
+  values `sonar` and `vitest-sonar-reporter` are normalized to Crafty's
+  Sonar reporter defaults. Crafty resolves the reporter from the preset,
+  writes `coverage/sonar-report.xml` by default, and keeps relative file paths
+  unless you set `reportedFilePath: "absolute"`.
 
 You can pass a comma-separated list or repeat the option.
 
@@ -132,6 +134,8 @@ from your normal watch workflow.
 Run `crafty test --coverage` to include a coverage
 report. Crafty keeps Vitest coverage output under `coverage/` and includes
 `coverage/lcov.info` by default so SonarQube and similar tools can ingest it.
+Unless you override them, Crafty normalizes coverage to use provider `v8` and
+reporter `lcov`.
 
 If you need to customize Crafty's coverage settings, assign
 `options.test.coverage` through the `vitest(crafty, options, context)` hook.
@@ -203,6 +207,30 @@ reporter config.
 Use `context.moduleDirectories` and `context.moduleFileExtensions` to extend
 module resolution and test discovery.
 
+## Migrating an existing `vitest.config.*`
+
+When you migrate from a raw Vitest configuration, move repo-specific Vitest
+settings into the `vitest(crafty, options, context)` hook.
+
+Common fields that still need to be re-expressed manually are:
+
+- `resolve.alias`
+- `test.include`
+- `test.exclude`
+- `test.testTimeout`
+- `test.hookTimeout`
+- `test.pool`
+- `test.reporters`
+
+Crafty always adds its own default discovery globs for supported extensions.
+If your repository contains fixtures, sample apps, or embedded workspaces, use
+`options.test.exclude` to narrow discovery as needed. A common pattern is to
+exclude paths such as `fixtures/**`, `examples/**`, or `samples/**`.
+
+If you replace `options.test.reporters`, you own the full reporter list for
+that package. Add `sonar` explicitly when you still want the default Sonar XML
+report alongside a custom reporter such as `verbose`.
+
 The full list of available configuration options is available on the
 [official website](https://vitest.dev/config/).
 
@@ -251,8 +279,11 @@ More often than not, we add a reporter to create a SonarQube test report.
 `crafty-preset-vitest` comes out of the box with a sonar report that is written
 to `coverage/sonar-report.xml`.
 
-This report is automatically added to the configuration if no reporter is
-specified through the command line. The `sonar` alias, and the raw
+Consumers do not need to add `vitest-sonar-reporter` directly unless they
+import it themselves. Crafty resolves the reporter from the preset.
+
+This report is automatically added when no reporters are configured after the
+Crafty hooks have run. The `sonar` alias, and the raw
 `vitest-sonar-reporter` name, are normalized to that default output path with
 relative file paths by default. This keeps the XML portable across local runs
 and multi-platform CI.
@@ -275,8 +306,10 @@ module.exports = {
    * @param {Object} options - The Vitest configuration object
    */
   vitest(crafty, options) {
-    // The Sonar reporter is automatically added
-    console.log(options.test.reporters); // ['default', ["sonar", { outputFile: "./coverage/sonar-report.xml", reportedFilePath: "relative" }]]
+    options.test.reporters = [
+      "verbose",
+      ["sonar", { reportedFilePath: "absolute" }],
+    ];
   },
 };
 ```

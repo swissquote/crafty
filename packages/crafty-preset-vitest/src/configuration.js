@@ -2,10 +2,12 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const SONAR_REPORTER_MODULE = "vitest-sonar-reporter";
-const SONAR_REPORTER_OUTPUT_FILE = "./coverage/sonar-report.xml";
-const SONAR_REPORTED_FILE_PATH_DEFAULT = "relative";
-const SONAR_REPORTED_FILE_PATH_VALUES = new Set(["absolute", "relative"]);
-const COVERAGE_REPORTERS = ["text", "html", "clover", "json", "lcov"];
+const SONAR_REPORTER_PATH = require.resolve(SONAR_REPORTER_MODULE);
+const SONAR_REPORTER_DEFAULTS = {
+  outputFile: "./coverage/sonar-report.xml",
+  reportedFilePath: "relative"
+};
+const SUPPORTED_SONAR_FILE_PATHS = new Set(["relative", "absolute"]);
 const MODULE_DIRECTORIES_ENV = "CRAFTY_VITEST_MODULE_RESOLUTION";
 const MODULE_DIRECTORIES_SETUP_FILE = require.resolve(
   "./module-directories-setup"
@@ -21,8 +23,13 @@ function isModuleMode() {
   return false;
 }
 
-function isSonarReporter(name) {
-  return name === "sonar" || name === SONAR_REPORTER_MODULE;
+function isSonarReporter(reporterName) {
+  return (
+    typeof reporterName === "string" &&
+    (reporterName === "sonar" ||
+      reporterName === SONAR_REPORTER_MODULE ||
+      reporterName === SONAR_REPORTER_PATH)
+  );
 }
 
 function normalizeSonarPath(filePath) {
@@ -39,31 +46,26 @@ function createSonarReportedFilePathMapper(reportedFilePath) {
 }
 
 function finalizeSonarReporterConfig(config = {}) {
-  if (Object.prototype.hasOwnProperty.call(config, "onWritePath")) {
+  if (typeof config.onWritePath !== "undefined") {
     throw new Error(
-      "crafty-preset-vitest does not support vitest-sonar-reporter's " +
-        'onWritePath option. Use reportedFilePath: "absolute" or ' +
-        'reportedFilePath: "relative" instead.'
+      "Crafty does not support vitest-sonar-reporter's onWritePath option. " +
+        "Use reportedFilePath instead."
     );
   }
 
-  const finalizedConfig = {
-    outputFile: SONAR_REPORTER_OUTPUT_FILE,
-    ...config
-  };
-  const reportedFilePath =
-    finalizedConfig.reportedFilePath ?? SONAR_REPORTED_FILE_PATH_DEFAULT;
-
-  if (!SONAR_REPORTED_FILE_PATH_VALUES.has(reportedFilePath)) {
+  if (
+    typeof config.reportedFilePath !== "undefined" &&
+    !SUPPORTED_SONAR_FILE_PATHS.has(config.reportedFilePath)
+  ) {
     throw new Error(
-      "crafty-preset-vitest Sonar reporter option reportedFilePath " +
-        'must be "absolute" or "relative".'
+      "Crafty only supports vitest-sonar-reporter reportedFilePath values " +
+        '"relative" and "absolute".'
     );
   }
 
   return {
-    ...finalizedConfig,
-    reportedFilePath
+    ...SONAR_REPORTER_DEFAULTS,
+    ...config
   };
 }
 
@@ -74,15 +76,15 @@ function finalizeReporters(reporters) {
   }
 
   return reporters.map(reporter => {
-    if (typeof reporter === "string" && isSonarReporter(reporter)) {
-      return [SONAR_REPORTER_MODULE, finalizeSonarReporterConfig()];
+    if (isSonarReporter(reporter)) {
+      return [SONAR_REPORTER_PATH, finalizeSonarReporterConfig()];
     }
 
     if (Array.isArray(reporter) && reporter.length > 0) {
       const [name, config] = reporter;
 
-      if (typeof name === "string" && isSonarReporter(name)) {
-        return [SONAR_REPORTER_MODULE, finalizeSonarReporterConfig(config)];
+      if (isSonarReporter(name)) {
+        return [SONAR_REPORTER_PATH, finalizeSonarReporterConfig(config)];
       }
     }
 
@@ -90,64 +92,27 @@ function finalizeReporters(reporters) {
   });
 }
 
-function isPlainObject(value) {
-  if (!value || typeof value !== "object") {
-    return false;
+function finalizeCoverageOptions(coverageOptions, coverageEnabledFromCli) {
+  const normalizedCoverageOptions =
+    coverageOptions && coverageOptions !== true ? { ...coverageOptions } : {};
+
+  if (typeof normalizedCoverageOptions.enabled === "undefined") {
+    normalizedCoverageOptions.enabled = coverageEnabledFromCli;
   }
 
-  const prototype = Object.getPrototypeOf(value);
-  return prototype === Object.prototype || prototype === null;
-}
-
-function materializeSonarReporterConfig(config) {
-  if (!Array.isArray(config.test?.reporters)) {
-    return config;
+  if (typeof normalizedCoverageOptions.provider === "undefined") {
+    normalizedCoverageOptions.provider = "v8";
   }
 
-  config.test.reporters = config.test.reporters.map(reporter => {
-    if (!Array.isArray(reporter) || reporter.length === 0) {
-      return reporter;
-    }
-
-    const [name, reporterOptions] = reporter;
-
-    if (name !== SONAR_REPORTER_MODULE || !isPlainObject(reporterOptions)) {
-      return reporter;
-    }
-
-    const { reportedFilePath, ...remainingOptions } = reporterOptions;
-
-    if (!reportedFilePath) {
-      return reporter;
-    }
-
-    return [
-      name,
-      {
-        ...remainingOptions,
-        onWritePath: createSonarReportedFilePathMapper(reportedFilePath)
-      }
-    ];
-  });
-
-  return config;
-}
-
-function finalizeCoverage(coverage) {
-  if (!coverage) {
-    return {
-      provider: "v8",
-      reportsDirectory: "./coverage",
-      reporter: [...COVERAGE_REPORTERS]
-    };
+  if (typeof normalizedCoverageOptions.reportsDirectory === "undefined") {
+    normalizedCoverageOptions.reportsDirectory = "./coverage";
   }
 
-  return {
-    provider: "v8",
-    reportsDirectory: "./coverage",
-    reporter: [...COVERAGE_REPORTERS],
-    ...coverage
-  };
+  if (typeof normalizedCoverageOptions.reporter === "undefined") {
+    normalizedCoverageOptions.reporter = ["lcov"];
+  }
+
+  return normalizedCoverageOptions;
 }
 
 function createDefaultCliState() {
@@ -224,6 +189,7 @@ function normalizeVitestOptions(crafty, argsOrState = []) {
   const moduleDirectories = [...cliState.moduleDirectories];
   const moduleFileExtensions = [...cliState.moduleFileExtensions];
   const reporters = [...cliState.reporters];
+  const coverageEnabledFromCli = cliState.runnerArgs.includes("--coverage");
 
   const options = {
     resolve: {
@@ -255,7 +221,10 @@ function normalizeVitestOptions(crafty, argsOrState = []) {
   crafty.runAllSync("vitest", crafty, options, context);
 
   options.test.reporters = finalizeReporters(options.test.reporters || []);
-  options.test.coverage = finalizeCoverage(options.test.coverage);
+  options.test.coverage = finalizeCoverageOptions(
+    options.test.coverage,
+    coverageEnabledFromCli
+  );
 
   if (
     context.moduleDirectories.some(
@@ -308,6 +277,47 @@ function createRegExpDescriptor(value) {
     source: value.source,
     flags: value.flags
   };
+}
+
+function isPlainObject(value) {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+
+function materializeSonarReporterConfig(config) {
+  if (!Array.isArray(config.test?.reporters)) {
+    return config;
+  }
+
+  config.test.reporters = config.test.reporters.map(reporter => {
+    if (!Array.isArray(reporter) || reporter.length === 0) {
+      return reporter;
+    }
+
+    const [name, reporterOptions] = reporter;
+
+    if (name !== SONAR_REPORTER_PATH || !isPlainObject(reporterOptions)) {
+      return reporter;
+    }
+
+    const { reportedFilePath, ...remainingOptions } = reporterOptions;
+
+    return [
+      name,
+      {
+        ...remainingOptions,
+        onWritePath: createSonarReportedFilePathMapper(
+          reportedFilePath ?? SONAR_REPORTER_DEFAULTS.reportedFilePath
+        )
+      }
+    ];
+  });
+
+  return config;
 }
 
 function serializeVitestValue(value, pathLabel) {
