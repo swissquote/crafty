@@ -107,6 +107,8 @@
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li>
+<li class='Nav__item  has-children'><a href="../Packages/crafty_preset_vitest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-vitest</a><ul class='Nav'>
+<li class='Nav__item '><a href="../Packages/crafty_preset_vitest/Vitest_IDE_Integration.html">Vitest IDE Integration</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li>
@@ -158,6 +160,7 @@
 <tr><th>Test Runners</th><td>
 <ul>
 <li><a href="crafty_preset_jest/index.html">Jest</a></li>
+<li><a href="crafty_preset_vitest/index.html">Vitest</a></li>
 </ul>
 </td></tr>
 <tr><th>Related presets</th><td>
@@ -166,10 +169,12 @@
 <li><a href="crafty_preset_typescript/index.html">TypeScript</a></li>
 <li><a href="crafty_preset_swc.html">SWC</a></li>
 <li><a href="crafty_preset_jest/index.html">Jest</a></li>
+<li><a href="crafty_preset_vitest/index.html">Vitest</a></li>
 </ul>
 </td></tr>
 </table>
-<p>This preset provides Hot Module Replacement in React projects.</p>
+<p>This preset provides utilities for React testing and Hot Module Replacement in
+React projects.</p>
 <div class="TableOfContentsContainer">
     <h4 class="TableOfContentsContainer__title">Table of Contents</h4>
     <div class="TableOfContentsContainer__content">
@@ -185,6 +190,8 @@
 </li>
 </ul>    </div>
 </div>
+<p>When combined with <code>crafty-preset-jest</code> or <code>crafty-preset-vitest</code>, this preset
+adds the React test setup file automatically.</p>
 <h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-babel --save
 </code></pre>

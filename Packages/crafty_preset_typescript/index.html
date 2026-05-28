@@ -107,6 +107,8 @@
 <li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li>
 <li class='Nav__item '><a href="../../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li>
+<li class='Nav__item  has-children'><a href="../../Packages/crafty_preset_vitest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-vitest</a><ul class='Nav'>
+<li class='Nav__item '><a href="../../Packages/crafty_preset_vitest/Vitest_IDE_Integration.html">Vitest IDE Integration</a></li></ul></li>
 <li class='Nav__item '><a href="../../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li>
 <li class='Nav__item '><a href="../../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li>
 <li class='Nav__item '><a href="../../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li>
@@ -158,6 +160,7 @@
 <tr><th>Test Runners</th><td>
 <ul>
 <li><a href="../crafty_preset_jest/index.html">Jest</a></li>
+<li><a href="../crafty_preset_vitest/index.html">Vitest</a></li>
 </ul>
 </td></tr>
 <tr><th>Linters</th><td>
@@ -173,7 +176,7 @@
 <li><a href="#linting">Linting</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage-with-webpack">Usage with Webpack</a></li>
-<li><a href="#usage-with-jest">Usage with Jest</a></li>
+<li><a href="#usage-with-jest-and-vitest">Usage with Jest and Vitest</a></li>
 <li><a href="#type-definition-files">Type definition files</a></li>
 <li><a href="#getting-started">Getting Started</a>
 <ul>
@@ -214,9 +217,10 @@ With the help of ESLint we check the code for common mistakes and formatting err
 <p>You have to configure TypeScript with the <code>tsconfig.json</code> file that you put at the root of the project.</p>
 <p>Some options can’t be auto-configured through the loaders / plugins so that’s why you have to do it yourself.
 Moreover, the integration with your IDE is simplified if you have a complete <code>tsconfig.json</code> in your project.</p>
-<h2><a id="usage-with-jest" href="#usage-with-jest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest</h2>
-<p>If you include both <code>crafty-preset-typescript</code> and <code>crafty-preset-jest</code>.
-When running your tests with <code>crafty test</code> this preset will be use to convert all <code>.ts</code>, <code>.tsx</code>, <code>.mts</code>, and <code>.cts</code> files (source and test files)</p>
+<h2><a id="usage-with-jest-and-vitest" href="#usage-with-jest-and-vitest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest and Vitest</h2>
+<p>If you include <code>crafty-preset-typescript</code> with either <code>crafty-preset-jest</code> or
+<code>crafty-preset-vitest</code>, running <code>crafty test</code> will add support for <code>.ts</code>,
+<code>.tsx</code>, <code>.mts</code>, and <code>.cts</code> source and test files.</p>
 <h2><a id="type-definition-files" href="#type-definition-files" class="Permalink" aria-hidden="true" title="Permalink">#</a>Type definition files</h2>
 <p>TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.</p>
 <p>Some packages come with their own definitions, for the others there are two ways to consume these files.</p>

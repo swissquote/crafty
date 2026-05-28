@@ -107,6 +107,8 @@
 <li class='Nav__item '><a href="Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li>
 <li class='Nav__item '><a href="Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li>
 <li class='Nav__item '><a href="Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li>
+<li class='Nav__item  has-children'><a href="Packages/crafty_preset_vitest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-vitest</a><ul class='Nav'>
+<li class='Nav__item '><a href="Packages/crafty_preset_vitest/Vitest_IDE_Integration.html">Vitest IDE Integration</a></li></ul></li>
 <li class='Nav__item '><a href="Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li>
 <li class='Nav__item '><a href="Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li>
 <li class='Nav__item '><a href="Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li>
@@ -180,9 +182,9 @@ occurs.</p>
 <p>All presets can add watchers for any file pattern or use their embedded watcher
 (like Webpack).</p>
 <h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty test</code></h2>
-<p>Presets can register test runners, when running <code>crafty test</code> all these test
-runners are invoked.</p>
-<p>We have one test runner which is provided as a preset; Jest.</p>
+<p>Presets can register test runners. When running <code>crafty test</code>, Crafty expects
+one configured test runner and invokes it.</p>
+<p>Crafty provides two test runner presets; Jest and Vitest.</p>
 <h2><a id="commands-added-by-presets" href="#commands-added-by-presets" class="Permalink" aria-hidden="true" title="Permalink">#</a>Commands added by presets</h2>
 <h3><a id="crafty-csslint-file-dir-glob" href="#crafty-csslint-file-dir-glob" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty cssLint [file|dir|glob]*</code></h3>
 <p>Bundled Stylelint with embedded presets,

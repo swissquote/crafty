@@ -107,6 +107,8 @@
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li>
+<li class='Nav__item  has-children'><a href="../Packages/crafty_preset_vitest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-vitest</a><ul class='Nav'>
+<li class='Nav__item '><a href="../Packages/crafty_preset_vitest/Vitest_IDE_Integration.html">Vitest IDE Integration</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li>
@@ -160,14 +162,17 @@
 </div>
 <p>Crafty comes with a <code>crafty test</code> command by default, but no test runner comes
 built-in.</p>
-<p>For that we made an integration with Jest.</p>
+<p>For that we made integrations with Jest and Vitest.</p>
 <h2><a id="installing" href="#installing" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installing</h2>
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> src/main/frontend
-npm install @swissquote/crafty @swissquote/crafty-preset-jest --save
+npm install @swissquote/crafty @swissquote/crafty-preset-vitest --save
 </code></pre>
+<p>If you prefer Jest, replace <code>@swissquote/crafty-preset-vitest</code> with
+<code>@swissquote/crafty-preset-jest</code>. Crafty supports one active test runner per
+project.</p>
 <p>In your <code>crafty.config.js</code> file, you must add the following presets</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
-  <span class="hljs-attr">presets</span>: [<span class="hljs-string">"@swissquote/crafty-preset-jest"</span>],
+  <span class="hljs-attr">presets</span>: [<span class="hljs-string">"@swissquote/crafty-preset-vitest"</span>],
 };
 </code></pre>
 <h2><a id="your-first-test" href="#your-first-test" class="Permalink" aria-hidden="true" title="Permalink">#</a>Your first test</h2>
@@ -193,7 +198,8 @@ test(<span class="hljs-string">"multiply something"</span>, () =&gt; {
 </code></pre>
 <p>You can now run <code>crafty test</code> and see that the test is discovered and executed
 automatically.</p>
-<p>Read more about <a href="../Packages/crafty_preset_jest/index.html"><code>crafty-preset-jest</code></a>.</p>
+<p>Read more about <a href="../Packages/crafty_preset_vitest/index.html"><code>crafty-preset-vitest</code></a>
+or <a href="../Packages/crafty_preset_jest/index.html"><code>crafty-preset-jest</code></a>.</p>
 <h2><a id="with-babel-or-typescript" href="#with-babel-or-typescript" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Babel or Typescript</h2>
 <p>You can also use EcmaScript 2015+ and TypeScript features by installing and
 adding their respective presets.</p>

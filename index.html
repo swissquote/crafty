@@ -83,7 +83,7 @@ Frontend build environment a joy to work with.</p>
 <pre><code class="hljs bash">npm install @swissquote/crafty \
   @swissquote/crafty-preset-babel \
   @swissquote/crafty-preset-postcss \
-  @swissquote/crafty-preset-jest \
+  @swissquote/crafty-preset-vitest \
   @swissquote/crafty-runner-webpack \
   @swissquote/crafty-runner-gulp
 </code></pre>
@@ -93,7 +93,7 @@ Frontend build environment a joy to work with.</p>
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-babel"</span>,
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
-    <span class="hljs-string">"@swissquote/crafty-preset-jest"</span>,
+    <span class="hljs-string">"@swissquote/crafty-preset-vitest"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
     <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
   ],
@@ -111,6 +111,11 @@ Frontend build environment a joy to work with.</p>
   },
 };
 </code></pre>
+<blockquote>
+<p>If you prefer Jest, replace <code>@swissquote/crafty-preset-vitest</code> with
+<code>@swissquote/crafty-preset-jest</code>. Crafty supports one active test runner per
+project.</p>
+</blockquote>
 <h3><a id="run" href="#run" class="Permalink" aria-hidden="true" title="Permalink">#</a>Run</h3>
 <p>You can run the commands using
 <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b" class="Link--external" rel="noopener noreferrer">npx</a>
@@ -125,8 +130,8 @@ and <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferre
 <li>Linted your JavaScript with <a href="https://eslint.org/" class="Link--external" rel="noopener noreferrer">ESLint</a>.</li>
 <li>Create a CSS bundle compiled with <a href="http://postcss.org/" class="Link--external" rel="noopener noreferrer">PostCSS</a>.</li>
 <li>Lint your CSS with <a href="https://stylelint.io/" class="Link--external" rel="noopener noreferrer">Stylelint</a>.</li>
-<li>Run your tests with <a href="https://facebook.github.io/jest/" class="Link--external" rel="noopener noreferrer">Jest</a> and compile them
-with <a href="https://babeljs.io/" class="Link--external" rel="noopener noreferrer">Babel</a>.</li>
+<li>Run your tests with <a href="https://vitest.dev/" class="Link--external" rel="noopener noreferrer">Vitest</a> and compile them with
+<a href="https://babeljs.io/" class="Link--external" rel="noopener noreferrer">Babel</a>.</li>
 </ul>
 <h2><a id="why" href="#why" class="Permalink" aria-hidden="true" title="Permalink">#</a>Why</h2>
 <p>Getting started in a web application is easy, write an <code>index.html</code>, a

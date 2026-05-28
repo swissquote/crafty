@@ -107,6 +107,8 @@
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/Getting_Started_with_TypeScript.html">Getting Started with TypeScript</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Features.html">TypeScript Features</a></li>
 <li class='Nav__item '><a href="../Packages/crafty_preset_typescript/TypeScript_Typings.html">TypeScript Typings</a></li></ul></li>
+<li class='Nav__item  has-children'><a href="../Packages/crafty_preset_vitest/index.html" class="Nav__item__link"><i class="Nav__arrow">&nbsp;</i>crafty-preset-vitest</a><ul class='Nav'>
+<li class='Nav__item '><a href="../Packages/crafty_preset_vitest/Vitest_IDE_Integration.html">Vitest IDE Integration</a></li></ul></li>
 <li class='Nav__item '><a href="../Packages/babel_preset_swissquote.html">babel-preset-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/eslint_plugin_swissquote.html">eslint-plugin-swissquote</a></li>
 <li class='Nav__item '><a href="../Packages/postcss_swissquote_preset.html">postcss-swissquote-preset</a></li>
@@ -159,6 +161,7 @@
 <tr><th>Test Runners</th><td>
 <ul>
 <li><a href="crafty_preset_jest/index.html">Jest</a></li>
+<li><a href="crafty_preset_vitest/index.html">Vitest</a></li>
 </ul>
 </td></tr>
 </table>
@@ -180,7 +183,7 @@
 <li><a href="#with-gulp">With Gulp</a></li>
 </ul>
 </li>
-<li><a href="#usage-with-jest">Usage with Jest</a></li>
+<li><a href="#usage-with-jest-and-vitest">Usage with Jest and Vitest</a></li>
 <li><a href="#configuration">Configuration</a>
 <ul>
 <li><a href="#bundle-options">Bundle options</a></li>
@@ -242,9 +245,10 @@ They will resolve your modules recursively and bundle them in one file or more i
 <p>Gulp will not bundle your files like Webpack does, instead it will generate one output file per input file.
 This is useful if you are creating a library as it’s the role of the final application to tree-shake what it doesn’t need from your library.</p>
 <p>Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren’t removed from your bundle even if they aren’t used.</p>
-<h2><a id="usage-with-jest" href="#usage-with-jest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest</h2>
-<p>If you include both <code>crafty-preset-swc</code> and <code>crafty-preset-jest</code>.
-When running your tests with <code>crafty test</code> this preset will be use to convert all <code>.js</code> and <code>.jsx</code> files (source and test files)</p>
+<h2><a id="usage-with-jest-and-vitest" href="#usage-with-jest-and-vitest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest and Vitest</h2>
+<p>If you include <code>crafty-preset-swc</code> with either <code>crafty-preset-jest</code> or
+<code>crafty-preset-vitest</code>, running <code>crafty test</code> will add support for <code>.js</code> and
+<code>.jsx</code> source and test files.</p>
 <h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
 <h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle options</h3>
 <table>
