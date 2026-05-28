@@ -7,9 +7,6 @@ const {
   ResolverFactory,
   CachedInputFileSystem
 } = require("@swissquote/crafty/packages/enhanced-resolve.js");
-const {
-  getCraftyTestResolveOptions
-} = require("@swissquote/crafty/packages/test-resolve.js");
 
 const EMPTY_FILE = require.resolve("./resolver-empty");
 
@@ -91,13 +88,17 @@ function create(getConfig) {
  */
 function getDefaultConfig(opts) {
   return {
+    symlinks: true,
+    extensions: opts.extensions,
+    modules: opts.moduleDirectory,
+    conditionNames: opts.conditions,
     fileSystem: fs,
-    ...getCraftyTestResolveOptions({
-      browser: opts.browser,
-      conditions: opts.conditions,
-      extensions: opts.extensions,
-      moduleDirectories: opts.moduleDirectory
-    })
+    ...(opts.browser
+      ? {
+          aliasFields: ["browser"],
+          mainFields: ["browser", "main"]
+        }
+      : {})
   };
 }
 
@@ -107,6 +108,14 @@ module.exports = create(jestConfig => {
 
   // You can get a config with the same options as the default resolver like so.
   const baseConfig = getDefaultConfig(jestConfig);
+
+  // These aliases are defined even without the existence of the TypeScripts preset
+  // this is because we can't define it from the TypeScript preset
+  baseConfig.extensionAlias = {
+    ".js": [".js", ".ts"],
+    ".cjs": [".cjs", ".cts"],
+    ".mjs": [".mjs", ".mts"]
+  };
 
   return baseConfig;
 });
