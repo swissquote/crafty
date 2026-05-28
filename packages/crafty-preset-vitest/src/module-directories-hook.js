@@ -1,9 +1,7 @@
 const path = require("node:path");
 const Module = require("node:module");
 const enhancedResolve = require("@swissquote/crafty/packages/enhanced-resolve.js");
-const {
-  getCraftyTestResolveOptions
-} = require("@swissquote/crafty/packages/test-resolve.js");
+const { getCraftyTestResolveOptions } = require("./test-resolve.js");
 
 let resolveSync = null;
 let installed = false;
