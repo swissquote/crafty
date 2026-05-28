@@ -86,6 +86,22 @@ module.exports = class Processor {
   }
 
   /**
+   * Provide a custom init callback, needed if your plugin
+   * is just a function or needs more than one parameter.
+   * This is an alternative to `.module(name)`.
+   *
+   * .init(options => require("my-postcss-plugin")(options))
+   *
+   * @param {Function} fun The function that will return the instance of the plugin
+   * @returns {this}
+   */
+  init(fun) {
+    this.moduleInit = fun;
+
+    return this;
+  }
+
+  /**
    * Does all the checks to know if this Processor is enabled or not
    * @returns {boolean}
    */
