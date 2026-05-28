@@ -36,6 +36,6 @@ module.exports = {
     "@eslint-react/dom-no-void-elements-with-children": "error",
 
     // Disable the rule as it would attempt to autofix
-    "@eslint-react/dom/no-render": "off"
+    "@eslint-react/dom-no-render": "off"
   }
 };

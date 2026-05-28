@@ -1,0 +1,26 @@
+{
+  "name": "@swissquote/crafty-preset-vitest",
+  "version": "1.29.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swissquote/crafty.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+  },
+  "dependencies": {
+    "@swissquote/crafty": "1.29.0",
+    "@vitest/coverage-v8": "4.1.7",
+    "vitest": "4.1.7",
+    "vitest-sonar-reporter": "3.0.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

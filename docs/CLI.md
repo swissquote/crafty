@@ -27,10 +27,10 @@ All presets can add watchers for any file pattern or use their embedded watcher
 
 ## `crafty test`
 
-Presets can register test runners, when running `crafty test` all these test
-runners are invoked.
+Presets can register test runners. When running `crafty test`, Crafty expects
+one configured test runner and invokes it.
 
-We have one test runner which is provided as a preset; Jest.
+Crafty provides two test runner presets; Jest and Vitest.
 
 ## Commands added by presets
 

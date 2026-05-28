@@ -27,6 +27,23 @@ module.exports = {
       }
     );
   },
+  vitest(crafty, options, context) {
+    const babelConfigurator = require("@swissquote/babel-preset-swissquote/configurator");
+
+    context.moduleDirectories.push(MODULES);
+    context.moduleFileExtensions.push("jsx");
+    context.runtimePlugins.push({
+      pluginPath: require.resolve("./vitest-plugin"),
+      options: babelConfigurator(
+        crafty,
+        {},
+        {
+          environment: "test",
+          presetReact: { runtime: "automatic" }
+        }
+      )
+    });
+  },
   bundleCreator(crafty) {
     const configurators = { js: {} };
 

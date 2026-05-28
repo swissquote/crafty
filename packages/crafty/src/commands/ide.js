@@ -50,6 +50,7 @@ exports.command = async function run(crafty, input, cli) {
       }
     }
 
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.writeFileSync(destination, content);
 
     if (

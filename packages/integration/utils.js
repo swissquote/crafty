@@ -1,10 +1,16 @@
 import { execaNode } from "execa";
 import path from "node:path";
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const craftyBin = require.resolve("@swissquote/crafty/src/bin.cjs");
+const requireModule = createRequire(import.meta.url);
+const vitestCli = path.join(
+  path.dirname(requireModule.resolve("vitest/package.json")),
+  "vitest.mjs"
+);
 
 function getCraftyOptions(cwd, commandOptions) {
   const options = {
@@ -163,6 +169,17 @@ export async function run(args, cwd, commandOptions) {
   const options = getCraftyOptions(cwd, commandOptions);
 
   const ret = await execaNode(craftyBin, args, options);
+
+  return {
+    status: ret.exitCode,
+    stdall: ret.all ? normalizeOutput(ret.all.toString("utf8")) : ""
+  };
+}
+
+export async function runVitest(args, cwd, commandOptions) {
+  const options = getCraftyOptions(cwd, commandOptions);
+
+  const ret = await execaNode(vitestCli, args, options);
 
   return {
     status: ret.exitCode,

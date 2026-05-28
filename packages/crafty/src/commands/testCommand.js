@@ -8,9 +8,8 @@ exports.description = "Run tests from any test runners";
 exports.command = function test(crafty, input, cli) {
   debug("Registering Runners");
 
-  const tasks = crafty
-    .getImplementations("test")
-    .map(preset => preset.get("test"));
+  const runners = crafty.getImplementations("test");
+  const tasks = runners.map(preset => preset.get("test"));
 
   // Some libraries don't want a NODE_ENV set.
   // We restore the original values here
@@ -20,6 +19,17 @@ exports.command = function test(crafty, input, cli) {
     if (tasks.length === 0) {
       console.log("No runner found for tests");
       reject(1);
+      return;
+    }
+
+    if (tasks.length > 1) {
+      reject(
+        new crafty.Information(
+          `You have multiple test runners, please configure exactly one. Available runners are ['${runners
+            .map(preset => preset.presetName)
+            .join("', '")}'].`
+        )
+      );
       return;
     }
 
