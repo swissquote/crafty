@@ -38,17 +38,23 @@ module.exports = class StreamHandler {
     const sourceStream = gulp.src(this.source, this.srcOptions);
     const destStream = gulp.dest(this.destination, this.destOptions);
 
-    return pump(sourceStream, ...this.handlers, destStream, err => {
-      // Display the error if there is any
-      if (err) {
-        crafty.error(err);
-      }
+    return pump(
+      sourceStream,
+      ...this.handlers,
+      plumber.stop(),
+      destStream,
+      err => {
+        // Display the error if there is any
+        if (err) {
+          crafty.error(err);
+        }
 
-      // Signal completion
-      if (this.callback) {
-        this.callback(err);
+        // Signal completion
+        if (this.callback) {
+          this.callback(err);
+        }
       }
-    });
+    );
   }
 };
 
