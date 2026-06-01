@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-06-01T12:32:55.763Z",
+  "permutations": [
+    {
+      "name": "jest",
+      "domain": "test",
+      "build": {
+        "mean_s": 0.7140140256,
+        "stddev_s": 0.010995649127304174,
+        "min_s": 0.7073256092,
+        "max_s": 0.7335421502
+      }
+    },
+    {
+      "name": "rspack-swc-lightningcss",
+      "domain": "build",
+      "build": {
+        "mean_s": 0.76780494584,
+        "stddev_s": 0.013445578458152195,
+        "min_s": 0.75278789584,
+        "max_s": 0.78904672884
+      },
+      "bundle": {
+        "js_bytes": 198779,
+        "css_bytes": 5052
+      }
+    },
+    {
+      "name": "rspack-swc-postcss",
+      "domain": "build",
+      "build": {
+        "mean_s": 0.84756649902,
+        "stddev_s": 0.010717298099082888,
+        "min_s": 0.8367536828200001,
+        "max_s": 0.86290051582
+      },
+      "bundle": {
+        "js_bytes": 198779,
+        "css_bytes": 5055
+      }
+    },
+    {
+      "name": "vitest",
+      "domain": "test",
+      "build": {
+        "mean_s": 0.41439098570000005,
+        "stddev_s": 0.0020284498178258295,
+        "min_s": 0.41243502690000006,
+        "max_s": 0.4172365269
+      }
+    },
+    {
+      "name": "webpack-babel-postcss",
+      "domain": "build",
+      "build": {
+        "mean_s": 1.27677988154,
+        "stddev_s": 0.019722454028923933,
+        "min_s": 1.25772463974,
+        "max_s": 1.30797905674
+      },
+      "bundle": {
+        "js_bytes": 198742,
+        "css_bytes": 5055
+      }
+    },
+    {
+      "name": "webpack-swc-postcss",
+      "domain": "build",
+      "build": {
+        "mean_s": 1.2574671131000001,
+        "stddev_s": 0.05556372894872953,
+        "min_s": 1.2191270127,
+        "max_s": 1.3545153887
+      },
+      "bundle": {
+        "js_bytes": 198738,
+        "css_bytes": 5055
+      }
+    }
+  ]
+}

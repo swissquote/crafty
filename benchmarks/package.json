@@ -1,0 +1,18 @@
+{
+  "name": "@swissquote/crafty-benchmarks",
+  "private": true,
+  "dependencies": {
+    "@swissquote/crafty": "workspace:*",
+    "@swissquote/crafty-preset-babel": "workspace:*",
+    "@swissquote/crafty-preset-jest": "workspace:*",
+    "@swissquote/crafty-preset-lightningcss": "workspace:*",
+    "@swissquote/crafty-preset-postcss": "workspace:*",
+    "@swissquote/crafty-preset-react": "workspace:*",
+    "@swissquote/crafty-preset-swc": "workspace:*",
+    "@swissquote/crafty-preset-vitest": "workspace:*",
+    "@swissquote/crafty-runner-rspack": "workspace:*",
+    "@swissquote/crafty-runner-webpack": "workspace:*",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  }
+}

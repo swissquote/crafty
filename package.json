@@ -12,7 +12,8 @@
       "package-forks/*",
       "examples/*",
       "examples/maven/src/main/frontend",
-      "utils"
+      "utils",
+      "benchmarks"
     ]
   },
   "scripts": {
@@ -27,7 +28,9 @@
     "test:ci": "./run_all.sh test:ci",
     "publish:canary": "./utils/publish.mjs --pre-release",
     "publish:all": "./utils/publish.mjs",
-    "upgrade": "yarn up -R '**'"
+    "upgrade": "yarn up -R '**'",
+    "benchmark": "node benchmarks/runner.js",
+    "benchmark:compare": "node benchmarks/compare.js"
   },
   "dependencies": {
     "@types/eslint": "^9.0.0",
