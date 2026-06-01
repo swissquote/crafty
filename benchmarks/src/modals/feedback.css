@@ -1,0 +1,146 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  animation: slideUp 0.15s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-select,
+.form-input {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-select:focus,
+.form-input:focus {
+  border-color: var(--color-primary);
+}
+
+.form-textarea {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.form-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.rating-group {
+  display: flex;
+  gap: 8px;
+}
+
+.rating-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+
+.rating-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.rating-btn--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.form-submit {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  align-self: flex-end;
+}
+
+.form-submit:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.feedback-success {
+  padding: 24px 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}

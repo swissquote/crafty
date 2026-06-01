@@ -3804,6 +3804,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@swissquote/crafty-benchmarks@workspace:benchmarks":
+  version: 0.0.0-use.local
+  resolution: "@swissquote/crafty-benchmarks@workspace:benchmarks"
+  dependencies:
+    "@swissquote/crafty": "workspace:*"
+    "@swissquote/crafty-preset-babel": "workspace:*"
+    "@swissquote/crafty-preset-jest": "workspace:*"
+    "@swissquote/crafty-preset-lightningcss": "workspace:*"
+    "@swissquote/crafty-preset-postcss": "workspace:*"
+    "@swissquote/crafty-preset-react": "workspace:*"
+    "@swissquote/crafty-preset-swc": "workspace:*"
+    "@swissquote/crafty-preset-vitest": "workspace:*"
+    "@swissquote/crafty-runner-rspack": "workspace:*"
+    "@swissquote/crafty-runner-webpack": "workspace:*"
+    react: "npm:19.2.6"
+    react-dom: "npm:19.2.6"
+  languageName: unknown
+  linkType: soft
+
 "@swissquote/crafty-commons-gulp@npm:1.29.0, @swissquote/crafty-commons-gulp@workspace:packages/crafty-commons-gulp":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-commons-gulp@workspace:packages/crafty-commons-gulp"
@@ -3864,7 +3883,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-babel@npm:1.29.0, @swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel":
+"@swissquote/crafty-preset-babel@npm:1.29.0, @swissquote/crafty-preset-babel@workspace:*, @swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-babel@workspace:packages/crafty-preset-babel"
   dependencies:
@@ -3922,7 +3941,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-jest@npm:1.29.0, @swissquote/crafty-preset-jest@workspace:packages/crafty-preset-jest":
+"@swissquote/crafty-preset-jest@npm:1.29.0, @swissquote/crafty-preset-jest@workspace:*, @swissquote/crafty-preset-jest@workspace:packages/crafty-preset-jest":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-jest@workspace:packages/crafty-preset-jest"
   dependencies:
@@ -3935,7 +3954,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-lightningcss@workspace:packages/crafty-preset-lightningcss":
+"@swissquote/crafty-preset-lightningcss@workspace:*, @swissquote/crafty-preset-lightningcss@workspace:packages/crafty-preset-lightningcss":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-lightningcss@workspace:packages/crafty-preset-lightningcss"
   dependencies:
@@ -3961,7 +3980,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-postcss@npm:1.29.0, @swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss":
+"@swissquote/crafty-preset-postcss@npm:1.29.0, @swissquote/crafty-preset-postcss@workspace:*, @swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-postcss@workspace:packages/crafty-preset-postcss"
   dependencies:
@@ -3992,7 +4011,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-react@npm:1.29.0, @swissquote/crafty-preset-react@workspace:packages/crafty-preset-react":
+"@swissquote/crafty-preset-react@npm:1.29.0, @swissquote/crafty-preset-react@workspace:*, @swissquote/crafty-preset-react@workspace:packages/crafty-preset-react":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-react@workspace:packages/crafty-preset-react"
   dependencies:
@@ -4022,7 +4041,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-swc@npm:1.29.0, @swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc":
+"@swissquote/crafty-preset-swc@npm:1.29.0, @swissquote/crafty-preset-swc@workspace:*, @swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-swc@workspace:packages/crafty-preset-swc"
   dependencies:
@@ -4072,7 +4091,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-preset-vitest@npm:1.29.0, @swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest":
+"@swissquote/crafty-preset-vitest@npm:1.29.0, @swissquote/crafty-preset-vitest@workspace:*, @swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-preset-vitest@workspace:packages/crafty-preset-vitest"
   dependencies:
@@ -4096,7 +4115,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-runner-rspack@workspace:packages/crafty-runner-rspack":
+"@swissquote/crafty-runner-rspack@workspace:*, @swissquote/crafty-runner-rspack@workspace:packages/crafty-runner-rspack":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-rspack@workspace:packages/crafty-runner-rspack"
   dependencies:
@@ -4120,7 +4139,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty-runner-webpack@npm:1.29.0, @swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack":
+"@swissquote/crafty-runner-webpack@npm:1.29.0, @swissquote/crafty-runner-webpack@workspace:*, @swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-webpack@workspace:packages/crafty-runner-webpack"
   dependencies:
@@ -4148,7 +4167,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@swissquote/crafty@npm:1.29.0, @swissquote/crafty@workspace:packages/crafty":
+"@swissquote/crafty@npm:1.29.0, @swissquote/crafty@workspace:*, @swissquote/crafty@workspace:packages/crafty":
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty@workspace:packages/crafty"
   dependencies:

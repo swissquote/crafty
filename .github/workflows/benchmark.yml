@@ -1,0 +1,31 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      permutations:
+        description: "Comma-separated permutation names to run (empty = all)"
+        required: false
+        default: ""
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install hyperfine
+        run: sudo apt-get install -y hyperfine
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run benchmarks
+        run: node benchmarks/runner.js
+        env:
+          BENCH_PERMUTATIONS: ${{ inputs.permutations }}

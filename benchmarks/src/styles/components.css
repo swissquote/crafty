@@ -1,0 +1,123 @@
+.add-todo {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-todo-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.add-todo-input:focus {
+  border-color: var(--color-primary);
+}
+
+.add-todo-btn {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+.add-todo-btn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.filter-btn {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 5px 12px;
+  border: 1px solid transparent;
+  font-size: 0.85rem;
+}
+
+.filter-btn:hover {
+  color: var(--color-primary);
+}
+
+.filter-btn--active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.todo-counter {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.counter-item strong {
+  color: var(--color-text);
+}
+
+.todo-list {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item--done .todo-label {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.todo-label {
+  flex: 1;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.todo-remove {
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+.todo-remove:hover {
+  color: var(--color-danger);
+}
+
+.empty-state {
+  padding: 32px 0;
+  text-align: center;
+}
+
+.empty-state-text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
