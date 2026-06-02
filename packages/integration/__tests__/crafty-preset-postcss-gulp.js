@@ -1,4 +1,6 @@
 import { test, expect } from "vitest";
+import fs from "fs";
+import path from "path";
 import configuration from "@swissquote/crafty/src/configuration";
 import getCommands from "@swissquote/crafty/src/commands/index.js";
 
@@ -185,4 +187,66 @@ test("Compiles CSS, compiles color-function", async () => {
     ":root{--color-default:#d1d1d1;--color-light:var(--color-default)}.Button{color:#fafafa;background-color:var(--color-light)}" +
       "/*# sourceMappingURL=myBundle.min.css.map */\n"
   );
+});
+
+test("Starts and rebuilds in watch mode", async () => {
+  const fixture = await testUtils.getIsolatedFixtures(
+    "crafty-preset-postcss-gulp/compiles-watch"
+  );
+  const cwd = fixture.cwd;
+  const watch = testUtils.startWatch(["watch"], cwd);
+  const outputFile = "dist/css/myBundle.min.css";
+  const importedPath = path.join(cwd, "css", "imported.scss");
+  const originalSource = await fs.promises.readFile(importedPath, "utf8");
+  let result;
+
+  try {
+    const initialOutput = await testUtils.waitFor(async () => {
+      const output = watch.getStdall();
+
+      if (watch.child.exitCode !== null) {
+        throw new Error(
+          `crafty watch exited before the initial compilation completed:\n${output}`
+        );
+      }
+
+      return output.includes("Finished 'css_myBundle'") ? output : false;
+    }, "the initial watch output");
+
+    expect(initialOutput).toContain("Finished 'css_myBundle'");
+
+    const initialCSS = await testUtils.waitFor(async () => {
+      if (!testUtils.exists(cwd, outputFile)) return false;
+      const css = testUtils.readFile(cwd, outputFile);
+      return css.includes("color: #00f") ? css : false;
+    }, "the initial watch build");
+
+    expect(initialCSS).toContain("color: #00f");
+
+    await fs.promises.writeFile(
+      importedPath,
+      originalSource.replace("color: blue", "color: red")
+    );
+
+    const rebuiltCSS = await testUtils.waitFor(async () => {
+      if (watch.child.exitCode !== null) {
+        throw new Error(
+          `crafty watch exited before rebuilding after a source change:\n${watch.getStdall()}`
+        );
+      }
+      const css = testUtils.readFile(cwd, outputFile);
+      return css.includes("color: red") ? css : false;
+    }, "the rebuilt watch CSS");
+
+    expect(rebuiltCSS).toContain("color: red");
+    expect(rebuiltCSS).not.toEqual(initialCSS);
+    result = await watch.stop();
+  } finally {
+    await fs.promises.writeFile(importedPath, originalSource);
+    if (!result) result = await watch.stop();
+    await fixture.cleanup();
+  }
+
+  expect(result.status).toBeNull();
+  expect(result.stdall).toContain("Finished 'css_myBundle'");
 });
