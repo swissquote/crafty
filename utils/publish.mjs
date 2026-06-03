@@ -136,6 +136,10 @@ async function exec(cmd, args, options = {}) {
   await execa(cmd, args, { stdio: "inherit", ...options });
 }
 
+async function login() {
+  await exec("npm", ["login"]);
+}
+
 async function gitCommitChanges(files, msg) {
   await exec("git", ["add"].concat(files));
   await exec("git", ["commit", "-m", msg].concat(files));
@@ -145,16 +149,24 @@ async function gitAddTag(tag) {
   await exec("git", ["tag", tag]);
 }
 
-async function gitPushWithTags() {
-  await exec("git", ["push", "--quiet"]);
+async function gitPushWithTags(branch) {
+  await exec("git", ["push", "--quiet", "--set-upstream", "origin", branch]);
   await exec("git", ["push", "--tags", "--quiet"]);
 }
 
+async function gitBranch(branch) {
+  await exec("git", ["checkout", "-b", branch]);
+}
+
 async function commit(files, nextVersion) {
+  const tag = `v${nextVersion}`;
+  const branch = `release/${tag}`;
+
   // Commit, tag and push
-  await gitCommitChanges(files, `v${nextVersion}`);
-  await gitAddTag(`v${nextVersion}`);
-  await gitPushWithTags();
+  await gitBranch(branch);
+  await gitCommitChanges(files, tag);
+  await gitAddTag(tag);
+  await gitPushWithTags(branch);
 }
 
 function readPackageSpecs(paths) {
@@ -253,6 +265,8 @@ async function publish(allSpecs, preRelease) {
     readNewVersion(argv.newVersion),
     false
   );
+
+  await login();
 
   if (!argv.preRelease) {
     const files = Object.values(allSpecs).map(spec => spec.specPath);
