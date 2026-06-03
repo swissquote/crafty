@@ -155,12 +155,12 @@ async function gitPushWithTags(branch) {
 }
 
 async function gitBranch(branch) {
-  await exec("git", ["checkout", "-b", branch])
+  await exec("git", ["checkout", "-b", branch]);
 }
 
 async function commit(files, nextVersion) {
-  const tag = `v${nextVersion}`
-  const branch = `release/${tag}`
+  const tag = `v${nextVersion}`;
+  const branch = `release/${tag}`;
 
   // Commit, tag and push
   await gitBranch(branch);
