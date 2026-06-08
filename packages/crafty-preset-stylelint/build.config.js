@@ -13,5 +13,9 @@ export default [
   (builder) => builder("stylelint-sarif-formatter")
       .esm()
       .package()
+      .externals(externals),
+  (builder) => builder("resolve-from")
+      .esm()
+      .package()
       .externals(externals)
 ];
