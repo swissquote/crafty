@@ -1,1 +1,2 @@
-module.exports = require("../dist/resolve-from/index.js");
+import mod from "../dist/resolve-from/index.js";
+export default mod;
