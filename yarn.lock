@@ -3413,16 +3413,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/plugin-react-refresh@npm:2.0.1":
-  version: 2.0.1
-  resolution: "@rspack/plugin-react-refresh@npm:2.0.1"
+"@rspack/plugin-react-refresh@npm:2.0.2":
+  version: 2.0.2
+  resolution: "@rspack/plugin-react-refresh@npm:2.0.2"
   peerDependencies:
-    "@rspack/core": ^2.0.0-0
+    "@rspack/core": ^2.0.0
     react-refresh: ">=0.10.0 <1.0.0"
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
-  checksum: 10c0/4584cd39f354af9fd47c62f45a891e6dbb7e066773ee80c207805bfb71f8448a1e27d8c4e3e97eb7d27efc514f6ccb19278df4e01901c3af4414e353c4451431
+  checksum: 10c0/1291689c3fcdfc4bc62e9fd032786d0f72a24b8e3c844974367a54b9b640534836f1ac945b1f1342f877332a584440a71631761a3569dad3e76c30655f20b9bb
   languageName: node
   linkType: hard
 
@@ -4016,7 +4016,7 @@ __metadata:
   resolution: "@swissquote/crafty-preset-react@workspace:packages/crafty-preset-react"
   dependencies:
     "@pmmmwh/react-refresh-webpack-plugin": "npm:0.6.2"
-    "@rspack/plugin-react-refresh": "npm:2.0.1"
+    "@rspack/plugin-react-refresh": "npm:2.0.2"
     react-hot-loader: "npm:4.13.1"
     react-refresh: "npm:0.18.0"
   languageName: unknown
