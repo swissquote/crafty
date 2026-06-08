@@ -39,6 +39,7 @@ module.exports = {
         {},
         {
           environment: "test",
+          presetEnv: { modules: false },
           presetReact: { runtime: "automatic" }
         }
       )
