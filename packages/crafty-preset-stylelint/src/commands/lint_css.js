@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 
-import resolveFrom from "resolve-from";
+import resolveFrom from "../../packages/resolve-from.js";
 import tmp from "@swissquote/crafty-commons/packages/tmp.js";
 
 import cli from "@swissquote/stylelint-config-swissquote/packages/stylelint-cli.js";
