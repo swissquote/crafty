@@ -1589,7 +1589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.1.1, @csstools/css-calc@npm:^3.2.0":
+"@csstools/css-calc@npm:^3.1.1, @csstools/css-calc@npm:^3.2.1":
   version: 3.2.1
   resolution: "@csstools/css-calc@npm:3.2.1"
   peerDependencies:
@@ -1630,15 +1630,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-syntax-patches-for-csstree@npm:^1.1.2, @csstools/css-syntax-patches-for-csstree@npm:^1.1.3":
-  version: 1.1.4
-  resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.4"
+"@csstools/css-syntax-patches-for-csstree@npm:^1.1.2, @csstools/css-syntax-patches-for-csstree@npm:^1.1.4":
+  version: 1.1.5
+  resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.5"
   peerDependencies:
     css-tree: ^3.2.1
   peerDependenciesMeta:
     css-tree:
       optional: true
-  checksum: 10c0/3872a7befb553c53249c87e964ac00f55d059f4574d2cc023e03e1dafc86a5ad19f6a6d05fa2c14fb192e6a4538a73158104cc2e32e0688f27fd841b9ba76568
+  checksum: 10c0/a31f0cfb74e2b5ce8a283c47969a202fc3b23c3ee05c6b6beab7f5c14d89c50b82533e446df74f7df0bf88bf23810ed59431353db26e00d5b013995c1ebf07a2
   languageName: node
   linkType: hard
 
@@ -4437,7 +4437,7 @@ __metadata:
     prettier: "npm:3.8.3"
     stylelint: "npm:17.8.0"
     stylelint-prettier: "npm:5.0.3"
-    stylelint-scss: "npm:7.1.1"
+    stylelint-scss: "npm:7.2.0"
   peerDependencies:
     "@swissquote/crafty-commons": 1.30.0
     postcss: ^8.0.0
@@ -13318,13 +13318,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-scss@npm:7.1.1":
-  version: 7.1.1
-  resolution: "stylelint-scss@npm:7.1.1"
+"stylelint-scss@npm:7.2.0":
+  version: 7.2.0
+  resolution: "stylelint-scss@npm:7.2.0"
   dependencies:
-    "@csstools/css-calc": "npm:^3.2.0"
+    "@csstools/css-calc": "npm:^3.2.1"
     "@csstools/css-parser-algorithms": "npm:^4.0.0"
-    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.3"
+    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.4"
     "@csstools/css-tokenizer": "npm:^4.0.0"
     css-tree: "npm:^3.2.1"
     is-plain-object: "npm:^5.0.0"
@@ -13335,7 +13335,7 @@ __metadata:
     postcss-value-parser: "npm:^4.2.0"
   peerDependencies:
     stylelint: ^16.8.2 || ^17.0.0
-  checksum: 10c0/5e3c9084788debdc1d616ba8f7a49431449b7f2e7c80c7b1d311266cc2907fe4c8fc174f725b182422fa0937f168e384de8a9b8eb2c8534b9d7ddc2d08b2c874
+  checksum: 10c0/9f45690560e8a7156dd6aac7cbadf47010444dbf9b7953b75491ee7db08b8c660efdb0a421d09eab019bd73ef606efbc72ad983d37e1997daa397d5442109f47
   languageName: node
   linkType: hard
 
