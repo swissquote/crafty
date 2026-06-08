@@ -3406,10 +3406,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/lite-tapable@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@rspack/lite-tapable@npm:1.1.0"
-  checksum: 10c0/15059d1da73192b150339ceba3142a2d0073fa298dad9a497cc8c6037c597c3a982ed4c88dc50afa7b70d0757df1b47af7ae407cfe8acd31d333d524b84a7a4b
+"@rspack/lite-tapable@npm:^1.1.1":
+  version: 1.1.2
+  resolution: "@rspack/lite-tapable@npm:1.1.2"
+  checksum: 10c0/c5d942d5ec80d2ad5af9f85d60c13e5bef785681995ed511ec501e0a7f69e5878737ce45c058909a7f515db065630f51ed64a76452319da2f0759d35eb332439
   languageName: node
   linkType: hard
 
@@ -4079,7 +4079,7 @@ __metadata:
     fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
     memfs: "npm:4.57.6"
     schema-utils: "npm:4.3.3"
-    ts-checker-rspack-plugin: "npm:1.3.1"
+    ts-checker-rspack-plugin: "npm:1.3.2"
     ts-jest: "npm:29.4.11"
     ts-loader: "npm:9.5.7"
     tslib: "npm:2.8.1"
@@ -10837,7 +10837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memfs@npm:4.57.6, memfs@npm:^4.57.2":
+"memfs@npm:4.57.6, memfs@npm:^4.57.3":
   version: 4.57.6
   resolution: "memfs@npm:4.57.6"
   dependencies:
@@ -13827,21 +13827,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-checker-rspack-plugin@npm:1.3.1":
-  version: 1.3.1
-  resolution: "ts-checker-rspack-plugin@npm:1.3.1"
+"ts-checker-rspack-plugin@npm:1.3.2":
+  version: 1.3.2
+  resolution: "ts-checker-rspack-plugin@npm:1.3.2"
   dependencies:
-    "@rspack/lite-tapable": "npm:^1.1.0"
+    "@rspack/lite-tapable": "npm:^1.1.1"
     chokidar: "npm:^3.6.0"
-    memfs: "npm:^4.57.2"
+    memfs: "npm:^4.57.3"
     picocolors: "npm:^1.1.1"
   peerDependencies:
-    "@rspack/core": ^1.0.0 || ^2.0.0-0
+    "@rspack/core": ^1.0.0 || ^2.0.0
     typescript: ">=3.8.0"
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
-  checksum: 10c0/876e6ea88ea86df31e2143a8aa1a30c56f6466a79b7ea58fd33ac18159f5b2a328cdc687415e8ce7c8d252e521380983a2b9fdc8562ae1da2896564fe1942a26
+  checksum: 10c0/14e626fb8477402f87229696e36a6b21e95025307ab3611c1bf724f4cf16c177acaf691aa8cfaefa166f3c02088d7048f79c7f14781614702a410b9d5cc4ac07
   languageName: node
   linkType: hard
 
