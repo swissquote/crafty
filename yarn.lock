@@ -4079,7 +4079,7 @@ __metadata:
     fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
     memfs: "npm:4.57.6"
     schema-utils: "npm:4.3.3"
-    ts-checker-rspack-plugin: "npm:1.3.2"
+    ts-checker-rspack-plugin: "npm:1.4.0"
     ts-jest: "npm:29.4.11"
     ts-loader: "npm:9.6.0"
     tslib: "npm:2.8.1"
@@ -13827,9 +13827,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-checker-rspack-plugin@npm:1.3.2":
-  version: 1.3.2
-  resolution: "ts-checker-rspack-plugin@npm:1.3.2"
+"ts-checker-rspack-plugin@npm:1.4.0":
+  version: 1.4.0
+  resolution: "ts-checker-rspack-plugin@npm:1.4.0"
   dependencies:
     "@rspack/lite-tapable": "npm:^1.1.1"
     chokidar: "npm:^3.6.0"
@@ -13837,11 +13837,14 @@ __metadata:
     picocolors: "npm:^1.1.1"
   peerDependencies:
     "@rspack/core": ^1.0.0 || ^2.0.0
+    "@typescript/native-preview": ^7.0.0-0
     typescript: ">=3.8.0"
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
-  checksum: 10c0/14e626fb8477402f87229696e36a6b21e95025307ab3611c1bf724f4cf16c177acaf691aa8cfaefa166f3c02088d7048f79c7f14781614702a410b9d5cc4ac07
+    "@typescript/native-preview":
+      optional: true
+  checksum: 10c0/b14c06ea7625c851ff83af72f029b411a14a53d83092c8845f25085c6b5c3979270e231e2cc073b3cb16733b55c07fa68894469aeb4347e3091deeae7e0caf52
   languageName: node
   linkType: hard
 
