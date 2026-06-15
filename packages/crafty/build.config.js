@@ -5,6 +5,7 @@ module.exports = [
     builder("camelcase-keys")
       .esm()
       .package(),
+  builder => builder("source-map-support").package(),
   builder =>
     builder("crafty-packages")
       .packages(pkgBuilder =>

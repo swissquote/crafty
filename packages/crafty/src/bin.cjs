@@ -2,6 +2,8 @@
 
 "use strict";
 
+require("../packages/source-map-support").install({ environment: "node" });
+
 const log = require("@swissquote/crafty-commons/packages/fancy-log");
 const loudRejection = require("../packages/loud-rejection");
 
