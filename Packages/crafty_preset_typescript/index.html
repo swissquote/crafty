@@ -221,6 +221,9 @@ Moreover, the integration with your IDE is simplified if you have a complete <co
 <p>If you include <code>crafty-preset-typescript</code> with either <code>crafty-preset-jest</code> or
 <code>crafty-preset-vitest</code>, running <code>crafty test</code> will add support for <code>.ts</code>,
 <code>.tsx</code>, <code>.mts</code>, and <code>.cts</code> source and test files.</p>
+<p>When <code>crafty-preset-babel</code> is also active, TypeScript files keep using the
+TypeScript and Vitest transform path while Babel remains limited to <code>.js</code> and
+<code>.jsx</code> files.</p>
 <h2><a id="type-definition-files" href="#type-definition-files" class="Permalink" aria-hidden="true" title="Permalink">#</a>Type definition files</h2>
 <p>TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.</p>
 <p>Some packages come with their own definitions, for the others there are two ways to consume these files.</p>

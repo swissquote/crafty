@@ -249,6 +249,9 @@ This is useful if you are creating a library as it’s the role of the final app
 <p>If you include <code>crafty-preset-babel</code> with either <code>crafty-preset-jest</code> or
 <code>crafty-preset-vitest</code>, running <code>crafty test</code> will add support for <code>.js</code> and
 <code>.jsx</code> source and test files.</p>
+<p>When <code>crafty-preset-typescript</code> is also active, Babel keeps owning only the
+<code>.js</code> and <code>.jsx</code> test path. TypeScript files stay on the TypeScript and Vitest
+transform path.</p>
 <h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
 <h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle options</h3>
 <table>
