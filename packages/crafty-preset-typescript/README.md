@@ -74,6 +74,10 @@ If you include `crafty-preset-typescript` with either `crafty-preset-jest` or
 `crafty-preset-vitest`, running `crafty test` will add support for `.ts`,
 `.tsx`, `.mts`, and `.cts` source and test files.
 
+When `crafty-preset-babel` is also active, TypeScript files keep using the
+TypeScript and Vitest transform path while Babel remains limited to `.js` and
+`.jsx` files.
+
 ## Type definition files
 
 TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.

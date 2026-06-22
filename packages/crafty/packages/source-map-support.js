@@ -1,0 +1,1 @@
+module.exports = require("../dist/source-map-support/index.js");

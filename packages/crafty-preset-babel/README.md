@@ -100,6 +100,10 @@ If you include `crafty-preset-babel` with either `crafty-preset-jest` or
 `crafty-preset-vitest`, running `crafty test` will add support for `.js` and
 `.jsx` source and test files.
 
+When `crafty-preset-typescript` is also active, Babel keeps owning only the
+`.js` and `.jsx` test path. TypeScript files stay on the TypeScript and Vitest
+transform path.
+
 ## Configuration
 
 ### Bundle options

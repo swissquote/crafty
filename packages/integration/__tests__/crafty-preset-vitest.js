@@ -562,6 +562,16 @@ test("Loads JSX tests through the Babel preset hook", async () => {
   expect(result.status).toBe(0);
 });
 
+test("Loads JSX tests importing TypeScript helpers through mixed Babel and TypeScript preset hooks", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/hook-babel-typescript"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+});
+
 test("Loads JSX tests through the SWC preset hook", async () => {
   const cwd = await testUtils.getCleanFixtures("crafty-preset-vitest/hook-swc");
 

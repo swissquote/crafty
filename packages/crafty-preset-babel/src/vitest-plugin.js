@@ -1,5 +1,9 @@
 const babel = require("@babel/core");
 
+function shouldTransform(filename) {
+  return /\.(js|jsx)$/.test(filename);
+}
+
 module.exports = function createVitestPlugin(babelOptions) {
   return {
     name: "crafty-babel-vitest",
@@ -7,11 +11,7 @@ module.exports = function createVitestPlugin(babelOptions) {
     async transform(code, id) {
       const [filename] = id.split("?");
 
-      if (filename.includes("/node_modules/")) {
-        return null;
-      }
-
-      if (babel.util && !babel.util.canCompile(filename)) {
+      if (filename.includes("/node_modules/") || !shouldTransform(filename)) {
         return null;
       }
 

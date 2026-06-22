@@ -57,7 +57,7 @@ async function compileNcc(input, output, bundle) {
     quiet: true,
     filename: path.basename(input),
     sourceMap: true,
-    sourceMapRegister: true,
+    sourceMapRegister: false,
     ...options
   });
 
