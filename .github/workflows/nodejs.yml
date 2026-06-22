@@ -18,7 +18,7 @@ jobs:
     steps:
     # Commit is needed to check coverage files against content
     - name: 📥 Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
     - name: ⬢ Setup Node.js
@@ -98,7 +98,7 @@ jobs:
 
     steps:
     - name: 📥 Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
     - name: ⬢ Setup Node.js ${{ matrix.node-version }}
@@ -142,7 +142,7 @@ jobs:
     steps:
     # Commit is needed to check coverage files against content
     - name: 📥 Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
         # Disabling shallow clone is needed by SonarQube
