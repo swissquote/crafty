@@ -3104,9 +3104,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsbuild/core@npm:~2.0.12":
-  version: 2.0.14
-  resolution: "@rsbuild/core@npm:2.0.14"
+"@rsbuild/core@npm:~2.0.15":
+  version: 2.0.15
+  resolution: "@rsbuild/core@npm:2.0.15"
   dependencies:
     "@rspack/core": "npm:~2.0.8"
     "@swc/helpers": "npm:^0.5.23"
@@ -3117,7 +3117,7 @@ __metadata:
       optional: true
   bin:
     rsbuild: ./bin/rsbuild.js
-  checksum: 10c0/8565472ff01779045246df28daf487d9ef2aa924cb971ab7294720bd4306917d2eaa3de8b022544b745411faeba560c109b0cada4197dbfdbbe155ced2574bb0
+  checksum: 10c0/0aa77a2e4928e1b62b26fa986467d8226a89f2fb0680ae825a36f7e581a976e6bb43debcca4dcdb7fd8d68b05a7f7ef2e5b25b9769afd70ea2a65c1103b59e2e
   languageName: node
   linkType: hard
 
@@ -3256,12 +3256,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rslib/core@npm:0.22.1":
-  version: 0.22.1
-  resolution: "@rslib/core@npm:0.22.1"
+"@rslib/core@npm:0.23.0":
+  version: 0.23.0
+  resolution: "@rslib/core@npm:0.23.0"
   dependencies:
-    "@rsbuild/core": "npm:~2.0.12"
-    rsbuild-plugin-dts: "npm:0.22.1"
+    "@rsbuild/core": "npm:~2.0.15"
+    rsbuild-plugin-dts: "npm:0.23.0"
   peerDependencies:
     "@microsoft/api-extractor": ^7
     typescript: ^5 || ^6
@@ -3272,7 +3272,7 @@ __metadata:
       optional: true
   bin:
     rslib: ./bin/rslib.js
-  checksum: 10c0/d904c19c2e2e9c3499d80c5bdf0293b85a1bb010b7968eeb54e4cb95cba0127f7cb700e06d7c21fb8bc673645b2a4518be071742724932af941a64b7aaad0f9a
+  checksum: 10c0/6a3bddbc049dc60be72d761b2c88988121378de7d4357dab8f480eef5bedd23d1af852ff4f015cd91a4feb36a133fa25c78e796acbff16cb2c4e59c0fcc326f4
   languageName: node
   linkType: hard
 
@@ -4450,7 +4450,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/utils@workspace:utils"
   dependencies:
-    "@rslib/core": "npm:0.22.1"
+    "@rslib/core": "npm:0.23.0"
     "@vercel/ncc": "npm:0.38.4"
     prompts: "npm:2.4.2"
   languageName: unknown
@@ -12638,9 +12638,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rsbuild-plugin-dts@npm:0.22.1":
-  version: 0.22.1
-  resolution: "rsbuild-plugin-dts@npm:0.22.1"
+"rsbuild-plugin-dts@npm:0.23.0":
+  version: 0.23.0
+  resolution: "rsbuild-plugin-dts@npm:0.23.0"
   dependencies:
     "@ast-grep/napi": "npm:0.37.0"
   peerDependencies:
@@ -12655,7 +12655,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/639ddff5dcf524a23d3234a3e7d9adfa1ca1c1485dbd33ed8d808b9f6cc3fc5e4e03d3b38c3350fa4db220843cdd7d4d1237a269d9a80d5c02907ed44b551c91
+  checksum: 10c0/8d22d8f923f9624d138a61602465160e76050bd355eb0dce538e15b030354da013304519d5ce1f55dad0cbff166517fb3ef31e900399b94d0ea15279eab5bc69
   languageName: node
   linkType: hard
 
