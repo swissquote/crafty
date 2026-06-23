@@ -15,14 +15,14 @@
     "build": "node ../../utils/build.mjs"
   },
   "dependencies": {
-    "@babel/core": "7.29.7",
-    "@babel/runtime": "7.29.7",
+    "@babel/core": "8.0.1",
+    "@babel/runtime": "8.0.0",
     "@swissquote/crafty-commons": "1.30.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.29.7",
-    "@babel/preset-env": "7.29.7",
-    "@babel/preset-react": "7.29.7",
+    "@babel/plugin-transform-runtime": "8.0.1",
+    "@babel/preset-env": "8.0.2",
+    "@babel/preset-react": "8.0.1",
     "babel-plugin-istanbul": "7.0.1",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "babel-preset-jest": "30.4.0"
