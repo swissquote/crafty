@@ -180,6 +180,13 @@ React projects.</p>
     <div class="TableOfContentsContainer__content">
         <ul class="TableOfContents">
 <li><a href="#installation">Installation</a></li>
+<li><a href="#react-compiler">React Compiler</a>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#disabling-it">Disabling it</a></li>
+</ul>
+</li>
 <li><a href="#hot-module-replacement">Hot Module Replacement</a></li>
 <li><a href="#react-hot-module-replacement-variants">React Hot Module Replacement variants</a>
 <ul>
@@ -211,6 +218,64 @@ adds the React test setup file automatically.</p>
     },
   },
 };
+</code></pre>
+<h2><a id="react-compiler" href="#react-compiler" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Compiler</h2>
+<blockquote>
+<p>This feature works with the <strong>SWC</strong> preset on Webpack, Rspack and Gulp.</p>
+</blockquote>
+<p>The <a href="https://react.dev/learn/react-compiler" class="Link--external" rel="noopener noreferrer">React Compiler</a> automatically
+memoizes your components and hooks at build time, removing most of the need for
+manual <code>useMemo</code>, <code>useCallback</code> and <code>React.memo</code>. Crafty enables it through
+SWC’s built-in support.</p>
+<p>It is <strong>disabled by default</strong> and must be opted into per bundle by setting
+<code>reactCompiler</code> on the bundle’s <code>react</code> option:</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">presets</span>: [
+    <span class="hljs-string">"@swissquote/crafty-preset-swc"</span>,
+    <span class="hljs-string">"@swissquote/crafty-runner-webpack"</span>,
+    <span class="hljs-string">"@swissquote/crafty-preset-react"</span>,
+  ],
+  <span class="hljs-attr">js</span>: {
+    <span class="hljs-attr">app</span>: {
+      <span class="hljs-attr">source</span>: <span class="hljs-string">"js/app.js"</span>,
+      <span class="hljs-attr">react</span>: {
+        <span class="hljs-attr">reactCompiler</span>: <span class="hljs-literal">true</span>,
+      },
+    },
+  },
+};
+</code></pre>
+<p>The compiler runs in both development and production builds, and can be combined
+with Fast Refresh:</p>
+<pre><code class="hljs javascript">react: {
+  <span class="hljs-attr">refreshMode</span>: <span class="hljs-string">"fast"</span>,
+  <span class="hljs-attr">reactCompiler</span>: <span class="hljs-literal">true</span>,
+}
+</code></pre>
+<h3><a id="requirements" href="#requirements" class="Permalink" aria-hidden="true" title="Permalink">#</a>Requirements</h3>
+<ul>
+<li>The compiler targets <strong>React 19</strong> by default. For React 17 or 18, set the
+<code>target</code> option (see below).</li>
+<li>With Rspack, the compiler requires <code>@rspack/core</code> <strong>2.1.0 or later</strong>.</li>
+</ul>
+<h3><a id="options" href="#options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Options</h3>
+<p>Passing <code>true</code> uses SWC’s defaults. To configure the compiler, pass an object
+instead — the options match the
+<a href="https://react.dev/reference/react-compiler/configuration" class="Link--external" rel="noopener noreferrer">React Compiler configuration</a>
+(for example <code>target</code>, <code>compilationMode</code>, <code>panicThreshold</code>):</p>
+<pre><code class="hljs javascript">react: {
+  <span class="hljs-attr">reactCompiler</span>: {
+    <span class="hljs-attr">target</span>: <span class="hljs-string">"18"</span>, <span class="hljs-comment">// "17" | "18" | "19" (default)</span>
+  },
+}
+</code></pre>
+<h3><a id="disabling-it" href="#disabling-it" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disabling it</h3>
+<p>The React Compiler is off by default, so there is nothing to do to keep it
+disabled. To turn it off for a bundle where it was enabled, remove the
+<code>reactCompiler</code> key or set it to <code>false</code>:</p>
+<pre><code class="hljs javascript">react: {
+  <span class="hljs-attr">reactCompiler</span>: <span class="hljs-literal">false</span>,
+}
 </code></pre>
 <h2><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h2>
 <p>When doing modern JavaScript development, the usual process is <strong>Write code</strong>,
