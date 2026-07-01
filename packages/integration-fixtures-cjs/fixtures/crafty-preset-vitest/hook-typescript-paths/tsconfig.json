@@ -1,0 +1,19 @@
+{
+  "exclude": [
+    "node_modules",
+    "node",
+    "css",
+    "etc"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "lib": ["DOM", "ES2017"],
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@math/*": ["./src/math/*"]
+    }
+  }
+}

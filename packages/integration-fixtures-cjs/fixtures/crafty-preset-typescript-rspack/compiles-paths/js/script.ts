@@ -1,4 +1,4 @@
-import test from "./components/Calculator";
+import test from "components/Calculator";
 
 export default class NewStuff {
   constructor() {

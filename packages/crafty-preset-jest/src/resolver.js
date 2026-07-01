@@ -117,5 +117,14 @@ module.exports = create(jestConfig => {
     ".mjs": [".mjs", ".mts"]
   };
 
+  // The TypeScript preset communicates the tsconfig.json location through this
+  // environment variable so imports can be resolved using its `paths`/`baseUrl` mapping
+  if (process.env.CRAFTY_JEST_TSCONFIG) {
+    baseConfig.tsconfig = {
+      configFile: process.env.CRAFTY_JEST_TSCONFIG,
+      references: "auto"
+    };
+  }
+
   return baseConfig;
 });
