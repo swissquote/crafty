@@ -162,6 +162,7 @@
 </ul>
 </li>
 <li><a href="#other">Other</a></li>
+<li><a href="#path-mapping">Path mapping</a></li>
 <li><a href="#ide-integration">IDE Integration</a></li>
 </ul>    </div>
 </div>
@@ -205,6 +206,21 @@ For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaS
 <li>Type Aliases (<code>type PrimitiveArray = Array&lt;string|number|boolean&gt;;</code>)</li>
 </ul>
 <p><a href="http://www.typescriptlang.org/docs/tutorial.html" class="Link--external" rel="noopener noreferrer">Read more</a></p>
+<h2><a id="path-mapping" href="#path-mapping" class="Permalink" aria-hidden="true" title="Permalink">#</a>Path mapping</h2>
+<p>The <code>paths</code> and <code>baseUrl</code> options in your <code>tsconfig.json</code> let you import modules through aliases instead of long relative paths:</p>
+<pre><code class="hljs json">{
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"baseUrl"</span>: <span class="hljs-string">"."</span>,
+    <span class="hljs-attr">"paths"</span>: {
+      <span class="hljs-attr">"@components/*"</span>: [<span class="hljs-string">"./src/components/*"</span>]
+    }
+  }
+}
+</code></pre>
+<pre><code class="hljs typescript"><span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">"@components/Button"</span>;
+</code></pre>
+<p>Crafty reads these mappings from your <code>tsconfig.json</code> and applies them when it resolves modules. They work when you bundle with Webpack or Rspack, and when you run tests with Jest or Vitest.</p>
+<p>The Gulp runner does not support path mapping. The TypeScript compiler keeps import specifiers as written when it emits files one by one, so the aliases would remain in the output and fail at runtime.</p>
 <h2><a id="ide-integration" href="#ide-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>IDE Integration</h2>
 <p>TypeScript being out for years now, it has first class support in IDE’s like IntelliJ, Visual Studio Code and others.</p>
 <p>The IDE directly understands types and type definition files and is able to propose auto completion and refactoring out of the box.</p>
