@@ -56,6 +56,29 @@ function direction(k: "left" | "right") {
 
 [Read more](http://www.typescriptlang.org/docs/tutorial.html)
 
+## Path mapping
+
+The `paths` and `baseUrl` options in your `tsconfig.json` let you import modules through aliases instead of long relative paths:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"]
+    }
+  }
+}
+```
+
+```typescript
+import Button from "@components/Button";
+```
+
+Crafty reads these mappings from your `tsconfig.json` and applies them when it resolves modules. They work when you bundle with Webpack or Rspack, and when you run tests with Jest or Vitest.
+
+The Gulp runner does not support path mapping. The TypeScript compiler keeps import specifiers as written when it emits files one by one, so the aliases would remain in the output and fail at runtime.
+
 ## IDE Integration
 
 TypeScript being out for years now, it has first class support in IDE's like IntelliJ, Visual Studio Code and others.

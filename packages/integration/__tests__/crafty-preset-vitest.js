@@ -542,6 +542,16 @@ test("Loads TypeScript tests through the preset hook", async () => {
   expect(result.status).toBe(0);
 });
 
+test("Resolves TypeScript path mapping through the preset hook", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/hook-typescript-paths"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+});
+
 test("Loads the React setup file through the preset hook", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/hook-react"

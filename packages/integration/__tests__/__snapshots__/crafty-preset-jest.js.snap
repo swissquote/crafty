@@ -244,6 +244,23 @@ Ran all test suites.
 }
 `;
 
+exports[`Succeeds with typescript path mapping 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+PASS src/__tests__/add.ts
+  ✓ adds two numbers through a tsconfig path alias
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        _____s
+Ran all test suites.
+",
+}
+`;
+
 exports[`Succeeds without transpiling, selects test 1`] = `
 {
   "status": 0,

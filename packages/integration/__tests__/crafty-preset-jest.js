@@ -85,6 +85,17 @@ test("Succeeds with typescript", async () => {
   expect(result.status).toBe(0);
 });
 
+test("Succeeds with typescript path mapping", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-jest/typescript-paths"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
+});
+
 test("Succeeds with typescript modules", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-jest/typescript-modules"

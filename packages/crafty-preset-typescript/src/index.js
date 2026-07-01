@@ -44,6 +44,14 @@ module.exports = {
     return ["ts", "tsx", "mts", "cts"];
   },
   jest(crafty, options, esmMode) {
+    // Let the Jest resolver honor the `paths`/`baseUrl` mapping from tsconfig.json.
+    // The value is read back in `crafty-preset-jest`'s resolver, which runs in Jest
+    // worker processes and inherits this environment variable.
+    const tsconfigFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
+    if (tsconfigFile) {
+      process.env.CRAFTY_JEST_TSCONFIG = tsconfigFile;
+    }
+
     options.moduleDirectories.push(MODULES);
     options.transform["^.+\\.(ts|tsx|mts)$"] = [
       require.resolve("../packages/ts-jest"),
@@ -78,6 +86,20 @@ module.exports = {
   vitest(crafty, options, context) {
     context.moduleDirectories.push(MODULES);
     context.moduleFileExtensions.push("ts", "tsx", "mts", "cts");
+
+    // Resolve imports using the `paths`/`baseUrl` mapping from tsconfig.json
+    const tsconfigFile = findUpSync("tsconfig.json", { cwd: process.cwd() });
+    if (tsconfigFile) {
+      context.runtimePlugins.push({
+        pluginPath: require.resolve("../packages/vitest-tsconfig-paths"),
+        options: {
+          tsconfig: tsconfigFile,
+          extensions: context.moduleFileExtensions.map(
+            extension => `.${extension}`
+          )
+        }
+      });
+    }
   },
   webpack(crafty, bundle, chain) {
     const tsconfigFile = bundle.tsconfigFile || "tsconfig.json";
@@ -120,6 +142,9 @@ module.exports = {
 
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
+
+    // Resolve imports using the `paths`/`baseUrl` mapping from tsconfig.json
+    chain.resolve.set("tsconfig", { configFile, references: "auto" });
 
     // TypeScript
     const tsRule = chain.module.rule("ts");
@@ -246,6 +271,9 @@ module.exports = {
 
     chain.resolve.modules.add(MODULES);
     chain.resolveLoader.modules.add(MODULES);
+
+    // Resolve imports using the `paths`/`baseUrl` mapping from tsconfig.json
+    chain.resolve.set("tsConfig", { configFile, references: "auto" });
 
     // TypeScript
     const tsRule = chain.module.rule("ts");
