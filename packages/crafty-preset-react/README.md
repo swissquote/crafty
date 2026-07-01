@@ -54,6 +54,79 @@ module.exports = {
 };
 ```
 
+## React Compiler
+
+> This feature works with the **SWC** preset on Webpack, Rspack and Gulp.
+
+The [React Compiler](https://react.dev/learn/react-compiler) automatically
+memoizes your components and hooks at build time, removing most of the need for
+manual `useMemo`, `useCallback` and `React.memo`. Crafty enables it through
+SWC's built-in support.
+
+It is **disabled by default** and must be opted into per bundle by setting
+`reactCompiler` on the bundle's `react` option:
+
+```js
+module.exports = {
+  presets: [
+    "@swissquote/crafty-preset-swc",
+    "@swissquote/crafty-runner-webpack",
+    "@swissquote/crafty-preset-react",
+  ],
+  js: {
+    app: {
+      source: "js/app.js",
+      react: {
+        reactCompiler: true,
+      },
+    },
+  },
+};
+```
+
+The compiler runs in both development and production builds, and can be combined
+with Fast Refresh:
+
+```js
+react: {
+  refreshMode: "fast",
+  reactCompiler: true,
+}
+```
+
+### Requirements
+
+- The compiler targets **React 19** by default. For React 17 or 18, set the
+  `target` option (see below).
+- With Rspack, the compiler requires `@rspack/core` **2.1.0 or later**.
+
+### Options
+
+Passing `true` uses SWC's defaults. To configure the compiler, pass an object
+instead — the options match the
+[React Compiler configuration](https://react.dev/reference/react-compiler/configuration)
+(for example `target`, `compilationMode`, `panicThreshold`):
+
+```js
+react: {
+  reactCompiler: {
+    target: "18", // "17" | "18" | "19" (default)
+  },
+}
+```
+
+### Disabling it
+
+The React Compiler is off by default, so there is nothing to do to keep it
+disabled. To turn it off for a bundle where it was enabled, remove the
+`reactCompiler` key or set it to `false`:
+
+```js
+react: {
+  reactCompiler: false,
+}
+```
+
 ## Hot Module Replacement
 
 When doing modern JavaScript development, the usual process is **Write code**,

@@ -66,6 +66,26 @@ test("Compiles JavaScript", async () => {
   ).toMatchSnapshot();
 });
 
+test("Enables the React Compiler", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc-gulp/react-compiler"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
+
+  expect(testUtils.exists(cwd, "dist/js/script.js")).toBeTruthy();
+  expect(testUtils.exists(cwd, "dist/js/script.js.map")).toBeTruthy();
+
+  // The React Compiler injects an import from `react/compiler-runtime`
+  const content = testUtils.readFile(cwd, "dist/js/script.js");
+  expect(content.includes("react/compiler-runtime")).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, "dist/js/script.js")).toMatchSnapshot();
+});
+
 test("Compiles JavaScript, keeps runtime external", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-gulp/compiles-import-runtime"

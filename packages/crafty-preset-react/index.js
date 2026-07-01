@@ -63,17 +63,30 @@ module.exports = {
     }
   },
   swc(crafty, bundle, swcOptions) {
-    if (enableFastRefresh(crafty, bundle)) {
+    const reactCompiler = bundle.react && bundle.react.reactCompiler;
+    const fastRefresh = enableFastRefresh(crafty, bundle);
+
+    if (fastRefresh || reactCompiler) {
       if (!swcOptions.jsc.transform) {
         swcOptions.jsc.transform = {};
       }
+    }
 
+    if (fastRefresh) {
       if (!swcOptions.jsc.transform.react) {
         swcOptions.jsc.transform.react = {};
       }
 
       swcOptions.jsc.transform.react.development = true;
       swcOptions.jsc.transform.react.refresh = true;
+    }
+
+    // The React Compiler is opt-in per bundle (`react: { reactCompiler: true }`).
+    // Passing the value through means `true` uses SWC's defaults while an object
+    // forwards options (target, compilationMode, ...) to the compiler.
+    // It runs in both development and production builds.
+    if (reactCompiler) {
+      swcOptions.jsc.transform.reactCompiler = reactCompiler;
     }
   },
   webpack(crafty, bundle, chain) {

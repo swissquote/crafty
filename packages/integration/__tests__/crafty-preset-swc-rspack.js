@@ -20,6 +20,26 @@ test("Compiles JavaScript", async () => {
   expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
 });
 
+test("Enables the React Compiler", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-swc-rspack/react-compiler"
+  );
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result).toMatchSnapshot();
+  expect(result.status).toBe(0);
+
+  expect(testUtils.exists(cwd, BUNDLE)).toBeTruthy();
+  expect(testUtils.exists(cwd, BUNDLE_MAP)).toBeTruthy();
+
+  // The React Compiler injects an import from `react/compiler-runtime`
+  const content = testUtils.readFile(cwd, BUNDLE);
+  expect(content.includes("react/compiler-runtime")).toBeTruthy();
+
+  expect(testUtils.readForSnapshot(cwd, BUNDLE)).toMatchSnapshot();
+});
+
 test("Keeps imports unresolved for SWC Runtime", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-swc-rspack/compiles-import-runtime"
