@@ -326,6 +326,39 @@ exports[`Does not transpile on modern browsers 2`] = `
 //# sourceMappingURL=myBundle.min.js.map"
 `;
 
+exports[`Enables the React Compiler 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-webpack/react-compiler/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+asset myBundle.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap myBundle.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+Entrypoint default ___ KiB (___ KiB) = myBundle.min.js 1 auxiliary asset
+chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 4 modules
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/script.js ___ KiB [built] [code generated]
+
+  Compiled successfully!
+  Δt ____ms
+
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Enables the React Compiler 2`] = `
+"!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t(require("react/compiler-runtime"));else if("function"==typeof define&&define.amd)define(["react/compiler-runtime"],t);else{var r="object"==typeof exports?t(require("react/compiler-runtime")):t(e["react/compiler-runtime"]);for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,function(e){return function(){"use strict";var t={952:function(t){t.exports=e}},r={};function n(e){var o=r[e];if(void 0!==o)return o.exports;var u=r[e]={exports:{}};return t[e](u,u.exports,n),u.exports}n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,{a:t}),t},n.d=function(e,t){for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.r=function(e){"u">typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var o={};n.r(o);var u=n(952);function c(e){return React.createElement("li",{key:e},e)}return o.default=function(e){let t,r,n,o,i=(0,u.c)(9),{name:l,items:f}=e;return i[0]!==l?(t=React.createElement("h1",null,"Hello ",l),i[0]=l,i[1]=t):t=i[1],i[2]!==f?(r=f.map(c),i[2]=f,i[3]=r):r=i[3],i[4]!==r?(n=React.createElement("ul",null,r),i[4]=r,i[5]=n):n=i[5],i[6]!==t||i[7]!==n?(o=React.createElement("div",null,t,n),i[6]=t,i[7]=n,i[8]=o):o=i[8],o},o}()});
+//# sourceMappingURL=myBundle.min.js.map"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 {
   "status": 1,

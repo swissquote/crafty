@@ -335,6 +335,28 @@ exports[`Compiles JavaScript, new features transpiled 3`] = `
 "
 `;
 
+exports[`Enables the React Compiler 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-gulp/react-compiler/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_myBundle' ...
+[__:__:__] Finished 'js_myBundle' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
+exports[`Enables the React Compiler 2`] = `
+"import{c as _c}from"react/compiler-runtime";function Greeting(t0){const $=_c(9);const{name,items}=t0;let t1;if($[0]!==name){t1=React.createElement("h1",null,"Hello ",name);$[0]=name;$[1]=t1}else{t1=$[1]}let t2;if($[2]!==items){t2=items.map(_temp);$[2]=items;$[3]=t2}else{t2=$[3]}let t3;if($[4]!==t2){t3=React.createElement("ul",null,t2);$[4]=t2;$[5]=t3}else{t3=$[5]}let t4;if($[6]!==t1||$[7]!==t3){t4=React.createElement("div",null,t1,t3);$[6]=t1;$[7]=t3;$[8]=t4}else{t4=$[8]}return t4}function _temp(item){return React.createElement("li",{key:item},item)}export default Greeting;//# sourceMappingURL=script.js.map
+"
+`;
+
 exports[`Fails gracefully on broken markup 1`] = `
 {
   "status": 1,
