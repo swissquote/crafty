@@ -286,6 +286,79 @@ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/tes
 }
 `;
 
+exports[`crafty-preset-typescript > Tests Syntax using Prettier 2 2`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            js: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/test-ts-syntax_prettier2/dist/js
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'js' ...
+[__:__:__] Starting 'js_webpack' ...
+assets by path js/*.ts ___ KiB
+  asset js/app.d.ts ___ KiB [emitted]
+  asset js/TS_4_3.d.ts ___ KiB [emitted]
+  asset js/TS_4_1.d.ts ___ KiB [emitted]
+  asset js/TS_4_5.d.ts ___ KiB [emitted]
+  asset js/TS_4_0.d.ts ___ KiB [emitted]
+  asset js/TS_5_0.d.ts ___ KiB [emitted]
+  asset js/TS_4_9.d.ts ___ KiB [emitted]
+  asset js/TS_4_6.d.ts ___ KiB [emitted]
+  asset js/TS_4_2.d.ts ___ KiB [emitted]
+  asset js/TS_4_8.d.ts ___ KiB [emitted]
+  + 2 assets
+asset webpack.min.js ___ KiB [emitted] [minimized] (name: default)
+  sourceMap webpack.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
+asset js/TS_4_7.d.mts ___ KiB [emitted]
+asset js/TS_4_7_common.d.cts ___ KiB [emitted]
+Entrypoint default ___ KiB (___ KiB) = webpack.min.js 1 auxiliary asset
+chunk (runtime: default) webpack.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
+  runtime modules ___ KiB 3 modules
+  dependent modules ___ KiB [dependent] 1 module
+  ./js/app.ts + 13 modules ___ KiB [built] [code generated]
+
+  Compiled with warnings.
+
+[eslint]
+__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/test-ts-syntax_prettier2/js/TS_4_8.ts
+  2:34  warning  The \`{}\` ("empty object") type allows any non-nullish value, including literals like \`0\` and \`""\`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want \`object\` instead.
+- If you want a type meaning "any value", you probably want \`unknown\` instead  @swissquote/swissquote/@typescript-eslint/no-empty-object-type
+
+__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/test-ts-syntax_prettier2/js/TS_5_0.ts
+  14:5  warning  Unexpected console statement  no-console
+  16:5  warning  Unexpected console statement  no-console
+  32:5  warning  Unexpected console statement  no-console
+
+✖ 4 problems (0 errors, 4 warnings)
+
+  Δt ____ms ⚠  1 problem (0 errors, 1 warning)
+
+[__:__:__] Finished 'js_webpack' after ____ ms
+[__:__:__] Starting 'js_gulp' ...
+[__:__:__]
+__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/test-ts-syntax_prettier2/js/TS_4_8.ts
+  2:34  warning  The \`{}\` ("empty object") type allows any non-nullish value, including literals like \`0\` and \`""\`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want \`object\` instead.
+- If you want a type meaning "any value", you probably want \`unknown\` instead  @swissquote/swissquote/@typescript-eslint/no-empty-object-type
+
+__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript/test-ts-syntax_prettier2/js/TS_5_0.ts
+  14:5  warning  Unexpected console statement  no-console
+  16:5  warning  Unexpected console statement  no-console
+  32:5  warning  Unexpected console statement  no-console
+
+✖ 4 problems (0 errors, 4 warnings)
+
+[__:__:__] Finished 'js_gulp' after ____ ms
+[__:__:__] Finished 'js' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
+
 exports[`crafty-preset-typescript > Tests Syntax using Prettier 3 1`] = `
 {
   "status": 0,

@@ -25,8 +25,18 @@ This plugin comes with four presets
 Due to breaking changes in behavior between Prettier major versions, this preset provides multiple Prettier versions.
 By default we use Prettier 1 for backwards compatibility.
 
-You can choose which version you want to use by using ESLint's `settings` key.
-Valid values are `prettier:1`, `prettier:2`, and `prettier:3`.
+The recommended way to choose a version is the top-level `formatter` option in
+`crafty.config.js`. Valid values are `prettier:1`, `prettier:2`, `prettier:3`
+(and `oxfmt` when the [oxfmt preset](../crafty-preset-oxfmt) is used):
+
+```javascript
+export default {
+  formatter: "prettier:2",
+};
+```
+
+Setting the version through ESLint's `settings` key still works and is kept as an
+alias (an explicit `formatter` wins over it):
 
 ```javascript
 {
