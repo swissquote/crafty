@@ -22,8 +22,6 @@ const excludedUtils = new Set([
   "appendRuleName",
   "cachedImport",
   "checkInvalidCLIOptions",
-  "dynamicImport",
-  "errors",
   "getModulePath",
   "FileCache",
   "getRelativePath",
@@ -549,7 +547,7 @@ export default [
     const version = pkg.version;
 
     await compilerUtils.replaceContent(
-      path.join("dist", "stylelint", "268.js"),
+      path.join("dist", "stylelint", "157.js"),
       content =>
         content
           .replace(
