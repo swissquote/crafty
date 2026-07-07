@@ -1,10 +1,19 @@
 module.exports = {
+  // Declares that this preset provides the "prettier" formatter. Crafty resolves
+  // the active formatter from this (see Crafty#getActiveFormatter); when another
+  // formatter (e.g. oxfmt) is active, Prettier's IDE config stands down so
+  // editors use that formatter instead.
+  provides: { formatter: "prettier" },
   defaultConfig() {
     return {
       prettier: {}
     };
   },
-  ide() {
+  ide(crafty) {
+    if (!crafty.isActiveFormatter("prettier")) {
+      return {};
+    }
+
     return {
       "prettier.config.mjs": {
         shouldIgnore: false,

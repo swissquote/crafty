@@ -99,6 +99,22 @@ async function toESLintConfig(crafty, config = {}, source = "plugin") {
           configs.push(value);
         }
       });
+
+    // Let the declarative `formatter` config drive ESLint's formatting:
+    //  - prettier family: select the prettier version through the
+    //    `formatting/mode` setting (kept as the legacy alias, so configs setting
+    //    it directly still work; an explicit `formatter` wins as it is appended
+    //    last);
+    //  - any other formatter (e.g. oxfmt): turn the `prettier/prettier` rule off
+    //    so ESLint stops formatting and the external formatter owns it.
+    const formatterFamily = crafty.getFormatterFamily();
+    if (formatterFamily === "prettier") {
+      configs.push({
+        settings: { "formatting/mode": crafty.getActiveFormatter() }
+      });
+    } else if (formatterFamily) {
+      configs.push({ rules: { "prettier/prettier": "off" } });
+    }
   }
 
   // Load other configuration files

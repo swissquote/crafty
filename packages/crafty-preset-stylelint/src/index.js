@@ -56,17 +56,24 @@ export default {
     };
   },
   config(config) {
-    // Set prettier configuration for CSS
-    config.prettier.overrides = config.prettier.overrides || [];
-    config.prettier.overrides.push({
-      files: ["*.css", "*.scss"],
-      options: { tabWidth: 4 }
-    });
-
     // Add rules that need the current browsers configurations
     addNoVariableInTranspiledFunction(config.stylelint.rules, config.browsers);
 
     return config;
+  },
+  init(crafty) {
+    // When Prettier is the active formatter it formats CSS/SCSS too, so we add
+    // the Prettier CSS overrides. With another formatter (e.g. oxfmt) they would
+    // be dead config, so we skip them. This runs in init() — rather than
+    // config() — because the formatter is resolved from the Crafty instance.
+    if (crafty.isActiveFormatter("prettier")) {
+      const { config } = crafty;
+      config.prettier.overrides = config.prettier.overrides || [];
+      config.prettier.overrides.push({
+        files: ["*.css", "*.scss"],
+        options: { tabWidth: 4 }
+      });
+    }
   },
   commands() {
     return {

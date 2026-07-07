@@ -17,8 +17,17 @@ const MODULES = path.join(__dirname, "..", "node_modules");
 
 module.exports = {
   toESLintConfig,
+  // Declares that this preset provides the "eslint" linter. Crafty resolves the
+  // active linter from this (see Crafty#getActiveLinter); when another linter
+  // (e.g. oxlint) is the active one, ESLint's build linting and IDE config stand
+  // down to avoid double linting and conflicting configs.
+  provides: { linter: "eslint" },
   presets: [require.resolve("@swissquote/crafty-preset-prettier")],
   ide(crafty) {
+    if (!crafty.isActiveLinter("eslint")) {
+      return {};
+    }
+
     return {
       "eslint.config.mjs": {
         shouldIgnore: false,
@@ -59,7 +68,7 @@ module.exports = {
         extensions.push(...preset.get("eslintExtensions")());
       });
 
-    if (!crafty.isWatching()) {
+    if (!crafty.isWatching() && crafty.isActiveLinter("eslint")) {
       // JavaScript linting
       chain
         .plugin("lint-js")
@@ -87,7 +96,7 @@ module.exports = {
         extensions.push(...preset.get("eslintExtensions")());
       });
 
-    if (!crafty.isWatching()) {
+    if (!crafty.isWatching() && crafty.isActiveLinter("eslint")) {
       // JavaScript linting
       chain
         .plugin("lint-js")

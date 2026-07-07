@@ -1,0 +1,28 @@
+{
+  "name": "@swissquote/crafty-preset-oxlint",
+  "version": "1.30.1",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swissquote/crafty.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
+  },
+  "dependencies": {
+    "@swissquote/crafty": "1.30.1",
+    "@swissquote/crafty-commons": "1.30.1",
+    "@swissquote/crafty-preset-oxfmt": "1.30.1",
+    "@swissquote/oxlint-config-swissquote": "1.30.1",
+    "oxlint": "1.72.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

@@ -355,3 +355,28 @@ exports[`Fails gracefully on broken markup 1`] = `
 ",
 }
 `;
+
+exports[`Starts and rebuilds in watch mode 1`] = `
+{
+  "status": 0,
+  "stdall": "
+[__:__:__] Starting Crafty __version__...
+[__:__:__] Files will be stored in:
+            css: __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-postcss-gulp/compiles-color-function/dist/css
+[__:__:__] Starting 'default' ...
+[__:__:__] Starting 'css' ...
+[__:__:__] Starting 'css_myBundle' ...
+[__:__:__] Finished 'css_myBundle' after ____ ms
+[__:__:__] Finished 'css' after ____ ms
+[__:__:__] Starting 'css__lint' ...
+
+css/style.scss
+  7:12  ⚠  Unexpected var() in transpiled function "color"  swissquote/no-variable-in-transpiled-function
+
+⚠ 1 problem (0 errors, 1 warning)
+
+[__:__:__] Finished 'css__lint' after ____ ms
+[__:__:__] Finished 'default' after ____ ms
+",
+}
+`;
