@@ -549,7 +549,7 @@ export default [
     const version = pkg.version;
 
     await compilerUtils.replaceContent(
-      path.join("dist", "stylelint", "71.js"),
+      path.join("dist", "stylelint", "268.js"),
       content =>
         content
           .replace(
