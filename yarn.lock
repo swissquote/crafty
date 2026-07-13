@@ -3160,83 +3160,83 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rsdoctor/client@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/client@npm:1.5.17"
-  checksum: 10c0/399e6b2b689d6e2835089bac2d766dad9d052011e854accab621279a545ed064fb5b776426f651bdf390d5697a287acbbe02fa04acbdf3ec4dfb92528196d1a1
+"@rsdoctor/client@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/client@npm:1.5.18"
+  checksum: 10c0/93034db26dff6b8f40101bba96e11b10194e25bdcb3ae6d882d5486cf349fde013701a738ba2e2883ab9234ef0061fd0867c5a8e4495b28103e8a921c1df97d0
   languageName: node
   linkType: hard
 
-"@rsdoctor/core@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/core@npm:1.5.17"
+"@rsdoctor/core@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/core@npm:1.5.18"
   dependencies:
     "@rsbuild/plugin-check-syntax": "npm:^1.6.1"
-    "@rsdoctor/graph": "npm:1.5.17"
-    "@rsdoctor/sdk": "npm:1.5.17"
-    "@rsdoctor/types": "npm:1.5.17"
-    "@rsdoctor/utils": "npm:1.5.17"
+    "@rsdoctor/graph": "npm:1.5.18"
+    "@rsdoctor/sdk": "npm:1.5.18"
+    "@rsdoctor/types": "npm:1.5.18"
+    "@rsdoctor/utils": "npm:1.5.18"
     "@rspack/resolver": "npm:^0.2.8"
     browserslist-load-config: "npm:^1.0.2"
-    es-toolkit: "npm:^1.47.0"
+    es-toolkit: "npm:^1.49.0"
     filesize: "npm:^11.0.17"
     fs-extra: "npm:^11.1.1"
-    semver: "npm:^7.7.4"
+    semver: "npm:^7.8.5"
     source-map: "npm:^0.7.6"
-  checksum: 10c0/42b6893d1a875c8cb4a3ab8896f9fbb05c5df4812bafa0f896bb6162505840707a2ad964ae49093e7bd05d4c7948364d6dafacb133c251672b07cf6d37d6b7cb
+  checksum: 10c0/c92c210a7ba37ae2f5c182d1a147f1567f9630a6d48aa1b17d2eb65bb19eec78fb3649852fc98448b177b8b129dde05e29d20ae06cfefd5c89cb3dde4b43a126
   languageName: node
   linkType: hard
 
-"@rsdoctor/graph@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/graph@npm:1.5.17"
+"@rsdoctor/graph@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/graph@npm:1.5.18"
   dependencies:
-    "@rsdoctor/types": "npm:1.5.17"
-    "@rsdoctor/utils": "npm:1.5.17"
-    es-toolkit: "npm:^1.47.0"
+    "@rsdoctor/types": "npm:1.5.18"
+    "@rsdoctor/utils": "npm:1.5.18"
+    es-toolkit: "npm:^1.49.0"
     path-browserify: "npm:1.0.1"
     source-map: "npm:^0.7.6"
-  checksum: 10c0/0419dabdead5205eaac0f43093f0d9faa15a26891339a594f4bf28235d20274ab5d00b29da742ca3e2844c5283e8ab3b5044d7930b7765624f1ba3e12ebbfaa4
+  checksum: 10c0/d4e991f3daf9ca8be612bfa61316c53d52d39965ff7609190f00342f43a0b12ed973c26cce6438bf5b7d4e767912b35c00a7fff7d25c754a71bdf814c4ba75db
   languageName: node
   linkType: hard
 
-"@rsdoctor/rspack-plugin@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/rspack-plugin@npm:1.5.17"
+"@rsdoctor/rspack-plugin@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/rspack-plugin@npm:1.5.18"
   dependencies:
-    "@rsdoctor/core": "npm:1.5.17"
-    "@rsdoctor/graph": "npm:1.5.17"
-    "@rsdoctor/sdk": "npm:1.5.17"
-    "@rsdoctor/types": "npm:1.5.17"
-    "@rsdoctor/utils": "npm:1.5.17"
+    "@rsdoctor/core": "npm:1.5.18"
+    "@rsdoctor/graph": "npm:1.5.18"
+    "@rsdoctor/sdk": "npm:1.5.18"
+    "@rsdoctor/types": "npm:1.5.18"
+    "@rsdoctor/utils": "npm:1.5.18"
   peerDependencies:
     "@rspack/core": "*"
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
-  checksum: 10c0/edad1a23dd64e6db85f948c141d61c5c10bf15ac296ca8969559b8034d620e21702bcafd5feb6dc941595cb5dd30fd510beb089e61c21078c2cc0f3d95099655
+  checksum: 10c0/e3575aba47f34a372f55400b2081b98d621eefc81d68096e0e8ec7e4bd6572ad1e446a5a376b409a1f4651af46766a46a0e1e30b36f75148df79529438893323
   languageName: node
   linkType: hard
 
-"@rsdoctor/sdk@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/sdk@npm:1.5.17"
+"@rsdoctor/sdk@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/sdk@npm:1.5.18"
   dependencies:
-    "@rsdoctor/client": "npm:1.5.17"
-    "@rsdoctor/graph": "npm:1.5.17"
-    "@rsdoctor/types": "npm:1.5.17"
-    "@rsdoctor/utils": "npm:1.5.17"
+    "@rsdoctor/client": "npm:1.5.18"
+    "@rsdoctor/graph": "npm:1.5.18"
+    "@rsdoctor/types": "npm:1.5.18"
+    "@rsdoctor/utils": "npm:1.5.18"
     launch-editor: "npm:^2.13.2"
     safer-buffer: "npm:2.1.2"
     socket.io: "npm:4.8.1"
     tapable: "npm:2.3.3"
-  checksum: 10c0/ac33bdae4eb935c5cd3b92f31982287e56f278018c568f20284dbb133b623d7abb340ff26f5121e30876271de672451f8765545fa48c067b9e30da12a6201191
+  checksum: 10c0/c634f3b32d36cf63529f53b33bcbea3ece494fefe98cf74e037accb786324e6e2b056361ca14337a2303a0e7425d1179f80268f252709eb4ab1e822fc3064e61
   languageName: node
   linkType: hard
 
-"@rsdoctor/types@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/types@npm:1.5.17"
+"@rsdoctor/types@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/types@npm:1.5.18"
   dependencies:
     "@types/connect": "npm:3.4.38"
     "@types/estree": "npm:1.0.5"
@@ -3250,16 +3250,16 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/68f105ab2ff9a5e33f3fd2684cd543b62ea8628c1711b70ed3b27ef606e3d40c3ddcbdbf996f936f7a6a3742fe8e51803b6c2659c1e40ee3d0b220b34bc32c31
+  checksum: 10c0/75796ebbcedddc8fd534b2f5d5e5e6c16d8e35ffdee7c627b5bd051e1260637cfc3646f6de6efc816113b11512c5d0ee82c2858e2e955385642840462645d23c
   languageName: node
   linkType: hard
 
-"@rsdoctor/utils@npm:1.5.17":
-  version: 1.5.17
-  resolution: "@rsdoctor/utils@npm:1.5.17"
+"@rsdoctor/utils@npm:1.5.18":
+  version: 1.5.18
+  resolution: "@rsdoctor/utils@npm:1.5.18"
   dependencies:
     "@babel/code-frame": "npm:7.26.2"
-    "@rsdoctor/types": "npm:1.5.17"
+    "@rsdoctor/types": "npm:1.5.18"
     "@types/estree": "npm:1.0.5"
     acorn: "npm:^8.10.0"
     acorn-import-attributes: "npm:^1.9.5"
@@ -3272,8 +3272,8 @@ __metadata:
     lines-and-columns: "npm:2.0.4"
     picocolors: "npm:^1.1.1"
     rslog: "npm:^2.1.2"
-    strip-ansi: "npm:^6.0.1"
-  checksum: 10c0/9411b3b618684329996a65551ad85f19873d1e761ca9efcd02893f3c259f528e2ea37da7f5b2c046e9339fdf140f25804097e922f210d8c8fc7d2233d248d21b
+    strip-ansi: "npm:^7.2.0"
+  checksum: 10c0/257847cff74e745ff24d29486ba76bb83e04135d3956898c7af135ca31071e46b523b8b9f2cc216976dbd5e26d330a03fd33467b9c43e014131798ef1ed48aa6
   languageName: node
   linkType: hard
 
@@ -4160,7 +4160,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@swissquote/crafty-runner-rspack@workspace:packages/crafty-runner-rspack"
   dependencies:
-    "@rsdoctor/rspack-plugin": "npm:1.5.17"
+    "@rsdoctor/rspack-plugin": "npm:1.5.18"
     "@rspack/core": "npm:2.1.2"
     "@swissquote/crafty": "npm:1.30.2"
     "@swissquote/crafty-commons": "npm:1.30.2"
@@ -7524,9 +7524,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-toolkit@npm:^1.47.0":
-  version: 1.47.1
-  resolution: "es-toolkit@npm:1.47.1"
+"es-toolkit@npm:^1.49.0":
+  version: 1.49.0
+  resolution: "es-toolkit@npm:1.49.0"
   dependenciesMeta:
     "@trivago/prettier-plugin-sort-imports@4.3.0":
       unplugged: true
@@ -7534,7 +7534,7 @@ __metadata:
       unplugged: true
     vitepress-plugin-sandpack@1.1.4:
       unplugged: true
-  checksum: 10c0/d6dff140a71e15d22209f8482f1ce34bab433f449e569c28b9c535963b18b2c3b89b00d7cf7156b5c74cace4c5f96283f0a5fee3be8802dd2cf7481da90cfe0a
+  checksum: 10c0/ab0864bb0c5c494ed09043d53a74b58a0ab9df1b89b9b54bce72a63de2869152d7d65e489dc89ab671f0fea243728922c8a8f8c873f1b2a53350a23360b3e2df
   languageName: node
   linkType: hard
 
@@ -12855,7 +12855,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.8.5, semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.2, semver@npm:^7.6.3, semver@npm:^7.7.1, semver@npm:^7.7.2, semver@npm:^7.7.3, semver@npm:^7.7.4, semver@npm:^7.8.0":
+"semver@npm:7.8.5, semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.2, semver@npm:^7.6.3, semver@npm:^7.7.1, semver@npm:^7.7.2, semver@npm:^7.7.3, semver@npm:^7.7.4, semver@npm:^7.8.0, semver@npm:^7.8.5":
   version: 7.8.5
   resolution: "semver@npm:7.8.5"
   bin:
@@ -13325,7 +13325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strip-ansi@npm:^7.0.1, strip-ansi@npm:^7.1.2":
+"strip-ansi@npm:^7.0.1, strip-ansi@npm:^7.1.2, strip-ansi@npm:^7.2.0":
   version: 7.2.0
   resolution: "strip-ansi@npm:7.2.0"
   dependencies:
