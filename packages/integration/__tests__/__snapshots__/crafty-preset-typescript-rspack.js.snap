@@ -213,20 +213,15 @@ chunk (runtime: default) myTSBundle.min.js (default) ___ KiB [entry] [rendered]
   Failed to compile.
 
   × Module build failed (from builtin:swc-loader):
-  ├─▶   ×   x Unexpected token \`class\`. Expected * for generator, private key, identifier or async
-  │     │     ,-[__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts:14:1]
-  │     │  11 |
-  │     │  12 | }
-  │     │  13 |
-  │     │  14 | export class D {
-  │     │     :        ^^^^^
-  │     │  15 |     constructor() {
-  │     │  16 |         console.log("Something else happens here");
-  │     │  17 |     }
-  │     │     \`----
-  │     │
-  │
-  ╰─▶   × Syntax Error
+  ╰─▶   × Syntax Error: Unexpected token \`class\`. Expected * for generator, private key, identifier or async
+          ╭─[14:7]
+       12 │ }
+       13 │
+       14 │ export class D {
+          ·        ─────
+       15 │     constructor() {
+       16 │         console.log("Something else happens here");
+          ╰────
 
   × [eslint]
   │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-typescript-rspack/fails/js/typescript.ts

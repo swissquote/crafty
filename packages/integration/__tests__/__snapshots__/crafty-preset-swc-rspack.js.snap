@@ -118,7 +118,7 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
 `;
 
 exports[`Compiles JavaScript with rspack overrides 2`] = `
-"(function webpackUniversalModuleDefinition(root, factory) {
+"(function __rspack_universal_module_definition(root, factory) {
 
       if(typeof exports === 'object' && typeof module === 'object') {
           module.exports = factory();
@@ -355,15 +355,11 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB [entry] [rendered]
   Failed to compile.
 
   × Module build failed (from builtin:swc-loader):
-  ├─▶   ×   x Unexpected token \`<eof>\`. Expected identifier, string literal, numeric literal or [ for the computed key
-  │     │     ,-[__PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/fails/js/script.js:14:3]
-  │     │  12 |     console.log(Component);
-  │     │  13 |
-  │     │  14 | }
-  │     │     \`----
-  │     │
-  │
-  ╰─▶   × Syntax Error
+  ╰─▶   × Syntax Error: Unexpected token \`<eof>\`. Expected identifier, string literal, numeric literal or [ for the computed key
+          ╭─[13:0]
+       13 │
+       14 │ }
+          ╰────
 
   × [eslint]
   │ __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-swc-rspack/fails/js/script.js
