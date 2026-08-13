@@ -74,7 +74,7 @@ const externals = {
   // Better to use the external version
   postcss: "commonjs postcss",
   "postcss/package.json": "postcss/package.json",
-  "/postcss/lib(/.*)/": "postcss/lib$1",
+  "/postcss/lib(/.*)/": "commonjs postcss/lib$1",
 
   "@babel/code-frame": "commonjs @babel/code-frame",
 
@@ -546,13 +546,33 @@ export default [
     );
     const version = pkg.version;
 
+    // eslint-disable-next-line no-template-curly-in-string
+    const ruleImport = "import(`./${ruleName}/index.mjs`)";
+
+    // rspack names this chunk after its id, which shifts as soon as the module
+    // graph changes, so look it up by the code we need to patch.
+    const stylelintDist = path.join("dist", "stylelint");
+    const mainChunk = fs
+      .readdirSync(stylelintDist)
+      .filter(file => /^\d+\.js$/.test(file))
+      .find(file =>
+        fs
+          .readFileSync(path.join(stylelintDist, file), { encoding: "utf-8" })
+          .includes(ruleImport)
+      );
+
+    if (!mainChunk) {
+      throw new Error(
+        `Could not find the stylelint chunk containing ${ruleImport}`
+      );
+    }
+
     await compilerUtils.replaceContent(
-      path.join("dist", "stylelint", "157.js"),
+      path.join(stylelintDist, mainChunk),
       content =>
         content
           .replace(
-            // eslint-disable-next-line no-template-curly-in-string
-            "import(`./${ruleName}/index.mjs`)",
+            ruleImport,
             // eslint-disable-next-line no-template-curly-in-string
             "import(`./rules/${ruleName}/index.js`)"
           )

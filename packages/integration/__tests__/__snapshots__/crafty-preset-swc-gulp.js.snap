@@ -147,11 +147,8 @@ exports[`Compiles JavaScript, new features transpiled 2`] = `
         reject(error);
         return;
     }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
+    if (info.done) resolve(value);
+    else Promise.resolve(value).then(_next, _throw);
 }
 function _async_to_generator(fn) {
     return function() {
@@ -169,9 +166,7 @@ function _async_to_generator(fn) {
     };
 }
 function _class_call_check(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
+    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
 }
 function _defineProperties(target, props) {
     for(var i = 0; i < props.length; i++){

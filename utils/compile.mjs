@@ -82,6 +82,50 @@ function statsJsonPlugin(statsFile) {
   };
 }
 
+const REGEX_EXTERNAL_KEY = /^\/(.*)\/$/;
+
+// ncc supports object externals whose key is a /regex/, with $1 capture
+// replacement in the value. rspack only does exact string matching, so expand
+// those keys into an equivalent function external.
+function expandRegexExternals(item) {
+  if (typeof item !== "object" || item === null) {
+    return [item];
+  }
+
+  const plain = {};
+  const patterns = [];
+
+  for (const [key, value] of Object.entries(item)) {
+    const match = REGEX_EXTERNAL_KEY.exec(key);
+    if (match) {
+      patterns.push([new RegExp(match[1]), value]);
+    } else {
+      plain[key] = value;
+    }
+  }
+
+  if (patterns.length === 0) {
+    return [plain];
+  }
+
+  return [
+    plain,
+    ({ request }, callback) => {
+      for (const [regex, value] of patterns) {
+        const match = request && regex.exec(request);
+        if (match) {
+          return callback(
+            null,
+            value.replace(/\$(\d)/g, (full, index) => match[index] ?? full)
+          );
+        }
+      }
+
+      return callback();
+    }
+  ];
+}
+
 async function compileRSLib(input, output, bundle) {
   const {
     name,
@@ -126,7 +170,7 @@ async function compileRSLib(input, output, bundle) {
           },
           autoExternal: false,
           output: {
-            externals: externals || [],
+            externals: [externals || []].flat().flatMap(expandRegexExternals),
             distPath: {
               root: dirname
             },
