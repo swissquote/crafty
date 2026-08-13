@@ -7,13 +7,13 @@
     "test": "crafty test",
     "watch": "crafty watch",
     "lint:css": "crafty cssLint css js/**/*.css",
-    "start": "serve"
+    "start": "sirv --dev --port 3000"
   },
   "dependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "react-tabs": "6.1.1",
-    "serve": "14.2.6",
+    "sirv-cli": "3.0.1",
     "webpack": "5.109.2"
   },
   "devDependencies": {

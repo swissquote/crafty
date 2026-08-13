@@ -6,13 +6,13 @@
     "_build": "crafty run",
     "test": "crafty test",
     "watch": "crafty watch",
-    "start": "serve ../../../target/my-app-1.0.0-SNAPSHOT/resources"
+    "start": "sirv ../../../target/my-app-1.0.0-SNAPSHOT/resources --dev --port 3000"
   },
   "dependencies": {
     "@types/react": "^19.0.0",
     "react-loadable": "5.5.0",
     "react-tabs": "6.1.1",
-    "serve": "14.2.6",
+    "sirv-cli": "3.0.1",
     "webpack": "5.109.2"
   },
   "devDependencies": {
