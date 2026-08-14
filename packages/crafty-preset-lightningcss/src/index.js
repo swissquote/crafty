@@ -71,7 +71,7 @@ module.exports = {
         (Plugin, args) =>
           new Plugin.rspack.LightningCssMinimizerRspackPlugin(...args)
       )
-      .use(require.resolve("@rspack/core"), [
+      .use(require("@rspack/core"), [
         {
           minimizerOptions: {
             targets: crafty.config.browsers,

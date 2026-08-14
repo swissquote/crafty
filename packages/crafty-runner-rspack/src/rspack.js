@@ -75,7 +75,7 @@ function configureWatcher(chain, bundle, config, rspackPort) {
   chain
     .plugin("case-sensitive")
     .init((Plugin, args) => new Plugin.rspack.CaseSensitivePlugin(...args))
-    .use(require.resolve("@rspack/core"));
+    .use(require("@rspack/core"));
 
   const outputPath = `${chain.output.get("path").replace(/\/$/g, "")}/**`;
 
@@ -134,7 +134,7 @@ function finalizeWatcher(chain, config) {
   chain
     .plugin("AnypackPluginServe")
     .init((Plugin, args) => new Plugin.AnypackPluginServe(...args))
-    .use(require.resolve("anypack-plugin-serve"), [
+    .use(require("anypack-plugin-serve"), [
       {
         ...devServerConfig,
         host,
@@ -233,7 +233,7 @@ module.exports = async function configureRspack(crafty, bundle, serverPort) {
     .init(
       (Plugin, args) => new Plugin.rspack.SwcJsMinimizerRspackPlugin(...args)
     )
-    .use(require.resolve("@rspack/core"), [
+    .use(require("@rspack/core"), [
       {
         compress: true,
         mangle: true
@@ -266,7 +266,7 @@ module.exports = async function configureRspack(crafty, bundle, serverPort) {
     chain
       .plugin("RsdoctorRspackPlugin")
       .init((Plugin, args) => new Plugin.RsdoctorRspackPlugin(...args))
-      .use(require.resolve("@rsdoctor/rspack-plugin"), [
+      .use(require("@rsdoctor/rspack-plugin"), [
         {
           // https://rsdoctor.rs/config/options/options
           disableClientServer: true,

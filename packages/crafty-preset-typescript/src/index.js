@@ -343,8 +343,6 @@ module.exports = {
     chain
       .plugin("ts-checker-rspack-plugin")
       .init((Plugin, args) => new Plugin.TsCheckerRspackPlugin(...args))
-      .use(require.resolve("../packages/ts-checker-rspack-plugin"), [
-        checkerOptions
-      ]);
+      .use(require("../packages/ts-checker-rspack-plugin"), [checkerOptions]);
   }
 };
