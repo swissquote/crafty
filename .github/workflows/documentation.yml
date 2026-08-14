@@ -7,6 +7,9 @@ on:
 jobs:
   documentation:
     runs-on: ubuntu-latest
+    # Needed by github-pages-deploy-action to push to the gh-pages branch
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v7
       with:
