@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const { getExternals } = require("../../utils/externals");
 
 const craftyExternals = getExternals();
+const rslibExternals = getExternals(true);
 
 module.exports = [
   (builder) =>
@@ -10,7 +11,6 @@ module.exports = [
       .packages((pkgBuilder) =>
         pkgBuilder
           .package("eslint-webpack-plugin", "eslintWebpackPlugin")
-          .package("eslint-rspack-plugin", "eslintRspackPlugin")
           .package("resolve-from", "resolveFrom")
       )
       .externals({
@@ -21,6 +21,14 @@ module.exports = [
         eslint: "eslint",
         "schema-utils": "schema-utils",
       }),
+  // eslint-rspack-plugin is ESM-only since v5 and loads ESLint with a dynamic
+  // `import()`, so it gets its own rslib/ESM bundle instead of being bundled
+  // with the CommonJS eslint-webpack-plugin.
+  (builder) =>
+    builder("eslint-rspack-plugin")
+      .esm()
+      .package()
+      .externals(rslibExternals),
   (builder) => builder("@microsoft/eslint-formatter-sarif").package().externals({
         // Provided by other Crafty packages
         ...craftyExternals,
@@ -50,3 +58,9 @@ module.exports = [
     );
   },
 ];
+
+// eslint-webpack-plugin and eslint-rspack-plugin both depend on normalize-path,
+// and they live in two different bundles. 2 KB of duplication is cheaper than
+// adding yet another shared wrapper to crafty-commons.
+module.exports.keepDuplicateFile = ({ file }) =>
+  !file.includes("/normalize-path/");

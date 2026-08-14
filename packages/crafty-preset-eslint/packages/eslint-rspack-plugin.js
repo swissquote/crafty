@@ -1,1 +1,1 @@
-module.exports = require("../dist/eslint-packages/bundled.js").eslintRspackPlugin();
+module.exports = require("../dist/eslint-rspack-plugin/index.mjs").default;
