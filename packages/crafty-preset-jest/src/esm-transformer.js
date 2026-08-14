@@ -6,6 +6,16 @@ const THIS_FILE = fs.readFileSync(__filename);
 
 const importExportRegex = /\b(import|export)\b/;
 
+// All the top level declarations that make a file an ES module.
+// `ExportAllDeclaration` is `export * from "./other.js"`, a file containing
+// only those would be left untransformed if it were missing from this list.
+const ESM_DECLARATIONS = new Set([
+  "ImportDeclaration",
+  "ExportNamedDeclaration",
+  "ExportDefaultDeclaration",
+  "ExportAllDeclaration"
+]);
+
 module.exports = {
   getCacheKey(fileData, filename, instance) {
     return crypto
@@ -41,17 +51,14 @@ module.exports = {
     const ast = babel.parseSync(code, options);
 
     // Imports and exports have to be at the first level on a file
-    // This makes it easy for us to traverse the file, a simple filter does the trick
+    // This makes it easy for us to traverse the file, a simple check does the trick
     // If we had to find `import()` statements that would be more complicated, but as
     // They would certainly have an import or export anyway, we're covered.
-    const hasImportOrExport = ast.program.body.filter(
-      item =>
-        item.type === "ImportDeclaration" ||
-        item.type === "ExportNamedDeclaration" ||
-        item.type === "ExportDefaultDeclaration"
+    const hasImportOrExport = ast.program.body.some(item =>
+      ESM_DECLARATIONS.has(item.type)
     );
 
-    if (hasImportOrExport.length === 0) {
+    if (!hasImportOrExport) {
       return { code };
     }
 
