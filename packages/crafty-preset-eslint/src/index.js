@@ -91,7 +91,7 @@ module.exports = {
       // JavaScript linting
       chain
         .plugin("lint-js")
-        .use(require.resolve("../packages/eslint-rspack-plugin.js"), [
+        .use(require("../packages/eslint-rspack-plugin.js"), [
           {
             configType: "flat",
             eslintPath: require.resolve("eslint"),
