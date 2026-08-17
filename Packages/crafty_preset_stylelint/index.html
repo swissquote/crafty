@@ -173,6 +173,7 @@
 <li><a href="#linting-options">Linting options</a></li>
 </ul>
 </li>
+<li><a href="#sonarqube-integration">SonarQube Integration</a></li>
 </ul>    </div>
 </div>
 <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
@@ -211,6 +212,13 @@ No need to add it manually if <code>crafty-preset-postcss</code> is already in y
 <p>If no preset is specified <code>recommended</code> is used.</p>
 <h3><a id="linting-options" href="#linting-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting options</h3>
 <p>You can read about the linting options in the page about <a href="CSS_Linting.html">CSS Linting</a></p>
+<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>SonarQube Integration</h2>
+<p>On top of the report printed in the console, every run writes a
+<a href="https://sarifweb.azurewebsites.net/" class="Link--external" rel="noopener noreferrer">SARIF</a> report in <code>reports/stylelint</code>,
+which SonarQube can import.</p>
+<p>Those reports are build artifacts, Crafty creates <code>reports/stylelint</code> with a
+<code>.gitignore</code> inside, so they don’t show up as untracked files. You don’t have
+to add anything to your project’s <code>.gitignore</code>.</p>
     </div>
 
         <nav>

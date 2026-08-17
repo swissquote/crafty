@@ -175,6 +175,7 @@
 <li><a href="#crafty-jslint">crafty jsLint</a></li>
 </ul>
 </li>
+<li><a href="#sonarqube-integration">SonarQube Integration</a></li>
 </ul>    </div>
 </div>
 <h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
@@ -215,6 +216,13 @@
 </code></pre>
 <p>If you don’t specify any preset, we’ll default to <code>recommended</code>.</p>
 <p>If you pass the <code>--fix</code> flag, it will fix all the errors it can and write them directly to the file.</p>
+<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>SonarQube Integration</h2>
+<p>On top of the report printed in the console, every run writes a
+<a href="https://sarifweb.azurewebsites.net/" class="Link--external" rel="noopener noreferrer">SARIF</a> report in <code>reports/eslint</code>, which
+SonarQube can import.</p>
+<p>Those reports are build artifacts, Crafty creates <code>reports/eslint</code> with a
+<code>.gitignore</code> inside, so they don’t show up as untracked files. You don’t have
+to add anything to your project’s <code>.gitignore</code>.</p>
     </div>
 
         <nav>
