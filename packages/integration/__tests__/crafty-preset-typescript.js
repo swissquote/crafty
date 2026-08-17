@@ -17,6 +17,20 @@ describe("crafty-preset-typescript", () => {
     expect(testUtils.exists(cwd, "dist/js/myBundle.min.js.map")).toBeFalsy();
   });
 
+  test("Keeps the SARIF reports out of Git", async () => {
+    const cwd = await testUtils.getCleanFixtures(
+      "crafty-preset-typescript/lints",
+      ["dist", "reports"]
+    );
+
+    await testUtils.run(["jsLint", "js/**/*.ts"], cwd);
+
+    expect(testUtils.exists(cwd, "reports/eslint/.gitignore")).toBeTruthy();
+    expect(
+      testUtils.readForSnapshot(cwd, "reports/eslint/.gitignore")
+    ).toMatchSnapshot();
+  });
+
   test("Lints TypeScript using the command, --preset recommended, --preset node", async () => {
     const cwd = await testUtils.getCleanFixtures(
       "crafty-preset-typescript/lints"

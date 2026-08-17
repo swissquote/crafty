@@ -69,3 +69,13 @@ crafty jsLint src/** --preset format --preset node --preset recommended
 If you don't specify any preset, we'll default to `recommended`.
 
 If you pass the `--fix` flag, it will fix all the errors it can and write them directly to the file.
+
+## SonarQube Integration
+
+On top of the report printed in the console, every run writes a
+[SARIF](https://sarifweb.azurewebsites.net/) report in `reports/eslint`, which
+SonarQube can import.
+
+Those reports are build artifacts, Crafty creates `reports/eslint` with a
+`.gitignore` inside, so they don't show up as untracked files. You don't have
+to add anything to your project's `.gitignore`.

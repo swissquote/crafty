@@ -171,6 +171,10 @@ More often than not, we add a custom reporter to create a SonarQube test report.
 
 This report is automatically added to the configuration if no reporter is specified through the command line.
 
+The report is a build artifact, Crafty creates the directory that holds it with
+a `.gitignore` inside, so it doesn't show up as an untracked file. You don't
+have to add anything to your project's `.gitignore`.
+
 You can decide to change this configuration by overriding `options.reporters`
 
 ```javascript

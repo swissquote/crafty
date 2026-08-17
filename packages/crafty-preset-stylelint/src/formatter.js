@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
+import { prepareReportsDirectory } from "@swissquote/crafty/src/utils/reports.js";
 import stylelint from "@swissquote/stylelint-config-swissquote/packages/stylelint.js";
 import sarif from "../dist/stylelint-sarif-formatter/index.js";
 
@@ -29,10 +30,7 @@ stylelint.formatters.string.then(fn => {
 });
 
 function getReportFilePath(fileName) {
-  const dirName = "reports/stylelint";
-  if (!fs.existsSync(dirName)) {
-    fs.mkdirSync(dirName, { recursive: true });
-  }
+  const dirName = prepareReportsDirectory("reports/stylelint");
   const file = `${dirName}/${fileName ||
     "stylelint"}_${getProcessHash()}.sarif.json`;
 

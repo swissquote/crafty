@@ -92,6 +92,13 @@ Ran all test suites.
 }
 `;
 
+exports[`Keeps the Sonar report out of Git 1`] = `
+"# Created by Crafty
+# Reports are regenerated on every run, they are build artifacts
+*
+"
+`;
+
 exports[`Succeeds with babel 1`] = `
 {
   "status": 0,

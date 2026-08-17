@@ -25,6 +25,22 @@ test("Succeeds without transpiling, selects test", async () => {
   expect(result).toMatchSnapshot();
 });
 
+test("Keeps the Sonar report out of Git", async () => {
+  const cwd = await testUtils.getCleanFixtures("crafty-preset-jest/succeeds", [
+    "dist",
+    "reports"
+  ]);
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(testUtils.exists(cwd, "reports/sonar-report.xml")).toBeTruthy();
+  expect(testUtils.exists(cwd, "reports/.gitignore")).toBeTruthy();
+  expect(
+    testUtils.readForSnapshot(cwd, "reports/.gitignore")
+  ).toMatchSnapshot();
+});
+
 test("Fails when multiple test runners are configured", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-jest/multiple-runners"
