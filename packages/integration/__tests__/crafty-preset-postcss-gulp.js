@@ -127,6 +127,22 @@ test("Compiles CSS", async () => {
   );
 });
 
+test("Compiles CSS with a usable modification time", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss-gulp/compiles"
+  );
+  const before = Date.now();
+
+  const result = await testUtils.run(["run", "default"], cwd);
+
+  expect(result.status).toBe(0);
+
+  // A Number of milliseconds here is read as seconds and clamps, giving every build the same mtime.
+  const { mtimeMs } = fs.statSync(path.join(cwd, BUNDLED_CSS));
+  expect(mtimeMs).toBeGreaterThanOrEqual(before - 1000);
+  expect(mtimeMs).toBeLessThanOrEqual(Date.now() + 1000);
+});
+
 test("Compiles CSS, configuration has overrides", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss-gulp/compiles-with-overrides"
