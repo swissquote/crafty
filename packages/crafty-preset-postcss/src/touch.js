@@ -8,8 +8,9 @@ module.exports = function() {
         return cb(null, file);
       }
 
-      file.stat.mtime = Date.now();
-      file.stat.ctime = Date.now();
+      const now = new Date();
+      file.stat.mtime = now;
+      file.stat.ctime = now;
 
       return cb(null, file);
     }
