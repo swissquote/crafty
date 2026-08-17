@@ -5,6 +5,7 @@ const childProcess = require("child_process");
 const {
   extractVitestCliState,
   materializeVitestOptions,
+  prepareReportDirectories,
   serializeVitestOptions,
   normalizeVitestOptions
 } = require("./configuration");
@@ -81,6 +82,8 @@ module.exports = {
 
       const cliState = extractVitestCliState(process.argv.slice(3));
       const craftedConfig = normalizeVitestOptions(crafty, cliState);
+
+      prepareReportDirectories(craftedConfig, cliState.runnerArgs);
 
       fs.writeFileSync(
         configFile,

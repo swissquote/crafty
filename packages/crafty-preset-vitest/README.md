@@ -292,6 +292,10 @@ When coverage is enabled through `crafty test --coverage`, Crafty also keeps
 Vitest coverage artifacts under `coverage/` and includes `coverage/lcov.info`
 by default.
 
+These reports are build artifacts, Crafty creates the directories that hold them
+with a `.gitignore` inside, so they don't show up as untracked files. You don't
+have to add anything to your project's `.gitignore`.
+
 If your Sonar setup requires absolute file paths, set
 `reportedFilePath: "absolute"` on the Sonar reporter config.
 

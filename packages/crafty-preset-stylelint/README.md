@@ -66,3 +66,13 @@ If no preset is specified `recommended` is used.
 ### Linting options
 
 You can read about the linting options in the page about [CSS Linting](CSS_Linting.md)
+
+## SonarQube Integration
+
+On top of the report printed in the console, every run writes a
+[SARIF](https://sarifweb.azurewebsites.net/) report in `reports/stylelint`,
+which SonarQube can import.
+
+Those reports are build artifacts, Crafty creates `reports/stylelint` with a
+`.gitignore` inside, so they don't show up as untracked files. You don't have
+to add anything to your project's `.gitignore`.

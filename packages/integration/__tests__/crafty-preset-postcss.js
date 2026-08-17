@@ -33,6 +33,20 @@ test("Lints with the command", async () => {
   expect(testUtils.exists(cwd, "dist")).toBeFalsy();
 });
 
+test("Keeps the SARIF reports out of Git", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-postcss/no-bundle",
+    ["dist", "reports"]
+  );
+
+  await testUtils.run(["cssLint", "css/*.scss"], cwd);
+
+  expect(testUtils.exists(cwd, "reports/stylelint/.gitignore")).toBeTruthy();
+  expect(
+    testUtils.readForSnapshot(cwd, "reports/stylelint/.gitignore")
+  ).toMatchSnapshot();
+});
+
 test("Lints with the command in legacy mode", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-postcss/no-bundle"

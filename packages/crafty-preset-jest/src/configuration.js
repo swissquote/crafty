@@ -1,5 +1,8 @@
 const path = require("node:path");
 const fs = require("node:fs");
+const {
+  prepareReportsDirectory
+} = require("@swissquote/crafty/src/utils/reports.js");
 
 function isModuleMode() {
   const packageJson = path.join(process.cwd(), "package.json");
@@ -12,6 +15,8 @@ function isModuleMode() {
 }
 
 const SONAR_REPORTER_MODULE = require.resolve("jest-to-sonar");
+// Jest exits before running anything with these, no report is written
+const NO_RUN_ARGUMENTS = new Set(["--help", "-h", "--showConfig", "--version"]);
 
 function finalizeReporters(reporters) {
   return reporters.map(reporter => {
@@ -29,6 +34,30 @@ function finalizeReporters(reporters) {
     }
     return reporter;
   });
+}
+
+/**
+ * Create the directories the reporters write to, so that Git can be told to
+ * ignore them before the first report lands there.
+ *
+ * @param {Array} reporters finalized Jest reporters
+ * @param {Array<string>} args the arguments Jest is called with
+ */
+function prepareReportDirectories(reporters, args = []) {
+  if (args.some(arg => NO_RUN_ARGUMENTS.has(arg))) {
+    return;
+  }
+
+  for (const reporter of reporters) {
+    if (!Array.isArray(reporter) || reporter[0] !== SONAR_REPORTER_MODULE) {
+      continue;
+    }
+
+    const { outputFile } = reporter[1] || {};
+    if (typeof outputFile === "string" && outputFile.length > 0) {
+      prepareReportsDirectory(path.dirname(outputFile));
+    }
+  }
 }
 
 function normalizeJestOptions(crafty, args) {
@@ -101,5 +130,6 @@ function normalizeJestOptions(crafty, args) {
 
 module.exports = {
   normalizeJestOptions,
+  prepareReportDirectories,
   isModuleMode
 };

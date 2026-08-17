@@ -43,6 +43,13 @@ export default config;
 "
 `;
 
+exports[`Keeps the SARIF reports out of Git 1`] = `
+"# Created by Crafty
+# Reports are regenerated on every run, they are build artifacts
+*
+"
+`;
+
 exports[`Lints with the command 1`] = `
 {
   "status": 2,

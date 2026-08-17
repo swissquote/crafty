@@ -1,5 +1,8 @@
 const crypto = require("node:crypto");
 const fs = require("node:fs");
+const {
+  prepareReportsDirectory
+} = require("@swissquote/crafty/src/utils/reports.js");
 const sarif = require("../dist/microsoft-eslint-formatter-sarif/index.js");
 
 let processHash = null;
@@ -21,10 +24,7 @@ function getProcessHash() {
 }
 
 function getReportFilePath(fileName) {
-  const dirName = "reports/eslint";
-  if (!fs.existsSync(dirName)) {
-    fs.mkdirSync(dirName, { recursive: true });
-  }
+  const dirName = prepareReportsDirectory("reports/eslint");
   const file = `${dirName}/${fileName ||
     "eslint"}_${getProcessHash()}.sarif.json`;
 

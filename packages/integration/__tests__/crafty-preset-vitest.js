@@ -82,6 +82,22 @@ test("Succeeds without transpiling, selects test", async () => {
   expect(result.stdall).toContain("src/__tests__/math-advanced.js");
 });
 
+test("Keeps the Sonar report out of Git", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/succeeds",
+    ["dist", "coverage", "reports"]
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeTruthy();
+  expect(testUtils.exists(cwd, "coverage/.gitignore")).toBeTruthy();
+  expect(
+    testUtils.readForSnapshot(cwd, "coverage/.gitignore")
+  ).toMatchSnapshot();
+});
+
 test("Shows help without running tests", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/succeeds",
@@ -94,6 +110,8 @@ test("Shows help without running tests", async () => {
   expect(result.stdall).toContain("Usage:");
   expect(result.stdall).not.toContain("src/__tests__/math.js");
   expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
+  // Not even the directory holding it
+  expect(testUtils.exists(cwd, "coverage")).toBeFalsy();
 });
 
 test("Shows configuration without running tests", async () => {
@@ -109,6 +127,8 @@ test("Shows configuration without running tests", async () => {
   expect(result.stdall).toContain("reporters:");
   expect(result.stdall).not.toContain("src/__tests__/math.js");
   expect(testUtils.exists(cwd, "coverage/sonar-report.xml")).toBeFalsy();
+  // Not even the directory holding it
+  expect(testUtils.exists(cwd, "coverage")).toBeFalsy();
 });
 
 test("Shows coverage configuration with the built-in V8 provider", async () => {

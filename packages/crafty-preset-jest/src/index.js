@@ -2,7 +2,11 @@ const path = require("node:path");
 const fs = require("node:fs");
 const childProcess = require("child_process");
 
-const { normalizeJestOptions, isModuleMode } = require("./configuration");
+const {
+  normalizeJestOptions,
+  prepareReportDirectories,
+  isModuleMode
+} = require("./configuration");
 
 function deleteOnExit(file) {
   process.addListener("exit", () => {
@@ -62,6 +66,8 @@ export default config;
       }
 
       const options = normalizeJestOptions(crafty, argv);
+
+      prepareReportDirectories(options.reporters, argv);
 
       // Write options to file and set config file option
       fs.writeFileSync(configFile, `${JSON.stringify(options, null, 2)}\n`);

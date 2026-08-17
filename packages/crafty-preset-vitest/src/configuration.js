@@ -1,5 +1,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const {
+  prepareReportsDirectory
+} = require("@swissquote/crafty/src/utils/reports.js");
 
 const SONAR_REPORTER_MODULE = "vitest-sonar-reporter";
 const SONAR_REPORTER_PATH = require.resolve(SONAR_REPORTER_MODULE);
@@ -8,6 +11,8 @@ const SONAR_REPORTER_DEFAULTS = {
   reportedFilePath: "relative"
 };
 const SUPPORTED_SONAR_FILE_PATHS = new Set(["relative", "absolute"]);
+// Vitest exits before running anything with these, no report is written
+const NO_RUN_ARGUMENTS = new Set(["--help", "-h", "--showConfig", "--version"]);
 const MODULE_DIRECTORIES_ENV = "CRAFTY_VITEST_MODULE_RESOLUTION";
 const MODULE_DIRECTORIES_SETUP_FILE = require.resolve(
   "./module-directories-setup"
@@ -442,9 +447,42 @@ function materializeVitestOptions(options) {
   return materializedOptions;
 }
 
+/**
+ * Create the directories Vitest writes reports to, so that Git can be told to
+ * ignore them before the first report lands there.
+ *
+ * @param {object} options normalized Vitest options
+ * @param {Array<string>} args the arguments Vitest is called with
+ */
+function prepareReportDirectories(options, args = []) {
+  if (args.some(arg => NO_RUN_ARGUMENTS.has(arg))) {
+    return;
+  }
+
+  const reporters = options?.test?.reporters;
+  if (Array.isArray(reporters)) {
+    for (const reporter of reporters) {
+      if (!Array.isArray(reporter) || reporter[0] !== SONAR_REPORTER_PATH) {
+        continue;
+      }
+
+      const { outputFile } = reporter[1] || {};
+      if (typeof outputFile === "string" && outputFile.length > 0) {
+        prepareReportsDirectory(path.dirname(outputFile));
+      }
+    }
+  }
+
+  const coverage = options?.test?.coverage;
+  if (coverage?.enabled && typeof coverage.reportsDirectory === "string") {
+    prepareReportsDirectory(coverage.reportsDirectory);
+  }
+}
+
 module.exports = {
   extractVitestCliState,
   materializeVitestOptions,
+  prepareReportDirectories,
   serializeVitestOptions,
   normalizeVitestOptions
 };
