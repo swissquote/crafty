@@ -203,7 +203,7 @@ need them.</p>
 <li><a href="#sonarqube-integration">SonarQube Integration</a></li>
 </ul>    </div>
 </div>
-<h2><a id="file-name-conventions" href="#file-name-conventions" class="Permalink" aria-hidden="true" title="Permalink">#</a>File name Conventions</h2>
+<h2><a id="file-name-conventions" href="#file-name-conventions" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>File name Conventions</h2>
 <p>Vitest will look for test files with any of the following popular naming
 conventions:</p>
 <ul>
@@ -226,7 +226,7 @@ a supported test file extension. Using
 <a href="../crafty_preset_typescript/index.html"><code>crafty-preset-typescript</code></a>
 will add the TypeScript extensions <code>ts</code>, <code>tsx</code>, <code>mts</code>, and <code>cts</code>.</p>
 </blockquote>
-<h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty test</code></h2>
+<h2><a id="crafty-test" href="#crafty-test" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>crafty test</code></h2>
 <p>Running <code>crafty test</code> will run all tests and exit. But you can use any option
 provided by Vitest itself.</p>
 <p>For example, <code>crafty test --watch</code> will run your tests in watch mode. This mode
@@ -234,7 +234,7 @@ will run all your tests once and then wait for code or test changes to rerun
 the concerned tests.</p>
 <p>Crafty supports one active test runner. If both Jest and Vitest are
 configured, <code>crafty test</code> fails with a clear error.</p>
-<h2><a id="crafty-specific-cli-options" href="#crafty-specific-cli-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Crafty-specific CLI options</h2>
+<h2><a id="crafty-specific-cli-options" href="#crafty-specific-cli-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Crafty-specific CLI options</h2>
 <p>The Vitest preset also provides extra options:</p>
 <ul>
 <li><code>--moduleDirectories &lt;dir[,dir...]&gt;</code>: adds directories to module lookup
@@ -248,7 +248,7 @@ writes <code>coverage/sonar-report.xml</code> by default, and keeps relative fil
 unless you set <code>reportedFilePath: &quot;absolute&quot;</code>.</li>
 </ul>
 <p>You can pass a comma-separated list or repeat the option.</p>
-<h2><a id="writing-tests" href="#writing-tests" class="Permalink" aria-hidden="true" title="Permalink">#</a>Writing Tests</h2>
+<h2><a id="writing-tests" href="#writing-tests" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Writing Tests</h2>
 <p>To create tests, add <code>it()</code> (or <code>test()</code>) blocks with the name of the test and
 its code. You may optionally wrap them in <code>describe()</code> blocks for logical
 grouping but this is neither required nor recommended.</p>
@@ -263,11 +263,11 @@ test(<span class="hljs-string">"sums numbers"</span>, () =&gt; {
 </code></pre>
 <p>All <code>expect()</code> matchers supported by Vitest are documented on the
 <a href="https://vitest.dev/api/expect.html" class="Link--external" rel="noopener noreferrer">official website</a>.</p>
-<h2><a id="focusing-and-excluding-tests" href="#focusing-and-excluding-tests" class="Permalink" aria-hidden="true" title="Permalink">#</a>Focusing and Excluding Tests</h2>
+<h2><a id="focusing-and-excluding-tests" href="#focusing-and-excluding-tests" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Focusing and Excluding Tests</h2>
 <p>Use <code>test.skip()</code> or <code>it.skip()</code> to temporarily exclude a test from being
 executed. Vitest also provides focused test helpers and CLI filters when you
 want to run a single test in isolation.</p>
-<h2><a id="coverage-reporting" href="#coverage-reporting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Coverage Reporting</h2>
+<h2><a id="coverage-reporting" href="#coverage-reporting" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Coverage Reporting</h2>
 <p><code>crafty-preset-vitest</code> ships with V8 coverage support out of the box.</p>
 <p>Tests run slower with coverage enabled, so we recommend running it separately
 from your normal watch workflow.</p>
@@ -287,10 +287,10 @@ reporter <code>lcov</code>.</p>
   },
 };
 </code></pre>
-<h2><a id="snapshot-testing" href="#snapshot-testing" class="Permalink" aria-hidden="true" title="Permalink">#</a>Snapshot Testing</h2>
+<h2><a id="snapshot-testing" href="#snapshot-testing" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Snapshot Testing</h2>
 <p>Vitest supports snapshot testing for values, rendered components, and more.
 <a href="https://vitest.dev/guide/snapshot.html" class="Link--external" rel="noopener noreferrer">Read more about snapshot testing.</a></p>
-<h2><a id="vitest-configuration-ownership" href="#vitest-configuration-ownership" class="Permalink" aria-hidden="true" title="Permalink">#</a>Vitest configuration ownership</h2>
+<h2><a id="vitest-configuration-ownership" href="#vitest-configuration-ownership" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Vitest configuration ownership</h2>
 <p>Crafty owns the Vitest configuration it runs.</p>
 <ul>
 <li><code>crafty test</code> computes the Vitest config from Crafty state and ignores
@@ -300,7 +300,7 @@ alternative filenames such as <code>vitest.config.js</code>, <code>vitest.config
 <code>vitest.config.mts</code>, <code>vitest.config.ts</code>, and <code>vitest.config.cts</code>.</li>
 </ul>
 <p>If you need to change Vitest behavior, use the <code>vitest(crafty, options, context)</code> hook rather than maintaining a separate <code>vitest.config.*</code> file.</p>
-<h2><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending the configuration</h2>
+<h2><a id="extending-the-configuration" href="#extending-the-configuration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Extending the configuration</h2>
 <p>Each preset and <code>crafty.config.js</code> can define the
 <code>vitest(crafty, options, context)</code> function to override Vitest’s configuration.</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"node:path"</span>);
@@ -331,7 +331,7 @@ not supported through this hook. For Sonar path control, use
 reporter config.</p>
 <p>Use <code>context.moduleDirectories</code> and <code>context.moduleFileExtensions</code> to extend
 module resolution and test discovery.</p>
-<h2><a id="migrating-an-existing-vitest-config" href="#migrating-an-existing-vitest-config" class="Permalink" aria-hidden="true" title="Permalink">#</a>Migrating an existing <code>vitest.config.*</code></h2>
+<h2><a id="migrating-an-existing-vitest-config" href="#migrating-an-existing-vitest-config" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Migrating an existing <code>vitest.config.*</code></h2>
 <p>When you migrate from a raw Vitest configuration, move repo-specific Vitest
 settings into the <code>vitest(crafty, options, context)</code> hook.</p>
 <p>Common fields that still need to be re-expressed manually are:</p>
@@ -353,7 +353,7 @@ that package. Add <code>sonar</code> explicitly when you still want the default 
 report alongside a custom reporter such as <code>verbose</code>.</p>
 <p>The full list of available configuration options is available on the
 <a href="https://vitest.dev/config/" class="Link--external" rel="noopener noreferrer">official website</a>.</p>
-<h2><a id="runtime-vite-plugins" href="#runtime-vite-plugins" class="Permalink" aria-hidden="true" title="Permalink">#</a>Runtime Vite plugins</h2>
+<h2><a id="runtime-vite-plugins" href="#runtime-vite-plugins" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Runtime Vite plugins</h2>
 <p>If you need a Vite plugin at runtime, register it through
 <code>context.runtimePlugins</code> instead of attaching a plugin object directly to
 <code>options.plugins</code>.</p>
@@ -371,7 +371,7 @@ report alongside a custom reporter such as <code>verbose</code>.</p>
 <p>The module at <code>pluginPath</code> must export a function that receives <code>options</code> and
 returns a Vite plugin. If you attach non-serializable values directly to
 <code>options</code>, Crafty rejects them with a clear error.</p>
-<h2><a id="crafty-ide" href="#crafty-ide" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty ide</code></h2>
+<h2><a id="crafty-ide" href="#crafty-ide" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>crafty ide</code></h2>
 <p>Running <code>crafty ide</code> generates a package-local <code>vitest.config.mjs</code> file for
 IDE discovery.</p>
 <p>In a monorepo, run <code>crafty ide</code> from each package directory that has its own
@@ -380,7 +380,7 @@ IDE discovery.</p>
 <code>vitest.config.mjs</code> is intended to be discovered by the official Vitest IDE
 integration.</p>
 <p><a href="Vitest_IDE_Integration.html">Read more about Vitest IDE integration.</a></p>
-<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>SonarQube Integration</h2>
+<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>SonarQube Integration</h2>
 <p>Most of the time, at Swissquote, we use SonarQube to check our code quality.
 More often than not, we add a reporter to create a SonarQube test report.</p>
 <p><code>crafty-preset-vitest</code> comes out of the box with a sonar report that is written

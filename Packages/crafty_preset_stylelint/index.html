@@ -176,10 +176,10 @@
 <li><a href="#sonarqube-integration">SonarQube Integration</a></li>
 </ul>    </div>
 </div>
-<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Description</h2>
 <p><strong>Stylelint</strong> is a wonderful tool to lint CSS in according to your rules, we have a custom configuration preset for Stylelint that comes pre-configured.</p>
 <p><a href="CSS_Linting.html">Read more about it here</a></p>
-<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Installation</h2>
 <blockquote>
 <p><code>@swissquote/crafty-preset-stylelint</code> is also automatically provided by <code>@swissquote/crafty-preset-postcss</code>.
 No need to add it manually if <code>crafty-preset-postcss</code> is already in your presets.</p>
@@ -190,8 +190,8 @@ No need to add it manually if <code>crafty-preset-postcss</code> is already in y
   <span class="hljs-attr">presets</span>: [<span class="hljs-string">"@swissquote/crafty-preset-stylelint"</span>],
 };
 </code></pre>
-<h2><a id="commands" href="#commands" class="Permalink" aria-hidden="true" title="Permalink">#</a>Commands</h2>
-<h3><a id="crafty-csslint" href="#crafty-csslint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>crafty cssLint</code></h3>
+<h2><a id="commands" href="#commands" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Commands</h2>
+<h3><a id="crafty-csslint" href="#crafty-csslint" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>crafty cssLint</code></h3>
 <p>This command will lint CSS files using Stylelint’s CLI too, you can get it’s documentation <a href="https://stylelint.io/user-guide/cli/" class="Link--external" rel="noopener noreferrer">here</a>.</p>
 <p>The additions made by this command are:</p>
 <ul>
@@ -210,9 +210,9 @@ No need to add it manually if <code>crafty-preset-postcss</code> is already in y
 <pre><code class="hljs bash">crafty cssLint css/**/*.scss --preset recommended
 </code></pre>
 <p>If no preset is specified <code>recommended</code> is used.</p>
-<h3><a id="linting-options" href="#linting-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting options</h3>
+<h3><a id="linting-options" href="#linting-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Linting options</h3>
 <p>You can read about the linting options in the page about <a href="CSS_Linting.html">CSS Linting</a></p>
-<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>SonarQube Integration</h2>
+<h2><a id="sonarqube-integration" href="#sonarqube-integration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>SonarQube Integration</h2>
 <p>On top of the report printed in the console, every run writes a
 <a href="https://sarifweb.azurewebsites.net/" class="Link--external" rel="noopener noreferrer">SARIF</a> report in <code>reports/stylelint</code>,
 which SonarQube can import.</p>

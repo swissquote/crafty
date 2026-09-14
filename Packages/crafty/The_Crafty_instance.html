@@ -161,7 +161,7 @@
 <li><a href="#watcher">Watcher</a></li>
 </ul>    </div>
 </div>
-<h2><a id="crafty" href="#crafty" class="Permalink" aria-hidden="true" title="Permalink">#</a>Crafty</h2>
+<h2><a id="crafty" href="#crafty" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Crafty</h2>
 <pre><code class="hljs typescript"><span class="hljs-keyword">class</span> Crafty {
   <span class="hljs-comment">/**
    *  Crafty's configuration object. All presets can add their values to it.
@@ -227,7 +227,7 @@
   createTasks();
 }
 </code></pre>
-<h2><a id="logging" href="#logging" class="Permalink" aria-hidden="true" title="Permalink">#</a>Logging</h2>
+<h2><a id="logging" href="#logging" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Logging</h2>
 <pre><code class="hljs typescript"><span class="hljs-keyword">class</span> FancyLog {
     (...msg: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span>,
     error: <span class="hljs-function">(<span class="hljs-params">...<span class="hljs-params">msg</span>: <span class="hljs-params">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>,
@@ -240,7 +240,7 @@
 crafty.log.info(<span class="hljs-string">"You should know this"</span>);
 </code></pre>
 <p><a href="https://www.npmjs.com/package/fancy-log" class="Link--external" rel="noopener noreferrer">Official documentation</a></p>
-<h2><a id="undertaker-the-task-repository" href="#undertaker-the-task-repository" class="Permalink" aria-hidden="true" title="Permalink">#</a>Undertaker: the task repository</h2>
+<h2><a id="undertaker-the-task-repository" href="#undertaker-the-task-repository" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Undertaker: the task repository</h2>
 <pre><code class="hljs typescript">crafty.undertaker.task(<span class="hljs-string">"task1"</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">resolve</span>, <span class="hljs-params">reject</span></span>) =&gt;</span> {
     resolve(); <span class="hljs-comment">// when everything is done</span>
@@ -251,7 +251,7 @@ crafty.undertaker.task(<span class="hljs-string">"combined"</span>, crafty.under
 crafty.undertaker.task(<span class="hljs-string">"all"</span>, crafty.undertaker.parallel(<span class="hljs-string">"combined"</span>, <span class="hljs-string">"task1"</span>));
 </code></pre>
 <p><a href="https://www.npmjs.com/package/undertaker" class="Link--external" rel="noopener noreferrer">Official documentation</a></p>
-<h2><a id="watcher" href="#watcher" class="Permalink" aria-hidden="true" title="Permalink">#</a>Watcher</h2>
+<h2><a id="watcher" href="#watcher" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Watcher</h2>
 <pre><code class="hljs typescript"><span class="hljs-keyword">class</span> Watcher {
   add(regex: <span class="hljs-built_in">RegExp</span>, task: <span class="hljs-built_in">string</span>) {}
 
