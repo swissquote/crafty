@@ -175,7 +175,7 @@
 </li>
 </ul>    </div>
 </div>
-<h2><a id="all-options" href="#all-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>All Options</h2>
+<h2><a id="all-options" href="#all-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>All Options</h2>
 <p>All the options in <code>crafty.config.js</code> apart from your bundles in the <code>js</code> and
 <code>css</code> bundles are optional.</p>
 <table>
@@ -268,13 +268,13 @@
 </tr>
 </tbody>
 </table>
-<h3><a id="destination" href="#destination" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>destination</code></h3>
+<h3><a id="destination" href="#destination" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>destination</code></h3>
 <p>By default, your compiled assets will be in <code>dist/&lt;bundleType&gt;</code>. But you can
 override the <code>config.destination</code> or <code>config.destination_&lt;bundleType&gt;</code> option.</p>
 <p>You can also use the <code>crafty-preset-maven</code> with the <code>mavenType</code> option to move
 your assets to Maven’s <code>target</code> directory.</p>
 <p><a href="../Packages/crafty_preset_maven.html">More about <code>crafty-preset-maven</code></a></p>
-<h3><a id="browser-browser-compatibility" href="#browser-browser-compatibility" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>browser</code>: Browser compatibility</h3>
+<h3><a id="browser-browser-compatibility" href="#browser-browser-compatibility" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>browser</code>: Browser compatibility</h3>
 <p>Default: <code>Edge &gt;= 107, Safari &gt;= 16, iOS &gt;= 16, Chrome &gt;= 107, and_chr &gt;= 107, Firefox &gt;= 107, &gt; 1%, not dead, not op_mini all</code></p>
 <p>Depending on the target browsers, some optimization might be enabled or disabled
 to create the smallest possible package for the browsers requirements we have.</p>
@@ -283,15 +283,15 @@ needs to add to the CSS file.</p>
 <p>We created this list of browsers based on the statistics of browser usage
 we have seen across all Swissquote Platforms.</p>
 <p>If you want a different list, you can override those defaults using any valid <a href="https://github.com/browserslist/browserslist#queries" class="Link--external" rel="noopener noreferrer">Browserslist query source</a></p>
-<h3><a id="terser-javascript-compression" href="#terser-javascript-compression" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>terser</code> : JavaScript compression</h3>
+<h3><a id="terser-javascript-compression" href="#terser-javascript-compression" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>terser</code> : JavaScript compression</h3>
 <p>Default: <code>{ compress: true, sourceMap: true }</code></p>
 <p>By default, we compress our JavaScript with safe parameters. If you wish, you can
 go further and enable more advanced compression techniques.</p>
 <p><a href="https://github.com/terser/terser#minify-options" class="Link--external" rel="noopener noreferrer">Terser’s documentation</a> has all the details on its options.</p>
-<h3><a id="stylelint-pattern-which-files-to-lint" href="#stylelint-pattern-which-files-to-lint" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>stylelint_pattern</code>: Which files to lint</h3>
+<h3><a id="stylelint-pattern-which-files-to-lint" href="#stylelint-pattern-which-files-to-lint" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>stylelint_pattern</code>: Which files to lint</h3>
 <p>Default: <code>[&quot;css/**/*.scss&quot;, &quot;css/**/*.css&quot;, &quot;!*.min.css&quot;, &quot;!**/vendor/**/*.scss&quot;, &quot;!**/vendor/**/*.css&quot;, &quot;!**/vendor/*.scss&quot;, &quot;!**/vendor/*.css&quot;]</code></p>
 <p>Define the file types you want to target when linting CSS files.</p>
-<h3><a id="externals-to-not-bundle-dependencies" href="#externals-to-not-bundle-dependencies" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>externals</code> to not bundle dependencies</h3>
+<h3><a id="externals-to-not-bundle-dependencies" href="#externals-to-not-bundle-dependencies" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>externals</code> to not bundle dependencies</h3>
 <p>By default, all bundlers include all external dependencies in the final bundle.</p>
 <p>Including all dependencies works fine for applications, but if you wish to build a multi-tenant
 application or a library, you might not want to include all dependencies because
@@ -314,7 +314,7 @@ you’ll end up with the same dependency more than one time.</p>
 </code></pre>
 <p>In this example, <code>react</code>, <code>react-dom</code>, and all modules starting with <code>moment/</code> will
 be treated as external</p>
-<h2><a id="js-and-css-bundles" href="#js-and-css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a><code>js</code> and <code>css</code> Bundles</h2>
+<h2><a id="js-and-css-bundles" href="#js-and-css-bundles" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a><code>js</code> and <code>css</code> Bundles</h2>
 <p>The two configuration objects inside <code>css</code> and <code>js</code> are what Crafty uses to create the build tasks when running <code>crafty run</code>.</p>
 <p>A bundle is a set of one or more <strong>source files</strong> that a <strong>runner</strong> compiles to one or
 more <strong>destination files</strong>.</p>
@@ -341,7 +341,7 @@ more <strong>destination files</strong>.</p>
 <li>Concatenate both files together; That option is exclusive to the gulp runner.</li>
 <li>Write the file to <code>&lt;destination_js&gt;/app.min.js</code>. Which is inferred from the bundle name because no destination was specified.</li>
 </ol>
-<h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Common Bundle options</h3>
+<h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Common Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -378,7 +378,7 @@ more <strong>destination files</strong>.</p>
 </tr>
 </tbody>
 </table>
-<h3><a id="javascript-bundle-options" href="#javascript-bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript Bundle options</h3>
+<h3><a id="javascript-bundle-options" href="#javascript-bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>JavaScript Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -395,7 +395,7 @@ more <strong>destination files</strong>.</p>
 </tr>
 </tbody>
 </table>
-<h3><a id="runners" href="#runners" class="Permalink" aria-hidden="true" title="Permalink">#</a>Runners</h3>
+<h3><a id="runners" href="#runners" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Runners</h3>
 <p>You can define which runner should run for which bundle. The different values are</p>
 <table>
 <thead>
@@ -433,7 +433,7 @@ more <strong>destination files</strong>.</p>
 </tr>
 </tbody>
 </table>
-<h3><a id="css-bundles" href="#css-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>CSS Bundles</h3>
+<h3><a id="css-bundles" href="#css-bundles" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>CSS Bundles</h3>
 <pre><code class="hljs javascript">{
   <span class="hljs-attr">presets</span>: [
       <span class="hljs-string">"@swissquote/crafty-runner-gulp"</span>,
@@ -453,7 +453,7 @@ more <strong>destination files</strong>.</p>
 build it.</p>
 <p>CSS bundling provides no particular option.
 When bundling your CSS inside your JavaScript, you must set the configuration in the JavaScript bundle.</p>
-<h3><a id="javascript-bundles" href="#javascript-bundles" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript Bundles</h3>
+<h3><a id="javascript-bundles" href="#javascript-bundles" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>JavaScript Bundles</h3>
 <pre><code class="hljs javascript">app: {
     <span class="hljs-attr">source</span>: [<span class="hljs-string">'js/panel.js'</span>, <span class="hljs-string">'js/nothing.js'</span>],
     <span class="hljs-attr">destination</span>: <span class="hljs-string">'app.min.js'</span>

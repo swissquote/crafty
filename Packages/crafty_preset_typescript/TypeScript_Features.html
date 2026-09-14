@@ -166,10 +166,10 @@
 <li><a href="#ide-integration">IDE Integration</a></li>
 </ul>    </div>
 </div>
-<h2><a id="language-features" href="#language-features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Language features</h2>
+<h2><a id="language-features" href="#language-features" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Language features</h2>
 <p>TypeScript is a superset of EcmaScript 2015, in this section we will cover what is added on top of it.
 For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaScript_Features.html">Babel preset’s features</a>.</p>
-<h3><a id="interfaces" href="#interfaces" class="Permalink" aria-hidden="true" title="Permalink">#</a>Interfaces</h3>
+<h3><a id="interfaces" href="#interfaces" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Interfaces</h3>
 <p>A useful feature for types is interfaces, unlike other strongly typed languages, interfaces can contain fields and optional fields.</p>
 <p>This allows you to create on-the-fly type definitions without creating an actual class in the output JavaScript.</p>
 <pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> Person {
@@ -185,7 +185,7 @@ For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaS
 
 <span class="hljs-built_in">document</span>.body.innerHTML = greeter(user);
 </code></pre>
-<h3><a id="union-types" href="#union-types" class="Permalink" aria-hidden="true" title="Permalink">#</a>Union types</h3>
+<h3><a id="union-types" href="#union-types" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Union types</h3>
 <p>Due to the nature of JavaScript, your code can receive parameters that are sometimes a string and sometimes an object.</p>
 <p>Union types come to the rescue :</p>
 <pre><code class="hljs typescript"><span class="hljs-keyword">type</span> Shape = Square | Rectangle | Circle;
@@ -197,7 +197,7 @@ For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaS
   <span class="hljs-comment">// The value of k is "left" or "right"</span>
 }
 </code></pre>
-<h2><a id="other" href="#other" class="Permalink" aria-hidden="true" title="Permalink">#</a>Other</h2>
+<h2><a id="other" href="#other" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Other</h2>
 <ul>
 <li><code>readonly</code> properties in interfaces and classes</li>
 <li>Generic Types</li>
@@ -206,7 +206,7 @@ For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaS
 <li>Type Aliases (<code>type PrimitiveArray = Array&lt;string|number|boolean&gt;;</code>)</li>
 </ul>
 <p><a href="http://www.typescriptlang.org/docs/tutorial.html" class="Link--external" rel="noopener noreferrer">Read more</a></p>
-<h2><a id="path-mapping" href="#path-mapping" class="Permalink" aria-hidden="true" title="Permalink">#</a>Path mapping</h2>
+<h2><a id="path-mapping" href="#path-mapping" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Path mapping</h2>
 <p>The <code>paths</code> and <code>baseUrl</code> options in your <code>tsconfig.json</code> let you import modules through aliases instead of long relative paths:</p>
 <pre><code class="hljs json">{
   <span class="hljs-attr">"compilerOptions"</span>: {
@@ -221,7 +221,7 @@ For ESNext features, you can check out our <a href="../crafty_preset_babel/JavaS
 </code></pre>
 <p>Crafty reads these mappings from your <code>tsconfig.json</code> and applies them when it resolves modules. They work when you bundle with Webpack or Rspack, and when you run tests with Jest or Vitest.</p>
 <p>The Gulp runner does not support path mapping. The TypeScript compiler keeps import specifiers as written when it emits files one by one, so the aliases would remain in the output and fail at runtime.</p>
-<h2><a id="ide-integration" href="#ide-integration" class="Permalink" aria-hidden="true" title="Permalink">#</a>IDE Integration</h2>
+<h2><a id="ide-integration" href="#ide-integration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>IDE Integration</h2>
 <p>TypeScript being out for years now, it has first class support in IDE’s like IntelliJ, Visual Studio Code and others.</p>
 <p>The IDE directly understands types and type definition files and is able to propose auto completion and refactoring out of the box.</p>
     </div>

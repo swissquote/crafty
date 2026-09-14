@@ -192,16 +192,16 @@
 </li>
 </ul>    </div>
 </div>
-<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Description</h2>
 <p><a href="https://swc.rs/" class="Link--external" rel="noopener noreferrer"><strong>SWC</strong></a> is the leading tool to compile EcmaScript 2015+ to EcmaScript 5, combined with <strong>ESLint</strong> to lint your code, you get the best preset to get started.</p>
-<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Features</h2>
 <p><code>@swissquote/crafty-preset-swc</code> is able to configure <strong>SWC</strong> with <strong>Webpack</strong>.
 This preset also supports <strong>Gulp</strong> but in this case it concatenates and minifies the files, it doesn’t resolve imports.</p>
 <p><a href="crafty_preset_babel/JavaScript_Features.html">Read more</a></p>
-<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting</h2>
+<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Linting</h2>
 <p>In <code>@swissquote/crafty-preset-swc</code> JavaScript is linted with <strong>ESLint</strong>, a powerful linter that supports plugins, our configuration follows the Swissquote JavaScript Guideline through our <code>@swissquote/crafty-preset-eslint</code> preset.</p>
 <p><a href="crafty_preset_eslint/JavaScript_Linting.html">Read more</a></p>
-<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-swc --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -218,11 +218,11 @@ This preset also supports <strong>Gulp</strong> but in this case it concatenates
   },
 };
 </code></pre>
-<h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage</h2>
-<h3><a id="with-webpack" href="#with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Webpack</h3>
+<h2><a id="usage" href="#usage" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Usage</h2>
+<h3><a id="with-webpack" href="#with-webpack" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>With Webpack</h3>
 <p>Both runners have the same features in regards to SWC support.
 They will resolve your modules recursively and bundle them in one file or more if you do some code-splitting.</p>
-<h4><a id="javascript-external-assets" href="#javascript-external-assets" class="Permalink" aria-hidden="true" title="Permalink">#</a>JavaScript External assets</h4>
+<h4><a id="javascript-external-assets" href="#javascript-external-assets" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>JavaScript External assets</h4>
 <p>By default, all bundlers include all external dependencies in the final bundle, this works fine for applications, but if you wish to build a multi-tenant application or a library, you don’t wish to include all dependencies, because you’ll end up with the same dependency duplicated.</p>
 <p>The <code>externals</code> option allows you to define a list of libraries that are provided and should not be embedded in the build, here is an example :</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -241,16 +241,16 @@ They will resolve your modules recursively and bundle them in one file or more i
 }
 </code></pre>
 <p>In this example <code>react</code>, <code>react-dom</code> and all modules starting with <code>squp/</code> will be treated as external</p>
-<h3><a id="with-gulp" href="#with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>With Gulp</h3>
+<h3><a id="with-gulp" href="#with-gulp" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>With Gulp</h3>
 <p>Gulp will not bundle your files like Webpack does, instead it will generate one output file per input file.
 This is useful if you are creating a library as it’s the role of the final application to tree-shake what it doesn’t need from your library.</p>
 <p>Tree-shaking is powerful but is sub-optimal on big files as some code patterns are recognized as side-effects and thus aren’t removed from your bundle even if they aren’t used.</p>
-<h2><a id="usage-with-jest-and-vitest" href="#usage-with-jest-and-vitest" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Jest and Vitest</h2>
+<h2><a id="usage-with-jest-and-vitest" href="#usage-with-jest-and-vitest" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Usage with Jest and Vitest</h2>
 <p>If you include <code>crafty-preset-swc</code> with either <code>crafty-preset-jest</code> or
 <code>crafty-preset-vitest</code>, running <code>crafty test</code> will add support for <code>.js</code> and
 <code>.jsx</code> source and test files.</p>
-<h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Configuration</h2>
-<h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle options</h3>
+<h2><a id="configuration" href="#configuration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Configuration</h2>
+<h3><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Bundle options</h3>
 <table>
 <thead>
 <tr>
@@ -271,7 +271,7 @@ This is useful if you are creating a library as it’s the role of the final app
 </tr>
 </tbody>
 </table>
-<h3><a id="change-swc-configuration" href="#change-swc-configuration" class="Permalink" aria-hidden="true" title="Permalink">#</a>Change SWC Configuration</h3>
+<h3><a id="change-swc-configuration" href="#change-swc-configuration" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Change SWC Configuration</h3>
 <p>You can add, change options to our default SWC configuration.</p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**

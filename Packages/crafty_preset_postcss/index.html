@@ -182,16 +182,16 @@
 <li><a href="#bundle-options">Bundle Options</a></li>
 </ul>    </div>
 </div>
-<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" title="Permalink">#</a>Description</h2>
+<h2><a id="description" href="#description" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Description</h2>
 <p>The principle of CSS is easy to grasp, yet CSS is complicated to write at large scales.</p>
 <p>We want to offer the best experience for writing CSS that is compatible with most browsers without the long configuration process.</p>
-<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" title="Permalink">#</a>Features</h2>
+<h2><a id="features" href="#features" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Features</h2>
 <p><strong>PostCSS</strong> is a CSS parser that supports plugins, countless plugins are maintained by a big community, we use a handful of them.</p>
 <p><a href="CSS_Features.html">Features and examples</a></p>
-<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" title="Permalink">#</a>Linting</h2>
+<h2><a id="linting" href="#linting" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Linting</h2>
 <p><strong>Stylelint</strong> is a wonderful tool to lint CSS in according to your rules, we have a custom configuration preset for Stylelint that comes pre-configured.</p>
 <p>Stylelint is provided automatically in this preset by also including <a href="../crafty_preset_stylelint/index.html"><code>crafty-preset-stylelint</code></a>.</p>
-<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-postcss --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -202,14 +202,14 @@
   ],
 };
 </code></pre>
-<h2><a id="usage-with-webpack" href="#usage-with-webpack" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Webpack</h2>
+<h2><a id="usage-with-webpack" href="#usage-with-webpack" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Usage with Webpack</h2>
 <p>Webpack defines the right loaders to support CSS.</p>
 <p>To use it, add <code>import &quot;myfile.scss&quot;</code> in your Webpack imported file.</p>
-<h3><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h3>
+<h3><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Hot Module Replacement</h3>
 <p>When setting <code>hot: true</code> in your <code>crafty.config.js</code> for your main JavaScript bundle, you can enable Hot Module Replacement.</p>
 <p>With this, the CSS files imported in your Webpack bundles are automatically reloaded upon changes.</p>
 <p>This is used inside <code>crafty watch</code>, the build mode will not take it into account.</p>
-<h3><a id="extracting-css" href="#extracting-css" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extracting CSS</h3>
+<h3><a id="extracting-css" href="#extracting-css" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Extracting CSS</h3>
 <p>By default, the CSS will be embedded in your bundle, but you can provide the <code>extractCSS</code> option to extract your styles using the <code>MiniCssExtractPlugin</code>.</p>
 <p><code>extractCSS</code> controls if the CSS should be embedded within the JavaScript bundle or extracted in a separate file.
 By default, the default is that the CSS content remains within the main file.</p>
@@ -236,11 +236,11 @@ By default, the default is that the CSS content remains within the main file.</p
 </tr>
 </tbody>
 </table>
-<h4><a id="side-effects" href="#side-effects" class="Permalink" aria-hidden="true" title="Permalink">#</a>Side effects</h4>
+<h4><a id="side-effects" href="#side-effects" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Side effects</h4>
 <p>Be careful when using <code>extractCSS</code> option and <code>sideEffects: false</code> in <code>package.json</code> of your project.
 Crafty is using <code>css-loader</code> and when you import a CSS file in your project, it needs to be added to the side effect list so it will not be unintentionally dropped in production mode.</p>
 <p><a href="https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free" class="Link--external" rel="noopener noreferrer">Webpack docs and examples</a></p>
-<h2><a id="usage-with-gulp" href="#usage-with-gulp" class="Permalink" aria-hidden="true" title="Permalink">#</a>Usage with Gulp</h2>
+<h2><a id="usage-with-gulp" href="#usage-with-gulp" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Usage with Gulp</h2>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-attr">presets</span>: [
     <span class="hljs-string">"@swissquote/crafty-preset-postcss"</span>,
@@ -255,7 +255,7 @@ Crafty is using <code>css-loader</code> and when you import a CSS file in your p
   },
 };
 </code></pre>
-<h2><a id="extending-from-your-crafty-config-js" href="#extending-from-your-crafty-config-js" class="Permalink" aria-hidden="true" title="Permalink">#</a>Extending from your <code>crafty.config.js</code></h2>
+<h2><a id="extending-from-your-crafty-config-js" href="#extending-from-your-crafty-config-js" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Extending from your <code>crafty.config.js</code></h2>
 <p>For this you need to add a <code>postcss</code> method to your <code>crafty.config.js</code></p>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
   <span class="hljs-comment">/**
@@ -299,7 +299,7 @@ Crafty is using <code>css-loader</code> and when you import a CSS file in your p
 };
 </code></pre>
 <p><a href="Postcss_Extension_API.html">Read about the full API</a></p>
-<h2><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Bundle Options</h2>
+<h2><a id="bundle-options" href="#bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Bundle Options</h2>
 <table>
 <thead>
 <tr>
