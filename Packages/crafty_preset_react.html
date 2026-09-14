@@ -199,7 +199,7 @@ React projects.</p>
 </div>
 <p>When combined with <code>crafty-preset-jest</code> or <code>crafty-preset-vitest</code>, this preset
 adds the React test setup file automatically.</p>
-<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Installation</h2>
+<h2><a id="installation" href="#installation" class="Permalink" aria-hidden="true" title="Permalink">#</a>Installation</h2>
 <pre><code class="hljs bash">npm install @swissquote/crafty-preset-babel --save
 </code></pre>
 <pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
@@ -219,7 +219,7 @@ adds the React test setup file automatically.</p>
   },
 };
 </code></pre>
-<h2><a id="react-compiler" href="#react-compiler" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>React Compiler</h2>
+<h2><a id="react-compiler" href="#react-compiler" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Compiler</h2>
 <blockquote>
 <p>This feature works with the <strong>SWC</strong> preset on Webpack, Rspack and Gulp.</p>
 </blockquote>
@@ -252,13 +252,13 @@ with Fast Refresh:</p>
   <span class="hljs-attr">reactCompiler</span>: <span class="hljs-literal">true</span>,
 }
 </code></pre>
-<h3><a id="requirements" href="#requirements" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Requirements</h3>
+<h3><a id="requirements" href="#requirements" class="Permalink" aria-hidden="true" title="Permalink">#</a>Requirements</h3>
 <ul>
 <li>The compiler targets <strong>React 19</strong> by default. For React 17 or 18, set the
 <code>target</code> option (see below).</li>
 <li>With Rspack, the compiler requires <code>@rspack/core</code> <strong>2.1.0 or later</strong>.</li>
 </ul>
-<h3><a id="options" href="#options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Options</h3>
+<h3><a id="options" href="#options" class="Permalink" aria-hidden="true" title="Permalink">#</a>Options</h3>
 <p>Passing <code>true</code> uses SWC’s defaults. To configure the compiler, pass an object
 instead — the options match the
 <a href="https://react.dev/reference/react-compiler/configuration" class="Link--external" rel="noopener noreferrer">React Compiler configuration</a>
@@ -269,7 +269,7 @@ instead — the options match the
   },
 }
 </code></pre>
-<h3><a id="disabling-it" href="#disabling-it" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Disabling it</h3>
+<h3><a id="disabling-it" href="#disabling-it" class="Permalink" aria-hidden="true" title="Permalink">#</a>Disabling it</h3>
 <p>The React Compiler is off by default, so there is nothing to do to keep it
 disabled. To turn it off for a bundle where it was enabled, remove the
 <code>reactCompiler</code> key or set it to <code>false</code>:</p>
@@ -277,7 +277,7 @@ disabled. To turn it off for a bundle where it was enabled, remove the
   <span class="hljs-attr">reactCompiler</span>: <span class="hljs-literal">false</span>,
 }
 </code></pre>
-<h2><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Hot Module Replacement</h2>
+<h2><a id="hot-module-replacement" href="#hot-module-replacement" class="Permalink" aria-hidden="true" title="Permalink">#</a>Hot Module Replacement</h2>
 <p>When doing modern JavaScript development, the usual process is <strong>Write code</strong>,
 <strong>Compile</strong>, <strong>Refresh the browser</strong>.</p>
 <ul>
@@ -295,9 +295,9 @@ the patch and apply the code change.</p>
 state.</p>
 <p>Here’s an example :</p>
 <p><img src="../react-hot-loader.gif" alt="React Hot Module Replacement example" /></p>
-<h2><a id="react-hot-module-replacement-variants" href="#react-hot-module-replacement-variants" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>React Hot Module Replacement variants</h2>
+<h2><a id="react-hot-module-replacement-variants" href="#react-hot-module-replacement-variants" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Hot Module Replacement variants</h2>
 <p>There are two ways to make this work</p>
-<h3><a id="fast-refresh" href="#fast-refresh" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Fast Refresh</h3>
+<h3><a id="fast-refresh" href="#fast-refresh" class="Permalink" aria-hidden="true" title="Permalink">#</a>Fast Refresh</h3>
 <blockquote>
 <p>This variant will work when using the Babel, TypeScript and SWC presets with Webpack.</p>
 </blockquote>
@@ -315,7 +315,7 @@ This is the recommended way and will be the default starting with Crafty 1.20.0<
 <blockquote>
 <p>If you are importing React through Requirejs or other ways that aren’t controlled by Webpack, make sure that you are using the development version while running in watch mode, otherwise no refresh will be applied.</p>
 </blockquote>
-<h3><a id="react-hot-loader" href="#react-hot-loader" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>React Hot Loader</h3>
+<h3><a id="react-hot-loader" href="#react-hot-loader" class="Permalink" aria-hidden="true" title="Permalink">#</a>React Hot Loader</h3>
 <blockquote>
 <p>This variant will work when using the Babel or TypeScript presets with Webpack.</p>
 </blockquote>
@@ -337,7 +337,7 @@ This is the recommended way and will be the default starting with Crafty 1.20.0<
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> hot(<span class="hljs-built_in">module</span>)(App);
 </code></pre>
 <p>Only the root component needs this wrapping, the child components don’t need it.</p>
-<h3><a id="typescript" href="#typescript" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>TypeScript</h3>
+<h3><a id="typescript" href="#typescript" class="Permalink" aria-hidden="true" title="Permalink">#</a>TypeScript</h3>
 <p>If you’re using TypeScript you have one more step to make</p>
 <pre><code class="hljs bash">npm install --save @types/webpack-env
 </code></pre>
