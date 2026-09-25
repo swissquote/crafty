@@ -2180,6 +2180,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/expect-utils@npm:30.5.2":
+  version: 30.5.2
+  resolution: "@jest/expect-utils@npm:30.5.2"
+  dependencies:
+    "@jest/get-type": "npm:30.5.0"
+  checksum: 10c0/0db00595907f6705c5acc8d10ee9d11d74960cd459beaae66bd7a1d6845c7df1d123295e957bb56b6882b380f2e7d55d277ced7646e0229fc4a67abeb713c048
+  languageName: node
+  linkType: hard
+
 "@jest/expect@npm:30.5.1":
   version: 30.5.1
   resolution: "@jest/expect@npm:30.5.1"
@@ -4057,7 +4066,7 @@ __metadata:
   resolution: "@swissquote/assets@workspace:package-forks/assets"
   dependencies:
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     image-size: "npm:1.2.1"
     mrmime: "npm:2.0.1"
   languageName: unknown
@@ -4230,7 +4239,7 @@ __metadata:
     "@babel/plugin-transform-modules-commonjs": "npm:7.29.7"
     "@swissquote/crafty": "npm:1.30.3"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     jest-cli: "npm:30.5.1"
     jest-environment-jsdom: "npm:30.5.1"
     jest-to-sonar: "npm:1.3.0"
@@ -4411,7 +4420,7 @@ __metadata:
     bufferutil: "npm:4.1.0"
     c8: "npm:12.0.0"
     common-ancestor-path: "npm:2.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     glob-to-regexp: "npm:0.4.1"
     hash-index: "npm:3.0.0"
     is-glob: "npm:4.0.3"
@@ -4435,7 +4444,7 @@ __metadata:
     c8: "npm:12.0.0"
     case-sensitive-paths-webpack-plugin: "npm:2.4.0"
     common-ancestor-path: "npm:2.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     glob-to-regexp: "npm:0.4.1"
     hash-index: "npm:3.0.0"
     inspectpack: "npm:4.7.1"
@@ -4462,7 +4471,7 @@ __metadata:
     chokidar: "npm:3.6.0"
     copy-anything: "npm:4.1.0"
     enhanced-resolve: "npm:5.24.5"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     fsevents: "npm:~2.3.3"
     is-negated-glob: "npm:1.0.0"
     just-debounce: "npm:1.1.0"
@@ -4493,7 +4502,7 @@ __metadata:
     eslint-config-prettier: "npm:10.1.8"
     eslint-import-resolver-typescript: "npm:4.4.5"
     eslint-plugin-import-x: "npm:4.17.1"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     globals: "npm:17.12.0"
     prettier: "npm:3.9.6"
     prettier-linter-helpers: "npm:1.0.1"
@@ -4516,7 +4525,7 @@ __metadata:
     "@babel/plugin-transform-block-scoping": "npm:7.29.7"
     "@babel/plugin-transform-classes": "npm:7.29.7"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     plugin-error: "npm:2.0.1"
     replace-ext: "npm:2.0.0"
     vinyl: "npm:3.0.1"
@@ -4534,7 +4543,7 @@ __metadata:
   dependencies:
     c8: "npm:12.0.0"
     concat-with-sourcemaps: "npm:1.1.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     vinyl: "npm:3.0.1"
     vinyl-fs: "npm:4.0.2"
     vinyl-sourcemap: "npm:2.0.0"
@@ -4547,7 +4556,7 @@ __metadata:
   dependencies:
     "@swissquote/crafty-runner-gulp": "npm:1.30.3"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     mock-fs: "npm:5.5.0"
     plugin-error: "npm:2.0.1"
     vinyl: "npm:3.0.1"
@@ -4560,7 +4569,7 @@ __metadata:
   dependencies:
     "@swissquote/assets": "npm:1.30.3"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-functions: "npm:4.0.2"
   peerDependencies:
@@ -4573,7 +4582,7 @@ __metadata:
   resolution: "@swissquote/postcss-atroot@workspace:package-forks/postcss-atroot"
   dependencies:
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
   peerDependencies:
     postcss: ^8.0.0
@@ -4585,7 +4594,7 @@ __metadata:
   resolution: "@swissquote/postcss-color-gray@workspace:package-forks/postcss-color-gray"
   dependencies:
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
@@ -4599,7 +4608,7 @@ __metadata:
   dependencies:
     "@swissquote/color-fns": "npm:1.30.3"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-functions: "npm:4.0.2"
     postcss-value-parser: "npm:4.2.0"
@@ -4615,7 +4624,7 @@ __metadata:
   dependencies:
     "@swissquote/color-fns": "npm:1.30.3"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
@@ -4628,7 +4637,7 @@ __metadata:
   resolution: "@swissquote/postcss-custom-properties@workspace:package-forks/postcss-custom-properties"
   dependencies:
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-values-parser: "npm:6.0.2"
   peerDependencies:
@@ -4641,7 +4650,7 @@ __metadata:
   resolution: "@swissquote/postcss-image-set-polyfill@workspace:package-forks/postcss-image-set-polyfill"
   dependencies:
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
     postcss-media-query-parser: "npm:0.2.3"
     postcss-value-parser: "npm:4.2.0"
@@ -4656,7 +4665,7 @@ __metadata:
   dependencies:
     balanced-match: "npm:2.0.0"
     c8: "npm:12.0.0"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     postcss: "npm:8.5.28"
   peerDependencies:
     postcss: ^8.0.0
@@ -4679,7 +4688,7 @@ __metadata:
     "@swissquote/postcss-selector-matches": "npm:1.30.3"
     c8: "npm:12.0.0"
     caniuse-lite: "npm:^1.0.30001702"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     lightningcss: "npm:1.33.0"
     postcss: "npm:8.5.28"
     postcss-custom-selectors: "npm:8.0.5"
@@ -4710,7 +4719,7 @@ __metadata:
     c8: "npm:12.0.0"
     caniuse-lite: "npm:^1.0.30001702"
     css-tree: "npm:3.2.1"
-    expect: "npm:30.5.1"
+    expect: "npm:30.5.2"
     fastest-levenshtein: "npm:1.0.16"
     known-css-properties: "npm:0.37.0"
     postcss: "npm:8.5.28"
@@ -8184,7 +8193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:30.5.1, expect@npm:^30.0.0":
+"expect@npm:30.5.1":
   version: 30.5.1
   resolution: "expect@npm:30.5.1"
   dependencies:
@@ -8195,6 +8204,20 @@ __metadata:
     jest-mock: "npm:30.5.1"
     jest-util: "npm:30.5.1"
   checksum: 10c0/351148b185c609a67c4ce5064572d02e7bba11febde47b5177e49fee7e6b680e945034c1ec9414d9fa1f7348a3eceb0d7429f9c9564c693e39c6d138f282370c
+  languageName: node
+  linkType: hard
+
+"expect@npm:30.5.2, expect@npm:^30.0.0":
+  version: 30.5.2
+  resolution: "expect@npm:30.5.2"
+  dependencies:
+    "@jest/expect-utils": "npm:30.5.2"
+    "@jest/get-type": "npm:30.5.0"
+    jest-matcher-utils: "npm:30.5.2"
+    jest-message-util: "npm:30.5.1"
+    jest-mock: "npm:30.5.2"
+    jest-util: "npm:30.5.1"
+  checksum: 10c0/31bf2307499008f267c84992a8ea27f76e97f207f685075439aa12f60b93dd81d024e5fcb0142755ed499233056f27fa51d01843d04cba437dfe7588387c352f
   languageName: node
   linkType: hard
 
@@ -9879,6 +9902,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-diff@npm:30.5.2":
+  version: 30.5.2
+  resolution: "jest-diff@npm:30.5.2"
+  dependencies:
+    "@jest/diff-sequences": "npm:30.5.0"
+    "@jest/get-type": "npm:30.5.0"
+    chalk: "npm:^4.1.2"
+    pretty-format: "npm:30.5.1"
+  checksum: 10c0/b11524e4b7a0c7b83c5b6a3775f705b1002bf086c211e9bd2e481686e3fa0ee1a87e61fa7453232aef2808f085f254f4f8fcbb41b69681d1b9384ec321cf6002
+  languageName: node
+  linkType: hard
+
 "jest-docblock@npm:30.5.0":
   version: 30.5.0
   resolution: "jest-docblock@npm:30.5.0"
@@ -9974,6 +10009,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-matcher-utils@npm:30.5.2":
+  version: 30.5.2
+  resolution: "jest-matcher-utils@npm:30.5.2"
+  dependencies:
+    "@jest/get-type": "npm:30.5.0"
+    chalk: "npm:^4.1.2"
+    jest-diff: "npm:30.5.2"
+    pretty-format: "npm:30.5.1"
+  checksum: 10c0/30f075c6f897335415817ad25e6caae8994de87c31ad59ae8f501e2c8bf6c925635abb481c562436b6add42a784902f105ee2fa0eca3357bd26e038f7e004cb8
+  languageName: node
+  linkType: hard
+
 "jest-message-util@npm:30.5.1":
   version: 30.5.1
   resolution: "jest-message-util@npm:30.5.1"
@@ -10001,6 +10048,18 @@ __metadata:
     "@types/node": "npm:*"
     jest-util: "npm:30.5.1"
   checksum: 10c0/58b1a7f93142147949e1cf0fd5a0fbd91d8fae466c24950aaf7ea766aeb0c657f48add172a5b614240a77e9f652bf0cecd8365d0fb3aac9b81a938e983f97f16
+  languageName: node
+  linkType: hard
+
+"jest-mock@npm:30.5.2":
+  version: 30.5.2
+  resolution: "jest-mock@npm:30.5.2"
+  dependencies:
+    "@jest/expect-utils": "npm:30.5.2"
+    "@jest/types": "npm:30.5.1"
+    "@types/node": "npm:*"
+    jest-util: "npm:30.5.1"
+  checksum: 10c0/24cc9ac6449c536ef5009c531e14ee6b145f5d68db6e4c5616a8f775c5c81173e83e2c6c47922d413da4dbf804eab555b91ab424b0bf918495ee1b29d8a8ebaa
   languageName: node
   linkType: hard
 
