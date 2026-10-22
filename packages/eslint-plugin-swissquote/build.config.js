@@ -121,6 +121,8 @@ module.exports = [
         "@typescript-eslint/types": "../typescript-eslint/types.js",
         "@typescript-eslint/utils/ast-utils":
           "../typescript-eslint/ast-utils.js",
+        "@typescript-eslint/utils/eslint-utils":
+          "../typescript-eslint/eslint-utils.js",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js",
         "@typescript-eslint/type-utils": "../typescript-eslint/type-utils.js",
 
@@ -161,9 +163,21 @@ module.exports = [
               "findVariable",
               "getStaticValue",
               "isIdentifier",
-              "isVariableDeclarator"
+              "isVariableDeclarator",
+              "isNodeOfType",
+              "isNodeOfTypes"
             ],
             "dist/typescript-eslint/ast-utils.js"
+          )
+          .package(
+            "@typescript-eslint/utils/eslint-utils",
+            [
+              "RuleCreator",
+              "getParserServices",
+              "nullThrows",
+              "NullThrowsReasons"
+            ],
+            "dist/typescript-eslint/eslint-utils.js"
           )
           .package(
             "@typescript-eslint/type-utils",
