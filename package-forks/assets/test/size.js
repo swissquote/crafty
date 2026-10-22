@@ -30,5 +30,5 @@ test("nonsupported file type", async () => {
 
 test("invalid file", async () => {
   await expect(() => resolveSize("test/fixtures/invalid.jpg"))
-    .rejects.toThrow(/Invalid JPG, no size found: .+invalid\.jpg/);
+    .rejects.toThrow(/Corrupt JPG, exceeded buffer limits:.+invalid\.jpg/);
 });

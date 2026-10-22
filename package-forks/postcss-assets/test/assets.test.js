@@ -171,7 +171,7 @@ test("throws when trying to measure a non-existing image", async () => {
 
 test("throws when trying to measure an invalid file", async () => {
   await expect(() => process("a { b: size('test/fixtures/images/invalid.jpg') }"))
-    .rejects.toThrow(/Invalid JPG, no size found: .+invalid\.jpg/);
+    .rejects.toThrow(/Corrupt JPG, exceeded buffer limits:.+invalid\.jpg/);
 });
 
 test("handles quotes and escaped characters", () =>
