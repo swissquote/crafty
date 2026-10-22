@@ -184,14 +184,14 @@ chunk (runtime: default) myBundle.min.js (default) ___ KiB (javascript) ___ KiB 
   ╰─▶   ×
         │ SyntaxError
         │
-        │ (11:13) __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-lightningcss-rspack/fails/css/style.scss Unknown word background
+        │ (5:13) __PATH__/packages/integration-fixtures-cjs/fixtures/crafty-preset-lightningcss-rspack/fails/css/style.scss Unknown word background
         │
-        │    9 | @at-root {
-        │   10 |   .Child
-        │ > 11 |             background: black;
-        │      |             ^
-        │   12 | }
-        │   13 |
+        │   3 |   @at-root {
+        │   4 |     .Child
+        │ > 5 |             background: black;
+        │     |             ^
+        │   6 |   }
+        │   7 | }
         │
 
   Δt ____ms ✖ 1 problem (1 error, 0 warnings)
