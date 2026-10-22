@@ -25,7 +25,7 @@ async function main() {
 
   if (options.showConfig) {
     const resolved = await resolveConfig(options);
-    printConfig(resolved.vitestConfig);
+    printConfig(resolved.test);
     return;
   }
 
