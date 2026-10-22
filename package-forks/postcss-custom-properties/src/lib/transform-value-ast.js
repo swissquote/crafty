@@ -88,6 +88,7 @@ const asClonedArray = (array, parent) =>
 
 // return a cloned node
 const asClonedNode = (node, parent) => {
+  /* eslint-disable-next-line new-cap */
   const cloneNode = new node.constructor(node);
 
   for (const key in node) {
