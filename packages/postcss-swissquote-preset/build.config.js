@@ -94,18 +94,6 @@ module.exports = [
       .esm()
       .externals(externals)
       .package(),
-  async (_, compilerUtils) => {
-    console.log("patch @swissquote/postcss-assets");
-    await compilerUtils.replaceContent(
-      "./dist/swissquote-postcss-assets/index.mjs",
-      content => {
-        return content.replace(
-          'var _postcssValueParser = _interopRequireDefault(__webpack_require__("postcss-value-parser"));',
-          'var _postcssValueParser = __webpack_require__("postcss-value-parser");'
-        );
-      }
-    );
-  },
   builder =>
     builder("@swissquote/postcss-atroot")
       .esm()
