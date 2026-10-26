@@ -342,42 +342,12 @@ more <strong>destination files</strong>.</p>
 <li>Write the file to <code>&lt;destination_js&gt;/app.min.js</code>. Which is inferred from the bundle name because no destination was specified.</li>
 </ol>
 <h3><a id="common-bundle-options" href="#common-bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Common Bundle options</h3>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Type</th>
-<th>Optional ?</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>source</code></td>
-<td>`string</td>
-<td>string[]`</td>
-<td>No</td>
-</tr>
-<tr>
-<td><code>runner</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>The runner’s name to use for this bundle. This option is mandatory if more than one runner is loaded</td>
-</tr>
-<tr>
-<td><code>destination</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>The name to give to the final file. Defaults to <code>&lt;bundle_name&gt;.min.&lt;bundle_type&gt;</code></td>
-</tr>
-<tr>
-<td><code>watch</code></td>
-<td>`string</td>
-<td>string[]`</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+<p>| Option        | Type     | Optional ? | Description                                                                                          |
+| ———–– | –––– | ––––– | –––––––––––––––––––––––––––––––––––––––––––––––––– | —————————————————————————————————————– |
+| <code>source</code>      | <code>string  | string[]</code>  | No                                                                                                   | One single file or an array of files you wish to compile. Glob expressions are valid.                             |
+| <code>runner</code>      | <code>string</code> | No         | The runner’s name to use for this bundle. This option is mandatory if more than one runner is loaded |
+| <code>destination</code> | <code>string</code> | Yes        | The name to give to the final file. Defaults to <code>&lt;bundle_name&gt;.min.&lt;bundle_type&gt;</code>                    |
+| <code>watch</code>       | <code>string  | string[]</code>  | Yes                                                                                                  | The watch expression to use to rebuild this asset. Any glob expression is valid. Webpack doesn’t use this option. |</p>
 <h3><a id="javascript-bundle-options" href="#javascript-bundle-options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>JavaScript Bundle options</h3>
 <table>
 <thead>
@@ -462,61 +432,14 @@ When bundling your CSS inside your JavaScript, you must set the configuration in
 <p><code>app</code> is the bundle name; you will be able to call <code>crafty run js_app</code> to build it.</p>
 <p>Apart from the common options, here are the options you can use for JavaScript
 bundles.</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Type</th>
-<th>Runner</th>
-<th>Preset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>externals</code></td>
-<td><code>string[]</code></td>
-<td>Webpack</td>
-<td><code>crafty-runner-webpack</code></td>
-<td>Extends the list of provided libraries (Webpack understands both globs and strings)</td>
-</tr>
-<tr>
-<td><code>hot</code></td>
-<td><code>bool</code></td>
-<td>Webpack</td>
-<td><code>crafty-runner-webpack</code></td>
-<td>Allows to use Hot Module Replacement in watch mode (<code>false</code> by default)</td>
-</tr>
-<tr>
-<td><code>libraryTarget</code></td>
-<td><code>string</code></td>
-<td>Webpack</td>
-<td><code>crafty-runner-webpack</code></td>
-<td>Define the library type to export. By default we use <code>amd</code>. <a href="https://webpack.js.org/configuration/output/#output-librarytarget" class="Link--external" rel="noopener noreferrer">Possible values</a>.</td>
-</tr>
-<tr>
-<td><code>library</code></td>
-<td><code>string</code></td>
-<td>Webpack</td>
-<td><code>crafty-runner-webpack</code></td>
-<td>Define the library name for the Webpack module or export.</td>
-</tr>
-<tr>
-<td><code>extractCSS</code></td>
-<td>`bool</td>
-<td>string</td>
-<td>object`</td>
-<td>Webpack</td>
-</tr>
-<tr>
-<td><code>concat</code></td>
-<td><code>bool</code></td>
-<td>Gulp</td>
-<td><code>crafty-preset-babel</code></td>
-<td>This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack for this)</td>
-</tr>
-</tbody>
-</table>
+<p>| Option          | Type       | Runner  | Preset                  | Description                                                                                                                                       |
+| ————— | ––––– | —–– | ———————– | ———————————————————————————————————————————————–– | —————————————————— | —————————————————————————————————————————————— |
+| <code>externals</code>     | <code>string[]</code> | Webpack | <code>crafty-runner-webpack</code> | Extends the list of provided libraries (Webpack understands both globs and strings)                                                               |
+| <code>hot</code>           | <code>bool</code>     | Webpack | <code>crafty-runner-webpack</code> | Allows to use Hot Module Replacement in watch mode (<code>false</code> by default)                                                                           |
+| <code>libraryTarget</code> | <code>string</code>   | Webpack | <code>crafty-runner-webpack</code> | Define the library type to export. By default we use <code>amd</code>. <a href="https://webpack.js.org/configuration/output/#output-librarytarget" class="Link--external" rel="noopener noreferrer">Possible values</a>. |
+| <code>library</code>       | <code>string</code>   | Webpack | <code>crafty-runner-webpack</code> | Define the library name for the Webpack module or export.                                                                                         |
+| <code>extractCSS</code>    | <code>bool      | string  | object</code>                 | Webpack                                                                                                                                           | <code>crafty-preset-postcss</code> / <code>crafty-preset-lightningcss</code> | This will extract the CSS out of the bundle, check details in <a href="../Packages/crafty_preset_postcss/index.html"><code>crafty-preset-postcss</code></a>. |
+| <code>concat</code>        | <code>bool</code>     | Gulp    | <code>crafty-preset-babel</code>   | This will merge all files together, outputting a single file. (This doesn’t resolve imports, use Webpack for this)                                |</p>
     </div>
 
         <nav>

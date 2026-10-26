@@ -165,47 +165,14 @@ browsers you support. (<code>@babel/preset-env</code>)</li>
 <li>[prod] Remove React Prop Types in production ( <code>babel-plugin-transform-react-remove-prop-types</code> )</li>
 </ul>
 <h2><a id="options" href="#options" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Options</h2>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Default</th>
-<th>Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>environment</code></td>
-<td>`process.env.BABEL_ENV</td>
-<td></td>
-</tr>
-<tr>
-<td><code>browsers</code></td>
-<td><code>babel-preset-env</code>’s default + IE9</td>
-<td>Sets the list of browsers to support, must be a valid Browserslist query</td>
-</tr>
-<tr>
-<td><code>deduplicateHelpers</code></td>
-<td><code>false</code></td>
-<td>Defines if the babel helpers (like <code>createClass</code>) should be in each file or referenced once</td>
-</tr>
-<tr>
-<td><code>useESModules</code></td>
-<td><code>false</code></td>
-<td>Defines if <code>@babel/plugin-transform-runtime</code> should use ES modules or commonjs modules</td>
-</tr>
-<tr>
-<td><code>presetReact</code></td>
-<td><code>{}</code></td>
-<td>Override <a href="https://babeljs.io/docs/en/babel-preset-react" class="Link--external" rel="noopener noreferrer"><code>@babel/preset-react</code></a> options</td>
-</tr>
-<tr>
-<td><code>presetEnv</code></td>
-<td><code>{}</code></td>
-<td>Override <a href="https://babeljs.io/docs/en/babel-preset-env" class="Link--external" rel="noopener noreferrer"><code>@babel/preset-env</code></a> options</td>
-</tr>
-</tbody>
-</table>
+<p>| Option               | Default                            | Effect                                                                                      |
+| –––––––––– | ––––––––––––––––– | —————————————————————————————–– | ——————— | —————————————————————————–– |
+| <code>environment</code>        | <code>process.env.BABEL_ENV             |                                                                                             | process.env.NODE_ENV</code> | Overrides the environment, must be one of <code>development</code>, <code>test</code> or <code>production</code> |
+| <code>browsers</code>           | <code>babel-preset-env</code>’s default + IE9 | Sets the list of browsers to support, must be a valid Browserslist query                    |
+| <code>deduplicateHelpers</code> | <code>false</code>                            | Defines if the babel helpers (like <code>createClass</code>) should be in each file or referenced once |
+| <code>useESModules</code>       | <code>false</code>                            | Defines if <code>@babel/plugin-transform-runtime</code> should use ES modules or commonjs modules      |
+| <code>presetReact</code>        | <code>{}</code>                               | Override <a href="https://babeljs.io/docs/en/babel-preset-react" class="Link--external" rel="noopener noreferrer"><code>@babel/preset-react</code></a> options     |
+| <code>presetEnv</code>          | <code>{}</code>                               | Override <a href="https://babeljs.io/docs/en/babel-preset-env" class="Link--external" rel="noopener noreferrer"><code>@babel/preset-env</code></a> options         |</p>
 <h2><a id="usage-in-crafty" href="#usage-in-crafty" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Usage in Crafty</h2>
 <p>The easiest way to use this configuration is with Crafty, which includes it by
 default. <strong>You don’t need to install it separately in Crafty projects.</strong></p>
