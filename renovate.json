@@ -1,6 +1,9 @@
 {
   "extends": [
     "config:recommended",
+    "helpers:pinGitHubActionDigests", 
+    ":configMigration",
+    "security:minimumReleaseAgeNpm",
     ":automergeMinor"
   ],
   "schedule": "before 11pm on Monday",
