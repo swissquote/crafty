@@ -3721,10 +3721,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rspack/lite-tapable@npm:^1.1.2":
-  version: 1.1.5
-  resolution: "@rspack/lite-tapable@npm:1.1.5"
-  checksum: 10c0/b3ddc59c824dff06981d3fd3ced577f7031fd88aa2749e8fba0d6b6566d40e38ccabe0f5c48cc8df1836cb1a1ba1afe936b7659528c03ab153f8351dbeea746b
+"@rspack/lite-tapable@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@rspack/lite-tapable@npm:1.3.0"
+  checksum: 10c0/4978a39aeb9f588b942a8b85cec37b9c85756e4b75b9884ef47f9d78571ad07ee33916b1ff27892b5b560f74166bb96ec0b00ac257191f972457a533899bafe2
   languageName: node
   linkType: hard
 
@@ -4382,7 +4382,7 @@ __metadata:
     fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
     memfs: "npm:4.80.0"
     schema-utils: "npm:4.3.3"
-    ts-checker-rspack-plugin: "npm:1.6.1"
+    ts-checker-rspack-plugin: "npm:1.7.1"
     ts-jest: "npm:29.4.15"
     ts-loader: "npm:9.6.2"
     tslib: "npm:2.8.1"
@@ -6543,7 +6543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:3.6.0, chokidar@npm:^3.6.0":
+"chokidar@npm:3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -6562,7 +6562,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^4.0.1":
+"chokidar@npm:^4.0.1, chokidar@npm:^4.0.3":
   version: 4.0.3
   resolution: "chokidar@npm:4.0.3"
   dependencies:
@@ -10835,7 +10835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memfs@npm:4.80.0, memfs@npm:^4.64.0":
+"memfs@npm:4.80.0, memfs@npm:^4.79.0":
   version: 4.80.0
   resolution: "memfs@npm:4.80.0"
   dependencies:
@@ -13636,13 +13636,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-checker-rspack-plugin@npm:1.6.1":
-  version: 1.6.1
-  resolution: "ts-checker-rspack-plugin@npm:1.6.1"
+"ts-checker-rspack-plugin@npm:1.7.1":
+  version: 1.7.1
+  resolution: "ts-checker-rspack-plugin@npm:1.7.1"
   dependencies:
-    "@rspack/lite-tapable": "npm:^1.1.2"
-    chokidar: "npm:^3.6.0"
-    memfs: "npm:^4.64.0"
+    "@rspack/lite-tapable": "npm:^1.3.0"
+    chokidar: "npm:^4.0.3"
+    memfs: "npm:^4.79.0"
     picocolors: "npm:^1.1.1"
   peerDependencies:
     "@rspack/core": ^1.0.0 || ^2.0.0
@@ -13653,7 +13653,7 @@ __metadata:
       optional: true
     "@typescript/native-preview":
       optional: true
-  checksum: 10c0/f2c1f6dd465354d922161fbf6a8372ee8dfde38b5256b04369a4ffdb0486322dcc957e521b1cc3956d6c55ecf30142988b21832316d3449421a5b0c425d782ab
+  checksum: 10c0/9e7885465ad62f1b767ae79c554ddb4d0af89dbf06c7ffd7bb0c3827d2b4bea253d0abe10499f8b3acaafb463d06c0d2e2051b450fb0a032de67d8f03acd0946
   languageName: node
   linkType: hard
 
