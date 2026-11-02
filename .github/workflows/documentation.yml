@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       with:
         persist-credentials: false
     - uses: docker://daux/daux.io:0.26.1
@@ -19,7 +19,7 @@ jobs:
       with:
         args: daux generate --themes=docs_theme
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.9.0
+      uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
       with:
         folder: "static"
         branch: gh-pages
