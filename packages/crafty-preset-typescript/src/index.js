@@ -100,6 +100,22 @@ module.exports = {
         }
       });
     }
+
+    // Type-check the tests like ts-jest, only with a tsconfig.test.json: tsconfig.json often lacks the Vitest globals
+    const testTsconfigFile = findUpSync("tsconfig.test.json", {
+      cwd: process.cwd()
+    });
+    if (testTsconfigFile) {
+      options.test.typecheck = {
+        enabled: true,
+        checker: require.resolve("typescript/bin/tsc"),
+        include: [
+          "**/__tests__/**/*.{ts,tsx,mts,cts}",
+          "**/*.{test,spec}.{ts,tsx,mts,cts}"
+        ],
+        tsconfig: testTsconfigFile
+      };
+    }
   },
   webpack(crafty, bundle, chain) {
     const tsconfigFile = bundle.tsconfigFile || "tsconfig.json";

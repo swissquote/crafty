@@ -78,6 +78,51 @@ When `crafty-preset-babel` is also active, TypeScript files keep using the
 TypeScript and Vitest transform path while Babel remains limited to `.js` and
 `.jsx` files.
 
+### Type checking the tests
+
+With Jest, `ts-jest` reports the type errors of each file that it compiles, so
+a type error fails `crafty test`.
+
+Vitest removes the types without a check. To check the tests, add a
+`tsconfig.test.json` to your project. Crafty looks for it as it looks for
+`tsconfig.json`: in the current folder, then in its parents. When the file
+exists, Crafty turns on the `typecheck` option of Vitest. Then `crafty test`
+runs `tsc` with that configuration. If a test has a type error, the run fails
+even when the test passes at runtime.
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["vitest/globals"]
+  },
+  "include": ["src"]
+}
+```
+
+The file must include the test files. Its `types` must declare the Vitest
+globals (`describe`, `test`, `expect`), because `crafty-preset-vitest` turns
+the globals on. To change the check or to turn it off, edit
+`options.test.typecheck` in the `vitest` hook of your `crafty.config.js`. It
+runs after the hook of this preset:
+
+```js
+module.exports = {
+  vitest(crafty, options) {
+    options.test.typecheck.enabled = false;
+  },
+};
+```
+
+Know these effects of the check:
+
+- `tsc` checks every file that `tsconfig.test.json` includes, not only the
+  tests. A type error in a source file also fails the run.
+- Vitest runs each test file twice: once as a test and once as a type check.
+  The second run shows as `TS` in the output, and counts as a second test in
+  the summary and in the Sonar report.
+
 ## Type definition files
 
 TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.

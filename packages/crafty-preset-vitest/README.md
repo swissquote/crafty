@@ -67,7 +67,9 @@ they are testing so that relative imports appear shorter. For example, if
 > [`crafty-preset-swc`](05_Packages/05_crafty-preset-swc.md) will add `jsx` as
 > a supported test file extension. Using
 > [`crafty-preset-typescript`](05_Packages/05_crafty-preset-typescript.md)
-> will add the TypeScript extensions `ts`, `tsx`, `mts`, and `cts`.
+> will add the TypeScript extensions `ts`, `tsx`, `mts`, and `cts`. It can also
+> type-check the tests, see its
+> [documentation](05_Packages/05_crafty-preset-typescript.md).
 
 ## `crafty test`
 

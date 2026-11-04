@@ -572,6 +572,32 @@ test("Resolves TypeScript path mapping through the preset hook", async () => {
   expect(result.status).toBe(0);
 });
 
+test("Type-checks the TypeScript tests with tsconfig.test.json", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/hook-typescript-typecheck"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(0);
+  expect(result.stdall).toContain("Type Errors");
+  expect(result.stdall).toContain("no errors");
+});
+
+test("Fails on a type error in a TypeScript test that passes at runtime", async () => {
+  const cwd = await testUtils.getCleanFixtures(
+    "crafty-preset-vitest/hook-typescript-typecheck-fails"
+  );
+
+  const result = await testUtils.run(["test"], cwd);
+
+  expect(result.status).toBe(1);
+  expect(result.stdall).toContain("TypeCheckError");
+  expect(result.stdall).toContain(
+    "Type 'number' is not assignable to type 'string'"
+  );
+});
+
 test("Loads the React setup file through the preset hook", async () => {
   const cwd = await testUtils.getCleanFixtures(
     "crafty-preset-vitest/hook-react"
