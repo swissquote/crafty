@@ -176,7 +176,11 @@
 <li><a href="#linting">Linting</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage-with-webpack">Usage with Webpack</a></li>
-<li><a href="#usage-with-jest-and-vitest">Usage with Jest and Vitest</a></li>
+<li><a href="#usage-with-jest-and-vitest">Usage with Jest and Vitest</a>
+<ul>
+<li><a href="#type-checking-the-tests">Type checking the tests</a></li>
+</ul>
+</li>
 <li><a href="#type-definition-files">Type definition files</a></li>
 <li><a href="#getting-started">Getting Started</a>
 <ul>
@@ -224,6 +228,43 @@ Moreover, the integration with your IDE is simplified if you have a complete <co
 <p>When <code>crafty-preset-babel</code> is also active, TypeScript files keep using the
 TypeScript and Vitest transform path while Babel remains limited to <code>.js</code> and
 <code>.jsx</code> files.</p>
+<h3><a id="type-checking-the-tests" href="#type-checking-the-tests" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Type checking the tests</h3>
+<p>With Jest, <code>ts-jest</code> reports the type errors of each file that it compiles, so
+a type error fails <code>crafty test</code>.</p>
+<p>Vitest removes the types without a check. To check the tests, add a
+<code>tsconfig.test.json</code> to your project. Crafty looks for it as it looks for
+<code>tsconfig.json</code>: in the current folder, then in its parents. When the file
+exists, Crafty turns on the <code>typecheck</code> option of Vitest. Then <code>crafty test</code>
+runs <code>tsc</code> with that configuration. If a test has a type error, the run fails
+even when the test passes at runtime.</p>
+<pre><code class="hljs json">{
+  <span class="hljs-attr">"extends"</span>: <span class="hljs-string">"./tsconfig.json"</span>,
+  <span class="hljs-attr">"compilerOptions"</span>: {
+    <span class="hljs-attr">"noEmit"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"types"</span>: [<span class="hljs-string">"vitest/globals"</span>]
+  },
+  <span class="hljs-attr">"include"</span>: [<span class="hljs-string">"src"</span>]
+}
+</code></pre>
+<p>The file must include the test files. Its <code>types</code> must declare the Vitest
+globals (<code>describe</code>, <code>test</code>, <code>expect</code>), because <code>crafty-preset-vitest</code> turns
+the globals on. To change the check or to turn it off, edit
+<code>options.test.typecheck</code> in the <code>vitest</code> hook of your <code>crafty.config.js</code>. It
+runs after the hook of this preset:</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = {
+  vitest(crafty, options) {
+    options.test.typecheck.enabled = <span class="hljs-literal">false</span>;
+  },
+};
+</code></pre>
+<p>Know these effects of the check:</p>
+<ul>
+<li><code>tsc</code> checks every file that <code>tsconfig.test.json</code> includes, not only the
+tests. A type error in a source file also fails the run.</li>
+<li>Vitest runs each test file twice: once as a test and once as a type check.
+The second run shows as <code>TS</code> in the output, and counts as a second test in
+the summary and in the Sonar report.</li>
+</ul>
 <h2><a id="type-definition-files" href="#type-definition-files" class="Permalink" aria-hidden="true" tabindex="-1" title="Permalink">#</a>Type definition files</h2>
 <p>TypeScript is also able to understand Types on libraries written in pure JavaScript this is done through types definition files.</p>
 <p>Some packages come with their own definitions, for the others there are two ways to consume these files.</p>
