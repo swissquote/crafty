@@ -11,9 +11,8 @@ exports.command = function test(crafty, input, cli) {
   const runners = crafty.getImplementations("test");
   const tasks = runners.map(preset => preset.get("test"));
 
-  // Some libraries don't want a NODE_ENV set.
-  // We restore the original values here
-  process.env.NODE_ENV = crafty.originalEnvironment;
+  // Restore the original NODE_ENV, or "test" like `crafty ide` (undefined would set "undefined")
+  process.env.NODE_ENV = crafty.originalEnvironment ?? "test";
 
   return new Promise((resolve, reject) => {
     if (tasks.length === 0) {
