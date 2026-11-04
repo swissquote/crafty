@@ -188,7 +188,7 @@ exports[`Experiment with all CSS 2`] = `
   margin: var(--Component-margin) calc(var(--Component-margin) * -1);
 }
 
-@media (min-width: 25em) {
+@media (width >= 25em) {
   .Button {
     background: url("../images/buttons/background.png");
   }
@@ -229,10 +229,6 @@ exports[`Experiment with all CSS 2`] = `
   font-size: calc(var(--main-font-size) * 2);
   height: calc(100px - 2em);
   margin-top: calc(var(--main-font-size) * 1.5);
-}
-
-:-webkit-full-screen .Link {
-  display: flex;
 }
 
 :fullscreen .Link {
