@@ -10,7 +10,7 @@ export default class NewStuff {
     // eslint-disable-next-line no-console
     console.log(Loading);
 
-    import("./SomeLibrary").then(SomeLibrary => {
+    import("./SomeLibrary.js").then(SomeLibrary => {
       const som = new SomeLibrary.default();
 
       // eslint-disable-next-line no-console
