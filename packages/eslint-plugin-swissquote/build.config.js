@@ -267,5 +267,23 @@ module.exports = [
         "./parser-postcss": FAKE_PRETTIER_PARSER,
         "./parser-yaml": FAKE_PRETTIER_PARSER
       }),
+  async (_, compilerUtils) => {
+    console.log("patch prettier1");
+    await compilerUtils.replaceContent("./dist/prettier1/index.js", content => {
+      // The browser build of `debug` inlined in prettier 1's TypeScript parser
+      // reads the global `localStorage`. Since Node.js 26 that access alone
+      // prints "ExperimentalWarning: localStorage is not available".
+      // All usages of `storage` are wrapped in try/catch, `undefined` is safe.
+      const search =
+        "t.storage=function(){try{return localStorage}catch(e){}}()";
+      if (!content.includes(search)) {
+        throw new Error(
+          "Could not find localStorage access to patch in prettier1"
+        );
+      }
+
+      return content.replace(search, "t.storage=void 0");
+    });
+  },
   builder => builder("prettier-linter-helpers").package()
 ];

@@ -5,7 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const Vinyl = require("vinyl");
-const mock = require("mock-fs");
+const mock = require("../test-helpers/fs-fixture.js");
 
 const newer = require("../index.js");
 
