@@ -204,9 +204,9 @@ asset js/TS_4_0.d.ts ___ KiB [emitted]
 asset js/app.d.ts ___ KiB [emitted]
 asset js/TS_4_2.d.ts ___ KiB [emitted]
 Entrypoint default ___ KiB (___ KiB) = webpack.min.js 1 auxiliary asset
-chunk (runtime: default) webpack.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
-  runtime modules ___ KiB 3 modules
-  ./js/app.ts + 2 modules ___ KiB [built] [code generated]
+chunk (runtime: default) webpack.min.js (default) ___ KiB [entry] [rendered]
+  dependent modules ___ KiB [dependent] 2 modules
+  ./js/app.ts ___ KiB [built] [code generated]
 
   Compiled successfully!
   Δt ____ms
@@ -234,8 +234,8 @@ assets by path js/*.ts ___ KiB
   asset js/app.d.ts ___ KiB [emitted]
   asset js/TS_4_3.d.ts ___ KiB [emitted]
   asset js/TS_4_1.d.ts ___ KiB [emitted]
-  asset js/TS_4_5.d.ts ___ KiB [emitted]
   asset js/TS_4_0.d.ts ___ KiB [emitted]
+  asset js/TS_4_5.d.ts ___ KiB [emitted]
   asset js/TS_5_0.d.ts ___ KiB [emitted]
   asset js/TS_4_9.d.ts ___ KiB [emitted]
   asset js/TS_4_6.d.ts ___ KiB [emitted]
@@ -249,7 +249,7 @@ asset js/TS_4_7_common.d.cts ___ KiB [emitted]
 Entrypoint default ___ KiB (___ KiB) = webpack.min.js 1 auxiliary asset
 chunk (runtime: default) webpack.min.js (default) ___ KiB (javascript) ___ KiB (runtime) [entry] [rendered]
   runtime modules ___ KiB 4 modules
-  ./js/app.ts + 14 modules ___ KiB [built] [code generated]
+  ./js/app.ts + 12 modules ___ KiB [built] [code generated]
 
   Compiled with warnings.
 
@@ -306,14 +306,14 @@ assets by path js/*.ts ___ KiB
   asset js/app.d.ts ___ KiB [emitted]
   asset js/TS_4_3.d.ts ___ KiB [emitted]
   asset js/TS_4_1.d.ts ___ KiB [emitted]
-  asset js/TS_4_5.d.ts ___ KiB [emitted]
   asset js/TS_4_0.d.ts ___ KiB [emitted]
+  asset js/TS_4_5.d.ts ___ KiB [emitted]
   asset js/TS_5_0.d.ts ___ KiB [emitted]
   asset js/TS_4_9.d.ts ___ KiB [emitted]
   asset js/TS_4_6.d.ts ___ KiB [emitted]
   asset js/TS_4_2.d.ts ___ KiB [emitted]
   asset js/TS_4_8.d.ts ___ KiB [emitted]
-  + 9 assets
+  + 12 assets
 asset webpack.min.js ___ KiB [emitted] [minimized] (name: default)
   sourceMap webpack.min.js.map ___ KiB [emitted] [dev] (auxiliary name: default)
 asset js/TS_4_7.d.mts ___ KiB [emitted]

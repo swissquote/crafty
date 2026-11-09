@@ -8,7 +8,7 @@ To make the compilation work with TypeScript, you need to add a `tsconfig.json` 
 {
   "exclude": ["node_modules", "node"],
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "module": "esnext", // Enables Tree shaking for Webpack
     "sourceMap": true,

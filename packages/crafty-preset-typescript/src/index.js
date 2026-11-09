@@ -10,6 +10,41 @@ function absolutePath(item) {
   return path.isAbsolute(item) ? item : path.join(process.cwd(), item);
 }
 
+/**
+ * TypeScript 6 no longer infers `rootDir` when emitting files (TS5011),
+ * compute it like TypeScript 5 did: the common directory of all source files.
+ * Returns undefined when `rootDir` is already set or can't be inferred.
+ */
+function inferRootDir(compiler, configFile) {
+  const parsed = compiler.getParsedCommandLineOfConfigFile(
+    configFile,
+    {},
+    { ...compiler.sys, onUnRecoverableConfigFileDiagnostic: () => {} }
+  );
+
+  if (!parsed || parsed.options.rootDir) {
+    return undefined;
+  }
+
+  const sourceDirectories = parsed.fileNames
+    .filter(file => !/\.d\.[cm]?ts$/.test(file))
+    .map(file => path.dirname(path.resolve(file)).split(path.sep));
+
+  if (sourceDirectories.length === 0) {
+    return undefined;
+  }
+
+  const common = sourceDirectories.reduce((prefix, segments) => {
+    let i = 0;
+    while (i < prefix.length && prefix[i] === segments[i]) {
+      i++;
+    }
+    return prefix.slice(0, i);
+  });
+
+  return common.join(path.sep) || path.sep;
+}
+
 module.exports = {
   presets: [require.resolve("@swissquote/crafty-preset-eslint")],
   defaultConfig() {
@@ -219,6 +254,13 @@ module.exports = {
       );
     }
 
+    if (hasDeclarations) {
+      const rootDir = inferRootDir(compiler, configFile);
+      if (rootDir) {
+        tsOptions.compilerOptions.rootDir = rootDir;
+      }
+    }
+
     // Fork-ts-webpack checker is enabled only if we don't have declarations enabled in our tsconfig.json
     // https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/49
     if (!hasDeclarations) {
@@ -341,6 +383,13 @@ module.exports = {
       compilerOptionsOverwrite.declarationDir = absolutePath(
         `${crafty.config.destination_js}${subdirectory}/js`
       );
+    }
+
+    if (hasDeclarations) {
+      const rootDir = inferRootDir(compiler, configFile);
+      if (rootDir) {
+        compilerOptionsOverwrite.rootDir = rootDir;
+      }
     }
 
     const checkerOptions = {

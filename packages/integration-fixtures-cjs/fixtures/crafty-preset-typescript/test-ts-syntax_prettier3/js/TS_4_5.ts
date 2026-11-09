@@ -1,7 +1,7 @@
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html#import-assertions
-import obj from "./ts_4_5.json" assert { type: "json" };
-
-export { obj };
+//import obj from "./ts_4_5.json" assert { type: "json" };
+//export { obj };
+// Removed in TypeScript 6.0
 
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html#type-modifiers-on-import-names
 export interface SomeType {
