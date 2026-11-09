@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-runner-gulp",
-  "version": "1.30.3",
+  "version": "1.31.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -16,9 +16,9 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.30.3",
-    "@swissquote/crafty-commons": "1.30.3",
-    "@swissquote/crafty-commons-gulp": "1.30.3"
+    "@swissquote/crafty": "1.31.0",
+    "@swissquote/crafty-commons": "1.31.0",
+    "@swissquote/crafty-commons-gulp": "1.31.0"
   },
   "devDependencies": {
     "@onigoetz/stream-plumber": "1.2.3",

@@ -1,6 +1,6 @@
 {
   "name": "@swissquote/crafty-preset-vitest",
-  "version": "1.30.3",
+  "version": "1.31.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "lint": "node ../crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node src"
   },
   "dependencies": {
-    "@swissquote/crafty": "1.30.3",
+    "@swissquote/crafty": "1.31.0",
     "@vitest/coverage-v8": "5.0.5",
     "vite": "8.3.5",
     "vitest": "5.0.5",
