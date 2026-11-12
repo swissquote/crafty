@@ -17,7 +17,7 @@
     "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html --include=src node --test"
   },
   "dependencies": {
-    "@babel/core": "7.29.7",
+    "@babel/core": "7.29.13",
     "@babel/plugin-transform-modules-commonjs": "7.29.7",
     "@swissquote/crafty": "1.31.0",
     "jest-cli": "30.5.2",
