@@ -4561,7 +4561,7 @@ __metadata:
     postcss: "npm:8.5.32"
     postcss-resolve-nested-selector: "npm:0.1.7"
     postcss-scss: "npm:4.0.9"
-    postcss-selector-parser: "npm:7.1.7"
+    postcss-selector-parser: "npm:7.2.1"
     postcss-value-parser: "npm:4.2.0"
     prettier: "npm:3.9.10"
     stylelint: "npm:17.14.1"
@@ -6879,15 +6879,6 @@ __metadata:
   version: 1.5.1
   resolution: "css.escape@npm:1.5.1"
   checksum: 10c0/5e09035e5bf6c2c422b40c6df2eb1529657a17df37fda5d0433d722609527ab98090baf25b13970ca754079a0f3161dd3dfc0e743563ded8cfa0749d861c1525
-  languageName: node
-  linkType: hard
-
-"cssesc@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "cssesc@npm:3.0.0"
-  bin:
-    cssesc: bin/cssesc
-  checksum: 10c0/6bcfd898662671be15ae7827120472c5667afb3d7429f1f917737f3bf84c4176003228131b643ae74543f17a394446247df090c597bb9a728cce298606ed0aa7
   languageName: node
   linkType: hard
 
@@ -11694,13 +11685,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:7.1.7, postcss-selector-parser@npm:^7.0.0, postcss-selector-parser@npm:^7.1.4, postcss-selector-parser@npm:^7.1.6":
-  version: 7.1.7
-  resolution: "postcss-selector-parser@npm:7.1.7"
+"postcss-selector-parser@npm:7.2.1, postcss-selector-parser@npm:^7.0.0, postcss-selector-parser@npm:^7.1.4, postcss-selector-parser@npm:^7.1.6":
+  version: 7.2.1
+  resolution: "postcss-selector-parser@npm:7.2.1"
   dependencies:
-    cssesc: "npm:^3.0.0"
     util-deprecate: "npm:^1.0.2"
-  checksum: 10c0/94db1cfb838957729dd632a229f86cc631cee98f0418026a8460ba3d24feb47da0a28f295a2ae4be37b548ffa6e61eff0f74fbc2ae309c48a6dd3fe1cb25e396
+  checksum: 10c0/bb82454497a6d2c8ec302cb53fbdc5c4ca36b8874c5c1b61acc6f9a0d6699135b7de6b1852d8d57c0d3404500e14fa9995595cd5d73b3fcdf48d717c2264784c
   languageName: node
   linkType: hard
 
