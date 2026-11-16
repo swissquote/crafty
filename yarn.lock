@@ -4063,7 +4063,7 @@ __metadata:
     "@swissquote/gulp-babel": "npm:1.31.0"
     babel-loader: "npm:10.1.1"
     gulp-terser: "npm:2.1.0"
-    schema-utils: "npm:4.8.1"
+    schema-utils: "npm:4.8.3"
   peerDependencies:
     "@swissquote/crafty-commons": 1.31.0
   languageName: unknown
@@ -4082,7 +4082,7 @@ __metadata:
     eslint-rspack-plugin: "npm:5.0.1"
     eslint-webpack-plugin: "npm:6.0.0"
     resolve-from: "npm:5.0.0"
-    schema-utils: "npm:4.8.1"
+    schema-utils: "npm:4.8.3"
   peerDependencies:
     "@swissquote/crafty-preset-eslint": 1.31.0
   languageName: unknown
@@ -4165,7 +4165,7 @@ __metadata:
     postcss-loader: "patch:postcss-loader@npm%3A8.2.1#~/.yarn/patches/postcss-loader-npm-8.2.1-c201e127e3.patch"
     postcss-scss: "npm:4.0.9"
     resolve-from: "npm:5.0.0"
-    schema-utils: "npm:4.8.1"
+    schema-utils: "npm:4.8.3"
     style-loader: "npm:4.0.0"
   peerDependencies:
     "@swissquote/stylelint-config-swissquote": 1.31.0
@@ -4245,7 +4245,7 @@ __metadata:
     "@swissquote/crafty-preset-eslint": "npm:1.31.0"
     fork-ts-checker-webpack-plugin: "patch:fork-ts-checker-webpack-plugin@npm%3A9.1.0#~/.yarn/patches/fork-ts-checker-webpack-plugin-npm-9.1.0-a1d6d9f548.patch"
     memfs: "npm:4.80.0"
-    schema-utils: "npm:4.8.1"
+    schema-utils: "npm:4.8.3"
     ts-checker-rspack-plugin: "npm:1.8.0"
     ts-jest: "npm:29.4.15"
     ts-loader: "npm:9.6.2"
@@ -12436,22 +12436,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:4.8.1, schema-utils@npm:^4.0.0, schema-utils@npm:^4.2.0, schema-utils@npm:^4.3.3, schema-utils@npm:^4.6.0, schema-utils@npm:^4.8.1":
-  version: 4.8.1
-  resolution: "schema-utils@npm:4.8.1"
+"schema-utils@npm:4.8.3, schema-utils@npm:^4.0.0, schema-utils@npm:^4.2.0, schema-utils@npm:^4.3.3, schema-utils@npm:^4.6.0, schema-utils@npm:^4.8.1":
+  version: 4.8.3
+  resolution: "schema-utils@npm:4.8.3"
   dependencies:
     "@types/json-schema": "npm:^7.0.15"
     ajv: "npm:^8.20.0"
     ajv-formats: "npm:^3.0.1"
     ajv-keywords: "npm:^5.1.0"
   peerDependencies:
-    webpack: ^5.112.0
+    webpack: ^5.0.0
   peerDependenciesMeta:
     webpack:
       optional: true
   bin:
     schema-utils: bin/schema-utils.js
-  checksum: 10c0/b18b816e5628adb6a703883dbbb672aa3368e6462e16097c9df16d9ca192e41191b98c1b63b6cf18b0ee17a7223268ec9ca76935e8c50337cfa8484d3d289eea
+  checksum: 10c0/4188ccb5b6b66184ed51de664aa6dfc600c9f9907878152e082df9346b133c441efaaccaed35b15ae2cd0e9841dfbdff2962c8dc0b9cbea451e117c56c87a089
   languageName: node
   linkType: hard
 
