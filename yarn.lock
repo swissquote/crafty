@@ -4566,7 +4566,7 @@ __metadata:
     prettier: "npm:3.9.10"
     stylelint: "npm:17.14.1"
     stylelint-prettier: "npm:5.0.3"
-    stylelint-scss: "npm:7.4.0"
+    stylelint-scss: "npm:7.5.0"
   peerDependencies:
     "@swissquote/crafty-commons": 1.31.0
     postcss: ^8.0.0
@@ -12935,9 +12935,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-scss@npm:7.4.0":
-  version: 7.4.0
-  resolution: "stylelint-scss@npm:7.4.0"
+"stylelint-scss@npm:7.5.0":
+  version: 7.5.0
+  resolution: "stylelint-scss@npm:7.5.0"
   dependencies:
     "@csstools/css-calc": "npm:^3.4.3"
     "@csstools/css-parser-algorithms": "npm:^4.0.0"
@@ -12951,8 +12951,8 @@ __metadata:
     postcss-selector-parser: "npm:^7.1.6"
     postcss-value-parser: "npm:^4.2.0"
   peerDependencies:
-    stylelint: ^16.8.2 || ^17.0.0
-  checksum: 10c0/eb1885618f621f6964dc2eb16cc9a2cb04575b359b29c18759761feb57aafcae1e0321608b0d683dc065daba89e004daa74f2e06b1d18ea2111cdac313ad69f0
+    stylelint: ^16.8.2 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/ce56b98eb353e2497a5ecd2798ca99690cd75695b787c892a0ad630c686a50acb5d029849cd56f913e8e8bfd95b2424d86f0637628fe618b6d27ee694f1bb2fd
   languageName: node
   linkType: hard
 
