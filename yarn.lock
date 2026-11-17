@@ -4198,7 +4198,7 @@ __metadata:
     "@swissquote/crafty-commons-gulp": "npm:1.31.0"
     "@swissquote/crafty-preset-prettier": "npm:1.31.0"
     "@swissquote/stylelint-config-swissquote": "npm:1.31.0"
-    gulp-stylelint-esm: "npm:4.0.0"
+    gulp-stylelint-esm: "npm:4.1.0"
     is-plain-object: "npm:5.1.0"
     postcss: "npm:8.5.32"
     postcss-scss: "npm:4.0.9"
@@ -8776,9 +8776,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gulp-stylelint-esm@npm:4.0.0":
-  version: 4.0.0
-  resolution: "gulp-stylelint-esm@npm:4.0.0"
+"gulp-stylelint-esm@npm:4.1.0":
+  version: 4.1.0
+  resolution: "gulp-stylelint-esm@npm:4.1.0"
   dependencies:
     "@adorade/plugin-error": "npm:2.0.1"
     "@jridgewell/trace-mapping": "npm:0.3.31"
@@ -8787,8 +8787,8 @@ __metadata:
     text-table: "npm:0.2.0"
     write-file-atomic: "npm:8.0.0"
   peerDependencies:
-    stylelint: 16 || 17
-  checksum: 10c0/7924dd723ba499c8b0747be2819f66ac96fe6f4904efd7db3552a8c5e32ea43e7fc2ae523ce15ab8dbe8f0ed40fe415873aa461a33bda6255013c789a16a074f
+    stylelint: ^16.18.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/f151de0d4436cad69e3413c9db1a781b3038e4eca59ad88cbd3aef640098c6bec9bb5e321f165cd19876c4dae441a1de6288963991bed67a83dd80d234249547
   languageName: node
   linkType: hard
 
