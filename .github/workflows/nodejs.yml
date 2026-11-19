@@ -190,13 +190,15 @@ jobs:
           -Dsonar.projectVersion=${{ steps.sonar_reports.outputs.project_version }}
 
   # ─── Job: publishes the package size report, does NOT run PR code ───
-  # PRs get it in the job summary: fork PRs have a read-only token, so no comment or check run
+  # Always written to the job summary. In-repo PRs also get a comment; fork PRs only get
+  # the summary, as GitHub downgrades their token to read-only whatever we request here
   size_report:
     name: "📦 Package Size Report"
     needs: lint
     runs-on: ubuntu-latest
     permissions:
-      checks: write # only used on push, see below
+      pull-requests: write # PR comment, in-repo PRs only
+      checks: write # check run, pushes only
     steps:
     - name: ⬇️ Download size report
       uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
@@ -206,6 +208,40 @@ jobs:
 
     - name: 📝 Write job summary
       run: cat .pkg-sizes-report.md >> "$GITHUB_STEP_SUMMARY"
+
+    - name: 💬 Post PR comment
+      uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+      if: >-
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        github.event.pull_request.user.login != 'dependabot[bot]'
+      with:
+        script: |
+          const fs = require('fs');
+          const body = fs.readFileSync('.pkg-sizes-report.md', 'utf8');
+          const marker = '<!-- pkg-size-report -->';
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.pull_request.number,
+          });
+          const existing = comments.find(c => c.body.includes(marker));
+          const fullBody = marker + '\n' + body;
+          if (existing) {
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: existing.id,
+              body: fullBody,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: fullBody,
+            });
+          }
 
     - name: ✅ Create check run with size report
       uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
