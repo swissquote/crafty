@@ -149,7 +149,7 @@ module.exports = [
           )
           .package(
             "@typescript-eslint/types",
-            ["AST_NODE_TYPES"],
+            ["AST_NODE_TYPES", "AST_TOKEN_TYPES"],
             "dist/typescript-eslint/types.js"
           )
           .package(
@@ -196,6 +196,10 @@ module.exports = [
         eslint: "eslint",
         "eslint/use-at-your-own-risk": "eslint/use-at-your-own-risk",
         "eslint/package.json": "eslint/package.json",
+
+        // Optional peer dependency of @typescript-eslint/typescript-estree (experimental tsgo backend),
+        // loaded lazily inside a try/catch, keep it external so it resolves at runtime if installed.
+        "/@typescript/native(/.*)/": "@typescript/native$1",
 
         "ts-api-utils": "../ts-api-utils/index.js",
 

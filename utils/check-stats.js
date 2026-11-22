@@ -42,6 +42,7 @@ const unnecessaryPackages = new Set();
 unnecessaryPackages.add("pnpapi");
 unnecessaryPackages.add("@microsoft/typescript-etw");
 unnecessaryPackages.add("sugarss");
+unnecessaryPackages.add("@typescript/native"); // Optional tsgo backend of @typescript-eslint/typescript-estree
 
 const depsAllowlist = new Set();
 depsAllowlist.add("@swissquote/crafty-preset-eslint");
