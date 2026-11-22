@@ -125,6 +125,7 @@ module.exports = [
           "../typescript-eslint/eslint-utils.js",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js",
         "@typescript-eslint/type-utils": "../typescript-eslint/type-utils.js",
+        "@typescript-eslint/visitor-keys": "../typescript-eslint/visitor-keys.js",
 
         "ts-api-utils": "../ts-api-utils/index.js"
       }),
@@ -151,6 +152,11 @@ module.exports = [
             "@typescript-eslint/types",
             ["AST_NODE_TYPES", "AST_TOKEN_TYPES"],
             "dist/typescript-eslint/types.js"
+          )
+          .package(
+            "@typescript-eslint/visitor-keys",
+            ["getKeys", "visitorKeys"],
+            "dist/typescript-eslint/visitor-keys.js"
           )
           .package(
             "@typescript-eslint/utils",
