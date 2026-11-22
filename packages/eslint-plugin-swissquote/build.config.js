@@ -125,7 +125,8 @@ module.exports = [
           "../typescript-eslint/eslint-utils.js",
         "@typescript-eslint/utils": "../typescript-eslint/utils.js",
         "@typescript-eslint/type-utils": "../typescript-eslint/type-utils.js",
-        "@typescript-eslint/visitor-keys": "../typescript-eslint/visitor-keys.js",
+        "@typescript-eslint/visitor-keys":
+          "../typescript-eslint/visitor-keys.js",
 
         "ts-api-utils": "../ts-api-utils/index.js"
       }),
