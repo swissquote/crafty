@@ -168,8 +168,8 @@ async function compileRSLib(input, output, bundle) {
                   : input
             }
           },
-          autoExternal: false,
           output: {
+            autoExternal: false,
             externals: [externals || []].flat().flatMap(expandRegexExternals),
             distPath: {
               root: dirname

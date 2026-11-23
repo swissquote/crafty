@@ -435,7 +435,7 @@ export default [
             ""
           )
           .replace(
-            "const { version: version } = version_require('../package.json');",
+            "const { version } = version_require('../package.json');",
             `const version = "${version}";`
           )
           .replace(
