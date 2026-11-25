@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-const path = require("node:path");
-const fs = require("node:fs");
+import path from "node:path";
+import fs from "node:fs";
 
-const { formatBytes, getModulePath, isModule } = require("./functions.js");
+import { formatBytes, getModulePath, isModule } from "./functions.js";
 
-function findFiles() {
+export function findFiles() {
   return fs.globSync("**/*-stats.json", { ignore: "node_modules/**" });
 }
 
-function scanFiles(files) {
+export function scanFiles(files) {
   const allModules = {};
 
   for (const file of files) {
     const loadFile = path.join(process.cwd(), file);
-    const data = require(loadFile);
+    const data = JSON.parse(fs.readFileSync(loadFile, "utf-8"));
 
     const validModules = data.modules.filter(
       m => m.nameForCondition != null && isModule(m.name)
@@ -67,7 +67,7 @@ function scanFiles(files) {
   };
 }
 
-function printReport(duplicateModules, duplicateModulesByPackage) {
+export function printReport(duplicateModules, duplicateModulesByPackage) {
   const prefix = `${process.cwd()}/`;
 
   console.log("Duplicated files, per module\n============================\n");
@@ -100,14 +100,9 @@ function printReport(duplicateModules, duplicateModulesByPackage) {
   }
 }
 
-module.exports = {
-  findFiles,
-  scanFiles,
-  printReport
-};
-
+// Only act as a CLI when run directly, not when imported by build.mjs
 const args = process.argv.slice(2);
-if (args.length > 0) {
+if (process.argv[1] === import.meta.filename && args.length > 0) {
   const report = scanFiles(args);
 
   if (report.duplicateModules.length > 0) {

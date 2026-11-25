@@ -14,3 +14,6 @@ export const _createLinter = stylelint._createLinter;
 export const utils = stylelint.utils;
 export const reference = stylelint.reference;
 export default stylelint;
+
+// Lets CommonJS consumers get the value from a plain require()
+export { stylelint as "module.exports" };
