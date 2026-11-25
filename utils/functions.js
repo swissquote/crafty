@@ -1,7 +1,7 @@
-const path = require("node:path");
-const fs = require("node:fs");
+import path from "node:path";
+import fs from "node:fs";
 
-function formatBytes(bytes) {
+export function formatBytes(bytes) {
   if (bytes === 0) return "0 Bytes";
 
   const k = 1000;
@@ -14,15 +14,15 @@ function formatBytes(bytes) {
   }`;
 }
 
-function isModule(name) {
+export function isModule(name) {
   return name.includes("/node_modules/") || name.includes("/package-forks/");
 }
 
-function isExternal(name) {
+export function isExternal(name) {
   return name.indexOf("external ") === 0;
 }
 
-function getModulePath(name) {
+export function getModulePath(name) {
   const moduleNames = [];
 
   const moduleParts = name.split("/");
@@ -60,7 +60,7 @@ function getModulePath(name) {
  * @param {string} src  The path to the thing to copy.
  * @param {string} dest The path to the new copy.
  */
-function copyRecursiveSync(src, dest) {
+export function copyRecursiveSync(src, dest) {
   const exists = fs.existsSync(src);
   const stats = exists && fs.statSync(src);
   const isDirectory = exists && stats.isDirectory();
@@ -77,15 +77,6 @@ function copyRecursiveSync(src, dest) {
   }
 }
 
-function rmrf(toDelete) {
+export function rmrf(toDelete) {
   fs.rmSync(toDelete, { recursive: true, force: true });
 }
-
-module.exports = {
-  formatBytes,
-  getModulePath,
-  isModule,
-  isExternal,
-  copyRecursiveSync,
-  rmrf
-};

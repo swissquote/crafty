@@ -1,7 +1,12 @@
-const { getModulePath, isModule, isExternal } = require("./functions.js");
-const isCore = require("is-core-module");
+import fs from "node:fs";
+import path from "node:path";
+import isCore from "is-core-module";
 
-const packageFile = require(`${process.cwd()}/package.json`);
+import { getModulePath, isModule, isExternal } from "./functions.js";
+
+const packageFile = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf-8")
+);
 
 function printStats({ modules }) {
   const packages = modules
@@ -90,7 +95,7 @@ function inDeps(dependency) {
   return result;
 }
 
-function checkStats(stats, statFile) {
+export default function checkStats(stats, statFile) {
   printStats(stats);
 
   const errors = [];
@@ -188,5 +193,3 @@ function checkStats(stats, statFile) {
     process.exit(1);
   }
 }
-
-module.exports = checkStats;

@@ -1,6 +1,7 @@
 {
   "name": "@swissquote/utils",
   "version": "1.31.0",
+  "type": "module",
   "main": "./build.mjs",
   "scripts": {
     "lint": "node ../packages/crafty-preset-eslint/src/commands/jsLint.js --preset recommended --preset node *.js *.mjs"

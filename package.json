@@ -30,7 +30,8 @@
     "publish:all": "./utils/publish.mjs",
     "upgrade": "yarn up -R '**'",
     "benchmark": "node benchmarks/runner.js",
-    "benchmark:compare": "node benchmarks/compare.js"
+    "benchmark:compare": "node benchmarks/compare.js",
+    "migration:status": "node utils/migration-status.js"
   },
   "dependencies": {
     "@types/eslint": "^9.0.0",
